@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Specifies the tags to add to a trail.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/AddTags" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -33,7 +39,7 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     private String resourceId;
     /**
      * <p>
-     * Contains a list of CloudTrail tags, up to a limit of 10.
+     * Contains a list of CloudTrail tags, up to a limit of 50
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tagsList;
@@ -95,10 +101,10 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Contains a list of CloudTrail tags, up to a limit of 10.
+     * Contains a list of CloudTrail tags, up to a limit of 50
      * </p>
      * 
-     * @return Contains a list of CloudTrail tags, up to a limit of 10.
+     * @return Contains a list of CloudTrail tags, up to a limit of 50
      */
 
     public java.util.List<Tag> getTagsList() {
@@ -110,11 +116,11 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Contains a list of CloudTrail tags, up to a limit of 10.
+     * Contains a list of CloudTrail tags, up to a limit of 50
      * </p>
      * 
      * @param tagsList
-     *        Contains a list of CloudTrail tags, up to a limit of 10.
+     *        Contains a list of CloudTrail tags, up to a limit of 50
      */
 
     public void setTagsList(java.util.Collection<Tag> tagsList) {
@@ -128,7 +134,7 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Contains a list of CloudTrail tags, up to a limit of 10.
+     * Contains a list of CloudTrail tags, up to a limit of 50
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -137,7 +143,7 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * </p>
      * 
      * @param tagsList
-     *        Contains a list of CloudTrail tags, up to a limit of 10.
+     *        Contains a list of CloudTrail tags, up to a limit of 50
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -153,11 +159,11 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Contains a list of CloudTrail tags, up to a limit of 10.
+     * Contains a list of CloudTrail tags, up to a limit of 50
      * </p>
      * 
      * @param tagsList
-     *        Contains a list of CloudTrail tags, up to a limit of 10.
+     *        Contains a list of CloudTrail tags, up to a limit of 50
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,9 +184,9 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTagsList() != null)
-            sb.append("TagsList: " + getTagsList());
+            sb.append("TagsList: ").append(getTagsList());
         sb.append("}");
         return sb.toString();
     }
@@ -220,4 +226,5 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     public AddTagsRequest clone() {
         return (AddTagsRequest) super.clone();
     }
+
 }

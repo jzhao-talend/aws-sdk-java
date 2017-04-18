@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,10 +15,8 @@ package com.amazonaws.services.cloudfront.model.transform;
 import static com.amazonaws.util.StringUtils.UTF8;
 
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -26,17 +24,17 @@ import com.amazonaws.DefaultRequest;
 import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.cloudfront.model.*;
 import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
+
 import com.amazonaws.util.StringInputStream;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
+
 import com.amazonaws.util.XMLWriter;
-import com.amazonaws.util.SdkHttpUtils;
 
 /**
  * UpdateStreamingDistributionRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateStreamingDistributionRequestMarshaller implements
         Marshaller<Request<UpdateStreamingDistributionRequest>, UpdateStreamingDistributionRequest> {
 
@@ -55,17 +53,14 @@ public class UpdateStreamingDistributionRequestMarshaller implements
             request.addHeader("If-Match", StringUtils.fromString(updateStreamingDistributionRequest.getIfMatch()));
         }
 
-        String uriResourcePath = "/2016-09-29/streaming-distribution/{Id}/config";
+        String uriResourcePath = "/2017-03-25/streaming-distribution/{Id}/config";
 
-        uriResourcePath = uriResourcePath.replace(
-                "{Id}",
-                (updateStreamingDistributionRequest.getId() != null) ? SdkHttpUtils.urlEncode(
-                        StringUtils.fromString(updateStreamingDistributionRequest.getId()), false) : "");
+        uriResourcePath = com.amazonaws.transform.PathMarshallers.NON_GREEDY.marshall(uriResourcePath, "Id", updateStreamingDistributionRequest.getId());
         request.setResourcePath(uriResourcePath);
 
         try {
             StringWriter stringWriter = new StringWriter();
-            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2016-09-29/");
+            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2017-03-25/");
 
             StreamingDistributionConfig streamingDistributionConfig = updateStreamingDistributionRequest.getStreamingDistributionConfig();
             if (streamingDistributionConfig != null) {

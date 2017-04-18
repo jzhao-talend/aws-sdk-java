@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web
  * requests, the location in requests that you want AWS WAF to search, and other settings.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ByteMatchTuple" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ByteMatchTuple implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ByteMatchTuple implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -419,7 +426,7 @@ public class ByteMatchTuple implements Serializable, Cloneable {
      * The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -711,6 +718,16 @@ public class ByteMatchTuple implements Serializable, Cloneable {
      * </p>
      * <p>
      * The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
      * </p>
      * 
      * @param targetString
@@ -2915,13 +2932,13 @@ public class ByteMatchTuple implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFieldToMatch() != null)
-            sb.append("FieldToMatch: " + getFieldToMatch() + ",");
+            sb.append("FieldToMatch: ").append(getFieldToMatch()).append(",");
         if (getTargetString() != null)
-            sb.append("TargetString: " + getTargetString() + ",");
+            sb.append("TargetString: ").append(getTargetString()).append(",");
         if (getTextTransformation() != null)
-            sb.append("TextTransformation: " + getTextTransformation() + ",");
+            sb.append("TextTransformation: ").append(getTextTransformation()).append(",");
         if (getPositionalConstraint() != null)
-            sb.append("PositionalConstraint: " + getPositionalConstraint());
+            sb.append("PositionalConstraint: ").append(getPositionalConstraint());
         sb.append("}");
         return sb.toString();
     }
@@ -2974,5 +2991,11 @@ public class ByteMatchTuple implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.ByteMatchTupleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

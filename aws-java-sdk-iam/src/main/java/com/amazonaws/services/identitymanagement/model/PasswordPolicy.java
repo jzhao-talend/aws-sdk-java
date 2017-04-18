@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -21,7 +22,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PasswordPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PasswordPolicy implements Serializable, Cloneable {
 
     /**
@@ -590,25 +595,25 @@ public class PasswordPolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMinimumPasswordLength() != null)
-            sb.append("MinimumPasswordLength: " + getMinimumPasswordLength() + ",");
+            sb.append("MinimumPasswordLength: ").append(getMinimumPasswordLength()).append(",");
         if (getRequireSymbols() != null)
-            sb.append("RequireSymbols: " + getRequireSymbols() + ",");
+            sb.append("RequireSymbols: ").append(getRequireSymbols()).append(",");
         if (getRequireNumbers() != null)
-            sb.append("RequireNumbers: " + getRequireNumbers() + ",");
+            sb.append("RequireNumbers: ").append(getRequireNumbers()).append(",");
         if (getRequireUppercaseCharacters() != null)
-            sb.append("RequireUppercaseCharacters: " + getRequireUppercaseCharacters() + ",");
+            sb.append("RequireUppercaseCharacters: ").append(getRequireUppercaseCharacters()).append(",");
         if (getRequireLowercaseCharacters() != null)
-            sb.append("RequireLowercaseCharacters: " + getRequireLowercaseCharacters() + ",");
+            sb.append("RequireLowercaseCharacters: ").append(getRequireLowercaseCharacters()).append(",");
         if (getAllowUsersToChangePassword() != null)
-            sb.append("AllowUsersToChangePassword: " + getAllowUsersToChangePassword() + ",");
+            sb.append("AllowUsersToChangePassword: ").append(getAllowUsersToChangePassword()).append(",");
         if (getExpirePasswords() != null)
-            sb.append("ExpirePasswords: " + getExpirePasswords() + ",");
+            sb.append("ExpirePasswords: ").append(getExpirePasswords()).append(",");
         if (getMaxPasswordAge() != null)
-            sb.append("MaxPasswordAge: " + getMaxPasswordAge() + ",");
+            sb.append("MaxPasswordAge: ").append(getMaxPasswordAge()).append(",");
         if (getPasswordReusePrevention() != null)
-            sb.append("PasswordReusePrevention: " + getPasswordReusePrevention() + ",");
+            sb.append("PasswordReusePrevention: ").append(getPasswordReusePrevention()).append(",");
         if (getHardExpiry() != null)
-            sb.append("HardExpiry: " + getHardExpiry());
+            sb.append("HardExpiry: ").append(getHardExpiry());
         sb.append("}");
         return sb.toString();
     }
@@ -692,4 +697,5 @@ public class PasswordPolicy implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,19 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The encryption settings, if any, that are used for decrypting your input files or encrypting your output files. If
- * your input file is encrypted, you must specify the mode that Elastic Transcoder will use to decrypt your file,
- * otherwise you must specify the mode you want Elastic Transcoder to use to encrypt your output files.
+ * your input file is encrypted, you must specify the mode that Elastic Transcoder uses to decrypt your file, otherwise
+ * you must specify the mode you want Elastic Transcoder to use to encrypt your output files.
  * </p>
  */
-public class Encryption implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Encryption implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -54,7 +58,7 @@ public class Encryption implements Serializable, Cloneable {
      * <li>
      * <p>
      * <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning
-     * that a file, key, or initialization vector that has been tampered with will fail the decryption process.
+     * that a file, key, or initialization vector that has been tampered with fails the decryption process.
      * </p>
      * </li>
      * </ul>
@@ -150,7 +154,7 @@ public class Encryption implements Serializable, Cloneable {
      * <li>
      * <p>
      * <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning
-     * that a file, key, or initialization vector that has been tampered with will fail the decryption process.
+     * that a file, key, or initialization vector that has been tampered with fails the decryption process.
      * </p>
      * </li>
      * </ul>
@@ -211,7 +215,7 @@ public class Encryption implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format,
-     *        meaning that a file, key, or initialization vector that has been tampered with will fail the decryption
+     *        meaning that a file, key, or initialization vector that has been tampered with fails the decryption
      *        process.
      *        </p>
      *        </li>
@@ -279,7 +283,7 @@ public class Encryption implements Serializable, Cloneable {
      * <li>
      * <p>
      * <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning
-     * that a file, key, or initialization vector that has been tampered with will fail the decryption process.
+     * that a file, key, or initialization vector that has been tampered with fails the decryption process.
      * </p>
      * </li>
      * </ul>
@@ -339,7 +343,7 @@ public class Encryption implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format,
-     *         meaning that a file, key, or initialization vector that has been tampered with will fail the decryption
+     *         meaning that a file, key, or initialization vector that has been tampered with fails the decryption
      *         process.
      *         </p>
      *         </li>
@@ -407,7 +411,7 @@ public class Encryption implements Serializable, Cloneable {
      * <li>
      * <p>
      * <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format, meaning
-     * that a file, key, or initialization vector that has been tampered with will fail the decryption process.
+     * that a file, key, or initialization vector that has been tampered with fails the decryption process.
      * </p>
      * </li>
      * </ul>
@@ -468,7 +472,7 @@ public class Encryption implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <b>AES-GCM:</b> AES Galois Counter Mode, a mode of operation that is an authenticated encryption format,
-     *        meaning that a file, key, or initialization vector that has been tampered with will fail the decryption
+     *        meaning that a file, key, or initialization vector that has been tampered with fails the decryption
      *        process.
      *        </p>
      *        </li>
@@ -717,13 +721,13 @@ public class Encryption implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMode() != null)
-            sb.append("Mode: " + getMode() + ",");
+            sb.append("Mode: ").append(getMode()).append(",");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getKeyMd5() != null)
-            sb.append("KeyMd5: " + getKeyMd5() + ",");
+            sb.append("KeyMd5: ").append(getKeyMd5()).append(",");
         if (getInitializationVector() != null)
-            sb.append("InitializationVector: " + getInitializationVector());
+            sb.append("InitializationVector: ").append(getInitializationVector());
         sb.append("}");
         return sb.toString();
     }
@@ -776,5 +780,11 @@ public class Encryption implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.EncryptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

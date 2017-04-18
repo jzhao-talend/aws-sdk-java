@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * CreateApplicationRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateApplicationRequestMarshaller implements Marshaller<Request<CreateApplicationRequest>, CreateApplicationRequest> {
 
     public Request<CreateApplicationRequest> marshall(CreateApplicationRequest createApplicationRequest) {
@@ -48,6 +46,56 @@ public class CreateApplicationRequestMarshaller implements Marshaller<Request<Cr
 
         if (createApplicationRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(createApplicationRequest.getDescription()));
+        }
+
+        ApplicationResourceLifecycleConfig resourceLifecycleConfig = createApplicationRequest.getResourceLifecycleConfig();
+        if (resourceLifecycleConfig != null) {
+
+            if (resourceLifecycleConfig.getServiceRole() != null) {
+                request.addParameter("ResourceLifecycleConfig.ServiceRole", StringUtils.fromString(resourceLifecycleConfig.getServiceRole()));
+            }
+
+            ApplicationVersionLifecycleConfig versionLifecycleConfig = resourceLifecycleConfig.getVersionLifecycleConfig();
+            if (versionLifecycleConfig != null) {
+
+                MaxCountRule maxCountRule = versionLifecycleConfig.getMaxCountRule();
+                if (maxCountRule != null) {
+
+                    if (maxCountRule.getEnabled() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxCountRule.Enabled",
+                                StringUtils.fromBoolean(maxCountRule.getEnabled()));
+                    }
+
+                    if (maxCountRule.getMaxCount() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxCountRule.MaxCount",
+                                StringUtils.fromInteger(maxCountRule.getMaxCount()));
+                    }
+
+                    if (maxCountRule.getDeleteSourceFromS3() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxCountRule.DeleteSourceFromS3",
+                                StringUtils.fromBoolean(maxCountRule.getDeleteSourceFromS3()));
+                    }
+                }
+
+                MaxAgeRule maxAgeRule = versionLifecycleConfig.getMaxAgeRule();
+                if (maxAgeRule != null) {
+
+                    if (maxAgeRule.getEnabled() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxAgeRule.Enabled",
+                                StringUtils.fromBoolean(maxAgeRule.getEnabled()));
+                    }
+
+                    if (maxAgeRule.getMaxAgeInDays() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxAgeRule.MaxAgeInDays",
+                                StringUtils.fromInteger(maxAgeRule.getMaxAgeInDays()));
+                    }
+
+                    if (maxAgeRule.getDeleteSourceFromS3() != null) {
+                        request.addParameter("ResourceLifecycleConfig.VersionLifecycleConfig.MaxAgeRule.DeleteSourceFromS3",
+                                StringUtils.fromBoolean(maxAgeRule.getDeleteSourceFromS3()));
+                    }
+                }
+            }
         }
 
         return request;

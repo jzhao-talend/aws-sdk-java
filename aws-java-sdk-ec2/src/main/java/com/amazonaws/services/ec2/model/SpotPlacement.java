@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes Spot instance placement.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotPlacement" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpotPlacement implements Serializable, Cloneable {
 
     /**
@@ -37,6 +42,14 @@ public class SpotPlacement implements Serializable, Cloneable {
      * </p>
      */
     private String groupName;
+    /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     */
+    private String tenancy;
 
     /**
      * Default constructor for SpotPlacement object. Callers should use the setter or fluent setter (with...) methods to
@@ -161,6 +174,99 @@ public class SpotPlacement implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     * 
+     * @param tenancy
+     *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
+     *        Spot instances.
+     * @see Tenancy
+     */
+
+    public void setTenancy(String tenancy) {
+        this.tenancy = tenancy;
+    }
+
+    /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     * 
+     * @return The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     *         <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
+     *         Spot instances.
+     * @see Tenancy
+     */
+
+    public String getTenancy() {
+        return this.tenancy;
+    }
+
+    /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     * 
+     * @param tenancy
+     *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
+     *        Spot instances.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Tenancy
+     */
+
+    public SpotPlacement withTenancy(String tenancy) {
+        setTenancy(tenancy);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     * 
+     * @param tenancy
+     *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
+     *        Spot instances.
+     * @see Tenancy
+     */
+
+    public void setTenancy(Tenancy tenancy) {
+        this.tenancy = tenancy.toString();
+    }
+
+    /**
+     * <p>
+     * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for Spot
+     * instances.
+     * </p>
+     * 
+     * @param tenancy
+     *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
+     *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
+     *        Spot instances.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Tenancy
+     */
+
+    public SpotPlacement withTenancy(Tenancy tenancy) {
+        setTenancy(tenancy);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -172,9 +278,11 @@ public class SpotPlacement implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getGroupName() != null)
-            sb.append("GroupName: " + getGroupName());
+            sb.append("GroupName: ").append(getGroupName()).append(",");
+        if (getTenancy() != null)
+            sb.append("Tenancy: ").append(getTenancy());
         sb.append("}");
         return sb.toString();
     }
@@ -197,6 +305,10 @@ public class SpotPlacement implements Serializable, Cloneable {
             return false;
         if (other.getGroupName() != null && other.getGroupName().equals(this.getGroupName()) == false)
             return false;
+        if (other.getTenancy() == null ^ this.getTenancy() == null)
+            return false;
+        if (other.getTenancy() != null && other.getTenancy().equals(this.getTenancy()) == false)
+            return false;
         return true;
     }
 
@@ -207,6 +319,7 @@ public class SpotPlacement implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
         hashCode = prime * hashCode + ((getGroupName() == null) ? 0 : getGroupName().hashCode());
+        hashCode = prime * hashCode + ((getTenancy() == null) ? 0 : getTenancy().hashCode());
         return hashCode;
     }
 
@@ -218,4 +331,5 @@ public class SpotPlacement implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

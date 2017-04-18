@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeVpcsRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeVpcsRequestMarshaller;
  * Contains the parameters for DescribeVpcs.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeVpcsRequest> {
 
     /**
@@ -40,14 +43,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * <ul>
      * <li>
      * <p>
-     * <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block
-     * for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example,
-     * <code>/28</code>).
+     * <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR
+     * block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for
+     * example, <code>/28</code>).
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block associated
+     * with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      * </p>
      * </li>
      * <li>
@@ -62,7 +81,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -189,14 +210,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * <ul>
      * <li>
      * <p>
-     * <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block
-     * for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example,
-     * <code>/28</code>).
+     * <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR
+     * block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for
+     * example, <code>/28</code>).
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block associated
+     * with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      * </p>
      * </li>
      * <li>
@@ -211,7 +248,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -240,14 +279,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's
-     *         CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
-     *         digits (for example, <code>/28</code>).
+     *         <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the
+     *         VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or
+     *         two digits (for example, <code>/28</code>).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block
+     *         associated with the VPC.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      *         </p>
      *         </li>
      *         <li>
@@ -263,6 +318,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -301,14 +359,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * <ul>
      * <li>
      * <p>
-     * <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block
-     * for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example,
-     * <code>/28</code>).
+     * <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR
+     * block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for
+     * example, <code>/28</code>).
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block associated
+     * with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      * </p>
      * </li>
      * <li>
@@ -323,7 +397,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -353,14 +429,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's
-     *        CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
+     *        <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the
+     *        VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
      *        digits (for example, <code>/28</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block
+     *        associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      *        </p>
      *        </li>
      *        <li>
@@ -376,6 +468,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -416,14 +511,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * <ul>
      * <li>
      * <p>
-     * <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block
-     * for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example,
-     * <code>/28</code>).
+     * <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR
+     * block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for
+     * example, <code>/28</code>).
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block associated
+     * with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      * </p>
      * </li>
      * <li>
@@ -438,7 +549,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -473,14 +586,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's
-     *        CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
+     *        <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the
+     *        VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
      *        digits (for example, <code>/28</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block
+     *        associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      *        </p>
      *        </li>
      *        <li>
@@ -496,6 +625,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -538,14 +670,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * <ul>
      * <li>
      * <p>
-     * <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block
-     * for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example,
-     * <code>/28</code>).
+     * <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR
+     * block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for
+     * example, <code>/28</code>).
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block associated
+     * with the VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      * </p>
      * </li>
      * <li>
@@ -560,7 +708,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -590,14 +740,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>cidr</code> - The CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's
-     *        CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
+     *        <code>cidr</code> - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the
+     *        VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two
      *        digits (for example, <code>/28</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>dhcp-options-id</code> - The ID of a set of DHCP options.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - The association ID for an IPv6 CIDR block
+     *        associated with the VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the VPC.
      *        </p>
      *        </li>
      *        <li>
@@ -613,6 +779,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -666,9 +835,9 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVpcIds() != null)
-            sb.append("VpcIds: " + getVpcIds() + ",");
+            sb.append("VpcIds: ").append(getVpcIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters());
         sb.append("}");
         return sb.toString();
     }

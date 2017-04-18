@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -28,8 +31,12 @@ import java.io.Serializable;
  * The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections
  * on the interconnect, and the owner of the interconnect determines how these resources are assigned.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/Interconnect" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Interconnect implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Interconnect implements Serializable, Cloneable, StructuredPojo {
 
     private String interconnectId;
 
@@ -48,6 +55,14 @@ public class Interconnect implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date loaIssueTime;
+
+    private String lagId;
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     */
+    private String awsDevice;
 
     /**
      * @param interconnectId
@@ -269,6 +284,72 @@ public class Interconnect implements Serializable, Cloneable {
     }
 
     /**
+     * @param lagId
+     */
+
+    public void setLagId(String lagId) {
+        this.lagId = lagId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getLagId() {
+        return this.lagId;
+    }
+
+    /**
+     * @param lagId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Interconnect withLagId(String lagId) {
+        setLagId(lagId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @param awsDevice
+     *        The Direct Connection endpoint which the physical connection terminates on.
+     */
+
+    public void setAwsDevice(String awsDevice) {
+        this.awsDevice = awsDevice;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @return The Direct Connection endpoint which the physical connection terminates on.
+     */
+
+    public String getAwsDevice() {
+        return this.awsDevice;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @param awsDevice
+     *        The Direct Connection endpoint which the physical connection terminates on.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Interconnect withAwsDevice(String awsDevice) {
+        setAwsDevice(awsDevice);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -280,19 +361,23 @@ public class Interconnect implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInterconnectId() != null)
-            sb.append("InterconnectId: " + getInterconnectId() + ",");
+            sb.append("InterconnectId: ").append(getInterconnectId()).append(",");
         if (getInterconnectName() != null)
-            sb.append("InterconnectName: " + getInterconnectName() + ",");
+            sb.append("InterconnectName: ").append(getInterconnectName()).append(",");
         if (getInterconnectState() != null)
-            sb.append("InterconnectState: " + getInterconnectState() + ",");
+            sb.append("InterconnectState: ").append(getInterconnectState()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation() + ",");
+            sb.append("Location: ").append(getLocation()).append(",");
         if (getBandwidth() != null)
-            sb.append("Bandwidth: " + getBandwidth() + ",");
+            sb.append("Bandwidth: ").append(getBandwidth()).append(",");
         if (getLoaIssueTime() != null)
-            sb.append("LoaIssueTime: " + getLoaIssueTime());
+            sb.append("LoaIssueTime: ").append(getLoaIssueTime()).append(",");
+        if (getLagId() != null)
+            sb.append("LagId: ").append(getLagId()).append(",");
+        if (getAwsDevice() != null)
+            sb.append("AwsDevice: ").append(getAwsDevice());
         sb.append("}");
         return sb.toString();
     }
@@ -335,6 +420,14 @@ public class Interconnect implements Serializable, Cloneable {
             return false;
         if (other.getLoaIssueTime() != null && other.getLoaIssueTime().equals(this.getLoaIssueTime()) == false)
             return false;
+        if (other.getLagId() == null ^ this.getLagId() == null)
+            return false;
+        if (other.getLagId() != null && other.getLagId().equals(this.getLagId()) == false)
+            return false;
+        if (other.getAwsDevice() == null ^ this.getAwsDevice() == null)
+            return false;
+        if (other.getAwsDevice() != null && other.getAwsDevice().equals(this.getAwsDevice()) == false)
+            return false;
         return true;
     }
 
@@ -350,6 +443,8 @@ public class Interconnect implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
         hashCode = prime * hashCode + ((getBandwidth() == null) ? 0 : getBandwidth().hashCode());
         hashCode = prime * hashCode + ((getLoaIssueTime() == null) ? 0 : getLoaIssueTime().hashCode());
+        hashCode = prime * hashCode + ((getLagId() == null) ? 0 : getLagId().hashCode());
+        hashCode = prime * hashCode + ((getAwsDevice() == null) ? 0 : getAwsDevice().hashCode());
         return hashCode;
     }
 
@@ -360,5 +455,11 @@ public class Interconnect implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directconnect.model.transform.InterconnectMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

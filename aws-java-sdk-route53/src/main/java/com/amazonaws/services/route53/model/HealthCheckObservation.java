@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains the last failure reason as reported by one Amazon Route 53 health checker.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/HealthCheckObservation" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class HealthCheckObservation implements Serializable, Cloneable {
 
     /**
@@ -219,11 +224,11 @@ public class HealthCheckObservation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getIPAddress() != null)
-            sb.append("IPAddress: " + getIPAddress() + ",");
+            sb.append("IPAddress: ").append(getIPAddress()).append(",");
         if (getStatusReport() != null)
-            sb.append("StatusReport: " + getStatusReport());
+            sb.append("StatusReport: ").append(getStatusReport());
         sb.append("}");
         return sb.toString();
     }
@@ -272,4 +277,5 @@ public class HealthCheckObservation implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,26 +13,63 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Represents a subscription filter.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/SubscriptionFilter" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SubscriptionFilter implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SubscriptionFilter implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The name of the subscription filter.
+     * </p>
+     */
     private String filterName;
-
+    /**
+     * <p>
+     * The name of the log group.
+     * </p>
+     */
     private String logGroupName;
 
     private String filterPattern;
-
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination.
+     * </p>
+     */
     private String destinationArn;
-
+    /** <p/> */
     private String roleArn;
-
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     */
+    private String distribution;
+    /**
+     * <p>
+     * The creation time of the subscription filter.
+     * </p>
+     */
     private Long creationTime;
 
     /**
+     * <p>
+     * The name of the subscription filter.
+     * </p>
+     * 
      * @param filterName
+     *        The name of the subscription filter.
      */
 
     public void setFilterName(String filterName) {
@@ -40,7 +77,11 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The name of the subscription filter.
+     * </p>
+     * 
+     * @return The name of the subscription filter.
      */
 
     public String getFilterName() {
@@ -48,7 +89,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the subscription filter.
+     * </p>
+     * 
      * @param filterName
+     *        The name of the subscription filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -58,7 +104,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the log group.
+     * </p>
+     * 
      * @param logGroupName
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -66,7 +117,11 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The name of the log group.
+     * </p>
+     * 
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -74,7 +129,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the log group.
+     * </p>
+     * 
      * @param logGroupName
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -110,7 +170,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination.
+     * </p>
+     * 
      * @param destinationArn
+     *        The Amazon Resource Name (ARN) of the destination.
      */
 
     public void setDestinationArn(String destinationArn) {
@@ -118,7 +183,11 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the destination.
      */
 
     public String getDestinationArn() {
@@ -126,7 +195,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination.
+     * </p>
+     * 
      * @param destinationArn
+     *        The Amazon Resource Name (ARN) of the destination.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,6 +210,8 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param roleArn
      */
 
@@ -144,6 +220,8 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @return
      */
 
@@ -152,6 +230,8 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param roleArn
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -162,7 +242,90 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream.
+     * @see Distribution
+     */
+
+    public void setDistribution(String distribution) {
+        this.distribution = distribution;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     * 
+     * @return The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *         stream.
+     * @see Distribution
+     */
+
+    public String getDistribution() {
+        return this.distribution;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Distribution
+     */
+
+    public SubscriptionFilter withDistribution(String distribution) {
+        setDistribution(distribution);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream.
+     * @see Distribution
+     */
+
+    public void setDistribution(Distribution distribution) {
+        this.distribution = distribution.toString();
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Distribution
+     */
+
+    public SubscriptionFilter withDistribution(Distribution distribution) {
+        setDistribution(distribution);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The creation time of the subscription filter.
+     * </p>
+     * 
      * @param creationTime
+     *        The creation time of the subscription filter.
      */
 
     public void setCreationTime(Long creationTime) {
@@ -170,7 +333,11 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The creation time of the subscription filter.
+     * </p>
+     * 
+     * @return The creation time of the subscription filter.
      */
 
     public Long getCreationTime() {
@@ -178,7 +345,12 @@ public class SubscriptionFilter implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The creation time of the subscription filter.
+     * </p>
+     * 
      * @param creationTime
+     *        The creation time of the subscription filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -199,17 +371,19 @@ public class SubscriptionFilter implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFilterName() != null)
-            sb.append("FilterName: " + getFilterName() + ",");
+            sb.append("FilterName: ").append(getFilterName()).append(",");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getFilterPattern() != null)
-            sb.append("FilterPattern: " + getFilterPattern() + ",");
+            sb.append("FilterPattern: ").append(getFilterPattern()).append(",");
         if (getDestinationArn() != null)
-            sb.append("DestinationArn: " + getDestinationArn() + ",");
+            sb.append("DestinationArn: ").append(getDestinationArn()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn() + ",");
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getDistribution() != null)
+            sb.append("Distribution: ").append(getDistribution()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime());
+            sb.append("CreationTime: ").append(getCreationTime());
         sb.append("}");
         return sb.toString();
     }
@@ -244,6 +418,10 @@ public class SubscriptionFilter implements Serializable, Cloneable {
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getDistribution() == null ^ this.getDistribution() == null)
+            return false;
+        if (other.getDistribution() != null && other.getDistribution().equals(this.getDistribution()) == false)
+            return false;
         if (other.getCreationTime() == null ^ this.getCreationTime() == null)
             return false;
         if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
@@ -261,6 +439,7 @@ public class SubscriptionFilter implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getFilterPattern() == null) ? 0 : getFilterPattern().hashCode());
         hashCode = prime * hashCode + ((getDestinationArn() == null) ? 0 : getDestinationArn().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getDistribution() == null) ? 0 : getDistribution().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
         return hashCode;
     }
@@ -272,5 +451,11 @@ public class SubscriptionFilter implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.SubscriptionFilterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

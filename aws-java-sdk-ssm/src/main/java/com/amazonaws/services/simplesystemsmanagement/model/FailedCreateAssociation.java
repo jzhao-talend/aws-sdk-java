@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a failed association.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/FailedCreateAssociation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class FailedCreateAssociation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class FailedCreateAssociation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -205,11 +212,11 @@ public class FailedCreateAssociation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEntry() != null)
-            sb.append("Entry: " + getEntry() + ",");
+            sb.append("Entry: ").append(getEntry()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getFault() != null)
-            sb.append("Fault: " + getFault());
+            sb.append("Fault: ").append(getFault());
         sb.append("}");
         return sb.toString();
     }
@@ -257,5 +264,11 @@ public class FailedCreateAssociation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.FailedCreateAssociationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

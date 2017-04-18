@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/SearchGameSessions" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -29,7 +34,7 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
     private java.util.List<GameSession> gameSessions;
     /**
      * <p>
-     * Token indicating where to resume retrieving results on the next call to this action. If no token is returned,
+     * Token that indicates where to resume retrieving results on the next call to this action. If no token is returned,
      * these results represent the end of the list.
      * </p>
      */
@@ -107,12 +112,12 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Token indicating where to resume retrieving results on the next call to this action. If no token is returned,
+     * Token that indicates where to resume retrieving results on the next call to this action. If no token is returned,
      * these results represent the end of the list.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating where to resume retrieving results on the next call to this action. If no token is
+     *        Token that indicates where to resume retrieving results on the next call to this action. If no token is
      *        returned, these results represent the end of the list.
      */
 
@@ -122,11 +127,11 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Token indicating where to resume retrieving results on the next call to this action. If no token is returned,
+     * Token that indicates where to resume retrieving results on the next call to this action. If no token is returned,
      * these results represent the end of the list.
      * </p>
      * 
-     * @return Token indicating where to resume retrieving results on the next call to this action. If no token is
+     * @return Token that indicates where to resume retrieving results on the next call to this action. If no token is
      *         returned, these results represent the end of the list.
      */
 
@@ -136,12 +141,12 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Token indicating where to resume retrieving results on the next call to this action. If no token is returned,
+     * Token that indicates where to resume retrieving results on the next call to this action. If no token is returned,
      * these results represent the end of the list.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating where to resume retrieving results on the next call to this action. If no token is
+     *        Token that indicates where to resume retrieving results on the next call to this action. If no token is
      *        returned, these results represent the end of the list.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -163,9 +168,9 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessions() != null)
-            sb.append("GameSessions: " + getGameSessions() + ",");
+            sb.append("GameSessions: ").append(getGameSessions()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -209,4 +214,5 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.securitytoken.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * AWS credentials for API authentication.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/Credentials" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Credentials implements Serializable, Cloneable {
 
     /**
@@ -245,13 +250,13 @@ public class Credentials implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessKeyId() != null)
-            sb.append("AccessKeyId: " + getAccessKeyId() + ",");
+            sb.append("AccessKeyId: ").append(getAccessKeyId()).append(",");
         if (getSecretAccessKey() != null)
-            sb.append("SecretAccessKey: " + getSecretAccessKey() + ",");
+            sb.append("SecretAccessKey: ").append(getSecretAccessKey()).append(",");
         if (getSessionToken() != null)
-            sb.append("SessionToken: " + getSessionToken() + ",");
+            sb.append("SessionToken: ").append(getSessionToken()).append(",");
         if (getExpiration() != null)
-            sb.append("Expiration: " + getExpiration());
+            sb.append("Expiration: ").append(getExpiration());
         sb.append("}");
         return sb.toString();
     }
@@ -305,4 +310,5 @@ public class Credentials implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

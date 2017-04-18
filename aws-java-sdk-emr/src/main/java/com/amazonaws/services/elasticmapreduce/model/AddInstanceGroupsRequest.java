@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to an AddInstanceGroups call.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceGroups" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Instance Groups to add.
+     * Instance groups to add.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<InstanceGroupConfig> instanceGroups;
@@ -47,7 +53,7 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
      * methods to initialize any additional object members.
      * 
      * @param instanceGroups
-     *        Instance Groups to add.
+     *        Instance groups to add.
      * @param jobFlowId
      *        Job flow in which to add the instance groups.
      */
@@ -58,10 +64,10 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Instance Groups to add.
+     * Instance groups to add.
      * </p>
      * 
-     * @return Instance Groups to add.
+     * @return Instance groups to add.
      */
 
     public java.util.List<InstanceGroupConfig> getInstanceGroups() {
@@ -73,11 +79,11 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Instance Groups to add.
+     * Instance groups to add.
      * </p>
      * 
      * @param instanceGroups
-     *        Instance Groups to add.
+     *        Instance groups to add.
      */
 
     public void setInstanceGroups(java.util.Collection<InstanceGroupConfig> instanceGroups) {
@@ -91,7 +97,7 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Instance Groups to add.
+     * Instance groups to add.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -100,7 +106,7 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @param instanceGroups
-     *        Instance Groups to add.
+     *        Instance groups to add.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,11 +122,11 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Instance Groups to add.
+     * Instance groups to add.
      * </p>
      * 
      * @param instanceGroups
-     *        Instance Groups to add.
+     *        Instance groups to add.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -181,9 +187,9 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceGroups() != null)
-            sb.append("InstanceGroups: " + getInstanceGroups() + ",");
+            sb.append("InstanceGroups: ").append(getInstanceGroups()).append(",");
         if (getJobFlowId() != null)
-            sb.append("JobFlowId: " + getJobFlowId());
+            sb.append("JobFlowId: ").append(getJobFlowId());
         sb.append("}");
         return sb.toString();
     }
@@ -223,4 +229,5 @@ public class AddInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
     public AddInstanceGroupsRequest clone() {
         return (AddInstanceGroupsRequest) super.clone();
     }
+
 }

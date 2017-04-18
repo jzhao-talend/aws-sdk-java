@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents a copy of an entire Redis cache cluster as of the time when the snapshot was taken.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/Snapshot" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Snapshot implements Serializable, Cloneable {
 
     /**
@@ -2404,53 +2409,53 @@ public class Snapshot implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotName() != null)
-            sb.append("SnapshotName: " + getSnapshotName() + ",");
+            sb.append("SnapshotName: ").append(getSnapshotName()).append(",");
         if (getReplicationGroupId() != null)
-            sb.append("ReplicationGroupId: " + getReplicationGroupId() + ",");
+            sb.append("ReplicationGroupId: ").append(getReplicationGroupId()).append(",");
         if (getReplicationGroupDescription() != null)
-            sb.append("ReplicationGroupDescription: " + getReplicationGroupDescription() + ",");
+            sb.append("ReplicationGroupDescription: ").append(getReplicationGroupDescription()).append(",");
         if (getCacheClusterId() != null)
-            sb.append("CacheClusterId: " + getCacheClusterId() + ",");
+            sb.append("CacheClusterId: ").append(getCacheClusterId()).append(",");
         if (getSnapshotStatus() != null)
-            sb.append("SnapshotStatus: " + getSnapshotStatus() + ",");
+            sb.append("SnapshotStatus: ").append(getSnapshotStatus()).append(",");
         if (getSnapshotSource() != null)
-            sb.append("SnapshotSource: " + getSnapshotSource() + ",");
+            sb.append("SnapshotSource: ").append(getSnapshotSource()).append(",");
         if (getCacheNodeType() != null)
-            sb.append("CacheNodeType: " + getCacheNodeType() + ",");
+            sb.append("CacheNodeType: ").append(getCacheNodeType()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getNumCacheNodes() != null)
-            sb.append("NumCacheNodes: " + getNumCacheNodes() + ",");
+            sb.append("NumCacheNodes: ").append(getNumCacheNodes()).append(",");
         if (getPreferredAvailabilityZone() != null)
-            sb.append("PreferredAvailabilityZone: " + getPreferredAvailabilityZone() + ",");
+            sb.append("PreferredAvailabilityZone: ").append(getPreferredAvailabilityZone()).append(",");
         if (getCacheClusterCreateTime() != null)
-            sb.append("CacheClusterCreateTime: " + getCacheClusterCreateTime() + ",");
+            sb.append("CacheClusterCreateTime: ").append(getCacheClusterCreateTime()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getTopicArn() != null)
-            sb.append("TopicArn: " + getTopicArn() + ",");
+            sb.append("TopicArn: ").append(getTopicArn()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getCacheParameterGroupName() != null)
-            sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");
+            sb.append("CacheParameterGroupName: ").append(getCacheParameterGroupName()).append(",");
         if (getCacheSubnetGroupName() != null)
-            sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName() + ",");
+            sb.append("CacheSubnetGroupName: ").append(getCacheSubnetGroupName()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getSnapshotRetentionLimit() != null)
-            sb.append("SnapshotRetentionLimit: " + getSnapshotRetentionLimit() + ",");
+            sb.append("SnapshotRetentionLimit: ").append(getSnapshotRetentionLimit()).append(",");
         if (getSnapshotWindow() != null)
-            sb.append("SnapshotWindow: " + getSnapshotWindow() + ",");
+            sb.append("SnapshotWindow: ").append(getSnapshotWindow()).append(",");
         if (getNumNodeGroups() != null)
-            sb.append("NumNodeGroups: " + getNumNodeGroups() + ",");
+            sb.append("NumNodeGroups: ").append(getNumNodeGroups()).append(",");
         if (getAutomaticFailover() != null)
-            sb.append("AutomaticFailover: " + getAutomaticFailover() + ",");
+            sb.append("AutomaticFailover: ").append(getAutomaticFailover()).append(",");
         if (getNodeSnapshots() != null)
-            sb.append("NodeSnapshots: " + getNodeSnapshots());
+            sb.append("NodeSnapshots: ").append(getNodeSnapshots());
         sb.append("}");
         return sb.toString();
     }
@@ -2604,4 +2609,5 @@ public class Snapshot implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

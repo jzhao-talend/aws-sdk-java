@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,31 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Rule that controls how a fleet is scaled. Scaling policies are uniquely identified by the combination of name and
  * fleet ID.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ScalingPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ScalingPolicy implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScalingPolicy implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Unique identity for the fleet associated with this scaling policy.
+     * Unique identifier for a fleet that is associated with this scaling policy.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      */
     private String name;
@@ -128,7 +135,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
     private Integer evaluationPeriods;
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -173,11 +180,11 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identity for the fleet associated with this scaling policy.
+     * Unique identifier for a fleet that is associated with this scaling policy.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet associated with this scaling policy.
+     *        Unique identifier for a fleet that is associated with this scaling policy.
      */
 
     public void setFleetId(String fleetId) {
@@ -186,10 +193,10 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identity for the fleet associated with this scaling policy.
+     * Unique identifier for a fleet that is associated with this scaling policy.
      * </p>
      * 
-     * @return Unique identity for the fleet associated with this scaling policy.
+     * @return Unique identifier for a fleet that is associated with this scaling policy.
      */
 
     public String getFleetId() {
@@ -198,11 +205,11 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identity for the fleet associated with this scaling policy.
+     * Unique identifier for a fleet that is associated with this scaling policy.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet associated with this scaling policy.
+     *        Unique identifier for a fleet that is associated with this scaling policy.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -213,11 +220,11 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -226,10 +233,10 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * @return Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public String getName() {
@@ -238,11 +245,11 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1150,7 +1157,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -1192,7 +1199,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
      * </ul>
      * 
      * @param metricName
-     *        Name of the GameLift-defined metric that is used to trigger an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1239,7 +1246,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -1280,7 +1287,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return Name of the GameLift-defined metric that is used to trigger an adjustment.</p>
+     * @return Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -1327,7 +1334,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -1369,7 +1376,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
      * </ul>
      * 
      * @param metricName
-     *        Name of the GameLift-defined metric that is used to trigger an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1418,7 +1425,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -1460,7 +1467,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
      * </ul>
      * 
      * @param metricName
-     *        Name of the GameLift-defined metric that is used to trigger an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1507,7 +1514,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the GameLift-defined metric that is used to trigger an adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
      * <li>
@@ -1549,7 +1556,7 @@ public class ScalingPolicy implements Serializable, Cloneable {
      * </ul>
      * 
      * @param metricName
-     *        Name of the GameLift-defined metric that is used to trigger an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1608,23 +1615,23 @@ public class ScalingPolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getScalingAdjustment() != null)
-            sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+            sb.append("ScalingAdjustment: ").append(getScalingAdjustment()).append(",");
         if (getScalingAdjustmentType() != null)
-            sb.append("ScalingAdjustmentType: " + getScalingAdjustmentType() + ",");
+            sb.append("ScalingAdjustmentType: ").append(getScalingAdjustmentType()).append(",");
         if (getComparisonOperator() != null)
-            sb.append("ComparisonOperator: " + getComparisonOperator() + ",");
+            sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: " + getThreshold() + ",");
+            sb.append("Threshold: ").append(getThreshold()).append(",");
         if (getEvaluationPeriods() != null)
-            sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+            sb.append("EvaluationPeriods: ").append(getEvaluationPeriods()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName());
+            sb.append("MetricName: ").append(getMetricName());
         sb.append("}");
         return sb.toString();
     }
@@ -1702,5 +1709,11 @@ public class ScalingPolicy implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.ScalingPolicyMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

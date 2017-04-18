@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,45 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The .jpg or .png file associated with an audio file.
  * </p>
  */
-public class JobAlbumArt implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobAlbumArt implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork files.
+     * A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     * <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     * <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     * <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that artwork
-     * for the output. If the original input does not contain artwork, Elastic Transcoder will use the specified album
-     * art file.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Replace:</code> The specified album art replaces any existing album art.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Append:</code> The specified album art is placed after any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork for the
+     * output. If the original input does not contain artwork, Elastic Transcoder uses the specified album art file.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String mergePolicy;
     /**
@@ -47,31 +64,57 @@ public class JobAlbumArt implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork files.
+     * A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     * <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     * <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     * <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that artwork
-     * for the output. If the original input does not contain artwork, Elastic Transcoder will use the specified album
-     * art file.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Replace:</code> The specified album art replaces any existing album art.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Append:</code> The specified album art is placed after any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork for the
+     * output. If the original input does not contain artwork, Elastic Transcoder uses the specified album art file.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param mergePolicy
-     *        A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork
-     *        files.</p>
-     *        <p>
+     *        A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.</p>
      *        <ul>
-     *        <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     *        <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     *        <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     *        <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that
-     *        artwork for the output. If the original input does not contain artwork, Elastic Transcoder will use the
-     *        specified album art file.</li>
-     *        </ul>
+     *        <li>
+     *        <p>
+     *        <code>Replace:</code> The specified album art replaces any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Append:</code> The specified album art is placed after any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork
+     *        for the output. If the original input does not contain artwork, Elastic Transcoder uses the specified
+     *        album art file.
+     *        </p>
+     *        </li>
      */
 
     public void setMergePolicy(String mergePolicy) {
@@ -80,30 +123,57 @@ public class JobAlbumArt implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork files.
+     * A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     * <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     * <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     * <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that artwork
-     * for the output. If the original input does not contain artwork, Elastic Transcoder will use the specified album
-     * art file.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Replace:</code> The specified album art replaces any existing album art.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Append:</code> The specified album art is placed after any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork for the
+     * output. If the original input does not contain artwork, Elastic Transcoder uses the specified album art file.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork
+     * @return A policy that determines how Elastic Transcoder handles the existence of multiple album artwork
      *         files.</p>
-     *         <p>
      *         <ul>
-     *         <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     *         <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     *         <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     *         <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that
-     *         artwork for the output. If the original input does not contain artwork, Elastic Transcoder will use the
-     *         specified album art file.</li>
-     *         </ul>
+     *         <li>
+     *         <p>
+     *         <code>Replace:</code> The specified album art replaces any existing album art.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Append:</code> The specified album art is placed after any existing album art.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork
+     *         for the output. If the original input does not contain artwork, Elastic Transcoder uses the specified
+     *         album art file.
+     *         </p>
+     *         </li>
      */
 
     public String getMergePolicy() {
@@ -112,31 +182,57 @@ public class JobAlbumArt implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork files.
+     * A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     * <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     * <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     * <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that artwork
-     * for the output. If the original input does not contain artwork, Elastic Transcoder will use the specified album
-     * art file.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Replace:</code> The specified album art replaces any existing album art.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Append:</code> The specified album art is placed after any existing album art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork for the
+     * output. If the original input does not contain artwork, Elastic Transcoder uses the specified album art file.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param mergePolicy
-     *        A policy that determines how Elastic Transcoder will handle the existence of multiple album artwork
-     *        files.</p>
-     *        <p>
+     *        A policy that determines how Elastic Transcoder handles the existence of multiple album artwork files.</p>
      *        <ul>
-     *        <li><code>Replace:</code> The specified album art will replace any existing album art.</li>
-     *        <li><code>Prepend:</code> The specified album art will be placed in front of any existing album art.</li>
-     *        <li><code>Append:</code> The specified album art will be placed after any existing album art.</li>
-     *        <li><code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder will use that
-     *        artwork for the output. If the original input does not contain artwork, Elastic Transcoder will use the
-     *        specified album art file.</li>
-     *        </ul>
+     *        <li>
+     *        <p>
+     *        <code>Replace:</code> The specified album art replaces any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Prepend:</code> The specified album art is placed in front of any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Append:</code> The specified album art is placed after any existing album art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Fallback:</code> If the original input file contains artwork, Elastic Transcoder uses that artwork
+     *        for the output. If the original input does not contain artwork, Elastic Transcoder uses the specified
+     *        album art file.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -238,9 +334,9 @@ public class JobAlbumArt implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMergePolicy() != null)
-            sb.append("MergePolicy: " + getMergePolicy() + ",");
+            sb.append("MergePolicy: ").append(getMergePolicy()).append(",");
         if (getArtwork() != null)
-            sb.append("Artwork: " + getArtwork());
+            sb.append("Artwork: ").append(getArtwork());
         sb.append("}");
         return sb.toString();
     }
@@ -283,5 +379,11 @@ public class JobAlbumArt implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.JobAlbumArtMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a <code>COPY</code> command for Amazon Redshift.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/CopyCommand" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CopyCommand implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CopyCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -37,7 +44,7 @@ public class CopyCommand implements Serializable, Cloneable {
      * <p>
      * Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the
      * "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon
-     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows.
+     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:
      * </p>
      * <p>
      * <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.
@@ -148,7 +155,7 @@ public class CopyCommand implements Serializable, Cloneable {
      * <p>
      * Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the
      * "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon
-     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows.
+     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:
      * </p>
      * <p>
      * <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.
@@ -177,7 +184,7 @@ public class CopyCommand implements Serializable, Cloneable {
      *        Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see
      *        the "Optional Parameters" section of <a
      *        href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift COPY command</a>. Some
-     *        possible examples that would apply to Firehose are as follows.</p>
+     *        possible examples that would apply to Firehose are as follows:</p>
      *        <p>
      *        <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using
      *        lzop.
@@ -210,7 +217,7 @@ public class CopyCommand implements Serializable, Cloneable {
      * <p>
      * Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the
      * "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon
-     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows.
+     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:
      * </p>
      * <p>
      * <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.
@@ -238,7 +245,7 @@ public class CopyCommand implements Serializable, Cloneable {
      * @return Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see
      *         the "Optional Parameters" section of <a
      *         href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift COPY command</a>. Some
-     *         possible examples that would apply to Firehose are as follows.</p>
+     *         possible examples that would apply to Firehose are as follows:</p>
      *         <p>
      *         <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using
      *         lzop.
@@ -271,7 +278,7 @@ public class CopyCommand implements Serializable, Cloneable {
      * <p>
      * Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the
      * "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon
-     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows.
+     * Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:
      * </p>
      * <p>
      * <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.
@@ -300,7 +307,7 @@ public class CopyCommand implements Serializable, Cloneable {
      *        Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see
      *        the "Optional Parameters" section of <a
      *        href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift COPY command</a>. Some
-     *        possible examples that would apply to Firehose are as follows.</p>
+     *        possible examples that would apply to Firehose are as follows:</p>
      *        <p>
      *        <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using
      *        lzop.
@@ -343,11 +350,11 @@ public class CopyCommand implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataTableName() != null)
-            sb.append("DataTableName: " + getDataTableName() + ",");
+            sb.append("DataTableName: ").append(getDataTableName()).append(",");
         if (getDataTableColumns() != null)
-            sb.append("DataTableColumns: " + getDataTableColumns() + ",");
+            sb.append("DataTableColumns: ").append(getDataTableColumns()).append(",");
         if (getCopyOptions() != null)
-            sb.append("CopyOptions: " + getCopyOptions());
+            sb.append("CopyOptions: ").append(getCopyOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -395,5 +402,11 @@ public class CopyCommand implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.CopyCommandMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

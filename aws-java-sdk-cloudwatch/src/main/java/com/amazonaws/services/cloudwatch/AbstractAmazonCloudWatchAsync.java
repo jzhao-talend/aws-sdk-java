@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudwatch;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudwatch.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.cloudwatch.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonCloudWatchAsync extends AbstractAmazonCloudWatch implements AmazonCloudWatchAsync {
 
     protected AbstractAmazonCloudWatchAsync() {
@@ -66,6 +69,7 @@ public class AbstractAmazonCloudWatchAsync extends AbstractAmazonCloudWatch impl
      *
      * @see #describeAlarmHistoryAsync(DescribeAlarmHistoryRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAlarmHistoryResult> describeAlarmHistoryAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAlarmHistoryRequest, DescribeAlarmHistoryResult> asyncHandler) {
 
@@ -101,6 +105,7 @@ public class AbstractAmazonCloudWatchAsync extends AbstractAmazonCloudWatch impl
      *
      * @see #describeAlarmsAsync(DescribeAlarmsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAlarmsResult> describeAlarmsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAlarmsRequest, DescribeAlarmsResult> asyncHandler) {
 
@@ -188,6 +193,7 @@ public class AbstractAmazonCloudWatchAsync extends AbstractAmazonCloudWatch impl
      *
      * @see #listMetricsAsync(ListMetricsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListMetricsResult> listMetricsAsync(
             com.amazonaws.handlers.AsyncHandler<ListMetricsRequest, ListMetricsResult> asyncHandler) {
 

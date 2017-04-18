@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetComplianceDetailsByResource"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -43,7 +49,7 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
     private com.amazonaws.internal.SdkInternalList<String> complianceTypes;
     /**
      * <p>
-     * The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
      * paginated response.
      * </p>
      */
@@ -258,12 +264,12 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
      * paginated response.
      * </p>
      * 
      * @param nextToken
-     *        The <code>nextToken</code> string returned on a previous page that you use to get the next page of results
+     *        The <code>NextToken</code> string returned on a previous page that you use to get the next page of results
      *        in a paginated response.
      */
 
@@ -273,11 +279,11 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
      * paginated response.
      * </p>
      * 
-     * @return The <code>nextToken</code> string returned on a previous page that you use to get the next page of
+     * @return The <code>NextToken</code> string returned on a previous page that you use to get the next page of
      *         results in a paginated response.
      */
 
@@ -287,12 +293,12 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
      * paginated response.
      * </p>
      * 
      * @param nextToken
-     *        The <code>nextToken</code> string returned on a previous page that you use to get the next page of results
+     *        The <code>NextToken</code> string returned on a previous page that you use to get the next page of results
      *        in a paginated response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -314,13 +320,13 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getComplianceTypes() != null)
-            sb.append("ComplianceTypes: " + getComplianceTypes() + ",");
+            sb.append("ComplianceTypes: ").append(getComplianceTypes()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -370,4 +376,5 @@ public class GetComplianceDetailsByResourceRequest extends com.amazonaws.AmazonW
     public GetComplianceDetailsByResourceRequest clone() {
         return (GetComplianceDetailsByResourceRequest) super.clone();
     }
+
 }

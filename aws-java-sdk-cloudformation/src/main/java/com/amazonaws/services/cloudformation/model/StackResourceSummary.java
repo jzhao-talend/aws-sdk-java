@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains high-level information about the specified stack resource.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StackResourceSummary"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StackResourceSummary implements Serializable, Cloneable {
 
     /**
@@ -357,17 +362,17 @@ public class StackResourceSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogicalResourceId() != null)
-            sb.append("LogicalResourceId: " + getLogicalResourceId() + ",");
+            sb.append("LogicalResourceId: ").append(getLogicalResourceId()).append(",");
         if (getPhysicalResourceId() != null)
-            sb.append("PhysicalResourceId: " + getPhysicalResourceId() + ",");
+            sb.append("PhysicalResourceId: ").append(getPhysicalResourceId()).append(",");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getLastUpdatedTimestamp() != null)
-            sb.append("LastUpdatedTimestamp: " + getLastUpdatedTimestamp() + ",");
+            sb.append("LastUpdatedTimestamp: ").append(getLastUpdatedTimestamp()).append(",");
         if (getResourceStatus() != null)
-            sb.append("ResourceStatus: " + getResourceStatus() + ",");
+            sb.append("ResourceStatus: ").append(getResourceStatus()).append(",");
         if (getResourceStatusReason() != null)
-            sb.append("ResourceStatusReason: " + getResourceStatusReason());
+            sb.append("ResourceStatusReason: ").append(getResourceStatusReason());
         sb.append("}");
         return sb.toString();
     }
@@ -431,4 +436,5 @@ public class StackResourceSummary implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

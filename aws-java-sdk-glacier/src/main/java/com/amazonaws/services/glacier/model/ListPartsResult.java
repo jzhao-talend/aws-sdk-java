@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -41,7 +43,7 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
     private String archiveDescription;
     /**
      * <p>
-     * The part size in bytes.
+     * The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.
      * </p>
      */
     private Long partSizeInBytes;
@@ -53,7 +55,8 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
     private String creationDate;
     /**
      * <p>
-     * A list of the part sizes of the multipart upload.
+     * A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and
+     * <code>sha256-tree-hash</code> name/value pair.
      * </p>
      */
     private java.util.List<PartListElement> parts;
@@ -187,11 +190,12 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The part size in bytes.
+     * The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.
      * </p>
      * 
      * @param partSizeInBytes
-     *        The part size in bytes.
+     *        The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload
+     *        request.
      */
 
     public void setPartSizeInBytes(Long partSizeInBytes) {
@@ -200,10 +204,11 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The part size in bytes.
+     * The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.
      * </p>
      * 
-     * @return The part size in bytes.
+     * @return The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload
+     *         request.
      */
 
     public Long getPartSizeInBytes() {
@@ -212,11 +217,12 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The part size in bytes.
+     * The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.
      * </p>
      * 
      * @param partSizeInBytes
-     *        The part size in bytes.
+     *        The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload
+     *        request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -267,10 +273,12 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of the part sizes of the multipart upload.
+     * A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and
+     * <code>sha256-tree-hash</code> name/value pair.
      * </p>
      * 
-     * @return A list of the part sizes of the multipart upload.
+     * @return A list of the part sizes of the multipart upload. Each object in the array contains a
+     *         <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.
      */
 
     public java.util.List<PartListElement> getParts() {
@@ -279,11 +287,13 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of the part sizes of the multipart upload.
+     * A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and
+     * <code>sha256-tree-hash</code> name/value pair.
      * </p>
      * 
      * @param parts
-     *        A list of the part sizes of the multipart upload.
+     *        A list of the part sizes of the multipart upload. Each object in the array contains a
+     *        <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.
      */
 
     public void setParts(java.util.Collection<PartListElement> parts) {
@@ -297,7 +307,8 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of the part sizes of the multipart upload.
+     * A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and
+     * <code>sha256-tree-hash</code> name/value pair.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -306,7 +317,8 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
      * </p>
      * 
      * @param parts
-     *        A list of the part sizes of the multipart upload.
+     *        A list of the part sizes of the multipart upload. Each object in the array contains a
+     *        <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -322,11 +334,13 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of the part sizes of the multipart upload.
+     * A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and
+     * <code>sha256-tree-hash</code> name/value pair.
      * </p>
      * 
      * @param parts
-     *        A list of the part sizes of the multipart upload.
+     *        A list of the part sizes of the multipart upload. Each object in the array contains a
+     *        <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -396,19 +410,19 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMultipartUploadId() != null)
-            sb.append("MultipartUploadId: " + getMultipartUploadId() + ",");
+            sb.append("MultipartUploadId: ").append(getMultipartUploadId()).append(",");
         if (getVaultARN() != null)
-            sb.append("VaultARN: " + getVaultARN() + ",");
+            sb.append("VaultARN: ").append(getVaultARN()).append(",");
         if (getArchiveDescription() != null)
-            sb.append("ArchiveDescription: " + getArchiveDescription() + ",");
+            sb.append("ArchiveDescription: ").append(getArchiveDescription()).append(",");
         if (getPartSizeInBytes() != null)
-            sb.append("PartSizeInBytes: " + getPartSizeInBytes() + ",");
+            sb.append("PartSizeInBytes: ").append(getPartSizeInBytes()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getParts() != null)
-            sb.append("Parts: " + getParts() + ",");
+            sb.append("Parts: ").append(getParts()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -477,4 +491,5 @@ public class ListPartsResult extends com.amazonaws.AmazonWebServiceResult<com.am
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

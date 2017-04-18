@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents health information from the specified instance that belongs to the AWS Elastic Beanstalk environment. Use
- * the <code>InstanceId</code> property to specify the application instance for which you'd like to return data.
+ * Detailed health information about an Amazon EC2 instance in your Elastic Beanstalk environment.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SingleInstanceHealth"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SingleInstanceHealth implements Serializable, Cloneable {
 
     /**
@@ -57,9 +61,17 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date launchedAt;
-
+    /**
+     * <p>
+     * Request metrics from your application.
+     * </p>
+     */
     private ApplicationMetrics applicationMetrics;
-
+    /**
+     * <p>
+     * Operating system metrics from the instance.
+     * </p>
+     */
     private SystemStatus system;
     /**
      * <p>
@@ -344,7 +356,12 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Request metrics from your application.
+     * </p>
+     * 
      * @param applicationMetrics
+     *        Request metrics from your application.
      */
 
     public void setApplicationMetrics(ApplicationMetrics applicationMetrics) {
@@ -352,7 +369,11 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Request metrics from your application.
+     * </p>
+     * 
+     * @return Request metrics from your application.
      */
 
     public ApplicationMetrics getApplicationMetrics() {
@@ -360,7 +381,12 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Request metrics from your application.
+     * </p>
+     * 
      * @param applicationMetrics
+     *        Request metrics from your application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -370,7 +396,12 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Operating system metrics from the instance.
+     * </p>
+     * 
      * @param system
+     *        Operating system metrics from the instance.
      */
 
     public void setSystem(SystemStatus system) {
@@ -378,7 +409,11 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Operating system metrics from the instance.
+     * </p>
+     * 
+     * @return Operating system metrics from the instance.
      */
 
     public SystemStatus getSystem() {
@@ -386,7 +421,12 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Operating system metrics from the instance.
+     * </p>
+     * 
      * @param system
+     *        Operating system metrics from the instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -527,25 +567,25 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getHealthStatus() != null)
-            sb.append("HealthStatus: " + getHealthStatus() + ",");
+            sb.append("HealthStatus: ").append(getHealthStatus()).append(",");
         if (getColor() != null)
-            sb.append("Color: " + getColor() + ",");
+            sb.append("Color: ").append(getColor()).append(",");
         if (getCauses() != null)
-            sb.append("Causes: " + getCauses() + ",");
+            sb.append("Causes: ").append(getCauses()).append(",");
         if (getLaunchedAt() != null)
-            sb.append("LaunchedAt: " + getLaunchedAt() + ",");
+            sb.append("LaunchedAt: ").append(getLaunchedAt()).append(",");
         if (getApplicationMetrics() != null)
-            sb.append("ApplicationMetrics: " + getApplicationMetrics() + ",");
+            sb.append("ApplicationMetrics: ").append(getApplicationMetrics()).append(",");
         if (getSystem() != null)
-            sb.append("System: " + getSystem() + ",");
+            sb.append("System: ").append(getSystem()).append(",");
         if (getDeployment() != null)
-            sb.append("Deployment: " + getDeployment() + ",");
+            sb.append("Deployment: ").append(getDeployment()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType());
+            sb.append("InstanceType: ").append(getInstanceType());
         sb.append("}");
         return sb.toString();
     }
@@ -629,4 +669,5 @@ public class SingleInstanceHealth implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

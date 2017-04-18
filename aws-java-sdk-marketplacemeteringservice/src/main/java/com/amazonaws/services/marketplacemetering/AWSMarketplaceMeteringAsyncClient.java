@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.marketplacemetering;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.marketplacemetering.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing AWSMarketplace Metering asynchronously. Each asynchronous method will return a Java Future
+ * Client for accessing AWSMarketplace Metering asynchronously. Each asynchronous method will return a Java Future
  * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -34,12 +43,31 @@ import com.amazonaws.annotation.ThreadSafe;
  * <ul>
  * <li>
  * <p>
- * <i>MeterUsage</i>- Submits the metering record for a Marketplace product.
+ * <i>MeterUsage</i>- Submits the metering record for a Marketplace product. MeterUsage is called from an EC2 instance.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <i>BatchMeterUsage</i>- Submits the metering record for a set of customers. BatchMeterUsage is called from a
+ * software-as-a-service (SaaS) application.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * <b>Accepting New Customers</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <i>ResolveCustomer</i>- Called by a SaaS application during the registration process. When a buyer visits your
+ * website during the registration process, the buyer submits a Registration Token through the browser. The Registration
+ * Token is resolved through this API to obtain a CustomerIdentifier and Product Code.
  * </p>
  * </li>
  * </ul>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringClient implements AWSMarketplaceMeteringAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -61,9 +89,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSMarketplaceMeteringAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -85,10 +115,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -101,9 +132,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -114,8 +147,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -130,10 +166,12 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -148,9 +186,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -167,11 +207,12 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -182,10 +223,11 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -199,12 +241,19 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceMeteringAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSMarketplaceMeteringAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceMeteringAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceMeteringAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AWSMarketplaceMeteringAsyncClientBuilder asyncBuilder() {
+        return AWSMarketplaceMeteringAsyncClientBuilder.standard();
     }
 
     /**
@@ -224,8 +273,41 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchMeterUsageResult> batchMeterUsageAsync(BatchMeterUsageRequest request) {
+
+        return batchMeterUsageAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchMeterUsageResult> batchMeterUsageAsync(final BatchMeterUsageRequest request,
+            final com.amazonaws.handlers.AsyncHandler<BatchMeterUsageRequest, BatchMeterUsageResult> asyncHandler) {
+        final BatchMeterUsageRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<BatchMeterUsageResult>() {
+            @Override
+            public BatchMeterUsageResult call() throws Exception {
+                BatchMeterUsageResult result = null;
+
+                try {
+                    result = executeBatchMeterUsage(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -237,14 +319,15 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
     @Override
     public java.util.concurrent.Future<MeterUsageResult> meterUsageAsync(final MeterUsageRequest request,
             final com.amazonaws.handlers.AsyncHandler<MeterUsageRequest, MeterUsageResult> asyncHandler) {
+        final MeterUsageRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<MeterUsageResult>() {
             @Override
             public MeterUsageResult call() throws Exception {
-                MeterUsageResult result;
+                MeterUsageResult result = null;
 
                 try {
-                    result = meterUsage(request);
+                    result = executeMeterUsage(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -253,7 +336,40 @@ public class AWSMarketplaceMeteringAsyncClient extends AWSMarketplaceMeteringCli
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResolveCustomerResult> resolveCustomerAsync(ResolveCustomerRequest request) {
+
+        return resolveCustomerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResolveCustomerResult> resolveCustomerAsync(final ResolveCustomerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ResolveCustomerRequest, ResolveCustomerResult> asyncHandler) {
+        final ResolveCustomerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ResolveCustomerResult>() {
+            @Override
+            public ResolveCustomerResult call() throws Exception {
+                ResolveCustomerResult result = null;
+
+                try {
+                    result = executeResolveCustomer(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

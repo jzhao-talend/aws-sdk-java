@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,25 @@
  * <ul>
  * <li>
  * <p>
- * <i>MeterUsage</i>- Submits the metering record for a Marketplace product.
+ * <i>MeterUsage</i>- Submits the metering record for a Marketplace product. MeterUsage is called from an EC2 instance.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <i>BatchMeterUsage</i>- Submits the metering record for a set of customers. BatchMeterUsage is called from a
+ * software-as-a-service (SaaS) application.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * <b>Accepting New Customers</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <i>ResolveCustomer</i>- Called by a SaaS application during the registration process. When a buyer visits your
+ * website during the registration process, the buyer submits a Registration Token through the browser. The Registration
+ * Token is resolved through this API to obtain a CustomerIdentifier and Product Code.
  * </p>
  * </li>
  * </ul>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.machinelearning;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.machinelearning.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.machinelearning.model.*;
  * corresponding overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonMachineLearningAsync extends AbstractAmazonMachineLearning implements AmazonMachineLearningAsync {
 
     protected AbstractAmazonMachineLearningAsync() {
@@ -235,6 +238,7 @@ public class AbstractAmazonMachineLearningAsync extends AbstractAmazonMachineLea
      *
      * @see #describeBatchPredictionsAsync(DescribeBatchPredictionsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeBatchPredictionsResult> describeBatchPredictionsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeBatchPredictionsRequest, DescribeBatchPredictionsResult> asyncHandler) {
 
@@ -270,6 +274,7 @@ public class AbstractAmazonMachineLearningAsync extends AbstractAmazonMachineLea
      *
      * @see #describeDataSourcesAsync(DescribeDataSourcesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeDataSourcesResult> describeDataSourcesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeDataSourcesRequest, DescribeDataSourcesResult> asyncHandler) {
 
@@ -305,6 +310,7 @@ public class AbstractAmazonMachineLearningAsync extends AbstractAmazonMachineLea
      *
      * @see #describeEvaluationsAsync(DescribeEvaluationsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeEvaluationsResult> describeEvaluationsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeEvaluationsRequest, DescribeEvaluationsResult> asyncHandler) {
 
@@ -340,6 +346,7 @@ public class AbstractAmazonMachineLearningAsync extends AbstractAmazonMachineLea
      *
      * @see #describeMLModelsAsync(DescribeMLModelsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeMLModelsResult> describeMLModelsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeMLModelsRequest, DescribeMLModelsResult> asyncHandler) {
 

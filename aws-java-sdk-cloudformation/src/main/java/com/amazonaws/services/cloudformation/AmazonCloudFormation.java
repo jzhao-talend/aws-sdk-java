@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudformation;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,6 +22,10 @@ import com.amazonaws.services.cloudformation.waiters.AmazonCloudFormationWaiters
 
 /**
  * Interface for accessing AWS CloudFormation.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.cloudformation.AbstractAmazonCloudFormation} instead.
+ * </p>
  * <p>
  * <fullname>AWS CloudFormation</fullname>
  * <p>
@@ -38,11 +44,11 @@ import com.amazonaws.services.cloudformation.waiters.AmazonCloudFormationWaiters
  * CloudFormation Product Page</a>.
  * </p>
  * <p>
- * Amazon CloudFormation makes use of other AWS products. If you need additional technical information about a specific
- * AWS product, you can find the product's technical documentation at <a
- * href="http://docs.aws.amazon.com/">http://docs.aws.amazon.com/</a>.
+ * Amazon CloudFormation makes use of other AWS products. For additional technical information about a specific AWS
+ * product, see its <a href="http://docs.aws.amazon.com/">technical documentation</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonCloudFormation {
 
     /**
@@ -74,7 +80,11 @@ public interface AmazonCloudFormation {
      *        The endpoint (ex: "cloudformation.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://cloudformation.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -95,7 +105,9 @@ public interface AmazonCloudFormation {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -113,6 +125,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>CancelUpdateStack</a> action.
      * @return Result of the CancelUpdateStack operation returned by the service.
      * @sample AmazonCloudFormation.CancelUpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CancelUpdateStack"
+     *      target="_top">AWS API Documentation</a>
      */
     CancelUpdateStackResult cancelUpdateStack(CancelUpdateStackRequest cancelUpdateStackRequest);
 
@@ -136,6 +150,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>ContinueUpdateRollback</a> action.
      * @return Result of the ContinueUpdateRollback operation returned by the service.
      * @sample AmazonCloudFormation.ContinueUpdateRollback
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ContinueUpdateRollback"
+     *      target="_top">AWS API Documentation</a>
      */
     ContinueUpdateRollbackResult continueUpdateRollback(ContinueUpdateRollbackRequest continueUpdateRollbackRequest);
 
@@ -165,6 +181,8 @@ public interface AmazonCloudFormation {
      * @throws LimitExceededException
      *         Quota for the resource has already been reached.
      * @sample AmazonCloudFormation.CreateChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateChangeSetResult createChangeSet(CreateChangeSetRequest createChangeSetRequest);
 
@@ -184,6 +202,8 @@ public interface AmazonCloudFormation {
      * @throws InsufficientCapabilitiesException
      *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
      * @sample AmazonCloudFormation.CreateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateStackResult createStack(CreateStackRequest createStackRequest);
 
@@ -202,6 +222,8 @@ public interface AmazonCloudFormation {
      *         The specified change set cannot be used to update the stack. For example, the change set status might be
      *         <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
      * @sample AmazonCloudFormation.DeleteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteChangeSetResult deleteChangeSet(DeleteChangeSetRequest deleteChangeSetRequest);
 
@@ -215,6 +237,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>DeleteStack</a> action.
      * @return Result of the DeleteStack operation returned by the service.
      * @sample AmazonCloudFormation.DeleteStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStack" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteStackResult deleteStack(DeleteStackRequest deleteStackRequest);
 
@@ -228,6 +252,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>DescribeAccountLimits</a> action.
      * @return Result of the DescribeAccountLimits operation returned by the service.
      * @sample AmazonCloudFormation.DescribeAccountLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeAccountLimits"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeAccountLimitsResult describeAccountLimits(DescribeAccountLimitsRequest describeAccountLimitsRequest);
 
@@ -246,6 +272,8 @@ public interface AmazonCloudFormation {
      *         The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
      *         <code>ListChangeSets</code> action.
      * @sample AmazonCloudFormation.DescribeChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeChangeSetResult describeChangeSet(DescribeChangeSetRequest describeChangeSetRequest);
 
@@ -267,6 +295,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>DescribeStackEvents</a> action.
      * @return Result of the DescribeStackEvents operation returned by the service.
      * @sample AmazonCloudFormation.DescribeStackEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackEvents"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStackEventsResult describeStackEvents(DescribeStackEventsRequest describeStackEventsRequest);
 
@@ -283,6 +313,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>DescribeStackResource</a> action.
      * @return Result of the DescribeStackResource operation returned by the service.
      * @sample AmazonCloudFormation.DescribeStackResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResource"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStackResourceResult describeStackResource(DescribeStackResourceRequest describeStackResourceRequest);
 
@@ -319,6 +351,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>DescribeStackResources</a> action.
      * @return Result of the DescribeStackResources operation returned by the service.
      * @sample AmazonCloudFormation.DescribeStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStackResourcesResult describeStackResources(DescribeStackResourcesRequest describeStackResourcesRequest);
 
@@ -337,6 +371,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>DescribeStacks</a> action.
      * @return Result of the DescribeStacks operation returned by the service.
      * @sample AmazonCloudFormation.DescribeStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStacks" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeStacksResult describeStacks(DescribeStacksRequest describeStacksRequest);
 
@@ -357,6 +393,8 @@ public interface AmazonCloudFormation {
      *        The input for an <a>EstimateTemplateCost</a> action.
      * @return Result of the EstimateTemplateCost operation returned by the service.
      * @sample AmazonCloudFormation.EstimateTemplateCost
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/EstimateTemplateCost"
+     *      target="_top">AWS API Documentation</a>
      */
     EstimateTemplateCostResult estimateTemplateCost(EstimateTemplateCostRequest estimateTemplateCostRequest);
 
@@ -391,7 +429,11 @@ public interface AmazonCloudFormation {
      * @throws ChangeSetNotFoundException
      *         The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
      *         <code>ListChangeSets</code> action.
+     * @throws InsufficientCapabilitiesException
+     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
      * @sample AmazonCloudFormation.ExecuteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ExecuteChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     ExecuteChangeSetResult executeChangeSet(ExecuteChangeSetRequest executeChangeSetRequest);
 
@@ -404,6 +446,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>GetStackPolicy</a> action.
      * @return Result of the GetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormation.GetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     GetStackPolicyResult getStackPolicy(GetStackPolicyRequest getStackPolicyRequest);
 
@@ -423,7 +467,12 @@ public interface AmazonCloudFormation {
      * @param getTemplateRequest
      *        The input for a <a>GetTemplate</a> action.
      * @return Result of the GetTemplate operation returned by the service.
+     * @throws ChangeSetNotFoundException
+     *         The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
+     *         <code>ListChangeSets</code> action.
      * @sample AmazonCloudFormation.GetTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplate" target="_top">AWS API
+     *      Documentation</a>
      */
     GetTemplateResult getTemplate(GetTemplateRequest getTemplateRequest);
 
@@ -446,6 +495,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>GetTemplateSummary</a> action.
      * @return Result of the GetTemplateSummary operation returned by the service.
      * @sample AmazonCloudFormation.GetTemplateSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary"
+     *      target="_top">AWS API Documentation</a>
      */
     GetTemplateSummaryResult getTemplateSummary(GetTemplateSummaryRequest getTemplateSummaryRequest);
 
@@ -466,6 +517,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>ListChangeSets</a> action.
      * @return Result of the ListChangeSets operation returned by the service.
      * @sample AmazonCloudFormation.ListChangeSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListChangeSets" target="_top">AWS
+     *      API Documentation</a>
      */
     ListChangeSetsResult listChangeSets(ListChangeSetsRequest listChangeSetsRequest);
 
@@ -477,16 +530,38 @@ public interface AmazonCloudFormation {
      * <code>Fn::ImportValue</code> </a> function.
      * </p>
      * <p>
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
-     * AWS CloudFormation Export Stack Output Values</a>.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html"> AWS
+     * CloudFormation Export Stack Output Values</a>.
      * </p>
      * 
      * @param listExportsRequest
      * @return Result of the ListExports operation returned by the service.
      * @sample AmazonCloudFormation.ListExports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListExports" target="_top">AWS API
+     *      Documentation</a>
      */
     ListExportsResult listExports(ListExportsRequest listExportsRequest);
+
+    /**
+     * <p>
+     * Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first
+     * use this action to see which stacks are using it. To see the exported output values in your account, see
+     * <a>ListExports</a>.
+     * </p>
+     * <p>
+     * For more information about importing an exported output value, see the <a href=
+     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
+     * <code>Fn::ImportValue</code> </a> function.
+     * </p>
+     * 
+     * @param listImportsRequest
+     * @return Result of the ListImports operation returned by the service.
+     * @sample AmazonCloudFormation.ListImports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListImports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListImportsResult listImports(ListImportsRequest listImportsRequest);
 
     /**
      * <p>
@@ -501,6 +576,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>ListStackResource</a> action.
      * @return Result of the ListStackResources operation returned by the service.
      * @sample AmazonCloudFormation.ListStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     ListStackResourcesResult listStackResources(ListStackResourcesRequest listStackResourcesRequest);
 
@@ -516,6 +593,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>ListStacks</a> action.
      * @return Result of the ListStacks operation returned by the service.
      * @sample AmazonCloudFormation.ListStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStacks" target="_top">AWS API
+     *      Documentation</a>
      */
     ListStacksResult listStacks(ListStacksRequest listStacksRequest);
 
@@ -535,6 +614,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>SetStackPolicy</a> action.
      * @return Result of the SetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormation.SetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     SetStackPolicyResult setStackPolicy(SetStackPolicyRequest setStackPolicyRequest);
 
@@ -551,6 +632,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>SignalResource</a> action.
      * @return Result of the SignalResource operation returned by the service.
      * @sample AmazonCloudFormation.SignalResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SignalResource" target="_top">AWS
+     *      API Documentation</a>
      */
     SignalResourceResult signalResource(SignalResourceRequest signalResourceRequest);
 
@@ -575,6 +658,8 @@ public interface AmazonCloudFormation {
      * @throws InsufficientCapabilitiesException
      *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
      * @sample AmazonCloudFormation.UpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateStackResult updateStack(UpdateStackRequest updateStackRequest);
 
@@ -589,6 +674,8 @@ public interface AmazonCloudFormation {
      *        The input for <a>ValidateTemplate</a> action.
      * @return Result of the ValidateTemplate operation returned by the service.
      * @sample AmazonCloudFormation.ValidateTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ValidateTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     ValidateTemplateResult validateTemplate(ValidateTemplateRequest validateTemplateRequest);
 
@@ -616,4 +703,5 @@ public interface AmazonCloudFormation {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AmazonCloudFormationWaiters waiters();
+
 }

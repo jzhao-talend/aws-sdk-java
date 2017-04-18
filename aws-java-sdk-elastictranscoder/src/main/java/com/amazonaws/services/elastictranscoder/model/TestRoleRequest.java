@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The <code>TestRoleRequest</code> structure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -36,8 +39,8 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
     private String inputBucket;
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to read
-     * from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      */
     private String outputBucket;
@@ -134,13 +137,13 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to read
-     * from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
      * @param outputBucket
-     *        The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to
-     *        read from this bucket.
+     *        The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read
+     *        from this bucket.
      */
 
     public void setOutputBucket(String outputBucket) {
@@ -149,11 +152,11 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to read
-     * from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
-     * @return The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to
+     * @return The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to
      *         read from this bucket.
      */
 
@@ -163,13 +166,13 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to read
-     * from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
      * @param outputBucket
-     *        The Amazon S3 bucket that Elastic Transcoder will write transcoded media files to. The action attempts to
-     *        read from this bucket.
+     *        The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read
+     *        from this bucket.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -271,13 +274,13 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRole() != null)
-            sb.append("Role: " + getRole() + ",");
+            sb.append("Role: ").append(getRole()).append(",");
         if (getInputBucket() != null)
-            sb.append("InputBucket: " + getInputBucket() + ",");
+            sb.append("InputBucket: ").append(getInputBucket()).append(",");
         if (getOutputBucket() != null)
-            sb.append("OutputBucket: " + getOutputBucket() + ",");
+            sb.append("OutputBucket: ").append(getOutputBucket()).append(",");
         if (getTopics() != null)
-            sb.append("Topics: " + getTopics());
+            sb.append("Topics: ").append(getTopics());
         sb.append("}");
         return sb.toString();
     }
@@ -327,4 +330,5 @@ public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest imple
     public TestRoleRequest clone() {
         return (TestRoleRequest) super.clone();
     }
+
 }

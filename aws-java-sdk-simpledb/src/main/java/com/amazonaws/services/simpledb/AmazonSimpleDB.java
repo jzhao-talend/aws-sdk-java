@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.simpledb;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.simpledb.model.*;
 
 /**
  * Interface for accessing Amazon SimpleDB.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.simpledb.AbstractAmazonSimpleDB} instead.
+ * </p>
  * <p>
  * Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By
  * offloading the time and effort associated with building and operating a web-scale database, SimpleDB provides
@@ -35,6 +41,7 @@ import com.amazonaws.services.simpledb.model.*;
  * Visit <a href="http://aws.amazon.com/simpledb/">http://aws.amazon.com/simpledb/</a> for more information.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSimpleDB {
 
     /**
@@ -65,7 +72,11 @@ public interface AmazonSimpleDB {
      * @param endpoint
      *        The endpoint (ex: "sdb.amazonaws.com") or a full URL, including the protocol (ex: "sdb.amazonaws.com") of
      *        the region specific AWS endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -86,7 +97,9 @@ public interface AmazonSimpleDB {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**

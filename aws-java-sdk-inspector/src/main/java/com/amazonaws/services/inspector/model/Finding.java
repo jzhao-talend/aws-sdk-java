@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an Amazon Inspector finding. This data type is used as the response element in the
  * <a>DescribeFindings</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/Finding" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Finding implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Finding implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -983,41 +990,41 @@ public class Finding implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getSchemaVersion() != null)
-            sb.append("SchemaVersion: " + getSchemaVersion() + ",");
+            sb.append("SchemaVersion: ").append(getSchemaVersion()).append(",");
         if (getService() != null)
-            sb.append("Service: " + getService() + ",");
+            sb.append("Service: ").append(getService()).append(",");
         if (getServiceAttributes() != null)
-            sb.append("ServiceAttributes: " + getServiceAttributes() + ",");
+            sb.append("ServiceAttributes: ").append(getServiceAttributes()).append(",");
         if (getAssetType() != null)
-            sb.append("AssetType: " + getAssetType() + ",");
+            sb.append("AssetType: ").append(getAssetType()).append(",");
         if (getAssetAttributes() != null)
-            sb.append("AssetAttributes: " + getAssetAttributes() + ",");
+            sb.append("AssetAttributes: ").append(getAssetAttributes()).append(",");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getTitle() != null)
-            sb.append("Title: " + getTitle() + ",");
+            sb.append("Title: ").append(getTitle()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getRecommendation() != null)
-            sb.append("Recommendation: " + getRecommendation() + ",");
+            sb.append("Recommendation: ").append(getRecommendation()).append(",");
         if (getSeverity() != null)
-            sb.append("Severity: " + getSeverity() + ",");
+            sb.append("Severity: ").append(getSeverity()).append(",");
         if (getNumericSeverity() != null)
-            sb.append("NumericSeverity: " + getNumericSeverity() + ",");
+            sb.append("NumericSeverity: ").append(getNumericSeverity()).append(",");
         if (getConfidence() != null)
-            sb.append("Confidence: " + getConfidence() + ",");
+            sb.append("Confidence: ").append(getConfidence()).append(",");
         if (getIndicatorOfCompromise() != null)
-            sb.append("IndicatorOfCompromise: " + getIndicatorOfCompromise() + ",");
+            sb.append("IndicatorOfCompromise: ").append(getIndicatorOfCompromise()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getUserAttributes() != null)
-            sb.append("UserAttributes: " + getUserAttributes() + ",");
+            sb.append("UserAttributes: ").append(getUserAttributes()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getUpdatedAt() != null)
-            sb.append("UpdatedAt: " + getUpdatedAt());
+            sb.append("UpdatedAt: ").append(getUpdatedAt());
         sb.append("}");
         return sb.toString();
     }
@@ -1140,5 +1147,11 @@ public class Finding implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.FindingMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

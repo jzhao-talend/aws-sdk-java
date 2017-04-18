@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The result of the <a>PutEvents</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutEvents" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -29,9 +31,8 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
     private Integer failedEntryCount;
     /**
      * <p>
-     * A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
-     * will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem
-     * with the entry.
+     * The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
      * </p>
      */
     private java.util.List<PutEventsResultEntry> entries;
@@ -78,14 +79,13 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
-     * will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem
-     * with the entry.
+     * The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
      * </p>
      * 
-     * @return A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the
-     *         entry will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify
-     *         the problem with the entry.
+     * @return The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
+     *         has the event ID in it. Otherwise, you can use the error code and error message to identify the problem
+     *         with the entry.
      */
 
     public java.util.List<PutEventsResultEntry> getEntries() {
@@ -94,15 +94,14 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
-     * will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem
-     * with the entry.
+     * The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
      * </p>
      * 
      * @param entries
-     *        A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the
-     *        entry will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify
-     *        the problem with the entry.
+     *        The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
+     *        has the event ID in it. Otherwise, you can use the error code and error message to identify the problem
+     *        with the entry.
      */
 
     public void setEntries(java.util.Collection<PutEventsResultEntry> entries) {
@@ -116,9 +115,8 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
-     * will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem
-     * with the entry.
+     * The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -127,9 +125,9 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
      * </p>
      * 
      * @param entries
-     *        A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the
-     *        entry will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify
-     *        the problem with the entry.
+     *        The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
+     *        has the event ID in it. Otherwise, you can use the error code and error message to identify the problem
+     *        with the entry.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -145,15 +143,14 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
-     * will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem
-     * with the entry.
+     * The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
      * </p>
      * 
      * @param entries
-     *        A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the
-     *        entry will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify
-     *        the problem with the entry.
+     *        The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry
+     *        has the event ID in it. Otherwise, you can use the error code and error message to identify the problem
+     *        with the entry.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -174,9 +171,9 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFailedEntryCount() != null)
-            sb.append("FailedEntryCount: " + getFailedEntryCount() + ",");
+            sb.append("FailedEntryCount: ").append(getFailedEntryCount()).append(",");
         if (getEntries() != null)
-            sb.append("Entries: " + getEntries());
+            sb.append("Entries: ").append(getEntries());
         sb.append("}");
         return sb.toString();
     }
@@ -220,4 +217,5 @@ public class PutEventsResult extends com.amazonaws.AmazonWebServiceResult<com.am
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

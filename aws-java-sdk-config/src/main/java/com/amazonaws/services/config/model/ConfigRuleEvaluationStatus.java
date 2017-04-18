@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -22,8 +25,12 @@ import java.io.Serializable;
  * <p>
  * This action does not return status information about custom Config rules.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigRuleEvaluationStatus" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ConfigRuleEvaluationStatus implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConfigRuleEvaluationStatus implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -660,27 +667,27 @@ public class ConfigRuleEvaluationStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConfigRuleName() != null)
-            sb.append("ConfigRuleName: " + getConfigRuleName() + ",");
+            sb.append("ConfigRuleName: ").append(getConfigRuleName()).append(",");
         if (getConfigRuleArn() != null)
-            sb.append("ConfigRuleArn: " + getConfigRuleArn() + ",");
+            sb.append("ConfigRuleArn: ").append(getConfigRuleArn()).append(",");
         if (getConfigRuleId() != null)
-            sb.append("ConfigRuleId: " + getConfigRuleId() + ",");
+            sb.append("ConfigRuleId: ").append(getConfigRuleId()).append(",");
         if (getLastSuccessfulInvocationTime() != null)
-            sb.append("LastSuccessfulInvocationTime: " + getLastSuccessfulInvocationTime() + ",");
+            sb.append("LastSuccessfulInvocationTime: ").append(getLastSuccessfulInvocationTime()).append(",");
         if (getLastFailedInvocationTime() != null)
-            sb.append("LastFailedInvocationTime: " + getLastFailedInvocationTime() + ",");
+            sb.append("LastFailedInvocationTime: ").append(getLastFailedInvocationTime()).append(",");
         if (getLastSuccessfulEvaluationTime() != null)
-            sb.append("LastSuccessfulEvaluationTime: " + getLastSuccessfulEvaluationTime() + ",");
+            sb.append("LastSuccessfulEvaluationTime: ").append(getLastSuccessfulEvaluationTime()).append(",");
         if (getLastFailedEvaluationTime() != null)
-            sb.append("LastFailedEvaluationTime: " + getLastFailedEvaluationTime() + ",");
+            sb.append("LastFailedEvaluationTime: ").append(getLastFailedEvaluationTime()).append(",");
         if (getFirstActivatedTime() != null)
-            sb.append("FirstActivatedTime: " + getFirstActivatedTime() + ",");
+            sb.append("FirstActivatedTime: ").append(getFirstActivatedTime()).append(",");
         if (getLastErrorCode() != null)
-            sb.append("LastErrorCode: " + getLastErrorCode() + ",");
+            sb.append("LastErrorCode: ").append(getLastErrorCode()).append(",");
         if (getLastErrorMessage() != null)
-            sb.append("LastErrorMessage: " + getLastErrorMessage() + ",");
+            sb.append("LastErrorMessage: ").append(getLastErrorMessage()).append(",");
         if (getFirstEvaluationStarted() != null)
-            sb.append("FirstEvaluationStarted: " + getFirstEvaluationStarted());
+            sb.append("FirstEvaluationStarted: ").append(getFirstEvaluationStarted());
         sb.append("}");
         return sb.toString();
     }
@@ -768,5 +775,11 @@ public class ConfigRuleEvaluationStatus implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.ConfigRuleEvaluationStatusMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

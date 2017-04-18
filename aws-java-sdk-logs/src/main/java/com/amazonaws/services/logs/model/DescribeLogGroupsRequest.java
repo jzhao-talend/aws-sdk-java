@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,44 +13,44 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogGroups" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no prefix
-     * filter is applied.
+     * The prefix to match.
      * </p>
      */
     private String logGroupNamePrefix;
     /**
      * <p>
-     * A string token used for pagination that points to the next page of results. It must be a value obtained from the
-     * response of the previous <code>DescribeLogGroups</code> request.
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * The maximum number of items returned in the response. If you don't specify a value, the request would return up
-     * to 50 items.
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * </p>
      */
     private Integer limit;
 
     /**
      * <p>
-     * Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no prefix
-     * filter is applied.
+     * The prefix to match.
      * </p>
      * 
      * @param logGroupNamePrefix
-     *        Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no
-     *        prefix filter is applied.
+     *        The prefix to match.
      */
 
     public void setLogGroupNamePrefix(String logGroupNamePrefix) {
@@ -59,12 +59,10 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no prefix
-     * filter is applied.
+     * The prefix to match.
      * </p>
      * 
-     * @return Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no
-     *         prefix filter is applied.
+     * @return The prefix to match.
      */
 
     public String getLogGroupNamePrefix() {
@@ -73,13 +71,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no prefix
-     * filter is applied.
+     * The prefix to match.
      * </p>
      * 
      * @param logGroupNamePrefix
-     *        Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no
-     *        prefix filter is applied.
+     *        The prefix to match.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -90,13 +86,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A string token used for pagination that points to the next page of results. It must be a value obtained from the
-     * response of the previous <code>DescribeLogGroups</code> request.
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        A string token used for pagination that points to the next page of results. It must be a value obtained
-     *        from the response of the previous <code>DescribeLogGroups</code> request.
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -105,12 +99,10 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A string token used for pagination that points to the next page of results. It must be a value obtained from the
-     * response of the previous <code>DescribeLogGroups</code> request.
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
-     * @return A string token used for pagination that points to the next page of results. It must be a value obtained
-     *         from the response of the previous <code>DescribeLogGroups</code> request.
+     * @return The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -119,13 +111,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A string token used for pagination that points to the next page of results. It must be a value obtained from the
-     * response of the previous <code>DescribeLogGroups</code> request.
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        A string token used for pagination that points to the next page of results. It must be a value obtained
-     *        from the response of the previous <code>DescribeLogGroups</code> request.
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,13 +126,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The maximum number of items returned in the response. If you don't specify a value, the request would return up
-     * to 50 items.
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * </p>
      * 
      * @param limit
-     *        The maximum number of items returned in the response. If you don't specify a value, the request would
-     *        return up to 50 items.
+     *        The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      */
 
     public void setLimit(Integer limit) {
@@ -151,12 +139,10 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The maximum number of items returned in the response. If you don't specify a value, the request would return up
-     * to 50 items.
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * </p>
      * 
-     * @return The maximum number of items returned in the response. If you don't specify a value, the request would
-     *         return up to 50 items.
+     * @return The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      */
 
     public Integer getLimit() {
@@ -165,13 +151,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The maximum number of items returned in the response. If you don't specify a value, the request would return up
-     * to 50 items.
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * </p>
      * 
      * @param limit
-     *        The maximum number of items returned in the response. If you don't specify a value, the request would
-     *        return up to 50 items.
+     *        The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -192,11 +176,11 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupNamePrefix() != null)
-            sb.append("LogGroupNamePrefix: " + getLogGroupNamePrefix() + ",");
+            sb.append("LogGroupNamePrefix: ").append(getLogGroupNamePrefix()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -241,4 +225,5 @@ public class DescribeLogGroupsRequest extends com.amazonaws.AmazonWebServiceRequ
     public DescribeLogGroupsRequest clone() {
         return (DescribeLogGroupsRequest) super.clone();
     }
+
 }

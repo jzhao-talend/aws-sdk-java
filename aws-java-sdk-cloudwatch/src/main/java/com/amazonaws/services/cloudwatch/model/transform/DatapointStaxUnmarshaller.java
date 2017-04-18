@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.cloudwatch.model.transform;
 
 import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
+
 import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cloudwatch.model.*;
 import com.amazonaws.transform.Unmarshaller;
@@ -28,7 +28,49 @@ import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 /**
  * Datapoint StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DatapointStaxUnmarshaller implements Unmarshaller<Datapoint, StaxUnmarshallerContext> {
+
+    private static class ExtendedStatisticsMapEntryUnmarshaller implements Unmarshaller<Map.Entry<String, Double>, StaxUnmarshallerContext> {
+
+        @Override
+        public Entry<String, Double> unmarshall(StaxUnmarshallerContext context) throws Exception {
+            int originalDepth = context.getCurrentDepth();
+            int targetDepth = originalDepth + 1;
+
+            MapEntry<String, Double> entry = new MapEntry<String, Double>();
+
+            while (true) {
+                XMLEvent xmlEvent = context.nextEvent();
+                if (xmlEvent.isEndDocument())
+                    return entry;
+
+                if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+                    if (context.testExpression("key", targetDepth)) {
+                        entry.setKey(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                        continue;
+                    }
+                    if (context.testExpression("value", targetDepth)) {
+                        entry.setValue(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                        continue;
+                    }
+                } else if (xmlEvent.isEndElement()) {
+                    if (context.getCurrentDepth() < originalDepth)
+                        return entry;
+                }
+            }
+        }
+
+        private static ExtendedStatisticsMapEntryUnmarshaller instance;
+
+        public static ExtendedStatisticsMapEntryUnmarshaller getInstance() {
+            if (instance == null)
+                instance = new ExtendedStatisticsMapEntryUnmarshaller();
+            return instance;
+        }
+
+    }
 
     public Datapoint unmarshall(StaxUnmarshallerContext context) throws Exception {
         Datapoint datapoint = new Datapoint();
@@ -79,6 +121,13 @@ public class DatapointStaxUnmarshaller implements Unmarshaller<Datapoint, StaxUn
                     datapoint.setUnit(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+
+                if (context.testExpression("ExtendedStatistics/entry", targetDepth)) {
+                    Entry<String, Double> entry = ExtendedStatisticsMapEntryUnmarshaller.getInstance().unmarshall(context);
+                    datapoint.addExtendedStatisticsEntry(entry.getKey(), entry.getValue());
+                    continue;
+                }
+
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return datapoint;

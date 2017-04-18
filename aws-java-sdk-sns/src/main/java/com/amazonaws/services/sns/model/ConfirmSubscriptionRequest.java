@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.sns.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input for ConfirmSubscription action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ConfirmSubscription" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ConfirmSubscriptionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -227,11 +233,11 @@ public class ConfirmSubscriptionRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTopicArn() != null)
-            sb.append("TopicArn: " + getTopicArn() + ",");
+            sb.append("TopicArn: ").append(getTopicArn()).append(",");
         if (getToken() != null)
-            sb.append("Token: " + getToken() + ",");
+            sb.append("Token: ").append(getToken()).append(",");
         if (getAuthenticateOnUnsubscribe() != null)
-            sb.append("AuthenticateOnUnsubscribe: " + getAuthenticateOnUnsubscribe());
+            sb.append("AuthenticateOnUnsubscribe: ").append(getAuthenticateOnUnsubscribe());
         sb.append("}");
         return sb.toString();
     }
@@ -276,4 +282,5 @@ public class ConfirmSubscriptionRequest extends com.amazonaws.AmazonWebServiceRe
     public ConfirmSubscriptionRequest clone() {
         return (ConfirmSubscriptionRequest) super.clone();
     }
+
 }

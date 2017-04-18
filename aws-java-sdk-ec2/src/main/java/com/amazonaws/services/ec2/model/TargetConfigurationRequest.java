@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,22 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Details about the target configuration.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TargetConfigurationRequest" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TargetConfigurationRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists your
-     * current Convertible Reserved Instance/s and their value/s.
+     * The Convertible Reserved Instance offering ID.
      * </p>
      */
     private String offeringId;
@@ -38,13 +42,11 @@ public class TargetConfigurationRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists your
-     * current Convertible Reserved Instance/s and their value/s.
+     * The Convertible Reserved Instance offering ID.
      * </p>
      * 
      * @param offeringId
-     *        The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists
-     *        your current Convertible Reserved Instance/s and their value/s.
+     *        The Convertible Reserved Instance offering ID.
      */
 
     public void setOfferingId(String offeringId) {
@@ -53,12 +55,10 @@ public class TargetConfigurationRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists your
-     * current Convertible Reserved Instance/s and their value/s.
+     * The Convertible Reserved Instance offering ID.
      * </p>
      * 
-     * @return The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists
-     *         your current Convertible Reserved Instance/s and their value/s.
+     * @return The Convertible Reserved Instance offering ID.
      */
 
     public String getOfferingId() {
@@ -67,13 +67,11 @@ public class TargetConfigurationRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists your
-     * current Convertible Reserved Instance/s and their value/s.
+     * The Convertible Reserved Instance offering ID.
      * </p>
      * 
      * @param offeringId
-     *        The Convertible Reserved Instance offering ID. If this isn't included in the request, the response lists
-     *        your current Convertible Reserved Instance/s and their value/s.
+     *        The Convertible Reserved Instance offering ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -140,9 +138,9 @@ public class TargetConfigurationRequest implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOfferingId() != null)
-            sb.append("OfferingId: " + getOfferingId() + ",");
+            sb.append("OfferingId: ").append(getOfferingId()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount());
+            sb.append("InstanceCount: ").append(getInstanceCount());
         sb.append("}");
         return sb.toString();
     }
@@ -186,4 +184,5 @@ public class TargetConfigurationRequest implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

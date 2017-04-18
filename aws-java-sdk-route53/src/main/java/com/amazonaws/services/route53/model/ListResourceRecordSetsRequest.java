@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The input for a ListResourceRecordSets request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListResourceRecordSets" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -55,7 +61,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -223,7 +229,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -265,7 +271,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>CloudFront distribution</b>: A
+     *        <b>CloudFront distribution</b>: A or AAAA
      *        </p>
      *        </li>
      *        <li>
@@ -314,7 +320,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -355,7 +361,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *         <ul>
      *         <li>
      *         <p>
-     *         <b>CloudFront distribution</b>: A
+     *         <b>CloudFront distribution</b>: A or AAAA
      *         </p>
      *         </li>
      *         <li>
@@ -404,7 +410,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -446,7 +452,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>CloudFront distribution</b>: A
+     *        <b>CloudFront distribution</b>: A or AAAA
      *        </p>
      *        </li>
      *        <li>
@@ -497,7 +503,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -539,7 +545,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>CloudFront distribution</b>: A
+     *        <b>CloudFront distribution</b>: A or AAAA
      *        </p>
      *        </li>
      *        <li>
@@ -588,7 +594,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * <ul>
      * <li>
      * <p>
-     * <b>CloudFront distribution</b>: A
+     * <b>CloudFront distribution</b>: A or AAAA
      * </p>
      * </li>
      * <li>
@@ -630,7 +636,7 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>CloudFront distribution</b>: A
+     *        <b>CloudFront distribution</b>: A or AAAA
      *        </p>
      *        </li>
      *        <li>
@@ -789,15 +795,15 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostedZoneId() != null)
-            sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+            sb.append("HostedZoneId: ").append(getHostedZoneId()).append(",");
         if (getStartRecordName() != null)
-            sb.append("StartRecordName: " + getStartRecordName() + ",");
+            sb.append("StartRecordName: ").append(getStartRecordName()).append(",");
         if (getStartRecordType() != null)
-            sb.append("StartRecordType: " + getStartRecordType() + ",");
+            sb.append("StartRecordType: ").append(getStartRecordType()).append(",");
         if (getStartRecordIdentifier() != null)
-            sb.append("StartRecordIdentifier: " + getStartRecordIdentifier() + ",");
+            sb.append("StartRecordIdentifier: ").append(getStartRecordIdentifier()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -852,4 +858,5 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
     public ListResourceRecordSetsRequest clone() {
         return (ListResourceRecordSetsRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.PurchaseReservedInstancesOfferingRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.PurchaseReservedInstancesOffer
  * Contains the parameters for PurchaseReservedInstancesOffering.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<PurchaseReservedInstancesOfferingRequest> {
 
@@ -215,11 +218,11 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservedInstancesOfferingId() != null)
-            sb.append("ReservedInstancesOfferingId: " + getReservedInstancesOfferingId() + ",");
+            sb.append("ReservedInstancesOfferingId: ").append(getReservedInstancesOfferingId()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount() + ",");
+            sb.append("InstanceCount: ").append(getInstanceCount()).append(",");
         if (getLimitPrice() != null)
-            sb.append("LimitPrice: " + getLimitPrice());
+            sb.append("LimitPrice: ").append(getLimitPrice());
         sb.append("}");
         return sb.toString();
     }

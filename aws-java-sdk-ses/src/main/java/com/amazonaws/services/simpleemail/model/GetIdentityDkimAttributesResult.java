@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,7 +21,11 @@ import java.io.Serializable;
  * contains the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that
  * these tokens were published.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityDkimAttributes" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetIdentityDkimAttributesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -106,7 +111,7 @@ public class GetIdentityDkimAttributesResult extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDkimAttributes() != null)
-            sb.append("DkimAttributes: " + getDkimAttributes());
+            sb.append("DkimAttributes: ").append(getDkimAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -145,4 +150,5 @@ public class GetIdentityDkimAttributesResult extends com.amazonaws.AmazonWebServ
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

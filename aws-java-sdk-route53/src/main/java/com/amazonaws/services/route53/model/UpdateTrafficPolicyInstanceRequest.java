@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * A complex type that contains information about the resource record sets that you want to update based on a specified
  * traffic policy instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyInstance"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateTrafficPolicyInstanceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -234,13 +240,13 @@ public class UpdateTrafficPolicyInstanceRequest extends com.amazonaws.AmazonWebS
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getTTL() != null)
-            sb.append("TTL: " + getTTL() + ",");
+            sb.append("TTL: ").append(getTTL()).append(",");
         if (getTrafficPolicyId() != null)
-            sb.append("TrafficPolicyId: " + getTrafficPolicyId() + ",");
+            sb.append("TrafficPolicyId: ").append(getTrafficPolicyId()).append(",");
         if (getTrafficPolicyVersion() != null)
-            sb.append("TrafficPolicyVersion: " + getTrafficPolicyVersion());
+            sb.append("TrafficPolicyVersion: ").append(getTrafficPolicyVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -290,4 +296,5 @@ public class UpdateTrafficPolicyInstanceRequest extends com.amazonaws.AmazonWebS
     public UpdateTrafficPolicyInstanceRequest clone() {
         return (UpdateTrafficPolicyInstanceRequest) super.clone();
     }
+
 }

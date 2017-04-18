@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,46 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a <i>GetItem</i> operation.
+ * Represents the output of a <code>GetItem</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/GetItem" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     * A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     * <code>ProjectionExpression</code>.
      * </p>
      */
     private java.util.Map<String, AttributeValue> item;
-
+    /**
+     * <p>
+     * The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     */
     private ConsumedCapacity consumedCapacity;
 
     /**
      * <p>
-     * A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     * A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     * <code>ProjectionExpression</code>.
      * </p>
      * 
-     * @return A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     * @return A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     *         <code>ProjectionExpression</code>.
      */
 
     public java.util.Map<String, AttributeValue> getItem() {
@@ -44,11 +61,13 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     * A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     * <code>ProjectionExpression</code>.
      * </p>
      * 
      * @param item
-     *        A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     *        A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     *        <code>ProjectionExpression</code>.
      */
 
     public void setItem(java.util.Map<String, AttributeValue> item) {
@@ -57,11 +76,13 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     * A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     * <code>ProjectionExpression</code>.
      * </p>
      * 
      * @param item
-     *        A map of attribute names to <i>AttributeValue</i> objects, as specified by <i>AttributesToGet</i>.
+     *        A map of attribute names to <code>AttributeValue</code> objects, as specified by
+     *        <code>ProjectionExpression</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,7 +113,22 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
+     * <p>
+     * The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param consumedCapacity
+     *        The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     *        provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *        operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *        parameter was specified. For more information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *        >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
@@ -100,7 +136,21 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
-     * @return
+     * <p>
+     * The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
+     * @return The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     *         provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *         operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *         parameter was specified. For more information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *         >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public ConsumedCapacity getConsumedCapacity() {
@@ -108,7 +158,22 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
+     * <p>
+     * The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param consumedCapacity
+     *        The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total
+     *        provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *        operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *        parameter was specified. For more information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *        >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,9 +194,9 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getItem() != null)
-            sb.append("Item: " + getItem() + ",");
+            sb.append("Item: ").append(getItem()).append(",");
         if (getConsumedCapacity() != null)
-            sb.append("ConsumedCapacity: " + getConsumedCapacity());
+            sb.append("ConsumedCapacity: ").append(getConsumedCapacity());
         sb.append("}");
         return sb.toString();
     }
@@ -175,4 +240,5 @@ public class GetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

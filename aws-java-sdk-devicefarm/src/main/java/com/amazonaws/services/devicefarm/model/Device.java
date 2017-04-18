@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents a device type that an app is tested against.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/Device" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Device implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Device implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -99,7 +106,11 @@ public class Device implements Serializable, Cloneable {
      * </p>
      */
     private CPU cpu;
-
+    /**
+     * <p>
+     * The resolution of the device.
+     * </p>
+     */
     private Resolution resolution;
     /**
      * <p>
@@ -827,7 +838,12 @@ public class Device implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The resolution of the device.
+     * </p>
+     * 
      * @param resolution
+     *        The resolution of the device.
      */
 
     public void setResolution(Resolution resolution) {
@@ -835,7 +851,11 @@ public class Device implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The resolution of the device.
+     * </p>
+     * 
+     * @return The resolution of the device.
      */
 
     public Resolution getResolution() {
@@ -843,7 +863,12 @@ public class Device implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The resolution of the device.
+     * </p>
+     * 
      * @param resolution
+     *        The resolution of the device.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1196,39 +1221,39 @@ public class Device implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getManufacturer() != null)
-            sb.append("Manufacturer: " + getManufacturer() + ",");
+            sb.append("Manufacturer: ").append(getManufacturer()).append(",");
         if (getModel() != null)
-            sb.append("Model: " + getModel() + ",");
+            sb.append("Model: ").append(getModel()).append(",");
         if (getFormFactor() != null)
-            sb.append("FormFactor: " + getFormFactor() + ",");
+            sb.append("FormFactor: ").append(getFormFactor()).append(",");
         if (getPlatform() != null)
-            sb.append("Platform: " + getPlatform() + ",");
+            sb.append("Platform: ").append(getPlatform()).append(",");
         if (getOs() != null)
-            sb.append("Os: " + getOs() + ",");
+            sb.append("Os: ").append(getOs()).append(",");
         if (getCpu() != null)
-            sb.append("Cpu: " + getCpu() + ",");
+            sb.append("Cpu: ").append(getCpu()).append(",");
         if (getResolution() != null)
-            sb.append("Resolution: " + getResolution() + ",");
+            sb.append("Resolution: ").append(getResolution()).append(",");
         if (getHeapSize() != null)
-            sb.append("HeapSize: " + getHeapSize() + ",");
+            sb.append("HeapSize: ").append(getHeapSize()).append(",");
         if (getMemory() != null)
-            sb.append("Memory: " + getMemory() + ",");
+            sb.append("Memory: ").append(getMemory()).append(",");
         if (getImage() != null)
-            sb.append("Image: " + getImage() + ",");
+            sb.append("Image: ").append(getImage()).append(",");
         if (getCarrier() != null)
-            sb.append("Carrier: " + getCarrier() + ",");
+            sb.append("Carrier: ").append(getCarrier()).append(",");
         if (getRadio() != null)
-            sb.append("Radio: " + getRadio() + ",");
+            sb.append("Radio: ").append(getRadio()).append(",");
         if (getRemoteAccessEnabled() != null)
-            sb.append("RemoteAccessEnabled: " + getRemoteAccessEnabled() + ",");
+            sb.append("RemoteAccessEnabled: ").append(getRemoteAccessEnabled()).append(",");
         if (getFleetType() != null)
-            sb.append("FleetType: " + getFleetType() + ",");
+            sb.append("FleetType: ").append(getFleetType()).append(",");
         if (getFleetName() != null)
-            sb.append("FleetName: " + getFleetName());
+            sb.append("FleetName: ").append(getFleetName());
         sb.append("}");
         return sb.toString();
     }
@@ -1346,5 +1371,11 @@ public class Device implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.DeviceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A list of available AWS Elastic Beanstalk solution stacks.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListAvailableSolutionStacks"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListAvailableSolutionStacksResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -192,9 +197,9 @@ public class ListAvailableSolutionStacksResult extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSolutionStacks() != null)
-            sb.append("SolutionStacks: " + getSolutionStacks() + ",");
+            sb.append("SolutionStacks: ").append(getSolutionStacks()).append(",");
         if (getSolutionStackDetails() != null)
-            sb.append("SolutionStackDetails: " + getSolutionStackDetails());
+            sb.append("SolutionStackDetails: ").append(getSolutionStackDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -238,4 +243,5 @@ public class ListAvailableSolutionStacksResult extends com.amazonaws.AmazonWebSe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

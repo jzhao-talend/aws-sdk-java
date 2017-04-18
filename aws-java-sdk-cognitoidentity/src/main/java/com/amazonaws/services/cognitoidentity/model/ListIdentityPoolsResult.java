@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,36 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
  * The result of a successful ListIdentityPools action.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentityPools" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
-    /** The identity pools returned by the ListIdentityPools action. */
+    /**
+     * <p>
+     * The identity pools returned by the ListIdentityPools action.
+     * </p>
+     */
     private java.util.List<IdentityPoolShortDescription> identityPools;
-    /** A pagination token. */
+    /**
+     * <p>
+     * A pagination token.
+     * </p>
+     */
     private String nextToken;
 
     /**
+     * <p>
      * The identity pools returned by the ListIdentityPools action.
+     * </p>
      * 
      * @return The identity pools returned by the ListIdentityPools action.
      */
@@ -35,7 +52,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * The identity pools returned by the ListIdentityPools action.
+     * </p>
      * 
      * @param identityPools
      *        The identity pools returned by the ListIdentityPools action.
@@ -51,7 +70,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * The identity pools returned by the ListIdentityPools action.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setIdentityPools(java.util.Collection)} or {@link #withIdentityPools(java.util.Collection)} if you want
@@ -74,7 +95,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * The identity pools returned by the ListIdentityPools action.
+     * </p>
      * 
      * @param identityPools
      *        The identity pools returned by the ListIdentityPools action.
@@ -87,7 +110,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @param nextToken
      *        A pagination token.
@@ -98,7 +123,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @return A pagination token.
      */
@@ -108,7 +135,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @param nextToken
      *        A pagination token.
@@ -132,9 +161,9 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPools() != null)
-            sb.append("IdentityPools: " + getIdentityPools() + ",");
+            sb.append("IdentityPools: ").append(getIdentityPools()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -178,4 +207,5 @@ public class ListIdentityPoolsResult extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A list of returned queue attributes.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/GetQueueAttributes" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetQueueAttributesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A map of attributes to the respective values.
+     * A map of attributes to their respective values.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalMap<String, String> attributes;
 
     /**
      * <p>
-     * A map of attributes to the respective values.
+     * A map of attributes to their respective values.
      * </p>
      * 
-     * @return A map of attributes to the respective values.
+     * @return A map of attributes to their respective values.
      */
 
     public java.util.Map<String, String> getAttributes() {
@@ -45,11 +50,11 @@ public class GetQueueAttributesResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A map of attributes to the respective values.
+     * A map of attributes to their respective values.
      * </p>
      * 
      * @param attributes
-     *        A map of attributes to the respective values.
+     *        A map of attributes to their respective values.
      */
 
     public void setAttributes(java.util.Map<String, String> attributes) {
@@ -58,11 +63,11 @@ public class GetQueueAttributesResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A map of attributes to the respective values.
+     * A map of attributes to their respective values.
      * </p>
      * 
      * @param attributes
-     *        A map of attributes to the respective values.
+     *        A map of attributes to their respective values.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -104,7 +109,7 @@ public class GetQueueAttributesResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes());
+            sb.append("Attributes: ").append(getAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -143,4 +148,5 @@ public class GetQueueAttributesResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

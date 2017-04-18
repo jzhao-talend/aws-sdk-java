@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.cloudsearchv2;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudsearchv2.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon CloudSearch asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing Amazon CloudSearch asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -35,6 +44,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implements AmazonCloudSearchAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -56,9 +66,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCloudSearchAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -80,10 +92,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -96,9 +109,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -109,8 +124,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -125,10 +143,12 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -143,9 +163,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -162,10 +184,12 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -176,9 +200,11 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -192,12 +218,18 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudSearchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonCloudSearchAsyncClientBuilder asyncBuilder() {
+        return AmazonCloudSearchAsyncClientBuilder.standard();
     }
 
     /**
@@ -217,7 +249,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -230,14 +262,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<BuildSuggestersResult> buildSuggestersAsync(final BuildSuggestersRequest request,
             final com.amazonaws.handlers.AsyncHandler<BuildSuggestersRequest, BuildSuggestersResult> asyncHandler) {
+        final BuildSuggestersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<BuildSuggestersResult>() {
             @Override
             public BuildSuggestersResult call() throws Exception {
-                BuildSuggestersResult result;
+                BuildSuggestersResult result = null;
 
                 try {
-                    result = buildSuggesters(request);
+                    result = executeBuildSuggesters(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -246,7 +279,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -262,14 +295,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<CreateDomainResult> createDomainAsync(final CreateDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateDomainRequest, CreateDomainResult> asyncHandler) {
+        final CreateDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateDomainResult>() {
             @Override
             public CreateDomainResult call() throws Exception {
-                CreateDomainResult result;
+                CreateDomainResult result = null;
 
                 try {
-                    result = createDomain(request);
+                    result = executeCreateDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -278,7 +312,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -294,14 +328,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DefineAnalysisSchemeResult> defineAnalysisSchemeAsync(final DefineAnalysisSchemeRequest request,
             final com.amazonaws.handlers.AsyncHandler<DefineAnalysisSchemeRequest, DefineAnalysisSchemeResult> asyncHandler) {
+        final DefineAnalysisSchemeRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DefineAnalysisSchemeResult>() {
             @Override
             public DefineAnalysisSchemeResult call() throws Exception {
-                DefineAnalysisSchemeResult result;
+                DefineAnalysisSchemeResult result = null;
 
                 try {
-                    result = defineAnalysisScheme(request);
+                    result = executeDefineAnalysisScheme(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -310,7 +345,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -326,14 +361,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DefineExpressionResult> defineExpressionAsync(final DefineExpressionRequest request,
             final com.amazonaws.handlers.AsyncHandler<DefineExpressionRequest, DefineExpressionResult> asyncHandler) {
+        final DefineExpressionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DefineExpressionResult>() {
             @Override
             public DefineExpressionResult call() throws Exception {
-                DefineExpressionResult result;
+                DefineExpressionResult result = null;
 
                 try {
-                    result = defineExpression(request);
+                    result = executeDefineExpression(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -342,7 +378,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -358,14 +394,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DefineIndexFieldResult> defineIndexFieldAsync(final DefineIndexFieldRequest request,
             final com.amazonaws.handlers.AsyncHandler<DefineIndexFieldRequest, DefineIndexFieldResult> asyncHandler) {
+        final DefineIndexFieldRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DefineIndexFieldResult>() {
             @Override
             public DefineIndexFieldResult call() throws Exception {
-                DefineIndexFieldResult result;
+                DefineIndexFieldResult result = null;
 
                 try {
-                    result = defineIndexField(request);
+                    result = executeDefineIndexField(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -374,7 +411,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -390,14 +427,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DefineSuggesterResult> defineSuggesterAsync(final DefineSuggesterRequest request,
             final com.amazonaws.handlers.AsyncHandler<DefineSuggesterRequest, DefineSuggesterResult> asyncHandler) {
+        final DefineSuggesterRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DefineSuggesterResult>() {
             @Override
             public DefineSuggesterResult call() throws Exception {
-                DefineSuggesterResult result;
+                DefineSuggesterResult result = null;
 
                 try {
-                    result = defineSuggester(request);
+                    result = executeDefineSuggester(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -406,7 +444,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -422,14 +460,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DeleteAnalysisSchemeResult> deleteAnalysisSchemeAsync(final DeleteAnalysisSchemeRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteAnalysisSchemeRequest, DeleteAnalysisSchemeResult> asyncHandler) {
+        final DeleteAnalysisSchemeRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteAnalysisSchemeResult>() {
             @Override
             public DeleteAnalysisSchemeResult call() throws Exception {
-                DeleteAnalysisSchemeResult result;
+                DeleteAnalysisSchemeResult result = null;
 
                 try {
-                    result = deleteAnalysisScheme(request);
+                    result = executeDeleteAnalysisScheme(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -438,7 +477,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -454,14 +493,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DeleteDomainResult> deleteDomainAsync(final DeleteDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteDomainRequest, DeleteDomainResult> asyncHandler) {
+        final DeleteDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteDomainResult>() {
             @Override
             public DeleteDomainResult call() throws Exception {
-                DeleteDomainResult result;
+                DeleteDomainResult result = null;
 
                 try {
-                    result = deleteDomain(request);
+                    result = executeDeleteDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -470,7 +510,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -486,14 +526,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DeleteExpressionResult> deleteExpressionAsync(final DeleteExpressionRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteExpressionRequest, DeleteExpressionResult> asyncHandler) {
+        final DeleteExpressionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteExpressionResult>() {
             @Override
             public DeleteExpressionResult call() throws Exception {
-                DeleteExpressionResult result;
+                DeleteExpressionResult result = null;
 
                 try {
-                    result = deleteExpression(request);
+                    result = executeDeleteExpression(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -502,7 +543,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -518,14 +559,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DeleteIndexFieldResult> deleteIndexFieldAsync(final DeleteIndexFieldRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteIndexFieldRequest, DeleteIndexFieldResult> asyncHandler) {
+        final DeleteIndexFieldRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteIndexFieldResult>() {
             @Override
             public DeleteIndexFieldResult call() throws Exception {
-                DeleteIndexFieldResult result;
+                DeleteIndexFieldResult result = null;
 
                 try {
-                    result = deleteIndexField(request);
+                    result = executeDeleteIndexField(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -534,7 +576,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -550,14 +592,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DeleteSuggesterResult> deleteSuggesterAsync(final DeleteSuggesterRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteSuggesterRequest, DeleteSuggesterResult> asyncHandler) {
+        final DeleteSuggesterRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteSuggesterResult>() {
             @Override
             public DeleteSuggesterResult call() throws Exception {
-                DeleteSuggesterResult result;
+                DeleteSuggesterResult result = null;
 
                 try {
-                    result = deleteSuggester(request);
+                    result = executeDeleteSuggester(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -566,7 +609,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -582,14 +625,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeAnalysisSchemesResult> describeAnalysisSchemesAsync(final DescribeAnalysisSchemesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeAnalysisSchemesRequest, DescribeAnalysisSchemesResult> asyncHandler) {
+        final DescribeAnalysisSchemesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeAnalysisSchemesResult>() {
             @Override
             public DescribeAnalysisSchemesResult call() throws Exception {
-                DescribeAnalysisSchemesResult result;
+                DescribeAnalysisSchemesResult result = null;
 
                 try {
-                    result = describeAnalysisSchemes(request);
+                    result = executeDescribeAnalysisSchemes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -598,7 +642,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -614,14 +658,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeAvailabilityOptionsResult> describeAvailabilityOptionsAsync(final DescribeAvailabilityOptionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeAvailabilityOptionsRequest, DescribeAvailabilityOptionsResult> asyncHandler) {
+        final DescribeAvailabilityOptionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeAvailabilityOptionsResult>() {
             @Override
             public DescribeAvailabilityOptionsResult call() throws Exception {
-                DescribeAvailabilityOptionsResult result;
+                DescribeAvailabilityOptionsResult result = null;
 
                 try {
-                    result = describeAvailabilityOptions(request);
+                    result = executeDescribeAvailabilityOptions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -630,7 +675,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -646,14 +691,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeDomainsResult> describeDomainsAsync(final DescribeDomainsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeDomainsRequest, DescribeDomainsResult> asyncHandler) {
+        final DescribeDomainsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeDomainsResult>() {
             @Override
             public DescribeDomainsResult call() throws Exception {
-                DescribeDomainsResult result;
+                DescribeDomainsResult result = null;
 
                 try {
-                    result = describeDomains(request);
+                    result = executeDescribeDomains(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -662,7 +708,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -685,6 +731,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @see #describeDomainsAsync(DescribeDomainsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeDomainsResult> describeDomainsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeDomainsRequest, DescribeDomainsResult> asyncHandler) {
 
@@ -700,14 +747,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeExpressionsResult> describeExpressionsAsync(final DescribeExpressionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeExpressionsRequest, DescribeExpressionsResult> asyncHandler) {
+        final DescribeExpressionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeExpressionsResult>() {
             @Override
             public DescribeExpressionsResult call() throws Exception {
-                DescribeExpressionsResult result;
+                DescribeExpressionsResult result = null;
 
                 try {
-                    result = describeExpressions(request);
+                    result = executeDescribeExpressions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -716,7 +764,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -732,14 +780,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeIndexFieldsResult> describeIndexFieldsAsync(final DescribeIndexFieldsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeIndexFieldsRequest, DescribeIndexFieldsResult> asyncHandler) {
+        final DescribeIndexFieldsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeIndexFieldsResult>() {
             @Override
             public DescribeIndexFieldsResult call() throws Exception {
-                DescribeIndexFieldsResult result;
+                DescribeIndexFieldsResult result = null;
 
                 try {
-                    result = describeIndexFields(request);
+                    result = executeDescribeIndexFields(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -748,7 +797,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -764,14 +813,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeScalingParametersResult> describeScalingParametersAsync(final DescribeScalingParametersRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeScalingParametersRequest, DescribeScalingParametersResult> asyncHandler) {
+        final DescribeScalingParametersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeScalingParametersResult>() {
             @Override
             public DescribeScalingParametersResult call() throws Exception {
-                DescribeScalingParametersResult result;
+                DescribeScalingParametersResult result = null;
 
                 try {
-                    result = describeScalingParameters(request);
+                    result = executeDescribeScalingParameters(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -780,7 +830,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -797,14 +847,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     public java.util.concurrent.Future<DescribeServiceAccessPoliciesResult> describeServiceAccessPoliciesAsync(
             final DescribeServiceAccessPoliciesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeServiceAccessPoliciesRequest, DescribeServiceAccessPoliciesResult> asyncHandler) {
+        final DescribeServiceAccessPoliciesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeServiceAccessPoliciesResult>() {
             @Override
             public DescribeServiceAccessPoliciesResult call() throws Exception {
-                DescribeServiceAccessPoliciesResult result;
+                DescribeServiceAccessPoliciesResult result = null;
 
                 try {
-                    result = describeServiceAccessPolicies(request);
+                    result = executeDescribeServiceAccessPolicies(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -813,7 +864,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -829,14 +880,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<DescribeSuggestersResult> describeSuggestersAsync(final DescribeSuggestersRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeSuggestersRequest, DescribeSuggestersResult> asyncHandler) {
+        final DescribeSuggestersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeSuggestersResult>() {
             @Override
             public DescribeSuggestersResult call() throws Exception {
-                DescribeSuggestersResult result;
+                DescribeSuggestersResult result = null;
 
                 try {
-                    result = describeSuggesters(request);
+                    result = executeDescribeSuggesters(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -845,7 +897,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -861,14 +913,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<IndexDocumentsResult> indexDocumentsAsync(final IndexDocumentsRequest request,
             final com.amazonaws.handlers.AsyncHandler<IndexDocumentsRequest, IndexDocumentsResult> asyncHandler) {
+        final IndexDocumentsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<IndexDocumentsResult>() {
             @Override
             public IndexDocumentsResult call() throws Exception {
-                IndexDocumentsResult result;
+                IndexDocumentsResult result = null;
 
                 try {
-                    result = indexDocuments(request);
+                    result = executeIndexDocuments(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -877,7 +930,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -893,14 +946,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<ListDomainNamesResult> listDomainNamesAsync(final ListDomainNamesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDomainNamesRequest, ListDomainNamesResult> asyncHandler) {
+        final ListDomainNamesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDomainNamesResult>() {
             @Override
             public ListDomainNamesResult call() throws Exception {
-                ListDomainNamesResult result;
+                ListDomainNamesResult result = null;
 
                 try {
-                    result = listDomainNames(request);
+                    result = executeListDomainNames(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -909,7 +963,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -932,6 +986,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
      *
      * @see #listDomainNamesAsync(ListDomainNamesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListDomainNamesResult> listDomainNamesAsync(
             com.amazonaws.handlers.AsyncHandler<ListDomainNamesRequest, ListDomainNamesResult> asyncHandler) {
 
@@ -947,14 +1002,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<UpdateAvailabilityOptionsResult> updateAvailabilityOptionsAsync(final UpdateAvailabilityOptionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateAvailabilityOptionsRequest, UpdateAvailabilityOptionsResult> asyncHandler) {
+        final UpdateAvailabilityOptionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateAvailabilityOptionsResult>() {
             @Override
             public UpdateAvailabilityOptionsResult call() throws Exception {
-                UpdateAvailabilityOptionsResult result;
+                UpdateAvailabilityOptionsResult result = null;
 
                 try {
-                    result = updateAvailabilityOptions(request);
+                    result = executeUpdateAvailabilityOptions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -963,7 +1019,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -979,14 +1035,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<UpdateScalingParametersResult> updateScalingParametersAsync(final UpdateScalingParametersRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateScalingParametersRequest, UpdateScalingParametersResult> asyncHandler) {
+        final UpdateScalingParametersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateScalingParametersResult>() {
             @Override
             public UpdateScalingParametersResult call() throws Exception {
-                UpdateScalingParametersResult result;
+                UpdateScalingParametersResult result = null;
 
                 try {
-                    result = updateScalingParameters(request);
+                    result = executeUpdateScalingParameters(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -995,7 +1052,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1011,14 +1068,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
     @Override
     public java.util.concurrent.Future<UpdateServiceAccessPoliciesResult> updateServiceAccessPoliciesAsync(final UpdateServiceAccessPoliciesRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateServiceAccessPoliciesRequest, UpdateServiceAccessPoliciesResult> asyncHandler) {
+        final UpdateServiceAccessPoliciesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateServiceAccessPoliciesResult>() {
             @Override
             public UpdateServiceAccessPoliciesResult call() throws Exception {
-                UpdateServiceAccessPoliciesResult result;
+                UpdateServiceAccessPoliciesResult result = null;
 
                 try {
-                    result = updateServiceAccessPolicies(request);
+                    result = executeUpdateServiceAccessPolicies(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1027,7 +1085,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient implem
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

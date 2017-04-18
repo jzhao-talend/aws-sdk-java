@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the application metrics for a specified environment.
+ * Application request metrics for an AWS Elastic Beanstalk environment.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplicationMetrics"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ApplicationMetrics implements Serializable, Cloneable {
 
     /**
@@ -44,7 +49,7 @@ public class ApplicationMetrics implements Serializable, Cloneable {
     /**
      * <p>
      * Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in
-     * seconds with one milisecond resolution.
+     * seconds with one millisecond resolution.
      * </p>
      */
     private Latency latency;
@@ -184,12 +189,12 @@ public class ApplicationMetrics implements Serializable, Cloneable {
     /**
      * <p>
      * Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in
-     * seconds with one milisecond resolution.
+     * seconds with one millisecond resolution.
      * </p>
      * 
      * @param latency
      *        Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies
-     *        are in seconds with one milisecond resolution.
+     *        are in seconds with one millisecond resolution.
      */
 
     public void setLatency(Latency latency) {
@@ -199,11 +204,11 @@ public class ApplicationMetrics implements Serializable, Cloneable {
     /**
      * <p>
      * Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in
-     * seconds with one milisecond resolution.
+     * seconds with one millisecond resolution.
      * </p>
      * 
      * @return Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies
-     *         are in seconds with one milisecond resolution.
+     *         are in seconds with one millisecond resolution.
      */
 
     public Latency getLatency() {
@@ -213,12 +218,12 @@ public class ApplicationMetrics implements Serializable, Cloneable {
     /**
      * <p>
      * Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in
-     * seconds with one milisecond resolution.
+     * seconds with one millisecond resolution.
      * </p>
      * 
      * @param latency
      *        Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies
-     *        are in seconds with one milisecond resolution.
+     *        are in seconds with one millisecond resolution.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -239,13 +244,13 @@ public class ApplicationMetrics implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDuration() != null)
-            sb.append("Duration: " + getDuration() + ",");
+            sb.append("Duration: ").append(getDuration()).append(",");
         if (getRequestCount() != null)
-            sb.append("RequestCount: " + getRequestCount() + ",");
+            sb.append("RequestCount: ").append(getRequestCount()).append(",");
         if (getStatusCodes() != null)
-            sb.append("StatusCodes: " + getStatusCodes() + ",");
+            sb.append("StatusCodes: ").append(getStatusCodes()).append(",");
         if (getLatency() != null)
-            sb.append("Latency: " + getLatency());
+            sb.append("Latency: ").append(getLatency());
         sb.append("}");
         return sb.toString();
     }
@@ -299,4 +304,5 @@ public class ApplicationMetrics implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.GetHostReservationPurchasePreviewRequestMarshaller;
@@ -20,6 +22,7 @@ import com.amazonaws.services.ec2.model.transform.GetHostReservationPurchasePrev
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetHostReservationPurchasePreviewRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<GetHostReservationPurchasePreviewRequest> {
 
@@ -172,9 +175,9 @@ public class GetHostReservationPurchasePreviewRequest extends AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOfferingId() != null)
-            sb.append("OfferingId: " + getOfferingId() + ",");
+            sb.append("OfferingId: ").append(getOfferingId()).append(",");
         if (getHostIdSet() != null)
-            sb.append("HostIdSet: " + getHostIdSet());
+            sb.append("HostIdSet: ").append(getHostIdSet());
         sb.append("}");
         return sb.toString();
     }

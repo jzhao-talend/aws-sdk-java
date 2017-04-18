@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.importexport;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,12 +22,17 @@ import com.amazonaws.services.importexport.model.*;
 /**
  * Interface for accessing AWS Import/Export.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.importexport.AbstractAmazonImportExport} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Import/Export Service</fullname> AWS Import/Export accelerates transferring large amounts of data
  * between the AWS cloud and portable storage devices that you mail to us. AWS Import/Export transfers data directly
  * onto and off of your storage devices using Amazon's high-speed internal network and bypassing the Internet. For large
  * data sets, AWS Import/Export is often faster than Internet transfer and more cost effective than upgrading your
  * connectivity.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonImportExport {
 
     /**
@@ -57,7 +64,11 @@ public interface AmazonImportExport {
      *        The endpoint (ex: "importexport.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://importexport.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -78,7 +89,9 @@ public interface AmazonImportExport {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**

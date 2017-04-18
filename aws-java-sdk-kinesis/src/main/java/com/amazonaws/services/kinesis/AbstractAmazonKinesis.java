@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.kinesis;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.kinesis.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.kinesis.waiters.AmazonKinesisWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.kinesis.waiters.AmazonKinesisWaiters;
  * Abstract implementation of {@code AmazonKinesis}. Convenient method forms pass through to the corresponding overload
  * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonKinesis implements AmazonKinesis {
 
     protected AbstractAmazonKinesis() {
@@ -63,6 +66,11 @@ public class AbstractAmazonKinesis implements AmazonKinesis {
     @Override
     public DeleteStreamResult deleteStream(String streamName) {
         return deleteStream(new DeleteStreamRequest().withStreamName(streamName));
+    }
+
+    @Override
+    public DescribeLimitsResult describeLimits(DescribeLimitsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -193,6 +201,11 @@ public class AbstractAmazonKinesis implements AmazonKinesis {
     }
 
     @Override
+    public UpdateShardCountResult updateShardCount(UpdateShardCountRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public void shutdown() {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -206,4 +219,5 @@ public class AbstractAmazonKinesis implements AmazonKinesis {
     public AmazonKinesisWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

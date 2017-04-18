@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes stack or user permissions.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Permission" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Permission implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Permission implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -523,15 +530,15 @@ public class Permission implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getIamUserArn() != null)
-            sb.append("IamUserArn: " + getIamUserArn() + ",");
+            sb.append("IamUserArn: ").append(getIamUserArn()).append(",");
         if (getAllowSsh() != null)
-            sb.append("AllowSsh: " + getAllowSsh() + ",");
+            sb.append("AllowSsh: ").append(getAllowSsh()).append(",");
         if (getAllowSudo() != null)
-            sb.append("AllowSudo: " + getAllowSudo() + ",");
+            sb.append("AllowSudo: ").append(getAllowSudo()).append(",");
         if (getLevel() != null)
-            sb.append("Level: " + getLevel());
+            sb.append("Level: ").append(getLevel());
         sb.append("}");
         return sb.toString();
     }
@@ -589,5 +596,11 @@ public class Permission implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.PermissionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

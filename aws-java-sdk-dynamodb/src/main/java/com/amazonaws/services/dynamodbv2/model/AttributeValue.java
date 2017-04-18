@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,76 +13,124 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the data for an attribute. You can set one, and only one, of the elements.
+ * Represents the data for an attribute.
  * </p>
  * <p>
- * Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a
- * book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued
- * attribute is a set; duplicate values are not allowed.
+ * Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.
  * </p>
+ * <p>
+ * For more information, see <a href=
+ * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes"
+ * >Data Types</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/AttributeValue" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AttributeValue implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AttributeValue implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A String data type.
+     * An attribute of type String. For example:
+     * </p>
+     * <p>
+     * <code>"S": "Hello"</code>
      * </p>
      */
     private String s;
     /**
      * <p>
-     * A Number data type.
+     * An attribute of type Number. For example:
+     * </p>
+     * <p>
+     * <code>"N": "123.45"</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      */
     private String n;
     /**
      * <p>
-     * A Binary data type.
+     * An attribute of type Binary. For example:
+     * </p>
+     * <p>
+     * <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
      * </p>
      */
     private java.nio.ByteBuffer b;
     /**
      * <p>
-     * A String Set data type.
+     * An attribute of type String Set. For example:
+     * </p>
+     * <p>
+     * <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * </p>
      */
     private java.util.List<String> sS;
     /**
      * <p>
-     * A Number Set data type.
+     * An attribute of type Number Set. For example:
+     * </p>
+     * <p>
+     * <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      */
     private java.util.List<String> nS;
     /**
      * <p>
-     * A Binary Set data type.
+     * An attribute of type Binary Set. For example:
+     * </p>
+     * <p>
+     * <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * </p>
      */
     private java.util.List<java.nio.ByteBuffer> bS;
     /**
      * <p>
-     * A Map of attribute values.
+     * An attribute of type Map. For example:
+     * </p>
+     * <p>
+     * <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      * </p>
      */
     private java.util.Map<String, AttributeValue> m;
     /**
      * <p>
-     * A List of attribute values.
+     * An attribute of type List. For example:
+     * </p>
+     * <p>
+     * <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * </p>
      */
     private java.util.List<AttributeValue> l;
     /**
      * <p>
-     * A Null data type.
+     * An attribute of type Null. For example:
+     * </p>
+     * <p>
+     * <code>"NULL": true</code>
      * </p>
      */
     private Boolean nULLValue;
     /**
      * <p>
-     * A Boolean data type.
+     * An attribute of type Boolean. For example:
+     * </p>
+     * <p>
+     * <code>"BOOL": true</code>
      * </p>
      */
     private Boolean bOOL;
@@ -99,7 +147,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * initialize any additional object members.
      * 
      * @param s
-     *        A String data type.
+     *        An attribute of type String. For example:</p>
+     *        <p>
+     *        <code>"S": "Hello"</code>
      */
     public AttributeValue(String s) {
         setS(s);
@@ -110,7 +160,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * initialize any additional object members.
      * 
      * @param sS
-     *        A String Set data type.
+     *        An attribute of type String Set. For example:</p>
+     *        <p>
+     *        <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      */
     public AttributeValue(java.util.List<String> sS) {
         setSS(sS);
@@ -118,11 +170,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String data type.
+     * An attribute of type String. For example:
+     * </p>
+     * <p>
+     * <code>"S": "Hello"</code>
      * </p>
      * 
      * @param s
-     *        A String data type.
+     *        An attribute of type String. For example:</p>
+     *        <p>
+     *        <code>"S": "Hello"</code>
      */
 
     public void setS(String s) {
@@ -131,10 +188,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String data type.
+     * An attribute of type String. For example:
+     * </p>
+     * <p>
+     * <code>"S": "Hello"</code>
      * </p>
      * 
-     * @return A String data type.
+     * @return An attribute of type String. For example:</p>
+     *         <p>
+     *         <code>"S": "Hello"</code>
      */
 
     public String getS() {
@@ -143,11 +205,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String data type.
+     * An attribute of type String. For example:
+     * </p>
+     * <p>
+     * <code>"S": "Hello"</code>
      * </p>
      * 
      * @param s
-     *        A String data type.
+     *        An attribute of type String. For example:</p>
+     *        <p>
+     *        <code>"S": "Hello"</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -158,11 +225,24 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number data type.
+     * An attribute of type Number. For example:
+     * </p>
+     * <p>
+     * <code>"N": "123.45"</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
      * @param n
-     *        A Number data type.
+     *        An attribute of type Number. For example:</p>
+     *        <p>
+     *        <code>"N": "123.45"</code>
+     *        </p>
+     *        <p>
+     *        Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     *        libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      */
 
     public void setN(String n) {
@@ -171,10 +251,23 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number data type.
+     * An attribute of type Number. For example:
+     * </p>
+     * <p>
+     * <code>"N": "123.45"</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
-     * @return A Number data type.
+     * @return An attribute of type Number. For example:</p>
+     *         <p>
+     *         <code>"N": "123.45"</code>
+     *         </p>
+     *         <p>
+     *         Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages
+     *         and libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      */
 
     public String getN() {
@@ -183,11 +276,24 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number data type.
+     * An attribute of type Number. For example:
+     * </p>
+     * <p>
+     * <code>"N": "123.45"</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
      * @param n
-     *        A Number data type.
+     *        An attribute of type Number. For example:</p>
+     *        <p>
+     *        <code>"N": "123.45"</code>
+     *        </p>
+     *        <p>
+     *        Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     *        libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -198,10 +304,13 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary data type.
+     * An attribute of type Binary. For example:
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -212,7 +321,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * </p>
      * 
      * @param b
-     *        A Binary data type.
+     *        An attribute of type Binary. For example:</p>
+     *        <p>
+     *        <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
      */
 
     public void setB(java.nio.ByteBuffer b) {
@@ -221,7 +332,10 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary data type.
+     * An attribute of type Binary. For example:
+     * </p>
+     * <p>
+     * <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
      * </p>
      * <p>
      * {@code ByteBuffer}s are stateful. Calling their {@code get} methods changes their {@code position}. We recommend
@@ -231,7 +345,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * {@code position}.
      * </p>
      * 
-     * @return A Binary data type.
+     * @return An attribute of type Binary. For example:</p>
+     *         <p>
+     *         <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
      */
 
     public java.nio.ByteBuffer getB() {
@@ -240,11 +356,26 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary data type.
+     * An attribute of type Binary. For example:
+     * </p>
+     * <p>
+     * <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
      * </p>
      * 
      * @param b
-     *        A Binary data type.
+     *        An attribute of type Binary. For example:</p>
+     *        <p>
+     *        <code>"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -255,10 +386,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String Set data type.
+     * An attribute of type String Set. For example:
+     * </p>
+     * <p>
+     * <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * </p>
      * 
-     * @return A String Set data type.
+     * @return An attribute of type String Set. For example:</p>
+     *         <p>
+     *         <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      */
 
     public java.util.List<String> getSS() {
@@ -267,11 +403,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String Set data type.
+     * An attribute of type String Set. For example:
+     * </p>
+     * <p>
+     * <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * </p>
      * 
      * @param sS
-     *        A String Set data type.
+     *        An attribute of type String Set. For example:</p>
+     *        <p>
+     *        <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      */
 
     public void setSS(java.util.Collection<String> sS) {
@@ -285,7 +426,10 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String Set data type.
+     * An attribute of type String Set. For example:
+     * </p>
+     * <p>
+     * <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -294,7 +438,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * </p>
      * 
      * @param sS
-     *        A String Set data type.
+     *        An attribute of type String Set. For example:</p>
+     *        <p>
+     *        <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -310,11 +456,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A String Set data type.
+     * An attribute of type String Set. For example:
+     * </p>
+     * <p>
+     * <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * </p>
      * 
      * @param sS
-     *        A String Set data type.
+     *        An attribute of type String Set. For example:</p>
+     *        <p>
+     *        <code>"SS": ["Giraffe", "Hippo" ,"Zebra"]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -325,10 +476,23 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number Set data type.
+     * An attribute of type Number Set. For example:
+     * </p>
+     * <p>
+     * <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
-     * @return A Number Set data type.
+     * @return An attribute of type Number Set. For example:</p>
+     *         <p>
+     *         <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     *         </p>
+     *         <p>
+     *         Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages
+     *         and libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      */
 
     public java.util.List<String> getNS() {
@@ -337,11 +501,24 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number Set data type.
+     * An attribute of type Number Set. For example:
+     * </p>
+     * <p>
+     * <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
      * @param nS
-     *        A Number Set data type.
+     *        An attribute of type Number Set. For example:</p>
+     *        <p>
+     *        <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     *        </p>
+     *        <p>
+     *        Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     *        libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      */
 
     public void setNS(java.util.Collection<String> nS) {
@@ -355,7 +532,14 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number Set data type.
+     * An attribute of type Number Set. For example:
+     * </p>
+     * <p>
+     * <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -364,7 +548,13 @@ public class AttributeValue implements Serializable, Cloneable {
      * </p>
      * 
      * @param nS
-     *        A Number Set data type.
+     *        An attribute of type Number Set. For example:</p>
+     *        <p>
+     *        <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     *        </p>
+     *        <p>
+     *        Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     *        libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -380,11 +570,24 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Number Set data type.
+     * An attribute of type Number Set. For example:
+     * </p>
+     * <p>
+     * <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     * </p>
+     * <p>
+     * Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     * libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * </p>
      * 
      * @param nS
-     *        A Number Set data type.
+     *        An attribute of type Number Set. For example:</p>
+     *        <p>
+     *        <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code>
+     *        </p>
+     *        <p>
+     *        Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+     *        libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -395,10 +598,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary Set data type.
+     * An attribute of type Binary Set. For example:
+     * </p>
+     * <p>
+     * <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * </p>
      * 
-     * @return A Binary Set data type.
+     * @return An attribute of type Binary Set. For example:</p>
+     *         <p>
+     *         <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      */
 
     public java.util.List<java.nio.ByteBuffer> getBS() {
@@ -407,11 +615,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary Set data type.
+     * An attribute of type Binary Set. For example:
+     * </p>
+     * <p>
+     * <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * </p>
      * 
      * @param bS
-     *        A Binary Set data type.
+     *        An attribute of type Binary Set. For example:</p>
+     *        <p>
+     *        <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      */
 
     public void setBS(java.util.Collection<java.nio.ByteBuffer> bS) {
@@ -425,7 +638,10 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary Set data type.
+     * An attribute of type Binary Set. For example:
+     * </p>
+     * <p>
+     * <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -434,7 +650,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * </p>
      * 
      * @param bS
-     *        A Binary Set data type.
+     *        An attribute of type Binary Set. For example:</p>
+     *        <p>
+     *        <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -450,11 +668,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Binary Set data type.
+     * An attribute of type Binary Set. For example:
+     * </p>
+     * <p>
+     * <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * </p>
      * 
      * @param bS
-     *        A Binary Set data type.
+     *        An attribute of type Binary Set. For example:</p>
+     *        <p>
+     *        <code>"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -465,10 +688,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Map of attribute values.
+     * An attribute of type Map. For example:
+     * </p>
+     * <p>
+     * <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      * </p>
      * 
-     * @return A Map of attribute values.
+     * @return An attribute of type Map. For example:</p>
+     *         <p>
+     *         <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      */
 
     public java.util.Map<String, AttributeValue> getM() {
@@ -477,11 +705,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Map of attribute values.
+     * An attribute of type Map. For example:
+     * </p>
+     * <p>
+     * <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      * </p>
      * 
      * @param m
-     *        A Map of attribute values.
+     *        An attribute of type Map. For example:</p>
+     *        <p>
+     *        <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      */
 
     public void setM(java.util.Map<String, AttributeValue> m) {
@@ -490,11 +723,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Map of attribute values.
+     * An attribute of type Map. For example:
+     * </p>
+     * <p>
+     * <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      * </p>
      * 
      * @param m
-     *        A Map of attribute values.
+     *        An attribute of type Map. For example:</p>
+     *        <p>
+     *        <code>"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -526,10 +764,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A List of attribute values.
+     * An attribute of type List. For example:
+     * </p>
+     * <p>
+     * <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * </p>
      * 
-     * @return A List of attribute values.
+     * @return An attribute of type List. For example:</p>
+     *         <p>
+     *         <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      */
 
     public java.util.List<AttributeValue> getL() {
@@ -538,11 +781,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A List of attribute values.
+     * An attribute of type List. For example:
+     * </p>
+     * <p>
+     * <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * </p>
      * 
      * @param l
-     *        A List of attribute values.
+     *        An attribute of type List. For example:</p>
+     *        <p>
+     *        <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      */
 
     public void setL(java.util.Collection<AttributeValue> l) {
@@ -556,7 +804,10 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A List of attribute values.
+     * An attribute of type List. For example:
+     * </p>
+     * <p>
+     * <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -565,7 +816,9 @@ public class AttributeValue implements Serializable, Cloneable {
      * </p>
      * 
      * @param l
-     *        A List of attribute values.
+     *        An attribute of type List. For example:</p>
+     *        <p>
+     *        <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -581,11 +834,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A List of attribute values.
+     * An attribute of type List. For example:
+     * </p>
+     * <p>
+     * <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * </p>
      * 
      * @param l
-     *        A List of attribute values.
+     *        An attribute of type List. For example:</p>
+     *        <p>
+     *        <code>"L": ["Cookies", "Coffee", 3.14159]</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -596,11 +854,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Null data type.
+     * An attribute of type Null. For example:
+     * </p>
+     * <p>
+     * <code>"NULL": true</code>
      * </p>
      * 
      * @param nULLValue
-     *        A Null data type.
+     *        An attribute of type Null. For example:</p>
+     *        <p>
+     *        <code>"NULL": true</code>
      */
 
     public void setNULL(Boolean nULLValue) {
@@ -609,10 +872,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Null data type.
+     * An attribute of type Null. For example:
+     * </p>
+     * <p>
+     * <code>"NULL": true</code>
      * </p>
      * 
-     * @return A Null data type.
+     * @return An attribute of type Null. For example:</p>
+     *         <p>
+     *         <code>"NULL": true</code>
      */
 
     public Boolean getNULL() {
@@ -621,11 +889,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Null data type.
+     * An attribute of type Null. For example:
+     * </p>
+     * <p>
+     * <code>"NULL": true</code>
      * </p>
      * 
      * @param nULLValue
-     *        A Null data type.
+     *        An attribute of type Null. For example:</p>
+     *        <p>
+     *        <code>"NULL": true</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -636,10 +909,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Null data type.
+     * An attribute of type Null. For example:
+     * </p>
+     * <p>
+     * <code>"NULL": true</code>
      * </p>
      * 
-     * @return A Null data type.
+     * @return An attribute of type Null. For example:</p>
+     *         <p>
+     *         <code>"NULL": true</code>
      */
 
     public Boolean isNULL() {
@@ -648,11 +926,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Boolean data type.
+     * An attribute of type Boolean. For example:
+     * </p>
+     * <p>
+     * <code>"BOOL": true</code>
      * </p>
      * 
      * @param bOOL
-     *        A Boolean data type.
+     *        An attribute of type Boolean. For example:</p>
+     *        <p>
+     *        <code>"BOOL": true</code>
      */
 
     public void setBOOL(Boolean bOOL) {
@@ -661,10 +944,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Boolean data type.
+     * An attribute of type Boolean. For example:
+     * </p>
+     * <p>
+     * <code>"BOOL": true</code>
      * </p>
      * 
-     * @return A Boolean data type.
+     * @return An attribute of type Boolean. For example:</p>
+     *         <p>
+     *         <code>"BOOL": true</code>
      */
 
     public Boolean getBOOL() {
@@ -673,11 +961,16 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Boolean data type.
+     * An attribute of type Boolean. For example:
+     * </p>
+     * <p>
+     * <code>"BOOL": true</code>
      * </p>
      * 
      * @param bOOL
-     *        A Boolean data type.
+     *        An attribute of type Boolean. For example:</p>
+     *        <p>
+     *        <code>"BOOL": true</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -688,10 +981,15 @@ public class AttributeValue implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A Boolean data type.
+     * An attribute of type Boolean. For example:
+     * </p>
+     * <p>
+     * <code>"BOOL": true</code>
      * </p>
      * 
-     * @return A Boolean data type.
+     * @return An attribute of type Boolean. For example:</p>
+     *         <p>
+     *         <code>"BOOL": true</code>
      */
 
     public Boolean isBOOL() {
@@ -710,25 +1008,25 @@ public class AttributeValue implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getS() != null)
-            sb.append("S: " + getS() + ",");
+            sb.append("S: ").append(getS()).append(",");
         if (getN() != null)
-            sb.append("N: " + getN() + ",");
+            sb.append("N: ").append(getN()).append(",");
         if (getB() != null)
-            sb.append("B: " + getB() + ",");
+            sb.append("B: ").append(getB()).append(",");
         if (getSS() != null)
-            sb.append("SS: " + getSS() + ",");
+            sb.append("SS: ").append(getSS()).append(",");
         if (getNS() != null)
-            sb.append("NS: " + getNS() + ",");
+            sb.append("NS: ").append(getNS()).append(",");
         if (getBS() != null)
-            sb.append("BS: " + getBS() + ",");
+            sb.append("BS: ").append(getBS()).append(",");
         if (getM() != null)
-            sb.append("M: " + getM() + ",");
+            sb.append("M: ").append(getM()).append(",");
         if (getL() != null)
-            sb.append("L: " + getL() + ",");
+            sb.append("L: ").append(getL()).append(",");
         if (getNULL() != null)
-            sb.append("NULL: " + getNULL() + ",");
+            sb.append("NULL: ").append(getNULL()).append(",");
         if (getBOOL() != null)
-            sb.append("BOOL: " + getBOOL());
+            sb.append("BOOL: ").append(getBOOL());
         sb.append("}");
         return sb.toString();
     }
@@ -811,5 +1109,11 @@ public class AttributeValue implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.AttributeValueMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

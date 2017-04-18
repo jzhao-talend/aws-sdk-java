@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeReservedInstancesOfferingsRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeReservedInstancesOffer
  * Contains the parameters for DescribeReservedInstancesOfferings.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeReservedInstancesOfferingsRequest> {
 
@@ -1634,33 +1637,33 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservedInstancesOfferingIds() != null)
-            sb.append("ReservedInstancesOfferingIds: " + getReservedInstancesOfferingIds() + ",");
+            sb.append("ReservedInstancesOfferingIds: ").append(getReservedInstancesOfferingIds()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getProductDescription() != null)
-            sb.append("ProductDescription: " + getProductDescription() + ",");
+            sb.append("ProductDescription: ").append(getProductDescription()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getInstanceTenancy() != null)
-            sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
+            sb.append("InstanceTenancy: ").append(getInstanceTenancy()).append(",");
         if (getOfferingType() != null)
-            sb.append("OfferingType: " + getOfferingType() + ",");
+            sb.append("OfferingType: ").append(getOfferingType()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getIncludeMarketplace() != null)
-            sb.append("IncludeMarketplace: " + getIncludeMarketplace() + ",");
+            sb.append("IncludeMarketplace: ").append(getIncludeMarketplace()).append(",");
         if (getMinDuration() != null)
-            sb.append("MinDuration: " + getMinDuration() + ",");
+            sb.append("MinDuration: ").append(getMinDuration()).append(",");
         if (getMaxDuration() != null)
-            sb.append("MaxDuration: " + getMaxDuration() + ",");
+            sb.append("MaxDuration: ").append(getMaxDuration()).append(",");
         if (getMaxInstanceCount() != null)
-            sb.append("MaxInstanceCount: " + getMaxInstanceCount() + ",");
+            sb.append("MaxInstanceCount: ").append(getMaxInstanceCount()).append(",");
         if (getOfferingClass() != null)
-            sb.append("OfferingClass: " + getOfferingClass());
+            sb.append("OfferingClass: ").append(getOfferingClass());
         sb.append("}");
         return sb.toString();
     }

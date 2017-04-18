@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the name of an SSM document.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DocumentIdentifier" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DocumentIdentifier implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DocumentIdentifier implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -39,6 +46,24 @@ public class DocumentIdentifier implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> platformTypes;
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     */
+    private String documentVersion;
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     */
+    private String documentType;
+    /**
+     * <p>
+     * The schema version.
+     * </p>
+     */
+    private String schemaVersion;
 
     /**
      * <p>
@@ -222,6 +247,159 @@ public class DocumentIdentifier implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The document version.
+     */
+
+    public void setDocumentVersion(String documentVersion) {
+        this.documentVersion = documentVersion;
+    }
+
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @return The document version.
+     */
+
+    public String getDocumentVersion() {
+        return this.documentVersion;
+    }
+
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The document version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DocumentIdentifier withDocumentVersion(String documentVersion) {
+        setDocumentVersion(documentVersion);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     * 
+     * @param documentType
+     *        The document type.
+     * @see DocumentType
+     */
+
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
+    }
+
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     * 
+     * @return The document type.
+     * @see DocumentType
+     */
+
+    public String getDocumentType() {
+        return this.documentType;
+    }
+
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     * 
+     * @param documentType
+     *        The document type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DocumentType
+     */
+
+    public DocumentIdentifier withDocumentType(String documentType) {
+        setDocumentType(documentType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     * 
+     * @param documentType
+     *        The document type.
+     * @see DocumentType
+     */
+
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType.toString();
+    }
+
+    /**
+     * <p>
+     * The document type.
+     * </p>
+     * 
+     * @param documentType
+     *        The document type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DocumentType
+     */
+
+    public DocumentIdentifier withDocumentType(DocumentType documentType) {
+        setDocumentType(documentType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The schema version.
+     * </p>
+     * 
+     * @param schemaVersion
+     *        The schema version.
+     */
+
+    public void setSchemaVersion(String schemaVersion) {
+        this.schemaVersion = schemaVersion;
+    }
+
+    /**
+     * <p>
+     * The schema version.
+     * </p>
+     * 
+     * @return The schema version.
+     */
+
+    public String getSchemaVersion() {
+        return this.schemaVersion;
+    }
+
+    /**
+     * <p>
+     * The schema version.
+     * </p>
+     * 
+     * @param schemaVersion
+     *        The schema version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DocumentIdentifier withSchemaVersion(String schemaVersion) {
+        setSchemaVersion(schemaVersion);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -233,11 +411,17 @@ public class DocumentIdentifier implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getOwner() != null)
-            sb.append("Owner: " + getOwner() + ",");
+            sb.append("Owner: ").append(getOwner()).append(",");
         if (getPlatformTypes() != null)
-            sb.append("PlatformTypes: " + getPlatformTypes());
+            sb.append("PlatformTypes: ").append(getPlatformTypes()).append(",");
+        if (getDocumentVersion() != null)
+            sb.append("DocumentVersion: ").append(getDocumentVersion()).append(",");
+        if (getDocumentType() != null)
+            sb.append("DocumentType: ").append(getDocumentType()).append(",");
+        if (getSchemaVersion() != null)
+            sb.append("SchemaVersion: ").append(getSchemaVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -264,6 +448,18 @@ public class DocumentIdentifier implements Serializable, Cloneable {
             return false;
         if (other.getPlatformTypes() != null && other.getPlatformTypes().equals(this.getPlatformTypes()) == false)
             return false;
+        if (other.getDocumentVersion() == null ^ this.getDocumentVersion() == null)
+            return false;
+        if (other.getDocumentVersion() != null && other.getDocumentVersion().equals(this.getDocumentVersion()) == false)
+            return false;
+        if (other.getDocumentType() == null ^ this.getDocumentType() == null)
+            return false;
+        if (other.getDocumentType() != null && other.getDocumentType().equals(this.getDocumentType()) == false)
+            return false;
+        if (other.getSchemaVersion() == null ^ this.getSchemaVersion() == null)
+            return false;
+        if (other.getSchemaVersion() != null && other.getSchemaVersion().equals(this.getSchemaVersion()) == false)
+            return false;
         return true;
     }
 
@@ -275,6 +471,9 @@ public class DocumentIdentifier implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getOwner() == null) ? 0 : getOwner().hashCode());
         hashCode = prime * hashCode + ((getPlatformTypes() == null) ? 0 : getPlatformTypes().hashCode());
+        hashCode = prime * hashCode + ((getDocumentVersion() == null) ? 0 : getDocumentVersion().hashCode());
+        hashCode = prime * hashCode + ((getDocumentType() == null) ? 0 : getDocumentType().hashCode());
+        hashCode = prime * hashCode + ((getSchemaVersion() == null) ? 0 : getSchemaVersion().hashCode());
         return hashCode;
     }
 
@@ -285,5 +484,11 @@ public class DocumentIdentifier implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.DocumentIdentifierMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

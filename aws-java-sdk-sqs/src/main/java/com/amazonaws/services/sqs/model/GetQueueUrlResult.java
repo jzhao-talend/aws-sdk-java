@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,23 +21,27 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html"
  * >Responses</a> in the <i>Amazon SQS Developer Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/GetQueueUrl" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetQueueUrlResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL for the queue.
+     * The URL of the queue.
      * </p>
      */
     private String queueUrl;
 
     /**
      * <p>
-     * The URL for the queue.
+     * The URL of the queue.
      * </p>
      * 
      * @param queueUrl
-     *        The URL for the queue.
+     *        The URL of the queue.
      */
 
     public void setQueueUrl(String queueUrl) {
@@ -45,10 +50,10 @@ public class GetQueueUrlResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The URL for the queue.
+     * The URL of the queue.
      * </p>
      * 
-     * @return The URL for the queue.
+     * @return The URL of the queue.
      */
 
     public String getQueueUrl() {
@@ -57,11 +62,11 @@ public class GetQueueUrlResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The URL for the queue.
+     * The URL of the queue.
      * </p>
      * 
      * @param queueUrl
-     *        The URL for the queue.
+     *        The URL of the queue.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -82,7 +87,7 @@ public class GetQueueUrlResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrl() != null)
-            sb.append("QueueUrl: " + getQueueUrl());
+            sb.append("QueueUrl: ").append(getQueueUrl());
         sb.append("}");
         return sb.toString();
     }
@@ -121,4 +126,5 @@ public class GetQueueUrlResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

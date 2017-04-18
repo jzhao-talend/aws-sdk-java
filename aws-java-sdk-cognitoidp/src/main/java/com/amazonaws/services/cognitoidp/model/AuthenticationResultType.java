@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The result type of the authentication result.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AuthenticationResultType"
+ *      target="_top">AWS API Documentation</a>
  */
-public class AuthenticationResultType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AuthenticationResultType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -310,17 +317,17 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessToken() != null)
-            sb.append("AccessToken: " + getAccessToken() + ",");
+            sb.append("AccessToken: ").append(getAccessToken()).append(",");
         if (getExpiresIn() != null)
-            sb.append("ExpiresIn: " + getExpiresIn() + ",");
+            sb.append("ExpiresIn: ").append(getExpiresIn()).append(",");
         if (getTokenType() != null)
-            sb.append("TokenType: " + getTokenType() + ",");
+            sb.append("TokenType: ").append(getTokenType()).append(",");
         if (getRefreshToken() != null)
-            sb.append("RefreshToken: " + getRefreshToken() + ",");
+            sb.append("RefreshToken: ").append(getRefreshToken()).append(",");
         if (getIdToken() != null)
-            sb.append("IdToken: " + getIdToken() + ",");
+            sb.append("IdToken: ").append(getIdToken()).append(",");
         if (getNewDeviceMetadata() != null)
-            sb.append("NewDeviceMetadata: " + getNewDeviceMetadata());
+            sb.append("NewDeviceMetadata: ").append(getNewDeviceMetadata());
         sb.append("}");
         return sb.toString();
     }
@@ -383,5 +390,11 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.AuthenticationResultTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

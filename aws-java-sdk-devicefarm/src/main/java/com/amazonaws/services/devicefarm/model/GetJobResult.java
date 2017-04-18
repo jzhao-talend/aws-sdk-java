@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the result of a get job request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetJob" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * An object containing information about the requested job.
+     * </p>
+     */
     private Job job;
 
     /**
+     * <p>
+     * An object containing information about the requested job.
+     * </p>
+     * 
      * @param job
+     *        An object containing information about the requested job.
      */
 
     public void setJob(Job job) {
@@ -32,7 +47,11 @@ public class GetJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     }
 
     /**
-     * @return
+     * <p>
+     * An object containing information about the requested job.
+     * </p>
+     * 
+     * @return An object containing information about the requested job.
      */
 
     public Job getJob() {
@@ -40,7 +59,12 @@ public class GetJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     }
 
     /**
+     * <p>
+     * An object containing information about the requested job.
+     * </p>
+     * 
      * @param job
+     *        An object containing information about the requested job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class GetJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJob() != null)
-            sb.append("Job: " + getJob());
+            sb.append("Job: ").append(getJob());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class GetJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

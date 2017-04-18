@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * NetworkInterface StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInterface, StaxUnmarshallerContext> {
 
     public NetworkInterface unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -110,6 +110,11 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
                     continue;
                 }
 
+                if (context.testExpression("groupSet", targetDepth)) {
+                    networkInterface.withGroups(new ArrayList<GroupIdentifier>());
+                    continue;
+                }
+
                 if (context.testExpression("groupSet/item", targetDepth)) {
                     networkInterface.withGroups(GroupIdentifierStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -125,13 +130,33 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
                     continue;
                 }
 
+                if (context.testExpression("tagSet", targetDepth)) {
+                    networkInterface.withTagSet(new ArrayList<Tag>());
+                    continue;
+                }
+
                 if (context.testExpression("tagSet/item", targetDepth)) {
                     networkInterface.withTagSet(TagStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("privateIpAddressesSet", targetDepth)) {
+                    networkInterface.withPrivateIpAddresses(new ArrayList<NetworkInterfacePrivateIpAddress>());
+                    continue;
+                }
+
                 if (context.testExpression("privateIpAddressesSet/item", targetDepth)) {
                     networkInterface.withPrivateIpAddresses(NetworkInterfacePrivateIpAddressStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ipv6AddressesSet", targetDepth)) {
+                    networkInterface.withIpv6Addresses(new ArrayList<NetworkInterfaceIpv6Address>());
+                    continue;
+                }
+
+                if (context.testExpression("ipv6AddressesSet/item", targetDepth)) {
+                    networkInterface.withIpv6Addresses(NetworkInterfaceIpv6AddressStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 

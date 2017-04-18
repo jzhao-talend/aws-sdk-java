@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,9 @@
 package com.amazonaws.services.cloudsearchv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Limits implements Serializable, Cloneable {
 
     private Integer maximumReplicationCount;
@@ -87,9 +86,9 @@ public class Limits implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaximumReplicationCount() != null)
-            sb.append("MaximumReplicationCount: " + getMaximumReplicationCount() + ",");
+            sb.append("MaximumReplicationCount: ").append(getMaximumReplicationCount()).append(",");
         if (getMaximumPartitionCount() != null)
-            sb.append("MaximumPartitionCount: " + getMaximumPartitionCount());
+            sb.append("MaximumPartitionCount: ").append(getMaximumPartitionCount());
         sb.append("}");
         return sb.toString();
     }
@@ -133,4 +132,5 @@ public class Limits implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

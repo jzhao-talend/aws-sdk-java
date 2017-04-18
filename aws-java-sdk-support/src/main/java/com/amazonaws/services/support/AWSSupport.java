@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.support;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.support.model.*;
 
 /**
  * Interface for accessing AWS Support.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.support.AbstractAWSSupport} instead.
+ * </p>
  * <p>
  * <fullname>AWS Support</fullname>
  * <p>
@@ -97,6 +103,7 @@ import com.amazonaws.services.support.model.*;
  * and how to call Trusted Advisor for results of checks on your resources.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSSupport {
 
     /**
@@ -128,7 +135,11 @@ public interface AWSSupport {
      *        The endpoint (ex: "support.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://support.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -149,7 +160,9 @@ public interface AWSSupport {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -179,6 +192,8 @@ public interface AWSSupport {
      * @throws AttachmentLimitExceededException
      *         The limit for the number of attachment sets created in a short period of time has been exceeded.
      * @sample AWSSupport.AddAttachmentsToSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet" target="_top">AWS
+     *      API Documentation</a>
      */
     AddAttachmentsToSetResult addAttachmentsToSet(AddAttachmentsToSetRequest addAttachmentsToSetRequest);
 
@@ -208,6 +223,8 @@ public interface AWSSupport {
      * @throws AttachmentSetExpiredException
      *         The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
      * @sample AWSSupport.AddCommunicationToCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase" target="_top">AWS
+     *      API Documentation</a>
      */
     AddCommunicationToCaseResult addCommunicationToCase(AddCommunicationToCaseRequest addCommunicationToCaseRequest);
 
@@ -298,6 +315,8 @@ public interface AWSSupport {
      * @throws AttachmentSetExpiredException
      *         The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
      * @sample AWSSupport.CreateCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateCaseResult createCase(CreateCaseRequest createCaseRequest);
 
@@ -318,6 +337,8 @@ public interface AWSSupport {
      * @throws AttachmentIdNotFoundException
      *         An attachment with the specified ID could not be found.
      * @sample AWSSupport.DescribeAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeAttachmentResult describeAttachment(DescribeAttachmentRequest describeAttachmentRequest);
 
@@ -356,6 +377,8 @@ public interface AWSSupport {
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.DescribeCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeCasesResult describeCases(DescribeCasesRequest describeCasesRequest);
 
@@ -389,6 +412,8 @@ public interface AWSSupport {
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.DescribeCommunications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeCommunicationsResult describeCommunications(DescribeCommunicationsRequest describeCommunicationsRequest);
 
@@ -411,6 +436,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeServicesResult describeServices(DescribeServicesRequest describeServicesRequest);
 
@@ -432,6 +459,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeSeverityLevels
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeSeverityLevelsResult describeSeverityLevels(DescribeSeverityLevelsRequest describeSeverityLevelsRequest);
 
@@ -460,6 +489,9 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckRefreshStatuses
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTrustedAdvisorCheckRefreshStatusesResult describeTrustedAdvisorCheckRefreshStatuses(
             DescribeTrustedAdvisorCheckRefreshStatusesRequest describeTrustedAdvisorCheckRefreshStatusesRequest);
@@ -516,6 +548,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTrustedAdvisorCheckResultResult describeTrustedAdvisorCheckResult(DescribeTrustedAdvisorCheckResultRequest describeTrustedAdvisorCheckResultRequest);
 
@@ -533,6 +567,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckSummaries
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTrustedAdvisorCheckSummariesResult describeTrustedAdvisorCheckSummaries(
             DescribeTrustedAdvisorCheckSummariesRequest describeTrustedAdvisorCheckSummariesRequest);
@@ -549,6 +585,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorChecks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTrustedAdvisorChecksResult describeTrustedAdvisorChecks(DescribeTrustedAdvisorChecksRequest describeTrustedAdvisorChecksRequest);
 
@@ -590,6 +628,8 @@ public interface AWSSupport {
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.RefreshTrustedAdvisorCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     RefreshTrustedAdvisorCheckResult refreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest refreshTrustedAdvisorCheckRequest);
 
@@ -606,6 +646,8 @@ public interface AWSSupport {
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.ResolveCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase" target="_top">AWS API
+     *      Documentation</a>
      */
     ResolveCaseResult resolveCase(ResolveCaseRequest resolveCaseRequest);
 

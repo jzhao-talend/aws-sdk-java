@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a workflow execution.
  * </p>
  */
-public class WorkflowExecutionInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WorkflowExecutionInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -682,23 +686,23 @@ public class WorkflowExecutionInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExecution() != null)
-            sb.append("Execution: " + getExecution() + ",");
+            sb.append("Execution: ").append(getExecution()).append(",");
         if (getWorkflowType() != null)
-            sb.append("WorkflowType: " + getWorkflowType() + ",");
+            sb.append("WorkflowType: ").append(getWorkflowType()).append(",");
         if (getStartTimestamp() != null)
-            sb.append("StartTimestamp: " + getStartTimestamp() + ",");
+            sb.append("StartTimestamp: ").append(getStartTimestamp()).append(",");
         if (getCloseTimestamp() != null)
-            sb.append("CloseTimestamp: " + getCloseTimestamp() + ",");
+            sb.append("CloseTimestamp: ").append(getCloseTimestamp()).append(",");
         if (getExecutionStatus() != null)
-            sb.append("ExecutionStatus: " + getExecutionStatus() + ",");
+            sb.append("ExecutionStatus: ").append(getExecutionStatus()).append(",");
         if (getCloseStatus() != null)
-            sb.append("CloseStatus: " + getCloseStatus() + ",");
+            sb.append("CloseStatus: ").append(getCloseStatus()).append(",");
         if (getParent() != null)
-            sb.append("Parent: " + getParent() + ",");
+            sb.append("Parent: ").append(getParent()).append(",");
         if (getTagList() != null)
-            sb.append("TagList: " + getTagList() + ",");
+            sb.append("TagList: ").append(getTagList()).append(",");
         if (getCancelRequested() != null)
-            sb.append("CancelRequested: " + getCancelRequested());
+            sb.append("CancelRequested: ").append(getCancelRequested());
         sb.append("}");
         return sb.toString();
     }
@@ -776,5 +780,11 @@ public class WorkflowExecutionInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.WorkflowExecutionInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

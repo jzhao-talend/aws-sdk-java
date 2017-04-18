@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,24 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed,
- * along with statistics for the table and any indexes involved in the operation. <i>ConsumedCapacity</i> is only
+ * along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
  * returned if the request asked for it. For more information, see <a
  * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
  * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ConsumedCapacity" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ConsumedCapacity implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConsumedCapacity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -310,15 +317,15 @@ public class ConsumedCapacity implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTableName() != null)
-            sb.append("TableName: " + getTableName() + ",");
+            sb.append("TableName: ").append(getTableName()).append(",");
         if (getCapacityUnits() != null)
-            sb.append("CapacityUnits: " + getCapacityUnits() + ",");
+            sb.append("CapacityUnits: ").append(getCapacityUnits()).append(",");
         if (getTable() != null)
-            sb.append("Table: " + getTable() + ",");
+            sb.append("Table: ").append(getTable()).append(",");
         if (getLocalSecondaryIndexes() != null)
-            sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() + ",");
+            sb.append("LocalSecondaryIndexes: ").append(getLocalSecondaryIndexes()).append(",");
         if (getGlobalSecondaryIndexes() != null)
-            sb.append("GlobalSecondaryIndexes: " + getGlobalSecondaryIndexes());
+            sb.append("GlobalSecondaryIndexes: ").append(getGlobalSecondaryIndexes());
         sb.append("}");
         return sb.toString();
     }
@@ -376,5 +383,11 @@ public class ConsumedCapacity implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.ConsumedCapacityMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

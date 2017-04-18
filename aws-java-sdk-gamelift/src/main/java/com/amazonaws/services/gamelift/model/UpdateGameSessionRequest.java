@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,36 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateGameSession" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the game session to update. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to update.
      * </p>
      */
     private String gameSessionId;
     /**
      * <p>
-     * Maximum number of players that can be simultaneously connected to the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      */
     private Integer maximumPlayerSessionCount;
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      */
     private String name;
@@ -71,17 +74,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for the game session to update. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to update.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to update. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to update.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -90,16 +87,10 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for the game session to update. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to update.
      * </p>
      * 
-     * @return Unique identifier for the game session to update. Game session ID format is as follows:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *         &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created)
-     *         an auto-generated string.
+     * @return Unique identifier for the game session to update.
      */
 
     public String getGameSessionId() {
@@ -108,17 +99,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for the game session to update. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to update.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to update. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to update.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,11 +114,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of players that can be simultaneously connected to the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
      * @param maximumPlayerSessionCount
-     *        Maximum number of players that can be simultaneously connected to the game session.
+     *        Maximum number of players that can be connected simultaneously to the game session.
      */
 
     public void setMaximumPlayerSessionCount(Integer maximumPlayerSessionCount) {
@@ -142,10 +127,10 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of players that can be simultaneously connected to the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
-     * @return Maximum number of players that can be simultaneously connected to the game session.
+     * @return Maximum number of players that can be connected simultaneously to the game session.
      */
 
     public Integer getMaximumPlayerSessionCount() {
@@ -154,11 +139,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of players that can be simultaneously connected to the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
      * @param maximumPlayerSessionCount
-     *        Maximum number of players that can be simultaneously connected to the game session.
+     *        Maximum number of players that can be connected simultaneously to the game session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -169,11 +154,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do not need to be unique.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -182,10 +167,10 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a game session. Session names do not need to be unique.
+     * @return Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public String getName() {
@@ -194,11 +179,11 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do not need to be unique.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -490,15 +475,15 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId() + ",");
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
         if (getMaximumPlayerSessionCount() != null)
-            sb.append("MaximumPlayerSessionCount: " + getMaximumPlayerSessionCount() + ",");
+            sb.append("MaximumPlayerSessionCount: ").append(getMaximumPlayerSessionCount()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getPlayerSessionCreationPolicy() != null)
-            sb.append("PlayerSessionCreationPolicy: " + getPlayerSessionCreationPolicy() + ",");
+            sb.append("PlayerSessionCreationPolicy: ").append(getPlayerSessionCreationPolicy()).append(",");
         if (getProtectionPolicy() != null)
-            sb.append("ProtectionPolicy: " + getProtectionPolicy());
+            sb.append("ProtectionPolicy: ").append(getProtectionPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -553,4 +538,5 @@ public class UpdateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
     public UpdateGameSessionRequest clone() {
         return (UpdateGameSessionRequest) super.clone();
     }
+
 }

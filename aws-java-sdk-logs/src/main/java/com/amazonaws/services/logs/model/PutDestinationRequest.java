@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestination" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -34,7 +39,7 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
     private String targetArn;
     /**
      * <p>
-     * The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on the
+     * The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
      * destination stream.
      * </p>
      */
@@ -122,13 +127,13 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on the
+     * The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
      * destination stream.
      * </p>
      * 
      * @param roleArn
-     *        The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on
-     *        the destination stream.
+     *        The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
+     *        destination stream.
      */
 
     public void setRoleArn(String roleArn) {
@@ -137,12 +142,12 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on the
+     * The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
      * destination stream.
      * </p>
      * 
-     * @return The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on
-     *         the destination stream.
+     * @return The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
+     *         destination stream.
      */
 
     public String getRoleArn() {
@@ -151,13 +156,13 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on the
+     * The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
      * destination stream.
      * </p>
      * 
      * @param roleArn
-     *        The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on
-     *        the destination stream.
+     *        The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the
+     *        destination stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,11 +183,11 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDestinationName() != null)
-            sb.append("DestinationName: " + getDestinationName() + ",");
+            sb.append("DestinationName: ").append(getDestinationName()).append(",");
         if (getTargetArn() != null)
-            sb.append("TargetArn: " + getTargetArn() + ",");
+            sb.append("TargetArn: ").append(getTargetArn()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn());
         sb.append("}");
         return sb.toString();
     }
@@ -227,4 +232,5 @@ public class PutDestinationRequest extends com.amazonaws.AmazonWebServiceRequest
     public PutDestinationRequest clone() {
         return (PutDestinationRequest) super.clone();
     }
+
 }

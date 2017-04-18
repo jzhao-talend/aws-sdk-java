@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,14 +12,23 @@
  */
 package com.amazonaws.services.kinesisfirehose;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.kinesisfirehose.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Firehose asynchronously. Each asynchronous method will return a Java Future object
- * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
- * notification when an asynchronous operation completes.
+ * Client for accessing Firehose asynchronously. Each asynchronous method will return a Java Future object representing
+ * the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when
+ * an asynchronous operation completes.
  * <p>
  * <fullname>Amazon Kinesis Firehose API Reference</fullname>
  * <p>
@@ -28,6 +37,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClient implements AmazonKinesisFirehoseAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -49,9 +59,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonKinesisFirehoseAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -73,10 +85,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -89,9 +102,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -102,8 +117,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -118,10 +136,12 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -136,9 +156,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -155,11 +177,12 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -170,10 +193,11 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -187,12 +211,19 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisFirehoseAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisFirehoseAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisFirehoseAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisFirehoseAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonKinesisFirehoseAsyncClientBuilder asyncBuilder() {
+        return AmazonKinesisFirehoseAsyncClientBuilder.standard();
     }
 
     /**
@@ -211,7 +242,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -224,14 +255,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<CreateDeliveryStreamResult> createDeliveryStreamAsync(final CreateDeliveryStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateDeliveryStreamRequest, CreateDeliveryStreamResult> asyncHandler) {
+        final CreateDeliveryStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateDeliveryStreamResult>() {
             @Override
             public CreateDeliveryStreamResult call() throws Exception {
-                CreateDeliveryStreamResult result;
+                CreateDeliveryStreamResult result = null;
 
                 try {
-                    result = createDeliveryStream(request);
+                    result = executeCreateDeliveryStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -240,7 +272,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -256,14 +288,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<DeleteDeliveryStreamResult> deleteDeliveryStreamAsync(final DeleteDeliveryStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteDeliveryStreamRequest, DeleteDeliveryStreamResult> asyncHandler) {
+        final DeleteDeliveryStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteDeliveryStreamResult>() {
             @Override
             public DeleteDeliveryStreamResult call() throws Exception {
-                DeleteDeliveryStreamResult result;
+                DeleteDeliveryStreamResult result = null;
 
                 try {
-                    result = deleteDeliveryStream(request);
+                    result = executeDeleteDeliveryStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -272,7 +305,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -288,14 +321,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<DescribeDeliveryStreamResult> describeDeliveryStreamAsync(final DescribeDeliveryStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeDeliveryStreamRequest, DescribeDeliveryStreamResult> asyncHandler) {
+        final DescribeDeliveryStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeDeliveryStreamResult>() {
             @Override
             public DescribeDeliveryStreamResult call() throws Exception {
-                DescribeDeliveryStreamResult result;
+                DescribeDeliveryStreamResult result = null;
 
                 try {
-                    result = describeDeliveryStream(request);
+                    result = executeDescribeDeliveryStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -304,7 +338,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -320,14 +354,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<ListDeliveryStreamsResult> listDeliveryStreamsAsync(final ListDeliveryStreamsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDeliveryStreamsRequest, ListDeliveryStreamsResult> asyncHandler) {
+        final ListDeliveryStreamsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDeliveryStreamsResult>() {
             @Override
             public ListDeliveryStreamsResult call() throws Exception {
-                ListDeliveryStreamsResult result;
+                ListDeliveryStreamsResult result = null;
 
                 try {
-                    result = listDeliveryStreams(request);
+                    result = executeListDeliveryStreams(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -336,7 +371,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -352,14 +387,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<PutRecordResult> putRecordAsync(final PutRecordRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutRecordRequest, PutRecordResult> asyncHandler) {
+        final PutRecordRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutRecordResult>() {
             @Override
             public PutRecordResult call() throws Exception {
-                PutRecordResult result;
+                PutRecordResult result = null;
 
                 try {
-                    result = putRecord(request);
+                    result = executePutRecord(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -368,7 +404,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -384,14 +420,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<PutRecordBatchResult> putRecordBatchAsync(final PutRecordBatchRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutRecordBatchRequest, PutRecordBatchResult> asyncHandler) {
+        final PutRecordBatchRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutRecordBatchResult>() {
             @Override
             public PutRecordBatchResult call() throws Exception {
-                PutRecordBatchResult result;
+                PutRecordBatchResult result = null;
 
                 try {
-                    result = putRecordBatch(request);
+                    result = executePutRecordBatch(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -400,7 +437,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -416,14 +453,15 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
     @Override
     public java.util.concurrent.Future<UpdateDestinationResult> updateDestinationAsync(final UpdateDestinationRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateDestinationRequest, UpdateDestinationResult> asyncHandler) {
+        final UpdateDestinationRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateDestinationResult>() {
             @Override
             public UpdateDestinationResult call() throws Exception {
-                UpdateDestinationResult result;
+                UpdateDestinationResult result = null;
 
                 try {
-                    result = updateDestination(request);
+                    result = executeUpdateDestination(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -432,7 +470,7 @@ public class AmazonKinesisFirehoseAsyncClient extends AmazonKinesisFirehoseClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

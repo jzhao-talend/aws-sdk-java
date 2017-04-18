@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehoseClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -51,6 +55,7 @@ import com.amazonaws.services.kinesisfirehose.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implements AmazonKinesisFirehose {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -63,29 +68,30 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.ConcurrentModificationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.ServiceUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.InvalidArgumentException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.ResourceInUseException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.kinesisfirehose.model.LimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.kinesisfirehose.model.AmazonKinesisFirehoseException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.ConcurrentModificationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.InvalidArgumentException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.ResourceInUseException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.ServiceUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.kinesisfirehose.model.LimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.kinesisfirehose.model.AmazonKinesisFirehoseException.class));
 
     /**
      * Constructs a new client to invoke service methods on Firehose. A credentials provider chain will be used that
@@ -101,7 +107,9 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -124,7 +132,9 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -138,7 +148,10 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonKinesisFirehoseClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -156,7 +169,10 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Firehose (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -173,7 +189,9 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -191,7 +209,10 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Firehose (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -211,12 +232,20 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonKinesisFirehoseClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisFirehoseClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisFirehoseClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonKinesisFirehoseClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonKinesisFirehoseClientBuilder builder() {
+        return AmazonKinesisFirehoseClientBuilder.standard();
     }
 
     /**
@@ -251,28 +280,23 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * Creates a delivery stream.
      * </p>
      * <p>
-     * <a>CreateDeliveryStream</a> is an asynchronous operation that immediately returns. The initial status of the
-     * delivery stream is <code>CREATING</code>. After the delivery stream is created, its status is <code>ACTIVE</code>
-     * and it now accepts data. Attempts to send data to a delivery stream that is not in the <code>ACTIVE</code> state
-     * cause an exception. To check the state of a delivery stream, use <a>DescribeDeliveryStream</a>.
-     * </p>
-     * <p>
-     * The name of a delivery stream identifies it. You can't have two delivery streams with the same name in the same
-     * region. Two delivery streams in different AWS accounts or different regions in the same AWS account can have the
-     * same name.
-     * </p>
-     * <p>
      * By default, you can create up to 20 delivery streams per region.
      * </p>
      * <p>
-     * A delivery stream can only be configured with a single destination, Amazon S3, Amazon Elasticsearch Service, or
-     * Amazon Redshift. For correct <a>CreateDeliveryStream</a> request syntax, specify only one destination
-     * configuration parameter: either <b>S3DestinationConfiguration</b>, <b>ElasticsearchDestinationConfiguration</b>,
-     * or <b>RedshiftDestinationConfiguration</b>.
+     * This is an asynchronous operation that immediately returns. The initial status of the delivery stream is
+     * <code>CREATING</code>. After the delivery stream is created, its status is <code>ACTIVE</code> and it now accepts
+     * data. Attempts to send data to a delivery stream that is not in the <code>ACTIVE</code> state cause an exception.
+     * To check the state of a delivery stream, use <a>DescribeDeliveryStream</a>.
      * </p>
      * <p>
-     * As part of <b>S3DestinationConfiguration</b>, optional values <b>BufferingHints</b>,
-     * <b>EncryptionConfiguration</b>, and <b>CompressionFormat</b> can be provided. By default, if no
+     * A delivery stream is configured with a single destination: Amazon S3, Amazon Elasticsearch Service, or Amazon
+     * Redshift. You must specify only one of the following destination configuration parameters:
+     * <b>ExtendedS3DestinationConfiguration</b>, <b>S3DestinationConfiguration</b>,
+     * <b>ElasticsearchDestinationConfiguration</b>, or <b>RedshiftDestinationConfiguration</b>.
+     * </p>
+     * <p>
+     * When you specify <b>S3DestinationConfiguration</b>, you can also provide the following optional values:
+     * <b>BufferingHints</b>, <b>EncryptionConfiguration</b>, and <b>CompressionFormat</b>. By default, if no
      * <b>BufferingHints</b> value is provided, Firehose buffers data up to 5 MB or for 5 minutes, whichever condition
      * is satisfied first. Note that <b>BufferingHints</b> is a hint, so there are some cases where the service cannot
      * adhere to these conditions strictly; for example, record boundaries are such that the size is a little over or
@@ -280,14 +304,14 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * enable encryption to ensure secure data storage in Amazon S3.
      * </p>
      * <p>
-     * A few notes about <b>RedshiftDestinationConfiguration</b>:
+     * A few notes about Amazon Redshift as a destination:
      * </p>
      * <ul>
      * <li>
      * <p>
      * An Amazon Redshift destination requires an S3 bucket as intermediate location, as Firehose first delivers data to
      * S3 and then uses <code>COPY</code> syntax to load data into an Amazon Redshift table. This is specified in the
-     * <b>RedshiftDestinationConfiguration.S3Configuration</b> parameter element.
+     * <b>RedshiftDestinationConfiguration.S3Configuration</b> parameter.
      * </p>
      * </li>
      * <li>
@@ -299,13 +323,13 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </li>
      * <li>
      * <p>
-     * We strongly recommend that the username and password provided is used exclusively for Firehose purposes, and that
-     * the permissions for the account are restricted for Amazon Redshift <code>INSERT</code> permissions.
+     * We strongly recommend that you use the user name and password you provide exclusively with Firehose, and that the
+     * permissions for the account are restricted for Amazon Redshift <code>INSERT</code> permissions.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Firehose assumes the IAM role that is configured as part of destinations. The IAM role should allow the Firehose
+     * Firehose assumes the IAM role that is configured as part of the destination. The role should allow the Firehose
      * principal to assume the role, and the role should have permissions that allows the service to deliver the data.
      * For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon S3 Bucket
@@ -313,7 +337,6 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param createDeliveryStreamRequest
-     *        Contains the parameters for <a>CreateDeliveryStream</a>.
      * @return Result of the CreateDeliveryStream operation returned by the service.
      * @throws InvalidArgumentException
      *         The specified input parameter has an value that is not valid.
@@ -322,9 +345,18 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * @throws ResourceInUseException
      *         The resource is already in use and not available for this operation.
      * @sample AmazonKinesisFirehose.CreateDeliveryStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/CreateDeliveryStream" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateDeliveryStreamResult createDeliveryStream(CreateDeliveryStreamRequest createDeliveryStreamRequest) {
+    public CreateDeliveryStreamResult createDeliveryStream(CreateDeliveryStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDeliveryStream(request);
+    }
+
+    @SdkInternalApi
+    final CreateDeliveryStreamResult executeCreateDeliveryStream(CreateDeliveryStreamRequest createDeliveryStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDeliveryStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -334,7 +366,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateDeliveryStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDeliveryStreamRequest));
+                request = new CreateDeliveryStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDeliveryStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -372,16 +404,24 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param deleteDeliveryStreamRequest
-     *        Contains the parameters for <a>DeleteDeliveryStream</a>.
      * @return Result of the DeleteDeliveryStream operation returned by the service.
      * @throws ResourceInUseException
      *         The resource is already in use and not available for this operation.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found.
      * @sample AmazonKinesisFirehose.DeleteDeliveryStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/DeleteDeliveryStream" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteDeliveryStreamResult deleteDeliveryStream(DeleteDeliveryStreamRequest deleteDeliveryStreamRequest) {
+    public DeleteDeliveryStreamResult deleteDeliveryStream(DeleteDeliveryStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDeliveryStream(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDeliveryStreamResult executeDeleteDeliveryStream(DeleteDeliveryStreamRequest deleteDeliveryStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDeliveryStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -391,7 +431,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteDeliveryStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDeliveryStreamRequest));
+                request = new DeleteDeliveryStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDeliveryStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -418,14 +458,22 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param describeDeliveryStreamRequest
-     *        Contains the parameters for <a>DescribeDeliveryStream</a>.
      * @return Result of the DescribeDeliveryStream operation returned by the service.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found.
      * @sample AmazonKinesisFirehose.DescribeDeliveryStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/DescribeDeliveryStream"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeDeliveryStreamResult describeDeliveryStream(DescribeDeliveryStreamRequest describeDeliveryStreamRequest) {
+    public DescribeDeliveryStreamResult describeDeliveryStream(DescribeDeliveryStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDeliveryStream(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDeliveryStreamResult executeDescribeDeliveryStream(DescribeDeliveryStreamRequest describeDeliveryStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDeliveryStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -435,7 +483,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeDeliveryStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDeliveryStreamRequest));
+                request = new DescribeDeliveryStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDeliveryStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -468,12 +516,20 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param listDeliveryStreamsRequest
-     *        Contains the parameters for <a>ListDeliveryStreams</a>.
      * @return Result of the ListDeliveryStreams operation returned by the service.
      * @sample AmazonKinesisFirehose.ListDeliveryStreams
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/ListDeliveryStreams" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListDeliveryStreamsResult listDeliveryStreams(ListDeliveryStreamsRequest listDeliveryStreamsRequest) {
+    public ListDeliveryStreamsResult listDeliveryStreams(ListDeliveryStreamsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDeliveryStreams(request);
+    }
+
+    @SdkInternalApi
+    final ListDeliveryStreamsResult executeListDeliveryStreams(ListDeliveryStreamsRequest listDeliveryStreamsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDeliveryStreamsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -483,7 +539,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListDeliveryStreamsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDeliveryStreamsRequest));
+                request = new ListDeliveryStreamsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDeliveryStreamsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -540,7 +596,6 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param putRecordRequest
-     *        Contains the parameters for <a>PutRecord</a>.
      * @return Result of the PutRecord operation returned by the service.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found.
@@ -552,9 +607,18 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *         how to request an increase, see <a
      *         href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.
      * @sample AmazonKinesisFirehose.PutRecord
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/PutRecord" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRecordResult putRecord(PutRecordRequest putRecordRequest) {
+    public PutRecordResult putRecord(PutRecordRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRecord(request);
+    }
+
+    @SdkInternalApi
+    final PutRecordResult executePutRecord(PutRecordRequest putRecordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRecordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -564,7 +628,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRecordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordRequest));
+                request = new PutRecordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -590,12 +654,14 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * <a>PutRecord</a>. Applications using these operations are referred to as producers.
      * </p>
      * <p>
-     * Each <a>PutRecordBatch</a> request supports up to 500 records. Each record in the request can be as large as
-     * 1,000 KB (before 64-bit encoding), up to a limit of 4 MB for the entire request. By default, each delivery stream
-     * can take in up to 2,000 transactions per second, 5,000 records per second, or 5 MB per second. Note that if you
-     * use <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate across these two operations for each
-     * delivery stream. For more information about limits and how to request an increase, see <a
+     * By default, each delivery stream can take in up to 2,000 transactions per second, 5,000 records per second, or 5
+     * MB per second. Note that if you use <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate
+     * across these two operations for each delivery stream. For more information about limits, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.
+     * </p>
+     * <p>
+     * Each <a>PutRecordBatch</a> request supports up to 500 records. Each record in the request can be as large as
+     * 1,000 KB (before 64-bit encoding), up to a limit of 4 MB for the entire request. These limits cannot be changed.
      * </p>
      * <p>
      * You must specify the name of the delivery stream and the data record when using <a>PutRecord</a>. The data record
@@ -609,30 +675,29 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * when reading the data from the destination.
      * </p>
      * <p>
-     * The <a>PutRecordBatch</a> response includes a count of any failed records, <b>FailedPutCount</b>, and an array of
-     * responses, <b>RequestResponses</b>. The <b>FailedPutCount</b> value is a count of records that failed. Each entry
-     * in the <b>RequestResponses</b> array gives additional information of the processed record. Each entry in
-     * <b>RequestResponses</b> directly correlates with a record in the request array using the same ordering, from the
-     * top to the bottom of the request and response. <b>RequestResponses</b> always includes the same number of records
-     * as the request array. <b>RequestResponses</b> both successfully and unsuccessfully processed records. Firehose
+     * The <a>PutRecordBatch</a> response includes a count of failed records, <b>FailedPutCount</b>, and an array of
+     * responses, <b>RequestResponses</b>. Each entry in the <b>RequestResponses</b> array provides additional
+     * information about the processed record, and directly correlates with a record in the request array using the same
+     * ordering, from the top to the bottom. The response array always includes the same number of records as the
+     * request array. <b>RequestResponses</b> includes both successfully and unsuccessfully processed records. Firehose
      * attempts to process all records in each <a>PutRecordBatch</a> request. A single record failure does not stop the
      * processing of subsequent records.
      * </p>
      * <p>
-     * A successfully processed record includes a <b>RecordId</b> value, which is a unique value identified for the
-     * record. An unsuccessfully processed record includes <b>ErrorCode</b> and <b>ErrorMessage</b> values.
-     * <b>ErrorCode</b> reflects the type of error and is one of the following values: <code>ServiceUnavailable</code>
-     * or <code>InternalFailure</code>. <code>ErrorMessage</code> provides more detailed information about the error.
+     * A successfully processed record includes a <b>RecordId</b> value, which is unique for the record. An
+     * unsuccessfully processed record includes <b>ErrorCode</b> and <b>ErrorMessage</b> values. <b>ErrorCode</b>
+     * reflects the type of error, and is one of the following values: <code>ServiceUnavailable</code> or
+     * <code>InternalFailure</code>. <b>ErrorMessage</b> provides more detailed information about the error.
      * </p>
      * <p>
-     * If <b>FailedPutCount</b> is greater than 0 (zero), retry the request. A retry of the entire batch of records is
-     * possible; however, we strongly recommend that you inspect the entire response and resend only those records that
-     * failed processing. This minimizes duplicate records and also reduces the total bytes sent (and corresponding
-     * charges).
+     * If there is an internal server error or a timeout, the write might have completed or it might have failed. If
+     * <b>FailedPutCount</b> is greater than 0, retry the request, resending only those records that might have failed
+     * processing. This minimizes the possible duplicate records and also reduces the total bytes sent (and
+     * corresponding charges). We recommend that you handle any duplicates at the destination.
      * </p>
      * <p>
-     * If the <a>PutRecordBatch</a> operation throws a <b>ServiceUnavailableException</b>, back off and retry. If the
-     * exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
+     * If <a>PutRecordBatch</a> throws <b>ServiceUnavailableException</b>, back off and retry. If the exception
+     * persists, it is possible that the throughput limits have been exceeded for the delivery stream.
      * </p>
      * <p>
      * Data records sent to Firehose are stored for 24 hours from the time they are added to a delivery stream as it
@@ -641,7 +706,6 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * </p>
      * 
      * @param putRecordBatchRequest
-     *        Contains the parameters for <a>PutRecordBatch</a>.
      * @return Result of the PutRecordBatch operation returned by the service.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found.
@@ -653,9 +717,18 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *         how to request an increase, see <a
      *         href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.
      * @sample AmazonKinesisFirehose.PutRecordBatch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/PutRecordBatch" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRecordBatchResult putRecordBatch(PutRecordBatchRequest putRecordBatchRequest) {
+    public PutRecordBatchResult putRecordBatch(PutRecordBatchRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRecordBatch(request);
+    }
+
+    @SdkInternalApi
+    final PutRecordBatchResult executePutRecordBatch(PutRecordBatchRequest putRecordBatchRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRecordBatchRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -665,7 +738,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRecordBatchRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordBatchRequest));
+                request = new PutRecordBatchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordBatchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -686,38 +759,38 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
 
     /**
      * <p>
-     * Updates the specified destination of the specified delivery stream. Note: Switching between Elasticsearch and
-     * other services is not supported. For Elasticsearch destination, you can only update an existing Elasticsearch
-     * destination with this operation.
+     * Updates the specified destination of the specified delivery stream.
      * </p>
      * <p>
-     * This operation can be used to change the destination type (for example, to replace the Amazon S3 destination with
-     * Amazon Redshift) or change the parameters associated with a given destination (for example, to change the bucket
-     * name of the Amazon S3 destination). The update may not occur immediately. The target delivery stream remains
-     * active while the configurations are updated, so data writes to the delivery stream can continue during this
-     * process. The updated configurations are normally effective within a few minutes.
+     * You can use this operation to change the destination type (for example, to replace the Amazon S3 destination with
+     * Amazon Redshift) or change the parameters associated with a destination (for example, to change the bucket name
+     * of the Amazon S3 destination). The update might not occur immediately. The target delivery stream remains active
+     * while the configurations are updated, so data writes to the delivery stream can continue during this process. The
+     * updated configurations are usually effective within a few minutes.
      * </p>
      * <p>
-     * If the destination type is the same, Firehose merges the configuration parameters specified in the
-     * <a>UpdateDestination</a> request with the destination configuration that already exists on the delivery stream.
-     * If any of the parameters are not specified in the update request, then the existing configuration parameters are
-     * retained. For example, in the Amazon S3 destination, if <a>EncryptionConfiguration</a> is not specified then the
-     * existing <a>EncryptionConfiguration</a> is maintained on the destination.
+     * Note that switching between Amazon ES and other services is not supported. For an Amazon ES destination, you can
+     * only update to another Amazon ES destination.
+     * </p>
+     * <p>
+     * If the destination type is the same, Firehose merges the configuration parameters specified with the destination
+     * configuration that already exists on the delivery stream. If any of the parameters are not specified in the call,
+     * the existing values are retained. For example, in the Amazon S3 destination, if <a>EncryptionConfiguration</a> is
+     * not specified then the existing <a>EncryptionConfiguration</a> is maintained on the destination.
      * </p>
      * <p>
      * If the destination type is not the same, for example, changing the destination from Amazon S3 to Amazon Redshift,
      * Firehose does not merge any parameters. In this case, all parameters must be specified.
      * </p>
      * <p>
-     * Firehose uses the <b>CurrentDeliveryStreamVersionId</b> to avoid race conditions and conflicting merges. This is
-     * a required field in every request and the service only updates the configuration if the existing configuration
-     * matches the <b>VersionId</b>. After the update is applied successfully, the <b>VersionId</b> is updated, which
-     * can be retrieved with the <a>DescribeDeliveryStream</a> operation. The new <b>VersionId</b> should be uses to set
-     * <b>CurrentDeliveryStreamVersionId</b> in the next <a>UpdateDestination</a> operation.
+     * Firehose uses <b>CurrentDeliveryStreamVersionId</b> to avoid race conditions and conflicting merges. This is a
+     * required field, and the service updates the configuration only if the existing configuration has a version ID
+     * that matches. After the update is applied successfully, the version ID is updated, and can be retrieved using
+     * <a>DescribeDeliveryStream</a>. You should use the new version ID to set <b>CurrentDeliveryStreamVersionId</b> in
+     * the next call.
      * </p>
      * 
      * @param updateDestinationRequest
-     *        Contains the parameters for <a>UpdateDestination</a>.
      * @return Result of the UpdateDestination operation returned by the service.
      * @throws InvalidArgumentException
      *         The specified input parameter has an value that is not valid.
@@ -729,9 +802,18 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *         Another modification has already happened. Fetch <b>VersionId</b> again and use it to update the
      *         destination.
      * @sample AmazonKinesisFirehose.UpdateDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/UpdateDestination" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateDestinationResult updateDestination(UpdateDestinationRequest updateDestinationRequest) {
+    public UpdateDestinationResult updateDestination(UpdateDestinationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDestination(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDestinationResult executeUpdateDestination(UpdateDestinationRequest updateDestinationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDestinationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -741,7 +823,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDestinationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDestinationRequest));
+                request = new UpdateDestinationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDestinationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

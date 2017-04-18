@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type that contains the health check request information.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHealthCheck" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -59,15 +65,34 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
     private Long healthCheckVersion;
     /**
      * <p>
-     * The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you don't
-     * specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that
-     * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you
+     * don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name
+     * that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     * <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health
+     * of the endpoint.
      * </p>
      * <p>
-     * f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it with
-     * your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
-     * address of your instance never changes. For more information, see <a
+     * Use one of the following formats for the value of <code>IPAddress</code>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     * <code>192.0.2.44</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     * <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC
+     * 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your
+     * EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of
+     * your instance never changes. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses
      * (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
@@ -80,6 +105,28 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
      * </p>
+     * <p>
+     * Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private,
+     * non-routable, or multicast ranges. For more information about IP addresses for which you can't create health
+     * checks, see the following documents:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     * </p>
+     * </li>
+     * </ul>
      */
     private String iPAddress;
     /**
@@ -110,13 +157,16 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * </note>
      * <p>
-     * <b>If you specify</b> <code>IPAddress</code>:
+     * <b>If you specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
-     * The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks except TCP
-     * health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53
-     * to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is how it constructs the
-     * <code>Host</code> header:
+     * Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     * <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health
+     * checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to
+     * perform health checks.
+     * </p>
+     * <p>
+     * When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:
      * </p>
      * <ul>
      * <li>
@@ -146,19 +196,26 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      * </p>
      * <p>
-     * <b>If you don't specify</b> <code>IPAddress</code>:
+     * <b>If you don't specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
      * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that
      * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to
+     * the endpoint. If there's no resource record set with a type of A for the name that you specify for
+     * <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     * </p>
+     * </note>
      * <p>
      * If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify
      * the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check
      * for each endpoint. For example, create a health check for each HTTP server that is serving content for
      * www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server
-     * (such as <code>us-east-1-www.example.com</code>), not the name of the resource record sets (www.example.com).
+     * (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).
      * </p>
      * <important>
      * <p>
@@ -191,6 +248,9 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a href=
      * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How
      * Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.
+     * </p>
+     * <p>
+     * If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
      * </p>
      */
     private Integer failureThreshold;
@@ -513,15 +573,34 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you don't
-     * specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that
-     * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you
+     * don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name
+     * that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     * <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health
+     * of the endpoint.
      * </p>
      * <p>
-     * f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it with
-     * your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
-     * address of your instance never changes. For more information, see <a
+     * Use one of the following formats for the value of <code>IPAddress</code>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     * <code>192.0.2.44</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     * <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC
+     * 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your
+     * EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of
+     * your instance never changes. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses
      * (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
@@ -534,17 +613,57 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
      * </p>
+     * <p>
+     * Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private,
+     * non-routable, or multicast ranges. For more information about IP addresses for which you can't create health
+     * checks, see the following documents:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param iPAddress
-     *        The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you
-     *        don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the
-     *        domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *        <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the health
-     *        of the endpoint.</p>
+     *        The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If
+     *        you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the
+     *        domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     *        <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the
+     *        health of the endpoint.</p>
      *        <p>
-     *        f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it
-     *        with your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures
-     *        that the IP address of your instance never changes. For more information, see <a
+     *        Use one of the following formats for the value of <code>IPAddress</code>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     *        <code>192.0.2.44</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     *        <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in
+     *        RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with
+     *        your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
+     *        address of your instance never changes. For more information, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP
      *        Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *        </p>
@@ -556,6 +675,29 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        </note>
      *        <p>
      *        For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
+     *        </p>
+     *        <p>
+     *        Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local,
+     *        private, non-routable, or multicast ranges. For more information about IP addresses for which you can't
+     *        create health checks, see the following documents:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+     *        Space</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     *        </p>
+     *        </li>
      */
 
     public void setIPAddress(String iPAddress) {
@@ -564,15 +706,34 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you don't
-     * specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that
-     * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you
+     * don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name
+     * that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     * <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health
+     * of the endpoint.
      * </p>
      * <p>
-     * f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it with
-     * your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
-     * address of your instance never changes. For more information, see <a
+     * Use one of the following formats for the value of <code>IPAddress</code>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     * <code>192.0.2.44</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     * <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC
+     * 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your
+     * EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of
+     * your instance never changes. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses
      * (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
@@ -585,16 +746,56 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
      * </p>
+     * <p>
+     * Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private,
+     * non-routable, or multicast ranges. For more information about IP addresses for which you can't create health
+     * checks, see the following documents:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you
-     *         don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the
-     *         domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *         <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the
-     *         health of the endpoint.</p>
+     * @return The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on.
+     *         If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve
+     *         the domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you
+     *         specify in <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53
+     *         then checks the health of the endpoint.</p>
      *         <p>
-     *         f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate
-     *         it with your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This
-     *         ensures that the IP address of your instance never changes. For more information, see <a
+     *         Use one of the following formats for the value of <code>IPAddress</code>:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     *         <code>192.0.2.44</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     *         <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in
+     *         RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with
+     *         your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the
+     *         IP address of your instance never changes. For more information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP
      *         Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *         </p>
@@ -606,6 +807,29 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *         </note>
      *         <p>
      *         For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
+     *         </p>
+     *         <p>
+     *         Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local,
+     *         private, non-routable, or multicast ranges. For more information about IP addresses for which you can't
+     *         create health checks, see the following documents:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+     *         Space</a>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     *         </p>
+     *         </li>
      */
 
     public String getIPAddress() {
@@ -614,15 +838,34 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you don't
-     * specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that
-     * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you
+     * don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name
+     * that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     * <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health
+     * of the endpoint.
      * </p>
      * <p>
-     * f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it with
-     * your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
-     * address of your instance never changes. For more information, see <a
+     * Use one of the following formats for the value of <code>IPAddress</code>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     * <code>192.0.2.44</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     * <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC
+     * 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your
+     * EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of
+     * your instance never changes. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses
      * (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
@@ -635,17 +878,57 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
      * </p>
+     * <p>
+     * Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private,
+     * non-routable, or multicast ranges. For more information about IP addresses for which you can't create health
+     * checks, see the following documents:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param iPAddress
-     *        The IPv4 IP address of the endpoint on which you want Amazon Route 53 to perform health checks. If you
-     *        don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the
-     *        domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *        <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the health
-     *        of the endpoint.</p>
+     *        The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If
+     *        you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the
+     *        domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in
+     *        <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the
+     *        health of the endpoint.</p>
      *        <p>
-     *        f the endpoint is an Amazon EC2 instance, we recommend that you create an Elastic IP address, associate it
-     *        with your Amazon EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures
-     *        that the IP address of your instance never changes. For more information, see <a
+     *        Use one of the following formats for the value of <code>IPAddress</code>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example,
+     *        <code>192.0.2.44</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example,
+     *        <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in
+     *        RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with
+     *        your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP
+     *        address of your instance never changes. For more information, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP
      *        Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *        </p>
@@ -657,6 +940,29 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        </note>
      *        <p>
      *        For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.
+     *        </p>
+     *        <p>
+     *        Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local,
+     *        private, non-routable, or multicast ranges. For more information about IP addresses for which you can't
+     *        create health checks, see the following documents:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+     *        Space</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -783,13 +1089,16 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * </note>
      * <p>
-     * <b>If you specify</b> <code>IPAddress</code>:
+     * <b>If you specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
-     * The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks except TCP
-     * health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53
-     * to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is how it constructs the
-     * <code>Host</code> header:
+     * Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     * <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health
+     * checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to
+     * perform health checks.
+     * </p>
+     * <p>
+     * When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:
      * </p>
      * <ul>
      * <li>
@@ -819,19 +1128,26 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      * </p>
      * <p>
-     * <b>If you don't specify</b> <code>IPAddress</code>:
+     * <b>If you don't specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
      * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that
      * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to
+     * the endpoint. If there's no resource record set with a type of A for the name that you specify for
+     * <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     * </p>
+     * </note>
      * <p>
      * If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify
      * the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check
      * for each endpoint. For example, create a health check for each HTTP server that is serving content for
      * www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server
-     * (such as <code>us-east-1-www.example.com</code>), not the name of the resource record sets (www.example.com).
+     * (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).
      * </p>
      * <important>
      * <p>
@@ -856,13 +1172,17 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        </p>
      *        </note>
      *        <p>
-     *        <b>If you specify</b> <code>IPAddress</code>:
+     *        <b>If you specify a value for</b> <code>IPAddress</code>:
      *        </p>
      *        <p>
-     *        The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks
-     *        except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want
-     *        Amazon Route 53 to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is
-     *        how it constructs the <code>Host</code> header:
+     *        Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     *        <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP
+     *        health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon
+     *        Route 53 to perform health checks.
+     *        </p>
+     *        <p>
+     *        When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code>
+     *        header:
      *        </p>
      *        <ul>
      *        <li>
@@ -892,20 +1212,27 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        value of <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      *        </p>
      *        <p>
-     *        <b>If you don't specify</b> <code>IPAddress</code>:
+     *        <b>If you don't specify a value for</b> <code>IPAddress</code>:
      *        </p>
      *        <p>
      *        If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain
      *        that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *        <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the health
-     *        of the endpoint.
+     *        <code>RequestInterval</code>. Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks
+     *        the health of the endpoint.
      *        </p>
+     *        <note>
+     *        <p>
+     *        If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health
+     *        checks to the endpoint. If there's no resource record set with a type of A for the name that you specify
+     *        for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     *        </p>
+     *        </note>
      *        <p>
      *        If you want to check the health of weighted, latency, or failover resource record sets and you choose to
      *        specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a
      *        separate health check for each endpoint. For example, create a health check for each HTTP server that is
      *        serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the
-     *        domain name of the server (such as <code>us-east-1-www.example.com</code>), not the name of the resource
+     *        domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource
      *        record sets (www.example.com).
      *        </p>
      *        <important>
@@ -938,13 +1265,16 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * </note>
      * <p>
-     * <b>If you specify</b> <code>IPAddress</code>:
+     * <b>If you specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
-     * The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks except TCP
-     * health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53
-     * to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is how it constructs the
-     * <code>Host</code> header:
+     * Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     * <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health
+     * checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to
+     * perform health checks.
+     * </p>
+     * <p>
+     * When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:
      * </p>
      * <ul>
      * <li>
@@ -974,19 +1304,26 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      * </p>
      * <p>
-     * <b>If you don't specify</b> <code>IPAddress</code>:
+     * <b>If you don't specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
      * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that
      * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to
+     * the endpoint. If there's no resource record set with a type of A for the name that you specify for
+     * <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     * </p>
+     * </note>
      * <p>
      * If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify
      * the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check
      * for each endpoint. For example, create a health check for each HTTP server that is serving content for
      * www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server
-     * (such as <code>us-east-1-www.example.com</code>), not the name of the resource record sets (www.example.com).
+     * (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).
      * </p>
      * <important>
      * <p>
@@ -1010,13 +1347,17 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *         </p>
      *         </note>
      *         <p>
-     *         <b>If you specify</b> <code>IPAddress</code>:
+     *         <b>If you specify a value for</b> <code>IPAddress</code>:
      *         </p>
      *         <p>
-     *         The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks
-     *         except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you
-     *         want Amazon Route 53 to perform health checks. When Amazon Route 53 checks the health of an endpoint,
-     *         here is how it constructs the <code>Host</code> header:
+     *         Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     *         <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP
+     *         health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon
+     *         Route 53 to perform health checks.
+     *         </p>
+     *         <p>
+     *         When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code>
+     *         header:
      *         </p>
      *         <ul>
      *         <li>
@@ -1046,20 +1387,27 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *         value of <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      *         </p>
      *         <p>
-     *         <b>If you don't specify</b> <code>IPAddress</code>:
+     *         <b>If you don't specify a value for</b> <code>IPAddress</code>:
      *         </p>
      *         <p>
      *         If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the
      *         domain that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *         <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the
-     *         health of the endpoint.
+     *         <code>RequestInterval</code>. Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks
+     *         the health of the endpoint.
      *         </p>
+     *         <note>
+     *         <p>
+     *         If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health
+     *         checks to the endpoint. If there's no resource record set with a type of A for the name that you specify
+     *         for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     *         </p>
+     *         </note>
      *         <p>
      *         If you want to check the health of weighted, latency, or failover resource record sets and you choose to
      *         specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a
      *         separate health check for each endpoint. For example, create a health check for each HTTP server that is
      *         serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the
-     *         domain name of the server (such as <code>us-east-1-www.example.com</code>), not the name of the resource
+     *         domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource
      *         record sets (www.example.com).
      *         </p>
      *         <important>
@@ -1092,13 +1440,16 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * </note>
      * <p>
-     * <b>If you specify</b> <code>IPAddress</code>:
+     * <b>If you specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
-     * The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks except TCP
-     * health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53
-     * to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is how it constructs the
-     * <code>Host</code> header:
+     * Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     * <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health
+     * checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to
+     * perform health checks.
+     * </p>
+     * <p>
+     * When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:
      * </p>
      * <ul>
      * <li>
@@ -1128,19 +1479,26 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      * </p>
      * <p>
-     * <b>If you don't specify</b> <code>IPAddress</code>:
+     * <b>If you don't specify a value for</b> <code>IPAddress</code>:
      * </p>
      * <p>
      * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that
      * you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>.
-     * Using an IP address that DNS returns, Amazon Route 53 then checks the health of the endpoint.
+     * Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to
+     * the endpoint. If there's no resource record set with a type of A for the name that you specify for
+     * <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     * </p>
+     * </note>
      * <p>
      * If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify
      * the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check
      * for each endpoint. For example, create a health check for each HTTP server that is serving content for
      * www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server
-     * (such as <code>us-east-1-www.example.com</code>), not the name of the resource record sets (www.example.com).
+     * (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).
      * </p>
      * <important>
      * <p>
@@ -1165,13 +1523,17 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        </p>
      *        </note>
      *        <p>
-     *        <b>If you specify</b> <code>IPAddress</code>:
+     *        <b>If you specify a value for</b> <code>IPAddress</code>:
      *        </p>
      *        <p>
-     *        The value that you want Amazon Route 53 to pass in the <code>Host</code> header in all health checks
-     *        except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want
-     *        Amazon Route 53 to perform health checks. When Amazon Route 53 checks the health of an endpoint, here is
-     *        how it constructs the <code>Host</code> header:
+     *        Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of
+     *        <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP
+     *        health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon
+     *        Route 53 to perform health checks.
+     *        </p>
+     *        <p>
+     *        When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code>
+     *        header:
      *        </p>
      *        <ul>
      *        <li>
@@ -1201,20 +1563,27 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        value of <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.
      *        </p>
      *        <p>
-     *        <b>If you don't specify</b> <code>IPAddress</code>:
+     *        <b>If you don't specify a value for</b> <code>IPAddress</code>:
      *        </p>
      *        <p>
      *        If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain
      *        that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in
-     *        <code>RequestInterval</code>. Using an IP address that DNS returns, Amazon Route 53 then checks the health
-     *        of the endpoint.
+     *        <code>RequestInterval</code>. Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks
+     *        the health of the endpoint.
      *        </p>
+     *        <note>
+     *        <p>
+     *        If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health
+     *        checks to the endpoint. If there's no resource record set with a type of A for the name that you specify
+     *        for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.
+     *        </p>
+     *        </note>
      *        <p>
      *        If you want to check the health of weighted, latency, or failover resource record sets and you choose to
      *        specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a
      *        separate health check for each endpoint. For example, create a health check for each HTTP server that is
      *        serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the
-     *        domain name of the server (such as <code>us-east-1-www.example.com</code>), not the name of the resource
+     *        domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource
      *        record sets (www.example.com).
      *        </p>
      *        <important>
@@ -1303,6 +1672,9 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How
      * Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
+     * <p>
+     * If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
+     * </p>
      * 
      * @param failureThreshold
      *        The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change
@@ -1310,7 +1682,9 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        href=
      *        "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html"
      *        >How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer
-     *        Guide</i>.
+     *        Guide</i>.</p>
+     *        <p>
+     *        If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
      */
 
     public void setFailureThreshold(Integer failureThreshold) {
@@ -1324,13 +1698,18 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How
      * Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
+     * <p>
+     * If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
+     * </p>
      * 
      * @return The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change
      *         the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a
      *         href=
      *         "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html"
      *         >How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer
-     *         Guide</i>.
+     *         Guide</i>.</p>
+     *         <p>
+     *         If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
      */
 
     public Integer getFailureThreshold() {
@@ -1344,6 +1723,9 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How
      * Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
+     * <p>
+     * If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
+     * </p>
      * 
      * @param failureThreshold
      *        The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change
@@ -1351,7 +1733,9 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
      *        href=
      *        "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html"
      *        >How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer
-     *        Guide</i>.
+     *        Guide</i>.</p>
+     *        <p>
+     *        If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2259,35 +2643,35 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHealthCheckId() != null)
-            sb.append("HealthCheckId: " + getHealthCheckId() + ",");
+            sb.append("HealthCheckId: ").append(getHealthCheckId()).append(",");
         if (getHealthCheckVersion() != null)
-            sb.append("HealthCheckVersion: " + getHealthCheckVersion() + ",");
+            sb.append("HealthCheckVersion: ").append(getHealthCheckVersion()).append(",");
         if (getIPAddress() != null)
-            sb.append("IPAddress: " + getIPAddress() + ",");
+            sb.append("IPAddress: ").append(getIPAddress()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getResourcePath() != null)
-            sb.append("ResourcePath: " + getResourcePath() + ",");
+            sb.append("ResourcePath: ").append(getResourcePath()).append(",");
         if (getFullyQualifiedDomainName() != null)
-            sb.append("FullyQualifiedDomainName: " + getFullyQualifiedDomainName() + ",");
+            sb.append("FullyQualifiedDomainName: ").append(getFullyQualifiedDomainName()).append(",");
         if (getSearchString() != null)
-            sb.append("SearchString: " + getSearchString() + ",");
+            sb.append("SearchString: ").append(getSearchString()).append(",");
         if (getFailureThreshold() != null)
-            sb.append("FailureThreshold: " + getFailureThreshold() + ",");
+            sb.append("FailureThreshold: ").append(getFailureThreshold()).append(",");
         if (getInverted() != null)
-            sb.append("Inverted: " + getInverted() + ",");
+            sb.append("Inverted: ").append(getInverted()).append(",");
         if (getHealthThreshold() != null)
-            sb.append("HealthThreshold: " + getHealthThreshold() + ",");
+            sb.append("HealthThreshold: ").append(getHealthThreshold()).append(",");
         if (getChildHealthChecks() != null)
-            sb.append("ChildHealthChecks: " + getChildHealthChecks() + ",");
+            sb.append("ChildHealthChecks: ").append(getChildHealthChecks()).append(",");
         if (getEnableSNI() != null)
-            sb.append("EnableSNI: " + getEnableSNI() + ",");
+            sb.append("EnableSNI: ").append(getEnableSNI()).append(",");
         if (getRegions() != null)
-            sb.append("Regions: " + getRegions() + ",");
+            sb.append("Regions: ").append(getRegions()).append(",");
         if (getAlarmIdentifier() != null)
-            sb.append("AlarmIdentifier: " + getAlarmIdentifier() + ",");
+            sb.append("AlarmIdentifier: ").append(getAlarmIdentifier()).append(",");
         if (getInsufficientDataHealthStatus() != null)
-            sb.append("InsufficientDataHealthStatus: " + getInsufficientDataHealthStatus());
+            sb.append("InsufficientDataHealthStatus: ").append(getInsufficientDataHealthStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -2392,4 +2776,5 @@ public class UpdateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequ
     public UpdateHealthCheckRequest clone() {
         return (UpdateHealthCheckRequest) super.clone();
     }
+
 }

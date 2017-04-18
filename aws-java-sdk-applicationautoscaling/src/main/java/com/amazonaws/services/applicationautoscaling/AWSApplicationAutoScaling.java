@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.applicationautoscaling;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,33 +22,19 @@ import com.amazonaws.services.applicationautoscaling.model.*;
 /**
  * Interface for accessing Application Auto Scaling.
  * <p>
- * <p>
- * Application Auto Scaling is a general purpose Auto Scaling service for supported elastic AWS resources. With
- * Application Auto Scaling, you can automatically scale your AWS resources, with an experience similar to that of Auto
- * Scaling.
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.applicationautoscaling.AbstractAWSApplicationAutoScaling} instead.
  * </p>
  * <p>
- * Application Auto Scaling supports scaling the following AWS resources:
- * </p>
- * <ul>
- * <li>
  * <p>
- * Amazon ECS services
- * </p>
- * </li>
- * <li>
- * <p>
- * Amazon EC2 Spot fleet instances
- * </p>
- * </li>
- * </ul>
- * <p>
- * You can use Application Auto Scaling to accomplish the following tasks:
+ * With Application Auto Scaling, you can automatically scale your AWS resources. The experience similar to that of <a
+ * href="https://aws.amazon.com/autoscaling/">Auto Scaling</a>. You can use Application Auto Scaling to accomplish the
+ * following tasks:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Define scaling policies for automatically adjusting your AWS resources
+ * Define scaling policies to automatically scale your AWS resources
  * </p>
  * </li>
  * <li>
@@ -56,56 +44,50 @@ import com.amazonaws.services.applicationautoscaling.model.*;
  * </li>
  * <li>
  * <p>
- * View history of your scaling events
+ * View the history of your scaling events
  * </p>
  * </li>
  * </ul>
  * <p>
- * Application Auto Scaling is available in the following regions:
+ * Application Auto Scaling can scale the following AWS resources:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <code>us-east-1</code>
+ * Amazon ECS services. For more information, see <a
+ * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html">Service Auto Scaling</a>
+ * in the <i>Amazon EC2 Container Service Developer Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>us-west-1</code>
+ * Amazon EC2 Spot fleets. For more information, see <a
+ * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html">Automatic Scaling for Spot
+ * Fleet</a> in the <i>Amazon EC2 User Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>us-west-2</code>
+ * Amazon EMR clusters. For more information, see <a
+ * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html">Using Automatic
+ * Scaling in Amazon EMR</a> in the <i>Amazon EMR Management Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>ap-southeast-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>ap-southeast-2</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>ap-northeast-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>eu-central-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>eu-west-1</code>
+ * AppStream 2.0 fleets. For more information, see <a
+ * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html">Autoscaling Amazon AppStream 2.0
+ * Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
  * </p>
  * </li>
  * </ul>
+ * <p>
+ * For a list of supported regions, see <a
+ * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region">AWS Regions and Endpoints: Application
+ * Auto Scaling</a> in the <i>AWS General Reference</i>.
+ * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSApplicationAutoScaling {
 
     /**
@@ -137,7 +119,11 @@ public interface AWSApplicationAutoScaling {
      *        The endpoint (ex: "autoscaling.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://autoscaling.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -158,20 +144,21 @@ public interface AWSApplicationAutoScaling {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
-     * Deletes an Application Auto Scaling scaling policy that was previously created. If you are no longer using a
-     * scaling policy, you can delete it with this operation.
+     * Deletes the specified Application Auto Scaling scaling policy.
      * </p>
      * <p>
      * Deleting a policy deletes the underlying alarm action, but does not delete the CloudWatch alarm associated with
      * the scaling policy, even if it no longer has an associated action.
      * </p>
      * <p>
-     * To create a new scaling policy or update an existing one, see <a>PutScalingPolicy</a>.
+     * To create a scaling policy or update an existing one, see <a>PutScalingPolicy</a>.
      * </p>
      * 
      * @param deleteScalingPolicyRequest
@@ -190,17 +177,20 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.DeleteScalingPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DeleteScalingPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteScalingPolicyResult deleteScalingPolicy(DeleteScalingPolicyRequest deleteScalingPolicyRequest);
 
     /**
      * <p>
-     * Deregisters a scalable target that was previously registered. If you are no longer using a scalable target, you
-     * can delete it with this operation. When you deregister a scalable target, all of the scaling policies that are
-     * associated with that scalable target are deleted.
+     * Deregisters a scalable target.
      * </p>
      * <p>
-     * To create a new scalable target or update an existing one, see <a>RegisterScalableTarget</a>.
+     * Deregistering a scalable target deletes the scaling policies that are associated with it.
+     * </p>
+     * <p>
+     * To create a scalable target or update an existing one, see <a>RegisterScalableTarget</a>.
      * </p>
      * 
      * @param deregisterScalableTargetRequest
@@ -219,20 +209,21 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.DeregisterScalableTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DeregisterScalableTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     DeregisterScalableTargetResult deregisterScalableTarget(DeregisterScalableTargetRequest deregisterScalableTargetRequest);
 
     /**
      * <p>
-     * Provides descriptive information for scalable targets with a specified service namespace.
+     * Provides descriptive information about the scalable targets in the specified namespace.
      * </p>
      * <p>
-     * You can filter the results in a service namespace with the <code>ResourceIds</code> and
-     * <code>ScalableDimension</code> parameters.
+     * You can filter the results using the <code>ResourceIds</code> and <code>ScalableDimension</code> parameters.
      * </p>
      * <p>
-     * To create a new scalable target or update an existing one, see <a>RegisterScalableTarget</a>. If you are no
-     * longer using a scalable target, you can deregister it with <a>DeregisterScalableTarget</a>.
+     * To create a scalable target or update an existing one, see <a>RegisterScalableTarget</a>. If you are no longer
+     * using a scalable target, you can deregister it using <a>DeregisterScalableTarget</a>.
      * </p>
      * 
      * @param describeScalableTargetsRequest
@@ -247,22 +238,23 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.DescribeScalableTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalableTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeScalableTargetsResult describeScalableTargets(DescribeScalableTargetsRequest describeScalableTargetsRequest);
 
     /**
      * <p>
-     * Provides descriptive information for scaling activities with a specified service namespace for the previous six
+     * Provides descriptive information about the scaling activities in the specified namespace from the previous six
      * weeks.
      * </p>
      * <p>
-     * You can filter the results in a service namespace with the <code>ResourceId</code> and
-     * <code>ScalableDimension</code> parameters.
+     * You can filter the results using the <code>ResourceId</code> and <code>ScalableDimension</code> parameters.
      * </p>
      * <p>
      * Scaling activities are triggered by CloudWatch alarms that are associated with scaling policies. To view the
-     * existing scaling policies for a service namespace, see <a>DescribeScalingPolicies</a>. To create a new scaling
-     * policy or update an existing one, see <a>PutScalingPolicy</a>.
+     * scaling policies for a service namespace, see <a>DescribeScalingPolicies</a>. To create a scaling policy or
+     * update an existing one, see <a>PutScalingPolicy</a>.
      * </p>
      * 
      * @param describeScalingActivitiesRequest
@@ -277,20 +269,23 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.DescribeScalingActivities
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalingActivities"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeScalingActivitiesResult describeScalingActivities(DescribeScalingActivitiesRequest describeScalingActivitiesRequest);
 
     /**
      * <p>
-     * Provides descriptive information for scaling policies with a specified service namespace.
+     * Provides descriptive information about the scaling policies in the specified namespace.
      * </p>
      * <p>
-     * You can filter the results in a service namespace with the <code>ResourceId</code>,
-     * <code>ScalableDimension</code>, and <code>PolicyNames</code> parameters.
+     * You can filter the results using the <code>ResourceId</code>, <code>ScalableDimension</code>, and
+     * <code>PolicyNames</code> parameters.
      * </p>
      * <p>
-     * To create a new scaling policy or update an existing one, see <a>PutScalingPolicy</a>. If you are no longer using
-     * a scaling policy, you can delete it with <a>DeleteScalingPolicy</a>.
+     * To create a scaling policy or update an existing one, see <a>PutScalingPolicy</a>. If you are no longer using a
+     * scaling policy, you can delete it using <a>DeleteScalingPolicy</a>.
      * </p>
      * 
      * @param describeScalingPoliciesRequest
@@ -312,23 +307,27 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.DescribeScalingPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalingPolicies"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeScalingPoliciesResult describeScalingPolicies(DescribeScalingPoliciesRequest describeScalingPoliciesRequest);
 
     /**
      * <p>
-     * Creates or updates a policy for an existing Application Auto Scaling scalable target. Each scalable target is
-     * identified by service namespace, a resource ID, and a scalable dimension, and a scaling policy applies to a
-     * scalable target that is identified by those three attributes. You cannot create a scaling policy without first
-     * registering a scalable target with <a>RegisterScalableTarget</a>.
+     * Creates or updates a policy for an Application Auto Scaling scalable target.
      * </p>
      * <p>
-     * To update an existing policy, use the existing policy name and set the parameters you want to change. Any
-     * existing parameter not changed in an update to an existing policy is not changed in this update request.
+     * Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy
+     * applies to the scalable target identified by those three attributes. You cannot create a scaling policy without
+     * first registering a scalable target using <a>RegisterScalableTarget</a>.
      * </p>
      * <p>
-     * You can view the existing scaling policies for a service namespace with <a>DescribeScalingPolicies</a>. If you
-     * are no longer using a scaling policy, you can delete it with <a>DeleteScalingPolicy</a>.
+     * To update a policy, specify its policy name and the parameters that you want to change. Any parameters that you
+     * don't specify are not changed by this update request.
+     * </p>
+     * <p>
+     * You can view the scaling policies for a service namespace using <a>DescribeScalingPolicies</a>. If you are no
+     * longer using a scaling policy, you can delete it using <a>DeleteScalingPolicy</a>.
      * </p>
      * 
      * @param putScalingPolicyRequest
@@ -352,20 +351,21 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.PutScalingPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/PutScalingPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest putScalingPolicyRequest);
 
     /**
      * <p>
-     * Registers or updates a scalable target. A scalable target is a resource that can be scaled out or in with
-     * Application Auto Scaling. After you have registered a scalable target, you can use this operation to update the
-     * minimum and maximum values for your scalable dimension.
+     * Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale
+     * out or scale in. After you have registered a scalable target, you can use this operation to update the minimum
+     * and maximum values for your scalable dimension.
      * </p>
      * <p>
-     * After you register a scalable target with Application Auto Scaling, you can create and apply scaling policies to
-     * it with <a>PutScalingPolicy</a>. You can view the existing scaling policies for a service namespace with
-     * <a>DescribeScalableTargets</a>. If you are no longer using a scalable target, you can deregister it with
-     * <a>DeregisterScalableTarget</a>.
+     * After you register a scalable target, you can create and apply scaling policies using <a>PutScalingPolicy</a>.
+     * You can view the scaling policies for a service namespace using <a>DescribeScalableTargets</a>. If you are no
+     * longer using a scalable target, you can deregister it using <a>DeregisterScalableTarget</a>.
      * </p>
      * 
      * @param registerScalableTargetRequest
@@ -383,6 +383,8 @@ public interface AWSApplicationAutoScaling {
      * @throws InternalServiceException
      *         The service encountered an internal error.
      * @sample AWSApplicationAutoScaling.RegisterScalableTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/RegisterScalableTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     RegisterScalableTargetResult registerScalableTarget(RegisterScalableTargetRequest registerScalableTargetRequest);
 

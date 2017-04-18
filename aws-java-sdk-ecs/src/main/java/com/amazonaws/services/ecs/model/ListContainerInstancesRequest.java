@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListContainerInstances" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -27,6 +32,15 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private String cluster;
+    /**
+     * <p>
+     * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     * statements. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     */
+    private String filter;
     /**
      * <p>
      * The <code>nextToken</code> value returned from a previous paginated <code>ListContainerInstances</code> request
@@ -53,6 +67,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private Integer maxResults;
+    /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     */
+    private String status;
 
     /**
      * <p>
@@ -97,6 +119,64 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
 
     public ListContainerInstancesRequest withCluster(String cluster) {
         setCluster(cluster);
+        return this;
+    }
+
+    /**
+     * <p>
+     * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     * statements. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param filter
+     *        You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     *        statements. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *        Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     */
+
+    public void setFilter(String filter) {
+        this.filter = filter;
+    }
+
+    /**
+     * <p>
+     * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     * statements. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @return You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     *         statements. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *         Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     */
+
+    public String getFilter() {
+        return this.filter;
+    }
+
+    /**
+     * <p>
+     * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     * statements. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param filter
+     *        You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
+     *        statements. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *        Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ListContainerInstancesRequest withFilter(String filter) {
+        setFilter(filter);
         return this;
     }
 
@@ -262,6 +342,99 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     * 
+     * @param status
+     *        The container instance status with which to filter the <code>ListContainerInstances</code> results.
+     *        Specifying a container instance status of <code>DRAINING</code> limits the results to container instances
+     *        that have been set to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * @see ContainerInstanceStatus
+     */
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     * 
+     * @return The container instance status with which to filter the <code>ListContainerInstances</code> results.
+     *         Specifying a container instance status of <code>DRAINING</code> limits the results to container instances
+     *         that have been set to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * @see ContainerInstanceStatus
+     */
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     * 
+     * @param status
+     *        The container instance status with which to filter the <code>ListContainerInstances</code> results.
+     *        Specifying a container instance status of <code>DRAINING</code> limits the results to container instances
+     *        that have been set to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContainerInstanceStatus
+     */
+
+    public ListContainerInstancesRequest withStatus(String status) {
+        setStatus(status);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     * 
+     * @param status
+     *        The container instance status with which to filter the <code>ListContainerInstances</code> results.
+     *        Specifying a container instance status of <code>DRAINING</code> limits the results to container instances
+     *        that have been set to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * @see ContainerInstanceStatus
+     */
+
+    public void setStatus(ContainerInstanceStatus status) {
+        this.status = status.toString();
+    }
+
+    /**
+     * <p>
+     * The container instance status with which to filter the <code>ListContainerInstances</code> results. Specifying a
+     * container instance status of <code>DRAINING</code> limits the results to container instances that have been set
+     * to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * </p>
+     * 
+     * @param status
+     *        The container instance status with which to filter the <code>ListContainerInstances</code> results.
+     *        Specifying a container instance status of <code>DRAINING</code> limits the results to container instances
+     *        that have been set to drain with the <a>UpdateContainerInstancesState</a> operation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContainerInstanceStatus
+     */
+
+    public ListContainerInstancesRequest withStatus(ContainerInstanceStatus status) {
+        setStatus(status);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -273,11 +446,15 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCluster() != null)
-            sb.append("Cluster: " + getCluster() + ",");
+            sb.append("Cluster: ").append(getCluster()).append(",");
+        if (getFilter() != null)
+            sb.append("Filter: ").append(getFilter()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults());
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
+        if (getStatus() != null)
+            sb.append("Status: ").append(getStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -296,6 +473,10 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getCluster() != null && other.getCluster().equals(this.getCluster()) == false)
             return false;
+        if (other.getFilter() == null ^ this.getFilter() == null)
+            return false;
+        if (other.getFilter() != null && other.getFilter().equals(this.getFilter()) == false)
+            return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
         if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
@@ -303,6 +484,10 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
         if (other.getMaxResults() == null ^ this.getMaxResults() == null)
             return false;
         if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
+            return false;
+        if (other.getStatus() == null ^ this.getStatus() == null)
+            return false;
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         return true;
     }
@@ -313,8 +498,10 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getCluster() == null) ? 0 : getCluster().hashCode());
+        hashCode = prime * hashCode + ((getFilter() == null) ? 0 : getFilter().hashCode());
         hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         return hashCode;
     }
 
@@ -322,4 +509,5 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
     public ListContainerInstancesRequest clone() {
         return (ListContainerInstancesRequest) super.clone();
     }
+
 }

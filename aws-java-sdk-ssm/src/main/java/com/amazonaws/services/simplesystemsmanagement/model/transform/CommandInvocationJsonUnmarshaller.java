@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.simplesystemsmanagement.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.simplesystemsmanagement.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * CommandInvocation JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CommandInvocationJsonUnmarshaller implements Unmarshaller<CommandInvocation, JsonUnmarshallerContext> {
 
     public CommandInvocation unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class CommandInvocationJsonUnmarshaller implements Unmarshaller<CommandIn
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -54,6 +55,10 @@ public class CommandInvocationJsonUnmarshaller implements Unmarshaller<CommandIn
                 if (context.testExpression("InstanceId", targetDepth)) {
                     context.nextToken();
                     commandInvocation.setInstanceId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("InstanceName", targetDepth)) {
+                    context.nextToken();
+                    commandInvocation.setInstanceName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("Comment", targetDepth)) {
                     context.nextToken();
@@ -71,9 +76,21 @@ public class CommandInvocationJsonUnmarshaller implements Unmarshaller<CommandIn
                     context.nextToken();
                     commandInvocation.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("StatusDetails", targetDepth)) {
+                    context.nextToken();
+                    commandInvocation.setStatusDetails(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("TraceOutput", targetDepth)) {
                     context.nextToken();
                     commandInvocation.setTraceOutput(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("StandardOutputUrl", targetDepth)) {
+                    context.nextToken();
+                    commandInvocation.setStandardOutputUrl(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("StandardErrorUrl", targetDepth)) {
+                    context.nextToken();
+                    commandInvocation.setStandardErrorUrl(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("CommandPlugins", targetDepth)) {
                     context.nextToken();

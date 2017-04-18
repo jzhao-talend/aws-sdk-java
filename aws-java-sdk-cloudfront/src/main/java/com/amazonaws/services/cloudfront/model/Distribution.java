@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The distribution's information.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/Distribution" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Distribution implements Serializable, Cloneable {
 
     /**
@@ -501,21 +506,21 @@ public class Distribution implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getARN() != null)
-            sb.append("ARN: " + getARN() + ",");
+            sb.append("ARN: ").append(getARN()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getLastModifiedTime() != null)
-            sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");
+            sb.append("LastModifiedTime: ").append(getLastModifiedTime()).append(",");
         if (getInProgressInvalidationBatches() != null)
-            sb.append("InProgressInvalidationBatches: " + getInProgressInvalidationBatches() + ",");
+            sb.append("InProgressInvalidationBatches: ").append(getInProgressInvalidationBatches()).append(",");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getActiveTrustedSigners() != null)
-            sb.append("ActiveTrustedSigners: " + getActiveTrustedSigners() + ",");
+            sb.append("ActiveTrustedSigners: ").append(getActiveTrustedSigners()).append(",");
         if (getDistributionConfig() != null)
-            sb.append("DistributionConfig: " + getDistributionConfig());
+            sb.append("DistributionConfig: ").append(getDistributionConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -590,4 +595,5 @@ public class Distribution implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

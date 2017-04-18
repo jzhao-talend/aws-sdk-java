@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Requests Amazon API Gateway to create a <a>Resource</a> resource.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -173,11 +176,11 @@ public class CreateResourceRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getParentId() != null)
-            sb.append("ParentId: " + getParentId() + ",");
+            sb.append("ParentId: ").append(getParentId()).append(",");
         if (getPathPart() != null)
-            sb.append("PathPart: " + getPathPart());
+            sb.append("PathPart: ").append(getPathPart());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +225,5 @@ public class CreateResourceRequest extends com.amazonaws.AmazonWebServiceRequest
     public CreateResourceRequest clone() {
         return (CreateResourceRequest) super.clone();
     }
+
 }

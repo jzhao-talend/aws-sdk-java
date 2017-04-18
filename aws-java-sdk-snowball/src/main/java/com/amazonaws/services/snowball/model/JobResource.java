@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains an array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3
  * bucket that your transferred data will be exported from or imported into.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/JobResource" target="_top">AWS API
+ *      Documentation</a>
  */
-public class JobResource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobResource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -28,6 +35,12 @@ public class JobResource implements Serializable, Cloneable {
      * </p>
      */
     private java.util.List<S3Resource> s3Resources;
+    /**
+     * <p>
+     * The Python-language Lambda functions for this job.
+     * </p>
+     */
+    private java.util.List<LambdaResource> lambdaResources;
 
     /**
      * <p>
@@ -100,6 +113,76 @@ public class JobResource implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Python-language Lambda functions for this job.
+     * </p>
+     * 
+     * @return The Python-language Lambda functions for this job.
+     */
+
+    public java.util.List<LambdaResource> getLambdaResources() {
+        return lambdaResources;
+    }
+
+    /**
+     * <p>
+     * The Python-language Lambda functions for this job.
+     * </p>
+     * 
+     * @param lambdaResources
+     *        The Python-language Lambda functions for this job.
+     */
+
+    public void setLambdaResources(java.util.Collection<LambdaResource> lambdaResources) {
+        if (lambdaResources == null) {
+            this.lambdaResources = null;
+            return;
+        }
+
+        this.lambdaResources = new java.util.ArrayList<LambdaResource>(lambdaResources);
+    }
+
+    /**
+     * <p>
+     * The Python-language Lambda functions for this job.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setLambdaResources(java.util.Collection)} or {@link #withLambdaResources(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param lambdaResources
+     *        The Python-language Lambda functions for this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobResource withLambdaResources(LambdaResource... lambdaResources) {
+        if (this.lambdaResources == null) {
+            setLambdaResources(new java.util.ArrayList<LambdaResource>(lambdaResources.length));
+        }
+        for (LambdaResource ele : lambdaResources) {
+            this.lambdaResources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Python-language Lambda functions for this job.
+     * </p>
+     * 
+     * @param lambdaResources
+     *        The Python-language Lambda functions for this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobResource withLambdaResources(java.util.Collection<LambdaResource> lambdaResources) {
+        setLambdaResources(lambdaResources);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -111,7 +194,9 @@ public class JobResource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getS3Resources() != null)
-            sb.append("S3Resources: " + getS3Resources());
+            sb.append("S3Resources: ").append(getS3Resources()).append(",");
+        if (getLambdaResources() != null)
+            sb.append("LambdaResources: ").append(getLambdaResources());
         sb.append("}");
         return sb.toString();
     }
@@ -130,6 +215,10 @@ public class JobResource implements Serializable, Cloneable {
             return false;
         if (other.getS3Resources() != null && other.getS3Resources().equals(this.getS3Resources()) == false)
             return false;
+        if (other.getLambdaResources() == null ^ this.getLambdaResources() == null)
+            return false;
+        if (other.getLambdaResources() != null && other.getLambdaResources().equals(this.getLambdaResources()) == false)
+            return false;
         return true;
     }
 
@@ -139,6 +228,7 @@ public class JobResource implements Serializable, Cloneable {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getS3Resources() == null) ? 0 : getS3Resources().hashCode());
+        hashCode = prime * hashCode + ((getLambdaResources() == null) ? 0 : getLambdaResources().hashCode());
         return hashCode;
     }
 
@@ -149,5 +239,11 @@ public class JobResource implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.JobResourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

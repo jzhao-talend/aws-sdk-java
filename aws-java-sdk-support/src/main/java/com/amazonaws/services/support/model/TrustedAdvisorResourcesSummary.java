@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Details about AWS resources that were analyzed in a call to Trusted Advisor
  * <a>DescribeTrustedAdvisorCheckSummaries</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/TrustedAdvisorResourcesSummary"
+ *      target="_top">AWS API Documentation</a>
  */
-public class TrustedAdvisorResourcesSummary implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TrustedAdvisorResourcesSummary implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -220,13 +227,13 @@ public class TrustedAdvisorResourcesSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourcesProcessed() != null)
-            sb.append("ResourcesProcessed: " + getResourcesProcessed() + ",");
+            sb.append("ResourcesProcessed: ").append(getResourcesProcessed()).append(",");
         if (getResourcesFlagged() != null)
-            sb.append("ResourcesFlagged: " + getResourcesFlagged() + ",");
+            sb.append("ResourcesFlagged: ").append(getResourcesFlagged()).append(",");
         if (getResourcesIgnored() != null)
-            sb.append("ResourcesIgnored: " + getResourcesIgnored() + ",");
+            sb.append("ResourcesIgnored: ").append(getResourcesIgnored()).append(",");
         if (getResourcesSuppressed() != null)
-            sb.append("ResourcesSuppressed: " + getResourcesSuppressed());
+            sb.append("ResourcesSuppressed: ").append(getResourcesSuppressed());
         sb.append("}");
         return sb.toString();
     }
@@ -279,5 +286,11 @@ public class TrustedAdvisorResourcesSummary implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.support.model.transform.TrustedAdvisorResourcesSummaryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

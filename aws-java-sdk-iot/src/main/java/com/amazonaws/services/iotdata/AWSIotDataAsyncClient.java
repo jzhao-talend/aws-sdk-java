@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.iotdata;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.iotdata.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing AWS IoT Data Plane asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing AWS IoT Data Plane asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -30,6 +39,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDataAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -51,9 +61,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSIotDataAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -75,10 +87,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSIotDataAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -91,9 +104,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -104,8 +119,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -120,10 +138,12 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -138,9 +158,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -157,10 +179,12 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -171,9 +195,11 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -187,12 +213,18 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSIotDataAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSIotDataAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSIotDataAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSIotDataAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AWSIotDataAsyncClientBuilder asyncBuilder() {
+        return AWSIotDataAsyncClientBuilder.standard();
     }
 
     /**
@@ -212,7 +244,7 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -225,14 +257,15 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
     @Override
     public java.util.concurrent.Future<DeleteThingShadowResult> deleteThingShadowAsync(final DeleteThingShadowRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteThingShadowRequest, DeleteThingShadowResult> asyncHandler) {
+        final DeleteThingShadowRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteThingShadowResult>() {
             @Override
             public DeleteThingShadowResult call() throws Exception {
-                DeleteThingShadowResult result;
+                DeleteThingShadowResult result = null;
 
                 try {
-                    result = deleteThingShadow(request);
+                    result = executeDeleteThingShadow(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -241,7 +274,7 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -257,14 +290,15 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
     @Override
     public java.util.concurrent.Future<GetThingShadowResult> getThingShadowAsync(final GetThingShadowRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetThingShadowRequest, GetThingShadowResult> asyncHandler) {
+        final GetThingShadowRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetThingShadowResult>() {
             @Override
             public GetThingShadowResult call() throws Exception {
-                GetThingShadowResult result;
+                GetThingShadowResult result = null;
 
                 try {
-                    result = getThingShadow(request);
+                    result = executeGetThingShadow(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -273,7 +307,7 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -289,14 +323,15 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
     @Override
     public java.util.concurrent.Future<PublishResult> publishAsync(final PublishRequest request,
             final com.amazonaws.handlers.AsyncHandler<PublishRequest, PublishResult> asyncHandler) {
+        final PublishRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PublishResult>() {
             @Override
             public PublishResult call() throws Exception {
-                PublishResult result;
+                PublishResult result = null;
 
                 try {
-                    result = publish(request);
+                    result = executePublish(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -305,7 +340,7 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -321,14 +356,15 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
     @Override
     public java.util.concurrent.Future<UpdateThingShadowResult> updateThingShadowAsync(final UpdateThingShadowRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateThingShadowRequest, UpdateThingShadowResult> asyncHandler) {
+        final UpdateThingShadowRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateThingShadowResult>() {
             @Override
             public UpdateThingShadowResult call() throws Exception {
-                UpdateThingShadowResult result;
+                UpdateThingShadowResult result = null;
 
                 try {
-                    result = updateThingShadow(request);
+                    result = executeUpdateThingShadow(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -337,7 +373,7 @@ public class AWSIotDataAsyncClient extends AWSIotDataClient implements AWSIotDat
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

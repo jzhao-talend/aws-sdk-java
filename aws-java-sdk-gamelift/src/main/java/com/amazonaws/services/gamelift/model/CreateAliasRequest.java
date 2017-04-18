@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateAlias" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with an alias. Alias names do not need to be unique.
+     * Descriptive label that is associated with an alias. Alias names do not need to be unique.
      * </p>
      */
     private String name;
@@ -36,18 +42,18 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String description;
     /**
      * <p>
-     * Object specifying the fleet and routing type to use for the alias.
+     * Object that specifies the fleet and routing type to use for the alias.
      * </p>
      */
     private RoutingStrategy routingStrategy;
 
     /**
      * <p>
-     * Descriptive label associated with an alias. Alias names do not need to be unique.
+     * Descriptive label that is associated with an alias. Alias names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with an alias. Alias names do not need to be unique.
+     *        Descriptive label that is associated with an alias. Alias names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -56,10 +62,10 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with an alias. Alias names do not need to be unique.
+     * Descriptive label that is associated with an alias. Alias names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with an alias. Alias names do not need to be unique.
+     * @return Descriptive label that is associated with an alias. Alias names do not need to be unique.
      */
 
     public String getName() {
@@ -68,11 +74,11 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with an alias. Alias names do not need to be unique.
+     * Descriptive label that is associated with an alias. Alias names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with an alias. Alias names do not need to be unique.
+     *        Descriptive label that is associated with an alias. Alias names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -123,11 +129,11 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Object specifying the fleet and routing type to use for the alias.
+     * Object that specifies the fleet and routing type to use for the alias.
      * </p>
      * 
      * @param routingStrategy
-     *        Object specifying the fleet and routing type to use for the alias.
+     *        Object that specifies the fleet and routing type to use for the alias.
      */
 
     public void setRoutingStrategy(RoutingStrategy routingStrategy) {
@@ -136,10 +142,10 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Object specifying the fleet and routing type to use for the alias.
+     * Object that specifies the fleet and routing type to use for the alias.
      * </p>
      * 
-     * @return Object specifying the fleet and routing type to use for the alias.
+     * @return Object that specifies the fleet and routing type to use for the alias.
      */
 
     public RoutingStrategy getRoutingStrategy() {
@@ -148,11 +154,11 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Object specifying the fleet and routing type to use for the alias.
+     * Object that specifies the fleet and routing type to use for the alias.
      * </p>
      * 
      * @param routingStrategy
-     *        Object specifying the fleet and routing type to use for the alias.
+     *        Object that specifies the fleet and routing type to use for the alias.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,11 +179,11 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getRoutingStrategy() != null)
-            sb.append("RoutingStrategy: " + getRoutingStrategy());
+            sb.append("RoutingStrategy: ").append(getRoutingStrategy());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +228,5 @@ public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateAliasRequest clone() {
         return (CreateAliasRequest) super.clone();
     }
+
 }

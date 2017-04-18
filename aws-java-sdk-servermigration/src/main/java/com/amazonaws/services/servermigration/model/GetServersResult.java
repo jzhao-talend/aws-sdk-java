@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,14 @@
 package com.amazonaws.services.servermigration.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetServers" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetServersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private java.util.Date lastModifiedOn;
@@ -192,13 +196,13 @@ public class GetServersResult extends com.amazonaws.AmazonWebServiceResult<com.a
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLastModifiedOn() != null)
-            sb.append("LastModifiedOn: " + getLastModifiedOn() + ",");
+            sb.append("LastModifiedOn: ").append(getLastModifiedOn()).append(",");
         if (getServerCatalogStatus() != null)
-            sb.append("ServerCatalogStatus: " + getServerCatalogStatus() + ",");
+            sb.append("ServerCatalogStatus: ").append(getServerCatalogStatus()).append(",");
         if (getServerList() != null)
-            sb.append("ServerList: " + getServerList() + ",");
+            sb.append("ServerList: ").append(getServerList()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -252,4 +256,5 @@ public class GetServersResult extends com.amazonaws.AmazonWebServiceResult<com.a
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

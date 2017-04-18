@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an Amazon Glacier job.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -116,6 +118,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * This field is null in the following situations:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -137,7 +140,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * </li>
      * </ul>
-     * </p>
      */
     private String sHA256TreeHash;
     /**
@@ -156,6 +158,13 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      */
     private String retrievalByteRange;
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     */
+    private String tier;
     /**
      * <p>
      * Parameters used for range inventory retrieval.
@@ -797,6 +806,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * This field is null in the following situations:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -818,7 +828,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * </li>
      * </ul>
-     * </p>
      * 
      * @param sHA256TreeHash
      *        For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p>
@@ -832,6 +841,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        </p>
      *        <p>
      *        This field is null in the following situations:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -852,7 +862,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        Inventory jobs.
      *        </p>
      *        </li>
-     *        </ul>
      */
 
     public void setSHA256TreeHash(String sHA256TreeHash) {
@@ -873,6 +882,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * This field is null in the following situations:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -894,7 +904,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * </li>
      * </ul>
-     * </p>
      * 
      * @return For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p>
      *         <p>
@@ -907,6 +916,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *         </p>
      *         <p>
      *         This field is null in the following situations:
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
@@ -927,7 +937,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *         Inventory jobs.
      *         </p>
      *         </li>
-     *         </ul>
      */
 
     public String getSHA256TreeHash() {
@@ -948,6 +957,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * This field is null in the following situations:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -969,7 +979,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * </li>
      * </ul>
-     * </p>
      * 
      * @param sHA256TreeHash
      *        For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p>
@@ -983,6 +992,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        </p>
      *        <p>
      *        This field is null in the following situations:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1003,7 +1013,6 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        Inventory jobs.
      *        </p>
      *        </li>
-     *        </ul>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1118,6 +1127,52 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @param tier
+     *        The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *        <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     */
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @return The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *         <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     */
+
+    public String getTier() {
+        return this.tier;
+    }
+
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @param tier
+     *        The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *        <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeJobResult withTier(String tier) {
+        setTier(tier);
+        return this;
+    }
+
+    /**
+     * <p>
      * Parameters used for range inventory retrieval.
      * </p>
      * 
@@ -1168,39 +1223,41 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getJobDescription() != null)
-            sb.append("JobDescription: " + getJobDescription() + ",");
+            sb.append("JobDescription: ").append(getJobDescription()).append(",");
         if (getAction() != null)
-            sb.append("Action: " + getAction() + ",");
+            sb.append("Action: ").append(getAction()).append(",");
         if (getArchiveId() != null)
-            sb.append("ArchiveId: " + getArchiveId() + ",");
+            sb.append("ArchiveId: ").append(getArchiveId()).append(",");
         if (getVaultARN() != null)
-            sb.append("VaultARN: " + getVaultARN() + ",");
+            sb.append("VaultARN: ").append(getVaultARN()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getCompleted() != null)
-            sb.append("Completed: " + getCompleted() + ",");
+            sb.append("Completed: ").append(getCompleted()).append(",");
         if (getStatusCode() != null)
-            sb.append("StatusCode: " + getStatusCode() + ",");
+            sb.append("StatusCode: ").append(getStatusCode()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getArchiveSizeInBytes() != null)
-            sb.append("ArchiveSizeInBytes: " + getArchiveSizeInBytes() + ",");
+            sb.append("ArchiveSizeInBytes: ").append(getArchiveSizeInBytes()).append(",");
         if (getInventorySizeInBytes() != null)
-            sb.append("InventorySizeInBytes: " + getInventorySizeInBytes() + ",");
+            sb.append("InventorySizeInBytes: ").append(getInventorySizeInBytes()).append(",");
         if (getSNSTopic() != null)
-            sb.append("SNSTopic: " + getSNSTopic() + ",");
+            sb.append("SNSTopic: ").append(getSNSTopic()).append(",");
         if (getCompletionDate() != null)
-            sb.append("CompletionDate: " + getCompletionDate() + ",");
+            sb.append("CompletionDate: ").append(getCompletionDate()).append(",");
         if (getSHA256TreeHash() != null)
-            sb.append("SHA256TreeHash: " + getSHA256TreeHash() + ",");
+            sb.append("SHA256TreeHash: ").append(getSHA256TreeHash()).append(",");
         if (getArchiveSHA256TreeHash() != null)
-            sb.append("ArchiveSHA256TreeHash: " + getArchiveSHA256TreeHash() + ",");
+            sb.append("ArchiveSHA256TreeHash: ").append(getArchiveSHA256TreeHash()).append(",");
         if (getRetrievalByteRange() != null)
-            sb.append("RetrievalByteRange: " + getRetrievalByteRange() + ",");
+            sb.append("RetrievalByteRange: ").append(getRetrievalByteRange()).append(",");
+        if (getTier() != null)
+            sb.append("Tier: ").append(getTier()).append(",");
         if (getInventoryRetrievalParameters() != null)
-            sb.append("InventoryRetrievalParameters: " + getInventoryRetrievalParameters());
+            sb.append("InventoryRetrievalParameters: ").append(getInventoryRetrievalParameters());
         sb.append("}");
         return sb.toString();
     }
@@ -1279,6 +1336,10 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
             return false;
         if (other.getRetrievalByteRange() != null && other.getRetrievalByteRange().equals(this.getRetrievalByteRange()) == false)
             return false;
+        if (other.getTier() == null ^ this.getTier() == null)
+            return false;
+        if (other.getTier() != null && other.getTier().equals(this.getTier()) == false)
+            return false;
         if (other.getInventoryRetrievalParameters() == null ^ this.getInventoryRetrievalParameters() == null)
             return false;
         if (other.getInventoryRetrievalParameters() != null && other.getInventoryRetrievalParameters().equals(this.getInventoryRetrievalParameters()) == false)
@@ -1307,6 +1368,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
         hashCode = prime * hashCode + ((getSHA256TreeHash() == null) ? 0 : getSHA256TreeHash().hashCode());
         hashCode = prime * hashCode + ((getArchiveSHA256TreeHash() == null) ? 0 : getArchiveSHA256TreeHash().hashCode());
         hashCode = prime * hashCode + ((getRetrievalByteRange() == null) ? 0 : getRetrievalByteRange().hashCode());
+        hashCode = prime * hashCode + ((getTier() == null) ? 0 : getTier().hashCode());
         hashCode = prime * hashCode + ((getInventoryRetrievalParameters() == null) ? 0 : getInventoryRetrievalParameters().hashCode());
         return hashCode;
     }
@@ -1319,4 +1381,5 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

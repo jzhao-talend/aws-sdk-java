@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.inspector.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.inspector.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * DescribeRulesPackagesResult JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeRulesPackagesResultJsonUnmarshaller implements Unmarshaller<DescribeRulesPackagesResult, JsonUnmarshallerContext> {
 
     public DescribeRulesPackagesResult unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class DescribeRulesPackagesResultJsonUnmarshaller implements Unmarshaller
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
-            return null;
+        if (token == VALUE_NULL) {
+            return describeRulesPackagesResult;
+        }
 
         while (true) {
             if (token == null)

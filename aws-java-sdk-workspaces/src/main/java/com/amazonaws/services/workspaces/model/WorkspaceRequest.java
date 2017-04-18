@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a WorkSpace creation request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/WorkspaceRequest" target="_top">AWS API
+ *      Documentation</a>
  */
-public class WorkspaceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WorkspaceRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -462,21 +469,21 @@ public class WorkspaceRequest implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getUserName() != null)
-            sb.append("UserName: " + getUserName() + ",");
+            sb.append("UserName: ").append(getUserName()).append(",");
         if (getBundleId() != null)
-            sb.append("BundleId: " + getBundleId() + ",");
+            sb.append("BundleId: ").append(getBundleId()).append(",");
         if (getVolumeEncryptionKey() != null)
-            sb.append("VolumeEncryptionKey: " + getVolumeEncryptionKey() + ",");
+            sb.append("VolumeEncryptionKey: ").append(getVolumeEncryptionKey()).append(",");
         if (getUserVolumeEncryptionEnabled() != null)
-            sb.append("UserVolumeEncryptionEnabled: " + getUserVolumeEncryptionEnabled() + ",");
+            sb.append("UserVolumeEncryptionEnabled: ").append(getUserVolumeEncryptionEnabled()).append(",");
         if (getRootVolumeEncryptionEnabled() != null)
-            sb.append("RootVolumeEncryptionEnabled: " + getRootVolumeEncryptionEnabled() + ",");
+            sb.append("RootVolumeEncryptionEnabled: ").append(getRootVolumeEncryptionEnabled()).append(",");
         if (getWorkspaceProperties() != null)
-            sb.append("WorkspaceProperties: " + getWorkspaceProperties() + ",");
+            sb.append("WorkspaceProperties: ").append(getWorkspaceProperties()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -549,5 +556,11 @@ public class WorkspaceRequest implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.workspaces.model.transform.WorkspaceRequestMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

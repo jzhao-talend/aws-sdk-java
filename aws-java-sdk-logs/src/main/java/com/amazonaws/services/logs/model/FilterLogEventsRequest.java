@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,76 +13,79 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilterLogEvents" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group to query.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
     /**
      * <p>
-     * Optional list of log stream names within the specified log group to search. Defaults to all the log streams in
-     * the log group.
+     * Optional list of log stream names.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> logStreamNames;
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
+     * The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with
      * a timestamp prior to this time are not returned.
      * </p>
      */
     private Long startTime;
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
-     * a timestamp later than this time are not returned.
+     * The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a
+     * timestamp later than this time are not returned.
      * </p>
      */
     private Long endTime;
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events are
-     * matched.
+     * The filter pattern to use. If not provided, all the events are matched.
      * </p>
      */
     private String filterPattern;
     /**
      * <p>
-     * A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     * FilterLogEvents results. This token is omitted from the response when there are no other events to display.
+     * The token for the next set of events to return. (You received this token from a previous call.)
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * The maximum number of events to return in a page of results. Default is 10,000 events.
+     * The maximum number of events to return. The default is 10,000 events.
      * </p>
      */
     private Integer limit;
     /**
      * <p>
-     * If provided, the API will make a best effort to provide responses that contain events from multiple log streams
-     * within the log group interleaved in a single response. If not provided, all the matched log events in the first
-     * log stream will be searched first, then those in the next log stream, etc.
+     * If the value is true, the operation makes a best effort to provide responses that contain events from multiple
+     * log streams within the log group interleaved in a single response. If the value is false all the matched log
+     * events in the first log stream are searched first, then those in the next log stream, and so on. The default is
+     * false.
      * </p>
      */
     private Boolean interleaved;
 
     /**
      * <p>
-     * The name of the log group to query.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to query.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -91,10 +94,10 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The name of the log group to query.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group to query.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -103,11 +106,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The name of the log group to query.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to query.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -118,12 +121,10 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Optional list of log stream names within the specified log group to search. Defaults to all the log streams in
-     * the log group.
+     * Optional list of log stream names.
      * </p>
      * 
-     * @return Optional list of log stream names within the specified log group to search. Defaults to all the log
-     *         streams in the log group.
+     * @return Optional list of log stream names.
      */
 
     public java.util.List<String> getLogStreamNames() {
@@ -135,13 +136,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Optional list of log stream names within the specified log group to search. Defaults to all the log streams in
-     * the log group.
+     * Optional list of log stream names.
      * </p>
      * 
      * @param logStreamNames
-     *        Optional list of log stream names within the specified log group to search. Defaults to all the log
-     *        streams in the log group.
+     *        Optional list of log stream names.
      */
 
     public void setLogStreamNames(java.util.Collection<String> logStreamNames) {
@@ -155,8 +154,7 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Optional list of log stream names within the specified log group to search. Defaults to all the log streams in
-     * the log group.
+     * Optional list of log stream names.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -165,8 +163,7 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * 
      * @param logStreamNames
-     *        Optional list of log stream names within the specified log group to search. Defaults to all the log
-     *        streams in the log group.
+     *        Optional list of log stream names.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -182,13 +179,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Optional list of log stream names within the specified log group to search. Defaults to all the log streams in
-     * the log group.
+     * Optional list of log stream names.
      * </p>
      * 
      * @param logStreamNames
-     *        Optional list of log stream names within the specified log group to search. Defaults to all the log
-     *        streams in the log group.
+     *        Optional list of log stream names.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -199,13 +194,13 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
+     * The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with
      * a timestamp prior to this time are not returned.
      * </p>
      * 
      * @param startTime
-     *        A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *        events with a timestamp prior to this time are not returned.
+     *        The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     *        Events with a timestamp prior to this time are not returned.
      */
 
     public void setStartTime(Long startTime) {
@@ -214,12 +209,12 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
+     * The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with
      * a timestamp prior to this time are not returned.
      * </p>
      * 
-     * @return A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *         events with a timestamp prior to this time are not returned.
+     * @return The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     *         Events with a timestamp prior to this time are not returned.
      */
 
     public Long getStartTime() {
@@ -228,13 +223,13 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
+     * The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with
      * a timestamp prior to this time are not returned.
      * </p>
      * 
      * @param startTime
-     *        A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *        events with a timestamp prior to this time are not returned.
+     *        The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     *        Events with a timestamp prior to this time are not returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -245,13 +240,13 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
-     * a timestamp later than this time are not returned.
+     * The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a
+     * timestamp later than this time are not returned.
      * </p>
      * 
      * @param endTime
-     *        A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *        events with a timestamp later than this time are not returned.
+     *        The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events
+     *        with a timestamp later than this time are not returned.
      */
 
     public void setEndTime(Long endTime) {
@@ -260,12 +255,12 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
-     * a timestamp later than this time are not returned.
+     * The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a
+     * timestamp later than this time are not returned.
      * </p>
      * 
-     * @return A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *         events with a timestamp later than this time are not returned.
+     * @return The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events
+     *         with a timestamp later than this time are not returned.
      */
 
     public Long getEndTime() {
@@ -274,13 +269,13 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with
-     * a timestamp later than this time are not returned.
+     * The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a
+     * timestamp later than this time are not returned.
      * </p>
      * 
      * @param endTime
-     *        A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided,
-     *        events with a timestamp later than this time are not returned.
+     *        The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events
+     *        with a timestamp later than this time are not returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -291,13 +286,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events are
-     * matched.
+     * The filter pattern to use. If not provided, all the events are matched.
      * </p>
      * 
      * @param filterPattern
-     *        A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events
-     *        are matched.
+     *        The filter pattern to use. If not provided, all the events are matched.
      */
 
     public void setFilterPattern(String filterPattern) {
@@ -306,12 +299,10 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events are
-     * matched.
+     * The filter pattern to use. If not provided, all the events are matched.
      * </p>
      * 
-     * @return A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events
-     *         are matched.
+     * @return The filter pattern to use. If not provided, all the events are matched.
      */
 
     public String getFilterPattern() {
@@ -320,13 +311,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events are
-     * matched.
+     * The filter pattern to use. If not provided, all the events are matched.
      * </p>
      * 
      * @param filterPattern
-     *        A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events
-     *        are matched.
+     *        The filter pattern to use. If not provided, all the events are matched.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,14 +326,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     * FilterLogEvents results. This token is omitted from the response when there are no other events to display.
+     * The token for the next set of events to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     *        FilterLogEvents results. This token is omitted from the response when there are no other events to
-     *        display.
+     *        The token for the next set of events to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -353,13 +339,10 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     * FilterLogEvents results. This token is omitted from the response when there are no other events to display.
+     * The token for the next set of events to return. (You received this token from a previous call.)
      * </p>
      * 
-     * @return A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     *         FilterLogEvents results. This token is omitted from the response when there are no other events to
-     *         display.
+     * @return The token for the next set of events to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -368,14 +351,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     * FilterLogEvents results. This token is omitted from the response when there are no other events to display.
+     * The token for the next set of events to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the
-     *        FilterLogEvents results. This token is omitted from the response when there are no other events to
-     *        display.
+     *        The token for the next set of events to return. (You received this token from a previous call.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -386,11 +366,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The maximum number of events to return in a page of results. Default is 10,000 events.
+     * The maximum number of events to return. The default is 10,000 events.
      * </p>
      * 
      * @param limit
-     *        The maximum number of events to return in a page of results. Default is 10,000 events.
+     *        The maximum number of events to return. The default is 10,000 events.
      */
 
     public void setLimit(Integer limit) {
@@ -399,10 +379,10 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The maximum number of events to return in a page of results. Default is 10,000 events.
+     * The maximum number of events to return. The default is 10,000 events.
      * </p>
      * 
-     * @return The maximum number of events to return in a page of results. Default is 10,000 events.
+     * @return The maximum number of events to return. The default is 10,000 events.
      */
 
     public Integer getLimit() {
@@ -411,11 +391,11 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The maximum number of events to return in a page of results. Default is 10,000 events.
+     * The maximum number of events to return. The default is 10,000 events.
      * </p>
      * 
      * @param limit
-     *        The maximum number of events to return in a page of results. Default is 10,000 events.
+     *        The maximum number of events to return. The default is 10,000 events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -426,15 +406,17 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * If provided, the API will make a best effort to provide responses that contain events from multiple log streams
-     * within the log group interleaved in a single response. If not provided, all the matched log events in the first
-     * log stream will be searched first, then those in the next log stream, etc.
+     * If the value is true, the operation makes a best effort to provide responses that contain events from multiple
+     * log streams within the log group interleaved in a single response. If the value is false all the matched log
+     * events in the first log stream are searched first, then those in the next log stream, and so on. The default is
+     * false.
      * </p>
      * 
      * @param interleaved
-     *        If provided, the API will make a best effort to provide responses that contain events from multiple log
-     *        streams within the log group interleaved in a single response. If not provided, all the matched log events
-     *        in the first log stream will be searched first, then those in the next log stream, etc.
+     *        If the value is true, the operation makes a best effort to provide responses that contain events from
+     *        multiple log streams within the log group interleaved in a single response. If the value is false all the
+     *        matched log events in the first log stream are searched first, then those in the next log stream, and so
+     *        on. The default is false.
      */
 
     public void setInterleaved(Boolean interleaved) {
@@ -443,14 +425,16 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * If provided, the API will make a best effort to provide responses that contain events from multiple log streams
-     * within the log group interleaved in a single response. If not provided, all the matched log events in the first
-     * log stream will be searched first, then those in the next log stream, etc.
+     * If the value is true, the operation makes a best effort to provide responses that contain events from multiple
+     * log streams within the log group interleaved in a single response. If the value is false all the matched log
+     * events in the first log stream are searched first, then those in the next log stream, and so on. The default is
+     * false.
      * </p>
      * 
-     * @return If provided, the API will make a best effort to provide responses that contain events from multiple log
-     *         streams within the log group interleaved in a single response. If not provided, all the matched log
-     *         events in the first log stream will be searched first, then those in the next log stream, etc.
+     * @return If the value is true, the operation makes a best effort to provide responses that contain events from
+     *         multiple log streams within the log group interleaved in a single response. If the value is false all the
+     *         matched log events in the first log stream are searched first, then those in the next log stream, and so
+     *         on. The default is false.
      */
 
     public Boolean getInterleaved() {
@@ -459,15 +443,17 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * If provided, the API will make a best effort to provide responses that contain events from multiple log streams
-     * within the log group interleaved in a single response. If not provided, all the matched log events in the first
-     * log stream will be searched first, then those in the next log stream, etc.
+     * If the value is true, the operation makes a best effort to provide responses that contain events from multiple
+     * log streams within the log group interleaved in a single response. If the value is false all the matched log
+     * events in the first log stream are searched first, then those in the next log stream, and so on. The default is
+     * false.
      * </p>
      * 
      * @param interleaved
-     *        If provided, the API will make a best effort to provide responses that contain events from multiple log
-     *        streams within the log group interleaved in a single response. If not provided, all the matched log events
-     *        in the first log stream will be searched first, then those in the next log stream, etc.
+     *        If the value is true, the operation makes a best effort to provide responses that contain events from
+     *        multiple log streams within the log group interleaved in a single response. If the value is false all the
+     *        matched log events in the first log stream are searched first, then those in the next log stream, and so
+     *        on. The default is false.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -478,14 +464,16 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * If provided, the API will make a best effort to provide responses that contain events from multiple log streams
-     * within the log group interleaved in a single response. If not provided, all the matched log events in the first
-     * log stream will be searched first, then those in the next log stream, etc.
+     * If the value is true, the operation makes a best effort to provide responses that contain events from multiple
+     * log streams within the log group interleaved in a single response. If the value is false all the matched log
+     * events in the first log stream are searched first, then those in the next log stream, and so on. The default is
+     * false.
      * </p>
      * 
-     * @return If provided, the API will make a best effort to provide responses that contain events from multiple log
-     *         streams within the log group interleaved in a single response. If not provided, all the matched log
-     *         events in the first log stream will be searched first, then those in the next log stream, etc.
+     * @return If the value is true, the operation makes a best effort to provide responses that contain events from
+     *         multiple log streams within the log group interleaved in a single response. If the value is false all the
+     *         matched log events in the first log stream are searched first, then those in the next log stream, and so
+     *         on. The default is false.
      */
 
     public Boolean isInterleaved() {
@@ -504,21 +492,21 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getLogStreamNames() != null)
-            sb.append("LogStreamNames: " + getLogStreamNames() + ",");
+            sb.append("LogStreamNames: ").append(getLogStreamNames()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getFilterPattern() != null)
-            sb.append("FilterPattern: " + getFilterPattern() + ",");
+            sb.append("FilterPattern: ").append(getFilterPattern()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getInterleaved() != null)
-            sb.append("Interleaved: " + getInterleaved());
+            sb.append("Interleaved: ").append(getInterleaved());
         sb.append("}");
         return sb.toString();
     }
@@ -588,4 +576,5 @@ public class FilterLogEventsRequest extends com.amazonaws.AmazonWebServiceReques
     public FilterLogEventsRequest clone() {
         return (FilterLogEventsRequest) super.clone();
     }
+
 }

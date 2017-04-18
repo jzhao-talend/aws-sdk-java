@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.cloudsearchv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -22,6 +23,7 @@ import java.io.Serializable;
  * <code>AlgorithmicStemming</code>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AnalysisScheme implements Serializable, Cloneable {
 
     private String analysisSchemeName;
@@ -143,11 +145,11 @@ public class AnalysisScheme implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAnalysisSchemeName() != null)
-            sb.append("AnalysisSchemeName: " + getAnalysisSchemeName() + ",");
+            sb.append("AnalysisSchemeName: ").append(getAnalysisSchemeName()).append(",");
         if (getAnalysisSchemeLanguage() != null)
-            sb.append("AnalysisSchemeLanguage: " + getAnalysisSchemeLanguage() + ",");
+            sb.append("AnalysisSchemeLanguage: ").append(getAnalysisSchemeLanguage()).append(",");
         if (getAnalysisOptions() != null)
-            sb.append("AnalysisOptions: " + getAnalysisOptions());
+            sb.append("AnalysisOptions: ").append(getAnalysisOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -196,4 +198,5 @@ public class AnalysisScheme implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

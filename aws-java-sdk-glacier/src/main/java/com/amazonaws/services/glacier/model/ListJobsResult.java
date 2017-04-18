@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -29,8 +31,9 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     private java.util.List<GlacierJobDescription> jobList;
     /**
      * <p>
-     * An opaque string that represents where to continue pagination of the results. You use this value in a new List
-     * Jobs request to obtain more jobs in the list. If there are no more jobs, this value is <code>null</code>.
+     * An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get
+     * the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs request.
      * </p>
      */
     private String marker;
@@ -107,14 +110,15 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * An opaque string that represents where to continue pagination of the results. You use this value in a new List
-     * Jobs request to obtain more jobs in the list. If there are no more jobs, this value is <code>null</code>.
+     * An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get
+     * the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs request.
      * </p>
      * 
      * @param marker
-     *        An opaque string that represents where to continue pagination of the results. You use this value in a new
-     *        List Jobs request to obtain more jobs in the list. If there are no more jobs, this value is
-     *        <code>null</code>.
+     *        An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You
+     *        get the <code>marker</code> value from a previous List Jobs response. You only need to include the marker
+     *        if you are continuing the pagination of the results started in a previous List Jobs request.
      */
 
     public void setMarker(String marker) {
@@ -123,13 +127,14 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * An opaque string that represents where to continue pagination of the results. You use this value in a new List
-     * Jobs request to obtain more jobs in the list. If there are no more jobs, this value is <code>null</code>.
+     * An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get
+     * the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs request.
      * </p>
      * 
-     * @return An opaque string that represents where to continue pagination of the results. You use this value in a new
-     *         List Jobs request to obtain more jobs in the list. If there are no more jobs, this value is
-     *         <code>null</code>.
+     * @return An opaque string used for pagination that specifies the job at which the listing of jobs should begin.
+     *         You get the <code>marker</code> value from a previous List Jobs response. You only need to include the
+     *         marker if you are continuing the pagination of the results started in a previous List Jobs request.
      */
 
     public String getMarker() {
@@ -138,14 +143,15 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * An opaque string that represents where to continue pagination of the results. You use this value in a new List
-     * Jobs request to obtain more jobs in the list. If there are no more jobs, this value is <code>null</code>.
+     * An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get
+     * the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs request.
      * </p>
      * 
      * @param marker
-     *        An opaque string that represents where to continue pagination of the results. You use this value in a new
-     *        List Jobs request to obtain more jobs in the list. If there are no more jobs, this value is
-     *        <code>null</code>.
+     *        An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You
+     *        get the <code>marker</code> value from a previous List Jobs response. You only need to include the marker
+     *        if you are continuing the pagination of the results started in a previous List Jobs request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -166,9 +172,9 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobList() != null)
-            sb.append("JobList: " + getJobList() + ",");
+            sb.append("JobList: ").append(getJobList()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -212,4 +218,5 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

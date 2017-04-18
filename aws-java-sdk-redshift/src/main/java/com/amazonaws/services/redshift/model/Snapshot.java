@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a snapshot.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/Snapshot" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Snapshot implements Serializable, Cloneable {
 
     /**
@@ -1773,63 +1778,63 @@ public class Snapshot implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotIdentifier() != null)
-            sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
+            sb.append("SnapshotIdentifier: ").append(getSnapshotIdentifier()).append(",");
         if (getClusterIdentifier() != null)
-            sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+            sb.append("ClusterIdentifier: ").append(getClusterIdentifier()).append(",");
         if (getSnapshotCreateTime() != null)
-            sb.append("SnapshotCreateTime: " + getSnapshotCreateTime() + ",");
+            sb.append("SnapshotCreateTime: ").append(getSnapshotCreateTime()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getClusterCreateTime() != null)
-            sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");
+            sb.append("ClusterCreateTime: ").append(getClusterCreateTime()).append(",");
         if (getMasterUsername() != null)
-            sb.append("MasterUsername: " + getMasterUsername() + ",");
+            sb.append("MasterUsername: ").append(getMasterUsername()).append(",");
         if (getClusterVersion() != null)
-            sb.append("ClusterVersion: " + getClusterVersion() + ",");
+            sb.append("ClusterVersion: ").append(getClusterVersion()).append(",");
         if (getSnapshotType() != null)
-            sb.append("SnapshotType: " + getSnapshotType() + ",");
+            sb.append("SnapshotType: ").append(getSnapshotType()).append(",");
         if (getNodeType() != null)
-            sb.append("NodeType: " + getNodeType() + ",");
+            sb.append("NodeType: ").append(getNodeType()).append(",");
         if (getNumberOfNodes() != null)
-            sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+            sb.append("NumberOfNodes: ").append(getNumberOfNodes()).append(",");
         if (getDBName() != null)
-            sb.append("DBName: " + getDBName() + ",");
+            sb.append("DBName: ").append(getDBName()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
+            sb.append("Encrypted: ").append(getEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getEncryptedWithHSM() != null)
-            sb.append("EncryptedWithHSM: " + getEncryptedWithHSM() + ",");
+            sb.append("EncryptedWithHSM: ").append(getEncryptedWithHSM()).append(",");
         if (getAccountsWithRestoreAccess() != null)
-            sb.append("AccountsWithRestoreAccess: " + getAccountsWithRestoreAccess() + ",");
+            sb.append("AccountsWithRestoreAccess: ").append(getAccountsWithRestoreAccess()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getTotalBackupSizeInMegaBytes() != null)
-            sb.append("TotalBackupSizeInMegaBytes: " + getTotalBackupSizeInMegaBytes() + ",");
+            sb.append("TotalBackupSizeInMegaBytes: ").append(getTotalBackupSizeInMegaBytes()).append(",");
         if (getActualIncrementalBackupSizeInMegaBytes() != null)
-            sb.append("ActualIncrementalBackupSizeInMegaBytes: " + getActualIncrementalBackupSizeInMegaBytes() + ",");
+            sb.append("ActualIncrementalBackupSizeInMegaBytes: ").append(getActualIncrementalBackupSizeInMegaBytes()).append(",");
         if (getBackupProgressInMegaBytes() != null)
-            sb.append("BackupProgressInMegaBytes: " + getBackupProgressInMegaBytes() + ",");
+            sb.append("BackupProgressInMegaBytes: ").append(getBackupProgressInMegaBytes()).append(",");
         if (getCurrentBackupRateInMegaBytesPerSecond() != null)
-            sb.append("CurrentBackupRateInMegaBytesPerSecond: " + getCurrentBackupRateInMegaBytesPerSecond() + ",");
+            sb.append("CurrentBackupRateInMegaBytesPerSecond: ").append(getCurrentBackupRateInMegaBytesPerSecond()).append(",");
         if (getEstimatedSecondsToCompletion() != null)
-            sb.append("EstimatedSecondsToCompletion: " + getEstimatedSecondsToCompletion() + ",");
+            sb.append("EstimatedSecondsToCompletion: ").append(getEstimatedSecondsToCompletion()).append(",");
         if (getElapsedTimeInSeconds() != null)
-            sb.append("ElapsedTimeInSeconds: " + getElapsedTimeInSeconds() + ",");
+            sb.append("ElapsedTimeInSeconds: ").append(getElapsedTimeInSeconds()).append(",");
         if (getSourceRegion() != null)
-            sb.append("SourceRegion: " + getSourceRegion() + ",");
+            sb.append("SourceRegion: ").append(getSourceRegion()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getRestorableNodeTypes() != null)
-            sb.append("RestorableNodeTypes: " + getRestorableNodeTypes() + ",");
+            sb.append("RestorableNodeTypes: ").append(getRestorableNodeTypes()).append(",");
         if (getEnhancedVpcRouting() != null)
-            sb.append("EnhancedVpcRouting: " + getEnhancedVpcRouting());
+            sb.append("EnhancedVpcRouting: ").append(getEnhancedVpcRouting());
         sb.append("}");
         return sb.toString();
     }
@@ -2010,4 +2015,5 @@ public class Snapshot implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

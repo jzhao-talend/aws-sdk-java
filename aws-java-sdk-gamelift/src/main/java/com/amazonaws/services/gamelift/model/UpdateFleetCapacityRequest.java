@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateFleetCapacity" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update capacity for.
+     * Unique identifier for a fleet to update capacity for.
      * </p>
      */
     private String fleetId;
@@ -49,11 +55,11 @@ public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update capacity for.
+     * Unique identifier for a fleet to update capacity for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for the fleet you want to update capacity for.
+     *        Unique identifier for a fleet to update capacity for.
      */
 
     public void setFleetId(String fleetId) {
@@ -62,10 +68,10 @@ public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update capacity for.
+     * Unique identifier for a fleet to update capacity for.
      * </p>
      * 
-     * @return Unique identifier for the fleet you want to update capacity for.
+     * @return Unique identifier for a fleet to update capacity for.
      */
 
     public String getFleetId() {
@@ -74,11 +80,11 @@ public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update capacity for.
+     * Unique identifier for a fleet to update capacity for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for the fleet you want to update capacity for.
+     *        Unique identifier for a fleet to update capacity for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -219,13 +225,13 @@ public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getDesiredInstances() != null)
-            sb.append("DesiredInstances: " + getDesiredInstances() + ",");
+            sb.append("DesiredInstances: ").append(getDesiredInstances()).append(",");
         if (getMinSize() != null)
-            sb.append("MinSize: " + getMinSize() + ",");
+            sb.append("MinSize: ").append(getMinSize()).append(",");
         if (getMaxSize() != null)
-            sb.append("MaxSize: " + getMaxSize());
+            sb.append("MaxSize: ").append(getMaxSize());
         sb.append("}");
         return sb.toString();
     }
@@ -275,4 +281,5 @@ public class UpdateFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRe
     public UpdateFleetCapacityRequest clone() {
         return (UpdateFleetCapacityRequest) super.clone();
     }
+
 }

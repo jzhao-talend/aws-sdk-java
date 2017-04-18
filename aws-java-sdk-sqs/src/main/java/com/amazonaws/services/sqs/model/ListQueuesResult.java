@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A list of your queues.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListQueues" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of queue URLs, up to 1000 entries.
+     * A list of queue URLs, up to 1,000 entries.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> queueUrls;
 
     /**
      * <p>
-     * A list of queue URLs, up to 1000 entries.
+     * A list of queue URLs, up to 1,000 entries.
      * </p>
      * 
-     * @return A list of queue URLs, up to 1000 entries.
+     * @return A list of queue URLs, up to 1,000 entries.
      */
 
     public java.util.List<String> getQueueUrls() {
@@ -45,11 +50,11 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A list of queue URLs, up to 1000 entries.
+     * A list of queue URLs, up to 1,000 entries.
      * </p>
      * 
      * @param queueUrls
-     *        A list of queue URLs, up to 1000 entries.
+     *        A list of queue URLs, up to 1,000 entries.
      */
 
     public void setQueueUrls(java.util.Collection<String> queueUrls) {
@@ -63,7 +68,7 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A list of queue URLs, up to 1000 entries.
+     * A list of queue URLs, up to 1,000 entries.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -72,7 +77,7 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
      * </p>
      * 
      * @param queueUrls
-     *        A list of queue URLs, up to 1000 entries.
+     *        A list of queue URLs, up to 1,000 entries.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -88,11 +93,11 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A list of queue URLs, up to 1000 entries.
+     * A list of queue URLs, up to 1,000 entries.
      * </p>
      * 
      * @param queueUrls
-     *        A list of queue URLs, up to 1000 entries.
+     *        A list of queue URLs, up to 1,000 entries.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -113,7 +118,7 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrls() != null)
-            sb.append("QueueUrls: " + getQueueUrls());
+            sb.append("QueueUrls: ").append(getQueueUrls());
         sb.append("}");
         return sb.toString();
     }
@@ -152,4 +157,5 @@ public class ListQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.a
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

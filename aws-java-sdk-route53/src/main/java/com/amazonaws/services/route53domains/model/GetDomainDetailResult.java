@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The GetDomainDetail response includes the following elements.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetDomainDetailResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -1742,47 +1747,47 @@ public class GetDomainDetailResult extends com.amazonaws.AmazonWebServiceResult<
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getNameservers() != null)
-            sb.append("Nameservers: " + getNameservers() + ",");
+            sb.append("Nameservers: ").append(getNameservers()).append(",");
         if (getAutoRenew() != null)
-            sb.append("AutoRenew: " + getAutoRenew() + ",");
+            sb.append("AutoRenew: ").append(getAutoRenew()).append(",");
         if (getAdminContact() != null)
-            sb.append("AdminContact: " + getAdminContact() + ",");
+            sb.append("AdminContact: ").append(getAdminContact()).append(",");
         if (getRegistrantContact() != null)
-            sb.append("RegistrantContact: " + getRegistrantContact() + ",");
+            sb.append("RegistrantContact: ").append(getRegistrantContact()).append(",");
         if (getTechContact() != null)
-            sb.append("TechContact: " + getTechContact() + ",");
+            sb.append("TechContact: ").append(getTechContact()).append(",");
         if (getAdminPrivacy() != null)
-            sb.append("AdminPrivacy: " + getAdminPrivacy() + ",");
+            sb.append("AdminPrivacy: ").append(getAdminPrivacy()).append(",");
         if (getRegistrantPrivacy() != null)
-            sb.append("RegistrantPrivacy: " + getRegistrantPrivacy() + ",");
+            sb.append("RegistrantPrivacy: ").append(getRegistrantPrivacy()).append(",");
         if (getTechPrivacy() != null)
-            sb.append("TechPrivacy: " + getTechPrivacy() + ",");
+            sb.append("TechPrivacy: ").append(getTechPrivacy()).append(",");
         if (getRegistrarName() != null)
-            sb.append("RegistrarName: " + getRegistrarName() + ",");
+            sb.append("RegistrarName: ").append(getRegistrarName()).append(",");
         if (getWhoIsServer() != null)
-            sb.append("WhoIsServer: " + getWhoIsServer() + ",");
+            sb.append("WhoIsServer: ").append(getWhoIsServer()).append(",");
         if (getRegistrarUrl() != null)
-            sb.append("RegistrarUrl: " + getRegistrarUrl() + ",");
+            sb.append("RegistrarUrl: ").append(getRegistrarUrl()).append(",");
         if (getAbuseContactEmail() != null)
-            sb.append("AbuseContactEmail: " + getAbuseContactEmail() + ",");
+            sb.append("AbuseContactEmail: ").append(getAbuseContactEmail()).append(",");
         if (getAbuseContactPhone() != null)
-            sb.append("AbuseContactPhone: " + getAbuseContactPhone() + ",");
+            sb.append("AbuseContactPhone: ").append(getAbuseContactPhone()).append(",");
         if (getRegistryDomainId() != null)
-            sb.append("RegistryDomainId: " + getRegistryDomainId() + ",");
+            sb.append("RegistryDomainId: ").append(getRegistryDomainId()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getUpdatedDate() != null)
-            sb.append("UpdatedDate: " + getUpdatedDate() + ",");
+            sb.append("UpdatedDate: ").append(getUpdatedDate()).append(",");
         if (getExpirationDate() != null)
-            sb.append("ExpirationDate: " + getExpirationDate() + ",");
+            sb.append("ExpirationDate: ").append(getExpirationDate()).append(",");
         if (getReseller() != null)
-            sb.append("Reseller: " + getReseller() + ",");
+            sb.append("Reseller: ").append(getReseller()).append(",");
         if (getDnsSec() != null)
-            sb.append("DnsSec: " + getDnsSec() + ",");
+            sb.append("DnsSec: ").append(getDnsSec()).append(",");
         if (getStatusList() != null)
-            sb.append("StatusList: " + getStatusList());
+            sb.append("StatusList: ").append(getStatusList());
         sb.append("}");
         return sb.toString();
     }
@@ -1921,4 +1926,5 @@ public class GetDomainDetailResult extends com.amazonaws.AmazonWebServiceResult<
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

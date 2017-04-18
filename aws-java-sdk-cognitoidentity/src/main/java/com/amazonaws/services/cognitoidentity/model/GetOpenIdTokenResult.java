@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,23 +13,38 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
  * Returned in response to a successful GetOpenIdToken request.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdToken" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on
      * input.
+     * </p>
      */
     private String identityId;
-    /** An OpenID token, valid for 15 minutes. */
+    /**
+     * <p>
+     * An OpenID token, valid for 15 minutes.
+     * </p>
+     */
     private String token;
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on
      * input.
+     * </p>
      * 
      * @param identityId
      *        A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one
@@ -41,8 +56,10 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on
      * input.
+     * </p>
      * 
      * @return A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one
      *         passed on input.
@@ -53,8 +70,10 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on
      * input.
+     * </p>
      * 
      * @param identityId
      *        A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one
@@ -68,7 +87,9 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An OpenID token, valid for 15 minutes.
+     * </p>
      * 
      * @param token
      *        An OpenID token, valid for 15 minutes.
@@ -79,7 +100,9 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An OpenID token, valid for 15 minutes.
+     * </p>
      * 
      * @return An OpenID token, valid for 15 minutes.
      */
@@ -89,7 +112,9 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An OpenID token, valid for 15 minutes.
+     * </p>
      * 
      * @param token
      *        An OpenID token, valid for 15 minutes.
@@ -113,9 +138,9 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId() + ",");
+            sb.append("IdentityId: ").append(getIdentityId()).append(",");
         if (getToken() != null)
-            sb.append("Token: " + getToken());
+            sb.append("Token: ").append(getToken());
         sb.append("}");
         return sb.toString();
     }
@@ -159,4 +184,5 @@ public class GetOpenIdTokenResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

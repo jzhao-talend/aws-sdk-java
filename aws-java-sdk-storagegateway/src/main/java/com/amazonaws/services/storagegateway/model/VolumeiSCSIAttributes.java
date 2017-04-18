@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Lists iSCSI information about a volume.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/VolumeiSCSIAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
-public class VolumeiSCSIAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class VolumeiSCSIAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -276,15 +283,15 @@ public class VolumeiSCSIAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetARN() != null)
-            sb.append("TargetARN: " + getTargetARN() + ",");
+            sb.append("TargetARN: ").append(getTargetARN()).append(",");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getNetworkInterfacePort() != null)
-            sb.append("NetworkInterfacePort: " + getNetworkInterfacePort() + ",");
+            sb.append("NetworkInterfacePort: ").append(getNetworkInterfacePort()).append(",");
         if (getLunNumber() != null)
-            sb.append("LunNumber: " + getLunNumber() + ",");
+            sb.append("LunNumber: ").append(getLunNumber()).append(",");
         if (getChapEnabled() != null)
-            sb.append("ChapEnabled: " + getChapEnabled());
+            sb.append("ChapEnabled: ").append(getChapEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -342,5 +349,11 @@ public class VolumeiSCSIAttributes implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.VolumeiSCSIAttributesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

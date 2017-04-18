@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddTagsToResource" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -28,7 +33,7 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
     private String resourceId;
     /**
      * <p>
-     * The tags to be assigned to the Amazon Directory Services directory.
+     * The tags to be assigned to the directory.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
@@ -75,10 +80,10 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The tags to be assigned to the Amazon Directory Services directory.
+     * The tags to be assigned to the directory.
      * </p>
      * 
-     * @return The tags to be assigned to the Amazon Directory Services directory.
+     * @return The tags to be assigned to the directory.
      */
 
     public java.util.List<Tag> getTags() {
@@ -90,11 +95,11 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The tags to be assigned to the Amazon Directory Services directory.
+     * The tags to be assigned to the directory.
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the Amazon Directory Services directory.
+     *        The tags to be assigned to the directory.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -108,7 +113,7 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The tags to be assigned to the Amazon Directory Services directory.
+     * The tags to be assigned to the directory.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -117,7 +122,7 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the Amazon Directory Services directory.
+     *        The tags to be assigned to the directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -133,11 +138,11 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The tags to be assigned to the Amazon Directory Services directory.
+     * The tags to be assigned to the directory.
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the Amazon Directory Services directory.
+     *        The tags to be assigned to the directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -158,9 +163,9 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -200,4 +205,5 @@ public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequ
     public AddTagsToResourceRequest clone() {
         return (AddTagsToResourceRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a <code>DescribeSnapshotsMessage</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -74,7 +80,7 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
     private Integer maxRecords;
     /**
      * <p>
-     * A boolean value which if true, the node group (shard) configuration is included in the snapshot description.
+     * A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.
      * </p>
      */
     private Boolean showNodeGroupConfig;
@@ -402,11 +408,11 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A boolean value which if true, the node group (shard) configuration is included in the snapshot description.
+     * A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.
      * </p>
      * 
      * @param showNodeGroupConfig
-     *        A boolean value which if true, the node group (shard) configuration is included in the snapshot
+     *        A Boolean value which if true, the node group (shard) configuration is included in the snapshot
      *        description.
      */
 
@@ -416,10 +422,10 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A boolean value which if true, the node group (shard) configuration is included in the snapshot description.
+     * A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.
      * </p>
      * 
-     * @return A boolean value which if true, the node group (shard) configuration is included in the snapshot
+     * @return A Boolean value which if true, the node group (shard) configuration is included in the snapshot
      *         description.
      */
 
@@ -429,11 +435,11 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A boolean value which if true, the node group (shard) configuration is included in the snapshot description.
+     * A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.
      * </p>
      * 
      * @param showNodeGroupConfig
-     *        A boolean value which if true, the node group (shard) configuration is included in the snapshot
+     *        A Boolean value which if true, the node group (shard) configuration is included in the snapshot
      *        description.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -445,10 +451,10 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * A boolean value which if true, the node group (shard) configuration is included in the snapshot description.
+     * A Boolean value which if true, the node group (shard) configuration is included in the snapshot description.
      * </p>
      * 
-     * @return A boolean value which if true, the node group (shard) configuration is included in the snapshot
+     * @return A Boolean value which if true, the node group (shard) configuration is included in the snapshot
      *         description.
      */
 
@@ -468,19 +474,19 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationGroupId() != null)
-            sb.append("ReplicationGroupId: " + getReplicationGroupId() + ",");
+            sb.append("ReplicationGroupId: ").append(getReplicationGroupId()).append(",");
         if (getCacheClusterId() != null)
-            sb.append("CacheClusterId: " + getCacheClusterId() + ",");
+            sb.append("CacheClusterId: ").append(getCacheClusterId()).append(",");
         if (getSnapshotName() != null)
-            sb.append("SnapshotName: " + getSnapshotName() + ",");
+            sb.append("SnapshotName: ").append(getSnapshotName()).append(",");
         if (getSnapshotSource() != null)
-            sb.append("SnapshotSource: " + getSnapshotSource() + ",");
+            sb.append("SnapshotSource: ").append(getSnapshotSource()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getMaxRecords() != null)
-            sb.append("MaxRecords: " + getMaxRecords() + ",");
+            sb.append("MaxRecords: ").append(getMaxRecords()).append(",");
         if (getShowNodeGroupConfig() != null)
-            sb.append("ShowNodeGroupConfig: " + getShowNodeGroupConfig());
+            sb.append("ShowNodeGroupConfig: ").append(getShowNodeGroupConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -545,4 +551,5 @@ public class DescribeSnapshotsRequest extends com.amazonaws.AmazonWebServiceRequ
     public DescribeSnapshotsRequest clone() {
         return (DescribeSnapshotsRequest) super.clone();
     }
+
 }

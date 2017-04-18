@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.autoscaling;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.autoscaling.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.autoscaling.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling implements AmazonAutoScalingAsync {
 
     protected AbstractAmazonAutoScalingAsync() {
@@ -79,6 +82,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #attachLoadBalancersAsync(AttachLoadBalancersRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<AttachLoadBalancersResult> attachLoadBalancersAsync(
             com.amazonaws.handlers.AsyncHandler<AttachLoadBalancersRequest, AttachLoadBalancersResult> asyncHandler) {
 
@@ -259,6 +263,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeAccountLimitsAsync(DescribeAccountLimitsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAccountLimitsRequest, DescribeAccountLimitsResult> asyncHandler) {
 
@@ -294,6 +299,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeAdjustmentTypesAsync(DescribeAdjustmentTypesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAdjustmentTypesResult> describeAdjustmentTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAdjustmentTypesRequest, DescribeAdjustmentTypesResult> asyncHandler) {
 
@@ -329,6 +335,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeAutoScalingGroupsAsync(DescribeAutoScalingGroupsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAutoScalingGroupsResult> describeAutoScalingGroupsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAutoScalingGroupsRequest, DescribeAutoScalingGroupsResult> asyncHandler) {
 
@@ -364,6 +371,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeAutoScalingInstancesAsync(DescribeAutoScalingInstancesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAutoScalingInstancesResult> describeAutoScalingInstancesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAutoScalingInstancesRequest, DescribeAutoScalingInstancesResult> asyncHandler) {
 
@@ -402,6 +410,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      * @see #describeAutoScalingNotificationTypesAsync(DescribeAutoScalingNotificationTypesRequest,
      *      com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAutoScalingNotificationTypesResult> describeAutoScalingNotificationTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAutoScalingNotificationTypesRequest, DescribeAutoScalingNotificationTypesResult> asyncHandler) {
 
@@ -437,6 +446,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeLaunchConfigurationsAsync(DescribeLaunchConfigurationsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLaunchConfigurationsResult> describeLaunchConfigurationsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLaunchConfigurationsRequest, DescribeLaunchConfigurationsResult> asyncHandler) {
 
@@ -472,6 +482,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeLifecycleHookTypesAsync(DescribeLifecycleHookTypesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLifecycleHookTypesResult> describeLifecycleHookTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLifecycleHookTypesRequest, DescribeLifecycleHookTypesResult> asyncHandler) {
 
@@ -549,6 +560,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      * @see #describeMetricCollectionTypesAsync(DescribeMetricCollectionTypesRequest,
      *      com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeMetricCollectionTypesResult> describeMetricCollectionTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeMetricCollectionTypesRequest, DescribeMetricCollectionTypesResult> asyncHandler) {
 
@@ -587,6 +599,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      * @see #describeNotificationConfigurationsAsync(DescribeNotificationConfigurationsRequest,
      *      com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeNotificationConfigurationsResult> describeNotificationConfigurationsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeNotificationConfigurationsRequest, DescribeNotificationConfigurationsResult> asyncHandler) {
 
@@ -622,6 +635,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describePoliciesAsync(DescribePoliciesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribePoliciesResult> describePoliciesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribePoliciesRequest, DescribePoliciesResult> asyncHandler) {
 
@@ -657,6 +671,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeScalingActivitiesAsync(DescribeScalingActivitiesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeScalingActivitiesResult> describeScalingActivitiesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeScalingActivitiesRequest, DescribeScalingActivitiesResult> asyncHandler) {
 
@@ -692,6 +707,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeScalingProcessTypesAsync(DescribeScalingProcessTypesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeScalingProcessTypesResult> describeScalingProcessTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeScalingProcessTypesRequest, DescribeScalingProcessTypesResult> asyncHandler) {
 
@@ -727,6 +743,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeScheduledActionsAsync(DescribeScheduledActionsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeScheduledActionsResult> describeScheduledActionsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeScheduledActionsRequest, DescribeScheduledActionsResult> asyncHandler) {
 
@@ -762,6 +779,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #describeTagsAsync(DescribeTagsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeTagsRequest, DescribeTagsResult> asyncHandler) {
 
@@ -798,6 +816,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      * @see #describeTerminationPolicyTypesAsync(DescribeTerminationPolicyTypesRequest,
      *      com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeTerminationPolicyTypesResult> describeTerminationPolicyTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeTerminationPolicyTypesRequest, DescribeTerminationPolicyTypesResult> asyncHandler) {
 
@@ -859,6 +878,7 @@ public class AbstractAmazonAutoScalingAsync extends AbstractAmazonAutoScaling im
      *
      * @see #detachLoadBalancersAsync(DetachLoadBalancersRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DetachLoadBalancersResult> detachLoadBalancersAsync(
             com.amazonaws.handlers.AsyncHandler<DetachLoadBalancersRequest, DetachLoadBalancersResult> asyncHandler) {
 

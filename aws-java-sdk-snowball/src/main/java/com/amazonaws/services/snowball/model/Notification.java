@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -25,8 +28,12 @@ import java.io.Serializable;
  * job states using the <code>JobStatesToNotify</code> array of strings, or you can specify that you want to have Amazon
  * SNS notifications sent out for all job states with <code>NotifyAll</code> set to true.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/Notification" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Notification implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Notification implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -35,9 +42,9 @@ public class Notification implements Serializable, Cloneable {
      * href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.
      * </p>
      * <p>
-     * Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by
-     * using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
-     * Notification Service (SNS) API action.
+     * You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a
+     * href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service
+     * (SNS) API action.
      * </p>
      */
     private String snsTopicARN;
@@ -61,9 +68,9 @@ public class Notification implements Serializable, Cloneable {
      * href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.
      * </p>
      * <p>
-     * Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by
-     * using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
-     * Notification Service (SNS) API action.
+     * You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a
+     * href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service
+     * (SNS) API action.
      * </p>
      * 
      * @param snsTopicARN
@@ -72,9 +79,9 @@ public class Notification implements Serializable, Cloneable {
      *        href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API
      *        action.</p>
      *        <p>
-     *        Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or
-     *        by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS
-     *        Simple Notification Service (SNS) API action.
+     *        You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using
+     *        the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
+     *        Notification Service (SNS) API action.
      */
 
     public void setSnsTopicARN(String snsTopicARN) {
@@ -88,9 +95,9 @@ public class Notification implements Serializable, Cloneable {
      * href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.
      * </p>
      * <p>
-     * Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by
-     * using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
-     * Notification Service (SNS) API action.
+     * You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a
+     * href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service
+     * (SNS) API action.
      * </p>
      * 
      * @return The new SNS <code>TopicArn</code> that you want to associate with this job. You can create Amazon
@@ -98,9 +105,9 @@ public class Notification implements Serializable, Cloneable {
      *         href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API
      *         action.</p>
      *         <p>
-     *         Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or
-     *         by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS
-     *         Simple Notification Service (SNS) API action.
+     *         You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using
+     *         the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
+     *         Notification Service (SNS) API action.
      */
 
     public String getSnsTopicARN() {
@@ -114,9 +121,9 @@ public class Notification implements Serializable, Cloneable {
      * href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.
      * </p>
      * <p>
-     * Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by
-     * using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
-     * Notification Service (SNS) API action.
+     * You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a
+     * href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service
+     * (SNS) API action.
      * </p>
      * 
      * @param snsTopicARN
@@ -125,9 +132,9 @@ public class Notification implements Serializable, Cloneable {
      *        href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API
      *        action.</p>
      *        <p>
-     *        Note that you can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or
-     *        by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS
-     *        Simple Notification Service (SNS) API action.
+     *        You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using
+     *        the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple
+     *        Notification Service (SNS) API action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -298,11 +305,11 @@ public class Notification implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnsTopicARN() != null)
-            sb.append("SnsTopicARN: " + getSnsTopicARN() + ",");
+            sb.append("SnsTopicARN: ").append(getSnsTopicARN()).append(",");
         if (getJobStatesToNotify() != null)
-            sb.append("JobStatesToNotify: " + getJobStatesToNotify() + ",");
+            sb.append("JobStatesToNotify: ").append(getJobStatesToNotify()).append(",");
         if (getNotifyAll() != null)
-            sb.append("NotifyAll: " + getNotifyAll());
+            sb.append("NotifyAll: ").append(getNotifyAll());
         sb.append("}");
         return sb.toString();
     }
@@ -350,5 +357,11 @@ public class Notification implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.NotificationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

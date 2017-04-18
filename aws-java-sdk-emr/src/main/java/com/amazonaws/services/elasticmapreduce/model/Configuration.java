@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <note>
@@ -21,45 +24,45 @@ import java.io.Serializable;
  * </p>
  * </note>
  * <p>
- * Specifies a hardware and software configuration of the EMR cluster. This includes configurations for applications and
- * software bundled with Amazon EMR. The Configuration object is a JSON object which is defined by a classification and
- * a set of properties. Configurations can be nested, so a configuration may have its own Configuration objects listed.
+ * An optional configuration specification to be used when provisioning cluster instances, which can include
+ * configurations for applications and software bundled with Amazon EMR. A configuration consists of a classification,
+ * properties, and optional nested configurations. A classification refers to an application-specific configuration
+ * file. Properties are the settings you want to change in that file. For more information, see <a
+ * href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html">Configuring Applications</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/Configuration" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Configuration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Configuration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The classification of a configuration. For more information see, <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     * Configurations</a>.
+     * The classification within a configuration.
      * </p>
      */
     private String classification;
     /**
      * <p>
-     * A list of configurations you apply to this configuration object.
+     * A list of additional configurations to apply within a configuration object.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Configuration> configurations;
     /**
      * <p>
-     * A set of properties supplied to the Configuration object.
+     * A set of properties specified within a configuration classification.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalMap<String, String> properties;
 
     /**
      * <p>
-     * The classification of a configuration. For more information see, <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     * Configurations</a>.
+     * The classification within a configuration.
      * </p>
      * 
      * @param classification
-     *        The classification of a configuration. For more information see, <a
-     *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     *        Configurations</a>.
+     *        The classification within a configuration.
      */
 
     public void setClassification(String classification) {
@@ -68,14 +71,10 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The classification of a configuration. For more information see, <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     * Configurations</a>.
+     * The classification within a configuration.
      * </p>
      * 
-     * @return The classification of a configuration. For more information see, <a
-     *         href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     *         Configurations</a>.
+     * @return The classification within a configuration.
      */
 
     public String getClassification() {
@@ -84,15 +83,11 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The classification of a configuration. For more information see, <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     * Configurations</a>.
+     * The classification within a configuration.
      * </p>
      * 
      * @param classification
-     *        The classification of a configuration. For more information see, <a
-     *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR
-     *        Configurations</a>.
+     *        The classification within a configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -103,10 +98,10 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of configurations you apply to this configuration object.
+     * A list of additional configurations to apply within a configuration object.
      * </p>
      * 
-     * @return A list of configurations you apply to this configuration object.
+     * @return A list of additional configurations to apply within a configuration object.
      */
 
     public java.util.List<Configuration> getConfigurations() {
@@ -118,11 +113,11 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of configurations you apply to this configuration object.
+     * A list of additional configurations to apply within a configuration object.
      * </p>
      * 
      * @param configurations
-     *        A list of configurations you apply to this configuration object.
+     *        A list of additional configurations to apply within a configuration object.
      */
 
     public void setConfigurations(java.util.Collection<Configuration> configurations) {
@@ -136,7 +131,7 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of configurations you apply to this configuration object.
+     * A list of additional configurations to apply within a configuration object.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -145,7 +140,7 @@ public class Configuration implements Serializable, Cloneable {
      * </p>
      * 
      * @param configurations
-     *        A list of configurations you apply to this configuration object.
+     *        A list of additional configurations to apply within a configuration object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -161,11 +156,11 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of configurations you apply to this configuration object.
+     * A list of additional configurations to apply within a configuration object.
      * </p>
      * 
      * @param configurations
-     *        A list of configurations you apply to this configuration object.
+     *        A list of additional configurations to apply within a configuration object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -176,10 +171,10 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A set of properties supplied to the Configuration object.
+     * A set of properties specified within a configuration classification.
      * </p>
      * 
-     * @return A set of properties supplied to the Configuration object.
+     * @return A set of properties specified within a configuration classification.
      */
 
     public java.util.Map<String, String> getProperties() {
@@ -191,11 +186,11 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A set of properties supplied to the Configuration object.
+     * A set of properties specified within a configuration classification.
      * </p>
      * 
      * @param properties
-     *        A set of properties supplied to the Configuration object.
+     *        A set of properties specified within a configuration classification.
      */
 
     public void setProperties(java.util.Map<String, String> properties) {
@@ -204,11 +199,11 @@ public class Configuration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A set of properties supplied to the Configuration object.
+     * A set of properties specified within a configuration classification.
      * </p>
      * 
      * @param properties
-     *        A set of properties supplied to the Configuration object.
+     *        A set of properties specified within a configuration classification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -250,11 +245,11 @@ public class Configuration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClassification() != null)
-            sb.append("Classification: " + getClassification() + ",");
+            sb.append("Classification: ").append(getClassification()).append(",");
         if (getConfigurations() != null)
-            sb.append("Configurations: " + getConfigurations() + ",");
+            sb.append("Configurations: ").append(getConfigurations()).append(",");
         if (getProperties() != null)
-            sb.append("Properties: " + getProperties());
+            sb.append("Properties: ").append(getProperties());
         sb.append("}");
         return sb.toString();
     }
@@ -302,5 +297,11 @@ public class Configuration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.ConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

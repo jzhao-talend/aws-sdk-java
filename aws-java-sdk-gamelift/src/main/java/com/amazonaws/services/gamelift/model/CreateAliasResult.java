@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateAlias" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      */
     private Alias alias;
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
      * @param alias
-     *        Object containing the newly created alias record.
+     *        Object that describes the newly created alias record.
      */
 
     public void setAlias(Alias alias) {
@@ -43,10 +48,10 @@ public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
-     * @return Object containing the newly created alias record.
+     * @return Object that describes the newly created alias record.
      */
 
     public Alias getAlias() {
@@ -55,11 +60,11 @@ public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
      * @param alias
-     *        Object containing the newly created alias record.
+     *        Object that describes the newly created alias record.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlias() != null)
-            sb.append("Alias: " + getAlias());
+            sb.append("Alias: ").append(getAlias());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

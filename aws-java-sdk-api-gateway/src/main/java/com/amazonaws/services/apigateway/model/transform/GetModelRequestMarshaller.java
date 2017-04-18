@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,71 +12,50 @@
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.apigateway.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * GetModelRequest Marshaller
+ * GetModelRequestMarshaller
  */
-public class GetModelRequestMarshaller implements Marshaller<Request<GetModelRequest>, GetModelRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class GetModelRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> RESTAPIID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("restapi_id").build();
+    private static final MarshallingInfo<String> MODELNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("model_name").build();
+    private static final MarshallingInfo<Boolean> FLATTEN_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("flatten").build();
 
-    public GetModelRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final GetModelRequestMarshaller instance = new GetModelRequestMarshaller();
+
+    public static GetModelRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<GetModelRequest> marshall(GetModelRequest getModelRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(GetModelRequest getModelRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (getModelRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<GetModelRequest> request = new DefaultRequest<GetModelRequest>(getModelRequest, "AmazonApiGateway");
-
-        request.setHttpMethod(HttpMethodName.GET);
-
-        String uriResourcePath = "/restapis/{restapi_id}/models/{model_name}";
-
-        uriResourcePath = uriResourcePath.replace("{restapi_id}",
-                (getModelRequest.getRestApiId() != null) ? SdkHttpUtils.urlEncode(StringUtils.fromString(getModelRequest.getRestApiId()), false) : "");
-        uriResourcePath = uriResourcePath.replace("{model_name}",
-                (getModelRequest.getModelName() != null) ? SdkHttpUtils.urlEncode(StringUtils.fromString(getModelRequest.getModelName()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
-        if (getModelRequest.getFlatten() != null) {
-            request.addParameter("flatten", StringUtils.fromBoolean(getModelRequest.getFlatten()));
+        try {
+            protocolMarshaller.marshall(getModelRequest.getRestApiId(), RESTAPIID_BINDING);
+            protocolMarshaller.marshall(getModelRequest.getModelName(), MODELNAME_BINDING);
+            protocolMarshaller.marshall(getModelRequest.getFlatten(), FLATTEN_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        request.setContent(new ByteArrayInputStream(new byte[0]));
-        if (!request.getHeaders().containsKey("Content-Type")) {
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        }
-
-        return request;
     }
 
 }

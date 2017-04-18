@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,30 +13,39 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group to put log events to.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
     /**
      * <p>
-     * The name of the log stream to put log events to.
+     * The name of the log stream.
      * </p>
      */
     private String logStreamName;
-
+    /**
+     * <p>
+     * The log events.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<InputLogEvent> logEvents;
     /**
      * <p>
-     * A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     * The sequence token.
      * </p>
      */
     private String sequenceToken;
@@ -53,10 +62,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * initialize any additional object members.
      * 
      * @param logGroupName
-     *        The name of the log group to put log events to.
+     *        The name of the log group.
      * @param logStreamName
-     *        The name of the log stream to put log events to.
+     *        The name of the log stream.
      * @param logEvents
+     *        The log events.
      */
     public PutLogEventsRequest(String logGroupName, String logStreamName, java.util.List<InputLogEvent> logEvents) {
         setLogGroupName(logGroupName);
@@ -66,11 +76,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log group to put log events to.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to put log events to.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -79,10 +89,10 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log group to put log events to.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group to put log events to.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -91,11 +101,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log group to put log events to.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to put log events to.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,11 +116,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log stream to put log events to.
+     * The name of the log stream.
      * </p>
      * 
      * @param logStreamName
-     *        The name of the log stream to put log events to.
+     *        The name of the log stream.
      */
 
     public void setLogStreamName(String logStreamName) {
@@ -119,10 +129,10 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log stream to put log events to.
+     * The name of the log stream.
      * </p>
      * 
-     * @return The name of the log stream to put log events to.
+     * @return The name of the log stream.
      */
 
     public String getLogStreamName() {
@@ -131,11 +141,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The name of the log stream to put log events to.
+     * The name of the log stream.
      * </p>
      * 
      * @param logStreamName
-     *        The name of the log stream to put log events to.
+     *        The name of the log stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -145,7 +155,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * @return
+     * <p>
+     * The log events.
+     * </p>
+     * 
+     * @return The log events.
      */
 
     public java.util.List<InputLogEvent> getLogEvents() {
@@ -156,7 +170,12 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * The log events.
+     * </p>
+     * 
      * @param logEvents
+     *        The log events.
      */
 
     public void setLogEvents(java.util.Collection<InputLogEvent> logEvents) {
@@ -170,12 +189,16 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
+     * The log events.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setLogEvents(java.util.Collection)} or {@link #withLogEvents(java.util.Collection)} if you want to
      * override the existing values.
      * </p>
      * 
      * @param logEvents
+     *        The log events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -190,7 +213,12 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * The log events.
+     * </p>
+     * 
      * @param logEvents
+     *        The log events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -201,11 +229,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     * The sequence token.
      * </p>
      * 
      * @param sequenceToken
-     *        A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     *        The sequence token.
      */
 
     public void setSequenceToken(String sequenceToken) {
@@ -214,10 +242,10 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     * The sequence token.
      * </p>
      * 
-     * @return A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     * @return The sequence token.
      */
 
     public String getSequenceToken() {
@@ -226,11 +254,11 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     * The sequence token.
      * </p>
      * 
      * @param sequenceToken
-     *        A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.
+     *        The sequence token.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -251,13 +279,13 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getLogStreamName() != null)
-            sb.append("LogStreamName: " + getLogStreamName() + ",");
+            sb.append("LogStreamName: ").append(getLogStreamName()).append(",");
         if (getLogEvents() != null)
-            sb.append("LogEvents: " + getLogEvents() + ",");
+            sb.append("LogEvents: ").append(getLogEvents()).append(",");
         if (getSequenceToken() != null)
-            sb.append("SequenceToken: " + getSequenceToken());
+            sb.append("SequenceToken: ").append(getSequenceToken());
         sb.append("}");
         return sb.toString();
     }
@@ -307,4 +335,5 @@ public class PutLogEventsRequest extends com.amazonaws.AmazonWebServiceRequest i
     public PutLogEventsRequest clone() {
         return (PutLogEventsRequest) super.clone();
     }
+
 }

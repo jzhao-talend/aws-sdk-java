@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes an Amazon RDS instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RdsDbInstance" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RdsDbInstance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RdsDbInstance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -41,7 +48,7 @@ public class RdsDbInstance implements Serializable, Cloneable {
     private String dbUser;
     /**
      * <p>
-     * AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      */
     private String dbPassword;
@@ -65,15 +72,15 @@ public class RdsDbInstance implements Serializable, Cloneable {
     private String engine;
     /**
      * <p>
-     * The ID of the stack that the instance is registered with.
+     * The ID of the stack with which the instance is registered.
      * </p>
      */
     private String stackId;
     /**
      * <p>
-     * Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks attempts to
-     * discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance and
-     * then register it again.
+     * Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks
+     * Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must
+     * deregister the instance, and then register it again.
      * </p>
      */
     private Boolean missingOnRds;
@@ -200,11 +207,11 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param dbPassword
-     *        AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public void setDbPassword(String dbPassword) {
@@ -213,10 +220,10 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
-     * @return AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * @return AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public String getDbPassword() {
@@ -225,11 +232,11 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param dbPassword
-     *        AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -360,11 +367,11 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the stack that the instance is registered with.
+     * The ID of the stack with which the instance is registered.
      * </p>
      * 
      * @param stackId
-     *        The ID of the stack that the instance is registered with.
+     *        The ID of the stack with which the instance is registered.
      */
 
     public void setStackId(String stackId) {
@@ -373,10 +380,10 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the stack that the instance is registered with.
+     * The ID of the stack with which the instance is registered.
      * </p>
      * 
-     * @return The ID of the stack that the instance is registered with.
+     * @return The ID of the stack with which the instance is registered.
      */
 
     public String getStackId() {
@@ -385,11 +392,11 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the stack that the instance is registered with.
+     * The ID of the stack with which the instance is registered.
      * </p>
      * 
      * @param stackId
-     *        The ID of the stack that the instance is registered with.
+     *        The ID of the stack with which the instance is registered.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -400,15 +407,15 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks attempts to
-     * discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance and
-     * then register it again.
+     * Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks
+     * Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must
+     * deregister the instance, and then register it again.
      * </p>
      * 
      * @param missingOnRds
-     *        Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks
-     *        attempts to discover the instance only once. If this value is set to <code>true</code>, you must
-     *        deregister the instance and then register it again.
+     *        Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS
+     *        OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>,
+     *        you must deregister the instance, and then register it again.
      */
 
     public void setMissingOnRds(Boolean missingOnRds) {
@@ -417,14 +424,14 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks attempts to
-     * discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance and
-     * then register it again.
+     * Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks
+     * Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must
+     * deregister the instance, and then register it again.
      * </p>
      * 
-     * @return Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks
-     *         attempts to discover the instance only once. If this value is set to <code>true</code>, you must
-     *         deregister the instance and then register it again.
+     * @return Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS
+     *         OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>,
+     *         you must deregister the instance, and then register it again.
      */
 
     public Boolean getMissingOnRds() {
@@ -433,15 +440,15 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks attempts to
-     * discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance and
-     * then register it again.
+     * Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks
+     * Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must
+     * deregister the instance, and then register it again.
      * </p>
      * 
      * @param missingOnRds
-     *        Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks
-     *        attempts to discover the instance only once. If this value is set to <code>true</code>, you must
-     *        deregister the instance and then register it again.
+     *        Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS
+     *        OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>,
+     *        you must deregister the instance, and then register it again.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -452,14 +459,14 @@ public class RdsDbInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks attempts to
-     * discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance and
-     * then register it again.
+     * Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks
+     * Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must
+     * deregister the instance, and then register it again.
      * </p>
      * 
-     * @return Set to <code>true</code> if AWS OpsWorks was unable to discover the Amazon RDS instance. AWS OpsWorks
-     *         attempts to discover the instance only once. If this value is set to <code>true</code>, you must
-     *         deregister the instance and then register it again.
+     * @return Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS
+     *         OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>,
+     *         you must deregister the instance, and then register it again.
      */
 
     public Boolean isMissingOnRds() {
@@ -478,23 +485,23 @@ public class RdsDbInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRdsDbInstanceArn() != null)
-            sb.append("RdsDbInstanceArn: " + getRdsDbInstanceArn() + ",");
+            sb.append("RdsDbInstanceArn: ").append(getRdsDbInstanceArn()).append(",");
         if (getDbInstanceIdentifier() != null)
-            sb.append("DbInstanceIdentifier: " + getDbInstanceIdentifier() + ",");
+            sb.append("DbInstanceIdentifier: ").append(getDbInstanceIdentifier()).append(",");
         if (getDbUser() != null)
-            sb.append("DbUser: " + getDbUser() + ",");
+            sb.append("DbUser: ").append(getDbUser()).append(",");
         if (getDbPassword() != null)
-            sb.append("DbPassword: " + getDbPassword() + ",");
+            sb.append("DbPassword: ").append(getDbPassword()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getAddress() != null)
-            sb.append("Address: " + getAddress() + ",");
+            sb.append("Address: ").append(getAddress()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getMissingOnRds() != null)
-            sb.append("MissingOnRds: " + getMissingOnRds());
+            sb.append("MissingOnRds: ").append(getMissingOnRds());
         sb.append("}");
         return sb.toString();
     }
@@ -572,5 +579,11 @@ public class RdsDbInstance implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.RdsDbInstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

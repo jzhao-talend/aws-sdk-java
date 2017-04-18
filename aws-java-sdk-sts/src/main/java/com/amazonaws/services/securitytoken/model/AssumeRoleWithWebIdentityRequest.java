@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.securitytoken.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithWebIdentity" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -34,9 +39,8 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      * <code>AssumedRoleUser</code> response element.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      */
     private String roleSessionName;
@@ -156,9 +160,8 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      * <code>AssumedRoleUser</code> response element.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param roleSessionName
@@ -167,9 +170,9 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      *        application will use are associated with that user. This session name is included as part of the ARN and
      *        assumed role ID in the <code>AssumedRoleUser</code> response element.</p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      */
 
     public void setRoleSessionName(String roleSessionName) {
@@ -184,9 +187,8 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      * <code>AssumedRoleUser</code> response element.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @return An identifier for the assumed role session. Typically, you pass the name or identifier that is associated
@@ -194,9 +196,9 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      *         application will use are associated with that user. This session name is included as part of the ARN and
      *         assumed role ID in the <code>AssumedRoleUser</code> response element.</p>
      *         <p>
-     *         The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *         upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *         the following characters: =,.@-
+     *         The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *         alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *         characters: =,.@-
      */
 
     public String getRoleSessionName() {
@@ -211,9 +213,8 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      * <code>AssumedRoleUser</code> response element.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param roleSessionName
@@ -222,9 +223,9 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
      *        application will use are associated with that user. This session name is included as part of the ARN and
      *        assumed role ID in the <code>AssumedRoleUser</code> response element.</p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -657,17 +658,17 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn() + ",");
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
         if (getRoleSessionName() != null)
-            sb.append("RoleSessionName: " + getRoleSessionName() + ",");
+            sb.append("RoleSessionName: ").append(getRoleSessionName()).append(",");
         if (getWebIdentityToken() != null)
-            sb.append("WebIdentityToken: " + getWebIdentityToken() + ",");
+            sb.append("WebIdentityToken: ").append(getWebIdentityToken()).append(",");
         if (getProviderId() != null)
-            sb.append("ProviderId: " + getProviderId() + ",");
+            sb.append("ProviderId: ").append(getProviderId()).append(",");
         if (getPolicy() != null)
-            sb.append("Policy: " + getPolicy() + ",");
+            sb.append("Policy: ").append(getPolicy()).append(",");
         if (getDurationSeconds() != null)
-            sb.append("DurationSeconds: " + getDurationSeconds());
+            sb.append("DurationSeconds: ").append(getDurationSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -727,4 +728,5 @@ public class AssumeRoleWithWebIdentityRequest extends com.amazonaws.AmazonWebSer
     public AssumeRoleWithWebIdentityRequest clone() {
         return (AssumeRoleWithWebIdentityRequest) super.clone();
     }
+
 }

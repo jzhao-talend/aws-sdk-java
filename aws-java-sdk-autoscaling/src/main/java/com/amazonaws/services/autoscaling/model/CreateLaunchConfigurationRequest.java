@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the parameters for CreateLaunchConfiguration.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateLaunchConfigurationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -1626,41 +1632,41 @@ public class CreateLaunchConfigurationRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLaunchConfigurationName() != null)
-            sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+            sb.append("LaunchConfigurationName: ").append(getLaunchConfigurationName()).append(",");
         if (getImageId() != null)
-            sb.append("ImageId: " + getImageId() + ",");
+            sb.append("ImageId: ").append(getImageId()).append(",");
         if (getKeyName() != null)
-            sb.append("KeyName: " + getKeyName() + ",");
+            sb.append("KeyName: ").append(getKeyName()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getClassicLinkVPCId() != null)
-            sb.append("ClassicLinkVPCId: " + getClassicLinkVPCId() + ",");
+            sb.append("ClassicLinkVPCId: ").append(getClassicLinkVPCId()).append(",");
         if (getClassicLinkVPCSecurityGroups() != null)
-            sb.append("ClassicLinkVPCSecurityGroups: " + getClassicLinkVPCSecurityGroups() + ",");
+            sb.append("ClassicLinkVPCSecurityGroups: ").append(getClassicLinkVPCSecurityGroups()).append(",");
         if (getUserData() != null)
-            sb.append("UserData: " + getUserData() + ",");
+            sb.append("UserData: ").append(getUserData()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getKernelId() != null)
-            sb.append("KernelId: " + getKernelId() + ",");
+            sb.append("KernelId: ").append(getKernelId()).append(",");
         if (getRamdiskId() != null)
-            sb.append("RamdiskId: " + getRamdiskId() + ",");
+            sb.append("RamdiskId: ").append(getRamdiskId()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getInstanceMonitoring() != null)
-            sb.append("InstanceMonitoring: " + getInstanceMonitoring() + ",");
+            sb.append("InstanceMonitoring: ").append(getInstanceMonitoring()).append(",");
         if (getSpotPrice() != null)
-            sb.append("SpotPrice: " + getSpotPrice() + ",");
+            sb.append("SpotPrice: ").append(getSpotPrice()).append(",");
         if (getIamInstanceProfile() != null)
-            sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
+            sb.append("IamInstanceProfile: ").append(getIamInstanceProfile()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getAssociatePublicIpAddress() != null)
-            sb.append("AssociatePublicIpAddress: " + getAssociatePublicIpAddress() + ",");
+            sb.append("AssociatePublicIpAddress: ").append(getAssociatePublicIpAddress()).append(",");
         if (getPlacementTenancy() != null)
-            sb.append("PlacementTenancy: " + getPlacementTenancy());
+            sb.append("PlacementTenancy: ").append(getPlacementTenancy());
         sb.append("}");
         return sb.toString();
     }
@@ -1780,4 +1786,5 @@ public class CreateLaunchConfigurationRequest extends com.amazonaws.AmazonWebSer
     public CreateLaunchConfigurationRequest clone() {
         return (CreateLaunchConfigurationRequest) super.clone();
     }
+
 }

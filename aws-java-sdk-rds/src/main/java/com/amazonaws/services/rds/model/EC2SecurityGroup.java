@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -35,7 +36,11 @@ import java.io.Serializable;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/EC2SecurityGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EC2SecurityGroup implements Serializable, Cloneable {
 
     /**
@@ -249,13 +254,13 @@ public class EC2SecurityGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getEC2SecurityGroupName() != null)
-            sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");
+            sb.append("EC2SecurityGroupName: ").append(getEC2SecurityGroupName()).append(",");
         if (getEC2SecurityGroupId() != null)
-            sb.append("EC2SecurityGroupId: " + getEC2SecurityGroupId() + ",");
+            sb.append("EC2SecurityGroupId: ").append(getEC2SecurityGroupId()).append(",");
         if (getEC2SecurityGroupOwnerId() != null)
-            sb.append("EC2SecurityGroupOwnerId: " + getEC2SecurityGroupOwnerId());
+            sb.append("EC2SecurityGroupOwnerId: ").append(getEC2SecurityGroupOwnerId());
         sb.append("}");
         return sb.toString();
     }
@@ -309,4 +314,5 @@ public class EC2SecurityGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

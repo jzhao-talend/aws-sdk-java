@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the response from the server after AWS Device Farm makes a request to install to a remote access session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/InstallToRemoteAccessSession"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     */
     private Upload appUpload;
 
     /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
      * @param appUpload
+     *        An app to upload or that has been uploaded.
      */
 
     public void setAppUpload(Upload appUpload) {
@@ -32,7 +47,11 @@ public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * @return
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
+     * @return An app to upload or that has been uploaded.
      */
 
     public Upload getAppUpload() {
@@ -40,7 +59,12 @@ public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
      * @param appUpload
+     *        An app to upload or that has been uploaded.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebS
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAppUpload() != null)
-            sb.append("AppUpload: " + getAppUpload());
+            sb.append("AppUpload: ").append(getAppUpload());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebS
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

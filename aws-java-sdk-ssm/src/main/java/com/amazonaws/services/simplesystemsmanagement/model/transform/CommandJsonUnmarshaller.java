@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.simplesystemsmanagement.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.simplesystemsmanagement.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * Command JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CommandJsonUnmarshaller implements Unmarshaller<Command, JsonUnmarshallerContext> {
 
     public Command unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class CommandJsonUnmarshaller implements Unmarshaller<Command, JsonUnmars
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -72,6 +73,10 @@ public class CommandJsonUnmarshaller implements Unmarshaller<Command, JsonUnmars
                     context.nextToken();
                     command.setInstanceIds(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
                 }
+                if (context.testExpression("Targets", targetDepth)) {
+                    context.nextToken();
+                    command.setTargets(new ListUnmarshaller<Target>(TargetJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
                 if (context.testExpression("RequestedDateTime", targetDepth)) {
                     context.nextToken();
                     command.setRequestedDateTime(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
@@ -80,6 +85,14 @@ public class CommandJsonUnmarshaller implements Unmarshaller<Command, JsonUnmars
                     context.nextToken();
                     command.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("StatusDetails", targetDepth)) {
+                    context.nextToken();
+                    command.setStatusDetails(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("OutputS3Region", targetDepth)) {
+                    context.nextToken();
+                    command.setOutputS3Region(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("OutputS3BucketName", targetDepth)) {
                     context.nextToken();
                     command.setOutputS3BucketName(context.getUnmarshaller(String.class).unmarshall(context));
@@ -87,6 +100,26 @@ public class CommandJsonUnmarshaller implements Unmarshaller<Command, JsonUnmars
                 if (context.testExpression("OutputS3KeyPrefix", targetDepth)) {
                     context.nextToken();
                     command.setOutputS3KeyPrefix(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("MaxConcurrency", targetDepth)) {
+                    context.nextToken();
+                    command.setMaxConcurrency(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("MaxErrors", targetDepth)) {
+                    context.nextToken();
+                    command.setMaxErrors(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("TargetCount", targetDepth)) {
+                    context.nextToken();
+                    command.setTargetCount(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("CompletedCount", targetDepth)) {
+                    context.nextToken();
+                    command.setCompletedCount(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("ErrorCount", targetDepth)) {
+                    context.nextToken();
+                    command.setErrorCount(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("ServiceRole", targetDepth)) {
                     context.nextToken();

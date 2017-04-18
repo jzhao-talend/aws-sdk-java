@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -67,8 +72,8 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String description;
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      */
     private String snowballCapacityPreference;
@@ -409,13 +414,13 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the
-     *        50 TB Snowballs are only available in the US regions.
+     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB
+     *        Snowballs are only available in the US regions.
      * @see SnowballCapacity
      */
 
@@ -425,12 +430,12 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      * 
-     * @return The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that
-     *         the 50 TB Snowballs are only available in the US regions.
+     * @return The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB
+     *         Snowballs are only available in the US regions.
      * @see SnowballCapacity
      */
 
@@ -440,13 +445,13 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the
-     *        50 TB Snowballs are only available in the US regions.
+     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB
+     *        Snowballs are only available in the US regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SnowballCapacity
      */
@@ -458,13 +463,13 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the
-     *        50 TB Snowballs are only available in the US regions.
+     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB
+     *        Snowballs are only available in the US regions.
      * @see SnowballCapacity
      */
 
@@ -474,13 +479,13 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the 50 TB
-     * Snowballs are only available in the US regions.
+     * The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs
+     * are only available in the US regions.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. Note that the
-     *        50 TB Snowballs are only available in the US regions.
+     *        The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB
+     *        Snowballs are only available in the US regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SnowballCapacity
      */
@@ -502,21 +507,21 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getNotification() != null)
-            sb.append("Notification: " + getNotification() + ",");
+            sb.append("Notification: ").append(getNotification()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getAddressId() != null)
-            sb.append("AddressId: " + getAddressId() + ",");
+            sb.append("AddressId: ").append(getAddressId()).append(",");
         if (getShippingOption() != null)
-            sb.append("ShippingOption: " + getShippingOption() + ",");
+            sb.append("ShippingOption: ").append(getShippingOption()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getSnowballCapacityPreference() != null)
-            sb.append("SnowballCapacityPreference: " + getSnowballCapacityPreference());
+            sb.append("SnowballCapacityPreference: ").append(getSnowballCapacityPreference());
         sb.append("}");
         return sb.toString();
     }
@@ -586,4 +591,5 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public UpdateJobRequest clone() {
         return (UpdateJobRequest) super.clone();
     }
+
 }

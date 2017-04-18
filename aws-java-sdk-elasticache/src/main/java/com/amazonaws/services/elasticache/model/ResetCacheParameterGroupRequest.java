@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a <code>ResetCacheParameterGroup</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ResetCacheParameterGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -300,11 +306,11 @@ public class ResetCacheParameterGroupRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheParameterGroupName() != null)
-            sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");
+            sb.append("CacheParameterGroupName: ").append(getCacheParameterGroupName()).append(",");
         if (getResetAllParameters() != null)
-            sb.append("ResetAllParameters: " + getResetAllParameters() + ",");
+            sb.append("ResetAllParameters: ").append(getResetAllParameters()).append(",");
         if (getParameterNameValues() != null)
-            sb.append("ParameterNameValues: " + getParameterNameValues());
+            sb.append("ParameterNameValues: ").append(getParameterNameValues());
         sb.append("}");
         return sb.toString();
     }
@@ -349,4 +355,5 @@ public class ResetCacheParameterGroupRequest extends com.amazonaws.AmazonWebServ
     public ResetCacheParameterGroupRequest clone() {
         return (ResetCacheParameterGroupRequest) super.clone();
     }
+
 }

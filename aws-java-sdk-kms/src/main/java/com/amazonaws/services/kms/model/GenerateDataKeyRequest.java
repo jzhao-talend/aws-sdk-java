@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -26,7 +31,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of
-     * an alias that points to the CMK. Examples:
+     * an alias that refers to the CMK. Examples:
      * </p>
      * <ul>
      * <li>
@@ -36,7 +41,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
@@ -46,7 +51,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -96,7 +101,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of
-     * an alias that points to the CMK. Examples:
+     * an alias that refers to the CMK. Examples:
      * </p>
      * <ul>
      * <li>
@@ -106,7 +111,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
@@ -116,7 +121,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -125,7 +130,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        The identifier of the CMK under which to generate and encrypt the data encryption key.</p>
      *        <p>
      *        A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or
-     *        ARN of an alias that points to the CMK. Examples:
+     *        ARN of an alias that refers to the CMK. Examples:
      *        </p>
      *        <ul>
      *        <li>
@@ -135,7 +140,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
@@ -145,7 +150,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *        Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      */
@@ -160,7 +165,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of
-     * an alias that points to the CMK. Examples:
+     * an alias that refers to the CMK. Examples:
      * </p>
      * <ul>
      * <li>
@@ -170,7 +175,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
@@ -180,7 +185,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -188,7 +193,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * @return The identifier of the CMK under which to generate and encrypt the data encryption key.</p>
      *         <p>
      *         A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name
-     *         or ARN of an alias that points to the CMK. Examples:
+     *         or ARN of an alias that refers to the CMK. Examples:
      *         </p>
      *         <ul>
      *         <li>
@@ -198,7 +203,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *         </li>
      *         <li>
      *         <p>
-     *         CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *         CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *         </p>
      *         </li>
      *         <li>
@@ -208,7 +213,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *         </li>
      *         <li>
      *         <p>
-     *         Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *         Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *         </p>
      *         </li>
      */
@@ -223,7 +228,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of
-     * an alias that points to the CMK. Examples:
+     * an alias that refers to the CMK. Examples:
      * </p>
      * <ul>
      * <li>
@@ -233,7 +238,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
@@ -243,7 +248,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -252,7 +257,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        The identifier of the CMK under which to generate and encrypt the data encryption key.</p>
      *        <p>
      *        A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or
-     *        ARN of an alias that points to the CMK. Examples:
+     *        ARN of an alias that refers to the CMK. Examples:
      *        </p>
      *        <ul>
      *        <li>
@@ -262,7 +267,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        CMK ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
@@ -272,7 +277,7 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        Alias ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *        Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -630,15 +635,15 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getEncryptionContext() != null)
-            sb.append("EncryptionContext: " + getEncryptionContext() + ",");
+            sb.append("EncryptionContext: ").append(getEncryptionContext()).append(",");
         if (getNumberOfBytes() != null)
-            sb.append("NumberOfBytes: " + getNumberOfBytes() + ",");
+            sb.append("NumberOfBytes: ").append(getNumberOfBytes()).append(",");
         if (getKeySpec() != null)
-            sb.append("KeySpec: " + getKeySpec() + ",");
+            sb.append("KeySpec: ").append(getKeySpec()).append(",");
         if (getGrantTokens() != null)
-            sb.append("GrantTokens: " + getGrantTokens());
+            sb.append("GrantTokens: ").append(getGrantTokens());
         sb.append("}");
         return sb.toString();
     }
@@ -693,4 +698,5 @@ public class GenerateDataKeyRequest extends com.amazonaws.AmazonWebServiceReques
     public GenerateDataKeyRequest clone() {
         return (GenerateDataKeyRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 import com.amazonaws.services.ec2.waiters.AmazonEC2Waiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -53,6 +57,7 @@ import com.amazonaws.services.ec2.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2 {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -86,7 +91,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonEC2ClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonEC2Client() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -109,7 +116,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonEC2ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonEC2Client(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -123,7 +132,10 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonEC2ClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonEC2ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonEC2Client(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -141,7 +153,10 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon EC2 (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonEC2ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonEC2ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonEC2Client(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -158,7 +173,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonEC2ClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonEC2Client(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -176,7 +193,10 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon EC2 (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonEC2ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonEC2ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonEC2Client(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -196,11 +216,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonEC2ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonEC2ClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonEC2ClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonEC2Client(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonEC2ClientBuilder builder() {
+        return AmazonEC2ClientBuilder.standard();
     }
 
     /**
@@ -234,17 +262,27 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Purchases Convertible Reserved Instance offerings described in the <a>GetReservedInstancesExchangeQuote</a> call.
+     * Accepts the Convertible Reserved Instance exchange quote described in the
+     * <a>GetReservedInstancesExchangeQuote</a> call.
      * </p>
      * 
      * @param acceptReservedInstancesExchangeQuoteRequest
      *        Contains the parameters for accepting the quote.
      * @return Result of the AcceptReservedInstancesExchangeQuote operation returned by the service.
      * @sample AmazonEC2.AcceptReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AcceptReservedInstancesExchangeQuoteResult acceptReservedInstancesExchangeQuote(
+    public AcceptReservedInstancesExchangeQuoteResult acceptReservedInstancesExchangeQuote(AcceptReservedInstancesExchangeQuoteRequest request) {
+        request = beforeClientExecution(request);
+        return executeAcceptReservedInstancesExchangeQuote(request);
+    }
+
+    @SdkInternalApi
+    final AcceptReservedInstancesExchangeQuoteResult executeAcceptReservedInstancesExchangeQuote(
             AcceptReservedInstancesExchangeQuoteRequest acceptReservedInstancesExchangeQuoteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(acceptReservedInstancesExchangeQuoteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -285,9 +323,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AcceptVpcPeeringConnection.
      * @return Result of the AcceptVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2.AcceptVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
+    public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeAcceptVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final AcceptVpcPeeringConnectionResult executeAcceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(acceptVpcPeeringConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -335,9 +382,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AllocateAddress.
      * @return Result of the AllocateAddress operation returned by the service.
      * @sample AmazonEC2.AllocateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AllocateAddressResult allocateAddress(AllocateAddressRequest allocateAddressRequest) {
+    public AllocateAddressResult allocateAddress(AllocateAddressRequest request) {
+        request = beforeClientExecution(request);
+        return executeAllocateAddress(request);
+    }
+
+    @SdkInternalApi
+    final AllocateAddressResult executeAllocateAddress(AllocateAddressRequest allocateAddressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(allocateAddressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -381,9 +437,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AllocateHosts.
      * @return Result of the AllocateHosts operation returned by the service.
      * @sample AmazonEC2.AllocateHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AllocateHostsResult allocateHosts(AllocateHostsRequest allocateHostsRequest) {
+    public AllocateHostsResult allocateHosts(AllocateHostsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAllocateHosts(request);
+    }
+
+    @SdkInternalApi
+    final AllocateHostsResult executeAllocateHosts(AllocateHostsRequest allocateHostsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(allocateHostsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -413,6 +478,59 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6
+     * addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's
+     * IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private
+     * IPv4 addresses, and the limit varies per instance type. For information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses Per
+     * Network Interface Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param assignIpv6AddressesRequest
+     * @return Result of the AssignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2.AssignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public AssignIpv6AddressesResult assignIpv6Addresses(AssignIpv6AddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssignIpv6Addresses(request);
+    }
+
+    @SdkInternalApi
+    final AssignIpv6AddressesResult executeAssignIpv6Addresses(AssignIpv6AddressesRequest assignIpv6AddressesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(assignIpv6AddressesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssignIpv6AddressesRequest> request = null;
+        Response<AssignIpv6AddressesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssignIpv6AddressesRequestMarshaller().marshall(super.beforeMarshalling(assignIpv6AddressesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<AssignIpv6AddressesResult> responseHandler = new StaxResponseHandler<AssignIpv6AddressesResult>(
+                    new AssignIpv6AddressesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or
      * more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically
      * assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an
@@ -430,9 +548,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AssignPrivateIpAddresses.
      * @return Result of the AssignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2.AssignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AssignPrivateIpAddressesResult assignPrivateIpAddresses(AssignPrivateIpAddressesRequest assignPrivateIpAddressesRequest) {
+    public AssignPrivateIpAddressesResult assignPrivateIpAddresses(AssignPrivateIpAddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssignPrivateIpAddresses(request);
+    }
+
+    @SdkInternalApi
+    final AssignPrivateIpAddressesResult executeAssignPrivateIpAddresses(AssignPrivateIpAddressesRequest assignPrivateIpAddressesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(assignPrivateIpAddressesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -492,9 +619,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AssociateAddress.
      * @return Result of the AssociateAddress operation returned by the service.
      * @sample AmazonEC2.AssociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AssociateAddressResult associateAddress(AssociateAddressRequest associateAddressRequest) {
+    public AssociateAddressResult associateAddress(AssociateAddressRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateAddress(request);
+    }
+
+    @SdkInternalApi
+    final AssociateAddressResult executeAssociateAddress(AssociateAddressRequest associateAddressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(associateAddressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -544,9 +680,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AssociateDhcpOptions.
      * @return Result of the AssociateDhcpOptions operation returned by the service.
      * @sample AmazonEC2.AssociateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AssociateDhcpOptionsResult associateDhcpOptions(AssociateDhcpOptionsRequest associateDhcpOptionsRequest) {
+    public AssociateDhcpOptionsResult associateDhcpOptions(AssociateDhcpOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateDhcpOptions(request);
+    }
+
+    @SdkInternalApi
+    final AssociateDhcpOptionsResult executeAssociateDhcpOptions(AssociateDhcpOptionsRequest associateDhcpOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(associateDhcpOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -577,6 +722,55 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM
+     * instance profile with an instance.
+     * </p>
+     * 
+     * @param associateIamInstanceProfileRequest
+     * @return Result of the AssociateIamInstanceProfile operation returned by the service.
+     * @sample AmazonEC2.AssociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AssociateIamInstanceProfileResult associateIamInstanceProfile(AssociateIamInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateIamInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final AssociateIamInstanceProfileResult executeAssociateIamInstanceProfile(AssociateIamInstanceProfileRequest associateIamInstanceProfileRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(associateIamInstanceProfileRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateIamInstanceProfileRequest> request = null;
+        Response<AssociateIamInstanceProfileResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateIamInstanceProfileRequestMarshaller().marshall(super.beforeMarshalling(associateIamInstanceProfileRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<AssociateIamInstanceProfileResult> responseHandler = new StaxResponseHandler<AssociateIamInstanceProfileResult>(
+                    new AssociateIamInstanceProfileResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association
      * causes traffic originating from the subnet to be routed according to the routes in the route table. The action
      * returns an association ID, which you need in order to disassociate the route table from the subnet later. A route
@@ -592,9 +786,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AssociateRouteTable.
      * @return Result of the AssociateRouteTable operation returned by the service.
      * @sample AmazonEC2.AssociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AssociateRouteTableResult associateRouteTable(AssociateRouteTableRequest associateRouteTableRequest) {
+    public AssociateRouteTableResult associateRouteTable(AssociateRouteTableRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateRouteTable(request);
+    }
+
+    @SdkInternalApi
+    final AssociateRouteTableResult executeAssociateRouteTable(AssociateRouteTableRequest associateRouteTableRequest) {
+
         ExecutionContext executionContext = createExecutionContext(associateRouteTableRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -625,6 +828,104 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An
+     * IPv6 CIDR block must have a prefix length of /64.
+     * </p>
+     * 
+     * @param associateSubnetCidrBlockRequest
+     * @return Result of the AssociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2.AssociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSubnetCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public AssociateSubnetCidrBlockResult associateSubnetCidrBlock(AssociateSubnetCidrBlockRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateSubnetCidrBlock(request);
+    }
+
+    @SdkInternalApi
+    final AssociateSubnetCidrBlockResult executeAssociateSubnetCidrBlock(AssociateSubnetCidrBlockRequest associateSubnetCidrBlockRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(associateSubnetCidrBlockRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateSubnetCidrBlockRequest> request = null;
+        Response<AssociateSubnetCidrBlockResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateSubnetCidrBlockRequestMarshaller().marshall(super.beforeMarshalling(associateSubnetCidrBlockRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<AssociateSubnetCidrBlockResult> responseHandler = new StaxResponseHandler<AssociateSubnetCidrBlockResult>(
+                    new AssociateSubnetCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Associates a CIDR block with your VPC. You can only associate a single Amazon-provided IPv6 CIDR block with your
+     * VPC. The IPv6 CIDR block size is fixed at /56.
+     * </p>
+     * 
+     * @param associateVpcCidrBlockRequest
+     * @return Result of the AssociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2.AssociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateVpcCidrBlock" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public AssociateVpcCidrBlockResult associateVpcCidrBlock(AssociateVpcCidrBlockRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateVpcCidrBlock(request);
+    }
+
+    @SdkInternalApi
+    final AssociateVpcCidrBlockResult executeAssociateVpcCidrBlock(AssociateVpcCidrBlockRequest associateVpcCidrBlockRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(associateVpcCidrBlockRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateVpcCidrBlockRequest> request = null;
+        Response<AssociateVpcCidrBlockResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateVpcCidrBlockRequestMarshaller().marshall(super.beforeMarshalling(associateVpcCidrBlockRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<AssociateVpcCidrBlockResult> responseHandler = new StaxResponseHandler<AssociateVpcCidrBlockResult>(
+                    new AssociateVpcCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You
      * cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the
      * <code>running</code> state. An instance is automatically unlinked from a VPC when it's stopped - you can link it
@@ -642,9 +943,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AttachClassicLinkVpc.
      * @return Result of the AttachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2.AttachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachClassicLinkVpcResult attachClassicLinkVpc(AttachClassicLinkVpcRequest attachClassicLinkVpcRequest) {
+    public AttachClassicLinkVpcResult attachClassicLinkVpc(AttachClassicLinkVpcRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachClassicLinkVpc(request);
+    }
+
+    @SdkInternalApi
+    final AttachClassicLinkVpcResult executeAttachClassicLinkVpc(AttachClassicLinkVpcRequest attachClassicLinkVpcRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachClassicLinkVpcRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -684,9 +994,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AttachInternetGateway.
      * @return Result of the AttachInternetGateway operation returned by the service.
      * @sample AmazonEC2.AttachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachInternetGatewayResult attachInternetGateway(AttachInternetGatewayRequest attachInternetGatewayRequest) {
+    public AttachInternetGatewayResult attachInternetGateway(AttachInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final AttachInternetGatewayResult executeAttachInternetGateway(AttachInternetGatewayRequest attachInternetGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachInternetGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -724,9 +1043,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AttachNetworkInterface.
      * @return Result of the AttachNetworkInterface operation returned by the service.
      * @sample AmazonEC2.AttachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachNetworkInterfaceResult attachNetworkInterface(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest) {
+    public AttachNetworkInterfaceResult attachNetworkInterface(AttachNetworkInterfaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachNetworkInterface(request);
+    }
+
+    @SdkInternalApi
+    final AttachNetworkInterfaceResult executeAttachNetworkInterface(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachNetworkInterfaceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -812,9 +1140,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AttachVolume.
      * @return Result of the AttachVolume operation returned by the service.
      * @sample AmazonEC2.AttachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachVolumeResult attachVolume(AttachVolumeRequest attachVolumeRequest) {
+    public AttachVolumeResult attachVolume(AttachVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachVolume(request);
+    }
+
+    @SdkInternalApi
+    final AttachVolumeResult executeAttachVolume(AttachVolumeRequest attachVolumeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachVolumeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -844,18 +1181,29 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Attaches a virtual private gateway to a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private
-     * Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a
+     * Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param attachVpnGatewayRequest
      *        Contains the parameters for AttachVpnGateway.
      * @return Result of the AttachVpnGateway operation returned by the service.
      * @sample AmazonEC2.AttachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachVpnGatewayResult attachVpnGateway(AttachVpnGatewayRequest attachVpnGatewayRequest) {
+    public AttachVpnGatewayResult attachVpnGateway(AttachVpnGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachVpnGateway(request);
+    }
+
+    @SdkInternalApi
+    final AttachVpnGatewayResult executeAttachVpnGateway(AttachVpnGatewayRequest attachVpnGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachVpnGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -887,17 +1235,14 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     /**
      * <p>
      * [EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action
-     * permits instances to send traffic to one or more destination CIDR IP address ranges, or to one or more
+     * permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more
      * destination security groups for the same VPC. This action doesn't apply to security groups for use in
      * EC2-Classic. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your
-     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits,
+     * see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC
+     * Limits</a>.
      * </p>
-     * <important>
-     * <p>
-     * You can have up to 50 rules per security group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP
      * and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also
@@ -911,9 +1256,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for AuthorizeSecurityGroupEgress.
      * @return Result of the AuthorizeSecurityGroupEgress operation returned by the service.
      * @sample AmazonEC2.AuthorizeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupEgress"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AuthorizeSecurityGroupEgressResult authorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest authorizeSecurityGroupEgressRequest) {
+    public AuthorizeSecurityGroupEgressResult authorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest request) {
+        request = beforeClientExecution(request);
+        return executeAuthorizeSecurityGroupEgress(request);
+    }
+
+    @SdkInternalApi
+    final AuthorizeSecurityGroupEgressResult executeAuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest authorizeSecurityGroupEgressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(authorizeSecurityGroupEgressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -946,36 +1300,40 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <p>
      * Adds one or more ingress rules to a security group.
      * </p>
-     * <important>
-     * <p>
-     * EC2-Classic: You can have up to 100 rules per group.
-     * </p>
-     * <p>
-     * EC2-VPC: You can have up to 50 rules per group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
      * might occur.
      * </p>
      * <p>
-     * [EC2-Classic] This action gives one or more CIDR IP address ranges permission to access a security group in your
-     * account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security
-     * group for your account. A source group can be for your own AWS account, or another.
+     * [EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in
+     * your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a
+     * security group for your account. A source group can be for your own AWS account, or another. You can have up to
+     * 100 rules per group.
      * </p>
      * <p>
-     * [EC2-VPC] This action gives one or more CIDR IP address ranges permission to access a security group in your VPC,
-     * or gives one or more other security groups (called the <i>source groups</i>) permission to access a security
-     * group for your VPC. The security groups must all be for the same VPC.
+     * [EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in
+     * your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a
+     * security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering
+     * connection. For more information about VPC security group limits, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.
      * </p>
      * 
      * @param authorizeSecurityGroupIngressRequest
      *        Contains the parameters for AuthorizeSecurityGroupIngress.
      * @return Result of the AuthorizeSecurityGroupIngress operation returned by the service.
      * @sample AmazonEC2.AuthorizeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AuthorizeSecurityGroupIngressResult authorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest) {
+    public AuthorizeSecurityGroupIngressResult authorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest request) {
+        request = beforeClientExecution(request);
+        return executeAuthorizeSecurityGroupIngress(request);
+    }
+
+    @SdkInternalApi
+    final AuthorizeSecurityGroupIngressResult executeAuthorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(authorizeSecurityGroupIngressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1027,9 +1385,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for BundleInstance.
      * @return Result of the BundleInstance operation returned by the service.
      * @sample AmazonEC2.BundleInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/BundleInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public BundleInstanceResult bundleInstance(BundleInstanceRequest bundleInstanceRequest) {
+    public BundleInstanceResult bundleInstance(BundleInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeBundleInstance(request);
+    }
+
+    @SdkInternalApi
+    final BundleInstanceResult executeBundleInstance(BundleInstanceRequest bundleInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(bundleInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1067,9 +1434,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelBundleTask.
      * @return Result of the CancelBundleTask operation returned by the service.
      * @sample AmazonEC2.CancelBundleTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelBundleTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CancelBundleTaskResult cancelBundleTask(CancelBundleTaskRequest cancelBundleTaskRequest) {
+    public CancelBundleTaskResult cancelBundleTask(CancelBundleTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelBundleTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelBundleTaskResult executeCancelBundleTask(CancelBundleTaskRequest cancelBundleTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelBundleTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1114,9 +1490,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelConversionTask.
      * @return Result of the CancelConversionTask operation returned by the service.
      * @sample AmazonEC2.CancelConversionTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CancelConversionTaskResult cancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) {
+    public CancelConversionTaskResult cancelConversionTask(CancelConversionTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelConversionTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelConversionTaskResult executeCancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelConversionTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1156,9 +1541,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelExportTask.
      * @return Result of the CancelExportTask operation returned by the service.
      * @sample AmazonEC2.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CancelExportTaskResult cancelExportTask(CancelExportTaskRequest cancelExportTaskRequest) {
+    public CancelExportTaskResult cancelExportTask(CancelExportTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelExportTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelExportTaskResult executeCancelExportTask(CancelExportTaskRequest cancelExportTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelExportTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1196,9 +1590,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelImportTask.
      * @return Result of the CancelImportTask operation returned by the service.
      * @sample AmazonEC2.CancelImportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CancelImportTaskResult cancelImportTask(CancelImportTaskRequest cancelImportTaskRequest) {
+    public CancelImportTaskResult cancelImportTask(CancelImportTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelImportTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelImportTaskResult executeCancelImportTask(CancelImportTaskRequest cancelImportTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelImportTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1246,9 +1649,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelReservedInstancesListing.
      * @return Result of the CancelReservedInstancesListing operation returned by the service.
      * @sample AmazonEC2.CancelReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CancelReservedInstancesListingResult cancelReservedInstancesListing(CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest) {
+    public CancelReservedInstancesListingResult cancelReservedInstancesListing(CancelReservedInstancesListingRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelReservedInstancesListing(request);
+    }
+
+    @SdkInternalApi
+    final CancelReservedInstancesListingResult executeCancelReservedInstancesListing(CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelReservedInstancesListingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1293,9 +1705,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelSpotFleetRequests.
      * @return Result of the CancelSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2.CancelSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CancelSpotFleetRequestsResult cancelSpotFleetRequests(CancelSpotFleetRequestsRequest cancelSpotFleetRequestsRequest) {
+    public CancelSpotFleetRequestsResult cancelSpotFleetRequests(CancelSpotFleetRequestsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelSpotFleetRequests(request);
+    }
+
+    @SdkInternalApi
+    final CancelSpotFleetRequestsResult executeCancelSpotFleetRequests(CancelSpotFleetRequestsRequest cancelSpotFleetRequestsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelSpotFleetRequestsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1342,9 +1763,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CancelSpotInstanceRequests.
      * @return Result of the CancelSpotInstanceRequests operation returned by the service.
      * @sample AmazonEC2.CancelSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotInstanceRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CancelSpotInstanceRequestsResult cancelSpotInstanceRequests(CancelSpotInstanceRequestsRequest cancelSpotInstanceRequestsRequest) {
+    public CancelSpotInstanceRequestsResult cancelSpotInstanceRequests(CancelSpotInstanceRequestsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelSpotInstanceRequests(request);
+    }
+
+    @SdkInternalApi
+    final CancelSpotInstanceRequestsResult executeCancelSpotInstanceRequests(CancelSpotInstanceRequestsRequest cancelSpotInstanceRequestsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelSpotInstanceRequestsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1384,9 +1814,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ConfirmProductInstance.
      * @return Result of the ConfirmProductInstance operation returned by the service.
      * @sample AmazonEC2.ConfirmProductInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ConfirmProductInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ConfirmProductInstanceResult confirmProductInstance(ConfirmProductInstanceRequest confirmProductInstanceRequest) {
+    public ConfirmProductInstanceResult confirmProductInstance(ConfirmProductInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfirmProductInstance(request);
+    }
+
+    @SdkInternalApi
+    final ConfirmProductInstanceResult executeConfirmProductInstance(ConfirmProductInstanceRequest confirmProductInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(confirmProductInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1429,9 +1868,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CopyImage.
      * @return Result of the CopyImage operation returned by the service.
      * @sample AmazonEC2.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyImage" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CopyImageResult copyImage(CopyImageRequest copyImageRequest) {
+    public CopyImageResult copyImage(CopyImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyImage(request);
+    }
+
+    @SdkInternalApi
+    final CopyImageResult executeCopyImage(CopyImageRequest copyImageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyImageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1491,9 +1939,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CopySnapshot.
      * @return Result of the CopySnapshot operation returned by the service.
      * @sample AmazonEC2.CopySnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CopySnapshotResult copySnapshot(CopySnapshotRequest copySnapshotRequest) {
+    public CopySnapshotResult copySnapshot(CopySnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopySnapshot(request);
+    }
+
+    @SdkInternalApi
+    final CopySnapshotResult executeCopySnapshot(CopySnapshotRequest copySnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copySnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1557,9 +2014,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateCustomerGateway.
      * @return Result of the CreateCustomerGateway operation returned by the service.
      * @sample AmazonEC2.CreateCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest) {
+    public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateCustomerGateway(request);
+    }
+
+    @SdkInternalApi
+    final CreateCustomerGatewayResult executeCreateCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createCustomerGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1647,9 +2113,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateDhcpOptions.
      * @return Result of the CreateDhcpOptions operation returned by the service.
      * @sample AmazonEC2.CreateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateDhcpOptionsResult createDhcpOptions(CreateDhcpOptionsRequest createDhcpOptionsRequest) {
+    public CreateDhcpOptionsResult createDhcpOptions(CreateDhcpOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDhcpOptions(request);
+    }
+
+    @SdkInternalApi
+    final CreateDhcpOptionsResult executeCreateDhcpOptions(CreateDhcpOptionsRequest createDhcpOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDhcpOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1680,6 +2155,57 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * [IPv6 only] Creates an egress-only Internet gateway for your VPC. An egress-only Internet gateway is used to
+     * enable outbound communication over IPv6 from instances in your VPC to the Internet, and prevents hosts outside of
+     * your VPC from initiating an IPv6 connection with your instance.
+     * </p>
+     * 
+     * @param createEgressOnlyInternetGatewayRequest
+     * @return Result of the CreateEgressOnlyInternetGateway operation returned by the service.
+     * @sample AmazonEC2.CreateEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateEgressOnlyInternetGatewayResult createEgressOnlyInternetGateway(CreateEgressOnlyInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEgressOnlyInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final CreateEgressOnlyInternetGatewayResult executeCreateEgressOnlyInternetGateway(
+            CreateEgressOnlyInternetGatewayRequest createEgressOnlyInternetGatewayRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createEgressOnlyInternetGatewayRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateEgressOnlyInternetGatewayRequest> request = null;
+        Response<CreateEgressOnlyInternetGatewayResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateEgressOnlyInternetGatewayRequestMarshaller().marshall(super.beforeMarshalling(createEgressOnlyInternetGatewayRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateEgressOnlyInternetGatewayResult> responseHandler = new StaxResponseHandler<CreateEgressOnlyInternetGatewayResult>(
+                    new CreateEgressOnlyInternetGatewayResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates one or more flow logs to capture IP traffic for a specific network interface, subnet, or VPC. Flow logs
      * are delivered to a specified log group in Amazon CloudWatch Logs. If you specify a VPC or subnet in the request,
      * a log stream is created in CloudWatch Logs for each network interface in the subnet or VPC. Log streams can
@@ -1694,9 +2220,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateFlowLogs.
      * @return Result of the CreateFlowLogs operation returned by the service.
      * @sample AmazonEC2.CreateFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateFlowLogsResult createFlowLogs(CreateFlowLogsRequest createFlowLogsRequest) {
+    public CreateFlowLogsResult createFlowLogs(CreateFlowLogsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateFlowLogs(request);
+    }
+
+    @SdkInternalApi
+    final CreateFlowLogsResult executeCreateFlowLogs(CreateFlowLogsRequest createFlowLogsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createFlowLogsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1744,9 +2279,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateImage.
      * @return Result of the CreateImage operation returned by the service.
      * @sample AmazonEC2.CreateImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImage" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateImageResult createImage(CreateImageRequest createImageRequest) {
+    public CreateImageResult createImage(CreateImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateImage(request);
+    }
+
+    @SdkInternalApi
+    final CreateImageResult executeCreateImage(CreateImageRequest createImageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createImageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1789,9 +2333,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateInstanceExportTask.
      * @return Result of the CreateInstanceExportTask operation returned by the service.
      * @sample AmazonEC2.CreateInstanceExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceExportTask" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateInstanceExportTaskResult createInstanceExportTask(CreateInstanceExportTaskRequest createInstanceExportTaskRequest) {
+    public CreateInstanceExportTaskResult createInstanceExportTask(CreateInstanceExportTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateInstanceExportTask(request);
+    }
+
+    @SdkInternalApi
+    final CreateInstanceExportTaskResult executeCreateInstanceExportTask(CreateInstanceExportTaskRequest createInstanceExportTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createInstanceExportTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1834,9 +2387,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateInternetGateway.
      * @return Result of the CreateInternetGateway operation returned by the service.
      * @sample AmazonEC2.CreateInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateInternetGatewayResult createInternetGateway(CreateInternetGatewayRequest createInternetGatewayRequest) {
+    public CreateInternetGatewayResult createInternetGateway(CreateInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final CreateInternetGatewayResult executeCreateInternetGateway(CreateInternetGatewayRequest createInternetGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createInternetGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1893,9 +2455,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateKeyPair.
      * @return Result of the CreateKeyPair operation returned by the service.
      * @sample AmazonEC2.CreateKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateKeyPairResult createKeyPair(CreateKeyPairRequest createKeyPairRequest) {
+    public CreateKeyPairResult createKeyPair(CreateKeyPairRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateKeyPair(request);
+    }
+
+    @SdkInternalApi
+    final CreateKeyPairResult executeCreateKeyPair(CreateKeyPairRequest createKeyPairRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createKeyPairRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1936,9 +2507,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateNatGateway.
      * @return Result of the CreateNatGateway operation returned by the service.
      * @sample AmazonEC2.CreateNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateNatGatewayResult createNatGateway(CreateNatGatewayRequest createNatGatewayRequest) {
+    public CreateNatGatewayResult createNatGateway(CreateNatGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateNatGateway(request);
+    }
+
+    @SdkInternalApi
+    final CreateNatGatewayResult executeCreateNatGateway(CreateNatGatewayRequest createNatGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createNatGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1982,9 +2562,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateNetworkAcl.
      * @return Result of the CreateNetworkAcl operation returned by the service.
      * @sample AmazonEC2.CreateNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateNetworkAclResult createNetworkAcl(CreateNetworkAclRequest createNetworkAclRequest) {
+    public CreateNetworkAclResult createNetworkAcl(CreateNetworkAclRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateNetworkAcl(request);
+    }
+
+    @SdkInternalApi
+    final CreateNetworkAclResult executeCreateNetworkAcl(CreateNetworkAclRequest createNetworkAclRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createNetworkAclRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2039,9 +2628,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateNetworkAclEntry.
      * @return Result of the CreateNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2.CreateNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateNetworkAclEntryResult createNetworkAclEntry(CreateNetworkAclEntryRequest createNetworkAclEntryRequest) {
+    public CreateNetworkAclEntryResult createNetworkAclEntry(CreateNetworkAclEntryRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateNetworkAclEntry(request);
+    }
+
+    @SdkInternalApi
+    final CreateNetworkAclEntryResult executeCreateNetworkAclEntry(CreateNetworkAclEntryRequest createNetworkAclEntryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createNetworkAclEntryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2077,16 +2675,25 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <p>
      * For more information about network interfaces, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interfaces</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param createNetworkInterfaceRequest
      *        Contains the parameters for CreateNetworkInterface.
      * @return Result of the CreateNetworkInterface operation returned by the service.
      * @sample AmazonEC2.CreateNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest) {
+    public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateNetworkInterface(request);
+    }
+
+    @SdkInternalApi
+    final CreateNetworkInterfaceResult executeCreateNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createNetworkInterfaceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2130,9 +2737,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreatePlacementGroup.
      * @return Result of the CreatePlacementGroup operation returned by the service.
      * @sample AmazonEC2.CreatePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreatePlacementGroupResult createPlacementGroup(CreatePlacementGroupRequest createPlacementGroupRequest) {
+    public CreatePlacementGroupResult createPlacementGroup(CreatePlacementGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePlacementGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreatePlacementGroupResult executeCreatePlacementGroup(CreatePlacementGroupRequest createPlacementGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPlacementGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2167,6 +2783,12 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances,
      * you can use the <a>DescribeReservedInstances</a> operation.
      * </p>
+     * <note>
+     * <p>
+     * Only Standard Reserved Instances with a capacity reservation can be sold in the Reserved Instance Marketplace.
+     * Convertible Reserved Instances and Standard Reserved Instances with a regional benefit cannot be sold.
+     * </p>
+     * </note>
      * <p>
      * The Reserved Instance Marketplace matches sellers who want to resell Standard Reserved Instance capacity that
      * they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold
@@ -2189,9 +2811,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateReservedInstancesListing.
      * @return Result of the CreateReservedInstancesListing operation returned by the service.
      * @sample AmazonEC2.CreateReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateReservedInstancesListingResult createReservedInstancesListing(CreateReservedInstancesListingRequest createReservedInstancesListingRequest) {
+    public CreateReservedInstancesListingResult createReservedInstancesListing(CreateReservedInstancesListingRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReservedInstancesListing(request);
+    }
+
+    @SdkInternalApi
+    final CreateReservedInstancesListingResult executeCreateReservedInstancesListing(CreateReservedInstancesListingRequest createReservedInstancesListingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReservedInstancesListingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2226,11 +2857,11 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * </p>
      * <p>
      * You must specify one of the following targets: Internet gateway or virtual private gateway, NAT instance, NAT
-     * gateway, VPC peering connection, or network interface.
+     * gateway, VPC peering connection, network interface, or egress-only Internet gateway.
      * </p>
      * <p>
-     * When determining how to route traffic, we use the route with the most specific match. For example, let's say the
-     * traffic is destined for <code>192.0.2.3</code>, and the route table includes the following two routes:
+     * When determining how to route traffic, we use the route with the most specific match. For example, traffic is
+     * destined for the IPv4 address <code>192.0.2.3</code>, and the route table includes the following two IPv4 routes:
      * </p>
      * <ul>
      * <li>
@@ -2259,9 +2890,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateRoute.
      * @return Result of the CreateRoute operation returned by the service.
      * @sample AmazonEC2.CreateRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateRouteResult createRoute(CreateRouteRequest createRouteRequest) {
+    public CreateRouteResult createRoute(CreateRouteRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRoute(request);
+    }
+
+    @SdkInternalApi
+    final CreateRouteResult executeCreateRoute(CreateRouteRequest createRouteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRouteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2304,9 +2944,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateRouteTable.
      * @return Result of the CreateRouteTable operation returned by the service.
      * @sample AmazonEC2.CreateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateRouteTableResult createRouteTable(CreateRouteTableRequest createRouteTableRequest) {
+    public CreateRouteTableResult createRouteTable(CreateRouteTableRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRouteTable(request);
+    }
+
+    @SdkInternalApi
+    final CreateRouteTableResult executeCreateRouteTable(CreateRouteTableRequest createRouteTableRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRouteTableRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2374,9 +3023,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateSecurityGroup.
      * @return Result of the CreateSecurityGroup operation returned by the service.
      * @sample AmazonEC2.CreateSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateSecurityGroupResult createSecurityGroup(CreateSecurityGroupRequest createSecurityGroupRequest) {
+    public CreateSecurityGroupResult createSecurityGroup(CreateSecurityGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSecurityGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateSecurityGroupResult executeCreateSecurityGroup(CreateSecurityGroupRequest createSecurityGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createSecurityGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2443,9 +3101,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateSnapshot.
      * @return Result of the CreateSnapshot operation returned by the service.
      * @sample AmazonEC2.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest) {
+    public CreateSnapshotResult createSnapshot(CreateSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final CreateSnapshotResult executeCreateSnapshot(CreateSnapshotRequest createSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2486,9 +3153,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateSpotDatafeedSubscription.
      * @return Result of the CreateSpotDatafeedSubscription operation returned by the service.
      * @sample AmazonEC2.CreateSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateSpotDatafeedSubscriptionResult createSpotDatafeedSubscription(CreateSpotDatafeedSubscriptionRequest createSpotDatafeedSubscriptionRequest) {
+    public CreateSpotDatafeedSubscriptionResult createSpotDatafeedSubscription(CreateSpotDatafeedSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSpotDatafeedSubscription(request);
+    }
+
+    @SdkInternalApi
+    final CreateSpotDatafeedSubscriptionResult executeCreateSpotDatafeedSubscription(CreateSpotDatafeedSubscriptionRequest createSpotDatafeedSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createSpotDatafeedSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2523,10 +3199,15 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * </p>
      * <p>
      * When you create each subnet, you provide the VPC ID and the CIDR block you want for the subnet. After you create
-     * a subnet, you can't change its CIDR block. The subnet's CIDR block can be the same as the VPC's CIDR block
-     * (assuming you want only a single subnet in the VPC), or a subset of the VPC's CIDR block. If you create more than
-     * one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest subnet (and VPC) you can create uses
-     * a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536 IP addresses).
+     * a subnet, you can't change its CIDR block. The subnet's IPv4 CIDR block can be the same as the VPC's IPv4 CIDR
+     * block (assuming you want only a single subnet in the VPC), or a subset of the VPC's IPv4 CIDR block. If you
+     * create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and
+     * VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4
+     * addresses).
+     * </p>
+     * <p>
+     * If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses
+     * a /64 prefix length.
      * </p>
      * <important>
      * <p>
@@ -2553,9 +3234,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateSubnet.
      * @return Result of the CreateSubnet operation returned by the service.
      * @sample AmazonEC2.CreateSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateSubnetResult createSubnet(CreateSubnetRequest createSubnetRequest) {
+    public CreateSubnetResult createSubnet(CreateSubnetRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSubnet(request);
+    }
+
+    @SdkInternalApi
+    final CreateSubnetResult executeCreateSubnet(CreateSubnetRequest createSubnetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createSubnetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2601,9 +3291,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateTags.
      * @return Result of the CreateTags operation returned by the service.
      * @sample AmazonEC2.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateTagsResult createTags(CreateTagsRequest createTagsRequest) {
+    public CreateTagsResult createTags(CreateTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateTagsResult executeCreateTags(CreateTagsRequest createTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2649,18 +3348,31 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
+     * You can tag your volumes during creation. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
+     * </p>
+     * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating or Restoring an
-     * Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating an Amazon EBS
+     * Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVolumeRequest
      *        Contains the parameters for CreateVolume.
      * @return Result of the CreateVolume operation returned by the service.
      * @sample AmazonEC2.CreateVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVolumeResult createVolume(CreateVolumeRequest createVolumeRequest) {
+    public CreateVolumeResult createVolume(CreateVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVolume(request);
+    }
+
+    @SdkInternalApi
+    final CreateVolumeResult executeCreateVolume(CreateVolumeRequest createVolumeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVolumeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2690,13 +3402,14 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Creates a VPC with the specified CIDR block.
+     * Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4
+     * addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). To help you decide how big to make your
+     * VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and
+     * Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
-     * The smallest VPC you can create uses a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536
-     * IP addresses). To help you decide how big to make your VPC, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the
-     * <i>Amazon Virtual Private Cloud User Guide</i>.
+     * You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix
+     * length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
      * </p>
      * <p>
      * By default, each instance you launch in the VPC has the default DHCP options, which includes only a default DNS
@@ -2707,17 +3420,26 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <p>
      * You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the
      * VPC after you create it. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html.html">Dedicated Instances</a>
-     * in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVpcRequest
      *        Contains the parameters for CreateVpc.
      * @return Result of the CreateVpc operation returned by the service.
      * @sample AmazonEC2.CreateVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVpcResult createVpc(CreateVpcRequest createVpcRequest) {
+    public CreateVpcResult createVpc(CreateVpcRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpc(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpcResult executeCreateVpc(CreateVpcRequest createVpcRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpcRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2753,16 +3475,25 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * use the endpoint.
      * </p>
      * <p>
-     * Currently, only endpoints to Amazon S3 are supported.
+     * Use <a>DescribeVpcEndpointServices</a> to get a list of supported AWS services.
      * </p>
      * 
      * @param createVpcEndpointRequest
      *        Contains the parameters for CreateVpcEndpoint.
      * @return Result of the CreateVpcEndpoint operation returned by the service.
      * @sample AmazonEC2.CreateVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVpcEndpointResult createVpcEndpoint(CreateVpcEndpointRequest createVpcEndpointRequest) {
+    public CreateVpcEndpointResult createVpcEndpoint(CreateVpcEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpcEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpcEndpointResult executeCreateVpcEndpoint(CreateVpcEndpointRequest createVpcEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpcEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2810,9 +3541,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateVpcPeeringConnection.
      * @return Result of the CreateVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2.CreateVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+    public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpcPeeringConnectionResult executeCreateVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpcPeeringConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2878,9 +3618,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateVpnConnection.
      * @return Result of the CreateVpnConnection operation returned by the service.
      * @sample AmazonEC2.CreateVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVpnConnectionResult createVpnConnection(CreateVpnConnectionRequest createVpnConnectionRequest) {
+    public CreateVpnConnectionResult createVpnConnection(CreateVpnConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpnConnection(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpnConnectionResult executeCreateVpnConnection(CreateVpnConnectionRequest createVpnConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpnConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2925,9 +3674,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateVpnConnectionRoute.
      * @return Result of the CreateVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2.CreateVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateVpnConnectionRouteResult createVpnConnectionRoute(CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest) {
+    public CreateVpnConnectionRouteResult createVpnConnectionRoute(CreateVpnConnectionRouteRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpnConnectionRoute(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpnConnectionRouteResult executeCreateVpnConnectionRoute(CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpnConnectionRouteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2971,9 +3729,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for CreateVpnGateway.
      * @return Result of the CreateVpnGateway operation returned by the service.
      * @sample AmazonEC2.CreateVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVpnGatewayResult createVpnGateway(CreateVpnGatewayRequest createVpnGatewayRequest) {
+    public CreateVpnGatewayResult createVpnGateway(CreateVpnGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpnGateway(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpnGatewayResult executeCreateVpnGateway(CreateVpnGatewayRequest createVpnGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVpnGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3012,9 +3779,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteCustomerGateway.
      * @return Result of the DeleteCustomerGateway operation returned by the service.
      * @sample AmazonEC2.DeleteCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest) {
+    public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteCustomerGateway(request);
+    }
+
+    @SdkInternalApi
+    final DeleteCustomerGatewayResult executeDeleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteCustomerGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3054,9 +3830,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteDhcpOptions.
      * @return Result of the DeleteDhcpOptions operation returned by the service.
      * @sample AmazonEC2.DeleteDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDhcpOptionsResult deleteDhcpOptions(DeleteDhcpOptionsRequest deleteDhcpOptionsRequest) {
+    public DeleteDhcpOptionsResult deleteDhcpOptions(DeleteDhcpOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDhcpOptions(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDhcpOptionsResult executeDeleteDhcpOptions(DeleteDhcpOptionsRequest deleteDhcpOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDhcpOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3087,6 +3872,55 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Deletes an egress-only Internet gateway.
+     * </p>
+     * 
+     * @param deleteEgressOnlyInternetGatewayRequest
+     * @return Result of the DeleteEgressOnlyInternetGateway operation returned by the service.
+     * @sample AmazonEC2.DeleteEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteEgressOnlyInternetGatewayResult deleteEgressOnlyInternetGateway(DeleteEgressOnlyInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEgressOnlyInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEgressOnlyInternetGatewayResult executeDeleteEgressOnlyInternetGateway(
+            DeleteEgressOnlyInternetGatewayRequest deleteEgressOnlyInternetGatewayRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteEgressOnlyInternetGatewayRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteEgressOnlyInternetGatewayRequest> request = null;
+        Response<DeleteEgressOnlyInternetGatewayResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteEgressOnlyInternetGatewayRequestMarshaller().marshall(super.beforeMarshalling(deleteEgressOnlyInternetGatewayRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteEgressOnlyInternetGatewayResult> responseHandler = new StaxResponseHandler<DeleteEgressOnlyInternetGatewayResult>(
+                    new DeleteEgressOnlyInternetGatewayResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes one or more flow logs.
      * </p>
      * 
@@ -3094,9 +3928,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteFlowLogs.
      * @return Result of the DeleteFlowLogs operation returned by the service.
      * @sample AmazonEC2.DeleteFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteFlowLogsResult deleteFlowLogs(DeleteFlowLogsRequest deleteFlowLogsRequest) {
+    public DeleteFlowLogsResult deleteFlowLogs(DeleteFlowLogsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteFlowLogs(request);
+    }
+
+    @SdkInternalApi
+    final DeleteFlowLogsResult executeDeleteFlowLogs(DeleteFlowLogsRequest deleteFlowLogsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteFlowLogsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3135,9 +3978,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteInternetGateway.
      * @return Result of the DeleteInternetGateway operation returned by the service.
      * @sample AmazonEC2.DeleteInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteInternetGatewayResult deleteInternetGateway(DeleteInternetGatewayRequest deleteInternetGatewayRequest) {
+    public DeleteInternetGatewayResult deleteInternetGateway(DeleteInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final DeleteInternetGatewayResult executeDeleteInternetGateway(DeleteInternetGatewayRequest deleteInternetGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteInternetGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3175,9 +4027,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteKeyPair.
      * @return Result of the DeleteKeyPair operation returned by the service.
      * @sample AmazonEC2.DeleteKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteKeyPairResult deleteKeyPair(DeleteKeyPairRequest deleteKeyPairRequest) {
+    public DeleteKeyPairResult deleteKeyPair(DeleteKeyPairRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteKeyPair(request);
+    }
+
+    @SdkInternalApi
+    final DeleteKeyPairResult executeDeleteKeyPair(DeleteKeyPairRequest deleteKeyPairRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteKeyPairRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3216,9 +4077,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteNatGateway.
      * @return Result of the DeleteNatGateway operation returned by the service.
      * @sample AmazonEC2.DeleteNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteNatGatewayResult deleteNatGateway(DeleteNatGatewayRequest deleteNatGatewayRequest) {
+    public DeleteNatGatewayResult deleteNatGateway(DeleteNatGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteNatGateway(request);
+    }
+
+    @SdkInternalApi
+    final DeleteNatGatewayResult executeDeleteNatGateway(DeleteNatGatewayRequest deleteNatGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteNatGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3257,9 +4127,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteNetworkAcl.
      * @return Result of the DeleteNetworkAcl operation returned by the service.
      * @sample AmazonEC2.DeleteNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteNetworkAclResult deleteNetworkAcl(DeleteNetworkAclRequest deleteNetworkAclRequest) {
+    public DeleteNetworkAclResult deleteNetworkAcl(DeleteNetworkAclRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteNetworkAcl(request);
+    }
+
+    @SdkInternalApi
+    final DeleteNetworkAclResult executeDeleteNetworkAcl(DeleteNetworkAclRequest deleteNetworkAclRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteNetworkAclRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3297,9 +4176,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteNetworkAclEntry.
      * @return Result of the DeleteNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2.DeleteNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteNetworkAclEntryResult deleteNetworkAclEntry(DeleteNetworkAclEntryRequest deleteNetworkAclEntryRequest) {
+    public DeleteNetworkAclEntryResult deleteNetworkAclEntry(DeleteNetworkAclEntryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteNetworkAclEntry(request);
+    }
+
+    @SdkInternalApi
+    final DeleteNetworkAclEntryResult executeDeleteNetworkAclEntry(DeleteNetworkAclEntryRequest deleteNetworkAclEntryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteNetworkAclEntryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3337,9 +4225,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteNetworkInterface.
      * @return Result of the DeleteNetworkInterface operation returned by the service.
      * @sample AmazonEC2.DeleteNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest) {
+    public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteNetworkInterface(request);
+    }
+
+    @SdkInternalApi
+    final DeleteNetworkInterfaceResult executeDeleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteNetworkInterfaceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3380,9 +4277,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeletePlacementGroup.
      * @return Result of the DeletePlacementGroup operation returned by the service.
      * @sample AmazonEC2.DeletePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeletePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeletePlacementGroupResult deletePlacementGroup(DeletePlacementGroupRequest deletePlacementGroupRequest) {
+    public DeletePlacementGroupResult deletePlacementGroup(DeletePlacementGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePlacementGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeletePlacementGroupResult executeDeletePlacementGroup(DeletePlacementGroupRequest deletePlacementGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePlacementGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3420,9 +4326,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteRoute.
      * @return Result of the DeleteRoute operation returned by the service.
      * @sample AmazonEC2.DeleteRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteRouteResult deleteRoute(DeleteRouteRequest deleteRouteRequest) {
+    public DeleteRouteResult deleteRoute(DeleteRouteRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRoute(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRouteResult executeDeleteRoute(DeleteRouteRequest deleteRouteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRouteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3460,9 +4375,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteRouteTable.
      * @return Result of the DeleteRouteTable operation returned by the service.
      * @sample AmazonEC2.DeleteRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteRouteTableResult deleteRouteTable(DeleteRouteTableRequest deleteRouteTableRequest) {
+    public DeleteRouteTableResult deleteRouteTable(DeleteRouteTableRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRouteTable(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRouteTableResult executeDeleteRouteTable(DeleteRouteTableRequest deleteRouteTableRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRouteTableRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3505,9 +4429,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteSecurityGroup.
      * @return Result of the DeleteSecurityGroup operation returned by the service.
      * @sample AmazonEC2.DeleteSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteSecurityGroupResult deleteSecurityGroup(DeleteSecurityGroupRequest deleteSecurityGroupRequest) {
+    public DeleteSecurityGroupResult deleteSecurityGroup(DeleteSecurityGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSecurityGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSecurityGroupResult executeDeleteSecurityGroup(DeleteSecurityGroupRequest deleteSecurityGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSecurityGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3560,9 +4493,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteSnapshot.
      * @return Result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonEC2.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteSnapshotResult deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest) {
+    public DeleteSnapshotResult deleteSnapshot(DeleteSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSnapshotResult executeDeleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3600,9 +4542,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteSpotDatafeedSubscription.
      * @return Result of the DeleteSpotDatafeedSubscription operation returned by the service.
      * @sample AmazonEC2.DeleteSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteSpotDatafeedSubscriptionResult deleteSpotDatafeedSubscription(DeleteSpotDatafeedSubscriptionRequest deleteSpotDatafeedSubscriptionRequest) {
+    public DeleteSpotDatafeedSubscriptionResult deleteSpotDatafeedSubscription(DeleteSpotDatafeedSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSpotDatafeedSubscription(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSpotDatafeedSubscriptionResult executeDeleteSpotDatafeedSubscription(DeleteSpotDatafeedSubscriptionRequest deleteSpotDatafeedSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSpotDatafeedSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3646,9 +4597,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteSubnet.
      * @return Result of the DeleteSubnet operation returned by the service.
      * @sample AmazonEC2.DeleteSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteSubnetResult deleteSubnet(DeleteSubnetRequest deleteSubnetRequest) {
+    public DeleteSubnetResult deleteSubnet(DeleteSubnetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSubnet(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSubnetResult executeDeleteSubnet(DeleteSubnetRequest deleteSubnetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSubnetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3691,9 +4651,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteTags.
      * @return Result of the DeleteTags operation returned by the service.
      * @sample AmazonEC2.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest) {
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTags(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsResult executeDeleteTags(DeleteTagsRequest deleteTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3741,9 +4710,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVolume.
      * @return Result of the DeleteVolume operation returned by the service.
      * @sample AmazonEC2.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVolumeResult deleteVolume(DeleteVolumeRequest deleteVolumeRequest) {
+    public DeleteVolumeResult deleteVolume(DeleteVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVolume(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVolumeResult executeDeleteVolume(DeleteVolumeRequest deleteVolumeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVolumeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3783,9 +4761,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpc.
      * @return Result of the DeleteVpc operation returned by the service.
      * @sample AmazonEC2.DeleteVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVpcResult deleteVpc(DeleteVpcRequest deleteVpcRequest) {
+    public DeleteVpcResult deleteVpc(DeleteVpcRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpc(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpcResult executeDeleteVpc(DeleteVpcRequest deleteVpcRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpcRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3823,9 +4810,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpcEndpoints.
      * @return Result of the DeleteVpcEndpoints operation returned by the service.
      * @sample AmazonEC2.DeleteVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVpcEndpointsResult deleteVpcEndpoints(DeleteVpcEndpointsRequest deleteVpcEndpointsRequest) {
+    public DeleteVpcEndpointsResult deleteVpcEndpoints(DeleteVpcEndpointsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpcEndpoints(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpcEndpointsResult executeDeleteVpcEndpoints(DeleteVpcEndpointsRequest deleteVpcEndpointsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpcEndpointsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3865,9 +4861,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpcPeeringConnection.
      * @return Result of the DeleteVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2.DeleteVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+    public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpcPeeringConnectionResult executeDeleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpcPeeringConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3913,9 +4918,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpnConnection.
      * @return Result of the DeleteVpnConnection operation returned by the service.
      * @sample AmazonEC2.DeleteVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVpnConnectionResult deleteVpnConnection(DeleteVpnConnectionRequest deleteVpnConnectionRequest) {
+    public DeleteVpnConnectionResult deleteVpnConnection(DeleteVpnConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpnConnection(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpnConnectionResult executeDeleteVpnConnection(DeleteVpnConnectionRequest deleteVpnConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpnConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3955,9 +4969,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpnConnectionRoute.
      * @return Result of the DeleteVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2.DeleteVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteVpnConnectionRouteResult deleteVpnConnectionRoute(DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest) {
+    public DeleteVpnConnectionRouteResult deleteVpnConnectionRoute(DeleteVpnConnectionRouteRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpnConnectionRoute(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpnConnectionRouteResult executeDeleteVpnConnectionRoute(DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpnConnectionRouteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3997,9 +5020,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeleteVpnGateway.
      * @return Result of the DeleteVpnGateway operation returned by the service.
      * @sample AmazonEC2.DeleteVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVpnGatewayResult deleteVpnGateway(DeleteVpnGatewayRequest deleteVpnGatewayRequest) {
+    public DeleteVpnGatewayResult deleteVpnGateway(DeleteVpnGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpnGateway(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpnGatewayResult executeDeleteVpnGateway(DeleteVpnGatewayRequest deleteVpnGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVpnGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4040,9 +5072,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DeregisterImage.
      * @return Result of the DeregisterImage operation returned by the service.
      * @sample AmazonEC2.DeregisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeregisterImageResult deregisterImage(DeregisterImageRequest deregisterImageRequest) {
+    public DeregisterImageResult deregisterImage(DeregisterImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeregisterImage(request);
+    }
+
+    @SdkInternalApi
+    final DeregisterImageResult executeDeregisterImage(DeregisterImageRequest deregisterImageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deregisterImageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4116,9 +5157,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeAccountAttributes.
      * @return Result of the DescribeAccountAttributes operation returned by the service.
      * @sample AmazonEC2.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAccountAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAccountAttributesResult executeDescribeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAccountAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4166,9 +5216,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeAddresses.
      * @return Result of the DescribeAddresses operation returned by the service.
      * @sample AmazonEC2.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeAddressesResult describeAddresses(DescribeAddressesRequest describeAddressesRequest) {
+    public DescribeAddressesResult describeAddresses(DescribeAddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAddresses(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAddressesResult executeDescribeAddresses(DescribeAddressesRequest describeAddressesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAddressesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4218,9 +5277,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeAvailabilityZones.
      * @return Result of the DescribeAvailabilityZones operation returned by the service.
      * @sample AmazonEC2.DescribeAvailabilityZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAvailabilityZones" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest) {
+    public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAvailabilityZones(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAvailabilityZonesResult executeDescribeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAvailabilityZonesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4270,9 +5338,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeBundleTasks.
      * @return Result of the DescribeBundleTasks operation returned by the service.
      * @sample AmazonEC2.DescribeBundleTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeBundleTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeBundleTasksResult describeBundleTasks(DescribeBundleTasksRequest describeBundleTasksRequest) {
+    public DescribeBundleTasksResult describeBundleTasks(DescribeBundleTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeBundleTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeBundleTasksResult executeDescribeBundleTasks(DescribeBundleTasksRequest describeBundleTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeBundleTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4317,9 +5394,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeClassicLinkInstances.
      * @return Result of the DescribeClassicLinkInstances operation returned by the service.
      * @sample AmazonEC2.DescribeClassicLinkInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClassicLinkInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeClassicLinkInstancesResult describeClassicLinkInstances(DescribeClassicLinkInstancesRequest describeClassicLinkInstancesRequest) {
+    public DescribeClassicLinkInstancesResult describeClassicLinkInstances(DescribeClassicLinkInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeClassicLinkInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeClassicLinkInstancesResult executeDescribeClassicLinkInstances(DescribeClassicLinkInstancesRequest describeClassicLinkInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeClassicLinkInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4367,9 +5453,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeConversionTasks.
      * @return Result of the DescribeConversionTasks operation returned by the service.
      * @sample AmazonEC2.DescribeConversionTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeConversionTasksResult describeConversionTasks(DescribeConversionTasksRequest describeConversionTasksRequest) {
+    public DescribeConversionTasksResult describeConversionTasks(DescribeConversionTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeConversionTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeConversionTasksResult executeDescribeConversionTasks(DescribeConversionTasksRequest describeConversionTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeConversionTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4417,9 +5512,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeCustomerGateways.
      * @return Result of the DescribeCustomerGateways operation returned by the service.
      * @sample AmazonEC2.DescribeCustomerGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest) {
+    public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCustomerGateways(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCustomerGatewaysResult executeDescribeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCustomerGatewaysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4467,9 +5571,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeDhcpOptions.
      * @return Result of the DescribeDhcpOptions operation returned by the service.
      * @sample AmazonEC2.DescribeDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDhcpOptionsResult describeDhcpOptions(DescribeDhcpOptionsRequest describeDhcpOptionsRequest) {
+    public DescribeDhcpOptionsResult describeDhcpOptions(DescribeDhcpOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDhcpOptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDhcpOptionsResult executeDescribeDhcpOptions(DescribeDhcpOptionsRequest describeDhcpOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDhcpOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4505,6 +5618,56 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Describes one or more of your egress-only Internet gateways.
+     * </p>
+     * 
+     * @param describeEgressOnlyInternetGatewaysRequest
+     * @return Result of the DescribeEgressOnlyInternetGateways operation returned by the service.
+     * @sample AmazonEC2.DescribeEgressOnlyInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeEgressOnlyInternetGateways"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeEgressOnlyInternetGatewaysResult describeEgressOnlyInternetGateways(DescribeEgressOnlyInternetGatewaysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEgressOnlyInternetGateways(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEgressOnlyInternetGatewaysResult executeDescribeEgressOnlyInternetGateways(
+            DescribeEgressOnlyInternetGatewaysRequest describeEgressOnlyInternetGatewaysRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeEgressOnlyInternetGatewaysRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeEgressOnlyInternetGatewaysRequest> request = null;
+        Response<DescribeEgressOnlyInternetGatewaysResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeEgressOnlyInternetGatewaysRequestMarshaller()
+                        .marshall(super.beforeMarshalling(describeEgressOnlyInternetGatewaysRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeEgressOnlyInternetGatewaysResult> responseHandler = new StaxResponseHandler<DescribeEgressOnlyInternetGatewaysResult>(
+                    new DescribeEgressOnlyInternetGatewaysResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Describes one or more of your export tasks.
      * </p>
      * 
@@ -4512,9 +5675,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeExportTasks.
      * @return Result of the DescribeExportTasks operation returned by the service.
      * @sample AmazonEC2.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest describeExportTasksRequest) {
+    public DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeExportTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeExportTasksResult executeDescribeExportTasks(DescribeExportTasksRequest describeExportTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeExportTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4558,9 +5730,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeFlowLogs.
      * @return Result of the DescribeFlowLogs operation returned by the service.
      * @sample AmazonEC2.DescribeFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeFlowLogsResult describeFlowLogs(DescribeFlowLogsRequest describeFlowLogsRequest) {
+    public DescribeFlowLogsResult describeFlowLogs(DescribeFlowLogsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeFlowLogs(request);
+    }
+
+    @SdkInternalApi
+    final DescribeFlowLogsResult executeDescribeFlowLogs(DescribeFlowLogsRequest describeFlowLogsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeFlowLogsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4610,10 +5791,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param describeHostReservationOfferingsRequest
      * @return Result of the DescribeHostReservationOfferings operation returned by the service.
      * @sample AmazonEC2.DescribeHostReservationOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservationOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeHostReservationOfferingsResult describeHostReservationOfferings(
+    public DescribeHostReservationOfferingsResult describeHostReservationOfferings(DescribeHostReservationOfferingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeHostReservationOfferings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeHostReservationOfferingsResult executeDescribeHostReservationOfferings(
             DescribeHostReservationOfferingsRequest describeHostReservationOfferingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeHostReservationOfferingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4650,9 +5840,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param describeHostReservationsRequest
      * @return Result of the DescribeHostReservations operation returned by the service.
      * @sample AmazonEC2.DescribeHostReservations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservations" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeHostReservationsResult describeHostReservations(DescribeHostReservationsRequest describeHostReservationsRequest) {
+    public DescribeHostReservationsResult describeHostReservations(DescribeHostReservationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeHostReservations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeHostReservationsResult executeDescribeHostReservations(DescribeHostReservationsRequest describeHostReservationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeHostReservationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4695,9 +5894,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeHosts.
      * @return Result of the DescribeHosts operation returned by the service.
      * @sample AmazonEC2.DescribeHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeHostsResult describeHosts(DescribeHostsRequest describeHostsRequest) {
+    public DescribeHostsResult describeHosts(DescribeHostsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeHosts(request);
+    }
+
+    @SdkInternalApi
+    final DescribeHostsResult executeDescribeHosts(DescribeHostsRequest describeHostsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeHostsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4732,6 +5940,56 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Describes your IAM instance profile associations.
+     * </p>
+     * 
+     * @param describeIamInstanceProfileAssociationsRequest
+     * @return Result of the DescribeIamInstanceProfileAssociations operation returned by the service.
+     * @sample AmazonEC2.DescribeIamInstanceProfileAssociations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIamInstanceProfileAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeIamInstanceProfileAssociationsResult describeIamInstanceProfileAssociations(DescribeIamInstanceProfileAssociationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeIamInstanceProfileAssociations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeIamInstanceProfileAssociationsResult executeDescribeIamInstanceProfileAssociations(
+            DescribeIamInstanceProfileAssociationsRequest describeIamInstanceProfileAssociationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeIamInstanceProfileAssociationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeIamInstanceProfileAssociationsRequest> request = null;
+        Response<DescribeIamInstanceProfileAssociationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeIamInstanceProfileAssociationsRequestMarshaller().marshall(super
+                        .beforeMarshalling(describeIamInstanceProfileAssociationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeIamInstanceProfileAssociationsResult> responseHandler = new StaxResponseHandler<DescribeIamInstanceProfileAssociationsResult>(
+                    new DescribeIamInstanceProfileAssociationsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Describes the ID format settings for your resources on a per-region basis, for example, to view which resource
      * types are enabled for longer IDs. This request only returns information about resource types whose ID formats can
      * be modified; it does not return information about other resource types.
@@ -4752,9 +6010,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeIdFormat.
      * @return Result of the DescribeIdFormat operation returned by the service.
      * @sample AmazonEC2.DescribeIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeIdFormatResult describeIdFormat(DescribeIdFormatRequest describeIdFormatRequest) {
+    public DescribeIdFormatResult describeIdFormat(DescribeIdFormatRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeIdFormat(request);
+    }
+
+    @SdkInternalApi
+    final DescribeIdFormatResult executeDescribeIdFormat(DescribeIdFormatRequest describeIdFormatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeIdFormatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4809,9 +6076,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeIdentityIdFormat.
      * @return Result of the DescribeIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2.DescribeIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdentityIdFormat" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeIdentityIdFormatResult describeIdentityIdFormat(DescribeIdentityIdFormatRequest describeIdentityIdFormatRequest) {
+    public DescribeIdentityIdFormatResult describeIdentityIdFormat(DescribeIdentityIdFormatRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeIdentityIdFormat(request);
+    }
+
+    @SdkInternalApi
+    final DescribeIdentityIdFormatResult executeDescribeIdentityIdFormat(DescribeIdentityIdFormatRequest describeIdentityIdFormatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeIdentityIdFormatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4849,9 +6125,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeImageAttribute.
      * @return Result of the DescribeImageAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeImageAttributeResult describeImageAttribute(DescribeImageAttributeRequest describeImageAttributeRequest) {
+    public DescribeImageAttributeResult describeImageAttribute(DescribeImageAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeImageAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeImageAttributeResult executeDescribeImageAttribute(DescribeImageAttributeRequest describeImageAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeImageAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4896,9 +6181,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeImages.
      * @return Result of the DescribeImages operation returned by the service.
      * @sample AmazonEC2.DescribeImages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeImagesResult describeImages(DescribeImagesRequest describeImagesRequest) {
+    public DescribeImagesResult describeImages(DescribeImagesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeImages(request);
+    }
+
+    @SdkInternalApi
+    final DescribeImagesResult executeDescribeImages(DescribeImagesRequest describeImagesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeImagesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4941,9 +6235,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeImportImageTasks.
      * @return Result of the DescribeImportImageTasks operation returned by the service.
      * @sample AmazonEC2.DescribeImportImageTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportImageTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeImportImageTasksResult describeImportImageTasks(DescribeImportImageTasksRequest describeImportImageTasksRequest) {
+    public DescribeImportImageTasksResult describeImportImageTasks(DescribeImportImageTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeImportImageTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeImportImageTasksResult executeDescribeImportImageTasks(DescribeImportImageTasksRequest describeImportImageTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeImportImageTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4986,9 +6289,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeImportSnapshotTasks.
      * @return Result of the DescribeImportSnapshotTasks operation returned by the service.
      * @sample AmazonEC2.DescribeImportSnapshotTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportSnapshotTasks"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeImportSnapshotTasksResult describeImportSnapshotTasks(DescribeImportSnapshotTasksRequest describeImportSnapshotTasksRequest) {
+    public DescribeImportSnapshotTasksResult describeImportSnapshotTasks(DescribeImportSnapshotTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeImportSnapshotTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeImportSnapshotTasksResult executeDescribeImportSnapshotTasks(DescribeImportSnapshotTasksRequest describeImportSnapshotTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeImportSnapshotTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5035,9 +6347,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeInstanceAttribute.
      * @return Result of the DescribeInstanceAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeInstanceAttributeResult describeInstanceAttribute(DescribeInstanceAttributeRequest describeInstanceAttributeRequest) {
+    public DescribeInstanceAttributeResult describeInstanceAttribute(DescribeInstanceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInstanceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInstanceAttributeResult executeDescribeInstanceAttribute(DescribeInstanceAttributeRequest describeInstanceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInstanceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5107,9 +6428,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeInstanceStatus.
      * @return Result of the DescribeInstanceStatus operation returned by the service.
      * @sample AmazonEC2.DescribeInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeInstanceStatusResult describeInstanceStatus(DescribeInstanceStatusRequest describeInstanceStatusRequest) {
+    public DescribeInstanceStatusResult describeInstanceStatus(DescribeInstanceStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInstanceStatus(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInstanceStatusResult executeDescribeInstanceStatus(DescribeInstanceStatusRequest describeInstanceStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInstanceStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5167,9 +6497,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeInstances.
      * @return Result of the DescribeInstances operation returned by the service.
      * @sample AmazonEC2.DescribeInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeInstancesResult describeInstances(DescribeInstancesRequest describeInstancesRequest) {
+    public DescribeInstancesResult describeInstances(DescribeInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInstancesResult executeDescribeInstances(DescribeInstancesRequest describeInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5212,9 +6551,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeInternetGateways.
      * @return Result of the DescribeInternetGateways operation returned by the service.
      * @sample AmazonEC2.DescribeInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeInternetGatewaysResult describeInternetGateways(DescribeInternetGatewaysRequest describeInternetGatewaysRequest) {
+    public DescribeInternetGatewaysResult describeInternetGateways(DescribeInternetGatewaysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInternetGateways(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInternetGatewaysResult executeDescribeInternetGateways(DescribeInternetGatewaysRequest describeInternetGatewaysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInternetGatewaysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5262,9 +6610,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeKeyPairs.
      * @return Result of the DescribeKeyPairs operation returned by the service.
      * @sample AmazonEC2.DescribeKeyPairs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeKeyPairs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeKeyPairsResult describeKeyPairs(DescribeKeyPairsRequest describeKeyPairsRequest) {
+    public DescribeKeyPairsResult describeKeyPairs(DescribeKeyPairsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeKeyPairs(request);
+    }
+
+    @SdkInternalApi
+    final DescribeKeyPairsResult executeDescribeKeyPairs(DescribeKeyPairsRequest describeKeyPairsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeKeyPairsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5309,9 +6666,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeMovingAddresses.
      * @return Result of the DescribeMovingAddresses operation returned by the service.
      * @sample AmazonEC2.DescribeMovingAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeMovingAddressesResult describeMovingAddresses(DescribeMovingAddressesRequest describeMovingAddressesRequest) {
+    public DescribeMovingAddressesResult describeMovingAddresses(DescribeMovingAddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMovingAddresses(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMovingAddressesResult executeDescribeMovingAddresses(DescribeMovingAddressesRequest describeMovingAddressesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeMovingAddressesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5354,9 +6720,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeNatGateways.
      * @return Result of the DescribeNatGateways operation returned by the service.
      * @sample AmazonEC2.DescribeNatGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNatGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeNatGatewaysResult describeNatGateways(DescribeNatGatewaysRequest describeNatGatewaysRequest) {
+    public DescribeNatGatewaysResult describeNatGateways(DescribeNatGatewaysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNatGateways(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNatGatewaysResult executeDescribeNatGateways(DescribeNatGatewaysRequest describeNatGatewaysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeNatGatewaysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5399,9 +6774,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeNetworkAcls.
      * @return Result of the DescribeNetworkAcls operation returned by the service.
      * @sample AmazonEC2.DescribeNetworkAcls
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeNetworkAclsResult describeNetworkAcls(DescribeNetworkAclsRequest describeNetworkAclsRequest) {
+    public DescribeNetworkAclsResult describeNetworkAcls(DescribeNetworkAclsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNetworkAcls(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNetworkAclsResult executeDescribeNetworkAcls(DescribeNetworkAclsRequest describeNetworkAclsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeNetworkAclsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5444,10 +6828,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeNetworkInterfaceAttribute.
      * @return Result of the DescribeNetworkInterfaceAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeNetworkInterfaceAttributeResult describeNetworkInterfaceAttribute(
+    public DescribeNetworkInterfaceAttributeResult describeNetworkInterfaceAttribute(DescribeNetworkInterfaceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNetworkInterfaceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNetworkInterfaceAttributeResult executeDescribeNetworkInterfaceAttribute(
             DescribeNetworkInterfaceAttributeRequest describeNetworkInterfaceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeNetworkInterfaceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5485,9 +6878,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeNetworkInterfaces.
      * @return Result of the DescribeNetworkInterfaces operation returned by the service.
      * @sample AmazonEC2.DescribeNetworkInterfaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeNetworkInterfacesResult describeNetworkInterfaces(DescribeNetworkInterfacesRequest describeNetworkInterfacesRequest) {
+    public DescribeNetworkInterfacesResult describeNetworkInterfaces(DescribeNetworkInterfacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNetworkInterfaces(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNetworkInterfacesResult executeDescribeNetworkInterfaces(DescribeNetworkInterfacesRequest describeNetworkInterfacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeNetworkInterfacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5532,9 +6934,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribePlacementGroups.
      * @return Result of the DescribePlacementGroups operation returned by the service.
      * @sample AmazonEC2.DescribePlacementGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePlacementGroups" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribePlacementGroupsResult describePlacementGroups(DescribePlacementGroupsRequest describePlacementGroupsRequest) {
+    public DescribePlacementGroupsResult describePlacementGroups(DescribePlacementGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePlacementGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribePlacementGroupsResult executeDescribePlacementGroups(DescribePlacementGroupsRequest describePlacementGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describePlacementGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5579,9 +6990,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribePrefixLists.
      * @return Result of the DescribePrefixLists operation returned by the service.
      * @sample AmazonEC2.DescribePrefixLists
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixLists" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribePrefixListsResult describePrefixLists(DescribePrefixListsRequest describePrefixListsRequest) {
+    public DescribePrefixListsResult describePrefixLists(DescribePrefixListsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePrefixLists(request);
+    }
+
+    @SdkInternalApi
+    final DescribePrefixListsResult executeDescribePrefixLists(DescribePrefixListsRequest describePrefixListsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describePrefixListsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5628,9 +7048,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeRegions.
      * @return Result of the DescribeRegions operation returned by the service.
      * @sample AmazonEC2.DescribeRegions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRegions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeRegionsResult describeRegions(DescribeRegionsRequest describeRegionsRequest) {
+    public DescribeRegionsResult describeRegions(DescribeRegionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeRegions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeRegionsResult executeDescribeRegions(DescribeRegionsRequest describeRegionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeRegionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5678,9 +7107,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeReservedInstances.
      * @return Result of the DescribeReservedInstances operation returned by the service.
      * @sample AmazonEC2.DescribeReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeReservedInstancesResult describeReservedInstances(DescribeReservedInstancesRequest describeReservedInstancesRequest) {
+    public DescribeReservedInstancesResult describeReservedInstances(DescribeReservedInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedInstancesResult executeDescribeReservedInstances(DescribeReservedInstancesRequest describeReservedInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5744,10 +7182,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeReservedInstancesListings.
      * @return Result of the DescribeReservedInstancesListings operation returned by the service.
      * @sample AmazonEC2.DescribeReservedInstancesListings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesListings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReservedInstancesListingsResult describeReservedInstancesListings(
+    public DescribeReservedInstancesListingsResult describeReservedInstancesListings(DescribeReservedInstancesListingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedInstancesListings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedInstancesListingsResult executeDescribeReservedInstancesListings(
             DescribeReservedInstancesListingsRequest describeReservedInstancesListingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedInstancesListingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5797,10 +7244,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeReservedInstancesModifications.
      * @return Result of the DescribeReservedInstancesModifications operation returned by the service.
      * @sample AmazonEC2.DescribeReservedInstancesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesModifications"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications(
+    public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications(DescribeReservedInstancesModificationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedInstancesModifications(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedInstancesModificationsResult executeDescribeReservedInstancesModifications(
             DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedInstancesModificationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5855,10 +7311,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeReservedInstancesOfferings.
      * @return Result of the DescribeReservedInstancesOfferings operation returned by the service.
      * @sample AmazonEC2.DescribeReservedInstancesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReservedInstancesOfferingsResult describeReservedInstancesOfferings(
+    public DescribeReservedInstancesOfferingsResult describeReservedInstancesOfferings(DescribeReservedInstancesOfferingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedInstancesOfferings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedInstancesOfferingsResult executeDescribeReservedInstancesOfferings(
             DescribeReservedInstancesOfferingsRequest describeReservedInstancesOfferingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedInstancesOfferingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5912,9 +7377,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeRouteTables.
      * @return Result of the DescribeRouteTables operation returned by the service.
      * @sample AmazonEC2.DescribeRouteTables
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeRouteTablesResult describeRouteTables(DescribeRouteTablesRequest describeRouteTablesRequest) {
+    public DescribeRouteTablesResult describeRouteTables(DescribeRouteTablesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeRouteTables(request);
+    }
+
+    @SdkInternalApi
+    final DescribeRouteTablesResult executeDescribeRouteTables(DescribeRouteTablesRequest describeRouteTablesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeRouteTablesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5966,10 +7440,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeScheduledInstanceAvailability.
      * @return Result of the DescribeScheduledInstanceAvailability operation returned by the service.
      * @sample AmazonEC2.DescribeScheduledInstanceAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstanceAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeScheduledInstanceAvailabilityResult describeScheduledInstanceAvailability(
+    public DescribeScheduledInstanceAvailabilityResult describeScheduledInstanceAvailability(DescribeScheduledInstanceAvailabilityRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScheduledInstanceAvailability(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScheduledInstanceAvailabilityResult executeDescribeScheduledInstanceAvailability(
             DescribeScheduledInstanceAvailabilityRequest describeScheduledInstanceAvailabilityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeScheduledInstanceAvailabilityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6008,9 +7491,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeScheduledInstances.
      * @return Result of the DescribeScheduledInstances operation returned by the service.
      * @sample AmazonEC2.DescribeScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeScheduledInstancesResult describeScheduledInstances(DescribeScheduledInstancesRequest describeScheduledInstancesRequest) {
+    public DescribeScheduledInstancesResult describeScheduledInstances(DescribeScheduledInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScheduledInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScheduledInstancesResult executeDescribeScheduledInstances(DescribeScheduledInstancesRequest describeScheduledInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeScheduledInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6048,9 +7540,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param describeSecurityGroupReferencesRequest
      * @return Result of the DescribeSecurityGroupReferences operation returned by the service.
      * @sample AmazonEC2.DescribeSecurityGroupReferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupReferences"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSecurityGroupReferencesResult describeSecurityGroupReferences(DescribeSecurityGroupReferencesRequest describeSecurityGroupReferencesRequest) {
+    public DescribeSecurityGroupReferencesResult describeSecurityGroupReferences(DescribeSecurityGroupReferencesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSecurityGroupReferences(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSecurityGroupReferencesResult executeDescribeSecurityGroupReferences(
+            DescribeSecurityGroupReferencesRequest describeSecurityGroupReferencesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSecurityGroupReferencesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6095,9 +7597,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSecurityGroups.
      * @return Result of the DescribeSecurityGroups operation returned by the service.
      * @sample AmazonEC2.DescribeSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeSecurityGroupsResult describeSecurityGroups(DescribeSecurityGroupsRequest describeSecurityGroupsRequest) {
+    public DescribeSecurityGroupsResult describeSecurityGroups(DescribeSecurityGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSecurityGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSecurityGroupsResult executeDescribeSecurityGroups(DescribeSecurityGroupsRequest describeSecurityGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSecurityGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6145,9 +7656,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSnapshotAttribute.
      * @return Result of the DescribeSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeSnapshotAttributeResult describeSnapshotAttribute(DescribeSnapshotAttributeRequest describeSnapshotAttributeRequest) {
+    public DescribeSnapshotAttributeResult describeSnapshotAttribute(DescribeSnapshotAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSnapshotAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSnapshotAttributeResult executeDescribeSnapshotAttribute(DescribeSnapshotAttributeRequest describeSnapshotAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSnapshotAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6241,9 +7761,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSnapshots.
      * @return Result of the DescribeSnapshots operation returned by the service.
      * @sample AmazonEC2.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeSnapshotsResult describeSnapshots(DescribeSnapshotsRequest describeSnapshotsRequest) {
+    public DescribeSnapshotsResult describeSnapshots(DescribeSnapshotsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSnapshots(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSnapshotsResult executeDescribeSnapshots(DescribeSnapshotsRequest describeSnapshotsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSnapshotsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6288,10 +7817,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotDatafeedSubscription.
      * @return Result of the DescribeSpotDatafeedSubscription operation returned by the service.
      * @sample AmazonEC2.DescribeSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSpotDatafeedSubscriptionResult describeSpotDatafeedSubscription(
+    public DescribeSpotDatafeedSubscriptionResult describeSpotDatafeedSubscription(DescribeSpotDatafeedSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotDatafeedSubscription(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotDatafeedSubscriptionResult executeDescribeSpotDatafeedSubscription(
             DescribeSpotDatafeedSubscriptionRequest describeSpotDatafeedSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotDatafeedSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6334,9 +7872,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotFleetInstances.
      * @return Result of the DescribeSpotFleetInstances operation returned by the service.
      * @sample AmazonEC2.DescribeSpotFleetInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeSpotFleetInstancesResult describeSpotFleetInstances(DescribeSpotFleetInstancesRequest describeSpotFleetInstancesRequest) {
+    public DescribeSpotFleetInstancesResult describeSpotFleetInstances(DescribeSpotFleetInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotFleetInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotFleetInstancesResult executeDescribeSpotFleetInstances(DescribeSpotFleetInstancesRequest describeSpotFleetInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotFleetInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6378,9 +7925,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotFleetRequestHistory.
      * @return Result of the DescribeSpotFleetRequestHistory operation returned by the service.
      * @sample AmazonEC2.DescribeSpotFleetRequestHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistory"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSpotFleetRequestHistoryResult describeSpotFleetRequestHistory(DescribeSpotFleetRequestHistoryRequest describeSpotFleetRequestHistoryRequest) {
+    public DescribeSpotFleetRequestHistoryResult describeSpotFleetRequestHistory(DescribeSpotFleetRequestHistoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotFleetRequestHistory(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotFleetRequestHistoryResult executeDescribeSpotFleetRequestHistory(
+            DescribeSpotFleetRequestHistoryRequest describeSpotFleetRequestHistoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotFleetRequestHistoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6421,9 +7978,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotFleetRequests.
      * @return Result of the DescribeSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2.DescribeSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeSpotFleetRequestsResult describeSpotFleetRequests(DescribeSpotFleetRequestsRequest describeSpotFleetRequestsRequest) {
+    public DescribeSpotFleetRequestsResult describeSpotFleetRequests(DescribeSpotFleetRequestsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotFleetRequests(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotFleetRequestsResult executeDescribeSpotFleetRequests(DescribeSpotFleetRequestsRequest describeSpotFleetRequestsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotFleetRequestsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6479,9 +8045,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotInstanceRequests.
      * @return Result of the DescribeSpotInstanceRequests operation returned by the service.
      * @sample AmazonEC2.DescribeSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotInstanceRequests"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSpotInstanceRequestsResult describeSpotInstanceRequests(DescribeSpotInstanceRequestsRequest describeSpotInstanceRequestsRequest) {
+    public DescribeSpotInstanceRequestsResult describeSpotInstanceRequests(DescribeSpotInstanceRequestsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotInstanceRequests(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotInstanceRequestsResult executeDescribeSpotInstanceRequests(DescribeSpotInstanceRequestsRequest describeSpotInstanceRequestsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotInstanceRequestsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6517,8 +8092,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Describes the Spot price history. The prices returned are listed in chronological order, from the oldest to the
-     * most recent, for up to the past 90 days. For more information, see <a
+     * Describes the Spot price history. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing
      * History</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -6532,9 +8106,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSpotPriceHistory.
      * @return Result of the DescribeSpotPriceHistory operation returned by the service.
      * @sample AmazonEC2.DescribeSpotPriceHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistory" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeSpotPriceHistoryResult describeSpotPriceHistory(DescribeSpotPriceHistoryRequest describeSpotPriceHistoryRequest) {
+    public DescribeSpotPriceHistoryResult describeSpotPriceHistory(DescribeSpotPriceHistoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSpotPriceHistory(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSpotPriceHistoryResult executeDescribeSpotPriceHistory(DescribeSpotPriceHistoryRequest describeSpotPriceHistoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSpotPriceHistoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6578,9 +8161,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param describeStaleSecurityGroupsRequest
      * @return Result of the DescribeStaleSecurityGroups operation returned by the service.
      * @sample AmazonEC2.DescribeStaleSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStaleSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeStaleSecurityGroupsResult describeStaleSecurityGroups(DescribeStaleSecurityGroupsRequest describeStaleSecurityGroupsRequest) {
+    public DescribeStaleSecurityGroupsResult describeStaleSecurityGroups(DescribeStaleSecurityGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeStaleSecurityGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeStaleSecurityGroupsResult executeDescribeStaleSecurityGroups(DescribeStaleSecurityGroupsRequest describeStaleSecurityGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeStaleSecurityGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6623,9 +8215,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeSubnets.
      * @return Result of the DescribeSubnets operation returned by the service.
      * @sample AmazonEC2.DescribeSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeSubnetsResult describeSubnets(DescribeSubnetsRequest describeSubnetsRequest) {
+    public DescribeSubnetsResult describeSubnets(DescribeSubnetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSubnets(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSubnetsResult executeDescribeSubnets(DescribeSubnetsRequest describeSubnetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSubnetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6673,9 +8274,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeTags.
      * @return Result of the DescribeTags operation returned by the service.
      * @sample AmazonEC2.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6722,9 +8332,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVolumeAttribute.
      * @return Result of the DescribeVolumeAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeVolumeAttributeResult describeVolumeAttribute(DescribeVolumeAttributeRequest describeVolumeAttributeRequest) {
+    public DescribeVolumeAttributeResult describeVolumeAttribute(DescribeVolumeAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVolumeAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVolumeAttributeResult executeDescribeVolumeAttribute(DescribeVolumeAttributeRequest describeVolumeAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVolumeAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6798,9 +8417,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVolumeStatus.
      * @return Result of the DescribeVolumeStatus operation returned by the service.
      * @sample AmazonEC2.DescribeVolumeStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVolumeStatusResult describeVolumeStatus(DescribeVolumeStatusRequest describeVolumeStatusRequest) {
+    public DescribeVolumeStatusResult describeVolumeStatus(DescribeVolumeStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVolumeStatus(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVolumeStatusResult executeDescribeVolumeStatus(DescribeVolumeStatusRequest describeVolumeStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVolumeStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6855,9 +8483,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVolumes.
      * @return Result of the DescribeVolumes operation returned by the service.
      * @sample AmazonEC2.DescribeVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVolumesResult describeVolumes(DescribeVolumesRequest describeVolumesRequest) {
+    public DescribeVolumesResult describeVolumes(DescribeVolumesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVolumes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVolumesResult executeDescribeVolumes(DescribeVolumesRequest describeVolumesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVolumesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6893,6 +8530,68 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Reports the current modification status of EBS volumes.
+     * </p>
+     * <p>
+     * Current-generation EBS volumes support modification of attributes including type, size, and (for <code>io1</code>
+     * volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the
+     * API or the console to modify a volume, the status of the modification may be <code>modifying</code>,
+     * <code>optimizing</code>, <code>completed</code>, or <code>failed</code>. If a volume has never been modified,
+     * then certain elements of the returned <code>VolumeModification</code> objects are null.
+     * </p>
+     * <p>
+     * You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications"</a>.
+     * </p>
+     * 
+     * @param describeVolumesModificationsRequest
+     * @return Result of the DescribeVolumesModifications operation returned by the service.
+     * @sample AmazonEC2.DescribeVolumesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumesModifications"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeVolumesModificationsResult describeVolumesModifications(DescribeVolumesModificationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVolumesModifications(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVolumesModificationsResult executeDescribeVolumesModifications(DescribeVolumesModificationsRequest describeVolumesModificationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeVolumesModificationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeVolumesModificationsRequest> request = null;
+        Response<DescribeVolumesModificationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeVolumesModificationsRequestMarshaller().marshall(super.beforeMarshalling(describeVolumesModificationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeVolumesModificationsResult> responseHandler = new StaxResponseHandler<DescribeVolumesModificationsResult>(
+                    new DescribeVolumesModificationsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
      * </p>
      * 
@@ -6900,9 +8599,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcAttribute.
      * @return Result of the DescribeVpcAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpcAttributeResult describeVpcAttribute(DescribeVpcAttributeRequest describeVpcAttributeRequest) {
+    public DescribeVpcAttributeResult describeVpcAttribute(DescribeVpcAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcAttributeResult executeDescribeVpcAttribute(DescribeVpcAttributeRequest describeVpcAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6940,9 +8648,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcClassicLink.
      * @return Result of the DescribeVpcClassicLink operation returned by the service.
      * @sample AmazonEC2.DescribeVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpcClassicLinkResult describeVpcClassicLink(DescribeVpcClassicLinkRequest describeVpcClassicLinkRequest) {
+    public DescribeVpcClassicLinkResult describeVpcClassicLink(DescribeVpcClassicLinkRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcClassicLink(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcClassicLinkResult executeDescribeVpcClassicLink(DescribeVpcClassicLinkRequest describeVpcClassicLinkRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcClassicLinkRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6990,10 +8707,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcClassicLinkDnsSupport.
      * @return Result of the DescribeVpcClassicLinkDnsSupport operation returned by the service.
      * @sample AmazonEC2.DescribeVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeVpcClassicLinkDnsSupportResult describeVpcClassicLinkDnsSupport(
+    public DescribeVpcClassicLinkDnsSupportResult describeVpcClassicLinkDnsSupport(DescribeVpcClassicLinkDnsSupportRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcClassicLinkDnsSupport(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcClassicLinkDnsSupportResult executeDescribeVpcClassicLinkDnsSupport(
             DescribeVpcClassicLinkDnsSupportRequest describeVpcClassicLinkDnsSupportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcClassicLinkDnsSupportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7031,9 +8757,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcEndpointServices.
      * @return Result of the DescribeVpcEndpointServices operation returned by the service.
      * @sample AmazonEC2.DescribeVpcEndpointServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServices"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeVpcEndpointServicesResult describeVpcEndpointServices(DescribeVpcEndpointServicesRequest describeVpcEndpointServicesRequest) {
+    public DescribeVpcEndpointServicesResult describeVpcEndpointServices(DescribeVpcEndpointServicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcEndpointServices(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcEndpointServicesResult executeDescribeVpcEndpointServices(DescribeVpcEndpointServicesRequest describeVpcEndpointServicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcEndpointServicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7076,9 +8811,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcEndpoints.
      * @return Result of the DescribeVpcEndpoints operation returned by the service.
      * @sample AmazonEC2.DescribeVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpcEndpointsResult describeVpcEndpoints(DescribeVpcEndpointsRequest describeVpcEndpointsRequest) {
+    public DescribeVpcEndpointsResult describeVpcEndpoints(DescribeVpcEndpointsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcEndpoints(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcEndpointsResult executeDescribeVpcEndpoints(DescribeVpcEndpointsRequest describeVpcEndpointsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcEndpointsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7121,9 +8865,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcPeeringConnections.
      * @return Result of the DescribeVpcPeeringConnections operation returned by the service.
      * @sample AmazonEC2.DescribeVpcPeeringConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcPeeringConnections"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+    public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcPeeringConnections(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcPeeringConnectionsResult executeDescribeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcPeeringConnectionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7166,9 +8919,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpcs.
      * @return Result of the DescribeVpcs operation returned by the service.
      * @sample AmazonEC2.DescribeVpcs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpcsResult describeVpcs(DescribeVpcsRequest describeVpcsRequest) {
+    public DescribeVpcsResult describeVpcs(DescribeVpcsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcs(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcsResult executeDescribeVpcs(DescribeVpcsRequest describeVpcsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpcsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7215,9 +8977,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpnConnections.
      * @return Result of the DescribeVpnConnections operation returned by the service.
      * @sample AmazonEC2.DescribeVpnConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpnConnectionsResult describeVpnConnections(DescribeVpnConnectionsRequest describeVpnConnectionsRequest) {
+    public DescribeVpnConnectionsResult describeVpnConnections(DescribeVpnConnectionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpnConnections(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpnConnectionsResult executeDescribeVpnConnections(DescribeVpnConnectionsRequest describeVpnConnectionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpnConnectionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7265,9 +9036,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DescribeVpnGateways.
      * @return Result of the DescribeVpnGateways operation returned by the service.
      * @sample AmazonEC2.DescribeVpnGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest) {
+    public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpnGateways(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpnGatewaysResult executeDescribeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeVpnGatewaysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7312,9 +9092,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DetachClassicLinkVpc.
      * @return Result of the DetachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2.DetachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachClassicLinkVpcResult detachClassicLinkVpc(DetachClassicLinkVpcRequest detachClassicLinkVpcRequest) {
+    public DetachClassicLinkVpcResult detachClassicLinkVpc(DetachClassicLinkVpcRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachClassicLinkVpc(request);
+    }
+
+    @SdkInternalApi
+    final DetachClassicLinkVpcResult executeDetachClassicLinkVpc(DetachClassicLinkVpcRequest detachClassicLinkVpcRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachClassicLinkVpcRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7353,9 +9142,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DetachInternetGateway.
      * @return Result of the DetachInternetGateway operation returned by the service.
      * @sample AmazonEC2.DetachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachInternetGatewayResult detachInternetGateway(DetachInternetGatewayRequest detachInternetGatewayRequest) {
+    public DetachInternetGatewayResult detachInternetGateway(DetachInternetGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachInternetGateway(request);
+    }
+
+    @SdkInternalApi
+    final DetachInternetGatewayResult executeDetachInternetGateway(DetachInternetGatewayRequest detachInternetGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachInternetGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7393,9 +9191,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DetachNetworkInterface.
      * @return Result of the DetachNetworkInterface operation returned by the service.
      * @sample AmazonEC2.DetachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachNetworkInterfaceResult detachNetworkInterface(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest) {
+    public DetachNetworkInterfaceResult detachNetworkInterface(DetachNetworkInterfaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachNetworkInterface(request);
+    }
+
+    @SdkInternalApi
+    final DetachNetworkInterfaceResult executeDetachNetworkInterface(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachNetworkInterfaceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7447,9 +9254,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DetachVolume.
      * @return Result of the DetachVolume operation returned by the service.
      * @sample AmazonEC2.DetachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachVolumeResult detachVolume(DetachVolumeRequest detachVolumeRequest) {
+    public DetachVolumeResult detachVolume(DetachVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachVolume(request);
+    }
+
+    @SdkInternalApi
+    final DetachVolumeResult executeDetachVolume(DetachVolumeRequest detachVolumeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachVolumeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7492,9 +9308,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DetachVpnGateway.
      * @return Result of the DetachVpnGateway operation returned by the service.
      * @sample AmazonEC2.DetachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachVpnGatewayResult detachVpnGateway(DetachVpnGatewayRequest detachVpnGatewayRequest) {
+    public DetachVpnGatewayResult detachVpnGateway(DetachVpnGatewayRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachVpnGateway(request);
+    }
+
+    @SdkInternalApi
+    final DetachVpnGatewayResult executeDetachVpnGateway(DetachVpnGatewayRequest detachVpnGatewayRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachVpnGatewayRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7532,9 +9357,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DisableVgwRoutePropagation.
      * @return Result of the DisableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2.DisableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DisableVgwRoutePropagationResult disableVgwRoutePropagation(DisableVgwRoutePropagationRequest disableVgwRoutePropagationRequest) {
+    public DisableVgwRoutePropagationResult disableVgwRoutePropagation(DisableVgwRoutePropagationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableVgwRoutePropagation(request);
+    }
+
+    @SdkInternalApi
+    final DisableVgwRoutePropagationResult executeDisableVgwRoutePropagation(DisableVgwRoutePropagationRequest disableVgwRoutePropagationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableVgwRoutePropagationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7573,9 +9407,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DisableVpcClassicLink.
      * @return Result of the DisableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2.DisableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DisableVpcClassicLinkResult disableVpcClassicLink(DisableVpcClassicLinkRequest disableVpcClassicLinkRequest) {
+    public DisableVpcClassicLinkResult disableVpcClassicLink(DisableVpcClassicLinkRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableVpcClassicLink(request);
+    }
+
+    @SdkInternalApi
+    final DisableVpcClassicLinkResult executeDisableVpcClassicLink(DisableVpcClassicLinkRequest disableVpcClassicLinkRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableVpcClassicLinkRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7617,9 +9460,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DisableVpcClassicLinkDnsSupport.
      * @return Result of the DisableVpcClassicLinkDnsSupport operation returned by the service.
      * @sample AmazonEC2.DisableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest disableVpcClassicLinkDnsSupportRequest) {
+    public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableVpcClassicLinkDnsSupport(request);
+    }
+
+    @SdkInternalApi
+    final DisableVpcClassicLinkDnsSupportResult executeDisableVpcClassicLinkDnsSupport(
+            DisableVpcClassicLinkDnsSupportRequest disableVpcClassicLinkDnsSupportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableVpcClassicLinkDnsSupportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7665,9 +9518,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DisassociateAddress.
      * @return Result of the DisassociateAddress operation returned by the service.
      * @sample AmazonEC2.DisassociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DisassociateAddressResult disassociateAddress(DisassociateAddressRequest disassociateAddressRequest) {
+    public DisassociateAddressResult disassociateAddress(DisassociateAddressRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateAddress(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateAddressResult executeDisassociateAddress(DisassociateAddressRequest disassociateAddressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disassociateAddressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7698,6 +9560,57 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Disassociates an IAM instance profile from a running or stopped instance.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param disassociateIamInstanceProfileRequest
+     * @return Result of the DisassociateIamInstanceProfile operation returned by the service.
+     * @sample AmazonEC2.DisassociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DisassociateIamInstanceProfileResult disassociateIamInstanceProfile(DisassociateIamInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateIamInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateIamInstanceProfileResult executeDisassociateIamInstanceProfile(DisassociateIamInstanceProfileRequest disassociateIamInstanceProfileRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disassociateIamInstanceProfileRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateIamInstanceProfileRequest> request = null;
+        Response<DisassociateIamInstanceProfileResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateIamInstanceProfileRequestMarshaller().marshall(super.beforeMarshalling(disassociateIamInstanceProfileRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DisassociateIamInstanceProfileResult> responseHandler = new StaxResponseHandler<DisassociateIamInstanceProfileResult>(
+                    new DisassociateIamInstanceProfileResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Disassociates a subnet from a route table.
      * </p>
      * <p>
@@ -7711,9 +9624,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for DisassociateRouteTable.
      * @return Result of the DisassociateRouteTable operation returned by the service.
      * @sample AmazonEC2.DisassociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DisassociateRouteTableResult disassociateRouteTable(DisassociateRouteTableRequest disassociateRouteTableRequest) {
+    public DisassociateRouteTableResult disassociateRouteTable(DisassociateRouteTableRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateRouteTable(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateRouteTableResult executeDisassociateRouteTable(DisassociateRouteTableRequest disassociateRouteTableRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disassociateRouteTableRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7744,6 +9666,105 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must
+     * detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate
+     * it.
+     * </p>
+     * 
+     * @param disassociateSubnetCidrBlockRequest
+     * @return Result of the DisassociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2.DisassociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateSubnetCidrBlock"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DisassociateSubnetCidrBlockResult disassociateSubnetCidrBlock(DisassociateSubnetCidrBlockRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateSubnetCidrBlock(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateSubnetCidrBlockResult executeDisassociateSubnetCidrBlock(DisassociateSubnetCidrBlockRequest disassociateSubnetCidrBlockRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disassociateSubnetCidrBlockRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateSubnetCidrBlockRequest> request = null;
+        Response<DisassociateSubnetCidrBlockResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateSubnetCidrBlockRequestMarshaller().marshall(super.beforeMarshalling(disassociateSubnetCidrBlockRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DisassociateSubnetCidrBlockResult> responseHandler = new StaxResponseHandler<DisassociateSubnetCidrBlockResult>(
+                    new DisassociateSubnetCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disassociates a CIDR block from a VPC. Currently, you can disassociate an IPv6 CIDR block only. You must detach
+     * or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+     * </p>
+     * 
+     * @param disassociateVpcCidrBlockRequest
+     * @return Result of the DisassociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2.DisassociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateVpcCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DisassociateVpcCidrBlockResult disassociateVpcCidrBlock(DisassociateVpcCidrBlockRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateVpcCidrBlock(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateVpcCidrBlockResult executeDisassociateVpcCidrBlock(DisassociateVpcCidrBlockRequest disassociateVpcCidrBlockRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disassociateVpcCidrBlockRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateVpcCidrBlockRequest> request = null;
+        Response<DisassociateVpcCidrBlockResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateVpcCidrBlockRequestMarshaller().marshall(super.beforeMarshalling(disassociateVpcCidrBlockRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DisassociateVpcCidrBlockResult> responseHandler = new StaxResponseHandler<DisassociateVpcCidrBlockResult>(
+                    new DisassociateVpcCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
      * </p>
      * 
@@ -7751,9 +9772,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for EnableVgwRoutePropagation.
      * @return Result of the EnableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2.EnableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public EnableVgwRoutePropagationResult enableVgwRoutePropagation(EnableVgwRoutePropagationRequest enableVgwRoutePropagationRequest) {
+    public EnableVgwRoutePropagationResult enableVgwRoutePropagation(EnableVgwRoutePropagationRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableVgwRoutePropagation(request);
+    }
+
+    @SdkInternalApi
+    final EnableVgwRoutePropagationResult executeEnableVgwRoutePropagation(EnableVgwRoutePropagationRequest enableVgwRoutePropagationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableVgwRoutePropagationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7792,9 +9822,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for EnableVolumeIO.
      * @return Result of the EnableVolumeIO operation returned by the service.
      * @sample AmazonEC2.EnableVolumeIO
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVolumeIO" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public EnableVolumeIOResult enableVolumeIO(EnableVolumeIORequest enableVolumeIORequest) {
+    public EnableVolumeIOResult enableVolumeIO(EnableVolumeIORequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableVolumeIO(request);
+    }
+
+    @SdkInternalApi
+    final EnableVolumeIOResult executeEnableVolumeIO(EnableVolumeIORequest enableVolumeIORequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableVolumeIORequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7838,9 +9877,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for EnableVpcClassicLink.
      * @return Result of the EnableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2.EnableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public EnableVpcClassicLinkResult enableVpcClassicLink(EnableVpcClassicLinkRequest enableVpcClassicLinkRequest) {
+    public EnableVpcClassicLinkResult enableVpcClassicLink(EnableVpcClassicLinkRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableVpcClassicLink(request);
+    }
+
+    @SdkInternalApi
+    final EnableVpcClassicLinkResult executeEnableVpcClassicLink(EnableVpcClassicLinkRequest enableVpcClassicLinkRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableVpcClassicLinkRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7875,17 +9923,26 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's
      * linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed
      * from a linked EC2-Classic instance. For more information about ClassicLink, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon
+     * Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param enableVpcClassicLinkDnsSupportRequest
      *        Contains the parameters for EnableVpcClassicLinkDnsSupport.
      * @return Result of the EnableVpcClassicLinkDnsSupport operation returned by the service.
      * @sample AmazonEC2.EnableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest enableVpcClassicLinkDnsSupportRequest) {
+    public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableVpcClassicLinkDnsSupport(request);
+    }
+
+    @SdkInternalApi
+    final EnableVpcClassicLinkDnsSupportResult executeEnableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest enableVpcClassicLinkDnsSupportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableVpcClassicLinkDnsSupportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7940,9 +9997,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for GetConsoleOutput.
      * @return Result of the GetConsoleOutput operation returned by the service.
      * @sample AmazonEC2.GetConsoleOutput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleOutput" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetConsoleOutputResult getConsoleOutput(GetConsoleOutputRequest getConsoleOutputRequest) {
+    public GetConsoleOutputResult getConsoleOutput(GetConsoleOutputRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetConsoleOutput(request);
+    }
+
+    @SdkInternalApi
+    final GetConsoleOutputResult executeGetConsoleOutput(GetConsoleOutputRequest getConsoleOutputRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getConsoleOutputRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -7983,9 +10049,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for the request.
      * @return Result of the GetConsoleScreenshot operation returned by the service.
      * @sample AmazonEC2.GetConsoleScreenshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleScreenshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetConsoleScreenshotResult getConsoleScreenshot(GetConsoleScreenshotRequest getConsoleScreenshotRequest) {
+    public GetConsoleScreenshotResult getConsoleScreenshot(GetConsoleScreenshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetConsoleScreenshot(request);
+    }
+
+    @SdkInternalApi
+    final GetConsoleScreenshotResult executeGetConsoleScreenshot(GetConsoleScreenshotRequest getConsoleScreenshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getConsoleScreenshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8027,10 +10102,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param getHostReservationPurchasePreviewRequest
      * @return Result of the GetHostReservationPurchasePreview operation returned by the service.
      * @sample AmazonEC2.GetHostReservationPurchasePreview
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetHostReservationPurchasePreview"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetHostReservationPurchasePreviewResult getHostReservationPurchasePreview(
+    public GetHostReservationPurchasePreviewResult getHostReservationPurchasePreview(GetHostReservationPurchasePreviewRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHostReservationPurchasePreview(request);
+    }
+
+    @SdkInternalApi
+    final GetHostReservationPurchasePreviewResult executeGetHostReservationPurchasePreview(
             GetHostReservationPurchasePreviewRequest getHostReservationPurchasePreviewRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHostReservationPurchasePreviewRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8082,9 +10166,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for GetPasswordData.
      * @return Result of the GetPasswordData operation returned by the service.
      * @sample AmazonEC2.GetPasswordData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetPasswordData" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetPasswordDataResult getPasswordData(GetPasswordDataRequest getPasswordDataRequest) {
+    public GetPasswordDataResult getPasswordData(GetPasswordDataRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPasswordData(request);
+    }
+
+    @SdkInternalApi
+    final GetPasswordDataResult executeGetPasswordData(GetPasswordDataRequest getPasswordDataRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPasswordDataRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8115,18 +10208,27 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Returns details about the values and term of your specified Convertible Reserved Instances. When an offering ID
-     * is specified it returns information about whether the exchange is valid and can be performed.
+     * Returns details about the values and term of your specified Convertible Reserved Instances. When a target
+     * configuration is specified, it returns information about whether the exchange is valid and can be performed.
      * </p>
      * 
      * @param getReservedInstancesExchangeQuoteRequest
      *        Contains the parameters for GetReservedInstanceExchangeQuote.
      * @return Result of the GetReservedInstancesExchangeQuote operation returned by the service.
      * @sample AmazonEC2.GetReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetReservedInstancesExchangeQuoteResult getReservedInstancesExchangeQuote(
+    public GetReservedInstancesExchangeQuoteResult getReservedInstancesExchangeQuote(GetReservedInstancesExchangeQuoteRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReservedInstancesExchangeQuote(request);
+    }
+
+    @SdkInternalApi
+    final GetReservedInstancesExchangeQuoteResult executeGetReservedInstancesExchangeQuote(
             GetReservedInstancesExchangeQuoteRequest getReservedInstancesExchangeQuoteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getReservedInstancesExchangeQuoteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8167,9 +10269,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ImportImage.
      * @return Result of the ImportImage operation returned by the service.
      * @sample AmazonEC2.ImportImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImage" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportImageResult importImage(ImportImageRequest importImageRequest) {
+    public ImportImageResult importImage(ImportImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportImage(request);
+    }
+
+    @SdkInternalApi
+    final ImportImageResult executeImportImage(ImportImageRequest importImageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importImageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8218,9 +10329,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ImportInstance.
      * @return Result of the ImportInstance operation returned by the service.
      * @sample AmazonEC2.ImportInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportInstanceResult importInstance(ImportInstanceRequest importInstanceRequest) {
+    public ImportInstanceResult importInstance(ImportInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportInstance(request);
+    }
+
+    @SdkInternalApi
+    final ImportInstanceResult executeImportInstance(ImportInstanceRequest importInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8266,9 +10386,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ImportKeyPair.
      * @return Result of the ImportKeyPair operation returned by the service.
      * @sample AmazonEC2.ImportKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportKeyPairResult importKeyPair(ImportKeyPairRequest importKeyPairRequest) {
+    public ImportKeyPairResult importKeyPair(ImportKeyPairRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportKeyPair(request);
+    }
+
+    @SdkInternalApi
+    final ImportKeyPairResult executeImportKeyPair(ImportKeyPairRequest importKeyPairRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importKeyPairRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8305,9 +10434,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ImportSnapshot.
      * @return Result of the ImportSnapshot operation returned by the service.
      * @sample AmazonEC2.ImportSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportSnapshotResult importSnapshot(ImportSnapshotRequest importSnapshotRequest) {
+    public ImportSnapshotResult importSnapshot(ImportSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final ImportSnapshotResult executeImportSnapshot(ImportSnapshotRequest importSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8356,9 +10494,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ImportVolume.
      * @return Result of the ImportVolume operation returned by the service.
      * @sample AmazonEC2.ImportVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportVolumeResult importVolume(ImportVolumeRequest importVolumeRequest) {
+    public ImportVolumeResult importVolume(ImportVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportVolume(request);
+    }
+
+    @SdkInternalApi
+    final ImportVolumeResult executeImportVolume(ImportVolumeRequest importVolumeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importVolumeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8399,9 +10546,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyHosts.
      * @return Result of the ModifyHosts operation returned by the service.
      * @sample AmazonEC2.ModifyHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyHostsResult modifyHosts(ModifyHostsRequest modifyHostsRequest) {
+    public ModifyHostsResult modifyHosts(ModifyHostsRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyHosts(request);
+    }
+
+    @SdkInternalApi
+    final ModifyHostsResult executeModifyHosts(ModifyHostsRequest modifyHostsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyHostsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8452,9 +10608,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters of ModifyIdFormat.
      * @return Result of the ModifyIdFormat operation returned by the service.
      * @sample AmazonEC2.ModifyIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyIdFormatResult modifyIdFormat(ModifyIdFormatRequest modifyIdFormatRequest) {
+    public ModifyIdFormatResult modifyIdFormat(ModifyIdFormatRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyIdFormat(request);
+    }
+
+    @SdkInternalApi
+    final ModifyIdFormatResult executeModifyIdFormat(ModifyIdFormatRequest modifyIdFormatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyIdFormatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8508,9 +10673,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters of ModifyIdentityIdFormat.
      * @return Result of the ModifyIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2.ModifyIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdentityIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyIdentityIdFormatResult modifyIdentityIdFormat(ModifyIdentityIdFormatRequest modifyIdentityIdFormatRequest) {
+    public ModifyIdentityIdFormatResult modifyIdentityIdFormat(ModifyIdentityIdFormatRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyIdentityIdFormat(request);
+    }
+
+    @SdkInternalApi
+    final ModifyIdentityIdFormatResult executeModifyIdentityIdFormat(ModifyIdentityIdFormatRequest modifyIdentityIdFormatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyIdentityIdFormatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8560,9 +10734,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyImageAttribute.
      * @return Result of the ModifyImageAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyImageAttributeResult modifyImageAttribute(ModifyImageAttributeRequest modifyImageAttributeRequest) {
+    public ModifyImageAttributeResult modifyImageAttribute(ModifyImageAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyImageAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifyImageAttributeResult executeModifyImageAttribute(ModifyImageAttributeRequest modifyImageAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyImageAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8605,9 +10788,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyInstanceAttribute.
      * @return Result of the ModifyInstanceAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ModifyInstanceAttributeResult modifyInstanceAttribute(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest) {
+    public ModifyInstanceAttributeResult modifyInstanceAttribute(ModifyInstanceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyInstanceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifyInstanceAttributeResult executeModifyInstanceAttribute(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyInstanceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8662,9 +10854,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyInstancePlacement.
      * @return Result of the ModifyInstancePlacement operation returned by the service.
      * @sample AmazonEC2.ModifyInstancePlacement
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstancePlacement" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ModifyInstancePlacementResult modifyInstancePlacement(ModifyInstancePlacementRequest modifyInstancePlacementRequest) {
+    public ModifyInstancePlacementResult modifyInstancePlacement(ModifyInstancePlacementRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyInstancePlacement(request);
+    }
+
+    @SdkInternalApi
+    final ModifyInstancePlacementResult executeModifyInstancePlacement(ModifyInstancePlacementRequest modifyInstancePlacementRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyInstancePlacementRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8702,9 +10903,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyNetworkInterfaceAttribute.
      * @return Result of the ModifyNetworkInterfaceAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyNetworkInterfaceAttributeResult modifyNetworkInterfaceAttribute(ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest) {
+    public ModifyNetworkInterfaceAttributeResult modifyNetworkInterfaceAttribute(ModifyNetworkInterfaceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyNetworkInterfaceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifyNetworkInterfaceAttributeResult executeModifyNetworkInterfaceAttribute(
+            ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyNetworkInterfaceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8749,9 +10960,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyReservedInstances.
      * @return Result of the ModifyReservedInstances operation returned by the service.
      * @sample AmazonEC2.ModifyReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ModifyReservedInstancesResult modifyReservedInstances(ModifyReservedInstancesRequest modifyReservedInstancesRequest) {
+    public ModifyReservedInstancesResult modifyReservedInstances(ModifyReservedInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyReservedInstances(request);
+    }
+
+    @SdkInternalApi
+    final ModifyReservedInstancesResult executeModifyReservedInstances(ModifyReservedInstancesRequest modifyReservedInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyReservedInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8802,9 +11022,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifySnapshotAttribute.
      * @return Result of the ModifySnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.ModifySnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ModifySnapshotAttributeResult modifySnapshotAttribute(ModifySnapshotAttributeRequest modifySnapshotAttributeRequest) {
+    public ModifySnapshotAttributeResult modifySnapshotAttribute(ModifySnapshotAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifySnapshotAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifySnapshotAttributeResult executeModifySnapshotAttribute(ModifySnapshotAttributeRequest modifySnapshotAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifySnapshotAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8860,9 +11089,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifySpotFleetRequest.
      * @return Result of the ModifySpotFleetRequest operation returned by the service.
      * @sample AmazonEC2.ModifySpotFleetRequest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySpotFleetRequest" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifySpotFleetRequestResult modifySpotFleetRequest(ModifySpotFleetRequestRequest modifySpotFleetRequestRequest) {
+    public ModifySpotFleetRequestResult modifySpotFleetRequest(ModifySpotFleetRequestRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifySpotFleetRequest(request);
+    }
+
+    @SdkInternalApi
+    final ModifySpotFleetRequestResult executeModifySpotFleetRequest(ModifySpotFleetRequestRequest modifySpotFleetRequestRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifySpotFleetRequestRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8893,16 +11131,25 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Modifies a subnet attribute.
+     * Modifies a subnet attribute. You can only modify one attribute at a time.
      * </p>
      * 
      * @param modifySubnetAttributeRequest
      *        Contains the parameters for ModifySubnetAttribute.
      * @return Result of the ModifySubnetAttribute operation returned by the service.
      * @sample AmazonEC2.ModifySubnetAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySubnetAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifySubnetAttributeResult modifySubnetAttribute(ModifySubnetAttributeRequest modifySubnetAttributeRequest) {
+    public ModifySubnetAttributeResult modifySubnetAttribute(ModifySubnetAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifySubnetAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifySubnetAttributeResult executeModifySubnetAttribute(ModifySubnetAttributeRequest modifySubnetAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifySubnetAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8933,6 +11180,91 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS
+     * capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply
+     * these changes without stopping the instance or detaching the volume from it. For more information about modifying
+     * an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * <p>
+     * When you complete a resize operation on your volume, you need to extend the volume's file-system size to take
+     * advantage of the new storage capacity. For information about extending a Linux file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux"
+     * >Extending a Linux File System</a>. For information about extending a Windows file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows"
+     * >Extending a Windows File System</a>.
+     * </p>
+     * <p>
+     * You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. You can also track the status of a modification using the
+     * <a>DescribeVolumesModifications</a> API. For information about tracking status changes using either method, see
+     * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications</a>.
+     * </p>
+     * <note>
+     * <p>
+     * With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume
+     * or stopping and restarting the instance. For more information about modifying an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * </note> <note>
+     * <p>
+     * If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours
+     * before applying further modifications to the affected EBS volume.
+     * </p>
+     * </note>
+     * 
+     * @param modifyVolumeRequest
+     * @return Result of the ModifyVolume operation returned by the service.
+     * @sample AmazonEC2.ModifyVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolume" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ModifyVolumeResult modifyVolume(ModifyVolumeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVolume(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVolumeResult executeModifyVolume(ModifyVolumeRequest modifyVolumeRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyVolumeRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyVolumeRequest> request = null;
+        Response<ModifyVolumeResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyVolumeRequestMarshaller().marshall(super.beforeMarshalling(modifyVolumeRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifyVolumeResult> responseHandler = new StaxResponseHandler<ModifyVolumeResult>(new ModifyVolumeResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Modifies a volume attribute.
      * </p>
      * <p>
@@ -8949,9 +11281,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyVolumeAttribute.
      * @return Result of the ModifyVolumeAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolumeAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyVolumeAttributeResult modifyVolumeAttribute(ModifyVolumeAttributeRequest modifyVolumeAttributeRequest) {
+    public ModifyVolumeAttributeResult modifyVolumeAttribute(ModifyVolumeAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVolumeAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVolumeAttributeResult executeModifyVolumeAttribute(ModifyVolumeAttributeRequest modifyVolumeAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyVolumeAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -8989,9 +11330,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyVpcAttribute.
      * @return Result of the ModifyVpcAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyVpcAttributeResult modifyVpcAttribute(ModifyVpcAttributeRequest modifyVpcAttributeRequest) {
+    public ModifyVpcAttributeResult modifyVpcAttribute(ModifyVpcAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVpcAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVpcAttributeResult executeModifyVpcAttribute(ModifyVpcAttributeRequest modifyVpcAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyVpcAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9030,9 +11380,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ModifyVpcEndpoint.
      * @return Result of the ModifyVpcEndpoint operation returned by the service.
      * @sample AmazonEC2.ModifyVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyVpcEndpointResult modifyVpcEndpoint(ModifyVpcEndpointRequest modifyVpcEndpointRequest) {
+    public ModifyVpcEndpointResult modifyVpcEndpoint(ModifyVpcEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVpcEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVpcEndpointResult executeModifyVpcEndpoint(ModifyVpcEndpointRequest modifyVpcEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyVpcEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9096,10 +11455,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param modifyVpcPeeringConnectionOptionsRequest
      * @return Result of the ModifyVpcPeeringConnectionOptions operation returned by the service.
      * @sample AmazonEC2.ModifyVpcPeeringConnectionOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcPeeringConnectionOptions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyVpcPeeringConnectionOptionsResult modifyVpcPeeringConnectionOptions(
+    public ModifyVpcPeeringConnectionOptionsResult modifyVpcPeeringConnectionOptions(ModifyVpcPeeringConnectionOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVpcPeeringConnectionOptions(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVpcPeeringConnectionOptionsResult executeModifyVpcPeeringConnectionOptions(
             ModifyVpcPeeringConnectionOptionsRequest modifyVpcPeeringConnectionOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyVpcPeeringConnectionOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9130,18 +11498,30 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Enables monitoring for a running instance. For more information about monitoring instances, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
-     * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information,
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances
+     * and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * To disable detailed monitoring, see .
      * </p>
      * 
      * @param monitorInstancesRequest
      *        Contains the parameters for MonitorInstances.
      * @return Result of the MonitorInstances operation returned by the service.
      * @sample AmazonEC2.MonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public MonitorInstancesResult monitorInstances(MonitorInstancesRequest monitorInstancesRequest) {
+    public MonitorInstancesResult monitorInstances(MonitorInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeMonitorInstances(request);
+    }
+
+    @SdkInternalApi
+    final MonitorInstancesResult executeMonitorInstances(MonitorInstancesRequest monitorInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(monitorInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9183,9 +11563,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for MoveAddressToVpc.
      * @return Result of the MoveAddressToVpc operation returned by the service.
      * @sample AmazonEC2.MoveAddressToVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveAddressToVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public MoveAddressToVpcResult moveAddressToVpc(MoveAddressToVpcRequest moveAddressToVpcRequest) {
+    public MoveAddressToVpcResult moveAddressToVpc(MoveAddressToVpcRequest request) {
+        request = beforeClientExecution(request);
+        return executeMoveAddressToVpc(request);
+    }
+
+    @SdkInternalApi
+    final MoveAddressToVpcResult executeMoveAddressToVpc(MoveAddressToVpcRequest moveAddressToVpcRequest) {
+
         ExecutionContext executionContext = createExecutionContext(moveAddressToVpcRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9224,9 +11613,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * @param purchaseHostReservationRequest
      * @return Result of the PurchaseHostReservation operation returned by the service.
      * @sample AmazonEC2.PurchaseHostReservation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseHostReservation" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public PurchaseHostReservationResult purchaseHostReservation(PurchaseHostReservationRequest purchaseHostReservationRequest) {
+    public PurchaseHostReservationResult purchaseHostReservation(PurchaseHostReservationRequest request) {
+        request = beforeClientExecution(request);
+        return executePurchaseHostReservation(request);
+    }
+
+    @SdkInternalApi
+    final PurchaseHostReservationResult executePurchaseHostReservation(PurchaseHostReservationRequest purchaseHostReservationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(purchaseHostReservationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9276,10 +11674,19 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for PurchaseReservedInstancesOffering.
      * @return Result of the PurchaseReservedInstancesOffering operation returned by the service.
      * @sample AmazonEC2.PurchaseReservedInstancesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseReservedInstancesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public PurchaseReservedInstancesOfferingResult purchaseReservedInstancesOffering(
+    public PurchaseReservedInstancesOfferingResult purchaseReservedInstancesOffering(PurchaseReservedInstancesOfferingRequest request) {
+        request = beforeClientExecution(request);
+        return executePurchaseReservedInstancesOffering(request);
+    }
+
+    @SdkInternalApi
+    final PurchaseReservedInstancesOfferingResult executePurchaseReservedInstancesOffering(
             PurchaseReservedInstancesOfferingRequest purchaseReservedInstancesOfferingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(purchaseReservedInstancesOfferingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9326,9 +11733,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for PurchaseScheduledInstances.
      * @return Result of the PurchaseScheduledInstances operation returned by the service.
      * @sample AmazonEC2.PurchaseScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest purchaseScheduledInstancesRequest) {
+    public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executePurchaseScheduledInstances(request);
+    }
+
+    @SdkInternalApi
+    final PurchaseScheduledInstancesResult executePurchaseScheduledInstances(PurchaseScheduledInstancesRequest purchaseScheduledInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(purchaseScheduledInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9376,9 +11792,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RebootInstances.
      * @return Result of the RebootInstances operation returned by the service.
      * @sample AmazonEC2.RebootInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RebootInstancesResult rebootInstances(RebootInstancesRequest rebootInstancesRequest) {
+    public RebootInstancesResult rebootInstances(RebootInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRebootInstances(request);
+    }
+
+    @SdkInternalApi
+    final RebootInstancesResult executeRebootInstances(RebootInstancesRequest rebootInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rebootInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9422,44 +11847,42 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * </note>
      * <p>
      * You can also use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a snapshot of a root
-     * device volume. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_LaunchingInstanceFromSnapshot.html">Launching an
-     * Instance from a Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * device volume. You specify the snapshot using the block device mapping. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html">Launching a Linux
+     * Instance from a Backup</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
-     * <important>
+     * <p>
+     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
+     * </p>
      * <p>
      * Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use
-     * the EC2 <code>billingProduct</code> code associated with an AMI to verify subscription status for package
-     * updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances
-     * launched from such an AMI will not be able to connect to package update infrastructure.
+     * the EC2 billing product code associated with an AMI to verify the subscription status for package updates.
+     * Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances launched from
+     * such an AMI will not be able to connect to package update infrastructure. To create an AMI that must retain
+     * billing codes, see <a>CreateImage</a>.
      * </p>
-     * <p>
-     * Similarly, although you can create a Windows AMI from a snapshot, you can't successfully launch an instance from
-     * the AMI.
-     * </p>
-     * <p>
-     * To create Windows AMIs or to create AMIs for Linux operating systems that must retain AMI billing codes to work
-     * properly, see <a>CreateImage</a>.
-     * </p>
-     * </important>
      * <p>
      * If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance
      * store volume invalidates its registration. If you make changes to an image, deregister the previous image and
      * register the new image.
      * </p>
-     * <note>
-     * <p>
-     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
-     * </p>
-     * </note>
      * 
      * @param registerImageRequest
      *        Contains the parameters for RegisterImage.
      * @return Result of the RegisterImage operation returned by the service.
      * @sample AmazonEC2.RegisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RegisterImageResult registerImage(RegisterImageRequest registerImageRequest) {
+    public RegisterImageResult registerImage(RegisterImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterImage(request);
+    }
+
+    @SdkInternalApi
+    final RegisterImageResult executeRegisterImage(RegisterImageRequest registerImageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(registerImageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9499,9 +11922,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RejectVpcPeeringConnection.
      * @return Result of the RejectVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2.RejectVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
+    public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeRejectVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final RejectVpcPeeringConnectionResult executeRejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rejectVpcPeeringConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9553,9 +11985,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReleaseAddress.
      * @return Result of the ReleaseAddress operation returned by the service.
      * @sample AmazonEC2.ReleaseAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ReleaseAddressResult releaseAddress(ReleaseAddressRequest releaseAddressRequest) {
+    public ReleaseAddressResult releaseAddress(ReleaseAddressRequest request) {
+        request = beforeClientExecution(request);
+        return executeReleaseAddress(request);
+    }
+
+    @SdkInternalApi
+    final ReleaseAddressResult executeReleaseAddress(ReleaseAddressRequest releaseAddressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(releaseAddressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9604,9 +12045,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReleaseHosts.
      * @return Result of the ReleaseHosts operation returned by the service.
      * @sample AmazonEC2.ReleaseHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ReleaseHostsResult releaseHosts(ReleaseHostsRequest releaseHostsRequest) {
+    public ReleaseHostsResult releaseHosts(ReleaseHostsRequest request) {
+        request = beforeClientExecution(request);
+        return executeReleaseHosts(request);
+    }
+
+    @SdkInternalApi
+    final ReleaseHostsResult executeReleaseHosts(ReleaseHostsRequest releaseHostsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(releaseHostsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9636,6 +12086,61 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM
+     * instance profile that's associated with an instance without having to disassociate the existing IAM instance
+     * profile first.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param replaceIamInstanceProfileAssociationRequest
+     * @return Result of the ReplaceIamInstanceProfileAssociation operation returned by the service.
+     * @sample AmazonEC2.ReplaceIamInstanceProfileAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceIamInstanceProfileAssociation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ReplaceIamInstanceProfileAssociationResult replaceIamInstanceProfileAssociation(ReplaceIamInstanceProfileAssociationRequest request) {
+        request = beforeClientExecution(request);
+        return executeReplaceIamInstanceProfileAssociation(request);
+    }
+
+    @SdkInternalApi
+    final ReplaceIamInstanceProfileAssociationResult executeReplaceIamInstanceProfileAssociation(
+            ReplaceIamInstanceProfileAssociationRequest replaceIamInstanceProfileAssociationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(replaceIamInstanceProfileAssociationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ReplaceIamInstanceProfileAssociationRequest> request = null;
+        Response<ReplaceIamInstanceProfileAssociationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ReplaceIamInstanceProfileAssociationRequestMarshaller().marshall(super
+                        .beforeMarshalling(replaceIamInstanceProfileAssociationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ReplaceIamInstanceProfileAssociationResult> responseHandler = new StaxResponseHandler<ReplaceIamInstanceProfileAssociationResult>(
+                    new ReplaceIamInstanceProfileAssociationResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically
      * associated with the default network ACL. For more information about network ACLs, see <a
      * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon
@@ -9646,9 +12151,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReplaceNetworkAclAssociation.
      * @return Result of the ReplaceNetworkAclAssociation operation returned by the service.
      * @sample AmazonEC2.ReplaceNetworkAclAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ReplaceNetworkAclAssociationResult replaceNetworkAclAssociation(ReplaceNetworkAclAssociationRequest replaceNetworkAclAssociationRequest) {
+    public ReplaceNetworkAclAssociationResult replaceNetworkAclAssociation(ReplaceNetworkAclAssociationRequest request) {
+        request = beforeClientExecution(request);
+        return executeReplaceNetworkAclAssociation(request);
+    }
+
+    @SdkInternalApi
+    final ReplaceNetworkAclAssociationResult executeReplaceNetworkAclAssociation(ReplaceNetworkAclAssociationRequest replaceNetworkAclAssociationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(replaceNetworkAclAssociationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9688,9 +12202,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReplaceNetworkAclEntry.
      * @return Result of the ReplaceNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2.ReplaceNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ReplaceNetworkAclEntryResult replaceNetworkAclEntry(ReplaceNetworkAclEntryRequest replaceNetworkAclEntryRequest) {
+    public ReplaceNetworkAclEntryResult replaceNetworkAclEntry(ReplaceNetworkAclEntryRequest request) {
+        request = beforeClientExecution(request);
+        return executeReplaceNetworkAclEntry(request);
+    }
+
+    @SdkInternalApi
+    final ReplaceNetworkAclEntryResult executeReplaceNetworkAclEntry(ReplaceNetworkAclEntryRequest replaceNetworkAclEntryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(replaceNetworkAclEntryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9722,7 +12245,8 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     /**
      * <p>
      * Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet
-     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, or network interface.
+     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or
+     * egress-only Internet gateway.
      * </p>
      * <p>
      * For more information about route tables, see <a
@@ -9734,9 +12258,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReplaceRoute.
      * @return Result of the ReplaceRoute operation returned by the service.
      * @sample AmazonEC2.ReplaceRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ReplaceRouteResult replaceRoute(ReplaceRouteRequest replaceRouteRequest) {
+    public ReplaceRouteResult replaceRoute(ReplaceRouteRequest request) {
+        request = beforeClientExecution(request);
+        return executeReplaceRoute(request);
+    }
+
+    @SdkInternalApi
+    final ReplaceRouteResult executeReplaceRoute(ReplaceRouteRequest replaceRouteRequest) {
+
         ExecutionContext executionContext = createExecutionContext(replaceRouteRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9780,9 +12313,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReplaceRouteTableAssociation.
      * @return Result of the ReplaceRouteTableAssociation operation returned by the service.
      * @sample AmazonEC2.ReplaceRouteTableAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRouteTableAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ReplaceRouteTableAssociationResult replaceRouteTableAssociation(ReplaceRouteTableAssociationRequest replaceRouteTableAssociationRequest) {
+    public ReplaceRouteTableAssociationResult replaceRouteTableAssociation(ReplaceRouteTableAssociationRequest request) {
+        request = beforeClientExecution(request);
+        return executeReplaceRouteTableAssociation(request);
+    }
+
+    @SdkInternalApi
+    final ReplaceRouteTableAssociationResult executeReplaceRouteTableAssociation(ReplaceRouteTableAssociationRequest replaceRouteTableAssociationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(replaceRouteTableAssociationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9826,9 +12368,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ReportInstanceStatus.
      * @return Result of the ReportInstanceStatus operation returned by the service.
      * @sample AmazonEC2.ReportInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReportInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ReportInstanceStatusResult reportInstanceStatus(ReportInstanceStatusRequest reportInstanceStatusRequest) {
+    public ReportInstanceStatusResult reportInstanceStatus(ReportInstanceStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeReportInstanceStatus(request);
+    }
+
+    @SdkInternalApi
+    final ReportInstanceStatusResult executeReportInstanceStatus(ReportInstanceStatusRequest reportInstanceStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(reportInstanceStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9885,9 +12436,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RequestSpotFleet.
      * @return Result of the RequestSpotFleet operation returned by the service.
      * @sample AmazonEC2.RequestSpotFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotFleet" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RequestSpotFleetResult requestSpotFleet(RequestSpotFleetRequest requestSpotFleetRequest) {
+    public RequestSpotFleetResult requestSpotFleet(RequestSpotFleetRequest request) {
+        request = beforeClientExecution(request);
+        return executeRequestSpotFleet(request);
+    }
+
+    @SdkInternalApi
+    final RequestSpotFleetResult executeRequestSpotFleet(RequestSpotFleetRequest requestSpotFleetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(requestSpotFleetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9929,9 +12489,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RequestSpotInstances.
      * @return Result of the RequestSpotInstances operation returned by the service.
      * @sample AmazonEC2.RequestSpotInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RequestSpotInstancesResult requestSpotInstances(RequestSpotInstancesRequest requestSpotInstancesRequest) {
+    public RequestSpotInstancesResult requestSpotInstances(RequestSpotInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRequestSpotInstances(request);
+    }
+
+    @SdkInternalApi
+    final RequestSpotInstancesResult executeRequestSpotInstances(RequestSpotInstancesRequest requestSpotInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(requestSpotInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -9974,9 +12543,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ResetImageAttribute.
      * @return Result of the ResetImageAttribute operation returned by the service.
      * @sample AmazonEC2.ResetImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResetImageAttributeResult resetImageAttribute(ResetImageAttributeRequest resetImageAttributeRequest) {
+    public ResetImageAttributeResult resetImageAttribute(ResetImageAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetImageAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ResetImageAttributeResult executeResetImageAttribute(ResetImageAttributeRequest resetImageAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetImageAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10023,9 +12601,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ResetInstanceAttribute.
      * @return Result of the ResetInstanceAttribute operation returned by the service.
      * @sample AmazonEC2.ResetInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetInstanceAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResetInstanceAttributeResult resetInstanceAttribute(ResetInstanceAttributeRequest resetInstanceAttributeRequest) {
+    public ResetInstanceAttributeResult resetInstanceAttribute(ResetInstanceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetInstanceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ResetInstanceAttributeResult executeResetInstanceAttribute(ResetInstanceAttributeRequest resetInstanceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetInstanceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10063,9 +12650,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ResetNetworkInterfaceAttribute.
      * @return Result of the ResetNetworkInterfaceAttribute operation returned by the service.
      * @sample AmazonEC2.ResetNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ResetNetworkInterfaceAttributeResult resetNetworkInterfaceAttribute(ResetNetworkInterfaceAttributeRequest resetNetworkInterfaceAttributeRequest) {
+    public ResetNetworkInterfaceAttributeResult resetNetworkInterfaceAttribute(ResetNetworkInterfaceAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetNetworkInterfaceAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ResetNetworkInterfaceAttributeResult executeResetNetworkInterfaceAttribute(ResetNetworkInterfaceAttributeRequest resetNetworkInterfaceAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetNetworkInterfaceAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10108,9 +12704,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for ResetSnapshotAttribute.
      * @return Result of the ResetSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.ResetSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResetSnapshotAttributeResult resetSnapshotAttribute(ResetSnapshotAttributeRequest resetSnapshotAttributeRequest) {
+    public ResetSnapshotAttributeResult resetSnapshotAttribute(ResetSnapshotAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetSnapshotAttribute(request);
+    }
+
+    @SdkInternalApi
+    final ResetSnapshotAttributeResult executeResetSnapshotAttribute(ResetSnapshotAttributeRequest resetSnapshotAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetSnapshotAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10150,9 +12755,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RestoreAddressToClassic.
      * @return Result of the RestoreAddressToClassic operation returned by the service.
      * @sample AmazonEC2.RestoreAddressToClassic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreAddressToClassic" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RestoreAddressToClassicResult restoreAddressToClassic(RestoreAddressToClassicRequest restoreAddressToClassicRequest) {
+    public RestoreAddressToClassicResult restoreAddressToClassic(RestoreAddressToClassicRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreAddressToClassic(request);
+    }
+
+    @SdkInternalApi
+    final RestoreAddressToClassicResult executeRestoreAddressToClassic(RestoreAddressToClassicRequest restoreAddressToClassicRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restoreAddressToClassicRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10188,9 +12802,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * must match the existing rule's values for the rule to be revoked.
      * </p>
      * <p>
-     * Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols,
-     * you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the
-     * ICMP type and code.
+     * Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP
+     * protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also
+     * specify the ICMP type and code.
      * </p>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
@@ -10201,9 +12815,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RevokeSecurityGroupEgress.
      * @return Result of the RevokeSecurityGroupEgress operation returned by the service.
      * @sample AmazonEC2.RevokeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupEgress" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RevokeSecurityGroupEgressResult revokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest revokeSecurityGroupEgressRequest) {
+    public RevokeSecurityGroupEgressResult revokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest request) {
+        request = beforeClientExecution(request);
+        return executeRevokeSecurityGroupEgress(request);
+    }
+
+    @SdkInternalApi
+    final RevokeSecurityGroupEgressResult executeRevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest revokeSecurityGroupEgressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(revokeSecurityGroupEgressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10251,9 +12874,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RevokeSecurityGroupIngress.
      * @return Result of the RevokeSecurityGroupIngress operation returned by the service.
      * @sample AmazonEC2.RevokeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupIngress" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RevokeSecurityGroupIngressResult revokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest revokeSecurityGroupIngressRequest) {
+    public RevokeSecurityGroupIngressResult revokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest request) {
+        request = beforeClientExecution(request);
+        return executeRevokeSecurityGroupIngress(request);
+    }
+
+    @SdkInternalApi
+    final RevokeSecurityGroupIngressResult executeRevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest revokeSecurityGroupIngressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(revokeSecurityGroupIngressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10283,6 +12915,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     }
 
     @Override
+    @Deprecated
     public RevokeSecurityGroupIngressResult revokeSecurityGroupIngress() {
         return revokeSecurityGroupIngress(new RevokeSecurityGroupIngressRequest());
     }
@@ -10292,31 +12925,61 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * Launches the specified number of instances using an AMI for which you have permissions.
      * </p>
      * <p>
-     * When you launch an instance, it enters the <code>pending</code> state. After the instance is ready for you, it
-     * enters the <code>running</code> state. To check the state of your instance, call <a>DescribeInstances</a>.
+     * You can specify a number of options, or leave the default options. The following rules apply:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * [EC2-VPC] If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you
+     * don't have a default VPC, you must specify a subnet ID in the request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-Classic] If don't specify an Availability Zone, we choose one for you.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a
+     * subnet ID, the request fails. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
+     * Available Only in a VPC</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-VPC] All instances have a network interface with a primary private IPv4 address. If you don't specify this
+     * address, we choose one from the IPv4 range of your subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not all instance types support IPv6 addresses. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you don't specify a security group ID, we use the default security group. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To ensure faster instance launches, break up large requests into smaller batches. For example, create 5 separate
+     * launch requests for 100 instances each instead of 1 launch request for 500 instances.
      * </p>
      * <p>
-     * To ensure faster instance launches, break up large requests into smaller batches. For example, create five
-     * separate launch requests for 100 instances each instead of one launch request for 500 instances.
-     * </p>
-     * <p>
-     * To tag your instance, ensure that it is <code>running</code> as <a>CreateTags</a> requires a resource ID. For
-     * more information about tagging, see <a
+     * An instance is ready for you to use when it's in the <code>running</code> state. You can check the state of your
+     * instance using <a>DescribeInstances</a>. You can tag instances and EBS volumes during launch, after launch, or
+     * both. For more information, see <a>CreateTags</a> and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
-     * </p>
-     * <p>
-     * If you don't specify a security group when launching an instance, Amazon EC2 uses the default security group. For
-     * more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * [EC2-VPC only accounts] If you don't specify a subnet in the request, we choose a default subnet from your
-     * default VPC for you.
-     * </p>
-     * <p>
-     * [EC2-Classic accounts] If you're launching into EC2-Classic and you don't specify an Availability Zone, we choose
-     * one for you.
      * </p>
      * <p>
      * Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure
@@ -10325,22 +12988,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * You can provide optional user data when launching an instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a>
-     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * If any of the AMIs have a product code attached for which the user has not subscribed, <code>RunInstances</code>
-     * fails.
-     * </p>
-     * <p>
-     * Some instance types can only be launched into a VPC. If you do not have a default VPC, or if you do not specify a
-     * subnet ID in the request, <code>RunInstances</code> fails. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
-     * Available Only in a VPC</a>.
-     * </p>
-     * <p>
-     * For more information about troubleshooting, see <a
+     * For troubleshooting, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What To Do If
      * An Instance Immediately Terminates</a>, and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting
@@ -10351,9 +12999,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RunInstances.
      * @return Result of the RunInstances operation returned by the service.
      * @sample AmazonEC2.RunInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest) {
+    public RunInstancesResult runInstances(RunInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRunInstances(request);
+    }
+
+    @SdkInternalApi
+    final RunInstancesResult executeRunInstances(RunInstancesRequest runInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(runInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10401,9 +13058,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for RunScheduledInstances.
      * @return Result of the RunScheduledInstances operation returned by the service.
      * @sample AmazonEC2.RunScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest runScheduledInstancesRequest) {
+    public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRunScheduledInstances(request);
+    }
+
+    @SdkInternalApi
+    final RunScheduledInstancesResult executeRunScheduledInstances(RunScheduledInstancesRequest runScheduledInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(runScheduledInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10459,9 +13125,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for StartInstances.
      * @return Result of the StartInstances operation returned by the service.
      * @sample AmazonEC2.StartInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StartInstancesResult startInstances(StartInstancesRequest startInstancesRequest) {
+    public StartInstancesResult startInstances(StartInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartInstances(request);
+    }
+
+    @SdkInternalApi
+    final StartInstancesResult executeStartInstances(StartInstancesRequest startInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10528,9 +13203,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for StopInstances.
      * @return Result of the StopInstances operation returned by the service.
      * @sample AmazonEC2.StopInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StopInstancesResult stopInstances(StopInstancesRequest stopInstancesRequest) {
+    public StopInstancesResult stopInstances(StopInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopInstances(request);
+    }
+
+    @SdkInternalApi
+    final StopInstancesResult executeStopInstances(StopInstancesRequest stopInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(stopInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10593,9 +13277,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for TerminateInstances.
      * @return Result of the TerminateInstances operation returned by the service.
      * @sample AmazonEC2.TerminateInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest) {
+    public TerminateInstancesResult terminateInstances(TerminateInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeTerminateInstances(request);
+    }
+
+    @SdkInternalApi
+    final TerminateInstancesResult executeTerminateInstances(TerminateInstancesRequest terminateInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(terminateInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10626,6 +13319,54 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
+     * Unassigns one or more IPv6 addresses from a network interface.
+     * </p>
+     * 
+     * @param unassignIpv6AddressesRequest
+     * @return Result of the UnassignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2.UnassignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UnassignIpv6AddressesResult unassignIpv6Addresses(UnassignIpv6AddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeUnassignIpv6Addresses(request);
+    }
+
+    @SdkInternalApi
+    final UnassignIpv6AddressesResult executeUnassignIpv6Addresses(UnassignIpv6AddressesRequest unassignIpv6AddressesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(unassignIpv6AddressesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UnassignIpv6AddressesRequest> request = null;
+        Response<UnassignIpv6AddressesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UnassignIpv6AddressesRequestMarshaller().marshall(super.beforeMarshalling(unassignIpv6AddressesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UnassignIpv6AddressesResult> responseHandler = new StaxResponseHandler<UnassignIpv6AddressesResult>(
+                    new UnassignIpv6AddressesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Unassigns one or more secondary private IP addresses from a network interface.
      * </p>
      * 
@@ -10633,9 +13374,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for UnassignPrivateIpAddresses.
      * @return Result of the UnassignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2.UnassignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UnassignPrivateIpAddressesResult unassignPrivateIpAddresses(UnassignPrivateIpAddressesRequest unassignPrivateIpAddressesRequest) {
+    public UnassignPrivateIpAddressesResult unassignPrivateIpAddresses(UnassignPrivateIpAddressesRequest request) {
+        request = beforeClientExecution(request);
+        return executeUnassignPrivateIpAddresses(request);
+    }
+
+    @SdkInternalApi
+    final UnassignPrivateIpAddressesResult executeUnassignPrivateIpAddresses(UnassignPrivateIpAddressesRequest unassignPrivateIpAddressesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(unassignPrivateIpAddressesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10666,7 +13416,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Disables monitoring for a running instance. For more information about monitoring instances, see <a
+     * Disables detailed monitoring for a running instance. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
      * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -10675,9 +13425,18 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      *        Contains the parameters for UnmonitorInstances.
      * @return Result of the UnmonitorInstances operation returned by the service.
      * @sample AmazonEC2.UnmonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UnmonitorInstancesResult unmonitorInstances(UnmonitorInstancesRequest unmonitorInstancesRequest) {
+    public UnmonitorInstancesResult unmonitorInstances(UnmonitorInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeUnmonitorInstances(request);
+    }
+
+    @SdkInternalApi
+    final UnmonitorInstancesResult executeUnmonitorInstances(UnmonitorInstancesRequest unmonitorInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(unmonitorInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -10792,6 +13551,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonEC2Waiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -10801,6 +13561,14 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

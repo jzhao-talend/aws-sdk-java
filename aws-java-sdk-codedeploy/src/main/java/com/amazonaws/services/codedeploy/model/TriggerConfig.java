@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about notification triggers for the deployment group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/TriggerConfig" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TriggerConfig implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TriggerConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -240,11 +247,11 @@ public class TriggerConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTriggerName() != null)
-            sb.append("TriggerName: " + getTriggerName() + ",");
+            sb.append("TriggerName: ").append(getTriggerName()).append(",");
         if (getTriggerTargetArn() != null)
-            sb.append("TriggerTargetArn: " + getTriggerTargetArn() + ",");
+            sb.append("TriggerTargetArn: ").append(getTriggerTargetArn()).append(",");
         if (getTriggerEvents() != null)
-            sb.append("TriggerEvents: " + getTriggerEvents());
+            sb.append("TriggerEvents: ").append(getTriggerEvents());
         sb.append("}");
         return sb.toString();
     }
@@ -292,5 +299,11 @@ public class TriggerConfig implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.TriggerConfigMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

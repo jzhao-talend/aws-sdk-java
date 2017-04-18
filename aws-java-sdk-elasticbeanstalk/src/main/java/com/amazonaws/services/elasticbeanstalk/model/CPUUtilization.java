@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents CPU utilization information from the specified instance that belongs to the AWS Elastic Beanstalk
- * environment. Use the <code>instanceId</code> property to specify the application instance for which you'd like to
- * return data.
+ * CPU utilization metrics for an instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CPUUtilization" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CPUUtilization implements Serializable, Cloneable {
 
     /**
@@ -358,19 +361,19 @@ public class CPUUtilization implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUser() != null)
-            sb.append("User: " + getUser() + ",");
+            sb.append("User: ").append(getUser()).append(",");
         if (getNice() != null)
-            sb.append("Nice: " + getNice() + ",");
+            sb.append("Nice: ").append(getNice()).append(",");
         if (getSystem() != null)
-            sb.append("System: " + getSystem() + ",");
+            sb.append("System: ").append(getSystem()).append(",");
         if (getIdle() != null)
-            sb.append("Idle: " + getIdle() + ",");
+            sb.append("Idle: ").append(getIdle()).append(",");
         if (getIOWait() != null)
-            sb.append("IOWait: " + getIOWait() + ",");
+            sb.append("IOWait: ").append(getIOWait()).append(",");
         if (getIRQ() != null)
-            sb.append("IRQ: " + getIRQ() + ",");
+            sb.append("IRQ: ").append(getIRQ()).append(",");
         if (getSoftIRQ() != null)
-            sb.append("SoftIRQ: " + getSoftIRQ());
+            sb.append("SoftIRQ: ").append(getSoftIRQ());
         sb.append("}");
         return sb.toString();
     }
@@ -439,4 +442,5 @@ public class CPUUtilization implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

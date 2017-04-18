@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Container definitions are used in task definitions to describe the different containers that are launched as part of
  * a task.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ContainerDefinition" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ContainerDefinition implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ContainerDefinition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -47,7 +54,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      * <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <note>
+     * <p>
+     * Amazon ECS task definitions currently only support tags as image identifiers within a specified repository (and
+     * not <code>sha256</code> digests).
+     * </p>
+     * </note>
      * <ul>
+     * <li>
+     * <p>
+     * Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     * </p>
+     * </li>
      * <li>
      * <p>
      * Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -458,8 +477,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * <note>
      * <p>
      * Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     * <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases of the
-     * Amazon ECS container agent.
+     * <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS
+     * container agent.
      * </p>
      * </note>
      * <p>
@@ -573,7 +592,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      * <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <note>
+     * <p>
+     * Amazon ECS task definitions currently only support tags as image identifiers within a specified repository (and
+     * not <code>sha256</code> digests).
+     * </p>
+     * </note>
      * <ul>
+     * <li>
+     * <p>
+     * Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     * </p>
+     * </li>
      * <li>
      * <p>
      * Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -604,8 +635,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *        container</a> section of the <a
      *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      *        <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
-     *        run</a>.</p>
+     *        run</a>.</p> <note>
+     *        <p>
+     *        Amazon ECS task definitions currently only support tags as image identifiers within a specified repository
+     *        (and not <code>sha256</code> digests).
+     *        </p>
+     *        </note>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     *        <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -642,7 +684,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      * <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <note>
+     * <p>
+     * Amazon ECS task definitions currently only support tags as image identifiers within a specified repository (and
+     * not <code>sha256</code> digests).
+     * </p>
+     * </note>
      * <ul>
+     * <li>
+     * <p>
+     * Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     * </p>
+     * </li>
      * <li>
      * <p>
      * Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -672,8 +726,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *         container</a> section of the <a
      *         href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and
      *         the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
-     *         run</a>.</p>
+     *         run</a>.</p> <note>
+     *         <p>
+     *         Amazon ECS task definitions currently only support tags as image identifiers within a specified
+     *         repository (and not <code>sha256</code> digests).
+     *         </p>
+     *         </note>
      *         <ul>
+     *         <li>
+     *         <p>
+     *         Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     *         <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     *         </p>
+     *         </li>
      *         <li>
      *         <p>
      *         Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -710,7 +775,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      * <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
+     * <note>
+     * <p>
+     * Amazon ECS task definitions currently only support tags as image identifiers within a specified repository (and
+     * not <code>sha256</code> digests).
+     * </p>
+     * </note>
      * <ul>
+     * <li>
+     * <p>
+     * Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     * </p>
+     * </li>
      * <li>
      * <p>
      * Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -741,8 +818,19 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *        container</a> section of the <a
      *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the
      *        <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
-     *        run</a>.</p>
+     *        run</a>.</p> <note>
+     *        <p>
+     *        Amazon ECS task definitions currently only support tags as image identifiers within a specified repository
+     *        (and not <code>sha256</code> digests).
+     *        </p>
+     *        </note>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        Images in Amazon ECR repositories use the full registry and repository URI (for example,
+     *        <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>).
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or
@@ -3836,8 +3924,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * <note>
      * <p>
      * Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     * <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases of the
-     * Amazon ECS container agent.
+     * <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS
+     * container agent.
      * </p>
      * </note>
      * <p>
@@ -3871,8 +3959,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *        documentation.</p> <note>
      *        <p>
      *        Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     *        <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases
-     *        of the Amazon ECS container agent.
+     *        <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the
+     *        Amazon ECS container agent.
      *        </p>
      *        </note>
      *        <p>
@@ -3912,8 +4000,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * <note>
      * <p>
      * Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     * <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases of the
-     * Amazon ECS container agent.
+     * <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS
+     * container agent.
      * </p>
      * </note>
      * <p>
@@ -3946,8 +4034,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *         documentation.</p> <note>
      *         <p>
      *         Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in
-     *         the <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future
-     *         releases of the Amazon ECS container agent.
+     *         the <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the
+     *         Amazon ECS container agent.
      *         </p>
      *         </note>
      *         <p>
@@ -3987,8 +4075,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      * <note>
      * <p>
      * Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     * <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases of the
-     * Amazon ECS container agent.
+     * <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS
+     * container agent.
      * </p>
      * </note>
      * <p>
@@ -4022,8 +4110,8 @@ public class ContainerDefinition implements Serializable, Cloneable {
      *        documentation.</p> <note>
      *        <p>
      *        Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the
-     *        <a>LogConfiguration</a> data type). Currently unsupported log drivers may be available in future releases
-     *        of the Amazon ECS container agent.
+     *        <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the
+     *        Amazon ECS container agent.
      *        </p>
      *        </note>
      *        <p>
@@ -4059,57 +4147,57 @@ public class ContainerDefinition implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getImage() != null)
-            sb.append("Image: " + getImage() + ",");
+            sb.append("Image: ").append(getImage()).append(",");
         if (getCpu() != null)
-            sb.append("Cpu: " + getCpu() + ",");
+            sb.append("Cpu: ").append(getCpu()).append(",");
         if (getMemory() != null)
-            sb.append("Memory: " + getMemory() + ",");
+            sb.append("Memory: ").append(getMemory()).append(",");
         if (getMemoryReservation() != null)
-            sb.append("MemoryReservation: " + getMemoryReservation() + ",");
+            sb.append("MemoryReservation: ").append(getMemoryReservation()).append(",");
         if (getLinks() != null)
-            sb.append("Links: " + getLinks() + ",");
+            sb.append("Links: ").append(getLinks()).append(",");
         if (getPortMappings() != null)
-            sb.append("PortMappings: " + getPortMappings() + ",");
+            sb.append("PortMappings: ").append(getPortMappings()).append(",");
         if (getEssential() != null)
-            sb.append("Essential: " + getEssential() + ",");
+            sb.append("Essential: ").append(getEssential()).append(",");
         if (getEntryPoint() != null)
-            sb.append("EntryPoint: " + getEntryPoint() + ",");
+            sb.append("EntryPoint: ").append(getEntryPoint()).append(",");
         if (getCommand() != null)
-            sb.append("Command: " + getCommand() + ",");
+            sb.append("Command: ").append(getCommand()).append(",");
         if (getEnvironment() != null)
-            sb.append("Environment: " + getEnvironment() + ",");
+            sb.append("Environment: ").append(getEnvironment()).append(",");
         if (getMountPoints() != null)
-            sb.append("MountPoints: " + getMountPoints() + ",");
+            sb.append("MountPoints: ").append(getMountPoints()).append(",");
         if (getVolumesFrom() != null)
-            sb.append("VolumesFrom: " + getVolumesFrom() + ",");
+            sb.append("VolumesFrom: ").append(getVolumesFrom()).append(",");
         if (getHostname() != null)
-            sb.append("Hostname: " + getHostname() + ",");
+            sb.append("Hostname: ").append(getHostname()).append(",");
         if (getUser() != null)
-            sb.append("User: " + getUser() + ",");
+            sb.append("User: ").append(getUser()).append(",");
         if (getWorkingDirectory() != null)
-            sb.append("WorkingDirectory: " + getWorkingDirectory() + ",");
+            sb.append("WorkingDirectory: ").append(getWorkingDirectory()).append(",");
         if (getDisableNetworking() != null)
-            sb.append("DisableNetworking: " + getDisableNetworking() + ",");
+            sb.append("DisableNetworking: ").append(getDisableNetworking()).append(",");
         if (getPrivileged() != null)
-            sb.append("Privileged: " + getPrivileged() + ",");
+            sb.append("Privileged: ").append(getPrivileged()).append(",");
         if (getReadonlyRootFilesystem() != null)
-            sb.append("ReadonlyRootFilesystem: " + getReadonlyRootFilesystem() + ",");
+            sb.append("ReadonlyRootFilesystem: ").append(getReadonlyRootFilesystem()).append(",");
         if (getDnsServers() != null)
-            sb.append("DnsServers: " + getDnsServers() + ",");
+            sb.append("DnsServers: ").append(getDnsServers()).append(",");
         if (getDnsSearchDomains() != null)
-            sb.append("DnsSearchDomains: " + getDnsSearchDomains() + ",");
+            sb.append("DnsSearchDomains: ").append(getDnsSearchDomains()).append(",");
         if (getExtraHosts() != null)
-            sb.append("ExtraHosts: " + getExtraHosts() + ",");
+            sb.append("ExtraHosts: ").append(getExtraHosts()).append(",");
         if (getDockerSecurityOptions() != null)
-            sb.append("DockerSecurityOptions: " + getDockerSecurityOptions() + ",");
+            sb.append("DockerSecurityOptions: ").append(getDockerSecurityOptions()).append(",");
         if (getDockerLabels() != null)
-            sb.append("DockerLabels: " + getDockerLabels() + ",");
+            sb.append("DockerLabels: ").append(getDockerLabels()).append(",");
         if (getUlimits() != null)
-            sb.append("Ulimits: " + getUlimits() + ",");
+            sb.append("Ulimits: ").append(getUlimits()).append(",");
         if (getLogConfiguration() != null)
-            sb.append("LogConfiguration: " + getLogConfiguration());
+            sb.append("LogConfiguration: ").append(getLogConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -4272,5 +4360,11 @@ public class ContainerDefinition implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ContainerDefinitionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

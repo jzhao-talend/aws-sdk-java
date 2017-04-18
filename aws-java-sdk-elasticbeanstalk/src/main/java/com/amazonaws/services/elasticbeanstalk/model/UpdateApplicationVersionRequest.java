@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplicationVersion"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -42,7 +48,7 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
     private String versionLabel;
     /**
      * <p>
-     * A new description for this release.
+     * A new description for this version.
      * </p>
      */
     private String description;
@@ -199,11 +205,11 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A new description for this release.
+     * A new description for this version.
      * </p>
      * 
      * @param description
-     *        A new description for this release.
+     *        A new description for this version.
      */
 
     public void setDescription(String description) {
@@ -212,10 +218,10 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A new description for this release.
+     * A new description for this version.
      * </p>
      * 
-     * @return A new description for this release.
+     * @return A new description for this version.
      */
 
     public String getDescription() {
@@ -224,11 +230,11 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A new description for this release.
+     * A new description for this version.
      * </p>
      * 
      * @param description
-     *        A new description for this release.
+     *        A new description for this version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -249,11 +255,11 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getVersionLabel() != null)
-            sb.append("VersionLabel: " + getVersionLabel() + ",");
+            sb.append("VersionLabel: ").append(getVersionLabel()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -298,4 +304,5 @@ public class UpdateApplicationVersionRequest extends com.amazonaws.AmazonWebServ
     public UpdateApplicationVersionRequest clone() {
         return (UpdateApplicationVersionRequest) super.clone();
     }
+
 }

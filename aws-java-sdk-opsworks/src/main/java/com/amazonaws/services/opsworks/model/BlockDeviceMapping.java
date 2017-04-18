@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,14 +23,18 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a> data
  * type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/BlockDeviceMapping" target="_top">AWS API
+ *      Documentation</a>
  */
-public class BlockDeviceMapping implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class BlockDeviceMapping implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use
-     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks will provide
-     * the correct device name.
+     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will
+     * provide the correct device name.
      * </p>
      */
     private String deviceName;
@@ -54,14 +61,14 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
     /**
      * <p>
      * The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use
-     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks will provide
-     * the correct device name.
+     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will
+     * provide the correct device name.
      * </p>
      * 
      * @param deviceName
      *        The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you
      *        can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS
-     *        OpsWorks will provide the correct device name.
+     *        OpsWorks Stacks will provide the correct device name.
      */
 
     public void setDeviceName(String deviceName) {
@@ -71,13 +78,13 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
     /**
      * <p>
      * The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use
-     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks will provide
-     * the correct device name.
+     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will
+     * provide the correct device name.
      * </p>
      * 
      * @return The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you
      *         can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS
-     *         OpsWorks will provide the correct device name.
+     *         OpsWorks Stacks will provide the correct device name.
      */
 
     public String getDeviceName() {
@@ -87,14 +94,14 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
     /**
      * <p>
      * The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use
-     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks will provide
-     * the correct device name.
+     * the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will
+     * provide the correct device name.
      * </p>
      * 
      * @param deviceName
      *        The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you
      *        can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS
-     *        OpsWorks will provide the correct device name.
+     *        OpsWorks Stacks will provide the correct device name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,13 +254,13 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeviceName() != null)
-            sb.append("DeviceName: " + getDeviceName() + ",");
+            sb.append("DeviceName: ").append(getDeviceName()).append(",");
         if (getNoDevice() != null)
-            sb.append("NoDevice: " + getNoDevice() + ",");
+            sb.append("NoDevice: ").append(getNoDevice()).append(",");
         if (getVirtualName() != null)
-            sb.append("VirtualName: " + getVirtualName() + ",");
+            sb.append("VirtualName: ").append(getVirtualName()).append(",");
         if (getEbs() != null)
-            sb.append("Ebs: " + getEbs());
+            sb.append("Ebs: ").append(getEbs());
         sb.append("}");
         return sb.toString();
     }
@@ -306,5 +313,11 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.BlockDeviceMappingMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

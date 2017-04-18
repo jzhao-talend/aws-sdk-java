@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdTokenForDeveloperIdentity"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -313,13 +319,13 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPoolId() != null)
-            sb.append("IdentityPoolId: " + getIdentityPoolId() + ",");
+            sb.append("IdentityPoolId: ").append(getIdentityPoolId()).append(",");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId() + ",");
+            sb.append("IdentityId: ").append(getIdentityId()).append(",");
         if (getLogins() != null)
-            sb.append("Logins: " + getLogins() + ",");
+            sb.append("Logins: ").append(getLogins()).append(",");
         if (getTokenDuration() != null)
-            sb.append("TokenDuration: " + getTokenDuration());
+            sb.append("TokenDuration: ").append(getTokenDuration());
         sb.append("}");
         return sb.toString();
     }
@@ -369,4 +375,5 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
     public GetOpenIdTokenForDeveloperIdentityRequest clone() {
         return (GetOpenIdTokenForDeveloperIdentityRequest) super.clone();
     }
+
 }

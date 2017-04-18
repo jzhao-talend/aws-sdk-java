@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,31 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Describes the inputs for DeleteAlarms.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteAlarms" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of alarms to be deleted.
+     * The alarms to be deleted.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> alarmNames;
 
     /**
      * <p>
-     * A list of alarms to be deleted.
+     * The alarms to be deleted.
      * </p>
      * 
-     * @return A list of alarms to be deleted.
+     * @return The alarms to be deleted.
      */
 
     public java.util.List<String> getAlarmNames() {
@@ -46,11 +49,11 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A list of alarms to be deleted.
+     * The alarms to be deleted.
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarms to be deleted.
+     *        The alarms to be deleted.
      */
 
     public void setAlarmNames(java.util.Collection<String> alarmNames) {
@@ -64,7 +67,7 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A list of alarms to be deleted.
+     * The alarms to be deleted.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -73,7 +76,7 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarms to be deleted.
+     *        The alarms to be deleted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +92,11 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * A list of alarms to be deleted.
+     * The alarms to be deleted.
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarms to be deleted.
+     *        The alarms to be deleted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,7 +117,7 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlarmNames() != null)
-            sb.append("AlarmNames: " + getAlarmNames());
+            sb.append("AlarmNames: ").append(getAlarmNames());
         sb.append("}");
         return sb.toString();
     }
@@ -149,4 +152,5 @@ public class DeleteAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest i
     public DeleteAlarmsRequest clone() {
         return (DeleteAlarmsRequest) super.clone();
     }
+
 }

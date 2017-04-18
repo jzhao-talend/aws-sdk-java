@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,25 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a <i>ListTables</i> operation.
+ * Represents the input of a <code>ListTables</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListTables" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * The first table name that this operation will evaluate. Use the value that was returned for
-     * <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     * <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of results.
      * </p>
      */
     private String exclusiveStartTableName;
@@ -49,7 +55,8 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * 
      * @param exclusiveStartTableName
      *        The first table name that this operation will evaluate. Use the value that was returned for
-     *        <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     *        <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of
+     *        results.
      */
     public ListTablesRequest(String exclusiveStartTableName) {
         setExclusiveStartTableName(exclusiveStartTableName);
@@ -61,7 +68,8 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * 
      * @param exclusiveStartTableName
      *        The first table name that this operation will evaluate. Use the value that was returned for
-     *        <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     *        <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of
+     *        results.
      * @param limit
      *        A maximum number of table names to return. If this parameter is not specified, the limit is 100.
      */
@@ -73,12 +81,13 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The first table name that this operation will evaluate. Use the value that was returned for
-     * <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     * <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of results.
      * </p>
      * 
      * @param exclusiveStartTableName
      *        The first table name that this operation will evaluate. Use the value that was returned for
-     *        <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     *        <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of
+     *        results.
      */
 
     public void setExclusiveStartTableName(String exclusiveStartTableName) {
@@ -88,11 +97,12 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The first table name that this operation will evaluate. Use the value that was returned for
-     * <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     * <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of results.
      * </p>
      * 
      * @return The first table name that this operation will evaluate. Use the value that was returned for
-     *         <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     *         <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of
+     *         results.
      */
 
     public String getExclusiveStartTableName() {
@@ -102,12 +112,13 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The first table name that this operation will evaluate. Use the value that was returned for
-     * <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     * <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of results.
      * </p>
      * 
      * @param exclusiveStartTableName
      *        The first table name that this operation will evaluate. Use the value that was returned for
-     *        <i>LastEvaluatedTableName</i> in a previous operation, so that you can obtain the next page of results.
+     *        <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of
+     *        results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,9 +179,9 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExclusiveStartTableName() != null)
-            sb.append("ExclusiveStartTableName: " + getExclusiveStartTableName() + ",");
+            sb.append("ExclusiveStartTableName: ").append(getExclusiveStartTableName()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -210,4 +221,5 @@ public class ListTablesRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public ListTablesRequest clone() {
         return (ListTablesRequest) super.clone();
     }
+
 }

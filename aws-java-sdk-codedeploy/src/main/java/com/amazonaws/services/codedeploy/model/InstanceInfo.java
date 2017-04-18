@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about an on-premises instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/InstanceInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InstanceInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -27,6 +34,12 @@ public class InstanceInfo implements Serializable, Cloneable {
      * </p>
      */
     private String instanceName;
+    /**
+     * <p>
+     * The ARN of the IAM session associated with the on-premises instance.
+     * </p>
+     */
+    private String iamSessionArn;
     /**
      * <p>
      * The IAM user ARN associated with the on-premises instance.
@@ -95,6 +108,46 @@ public class InstanceInfo implements Serializable, Cloneable {
 
     public InstanceInfo withInstanceName(String instanceName) {
         setInstanceName(instanceName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session associated with the on-premises instance.
+     * </p>
+     * 
+     * @param iamSessionArn
+     *        The ARN of the IAM session associated with the on-premises instance.
+     */
+
+    public void setIamSessionArn(String iamSessionArn) {
+        this.iamSessionArn = iamSessionArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session associated with the on-premises instance.
+     * </p>
+     * 
+     * @return The ARN of the IAM session associated with the on-premises instance.
+     */
+
+    public String getIamSessionArn() {
+        return this.iamSessionArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session associated with the on-premises instance.
+     * </p>
+     * 
+     * @param iamSessionArn
+     *        The ARN of the IAM session associated with the on-premises instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceInfo withIamSessionArn(String iamSessionArn) {
+        setIamSessionArn(iamSessionArn);
         return this;
     }
 
@@ -344,17 +397,19 @@ public class InstanceInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceName() != null)
-            sb.append("InstanceName: " + getInstanceName() + ",");
+            sb.append("InstanceName: ").append(getInstanceName()).append(",");
+        if (getIamSessionArn() != null)
+            sb.append("IamSessionArn: ").append(getIamSessionArn()).append(",");
         if (getIamUserArn() != null)
-            sb.append("IamUserArn: " + getIamUserArn() + ",");
+            sb.append("IamUserArn: ").append(getIamUserArn()).append(",");
         if (getInstanceArn() != null)
-            sb.append("InstanceArn: " + getInstanceArn() + ",");
+            sb.append("InstanceArn: ").append(getInstanceArn()).append(",");
         if (getRegisterTime() != null)
-            sb.append("RegisterTime: " + getRegisterTime() + ",");
+            sb.append("RegisterTime: ").append(getRegisterTime()).append(",");
         if (getDeregisterTime() != null)
-            sb.append("DeregisterTime: " + getDeregisterTime() + ",");
+            sb.append("DeregisterTime: ").append(getDeregisterTime()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -372,6 +427,10 @@ public class InstanceInfo implements Serializable, Cloneable {
         if (other.getInstanceName() == null ^ this.getInstanceName() == null)
             return false;
         if (other.getInstanceName() != null && other.getInstanceName().equals(this.getInstanceName()) == false)
+            return false;
+        if (other.getIamSessionArn() == null ^ this.getIamSessionArn() == null)
+            return false;
+        if (other.getIamSessionArn() != null && other.getIamSessionArn().equals(this.getIamSessionArn()) == false)
             return false;
         if (other.getIamUserArn() == null ^ this.getIamUserArn() == null)
             return false;
@@ -402,6 +461,7 @@ public class InstanceInfo implements Serializable, Cloneable {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getInstanceName() == null) ? 0 : getInstanceName().hashCode());
+        hashCode = prime * hashCode + ((getIamSessionArn() == null) ? 0 : getIamSessionArn().hashCode());
         hashCode = prime * hashCode + ((getIamUserArn() == null) ? 0 : getIamUserArn().hashCode());
         hashCode = prime * hashCode + ((getInstanceArn() == null) ? 0 : getInstanceArn().hashCode());
         hashCode = prime * hashCode + ((getRegisterTime() == null) ? 0 : getRegisterTime().hashCode());
@@ -417,5 +477,11 @@ public class InstanceInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.InstanceInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

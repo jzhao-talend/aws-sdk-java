@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.apigateway.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * CreateUsagePlanResult JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateUsagePlanResultJsonUnmarshaller implements Unmarshaller<CreateUsagePlanResult, JsonUnmarshallerContext> {
 
     public CreateUsagePlanResult unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class CreateUsagePlanResultJsonUnmarshaller implements Unmarshaller<Creat
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
-            return null;
+        if (token == VALUE_NULL) {
+            return createUsagePlanResult;
+        }
 
         while (true) {
             if (token == null)
@@ -70,6 +71,10 @@ public class CreateUsagePlanResultJsonUnmarshaller implements Unmarshaller<Creat
                 if (context.testExpression("quota", targetDepth)) {
                     context.nextToken();
                     createUsagePlanResult.setQuota(QuotaSettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("productCode", targetDepth)) {
+                    context.nextToken();
+                    createUsagePlanResult.setProductCode(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.identitymanagement.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ListGroupsForUserResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListGroupsForUserResultStaxUnmarshaller implements Unmarshaller<ListGroupsForUserResult, StaxUnmarshallerContext> {
 
     public ListGroupsForUserResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -44,6 +44,11 @@ public class ListGroupsForUserResultStaxUnmarshaller implements Unmarshaller<Lis
                 return listGroupsForUserResult;
 
             if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+
+                if (context.testExpression("Groups", targetDepth)) {
+                    listGroupsForUserResult.withGroups(new ArrayList<Group>());
+                    continue;
+                }
 
                 if (context.testExpression("Groups/member", targetDepth)) {
                     listGroupsForUserResult.withGroups(GroupStaxUnmarshaller.getInstance().unmarshall(context));

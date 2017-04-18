@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeRouteTablesRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeRouteTablesRequestMars
  * Contains the parameters for DescribeRouteTables.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeRouteTablesRequest> {
 
     /**
@@ -66,13 +69,24 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     * <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the
      * table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a
+     * route in the route table.
      * </p>
      * </li>
      * <li>
@@ -113,7 +127,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -266,13 +282,24 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     * <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the
      * table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a
+     * route in the route table.
      * </p>
      * </li>
      * <li>
@@ -313,7 +340,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -368,13 +397,25 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *         </li>
      *         <li>
      *         <p>
-     *         <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     *         <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route
+     *         table.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route
      *         in the table.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified
+     *         in a route in the route table.
      *         </p>
      *         </li>
      *         <li>
@@ -417,6 +458,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -481,13 +525,24 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     * <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the
      * table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a
+     * route in the route table.
      * </p>
      * </li>
      * <li>
@@ -528,7 +583,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -584,13 +641,25 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     *        <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route
+     *        table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in
      *        the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified
+     *        in a route in the route table.
      *        </p>
      *        </li>
      *        <li>
@@ -633,6 +702,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -699,13 +771,24 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     * <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the
      * table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a
+     * route in the route table.
      * </p>
      * </li>
      * <li>
@@ -746,7 +829,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -807,13 +892,25 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     *        <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route
+     *        table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in
      *        the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified
+     *        in a route in the route table.
      *        </p>
      *        </li>
      *        <li>
@@ -856,6 +953,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -924,13 +1024,24 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     * <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the
      * table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a
+     * route in the route table.
      * </p>
      * </li>
      * <li>
@@ -971,7 +1082,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -1027,13 +1140,25 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>route.destination-cidr-block</code> - The CIDR range specified in a route in the table.
+     *        <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route
+     *        table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in
      *        the table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified
+     *        in a route in the route table.
      *        </p>
      *        </li>
      *        <li>
@@ -1076,6 +1201,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -1129,9 +1257,9 @@ public class DescribeRouteTablesRequest extends AmazonWebServiceRequest implemen
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRouteTableIds() != null)
-            sb.append("RouteTableIds: " + getRouteTableIds() + ",");
+            sb.append("RouteTableIds: ").append(getRouteTableIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters());
         sb.append("}");
         return sb.toString();
     }

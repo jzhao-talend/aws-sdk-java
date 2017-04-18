@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.securitytoken.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionToken" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -39,9 +44,8 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      * credentials.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      */
     private String serialNumber;
@@ -126,9 +130,8 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      * credentials.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param serialNumber
@@ -139,9 +142,9 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      *        <code>arn:aws:iam::123456789012:mfa/user</code>). You can find the device for an IAM user by going to the
      *        AWS Management Console and viewing the user's security credentials. </p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      */
 
     public void setSerialNumber(String serialNumber) {
@@ -158,9 +161,8 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      * credentials.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @return The identification number of the MFA device that is associated with the IAM user who is making the
@@ -170,9 +172,9 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      *         <code>arn:aws:iam::123456789012:mfa/user</code>). You can find the device for an IAM user by going to the
      *         AWS Management Console and viewing the user's security credentials. </p>
      *         <p>
-     *         The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *         upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *         the following characters: =,.@-
+     *         The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *         alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *         characters: =,.@-
      */
 
     public String getSerialNumber() {
@@ -189,9 +191,8 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      * credentials.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param serialNumber
@@ -202,9 +203,9 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
      *        <code>arn:aws:iam::123456789012:mfa/user</code>). You can find the device for an IAM user by going to the
      *        AWS Management Console and viewing the user's security credentials. </p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -298,11 +299,11 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDurationSeconds() != null)
-            sb.append("DurationSeconds: " + getDurationSeconds() + ",");
+            sb.append("DurationSeconds: ").append(getDurationSeconds()).append(",");
         if (getSerialNumber() != null)
-            sb.append("SerialNumber: " + getSerialNumber() + ",");
+            sb.append("SerialNumber: ").append(getSerialNumber()).append(",");
         if (getTokenCode() != null)
-            sb.append("TokenCode: " + getTokenCode());
+            sb.append("TokenCode: ").append(getTokenCode());
         sb.append("}");
         return sb.toString();
     }
@@ -347,4 +348,5 @@ public class GetSessionTokenRequest extends com.amazonaws.AmazonWebServiceReques
     public GetSessionTokenRequest clone() {
         return (GetSessionTokenRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.elasticsearch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies the configuration for the domain cluster, such as the type and number of instances.
  * </p>
  */
-public class ElasticsearchClusterConfig implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ElasticsearchClusterConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -436,17 +440,17 @@ public class ElasticsearchClusterConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount() + ",");
+            sb.append("InstanceCount: ").append(getInstanceCount()).append(",");
         if (getDedicatedMasterEnabled() != null)
-            sb.append("DedicatedMasterEnabled: " + getDedicatedMasterEnabled() + ",");
+            sb.append("DedicatedMasterEnabled: ").append(getDedicatedMasterEnabled()).append(",");
         if (getZoneAwarenessEnabled() != null)
-            sb.append("ZoneAwarenessEnabled: " + getZoneAwarenessEnabled() + ",");
+            sb.append("ZoneAwarenessEnabled: ").append(getZoneAwarenessEnabled()).append(",");
         if (getDedicatedMasterType() != null)
-            sb.append("DedicatedMasterType: " + getDedicatedMasterType() + ",");
+            sb.append("DedicatedMasterType: ").append(getDedicatedMasterType()).append(",");
         if (getDedicatedMasterCount() != null)
-            sb.append("DedicatedMasterCount: " + getDedicatedMasterCount());
+            sb.append("DedicatedMasterCount: ").append(getDedicatedMasterCount());
         sb.append("}");
         return sb.toString();
     }
@@ -509,5 +513,11 @@ public class ElasticsearchClusterConfig implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticsearch.model.transform.ElasticsearchClusterConfigMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

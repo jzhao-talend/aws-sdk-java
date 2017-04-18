@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the result of a cluster resize operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeResize" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeResizeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -839,29 +844,29 @@ public class DescribeResizeResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetNodeType() != null)
-            sb.append("TargetNodeType: " + getTargetNodeType() + ",");
+            sb.append("TargetNodeType: ").append(getTargetNodeType()).append(",");
         if (getTargetNumberOfNodes() != null)
-            sb.append("TargetNumberOfNodes: " + getTargetNumberOfNodes() + ",");
+            sb.append("TargetNumberOfNodes: ").append(getTargetNumberOfNodes()).append(",");
         if (getTargetClusterType() != null)
-            sb.append("TargetClusterType: " + getTargetClusterType() + ",");
+            sb.append("TargetClusterType: ").append(getTargetClusterType()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getImportTablesCompleted() != null)
-            sb.append("ImportTablesCompleted: " + getImportTablesCompleted() + ",");
+            sb.append("ImportTablesCompleted: ").append(getImportTablesCompleted()).append(",");
         if (getImportTablesInProgress() != null)
-            sb.append("ImportTablesInProgress: " + getImportTablesInProgress() + ",");
+            sb.append("ImportTablesInProgress: ").append(getImportTablesInProgress()).append(",");
         if (getImportTablesNotStarted() != null)
-            sb.append("ImportTablesNotStarted: " + getImportTablesNotStarted() + ",");
+            sb.append("ImportTablesNotStarted: ").append(getImportTablesNotStarted()).append(",");
         if (getAvgResizeRateInMegaBytesPerSecond() != null)
-            sb.append("AvgResizeRateInMegaBytesPerSecond: " + getAvgResizeRateInMegaBytesPerSecond() + ",");
+            sb.append("AvgResizeRateInMegaBytesPerSecond: ").append(getAvgResizeRateInMegaBytesPerSecond()).append(",");
         if (getTotalResizeDataInMegaBytes() != null)
-            sb.append("TotalResizeDataInMegaBytes: " + getTotalResizeDataInMegaBytes() + ",");
+            sb.append("TotalResizeDataInMegaBytes: ").append(getTotalResizeDataInMegaBytes()).append(",");
         if (getProgressInMegaBytes() != null)
-            sb.append("ProgressInMegaBytes: " + getProgressInMegaBytes() + ",");
+            sb.append("ProgressInMegaBytes: ").append(getProgressInMegaBytes()).append(",");
         if (getElapsedTimeInSeconds() != null)
-            sb.append("ElapsedTimeInSeconds: " + getElapsedTimeInSeconds() + ",");
+            sb.append("ElapsedTimeInSeconds: ").append(getElapsedTimeInSeconds()).append(",");
         if (getEstimatedTimeToCompletionInSeconds() != null)
-            sb.append("EstimatedTimeToCompletionInSeconds: " + getEstimatedTimeToCompletionInSeconds());
+            sb.append("EstimatedTimeToCompletionInSeconds: ").append(getEstimatedTimeToCompletionInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -957,4 +962,5 @@ public class DescribeResizeResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

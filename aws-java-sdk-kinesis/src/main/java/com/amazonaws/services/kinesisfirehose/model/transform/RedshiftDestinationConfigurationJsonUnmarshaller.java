@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.kinesisfirehose.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.kinesisfirehose.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * RedshiftDestinationConfiguration JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RedshiftDestinationConfigurationJsonUnmarshaller implements Unmarshaller<RedshiftDestinationConfiguration, JsonUnmarshallerContext> {
 
     public RedshiftDestinationConfiguration unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class RedshiftDestinationConfigurationJsonUnmarshaller implements Unmarsh
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -74,6 +75,18 @@ public class RedshiftDestinationConfigurationJsonUnmarshaller implements Unmarsh
                 if (context.testExpression("S3Configuration", targetDepth)) {
                     context.nextToken();
                     redshiftDestinationConfiguration.setS3Configuration(S3DestinationConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ProcessingConfiguration", targetDepth)) {
+                    context.nextToken();
+                    redshiftDestinationConfiguration.setProcessingConfiguration(ProcessingConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("S3BackupMode", targetDepth)) {
+                    context.nextToken();
+                    redshiftDestinationConfiguration.setS3BackupMode(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("S3BackupConfiguration", targetDepth)) {
+                    context.nextToken();
+                    redshiftDestinationConfiguration.setS3BackupConfiguration(S3DestinationConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("CloudWatchLoggingOptions", targetDepth)) {
                     context.nextToken();

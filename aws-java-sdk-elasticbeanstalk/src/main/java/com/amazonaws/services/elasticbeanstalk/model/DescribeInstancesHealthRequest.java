@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,48 +13,54 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * See the example below to learn how to create a request body.
+ * Parameters for a call to <code>DescribeInstancesHealth</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeInstancesHealth"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment name.
+     * Specify the AWS Elastic Beanstalk environment by name.
      * </p>
      */
     private String environmentName;
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment ID.
+     * Specify the AWS Elastic Beanstalk environment by ID.
      * </p>
      */
     private String environmentId;
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> attributeNames;
     /**
      * <p>
-     * Specifies the next token of the request.
+     * Specify the pagination token returned by a previous call.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment name.
+     * Specify the AWS Elastic Beanstalk environment by name.
      * </p>
      * 
      * @param environmentName
-     *        Specifies the AWS Elastic Beanstalk environment name.
+     *        Specify the AWS Elastic Beanstalk environment by name.
      */
 
     public void setEnvironmentName(String environmentName) {
@@ -63,10 +69,10 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment name.
+     * Specify the AWS Elastic Beanstalk environment by name.
      * </p>
      * 
-     * @return Specifies the AWS Elastic Beanstalk environment name.
+     * @return Specify the AWS Elastic Beanstalk environment by name.
      */
 
     public String getEnvironmentName() {
@@ -75,11 +81,11 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment name.
+     * Specify the AWS Elastic Beanstalk environment by name.
      * </p>
      * 
      * @param environmentName
-     *        Specifies the AWS Elastic Beanstalk environment name.
+     *        Specify the AWS Elastic Beanstalk environment by name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -90,11 +96,11 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment ID.
+     * Specify the AWS Elastic Beanstalk environment by ID.
      * </p>
      * 
      * @param environmentId
-     *        Specifies the AWS Elastic Beanstalk environment ID.
+     *        Specify the AWS Elastic Beanstalk environment by ID.
      */
 
     public void setEnvironmentId(String environmentId) {
@@ -103,10 +109,10 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment ID.
+     * Specify the AWS Elastic Beanstalk environment by ID.
      * </p>
      * 
-     * @return Specifies the AWS Elastic Beanstalk environment ID.
+     * @return Specify the AWS Elastic Beanstalk environment by ID.
      */
 
     public String getEnvironmentId() {
@@ -115,11 +121,11 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the AWS Elastic Beanstalk environment ID.
+     * Specify the AWS Elastic Beanstalk environment by ID.
      * </p>
      * 
      * @param environmentId
-     *        Specifies the AWS Elastic Beanstalk environment ID.
+     *        Specify the AWS Elastic Beanstalk environment by ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -130,12 +136,12 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      * 
-     * @return Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic
-     *         Beanstalk only returns a list of instances.
+     * @return Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>.
+     *         If no attribute names are specified, returns a list of instances.
      * @see InstancesHealthAttribute
      */
 
@@ -148,13 +154,13 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      * 
      * @param attributeNames
-     *        Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic
-     *        Beanstalk only returns a list of instances.
+     *        Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>.
+     *        If no attribute names are specified, returns a list of instances.
      * @see InstancesHealthAttribute
      */
 
@@ -169,8 +175,8 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -179,8 +185,8 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
      * </p>
      * 
      * @param attributeNames
-     *        Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic
-     *        Beanstalk only returns a list of instances.
+     *        Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>.
+     *        If no attribute names are specified, returns a list of instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstancesHealthAttribute
      */
@@ -197,13 +203,13 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      * 
      * @param attributeNames
-     *        Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic
-     *        Beanstalk only returns a list of instances.
+     *        Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>.
+     *        If no attribute names are specified, returns a list of instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstancesHealthAttribute
      */
@@ -215,13 +221,13 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic Beanstalk
-     * only returns a list of instances.
+     * Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no
+     * attribute names are specified, returns a list of instances.
      * </p>
      * 
      * @param attributeNames
-     *        Specifies the response elements you wish to receive. If no attribute names are specified, AWS Elastic
-     *        Beanstalk only returns a list of instances.
+     *        Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>.
+     *        If no attribute names are specified, returns a list of instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstancesHealthAttribute
      */
@@ -241,11 +247,11 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the next token of the request.
+     * Specify the pagination token returned by a previous call.
      * </p>
      * 
      * @param nextToken
-     *        Specifies the next token of the request.
+     *        Specify the pagination token returned by a previous call.
      */
 
     public void setNextToken(String nextToken) {
@@ -254,10 +260,10 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the next token of the request.
+     * Specify the pagination token returned by a previous call.
      * </p>
      * 
-     * @return Specifies the next token of the request.
+     * @return Specify the pagination token returned by a previous call.
      */
 
     public String getNextToken() {
@@ -266,11 +272,11 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies the next token of the request.
+     * Specify the pagination token returned by a previous call.
      * </p>
      * 
      * @param nextToken
-     *        Specifies the next token of the request.
+     *        Specify the pagination token returned by a previous call.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -291,13 +297,13 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEnvironmentName() != null)
-            sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+            sb.append("EnvironmentName: ").append(getEnvironmentName()).append(",");
         if (getEnvironmentId() != null)
-            sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+            sb.append("EnvironmentId: ").append(getEnvironmentId()).append(",");
         if (getAttributeNames() != null)
-            sb.append("AttributeNames: " + getAttributeNames() + ",");
+            sb.append("AttributeNames: ").append(getAttributeNames()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -347,4 +353,5 @@ public class DescribeInstancesHealthRequest extends com.amazonaws.AmazonWebServi
     public DescribeInstancesHealthRequest clone() {
         return (DescribeInstancesHealthRequest) super.clone();
     }
+
 }

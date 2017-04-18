@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.ecs;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,6 +22,10 @@ import com.amazonaws.services.ecs.waiters.AmazonECSWaiters;
 
 /**
  * Interface for accessing Amazon ECS.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.ecs.AbstractAmazonECS} instead.
+ * </p>
  * <p>
  * <p>
  * Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast, container management service that makes it easy
@@ -35,6 +41,7 @@ import com.amazonaws.services.ecs.waiters.AmazonECSWaiters;
  * infrastructure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonECS {
 
     /**
@@ -66,7 +73,11 @@ public interface AmazonECS {
      *        The endpoint (ex: "ecs.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://ecs.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -87,7 +98,9 @@ public interface AmazonECS {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -108,6 +121,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateClusterResult createCluster(CreateClusterRequest createClusterRequest);
 
@@ -141,26 +156,24 @@ public interface AmazonECS {
      * The <code>minimumHealthyPercent</code> represents a lower limit on the number of your service's tasks that must
      * remain in the <code>RUNNING</code> state during a deployment, as a percentage of the <code>desiredCount</code>
      * (rounded up to the nearest integer). This parameter enables you to deploy without using additional cluster
-     * capacity. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>minimumHealthyPercent</code> of 50%, the scheduler may stop two existing tasks to free up cluster capacity
-     * before starting two new tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy
-     * if they are in the <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are
-     * considered healthy if they are in the <code>RUNNING</code> state and the container instance it is hosted on is
-     * reported as healthy by the load balancer. The default value for <code>minimumHealthyPercent</code> is 50% in the
-     * console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+     * capacity. For example, if <code>desiredCount</code> is four tasks and the minimum is 50%, the scheduler can stop
+     * two existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that do not use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance
+     * they are hosted on is reported as healthy by the load balancer. The default value is 50% in the console and 100%
+     * for the AWS CLI, the AWS SDKs, and the APIs.
      * </p>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of your service's tasks that
      * are allowed in the <code>RUNNING</code> or <code>PENDING</code> state during a deployment, as a percentage of the
      * <code>desiredCount</code> (rounded down to the nearest integer). This parameter enables you to define the
-     * deployment batch size. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>maximumPercent</code> value of 200%, the scheduler may start four new tasks before stopping the four older
-     * tasks (provided that the cluster resources required to do this are available). The default value for
-     * <code>maximumPercent</code> is 200%.
+     * deployment batch size. For example, if <code>desiredCount</code> is four tasks and the maximum is 200%, the
+     * scheduler can start four new tasks before stopping the four older tasks (provided that the cluster resources
+     * required to do this are available). The default value is 200%.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster using the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -169,6 +182,12 @@ public interface AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -181,6 +200,8 @@ public interface AmazonECS {
      * Place the new service task on a valid container instance in an optimal Availability Zone (based on the previous
      * steps), favoring container instances with the fewest number of running tasks for this service.
      * </p>
+     * </li>
+     * </ul>
      * </li>
      * </ul>
      * 
@@ -198,8 +219,31 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.CreateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateService" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateServiceResult createService(CreateServiceRequest createServiceRequest);
+
+    /**
+     * <p>
+     * Deletes one or more custom attributes from an Amazon ECS resource.
+     * </p>
+     * 
+     * @param deleteAttributesRequest
+     * @return Result of the DeleteAttributes operation returned by the service.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are region-specific.
+     * @throws TargetNotFoundException
+     *         The specified target could not be found. You can view your available container instances with
+     *         <a>ListContainerInstances</a>. Amazon ECS container instances are cluster-specific and region-specific.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @sample AmazonECS.DeleteAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteAttributesResult deleteAttributes(DeleteAttributesRequest deleteAttributesRequest);
 
     /**
      * <p>
@@ -230,6 +274,8 @@ public interface AmazonECS {
      *         desired task count to 0 and then delete the service. For more information, see <a>UpdateService</a> and
      *         <a>DeleteService</a>.
      * @sample AmazonECS.DeleteCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteClusterResult deleteCluster(DeleteClusterRequest deleteClusterRequest);
 
@@ -269,6 +315,8 @@ public interface AmazonECS {
      *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
      *         Amazon ECS services are cluster-specific and region-specific.
      * @sample AmazonECS.DeleteService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteService" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteServiceResult deleteService(DeleteServiceRequest deleteServiceRequest);
 
@@ -309,6 +357,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.DeregisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterContainerInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     DeregisterContainerInstanceResult deregisterContainerInstance(DeregisterContainerInstanceRequest deregisterContainerInstanceRequest);
 
@@ -336,6 +386,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.DeregisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterTaskDefinition" target="_top">AWS
+     *      API Documentation</a>
      */
     DeregisterTaskDefinitionResult deregisterTaskDefinition(DeregisterTaskDefinitionRequest deregisterTaskDefinitionRequest);
 
@@ -355,6 +407,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.DescribeClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeClustersResult describeClusters(DescribeClustersRequest describeClustersRequest);
 
@@ -385,6 +439,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.DescribeContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeContainerInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeContainerInstancesResult describeContainerInstances(DescribeContainerInstancesRequest describeContainerInstancesRequest);
 
@@ -407,6 +463,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeServicesResult describeServices(DescribeServicesRequest describeServicesRequest);
 
@@ -433,6 +491,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.DescribeTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeTaskDefinitionResult describeTaskDefinition(DescribeTaskDefinitionRequest describeTaskDefinitionRequest);
 
@@ -455,6 +515,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.DescribeTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeTasksResult describeTasks(DescribeTasksRequest describeTasksRequest);
 
@@ -478,6 +540,8 @@ public interface AmazonECS {
      *         user that doesn't have permission to use the action or resource, or specifying an identifier that is not
      *         valid.
      * @sample AmazonECS.DiscoverPollEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DiscoverPollEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     DiscoverPollEndpointResult discoverPollEndpoint(DiscoverPollEndpointRequest discoverPollEndpointRequest);
 
@@ -487,6 +551,28 @@ public interface AmazonECS {
      * @see #discoverPollEndpoint(DiscoverPollEndpointRequest)
      */
     DiscoverPollEndpointResult discoverPollEndpoint();
+
+    /**
+     * <p>
+     * Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a
+     * target type and cluster, <code>LisAttributes</code> returns a list of attribute objects, one for each attribute
+     * on each resource. You can filter the list of results to a single attribute name to only return results that have
+     * that name. You can also filter the results by attribute name and value, for example, to see which container
+     * instances in a cluster are running a Linux AMI (<code>ecs.os-type=linux</code>).
+     * </p>
+     * 
+     * @param listAttributesRequest
+     * @return Result of the ListAttributes operation returned by the service.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are region-specific.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @sample AmazonECS.ListAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListAttributesResult listAttributes(ListAttributesRequest listAttributesRequest);
 
     /**
      * <p>
@@ -504,6 +590,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     ListClustersResult listClusters(ListClustersRequest listClustersRequest);
 
@@ -516,7 +604,11 @@ public interface AmazonECS {
 
     /**
      * <p>
-     * Returns a list of container instances in a specified cluster.
+     * Returns a list of container instances in a specified cluster. You can filter the results of a
+     * <code>ListContainerInstances</code> operation with cluster query language statements inside the
+     * <code>filter</code> parameter. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
      * 
      * @param listContainerInstancesRequest
@@ -533,6 +625,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.ListContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListContainerInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     ListContainerInstancesResult listContainerInstances(ListContainerInstancesRequest listContainerInstancesRequest);
 
@@ -562,6 +656,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.ListServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListServices" target="_top">AWS API
+     *      Documentation</a>
      */
     ListServicesResult listServices(ListServicesRequest listServicesRequest);
 
@@ -594,6 +690,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.ListTaskDefinitionFamilies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitionFamilies" target="_top">AWS
+     *      API Documentation</a>
      */
     ListTaskDefinitionFamiliesResult listTaskDefinitionFamilies(ListTaskDefinitionFamiliesRequest listTaskDefinitionFamiliesRequest);
 
@@ -621,6 +719,8 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.ListTaskDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitions" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTaskDefinitionsResult listTaskDefinitions(ListTaskDefinitionsRequest listTaskDefinitionsRequest);
 
@@ -659,6 +759,8 @@ public interface AmazonECS {
      *         The specified service could not be found. You can view your available services with <a>ListServices</a>.
      *         Amazon ECS services are cluster-specific and region-specific.
      * @sample AmazonECS.ListTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTasksResult listTasks(ListTasksRequest listTasksRequest);
 
@@ -668,6 +770,34 @@ public interface AmazonECS {
      * @see #listTasks(ListTasksRequest)
      */
     ListTasksResult listTasks();
+
+    /**
+     * <p>
+     * Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the
+     * attribute exists, its value is replaced with the specified value. To delete an attribute, use
+     * <a>DeleteAttributes</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes"
+     * >Attributes</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param putAttributesRequest
+     * @return Result of the PutAttributes operation returned by the service.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are region-specific.
+     * @throws TargetNotFoundException
+     *         The specified target could not be found. You can view your available container instances with
+     *         <a>ListContainerInstances</a>. Amazon ECS container instances are cluster-specific and region-specific.
+     * @throws AttributeLimitExceededException
+     *         You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with
+     *         <a>ListAttributes</a>. You can remove existing attributes on a resource with <a>DeleteAttributes</a>.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @sample AmazonECS.PutAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PutAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    PutAttributesResult putAttributes(PutAttributesRequest putAttributesRequest);
 
     /**
      * <note>
@@ -689,6 +819,8 @@ public interface AmazonECS {
      *         user that doesn't have permission to use the action or resource, or specifying an identifier that is not
      *         valid.
      * @sample AmazonECS.RegisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterContainerInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     RegisterContainerInstanceResult registerContainerInstance(RegisterContainerInstanceRequest registerContainerInstanceRequest);
 
@@ -725,19 +857,25 @@ public interface AmazonECS {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.RegisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     RegisterTaskDefinitionResult registerTaskDefinition(RegisterTaskDefinitionRequest registerTaskDefinitionRequest);
 
     /**
      * <p>
-     * Start a task using random placement and the default Amazon ECS scheduler. To use your own scheduler or place a
-     * task on a specific container instance, use <code>StartTask</code> instead.
+     * Starts a new task using the specified task definition.
      * </p>
-     * <important>
      * <p>
-     * The <code>count</code> parameter is limited to 10 tasks per call.
+     * You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement
+     * constraints and placement strategies. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
+     * <p>
+     * Alternatively, you can use <a>StartTask</a> to use your own scheduler or place tasks manually on specific
+     * container instances.
+     * </p>
      * 
      * @param runTaskRequest
      * @return Result of the RunTask operation returned by the service.
@@ -753,19 +891,20 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.RunTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RunTask" target="_top">AWS API
+     *      Documentation</a>
      */
     RunTaskResult runTask(RunTaskRequest runTaskRequest);
 
     /**
      * <p>
-     * Starts a new task from the specified task definition on the specified container instance or instances. To use the
-     * default Amazon ECS scheduler to place your task, use <code>RunTask</code> instead.
+     * Starts a new task from the specified task definition on the specified container instance or instances.
      * </p>
-     * <important>
      * <p>
-     * The list of container instances to start tasks on is limited to 10.
+     * Alternatively, you can use <a>RunTask</a> to place tasks for you. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
      * 
      * @param startTaskRequest
      * @return Result of the StartTask operation returned by the service.
@@ -781,6 +920,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.StartTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StartTask" target="_top">AWS API
+     *      Documentation</a>
      */
     StartTaskResult startTask(StartTaskRequest startTaskRequest);
 
@@ -809,6 +950,8 @@ public interface AmazonECS {
      *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
      *         Amazon ECS clusters are region-specific.
      * @sample AmazonECS.StopTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StopTask" target="_top">AWS API
+     *      Documentation</a>
      */
     StopTaskResult stopTask(StopTaskRequest stopTaskRequest);
 
@@ -832,6 +975,8 @@ public interface AmazonECS {
      *         user that doesn't have permission to use the action or resource, or specifying an identifier that is not
      *         valid.
      * @sample AmazonECS.SubmitContainerStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitContainerStateChange" target="_top">AWS
+     *      API Documentation</a>
      */
     SubmitContainerStateChangeResult submitContainerStateChange(SubmitContainerStateChangeRequest submitContainerStateChangeRequest);
 
@@ -862,6 +1007,8 @@ public interface AmazonECS {
      *         user that doesn't have permission to use the action or resource, or specifying an identifier that is not
      *         valid.
      * @sample AmazonECS.SubmitTaskStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitTaskStateChange" target="_top">AWS API
+     *      Documentation</a>
      */
     SubmitTaskStateChangeResult submitTaskStateChange(SubmitTaskStateChangeRequest submitTaskStateChangeRequest);
 
@@ -907,8 +1054,84 @@ public interface AmazonECS {
      *         running on the container instance is an older or custom version that does not use our version
      *         information.
      * @sample AmazonECS.UpdateContainerAgent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerAgent" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateContainerAgentResult updateContainerAgent(UpdateContainerAgentRequest updateContainerAgentRequest);
+
+    /**
+     * <p>
+     * Modifies the status of an Amazon ECS container instance.
+     * </p>
+     * <p>
+     * You can change the status of a container instance to <code>DRAINING</code> to manually remove an instance from a
+     * cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>DRAINING</code>, Amazon ECS prevents new tasks from being scheduled
+     * for placement on the container instance and replacement service tasks are started on other container instances in
+     * the cluster if the resources are available. Service tasks on the container instance that are in the
+     * <code>PENDING</code> state are stopped immediately.
+     * </p>
+     * <p>
+     * Service tasks on the container instance that are in the <code>RUNNING</code> state are stopped and replaced
+     * according the service's deployment configuration parameters, <code>minimumHealthyPercent</code> and
+     * <code>maximumPercent</code>. Note that you can change the deployment configuration of your service using
+     * <a>UpdateService</a>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during task replacement. For example, <code>desiredCount</code> is four tasks, a minimum of 50%
+     * allows the scheduler to stop two existing tasks before starting two new tasks. If the minimum is 100%, the
+     * service scheduler can't remove existing tasks until the replacement tasks are considered healthy. Tasks for
+     * services that do not use a load balancer are considered healthy if they are in the <code>RUNNING</code> state.
+     * Tasks for services that use a load balancer are considered healthy if they are in the <code>RUNNING</code> state
+     * and the container instance they are hosted on is reported as healthy by the load balancer.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during task
+     * replacement, which enables you to define the replacement batch size. For example, if <code>desiredCount</code> of
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four tasks to be drained (provided that
+     * the cluster resources required to do this are available). If the maximum is 100%, then replacement tasks can't
+     * start until the draining tasks have stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Any <code>PENDING</code> or <code>RUNNING</code> tasks that do not belong to a service are not affected; you must
+     * wait for them to finish or stop them manually.
+     * </p>
+     * <p>
+     * A container instance has completed draining when it has no more <code>RUNNING</code> tasks. You can verify this
+     * using <a>ListTasks</a>.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>ACTIVE</code>, the Amazon ECS scheduler can begin scheduling tasks on
+     * the instance again.
+     * </p>
+     * 
+     * @param updateContainerInstancesStateRequest
+     * @return Result of the UpdateContainerInstancesState operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server issue.
+     * @throws ClientException
+     *         These errors are usually caused by a client action, such as using an action or resource on behalf of a
+     *         user that doesn't have permission to use the action or resource, or specifying an identifier that is not
+     *         valid.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClusterNotFoundException
+     *         The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         Amazon ECS clusters are region-specific.
+     * @sample AmazonECS.UpdateContainerInstancesState
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerInstancesState"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateContainerInstancesStateResult updateContainerInstancesState(UpdateContainerInstancesStateRequest updateContainerInstancesStateRequest);
 
     /**
      * <p>
@@ -926,21 +1149,26 @@ public interface AmazonECS {
      * task definition of a service, the service scheduler uses the deployment configuration parameters,
      * <code>minimumHealthyPercent</code> and <code>maximumPercent</code>, to determine the deployment strategy.
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * If the <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the <code>desiredCount</code>
-     * temporarily during a deployment. For example, if your service has a <code>desiredCount</code> of four tasks, a
-     * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two existing tasks before starting two new
-     * tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy if they are in the
-     * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are considered healthy if they
-     * are in the <code>RUNNING</code> state and the container instance it is hosted on is reported as healthy by the
-     * load balancer.
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during a deployment. For example, if <code>desiredCount</code> is four tasks, a minimum of 50% allows
+     * the scheduler to stop two existing tasks before starting two new tasks. Tasks for services that do not use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance they are
+     * hosted on is reported as healthy by the load balancer.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during a
-     * deployment, which enables you to define the deployment batch size. For example, if your service has a
-     * <code>desiredCount</code> of four tasks, a <code>maximumPercent</code> value of 200% starts four new tasks before
-     * stopping the four older tasks (provided that the cluster resources required to do this are available).
+     * deployment, which enables you to define the deployment batch size. For example, if <code>desiredCount</code> is
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four older tasks (provided that the
+     * cluster resources required to do this are available).
      * </p>
+     * </li>
+     * </ul>
      * <p>
      * When <a>UpdateService</a> stops a task during a deployment, the equivalent of <code>docker stop</code> is issued
      * to the containers running in the task. This results in a <code>SIGTERM</code> and a 30-second timeout, after
@@ -948,8 +1176,8 @@ public interface AmazonECS {
      * <code>SIGTERM</code> gracefully and exits within 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster with the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -958,6 +1186,12 @@ public interface AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -969,6 +1203,27 @@ public interface AmazonECS {
      * <p>
      * Place the new service task on a valid container instance in an optimal Availability Zone (based on the previous
      * steps), favoring container instances with the fewest number of running tasks for this service.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * When the service scheduler stops running tasks, it attempts to maintain balance across the Availability Zones in
+     * your cluster using the following logic:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Sort the container instances by the largest number of running tasks for this service in the same Availability
+     * Zone as the instance. For example, if zone A has one running service task and zones B and C each have two,
+     * container instances in either zone B or C are considered optimal for termination.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stop the task on a container instance in an optimal Availability Zone (based on the previous steps), favoring
+     * container instances with the largest number of running tasks for this service.
      * </p>
      * </li>
      * </ul>
@@ -993,6 +1248,8 @@ public interface AmazonECS {
      *         The specified service is not active. You cannot update a service that is not active. If you have
      *         previously deleted a service, you can re-create it with <a>CreateService</a>.
      * @sample AmazonECS.UpdateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateService" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateServiceResult updateService(UpdateServiceRequest updateServiceRequest);
 
@@ -1020,4 +1277,5 @@ public interface AmazonECS {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AmazonECSWaiters waiters();
+
 }

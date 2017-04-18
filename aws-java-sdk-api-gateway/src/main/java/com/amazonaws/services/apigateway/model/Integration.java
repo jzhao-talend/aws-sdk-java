@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,20 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents an HTTP, AWS, or Mock integration.
+ * Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.
  * </p>
  * <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div
  * class="seeAlso"> <a
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
  */
-public class Integration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Integration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -42,7 +46,7 @@ public class Integration implements Serializable, Cloneable {
     /**
      * <p>
      * Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully
-     * formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
+     * formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
      * target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
      * <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      * <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint.
@@ -105,6 +109,31 @@ public class Integration implements Serializable, Cloneable {
      * </div>
      */
     private String passthroughBehavior;
+    /**
+     * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     */
+    private String contentHandling;
     /**
      * <p>
      * Specifies the integration's cache namespace.
@@ -292,7 +321,7 @@ public class Integration implements Serializable, Cloneable {
     /**
      * <p>
      * Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully
-     * formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
+     * formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
      * target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
      * <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      * <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint.
@@ -304,8 +333,9 @@ public class Integration implements Serializable, Cloneable {
      * 
      * @param uri
      *        Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a
-     *        fully formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
-     *        target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
+     *        fully formed, encoded HTTP(S) URL according to the <a
+     *        href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986
+     *        specification</a>. For AWS integrations, the URI should be of the form
      *        <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      *        <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right
      *        endpoint. For AWS services that use the <code>Action=</code> query string parameter,
@@ -321,7 +351,7 @@ public class Integration implements Serializable, Cloneable {
     /**
      * <p>
      * Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully
-     * formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
+     * formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
      * target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
      * <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      * <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint.
@@ -332,8 +362,9 @@ public class Integration implements Serializable, Cloneable {
      * </p>
      * 
      * @return Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a
-     *         fully formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
-     *         target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
+     *         fully formed, encoded HTTP(S) URL according to the <a
+     *         href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986
+     *         specification</a>. For AWS integrations, the URI should be of the form
      *         <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      *         <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right
      *         endpoint. For AWS services that use the <code>Action=</code> query string parameter,
@@ -349,7 +380,7 @@ public class Integration implements Serializable, Cloneable {
     /**
      * <p>
      * Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully
-     * formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
+     * formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
      * target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
      * <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      * <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint.
@@ -361,8 +392,9 @@ public class Integration implements Serializable, Cloneable {
      * 
      * @param uri
      *        Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a
-     *        fully formed, encoded HTTP(S) URL according to the <a href="https://www.ietf.org/rfc/rfc3986.txt"
-     *        target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form
+     *        fully formed, encoded HTTP(S) URL according to the <a
+     *        href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986
+     *        specification</a>. For AWS integrations, the URI should be of the form
      *        <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>.
      *        <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right
      *        endpoint. For AWS services that use the <code>Action=</code> query string parameter,
@@ -756,6 +788,264 @@ public class Integration implements Serializable, Cloneable {
 
     /**
      * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     * 
+     * @param contentHandling
+     *        Specifies how to handle request payload content type conversions. Supported values are
+     *        <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the
+     *        corresponding binary blob.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If this property is not defined, the request payload will be passed through from the method request to
+     *        integration request without modification, provided that the <code>passthroughBehaviors</code> is
+     *        configured to support payload pass-through.
+     * @see ContentHandlingStrategy
+     */
+
+    public void setContentHandling(String contentHandling) {
+        this.contentHandling = contentHandling;
+    }
+
+    /**
+     * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     * 
+     * @return Specifies how to handle request payload content type conversions. Supported values are
+     *         <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the
+     *         corresponding binary blob.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If this property is not defined, the request payload will be passed through from the method request to
+     *         integration request without modification, provided that the <code>passthroughBehaviors</code> is
+     *         configured to support payload pass-through.
+     * @see ContentHandlingStrategy
+     */
+
+    public String getContentHandling() {
+        return this.contentHandling;
+    }
+
+    /**
+     * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     * 
+     * @param contentHandling
+     *        Specifies how to handle request payload content type conversions. Supported values are
+     *        <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the
+     *        corresponding binary blob.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If this property is not defined, the request payload will be passed through from the method request to
+     *        integration request without modification, provided that the <code>passthroughBehaviors</code> is
+     *        configured to support payload pass-through.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContentHandlingStrategy
+     */
+
+    public Integration withContentHandling(String contentHandling) {
+        setContentHandling(contentHandling);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     * 
+     * @param contentHandling
+     *        Specifies how to handle request payload content type conversions. Supported values are
+     *        <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the
+     *        corresponding binary blob.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If this property is not defined, the request payload will be passed through from the method request to
+     *        integration request without modification, provided that the <code>passthroughBehaviors</code> is
+     *        configured to support payload pass-through.
+     * @see ContentHandlingStrategy
+     */
+
+    public void setContentHandling(ContentHandlingStrategy contentHandling) {
+        this.contentHandling = contentHandling.toString();
+    }
+
+    /**
+     * <p>
+     * Specifies how to handle request payload content type conversions. Supported values are
+     * <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding
+     * binary blob.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If this property is not defined, the request payload will be passed through from the method request to
+     * integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to
+     * support payload pass-through.
+     * </p>
+     * 
+     * @param contentHandling
+     *        Specifies how to handle request payload content type conversions. Supported values are
+     *        <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the
+     *        corresponding binary blob.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If this property is not defined, the request payload will be passed through from the method request to
+     *        integration request without modification, provided that the <code>passthroughBehaviors</code> is
+     *        configured to support payload pass-through.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContentHandlingStrategy
+     */
+
+    public Integration withContentHandling(ContentHandlingStrategy contentHandling) {
+        setContentHandling(contentHandling);
+        return this;
+    }
+
+    /**
+     * <p>
      * Specifies the integration's cache namespace.
      * </p>
      * 
@@ -1072,25 +1362,27 @@ public class Integration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getHttpMethod() != null)
-            sb.append("HttpMethod: " + getHttpMethod() + ",");
+            sb.append("HttpMethod: ").append(getHttpMethod()).append(",");
         if (getUri() != null)
-            sb.append("Uri: " + getUri() + ",");
+            sb.append("Uri: ").append(getUri()).append(",");
         if (getCredentials() != null)
-            sb.append("Credentials: " + getCredentials() + ",");
+            sb.append("Credentials: ").append(getCredentials()).append(",");
         if (getRequestParameters() != null)
-            sb.append("RequestParameters: " + getRequestParameters() + ",");
+            sb.append("RequestParameters: ").append(getRequestParameters()).append(",");
         if (getRequestTemplates() != null)
-            sb.append("RequestTemplates: " + getRequestTemplates() + ",");
+            sb.append("RequestTemplates: ").append(getRequestTemplates()).append(",");
         if (getPassthroughBehavior() != null)
-            sb.append("PassthroughBehavior: " + getPassthroughBehavior() + ",");
+            sb.append("PassthroughBehavior: ").append(getPassthroughBehavior()).append(",");
+        if (getContentHandling() != null)
+            sb.append("ContentHandling: ").append(getContentHandling()).append(",");
         if (getCacheNamespace() != null)
-            sb.append("CacheNamespace: " + getCacheNamespace() + ",");
+            sb.append("CacheNamespace: ").append(getCacheNamespace()).append(",");
         if (getCacheKeyParameters() != null)
-            sb.append("CacheKeyParameters: " + getCacheKeyParameters() + ",");
+            sb.append("CacheKeyParameters: ").append(getCacheKeyParameters()).append(",");
         if (getIntegrationResponses() != null)
-            sb.append("IntegrationResponses: " + getIntegrationResponses());
+            sb.append("IntegrationResponses: ").append(getIntegrationResponses());
         sb.append("}");
         return sb.toString();
     }
@@ -1133,6 +1425,10 @@ public class Integration implements Serializable, Cloneable {
             return false;
         if (other.getPassthroughBehavior() != null && other.getPassthroughBehavior().equals(this.getPassthroughBehavior()) == false)
             return false;
+        if (other.getContentHandling() == null ^ this.getContentHandling() == null)
+            return false;
+        if (other.getContentHandling() != null && other.getContentHandling().equals(this.getContentHandling()) == false)
+            return false;
         if (other.getCacheNamespace() == null ^ this.getCacheNamespace() == null)
             return false;
         if (other.getCacheNamespace() != null && other.getCacheNamespace().equals(this.getCacheNamespace()) == false)
@@ -1160,6 +1456,7 @@ public class Integration implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getRequestParameters() == null) ? 0 : getRequestParameters().hashCode());
         hashCode = prime * hashCode + ((getRequestTemplates() == null) ? 0 : getRequestTemplates().hashCode());
         hashCode = prime * hashCode + ((getPassthroughBehavior() == null) ? 0 : getPassthroughBehavior().hashCode());
+        hashCode = prime * hashCode + ((getContentHandling() == null) ? 0 : getContentHandling().hashCode());
         hashCode = prime * hashCode + ((getCacheNamespace() == null) ? 0 : getCacheNamespace().hashCode());
         hashCode = prime * hashCode + ((getCacheKeyParameters() == null) ? 0 : getCacheKeyParameters().hashCode());
         hashCode = prime * hashCode + ((getIntegrationResponses() == null) ? 0 : getIntegrationResponses().hashCode());
@@ -1173,5 +1470,11 @@ public class Integration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.IntegrationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

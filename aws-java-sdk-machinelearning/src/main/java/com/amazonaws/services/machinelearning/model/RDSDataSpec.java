@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The data specification of an Amazon Relational Database Service (Amazon RDS) <code>DataSource</code>.
  * </p>
  */
-public class RDSDataSpec implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RDSDataSpec implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -1617,27 +1621,27 @@ public class RDSDataSpec implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDatabaseInformation() != null)
-            sb.append("DatabaseInformation: " + getDatabaseInformation() + ",");
+            sb.append("DatabaseInformation: ").append(getDatabaseInformation()).append(",");
         if (getSelectSqlQuery() != null)
-            sb.append("SelectSqlQuery: " + getSelectSqlQuery() + ",");
+            sb.append("SelectSqlQuery: ").append(getSelectSqlQuery()).append(",");
         if (getDatabaseCredentials() != null)
-            sb.append("DatabaseCredentials: " + getDatabaseCredentials() + ",");
+            sb.append("DatabaseCredentials: ").append(getDatabaseCredentials()).append(",");
         if (getS3StagingLocation() != null)
-            sb.append("S3StagingLocation: " + getS3StagingLocation() + ",");
+            sb.append("S3StagingLocation: ").append(getS3StagingLocation()).append(",");
         if (getDataRearrangement() != null)
-            sb.append("DataRearrangement: " + getDataRearrangement() + ",");
+            sb.append("DataRearrangement: ").append(getDataRearrangement()).append(",");
         if (getDataSchema() != null)
-            sb.append("DataSchema: " + getDataSchema() + ",");
+            sb.append("DataSchema: ").append(getDataSchema()).append(",");
         if (getDataSchemaUri() != null)
-            sb.append("DataSchemaUri: " + getDataSchemaUri() + ",");
+            sb.append("DataSchemaUri: ").append(getDataSchemaUri()).append(",");
         if (getResourceRole() != null)
-            sb.append("ResourceRole: " + getResourceRole() + ",");
+            sb.append("ResourceRole: ").append(getResourceRole()).append(",");
         if (getServiceRole() != null)
-            sb.append("ServiceRole: " + getServiceRole() + ",");
+            sb.append("ServiceRole: ").append(getServiceRole()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getSecurityGroupIds() != null)
-            sb.append("SecurityGroupIds: " + getSecurityGroupIds());
+            sb.append("SecurityGroupIds: ").append(getSecurityGroupIds());
         sb.append("}");
         return sb.toString();
     }
@@ -1725,5 +1729,11 @@ public class RDSDataSpec implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.machinelearning.model.transform.RDSDataSpecMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

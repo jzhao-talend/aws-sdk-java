@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.certificatemanager;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.certificatemanager.model.*;
 
 /**
  * Interface for accessing ACM asynchronously. Each asynchronous method will return a Java Future object representing
  * the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when
  * an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.certificatemanager.AbstractAWSCertificateManagerAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS Certificate Manager</fullname>
  * <p>
@@ -29,6 +35,7 @@ import com.amazonaws.services.certificatemanager.model.*;
  * Guide</i> </a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCertificateManagerAsync extends AWSCertificateManager {
 
     /**
@@ -54,6 +61,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param addTagsToCertificateRequest
      * @return A Java Future containing the result of the AddTagsToCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.AddTagsToCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/AddTagsToCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToCertificateResult> addTagsToCertificateAsync(AddTagsToCertificateRequest addTagsToCertificateRequest);
 
@@ -84,6 +93,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddTagsToCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.AddTagsToCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/AddTagsToCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToCertificateResult> addTagsToCertificateAsync(AddTagsToCertificateRequest addTagsToCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToCertificateRequest, AddTagsToCertificateResult> asyncHandler);
@@ -105,6 +116,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param deleteCertificateRequest
      * @return A Java Future containing the result of the DeleteCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest);
 
@@ -129,30 +142,28 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCertificateRequest, DeleteCertificateResult> asyncHandler);
 
     /**
      * <p>
-     * Returns a list of the fields contained in the specified ACM Certificate. For example, this action returns the
-     * certificate status, a flag that indicates whether the certificate is associated with any other AWS service, and
-     * the date at which the certificate request was created. You specify the ACM Certificate on input by its Amazon
-     * Resource Name (ARN).
+     * Returns detailed metadata about the specified ACM Certificate.
      * </p>
      * 
      * @param describeCertificateRequest
      * @return A Java Future containing the result of the DescribeCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.DescribeCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DescribeCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCertificateResult> describeCertificateAsync(DescribeCertificateRequest describeCertificateRequest);
 
     /**
      * <p>
-     * Returns a list of the fields contained in the specified ACM Certificate. For example, this action returns the
-     * certificate status, a flag that indicates whether the certificate is associated with any other AWS service, and
-     * the date at which the certificate request was created. You specify the ACM Certificate on input by its Amazon
-     * Resource Name (ARN).
+     * Returns detailed metadata about the specified ACM Certificate.
      * </p>
      * 
      * @param describeCertificateRequest
@@ -162,6 +173,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.DescribeCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DescribeCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCertificateResult> describeCertificateAsync(DescribeCertificateRequest describeCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCertificateRequest, DescribeCertificateResult> asyncHandler);
@@ -182,6 +195,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param getCertificateRequest
      * @return A Java Future containing the result of the GetCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.GetCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/GetCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCertificateResult> getCertificateAsync(GetCertificateRequest getCertificateRequest);
 
@@ -205,6 +220,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.GetCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/GetCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCertificateResult> getCertificateAsync(GetCertificateRequest getCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<GetCertificateRequest, GetCertificateResult> asyncHandler);
@@ -250,6 +267,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param importCertificateRequest
      * @return A Java Future containing the result of the ImportCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportCertificateResult> importCertificateAsync(ImportCertificateRequest importCertificateRequest);
 
@@ -298,6 +317,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportCertificateResult> importCertificateAsync(ImportCertificateRequest importCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<ImportCertificateRequest, ImportCertificateResult> asyncHandler);
@@ -311,6 +332,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param listCertificatesRequest
      * @return A Java Future containing the result of the ListCertificates operation returned by the service.
      * @sample AWSCertificateManagerAsync.ListCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListCertificatesResult> listCertificatesAsync(ListCertificatesRequest listCertificatesRequest);
 
@@ -327,28 +350,32 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListCertificates operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.ListCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListCertificatesResult> listCertificatesAsync(ListCertificatesRequest listCertificatesRequest,
             com.amazonaws.handlers.AsyncHandler<ListCertificatesRequest, ListCertificatesResult> asyncHandler);
 
     /**
      * <p>
-     * Lists the tags that have been applied to the ACM Certificate. Use the certificate ARN to specify the certificate.
-     * To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the
-     * <a>RemoveTagsFromCertificate</a> action.
+     * Lists the tags that have been applied to the ACM Certificate. Use the certificate's Amazon Resource Name (ARN) to
+     * specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To
+     * delete a tag, use the <a>RemoveTagsFromCertificate</a> action.
      * </p>
      * 
      * @param listTagsForCertificateRequest
      * @return A Java Future containing the result of the ListTagsForCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.ListTagsForCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListTagsForCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForCertificateResult> listTagsForCertificateAsync(ListTagsForCertificateRequest listTagsForCertificateRequest);
 
     /**
      * <p>
-     * Lists the tags that have been applied to the ACM Certificate. Use the certificate ARN to specify the certificate.
-     * To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the
-     * <a>RemoveTagsFromCertificate</a> action.
+     * Lists the tags that have been applied to the ACM Certificate. Use the certificate's Amazon Resource Name (ARN) to
+     * specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To
+     * delete a tag, use the <a>RemoveTagsFromCertificate</a> action.
      * </p>
      * 
      * @param listTagsForCertificateRequest
@@ -358,6 +385,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTagsForCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.ListTagsForCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListTagsForCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForCertificateResult> listTagsForCertificateAsync(ListTagsForCertificateRequest listTagsForCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForCertificateRequest, ListTagsForCertificateResult> asyncHandler);
@@ -376,6 +405,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param removeTagsFromCertificateRequest
      * @return A Java Future containing the result of the RemoveTagsFromCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.RemoveTagsFromCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RemoveTagsFromCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromCertificateResult> removeTagsFromCertificateAsync(
             RemoveTagsFromCertificateRequest removeTagsFromCertificateRequest);
@@ -398,6 +429,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveTagsFromCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.RemoveTagsFromCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RemoveTagsFromCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromCertificateResult> removeTagsFromCertificateAsync(
             RemoveTagsFromCertificateRequest removeTagsFromCertificateRequest,
@@ -416,6 +449,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param requestCertificateRequest
      * @return A Java Future containing the result of the RequestCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsync.RequestCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RequestCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestCertificateResult> requestCertificateAsync(RequestCertificateRequest requestCertificateRequest);
 
@@ -436,6 +471,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RequestCertificate operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.RequestCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RequestCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestCertificateResult> requestCertificateAsync(RequestCertificateRequest requestCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<RequestCertificateRequest, RequestCertificateResult> asyncHandler);
@@ -454,6 +491,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      * @param resendValidationEmailRequest
      * @return A Java Future containing the result of the ResendValidationEmail operation returned by the service.
      * @sample AWSCertificateManagerAsync.ResendValidationEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ResendValidationEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResendValidationEmailResult> resendValidationEmailAsync(ResendValidationEmailRequest resendValidationEmailRequest);
 
@@ -475,6 +514,8 @@ public interface AWSCertificateManagerAsync extends AWSCertificateManager {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResendValidationEmail operation returned by the service.
      * @sample AWSCertificateManagerAsyncHandler.ResendValidationEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ResendValidationEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResendValidationEmailResult> resendValidationEmailAsync(ResendValidationEmailRequest resendValidationEmailRequest,
             com.amazonaws.handlers.AsyncHandler<ResendValidationEmailRequest, ResendValidationEmailResult> asyncHandler);

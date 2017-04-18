@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,27 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Container for the parameters to the <a>ListRuleNamesByTarget</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/ListRuleNamesByTarget" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     * The Amazon Resource Name (ARN) of the target resource.
      * </p>
      */
     private String targetArn;
     /**
      * <p>
-     * The token returned by a previous call to indicate that there is more data available.
+     * The token returned by a previous call to retrieve the next set of results.
      * </p>
      */
     private String nextToken;
@@ -43,11 +46,11 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     * The Amazon Resource Name (ARN) of the target resource.
      * </p>
      * 
      * @param targetArn
-     *        The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     *        The Amazon Resource Name (ARN) of the target resource.
      */
 
     public void setTargetArn(String targetArn) {
@@ -56,10 +59,10 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     * The Amazon Resource Name (ARN) of the target resource.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     * @return The Amazon Resource Name (ARN) of the target resource.
      */
 
     public String getTargetArn() {
@@ -68,11 +71,11 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     * The Amazon Resource Name (ARN) of the target resource.
      * </p>
      * 
      * @param targetArn
-     *        The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.
+     *        The Amazon Resource Name (ARN) of the target resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -83,11 +86,11 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token returned by a previous call to indicate that there is more data available.
+     * The token returned by a previous call to retrieve the next set of results.
      * </p>
      * 
      * @param nextToken
-     *        The token returned by a previous call to indicate that there is more data available.
+     *        The token returned by a previous call to retrieve the next set of results.
      */
 
     public void setNextToken(String nextToken) {
@@ -96,10 +99,10 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token returned by a previous call to indicate that there is more data available.
+     * The token returned by a previous call to retrieve the next set of results.
      * </p>
      * 
-     * @return The token returned by a previous call to indicate that there is more data available.
+     * @return The token returned by a previous call to retrieve the next set of results.
      */
 
     public String getNextToken() {
@@ -108,11 +111,11 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token returned by a previous call to indicate that there is more data available.
+     * The token returned by a previous call to retrieve the next set of results.
      * </p>
      * 
      * @param nextToken
-     *        The token returned by a previous call to indicate that there is more data available.
+     *        The token returned by a previous call to retrieve the next set of results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,11 +176,11 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetArn() != null)
-            sb.append("TargetArn: " + getTargetArn() + ",");
+            sb.append("TargetArn: ").append(getTargetArn()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +225,5 @@ public class ListRuleNamesByTargetRequest extends com.amazonaws.AmazonWebService
     public ListRuleNamesByTargetRequest clone() {
         return (ListRuleNamesByTargetRequest) super.clone();
     }
+
 }

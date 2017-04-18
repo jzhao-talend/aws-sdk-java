@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an
  * Amazon Kinesis stream configured as the destination.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisStreamsOutputUpdate"
+ *      target="_top">AWS API Documentation</a>
  */
-public class KinesisStreamsOutputUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class KinesisStreamsOutputUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -134,9 +141,9 @@ public class KinesisStreamsOutputUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceARNUpdate() != null)
-            sb.append("ResourceARNUpdate: " + getResourceARNUpdate() + ",");
+            sb.append("ResourceARNUpdate: ").append(getResourceARNUpdate()).append(",");
         if (getRoleARNUpdate() != null)
-            sb.append("RoleARNUpdate: " + getRoleARNUpdate());
+            sb.append("RoleARNUpdate: ").append(getRoleARNUpdate());
         sb.append("}");
         return sb.toString();
     }
@@ -179,5 +186,11 @@ public class KinesisStreamsOutputUpdate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.KinesisStreamsOutputUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

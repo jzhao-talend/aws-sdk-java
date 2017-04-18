@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.cloudfront.AmazonCloudFrontClientBuilder;
 import com.amazonaws.services.cloudfront.waiters.AmazonCloudFrontWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -53,6 +57,7 @@ import com.amazonaws.services.cloudfront.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCloudFrontClient extends AmazonWebServiceClient implements AmazonCloudFront {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -86,7 +91,9 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCloudFrontClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -109,7 +116,9 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudFrontClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -123,7 +132,10 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonCloudFrontClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonCloudFrontClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -141,7 +153,10 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CloudFront (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudFrontClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudFrontClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -158,7 +173,9 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonCloudFrontClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -176,7 +193,10 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CloudFront (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudFrontClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudFrontClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -196,12 +216,20 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonCloudFrontClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudFrontClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudFrontClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonCloudFrontClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonCloudFrontClientBuilder builder() {
+        return AmazonCloudFrontClientBuilder.standard();
     }
 
     /**
@@ -236,6 +264,7 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         exceptionUnmarshallers.add(new IllegalUpdateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyCookieNamesInWhiteListExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyHeadersInForwardedValuesExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidOriginReadTimeoutExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidMinimumProtocolVersionExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyDistributionCNAMEsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NoSuchDistributionExceptionUnmarshaller());
@@ -245,6 +274,8 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         exceptionUnmarshallers.add(new TooManyCacheBehaviorsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InconsistentQuantitiesExceptionUnmarshaller());
         exceptionUnmarshallers.add(new CloudFrontOriginAccessIdentityInUseExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidLambdaFunctionAssociationExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new TooManyLambdaFunctionAssociationsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidViewerCertificateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DistributionNotDisabledExceptionUnmarshaller());
         exceptionUnmarshallers.add(new MissingBodyExceptionUnmarshaller());
@@ -261,6 +292,8 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         exceptionUnmarshallers.add(new BatchTooLargeExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidResponseCodeExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidRelativePathExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidOriginKeepaliveTimeoutExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new TooManyDistributionsWithLambdaAssociationsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyStreamingDistributionsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidHeadersForS3OriginExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyDistributionsExceptionUnmarshaller());
@@ -312,10 +345,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InconsistentQuantitiesException
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @sample AmazonCloudFront.CreateCloudFrontOriginAccessIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateCloudFrontOriginAccessIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateCloudFrontOriginAccessIdentityResult createCloudFrontOriginAccessIdentity(
+    public CreateCloudFrontOriginAccessIdentityResult createCloudFrontOriginAccessIdentity(CreateCloudFrontOriginAccessIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateCloudFrontOriginAccessIdentity(request);
+    }
+
+    @SdkInternalApi
+    final CreateCloudFrontOriginAccessIdentityResult executeCreateCloudFrontOriginAccessIdentity(
             CreateCloudFrontOriginAccessIdentityRequest createCloudFrontOriginAccessIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createCloudFrontOriginAccessIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -347,7 +389,7 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Creates a new web distribution. Send a <code>GET</code> request to the
+     * Creates a new web distribution. Send a <code>POST</code> request to the
      * <code>/<i>CloudFront API version</i>/distribution</code>/<code>distribution ID</code> resource.
      * </p>
      * 
@@ -415,10 +457,28 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws TooManyOriginCustomHeadersException
      * @throws TooManyQueryStringParametersException
      * @throws InvalidQueryStringParametersException
+     * @throws TooManyDistributionsWithLambdaAssociationsException
+     *         Processing your request would cause the maximum number of distributions with Lambda function associations
+     *         per owner to be exceeded.
+     * @throws TooManyLambdaFunctionAssociationsException
+     *         Your request contains more Lambda function associations than are allowed per distribution.
+     * @throws InvalidLambdaFunctionAssociationException
+     *         The specified Lambda function association is invalid.
+     * @throws InvalidOriginReadTimeoutException
+     * @throws InvalidOriginKeepaliveTimeoutException
      * @sample AmazonCloudFront.CreateDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateDistribution" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateDistributionResult createDistribution(CreateDistributionRequest createDistributionRequest) {
+    public CreateDistributionResult createDistribution(CreateDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDistribution(request);
+    }
+
+    @SdkInternalApi
+    final CreateDistributionResult executeCreateDistribution(CreateDistributionRequest createDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -517,10 +577,28 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidTaggingException
      * @throws TooManyQueryStringParametersException
      * @throws InvalidQueryStringParametersException
+     * @throws TooManyDistributionsWithLambdaAssociationsException
+     *         Processing your request would cause the maximum number of distributions with Lambda function associations
+     *         per owner to be exceeded.
+     * @throws TooManyLambdaFunctionAssociationsException
+     *         Your request contains more Lambda function associations than are allowed per distribution.
+     * @throws InvalidLambdaFunctionAssociationException
+     *         The specified Lambda function association is invalid.
+     * @throws InvalidOriginReadTimeoutException
+     * @throws InvalidOriginKeepaliveTimeoutException
      * @sample AmazonCloudFront.CreateDistributionWithTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateDistributionWithTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateDistributionWithTagsResult createDistributionWithTags(CreateDistributionWithTagsRequest createDistributionWithTagsRequest) {
+    public CreateDistributionWithTagsResult createDistributionWithTags(CreateDistributionWithTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDistributionWithTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateDistributionWithTagsResult executeCreateDistributionWithTags(CreateDistributionWithTagsRequest createDistributionWithTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDistributionWithTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -572,9 +650,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InconsistentQuantitiesException
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @sample AmazonCloudFront.CreateInvalidation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateInvalidation" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateInvalidationResult createInvalidation(CreateInvalidationRequest createInvalidationRequest) {
+    public CreateInvalidationResult createInvalidation(CreateInvalidationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateInvalidation(request);
+    }
+
+    @SdkInternalApi
+    final CreateInvalidationResult executeCreateInvalidation(CreateInvalidationRequest createInvalidationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createInvalidationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -661,9 +748,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InconsistentQuantitiesException
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @sample AmazonCloudFront.CreateStreamingDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateStreamingDistribution"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateStreamingDistributionResult createStreamingDistribution(CreateStreamingDistributionRequest createStreamingDistributionRequest) {
+    public CreateStreamingDistributionResult createStreamingDistribution(CreateStreamingDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStreamingDistribution(request);
+    }
+
+    @SdkInternalApi
+    final CreateStreamingDistributionResult executeCreateStreamingDistribution(CreateStreamingDistributionRequest createStreamingDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createStreamingDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -723,10 +819,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @throws InvalidTaggingException
      * @sample AmazonCloudFront.CreateStreamingDistributionWithTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateStreamingDistributionWithTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateStreamingDistributionWithTagsResult createStreamingDistributionWithTags(
+    public CreateStreamingDistributionWithTagsResult createStreamingDistributionWithTags(CreateStreamingDistributionWithTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStreamingDistributionWithTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateStreamingDistributionWithTagsResult executeCreateStreamingDistributionWithTags(
             CreateStreamingDistributionWithTagsRequest createStreamingDistributionWithTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createStreamingDistributionWithTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -774,10 +879,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *         The precondition given in one or more of the request-header fields evaluated to <code>false</code>.
      * @throws CloudFrontOriginAccessIdentityInUseException
      * @sample AmazonCloudFront.DeleteCloudFrontOriginAccessIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteCloudFrontOriginAccessIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteCloudFrontOriginAccessIdentityResult deleteCloudFrontOriginAccessIdentity(
+    public DeleteCloudFrontOriginAccessIdentityResult deleteCloudFrontOriginAccessIdentity(DeleteCloudFrontOriginAccessIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteCloudFrontOriginAccessIdentity(request);
+    }
+
+    @SdkInternalApi
+    final DeleteCloudFrontOriginAccessIdentityResult executeDeleteCloudFrontOriginAccessIdentity(
             DeleteCloudFrontOriginAccessIdentityRequest deleteCloudFrontOriginAccessIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteCloudFrontOriginAccessIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -885,9 +999,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws PreconditionFailedException
      *         The precondition given in one or more of the request-header fields evaluated to <code>false</code>.
      * @sample AmazonCloudFront.DeleteDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteDistribution" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteDistributionResult deleteDistribution(DeleteDistributionRequest deleteDistributionRequest) {
+    public DeleteDistributionResult deleteDistribution(DeleteDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDistribution(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDistributionResult executeDeleteDistribution(DeleteDistributionRequest deleteDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -995,9 +1118,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws PreconditionFailedException
      *         The precondition given in one or more of the request-header fields evaluated to <code>false</code>.
      * @sample AmazonCloudFront.DeleteStreamingDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteStreamingDistribution"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteStreamingDistributionResult deleteStreamingDistribution(DeleteStreamingDistributionRequest deleteStreamingDistributionRequest) {
+    public DeleteStreamingDistributionResult deleteStreamingDistribution(DeleteStreamingDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteStreamingDistribution(request);
+    }
+
+    @SdkInternalApi
+    final DeleteStreamingDistributionResult executeDeleteStreamingDistribution(DeleteStreamingDistributionRequest deleteStreamingDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteStreamingDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1039,10 +1171,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetCloudFrontOriginAccessIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetCloudFrontOriginAccessIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetCloudFrontOriginAccessIdentityResult getCloudFrontOriginAccessIdentity(
+    public GetCloudFrontOriginAccessIdentityResult getCloudFrontOriginAccessIdentity(GetCloudFrontOriginAccessIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCloudFrontOriginAccessIdentity(request);
+    }
+
+    @SdkInternalApi
+    final GetCloudFrontOriginAccessIdentityResult executeGetCloudFrontOriginAccessIdentity(
             GetCloudFrontOriginAccessIdentityRequest getCloudFrontOriginAccessIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCloudFrontOriginAccessIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1085,10 +1226,20 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetCloudFrontOriginAccessIdentityConfig
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetCloudFrontOriginAccessIdentityConfig"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetCloudFrontOriginAccessIdentityConfigResult getCloudFrontOriginAccessIdentityConfig(
+    public GetCloudFrontOriginAccessIdentityConfigResult getCloudFrontOriginAccessIdentityConfig(GetCloudFrontOriginAccessIdentityConfigRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCloudFrontOriginAccessIdentityConfig(request);
+    }
+
+    @SdkInternalApi
+    final GetCloudFrontOriginAccessIdentityConfigResult executeGetCloudFrontOriginAccessIdentityConfig(
             GetCloudFrontOriginAccessIdentityConfigRequest getCloudFrontOriginAccessIdentityConfigRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCloudFrontOriginAccessIdentityConfigRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1131,9 +1282,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetDistribution" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetDistributionResult getDistribution(GetDistributionRequest getDistributionRequest) {
+    public GetDistributionResult getDistribution(GetDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDistribution(request);
+    }
+
+    @SdkInternalApi
+    final GetDistributionResult executeGetDistribution(GetDistributionRequest getDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1175,9 +1335,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetDistributionConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetDistributionConfig"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetDistributionConfigResult getDistributionConfig(GetDistributionConfigRequest getDistributionConfigRequest) {
+    public GetDistributionConfigResult getDistributionConfig(GetDistributionConfigRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDistributionConfig(request);
+    }
+
+    @SdkInternalApi
+    final GetDistributionConfigResult executeGetDistributionConfig(GetDistributionConfigRequest getDistributionConfigRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDistributionConfigRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1221,9 +1390,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetInvalidation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetInvalidation" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetInvalidationResult getInvalidation(GetInvalidationRequest getInvalidationRequest) {
+    public GetInvalidationResult getInvalidation(GetInvalidationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetInvalidation(request);
+    }
+
+    @SdkInternalApi
+    final GetInvalidationResult executeGetInvalidation(GetInvalidationRequest getInvalidationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getInvalidationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1265,9 +1443,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetStreamingDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetStreamingDistribution"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetStreamingDistributionResult getStreamingDistribution(GetStreamingDistributionRequest getStreamingDistributionRequest) {
+    public GetStreamingDistributionResult getStreamingDistribution(GetStreamingDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetStreamingDistribution(request);
+    }
+
+    @SdkInternalApi
+    final GetStreamingDistributionResult executeGetStreamingDistribution(GetStreamingDistributionRequest getStreamingDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getStreamingDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1309,9 +1496,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.GetStreamingDistributionConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetStreamingDistributionConfig"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetStreamingDistributionConfigResult getStreamingDistributionConfig(GetStreamingDistributionConfigRequest getStreamingDistributionConfigRequest) {
+    public GetStreamingDistributionConfigResult getStreamingDistributionConfig(GetStreamingDistributionConfigRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetStreamingDistributionConfig(request);
+    }
+
+    @SdkInternalApi
+    final GetStreamingDistributionConfigResult executeGetStreamingDistributionConfig(GetStreamingDistributionConfigRequest getStreamingDistributionConfigRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getStreamingDistributionConfigRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1351,10 +1547,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidArgumentException
      *         The argument is invalid.
      * @sample AmazonCloudFront.ListCloudFrontOriginAccessIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListCloudFrontOriginAccessIdentities"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListCloudFrontOriginAccessIdentitiesResult listCloudFrontOriginAccessIdentities(
+    public ListCloudFrontOriginAccessIdentitiesResult listCloudFrontOriginAccessIdentities(ListCloudFrontOriginAccessIdentitiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListCloudFrontOriginAccessIdentities(request);
+    }
+
+    @SdkInternalApi
+    final ListCloudFrontOriginAccessIdentitiesResult executeListCloudFrontOriginAccessIdentities(
             ListCloudFrontOriginAccessIdentitiesRequest listCloudFrontOriginAccessIdentitiesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listCloudFrontOriginAccessIdentitiesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1395,9 +1600,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidArgumentException
      *         The argument is invalid.
      * @sample AmazonCloudFront.ListDistributions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListDistributions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListDistributionsResult listDistributions(ListDistributionsRequest listDistributionsRequest) {
+    public ListDistributionsResult listDistributions(ListDistributionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDistributions(request);
+    }
+
+    @SdkInternalApi
+    final ListDistributionsResult executeListDistributions(ListDistributionsRequest listDistributionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDistributionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1438,9 +1652,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      *         The argument is invalid.
      * @throws InvalidWebACLIdException
      * @sample AmazonCloudFront.ListDistributionsByWebACLId
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListDistributionsByWebACLId"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListDistributionsByWebACLIdResult listDistributionsByWebACLId(ListDistributionsByWebACLIdRequest listDistributionsByWebACLIdRequest) {
+    public ListDistributionsByWebACLIdResult listDistributionsByWebACLId(ListDistributionsByWebACLIdRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDistributionsByWebACLId(request);
+    }
+
+    @SdkInternalApi
+    final ListDistributionsByWebACLIdResult executeListDistributionsByWebACLId(ListDistributionsByWebACLIdRequest listDistributionsByWebACLIdRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDistributionsByWebACLIdRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1484,9 +1707,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws AccessDeniedException
      *         Access denied.
      * @sample AmazonCloudFront.ListInvalidations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListInvalidations" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListInvalidationsResult listInvalidations(ListInvalidationsRequest listInvalidationsRequest) {
+    public ListInvalidationsResult listInvalidations(ListInvalidationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListInvalidations(request);
+    }
+
+    @SdkInternalApi
+    final ListInvalidationsResult executeListInvalidations(ListInvalidationsRequest listInvalidationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listInvalidationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1526,9 +1758,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidArgumentException
      *         The argument is invalid.
      * @sample AmazonCloudFront.ListStreamingDistributions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListStreamingDistributions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListStreamingDistributionsResult listStreamingDistributions(ListStreamingDistributionsRequest listStreamingDistributionsRequest) {
+    public ListStreamingDistributionsResult listStreamingDistributions(ListStreamingDistributionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStreamingDistributions(request);
+    }
+
+    @SdkInternalApi
+    final ListStreamingDistributionsResult executeListStreamingDistributions(ListStreamingDistributionsRequest listStreamingDistributionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listStreamingDistributionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1572,9 +1813,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidTaggingException
      * @throws NoSuchResourceException
      * @sample AmazonCloudFront.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1618,9 +1868,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidTaggingException
      * @throws NoSuchResourceException
      * @sample AmazonCloudFront.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/TagResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public TagResourceResult tagResource(TagResourceRequest tagResourceRequest) {
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1663,9 +1922,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InvalidTaggingException
      * @throws NoSuchResourceException
      * @sample AmazonCloudFront.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UntagResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest) {
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1718,10 +1986,19 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InconsistentQuantitiesException
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @sample AmazonCloudFront.UpdateCloudFrontOriginAccessIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateCloudFrontOriginAccessIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateCloudFrontOriginAccessIdentityResult updateCloudFrontOriginAccessIdentity(
+    public UpdateCloudFrontOriginAccessIdentityResult updateCloudFrontOriginAccessIdentity(UpdateCloudFrontOriginAccessIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateCloudFrontOriginAccessIdentity(request);
+    }
+
+    @SdkInternalApi
+    final UpdateCloudFrontOriginAccessIdentityResult executeUpdateCloudFrontOriginAccessIdentity(
             UpdateCloudFrontOriginAccessIdentityRequest updateCloudFrontOriginAccessIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateCloudFrontOriginAccessIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1818,10 +2095,28 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws TooManyOriginCustomHeadersException
      * @throws TooManyQueryStringParametersException
      * @throws InvalidQueryStringParametersException
+     * @throws TooManyDistributionsWithLambdaAssociationsException
+     *         Processing your request would cause the maximum number of distributions with Lambda function associations
+     *         per owner to be exceeded.
+     * @throws TooManyLambdaFunctionAssociationsException
+     *         Your request contains more Lambda function associations than are allowed per distribution.
+     * @throws InvalidLambdaFunctionAssociationException
+     *         The specified Lambda function association is invalid.
+     * @throws InvalidOriginReadTimeoutException
+     * @throws InvalidOriginKeepaliveTimeoutException
      * @sample AmazonCloudFront.UpdateDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateDistribution" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UpdateDistributionResult updateDistribution(UpdateDistributionRequest updateDistributionRequest) {
+    public UpdateDistributionResult updateDistribution(UpdateDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDistribution(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDistributionResult executeUpdateDistribution(UpdateDistributionRequest updateDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1883,9 +2178,18 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
      * @throws InconsistentQuantitiesException
      *         The value of <code>Quantity</code> and the size of <code>Items</code> do not match.
      * @sample AmazonCloudFront.UpdateStreamingDistribution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateStreamingDistribution"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateStreamingDistributionResult updateStreamingDistribution(UpdateStreamingDistributionRequest updateStreamingDistributionRequest) {
+    public UpdateStreamingDistributionResult updateStreamingDistribution(UpdateStreamingDistributionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateStreamingDistribution(request);
+    }
+
+    @SdkInternalApi
+    final UpdateStreamingDistributionResult executeUpdateStreamingDistribution(UpdateStreamingDistributionRequest updateStreamingDistributionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateStreamingDistributionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1967,6 +2271,7 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonCloudFrontWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -1976,6 +2281,14 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

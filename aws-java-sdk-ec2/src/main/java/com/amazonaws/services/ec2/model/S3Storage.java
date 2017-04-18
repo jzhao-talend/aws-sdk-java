@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the storage parameters for S3 and S3 buckets for an instance store-backed AMI.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/S3Storage" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class S3Storage implements Serializable, Cloneable {
 
     /**
@@ -296,15 +301,15 @@ public class S3Storage implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBucket() != null)
-            sb.append("Bucket: " + getBucket() + ",");
+            sb.append("Bucket: ").append(getBucket()).append(",");
         if (getPrefix() != null)
-            sb.append("Prefix: " + getPrefix() + ",");
+            sb.append("Prefix: ").append(getPrefix()).append(",");
         if (getAWSAccessKeyId() != null)
-            sb.append("AWSAccessKeyId: " + getAWSAccessKeyId() + ",");
+            sb.append("AWSAccessKeyId: ").append(getAWSAccessKeyId()).append(",");
         if (getUploadPolicy() != null)
-            sb.append("UploadPolicy: " + getUploadPolicy() + ",");
+            sb.append("UploadPolicy: ").append(getUploadPolicy()).append(",");
         if (getUploadPolicySignature() != null)
-            sb.append("UploadPolicySignature: " + getUploadPolicySignature());
+            sb.append("UploadPolicySignature: ").append(getUploadPolicySignature());
         sb.append("}");
         return sb.toString();
     }
@@ -363,4 +368,5 @@ public class S3Storage implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

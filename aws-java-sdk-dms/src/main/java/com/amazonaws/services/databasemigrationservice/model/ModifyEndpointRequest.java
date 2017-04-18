@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -41,8 +47,8 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
     private String endpointType;
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and
-     * SQLSERVER.
+     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     * SYBASE, and SQLSERVER.
      * </p>
      */
     private String engineName;
@@ -262,13 +268,13 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and
-     * SQLSERVER.
+     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     * SYBASE, and SQLSERVER.
      * </p>
      * 
      * @param engineName
      *        The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA,
-     *        REDSHIFT, and SQLSERVER.
+     *        REDSHIFT, SYBASE, and SQLSERVER.
      */
 
     public void setEngineName(String engineName) {
@@ -277,12 +283,12 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and
-     * SQLSERVER.
+     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     * SYBASE, and SQLSERVER.
      * </p>
      * 
      * @return The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA,
-     *         REDSHIFT, and SQLSERVER.
+     *         REDSHIFT, SYBASE, and SQLSERVER.
      */
 
     public String getEngineName() {
@@ -291,13 +297,13 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and
-     * SQLSERVER.
+     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     * SYBASE, and SQLSERVER.
      * </p>
      * 
      * @param engineName
      *        The type of engine for the endpoint. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA,
-     *        REDSHIFT, and SQLSERVER.
+     *        REDSHIFT, SYBASE, and SQLSERVER.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -726,29 +732,29 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEndpointArn() != null)
-            sb.append("EndpointArn: " + getEndpointArn() + ",");
+            sb.append("EndpointArn: ").append(getEndpointArn()).append(",");
         if (getEndpointIdentifier() != null)
-            sb.append("EndpointIdentifier: " + getEndpointIdentifier() + ",");
+            sb.append("EndpointIdentifier: ").append(getEndpointIdentifier()).append(",");
         if (getEndpointType() != null)
-            sb.append("EndpointType: " + getEndpointType() + ",");
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getPassword() != null)
-            sb.append("Password: " + getPassword() + ",");
+            sb.append("Password: ").append(getPassword()).append(",");
         if (getServerName() != null)
-            sb.append("ServerName: " + getServerName() + ",");
+            sb.append("ServerName: ").append(getServerName()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getDatabaseName() != null)
-            sb.append("DatabaseName: " + getDatabaseName() + ",");
+            sb.append("DatabaseName: ").append(getDatabaseName()).append(",");
         if (getExtraConnectionAttributes() != null)
-            sb.append("ExtraConnectionAttributes: " + getExtraConnectionAttributes() + ",");
+            sb.append("ExtraConnectionAttributes: ").append(getExtraConnectionAttributes()).append(",");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getSslMode() != null)
-            sb.append("SslMode: " + getSslMode());
+            sb.append("SslMode: ").append(getSslMode());
         sb.append("}");
         return sb.toString();
     }
@@ -838,4 +844,5 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
     public ModifyEndpointRequest clone() {
         return (ModifyEndpointRequest) super.clone();
     }
+
 }

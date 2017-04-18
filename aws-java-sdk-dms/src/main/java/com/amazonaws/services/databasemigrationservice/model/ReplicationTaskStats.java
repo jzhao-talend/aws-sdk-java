@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ReplicationTaskStats" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ReplicationTaskStats implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplicationTaskStats implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -308,17 +315,17 @@ public class ReplicationTaskStats implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFullLoadProgressPercent() != null)
-            sb.append("FullLoadProgressPercent: " + getFullLoadProgressPercent() + ",");
+            sb.append("FullLoadProgressPercent: ").append(getFullLoadProgressPercent()).append(",");
         if (getElapsedTimeMillis() != null)
-            sb.append("ElapsedTimeMillis: " + getElapsedTimeMillis() + ",");
+            sb.append("ElapsedTimeMillis: ").append(getElapsedTimeMillis()).append(",");
         if (getTablesLoaded() != null)
-            sb.append("TablesLoaded: " + getTablesLoaded() + ",");
+            sb.append("TablesLoaded: ").append(getTablesLoaded()).append(",");
         if (getTablesLoading() != null)
-            sb.append("TablesLoading: " + getTablesLoading() + ",");
+            sb.append("TablesLoading: ").append(getTablesLoading()).append(",");
         if (getTablesQueued() != null)
-            sb.append("TablesQueued: " + getTablesQueued() + ",");
+            sb.append("TablesQueued: ").append(getTablesQueued()).append(",");
         if (getTablesErrored() != null)
-            sb.append("TablesErrored: " + getTablesErrored());
+            sb.append("TablesErrored: ").append(getTablesErrored());
         sb.append("}");
         return sb.toString();
     }
@@ -381,5 +388,11 @@ public class ReplicationTaskStats implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.ReplicationTaskStatsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.codecommit.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the output of a get commit operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommit" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetCommitResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Information about the specified commit.
+     * A commit data type object that contains information about the specified commit.
      * </p>
      */
     private Commit commit;
 
     /**
      * <p>
-     * Information about the specified commit.
+     * A commit data type object that contains information about the specified commit.
      * </p>
      * 
      * @param commit
-     *        Information about the specified commit.
+     *        A commit data type object that contains information about the specified commit.
      */
 
     public void setCommit(Commit commit) {
@@ -43,10 +48,10 @@ public class GetCommitResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * Information about the specified commit.
+     * A commit data type object that contains information about the specified commit.
      * </p>
      * 
-     * @return Information about the specified commit.
+     * @return A commit data type object that contains information about the specified commit.
      */
 
     public Commit getCommit() {
@@ -55,11 +60,11 @@ public class GetCommitResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * Information about the specified commit.
+     * A commit data type object that contains information about the specified commit.
      * </p>
      * 
      * @param commit
-     *        Information about the specified commit.
+     *        A commit data type object that contains information about the specified commit.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class GetCommitResult extends com.amazonaws.AmazonWebServiceResult<com.am
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCommit() != null)
-            sb.append("Commit: " + getCommit());
+            sb.append("Commit: ").append(getCommit());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class GetCommitResult extends com.amazonaws.AmazonWebServiceResult<com.am
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

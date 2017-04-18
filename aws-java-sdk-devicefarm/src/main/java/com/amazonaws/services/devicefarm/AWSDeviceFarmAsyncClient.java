@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.devicefarm;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.devicefarm.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing AWS Device Farm asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing AWS Device Farm asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -27,6 +36,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWSDeviceFarmAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -48,9 +58,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSDeviceFarmAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -72,10 +84,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -88,9 +101,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -101,8 +116,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -117,10 +135,12 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -135,9 +155,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -154,10 +176,12 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -168,9 +192,11 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -184,12 +210,18 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSDeviceFarmAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSDeviceFarmAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSDeviceFarmAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSDeviceFarmAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AWSDeviceFarmAsyncClientBuilder asyncBuilder() {
+        return AWSDeviceFarmAsyncClientBuilder.standard();
     }
 
     /**
@@ -208,7 +240,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -221,14 +253,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<CreateDevicePoolResult> createDevicePoolAsync(final CreateDevicePoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateDevicePoolRequest, CreateDevicePoolResult> asyncHandler) {
+        final CreateDevicePoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateDevicePoolResult>() {
             @Override
             public CreateDevicePoolResult call() throws Exception {
-                CreateDevicePoolResult result;
+                CreateDevicePoolResult result = null;
 
                 try {
-                    result = createDevicePool(request);
+                    result = executeCreateDevicePool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -237,7 +270,40 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateNetworkProfileResult> createNetworkProfileAsync(CreateNetworkProfileRequest request) {
+
+        return createNetworkProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateNetworkProfileResult> createNetworkProfileAsync(final CreateNetworkProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateNetworkProfileRequest, CreateNetworkProfileResult> asyncHandler) {
+        final CreateNetworkProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateNetworkProfileResult>() {
+            @Override
+            public CreateNetworkProfileResult call() throws Exception {
+                CreateNetworkProfileResult result = null;
+
+                try {
+                    result = executeCreateNetworkProfile(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -253,14 +319,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<CreateProjectResult> createProjectAsync(final CreateProjectRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateProjectRequest, CreateProjectResult> asyncHandler) {
+        final CreateProjectRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateProjectResult>() {
             @Override
             public CreateProjectResult call() throws Exception {
-                CreateProjectResult result;
+                CreateProjectResult result = null;
 
                 try {
-                    result = createProject(request);
+                    result = executeCreateProject(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -269,7 +336,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -285,14 +352,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<CreateRemoteAccessSessionResult> createRemoteAccessSessionAsync(final CreateRemoteAccessSessionRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateRemoteAccessSessionRequest, CreateRemoteAccessSessionResult> asyncHandler) {
+        final CreateRemoteAccessSessionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateRemoteAccessSessionResult>() {
             @Override
             public CreateRemoteAccessSessionResult call() throws Exception {
-                CreateRemoteAccessSessionResult result;
+                CreateRemoteAccessSessionResult result = null;
 
                 try {
-                    result = createRemoteAccessSession(request);
+                    result = executeCreateRemoteAccessSession(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -301,7 +369,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -317,14 +385,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<CreateUploadResult> createUploadAsync(final CreateUploadRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateUploadRequest, CreateUploadResult> asyncHandler) {
+        final CreateUploadRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateUploadResult>() {
             @Override
             public CreateUploadResult call() throws Exception {
-                CreateUploadResult result;
+                CreateUploadResult result = null;
 
                 try {
-                    result = createUpload(request);
+                    result = executeCreateUpload(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -333,7 +402,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -349,14 +418,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<DeleteDevicePoolResult> deleteDevicePoolAsync(final DeleteDevicePoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteDevicePoolRequest, DeleteDevicePoolResult> asyncHandler) {
+        final DeleteDevicePoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteDevicePoolResult>() {
             @Override
             public DeleteDevicePoolResult call() throws Exception {
-                DeleteDevicePoolResult result;
+                DeleteDevicePoolResult result = null;
 
                 try {
-                    result = deleteDevicePool(request);
+                    result = executeDeleteDevicePool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -365,7 +435,40 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteNetworkProfileResult> deleteNetworkProfileAsync(DeleteNetworkProfileRequest request) {
+
+        return deleteNetworkProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteNetworkProfileResult> deleteNetworkProfileAsync(final DeleteNetworkProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteNetworkProfileRequest, DeleteNetworkProfileResult> asyncHandler) {
+        final DeleteNetworkProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteNetworkProfileResult>() {
+            @Override
+            public DeleteNetworkProfileResult call() throws Exception {
+                DeleteNetworkProfileResult result = null;
+
+                try {
+                    result = executeDeleteNetworkProfile(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -381,14 +484,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<DeleteProjectResult> deleteProjectAsync(final DeleteProjectRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteProjectRequest, DeleteProjectResult> asyncHandler) {
+        final DeleteProjectRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteProjectResult>() {
             @Override
             public DeleteProjectResult call() throws Exception {
-                DeleteProjectResult result;
+                DeleteProjectResult result = null;
 
                 try {
-                    result = deleteProject(request);
+                    result = executeDeleteProject(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -397,7 +501,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -413,14 +517,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<DeleteRemoteAccessSessionResult> deleteRemoteAccessSessionAsync(final DeleteRemoteAccessSessionRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteRemoteAccessSessionRequest, DeleteRemoteAccessSessionResult> asyncHandler) {
+        final DeleteRemoteAccessSessionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteRemoteAccessSessionResult>() {
             @Override
             public DeleteRemoteAccessSessionResult call() throws Exception {
-                DeleteRemoteAccessSessionResult result;
+                DeleteRemoteAccessSessionResult result = null;
 
                 try {
-                    result = deleteRemoteAccessSession(request);
+                    result = executeDeleteRemoteAccessSession(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -429,7 +534,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -445,14 +550,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<DeleteRunResult> deleteRunAsync(final DeleteRunRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteRunRequest, DeleteRunResult> asyncHandler) {
+        final DeleteRunRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteRunResult>() {
             @Override
             public DeleteRunResult call() throws Exception {
-                DeleteRunResult result;
+                DeleteRunResult result = null;
 
                 try {
-                    result = deleteRun(request);
+                    result = executeDeleteRun(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -461,7 +567,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -477,14 +583,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<DeleteUploadResult> deleteUploadAsync(final DeleteUploadRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteUploadRequest, DeleteUploadResult> asyncHandler) {
+        final DeleteUploadRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteUploadResult>() {
             @Override
             public DeleteUploadResult call() throws Exception {
-                DeleteUploadResult result;
+                DeleteUploadResult result = null;
 
                 try {
-                    result = deleteUpload(request);
+                    result = executeDeleteUpload(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -493,7 +600,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -509,14 +616,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetAccountSettingsResult> getAccountSettingsAsync(final GetAccountSettingsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetAccountSettingsRequest, GetAccountSettingsResult> asyncHandler) {
+        final GetAccountSettingsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetAccountSettingsResult>() {
             @Override
             public GetAccountSettingsResult call() throws Exception {
-                GetAccountSettingsResult result;
+                GetAccountSettingsResult result = null;
 
                 try {
-                    result = getAccountSettings(request);
+                    result = executeGetAccountSettings(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -525,7 +633,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -541,14 +649,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetDeviceResult> getDeviceAsync(final GetDeviceRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetDeviceRequest, GetDeviceResult> asyncHandler) {
+        final GetDeviceRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetDeviceResult>() {
             @Override
             public GetDeviceResult call() throws Exception {
-                GetDeviceResult result;
+                GetDeviceResult result = null;
 
                 try {
-                    result = getDevice(request);
+                    result = executeGetDevice(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -557,7 +666,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -573,14 +682,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetDevicePoolResult> getDevicePoolAsync(final GetDevicePoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetDevicePoolRequest, GetDevicePoolResult> asyncHandler) {
+        final GetDevicePoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetDevicePoolResult>() {
             @Override
             public GetDevicePoolResult call() throws Exception {
-                GetDevicePoolResult result;
+                GetDevicePoolResult result = null;
 
                 try {
-                    result = getDevicePool(request);
+                    result = executeGetDevicePool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -589,7 +699,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -605,14 +715,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetDevicePoolCompatibilityResult> getDevicePoolCompatibilityAsync(final GetDevicePoolCompatibilityRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetDevicePoolCompatibilityRequest, GetDevicePoolCompatibilityResult> asyncHandler) {
+        final GetDevicePoolCompatibilityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetDevicePoolCompatibilityResult>() {
             @Override
             public GetDevicePoolCompatibilityResult call() throws Exception {
-                GetDevicePoolCompatibilityResult result;
+                GetDevicePoolCompatibilityResult result = null;
 
                 try {
-                    result = getDevicePoolCompatibility(request);
+                    result = executeGetDevicePoolCompatibility(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -621,7 +732,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -637,14 +748,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetJobResult> getJobAsync(final GetJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetJobRequest, GetJobResult> asyncHandler) {
+        final GetJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetJobResult>() {
             @Override
             public GetJobResult call() throws Exception {
-                GetJobResult result;
+                GetJobResult result = null;
 
                 try {
-                    result = getJob(request);
+                    result = executeGetJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -653,7 +765,40 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetNetworkProfileResult> getNetworkProfileAsync(GetNetworkProfileRequest request) {
+
+        return getNetworkProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetNetworkProfileResult> getNetworkProfileAsync(final GetNetworkProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetNetworkProfileRequest, GetNetworkProfileResult> asyncHandler) {
+        final GetNetworkProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetNetworkProfileResult>() {
+            @Override
+            public GetNetworkProfileResult call() throws Exception {
+                GetNetworkProfileResult result = null;
+
+                try {
+                    result = executeGetNetworkProfile(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -669,14 +814,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetOfferingStatusResult> getOfferingStatusAsync(final GetOfferingStatusRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetOfferingStatusRequest, GetOfferingStatusResult> asyncHandler) {
+        final GetOfferingStatusRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetOfferingStatusResult>() {
             @Override
             public GetOfferingStatusResult call() throws Exception {
-                GetOfferingStatusResult result;
+                GetOfferingStatusResult result = null;
 
                 try {
-                    result = getOfferingStatus(request);
+                    result = executeGetOfferingStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -685,7 +831,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -701,14 +847,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetProjectResult> getProjectAsync(final GetProjectRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetProjectRequest, GetProjectResult> asyncHandler) {
+        final GetProjectRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetProjectResult>() {
             @Override
             public GetProjectResult call() throws Exception {
-                GetProjectResult result;
+                GetProjectResult result = null;
 
                 try {
-                    result = getProject(request);
+                    result = executeGetProject(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -717,7 +864,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -733,14 +880,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetRemoteAccessSessionResult> getRemoteAccessSessionAsync(final GetRemoteAccessSessionRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetRemoteAccessSessionRequest, GetRemoteAccessSessionResult> asyncHandler) {
+        final GetRemoteAccessSessionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetRemoteAccessSessionResult>() {
             @Override
             public GetRemoteAccessSessionResult call() throws Exception {
-                GetRemoteAccessSessionResult result;
+                GetRemoteAccessSessionResult result = null;
 
                 try {
-                    result = getRemoteAccessSession(request);
+                    result = executeGetRemoteAccessSession(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -749,7 +897,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -765,14 +913,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetRunResult> getRunAsync(final GetRunRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetRunRequest, GetRunResult> asyncHandler) {
+        final GetRunRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetRunResult>() {
             @Override
             public GetRunResult call() throws Exception {
-                GetRunResult result;
+                GetRunResult result = null;
 
                 try {
-                    result = getRun(request);
+                    result = executeGetRun(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -781,7 +930,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -797,14 +946,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetSuiteResult> getSuiteAsync(final GetSuiteRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetSuiteRequest, GetSuiteResult> asyncHandler) {
+        final GetSuiteRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetSuiteResult>() {
             @Override
             public GetSuiteResult call() throws Exception {
-                GetSuiteResult result;
+                GetSuiteResult result = null;
 
                 try {
-                    result = getSuite(request);
+                    result = executeGetSuite(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -813,7 +963,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -829,14 +979,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetTestResult> getTestAsync(final GetTestRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetTestRequest, GetTestResult> asyncHandler) {
+        final GetTestRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetTestResult>() {
             @Override
             public GetTestResult call() throws Exception {
-                GetTestResult result;
+                GetTestResult result = null;
 
                 try {
-                    result = getTest(request);
+                    result = executeGetTest(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -845,7 +996,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -861,14 +1012,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<GetUploadResult> getUploadAsync(final GetUploadRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetUploadRequest, GetUploadResult> asyncHandler) {
+        final GetUploadRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetUploadResult>() {
             @Override
             public GetUploadResult call() throws Exception {
-                GetUploadResult result;
+                GetUploadResult result = null;
 
                 try {
-                    result = getUpload(request);
+                    result = executeGetUpload(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -877,7 +1029,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -893,14 +1045,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<InstallToRemoteAccessSessionResult> installToRemoteAccessSessionAsync(final InstallToRemoteAccessSessionRequest request,
             final com.amazonaws.handlers.AsyncHandler<InstallToRemoteAccessSessionRequest, InstallToRemoteAccessSessionResult> asyncHandler) {
+        final InstallToRemoteAccessSessionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<InstallToRemoteAccessSessionResult>() {
             @Override
             public InstallToRemoteAccessSessionResult call() throws Exception {
-                InstallToRemoteAccessSessionResult result;
+                InstallToRemoteAccessSessionResult result = null;
 
                 try {
-                    result = installToRemoteAccessSession(request);
+                    result = executeInstallToRemoteAccessSession(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -909,7 +1062,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -925,14 +1078,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListArtifactsResult> listArtifactsAsync(final ListArtifactsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListArtifactsRequest, ListArtifactsResult> asyncHandler) {
+        final ListArtifactsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListArtifactsResult>() {
             @Override
             public ListArtifactsResult call() throws Exception {
-                ListArtifactsResult result;
+                ListArtifactsResult result = null;
 
                 try {
-                    result = listArtifacts(request);
+                    result = executeListArtifacts(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -941,7 +1095,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -957,14 +1111,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListDevicePoolsResult> listDevicePoolsAsync(final ListDevicePoolsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDevicePoolsRequest, ListDevicePoolsResult> asyncHandler) {
+        final ListDevicePoolsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDevicePoolsResult>() {
             @Override
             public ListDevicePoolsResult call() throws Exception {
-                ListDevicePoolsResult result;
+                ListDevicePoolsResult result = null;
 
                 try {
-                    result = listDevicePools(request);
+                    result = executeListDevicePools(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -973,7 +1128,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -989,14 +1144,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListDevicesResult> listDevicesAsync(final ListDevicesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDevicesRequest, ListDevicesResult> asyncHandler) {
+        final ListDevicesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDevicesResult>() {
             @Override
             public ListDevicesResult call() throws Exception {
-                ListDevicesResult result;
+                ListDevicesResult result = null;
 
                 try {
-                    result = listDevices(request);
+                    result = executeListDevices(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1005,7 +1161,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1021,14 +1177,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListJobsResult> listJobsAsync(final ListJobsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListJobsRequest, ListJobsResult> asyncHandler) {
+        final ListJobsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListJobsResult>() {
             @Override
             public ListJobsResult call() throws Exception {
-                ListJobsResult result;
+                ListJobsResult result = null;
 
                 try {
-                    result = listJobs(request);
+                    result = executeListJobs(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1037,7 +1194,40 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListNetworkProfilesResult> listNetworkProfilesAsync(ListNetworkProfilesRequest request) {
+
+        return listNetworkProfilesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListNetworkProfilesResult> listNetworkProfilesAsync(final ListNetworkProfilesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListNetworkProfilesRequest, ListNetworkProfilesResult> asyncHandler) {
+        final ListNetworkProfilesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListNetworkProfilesResult>() {
+            @Override
+            public ListNetworkProfilesResult call() throws Exception {
+                ListNetworkProfilesResult result = null;
+
+                try {
+                    result = executeListNetworkProfiles(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1053,14 +1243,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListOfferingTransactionsResult> listOfferingTransactionsAsync(final ListOfferingTransactionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListOfferingTransactionsRequest, ListOfferingTransactionsResult> asyncHandler) {
+        final ListOfferingTransactionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListOfferingTransactionsResult>() {
             @Override
             public ListOfferingTransactionsResult call() throws Exception {
-                ListOfferingTransactionsResult result;
+                ListOfferingTransactionsResult result = null;
 
                 try {
-                    result = listOfferingTransactions(request);
+                    result = executeListOfferingTransactions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1069,7 +1260,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1085,14 +1276,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListOfferingsResult> listOfferingsAsync(final ListOfferingsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListOfferingsRequest, ListOfferingsResult> asyncHandler) {
+        final ListOfferingsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListOfferingsResult>() {
             @Override
             public ListOfferingsResult call() throws Exception {
-                ListOfferingsResult result;
+                ListOfferingsResult result = null;
 
                 try {
-                    result = listOfferings(request);
+                    result = executeListOfferings(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1101,7 +1293,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1117,14 +1309,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListProjectsResult> listProjectsAsync(final ListProjectsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListProjectsRequest, ListProjectsResult> asyncHandler) {
+        final ListProjectsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListProjectsResult>() {
             @Override
             public ListProjectsResult call() throws Exception {
-                ListProjectsResult result;
+                ListProjectsResult result = null;
 
                 try {
-                    result = listProjects(request);
+                    result = executeListProjects(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1133,7 +1326,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1149,14 +1342,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListRemoteAccessSessionsResult> listRemoteAccessSessionsAsync(final ListRemoteAccessSessionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListRemoteAccessSessionsRequest, ListRemoteAccessSessionsResult> asyncHandler) {
+        final ListRemoteAccessSessionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListRemoteAccessSessionsResult>() {
             @Override
             public ListRemoteAccessSessionsResult call() throws Exception {
-                ListRemoteAccessSessionsResult result;
+                ListRemoteAccessSessionsResult result = null;
 
                 try {
-                    result = listRemoteAccessSessions(request);
+                    result = executeListRemoteAccessSessions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1165,7 +1359,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1181,14 +1375,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListRunsResult> listRunsAsync(final ListRunsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListRunsRequest, ListRunsResult> asyncHandler) {
+        final ListRunsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListRunsResult>() {
             @Override
             public ListRunsResult call() throws Exception {
-                ListRunsResult result;
+                ListRunsResult result = null;
 
                 try {
-                    result = listRuns(request);
+                    result = executeListRuns(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1197,7 +1392,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1213,14 +1408,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListSamplesResult> listSamplesAsync(final ListSamplesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListSamplesRequest, ListSamplesResult> asyncHandler) {
+        final ListSamplesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListSamplesResult>() {
             @Override
             public ListSamplesResult call() throws Exception {
-                ListSamplesResult result;
+                ListSamplesResult result = null;
 
                 try {
-                    result = listSamples(request);
+                    result = executeListSamples(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1229,7 +1425,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1245,14 +1441,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListSuitesResult> listSuitesAsync(final ListSuitesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListSuitesRequest, ListSuitesResult> asyncHandler) {
+        final ListSuitesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListSuitesResult>() {
             @Override
             public ListSuitesResult call() throws Exception {
-                ListSuitesResult result;
+                ListSuitesResult result = null;
 
                 try {
-                    result = listSuites(request);
+                    result = executeListSuites(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1261,7 +1458,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1277,14 +1474,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListTestsResult> listTestsAsync(final ListTestsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListTestsRequest, ListTestsResult> asyncHandler) {
+        final ListTestsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListTestsResult>() {
             @Override
             public ListTestsResult call() throws Exception {
-                ListTestsResult result;
+                ListTestsResult result = null;
 
                 try {
-                    result = listTests(request);
+                    result = executeListTests(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1293,7 +1491,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1309,14 +1507,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListUniqueProblemsResult> listUniqueProblemsAsync(final ListUniqueProblemsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListUniqueProblemsRequest, ListUniqueProblemsResult> asyncHandler) {
+        final ListUniqueProblemsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListUniqueProblemsResult>() {
             @Override
             public ListUniqueProblemsResult call() throws Exception {
-                ListUniqueProblemsResult result;
+                ListUniqueProblemsResult result = null;
 
                 try {
-                    result = listUniqueProblems(request);
+                    result = executeListUniqueProblems(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1325,7 +1524,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1341,14 +1540,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ListUploadsResult> listUploadsAsync(final ListUploadsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListUploadsRequest, ListUploadsResult> asyncHandler) {
+        final ListUploadsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListUploadsResult>() {
             @Override
             public ListUploadsResult call() throws Exception {
-                ListUploadsResult result;
+                ListUploadsResult result = null;
 
                 try {
-                    result = listUploads(request);
+                    result = executeListUploads(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1357,7 +1557,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1373,14 +1573,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<PurchaseOfferingResult> purchaseOfferingAsync(final PurchaseOfferingRequest request,
             final com.amazonaws.handlers.AsyncHandler<PurchaseOfferingRequest, PurchaseOfferingResult> asyncHandler) {
+        final PurchaseOfferingRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PurchaseOfferingResult>() {
             @Override
             public PurchaseOfferingResult call() throws Exception {
-                PurchaseOfferingResult result;
+                PurchaseOfferingResult result = null;
 
                 try {
-                    result = purchaseOffering(request);
+                    result = executePurchaseOffering(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1389,7 +1590,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1405,14 +1606,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<RenewOfferingResult> renewOfferingAsync(final RenewOfferingRequest request,
             final com.amazonaws.handlers.AsyncHandler<RenewOfferingRequest, RenewOfferingResult> asyncHandler) {
+        final RenewOfferingRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RenewOfferingResult>() {
             @Override
             public RenewOfferingResult call() throws Exception {
-                RenewOfferingResult result;
+                RenewOfferingResult result = null;
 
                 try {
-                    result = renewOffering(request);
+                    result = executeRenewOffering(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1421,7 +1623,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1437,14 +1639,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<ScheduleRunResult> scheduleRunAsync(final ScheduleRunRequest request,
             final com.amazonaws.handlers.AsyncHandler<ScheduleRunRequest, ScheduleRunResult> asyncHandler) {
+        final ScheduleRunRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ScheduleRunResult>() {
             @Override
             public ScheduleRunResult call() throws Exception {
-                ScheduleRunResult result;
+                ScheduleRunResult result = null;
 
                 try {
-                    result = scheduleRun(request);
+                    result = executeScheduleRun(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1453,7 +1656,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1469,14 +1672,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<StopRemoteAccessSessionResult> stopRemoteAccessSessionAsync(final StopRemoteAccessSessionRequest request,
             final com.amazonaws.handlers.AsyncHandler<StopRemoteAccessSessionRequest, StopRemoteAccessSessionResult> asyncHandler) {
+        final StopRemoteAccessSessionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<StopRemoteAccessSessionResult>() {
             @Override
             public StopRemoteAccessSessionResult call() throws Exception {
-                StopRemoteAccessSessionResult result;
+                StopRemoteAccessSessionResult result = null;
 
                 try {
-                    result = stopRemoteAccessSession(request);
+                    result = executeStopRemoteAccessSession(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1485,7 +1689,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1501,14 +1705,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<StopRunResult> stopRunAsync(final StopRunRequest request,
             final com.amazonaws.handlers.AsyncHandler<StopRunRequest, StopRunResult> asyncHandler) {
+        final StopRunRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<StopRunResult>() {
             @Override
             public StopRunResult call() throws Exception {
-                StopRunResult result;
+                StopRunResult result = null;
 
                 try {
-                    result = stopRun(request);
+                    result = executeStopRun(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1517,7 +1722,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1533,14 +1738,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<UpdateDevicePoolResult> updateDevicePoolAsync(final UpdateDevicePoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateDevicePoolRequest, UpdateDevicePoolResult> asyncHandler) {
+        final UpdateDevicePoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateDevicePoolResult>() {
             @Override
             public UpdateDevicePoolResult call() throws Exception {
-                UpdateDevicePoolResult result;
+                UpdateDevicePoolResult result = null;
 
                 try {
-                    result = updateDevicePool(request);
+                    result = executeUpdateDevicePool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1549,7 +1755,40 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNetworkProfileResult> updateNetworkProfileAsync(UpdateNetworkProfileRequest request) {
+
+        return updateNetworkProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNetworkProfileResult> updateNetworkProfileAsync(final UpdateNetworkProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateNetworkProfileRequest, UpdateNetworkProfileResult> asyncHandler) {
+        final UpdateNetworkProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateNetworkProfileResult>() {
+            @Override
+            public UpdateNetworkProfileResult call() throws Exception {
+                UpdateNetworkProfileResult result = null;
+
+                try {
+                    result = executeUpdateNetworkProfile(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1565,14 +1804,15 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     @Override
     public java.util.concurrent.Future<UpdateProjectResult> updateProjectAsync(final UpdateProjectRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateProjectRequest, UpdateProjectResult> asyncHandler) {
+        final UpdateProjectRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateProjectResult>() {
             @Override
             public UpdateProjectResult call() throws Exception {
-                UpdateProjectResult result;
+                UpdateProjectResult result = null;
 
                 try {
-                    result = updateProject(request);
+                    result = executeUpdateProject(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1581,7 +1821,7 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

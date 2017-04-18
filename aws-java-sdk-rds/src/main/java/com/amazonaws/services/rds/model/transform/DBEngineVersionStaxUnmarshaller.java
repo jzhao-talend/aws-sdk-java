@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.rds.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.rds.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * DBEngineVersion StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBEngineVersionStaxUnmarshaller implements Unmarshaller<DBEngineVersion, StaxUnmarshallerContext> {
 
     public DBEngineVersion unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -75,13 +75,28 @@ public class DBEngineVersionStaxUnmarshaller implements Unmarshaller<DBEngineVer
                     continue;
                 }
 
+                if (context.testExpression("SupportedCharacterSets", targetDepth)) {
+                    dBEngineVersion.withSupportedCharacterSets(new ArrayList<CharacterSet>());
+                    continue;
+                }
+
                 if (context.testExpression("SupportedCharacterSets/CharacterSet", targetDepth)) {
                     dBEngineVersion.withSupportedCharacterSets(CharacterSetStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("ValidUpgradeTarget", targetDepth)) {
+                    dBEngineVersion.withValidUpgradeTarget(new ArrayList<UpgradeTarget>());
+                    continue;
+                }
+
                 if (context.testExpression("ValidUpgradeTarget/UpgradeTarget", targetDepth)) {
                     dBEngineVersion.withValidUpgradeTarget(UpgradeTargetStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SupportedTimezones", targetDepth)) {
+                    dBEngineVersion.withSupportedTimezones(new ArrayList<Timezone>());
                     continue;
                 }
 

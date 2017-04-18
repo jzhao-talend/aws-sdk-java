@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * CreateConfigurationTemplateRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateConfigurationTemplateRequestMarshaller implements
         Marshaller<Request<CreateConfigurationTemplateRequest>, CreateConfigurationTemplateRequest> {
 
@@ -54,6 +52,10 @@ public class CreateConfigurationTemplateRequestMarshaller implements
 
         if (createConfigurationTemplateRequest.getSolutionStackName() != null) {
             request.addParameter("SolutionStackName", StringUtils.fromString(createConfigurationTemplateRequest.getSolutionStackName()));
+        }
+
+        if (createConfigurationTemplateRequest.getPlatformArn() != null) {
+            request.addParameter("PlatformArn", StringUtils.fromString(createConfigurationTemplateRequest.getPlatformArn()));
         }
 
         SourceConfiguration sourceConfiguration = createConfigurationTemplateRequest.getSourceConfiguration();

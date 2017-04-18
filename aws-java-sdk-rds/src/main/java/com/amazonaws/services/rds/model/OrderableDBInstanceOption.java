@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -21,7 +22,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>DescribeOrderableDBInstanceOptions</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OrderableDBInstanceOption" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OrderableDBInstanceOption implements Serializable, Cloneable {
 
     /**
@@ -694,29 +699,29 @@ public class OrderableDBInstanceOption implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getDBInstanceClass() != null)
-            sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+            sb.append("DBInstanceClass: ").append(getDBInstanceClass()).append(",");
         if (getLicenseModel() != null)
-            sb.append("LicenseModel: " + getLicenseModel() + ",");
+            sb.append("LicenseModel: ").append(getLicenseModel()).append(",");
         if (getAvailabilityZones() != null)
-            sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+            sb.append("AvailabilityZones: ").append(getAvailabilityZones()).append(",");
         if (getMultiAZCapable() != null)
-            sb.append("MultiAZCapable: " + getMultiAZCapable() + ",");
+            sb.append("MultiAZCapable: ").append(getMultiAZCapable()).append(",");
         if (getReadReplicaCapable() != null)
-            sb.append("ReadReplicaCapable: " + getReadReplicaCapable() + ",");
+            sb.append("ReadReplicaCapable: ").append(getReadReplicaCapable()).append(",");
         if (getVpc() != null)
-            sb.append("Vpc: " + getVpc() + ",");
+            sb.append("Vpc: ").append(getVpc()).append(",");
         if (getSupportsStorageEncryption() != null)
-            sb.append("SupportsStorageEncryption: " + getSupportsStorageEncryption() + ",");
+            sb.append("SupportsStorageEncryption: ").append(getSupportsStorageEncryption()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getSupportsIops() != null)
-            sb.append("SupportsIops: " + getSupportsIops() + ",");
+            sb.append("SupportsIops: ").append(getSupportsIops()).append(",");
         if (getSupportsEnhancedMonitoring() != null)
-            sb.append("SupportsEnhancedMonitoring: " + getSupportsEnhancedMonitoring());
+            sb.append("SupportsEnhancedMonitoring: ").append(getSupportsEnhancedMonitoring());
         sb.append("}");
         return sb.toString();
     }
@@ -810,4 +815,5 @@ public class OrderableDBInstanceOption implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

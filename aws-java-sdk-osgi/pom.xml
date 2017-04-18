@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.53-SNAPSHOT</version>
+    <version>1.11.120-SNAPSHOT</version>
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-osgi</artifactId>
@@ -15,6 +15,30 @@
 
   <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
   <dependencies>
+    <dependency>
+        <artifactId>aws-java-sdk-resourcegroupstaggingapi</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-pinpoint</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-xray</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-opsworkscm</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
     <dependency>
         <artifactId>aws-java-sdk-support</artifactId>
         <groupId>com.amazonaws</groupId>
@@ -221,6 +245,12 @@
     </dependency>
     <dependency>
         <artifactId>aws-java-sdk-cloudfront</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-clouddirectory</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
         <version>${awsjavasdk.version}</version>
@@ -436,7 +466,97 @@
         <version>${awsjavasdk.version}</version>
     </dependency>
     <dependency>
+        <artifactId>aws-java-sdk-rekognition</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-polly</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-lightsail</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-stepfunctions</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-health</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-costandusagereport</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-codebuild</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-appstream</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-shield</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-batch</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-lex</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-mechanicalturkrequester</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-organizations</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-workdocs</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
         <artifactId>aws-java-sdk-core</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>jmespath-java</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
         <version>${awsjavasdk.version}</version>
@@ -591,6 +711,10 @@
                           </taglets>
                           <groups>
                               <group>
+                                  <title>AWS Resource Groups Tagging API</title>
+                                  <packages>com.amazonaws.services.resourcegroupstaggingapi*</packages>
+                              </group>
+                              <group>
                                   <title>Amazon S3</title>
                                   <packages>com.amazonaws.services.s3*</packages>
                               </group>
@@ -661,6 +785,10 @@
                               <group>
                                   <title>Amazon CloudFront</title>
                                   <packages>com.amazonaws.services.cloudfront*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon CloudDirectory</title>
+                                  <packages>com.amazonaws.services.clouddirectory*</packages>
                               </group>
                               <group>
                                   <title>Amazon Cognito</title>
@@ -859,6 +987,74 @@
                                   <packages>com.amazonaws.services.servermigration*</packages>
                               </group>
                               <group>
+                                  <title>Amazon Rekognition</title>
+                                  <packages>com.amazonaws.services.rekognition*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Polly</title>
+                                  <packages>com.amazonaws.services.polly*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Lightsail</title>
+                                  <packages>com.amazonaws.services.lightsail*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon AppStream</title>
+                                  <packages>com.amazonaws.services.appstream*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS X-Ray</title>
+                                  <packages>com.amazonaws.services.xray*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS OpsWorks for Chef Automate</title>
+                                  <packages>com.amazonaws.services.opsworkscm*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Pinpoint</title>
+                                  <packages>com.amazonaws.services.pinpoint*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Step Functions</title>
+                                  <packages>com.amazonaws.services.stepfunctions*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Shield</title>
+                                  <packages>com.amazonaws.services.shield*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Health APIs and Notifications</title>
+                                  <packages>com.amazonaws.services.health*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Cost and Usage Report</title>
+                                  <packages>com.amazonaws.services.costandusagereport*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Code Build</title>
+                                  <packages>com.amazonaws.services.codebuild*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Batch</title>
+                                  <packages>com.amazonaws.services.batch*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Lex</title>
+                                  <packages>com.amazonaws.services.lex*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Mechanical Turk Requester</title>
+                                  <packages>com.amazonaws.services.mechanicalturkrequester*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Organizations</title>
+                                  <packages>com.amazonaws.services.organizations*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon WorkDocs</title>
+                                  <packages>com.amazonaws.services.workdocs*</packages>
+                              </group>
+                              <group>
                                   <title>Common</title>
                                   <packages>com.amazonaws*</packages>
                               </group>
@@ -905,9 +1101,7 @@
                               <div id="feedback-section">
                                   <h3>Did this page help you?</h3>
                                   <div id="feedback-link-sectioin">
-                                      <a id="feedback_yes" target="_blank" style="display:inline;">Yes</a>&nbsp;&nbsp;
-                                      <a id="feedback_no" target="_blank" style="display:inline;">No</a>&nbsp;&nbsp;
-                                      <a id="go_cti" target="_blank" style="display:inline;">Tell us about it...</a>
+                                      <a id="go_cti" target="_blank" style="display:inline;">Submit feedback...</a>
                                   </div>
 
                               </div>
@@ -917,16 +1111,13 @@
                                   var javadoc_root_name = "/javadoc/";
                                   var javadoc_path = location.href.substring(0, location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
                                   var file_path = location.href.substring(location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
+                                  var sdk_name = encodeURI("AWS SDK for Java");
+                                  var encoded_path = encodeURI(location.href);
 
-                                  var feedback_yes_url = javadoc_path + "javadoc-resources/feedbackyes.html?topic_id=";
-                                  var feedback_no_url = javadoc_path + "javadoc-resources/feedbackno.html?topic_id=";
-                                  var feedback_tellmore_url = "https://aws-portal.amazon.com/gp/aws/html-forms-controller/documentation/aws_doc_feedback_04?service_name=Java-Ref&file_name=";
+                                  var feedback_tellmore_url = "https://docs-feedback.aws.amazon.com/feedback.jsp?hidden_service_name=" + sdk_name + "&topic_url=" + encoded_path;
 
                                   if(file_path != "overview-frame.html") {
-                                  var file_name = file_path.replace(/[/.]/g, '_');
-                                  document.getElementById("feedback_yes").setAttribute("href", feedback_yes_url + file_name);
-                                  document.getElementById("feedback_no").setAttribute("href", feedback_no_url + file_name);
-                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url + file_name);
+                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url);
                                   } else {
                                   document.getElementById("feedback-section").outerHTML = "AWS SDK for Java";
                                   document.getElementById("divsearch").outerHTML = "";

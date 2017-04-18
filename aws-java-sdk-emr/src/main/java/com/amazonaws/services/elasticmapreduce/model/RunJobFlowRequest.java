@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to the <a>RunJobFlow</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RunJobFlow" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -64,10 +70,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * the defaults shown above.
      * </p>
      * <p>
-     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      * "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
      * </p>
+     * <note>
+     * <p>
+     * Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather
+     * than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer
+     * release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).
+     * </p>
+     * </note>
      */
     private String amiVersion;
     /**
@@ -84,19 +97,19 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private String releaseLabel;
     /**
      * <p>
-     * A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     * A specification of the number and type of Amazon EC2 instances.
      * </p>
      */
     private JobFlowInstancesConfig instances;
     /**
      * <p>
-     * A list of steps to be executed by the job flow.
+     * A list of steps to run.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<StepConfig> steps;
     /**
      * <p>
-     * A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<BootstrapActionConfig> bootstrapActions;
@@ -107,7 +120,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * </note>
      * <p>
-     * A list of strings that indicates third-party software to use with the job flow. For more information, go to <a
+     * A list of strings that indicates third-party software to use. For more information, see <a
      * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third
      * Party Applications with Amazon EMR</a>. Currently supported values are:
      * </p>
@@ -134,9 +147,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
-     * arguments. For more information, see <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the
-     * MapR Distribution for Hadoop</a>. Currently supported values are:
+     * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     * href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR
+     * Developer Guide</a>. Supported values are:
      * </p>
      * <ul>
      * <li>
@@ -208,10 +221,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private com.amazonaws.internal.SdkInternalList<Configuration> configurations;
     /**
      * <p>
-     * Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value
-     * is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
-     * permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job
-     * flow can view and manage it.
+     * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
+     * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
+     * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it.
      * </p>
      */
     private Boolean visibleToAllUsers;
@@ -241,6 +254,28 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      */
     private String securityConfiguration;
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     */
+    private String autoScalingRole;
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     */
+    private String scaleDownBehavior;
 
     /**
      * Default constructor for RunJobFlowRequest object. Callers should use the setter or fluent setter (with...)
@@ -256,7 +291,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * @param name
      *        The name of the job flow.
      * @param instances
-     *        A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     *        A specification of the number and type of Amazon EC2 instances.
      */
     public RunJobFlowRequest(String name, JobFlowInstancesConfig instances) {
         setName(name);
@@ -412,10 +447,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * the defaults shown above.
      * </p>
      * <p>
-     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      * "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
      * </p>
+     * <note>
+     * <p>
+     * Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather
+     * than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer
+     * release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).
+     * </p>
+     * </note>
      * 
      * @param amiVersion
      *        <p>
@@ -439,9 +481,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        of Hadoop from the defaults shown above.
      *        </p>
      *        <p>
-     *        For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     *        For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      *        "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     *        >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     *        >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version
+     *        rather than specify a numerical value. Some regions no longer support this deprecated option as they only
+     *        have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR
+     *        4.x or later).
+     *        </p>
      */
 
     public void setAmiVersion(String amiVersion) {
@@ -471,10 +521,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * the defaults shown above.
      * </p>
      * <p>
-     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      * "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
      * </p>
+     * <note>
+     * <p>
+     * Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather
+     * than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer
+     * release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).
+     * </p>
+     * </note>
      * 
      * @return <p>
      *         For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.
@@ -497,10 +554,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         of Hadoop from the defaults shown above.
      *         </p>
      *         <p>
-     *         For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     *         For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      *         "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     *         >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's
-     *         Guide.</i>
+     *         >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI
+     *         version rather than specify a numerical value. Some regions no longer support this deprecated option as
+     *         they only have a newer release label version of EMR, which requires you to specify an EMR release label
+     *         release (EMR 4.x or later).
+     *         </p>
      */
 
     public String getAmiVersion() {
@@ -530,10 +594,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * the defaults shown above.
      * </p>
      * <p>
-     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     * For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      * "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     * >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
      * </p>
+     * <note>
+     * <p>
+     * Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather
+     * than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer
+     * release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).
+     * </p>
+     * </note>
      * 
      * @param amiVersion
      *        <p>
@@ -557,9 +628,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        of Hadoop from the defaults shown above.
      *        </p>
      *        <p>
-     *        For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href=
+     *        For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href=
      *        "http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported"
-     *        >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     *        >AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i>
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version
+     *        rather than specify a numerical value. Some regions no longer support this deprecated option as they only
+     *        have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR
+     *        4.x or later).
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -646,11 +725,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     * A specification of the number and type of Amazon EC2 instances.
      * </p>
      * 
      * @param instances
-     *        A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     *        A specification of the number and type of Amazon EC2 instances.
      */
 
     public void setInstances(JobFlowInstancesConfig instances) {
@@ -659,10 +738,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     * A specification of the number and type of Amazon EC2 instances.
      * </p>
      * 
-     * @return A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     * @return A specification of the number and type of Amazon EC2 instances.
      */
 
     public JobFlowInstancesConfig getInstances() {
@@ -671,11 +750,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     * A specification of the number and type of Amazon EC2 instances.
      * </p>
      * 
      * @param instances
-     *        A specification of the number and type of Amazon EC2 instances on which to run the job flow.
+     *        A specification of the number and type of Amazon EC2 instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -686,10 +765,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of steps to be executed by the job flow.
+     * A list of steps to run.
      * </p>
      * 
-     * @return A list of steps to be executed by the job flow.
+     * @return A list of steps to run.
      */
 
     public java.util.List<StepConfig> getSteps() {
@@ -701,11 +780,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of steps to be executed by the job flow.
+     * A list of steps to run.
      * </p>
      * 
      * @param steps
-     *        A list of steps to be executed by the job flow.
+     *        A list of steps to run.
      */
 
     public void setSteps(java.util.Collection<StepConfig> steps) {
@@ -719,7 +798,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of steps to be executed by the job flow.
+     * A list of steps to run.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -728,7 +807,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @param steps
-     *        A list of steps to be executed by the job flow.
+     *        A list of steps to run.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -744,11 +823,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of steps to be executed by the job flow.
+     * A list of steps to run.
      * </p>
      * 
      * @param steps
-     *        A list of steps to be executed by the job flow.
+     *        A list of steps to run.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -759,10 +838,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * </p>
      * 
-     * @return A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * @return A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      */
 
     public java.util.List<BootstrapActionConfig> getBootstrapActions() {
@@ -774,11 +853,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * </p>
      * 
      * @param bootstrapActions
-     *        A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     *        A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      */
 
     public void setBootstrapActions(java.util.Collection<BootstrapActionConfig> bootstrapActions) {
@@ -792,7 +871,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -801,7 +880,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @param bootstrapActions
-     *        A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     *        A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -817,11 +896,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     * A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * </p>
      * 
      * @param bootstrapActions
-     *        A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.
+     *        A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -837,7 +916,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * </note>
      * <p>
-     * A list of strings that indicates third-party software to use with the job flow. For more information, go to <a
+     * A list of strings that indicates third-party software to use. For more information, see <a
      * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third
      * Party Applications with Amazon EMR</a>. Currently supported values are:
      * </p>
@@ -859,8 +938,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         </p>
      *         </note>
      *         <p>
-     *         A list of strings that indicates third-party software to use with the job flow. For more information, go
-     *         to <a
+     *         A list of strings that indicates third-party software to use. For more information, see <a
      *         href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use
      *         Third Party Applications with Amazon EMR</a>. Currently supported values are:
      *         </p>
@@ -891,7 +969,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * </note>
      * <p>
-     * A list of strings that indicates third-party software to use with the job flow. For more information, go to <a
+     * A list of strings that indicates third-party software to use. For more information, see <a
      * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third
      * Party Applications with Amazon EMR</a>. Currently supported values are:
      * </p>
@@ -914,8 +992,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </p>
      *        </note>
      *        <p>
-     *        A list of strings that indicates third-party software to use with the job flow. For more information, go
-     *        to <a
+     *        A list of strings that indicates third-party software to use. For more information, see <a
      *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use
      *        Third Party Applications with Amazon EMR</a>. Currently supported values are:
      *        </p>
@@ -948,7 +1025,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * </note>
      * <p>
-     * A list of strings that indicates third-party software to use with the job flow. For more information, go to <a
+     * A list of strings that indicates third-party software to use. For more information, see <a
      * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third
      * Party Applications with Amazon EMR</a>. Currently supported values are:
      * </p>
@@ -976,8 +1053,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </p>
      *        </note>
      *        <p>
-     *        A list of strings that indicates third-party software to use with the job flow. For more information, go
-     *        to <a
+     *        A list of strings that indicates third-party software to use. For more information, see <a
      *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use
      *        Third Party Applications with Amazon EMR</a>. Currently supported values are:
      *        </p>
@@ -1012,7 +1088,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * </note>
      * <p>
-     * A list of strings that indicates third-party software to use with the job flow. For more information, go to <a
+     * A list of strings that indicates third-party software to use. For more information, see <a
      * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third
      * Party Applications with Amazon EMR</a>. Currently supported values are:
      * </p>
@@ -1035,8 +1111,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </p>
      *        </note>
      *        <p>
-     *        A list of strings that indicates third-party software to use with the job flow. For more information, go
-     *        to <a
+     *        A list of strings that indicates third-party software to use. For more information, see <a
      *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use
      *        Third Party Applications with Amazon EMR</a>. Currently supported values are:
      *        </p>
@@ -1068,9 +1143,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
-     * arguments. For more information, see <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the
-     * MapR Distribution for Hadoop</a>. Currently supported values are:
+     * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     * href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR
+     * Developer Guide</a>. Supported values are:
      * </p>
      * <ul>
      * <li>
@@ -1123,9 +1198,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         <p>
      *         A list of strings that indicates third-party software to use with the job flow that accepts a user
      *         argument list. EMR accepts and forwards the argument list to the corresponding installation script as
-     *         bootstrap action arguments. For more information, see <a
-     *         href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow
-     *         on the MapR Distribution for Hadoop</a>. Currently supported values are:
+     *         bootstrap action arguments. For more information, see
+     *         "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     *         href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon
+     *         EMR Developer Guide</a>. Supported values are:
      *         </p>
      *         <ul>
      *         <li>
@@ -1187,9 +1263,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
-     * arguments. For more information, see <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the
-     * MapR Distribution for Hadoop</a>. Currently supported values are:
+     * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     * href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR
+     * Developer Guide</a>. Supported values are:
      * </p>
      * <ul>
      * <li>
@@ -1243,9 +1319,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <p>
      *        A list of strings that indicates third-party software to use with the job flow that accepts a user
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
-     *        bootstrap action arguments. For more information, see <a
-     *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow
-     *        on the MapR Distribution for Hadoop</a>. Currently supported values are:
+     *        bootstrap action arguments. For more information, see
+     *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     *        href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon
+     *        EMR Developer Guide</a>. Supported values are:
      *        </p>
      *        <ul>
      *        <li>
@@ -1309,9 +1386,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
-     * arguments. For more information, see <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the
-     * MapR Distribution for Hadoop</a>. Currently supported values are:
+     * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     * href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR
+     * Developer Guide</a>. Supported values are:
      * </p>
      * <ul>
      * <li>
@@ -1370,9 +1447,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <p>
      *        A list of strings that indicates third-party software to use with the job flow that accepts a user
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
-     *        bootstrap action arguments. For more information, see <a
-     *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow
-     *        on the MapR Distribution for Hadoop</a>. Currently supported values are:
+     *        bootstrap action arguments. For more information, see
+     *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     *        href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon
+     *        EMR Developer Guide</a>. Supported values are:
      *        </p>
      *        <ul>
      *        <li>
@@ -1438,9 +1516,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
-     * arguments. For more information, see <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the
-     * MapR Distribution for Hadoop</a>. Currently supported values are:
+     * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     * href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR
+     * Developer Guide</a>. Supported values are:
      * </p>
      * <ul>
      * <li>
@@ -1494,9 +1572,10 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <p>
      *        A list of strings that indicates third-party software to use with the job flow that accepts a user
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
-     *        bootstrap action arguments. For more information, see <a
-     *        href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow
-     *        on the MapR Distribution for Hadoop</a>. Currently supported values are:
+     *        bootstrap action arguments. For more information, see
+     *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
+     *        href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon
+     *        EMR Developer Guide</a>. Supported values are:
      *        </p>
      *        <ul>
      *        <li>
@@ -1784,17 +1863,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value
-     * is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
-     * permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job
-     * flow can view and manage it.
+     * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
+     * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
+     * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it.
      * </p>
      * 
      * @param visibleToAllUsers
-     *        Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this
+     *        Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *        value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper
-     *        policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that
-     *        created the job flow can view and manage it.
+     *        policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that
+     *        created the cluster can view and manage it.
      */
 
     public void setVisibleToAllUsers(Boolean visibleToAllUsers) {
@@ -1803,16 +1882,16 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value
-     * is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
-     * permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job
-     * flow can view and manage it.
+     * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
+     * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
+     * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it.
      * </p>
      * 
-     * @return Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this
+     * @return Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *         value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the
-     *         proper policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user
-     *         that created the job flow can view and manage it.
+     *         proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user
+     *         that created the cluster can view and manage it.
      */
 
     public Boolean getVisibleToAllUsers() {
@@ -1821,17 +1900,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value
-     * is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
-     * permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job
-     * flow can view and manage it.
+     * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
+     * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
+     * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it.
      * </p>
      * 
      * @param visibleToAllUsers
-     *        Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this
+     *        Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *        value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper
-     *        policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that
-     *        created the job flow can view and manage it.
+     *        policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that
+     *        created the cluster can view and manage it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1842,16 +1921,16 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value
-     * is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
-     * permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job
-     * flow can view and manage it.
+     * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
+     * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
+     * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it.
      * </p>
      * 
-     * @return Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this
+     * @return Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *         value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the
-     *         proper policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user
-     *         that created the job flow can view and manage it.
+     *         proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user
+     *         that created the cluster can view and manage it.
      */
 
     public Boolean isVisibleToAllUsers() {
@@ -2064,6 +2143,216 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     }
 
     /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @param autoScalingRole
+     *        An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *        The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *        instances in an instance group.
+     */
+
+    public void setAutoScalingRole(String autoScalingRole) {
+        this.autoScalingRole = autoScalingRole;
+    }
+
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @return An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *         The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *         instances in an instance group.
+     */
+
+    public String getAutoScalingRole() {
+        return this.autoScalingRole;
+    }
+
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @param autoScalingRole
+     *        An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *        The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *        instances in an instance group.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunJobFlowRequest withAutoScalingRole(String autoScalingRole) {
+        setAutoScalingRole(autoScalingRole);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity
+     *        occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR
+     *        terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance
+     *        was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for
+     *        clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *        blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *        instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *        instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code>
+     *        available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *        earlier than 5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public void setScaleDownBehavior(String scaleDownBehavior) {
+        this.scaleDownBehavior = scaleDownBehavior;
+    }
+
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @return Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity
+     *         occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR
+     *         terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance
+     *         was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for
+     *         clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *         blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *         instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *         instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code>
+     *         available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *         earlier than 5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public String getScaleDownBehavior() {
+        return this.scaleDownBehavior;
+    }
+
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity
+     *        occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR
+     *        terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance
+     *        was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for
+     *        clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *        blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *        instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *        instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code>
+     *        available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *        earlier than 5.1.0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ScaleDownBehavior
+     */
+
+    public RunJobFlowRequest withScaleDownBehavior(String scaleDownBehavior) {
+        setScaleDownBehavior(scaleDownBehavior);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity
+     *        occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR
+     *        terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance
+     *        was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for
+     *        clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *        blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *        instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *        instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code>
+     *        available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *        earlier than 5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public void setScaleDownBehavior(ScaleDownBehavior scaleDownBehavior) {
+        this.scaleDownBehavior = scaleDownBehavior.toString();
+    }
+
+    /**
+     * <p>
+     * Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     * instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at
+     * the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option
+     * is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity
+     *        occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR
+     *        terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance
+     *        was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for
+     *        clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *        blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *        instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *        instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code>
+     *        available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *        earlier than 5.1.0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ScaleDownBehavior
+     */
+
+    public RunJobFlowRequest withScaleDownBehavior(ScaleDownBehavior scaleDownBehavior) {
+        setScaleDownBehavior(scaleDownBehavior);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -2075,39 +2364,43 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getLogUri() != null)
-            sb.append("LogUri: " + getLogUri() + ",");
+            sb.append("LogUri: ").append(getLogUri()).append(",");
         if (getAdditionalInfo() != null)
-            sb.append("AdditionalInfo: " + getAdditionalInfo() + ",");
+            sb.append("AdditionalInfo: ").append(getAdditionalInfo()).append(",");
         if (getAmiVersion() != null)
-            sb.append("AmiVersion: " + getAmiVersion() + ",");
+            sb.append("AmiVersion: ").append(getAmiVersion()).append(",");
         if (getReleaseLabel() != null)
-            sb.append("ReleaseLabel: " + getReleaseLabel() + ",");
+            sb.append("ReleaseLabel: ").append(getReleaseLabel()).append(",");
         if (getInstances() != null)
-            sb.append("Instances: " + getInstances() + ",");
+            sb.append("Instances: ").append(getInstances()).append(",");
         if (getSteps() != null)
-            sb.append("Steps: " + getSteps() + ",");
+            sb.append("Steps: ").append(getSteps()).append(",");
         if (getBootstrapActions() != null)
-            sb.append("BootstrapActions: " + getBootstrapActions() + ",");
+            sb.append("BootstrapActions: ").append(getBootstrapActions()).append(",");
         if (getSupportedProducts() != null)
-            sb.append("SupportedProducts: " + getSupportedProducts() + ",");
+            sb.append("SupportedProducts: ").append(getSupportedProducts()).append(",");
         if (getNewSupportedProducts() != null)
-            sb.append("NewSupportedProducts: " + getNewSupportedProducts() + ",");
+            sb.append("NewSupportedProducts: ").append(getNewSupportedProducts()).append(",");
         if (getApplications() != null)
-            sb.append("Applications: " + getApplications() + ",");
+            sb.append("Applications: ").append(getApplications()).append(",");
         if (getConfigurations() != null)
-            sb.append("Configurations: " + getConfigurations() + ",");
+            sb.append("Configurations: ").append(getConfigurations()).append(",");
         if (getVisibleToAllUsers() != null)
-            sb.append("VisibleToAllUsers: " + getVisibleToAllUsers() + ",");
+            sb.append("VisibleToAllUsers: ").append(getVisibleToAllUsers()).append(",");
         if (getJobFlowRole() != null)
-            sb.append("JobFlowRole: " + getJobFlowRole() + ",");
+            sb.append("JobFlowRole: ").append(getJobFlowRole()).append(",");
         if (getServiceRole() != null)
-            sb.append("ServiceRole: " + getServiceRole() + ",");
+            sb.append("ServiceRole: ").append(getServiceRole()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getSecurityConfiguration() != null)
-            sb.append("SecurityConfiguration: " + getSecurityConfiguration());
+            sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
+        if (getAutoScalingRole() != null)
+            sb.append("AutoScalingRole: ").append(getAutoScalingRole()).append(",");
+        if (getScaleDownBehavior() != null)
+            sb.append("ScaleDownBehavior: ").append(getScaleDownBehavior());
         sb.append("}");
         return sb.toString();
     }
@@ -2190,6 +2483,14 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
             return false;
         if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
             return false;
+        if (other.getAutoScalingRole() == null ^ this.getAutoScalingRole() == null)
+            return false;
+        if (other.getAutoScalingRole() != null && other.getAutoScalingRole().equals(this.getAutoScalingRole()) == false)
+            return false;
+        if (other.getScaleDownBehavior() == null ^ this.getScaleDownBehavior() == null)
+            return false;
+        if (other.getScaleDownBehavior() != null && other.getScaleDownBehavior().equals(this.getScaleDownBehavior()) == false)
+            return false;
         return true;
     }
 
@@ -2215,6 +2516,8 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
         hashCode = prime * hashCode + ((getServiceRole() == null) ? 0 : getServiceRole().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingRole() == null) ? 0 : getAutoScalingRole().hashCode());
+        hashCode = prime * hashCode + ((getScaleDownBehavior() == null) ? 0 : getScaleDownBehavior().hashCode());
         return hashCode;
     }
 
@@ -2222,4 +2525,5 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public RunJobFlowRequest clone() {
         return (RunJobFlowRequest) super.clone();
     }
+
 }

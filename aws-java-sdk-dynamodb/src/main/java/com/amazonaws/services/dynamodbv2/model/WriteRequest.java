@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,25 +13,32 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents an operation to perform - either <i>DeleteItem</i> or <i>PutItem</i>. You can only request one of these
- * operations, not both, in a single <i>WriteRequest</i>. If you do need to perform both of these operations, you will
- * need to provide two separate <i>WriteRequest</i> objects.
+ * Represents an operation to perform - either <code>DeleteItem</code> or <code>PutItem</code>. You can only request one
+ * of these operations, not both, in a single <code>WriteRequest</code>. If you do need to perform both of these
+ * operations, you will need to provide two separate <code>WriteRequest</code> objects.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/WriteRequest" target="_top">AWS API
+ *      Documentation</a>
  */
-public class WriteRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WriteRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A request to perform a <i>PutItem</i> operation.
+     * A request to perform a <code>PutItem</code> operation.
      * </p>
      */
     private PutRequest putRequest;
     /**
      * <p>
-     * A request to perform a <i>DeleteItem</i> operation.
+     * A request to perform a <code>DeleteItem</code> operation.
      * </p>
      */
     private DeleteRequest deleteRequest;
@@ -48,7 +55,7 @@ public class WriteRequest implements Serializable, Cloneable {
      * initialize any additional object members.
      * 
      * @param putRequest
-     *        A request to perform a <i>PutItem</i> operation.
+     *        A request to perform a <code>PutItem</code> operation.
      */
     public WriteRequest(PutRequest putRequest) {
         setPutRequest(putRequest);
@@ -59,7 +66,7 @@ public class WriteRequest implements Serializable, Cloneable {
      * initialize any additional object members.
      * 
      * @param deleteRequest
-     *        A request to perform a <i>DeleteItem</i> operation.
+     *        A request to perform a <code>DeleteItem</code> operation.
      */
     public WriteRequest(DeleteRequest deleteRequest) {
         setDeleteRequest(deleteRequest);
@@ -67,11 +74,11 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>PutItem</i> operation.
+     * A request to perform a <code>PutItem</code> operation.
      * </p>
      * 
      * @param putRequest
-     *        A request to perform a <i>PutItem</i> operation.
+     *        A request to perform a <code>PutItem</code> operation.
      */
 
     public void setPutRequest(PutRequest putRequest) {
@@ -80,10 +87,10 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>PutItem</i> operation.
+     * A request to perform a <code>PutItem</code> operation.
      * </p>
      * 
-     * @return A request to perform a <i>PutItem</i> operation.
+     * @return A request to perform a <code>PutItem</code> operation.
      */
 
     public PutRequest getPutRequest() {
@@ -92,11 +99,11 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>PutItem</i> operation.
+     * A request to perform a <code>PutItem</code> operation.
      * </p>
      * 
      * @param putRequest
-     *        A request to perform a <i>PutItem</i> operation.
+     *        A request to perform a <code>PutItem</code> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -107,11 +114,11 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>DeleteItem</i> operation.
+     * A request to perform a <code>DeleteItem</code> operation.
      * </p>
      * 
      * @param deleteRequest
-     *        A request to perform a <i>DeleteItem</i> operation.
+     *        A request to perform a <code>DeleteItem</code> operation.
      */
 
     public void setDeleteRequest(DeleteRequest deleteRequest) {
@@ -120,10 +127,10 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>DeleteItem</i> operation.
+     * A request to perform a <code>DeleteItem</code> operation.
      * </p>
      * 
-     * @return A request to perform a <i>DeleteItem</i> operation.
+     * @return A request to perform a <code>DeleteItem</code> operation.
      */
 
     public DeleteRequest getDeleteRequest() {
@@ -132,11 +139,11 @@ public class WriteRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A request to perform a <i>DeleteItem</i> operation.
+     * A request to perform a <code>DeleteItem</code> operation.
      * </p>
      * 
      * @param deleteRequest
-     *        A request to perform a <i>DeleteItem</i> operation.
+     *        A request to perform a <code>DeleteItem</code> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -157,9 +164,9 @@ public class WriteRequest implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPutRequest() != null)
-            sb.append("PutRequest: " + getPutRequest() + ",");
+            sb.append("PutRequest: ").append(getPutRequest()).append(",");
         if (getDeleteRequest() != null)
-            sb.append("DeleteRequest: " + getDeleteRequest());
+            sb.append("DeleteRequest: ").append(getDeleteRequest());
         sb.append("}");
         return sb.toString();
     }
@@ -202,5 +209,11 @@ public class WriteRequest implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.WriteRequestMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

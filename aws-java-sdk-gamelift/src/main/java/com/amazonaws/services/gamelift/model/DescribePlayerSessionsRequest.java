@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,36 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribePlayerSessions" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve player sessions for.
      * </p>
      */
     private String gameSessionId;
     /**
      * <p>
-     * Unique identifier for a player.
+     * Unique identifier for a player to retrieve player sessions for.
      * </p>
      */
     private String playerId;
     /**
      * <p>
-     * Unique identifier for a player session.
+     * Unique identifier for a player session to retrieve.
      * </p>
      */
     private String playerSessionId;
@@ -85,26 +88,20 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
     private Integer limit;
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. If a player session ID is
-     * specified, this parameter is ignored.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. If a player session
+     * ID is specified, this parameter is ignored.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve player sessions for.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to retrieve player sessions for.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -113,16 +110,10 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve player sessions for.
      * </p>
      * 
-     * @return Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *         &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created)
-     *         an auto-generated string.
+     * @return Unique identifier for the game session to retrieve player sessions for.
      */
 
     public String getGameSessionId() {
@@ -131,17 +122,11 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve player sessions for.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to get player sessions for.Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to retrieve player sessions for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -152,11 +137,11 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player.
+     * Unique identifier for a player to retrieve player sessions for.
      * </p>
      * 
      * @param playerId
-     *        Unique identifier for a player.
+     *        Unique identifier for a player to retrieve player sessions for.
      */
 
     public void setPlayerId(String playerId) {
@@ -165,10 +150,10 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player.
+     * Unique identifier for a player to retrieve player sessions for.
      * </p>
      * 
-     * @return Unique identifier for a player.
+     * @return Unique identifier for a player to retrieve player sessions for.
      */
 
     public String getPlayerId() {
@@ -177,11 +162,11 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player.
+     * Unique identifier for a player to retrieve player sessions for.
      * </p>
      * 
      * @param playerId
-     *        Unique identifier for a player.
+     *        Unique identifier for a player to retrieve player sessions for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -192,11 +177,11 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player session.
+     * Unique identifier for a player session to retrieve.
      * </p>
      * 
      * @param playerSessionId
-     *        Unique identifier for a player session.
+     *        Unique identifier for a player session to retrieve.
      */
 
     public void setPlayerSessionId(String playerSessionId) {
@@ -205,10 +190,10 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player session.
+     * Unique identifier for a player session to retrieve.
      * </p>
      * 
-     * @return Unique identifier for a player session.
+     * @return Unique identifier for a player session to retrieve.
      */
 
     public String getPlayerSessionId() {
@@ -217,11 +202,11 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Unique identifier for a player session.
+     * Unique identifier for a player session to retrieve.
      * </p>
      * 
      * @param playerSessionId
-     *        Unique identifier for a player session.
+     *        Unique identifier for a player session to retrieve.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -477,15 +462,15 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. If a player session ID is
-     * specified, this parameter is ignored.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. If a player session
+     * ID is specified, this parameter is ignored.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value. If a player
-     *        session ID is specified, this parameter is ignored.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value. If a
+     *        player session ID is specified, this parameter is ignored.
      */
 
     public void setNextToken(String nextToken) {
@@ -494,14 +479,14 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. If a player session ID is
-     * specified, this parameter is ignored.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. If a player session
+     * ID is specified, this parameter is ignored.
      * </p>
      * 
-     * @return Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *         previous call to this action. To specify the start of the result set, do not specify a value. If a player
-     *         session ID is specified, this parameter is ignored.
+     * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
+     *         with a previous call to this action. To specify the start of the result set, do not specify a value. If a
+     *         player session ID is specified, this parameter is ignored.
      */
 
     public String getNextToken() {
@@ -510,15 +495,15 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. If a player session ID is
-     * specified, this parameter is ignored.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. If a player session
+     * ID is specified, this parameter is ignored.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value. If a player
-     *        session ID is specified, this parameter is ignored.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value. If a
+     *        player session ID is specified, this parameter is ignored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -539,17 +524,17 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId() + ",");
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
         if (getPlayerId() != null)
-            sb.append("PlayerId: " + getPlayerId() + ",");
+            sb.append("PlayerId: ").append(getPlayerId()).append(",");
         if (getPlayerSessionId() != null)
-            sb.append("PlayerSessionId: " + getPlayerSessionId() + ",");
+            sb.append("PlayerSessionId: ").append(getPlayerSessionId()).append(",");
         if (getPlayerSessionStatusFilter() != null)
-            sb.append("PlayerSessionStatusFilter: " + getPlayerSessionStatusFilter() + ",");
+            sb.append("PlayerSessionStatusFilter: ").append(getPlayerSessionStatusFilter()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -609,4 +594,5 @@ public class DescribePlayerSessionsRequest extends com.amazonaws.AmazonWebServic
     public DescribePlayerSessionsRequest clone() {
         return (DescribePlayerSessionsRequest) super.clone();
     }
+
 }

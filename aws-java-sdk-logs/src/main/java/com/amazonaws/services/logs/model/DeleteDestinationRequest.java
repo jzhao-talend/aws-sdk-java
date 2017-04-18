@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteDestination" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteDestinationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of destination to delete.
+     * The name of the destination.
      * </p>
      */
     private String destinationName;
 
     /**
      * <p>
-     * The name of destination to delete.
+     * The name of the destination.
      * </p>
      * 
      * @param destinationName
-     *        The name of destination to delete.
+     *        The name of the destination.
      */
 
     public void setDestinationName(String destinationName) {
@@ -42,10 +47,10 @@ public class DeleteDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of destination to delete.
+     * The name of the destination.
      * </p>
      * 
-     * @return The name of destination to delete.
+     * @return The name of the destination.
      */
 
     public String getDestinationName() {
@@ -54,11 +59,11 @@ public class DeleteDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of destination to delete.
+     * The name of the destination.
      * </p>
      * 
      * @param destinationName
-     *        The name of destination to delete.
+     *        The name of the destination.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -79,7 +84,7 @@ public class DeleteDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDestinationName() != null)
-            sb.append("DestinationName: " + getDestinationName());
+            sb.append("DestinationName: ").append(getDestinationName());
         sb.append("}");
         return sb.toString();
     }
@@ -114,4 +119,5 @@ public class DeleteDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
     public DeleteDestinationRequest clone() {
         return (DeleteDestinationRequest) super.clone();
     }
+
 }

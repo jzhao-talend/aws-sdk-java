@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -34,10 +34,10 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
     private Integer maxResults;
     /**
      * <p>
-     * A token to get the next set of results. For example, if you specified 100 IDs for
-     * <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the
-     * token in the query to get the next set of 10.
+     * A token to get the next set of results. For example, if you specify 100 IDs for
+     * <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token
+     * in the query to get the next set of 10.
      * </p>
      */
     private String nextToken;
@@ -154,17 +154,17 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A token to get the next set of results. For example, if you specified 100 IDs for
-     * <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the
-     * token in the query to get the next set of 10.
+     * A token to get the next set of results. For example, if you specify 100 IDs for
+     * <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token
+     * in the query to get the next set of 10.
      * </p>
      * 
      * @param nextToken
-     *        A token to get the next set of results. For example, if you specified 100 IDs for
-     *        <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     *        <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10.
-     *        Use the token in the query to get the next set of 10.
+     *        A token to get the next set of results. For example, if you specify 100 IDs for
+     *        <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     *        <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the
+     *        token in the query to get the next set of 10.
      */
 
     public void setNextToken(String nextToken) {
@@ -173,16 +173,16 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A token to get the next set of results. For example, if you specified 100 IDs for
-     * <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the
-     * token in the query to get the next set of 10.
+     * A token to get the next set of results. For example, if you specify 100 IDs for
+     * <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token
+     * in the query to get the next set of 10.
      * </p>
      * 
-     * @return A token to get the next set of results. For example, if you specified 100 IDs for
-     *         <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     *         <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10.
-     *         Use the token in the query to get the next set of 10.
+     * @return A token to get the next set of results. For example, if you specify 100 IDs for
+     *         <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     *         <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use
+     *         the token in the query to get the next set of 10.
      */
 
     public String getNextToken() {
@@ -191,17 +191,17 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A token to get the next set of results. For example, if you specified 100 IDs for
-     * <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the
-     * token in the query to get the next set of 10.
+     * A token to get the next set of results. For example, if you specify 100 IDs for
+     * <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     * <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token
+     * in the query to get the next set of 10.
      * </p>
      * 
      * @param nextToken
-     *        A token to get the next set of results. For example, if you specified 100 IDs for
-     *        <code>DescribeConfigurationsRequest$configurationIds</code> but set
-     *        <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10.
-     *        Use the token in the query to get the next set of 10.
+     *        A token to get the next set of results. For example, if you specify 100 IDs for
+     *        <code>DescribeExportConfigurationsRequest$exportIds</code> but set
+     *        <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the
+     *        token in the query to get the next set of 10.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -222,11 +222,11 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExportIds() != null)
-            sb.append("ExportIds: " + getExportIds() + ",");
+            sb.append("ExportIds: ").append(getExportIds()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -271,4 +271,5 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
     public DescribeExportConfigurationsRequest clone() {
         return (DescribeExportConfigurationsRequest) super.clone();
     }
+
 }

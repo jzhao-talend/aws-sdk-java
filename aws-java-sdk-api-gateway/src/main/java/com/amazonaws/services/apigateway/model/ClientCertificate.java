@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -24,7 +27,8 @@ import java.io.Serializable;
  * "http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use
  * Client-Side Certificate</a> </div>
  */
-public class ClientCertificate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ClientCertificate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -47,15 +51,13 @@ public class ClientCertificate implements Serializable, Cloneable {
     private String pemEncodedCertificate;
     /**
      * <p>
-     * The date when the client certificate was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate was created.
      * </p>
      */
     private java.util.Date createdDate;
     /**
      * <p>
-     * The date when the client certificate will expire, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate will expire.
      * </p>
      */
     private java.util.Date expirationDate;
@@ -188,13 +190,11 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the client certificate was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the client certificate was created.
      */
 
     public void setCreatedDate(java.util.Date createdDate) {
@@ -203,12 +203,10 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate was created.
      * </p>
      * 
-     * @return The date when the client certificate was created, in <a
-     *         href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the client certificate was created.
      */
 
     public java.util.Date getCreatedDate() {
@@ -217,13 +215,11 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the client certificate was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the client certificate was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -234,13 +230,11 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate will expire, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate will expire.
      * </p>
      * 
      * @param expirationDate
-     *        The date when the client certificate will expire, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the client certificate will expire.
      */
 
     public void setExpirationDate(java.util.Date expirationDate) {
@@ -249,12 +243,10 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate will expire, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate will expire.
      * </p>
      * 
-     * @return The date when the client certificate will expire, in <a
-     *         href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the client certificate will expire.
      */
 
     public java.util.Date getExpirationDate() {
@@ -263,13 +255,11 @@ public class ClientCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the client certificate will expire, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the client certificate will expire.
      * </p>
      * 
      * @param expirationDate
-     *        The date when the client certificate will expire, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the client certificate will expire.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -290,15 +280,15 @@ public class ClientCertificate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientCertificateId() != null)
-            sb.append("ClientCertificateId: " + getClientCertificateId() + ",");
+            sb.append("ClientCertificateId: ").append(getClientCertificateId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getPemEncodedCertificate() != null)
-            sb.append("PemEncodedCertificate: " + getPemEncodedCertificate() + ",");
+            sb.append("PemEncodedCertificate: ").append(getPemEncodedCertificate()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate() + ",");
+            sb.append("CreatedDate: ").append(getCreatedDate()).append(",");
         if (getExpirationDate() != null)
-            sb.append("ExpirationDate: " + getExpirationDate());
+            sb.append("ExpirationDate: ").append(getExpirationDate());
         sb.append("}");
         return sb.toString();
     }
@@ -356,5 +346,11 @@ public class ClientCertificate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.ClientCertificateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

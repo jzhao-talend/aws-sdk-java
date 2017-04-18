@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,25 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeEC2InstanceLimits" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
@@ -35,7 +41,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
@@ -43,7 +49,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      *        Leave this parameter blank to retrieve limits for all types.
      * @see EC2InstanceType
@@ -56,14 +62,14 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
      * 
      * @return Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *         computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *         capacity. GameLift supports the following EC2 instance types. See <a
+     *         capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *         href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      *         Leave this parameter blank to retrieve limits for all types.
      * @see EC2InstanceType
@@ -76,7 +82,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
@@ -84,7 +90,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      *        Leave this parameter blank to retrieve limits for all types.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -99,7 +105,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
@@ -107,7 +113,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      *        Leave this parameter blank to retrieve limits for all types.
      * @see EC2InstanceType
@@ -120,7 +126,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
      * </p>
@@ -128,7 +134,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      *        Leave this parameter blank to retrieve limits for all types.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -152,7 +158,7 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEC2InstanceType() != null)
-            sb.append("EC2InstanceType: " + getEC2InstanceType());
+            sb.append("EC2InstanceType: ").append(getEC2InstanceType());
         sb.append("}");
         return sb.toString();
     }
@@ -187,4 +193,5 @@ public class DescribeEC2InstanceLimitsRequest extends com.amazonaws.AmazonWebSer
     public DescribeEC2InstanceLimitsRequest clone() {
         return (DescribeEC2InstanceLimitsRequest) super.clone();
     }
+
 }

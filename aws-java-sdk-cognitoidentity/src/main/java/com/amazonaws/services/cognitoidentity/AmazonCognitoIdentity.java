@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cognitoidentity;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.cognitoidentity.model.*;
 
 /**
  * Interface for accessing Amazon Cognito Identity.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.cognitoidentity.AbstractAmazonCognitoIdentity} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Cognito</fullname>
  * <p>
@@ -55,6 +61,7 @@ import com.amazonaws.services.cognitoidentity.model.*;
  * Developer Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonCognitoIdentity {
 
     /**
@@ -86,7 +93,11 @@ public interface AmazonCognitoIdentity {
      *        The endpoint (ex: "cognito-identity.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://cognito-identity.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -107,7 +118,9 @@ public interface AmazonCognitoIdentity {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -115,13 +128,35 @@ public interface AmazonCognitoIdentity {
      * Creates a new identity pool. The identity pool is a store of user identity information that is specific to your
      * AWS account. The limit on identity pools is 60 per account. The keys for <code>SupportedLoginProviders</code> are
      * as follows:
+     * </p>
      * <ul>
-     * <li>Facebook: <code>graph.facebook.com</code></li>
-     * <li>Google: <code>accounts.google.com</code></li>
-     * <li>Amazon: <code>www.amazon.com</code></li>
-     * <li>Twitter: <code>api.twitter.com</code></li>
-     * <li>Digits: <code>www.digits.com</code></li>
+     * <li>
+     * <p>
+     * Facebook: <code>graph.facebook.com</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Google: <code>accounts.google.com</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Amazon: <code>www.amazon.com</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Twitter: <code>api.twitter.com</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Digits: <code>www.digits.com</code>
+     * </p>
+     * </li>
      * </ul>
+     * <p>
      * You must use AWS Developer credentials to call this API.
      * </p>
      * 
@@ -141,6 +176,8 @@ public interface AmazonCognitoIdentity {
      * @throws LimitExceededException
      *         Thrown when the total number of user pools has exceeded a preset limit.
      * @sample AmazonCognitoIdentity.CreateIdentityPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/CreateIdentityPool"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateIdentityPoolResult createIdentityPool(CreateIdentityPoolRequest createIdentityPoolRequest);
 
@@ -162,6 +199,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.DeleteIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DeleteIdentities"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteIdentitiesResult deleteIdentities(DeleteIdentitiesRequest deleteIdentitiesRequest);
 
@@ -187,6 +226,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.DeleteIdentityPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DeleteIdentityPool"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteIdentityPoolResult deleteIdentityPool(DeleteIdentityPoolRequest deleteIdentityPoolRequest);
 
@@ -213,6 +254,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.DescribeIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DescribeIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeIdentityResult describeIdentity(DescribeIdentityRequest describeIdentityRequest);
 
@@ -239,6 +282,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.DescribeIdentityPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DescribeIdentityPool"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeIdentityPoolResult describeIdentityPool(DescribeIdentityPoolRequest describeIdentityPoolRequest);
 
@@ -273,6 +318,8 @@ public interface AmazonCognitoIdentity {
      * @throws ExternalServiceException
      *         An exception thrown when a dependent service such as Facebook or Twitter is not responding
      * @sample AmazonCognitoIdentity.GetCredentialsForIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetCredentialsForIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     GetCredentialsForIdentityResult getCredentialsForIdentity(GetCredentialsForIdentityRequest getCredentialsForIdentityRequest);
 
@@ -304,6 +351,8 @@ public interface AmazonCognitoIdentity {
      * @throws ExternalServiceException
      *         An exception thrown when a dependent service such as Facebook or Twitter is not responding
      * @sample AmazonCognitoIdentity.GetId
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetId" target="_top">AWS API
+     *      Documentation</a>
      */
     GetIdResult getId(GetIdRequest getIdRequest);
 
@@ -331,6 +380,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.GetIdentityPoolRoles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetIdentityPoolRoles"
+     *      target="_top">AWS API Documentation</a>
      */
     GetIdentityPoolRolesResult getIdentityPoolRoles(GetIdentityPoolRolesRequest getIdentityPoolRolesRequest);
 
@@ -364,6 +415,8 @@ public interface AmazonCognitoIdentity {
      * @throws ExternalServiceException
      *         An exception thrown when a dependent service such as Facebook or Twitter is not responding
      * @sample AmazonCognitoIdentity.GetOpenIdToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdToken"
+     *      target="_top">AWS API Documentation</a>
      */
     GetOpenIdTokenResult getOpenIdToken(GetOpenIdTokenRequest getOpenIdTokenRequest);
 
@@ -403,6 +456,9 @@ public interface AmazonCognitoIdentity {
      * @throws DeveloperUserAlreadyRegisteredException
      *         The provided developer user identifier is already registered with Cognito under a different identity ID.
      * @sample AmazonCognitoIdentity.GetOpenIdTokenForDeveloperIdentity
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdTokenForDeveloperIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     GetOpenIdTokenForDeveloperIdentityResult getOpenIdTokenForDeveloperIdentity(
             GetOpenIdTokenForDeveloperIdentityRequest getOpenIdTokenForDeveloperIdentityRequest);
@@ -429,6 +485,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.ListIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentities"
+     *      target="_top">AWS API Documentation</a>
      */
     ListIdentitiesResult listIdentities(ListIdentitiesRequest listIdentitiesRequest);
 
@@ -452,6 +510,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.ListIdentityPools
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentityPools"
+     *      target="_top">AWS API Documentation</a>
      */
     ListIdentityPoolsResult listIdentityPools(ListIdentityPoolsRequest listIdentityPoolsRequest);
 
@@ -485,6 +545,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.LookupDeveloperIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/LookupDeveloperIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     LookupDeveloperIdentityResult lookupDeveloperIdentity(LookupDeveloperIdentityRequest lookupDeveloperIdentityRequest);
 
@@ -517,13 +579,15 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.MergeDeveloperIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/MergeDeveloperIdentities"
+     *      target="_top">AWS API Documentation</a>
      */
     MergeDeveloperIdentitiesResult mergeDeveloperIdentities(MergeDeveloperIdentitiesRequest mergeDeveloperIdentitiesRequest);
 
     /**
      * <p>
-     * Sets the roles for an identity pool. These roles are used when making calls to
-     * <code>GetCredentialsForIdentity</code> action.
+     * Sets the roles for an identity pool. These roles are used when making calls to <a>GetCredentialsForIdentity</a>
+     * action.
      * </p>
      * <p>
      * You must use AWS Developer credentials to call this API.
@@ -547,6 +611,8 @@ public interface AmazonCognitoIdentity {
      * @throws ConcurrentModificationException
      *         Thrown if there are parallel requests to modify a resource.
      * @sample AmazonCognitoIdentity.SetIdentityPoolRoles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/SetIdentityPoolRoles"
+     *      target="_top">AWS API Documentation</a>
      */
     SetIdentityPoolRolesResult setIdentityPoolRoles(SetIdentityPoolRolesRequest setIdentityPoolRolesRequest);
 
@@ -576,6 +642,8 @@ public interface AmazonCognitoIdentity {
      * @throws InternalErrorException
      *         Thrown when the service encounters an error during processing the request.
      * @sample AmazonCognitoIdentity.UnlinkDeveloperIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnlinkDeveloperIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     UnlinkDeveloperIdentityResult unlinkDeveloperIdentity(UnlinkDeveloperIdentityRequest unlinkDeveloperIdentityRequest);
 
@@ -606,6 +674,8 @@ public interface AmazonCognitoIdentity {
      * @throws ExternalServiceException
      *         An exception thrown when a dependent service such as Facebook or Twitter is not responding
      * @sample AmazonCognitoIdentity.UnlinkIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnlinkIdentity"
+     *      target="_top">AWS API Documentation</a>
      */
     UnlinkIdentityResult unlinkIdentity(UnlinkIdentityRequest unlinkIdentityRequest);
 
@@ -618,7 +688,7 @@ public interface AmazonCognitoIdentity {
      * </p>
      * 
      * @param updateIdentityPoolRequest
-     *        An object representing a Cognito identity pool.
+     *        An object representing an Amazon Cognito identity pool.
      * @return Result of the UpdateIdentityPool operation returned by the service.
      * @throws InvalidParameterException
      *         Thrown for missing or bad input parameter(s).
@@ -637,6 +707,8 @@ public interface AmazonCognitoIdentity {
      * @throws LimitExceededException
      *         Thrown when the total number of user pools has exceeded a preset limit.
      * @sample AmazonCognitoIdentity.UpdateIdentityPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UpdateIdentityPool"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateIdentityPoolResult updateIdentityPool(UpdateIdentityPoolRequest updateIdentityPoolRequest);
 

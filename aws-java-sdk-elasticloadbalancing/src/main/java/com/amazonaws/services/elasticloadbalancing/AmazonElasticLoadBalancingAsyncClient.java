@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,13 +12,22 @@
  */
 package com.amazonaws.services.elasticloadbalancing;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticloadbalancing.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Elastic Load Balancing asynchronously. Each asynchronous method will return a Java Future
- * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
+ * Client for accessing Elastic Load Balancing asynchronously. Each asynchronous method will return a Java Future object
+ * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
  * <fullname>Elastic Load Balancing</fullname>
@@ -51,6 +60,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBalancingClient implements AmazonElasticLoadBalancingAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -72,9 +82,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -96,10 +108,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -112,9 +125,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -125,8 +140,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -141,10 +159,12 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -159,9 +179,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -178,11 +200,12 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -193,10 +216,11 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -210,12 +234,19 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticLoadBalancingAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticLoadBalancingAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticLoadBalancingAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonElasticLoadBalancingAsyncClientBuilder asyncBuilder() {
+        return AmazonElasticLoadBalancingAsyncClientBuilder.standard();
     }
 
     /**
@@ -235,7 +266,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -248,14 +279,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<AddTagsResult> addTagsAsync(final AddTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<AddTagsRequest, AddTagsResult> asyncHandler) {
+        final AddTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AddTagsResult>() {
             @Override
             public AddTagsResult call() throws Exception {
-                AddTagsResult result;
+                AddTagsResult result = null;
 
                 try {
-                    result = addTags(request);
+                    result = executeAddTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -264,7 +296,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -282,14 +314,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<ApplySecurityGroupsToLoadBalancerResult> applySecurityGroupsToLoadBalancerAsync(
             final ApplySecurityGroupsToLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<ApplySecurityGroupsToLoadBalancerRequest, ApplySecurityGroupsToLoadBalancerResult> asyncHandler) {
+        final ApplySecurityGroupsToLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ApplySecurityGroupsToLoadBalancerResult>() {
             @Override
             public ApplySecurityGroupsToLoadBalancerResult call() throws Exception {
-                ApplySecurityGroupsToLoadBalancerResult result;
+                ApplySecurityGroupsToLoadBalancerResult result = null;
 
                 try {
-                    result = applySecurityGroupsToLoadBalancer(request);
+                    result = executeApplySecurityGroupsToLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -298,7 +331,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -314,14 +347,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<AttachLoadBalancerToSubnetsResult> attachLoadBalancerToSubnetsAsync(final AttachLoadBalancerToSubnetsRequest request,
             final com.amazonaws.handlers.AsyncHandler<AttachLoadBalancerToSubnetsRequest, AttachLoadBalancerToSubnetsResult> asyncHandler) {
+        final AttachLoadBalancerToSubnetsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AttachLoadBalancerToSubnetsResult>() {
             @Override
             public AttachLoadBalancerToSubnetsResult call() throws Exception {
-                AttachLoadBalancerToSubnetsResult result;
+                AttachLoadBalancerToSubnetsResult result = null;
 
                 try {
-                    result = attachLoadBalancerToSubnets(request);
+                    result = executeAttachLoadBalancerToSubnets(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -330,7 +364,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -346,14 +380,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<ConfigureHealthCheckResult> configureHealthCheckAsync(final ConfigureHealthCheckRequest request,
             final com.amazonaws.handlers.AsyncHandler<ConfigureHealthCheckRequest, ConfigureHealthCheckResult> asyncHandler) {
+        final ConfigureHealthCheckRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ConfigureHealthCheckResult>() {
             @Override
             public ConfigureHealthCheckResult call() throws Exception {
-                ConfigureHealthCheckResult result;
+                ConfigureHealthCheckResult result = null;
 
                 try {
-                    result = configureHealthCheck(request);
+                    result = executeConfigureHealthCheck(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -362,7 +397,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -380,14 +415,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<CreateAppCookieStickinessPolicyResult> createAppCookieStickinessPolicyAsync(
             final CreateAppCookieStickinessPolicyRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateAppCookieStickinessPolicyRequest, CreateAppCookieStickinessPolicyResult> asyncHandler) {
+        final CreateAppCookieStickinessPolicyRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateAppCookieStickinessPolicyResult>() {
             @Override
             public CreateAppCookieStickinessPolicyResult call() throws Exception {
-                CreateAppCookieStickinessPolicyResult result;
+                CreateAppCookieStickinessPolicyResult result = null;
 
                 try {
-                    result = createAppCookieStickinessPolicy(request);
+                    result = executeCreateAppCookieStickinessPolicy(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -396,7 +432,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -413,14 +449,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<CreateLBCookieStickinessPolicyResult> createLBCookieStickinessPolicyAsync(
             final CreateLBCookieStickinessPolicyRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateLBCookieStickinessPolicyRequest, CreateLBCookieStickinessPolicyResult> asyncHandler) {
+        final CreateLBCookieStickinessPolicyRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateLBCookieStickinessPolicyResult>() {
             @Override
             public CreateLBCookieStickinessPolicyResult call() throws Exception {
-                CreateLBCookieStickinessPolicyResult result;
+                CreateLBCookieStickinessPolicyResult result = null;
 
                 try {
-                    result = createLBCookieStickinessPolicy(request);
+                    result = executeCreateLBCookieStickinessPolicy(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -429,7 +466,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -445,14 +482,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<CreateLoadBalancerResult> createLoadBalancerAsync(final CreateLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateLoadBalancerRequest, CreateLoadBalancerResult> asyncHandler) {
+        final CreateLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateLoadBalancerResult>() {
             @Override
             public CreateLoadBalancerResult call() throws Exception {
-                CreateLoadBalancerResult result;
+                CreateLoadBalancerResult result = null;
 
                 try {
-                    result = createLoadBalancer(request);
+                    result = executeCreateLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -461,7 +499,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -477,14 +515,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<CreateLoadBalancerListenersResult> createLoadBalancerListenersAsync(final CreateLoadBalancerListenersRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateLoadBalancerListenersRequest, CreateLoadBalancerListenersResult> asyncHandler) {
+        final CreateLoadBalancerListenersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateLoadBalancerListenersResult>() {
             @Override
             public CreateLoadBalancerListenersResult call() throws Exception {
-                CreateLoadBalancerListenersResult result;
+                CreateLoadBalancerListenersResult result = null;
 
                 try {
-                    result = createLoadBalancerListeners(request);
+                    result = executeCreateLoadBalancerListeners(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -493,7 +532,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -509,14 +548,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<CreateLoadBalancerPolicyResult> createLoadBalancerPolicyAsync(final CreateLoadBalancerPolicyRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateLoadBalancerPolicyRequest, CreateLoadBalancerPolicyResult> asyncHandler) {
+        final CreateLoadBalancerPolicyRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateLoadBalancerPolicyResult>() {
             @Override
             public CreateLoadBalancerPolicyResult call() throws Exception {
-                CreateLoadBalancerPolicyResult result;
+                CreateLoadBalancerPolicyResult result = null;
 
                 try {
-                    result = createLoadBalancerPolicy(request);
+                    result = executeCreateLoadBalancerPolicy(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -525,7 +565,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -541,14 +581,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DeleteLoadBalancerResult> deleteLoadBalancerAsync(final DeleteLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteLoadBalancerRequest, DeleteLoadBalancerResult> asyncHandler) {
+        final DeleteLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteLoadBalancerResult>() {
             @Override
             public DeleteLoadBalancerResult call() throws Exception {
-                DeleteLoadBalancerResult result;
+                DeleteLoadBalancerResult result = null;
 
                 try {
-                    result = deleteLoadBalancer(request);
+                    result = executeDeleteLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -557,7 +598,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -573,14 +614,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DeleteLoadBalancerListenersResult> deleteLoadBalancerListenersAsync(final DeleteLoadBalancerListenersRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteLoadBalancerListenersRequest, DeleteLoadBalancerListenersResult> asyncHandler) {
+        final DeleteLoadBalancerListenersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteLoadBalancerListenersResult>() {
             @Override
             public DeleteLoadBalancerListenersResult call() throws Exception {
-                DeleteLoadBalancerListenersResult result;
+                DeleteLoadBalancerListenersResult result = null;
 
                 try {
-                    result = deleteLoadBalancerListeners(request);
+                    result = executeDeleteLoadBalancerListeners(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -589,7 +631,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -605,14 +647,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DeleteLoadBalancerPolicyResult> deleteLoadBalancerPolicyAsync(final DeleteLoadBalancerPolicyRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteLoadBalancerPolicyRequest, DeleteLoadBalancerPolicyResult> asyncHandler) {
+        final DeleteLoadBalancerPolicyRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteLoadBalancerPolicyResult>() {
             @Override
             public DeleteLoadBalancerPolicyResult call() throws Exception {
-                DeleteLoadBalancerPolicyResult result;
+                DeleteLoadBalancerPolicyResult result = null;
 
                 try {
-                    result = deleteLoadBalancerPolicy(request);
+                    result = executeDeleteLoadBalancerPolicy(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -621,7 +664,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -639,14 +682,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<DeregisterInstancesFromLoadBalancerResult> deregisterInstancesFromLoadBalancerAsync(
             final DeregisterInstancesFromLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeregisterInstancesFromLoadBalancerRequest, DeregisterInstancesFromLoadBalancerResult> asyncHandler) {
+        final DeregisterInstancesFromLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeregisterInstancesFromLoadBalancerResult>() {
             @Override
             public DeregisterInstancesFromLoadBalancerResult call() throws Exception {
-                DeregisterInstancesFromLoadBalancerResult result;
+                DeregisterInstancesFromLoadBalancerResult result = null;
 
                 try {
-                    result = deregisterInstancesFromLoadBalancer(request);
+                    result = executeDeregisterInstancesFromLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -655,7 +699,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -671,14 +715,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DescribeInstanceHealthResult> describeInstanceHealthAsync(final DescribeInstanceHealthRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeInstanceHealthRequest, DescribeInstanceHealthResult> asyncHandler) {
+        final DescribeInstanceHealthRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeInstanceHealthResult>() {
             @Override
             public DescribeInstanceHealthResult call() throws Exception {
-                DescribeInstanceHealthResult result;
+                DescribeInstanceHealthResult result = null;
 
                 try {
-                    result = describeInstanceHealth(request);
+                    result = executeDescribeInstanceHealth(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -687,7 +732,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -704,14 +749,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<DescribeLoadBalancerAttributesResult> describeLoadBalancerAttributesAsync(
             final DescribeLoadBalancerAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancerAttributesRequest, DescribeLoadBalancerAttributesResult> asyncHandler) {
+        final DescribeLoadBalancerAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeLoadBalancerAttributesResult>() {
             @Override
             public DescribeLoadBalancerAttributesResult call() throws Exception {
-                DescribeLoadBalancerAttributesResult result;
+                DescribeLoadBalancerAttributesResult result = null;
 
                 try {
-                    result = describeLoadBalancerAttributes(request);
+                    result = executeDescribeLoadBalancerAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -720,7 +766,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -736,14 +782,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DescribeLoadBalancerPoliciesResult> describeLoadBalancerPoliciesAsync(final DescribeLoadBalancerPoliciesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancerPoliciesRequest, DescribeLoadBalancerPoliciesResult> asyncHandler) {
+        final DescribeLoadBalancerPoliciesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeLoadBalancerPoliciesResult>() {
             @Override
             public DescribeLoadBalancerPoliciesResult call() throws Exception {
-                DescribeLoadBalancerPoliciesResult result;
+                DescribeLoadBalancerPoliciesResult result = null;
 
                 try {
-                    result = describeLoadBalancerPolicies(request);
+                    result = executeDescribeLoadBalancerPolicies(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -752,7 +799,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -775,6 +822,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @see #describeLoadBalancerPoliciesAsync(DescribeLoadBalancerPoliciesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLoadBalancerPoliciesResult> describeLoadBalancerPoliciesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancerPoliciesRequest, DescribeLoadBalancerPoliciesResult> asyncHandler) {
 
@@ -792,14 +840,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<DescribeLoadBalancerPolicyTypesResult> describeLoadBalancerPolicyTypesAsync(
             final DescribeLoadBalancerPolicyTypesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancerPolicyTypesRequest, DescribeLoadBalancerPolicyTypesResult> asyncHandler) {
+        final DescribeLoadBalancerPolicyTypesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeLoadBalancerPolicyTypesResult>() {
             @Override
             public DescribeLoadBalancerPolicyTypesResult call() throws Exception {
-                DescribeLoadBalancerPolicyTypesResult result;
+                DescribeLoadBalancerPolicyTypesResult result = null;
 
                 try {
-                    result = describeLoadBalancerPolicyTypes(request);
+                    result = executeDescribeLoadBalancerPolicyTypes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -808,7 +857,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -832,6 +881,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      * @see #describeLoadBalancerPolicyTypesAsync(DescribeLoadBalancerPolicyTypesRequest,
      *      com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLoadBalancerPolicyTypesResult> describeLoadBalancerPolicyTypesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancerPolicyTypesRequest, DescribeLoadBalancerPolicyTypesResult> asyncHandler) {
 
@@ -847,14 +897,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DescribeLoadBalancersResult> describeLoadBalancersAsync(final DescribeLoadBalancersRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancersRequest, DescribeLoadBalancersResult> asyncHandler) {
+        final DescribeLoadBalancersRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeLoadBalancersResult>() {
             @Override
             public DescribeLoadBalancersResult call() throws Exception {
-                DescribeLoadBalancersResult result;
+                DescribeLoadBalancersResult result = null;
 
                 try {
-                    result = describeLoadBalancers(request);
+                    result = executeDescribeLoadBalancers(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -863,7 +914,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -886,6 +937,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      *
      * @see #describeLoadBalancersAsync(DescribeLoadBalancersRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLoadBalancersResult> describeLoadBalancersAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLoadBalancersRequest, DescribeLoadBalancersResult> asyncHandler) {
 
@@ -901,14 +953,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(final DescribeTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeTagsRequest, DescribeTagsResult> asyncHandler) {
+        final DescribeTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeTagsResult>() {
             @Override
             public DescribeTagsResult call() throws Exception {
-                DescribeTagsResult result;
+                DescribeTagsResult result = null;
 
                 try {
-                    result = describeTags(request);
+                    result = executeDescribeTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -917,7 +970,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -934,14 +987,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<DetachLoadBalancerFromSubnetsResult> detachLoadBalancerFromSubnetsAsync(
             final DetachLoadBalancerFromSubnetsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DetachLoadBalancerFromSubnetsRequest, DetachLoadBalancerFromSubnetsResult> asyncHandler) {
+        final DetachLoadBalancerFromSubnetsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DetachLoadBalancerFromSubnetsResult>() {
             @Override
             public DetachLoadBalancerFromSubnetsResult call() throws Exception {
-                DetachLoadBalancerFromSubnetsResult result;
+                DetachLoadBalancerFromSubnetsResult result = null;
 
                 try {
-                    result = detachLoadBalancerFromSubnets(request);
+                    result = executeDetachLoadBalancerFromSubnets(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -950,7 +1004,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -968,14 +1022,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<DisableAvailabilityZonesForLoadBalancerResult> disableAvailabilityZonesForLoadBalancerAsync(
             final DisableAvailabilityZonesForLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableAvailabilityZonesForLoadBalancerRequest, DisableAvailabilityZonesForLoadBalancerResult> asyncHandler) {
+        final DisableAvailabilityZonesForLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableAvailabilityZonesForLoadBalancerResult>() {
             @Override
             public DisableAvailabilityZonesForLoadBalancerResult call() throws Exception {
-                DisableAvailabilityZonesForLoadBalancerResult result;
+                DisableAvailabilityZonesForLoadBalancerResult result = null;
 
                 try {
-                    result = disableAvailabilityZonesForLoadBalancer(request);
+                    result = executeDisableAvailabilityZonesForLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -984,7 +1039,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1002,14 +1057,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<EnableAvailabilityZonesForLoadBalancerResult> enableAvailabilityZonesForLoadBalancerAsync(
             final EnableAvailabilityZonesForLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableAvailabilityZonesForLoadBalancerRequest, EnableAvailabilityZonesForLoadBalancerResult> asyncHandler) {
+        final EnableAvailabilityZonesForLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableAvailabilityZonesForLoadBalancerResult>() {
             @Override
             public EnableAvailabilityZonesForLoadBalancerResult call() throws Exception {
-                EnableAvailabilityZonesForLoadBalancerResult result;
+                EnableAvailabilityZonesForLoadBalancerResult result = null;
 
                 try {
-                    result = enableAvailabilityZonesForLoadBalancer(request);
+                    result = executeEnableAvailabilityZonesForLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1018,7 +1074,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1034,14 +1090,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<ModifyLoadBalancerAttributesResult> modifyLoadBalancerAttributesAsync(final ModifyLoadBalancerAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ModifyLoadBalancerAttributesRequest, ModifyLoadBalancerAttributesResult> asyncHandler) {
+        final ModifyLoadBalancerAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ModifyLoadBalancerAttributesResult>() {
             @Override
             public ModifyLoadBalancerAttributesResult call() throws Exception {
-                ModifyLoadBalancerAttributesResult result;
+                ModifyLoadBalancerAttributesResult result = null;
 
                 try {
-                    result = modifyLoadBalancerAttributes(request);
+                    result = executeModifyLoadBalancerAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1050,7 +1107,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1068,14 +1125,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<RegisterInstancesWithLoadBalancerResult> registerInstancesWithLoadBalancerAsync(
             final RegisterInstancesWithLoadBalancerRequest request,
             final com.amazonaws.handlers.AsyncHandler<RegisterInstancesWithLoadBalancerRequest, RegisterInstancesWithLoadBalancerResult> asyncHandler) {
+        final RegisterInstancesWithLoadBalancerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RegisterInstancesWithLoadBalancerResult>() {
             @Override
             public RegisterInstancesWithLoadBalancerResult call() throws Exception {
-                RegisterInstancesWithLoadBalancerResult result;
+                RegisterInstancesWithLoadBalancerResult result = null;
 
                 try {
-                    result = registerInstancesWithLoadBalancer(request);
+                    result = executeRegisterInstancesWithLoadBalancer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1084,7 +1142,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1100,14 +1158,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     @Override
     public java.util.concurrent.Future<RemoveTagsResult> removeTagsAsync(final RemoveTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<RemoveTagsRequest, RemoveTagsResult> asyncHandler) {
+        final RemoveTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RemoveTagsResult>() {
             @Override
             public RemoveTagsResult call() throws Exception {
-                RemoveTagsResult result;
+                RemoveTagsResult result = null;
 
                 try {
-                    result = removeTags(request);
+                    result = executeRemoveTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1116,7 +1175,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1134,14 +1193,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<SetLoadBalancerListenerSSLCertificateResult> setLoadBalancerListenerSSLCertificateAsync(
             final SetLoadBalancerListenerSSLCertificateRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetLoadBalancerListenerSSLCertificateRequest, SetLoadBalancerListenerSSLCertificateResult> asyncHandler) {
+        final SetLoadBalancerListenerSSLCertificateRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetLoadBalancerListenerSSLCertificateResult>() {
             @Override
             public SetLoadBalancerListenerSSLCertificateResult call() throws Exception {
-                SetLoadBalancerListenerSSLCertificateResult result;
+                SetLoadBalancerListenerSSLCertificateResult result = null;
 
                 try {
-                    result = setLoadBalancerListenerSSLCertificate(request);
+                    result = executeSetLoadBalancerListenerSSLCertificate(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1150,7 +1210,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1168,14 +1228,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<SetLoadBalancerPoliciesForBackendServerResult> setLoadBalancerPoliciesForBackendServerAsync(
             final SetLoadBalancerPoliciesForBackendServerRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetLoadBalancerPoliciesForBackendServerRequest, SetLoadBalancerPoliciesForBackendServerResult> asyncHandler) {
+        final SetLoadBalancerPoliciesForBackendServerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetLoadBalancerPoliciesForBackendServerResult>() {
             @Override
             public SetLoadBalancerPoliciesForBackendServerResult call() throws Exception {
-                SetLoadBalancerPoliciesForBackendServerResult result;
+                SetLoadBalancerPoliciesForBackendServerResult result = null;
 
                 try {
-                    result = setLoadBalancerPoliciesForBackendServer(request);
+                    result = executeSetLoadBalancerPoliciesForBackendServer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1184,7 +1245,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1202,14 +1263,15 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
     public java.util.concurrent.Future<SetLoadBalancerPoliciesOfListenerResult> setLoadBalancerPoliciesOfListenerAsync(
             final SetLoadBalancerPoliciesOfListenerRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetLoadBalancerPoliciesOfListenerRequest, SetLoadBalancerPoliciesOfListenerResult> asyncHandler) {
+        final SetLoadBalancerPoliciesOfListenerRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetLoadBalancerPoliciesOfListenerResult>() {
             @Override
             public SetLoadBalancerPoliciesOfListenerResult call() throws Exception {
-                SetLoadBalancerPoliciesOfListenerResult result;
+                SetLoadBalancerPoliciesOfListenerResult result = null;
 
                 try {
-                    result = setLoadBalancerPoliciesOfListener(request);
+                    result = executeSetLoadBalancerPoliciesOfListener(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1218,7 +1280,7 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

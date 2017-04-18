@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the response of the test invoke request for a custom <a>Authorizer</a>
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestInvokeAuthorizerResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -390,19 +392,19 @@ public class TestInvokeAuthorizerResult extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientStatus() != null)
-            sb.append("ClientStatus: " + getClientStatus() + ",");
+            sb.append("ClientStatus: ").append(getClientStatus()).append(",");
         if (getLog() != null)
-            sb.append("Log: " + getLog() + ",");
+            sb.append("Log: ").append(getLog()).append(",");
         if (getLatency() != null)
-            sb.append("Latency: " + getLatency() + ",");
+            sb.append("Latency: ").append(getLatency()).append(",");
         if (getPrincipalId() != null)
-            sb.append("PrincipalId: " + getPrincipalId() + ",");
+            sb.append("PrincipalId: ").append(getPrincipalId()).append(",");
         if (getPolicy() != null)
-            sb.append("Policy: " + getPolicy() + ",");
+            sb.append("Policy: ").append(getPolicy()).append(",");
         if (getAuthorization() != null)
-            sb.append("Authorization: " + getAuthorization() + ",");
+            sb.append("Authorization: ").append(getAuthorization()).append(",");
         if (getClaims() != null)
-            sb.append("Claims: " + getClaims());
+            sb.append("Claims: ").append(getClaims());
         sb.append("}");
         return sb.toString();
     }
@@ -471,4 +473,5 @@ public class TestInvokeAuthorizerResult extends com.amazonaws.AmazonWebServiceRe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

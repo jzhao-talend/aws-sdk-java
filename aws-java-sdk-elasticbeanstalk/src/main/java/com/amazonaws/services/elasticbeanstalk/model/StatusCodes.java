@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,7 +21,11 @@ import java.io.Serializable;
  * For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code
  * Definitions</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/StatusCodes" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StatusCodes implements Serializable, Cloneable {
 
     /**
@@ -220,13 +225,13 @@ public class StatusCodes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatus2xx() != null)
-            sb.append("Status2xx: " + getStatus2xx() + ",");
+            sb.append("Status2xx: ").append(getStatus2xx()).append(",");
         if (getStatus3xx() != null)
-            sb.append("Status3xx: " + getStatus3xx() + ",");
+            sb.append("Status3xx: ").append(getStatus3xx()).append(",");
         if (getStatus4xx() != null)
-            sb.append("Status4xx: " + getStatus4xx() + ",");
+            sb.append("Status4xx: ").append(getStatus4xx()).append(",");
         if (getStatus5xx() != null)
-            sb.append("Status5xx: " + getStatus5xx());
+            sb.append("Status5xx: ").append(getStatus5xx());
         sb.append("}");
         return sb.toString();
     }
@@ -280,4 +285,5 @@ public class StatusCodes implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

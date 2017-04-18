@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A connection represents the physical network connection between the AWS Direct Connect location and the customer.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateConnection" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -59,10 +64,18 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
     private String partnerName;
     /**
      * <p>
-     * The time of the most recent call to DescribeConnectionLoa for this Connection.
+     * The time of the most recent call to <a>DescribeLoa</a> for this connection.
      * </p>
      */
     private java.util.Date loaIssueTime;
+
+    private String lagId;
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     */
+    private String awsDevice;
 
     /**
      * <p>
@@ -398,11 +411,11 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The time of the most recent call to DescribeConnectionLoa for this Connection.
+     * The time of the most recent call to <a>DescribeLoa</a> for this connection.
      * </p>
      * 
      * @param loaIssueTime
-     *        The time of the most recent call to DescribeConnectionLoa for this Connection.
+     *        The time of the most recent call to <a>DescribeLoa</a> for this connection.
      */
 
     public void setLoaIssueTime(java.util.Date loaIssueTime) {
@@ -411,10 +424,10 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The time of the most recent call to DescribeConnectionLoa for this Connection.
+     * The time of the most recent call to <a>DescribeLoa</a> for this connection.
      * </p>
      * 
-     * @return The time of the most recent call to DescribeConnectionLoa for this Connection.
+     * @return The time of the most recent call to <a>DescribeLoa</a> for this connection.
      */
 
     public java.util.Date getLoaIssueTime() {
@@ -423,16 +436,82 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The time of the most recent call to DescribeConnectionLoa for this Connection.
+     * The time of the most recent call to <a>DescribeLoa</a> for this connection.
      * </p>
      * 
      * @param loaIssueTime
-     *        The time of the most recent call to DescribeConnectionLoa for this Connection.
+     *        The time of the most recent call to <a>DescribeLoa</a> for this connection.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateConnectionResult withLoaIssueTime(java.util.Date loaIssueTime) {
         setLoaIssueTime(loaIssueTime);
+        return this;
+    }
+
+    /**
+     * @param lagId
+     */
+
+    public void setLagId(String lagId) {
+        this.lagId = lagId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getLagId() {
+        return this.lagId;
+    }
+
+    /**
+     * @param lagId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateConnectionResult withLagId(String lagId) {
+        setLagId(lagId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @param awsDevice
+     *        The Direct Connection endpoint which the physical connection terminates on.
+     */
+
+    public void setAwsDevice(String awsDevice) {
+        this.awsDevice = awsDevice;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @return The Direct Connection endpoint which the physical connection terminates on.
+     */
+
+    public String getAwsDevice() {
+        return this.awsDevice;
+    }
+
+    /**
+     * <p>
+     * The Direct Connection endpoint which the physical connection terminates on.
+     * </p>
+     * 
+     * @param awsDevice
+     *        The Direct Connection endpoint which the physical connection terminates on.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateConnectionResult withAwsDevice(String awsDevice) {
+        setAwsDevice(awsDevice);
         return this;
     }
 
@@ -448,25 +527,29 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: " + getConnectionId() + ",");
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
         if (getConnectionName() != null)
-            sb.append("ConnectionName: " + getConnectionName() + ",");
+            sb.append("ConnectionName: ").append(getConnectionName()).append(",");
         if (getConnectionState() != null)
-            sb.append("ConnectionState: " + getConnectionState() + ",");
+            sb.append("ConnectionState: ").append(getConnectionState()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation() + ",");
+            sb.append("Location: ").append(getLocation()).append(",");
         if (getBandwidth() != null)
-            sb.append("Bandwidth: " + getBandwidth() + ",");
+            sb.append("Bandwidth: ").append(getBandwidth()).append(",");
         if (getVlan() != null)
-            sb.append("Vlan: " + getVlan() + ",");
+            sb.append("Vlan: ").append(getVlan()).append(",");
         if (getPartnerName() != null)
-            sb.append("PartnerName: " + getPartnerName() + ",");
+            sb.append("PartnerName: ").append(getPartnerName()).append(",");
         if (getLoaIssueTime() != null)
-            sb.append("LoaIssueTime: " + getLoaIssueTime());
+            sb.append("LoaIssueTime: ").append(getLoaIssueTime()).append(",");
+        if (getLagId() != null)
+            sb.append("LagId: ").append(getLagId()).append(",");
+        if (getAwsDevice() != null)
+            sb.append("AwsDevice: ").append(getAwsDevice());
         sb.append("}");
         return sb.toString();
     }
@@ -521,6 +604,14 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
             return false;
         if (other.getLoaIssueTime() != null && other.getLoaIssueTime().equals(this.getLoaIssueTime()) == false)
             return false;
+        if (other.getLagId() == null ^ this.getLagId() == null)
+            return false;
+        if (other.getLagId() != null && other.getLagId().equals(this.getLagId()) == false)
+            return false;
+        if (other.getAwsDevice() == null ^ this.getAwsDevice() == null)
+            return false;
+        if (other.getAwsDevice() != null && other.getAwsDevice().equals(this.getAwsDevice()) == false)
+            return false;
         return true;
     }
 
@@ -539,6 +630,8 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
         hashCode = prime * hashCode + ((getVlan() == null) ? 0 : getVlan().hashCode());
         hashCode = prime * hashCode + ((getPartnerName() == null) ? 0 : getPartnerName().hashCode());
         hashCode = prime * hashCode + ((getLoaIssueTime() == null) ? 0 : getLoaIssueTime().hashCode());
+        hashCode = prime * hashCode + ((getLagId() == null) ? 0 : getLagId().hashCode());
+        hashCode = prime * hashCode + ((getAwsDevice() == null) ? 0 : getAwsDevice().hashCode());
         return hashCode;
     }
 
@@ -550,4 +643,5 @@ public class CreateConnectionResult extends com.amazonaws.AmazonWebServiceResult
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

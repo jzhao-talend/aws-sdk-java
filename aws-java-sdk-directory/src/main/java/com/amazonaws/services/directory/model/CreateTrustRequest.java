@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -26,7 +28,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud
  * and an external domain.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrust" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateTrustRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -424,17 +430,17 @@ public class CreateTrustRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getRemoteDomainName() != null)
-            sb.append("RemoteDomainName: " + getRemoteDomainName() + ",");
+            sb.append("RemoteDomainName: ").append(getRemoteDomainName()).append(",");
         if (getTrustPassword() != null)
-            sb.append("TrustPassword: " + getTrustPassword() + ",");
+            sb.append("TrustPassword: ").append(getTrustPassword()).append(",");
         if (getTrustDirection() != null)
-            sb.append("TrustDirection: " + getTrustDirection() + ",");
+            sb.append("TrustDirection: ").append(getTrustDirection()).append(",");
         if (getTrustType() != null)
-            sb.append("TrustType: " + getTrustType() + ",");
+            sb.append("TrustType: ").append(getTrustType()).append(",");
         if (getConditionalForwarderIpAddrs() != null)
-            sb.append("ConditionalForwarderIpAddrs: " + getConditionalForwarderIpAddrs());
+            sb.append("ConditionalForwarderIpAddrs: ").append(getConditionalForwarderIpAddrs());
         sb.append("}");
         return sb.toString();
     }
@@ -494,4 +500,5 @@ public class CreateTrustRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateTrustRequest clone() {
         return (CreateTrustRequest) super.clone();
     }
+
 }

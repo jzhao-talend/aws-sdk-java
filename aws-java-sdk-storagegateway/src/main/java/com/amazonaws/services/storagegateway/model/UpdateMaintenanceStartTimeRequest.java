@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -36,7 +38,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateMaintenanceStartTime"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String gatewayARN;
@@ -56,7 +62,8 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
     private Integer minuteOfHour;
     /**
      * <p>
-     * The maintenance start time day of the week.
+     * The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents
+     * Sunday and 6 Saturday.
      * </p>
      */
     private Integer dayOfWeek;
@@ -181,11 +188,13 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The maintenance start time day of the week.
+     * The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents
+     * Sunday and 6 Saturday.
      * </p>
      * 
      * @param dayOfWeek
-     *        The maintenance start time day of the week.
+     *        The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0
+     *        represents Sunday and 6 Saturday.
      */
 
     public void setDayOfWeek(Integer dayOfWeek) {
@@ -194,10 +203,12 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The maintenance start time day of the week.
+     * The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents
+     * Sunday and 6 Saturday.
      * </p>
      * 
-     * @return The maintenance start time day of the week.
+     * @return The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0
+     *         represents Sunday and 6 Saturday.
      */
 
     public Integer getDayOfWeek() {
@@ -206,11 +217,13 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The maintenance start time day of the week.
+     * The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents
+     * Sunday and 6 Saturday.
      * </p>
      * 
      * @param dayOfWeek
-     *        The maintenance start time day of the week.
+     *        The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0
+     *        represents Sunday and 6 Saturday.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -231,13 +244,13 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getHourOfDay() != null)
-            sb.append("HourOfDay: " + getHourOfDay() + ",");
+            sb.append("HourOfDay: ").append(getHourOfDay()).append(",");
         if (getMinuteOfHour() != null)
-            sb.append("MinuteOfHour: " + getMinuteOfHour() + ",");
+            sb.append("MinuteOfHour: ").append(getMinuteOfHour()).append(",");
         if (getDayOfWeek() != null)
-            sb.append("DayOfWeek: " + getDayOfWeek());
+            sb.append("DayOfWeek: ").append(getDayOfWeek());
         sb.append("}");
         return sb.toString();
     }
@@ -287,4 +300,5 @@ public class UpdateMaintenanceStartTimeRequest extends com.amazonaws.AmazonWebSe
     public UpdateMaintenanceStartTimeRequest clone() {
         return (UpdateMaintenanceStartTimeRequest) super.clone();
     }
+
 }

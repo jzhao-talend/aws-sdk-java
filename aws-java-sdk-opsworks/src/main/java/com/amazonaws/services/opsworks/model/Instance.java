@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes an instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Instance" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Instance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Instance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -199,7 +206,7 @@ public class Instance implements Serializable, Cloneable {
     private String registeredBy;
     /**
      * <p>
-     * The instance's reported AWS OpsWorks agent version.
+     * The instance's reported AWS OpsWorks Stacks agent version.
      * </p>
      */
     private String reportedAgentVersion;
@@ -1695,11 +1702,11 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's reported AWS OpsWorks agent version.
+     * The instance's reported AWS OpsWorks Stacks agent version.
      * </p>
      * 
      * @param reportedAgentVersion
-     *        The instance's reported AWS OpsWorks agent version.
+     *        The instance's reported AWS OpsWorks Stacks agent version.
      */
 
     public void setReportedAgentVersion(String reportedAgentVersion) {
@@ -1708,10 +1715,10 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's reported AWS OpsWorks agent version.
+     * The instance's reported AWS OpsWorks Stacks agent version.
      * </p>
      * 
-     * @return The instance's reported AWS OpsWorks agent version.
+     * @return The instance's reported AWS OpsWorks Stacks agent version.
      */
 
     public String getReportedAgentVersion() {
@@ -1720,11 +1727,11 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's reported AWS OpsWorks agent version.
+     * The instance's reported AWS OpsWorks Stacks agent version.
      * </p>
      * 
      * @param reportedAgentVersion
-     *        The instance's reported AWS OpsWorks agent version.
+     *        The instance's reported AWS OpsWorks Stacks agent version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2803,85 +2810,85 @@ public class Instance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAgentVersion() != null)
-            sb.append("AgentVersion: " + getAgentVersion() + ",");
+            sb.append("AgentVersion: ").append(getAgentVersion()).append(",");
         if (getAmiId() != null)
-            sb.append("AmiId: " + getAmiId() + ",");
+            sb.append("AmiId: ").append(getAmiId()).append(",");
         if (getArchitecture() != null)
-            sb.append("Architecture: " + getArchitecture() + ",");
+            sb.append("Architecture: ").append(getArchitecture()).append(",");
         if (getAutoScalingType() != null)
-            sb.append("AutoScalingType: " + getAutoScalingType() + ",");
+            sb.append("AutoScalingType: ").append(getAutoScalingType()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getEc2InstanceId() != null)
-            sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");
+            sb.append("Ec2InstanceId: ").append(getEc2InstanceId()).append(",");
         if (getEcsClusterArn() != null)
-            sb.append("EcsClusterArn: " + getEcsClusterArn() + ",");
+            sb.append("EcsClusterArn: ").append(getEcsClusterArn()).append(",");
         if (getEcsContainerInstanceArn() != null)
-            sb.append("EcsContainerInstanceArn: " + getEcsContainerInstanceArn() + ",");
+            sb.append("EcsContainerInstanceArn: ").append(getEcsContainerInstanceArn()).append(",");
         if (getElasticIp() != null)
-            sb.append("ElasticIp: " + getElasticIp() + ",");
+            sb.append("ElasticIp: ").append(getElasticIp()).append(",");
         if (getHostname() != null)
-            sb.append("Hostname: " + getHostname() + ",");
+            sb.append("Hostname: ").append(getHostname()).append(",");
         if (getInfrastructureClass() != null)
-            sb.append("InfrastructureClass: " + getInfrastructureClass() + ",");
+            sb.append("InfrastructureClass: ").append(getInfrastructureClass()).append(",");
         if (getInstallUpdatesOnBoot() != null)
-            sb.append("InstallUpdatesOnBoot: " + getInstallUpdatesOnBoot() + ",");
+            sb.append("InstallUpdatesOnBoot: ").append(getInstallUpdatesOnBoot()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getInstanceProfileArn() != null)
-            sb.append("InstanceProfileArn: " + getInstanceProfileArn() + ",");
+            sb.append("InstanceProfileArn: ").append(getInstanceProfileArn()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getLastServiceErrorId() != null)
-            sb.append("LastServiceErrorId: " + getLastServiceErrorId() + ",");
+            sb.append("LastServiceErrorId: ").append(getLastServiceErrorId()).append(",");
         if (getLayerIds() != null)
-            sb.append("LayerIds: " + getLayerIds() + ",");
+            sb.append("LayerIds: ").append(getLayerIds()).append(",");
         if (getOs() != null)
-            sb.append("Os: " + getOs() + ",");
+            sb.append("Os: ").append(getOs()).append(",");
         if (getPlatform() != null)
-            sb.append("Platform: " + getPlatform() + ",");
+            sb.append("Platform: ").append(getPlatform()).append(",");
         if (getPrivateDns() != null)
-            sb.append("PrivateDns: " + getPrivateDns() + ",");
+            sb.append("PrivateDns: ").append(getPrivateDns()).append(",");
         if (getPrivateIp() != null)
-            sb.append("PrivateIp: " + getPrivateIp() + ",");
+            sb.append("PrivateIp: ").append(getPrivateIp()).append(",");
         if (getPublicDns() != null)
-            sb.append("PublicDns: " + getPublicDns() + ",");
+            sb.append("PublicDns: ").append(getPublicDns()).append(",");
         if (getPublicIp() != null)
-            sb.append("PublicIp: " + getPublicIp() + ",");
+            sb.append("PublicIp: ").append(getPublicIp()).append(",");
         if (getRegisteredBy() != null)
-            sb.append("RegisteredBy: " + getRegisteredBy() + ",");
+            sb.append("RegisteredBy: ").append(getRegisteredBy()).append(",");
         if (getReportedAgentVersion() != null)
-            sb.append("ReportedAgentVersion: " + getReportedAgentVersion() + ",");
+            sb.append("ReportedAgentVersion: ").append(getReportedAgentVersion()).append(",");
         if (getReportedOs() != null)
-            sb.append("ReportedOs: " + getReportedOs() + ",");
+            sb.append("ReportedOs: ").append(getReportedOs()).append(",");
         if (getRootDeviceType() != null)
-            sb.append("RootDeviceType: " + getRootDeviceType() + ",");
+            sb.append("RootDeviceType: ").append(getRootDeviceType()).append(",");
         if (getRootDeviceVolumeId() != null)
-            sb.append("RootDeviceVolumeId: " + getRootDeviceVolumeId() + ",");
+            sb.append("RootDeviceVolumeId: ").append(getRootDeviceVolumeId()).append(",");
         if (getSecurityGroupIds() != null)
-            sb.append("SecurityGroupIds: " + getSecurityGroupIds() + ",");
+            sb.append("SecurityGroupIds: ").append(getSecurityGroupIds()).append(",");
         if (getSshHostDsaKeyFingerprint() != null)
-            sb.append("SshHostDsaKeyFingerprint: " + getSshHostDsaKeyFingerprint() + ",");
+            sb.append("SshHostDsaKeyFingerprint: ").append(getSshHostDsaKeyFingerprint()).append(",");
         if (getSshHostRsaKeyFingerprint() != null)
-            sb.append("SshHostRsaKeyFingerprint: " + getSshHostRsaKeyFingerprint() + ",");
+            sb.append("SshHostRsaKeyFingerprint: ").append(getSshHostRsaKeyFingerprint()).append(",");
         if (getSshKeyName() != null)
-            sb.append("SshKeyName: " + getSshKeyName() + ",");
+            sb.append("SshKeyName: ").append(getSshKeyName()).append(",");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getTenancy() != null)
-            sb.append("Tenancy: " + getTenancy() + ",");
+            sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getVirtualizationType() != null)
-            sb.append("VirtualizationType: " + getVirtualizationType());
+            sb.append("VirtualizationType: ").append(getVirtualizationType());
         sb.append("}");
         return sb.toString();
     }
@@ -3114,5 +3121,11 @@ public class Instance implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.InstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

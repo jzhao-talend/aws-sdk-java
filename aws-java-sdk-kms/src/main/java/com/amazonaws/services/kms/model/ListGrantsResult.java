@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,14 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -27,15 +31,16 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
     private com.amazonaws.internal.SdkInternalList<GrantListEntry> grants;
     /**
      * <p>
-     * When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     * <code>Marker</code> parameter in a subsequent pagination request.
+     * When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent request.
      * </p>
      */
     private String nextMarker;
     /**
      * <p>
-     * A flag that indicates whether there are more items in the list. If your results were truncated, you can use the
-     * <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in the list.
+     * A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
+     * response to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      */
     private Boolean truncated;
@@ -115,13 +120,13 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     * <code>Marker</code> parameter in a subsequent pagination request.
+     * When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param nextMarker
-     *        When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     *        <code>Marker</code> parameter in a subsequent pagination request.
+     *        When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     *        <code>Marker</code> parameter in a subsequent request.
      */
 
     public void setNextMarker(String nextMarker) {
@@ -130,12 +135,12 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     * <code>Marker</code> parameter in a subsequent pagination request.
+     * When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
-     * @return When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     *         <code>Marker</code> parameter in a subsequent pagination request.
+     * @return When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     *         <code>Marker</code> parameter in a subsequent request.
      */
 
     public String getNextMarker() {
@@ -144,13 +149,13 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     * <code>Marker</code> parameter in a subsequent pagination request.
+     * When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param nextMarker
-     *        When <code>Truncated</code> is true, this value is present and contains the value to use for the
-     *        <code>Marker</code> parameter in a subsequent pagination request.
+     *        When <code>Truncated</code> is true, this element is present and contains the value to use for the
+     *        <code>Marker</code> parameter in a subsequent request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -161,14 +166,15 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A flag that indicates whether there are more items in the list. If your results were truncated, you can use the
-     * <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in the list.
+     * A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
+     * response to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
-     *        A flag that indicates whether there are more items in the list. If your results were truncated, you can
-     *        use the <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in
-     *        the list.
+     *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     *        response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
+     *        this response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public void setTruncated(Boolean truncated) {
@@ -177,13 +183,14 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A flag that indicates whether there are more items in the list. If your results were truncated, you can use the
-     * <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in the list.
+     * A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
+     * response to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
-     * @return A flag that indicates whether there are more items in the list. If your results were truncated, you can
-     *         use the <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in
-     *         the list.
+     * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     *         response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
+     *         this response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean getTruncated() {
@@ -192,14 +199,15 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A flag that indicates whether there are more items in the list. If your results were truncated, you can use the
-     * <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in the list.
+     * A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
+     * response to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
-     *        A flag that indicates whether there are more items in the list. If your results were truncated, you can
-     *        use the <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in
-     *        the list.
+     *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     *        response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
+     *        this response to the <code>Marker</code> parameter in a subsequent request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -210,13 +218,14 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * A flag that indicates whether there are more items in the list. If your results were truncated, you can use the
-     * <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in the list.
+     * A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
+     * response to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
-     * @return A flag that indicates whether there are more items in the list. If your results were truncated, you can
-     *         use the <code>Marker</code> parameter to make a subsequent pagination request to retrieve more items in
-     *         the list.
+     * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
+     *         response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
+     *         this response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean isTruncated() {
@@ -235,11 +244,11 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGrants() != null)
-            sb.append("Grants: " + getGrants() + ",");
+            sb.append("Grants: ").append(getGrants()).append(",");
         if (getNextMarker() != null)
-            sb.append("NextMarker: " + getNextMarker() + ",");
+            sb.append("NextMarker: ").append(getNextMarker()).append(",");
         if (getTruncated() != null)
-            sb.append("Truncated: " + getTruncated());
+            sb.append("Truncated: ").append(getTruncated());
         sb.append("}");
         return sb.toString();
     }
@@ -288,4 +297,5 @@ public class ListGrantsResult extends com.amazonaws.AmazonWebServiceResult<com.a
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

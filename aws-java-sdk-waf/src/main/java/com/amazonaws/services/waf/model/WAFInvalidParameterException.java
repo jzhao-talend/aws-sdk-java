@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
+
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -57,8 +59,15 @@ package com.amazonaws.services.waf.model;
  * <code>Data</code>.
  * </p>
  * </li>
+ * <li>
+ * <p>
+ * Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be
+ * associated.
+ * </p>
+ * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class WAFInvalidParameterException extends com.amazonaws.services.waf.model.AWSWAFException {
     private static final long serialVersionUID = 1L;
 

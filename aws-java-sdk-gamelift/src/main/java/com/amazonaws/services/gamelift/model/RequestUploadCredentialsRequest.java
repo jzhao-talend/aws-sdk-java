@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,35 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/RequestUploadCredentials" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RequestUploadCredentialsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the build you want to get credentials for.
+     * Unique identifier for a build to get credentials for.
      * </p>
      */
     private String buildId;
 
     /**
      * <p>
-     * Unique identifier for the build you want to get credentials for.
+     * Unique identifier for a build to get credentials for.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier for the build you want to get credentials for.
+     *        Unique identifier for a build to get credentials for.
      */
 
     public void setBuildId(String buildId) {
@@ -44,10 +50,10 @@ public class RequestUploadCredentialsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Unique identifier for the build you want to get credentials for.
+     * Unique identifier for a build to get credentials for.
      * </p>
      * 
-     * @return Unique identifier for the build you want to get credentials for.
+     * @return Unique identifier for a build to get credentials for.
      */
 
     public String getBuildId() {
@@ -56,11 +62,11 @@ public class RequestUploadCredentialsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Unique identifier for the build you want to get credentials for.
+     * Unique identifier for a build to get credentials for.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier for the build you want to get credentials for.
+     *        Unique identifier for a build to get credentials for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -81,7 +87,7 @@ public class RequestUploadCredentialsRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBuildId() != null)
-            sb.append("BuildId: " + getBuildId());
+            sb.append("BuildId: ").append(getBuildId());
         sb.append("}");
         return sb.toString();
     }
@@ -116,4 +122,5 @@ public class RequestUploadCredentialsRequest extends com.amazonaws.AmazonWebServ
     public RequestUploadCredentialsRequest clone() {
         return (RequestUploadCredentialsRequest) super.clone();
     }
+
 }

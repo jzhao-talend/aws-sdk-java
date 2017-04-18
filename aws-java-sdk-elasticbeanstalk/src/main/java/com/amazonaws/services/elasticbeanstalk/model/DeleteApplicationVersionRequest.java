@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Request to delete an application version.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplicationVersion"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the application to delete releases from.
+     * The name of the application to which the version belongs.
      * </p>
      */
     private String applicationName;
@@ -36,23 +42,8 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
     private String versionLabel;
     /**
      * <p>
-     * Indicates whether to delete the associated source bundle from Amazon S3:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time of
-     * creation.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Valid Values: <code>true</code> | <code>false</code>
+     * Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version
+     * is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * </p>
      */
     private Boolean deleteSourceBundle;
@@ -69,7 +60,7 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
      * methods to initialize any additional object members.
      * 
      * @param applicationName
-     *        The name of the application to delete releases from.
+     *        The name of the application to which the version belongs.
      * @param versionLabel
      *        The label of the version to delete.
      */
@@ -80,11 +71,11 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the application to delete releases from.
+     * The name of the application to which the version belongs.
      * </p>
      * 
      * @param applicationName
-     *        The name of the application to delete releases from.
+     *        The name of the application to which the version belongs.
      */
 
     public void setApplicationName(String applicationName) {
@@ -93,10 +84,10 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the application to delete releases from.
+     * The name of the application to which the version belongs.
      * </p>
      * 
-     * @return The name of the application to delete releases from.
+     * @return The name of the application to which the version belongs.
      */
 
     public String getApplicationName() {
@@ -105,11 +96,11 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the application to delete releases from.
+     * The name of the application to which the version belongs.
      * </p>
      * 
      * @param applicationName
-     *        The name of the application to delete releases from.
+     *        The name of the application to which the version belongs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -160,42 +151,13 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Indicates whether to delete the associated source bundle from Amazon S3:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time of
-     * creation.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Valid Values: <code>true</code> | <code>false</code>
+     * Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version
+     * is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * </p>
      * 
      * @param deleteSourceBundle
-     *        Indicates whether to delete the associated source bundle from Amazon S3:</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time
-     *        of creation.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        Valid Values: <code>true</code> | <code>false</code>
+     *        Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application
+     *        version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      */
 
     public void setDeleteSourceBundle(Boolean deleteSourceBundle) {
@@ -204,41 +166,12 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Indicates whether to delete the associated source bundle from Amazon S3:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time of
-     * creation.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Valid Values: <code>true</code> | <code>false</code>
+     * Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version
+     * is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * </p>
      * 
-     * @return Indicates whether to delete the associated source bundle from Amazon S3:</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time
-     *         of creation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     *         </p>
-     *         </li>
-     *         </ul>
-     *         <p>
-     *         Valid Values: <code>true</code> | <code>false</code>
+     * @return Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application
+     *         version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      */
 
     public Boolean getDeleteSourceBundle() {
@@ -247,42 +180,13 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Indicates whether to delete the associated source bundle from Amazon S3:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time of
-     * creation.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Valid Values: <code>true</code> | <code>false</code>
+     * Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version
+     * is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * </p>
      * 
      * @param deleteSourceBundle
-     *        Indicates whether to delete the associated source bundle from Amazon S3:</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time
-     *        of creation.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        Valid Values: <code>true</code> | <code>false</code>
+     *        Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application
+     *        version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -293,41 +197,12 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Indicates whether to delete the associated source bundle from Amazon S3:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time of
-     * creation.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Valid Values: <code>true</code> | <code>false</code>
+     * Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version
+     * is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      * </p>
      * 
-     * @return Indicates whether to delete the associated source bundle from Amazon S3:</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>true</code>: An attempt is made to delete the associated Amazon S3 source bundle specified at time
-     *         of creation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>false</code>: No action is taken on the Amazon S3 source bundle specified at time of creation.
-     *         </p>
-     *         </li>
-     *         </ul>
-     *         <p>
-     *         Valid Values: <code>true</code> | <code>false</code>
+     * @return Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application
+     *         version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.
      */
 
     public Boolean isDeleteSourceBundle() {
@@ -346,11 +221,11 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getVersionLabel() != null)
-            sb.append("VersionLabel: " + getVersionLabel() + ",");
+            sb.append("VersionLabel: ").append(getVersionLabel()).append(",");
         if (getDeleteSourceBundle() != null)
-            sb.append("DeleteSourceBundle: " + getDeleteSourceBundle());
+            sb.append("DeleteSourceBundle: ").append(getDeleteSourceBundle());
         sb.append("}");
         return sb.toString();
     }
@@ -395,4 +270,5 @@ public class DeleteApplicationVersionRequest extends com.amazonaws.AmazonWebServ
     public DeleteApplicationVersionRequest clone() {
         return (DeleteApplicationVersionRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents an individual cache node in a snapshot of a cache cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/NodeSnapshot" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NodeSnapshot implements Serializable, Cloneable {
 
     /**
@@ -356,19 +361,19 @@ public class NodeSnapshot implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheClusterId() != null)
-            sb.append("CacheClusterId: " + getCacheClusterId() + ",");
+            sb.append("CacheClusterId: ").append(getCacheClusterId()).append(",");
         if (getNodeGroupId() != null)
-            sb.append("NodeGroupId: " + getNodeGroupId() + ",");
+            sb.append("NodeGroupId: ").append(getNodeGroupId()).append(",");
         if (getCacheNodeId() != null)
-            sb.append("CacheNodeId: " + getCacheNodeId() + ",");
+            sb.append("CacheNodeId: ").append(getCacheNodeId()).append(",");
         if (getNodeGroupConfiguration() != null)
-            sb.append("NodeGroupConfiguration: " + getNodeGroupConfiguration() + ",");
+            sb.append("NodeGroupConfiguration: ").append(getNodeGroupConfiguration()).append(",");
         if (getCacheSize() != null)
-            sb.append("CacheSize: " + getCacheSize() + ",");
+            sb.append("CacheSize: ").append(getCacheSize()).append(",");
         if (getCacheNodeCreateTime() != null)
-            sb.append("CacheNodeCreateTime: " + getCacheNodeCreateTime() + ",");
+            sb.append("CacheNodeCreateTime: ").append(getCacheNodeCreateTime()).append(",");
         if (getSnapshotCreateTime() != null)
-            sb.append("SnapshotCreateTime: " + getSnapshotCreateTime());
+            sb.append("SnapshotCreateTime: ").append(getSnapshotCreateTime());
         sb.append("}");
         return sb.toString();
     }
@@ -437,4 +442,5 @@ public class NodeSnapshot implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

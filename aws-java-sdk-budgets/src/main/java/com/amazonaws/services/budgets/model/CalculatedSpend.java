@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,15 @@
 package com.amazonaws.services.budgets.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * A structure holds the actual and forecasted spend for a budget.
  */
-public class CalculatedSpend implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CalculatedSpend implements Serializable, Cloneable, StructuredPojo {
 
     private Spend actualSpend;
 
@@ -87,9 +91,9 @@ public class CalculatedSpend implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActualSpend() != null)
-            sb.append("ActualSpend: " + getActualSpend() + ",");
+            sb.append("ActualSpend: ").append(getActualSpend()).append(",");
         if (getForecastedSpend() != null)
-            sb.append("ForecastedSpend: " + getForecastedSpend());
+            sb.append("ForecastedSpend: ").append(getForecastedSpend());
         sb.append("}");
         return sb.toString();
     }
@@ -132,5 +136,11 @@ public class CalculatedSpend implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.budgets.model.transform.CalculatedSpendMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

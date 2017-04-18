@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeCasesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -543,23 +549,23 @@ public class DescribeCasesRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCaseIdList() != null)
-            sb.append("CaseIdList: " + getCaseIdList() + ",");
+            sb.append("CaseIdList: ").append(getCaseIdList()).append(",");
         if (getDisplayId() != null)
-            sb.append("DisplayId: " + getDisplayId() + ",");
+            sb.append("DisplayId: ").append(getDisplayId()).append(",");
         if (getAfterTime() != null)
-            sb.append("AfterTime: " + getAfterTime() + ",");
+            sb.append("AfterTime: ").append(getAfterTime()).append(",");
         if (getBeforeTime() != null)
-            sb.append("BeforeTime: " + getBeforeTime() + ",");
+            sb.append("BeforeTime: ").append(getBeforeTime()).append(",");
         if (getIncludeResolvedCases() != null)
-            sb.append("IncludeResolvedCases: " + getIncludeResolvedCases() + ",");
+            sb.append("IncludeResolvedCases: ").append(getIncludeResolvedCases()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getLanguage() != null)
-            sb.append("Language: " + getLanguage() + ",");
+            sb.append("Language: ").append(getLanguage()).append(",");
         if (getIncludeCommunications() != null)
-            sb.append("IncludeCommunications: " + getIncludeCommunications());
+            sb.append("IncludeCommunications: ").append(getIncludeCommunications());
         sb.append("}");
         return sb.toString();
     }
@@ -634,4 +640,5 @@ public class DescribeCasesRequest extends com.amazonaws.AmazonWebServiceRequest 
     public DescribeCasesRequest clone() {
         return (DescribeCasesRequest) super.clone();
     }
+
 }

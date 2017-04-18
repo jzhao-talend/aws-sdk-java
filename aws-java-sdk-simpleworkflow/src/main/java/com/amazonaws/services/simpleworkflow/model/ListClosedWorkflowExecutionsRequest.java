@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListClosedWorkflowExecutionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -704,25 +704,25 @@ public class ListClosedWorkflowExecutionsRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getStartTimeFilter() != null)
-            sb.append("StartTimeFilter: " + getStartTimeFilter() + ",");
+            sb.append("StartTimeFilter: ").append(getStartTimeFilter()).append(",");
         if (getCloseTimeFilter() != null)
-            sb.append("CloseTimeFilter: " + getCloseTimeFilter() + ",");
+            sb.append("CloseTimeFilter: ").append(getCloseTimeFilter()).append(",");
         if (getExecutionFilter() != null)
-            sb.append("ExecutionFilter: " + getExecutionFilter() + ",");
+            sb.append("ExecutionFilter: ").append(getExecutionFilter()).append(",");
         if (getCloseStatusFilter() != null)
-            sb.append("CloseStatusFilter: " + getCloseStatusFilter() + ",");
+            sb.append("CloseStatusFilter: ").append(getCloseStatusFilter()).append(",");
         if (getTypeFilter() != null)
-            sb.append("TypeFilter: " + getTypeFilter() + ",");
+            sb.append("TypeFilter: ").append(getTypeFilter()).append(",");
         if (getTagFilter() != null)
-            sb.append("TagFilter: " + getTagFilter() + ",");
+            sb.append("TagFilter: ").append(getTagFilter()).append(",");
         if (getNextPageToken() != null)
-            sb.append("NextPageToken: " + getNextPageToken() + ",");
+            sb.append("NextPageToken: ").append(getNextPageToken()).append(",");
         if (getMaximumPageSize() != null)
-            sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");
+            sb.append("MaximumPageSize: ").append(getMaximumPageSize()).append(",");
         if (getReverseOrder() != null)
-            sb.append("ReverseOrder: " + getReverseOrder());
+            sb.append("ReverseOrder: ").append(getReverseOrder());
         sb.append("}");
         return sb.toString();
     }
@@ -802,4 +802,5 @@ public class ListClosedWorkflowExecutionsRequest extends com.amazonaws.AmazonWeb
     public ListClosedWorkflowExecutionsRequest clone() {
         return (ListClosedWorkflowExecutionsRequest) super.clone();
     }
+
 }

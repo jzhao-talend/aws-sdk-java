@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -62,6 +62,11 @@ public interface ProtocolMetadataProvider {
      * Currently only used by XML protocols.
      */
     String getExceptionUnmarshallerImpl();
+
+    /**
+     * @return The protocol factory implementation to use for JSON services.
+     */
+    String getProtocolFactoryImplFqcn();
 
     /**
      * @return The fully qualified class name of the exception class that all service exceptions

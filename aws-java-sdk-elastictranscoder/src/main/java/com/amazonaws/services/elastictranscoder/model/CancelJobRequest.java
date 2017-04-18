@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The <code>CancelJobRequest</code> structure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -43,7 +46,7 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param id
-     *        The identifier of the job that you want to cancel. </p>
+     *        The identifier of the job that you want to cancel.</p>
      *        <p>
      *        To get a list of the jobs (including their <code>jobId</code>) that have a status of
      *        <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.
@@ -62,7 +65,7 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * the <a>ListJobsByStatus</a> API action.
      * </p>
      * 
-     * @return The identifier of the job that you want to cancel. </p>
+     * @return The identifier of the job that you want to cancel.</p>
      *         <p>
      *         To get a list of the jobs (including their <code>jobId</code>) that have a status of
      *         <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.
@@ -82,7 +85,7 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param id
-     *        The identifier of the job that you want to cancel. </p>
+     *        The identifier of the job that you want to cancel.</p>
      *        <p>
      *        To get a list of the jobs (including their <code>jobId</code>) that have a status of
      *        <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.
@@ -106,7 +109,7 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId());
+            sb.append("Id: ").append(getId());
         sb.append("}");
         return sb.toString();
     }
@@ -141,4 +144,5 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public CancelJobRequest clone() {
         return (CancelJobRequest) super.clone();
     }
+
 }

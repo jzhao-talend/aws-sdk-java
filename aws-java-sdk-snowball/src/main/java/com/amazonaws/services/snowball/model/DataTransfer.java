@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. Note that this data is only
- * available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.
+ * Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available
+ * while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DataTransfer" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DataTransfer implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DataTransfer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -233,13 +240,13 @@ public class DataTransfer implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBytesTransferred() != null)
-            sb.append("BytesTransferred: " + getBytesTransferred() + ",");
+            sb.append("BytesTransferred: ").append(getBytesTransferred()).append(",");
         if (getObjectsTransferred() != null)
-            sb.append("ObjectsTransferred: " + getObjectsTransferred() + ",");
+            sb.append("ObjectsTransferred: ").append(getObjectsTransferred()).append(",");
         if (getTotalBytes() != null)
-            sb.append("TotalBytes: " + getTotalBytes() + ",");
+            sb.append("TotalBytes: ").append(getTotalBytes()).append(",");
         if (getTotalObjects() != null)
-            sb.append("TotalObjects: " + getTotalObjects());
+            sb.append("TotalObjects: ").append(getTotalObjects());
         sb.append("}");
         return sb.toString();
     }
@@ -292,5 +299,11 @@ public class DataTransfer implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.DataTransferMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

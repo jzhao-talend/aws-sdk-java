@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,22 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/DeleteMessage" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue from which messages are deleted.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
@@ -48,7 +54,7 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
      * initialize any additional object members.
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue from which messages are deleted.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      * @param receiptHandle
@@ -61,14 +67,14 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue from which messages are deleted.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue from which messages are deleted.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      */
@@ -79,13 +85,13 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue from which messages are deleted.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
-     * @return The URL of the Amazon SQS queue to take action on.</p>
+     * @return The URL of the Amazon SQS queue from which messages are deleted.</p>
      *         <p>
      *         Queue URLs are case-sensitive.
      */
@@ -96,14 +102,14 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue from which messages are deleted.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue from which messages are deleted.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -166,9 +172,9 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrl() != null)
-            sb.append("QueueUrl: " + getQueueUrl() + ",");
+            sb.append("QueueUrl: ").append(getQueueUrl()).append(",");
         if (getReceiptHandle() != null)
-            sb.append("ReceiptHandle: " + getReceiptHandle());
+            sb.append("ReceiptHandle: ").append(getReceiptHandle());
         sb.append("}");
         return sb.toString();
     }
@@ -208,4 +214,5 @@ public class DeleteMessageRequest extends com.amazonaws.AmazonWebServiceRequest 
     public DeleteMessageRequest clone() {
         return (DeleteMessageRequest) super.clone();
     }
+
 }

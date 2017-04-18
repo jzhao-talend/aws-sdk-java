@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.datapipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the parameters for SetTaskStatus.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SetTaskStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -354,15 +360,15 @@ public class SetTaskStatusRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskId() != null)
-            sb.append("TaskId: " + getTaskId() + ",");
+            sb.append("TaskId: ").append(getTaskId()).append(",");
         if (getTaskStatus() != null)
-            sb.append("TaskStatus: " + getTaskStatus() + ",");
+            sb.append("TaskStatus: ").append(getTaskStatus()).append(",");
         if (getErrorId() != null)
-            sb.append("ErrorId: " + getErrorId() + ",");
+            sb.append("ErrorId: ").append(getErrorId()).append(",");
         if (getErrorMessage() != null)
-            sb.append("ErrorMessage: " + getErrorMessage() + ",");
+            sb.append("ErrorMessage: ").append(getErrorMessage()).append(",");
         if (getErrorStackTrace() != null)
-            sb.append("ErrorStackTrace: " + getErrorStackTrace());
+            sb.append("ErrorStackTrace: ").append(getErrorStackTrace());
         sb.append("}");
         return sb.toString();
     }
@@ -417,4 +423,5 @@ public class SetTaskStatusRequest extends com.amazonaws.AmazonWebServiceRequest 
     public SetTaskStatusRequest clone() {
         return (SetTaskStatusRequest) super.clone();
     }
+
 }

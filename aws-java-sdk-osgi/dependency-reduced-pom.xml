@@ -3,7 +3,7 @@
   <parent>
     <artifactId>aws-java-sdk-pom</artifactId>
     <groupId>com.amazonaws</groupId>
-    <version>1.11.52</version>
+    <version>1.11.119</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
@@ -114,10 +114,10 @@
                   <use>false</use>
                   <notree>true</notree>
                   <nodeprecatedlist>true</nodeprecatedlist>
-                  <windowtitle>AWS SDK for Java - 1.11.52</windowtitle>
+                  <windowtitle>AWS SDK for Java - 1.11.119</windowtitle>
                   <encoding>UTF-8</encoding>
                   <docencoding>UTF-8</docencoding>
-                  <doctitle>AWS SDK for Java API Reference - 1.11.52</doctitle>
+                  <doctitle>AWS SDK for Java API Reference - 1.11.119</doctitle>
                   <packagesheader>AWS SDK for Java</packagesheader>
                   <docfilessubdirs>true</docfilessubdirs>
                   <taglets>
@@ -131,6 +131,10 @@
                     </taglet>
                   </taglets>
                   <groups>
+                    <group>
+                      <title>AWS Resource Groups Tagging API</title>
+                      <packages>com.amazonaws.services.resourcegroupstaggingapi*</packages>
+                    </group>
                     <group>
                       <title>Amazon S3</title>
                       <packages>com.amazonaws.services.s3*</packages>
@@ -202,6 +206,10 @@
                     <group>
                       <title>Amazon CloudFront</title>
                       <packages>com.amazonaws.services.cloudfront*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon CloudDirectory</title>
+                      <packages>com.amazonaws.services.clouddirectory*</packages>
                     </group>
                     <group>
                       <title>Amazon Cognito</title>
@@ -400,6 +408,74 @@
                       <packages>com.amazonaws.services.servermigration*</packages>
                     </group>
                     <group>
+                      <title>Amazon Rekognition</title>
+                      <packages>com.amazonaws.services.rekognition*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Polly</title>
+                      <packages>com.amazonaws.services.polly*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Lightsail</title>
+                      <packages>com.amazonaws.services.lightsail*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon AppStream</title>
+                      <packages>com.amazonaws.services.appstream*</packages>
+                    </group>
+                    <group>
+                      <title>AWS X-Ray</title>
+                      <packages>com.amazonaws.services.xray*</packages>
+                    </group>
+                    <group>
+                      <title>AWS OpsWorks for Chef Automate</title>
+                      <packages>com.amazonaws.services.opsworkscm*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Pinpoint</title>
+                      <packages>com.amazonaws.services.pinpoint*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Step Functions</title>
+                      <packages>com.amazonaws.services.stepfunctions*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Shield</title>
+                      <packages>com.amazonaws.services.shield*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Health APIs and Notifications</title>
+                      <packages>com.amazonaws.services.health*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Cost and Usage Report</title>
+                      <packages>com.amazonaws.services.costandusagereport*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Code Build</title>
+                      <packages>com.amazonaws.services.codebuild*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Batch</title>
+                      <packages>com.amazonaws.services.batch*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Lex</title>
+                      <packages>com.amazonaws.services.lex*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Mechanical Turk Requester</title>
+                      <packages>com.amazonaws.services.mechanicalturkrequester*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Organizations</title>
+                      <packages>com.amazonaws.services.organizations*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon WorkDocs</title>
+                      <packages>com.amazonaws.services.workdocs*</packages>
+                    </group>
+                    <group>
                       <title>Common</title>
                       <packages>com.amazonaws*</packages>
                     </group>
@@ -444,9 +520,7 @@
                               &lt;div id="feedback-section"&gt;
                                   &lt;h3&gt;Did this page help you?&lt;/h3&gt;
                                   &lt;div id="feedback-link-sectioin"&gt;
-                                      &lt;a id="feedback_yes" target="_blank" style="display:inline;"&gt;Yes&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="feedback_no" target="_blank" style="display:inline;"&gt;No&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Tell us about it...&lt;/a&gt;
+                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Submit feedback...&lt;/a&gt;
                                   &lt;/div&gt;
 
                               &lt;/div&gt;
@@ -456,16 +530,13 @@
                                   var javadoc_root_name = "/javadoc/";
                                   var javadoc_path = location.href.substring(0, location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
                                   var file_path = location.href.substring(location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
+                                  var sdk_name = encodeURI("AWS SDK for Java");
+                                  var encoded_path = encodeURI(location.href);
 
-                                  var feedback_yes_url = javadoc_path + "javadoc-resources/feedbackyes.html?topic_id=";
-                                  var feedback_no_url = javadoc_path + "javadoc-resources/feedbackno.html?topic_id=";
-                                  var feedback_tellmore_url = "https://aws-portal.amazon.com/gp/aws/html-forms-controller/documentation/aws_doc_feedback_04?service_name=Java-Ref&amp;file_name=";
+                                  var feedback_tellmore_url = "https://docs-feedback.aws.amazon.com/feedback.jsp?hidden_service_name=" + sdk_name + "&amp;topic_url=" + encoded_path;
 
                                   if(file_path != "overview-frame.html") {
-                                  var file_name = file_path.replace(/[/.]/g, '_');
-                                  document.getElementById("feedback_yes").setAttribute("href", feedback_yes_url + file_name);
-                                  document.getElementById("feedback_no").setAttribute("href", feedback_no_url + file_name);
-                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url + file_name);
+                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url);
                                   } else {
                                   document.getElementById("feedback-section").outerHTML = "AWS SDK for Java";
                                   document.getElementById("divsearch").outerHTML = "";
@@ -536,10 +607,10 @@
                   <use>false</use>
                   <notree>true</notree>
                   <nodeprecatedlist>true</nodeprecatedlist>
-                  <windowtitle>AWS SDK for Java - 1.11.52</windowtitle>
+                  <windowtitle>AWS SDK for Java - 1.11.119</windowtitle>
                   <encoding>UTF-8</encoding>
                   <docencoding>UTF-8</docencoding>
-                  <doctitle>AWS SDK for Java API Reference - 1.11.52</doctitle>
+                  <doctitle>AWS SDK for Java API Reference - 1.11.119</doctitle>
                   <packagesheader>AWS SDK for Java</packagesheader>
                   <docfilessubdirs>true</docfilessubdirs>
                   <taglets>
@@ -553,6 +624,10 @@
                     </taglet>
                   </taglets>
                   <groups>
+                    <group>
+                      <title>AWS Resource Groups Tagging API</title>
+                      <packages>com.amazonaws.services.resourcegroupstaggingapi*</packages>
+                    </group>
                     <group>
                       <title>Amazon S3</title>
                       <packages>com.amazonaws.services.s3*</packages>
@@ -624,6 +699,10 @@
                     <group>
                       <title>Amazon CloudFront</title>
                       <packages>com.amazonaws.services.cloudfront*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon CloudDirectory</title>
+                      <packages>com.amazonaws.services.clouddirectory*</packages>
                     </group>
                     <group>
                       <title>Amazon Cognito</title>
@@ -822,6 +901,74 @@
                       <packages>com.amazonaws.services.servermigration*</packages>
                     </group>
                     <group>
+                      <title>Amazon Rekognition</title>
+                      <packages>com.amazonaws.services.rekognition*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Polly</title>
+                      <packages>com.amazonaws.services.polly*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Lightsail</title>
+                      <packages>com.amazonaws.services.lightsail*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon AppStream</title>
+                      <packages>com.amazonaws.services.appstream*</packages>
+                    </group>
+                    <group>
+                      <title>AWS X-Ray</title>
+                      <packages>com.amazonaws.services.xray*</packages>
+                    </group>
+                    <group>
+                      <title>AWS OpsWorks for Chef Automate</title>
+                      <packages>com.amazonaws.services.opsworkscm*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon Pinpoint</title>
+                      <packages>com.amazonaws.services.pinpoint*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Step Functions</title>
+                      <packages>com.amazonaws.services.stepfunctions*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Shield</title>
+                      <packages>com.amazonaws.services.shield*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Health APIs and Notifications</title>
+                      <packages>com.amazonaws.services.health*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Cost and Usage Report</title>
+                      <packages>com.amazonaws.services.costandusagereport*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Code Build</title>
+                      <packages>com.amazonaws.services.codebuild*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Batch</title>
+                      <packages>com.amazonaws.services.batch*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Lex</title>
+                      <packages>com.amazonaws.services.lex*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Mechanical Turk Requester</title>
+                      <packages>com.amazonaws.services.mechanicalturkrequester*</packages>
+                    </group>
+                    <group>
+                      <title>AWS Organizations</title>
+                      <packages>com.amazonaws.services.organizations*</packages>
+                    </group>
+                    <group>
+                      <title>Amazon WorkDocs</title>
+                      <packages>com.amazonaws.services.workdocs*</packages>
+                    </group>
+                    <group>
                       <title>Common</title>
                       <packages>com.amazonaws*</packages>
                     </group>
@@ -866,9 +1013,7 @@
                               &lt;div id="feedback-section"&gt;
                                   &lt;h3&gt;Did this page help you?&lt;/h3&gt;
                                   &lt;div id="feedback-link-sectioin"&gt;
-                                      &lt;a id="feedback_yes" target="_blank" style="display:inline;"&gt;Yes&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="feedback_no" target="_blank" style="display:inline;"&gt;No&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Tell us about it...&lt;/a&gt;
+                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Submit feedback...&lt;/a&gt;
                                   &lt;/div&gt;
 
                               &lt;/div&gt;
@@ -878,16 +1023,13 @@
                                   var javadoc_root_name = "/javadoc/";
                                   var javadoc_path = location.href.substring(0, location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
                                   var file_path = location.href.substring(location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
+                                  var sdk_name = encodeURI("AWS SDK for Java");
+                                  var encoded_path = encodeURI(location.href);
 
-                                  var feedback_yes_url = javadoc_path + "javadoc-resources/feedbackyes.html?topic_id=";
-                                  var feedback_no_url = javadoc_path + "javadoc-resources/feedbackno.html?topic_id=";
-                                  var feedback_tellmore_url = "https://aws-portal.amazon.com/gp/aws/html-forms-controller/documentation/aws_doc_feedback_04?service_name=Java-Ref&amp;file_name=";
+                                  var feedback_tellmore_url = "https://docs-feedback.aws.amazon.com/feedback.jsp?hidden_service_name=" + sdk_name + "&amp;topic_url=" + encoded_path;
 
                                   if(file_path != "overview-frame.html") {
-                                  var file_name = file_path.replace(/[/.]/g, '_');
-                                  document.getElementById("feedback_yes").setAttribute("href", feedback_yes_url + file_name);
-                                  document.getElementById("feedback_no").setAttribute("href", feedback_no_url + file_name);
-                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url + file_name);
+                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url);
                                   } else {
                                   document.getElementById("feedback-section").outerHTML = "AWS SDK for Java";
                                   document.getElementById("divsearch").outerHTML = "";
@@ -954,10 +1096,10 @@
               <use>false</use>
               <notree>true</notree>
               <nodeprecatedlist>true</nodeprecatedlist>
-              <windowtitle>AWS SDK for Java - 1.11.52</windowtitle>
+              <windowtitle>AWS SDK for Java - 1.11.119</windowtitle>
               <encoding>UTF-8</encoding>
               <docencoding>UTF-8</docencoding>
-              <doctitle>AWS SDK for Java API Reference - 1.11.52</doctitle>
+              <doctitle>AWS SDK for Java API Reference - 1.11.119</doctitle>
               <packagesheader>AWS SDK for Java</packagesheader>
               <docfilessubdirs>true</docfilessubdirs>
               <taglets>
@@ -971,6 +1113,10 @@
                 </taglet>
               </taglets>
               <groups>
+                <group>
+                  <title>AWS Resource Groups Tagging API</title>
+                  <packages>com.amazonaws.services.resourcegroupstaggingapi*</packages>
+                </group>
                 <group>
                   <title>Amazon S3</title>
                   <packages>com.amazonaws.services.s3*</packages>
@@ -1042,6 +1188,10 @@
                 <group>
                   <title>Amazon CloudFront</title>
                   <packages>com.amazonaws.services.cloudfront*</packages>
+                </group>
+                <group>
+                  <title>Amazon CloudDirectory</title>
+                  <packages>com.amazonaws.services.clouddirectory*</packages>
                 </group>
                 <group>
                   <title>Amazon Cognito</title>
@@ -1240,6 +1390,74 @@
                   <packages>com.amazonaws.services.servermigration*</packages>
                 </group>
                 <group>
+                  <title>Amazon Rekognition</title>
+                  <packages>com.amazonaws.services.rekognition*</packages>
+                </group>
+                <group>
+                  <title>Amazon Polly</title>
+                  <packages>com.amazonaws.services.polly*</packages>
+                </group>
+                <group>
+                  <title>Amazon Lightsail</title>
+                  <packages>com.amazonaws.services.lightsail*</packages>
+                </group>
+                <group>
+                  <title>Amazon AppStream</title>
+                  <packages>com.amazonaws.services.appstream*</packages>
+                </group>
+                <group>
+                  <title>AWS X-Ray</title>
+                  <packages>com.amazonaws.services.xray*</packages>
+                </group>
+                <group>
+                  <title>AWS OpsWorks for Chef Automate</title>
+                  <packages>com.amazonaws.services.opsworkscm*</packages>
+                </group>
+                <group>
+                  <title>Amazon Pinpoint</title>
+                  <packages>com.amazonaws.services.pinpoint*</packages>
+                </group>
+                <group>
+                  <title>AWS Step Functions</title>
+                  <packages>com.amazonaws.services.stepfunctions*</packages>
+                </group>
+                <group>
+                  <title>AWS Shield</title>
+                  <packages>com.amazonaws.services.shield*</packages>
+                </group>
+                <group>
+                  <title>AWS Health APIs and Notifications</title>
+                  <packages>com.amazonaws.services.health*</packages>
+                </group>
+                <group>
+                  <title>AWS Cost and Usage Report</title>
+                  <packages>com.amazonaws.services.costandusagereport*</packages>
+                </group>
+                <group>
+                  <title>AWS Code Build</title>
+                  <packages>com.amazonaws.services.codebuild*</packages>
+                </group>
+                <group>
+                  <title>AWS Batch</title>
+                  <packages>com.amazonaws.services.batch*</packages>
+                </group>
+                <group>
+                  <title>AWS Lex</title>
+                  <packages>com.amazonaws.services.lex*</packages>
+                </group>
+                <group>
+                  <title>AWS Mechanical Turk Requester</title>
+                  <packages>com.amazonaws.services.mechanicalturkrequester*</packages>
+                </group>
+                <group>
+                  <title>AWS Organizations</title>
+                  <packages>com.amazonaws.services.organizations*</packages>
+                </group>
+                <group>
+                  <title>Amazon WorkDocs</title>
+                  <packages>com.amazonaws.services.workdocs*</packages>
+                </group>
+                <group>
                   <title>Common</title>
                   <packages>com.amazonaws*</packages>
                 </group>
@@ -1284,9 +1502,7 @@
                               &lt;div id="feedback-section"&gt;
                                   &lt;h3&gt;Did this page help you?&lt;/h3&gt;
                                   &lt;div id="feedback-link-sectioin"&gt;
-                                      &lt;a id="feedback_yes" target="_blank" style="display:inline;"&gt;Yes&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="feedback_no" target="_blank" style="display:inline;"&gt;No&lt;/a&gt;&amp;nbsp;&amp;nbsp;
-                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Tell us about it...&lt;/a&gt;
+                                      &lt;a id="go_cti" target="_blank" style="display:inline;"&gt;Submit feedback...&lt;/a&gt;
                                   &lt;/div&gt;
 
                               &lt;/div&gt;
@@ -1296,16 +1512,13 @@
                                   var javadoc_root_name = "/javadoc/";
                                   var javadoc_path = location.href.substring(0, location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
                                   var file_path = location.href.substring(location.href.lastIndexOf(javadoc_root_name) + javadoc_root_name.length);
+                                  var sdk_name = encodeURI("AWS SDK for Java");
+                                  var encoded_path = encodeURI(location.href);
 
-                                  var feedback_yes_url = javadoc_path + "javadoc-resources/feedbackyes.html?topic_id=";
-                                  var feedback_no_url = javadoc_path + "javadoc-resources/feedbackno.html?topic_id=";
-                                  var feedback_tellmore_url = "https://aws-portal.amazon.com/gp/aws/html-forms-controller/documentation/aws_doc_feedback_04?service_name=Java-Ref&amp;file_name=";
+                                  var feedback_tellmore_url = "https://docs-feedback.aws.amazon.com/feedback.jsp?hidden_service_name=" + sdk_name + "&amp;topic_url=" + encoded_path;
 
                                   if(file_path != "overview-frame.html") {
-                                  var file_name = file_path.replace(/[/.]/g, '_');
-                                  document.getElementById("feedback_yes").setAttribute("href", feedback_yes_url + file_name);
-                                  document.getElementById("feedback_no").setAttribute("href", feedback_no_url + file_name);
-                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url + file_name);
+                                  document.getElementById("go_cti").setAttribute("href", feedback_tellmore_url);
                                   } else {
                                   document.getElementById("feedback-section").outerHTML = "AWS SDK for Java";
                                   document.getElementById("divsearch").outerHTML = "";
@@ -1569,7 +1782,7 @@
                   <goal>exec</goal>
                 </goals>
                 <configuration>
-                  <workingDirectory>target/aws-java-sdk-osgi-1.11.52-sdk-zip-archive-assembly/</workingDirectory>
+                  <workingDirectory>target/aws-java-sdk-osgi-1.11.119-sdk-zip-archive-assembly/</workingDirectory>
                   <executable>zip</executable>
                   <commandlineArgs>-r ../aws-java-sdk.zip .</commandlineArgs>
                 </configuration>
@@ -1608,7 +1821,7 @@
     <dependency>
       <groupId>software.amazon.ion</groupId>
       <artifactId>ion-java</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

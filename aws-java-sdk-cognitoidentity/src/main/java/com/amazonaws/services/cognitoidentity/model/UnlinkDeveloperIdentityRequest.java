@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to the <code>UnlinkDeveloperIdentity</code> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnlinkDeveloperIdentity"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -40,7 +46,11 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
      * </p>
      */
     private String developerProviderName;
-    /** A unique ID used by your backend authentication process to identify a user. */
+    /**
+     * <p>
+     * A unique ID used by your backend authentication process to identify a user.
+     * </p>
+     */
     private String developerUserIdentifier;
 
     /**
@@ -164,7 +174,9 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
+     * <p>
      * A unique ID used by your backend authentication process to identify a user.
+     * </p>
      * 
      * @param developerUserIdentifier
      *        A unique ID used by your backend authentication process to identify a user.
@@ -175,7 +187,9 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
+     * <p>
      * A unique ID used by your backend authentication process to identify a user.
+     * </p>
      * 
      * @return A unique ID used by your backend authentication process to identify a user.
      */
@@ -185,7 +199,9 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
+     * <p>
      * A unique ID used by your backend authentication process to identify a user.
+     * </p>
      * 
      * @param developerUserIdentifier
      *        A unique ID used by your backend authentication process to identify a user.
@@ -209,13 +225,13 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId() + ",");
+            sb.append("IdentityId: ").append(getIdentityId()).append(",");
         if (getIdentityPoolId() != null)
-            sb.append("IdentityPoolId: " + getIdentityPoolId() + ",");
+            sb.append("IdentityPoolId: ").append(getIdentityPoolId()).append(",");
         if (getDeveloperProviderName() != null)
-            sb.append("DeveloperProviderName: " + getDeveloperProviderName() + ",");
+            sb.append("DeveloperProviderName: ").append(getDeveloperProviderName()).append(",");
         if (getDeveloperUserIdentifier() != null)
-            sb.append("DeveloperUserIdentifier: " + getDeveloperUserIdentifier());
+            sb.append("DeveloperUserIdentifier: ").append(getDeveloperUserIdentifier());
         sb.append("}");
         return sb.toString();
     }
@@ -265,4 +281,5 @@ public class UnlinkDeveloperIdentityRequest extends com.amazonaws.AmazonWebServi
     public UnlinkDeveloperIdentityRequest clone() {
         return (UnlinkDeveloperIdentityRequest) super.clone();
     }
+
 }

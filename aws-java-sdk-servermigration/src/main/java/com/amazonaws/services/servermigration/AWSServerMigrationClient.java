@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.servermigration.AWSServerMigrationClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -47,6 +51,7 @@ import com.amazonaws.services.servermigration.model.transform.*;
  * Amazon Server Migration Service automates the process of migrating servers to EC2.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSServerMigrationClient extends AmazonWebServiceClient implements AWSServerMigration {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -59,41 +64,42 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ReplicationJobAlreadyExistsException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.ReplicationJobAlreadyExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MissingRequiredParameterException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.MissingRequiredParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ServerCannotBeReplicatedException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.ServerCannotBeReplicatedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.InvalidParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ReplicationJobNotFoundException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.ReplicationJobNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ReplicationRunLimitExceededException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.ReplicationRunLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.OperationNotPermittedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnauthorizedOperationException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.UnauthorizedOperationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalError").withModeledClass(
-                            com.amazonaws.services.servermigration.model.InternalErrorException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("NoConnectorsAvailableException").withModeledClass(
-                            com.amazonaws.services.servermigration.model.NoConnectorsAvailableException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.servermigration.model.AWSServerMigrationException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReplicationJobAlreadyExistsException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.ReplicationJobAlreadyExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MissingRequiredParameterException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.MissingRequiredParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServerCannotBeReplicatedException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.ServerCannotBeReplicatedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.InvalidParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReplicationJobNotFoundException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.ReplicationJobNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReplicationRunLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.ReplicationRunLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.OperationNotPermittedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedOperationException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.UnauthorizedOperationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalError").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.InternalErrorException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NoConnectorsAvailableException").withModeledClass(
+                                    com.amazonaws.services.servermigration.model.NoConnectorsAvailableException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.servermigration.model.AWSServerMigrationException.class));
 
     /**
      * Constructs a new client to invoke service methods on SMS. A credentials provider chain will be used that searches
@@ -109,7 +115,9 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSServerMigrationClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSServerMigrationClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -132,7 +140,9 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *        counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSServerMigrationClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -146,7 +156,10 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSServerMigrationClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSServerMigrationClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -164,7 +177,10 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to SMS (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSServerMigrationClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSServerMigrationClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -180,7 +196,9 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSServerMigrationClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -198,7 +216,10 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to SMS (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSServerMigrationClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSServerMigrationClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -218,12 +239,20 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *        counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSServerMigrationClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSServerMigrationClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSServerMigrationClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSServerMigrationClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSServerMigrationClientBuilder builder() {
+        return AWSServerMigrationClientBuilder.standard();
     }
 
     /**
@@ -280,9 +309,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws InternalErrorException
      *         An internal error has occured.
      * @sample AWSServerMigration.CreateReplicationJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/CreateReplicationJob" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateReplicationJobResult createReplicationJob(CreateReplicationJobRequest createReplicationJobRequest) {
+    public CreateReplicationJobResult createReplicationJob(CreateReplicationJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReplicationJob(request);
+    }
+
+    @SdkInternalApi
+    final CreateReplicationJobResult executeCreateReplicationJob(CreateReplicationJobRequest createReplicationJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReplicationJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -292,7 +330,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateReplicationJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createReplicationJobRequest));
+                request = new CreateReplicationJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createReplicationJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -331,9 +369,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws ReplicationJobNotFoundException
      *         The specified Replication Job cannot be found.
      * @sample AWSServerMigration.DeleteReplicationJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DeleteReplicationJob" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteReplicationJobResult deleteReplicationJob(DeleteReplicationJobRequest deleteReplicationJobRequest) {
+    public DeleteReplicationJobResult deleteReplicationJob(DeleteReplicationJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteReplicationJob(request);
+    }
+
+    @SdkInternalApi
+    final DeleteReplicationJobResult executeDeleteReplicationJob(DeleteReplicationJobRequest deleteReplicationJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteReplicationJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -343,7 +390,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteReplicationJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteReplicationJobRequest));
+                request = new DeleteReplicationJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteReplicationJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -379,9 +426,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *         The request is missing a required parameter. Ensure that you have supplied all the required parameters
      *         for the request.
      * @sample AWSServerMigration.DeleteServerCatalog
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DeleteServerCatalog" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteServerCatalogResult deleteServerCatalog(DeleteServerCatalogRequest deleteServerCatalogRequest) {
+    public DeleteServerCatalogResult deleteServerCatalog(DeleteServerCatalogRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteServerCatalog(request);
+    }
+
+    @SdkInternalApi
+    final DeleteServerCatalogResult executeDeleteServerCatalog(DeleteServerCatalogRequest deleteServerCatalogRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteServerCatalogRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -391,7 +447,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteServerCatalogRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteServerCatalogRequest));
+                request = new DeleteServerCatalogRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteServerCatalogRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -427,9 +483,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws InvalidParameterException
      *         A parameter specified in the request is not valid, is unsupported, or cannot be used.
      * @sample AWSServerMigration.DisassociateConnector
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DisassociateConnector" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DisassociateConnectorResult disassociateConnector(DisassociateConnectorRequest disassociateConnectorRequest) {
+    public DisassociateConnectorResult disassociateConnector(DisassociateConnectorRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateConnector(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateConnectorResult executeDisassociateConnector(DisassociateConnectorRequest disassociateConnectorRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disassociateConnectorRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -439,7 +504,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DisassociateConnectorRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(disassociateConnectorRequest));
+                request = new DisassociateConnectorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(disassociateConnectorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -467,9 +532,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws UnauthorizedOperationException
      *         This user does not have permissions to perform this operation.
      * @sample AWSServerMigration.GetConnectors
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetConnectors" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetConnectorsResult getConnectors(GetConnectorsRequest getConnectorsRequest) {
+    public GetConnectorsResult getConnectors(GetConnectorsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetConnectors(request);
+    }
+
+    @SdkInternalApi
+    final GetConnectorsResult executeGetConnectors(GetConnectorsRequest getConnectorsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getConnectorsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -479,7 +553,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetConnectorsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getConnectorsRequest));
+                request = new GetConnectorsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getConnectorsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -512,9 +586,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws UnauthorizedOperationException
      *         This user does not have permissions to perform this operation.
      * @sample AWSServerMigration.GetReplicationJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetReplicationJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetReplicationJobsResult getReplicationJobs(GetReplicationJobsRequest getReplicationJobsRequest) {
+    public GetReplicationJobsResult getReplicationJobs(GetReplicationJobsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReplicationJobs(request);
+    }
+
+    @SdkInternalApi
+    final GetReplicationJobsResult executeGetReplicationJobs(GetReplicationJobsRequest getReplicationJobsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getReplicationJobsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -524,7 +607,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetReplicationJobsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getReplicationJobsRequest));
+                request = new GetReplicationJobsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getReplicationJobsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -558,9 +641,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws UnauthorizedOperationException
      *         This user does not have permissions to perform this operation.
      * @sample AWSServerMigration.GetReplicationRuns
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetReplicationRuns" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetReplicationRunsResult getReplicationRuns(GetReplicationRunsRequest getReplicationRunsRequest) {
+    public GetReplicationRunsResult getReplicationRuns(GetReplicationRunsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReplicationRuns(request);
+    }
+
+    @SdkInternalApi
+    final GetReplicationRunsResult executeGetReplicationRuns(GetReplicationRunsRequest getReplicationRunsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getReplicationRunsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -570,7 +662,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetReplicationRunsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getReplicationRunsRequest));
+                request = new GetReplicationRunsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getReplicationRunsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -598,9 +690,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws UnauthorizedOperationException
      *         This user does not have permissions to perform this operation.
      * @sample AWSServerMigration.GetServers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetServers" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetServersResult getServers(GetServersRequest getServersRequest) {
+    public GetServersResult getServers(GetServersRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetServers(request);
+    }
+
+    @SdkInternalApi
+    final GetServersResult executeGetServers(GetServersRequest getServersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getServersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -610,7 +711,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetServersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getServersRequest));
+                request = new GetServersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getServersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -650,9 +751,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      *         No connectors are available to handle this request. Please associate connector(s) and verify any existing
      *         connectors are healthy and can respond to requests.
      * @sample AWSServerMigration.ImportServerCatalog
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/ImportServerCatalog" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportServerCatalogResult importServerCatalog(ImportServerCatalogRequest importServerCatalogRequest) {
+    public ImportServerCatalogResult importServerCatalog(ImportServerCatalogRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportServerCatalog(request);
+    }
+
+    @SdkInternalApi
+    final ImportServerCatalogResult executeImportServerCatalog(ImportServerCatalogRequest importServerCatalogRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importServerCatalogRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -662,7 +772,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ImportServerCatalogRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(importServerCatalogRequest));
+                request = new ImportServerCatalogRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(importServerCatalogRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -701,9 +811,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws ReplicationRunLimitExceededException
      *         This user has exceeded the maximum allowed Replication Run limit.
      * @sample AWSServerMigration.StartOnDemandReplicationRun
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/StartOnDemandReplicationRun"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public StartOnDemandReplicationRunResult startOnDemandReplicationRun(StartOnDemandReplicationRunRequest startOnDemandReplicationRunRequest) {
+    public StartOnDemandReplicationRunResult startOnDemandReplicationRun(StartOnDemandReplicationRunRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartOnDemandReplicationRun(request);
+    }
+
+    @SdkInternalApi
+    final StartOnDemandReplicationRunResult executeStartOnDemandReplicationRun(StartOnDemandReplicationRunRequest startOnDemandReplicationRunRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startOnDemandReplicationRunRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -713,7 +832,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartOnDemandReplicationRunRequestMarshaller(protocolFactory).marshall(super
+                request = new StartOnDemandReplicationRunRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(startOnDemandReplicationRunRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -757,9 +876,18 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
      * @throws InternalErrorException
      *         An internal error has occured.
      * @sample AWSServerMigration.UpdateReplicationJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/UpdateReplicationJob" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateReplicationJobResult updateReplicationJob(UpdateReplicationJobRequest updateReplicationJobRequest) {
+    public UpdateReplicationJobResult updateReplicationJob(UpdateReplicationJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateReplicationJob(request);
+    }
+
+    @SdkInternalApi
+    final UpdateReplicationJobResult executeUpdateReplicationJob(UpdateReplicationJobRequest updateReplicationJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateReplicationJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -769,7 +897,7 @@ public class AWSServerMigrationClient extends AmazonWebServiceClient implements 
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateReplicationJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateReplicationJobRequest));
+                request = new UpdateReplicationJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateReplicationJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,15 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OptionGroup implements Serializable, Cloneable {
 
     /**
@@ -475,21 +480,21 @@ public class OptionGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOptionGroupName() != null)
-            sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+            sb.append("OptionGroupName: ").append(getOptionGroupName()).append(",");
         if (getOptionGroupDescription() != null)
-            sb.append("OptionGroupDescription: " + getOptionGroupDescription() + ",");
+            sb.append("OptionGroupDescription: ").append(getOptionGroupDescription()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getMajorEngineVersion() != null)
-            sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");
+            sb.append("MajorEngineVersion: ").append(getMajorEngineVersion()).append(",");
         if (getOptions() != null)
-            sb.append("Options: " + getOptions() + ",");
+            sb.append("Options: ").append(getOptions()).append(",");
         if (getAllowsVpcAndNonVpcInstanceMemberships() != null)
-            sb.append("AllowsVpcAndNonVpcInstanceMemberships: " + getAllowsVpcAndNonVpcInstanceMemberships() + ",");
+            sb.append("AllowsVpcAndNonVpcInstanceMemberships: ").append(getAllowsVpcAndNonVpcInstanceMemberships()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getOptionGroupArn() != null)
-            sb.append("OptionGroupArn: " + getOptionGroupArn());
+            sb.append("OptionGroupArn: ").append(getOptionGroupArn());
         sb.append("}");
         return sb.toString();
     }
@@ -564,4 +569,5 @@ public class OptionGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

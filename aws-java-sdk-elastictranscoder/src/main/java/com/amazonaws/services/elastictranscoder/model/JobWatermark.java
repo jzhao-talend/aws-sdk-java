@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,7 +23,8 @@ import java.io.Serializable;
  * format, which supports transparency.
  * </p>
  */
-public class JobWatermark implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobWatermark implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -226,11 +230,11 @@ public class JobWatermark implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPresetWatermarkId() != null)
-            sb.append("PresetWatermarkId: " + getPresetWatermarkId() + ",");
+            sb.append("PresetWatermarkId: ").append(getPresetWatermarkId()).append(",");
         if (getInputKey() != null)
-            sb.append("InputKey: " + getInputKey() + ",");
+            sb.append("InputKey: ").append(getInputKey()).append(",");
         if (getEncryption() != null)
-            sb.append("Encryption: " + getEncryption());
+            sb.append("Encryption: ").append(getEncryption());
         sb.append("}");
         return sb.toString();
     }
@@ -278,5 +282,11 @@ public class JobWatermark implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.JobWatermarkMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

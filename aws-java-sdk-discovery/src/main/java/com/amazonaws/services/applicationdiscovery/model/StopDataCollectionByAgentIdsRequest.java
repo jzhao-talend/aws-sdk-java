@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,26 +13,26 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IDs of the agents that you want to stop collecting data.
+     * The IDs of the agents or connectors from which to stop collecting data.
      * </p>
      */
     private java.util.List<String> agentIds;
 
     /**
      * <p>
-     * The IDs of the agents that you want to stop collecting data.
+     * The IDs of the agents or connectors from which to stop collecting data.
      * </p>
      * 
-     * @return The IDs of the agents that you want to stop collecting data.
+     * @return The IDs of the agents or connectors from which to stop collecting data.
      */
 
     public java.util.List<String> getAgentIds() {
@@ -41,11 +41,11 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The IDs of the agents that you want to stop collecting data.
+     * The IDs of the agents or connectors from which to stop collecting data.
      * </p>
      * 
      * @param agentIds
-     *        The IDs of the agents that you want to stop collecting data.
+     *        The IDs of the agents or connectors from which to stop collecting data.
      */
 
     public void setAgentIds(java.util.Collection<String> agentIds) {
@@ -59,7 +59,7 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The IDs of the agents that you want to stop collecting data.
+     * The IDs of the agents or connectors from which to stop collecting data.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -68,7 +68,7 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
      * </p>
      * 
      * @param agentIds
-     *        The IDs of the agents that you want to stop collecting data.
+     *        The IDs of the agents or connectors from which to stop collecting data.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -84,11 +84,11 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The IDs of the agents that you want to stop collecting data.
+     * The IDs of the agents or connectors from which to stop collecting data.
      * </p>
      * 
      * @param agentIds
-     *        The IDs of the agents that you want to stop collecting data.
+     *        The IDs of the agents or connectors from which to stop collecting data.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -109,7 +109,7 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAgentIds() != null)
-            sb.append("AgentIds: " + getAgentIds());
+            sb.append("AgentIds: ").append(getAgentIds());
         sb.append("}");
         return sb.toString();
     }
@@ -144,4 +144,5 @@ public class StopDataCollectionByAgentIdsRequest extends com.amazonaws.AmazonWeb
     public StopDataCollectionByAgentIdsRequest clone() {
         return (StopDataCollectionByAgentIdsRequest) super.clone();
     }
+
 }

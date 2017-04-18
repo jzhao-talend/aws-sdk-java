@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.route53.AmazonRoute53ClientBuilder;
 import com.amazonaws.services.route53.waiters.AmazonRoute53Waiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -48,6 +52,7 @@ import com.amazonaws.services.route53.model.transform.*;
  * 
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonRoute53Client extends AmazonWebServiceClient implements AmazonRoute53 {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -81,7 +86,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRoute53ClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonRoute53Client() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -104,7 +111,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53Client(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -118,7 +127,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonRoute53ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonRoute53Client(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -136,7 +148,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Route 53 (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53Client(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -153,7 +168,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonRoute53Client(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -171,7 +188,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Route 53 (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53ClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53Client(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -191,12 +211,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonRoute53ClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53ClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonRoute53ClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonRoute53Client(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonRoute53ClientBuilder builder() {
+        return AmazonRoute53ClientBuilder.standard();
     }
 
     /**
@@ -218,6 +246,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     private void init() {
         exceptionUnmarshallers.add(new HostedZoneNotEmptyExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ConcurrentModificationExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new VPCAssociationAuthorizationNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidDomainNameExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyHealthChecksExceptionUnmarshaller());
         exceptionUnmarshallers.add(new IncompatibleVersionExceptionUnmarshaller());
@@ -252,8 +281,11 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
         exceptionUnmarshallers.add(new HealthCheckAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DelegationSetInUseExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NoSuchDelegationSetExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new NotAuthorizedExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NoSuchHealthCheckExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new TooManyVPCAssociationAuthorizationsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyTrafficPolicyInstancesExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidPaginationTokenExceptionUnmarshaller());
         exceptionUnmarshallers.add(new LimitsExceededExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DelegationSetNotAvailableExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NoSuchTrafficPolicyInstanceExceptionUnmarshaller());
@@ -275,48 +307,60 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <important>
      * <p>
-     * The VPC and the hosted zone must already exist, and you must have created a private hosted zone. You cannot
-     * convert a public hosted zone into a private hosted zone.
+     * To perform the association, the VPC and the private hosted zone must already exist. You can't convert a public
+     * hosted zone into a private hosted zone.
      * </p>
      * </important>
      * <p>
      * Send a <code>POST</code> request to the <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/associatevpc</code>
-     * resource. The request body must include an XML document with a <code>AssociateVPCWithHostedZoneRequest</code>
-     * element. The response returns the <code>AssociateVPCWithHostedZoneResponse</code> element.
+     * resource. The request body must include a document with an <code>AssociateVPCWithHostedZoneRequest</code>
+     * element. The response contains a <code>ChangeInfo</code> data type that you can use to track the progress of the
+     * request.
      * </p>
      * <note>
      * <p>
-     * If you used different accounts to create the hosted zone and to create the Amazon VPCs that you want to associate
-     * with the hosted zone, we need to update account permissions for you. For more information, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html"
-     * >Associating Amazon VPCs and Private Hosted Zones That You Create with Different AWS Accounts</a> in the Amazon
-     * Route 53 Developer Guide.
+     * If you want to associate a VPC that was created by using one AWS account with a private hosted zone that was
+     * created by using a different account, the AWS account that created the private hosted zone must first submit a
+     * <code>CreateVPCAssociationAuthorization</code> request. Then the account that created the VPC must submit an
+     * <code>AssociateVPCWithHostedZone</code> request.
      * </p>
      * </note>
      * 
      * @param associateVPCWithHostedZoneRequest
-     *        A complex type that contains information about the VPC and the hosted zone that you want to associate.
+     *        A complex type that contains information about the request to associate a VPC with a private hosted zone.
      * @return Result of the AssociateVPCWithHostedZone operation returned by the service.
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
+     * @throws NotAuthorizedException
+     *         Associating the specified VPC with the specified hosted zone has not been authorized.
      * @throws InvalidVPCIdException
-     *         The hosted zone you are trying to create for your VPC_ID does not belong to you. Amazon Route 53 returns
-     *         this error when the VPC specified by <code>VPCId</code> does not belong to you.
+     *         The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access
+     *         this VPC.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws PublicZoneVPCAssociationException
-     *         The hosted zone specified in <code>HostedZoneId</code> is a public hosted zone.
+     *         You're trying to associate a VPC with a public hosted zone. Amazon Route 53 doesn't support associating a
+     *         VPC with a public hosted zone.
      * @throws ConflictingDomainExistsException
      *         You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you
      *         specified for one of the hosted zones is a subdomain of the domain that you specified for the other
-     *         hosted zone. For example, you cannot use the same Amazon VPC for the hosted zones for example.com and
+     *         hosted zone. For example, you can't use the same Amazon VPC for the hosted zones for example.com and
      *         test.example.com.
      * @throws LimitsExceededException
      *         The limits specified for a resource have been exceeded.
      * @sample AmazonRoute53.AssociateVPCWithHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/AssociateVPCWithHostedZone"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AssociateVPCWithHostedZoneResult associateVPCWithHostedZone(AssociateVPCWithHostedZoneRequest associateVPCWithHostedZoneRequest) {
+    public AssociateVPCWithHostedZoneResult associateVPCWithHostedZone(AssociateVPCWithHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateVPCWithHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final AssociateVPCWithHostedZoneResult executeAssociateVPCWithHostedZone(AssociateVPCWithHostedZoneRequest associateVPCWithHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(associateVPCWithHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -354,6 +398,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <code>/2013-04-01/hostedzone/<i>Amazon Route 53 hosted Zone ID</i>/rrset</code> resource.
      * </p>
      * <p>
+     * <b>Change Batches and Transactional Changes</b>
+     * </p>
+     * <p>
      * The request body must include a document with a <code>ChangeResourceRecordSetsRequest</code> element. The request
      * body contains a list of change items, known as a change batch. Change batches are considered transactional
      * changes. When using the Amazon Route 53 API to change resource record sets, Amazon Route 53 either makes all or
@@ -369,11 +416,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <important>
      * <p>
-     * Due to the nature of transactional changes, you cannot delete the same resource record set more than once in a
+     * Due to the nature of transactional changes, you can't delete the same resource record set more than once in a
      * single change batch. If you attempt to delete the same change batch more than once, Amazon Route 53 returns an
      * <code>InvalidChangeBatch</code> error.
      * </p>
-     * </important> <note>
+     * </important>
+     * <p>
+     * <b>Traffic Flow</b>
+     * </p>
      * <p>
      * To create resource record sets for complex routing configurations, use either the traffic flow visual editor in
      * the Amazon Route 53 console or the API actions for traffic policies and traffic policy instances. Save the
@@ -383,7 +433,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html">Using Traffic Flow to Route DNS
      * Traffic</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
-     * </note>
+     * <p>
+     * <b>Create, Delete, and Upsert</b>
+     * </p>
      * <p>
      * Use <code>ChangeResourceRecordsSetsRequest</code> to perform the following actions:
      * </p>
@@ -395,31 +447,43 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </li>
      * <li>
      * <p>
-     * <code>DELETE</code>: Deletes an existing resource record set that has the specified values for <code>Name</code>,
-     * <code>Type</code>, <code>Set Identifier</code> (for code latency, weighted, geolocation, and failover resource
-     * record sets), and <code>TTL</code> (except alias resource record sets, for which the TTL is determined by the AWS
-     * resource you're routing queries to).
+     * <code>DELETE</code>: Deletes an existing resource record set that has the specified values.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>UPSERT</code>: If a resource record set does not already exist, AWS creates it. If a resource set does
-     * exist, Amazon Route 53 updates it with the values in the request. Amazon Route 53 can update an existing resource
-     * record set only when all of the following values match: <code>Name</code>, <code>Type</code>, and
-     * <code>Set Identifier</code> (for weighted, latency, geolocation, and failover resource record sets).
+     * exist, Amazon Route 53 updates it with the values in the request.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * In response to a <code>ChangeResourceRecordSets</code> request, the DNS data is changed on all Amazon Route 53
-     * DNS servers. Initially, the status of a change is <code>PENDING</code>, meaning the change has not yet propagated
-     * to all the authoritative Amazon Route 53 DNS servers. When the change is propagated to all hosts, the change
-     * returns a status of <code>INSYNC</code>.
+     * <b>Syntaxes for Creating, Updating, and Deleting Resource Record Sets</b>
      * </p>
      * <p>
-     * After sending a change request, confirm your change has propagated to all Amazon Route 53 DNS servers. Changes
-     * generally propagate to all Amazon Route 53 name servers in a few minutes. In rare circumstances, propagation can
-     * take up to 30 minutes. For more information, see <a>GetChange</a>.
+     * The syntax for a request depends on the type of resource record set that you want to create, delete, or update,
+     * such as weighted, alias, or failover. The XML elements in your request must appear in the order listed in the
+     * syntax.
+     * </p>
+     * <p>
+     * For an example for each type of resource record set, see "Examples."
+     * </p>
+     * <p>
+     * Don't refer to the syntax in the "Parameter Syntax" section, which includes all of the elements for every kind of
+     * resource record set that you can create, delete, or update by using <code>ChangeResourceRecordSets</code>.
+     * </p>
+     * <p>
+     * <b>Change Propagation to Amazon Route 53 DNS Servers</b>
+     * </p>
+     * <p>
+     * When you submit a <code>ChangeResourceRecordSets</code> request, Amazon Route 53 propagates your changes to all
+     * of the Amazon Route 53 authoritative DNS servers. While your changes are propagating, <code>GetChange</code>
+     * returns a status of <code>PENDING</code>. When propagation is complete, <code>GetChange</code> returns a status
+     * of <code>INSYNC</code>. Changes generally propagate to all Amazon Route 53 name servers in a few minutes. In rare
+     * circumstances, propagation can take up to 30 minutes. For more information, see <a>GetChange</a>.
+     * </p>
+     * <p>
+     * <b>Limits on ChangeResourceRecordSets Requests</b>
      * </p>
      * <p>
      * For information about the limits on a <code>ChangeResourceRecordSets</code> request, see <a
@@ -445,9 +509,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
      *         intervals of increasing duration, before you try the request again.
      * @sample AmazonRoute53.ChangeResourceRecordSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeResourceRecordSets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ChangeResourceRecordSetsResult changeResourceRecordSets(ChangeResourceRecordSetsRequest changeResourceRecordSetsRequest) {
+    public ChangeResourceRecordSetsResult changeResourceRecordSets(ChangeResourceRecordSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeChangeResourceRecordSets(request);
+    }
+
+    @SdkInternalApi
+    final ChangeResourceRecordSetsResult executeChangeResourceRecordSets(ChangeResourceRecordSetsRequest changeResourceRecordSetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(changeResourceRecordSetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -501,10 +574,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
      *         intervals of increasing duration, before you try the request again.
      * @throws ThrottlingException
+     *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ChangeTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeTagsForResource" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ChangeTagsForResourceResult changeTagsForResource(ChangeTagsForResourceRequest changeTagsForResourceRequest) {
+    public ChangeTagsForResourceResult changeTagsForResource(ChangeTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeChangeTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ChangeTagsForResourceResult executeChangeTagsForResource(ChangeTagsForResourceRequest changeTagsForResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(changeTagsForResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -539,16 +622,15 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * To create a new health check, send a <code>POST</code> request to the <code>/2013-04-01/healthcheck</code>
-     * resource. The request body must include an XML document with a <code>CreateHealthCheckRequest</code> element. The
+     * resource. The request body must include a document with a <code>CreateHealthCheckRequest</code> element. The
      * response returns the <code>CreateHealthCheckResponse</code> element, containing the health check ID specified
      * when adding health check to a resource record set. For information about adding health checks to resource record
      * sets, see <a>ResourceRecordSet$HealthCheckId</a> in <a>ChangeResourceRecordSets</a>.
      * </p>
      * <p>
-     * If you are registering Amazon EC2 instances with an Elastic Load Balancing (ELB) load balancer, do not create
-     * Amazon Route 53 health checks for the Amazon EC2 instances. When you register an Amazon EC2 instance with a load
-     * balancer, you configure settings for an ELB health check, which performs a similar function to an Amazon Route 53
-     * health check.
+     * If you're registering EC2 instances with an Elastic Load Balancing (ELB) load balancer, do not create Amazon
+     * Route 53 health checks for the EC2 instances. When you register an EC2 instance with a load balancer, you
+     * configure settings for an ELB health check, which performs a similar function to an Amazon Route 53 health check.
      * </p>
      * <p>
      * You can associate health checks with failover resource record sets in a private hosted zone. Note the following:
@@ -574,7 +656,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * is based on the state of the alarm. For information about creating CloudWatch metrics and alarms by using the
      * CloudWatch console, see the <a
      * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html">Amazon CloudWatch
-     * Developer Guide</a>.
+     * User Guide</a>.
      * </p>
      * </li>
      * </ul>
@@ -587,16 +669,23 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS
      *         Support Center.
      * @throws HealthCheckAlreadyExistsException
-     *         The health check you're attempting to create already exists.</p>
-     *         <p>
-     *         Amazon Route 53 returns this error when a health check has already been created with the specified value
-     *         for <code>CallerReference</code>.
+     *         The health check you're attempting to create already exists. Amazon Route 53 returns this error when a
+     *         health check has already been created with the specified value for <code>CallerReference</code>.
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.CreateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHealthCheck" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateHealthCheckResult createHealthCheck(CreateHealthCheckRequest createHealthCheckRequest) {
+    public CreateHealthCheckResult createHealthCheck(CreateHealthCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateHealthCheck(request);
+    }
+
+    @SdkInternalApi
+    final CreateHealthCheckResult executeCreateHealthCheck(CreateHealthCheckRequest createHealthCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createHealthCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -632,13 +721,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <important>
      * <p>
-     * Public hosted zones cannot be converted to a private hosted zone or vice versa. Instead, create a new hosted zone
+     * Public hosted zones can't be converted to a private hosted zone or vice versa. Instead, create a new hosted zone
      * with the same name and create new resource record sets.
      * </p>
      * </important>
      * <p>
      * Send a <code>POST</code> request to the <code>/2013-04-01/hostedzone</code> resource. The request body must
-     * include an XML document with a <code>CreateHostedZoneRequest</code> element. The response returns the
+     * include a document with a <code>CreateHostedZoneRequest</code> element. The response returns the
      * <code>CreateHostedZoneResponse</code> element containing metadata about the hosted zone.
      * </p>
      * <p>
@@ -651,7 +740,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <ul>
      * <li>
      * <p>
-     * You cannot create a hosted zone for a top-level domain (TLD).
+     * You can't create a hosted zone for a top-level domain (TLD).
      * </p>
      * </li>
      * <li>
@@ -687,14 +776,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidDomainNameException
      *         The specified domain name is not valid.
      * @throws HostedZoneAlreadyExistsException
-     *         The hosted zone you are trying to create already exists. Amazon Route 53 returns this error when a hosted
+     *         The hosted zone you're trying to create already exists. Amazon Route 53 returns this error when a hosted
      *         zone has already been created with the specified <code>CallerReference</code>.
      * @throws TooManyHostedZonesException
-     *         This hosted zone cannot be created because the hosted zone limit is exceeded. To request a limit
-     *         increase, go to the Amazon Route 53 <a href="http://aws.amazon.com/route53-request/">Contact Us</a> page.
+     *         This hosted zone can't be created because the hosted zone limit is exceeded. To request a limit increase,
+     *         go to the Amazon Route 53 <a href="http://aws.amazon.com/route53-request/">Contact Us</a> page.
      * @throws InvalidVPCIdException
-     *         The hosted zone you are trying to create for your VPC_ID does not belong to you. Amazon Route 53 returns
-     *         this error when the VPC specified by <code>VPCId</code> does not belong to you.
+     *         The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access
+     *         this VPC.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws DelegationSetNotAvailableException
@@ -705,16 +794,25 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws ConflictingDomainExistsException
      *         You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you
      *         specified for one of the hosted zones is a subdomain of the domain that you specified for the other
-     *         hosted zone. For example, you cannot use the same Amazon VPC for the hosted zones for example.com and
+     *         hosted zone. For example, you can't use the same Amazon VPC for the hosted zones for example.com and
      *         test.example.com.
      * @throws NoSuchDelegationSetException
      *         A reusable delegation set with the specified ID does not exist.
      * @throws DelegationSetNotReusableException
      *         A reusable delegation set with the specified ID does not exist.
      * @sample AmazonRoute53.CreateHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHostedZone" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateHostedZoneResult createHostedZone(CreateHostedZoneRequest createHostedZoneRequest) {
+    public CreateHostedZoneResult createHostedZone(CreateHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final CreateHostedZoneResult executeCreateHostedZone(CreateHostedZoneRequest createHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -751,11 +849,11 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * Send a <code>POST</code> request to the <code>/2013-04-01/delegationset</code> resource. The request body must
-     * include an XML document with a <code>CreateReusableDelegationSetRequest</code> element.
+     * include a document with a <code>CreateReusableDelegationSetRequest</code> element.
      * </p>
      * <note>
      * <p>
-     * A reusable delegation set cannot be associated with a private hosted zone/
+     * A reusable delegation set can't be associated with a private hosted zone/
      * </p>
      * </note>
      * <p>
@@ -772,9 +870,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws LimitsExceededException
      *         The limits specified for a resource have been exceeded.
      * @throws HostedZoneNotFoundException
-     *         The specified HostedZone cannot be found.
+     *         The specified HostedZone can't be found.
      * @throws InvalidArgumentException
-     *         Parameter name and problem.
+     *         Parameter name is invalid.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws DelegationSetNotAvailableException
@@ -785,9 +883,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws DelegationSetAlreadyReusableException
      *         The specified delegation set has already been marked as reusable.
      * @sample AmazonRoute53.CreateReusableDelegationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateReusableDelegationSet"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateReusableDelegationSetResult createReusableDelegationSet(CreateReusableDelegationSetRequest createReusableDelegationSetRequest) {
+    public CreateReusableDelegationSetResult createReusableDelegationSet(CreateReusableDelegationSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReusableDelegationSet(request);
+    }
+
+    @SdkInternalApi
+    final CreateReusableDelegationSetResult executeCreateReusableDelegationSet(CreateReusableDelegationSetRequest createReusableDelegationSetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReusableDelegationSetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -842,9 +949,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         The format of the traffic policy document that you specified in the <code>Document</code> element is
      *         invalid.
      * @sample AmazonRoute53.CreateTrafficPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateTrafficPolicyResult createTrafficPolicy(CreateTrafficPolicyRequest createTrafficPolicyRequest) {
+    public CreateTrafficPolicyResult createTrafficPolicy(CreateTrafficPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTrafficPolicy(request);
+    }
+
+    @SdkInternalApi
+    final CreateTrafficPolicyResult executeCreateTrafficPolicy(CreateTrafficPolicyRequest createTrafficPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTrafficPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -905,9 +1021,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws TrafficPolicyInstanceAlreadyExistsException
      *         Traffic policy instance with given Id already exists.
      * @sample AmazonRoute53.CreateTrafficPolicyInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateTrafficPolicyInstanceResult createTrafficPolicyInstance(CreateTrafficPolicyInstanceRequest createTrafficPolicyInstanceRequest) {
+    public CreateTrafficPolicyInstanceResult createTrafficPolicyInstance(CreateTrafficPolicyInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTrafficPolicyInstance(request);
+    }
+
+    @SdkInternalApi
+    final CreateTrafficPolicyInstanceResult executeCreateTrafficPolicyInstance(CreateTrafficPolicyInstanceRequest createTrafficPolicyInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTrafficPolicyInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -966,9 +1091,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         The format of the traffic policy document that you specified in the <code>Document</code> element is
      *         invalid.
      * @sample AmazonRoute53.CreateTrafficPolicyVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyVersion"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateTrafficPolicyVersionResult createTrafficPolicyVersion(CreateTrafficPolicyVersionRequest createTrafficPolicyVersionRequest) {
+    public CreateTrafficPolicyVersionResult createTrafficPolicyVersion(CreateTrafficPolicyVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTrafficPolicyVersion(request);
+    }
+
+    @SdkInternalApi
+    final CreateTrafficPolicyVersionResult executeCreateTrafficPolicyVersion(CreateTrafficPolicyVersionRequest createTrafficPolicyVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTrafficPolicyVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -999,6 +1133,88 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
+     * Authorizes the AWS account that created a specified VPC to submit an <code>AssociateVPCWithHostedZone</code>
+     * request to associate the VPC with a specified hosted zone that was created by a different account. To submit a
+     * <code>CreateVPCAssociationAuthorization</code> request, you must use the account that created the hosted zone.
+     * After you authorize the association, use the account that created the VPC to submit an
+     * <code>AssociateVPCWithHostedZone</code> request.
+     * </p>
+     * <note>
+     * <p>
+     * If you want to associate multiple VPCs that you created by using one account with a hosted zone that you created
+     * by using a different account, you must submit one authorization request for each VPC.
+     * </p>
+     * </note>
+     * <p>
+     * Send a <code>POST</code> request to the
+     * <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/authorizevpcassociation</code> resource. The request body must
+     * include a document with a <code>CreateVPCAssociationAuthorizationRequest</code> element. The response contains
+     * information about the authorization.
+     * </p>
+     * 
+     * @param createVPCAssociationAuthorizationRequest
+     *        A complex type that contains information about the request to authorize associating a VPC with your
+     *        private hosted zone. Authorization is only required when a private hosted zone and a VPC were created by
+     *        using different accounts.
+     * @return Result of the CreateVPCAssociationAuthorization operation returned by the service.
+     * @throws ConcurrentModificationException
+     *         Another user submitted a request to update the object at the same time that you did. Retry the request.
+     * @throws TooManyVPCAssociationAuthorizationsException
+     *         You've created the maximum number of authorizations that can be created for the specified hosted zone. To
+     *         authorize another VPC to be associated with the hosted zone, submit a
+     *         <code>DeleteVPCAssociationAuthorization</code> request to remove an existing authorization. To get a list
+     *         of existing authorizations, submit a <code>ListVPCAssociationAuthorizations</code> request.
+     * @throws NoSuchHostedZoneException
+     *         No hosted zone exists with the ID that you specified.
+     * @throws InvalidVPCIdException
+     *         The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access
+     *         this VPC.
+     * @throws InvalidInputException
+     *         The input is not valid.
+     * @sample AmazonRoute53.CreateVPCAssociationAuthorization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateVPCAssociationAuthorization"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateVPCAssociationAuthorizationResult createVPCAssociationAuthorization(CreateVPCAssociationAuthorizationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVPCAssociationAuthorization(request);
+    }
+
+    @SdkInternalApi
+    final CreateVPCAssociationAuthorizationResult executeCreateVPCAssociationAuthorization(
+            CreateVPCAssociationAuthorizationRequest createVPCAssociationAuthorizationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createVPCAssociationAuthorizationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateVPCAssociationAuthorizationRequest> request = null;
+        Response<CreateVPCAssociationAuthorizationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateVPCAssociationAuthorizationRequestMarshaller().marshall(super.beforeMarshalling(createVPCAssociationAuthorizationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateVPCAssociationAuthorizationResult> responseHandler = new StaxResponseHandler<CreateVPCAssociationAuthorizationResult>(
+                    new CreateVPCAssociationAuthorizationResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes a health check. Send a <code>DELETE</code> request to the
      * <code>/2013-04-01/healthcheck/<i>health check ID</i> </code> resource.
      * </p>
@@ -1006,7 +1222,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <p>
      * Amazon Route 53 does not prevent you from deleting a health check even if the health check is associated with one
      * or more resource record sets. If you delete a health check and you don't update the associated resource record
-     * sets, the future status of the health check cannot be predicted and may change. This will affect the routing of
+     * sets, the future status of the health check can't be predicted and may change. This will affect the routing of
      * DNS queries for your DNS failover configuration. For more information, see <a href=
      * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html"
      * >Replacing and Deleting Health Checks</a> in the Amazon Route 53 Developer Guide.
@@ -1025,9 +1241,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.DeleteHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteHealthCheck" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteHealthCheckResult deleteHealthCheck(DeleteHealthCheckRequest deleteHealthCheckRequest) {
+    public DeleteHealthCheckResult deleteHealthCheck(DeleteHealthCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteHealthCheck(request);
+    }
+
+    @SdkInternalApi
+    final DeleteHealthCheckResult executeDeleteHealthCheck(DeleteHealthCheckRequest deleteHealthCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteHealthCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1088,9 +1313,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidDomainNameException
      *         The specified domain name is not valid.
      * @sample AmazonRoute53.DeleteHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteHostedZone" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteHostedZoneResult deleteHostedZone(DeleteHostedZoneRequest deleteHostedZoneRequest) {
+    public DeleteHostedZoneResult deleteHostedZone(DeleteHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final DeleteHostedZoneResult executeDeleteHostedZone(DeleteHostedZoneRequest deleteHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1147,9 +1381,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.DeleteReusableDelegationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteReusableDelegationSet"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteReusableDelegationSetResult deleteReusableDelegationSet(DeleteReusableDelegationSetRequest deleteReusableDelegationSetRequest) {
+    public DeleteReusableDelegationSetResult deleteReusableDelegationSet(DeleteReusableDelegationSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteReusableDelegationSet(request);
+    }
+
+    @SdkInternalApi
+    final DeleteReusableDelegationSetResult executeDeleteReusableDelegationSet(DeleteReusableDelegationSetRequest deleteReusableDelegationSetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteReusableDelegationSetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1199,9 +1442,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws ConcurrentModificationException
      *         Another user submitted a request to update the object at the same time that you did. Retry the request.
      * @sample AmazonRoute53.DeleteTrafficPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteTrafficPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteTrafficPolicyResult deleteTrafficPolicy(DeleteTrafficPolicyRequest deleteTrafficPolicyRequest) {
+    public DeleteTrafficPolicyResult deleteTrafficPolicy(DeleteTrafficPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTrafficPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTrafficPolicyResult executeDeleteTrafficPolicy(DeleteTrafficPolicyRequest deleteTrafficPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTrafficPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1258,9 +1510,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
      *         intervals of increasing duration, before you try the request again.
      * @sample AmazonRoute53.DeleteTrafficPolicyInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteTrafficPolicyInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteTrafficPolicyInstanceResult deleteTrafficPolicyInstance(DeleteTrafficPolicyInstanceRequest deleteTrafficPolicyInstanceRequest) {
+    public DeleteTrafficPolicyInstanceResult deleteTrafficPolicyInstance(DeleteTrafficPolicyInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTrafficPolicyInstance(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTrafficPolicyInstanceResult executeDeleteTrafficPolicyInstance(DeleteTrafficPolicyInstanceRequest deleteTrafficPolicyInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTrafficPolicyInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1291,39 +1552,132 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Disassociates a VPC from a Amazon Route 53 private hosted zone.
-     * </p>
-     * <p>
-     * Send a <code>POST</code> request to the <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/disassociatevpc</code>
-     * resource. The request body must include an XML document with a <code>DisassociateVPCFromHostedZoneRequest</code>
-     * element. The response returns the <code>DisassociateVPCFromHostedZoneResponse</code> element.
+     * Removes authorization to submit an <code>AssociateVPCWithHostedZone</code> request to associate a specified VPC
+     * with a hosted zone that was created by a different account. You must use the account that created the hosted zone
+     * to submit a <code>DeleteVPCAssociationAuthorization</code> request.
      * </p>
      * <important>
      * <p>
-     * You can only disassociate a VPC from a private hosted zone when two or more VPCs are associated with that hosted
-     * zone. You cannot convert a private hosted zone into a public hosted zone.
+     * Sending this request only prevents the AWS account that created the VPC from associating the VPC with the Amazon
+     * Route 53 hosted zone in the future. If the VPC is already associated with the hosted zone,
+     * <code>DeleteVPCAssociationAuthorization</code> won't disassociate the VPC from the hosted zone. If you want to
+     * delete an existing association, use <code>DisassociateVPCFromHostedZone</code>.
+     * </p>
+     * </important>
+     * <p>
+     * Send a <code>DELETE</code> request to the
+     * <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/deauthorizevpcassociation</code> resource. The request body
+     * must include a document with a <code>DeleteVPCAssociationAuthorizationRequest</code> element.
+     * </p>
+     * 
+     * @param deleteVPCAssociationAuthorizationRequest
+     *        A complex type that contains information about the request to remove authorization to associate a VPC that
+     *        was created by one AWS account with a hosted zone that was created with a different AWS account.
+     * @return Result of the DeleteVPCAssociationAuthorization operation returned by the service.
+     * @throws ConcurrentModificationException
+     *         Another user submitted a request to update the object at the same time that you did. Retry the request.
+     * @throws VPCAssociationAuthorizationNotFoundException
+     *         The VPC that you specified is not authorized to be associated with the hosted zone.
+     * @throws NoSuchHostedZoneException
+     *         No hosted zone exists with the ID that you specified.
+     * @throws InvalidVPCIdException
+     *         The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access
+     *         this VPC.
+     * @throws InvalidInputException
+     *         The input is not valid.
+     * @sample AmazonRoute53.DeleteVPCAssociationAuthorization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteVPCAssociationAuthorization"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteVPCAssociationAuthorizationResult deleteVPCAssociationAuthorization(DeleteVPCAssociationAuthorizationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVPCAssociationAuthorization(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVPCAssociationAuthorizationResult executeDeleteVPCAssociationAuthorization(
+            DeleteVPCAssociationAuthorizationRequest deleteVPCAssociationAuthorizationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteVPCAssociationAuthorizationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteVPCAssociationAuthorizationRequest> request = null;
+        Response<DeleteVPCAssociationAuthorizationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteVPCAssociationAuthorizationRequestMarshaller().marshall(super.beforeMarshalling(deleteVPCAssociationAuthorizationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteVPCAssociationAuthorizationResult> responseHandler = new StaxResponseHandler<DeleteVPCAssociationAuthorizationResult>(
+                    new DeleteVPCAssociationAuthorizationResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disassociates a VPC from a Amazon Route 53 private hosted zone.
+     * </p>
+     * <note>
+     * <p>
+     * You can't disassociate the last VPC from a private hosted zone.
+     * </p>
+     * </note>
+     * <p>
+     * Send a <code>POST</code> request to the <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/disassociatevpc</code>
+     * resource. The request body must include a document with a <code>DisassociateVPCFromHostedZoneRequest</code>
+     * element. The response includes a <code>DisassociateVPCFromHostedZoneResponse</code> element.
+     * </p>
+     * <important>
+     * <p>
+     * You can't disassociate a VPC from a private hosted zone when only one VPC is associated with the hosted zone. You
+     * also can't convert a private hosted zone into a public hosted zone.
      * </p>
      * </important>
      * 
      * @param disassociateVPCFromHostedZoneRequest
-     *        A complex type that contains information about the VPC and the hosted zone that you want to disassociate.
+     *        A complex type that contains information about the VPC that you want to disassociate from a specified
+     *        private hosted zone.
      * @return Result of the DisassociateVPCFromHostedZone operation returned by the service.
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @throws InvalidVPCIdException
-     *         The hosted zone you are trying to create for your VPC_ID does not belong to you. Amazon Route 53 returns
-     *         this error when the VPC specified by <code>VPCId</code> does not belong to you.
+     *         The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access
+     *         this VPC.
      * @throws VPCAssociationNotFoundException
      *         The specified VPC and hosted zone are not currently associated.
      * @throws LastVPCAssociationException
-     *         Only one VPC is currently associated with the hosted zone. You cannot convert a private hosted zone into
-     *         a public hosted zone by disassociating the last VPC from a hosted zone.
+     *         The VPC that you're trying to disassociate from the private hosted zone is the last VPC that is
+     *         associated with the hosted zone. Amazon Route 53 doesn't support disassociating the last VPC from a
+     *         hosted zone.
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.DisassociateVPCFromHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DisassociateVPCFromHostedZone"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisassociateVPCFromHostedZoneResult disassociateVPCFromHostedZone(DisassociateVPCFromHostedZoneRequest disassociateVPCFromHostedZoneRequest) {
+    public DisassociateVPCFromHostedZoneResult disassociateVPCFromHostedZone(DisassociateVPCFromHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateVPCFromHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateVPCFromHostedZoneResult executeDisassociateVPCFromHostedZone(DisassociateVPCFromHostedZoneRequest disassociateVPCFromHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disassociateVPCFromHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1378,9 +1732,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetChange" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetChangeResult getChange(GetChangeRequest getChangeRequest) {
+    public GetChangeResult getChange(GetChangeRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetChange(request);
+    }
+
+    @SdkInternalApi
+    final GetChangeResult executeGetChange(GetChangeRequest getChangeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getChangeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1410,64 +1773,27 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Returns the status and changes of a change batch request.
-     * </p>
-     * 
-     * @param getChangeDetailsRequest
-     *        The input for a <code>GetChangeDetails</code> request.
-     * @return Result of the GetChangeDetails operation returned by the service.
-     * @throws NoSuchChangeException
-     *         A change with the specified change ID does not exist.
-     * @throws InvalidInputException
-     *         The input is not valid.
-     * @sample AmazonRoute53.GetChangeDetails
-     */
-    @Override
-    @Deprecated
-    public GetChangeDetailsResult getChangeDetails(GetChangeDetailsRequest getChangeDetailsRequest) {
-        ExecutionContext executionContext = createExecutionContext(getChangeDetailsRequest);
-        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
-        Request<GetChangeDetailsRequest> request = null;
-        Response<GetChangeDetailsResult> response = null;
-
-        try {
-            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
-            try {
-                request = new GetChangeDetailsRequestMarshaller().marshall(super.beforeMarshalling(getChangeDetailsRequest));
-                // Binds the request metrics to the current request.
-                request.setAWSRequestMetrics(awsRequestMetrics);
-            } finally {
-                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
-            }
-
-            StaxResponseHandler<GetChangeDetailsResult> responseHandler = new StaxResponseHandler<GetChangeDetailsResult>(
-                    new GetChangeDetailsResultStaxUnmarshaller());
-            response = invoke(request, responseHandler, executionContext);
-
-            return response.getAwsResponse();
-
-        } finally {
-
-            endClientExecution(awsRequestMetrics, request, response);
-        }
-    }
-
-    /**
-     * <p>
-     * Retrieves a list of the IP ranges used by Amazon Route 53 health checkers to check the health of your resources.
-     * Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/checkeripranges</code> resource.
-     * Use these IP addresses to configure router and firewall rules to allow health checkers to check the health of
-     * your resources.
+     * <code>GetCheckerIpRanges</code> still works, but we recommend that you download ip-ranges.json, which includes IP
+     * address ranges for all AWS services. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html">IP Address Ranges of
+     * Amazon Route 53 Servers</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * 
      * @param getCheckerIpRangesRequest
-     *        Empty request.
      * @return Result of the GetCheckerIpRanges operation returned by the service.
      * @sample AmazonRoute53.GetCheckerIpRanges
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetCheckerIpRanges" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCheckerIpRangesResult getCheckerIpRanges(GetCheckerIpRangesRequest getCheckerIpRangesRequest) {
+    public GetCheckerIpRangesResult getCheckerIpRanges(GetCheckerIpRangesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCheckerIpRanges(request);
+    }
+
+    @SdkInternalApi
+    final GetCheckerIpRangesResult executeGetCheckerIpRanges(GetCheckerIpRangesRequest getCheckerIpRangesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCheckerIpRangesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1515,9 +1841,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetGeoLocation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetGeoLocation" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetGeoLocationResult getGeoLocation(GetGeoLocationRequest getGeoLocationRequest) {
+    public GetGeoLocationResult getGeoLocation(GetGeoLocationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetGeoLocation(request);
+    }
+
+    @SdkInternalApi
+    final GetGeoLocationResult executeGetGeoLocation(GetGeoLocationRequest getGeoLocationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getGeoLocationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1576,12 +1911,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws IncompatibleVersionException
-     *         The resource you are trying to access is unsupported on this Amazon Route 53 endpoint. Please consider
-     *         using a newer endpoint or a tool that does so.
+     *         The resource you're trying to access is unsupported on this Amazon Route 53 endpoint.
      * @sample AmazonRoute53.GetHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheck" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetHealthCheckResult getHealthCheck(GetHealthCheckRequest getHealthCheckRequest) {
+    public GetHealthCheckResult getHealthCheck(GetHealthCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHealthCheck(request);
+    }
+
+    @SdkInternalApi
+    final GetHealthCheckResult executeGetHealthCheck(GetHealthCheckRequest getHealthCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHealthCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1621,9 +1964,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        <code>/2013-04-01/healthcheckcount</code> resource.
      * @return Result of the GetHealthCheckCount operation returned by the service.
      * @sample AmazonRoute53.GetHealthCheckCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckCount" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetHealthCheckCountResult getHealthCheckCount(GetHealthCheckCountRequest getHealthCheckCountRequest) {
+    public GetHealthCheckCountResult getHealthCheckCount(GetHealthCheckCountRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHealthCheckCount(request);
+    }
+
+    @SdkInternalApi
+    final GetHealthCheckCountResult executeGetHealthCheckCount(GetHealthCheckCountRequest getHealthCheckCountRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHealthCheckCountRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1682,9 +2034,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHealthCheckLastFailureReason
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckLastFailureReason"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetHealthCheckLastFailureReasonResult getHealthCheckLastFailureReason(GetHealthCheckLastFailureReasonRequest getHealthCheckLastFailureReasonRequest) {
+    public GetHealthCheckLastFailureReasonResult getHealthCheckLastFailureReason(GetHealthCheckLastFailureReasonRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHealthCheckLastFailureReason(request);
+    }
+
+    @SdkInternalApi
+    final GetHealthCheckLastFailureReasonResult executeGetHealthCheckLastFailureReason(
+            GetHealthCheckLastFailureReasonRequest getHealthCheckLastFailureReasonRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHealthCheckLastFailureReasonRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1728,9 +2090,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHealthCheckStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckStatus" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetHealthCheckStatusResult getHealthCheckStatus(GetHealthCheckStatusRequest getHealthCheckStatusRequest) {
+    public GetHealthCheckStatusResult getHealthCheckStatus(GetHealthCheckStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHealthCheckStatus(request);
+    }
+
+    @SdkInternalApi
+    final GetHealthCheckStatusResult executeGetHealthCheckStatus(GetHealthCheckStatusRequest getHealthCheckStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHealthCheckStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1774,9 +2145,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZone" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetHostedZoneResult getHostedZone(GetHostedZoneRequest getHostedZoneRequest) {
+    public GetHostedZoneResult getHostedZone(GetHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final GetHostedZoneResult executeGetHostedZone(GetHostedZoneRequest getHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1817,9 +2197,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHostedZoneCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZoneCount" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetHostedZoneCountResult getHostedZoneCount(GetHostedZoneCountRequest getHostedZoneCountRequest) {
+    public GetHostedZoneCountResult getHostedZoneCount(GetHostedZoneCountRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetHostedZoneCount(request);
+    }
+
+    @SdkInternalApi
+    final GetHostedZoneCountResult executeGetHostedZoneCount(GetHostedZoneCountRequest getHostedZoneCountRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getHostedZoneCountRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1869,9 +2258,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetReusableDelegationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetReusableDelegationSet"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetReusableDelegationSetResult getReusableDelegationSet(GetReusableDelegationSetRequest getReusableDelegationSetRequest) {
+    public GetReusableDelegationSetResult getReusableDelegationSet(GetReusableDelegationSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReusableDelegationSet(request);
+    }
+
+    @SdkInternalApi
+    final GetReusableDelegationSetResult executeGetReusableDelegationSet(GetReusableDelegationSetRequest getReusableDelegationSetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getReusableDelegationSetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1917,9 +2315,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetTrafficPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetTrafficPolicyResult getTrafficPolicy(GetTrafficPolicyRequest getTrafficPolicyRequest) {
+    public GetTrafficPolicyResult getTrafficPolicy(GetTrafficPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTrafficPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetTrafficPolicyResult executeGetTrafficPolicy(GetTrafficPolicyRequest getTrafficPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getTrafficPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1979,9 +2386,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetTrafficPolicyInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicyInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetTrafficPolicyInstanceResult getTrafficPolicyInstance(GetTrafficPolicyInstanceRequest getTrafficPolicyInstanceRequest) {
+    public GetTrafficPolicyInstanceResult getTrafficPolicyInstance(GetTrafficPolicyInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTrafficPolicyInstance(request);
+    }
+
+    @SdkInternalApi
+    final GetTrafficPolicyInstanceResult executeGetTrafficPolicyInstance(GetTrafficPolicyInstanceRequest getTrafficPolicyInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getTrafficPolicyInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2020,13 +2436,21 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * 
      * @param getTrafficPolicyInstanceCountRequest
-     *        To retrieve a count of all your traffic policy instances, send a <code>GET</code> request to the
-     *        <code>/2013-04-01/trafficpolicyinstancecount</code> resource.
+     *        Request to get the number of traffic policy instances that are associated with the current AWS account.
      * @return Result of the GetTrafficPolicyInstanceCount operation returned by the service.
      * @sample AmazonRoute53.GetTrafficPolicyInstanceCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicyInstanceCount"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetTrafficPolicyInstanceCountResult getTrafficPolicyInstanceCount(GetTrafficPolicyInstanceCountRequest getTrafficPolicyInstanceCountRequest) {
+    public GetTrafficPolicyInstanceCountResult getTrafficPolicyInstanceCount(GetTrafficPolicyInstanceCountRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTrafficPolicyInstanceCount(request);
+    }
+
+    @SdkInternalApi
+    final GetTrafficPolicyInstanceCountResult executeGetTrafficPolicyInstanceCount(GetTrafficPolicyInstanceCountRequest getTrafficPolicyInstanceCountRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getTrafficPolicyInstanceCountRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2062,96 +2486,6 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Gets the list of ChangeBatches in a given time period for a given hosted zone.
-     * </p>
-     * 
-     * @param listChangeBatchesByHostedZoneRequest
-     *        The input for a ListChangeBatchesByHostedZone request.
-     * @return Result of the ListChangeBatchesByHostedZone operation returned by the service.
-     * @throws NoSuchHostedZoneException
-     *         No hosted zone exists with the ID that you specified.
-     * @throws InvalidInputException
-     *         The input is not valid.
-     * @sample AmazonRoute53.ListChangeBatchesByHostedZone
-     */
-    @Override
-    @Deprecated
-    public ListChangeBatchesByHostedZoneResult listChangeBatchesByHostedZone(ListChangeBatchesByHostedZoneRequest listChangeBatchesByHostedZoneRequest) {
-        ExecutionContext executionContext = createExecutionContext(listChangeBatchesByHostedZoneRequest);
-        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
-        Request<ListChangeBatchesByHostedZoneRequest> request = null;
-        Response<ListChangeBatchesByHostedZoneResult> response = null;
-
-        try {
-            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
-            try {
-                request = new ListChangeBatchesByHostedZoneRequestMarshaller().marshall(super.beforeMarshalling(listChangeBatchesByHostedZoneRequest));
-                // Binds the request metrics to the current request.
-                request.setAWSRequestMetrics(awsRequestMetrics);
-            } finally {
-                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
-            }
-
-            StaxResponseHandler<ListChangeBatchesByHostedZoneResult> responseHandler = new StaxResponseHandler<ListChangeBatchesByHostedZoneResult>(
-                    new ListChangeBatchesByHostedZoneResultStaxUnmarshaller());
-            response = invoke(request, responseHandler, executionContext);
-
-            return response.getAwsResponse();
-
-        } finally {
-
-            endClientExecution(awsRequestMetrics, request, response);
-        }
-    }
-
-    /**
-     * <p>
-     * Gets the list of ChangeBatches in a given time period for a given hosted zone and RRSet.
-     * </p>
-     * 
-     * @param listChangeBatchesByRRSetRequest
-     *        The input for a ListChangeBatchesByRRSet request.
-     * @return Result of the ListChangeBatchesByRRSet operation returned by the service.
-     * @throws NoSuchHostedZoneException
-     *         No hosted zone exists with the ID that you specified.
-     * @throws InvalidInputException
-     *         The input is not valid.
-     * @sample AmazonRoute53.ListChangeBatchesByRRSet
-     */
-    @Override
-    @Deprecated
-    public ListChangeBatchesByRRSetResult listChangeBatchesByRRSet(ListChangeBatchesByRRSetRequest listChangeBatchesByRRSetRequest) {
-        ExecutionContext executionContext = createExecutionContext(listChangeBatchesByRRSetRequest);
-        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
-        Request<ListChangeBatchesByRRSetRequest> request = null;
-        Response<ListChangeBatchesByRRSetResult> response = null;
-
-        try {
-            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
-            try {
-                request = new ListChangeBatchesByRRSetRequestMarshaller().marshall(super.beforeMarshalling(listChangeBatchesByRRSetRequest));
-                // Binds the request metrics to the current request.
-                request.setAWSRequestMetrics(awsRequestMetrics);
-            } finally {
-                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
-            }
-
-            StaxResponseHandler<ListChangeBatchesByRRSetResult> responseHandler = new StaxResponseHandler<ListChangeBatchesByRRSetResult>(
-                    new ListChangeBatchesByRRSetResultStaxUnmarshaller());
-            response = invoke(request, responseHandler, executionContext);
-
-            return response.getAwsResponse();
-
-        } finally {
-
-            endClientExecution(awsRequestMetrics, request, response);
-        }
-    }
-
-    /**
-     * <p>
      * Retrieves a list of supported geo locations. Send a <code>GET</code> request to the
      * <code>/2013-04-01/geolocations</code> resource. The response to this request includes a
      * <code>GeoLocationDetailsList</code> element for each location that Amazon Route 53 supports.
@@ -2175,9 +2509,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.ListGeoLocations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListGeoLocations" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListGeoLocationsResult listGeoLocations(ListGeoLocationsRequest listGeoLocationsRequest) {
+    public ListGeoLocationsResult listGeoLocations(ListGeoLocationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListGeoLocations(request);
+    }
+
+    @SdkInternalApi
+    final ListGeoLocationsResult executeListGeoLocations(ListGeoLocationsRequest listGeoLocationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listGeoLocationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2241,12 +2584,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws IncompatibleVersionException
-     *         The resource you are trying to access is unsupported on this Amazon Route 53 endpoint. Please consider
-     *         using a newer endpoint or a tool that does so.
+     *         The resource you're trying to access is unsupported on this Amazon Route 53 endpoint.
      * @sample AmazonRoute53.ListHealthChecks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHealthChecks" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListHealthChecksResult listHealthChecks(ListHealthChecksRequest listHealthChecksRequest) {
+    public ListHealthChecksResult listHealthChecks(ListHealthChecksRequest request) {
+        request = beforeClientExecution(request);
+        return executeListHealthChecks(request);
+    }
+
+    @SdkInternalApi
+    final ListHealthChecksResult executeListHealthChecks(ListHealthChecksRequest listHealthChecksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listHealthChecksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2373,9 +2724,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws DelegationSetNotReusableException
      *         A reusable delegation set with the specified ID does not exist.
      * @sample AmazonRoute53.ListHostedZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHostedZones" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListHostedZonesResult listHostedZones(ListHostedZonesRequest listHostedZonesRequest) {
+    public ListHostedZonesResult listHostedZones(ListHostedZonesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListHostedZones(request);
+    }
+
+    @SdkInternalApi
+    final ListHostedZonesResult executeListHostedZones(ListHostedZonesRequest listHostedZonesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listHostedZonesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2555,9 +2915,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidDomainNameException
      *         The specified domain name is not valid.
      * @sample AmazonRoute53.ListHostedZonesByName
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHostedZonesByName" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListHostedZonesByNameResult listHostedZonesByName(ListHostedZonesByNameRequest listHostedZonesByNameRequest) {
+    public ListHostedZonesByNameResult listHostedZonesByName(ListHostedZonesByNameRequest request) {
+        request = beforeClientExecution(request);
+        return executeListHostedZonesByName(request);
+    }
+
+    @SdkInternalApi
+    final ListHostedZonesByNameResult executeListHostedZonesByName(ListHostedZonesByNameRequest listHostedZonesByNameRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listHostedZonesByNameRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2660,9 +3029,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.ListResourceRecordSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListResourceRecordSets" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListResourceRecordSetsResult listResourceRecordSets(ListResourceRecordSetsRequest listResourceRecordSetsRequest) {
+    public ListResourceRecordSetsResult listResourceRecordSets(ListResourceRecordSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListResourceRecordSets(request);
+    }
+
+    @SdkInternalApi
+    final ListResourceRecordSetsResult executeListResourceRecordSets(ListResourceRecordSetsRequest listResourceRecordSetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listResourceRecordSetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2722,9 +3100,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.ListReusableDelegationSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListReusableDelegationSets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListReusableDelegationSetsResult listReusableDelegationSets(ListReusableDelegationSetsRequest listReusableDelegationSetsRequest) {
+    public ListReusableDelegationSetsResult listReusableDelegationSets(ListReusableDelegationSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListReusableDelegationSets(request);
+    }
+
+    @SdkInternalApi
+    final ListReusableDelegationSetsResult executeListReusableDelegationSets(ListReusableDelegationSetsRequest listReusableDelegationSetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listReusableDelegationSetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2784,10 +3171,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
      *         intervals of increasing duration, before you try the request again.
      * @throws ThrottlingException
+     *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2842,10 +3239,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
      *         intervals of increasing duration, before you try the request again.
      * @throws ThrottlingException
+     *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ListTagsForResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResources" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListTagsForResourcesResult listTagsForResources(ListTagsForResourcesRequest listTagsForResourcesRequest) {
+    public ListTagsForResourcesResult listTagsForResources(ListTagsForResourcesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResources(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourcesResult executeListTagsForResources(ListTagsForResourcesRequest listTagsForResourcesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForResourcesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2936,9 +3343,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.ListTrafficPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicies" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListTrafficPoliciesResult listTrafficPolicies(ListTrafficPoliciesRequest listTrafficPoliciesRequest) {
+    public ListTrafficPoliciesResult listTrafficPolicies(ListTrafficPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTrafficPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListTrafficPoliciesResult executeListTrafficPolicies(ListTrafficPoliciesRequest listTrafficPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTrafficPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3035,16 +3451,26 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </ul>
      * 
      * @param listTrafficPolicyInstancesRequest
-     *        A complex type that contains the information about the request to list your traffic policy instances.
+     *        A request to get information about the traffic policy instances that you created by using the current AWS
+     *        account.
      * @return Result of the ListTrafficPolicyInstances operation returned by the service.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws NoSuchTrafficPolicyInstanceException
      *         No traffic policy instance exists with the specified ID.
      * @sample AmazonRoute53.ListTrafficPolicyInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListTrafficPolicyInstancesResult listTrafficPolicyInstances(ListTrafficPolicyInstancesRequest listTrafficPolicyInstancesRequest) {
+    public ListTrafficPolicyInstancesResult listTrafficPolicyInstances(ListTrafficPolicyInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTrafficPolicyInstances(request);
+    }
+
+    @SdkInternalApi
+    final ListTrafficPolicyInstancesResult executeListTrafficPolicyInstances(ListTrafficPolicyInstancesRequest listTrafficPolicyInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTrafficPolicyInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3150,10 +3576,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @sample AmazonRoute53.ListTrafficPolicyInstancesByHostedZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByHostedZone"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListTrafficPolicyInstancesByHostedZoneResult listTrafficPolicyInstancesByHostedZone(
+    public ListTrafficPolicyInstancesByHostedZoneResult listTrafficPolicyInstancesByHostedZone(ListTrafficPolicyInstancesByHostedZoneRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTrafficPolicyInstancesByHostedZone(request);
+    }
+
+    @SdkInternalApi
+    final ListTrafficPolicyInstancesByHostedZoneResult executeListTrafficPolicyInstancesByHostedZone(
             ListTrafficPolicyInstancesByHostedZoneRequest listTrafficPolicyInstancesByHostedZoneRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTrafficPolicyInstancesByHostedZoneRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3255,10 +3690,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws NoSuchTrafficPolicyException
      *         No traffic policy exists with the specified ID.
      * @sample AmazonRoute53.ListTrafficPolicyInstancesByPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListTrafficPolicyInstancesByPolicyResult listTrafficPolicyInstancesByPolicy(
+    public ListTrafficPolicyInstancesByPolicyResult listTrafficPolicyInstancesByPolicy(ListTrafficPolicyInstancesByPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTrafficPolicyInstancesByPolicy(request);
+    }
+
+    @SdkInternalApi
+    final ListTrafficPolicyInstancesByPolicyResult executeListTrafficPolicyInstancesByPolicy(
             ListTrafficPolicyInstancesByPolicyRequest listTrafficPolicyInstancesByPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTrafficPolicyInstancesByPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3351,9 +3795,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws NoSuchTrafficPolicyException
      *         No traffic policy exists with the specified ID.
      * @sample AmazonRoute53.ListTrafficPolicyVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyVersions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListTrafficPolicyVersionsResult listTrafficPolicyVersions(ListTrafficPolicyVersionsRequest listTrafficPolicyVersionsRequest) {
+    public ListTrafficPolicyVersionsResult listTrafficPolicyVersions(ListTrafficPolicyVersionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTrafficPolicyVersions(request);
+    }
+
+    @SdkInternalApi
+    final ListTrafficPolicyVersionsResult executeListTrafficPolicyVersions(ListTrafficPolicyVersionsRequest listTrafficPolicyVersionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTrafficPolicyVersionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3372,6 +3825,83 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
             StaxResponseHandler<ListTrafficPolicyVersionsResult> responseHandler = new StaxResponseHandler<ListTrafficPolicyVersionsResult>(
                     new ListTrafficPolicyVersionsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted
+     * zone because you've submitted one or more <code>CreateVPCAssociationAuthorization</code> requests.
+     * </p>
+     * <p>
+     * Send a <code>GET</code> request to the
+     * <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/authorizevpcassociation</code> resource. The response to this
+     * request includes a <code>VPCs</code> element with a <code>VPC</code> child element for each VPC that can be
+     * associated with the hosted zone.
+     * </p>
+     * <p>
+     * Amazon Route 53 returns up to 50 VPCs per page. To return fewer VPCs per page, include the
+     * <code>MaxResults</code> parameter:
+     * </p>
+     * <p>
+     * <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/authorizevpcassociation?MaxItems=<i>VPCs per page</i> </code>
+     * </p>
+     * <p>
+     * If the response includes a <code>NextToken</code> element, there are more VPCs to list. To get the next page of
+     * VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request, and include the value of the
+     * <code>NextToken</code> element from the response in the <code>NextToken</code> request parameter:
+     * </p>
+     * <p>
+     * <code>/2013-04-01/hostedzone/<i>hosted zone ID</i>/authorizevpcassociation?MaxItems=<i>VPCs per page</i>&amp;NextToken=<i/> </code>
+     * </p>
+     * 
+     * @param listVPCAssociationAuthorizationsRequest
+     *        A complex type that contains information about that can be associated with your hosted zone.
+     * @return Result of the ListVPCAssociationAuthorizations operation returned by the service.
+     * @throws NoSuchHostedZoneException
+     *         No hosted zone exists with the ID that you specified.
+     * @throws InvalidInputException
+     *         The input is not valid.
+     * @throws InvalidPaginationTokenException
+     * @sample AmazonRoute53.ListVPCAssociationAuthorizations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListVPCAssociationAuthorizations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListVPCAssociationAuthorizationsResult listVPCAssociationAuthorizations(ListVPCAssociationAuthorizationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListVPCAssociationAuthorizations(request);
+    }
+
+    @SdkInternalApi
+    final ListVPCAssociationAuthorizationsResult executeListVPCAssociationAuthorizations(
+            ListVPCAssociationAuthorizationsRequest listVPCAssociationAuthorizationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listVPCAssociationAuthorizationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListVPCAssociationAuthorizationsRequest> request = null;
+        Response<ListVPCAssociationAuthorizationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListVPCAssociationAuthorizationsRequestMarshaller().marshall(super.beforeMarshalling(listVPCAssociationAuthorizationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListVPCAssociationAuthorizationsResult> responseHandler = new StaxResponseHandler<ListVPCAssociationAuthorizationsResult>(
+                    new ListVPCAssociationAuthorizationsResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3446,9 +3976,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.TestDNSAnswer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TestDNSAnswer" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public TestDNSAnswerResult testDNSAnswer(TestDNSAnswerRequest testDNSAnswerRequest) {
+    public TestDNSAnswerResult testDNSAnswer(TestDNSAnswerRequest request) {
+        request = beforeClientExecution(request);
+        return executeTestDNSAnswer(request);
+    }
+
+    @SdkInternalApi
+    final TestDNSAnswerResult executeTestDNSAnswer(TestDNSAnswerRequest testDNSAnswerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(testDNSAnswerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3482,7 +4021,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * Send a <code>POST</code> request to the <code>/2013-04-01/healthcheck/<i>health check ID</i> </code> resource.
-     * The request body must include an XML document with an <code>UpdateHealthCheckRequest</code> element. For more
+     * The request body must include a document with an <code>UpdateHealthCheckRequest</code> element. For more
      * information about updating health checks, see <a
      * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html">Creating,
      * Updating, and Deleting Health Checks</a> in the Amazon Route 53 Developer Guide.
@@ -3499,9 +4038,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         The value of <code>HealthCheckVersion</code> in the request doesn't match the value of
      *         <code>HealthCheckVersion</code> in the health check.
      * @sample AmazonRoute53.UpdateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHealthCheck" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateHealthCheckResult updateHealthCheck(UpdateHealthCheckRequest updateHealthCheckRequest) {
+    public UpdateHealthCheckResult updateHealthCheck(UpdateHealthCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateHealthCheck(request);
+    }
+
+    @SdkInternalApi
+    final UpdateHealthCheckResult executeUpdateHealthCheck(UpdateHealthCheckRequest updateHealthCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateHealthCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3544,9 +4092,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.UpdateHostedZoneComment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHostedZoneComment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateHostedZoneCommentResult updateHostedZoneComment(UpdateHostedZoneCommentRequest updateHostedZoneCommentRequest) {
+    public UpdateHostedZoneCommentResult updateHostedZoneComment(UpdateHostedZoneCommentRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateHostedZoneComment(request);
+    }
+
+    @SdkInternalApi
+    final UpdateHostedZoneCommentResult executeUpdateHostedZoneComment(UpdateHostedZoneCommentRequest updateHostedZoneCommentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateHostedZoneCommentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3597,9 +4154,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws ConcurrentModificationException
      *         Another user submitted a request to update the object at the same time that you did. Retry the request.
      * @sample AmazonRoute53.UpdateTrafficPolicyComment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyComment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateTrafficPolicyCommentResult updateTrafficPolicyComment(UpdateTrafficPolicyCommentRequest updateTrafficPolicyCommentRequest) {
+    public UpdateTrafficPolicyCommentResult updateTrafficPolicyComment(UpdateTrafficPolicyCommentRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTrafficPolicyComment(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTrafficPolicyCommentResult executeUpdateTrafficPolicyComment(UpdateTrafficPolicyCommentRequest updateTrafficPolicyCommentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateTrafficPolicyCommentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3685,9 +4251,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         type than the current type for the instance. You specified the type in the JSON document in the
      *         <code>CreateTrafficPolicy</code> or <code>CreateTrafficPolicyVersion</code>request.
      * @sample AmazonRoute53.UpdateTrafficPolicyInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateTrafficPolicyInstanceResult updateTrafficPolicyInstance(UpdateTrafficPolicyInstanceRequest updateTrafficPolicyInstanceRequest) {
+    public UpdateTrafficPolicyInstanceResult updateTrafficPolicyInstance(UpdateTrafficPolicyInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTrafficPolicyInstance(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTrafficPolicyInstanceResult executeUpdateTrafficPolicyInstance(UpdateTrafficPolicyInstanceRequest updateTrafficPolicyInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateTrafficPolicyInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3769,6 +4344,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonRoute53Waiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -3778,6 +4354,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

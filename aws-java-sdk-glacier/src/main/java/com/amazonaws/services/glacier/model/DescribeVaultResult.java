@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -35,29 +37,29 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     private String vaultName;
     /**
      * <p>
-     * The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     * "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO
+     * 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      */
     private String creationDate;
     /**
      * <p>
-     * The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601 date
-     * format, for example, "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value
+     * should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      */
     private String lastInventoryDate;
     /**
      * <p>
      * The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an
-     * inventory has not yet run on the vault, for example, if you just created the vault.
+     * inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      */
     private Long numberOfArchives;
     /**
      * <p>
      * Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if
-     * an inventory has not yet run on the vault, for example, if you just created the vault.
+     * an inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      */
     private Long sizeInBytes;
@@ -144,13 +146,13 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     * "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO
+     * 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
      * @param creationDate
-     *        The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     *        "2012-03-20T17:03:43.221Z".
+     *        The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the
+     *        ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      */
 
     public void setCreationDate(String creationDate) {
@@ -159,12 +161,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     * "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO
+     * 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
-     * @return The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     *         "2012-03-20T17:03:43.221Z".
+     * @return The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in
+     *         the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      */
 
     public String getCreationDate() {
@@ -173,13 +175,13 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     * "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO
+     * 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
      * @param creationDate
-     *        The UTC date when the vault was created. A string representation of ISO 8601 date format, for example,
-     *        "2012-03-20T17:03:43.221Z".
+     *        The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the
+     *        ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -190,13 +192,13 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601 date
-     * format, for example, "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value
+     * should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
      * @param lastInventoryDate
-     *        The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601
-     *        date format, for example, "2012-03-20T17:03:43.221Z".
+     *        The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This
+     *        value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      */
 
     public void setLastInventoryDate(String lastInventoryDate) {
@@ -205,12 +207,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601 date
-     * format, for example, "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value
+     * should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
-     * @return The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601
-     *         date format, for example, "2012-03-20T17:03:43.221Z".
+     * @return The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This
+     *         value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      */
 
     public String getLastInventoryDate() {
@@ -219,13 +221,13 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601 date
-     * format, for example, "2012-03-20T17:03:43.221Z".
+     * The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value
+     * should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * </p>
      * 
      * @param lastInventoryDate
-     *        The UTC date when Amazon Glacier completed the last vault inventory. A string representation of ISO 8601
-     *        date format, for example, "2012-03-20T17:03:43.221Z".
+     *        The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This
+     *        value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -237,13 +239,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an
-     * inventory has not yet run on the vault, for example, if you just created the vault.
+     * inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @param numberOfArchives
      *        The number of archives in the vault as of the last inventory date. This field will return
-     *        <code>null</code> if an inventory has not yet run on the vault, for example, if you just created the
-     *        vault.
+     *        <code>null</code> if an inventory has not yet run on the vault, for example if you just created the vault.
      */
 
     public void setNumberOfArchives(Long numberOfArchives) {
@@ -253,11 +254,11 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an
-     * inventory has not yet run on the vault, for example, if you just created the vault.
+     * inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @return The number of archives in the vault as of the last inventory date. This field will return
-     *         <code>null</code> if an inventory has not yet run on the vault, for example, if you just created the
+     *         <code>null</code> if an inventory has not yet run on the vault, for example if you just created the
      *         vault.
      */
 
@@ -268,13 +269,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an
-     * inventory has not yet run on the vault, for example, if you just created the vault.
+     * inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @param numberOfArchives
      *        The number of archives in the vault as of the last inventory date. This field will return
-     *        <code>null</code> if an inventory has not yet run on the vault, for example, if you just created the
-     *        vault.
+     *        <code>null</code> if an inventory has not yet run on the vault, for example if you just created the vault.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -286,12 +286,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if
-     * an inventory has not yet run on the vault, for example, if you just created the vault.
+     * an inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @param sizeInBytes
      *        Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return
-     *        null if an inventory has not yet run on the vault, for example, if you just created the vault.
+     *        null if an inventory has not yet run on the vault, for example if you just created the vault.
      */
 
     public void setSizeInBytes(Long sizeInBytes) {
@@ -301,11 +301,11 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if
-     * an inventory has not yet run on the vault, for example, if you just created the vault.
+     * an inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @return Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return
-     *         null if an inventory has not yet run on the vault, for example, if you just created the vault.
+     *         null if an inventory has not yet run on the vault, for example if you just created the vault.
      */
 
     public Long getSizeInBytes() {
@@ -315,12 +315,12 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
     /**
      * <p>
      * Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if
-     * an inventory has not yet run on the vault, for example, if you just created the vault.
+     * an inventory has not yet run on the vault, for example if you just created the vault.
      * </p>
      * 
      * @param sizeInBytes
      *        Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return
-     *        null if an inventory has not yet run on the vault, for example, if you just created the vault.
+     *        null if an inventory has not yet run on the vault, for example if you just created the vault.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -341,17 +341,17 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVaultARN() != null)
-            sb.append("VaultARN: " + getVaultARN() + ",");
+            sb.append("VaultARN: ").append(getVaultARN()).append(",");
         if (getVaultName() != null)
-            sb.append("VaultName: " + getVaultName() + ",");
+            sb.append("VaultName: ").append(getVaultName()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getLastInventoryDate() != null)
-            sb.append("LastInventoryDate: " + getLastInventoryDate() + ",");
+            sb.append("LastInventoryDate: ").append(getLastInventoryDate()).append(",");
         if (getNumberOfArchives() != null)
-            sb.append("NumberOfArchives: " + getNumberOfArchives() + ",");
+            sb.append("NumberOfArchives: ").append(getNumberOfArchives()).append(",");
         if (getSizeInBytes() != null)
-            sb.append("SizeInBytes: " + getSizeInBytes());
+            sb.append("SizeInBytes: ").append(getSizeInBytes());
         sb.append("}");
         return sb.toString();
     }
@@ -415,4 +415,5 @@ public class DescribeVaultResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

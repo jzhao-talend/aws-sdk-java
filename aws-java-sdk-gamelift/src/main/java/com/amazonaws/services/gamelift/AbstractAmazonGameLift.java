@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.gamelift;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.gamelift.model.*;
 import com.amazonaws.*;
 
@@ -19,6 +21,7 @@ import com.amazonaws.*;
  * Abstract implementation of {@code AmazonGameLift}. Convenient method forms pass through to the corresponding overload
  * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonGameLift implements AmazonGameLift {
 
     protected AbstractAmazonGameLift() {
@@ -55,6 +58,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public CreateGameSessionQueueResult createGameSessionQueue(CreateGameSessionQueueRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreatePlayerSessionResult createPlayerSession(CreatePlayerSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -76,6 +84,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public DeleteFleetResult deleteFleet(DeleteFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteGameSessionQueueResult deleteGameSessionQueue(DeleteGameSessionQueueRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -130,6 +143,16 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public DescribeGameSessionPlacementResult describeGameSessionPlacement(DescribeGameSessionPlacementRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeGameSessionQueuesResult describeGameSessionQueues(DescribeGameSessionQueuesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeGameSessionsResult describeGameSessions(DescribeGameSessionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -156,6 +179,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public GetGameSessionLogUrlResult getGameSessionLogUrl(GetGameSessionLogUrlRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetInstanceAccessResult getInstanceAccess(GetInstanceAccessRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -195,6 +223,16 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public StartGameSessionPlacementResult startGameSessionPlacement(StartGameSessionPlacementRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StopGameSessionPlacementResult stopGameSessionPlacement(StopGameSessionPlacementRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateAliasResult updateAlias(UpdateAliasRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -221,6 +259,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public UpdateGameSessionResult updateGameSession(UpdateGameSessionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateGameSessionQueueResult updateGameSessionQueue(UpdateGameSessionQueueRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

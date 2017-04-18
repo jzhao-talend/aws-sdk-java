@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.iot;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.iot.model.*;
 
 /**
  * Interface for accessing AWS IoT asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.iot.AbstractAWSIotAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS IoT</fullname>
  * <p>
@@ -32,6 +38,7 @@ import com.amazonaws.services.iot.model.*;
  * href="http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSIotAsync extends AWSIot {
 
     /**

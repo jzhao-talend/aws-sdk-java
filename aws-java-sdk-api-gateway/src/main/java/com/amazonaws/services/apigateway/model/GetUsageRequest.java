@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The GET request to get the usage data of a usage plan in a specified time interval.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -48,13 +51,13 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
     private String endDate;
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      */
     private Integer limit;
@@ -221,11 +224,11 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        Position
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -234,10 +237,10 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return Position
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -246,11 +249,11 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        Position
+     *        The current pagination position in the paged result set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -261,11 +264,11 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The maximum number of results to be returned.
+     *        The maximum number of returned results per page.
      */
 
     public void setLimit(Integer limit) {
@@ -274,10 +277,10 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
-     * @return The maximum number of results to be returned.
+     * @return The maximum number of returned results per page.
      */
 
     public Integer getLimit() {
@@ -286,11 +289,11 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The maximum number of results to be returned.
+     *        The maximum number of returned results per page.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -311,17 +314,17 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUsagePlanId() != null)
-            sb.append("UsagePlanId: " + getUsagePlanId() + ",");
+            sb.append("UsagePlanId: ").append(getUsagePlanId()).append(",");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getStartDate() != null)
-            sb.append("StartDate: " + getStartDate() + ",");
+            sb.append("StartDate: ").append(getStartDate()).append(",");
         if (getEndDate() != null)
-            sb.append("EndDate: " + getEndDate() + ",");
+            sb.append("EndDate: ").append(getEndDate()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -381,4 +384,5 @@ public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest imple
     public GetUsageRequest clone() {
         return (GetUsageRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.redshift.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.redshift.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * Cluster StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmarshallerContext> {
 
     public Cluster unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -90,13 +90,28 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
                     continue;
                 }
 
+                if (context.testExpression("ClusterSecurityGroups", targetDepth)) {
+                    cluster.withClusterSecurityGroups(new ArrayList<ClusterSecurityGroupMembership>());
+                    continue;
+                }
+
                 if (context.testExpression("ClusterSecurityGroups/ClusterSecurityGroup", targetDepth)) {
                     cluster.withClusterSecurityGroups(ClusterSecurityGroupMembershipStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("VpcSecurityGroups", targetDepth)) {
+                    cluster.withVpcSecurityGroups(new ArrayList<VpcSecurityGroupMembership>());
+                    continue;
+                }
+
                 if (context.testExpression("VpcSecurityGroups/VpcSecurityGroup", targetDepth)) {
                     cluster.withVpcSecurityGroups(VpcSecurityGroupMembershipStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ClusterParameterGroups", targetDepth)) {
+                    cluster.withClusterParameterGroups(new ArrayList<ClusterParameterGroupStatus>());
                     continue;
                 }
 
@@ -175,6 +190,11 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
                     continue;
                 }
 
+                if (context.testExpression("ClusterNodes", targetDepth)) {
+                    cluster.withClusterNodes(new ArrayList<ClusterNode>());
+                    continue;
+                }
+
                 if (context.testExpression("ClusterNodes/member", targetDepth)) {
                     cluster.withClusterNodes(ClusterNodeStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -190,6 +210,11 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
                     continue;
                 }
 
+                if (context.testExpression("Tags", targetDepth)) {
+                    cluster.withTags(new ArrayList<Tag>());
+                    continue;
+                }
+
                 if (context.testExpression("Tags/Tag", targetDepth)) {
                     cluster.withTags(TagStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -202,6 +227,11 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
 
                 if (context.testExpression("EnhancedVpcRouting", targetDepth)) {
                     cluster.setEnhancedVpcRouting(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("IamRoles", targetDepth)) {
+                    cluster.withIamRoles(new ArrayList<ClusterIamRole>());
                     continue;
                 }
 

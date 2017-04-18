@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the result of a get suite request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetSuite" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetSuiteResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * A collection of one or more tests.
+     * </p>
+     */
     private Suite suite;
 
     /**
+     * <p>
+     * A collection of one or more tests.
+     * </p>
+     * 
      * @param suite
+     *        A collection of one or more tests.
      */
 
     public void setSuite(Suite suite) {
@@ -32,7 +47,11 @@ public class GetSuiteResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     }
 
     /**
-     * @return
+     * <p>
+     * A collection of one or more tests.
+     * </p>
+     * 
+     * @return A collection of one or more tests.
      */
 
     public Suite getSuite() {
@@ -40,7 +59,12 @@ public class GetSuiteResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     }
 
     /**
+     * <p>
+     * A collection of one or more tests.
+     * </p>
+     * 
      * @param suite
+     *        A collection of one or more tests.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class GetSuiteResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSuite() != null)
-            sb.append("Suite: " + getSuite());
+            sb.append("Suite: ").append(getSuite());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class GetSuiteResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

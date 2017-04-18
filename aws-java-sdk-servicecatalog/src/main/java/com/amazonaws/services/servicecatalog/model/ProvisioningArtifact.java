@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information indicating the ways in which a product can be provisioned.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisioningArtifact"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProvisioningArtifact implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProvisioningArtifact implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -41,7 +48,7 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
@@ -168,11 +175,11 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time that the artifact was created by the Administrator.
+     *        The UTC timestamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -181,10 +188,10 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
-     * @return The time that the artifact was created by the Administrator.
+     * @return The UTC timestamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -193,11 +200,11 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time that the artifact was created by the Administrator.
+     *        The UTC timestamp of the creation time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -218,13 +225,13 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime());
+            sb.append("CreatedTime: ").append(getCreatedTime());
         sb.append("}");
         return sb.toString();
     }
@@ -277,5 +284,11 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProvisioningArtifactMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

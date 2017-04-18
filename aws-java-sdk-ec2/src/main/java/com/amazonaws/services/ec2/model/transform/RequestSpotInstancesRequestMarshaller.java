@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * RequestSpotInstancesRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RequestSpotInstancesRequestMarshaller implements Marshaller<Request<RequestSpotInstancesRequest>, RequestSpotInstancesRequest> {
 
     public Request<RequestSpotInstancesRequest> marshall(RequestSpotInstancesRequest requestSpotInstancesRequest) {
@@ -39,7 +37,7 @@ public class RequestSpotInstancesRequestMarshaller implements Marshaller<Request
 
         Request<RequestSpotInstancesRequest> request = new DefaultRequest<RequestSpotInstancesRequest>(requestSpotInstancesRequest, "AmazonEC2");
         request.addParameter("Action", "RequestSpotInstances");
-        request.addParameter("Version", "2016-09-15");
+        request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
         if (requestSpotInstancesRequest.getSpotPrice() != null) {
@@ -110,6 +108,10 @@ public class RequestSpotInstancesRequestMarshaller implements Marshaller<Request
 
                 if (placement.getGroupName() != null) {
                     request.addParameter("LaunchSpecification.Placement.GroupName", StringUtils.fromString(placement.getGroupName()));
+                }
+
+                if (placement.getTenancy() != null) {
+                    request.addParameter("LaunchSpecification.Placement.Tenancy", StringUtils.fromString(placement.getTenancy()));
                 }
             }
 
@@ -266,6 +268,28 @@ public class RequestSpotInstancesRequestMarshaller implements Marshaller<Request
                     if (launchSpecificationNetworkInterfacesListValue.getAssociatePublicIpAddress() != null) {
                         request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".AssociatePublicIpAddress",
                                 StringUtils.fromBoolean(launchSpecificationNetworkInterfacesListValue.getAssociatePublicIpAddress()));
+                    }
+
+                    com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> instanceNetworkInterfaceSpecificationIpv6AddressesList = (com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>) launchSpecificationNetworkInterfacesListValue
+                            .getIpv6Addresses();
+                    if (!instanceNetworkInterfaceSpecificationIpv6AddressesList.isEmpty()
+                            || !instanceNetworkInterfaceSpecificationIpv6AddressesList.isAutoConstruct()) {
+                        int ipv6AddressesListIndex = 1;
+
+                        for (InstanceIpv6Address instanceNetworkInterfaceSpecificationIpv6AddressesListValue : instanceNetworkInterfaceSpecificationIpv6AddressesList) {
+
+                            if (instanceNetworkInterfaceSpecificationIpv6AddressesListValue.getIpv6Address() != null) {
+                                request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".Ipv6Addresses."
+                                        + ipv6AddressesListIndex + ".Ipv6Address",
+                                        StringUtils.fromString(instanceNetworkInterfaceSpecificationIpv6AddressesListValue.getIpv6Address()));
+                            }
+                            ipv6AddressesListIndex++;
+                        }
+                    }
+
+                    if (launchSpecificationNetworkInterfacesListValue.getIpv6AddressCount() != null) {
+                        request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".Ipv6AddressCount",
+                                StringUtils.fromInteger(launchSpecificationNetworkInterfacesListValue.getIpv6AddressCount()));
                     }
                     networkInterfacesListIndex++;
                 }

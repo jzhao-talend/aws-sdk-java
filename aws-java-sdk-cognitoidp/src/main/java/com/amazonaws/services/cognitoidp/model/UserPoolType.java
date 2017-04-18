@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A container with information about the user pool type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UserPoolType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UserPoolType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -153,6 +160,14 @@ public class UserPoolType implements Serializable, Cloneable {
      * </p>
      */
     private SmsConfigurationType smsConfiguration;
+    /**
+     * <p>
+     * The cost allocation tags for the user pool. For more information, see <a
+     * href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     * >Adding Cost Allocation Tags to Your User Pool</a>
+     * </p>
+     */
+    private java.util.Map<String, String> userPoolTags;
     /**
      * <p>
      * The reason why the SMS configuration cannot send the message(s) to your users.
@@ -1321,6 +1336,79 @@ public class UserPoolType implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The cost allocation tags for the user pool. For more information, see <a
+     * href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     * >Adding Cost Allocation Tags to Your User Pool</a>
+     * </p>
+     * 
+     * @return The cost allocation tags for the user pool. For more information, see <a
+     *         href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     *         >Adding Cost Allocation Tags to Your User Pool</a>
+     */
+
+    public java.util.Map<String, String> getUserPoolTags() {
+        return userPoolTags;
+    }
+
+    /**
+     * <p>
+     * The cost allocation tags for the user pool. For more information, see <a
+     * href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     * >Adding Cost Allocation Tags to Your User Pool</a>
+     * </p>
+     * 
+     * @param userPoolTags
+     *        The cost allocation tags for the user pool. For more information, see <a href=
+     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     *        >Adding Cost Allocation Tags to Your User Pool</a>
+     */
+
+    public void setUserPoolTags(java.util.Map<String, String> userPoolTags) {
+        this.userPoolTags = userPoolTags;
+    }
+
+    /**
+     * <p>
+     * The cost allocation tags for the user pool. For more information, see <a
+     * href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     * >Adding Cost Allocation Tags to Your User Pool</a>
+     * </p>
+     * 
+     * @param userPoolTags
+     *        The cost allocation tags for the user pool. For more information, see <a href=
+     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html"
+     *        >Adding Cost Allocation Tags to Your User Pool</a>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UserPoolType withUserPoolTags(java.util.Map<String, String> userPoolTags) {
+        setUserPoolTags(userPoolTags);
+        return this;
+    }
+
+    public UserPoolType addUserPoolTagsEntry(String key, String value) {
+        if (null == this.userPoolTags) {
+            this.userPoolTags = new java.util.HashMap<String, String>();
+        }
+        if (this.userPoolTags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.userPoolTags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into UserPoolTags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UserPoolType clearUserPoolTagsEntries() {
+        this.userPoolTags = null;
+        return this;
+    }
+
+    /**
+     * <p>
      * The reason why the SMS configuration cannot send the message(s) to your users.
      * </p>
      * 
@@ -1451,49 +1539,51 @@ public class UserPoolType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getPolicies() != null)
-            sb.append("Policies: " + getPolicies() + ",");
+            sb.append("Policies: ").append(getPolicies()).append(",");
         if (getLambdaConfig() != null)
-            sb.append("LambdaConfig: " + getLambdaConfig() + ",");
+            sb.append("LambdaConfig: ").append(getLambdaConfig()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getLastModifiedDate() != null)
-            sb.append("LastModifiedDate: " + getLastModifiedDate() + ",");
+            sb.append("LastModifiedDate: ").append(getLastModifiedDate()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getSchemaAttributes() != null)
-            sb.append("SchemaAttributes: " + getSchemaAttributes() + ",");
+            sb.append("SchemaAttributes: ").append(getSchemaAttributes()).append(",");
         if (getAutoVerifiedAttributes() != null)
-            sb.append("AutoVerifiedAttributes: " + getAutoVerifiedAttributes() + ",");
+            sb.append("AutoVerifiedAttributes: ").append(getAutoVerifiedAttributes()).append(",");
         if (getAliasAttributes() != null)
-            sb.append("AliasAttributes: " + getAliasAttributes() + ",");
+            sb.append("AliasAttributes: ").append(getAliasAttributes()).append(",");
         if (getSmsVerificationMessage() != null)
-            sb.append("SmsVerificationMessage: " + getSmsVerificationMessage() + ",");
+            sb.append("SmsVerificationMessage: ").append(getSmsVerificationMessage()).append(",");
         if (getEmailVerificationMessage() != null)
-            sb.append("EmailVerificationMessage: " + getEmailVerificationMessage() + ",");
+            sb.append("EmailVerificationMessage: ").append(getEmailVerificationMessage()).append(",");
         if (getEmailVerificationSubject() != null)
-            sb.append("EmailVerificationSubject: " + getEmailVerificationSubject() + ",");
+            sb.append("EmailVerificationSubject: ").append(getEmailVerificationSubject()).append(",");
         if (getSmsAuthenticationMessage() != null)
-            sb.append("SmsAuthenticationMessage: " + getSmsAuthenticationMessage() + ",");
+            sb.append("SmsAuthenticationMessage: ").append(getSmsAuthenticationMessage()).append(",");
         if (getMfaConfiguration() != null)
-            sb.append("MfaConfiguration: " + getMfaConfiguration() + ",");
+            sb.append("MfaConfiguration: ").append(getMfaConfiguration()).append(",");
         if (getDeviceConfiguration() != null)
-            sb.append("DeviceConfiguration: " + getDeviceConfiguration() + ",");
+            sb.append("DeviceConfiguration: ").append(getDeviceConfiguration()).append(",");
         if (getEstimatedNumberOfUsers() != null)
-            sb.append("EstimatedNumberOfUsers: " + getEstimatedNumberOfUsers() + ",");
+            sb.append("EstimatedNumberOfUsers: ").append(getEstimatedNumberOfUsers()).append(",");
         if (getEmailConfiguration() != null)
-            sb.append("EmailConfiguration: " + getEmailConfiguration() + ",");
+            sb.append("EmailConfiguration: ").append(getEmailConfiguration()).append(",");
         if (getSmsConfiguration() != null)
-            sb.append("SmsConfiguration: " + getSmsConfiguration() + ",");
+            sb.append("SmsConfiguration: ").append(getSmsConfiguration()).append(",");
+        if (getUserPoolTags() != null)
+            sb.append("UserPoolTags: ").append(getUserPoolTags()).append(",");
         if (getSmsConfigurationFailure() != null)
-            sb.append("SmsConfigurationFailure: " + getSmsConfigurationFailure() + ",");
+            sb.append("SmsConfigurationFailure: ").append(getSmsConfigurationFailure()).append(",");
         if (getEmailConfigurationFailure() != null)
-            sb.append("EmailConfigurationFailure: " + getEmailConfigurationFailure() + ",");
+            sb.append("EmailConfigurationFailure: ").append(getEmailConfigurationFailure()).append(",");
         if (getAdminCreateUserConfig() != null)
-            sb.append("AdminCreateUserConfig: " + getAdminCreateUserConfig());
+            sb.append("AdminCreateUserConfig: ").append(getAdminCreateUserConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -1584,6 +1674,10 @@ public class UserPoolType implements Serializable, Cloneable {
             return false;
         if (other.getSmsConfiguration() != null && other.getSmsConfiguration().equals(this.getSmsConfiguration()) == false)
             return false;
+        if (other.getUserPoolTags() == null ^ this.getUserPoolTags() == null)
+            return false;
+        if (other.getUserPoolTags() != null && other.getUserPoolTags().equals(this.getUserPoolTags()) == false)
+            return false;
         if (other.getSmsConfigurationFailure() == null ^ this.getSmsConfigurationFailure() == null)
             return false;
         if (other.getSmsConfigurationFailure() != null && other.getSmsConfigurationFailure().equals(this.getSmsConfigurationFailure()) == false)
@@ -1623,6 +1717,7 @@ public class UserPoolType implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEstimatedNumberOfUsers() == null) ? 0 : getEstimatedNumberOfUsers().hashCode());
         hashCode = prime * hashCode + ((getEmailConfiguration() == null) ? 0 : getEmailConfiguration().hashCode());
         hashCode = prime * hashCode + ((getSmsConfiguration() == null) ? 0 : getSmsConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getUserPoolTags() == null) ? 0 : getUserPoolTags().hashCode());
         hashCode = prime * hashCode + ((getSmsConfigurationFailure() == null) ? 0 : getSmsConfigurationFailure().hashCode());
         hashCode = prime * hashCode + ((getEmailConfigurationFailure() == null) ? 0 : getEmailConfigurationFailure().hashCode());
         hashCode = prime * hashCode + ((getAdminCreateUserConfig() == null) ? 0 : getAdminCreateUserConfig().hashCode());
@@ -1636,5 +1731,11 @@ public class UserPoolType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.UserPoolTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

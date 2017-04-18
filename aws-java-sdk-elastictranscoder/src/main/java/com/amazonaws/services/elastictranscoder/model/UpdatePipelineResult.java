@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * When you update a pipeline, Elastic Transcoder returns the values that you specified in the request.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The pipeline updated by this <code>UpdatePipelineResponse</code> call.
+     * </p>
+     */
     private Pipeline pipeline;
     /**
      * <p>
@@ -35,7 +42,12 @@ public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
     private com.amazonaws.internal.SdkInternalList<Warning> warnings;
 
     /**
+     * <p>
+     * The pipeline updated by this <code>UpdatePipelineResponse</code> call.
+     * </p>
+     * 
      * @param pipeline
+     *        The pipeline updated by this <code>UpdatePipelineResponse</code> call.
      */
 
     public void setPipeline(Pipeline pipeline) {
@@ -43,7 +55,11 @@ public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * @return
+     * <p>
+     * The pipeline updated by this <code>UpdatePipelineResponse</code> call.
+     * </p>
+     * 
+     * @return The pipeline updated by this <code>UpdatePipelineResponse</code> call.
      */
 
     public Pipeline getPipeline() {
@@ -51,7 +67,12 @@ public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
+     * The pipeline updated by this <code>UpdatePipelineResponse</code> call.
+     * </p>
+     * 
      * @param pipeline
+     *        The pipeline updated by this <code>UpdatePipelineResponse</code> call.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -181,9 +202,9 @@ public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPipeline() != null)
-            sb.append("Pipeline: " + getPipeline() + ",");
+            sb.append("Pipeline: ").append(getPipeline()).append(",");
         if (getWarnings() != null)
-            sb.append("Warnings: " + getWarnings());
+            sb.append("Warnings: ").append(getWarnings());
         sb.append("}");
         return sb.toString();
     }
@@ -227,4 +248,5 @@ public class UpdatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

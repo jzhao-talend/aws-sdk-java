@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codecommit.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about a trigger for a repository.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/RepositoryTrigger" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RepositoryTrigger implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RepositoryTrigger implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -51,9 +58,13 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      */
     private java.util.List<String> events;
 
@@ -270,13 +281,19 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      * 
      * @return The repository events that will cause the trigger to run actions in another service, such as sending a
-     *         notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger
-     *         will run for all repository events.
+     *         notification through Amazon Simple Notification Service (SNS). </p> <note>
+     *         <p>
+     *         The valid value "all" cannot be used with any other values.
+     *         </p>
      * @see RepositoryTriggerEventEnum
      */
 
@@ -287,14 +304,20 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      * 
      * @param events
      *        The repository events that will cause the trigger to run actions in another service, such as sending a
-     *        notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger
-     *        will run for all repository events.
+     *        notification through Amazon Simple Notification Service (SNS). </p> <note>
+     *        <p>
+     *        The valid value "all" cannot be used with any other values.
+     *        </p>
      * @see RepositoryTriggerEventEnum
      */
 
@@ -310,9 +333,13 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setEvents(java.util.Collection)} or {@link #withEvents(java.util.Collection)} if you want to override the
@@ -321,8 +348,10 @@ public class RepositoryTrigger implements Serializable, Cloneable {
      * 
      * @param events
      *        The repository events that will cause the trigger to run actions in another service, such as sending a
-     *        notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger
-     *        will run for all repository events.
+     *        notification through Amazon Simple Notification Service (SNS). </p> <note>
+     *        <p>
+     *        The valid value "all" cannot be used with any other values.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RepositoryTriggerEventEnum
      */
@@ -340,14 +369,20 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      * 
      * @param events
      *        The repository events that will cause the trigger to run actions in another service, such as sending a
-     *        notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger
-     *        will run for all repository events.
+     *        notification through Amazon Simple Notification Service (SNS). </p> <note>
+     *        <p>
+     *        The valid value "all" cannot be used with any other values.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RepositoryTriggerEventEnum
      */
@@ -360,14 +395,20 @@ public class RepositoryTrigger implements Serializable, Cloneable {
     /**
      * <p>
      * The repository events that will cause the trigger to run actions in another service, such as sending a
-     * notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run
-     * for all repository events.
+     * notification through Amazon Simple Notification Service (SNS).
      * </p>
+     * <note>
+     * <p>
+     * The valid value "all" cannot be used with any other values.
+     * </p>
+     * </note>
      * 
      * @param events
      *        The repository events that will cause the trigger to run actions in another service, such as sending a
-     *        notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger
-     *        will run for all repository events.
+     *        notification through Amazon Simple Notification Service (SNS). </p> <note>
+     *        <p>
+     *        The valid value "all" cannot be used with any other values.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RepositoryTriggerEventEnum
      */
@@ -397,15 +438,15 @@ public class RepositoryTrigger implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDestinationArn() != null)
-            sb.append("DestinationArn: " + getDestinationArn() + ",");
+            sb.append("DestinationArn: ").append(getDestinationArn()).append(",");
         if (getCustomData() != null)
-            sb.append("CustomData: " + getCustomData() + ",");
+            sb.append("CustomData: ").append(getCustomData()).append(",");
         if (getBranches() != null)
-            sb.append("Branches: " + getBranches() + ",");
+            sb.append("Branches: ").append(getBranches()).append(",");
         if (getEvents() != null)
-            sb.append("Events: " + getEvents());
+            sb.append("Events: ").append(getEvents());
         sb.append("}");
         return sb.toString();
     }
@@ -463,5 +504,11 @@ public class RepositoryTrigger implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codecommit.model.transform.RepositoryTriggerMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

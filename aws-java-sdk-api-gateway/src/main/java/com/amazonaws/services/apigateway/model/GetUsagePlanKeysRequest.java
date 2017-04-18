@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The GET request to get all the usage plan keys representing the API keys added to a specified usage plan.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -31,13 +34,13 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
     private String usagePlanId;
     /**
      * <p>
-     * A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     * The maximum number of returned results per page.
      * </p>
      */
     private Integer limit;
@@ -96,11 +99,11 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -109,10 +112,10 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -121,11 +124,11 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        A query parameter specifying the zero-based index specifying the position of a usage plan key.
+     *        The current pagination position in the paged result set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,11 +139,11 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     *        The maximum number of returned results per page.
      */
 
     public void setLimit(Integer limit) {
@@ -149,10 +152,10 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     * The maximum number of returned results per page.
      * </p>
      * 
-     * @return A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     * @return The maximum number of returned results per page.
      */
 
     public Integer getLimit() {
@@ -161,11 +164,11 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        A query parameter specifying the maximum number usage plan keys returned by the GET request.
+     *        The maximum number of returned results per page.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -226,13 +229,13 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUsagePlanId() != null)
-            sb.append("UsagePlanId: " + getUsagePlanId() + ",");
+            sb.append("UsagePlanId: ").append(getUsagePlanId()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNameQuery() != null)
-            sb.append("NameQuery: " + getNameQuery());
+            sb.append("NameQuery: ").append(getNameQuery());
         sb.append("}");
         return sb.toString();
     }
@@ -282,4 +285,5 @@ public class GetUsagePlanKeysRequest extends com.amazonaws.AmazonWebServiceReque
     public GetUsagePlanKeysRequest clone() {
         return (GetUsagePlanKeysRequest) super.clone();
     }
+
 }

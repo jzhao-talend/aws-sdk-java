@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -23,7 +24,11 @@ import java.io.Serializable;
  * For information about receiving email through Amazon SES, see the <a
  * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/RecipientDsnFields" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RecipientDsnFields implements Serializable, Cloneable {
 
     /**
@@ -542,19 +547,19 @@ public class RecipientDsnFields implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFinalRecipient() != null)
-            sb.append("FinalRecipient: " + getFinalRecipient() + ",");
+            sb.append("FinalRecipient: ").append(getFinalRecipient()).append(",");
         if (getAction() != null)
-            sb.append("Action: " + getAction() + ",");
+            sb.append("Action: ").append(getAction()).append(",");
         if (getRemoteMta() != null)
-            sb.append("RemoteMta: " + getRemoteMta() + ",");
+            sb.append("RemoteMta: ").append(getRemoteMta()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getDiagnosticCode() != null)
-            sb.append("DiagnosticCode: " + getDiagnosticCode() + ",");
+            sb.append("DiagnosticCode: ").append(getDiagnosticCode()).append(",");
         if (getLastAttemptDate() != null)
-            sb.append("LastAttemptDate: " + getLastAttemptDate() + ",");
+            sb.append("LastAttemptDate: ").append(getLastAttemptDate()).append(",");
         if (getExtensionFields() != null)
-            sb.append("ExtensionFields: " + getExtensionFields());
+            sb.append("ExtensionFields: ").append(getExtensionFields());
         sb.append("}");
         return sb.toString();
     }
@@ -623,4 +628,5 @@ public class RecipientDsnFields implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

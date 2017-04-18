@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.datapipeline.DataPipelineClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -66,6 +70,7 @@ import com.amazonaws.services.datapipeline.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DataPipelineClient extends AmazonWebServiceClient implements DataPipeline {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -78,26 +83,27 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                            com.amazonaws.services.datapipeline.model.InvalidRequestException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withModeledClass(
-                            com.amazonaws.services.datapipeline.model.TaskNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withModeledClass(
-                            com.amazonaws.services.datapipeline.model.PipelineDeletedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withModeledClass(
-                            com.amazonaws.services.datapipeline.model.PipelineNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withModeledClass(
-                            com.amazonaws.services.datapipeline.model.InternalServiceErrorException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.datapipeline.model.DataPipelineException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
+                                    com.amazonaws.services.datapipeline.model.InvalidRequestException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withModeledClass(
+                                    com.amazonaws.services.datapipeline.model.TaskNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withModeledClass(
+                                    com.amazonaws.services.datapipeline.model.PipelineDeletedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withModeledClass(
+                                    com.amazonaws.services.datapipeline.model.PipelineNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withModeledClass(
+                                    com.amazonaws.services.datapipeline.model.InternalServiceErrorException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.datapipeline.model.DataPipelineException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS Data Pipeline. A credentials provider chain will be used
@@ -113,7 +119,9 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link DataPipelineClientBuilder#defaultClient()}
      */
+    @Deprecated
     public DataPipelineClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -136,7 +144,9 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link DataPipelineClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public DataPipelineClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -151,7 +161,10 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link DataPipelineClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code DataPipelineClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public DataPipelineClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -169,7 +182,10 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Data Pipeline (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link DataPipelineClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link DataPipelineClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public DataPipelineClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -186,7 +202,9 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link DataPipelineClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public DataPipelineClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -204,7 +222,10 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Data Pipeline (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link DataPipelineClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link DataPipelineClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public DataPipelineClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -224,12 +245,20 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link DataPipelineClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link DataPipelineClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link DataPipelineClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public DataPipelineClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static DataPipelineClientBuilder builder() {
+        return DataPipelineClientBuilder.standard();
     }
 
     /**
@@ -286,9 +315,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ActivatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ActivatePipelineResult activatePipeline(ActivatePipelineRequest activatePipelineRequest) {
+    public ActivatePipelineResult activatePipeline(ActivatePipelineRequest request) {
+        request = beforeClientExecution(request);
+        return executeActivatePipeline(request);
+    }
+
+    @SdkInternalApi
+    final ActivatePipelineResult executeActivatePipeline(ActivatePipelineRequest activatePipelineRequest) {
+
         ExecutionContext executionContext = createExecutionContext(activatePipelineRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -298,7 +336,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ActivatePipelineRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(activatePipelineRequest));
+                request = new ActivatePipelineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(activatePipelineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -336,9 +374,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsResult addTags(AddTagsRequest addTagsRequest) {
+    public AddTagsResult addTags(AddTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTags(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsResult executeAddTags(AddTagsRequest addTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -348,7 +395,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
+                request = new AddTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -382,9 +429,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.CreatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreatePipelineResult createPipeline(CreatePipelineRequest createPipelineRequest) {
+    public CreatePipelineResult createPipeline(CreatePipelineRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePipeline(request);
+    }
+
+    @SdkInternalApi
+    final CreatePipelineResult executeCreatePipeline(CreatePipelineRequest createPipelineRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPipelineRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -394,7 +450,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreatePipelineRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPipelineRequest));
+                request = new CreatePipelineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPipelineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -437,9 +493,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DeactivatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeactivatePipelineResult deactivatePipeline(DeactivatePipelineRequest deactivatePipelineRequest) {
+    public DeactivatePipelineResult deactivatePipeline(DeactivatePipelineRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeactivatePipeline(request);
+    }
+
+    @SdkInternalApi
+    final DeactivatePipelineResult executeDeactivatePipeline(DeactivatePipelineRequest deactivatePipelineRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deactivatePipelineRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -449,7 +514,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeactivatePipelineRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deactivatePipelineRequest));
+                request = new DeactivatePipelineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deactivatePipelineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -491,9 +556,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DeletePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeletePipelineResult deletePipeline(DeletePipelineRequest deletePipelineRequest) {
+    public DeletePipelineResult deletePipeline(DeletePipelineRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePipeline(request);
+    }
+
+    @SdkInternalApi
+    final DeletePipelineResult executeDeletePipeline(DeletePipelineRequest deletePipelineRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePipelineRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -503,7 +577,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeletePipelineRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePipelineRequest));
+                request = new DeletePipelineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePipelineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -542,9 +616,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.DescribeObjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeObjectsResult describeObjects(DescribeObjectsRequest describeObjectsRequest) {
+    public DescribeObjectsResult describeObjects(DescribeObjectsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeObjects(request);
+    }
+
+    @SdkInternalApi
+    final DescribeObjectsResult executeDescribeObjects(DescribeObjectsRequest describeObjectsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeObjectsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -554,7 +637,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeObjectsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeObjectsRequest));
+                request = new DescribeObjectsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeObjectsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -599,9 +682,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DescribePipelines
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribePipelinesResult describePipelines(DescribePipelinesRequest describePipelinesRequest) {
+    public DescribePipelinesResult describePipelines(DescribePipelinesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePipelines(request);
+    }
+
+    @SdkInternalApi
+    final DescribePipelinesResult executeDescribePipelines(DescribePipelinesRequest describePipelinesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describePipelinesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -611,7 +703,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribePipelinesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describePipelinesRequest));
+                request = new DescribePipelinesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describePipelinesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -652,9 +744,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.EvaluateExpression
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EvaluateExpressionResult evaluateExpression(EvaluateExpressionRequest evaluateExpressionRequest) {
+    public EvaluateExpressionResult evaluateExpression(EvaluateExpressionRequest request) {
+        request = beforeClientExecution(request);
+        return executeEvaluateExpression(request);
+    }
+
+    @SdkInternalApi
+    final EvaluateExpressionResult executeEvaluateExpression(EvaluateExpressionRequest evaluateExpressionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(evaluateExpressionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -664,7 +765,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new EvaluateExpressionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(evaluateExpressionRequest));
+                request = new EvaluateExpressionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(evaluateExpressionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -703,9 +804,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.GetPipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetPipelineDefinitionResult getPipelineDefinition(GetPipelineDefinitionRequest getPipelineDefinitionRequest) {
+    public GetPipelineDefinitionResult getPipelineDefinition(GetPipelineDefinitionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPipelineDefinition(request);
+    }
+
+    @SdkInternalApi
+    final GetPipelineDefinitionResult executeGetPipelineDefinition(GetPipelineDefinitionRequest getPipelineDefinitionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPipelineDefinitionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -715,7 +825,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetPipelineDefinitionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPipelineDefinitionRequest));
+                request = new GetPipelineDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPipelineDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -750,9 +860,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ListPipelines
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListPipelinesResult listPipelines(ListPipelinesRequest listPipelinesRequest) {
+    public ListPipelinesResult listPipelines(ListPipelinesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPipelines(request);
+    }
+
+    @SdkInternalApi
+    final ListPipelinesResult executeListPipelines(ListPipelinesRequest listPipelinesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPipelinesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -762,7 +881,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListPipelinesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listPipelinesRequest));
+                request = new ListPipelinesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listPipelinesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -814,9 +933,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws TaskNotFoundException
      *         The specified task was not found.
      * @sample DataPipeline.PollForTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PollForTaskResult pollForTask(PollForTaskRequest pollForTaskRequest) {
+    public PollForTaskResult pollForTask(PollForTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executePollForTask(request);
+    }
+
+    @SdkInternalApi
+    final PollForTaskResult executePollForTask(PollForTaskRequest pollForTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(pollForTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -826,7 +954,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PollForTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(pollForTaskRequest));
+                request = new PollForTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(pollForTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -879,9 +1007,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.PutPipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public PutPipelineDefinitionResult putPipelineDefinition(PutPipelineDefinitionRequest putPipelineDefinitionRequest) {
+    public PutPipelineDefinitionResult putPipelineDefinition(PutPipelineDefinitionRequest request) {
+        request = beforeClientExecution(request);
+        return executePutPipelineDefinition(request);
+    }
+
+    @SdkInternalApi
+    final PutPipelineDefinitionResult executePutPipelineDefinition(PutPipelineDefinitionRequest putPipelineDefinitionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putPipelineDefinitionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -891,7 +1028,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutPipelineDefinitionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putPipelineDefinitionRequest));
+                request = new PutPipelineDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putPipelineDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -930,9 +1067,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.QueryObjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public QueryObjectsResult queryObjects(QueryObjectsRequest queryObjectsRequest) {
+    public QueryObjectsResult queryObjects(QueryObjectsRequest request) {
+        request = beforeClientExecution(request);
+        return executeQueryObjects(request);
+    }
+
+    @SdkInternalApi
+    final QueryObjectsResult executeQueryObjects(QueryObjectsRequest queryObjectsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(queryObjectsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -942,7 +1088,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new QueryObjectsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(queryObjectsRequest));
+                request = new QueryObjectsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(queryObjectsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -980,9 +1126,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest) {
+    public RemoveTagsResult removeTags(RemoveTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTags(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsResult executeRemoveTags(RemoveTagsRequest removeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -992,7 +1147,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemoveTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsRequest));
+                request = new RemoveTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1041,9 +1196,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.ReportTaskProgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ReportTaskProgressResult reportTaskProgress(ReportTaskProgressRequest reportTaskProgressRequest) {
+    public ReportTaskProgressResult reportTaskProgress(ReportTaskProgressRequest request) {
+        request = beforeClientExecution(request);
+        return executeReportTaskProgress(request);
+    }
+
+    @SdkInternalApi
+    final ReportTaskProgressResult executeReportTaskProgress(ReportTaskProgressRequest reportTaskProgressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(reportTaskProgressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1053,7 +1217,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ReportTaskProgressRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(reportTaskProgressRequest));
+                request = new ReportTaskProgressRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(reportTaskProgressRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1089,9 +1253,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ReportTaskRunnerHeartbeat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ReportTaskRunnerHeartbeatResult reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest reportTaskRunnerHeartbeatRequest) {
+    public ReportTaskRunnerHeartbeatResult reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest request) {
+        request = beforeClientExecution(request);
+        return executeReportTaskRunnerHeartbeat(request);
+    }
+
+    @SdkInternalApi
+    final ReportTaskRunnerHeartbeatResult executeReportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest reportTaskRunnerHeartbeatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(reportTaskRunnerHeartbeatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1101,7 +1274,8 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ReportTaskRunnerHeartbeatRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(reportTaskRunnerHeartbeatRequest));
+                request = new ReportTaskRunnerHeartbeatRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(reportTaskRunnerHeartbeatRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1143,9 +1317,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.SetStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SetStatusResult setStatus(SetStatusRequest setStatusRequest) {
+    public SetStatusResult setStatus(SetStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetStatus(request);
+    }
+
+    @SdkInternalApi
+    final SetStatusResult executeSetStatus(SetStatusRequest setStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1155,7 +1338,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SetStatusRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(setStatusRequest));
+                request = new SetStatusRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(setStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1198,9 +1381,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.SetTaskStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SetTaskStatusResult setTaskStatus(SetTaskStatusRequest setTaskStatusRequest) {
+    public SetTaskStatusResult setTaskStatus(SetTaskStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetTaskStatus(request);
+    }
+
+    @SdkInternalApi
+    final SetTaskStatusResult executeSetTaskStatus(SetTaskStatusRequest setTaskStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setTaskStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1210,7 +1402,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SetTaskStatusRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(setTaskStatusRequest));
+                request = new SetTaskStatusRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(setTaskStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1248,9 +1440,18 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.ValidatePipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ValidatePipelineDefinitionResult validatePipelineDefinition(ValidatePipelineDefinitionRequest validatePipelineDefinitionRequest) {
+    public ValidatePipelineDefinitionResult validatePipelineDefinition(ValidatePipelineDefinitionRequest request) {
+        request = beforeClientExecution(request);
+        return executeValidatePipelineDefinition(request);
+    }
+
+    @SdkInternalApi
+    final ValidatePipelineDefinitionResult executeValidatePipelineDefinition(ValidatePipelineDefinitionRequest validatePipelineDefinitionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(validatePipelineDefinitionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1260,7 +1461,8 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ValidatePipelineDefinitionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(validatePipelineDefinitionRequest));
+                request = new ValidatePipelineDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(validatePipelineDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

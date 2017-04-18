@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about the location of an application revision.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RevisionLocation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RevisionLocation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RevisionLocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -39,9 +46,17 @@ public class RevisionLocation implements Serializable, Cloneable {
      * </ul>
      */
     private String revisionType;
-
+    /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     */
     private S3Location s3Location;
-
+    /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     */
     private GitHubLocation gitHubLocation;
 
     /**
@@ -233,7 +248,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
      * @param s3Location
+     *        Information about the location of application artifacts stored in Amazon S3.
      */
 
     public void setS3Location(S3Location s3Location) {
@@ -241,7 +261,11 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
+     * @return Information about the location of application artifacts stored in Amazon S3.
      */
 
     public S3Location getS3Location() {
@@ -249,7 +273,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
      * @param s3Location
+     *        Information about the location of application artifacts stored in Amazon S3.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -259,7 +288,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
      * @param gitHubLocation
+     *        Information about the location of application artifacts stored in GitHub.
      */
 
     public void setGitHubLocation(GitHubLocation gitHubLocation) {
@@ -267,7 +301,11 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
+     * @return Information about the location of application artifacts stored in GitHub.
      */
 
     public GitHubLocation getGitHubLocation() {
@@ -275,7 +313,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
      * @param gitHubLocation
+     *        Information about the location of application artifacts stored in GitHub.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -296,11 +339,11 @@ public class RevisionLocation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRevisionType() != null)
-            sb.append("RevisionType: " + getRevisionType() + ",");
+            sb.append("RevisionType: ").append(getRevisionType()).append(",");
         if (getS3Location() != null)
-            sb.append("S3Location: " + getS3Location() + ",");
+            sb.append("S3Location: ").append(getS3Location()).append(",");
         if (getGitHubLocation() != null)
-            sb.append("GitHubLocation: " + getGitHubLocation());
+            sb.append("GitHubLocation: ").append(getGitHubLocation());
         sb.append("}");
         return sb.toString();
     }
@@ -348,5 +391,11 @@ public class RevisionLocation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.RevisionLocationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

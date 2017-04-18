@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,7 +21,11 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and
  * Statuses</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/InstanceHealthSummary"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceHealthSummary implements Serializable, Cloneable {
 
     /**
@@ -432,21 +437,21 @@ public class InstanceHealthSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNoData() != null)
-            sb.append("NoData: " + getNoData() + ",");
+            sb.append("NoData: ").append(getNoData()).append(",");
         if (getUnknown() != null)
-            sb.append("Unknown: " + getUnknown() + ",");
+            sb.append("Unknown: ").append(getUnknown()).append(",");
         if (getPending() != null)
-            sb.append("Pending: " + getPending() + ",");
+            sb.append("Pending: ").append(getPending()).append(",");
         if (getOk() != null)
-            sb.append("Ok: " + getOk() + ",");
+            sb.append("Ok: ").append(getOk()).append(",");
         if (getInfo() != null)
-            sb.append("Info: " + getInfo() + ",");
+            sb.append("Info: ").append(getInfo()).append(",");
         if (getWarning() != null)
-            sb.append("Warning: " + getWarning() + ",");
+            sb.append("Warning: ").append(getWarning()).append(",");
         if (getDegraded() != null)
-            sb.append("Degraded: " + getDegraded() + ",");
+            sb.append("Degraded: ").append(getDegraded()).append(",");
         if (getSevere() != null)
-            sb.append("Severe: " + getSevere());
+            sb.append("Severe: ").append(getSevere());
         sb.append("}");
         return sb.toString();
     }
@@ -520,4 +525,5 @@ public class InstanceHealthSummary implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/TerminateProvisionedProduct"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TerminateProvisionedProductRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -400,15 +405,15 @@ public class TerminateProvisionedProductRequest extends com.amazonaws.AmazonWebS
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProvisionedProductName() != null)
-            sb.append("ProvisionedProductName: " + getProvisionedProductName() + ",");
+            sb.append("ProvisionedProductName: ").append(getProvisionedProductName()).append(",");
         if (getProvisionedProductId() != null)
-            sb.append("ProvisionedProductId: " + getProvisionedProductId() + ",");
+            sb.append("ProvisionedProductId: ").append(getProvisionedProductId()).append(",");
         if (getTerminateToken() != null)
-            sb.append("TerminateToken: " + getTerminateToken() + ",");
+            sb.append("TerminateToken: ").append(getTerminateToken()).append(",");
         if (getIgnoreErrors() != null)
-            sb.append("IgnoreErrors: " + getIgnoreErrors() + ",");
+            sb.append("IgnoreErrors: ").append(getIgnoreErrors()).append(",");
         if (getAcceptLanguage() != null)
-            sb.append("AcceptLanguage: " + getAcceptLanguage());
+            sb.append("AcceptLanguage: ").append(getAcceptLanguage());
         sb.append("}");
         return sb.toString();
     }
@@ -463,4 +468,5 @@ public class TerminateProvisionedProductRequest extends com.amazonaws.AmazonWebS
     public TerminateProvisionedProductRequest clone() {
         return (TerminateProvisionedProductRequest) super.clone();
     }
+
 }

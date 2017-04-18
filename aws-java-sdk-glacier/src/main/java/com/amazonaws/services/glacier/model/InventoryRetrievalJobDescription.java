@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,39 +13,44 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the options for a range inventory retrieval job.
  * </p>
  */
-public class InventoryRetrievalJobDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InventoryRetrievalJobDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a
-     * job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     * job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      * </p>
      */
     private String format;
     /**
      * <p>
-     * The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this
-     * date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes
+     * archives created on or after this date. This value should be a string in the ISO 8601 date format, for example
+     * <code>2013-03-20T17:03:43Z</code>.
      * </p>
      */
     private String startDate;
     /**
      * <p>
-     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. A
-     * string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date.
+     * This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.
      * </p>
      */
     private String endDate;
     /**
      * <p>
-     * Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit is set
-     * when initiating the job with the a <b>InitiateJob</b> request.
+     * The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when
+     * initiating the job with the a <b>InitiateJob</b> request.
      * </p>
      */
     private String limit;
@@ -63,12 +68,12 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
     /**
      * <p>
      * The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a
-     * job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     * job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      * </p>
      * 
      * @param format
      *        The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when
-     *        initiating a job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     *        initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      */
 
     public void setFormat(String format) {
@@ -78,11 +83,11 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
     /**
      * <p>
      * The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a
-     * job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     * job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      * </p>
      * 
      * @return The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when
-     *         initiating a job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     *         initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      */
 
     public String getFormat() {
@@ -92,12 +97,12 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
     /**
      * <p>
      * The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a
-     * job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     * job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      * </p>
      * 
      * @param format
      *        The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when
-     *        initiating a job to retrieve a vault inventory. Valid values are "CSV" and "JSON".
+     *        initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -108,13 +113,15 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this
-     * date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes
+     * archives created on or after this date. This value should be a string in the ISO 8601 date format, for example
+     * <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
      * @param startDate
-     *        The start of the date range in UTC for vault inventory retrieval that includes archives created on or
-     *        after this date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     *        The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that
+     *        includes archives created on or after this date. This value should be a string in the ISO 8601 date
+     *        format, for example <code>2013-03-20T17:03:43Z</code>.
      */
 
     public void setStartDate(String startDate) {
@@ -123,12 +130,14 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this
-     * date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes
+     * archives created on or after this date. This value should be a string in the ISO 8601 date format, for example
+     * <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
-     * @return The start of the date range in UTC for vault inventory retrieval that includes archives created on or
-     *         after this date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * @return The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that
+     *         includes archives created on or after this date. This value should be a string in the ISO 8601 date
+     *         format, for example <code>2013-03-20T17:03:43Z</code>.
      */
 
     public String getStartDate() {
@@ -137,13 +146,15 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this
-     * date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes
+     * archives created on or after this date. This value should be a string in the ISO 8601 date format, for example
+     * <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
      * @param startDate
-     *        The start of the date range in UTC for vault inventory retrieval that includes archives created on or
-     *        after this date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     *        The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that
+     *        includes archives created on or after this date. This value should be a string in the ISO 8601 date
+     *        format, for example <code>2013-03-20T17:03:43Z</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -154,13 +165,14 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. A
-     * string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date.
+     * This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
      * @param endDate
      *        The end of the date range in UTC for vault inventory retrieval that includes archives created before this
-     *        date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     *        date. This value should be a string in the ISO 8601 date format, for example
+     *        <code>2013-03-20T17:03:43Z</code>.
      */
 
     public void setEndDate(String endDate) {
@@ -169,12 +181,13 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. A
-     * string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date.
+     * This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
      * @return The end of the date range in UTC for vault inventory retrieval that includes archives created before this
-     *         date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     *         date. This value should be a string in the ISO 8601 date format, for example
+     *         <code>2013-03-20T17:03:43Z</code>.
      */
 
     public String getEndDate() {
@@ -183,13 +196,14 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. A
-     * string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     * The end of the date range in UTC for vault inventory retrieval that includes archives created before this date.
+     * This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.
      * </p>
      * 
      * @param endDate
      *        The end of the date range in UTC for vault inventory retrieval that includes archives created before this
-     *        date. A string representation of ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+     *        date. This value should be a string in the ISO 8601 date format, for example
+     *        <code>2013-03-20T17:03:43Z</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -200,13 +214,13 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit is set
-     * when initiating the job with the a <b>InitiateJob</b> request.
+     * The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when
+     * initiating the job with the a <b>InitiateJob</b> request.
      * </p>
      * 
      * @param limit
-     *        Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit
-     *        is set when initiating the job with the a <b>InitiateJob</b> request.
+     *        The maximum number of inventory items returned per vault inventory retrieval request. This limit is set
+     *        when initiating the job with the a <b>InitiateJob</b> request.
      */
 
     public void setLimit(String limit) {
@@ -215,12 +229,12 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit is set
-     * when initiating the job with the a <b>InitiateJob</b> request.
+     * The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when
+     * initiating the job with the a <b>InitiateJob</b> request.
      * </p>
      * 
-     * @return Specifies the maximum number of inventory items returned per vault inventory retrieval request. This
-     *         limit is set when initiating the job with the a <b>InitiateJob</b> request.
+     * @return The maximum number of inventory items returned per vault inventory retrieval request. This limit is set
+     *         when initiating the job with the a <b>InitiateJob</b> request.
      */
 
     public String getLimit() {
@@ -229,13 +243,13 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
 
     /**
      * <p>
-     * Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit is set
-     * when initiating the job with the a <b>InitiateJob</b> request.
+     * The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when
+     * initiating the job with the a <b>InitiateJob</b> request.
      * </p>
      * 
      * @param limit
-     *        Specifies the maximum number of inventory items returned per vault inventory retrieval request. This limit
-     *        is set when initiating the job with the a <b>InitiateJob</b> request.
+     *        The maximum number of inventory items returned per vault inventory retrieval request. This limit is set
+     *        when initiating the job with the a <b>InitiateJob</b> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -320,15 +334,15 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFormat() != null)
-            sb.append("Format: " + getFormat() + ",");
+            sb.append("Format: ").append(getFormat()).append(",");
         if (getStartDate() != null)
-            sb.append("StartDate: " + getStartDate() + ",");
+            sb.append("StartDate: ").append(getStartDate()).append(",");
         if (getEndDate() != null)
-            sb.append("EndDate: " + getEndDate() + ",");
+            sb.append("EndDate: ").append(getEndDate()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -386,5 +400,11 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.glacier.model.transform.InventoryRetrievalJobDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

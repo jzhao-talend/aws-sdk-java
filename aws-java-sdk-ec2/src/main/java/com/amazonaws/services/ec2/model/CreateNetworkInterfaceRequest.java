@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateNetworkInterfaceRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.CreateNetworkInterfaceRequestM
  * Contains the parameters for CreateNetworkInterface.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<CreateNetworkInterfaceRequest> {
 
@@ -39,9 +42,10 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
     private String description;
     /**
      * <p>
-     * The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2 selects
-     * one for you from the subnet range. If you specify an IP address, you cannot indicate any IP addresses specified
-     * in <code>privateIpAddresses</code> as primary (only one IP address can be designated as primary).
+     * The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon EC2
+     * selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot indicate any IP
+     * addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated as
+     * primary).
      * </p>
      */
     private String privateIpAddress;
@@ -53,23 +57,39 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
     private com.amazonaws.internal.SdkInternalList<String> groups;
     /**
      * <p>
-     * One or more private IP addresses.
+     * One or more private IPv4 addresses.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification> privateIpAddresses;
     /**
      * <p>
-     * The number of secondary private IP addresses to assign to a network interface. When you specify a number of
-     * secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't specify this
-     * option and specify more than one private IP address using <code>privateIpAddresses</code>.
+     * The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of
+     * secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't
+     * specify this option and specify more than one private IP address using <code>privateIpAddresses</code>.
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     * Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      */
     private Integer secondaryPrivateIpAddressCount;
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if
+     * you're specifying a number of IPv6 addresses.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> ipv6Addresses;
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     * addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your subnet
+     * has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can specify
+     * <code>0</code> to override this setting.
+     * </p>
+     */
+    private Integer ipv6AddressCount;
 
     /**
      * <p>
@@ -153,16 +173,17 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2 selects
-     * one for you from the subnet range. If you specify an IP address, you cannot indicate any IP addresses specified
-     * in <code>privateIpAddresses</code> as primary (only one IP address can be designated as primary).
+     * The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon EC2
+     * selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot indicate any IP
+     * addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated as
+     * primary).
      * </p>
      * 
      * @param privateIpAddress
-     *        The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2
-     *        selects one for you from the subnet range. If you specify an IP address, you cannot indicate any IP
-     *        addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated
-     *        as primary).
+     *        The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon
+     *        EC2 selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot
+     *        indicate any IP addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can
+     *        be designated as primary).
      */
 
     public void setPrivateIpAddress(String privateIpAddress) {
@@ -171,15 +192,16 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2 selects
-     * one for you from the subnet range. If you specify an IP address, you cannot indicate any IP addresses specified
-     * in <code>privateIpAddresses</code> as primary (only one IP address can be designated as primary).
+     * The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon EC2
+     * selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot indicate any IP
+     * addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated as
+     * primary).
      * </p>
      * 
-     * @return The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2
-     *         selects one for you from the subnet range. If you specify an IP address, you cannot indicate any IP
-     *         addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated
-     *         as primary).
+     * @return The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon
+     *         EC2 selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot
+     *         indicate any IP addresses specified in <code>privateIpAddresses</code> as primary (only one IP address
+     *         can be designated as primary).
      */
 
     public String getPrivateIpAddress() {
@@ -188,16 +210,17 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2 selects
-     * one for you from the subnet range. If you specify an IP address, you cannot indicate any IP addresses specified
-     * in <code>privateIpAddresses</code> as primary (only one IP address can be designated as primary).
+     * The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon EC2
+     * selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot indicate any IP
+     * addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated as
+     * primary).
      * </p>
      * 
      * @param privateIpAddress
-     *        The primary private IP address of the network interface. If you don't specify an IP address, Amazon EC2
-     *        selects one for you from the subnet range. If you specify an IP address, you cannot indicate any IP
-     *        addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can be designated
-     *        as primary).
+     *        The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon
+     *        EC2 selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot
+     *        indicate any IP addresses specified in <code>privateIpAddresses</code> as primary (only one IP address can
+     *        be designated as primary).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,10 +304,10 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more private IP addresses.
+     * One or more private IPv4 addresses.
      * </p>
      * 
-     * @return One or more private IP addresses.
+     * @return One or more private IPv4 addresses.
      */
 
     public java.util.List<PrivateIpAddressSpecification> getPrivateIpAddresses() {
@@ -296,11 +319,11 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more private IP addresses.
+     * One or more private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses.
+     *        One or more private IPv4 addresses.
      */
 
     public void setPrivateIpAddresses(java.util.Collection<PrivateIpAddressSpecification> privateIpAddresses) {
@@ -314,7 +337,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more private IP addresses.
+     * One or more private IPv4 addresses.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -323,7 +346,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses.
+     *        One or more private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -339,11 +362,11 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more private IP addresses.
+     * One or more private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses.
+     *        One or more private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -354,26 +377,26 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The number of secondary private IP addresses to assign to a network interface. When you specify a number of
-     * secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't specify this
-     * option and specify more than one private IP address using <code>privateIpAddresses</code>.
+     * The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of
+     * secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't
+     * specify this option and specify more than one private IP address using <code>privateIpAddresses</code>.
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     * Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses to assign to a network interface. When you specify a number
-     *        of secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't
-     *        specify this option and specify more than one private IP address using <code>privateIpAddresses</code>
-     *        .</p>
+     *        The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number
+     *        of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range.
+     *        You can't specify this option and specify more than one private IP address using
+     *        <code>privateIpAddresses</code>.</p>
      *        <p>
      *        The number of IP addresses you can assign to a network interface varies by instance type. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     *        Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *        Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
 
     public void setSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
@@ -382,25 +405,25 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The number of secondary private IP addresses to assign to a network interface. When you specify a number of
-     * secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't specify this
-     * option and specify more than one private IP address using <code>privateIpAddresses</code>.
+     * The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of
+     * secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't
+     * specify this option and specify more than one private IP address using <code>privateIpAddresses</code>.
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     * Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
-     * @return The number of secondary private IP addresses to assign to a network interface. When you specify a number
-     *         of secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't
-     *         specify this option and specify more than one private IP address using <code>privateIpAddresses</code>
-     *         .</p>
+     * @return The number of secondary private IPv4 addresses to assign to a network interface. When you specify a
+     *         number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR
+     *         range. You can't specify this option and specify more than one private IP address using
+     *         <code>privateIpAddresses</code>.</p>
      *         <p>
      *         The number of IP addresses you can assign to a network interface varies by instance type. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     *         Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *         Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
 
     public Integer getSecondaryPrivateIpAddressCount() {
@@ -409,31 +432,170 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The number of secondary private IP addresses to assign to a network interface. When you specify a number of
-     * secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't specify this
-     * option and specify more than one private IP address using <code>privateIpAddresses</code>.
+     * The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of
+     * secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't
+     * specify this option and specify more than one private IP address using <code>privateIpAddresses</code>.
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     * Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses to assign to a network interface. When you specify a number
-     *        of secondary IP addresses, Amazon EC2 selects these IP addresses within the subnet range. You can't
-     *        specify this option and specify more than one private IP address using <code>privateIpAddresses</code>
-     *        .</p>
+     *        The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number
+     *        of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range.
+     *        You can't specify this option and specify more than one private IP address using
+     *        <code>privateIpAddresses</code>.</p>
      *        <p>
      *        The number of IP addresses you can assign to a network interface varies by instance type. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private IP
-     *        Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *        Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateNetworkInterfaceRequest withSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
         setSecondaryPrivateIpAddressCount(secondaryPrivateIpAddressCount);
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if
+     * you're specifying a number of IPv6 addresses.
+     * </p>
+     * 
+     * @return One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this
+     *         option if you're specifying a number of IPv6 addresses.
+     */
+
+    public java.util.List<InstanceIpv6Address> getIpv6Addresses() {
+        if (ipv6Addresses == null) {
+            ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>();
+        }
+        return ipv6Addresses;
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if
+     * you're specifying a number of IPv6 addresses.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this
+     *        option if you're specifying a number of IPv6 addresses.
+     */
+
+    public void setIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        if (ipv6Addresses == null) {
+            this.ipv6Addresses = null;
+            return;
+        }
+
+        this.ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses);
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if
+     * you're specifying a number of IPv6 addresses.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6Addresses(java.util.Collection)} or {@link #withIpv6Addresses(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this
+     *        option if you're specifying a number of IPv6 addresses.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateNetworkInterfaceRequest withIpv6Addresses(InstanceIpv6Address... ipv6Addresses) {
+        if (this.ipv6Addresses == null) {
+            setIpv6Addresses(new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses.length));
+        }
+        for (InstanceIpv6Address ele : ipv6Addresses) {
+            this.ipv6Addresses.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if
+     * you're specifying a number of IPv6 addresses.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this
+     *        option if you're specifying a number of IPv6 addresses.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateNetworkInterfaceRequest withIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        setIpv6Addresses(ipv6Addresses);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     * addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your subnet
+     * has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can specify
+     * <code>0</code> to override this setting.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     *        addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your
+     *        subnet has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can
+     *        specify <code>0</code> to override this setting.
+     */
+
+    public void setIpv6AddressCount(Integer ipv6AddressCount) {
+        this.ipv6AddressCount = ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     * addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your subnet
+     * has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can specify
+     * <code>0</code> to override this setting.
+     * </p>
+     * 
+     * @return The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     *         addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your
+     *         subnet has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can
+     *         specify <code>0</code> to override this setting.
+     */
+
+    public Integer getIpv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     * addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your subnet
+     * has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can specify
+     * <code>0</code> to override this setting.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6
+     *        addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your
+     *        subnet has the <code>AssignIpv6AddressOnCreation</code> attribute set to <code>true</code>, you can
+     *        specify <code>0</code> to override this setting.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateNetworkInterfaceRequest withIpv6AddressCount(Integer ipv6AddressCount) {
+        setIpv6AddressCount(ipv6AddressCount);
         return this;
     }
 
@@ -460,17 +622,21 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
         if (getGroups() != null)
-            sb.append("Groups: " + getGroups() + ",");
+            sb.append("Groups: ").append(getGroups()).append(",");
         if (getPrivateIpAddresses() != null)
-            sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");
+            sb.append("PrivateIpAddresses: ").append(getPrivateIpAddresses()).append(",");
         if (getSecondaryPrivateIpAddressCount() != null)
-            sb.append("SecondaryPrivateIpAddressCount: " + getSecondaryPrivateIpAddressCount());
+            sb.append("SecondaryPrivateIpAddressCount: ").append(getSecondaryPrivateIpAddressCount()).append(",");
+        if (getIpv6Addresses() != null)
+            sb.append("Ipv6Addresses: ").append(getIpv6Addresses()).append(",");
+        if (getIpv6AddressCount() != null)
+            sb.append("Ipv6AddressCount: ").append(getIpv6AddressCount());
         sb.append("}");
         return sb.toString();
     }
@@ -510,6 +676,14 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
         if (other.getSecondaryPrivateIpAddressCount() != null
                 && other.getSecondaryPrivateIpAddressCount().equals(this.getSecondaryPrivateIpAddressCount()) == false)
             return false;
+        if (other.getIpv6Addresses() == null ^ this.getIpv6Addresses() == null)
+            return false;
+        if (other.getIpv6Addresses() != null && other.getIpv6Addresses().equals(this.getIpv6Addresses()) == false)
+            return false;
+        if (other.getIpv6AddressCount() == null ^ this.getIpv6AddressCount() == null)
+            return false;
+        if (other.getIpv6AddressCount() != null && other.getIpv6AddressCount().equals(this.getIpv6AddressCount()) == false)
+            return false;
         return true;
     }
 
@@ -524,6 +698,8 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
         hashCode = prime * hashCode + ((getGroups() == null) ? 0 : getGroups().hashCode());
         hashCode = prime * hashCode + ((getPrivateIpAddresses() == null) ? 0 : getPrivateIpAddresses().hashCode());
         hashCode = prime * hashCode + ((getSecondaryPrivateIpAddressCount() == null) ? 0 : getSecondaryPrivateIpAddressCount().hashCode());
+        hashCode = prime * hashCode + ((getIpv6Addresses() == null) ? 0 : getIpv6Addresses().hashCode());
+        hashCode = prime * hashCode + ((getIpv6AddressCount() == null) ? 0 : getIpv6AddressCount().hashCode());
         return hashCode;
     }
 

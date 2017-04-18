@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A customer origin.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CustomOriginConfig" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CustomOriginConfig implements Serializable, Cloneable {
 
     /**
@@ -45,6 +50,30 @@ public class CustomOriginConfig implements Serializable, Cloneable {
      * </p>
      */
     private OriginSslProtocols originSslProtocols;
+    /**
+     * <p>
+     * You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is
+     * 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is
+     * 4 seconds; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     */
+    private Integer originReadTimeout;
+    /**
+     * <p>
+     * You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5
+     * seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1
+     * second; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     */
+    private Integer originKeepaliveTimeout;
 
     /**
      * <p>
@@ -240,6 +269,152 @@ public class CustomOriginConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is
+     * 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is
+     * 4 seconds; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @param originReadTimeout
+     *        You can create a custom origin read timeout. All timeout units are in seconds. The default origin read
+     *        timeout is 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *        timeout length is 4 seconds; the maximum is 60 seconds.</p>
+     *        <p>
+     *        If you need to increase the maximum time limit, contact the <a
+     *        href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     */
+
+    public void setOriginReadTimeout(Integer originReadTimeout) {
+        this.originReadTimeout = originReadTimeout;
+    }
+
+    /**
+     * <p>
+     * You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is
+     * 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is
+     * 4 seconds; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @return You can create a custom origin read timeout. All timeout units are in seconds. The default origin read
+     *         timeout is 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *         timeout length is 4 seconds; the maximum is 60 seconds.</p>
+     *         <p>
+     *         If you need to increase the maximum time limit, contact the <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     */
+
+    public Integer getOriginReadTimeout() {
+        return this.originReadTimeout;
+    }
+
+    /**
+     * <p>
+     * You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is
+     * 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is
+     * 4 seconds; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @param originReadTimeout
+     *        You can create a custom origin read timeout. All timeout units are in seconds. The default origin read
+     *        timeout is 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *        timeout length is 4 seconds; the maximum is 60 seconds.</p>
+     *        <p>
+     *        If you need to increase the maximum time limit, contact the <a
+     *        href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CustomOriginConfig withOriginReadTimeout(Integer originReadTimeout) {
+        setOriginReadTimeout(originReadTimeout);
+        return this;
+    }
+
+    /**
+     * <p>
+     * You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5
+     * seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1
+     * second; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @param originKeepaliveTimeout
+     *        You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive
+     *        timeout is 5 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *        timeout length is 1 second; the maximum is 60 seconds.</p>
+     *        <p>
+     *        If you need to increase the maximum time limit, contact the <a
+     *        href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     */
+
+    public void setOriginKeepaliveTimeout(Integer originKeepaliveTimeout) {
+        this.originKeepaliveTimeout = originKeepaliveTimeout;
+    }
+
+    /**
+     * <p>
+     * You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5
+     * seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1
+     * second; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @return You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive
+     *         timeout is 5 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *         timeout length is 1 second; the maximum is 60 seconds.</p>
+     *         <p>
+     *         If you need to increase the maximum time limit, contact the <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     */
+
+    public Integer getOriginKeepaliveTimeout() {
+        return this.originKeepaliveTimeout;
+    }
+
+    /**
+     * <p>
+     * You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5
+     * seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1
+     * second; the maximum is 60 seconds.
+     * </p>
+     * <p>
+     * If you need to increase the maximum time limit, contact the <a
+     * href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * </p>
+     * 
+     * @param originKeepaliveTimeout
+     *        You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive
+     *        timeout is 5 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum
+     *        timeout length is 1 second; the maximum is 60 seconds.</p>
+     *        <p>
+     *        If you need to increase the maximum time limit, contact the <a
+     *        href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CustomOriginConfig withOriginKeepaliveTimeout(Integer originKeepaliveTimeout) {
+        setOriginKeepaliveTimeout(originKeepaliveTimeout);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -251,13 +426,17 @@ public class CustomOriginConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHTTPPort() != null)
-            sb.append("HTTPPort: " + getHTTPPort() + ",");
+            sb.append("HTTPPort: ").append(getHTTPPort()).append(",");
         if (getHTTPSPort() != null)
-            sb.append("HTTPSPort: " + getHTTPSPort() + ",");
+            sb.append("HTTPSPort: ").append(getHTTPSPort()).append(",");
         if (getOriginProtocolPolicy() != null)
-            sb.append("OriginProtocolPolicy: " + getOriginProtocolPolicy() + ",");
+            sb.append("OriginProtocolPolicy: ").append(getOriginProtocolPolicy()).append(",");
         if (getOriginSslProtocols() != null)
-            sb.append("OriginSslProtocols: " + getOriginSslProtocols());
+            sb.append("OriginSslProtocols: ").append(getOriginSslProtocols()).append(",");
+        if (getOriginReadTimeout() != null)
+            sb.append("OriginReadTimeout: ").append(getOriginReadTimeout()).append(",");
+        if (getOriginKeepaliveTimeout() != null)
+            sb.append("OriginKeepaliveTimeout: ").append(getOriginKeepaliveTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -288,6 +467,14 @@ public class CustomOriginConfig implements Serializable, Cloneable {
             return false;
         if (other.getOriginSslProtocols() != null && other.getOriginSslProtocols().equals(this.getOriginSslProtocols()) == false)
             return false;
+        if (other.getOriginReadTimeout() == null ^ this.getOriginReadTimeout() == null)
+            return false;
+        if (other.getOriginReadTimeout() != null && other.getOriginReadTimeout().equals(this.getOriginReadTimeout()) == false)
+            return false;
+        if (other.getOriginKeepaliveTimeout() == null ^ this.getOriginKeepaliveTimeout() == null)
+            return false;
+        if (other.getOriginKeepaliveTimeout() != null && other.getOriginKeepaliveTimeout().equals(this.getOriginKeepaliveTimeout()) == false)
+            return false;
         return true;
     }
 
@@ -300,6 +487,8 @@ public class CustomOriginConfig implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getHTTPSPort() == null) ? 0 : getHTTPSPort().hashCode());
         hashCode = prime * hashCode + ((getOriginProtocolPolicy() == null) ? 0 : getOriginProtocolPolicy().hashCode());
         hashCode = prime * hashCode + ((getOriginSslProtocols() == null) ? 0 : getOriginSslProtocols().hashCode());
+        hashCode = prime * hashCode + ((getOriginReadTimeout() == null) ? 0 : getOriginReadTimeout().hashCode());
+        hashCode = prime * hashCode + ((getOriginKeepaliveTimeout() == null) ? 0 : getOriginKeepaliveTimeout().hashCode());
         return hashCode;
     }
 
@@ -311,4 +500,5 @@ public class CustomOriginConfig implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

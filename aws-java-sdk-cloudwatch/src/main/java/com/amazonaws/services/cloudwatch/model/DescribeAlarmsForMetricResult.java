@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,29 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The output for <a>DescribeAlarmsForMetric</a>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of information for each alarm with the specified metric.
+     * The information for each alarm with the specified metric.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<MetricAlarm> metricAlarms;
 
     /**
      * <p>
-     * A list of information for each alarm with the specified metric.
+     * The information for each alarm with the specified metric.
      * </p>
      * 
-     * @return A list of information for each alarm with the specified metric.
+     * @return The information for each alarm with the specified metric.
      */
 
     public java.util.List<MetricAlarm> getMetricAlarms() {
@@ -45,11 +47,11 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of information for each alarm with the specified metric.
+     * The information for each alarm with the specified metric.
      * </p>
      * 
      * @param metricAlarms
-     *        A list of information for each alarm with the specified metric.
+     *        The information for each alarm with the specified metric.
      */
 
     public void setMetricAlarms(java.util.Collection<MetricAlarm> metricAlarms) {
@@ -63,7 +65,7 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of information for each alarm with the specified metric.
+     * The information for each alarm with the specified metric.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -72,7 +74,7 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
      * </p>
      * 
      * @param metricAlarms
-     *        A list of information for each alarm with the specified metric.
+     *        The information for each alarm with the specified metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -88,11 +90,11 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of information for each alarm with the specified metric.
+     * The information for each alarm with the specified metric.
      * </p>
      * 
      * @param metricAlarms
-     *        A list of information for each alarm with the specified metric.
+     *        The information for each alarm with the specified metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -113,7 +115,7 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMetricAlarms() != null)
-            sb.append("MetricAlarms: " + getMetricAlarms());
+            sb.append("MetricAlarms: ").append(getMetricAlarms());
         sb.append("}");
         return sb.toString();
     }
@@ -152,4 +154,5 @@ public class DescribeAlarmsForMetricResult extends com.amazonaws.AmazonWebServic
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

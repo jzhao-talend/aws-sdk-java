@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -24,7 +27,8 @@ import java.io.Serializable;
  * reduces processing time and prevents cross-regional charges.
  * </p>
  */
-public class Warning implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Warning implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -36,9 +40,11 @@ public class Warning implements Serializable, Cloneable {
      * <p>
      * The message explaining what resources are in a different region from the pipeline.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     * AWS KMS keys must be in the same region as the pipeline.
      * </p>
+     * </note>
      */
     private String message;
 
@@ -86,14 +92,17 @@ public class Warning implements Serializable, Cloneable {
      * <p>
      * The message explaining what resources are in a different region from the pipeline.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     * AWS KMS keys must be in the same region as the pipeline.
      * </p>
+     * </note>
      * 
      * @param message
-     *        The message explaining what resources are in a different region from the pipeline.</p>
+     *        The message explaining what resources are in a different region from the pipeline.</p> <note>
      *        <p>
-     *        <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     *        AWS KMS keys must be in the same region as the pipeline.
+     *        </p>
      */
 
     public void setMessage(String message) {
@@ -104,13 +113,16 @@ public class Warning implements Serializable, Cloneable {
      * <p>
      * The message explaining what resources are in a different region from the pipeline.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     * AWS KMS keys must be in the same region as the pipeline.
      * </p>
+     * </note>
      * 
-     * @return The message explaining what resources are in a different region from the pipeline.</p>
+     * @return The message explaining what resources are in a different region from the pipeline.</p> <note>
      *         <p>
-     *         <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     *         AWS KMS keys must be in the same region as the pipeline.
+     *         </p>
      */
 
     public String getMessage() {
@@ -121,14 +133,17 @@ public class Warning implements Serializable, Cloneable {
      * <p>
      * The message explaining what resources are in a different region from the pipeline.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     * AWS KMS keys must be in the same region as the pipeline.
      * </p>
+     * </note>
      * 
      * @param message
-     *        The message explaining what resources are in a different region from the pipeline.</p>
+     *        The message explaining what resources are in a different region from the pipeline.</p> <note>
      *        <p>
-     *        <b>Note:</b> AWS KMS keys must be in the same region as the pipeline.
+     *        AWS KMS keys must be in the same region as the pipeline.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -149,9 +164,9 @@ public class Warning implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCode() != null)
-            sb.append("Code: " + getCode() + ",");
+            sb.append("Code: ").append(getCode()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage());
+            sb.append("Message: ").append(getMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -194,5 +209,11 @@ public class Warning implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.WarningMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

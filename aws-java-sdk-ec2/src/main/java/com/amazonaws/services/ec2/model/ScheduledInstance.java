@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a Scheduled Instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledInstance implements Serializable, Cloneable {
 
     /**
@@ -724,35 +729,35 @@ public class ScheduledInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getScheduledInstanceId() != null)
-            sb.append("ScheduledInstanceId: " + getScheduledInstanceId() + ",");
+            sb.append("ScheduledInstanceId: ").append(getScheduledInstanceId()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getPlatform() != null)
-            sb.append("Platform: " + getPlatform() + ",");
+            sb.append("Platform: ").append(getPlatform()).append(",");
         if (getNetworkPlatform() != null)
-            sb.append("NetworkPlatform: " + getNetworkPlatform() + ",");
+            sb.append("NetworkPlatform: ").append(getNetworkPlatform()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getSlotDurationInHours() != null)
-            sb.append("SlotDurationInHours: " + getSlotDurationInHours() + ",");
+            sb.append("SlotDurationInHours: ").append(getSlotDurationInHours()).append(",");
         if (getRecurrence() != null)
-            sb.append("Recurrence: " + getRecurrence() + ",");
+            sb.append("Recurrence: ").append(getRecurrence()).append(",");
         if (getPreviousSlotEndTime() != null)
-            sb.append("PreviousSlotEndTime: " + getPreviousSlotEndTime() + ",");
+            sb.append("PreviousSlotEndTime: ").append(getPreviousSlotEndTime()).append(",");
         if (getNextSlotStartTime() != null)
-            sb.append("NextSlotStartTime: " + getNextSlotStartTime() + ",");
+            sb.append("NextSlotStartTime: ").append(getNextSlotStartTime()).append(",");
         if (getHourlyPrice() != null)
-            sb.append("HourlyPrice: " + getHourlyPrice() + ",");
+            sb.append("HourlyPrice: ").append(getHourlyPrice()).append(",");
         if (getTotalScheduledInstanceHours() != null)
-            sb.append("TotalScheduledInstanceHours: " + getTotalScheduledInstanceHours() + ",");
+            sb.append("TotalScheduledInstanceHours: ").append(getTotalScheduledInstanceHours()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount() + ",");
+            sb.append("InstanceCount: ").append(getInstanceCount()).append(",");
         if (getTermStartDate() != null)
-            sb.append("TermStartDate: " + getTermStartDate() + ",");
+            sb.append("TermStartDate: ").append(getTermStartDate()).append(",");
         if (getTermEndDate() != null)
-            sb.append("TermEndDate: " + getTermEndDate() + ",");
+            sb.append("TermEndDate: ").append(getTermEndDate()).append(",");
         if (getCreateDate() != null)
-            sb.append("CreateDate: " + getCreateDate());
+            sb.append("CreateDate: ").append(getCreateDate());
         sb.append("}");
         return sb.toString();
     }
@@ -861,4 +866,5 @@ public class ScheduledInstance implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

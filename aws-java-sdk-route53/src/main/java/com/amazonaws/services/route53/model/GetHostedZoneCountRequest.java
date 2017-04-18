@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * To retrieve a count of all your hosted zones, send a <code>GET</code> request to the
  * <code>/2013-04-01/hostedzonecount</code> resource.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZoneCount" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetHostedZoneCountRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -63,4 +69,5 @@ public class GetHostedZoneCountRequest extends com.amazonaws.AmazonWebServiceReq
     public GetHostedZoneCountRequest clone() {
         return (GetHostedZoneCountRequest) super.clone();
     }
+
 }

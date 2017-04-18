@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.cloudsearchdomain.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Container for the parameters to the <code>UploadDocuments</code> request.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UploadDocumentsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -227,11 +230,11 @@ public class UploadDocumentsRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDocuments() != null)
-            sb.append("Documents: " + getDocuments() + ",");
+            sb.append("Documents: ").append(getDocuments()).append(",");
         if (getContentType() != null)
-            sb.append("ContentType: " + getContentType() + ",");
+            sb.append("ContentType: ").append(getContentType()).append(",");
         if (getContentLength() != null)
-            sb.append("ContentLength: " + getContentLength());
+            sb.append("ContentLength: ").append(getContentLength());
         sb.append("}");
         return sb.toString();
     }
@@ -276,4 +279,5 @@ public class UploadDocumentsRequest extends com.amazonaws.AmazonWebServiceReques
     public UploadDocumentsRequest clone() {
         return (UploadDocumentsRequest) super.clone();
     }
+
 }

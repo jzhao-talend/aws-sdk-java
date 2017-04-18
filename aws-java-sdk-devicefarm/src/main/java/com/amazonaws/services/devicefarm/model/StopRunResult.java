@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the results of your stop run attempt.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/StopRun" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StopRunResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The run that was stopped.
+     * </p>
+     */
     private Run run;
 
     /**
+     * <p>
+     * The run that was stopped.
+     * </p>
+     * 
      * @param run
+     *        The run that was stopped.
      */
 
     public void setRun(Run run) {
@@ -32,7 +47,11 @@ public class StopRunResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
-     * @return
+     * <p>
+     * The run that was stopped.
+     * </p>
+     * 
+     * @return The run that was stopped.
      */
 
     public Run getRun() {
@@ -40,7 +59,12 @@ public class StopRunResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
+     * <p>
+     * The run that was stopped.
+     * </p>
+     * 
      * @param run
+     *        The run that was stopped.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class StopRunResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRun() != null)
-            sb.append("Run: " + getRun());
+            sb.append("Run: ").append(getRun());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class StopRunResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

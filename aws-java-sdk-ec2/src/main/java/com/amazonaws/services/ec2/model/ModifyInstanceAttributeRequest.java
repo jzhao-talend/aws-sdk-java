@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ModifyInstanceAttributeRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.ModifyInstanceAttributeRequest
  * Contains the parameters for ModifyInstanceAttribute.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<ModifyInstanceAttributeRequest> {
 
@@ -1217,35 +1220,35 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getAttribute() != null)
-            sb.append("Attribute: " + getAttribute() + ",");
+            sb.append("Attribute: ").append(getAttribute()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getSourceDestCheck() != null)
-            sb.append("SourceDestCheck: " + getSourceDestCheck() + ",");
+            sb.append("SourceDestCheck: ").append(getSourceDestCheck()).append(",");
         if (getDisableApiTermination() != null)
-            sb.append("DisableApiTermination: " + getDisableApiTermination() + ",");
+            sb.append("DisableApiTermination: ").append(getDisableApiTermination()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getKernel() != null)
-            sb.append("Kernel: " + getKernel() + ",");
+            sb.append("Kernel: ").append(getKernel()).append(",");
         if (getRamdisk() != null)
-            sb.append("Ramdisk: " + getRamdisk() + ",");
+            sb.append("Ramdisk: ").append(getRamdisk()).append(",");
         if (getUserData() != null)
-            sb.append("UserData: " + getUserData() + ",");
+            sb.append("UserData: ").append(getUserData()).append(",");
         if (getInstanceInitiatedShutdownBehavior() != null)
-            sb.append("InstanceInitiatedShutdownBehavior: " + getInstanceInitiatedShutdownBehavior() + ",");
+            sb.append("InstanceInitiatedShutdownBehavior: ").append(getInstanceInitiatedShutdownBehavior()).append(",");
         if (getGroups() != null)
-            sb.append("Groups: " + getGroups() + ",");
+            sb.append("Groups: ").append(getGroups()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getSriovNetSupport() != null)
-            sb.append("SriovNetSupport: " + getSriovNetSupport() + ",");
+            sb.append("SriovNetSupport: ").append(getSriovNetSupport()).append(",");
         if (getEnaSupport() != null)
-            sb.append("EnaSupport: " + getEnaSupport());
+            sb.append("EnaSupport: ").append(getEnaSupport());
         sb.append("}");
         return sb.toString();
     }

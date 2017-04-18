@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.codecommit.AWSCodeCommitClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -47,46 +51,120 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * <fullname>AWS CodeCommit</fullname>
  * <p>
  * This is the <i>AWS CodeCommit API Reference</i>. This reference provides descriptions of the operations and data
- * types for AWS CodeCommit API.
+ * types for AWS CodeCommit API along with usage examples.
  * </p>
  * <p>
  * You can use the AWS CodeCommit API to work with the following objects:
  * </p>
+ * <p>
+ * Repositories, by calling the following:
+ * </p>
  * <ul>
- * <li>Repositories, by calling the following:
- * <ul>
- * <li><a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
- * account</li>
- * <li><a>CreateRepository</a>, which creates an AWS CodeCommit repository</li>
- * <li><a>DeleteRepository</a>, which deletes an AWS CodeCommit repository</li>
- * <li><a>GetRepository</a>, which returns information about a specified repository</li>
- * <li><a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account</li>
- * <li><a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository</li>
- * <li><a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
- * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
+ * account
+ * </p>
  * </li>
- * <li>Branches, by calling the following:
- * <ul>
- * <li><a>CreateBranch</a>, which creates a new branch in a specified repository</li>
- * <li><a>GetBranch</a>, which returns information about a specified branch</li>
- * <li><a>ListBranches</a>, which lists all branches for a specified repository</li>
- * <li><a>UpdateDefaultBranch</a>, which changes the default branch for a repository</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>CreateRepository</a>, which creates an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Information about committed code in a repository, by calling the following:
- * <ul>
- * <li><a>GetCommit</a>, which returns information about a commit, including commit messages and committer information.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>DeleteRepository</a>, which deletes an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Triggers, by calling the following:
- * <ul>
- * <li><a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository</li>
- * <li><a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
- * triggers</li>
- * <li><a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the
- * trigger target</li>
+ * <li>
+ * <p>
+ * <a>GetRepository</a>, which returns information about a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
+ * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.
+ * </p>
+ * </li>
  * </ul>
+ * <p>
+ * Branches, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateBranch</a>, which creates a new branch in a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetBranch</a>, which returns information about a specified branch
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListBranches</a>, which lists all branches for a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Information about committed code in a repository, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetCommit</a>, which returns information about a commit, including commit messages and author and committer
+ * information
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetDifferences</a>, which returns information about the differences in a valid commit specifier (such as a branch,
+ * tag, HEAD, commit ID or other fully qualified reference)
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Triggers, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
+ * triggers
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the trigger
+ * target
+ * </p>
  * </li>
  * </ul>
  * <p>
@@ -95,6 +173,7 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCodeCommit {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -107,122 +186,150 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryLimitExceededException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyDisabledException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.EncryptionKeyDisabledException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CommitIdRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.CommitIdRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyNotFoundException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.EncryptionKeyNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryDescriptionException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryDescriptionException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerDestinationArnException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerDestinationArnException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryTriggersExceededException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.MaximumRepositoryTriggersExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerBranchNameException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerBranchNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSortByException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidSortByException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryNamesRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryNamesRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyAccessDeniedException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.EncryptionKeyAccessDeniedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryNameRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryNameRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerRegionException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerRegionException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerDestinationArnRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryTriggerDestinationArnRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryNameExistsException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryNameExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("BranchNameExistsException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.BranchNameExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggersListRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryTriggersListRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("BranchDoesNotExistException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.BranchDoesNotExistException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("EncryptionIntegrityChecksFailedException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.EncryptionIntegrityChecksFailedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerEventsListRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryTriggerEventsListRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidCommitIdException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidCommitIdException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidOrderException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidOrderException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CommitDoesNotExistException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.CommitDoesNotExistException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerBranchNameListRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryTriggerBranchNameListRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerCustomDataException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerCustomDataException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerEventsException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerEventsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("BranchNameRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.BranchNameRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerNameRequiredException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryTriggerNameRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerNameException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CommitIdDoesNotExistException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.CommitIdDoesNotExistException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyUnavailableException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.EncryptionKeyUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryNamesExceededException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.MaximumRepositoryNamesExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryNameException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidRepositoryNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RepositoryDoesNotExistException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.RepositoryDoesNotExistException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidContinuationTokenException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidContinuationTokenException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MaximumBranchesExceededException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.MaximumBranchesExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidBranchNameException").withModeledClass(
-                            com.amazonaws.services.codecommit.model.InvalidBranchNameException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.codecommit.model.AWSCodeCommitException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyDisabledException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.EncryptionKeyDisabledException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.CommitIdRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyNotFoundException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.EncryptionKeyNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPathException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidPathException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidCommitException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidBlobIdException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidBlobIdException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryDescriptionException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryDescriptionException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("FileTooLargeException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.FileTooLargeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerDestinationArnException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerDestinationArnException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryTriggersExceededException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.MaximumRepositoryTriggersExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerBranchNameException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerBranchNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BlobIdRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.BlobIdRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSortByException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidSortByException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BlobIdDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.BlobIdDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNamesRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryNamesRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyAccessDeniedException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.EncryptionKeyAccessDeniedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryNameRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerRegionException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerRegionException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerDestinationArnRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryTriggerDestinationArnRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameExistsException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryNameExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PathDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.PathDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxResultsException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidMaxResultsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BranchNameExistsException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.BranchNameExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggersListRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryTriggersListRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BranchDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.BranchDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionIntegrityChecksFailedException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.EncryptionIntegrityChecksFailedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerEventsListRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryTriggerEventsListRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitIdException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidCommitIdException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOrderException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidOrderException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommitDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.CommitDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerBranchNameListRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryTriggerBranchNameListRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerCustomDataException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerCustomDataException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerEventsException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerEventsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BranchNameRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.BranchNameRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerNameRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryTriggerNameRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerNameException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.CommitIdDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyUnavailableException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.EncryptionKeyUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryNamesExceededException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.MaximumRepositoryNamesExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryNameException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidRepositoryNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.RepositoryDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidContinuationTokenException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidContinuationTokenException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommitRequiredException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.CommitRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumBranchesExceededException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.MaximumBranchesExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidBranchNameException").withModeledClass(
+                                    com.amazonaws.services.codecommit.model.InvalidBranchNameException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.codecommit.model.AWSCodeCommitException.class));
 
     /**
      * Constructs a new client to invoke service methods on CodeCommit. A credentials provider chain will be used that
@@ -238,7 +345,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCodeCommitClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSCodeCommitClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -261,7 +370,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCodeCommitClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -275,7 +386,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSCodeCommitClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSCodeCommitClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -293,7 +407,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CodeCommit (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodeCommitClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCodeCommitClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -310,7 +427,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSCodeCommitClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -328,7 +447,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CodeCommit (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodeCommitClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCodeCommitClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -348,12 +470,20 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSCodeCommitClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodeCommitClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCodeCommitClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSCodeCommitClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSCodeCommitClientBuilder builder() {
+        return AWSCodeCommitClientBuilder.standard();
     }
 
     /**
@@ -420,9 +550,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.BatchGetRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositories"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public BatchGetRepositoriesResult batchGetRepositories(BatchGetRepositoriesRequest batchGetRepositoriesRequest) {
+    public BatchGetRepositoriesResult batchGetRepositories(BatchGetRepositoriesRequest request) {
+        request = beforeClientExecution(request);
+        return executeBatchGetRepositories(request);
+    }
+
+    @SdkInternalApi
+    final BatchGetRepositoriesResult executeBatchGetRepositories(BatchGetRepositoriesRequest batchGetRepositoriesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(batchGetRepositoriesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -432,7 +571,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new BatchGetRepositoriesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetRepositoriesRequest));
+                request = new BatchGetRepositoriesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetRepositoriesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -499,9 +638,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.CreateBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateBranchResult createBranch(CreateBranchRequest createBranchRequest) {
+    public CreateBranchResult createBranch(CreateBranchRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateBranch(request);
+    }
+
+    @SdkInternalApi
+    final CreateBranchResult executeCreateBranch(CreateBranchRequest createBranchRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createBranchRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -511,7 +659,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateBranchRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createBranchRequest));
+                request = new CreateBranchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createBranchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -563,9 +711,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.CreateRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateRepositoryResult createRepository(CreateRepositoryRequest createRepositoryRequest) {
+    public CreateRepositoryResult createRepository(CreateRepositoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRepository(request);
+    }
+
+    @SdkInternalApi
+    final CreateRepositoryResult executeCreateRepository(CreateRepositoryRequest createRepositoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRepositoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -575,7 +732,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateRepositoryRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createRepositoryRequest));
+                request = new CreateRepositoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createRepositoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -598,8 +755,12 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * <p>
      * Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.
      * </p>
-     * <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted,
-     * all future push calls to the deleted repository will fail.</important>
+     * <important>
+     * <p>
+     * Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future
+     * push calls to the deleted repository will fail.
+     * </p>
+     * </important>
      * 
      * @param deleteRepositoryRequest
      *        Represents the input of a delete repository operation.
@@ -623,9 +784,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.DeleteRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest deleteRepositoryRequest) {
+    public DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRepository(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRepositoryResult executeDeleteRepository(DeleteRepositoryRequest deleteRepositoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRepositoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -635,7 +805,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteRepositoryRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRepositoryRequest));
+                request = new DeleteRepositoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRepositoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -644,6 +814,85 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteRepositoryResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteRepositoryResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the base-64 encoded content of an individual blob within a repository.
+     * </p>
+     * 
+     * @param getBlobRequest
+     *        Represents the input of a get blob operation.
+     * @return Result of the GetBlob operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws BlobIdRequiredException
+     *         A blob ID is required but was not specified.
+     * @throws InvalidBlobIdException
+     *         The specified blob is not valid.
+     * @throws BlobIdDoesNotExistException
+     *         The specified blob does not exist.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @throws FileTooLargeException
+     *         The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in
+     *         AWS CodeCommit, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS
+     *         CodeCommit User Guide</a>.
+     * @sample AWSCodeCommit.GetBlob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBlob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetBlobResult getBlob(GetBlobRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetBlob(request);
+    }
+
+    @SdkInternalApi
+    final GetBlobResult executeGetBlob(GetBlobRequest getBlobRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getBlobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetBlobRequest> request = null;
+        Response<GetBlobResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetBlobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBlobRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetBlobResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetBlobResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -689,9 +938,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetBranchResult getBranch(GetBranchRequest getBranchRequest) {
+    public GetBranchResult getBranch(GetBranchRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetBranch(request);
+    }
+
+    @SdkInternalApi
+    final GetBranchResult executeGetBranch(GetBranchRequest getBranchRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getBranchRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -701,7 +959,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetBranchRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBranchRequest));
+                request = new GetBranchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBranchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -755,9 +1013,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommit" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCommitResult getCommit(GetCommitRequest getCommitRequest) {
+    public GetCommitResult getCommit(GetCommitRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCommit(request);
+    }
+
+    @SdkInternalApi
+    final GetCommitResult executeGetCommit(GetCommitRequest getCommitRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCommitRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -767,7 +1034,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetCommitRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCommitRequest));
+                request = new GetCommitRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCommitRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -776,6 +1043,92 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
 
             HttpResponseHandler<AmazonWebServiceResponse<GetCommitResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetCommitResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or
+     * other fully qualified reference). Results can be limited to a specified path.
+     * </p>
+     * 
+     * @param getDifferencesRequest
+     * @return Result of the GetDifferences operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws InvalidContinuationTokenException
+     *         The specified continuation token is not valid.
+     * @throws InvalidMaxResultsException
+     *         The specified number of maximum results is not valid.
+     * @throws InvalidCommitIdException
+     *         The specified commit ID is not valid.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws PathDoesNotExistException
+     *         The specified path does not exist.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.GetDifferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetDifferences" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetDifferencesResult getDifferences(GetDifferencesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDifferences(request);
+    }
+
+    @SdkInternalApi
+    final GetDifferencesResult executeGetDifferences(GetDifferencesRequest getDifferencesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getDifferencesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetDifferencesRequest> request = null;
+        Response<GetDifferencesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetDifferencesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDifferencesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetDifferencesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetDifferencesResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -823,9 +1176,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetRepositoryResult getRepository(GetRepositoryRequest getRepositoryRequest) {
+    public GetRepositoryResult getRepository(GetRepositoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRepository(request);
+    }
+
+    @SdkInternalApi
+    final GetRepositoryResult executeGetRepository(GetRepositoryRequest getRepositoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getRepositoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -835,7 +1197,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetRepositoryRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRepositoryRequest));
+                request = new GetRepositoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRepositoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -883,9 +1245,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetRepositoryTriggersResult getRepositoryTriggers(GetRepositoryTriggersRequest getRepositoryTriggersRequest) {
+    public GetRepositoryTriggersResult getRepositoryTriggers(GetRepositoryTriggersRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRepositoryTriggers(request);
+    }
+
+    @SdkInternalApi
+    final GetRepositoryTriggersResult executeGetRepositoryTriggers(GetRepositoryTriggersRequest getRepositoryTriggersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getRepositoryTriggersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -895,7 +1266,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetRepositoryTriggersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRepositoryTriggersRequest));
+                request = new GetRepositoryTriggersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRepositoryTriggersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -946,9 +1317,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws InvalidContinuationTokenException
      *         The specified continuation token is not valid.
      * @sample AWSCodeCommit.ListBranches
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListBranches" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListBranchesResult listBranches(ListBranchesRequest listBranchesRequest) {
+    public ListBranchesResult listBranches(ListBranchesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListBranches(request);
+    }
+
+    @SdkInternalApi
+    final ListBranchesResult executeListBranches(ListBranchesRequest listBranchesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listBranchesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -958,7 +1338,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListBranchesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listBranchesRequest));
+                request = new ListBranchesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listBranchesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -992,9 +1372,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws InvalidContinuationTokenException
      *         The specified continuation token is not valid.
      * @sample AWSCodeCommit.ListRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositories" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListRepositoriesResult listRepositories(ListRepositoriesRequest listRepositoriesRequest) {
+    public ListRepositoriesResult listRepositories(ListRepositoriesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListRepositories(request);
+    }
+
+    @SdkInternalApi
+    final ListRepositoriesResult executeListRepositories(ListRepositoriesRequest listRepositoriesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listRepositoriesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1004,7 +1393,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListRepositoriesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listRepositoriesRequest));
+                request = new ListRepositoriesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listRepositoriesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1081,9 +1470,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.PutRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public PutRepositoryTriggersResult putRepositoryTriggers(PutRepositoryTriggersRequest putRepositoryTriggersRequest) {
+    public PutRepositoryTriggersResult putRepositoryTriggers(PutRepositoryTriggersRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRepositoryTriggers(request);
+    }
+
+    @SdkInternalApi
+    final PutRepositoryTriggersResult executePutRepositoryTriggers(PutRepositoryTriggersRequest putRepositoryTriggersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRepositoryTriggersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1093,7 +1491,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRepositoryTriggersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRepositoryTriggersRequest));
+                request = new PutRepositoryTriggersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRepositoryTriggersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1173,9 +1571,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.TestRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/TestRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public TestRepositoryTriggersResult testRepositoryTriggers(TestRepositoryTriggersRequest testRepositoryTriggersRequest) {
+    public TestRepositoryTriggersResult testRepositoryTriggers(TestRepositoryTriggersRequest request) {
+        request = beforeClientExecution(request);
+        return executeTestRepositoryTriggers(request);
+    }
+
+    @SdkInternalApi
+    final TestRepositoryTriggersResult executeTestRepositoryTriggers(TestRepositoryTriggersRequest testRepositoryTriggersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(testRepositoryTriggersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1185,7 +1592,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new TestRepositoryTriggersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(testRepositoryTriggersRequest));
+                request = new TestRepositoryTriggersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(testRepositoryTriggersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1246,9 +1653,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.UpdateDefaultBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateDefaultBranch" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UpdateDefaultBranchResult updateDefaultBranch(UpdateDefaultBranchRequest updateDefaultBranchRequest) {
+    public UpdateDefaultBranchResult updateDefaultBranch(UpdateDefaultBranchRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDefaultBranch(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDefaultBranchResult executeUpdateDefaultBranch(UpdateDefaultBranchRequest updateDefaultBranchRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDefaultBranchRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1258,7 +1674,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDefaultBranchRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDefaultBranchRequest));
+                request = new UpdateDefaultBranchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDefaultBranchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1316,9 +1732,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.UpdateRepositoryDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryDescription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateRepositoryDescriptionResult updateRepositoryDescription(UpdateRepositoryDescriptionRequest updateRepositoryDescriptionRequest) {
+    public UpdateRepositoryDescriptionResult updateRepositoryDescription(UpdateRepositoryDescriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateRepositoryDescription(request);
+    }
+
+    @SdkInternalApi
+    final UpdateRepositoryDescriptionResult executeUpdateRepositoryDescription(UpdateRepositoryDescriptionRequest updateRepositoryDescriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateRepositoryDescriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1328,7 +1753,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateRepositoryDescriptionRequestMarshaller(protocolFactory).marshall(super
+                request = new UpdateRepositoryDescriptionRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(updateRepositoryDescriptionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1374,9 +1799,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         required repository parameter is missing, or when a specified repository does not exist.
      *         </p>
      * @sample AWSCodeCommit.UpdateRepositoryName
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryName"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateRepositoryNameResult updateRepositoryName(UpdateRepositoryNameRequest updateRepositoryNameRequest) {
+    public UpdateRepositoryNameResult updateRepositoryName(UpdateRepositoryNameRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateRepositoryName(request);
+    }
+
+    @SdkInternalApi
+    final UpdateRepositoryNameResult executeUpdateRepositoryName(UpdateRepositoryNameRequest updateRepositoryNameRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateRepositoryNameRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1386,7 +1820,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateRepositoryNameRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateRepositoryNameRequest));
+                request = new UpdateRepositoryNameRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateRepositoryNameRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

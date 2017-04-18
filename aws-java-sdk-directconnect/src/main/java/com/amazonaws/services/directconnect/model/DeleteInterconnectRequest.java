@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the DeleteInterconnect operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteInterconnect" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteInterconnectRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String interconnectId;
@@ -62,7 +68,7 @@ public class DeleteInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInterconnectId() != null)
-            sb.append("InterconnectId: " + getInterconnectId());
+            sb.append("InterconnectId: ").append(getInterconnectId());
         sb.append("}");
         return sb.toString();
     }
@@ -97,4 +103,5 @@ public class DeleteInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
     public DeleteInterconnectRequest clone() {
         return (DeleteInterconnectRequest) super.clone();
     }
+
 }

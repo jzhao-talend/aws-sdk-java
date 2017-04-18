@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for <a>UpdateDestination</a>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/UpdateDestination" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -30,11 +33,10 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
     private String deliveryStreamName;
     /**
      * <p>
-     * Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This value
-     * is required, and helps the service to perform conditional operations. For example, if there is a interleaving
-     * update and this value is null, then the update destination fails. After the update is successful, the
-     * <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
-     * configuration.
+     * Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required,
+     * and helps the service to perform conditional operations. For example, if there is a interleaving update and this
+     * value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is
+     * updated. The service then performs a merge of the old configuration with the new configuration.
      * </p>
      */
     private String currentDeliveryStreamVersionId;
@@ -46,10 +48,17 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
     private String destinationId;
     /**
      * <p>
+     * [Deprecated] Describes an update for a destination in Amazon S3.
+     * </p>
+     */
+    @Deprecated
+    private S3DestinationUpdate s3DestinationUpdate;
+    /**
+     * <p>
      * Describes an update for a destination in Amazon S3.
      * </p>
      */
-    private S3DestinationUpdate s3DestinationUpdate;
+    private ExtendedS3DestinationUpdate extendedS3DestinationUpdate;
     /**
      * <p>
      * Describes an update for a destination in Amazon Redshift.
@@ -105,19 +114,18 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This value
-     * is required, and helps the service to perform conditional operations. For example, if there is a interleaving
-     * update and this value is null, then the update destination fails. After the update is successful, the
-     * <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
-     * configuration.
+     * Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required,
+     * and helps the service to perform conditional operations. For example, if there is a interleaving update and this
+     * value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is
+     * updated. The service then performs a merge of the old configuration with the new configuration.
      * </p>
      * 
      * @param currentDeliveryStreamVersionId
-     *        Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This
-     *        value is required, and helps the service to perform conditional operations. For example, if there is a
-     *        interleaving update and this value is null, then the update destination fails. After the update is
-     *        successful, the <b>VersionId</b> value is updated. The service then performs a merge of the old
-     *        configuration with the new configuration.
+     *        Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is
+     *        required, and helps the service to perform conditional operations. For example, if there is a interleaving
+     *        update and this value is null, then the update destination fails. After the update is successful, the
+     *        <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
+     *        configuration.
      */
 
     public void setCurrentDeliveryStreamVersionId(String currentDeliveryStreamVersionId) {
@@ -126,16 +134,15 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This value
-     * is required, and helps the service to perform conditional operations. For example, if there is a interleaving
-     * update and this value is null, then the update destination fails. After the update is successful, the
-     * <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
-     * configuration.
+     * Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required,
+     * and helps the service to perform conditional operations. For example, if there is a interleaving update and this
+     * value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is
+     * updated. The service then performs a merge of the old configuration with the new configuration.
      * </p>
      * 
-     * @return Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation.
-     *         This value is required, and helps the service to perform conditional operations. For example, if there is
-     *         a interleaving update and this value is null, then the update destination fails. After the update is
+     * @return Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is
+     *         required, and helps the service to perform conditional operations. For example, if there is a
+     *         interleaving update and this value is null, then the update destination fails. After the update is
      *         successful, the <b>VersionId</b> value is updated. The service then performs a merge of the old
      *         configuration with the new configuration.
      */
@@ -146,19 +153,18 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This value
-     * is required, and helps the service to perform conditional operations. For example, if there is a interleaving
-     * update and this value is null, then the update destination fails. After the update is successful, the
-     * <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
-     * configuration.
+     * Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required,
+     * and helps the service to perform conditional operations. For example, if there is a interleaving update and this
+     * value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is
+     * updated. The service then performs a merge of the old configuration with the new configuration.
      * </p>
      * 
      * @param currentDeliveryStreamVersionId
-     *        Obtain this value from the <b>VersionId</b> result of the <a>DeliveryStreamDescription</a> operation. This
-     *        value is required, and helps the service to perform conditional operations. For example, if there is a
-     *        interleaving update and this value is null, then the update destination fails. After the update is
-     *        successful, the <b>VersionId</b> value is updated. The service then performs a merge of the old
-     *        configuration with the new configuration.
+     *        Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is
+     *        required, and helps the service to perform conditional operations. For example, if there is a interleaving
+     *        update and this value is null, then the update destination fails. After the update is successful, the
+     *        <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new
+     *        configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -209,15 +215,55 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Describes an update for a destination in Amazon S3.
+     * [Deprecated] Describes an update for a destination in Amazon S3.
      * </p>
      * 
      * @param s3DestinationUpdate
+     *        [Deprecated] Describes an update for a destination in Amazon S3.
+     */
+    @Deprecated
+    public void setS3DestinationUpdate(S3DestinationUpdate s3DestinationUpdate) {
+        this.s3DestinationUpdate = s3DestinationUpdate;
+    }
+
+    /**
+     * <p>
+     * [Deprecated] Describes an update for a destination in Amazon S3.
+     * </p>
+     * 
+     * @return [Deprecated] Describes an update for a destination in Amazon S3.
+     */
+    @Deprecated
+    public S3DestinationUpdate getS3DestinationUpdate() {
+        return this.s3DestinationUpdate;
+    }
+
+    /**
+     * <p>
+     * [Deprecated] Describes an update for a destination in Amazon S3.
+     * </p>
+     * 
+     * @param s3DestinationUpdate
+     *        [Deprecated] Describes an update for a destination in Amazon S3.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+    @Deprecated
+    public UpdateDestinationRequest withS3DestinationUpdate(S3DestinationUpdate s3DestinationUpdate) {
+        setS3DestinationUpdate(s3DestinationUpdate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Describes an update for a destination in Amazon S3.
+     * </p>
+     * 
+     * @param extendedS3DestinationUpdate
      *        Describes an update for a destination in Amazon S3.
      */
 
-    public void setS3DestinationUpdate(S3DestinationUpdate s3DestinationUpdate) {
-        this.s3DestinationUpdate = s3DestinationUpdate;
+    public void setExtendedS3DestinationUpdate(ExtendedS3DestinationUpdate extendedS3DestinationUpdate) {
+        this.extendedS3DestinationUpdate = extendedS3DestinationUpdate;
     }
 
     /**
@@ -228,8 +274,8 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
      * @return Describes an update for a destination in Amazon S3.
      */
 
-    public S3DestinationUpdate getS3DestinationUpdate() {
-        return this.s3DestinationUpdate;
+    public ExtendedS3DestinationUpdate getExtendedS3DestinationUpdate() {
+        return this.extendedS3DestinationUpdate;
     }
 
     /**
@@ -237,13 +283,13 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
      * Describes an update for a destination in Amazon S3.
      * </p>
      * 
-     * @param s3DestinationUpdate
+     * @param extendedS3DestinationUpdate
      *        Describes an update for a destination in Amazon S3.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateDestinationRequest withS3DestinationUpdate(S3DestinationUpdate s3DestinationUpdate) {
-        setS3DestinationUpdate(s3DestinationUpdate);
+    public UpdateDestinationRequest withExtendedS3DestinationUpdate(ExtendedS3DestinationUpdate extendedS3DestinationUpdate) {
+        setExtendedS3DestinationUpdate(extendedS3DestinationUpdate);
         return this;
     }
 
@@ -339,17 +385,19 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeliveryStreamName() != null)
-            sb.append("DeliveryStreamName: " + getDeliveryStreamName() + ",");
+            sb.append("DeliveryStreamName: ").append(getDeliveryStreamName()).append(",");
         if (getCurrentDeliveryStreamVersionId() != null)
-            sb.append("CurrentDeliveryStreamVersionId: " + getCurrentDeliveryStreamVersionId() + ",");
+            sb.append("CurrentDeliveryStreamVersionId: ").append(getCurrentDeliveryStreamVersionId()).append(",");
         if (getDestinationId() != null)
-            sb.append("DestinationId: " + getDestinationId() + ",");
+            sb.append("DestinationId: ").append(getDestinationId()).append(",");
         if (getS3DestinationUpdate() != null)
-            sb.append("S3DestinationUpdate: " + getS3DestinationUpdate() + ",");
+            sb.append("S3DestinationUpdate: ").append(getS3DestinationUpdate()).append(",");
+        if (getExtendedS3DestinationUpdate() != null)
+            sb.append("ExtendedS3DestinationUpdate: ").append(getExtendedS3DestinationUpdate()).append(",");
         if (getRedshiftDestinationUpdate() != null)
-            sb.append("RedshiftDestinationUpdate: " + getRedshiftDestinationUpdate() + ",");
+            sb.append("RedshiftDestinationUpdate: ").append(getRedshiftDestinationUpdate()).append(",");
         if (getElasticsearchDestinationUpdate() != null)
-            sb.append("ElasticsearchDestinationUpdate: " + getElasticsearchDestinationUpdate());
+            sb.append("ElasticsearchDestinationUpdate: ").append(getElasticsearchDestinationUpdate());
         sb.append("}");
         return sb.toString();
     }
@@ -381,6 +429,10 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getS3DestinationUpdate() != null && other.getS3DestinationUpdate().equals(this.getS3DestinationUpdate()) == false)
             return false;
+        if (other.getExtendedS3DestinationUpdate() == null ^ this.getExtendedS3DestinationUpdate() == null)
+            return false;
+        if (other.getExtendedS3DestinationUpdate() != null && other.getExtendedS3DestinationUpdate().equals(this.getExtendedS3DestinationUpdate()) == false)
+            return false;
         if (other.getRedshiftDestinationUpdate() == null ^ this.getRedshiftDestinationUpdate() == null)
             return false;
         if (other.getRedshiftDestinationUpdate() != null && other.getRedshiftDestinationUpdate().equals(this.getRedshiftDestinationUpdate()) == false)
@@ -402,6 +454,7 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getCurrentDeliveryStreamVersionId() == null) ? 0 : getCurrentDeliveryStreamVersionId().hashCode());
         hashCode = prime * hashCode + ((getDestinationId() == null) ? 0 : getDestinationId().hashCode());
         hashCode = prime * hashCode + ((getS3DestinationUpdate() == null) ? 0 : getS3DestinationUpdate().hashCode());
+        hashCode = prime * hashCode + ((getExtendedS3DestinationUpdate() == null) ? 0 : getExtendedS3DestinationUpdate().hashCode());
         hashCode = prime * hashCode + ((getRedshiftDestinationUpdate() == null) ? 0 : getRedshiftDestinationUpdate().hashCode());
         hashCode = prime * hashCode + ((getElasticsearchDestinationUpdate() == null) ? 0 : getElasticsearchDestinationUpdate().hashCode());
         return hashCode;
@@ -411,4 +464,5 @@ public class UpdateDestinationRequest extends com.amazonaws.AmazonWebServiceRequ
     public UpdateDestinationRequest clone() {
         return (UpdateDestinationRequest) super.clone();
     }
+
 }

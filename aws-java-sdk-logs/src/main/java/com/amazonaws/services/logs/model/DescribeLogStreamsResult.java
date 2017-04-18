@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,31 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogStreams" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The log streams.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<LogStream> logStreams;
 
     private String nextToken;
 
     /**
-     * @return
+     * <p>
+     * The log streams.
+     * </p>
+     * 
+     * @return The log streams.
      */
 
     public java.util.List<LogStream> getLogStreams() {
@@ -35,7 +48,12 @@ public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResu
     }
 
     /**
+     * <p>
+     * The log streams.
+     * </p>
+     * 
      * @param logStreams
+     *        The log streams.
      */
 
     public void setLogStreams(java.util.Collection<LogStream> logStreams) {
@@ -49,12 +67,16 @@ public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
+     * The log streams.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setLogStreams(java.util.Collection)} or {@link #withLogStreams(java.util.Collection)} if you want to
      * override the existing values.
      * </p>
      * 
      * @param logStreams
+     *        The log streams.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +91,12 @@ public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResu
     }
 
     /**
+     * <p>
+     * The log streams.
+     * </p>
+     * 
      * @param logStreams
+     *        The log streams.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,9 +143,9 @@ public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogStreams() != null)
-            sb.append("LogStreams: " + getLogStreams() + ",");
+            sb.append("LogStreams: ").append(getLogStreams()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -162,4 +189,5 @@ public class DescribeLogStreamsResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

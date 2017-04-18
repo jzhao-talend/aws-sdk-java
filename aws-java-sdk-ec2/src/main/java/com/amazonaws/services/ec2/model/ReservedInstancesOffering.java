@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a Reserved Instance offering.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReservedInstancesOffering" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
@@ -1072,35 +1077,35 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservedInstancesOfferingId() != null)
-            sb.append("ReservedInstancesOfferingId: " + getReservedInstancesOfferingId() + ",");
+            sb.append("ReservedInstancesOfferingId: ").append(getReservedInstancesOfferingId()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getDuration() != null)
-            sb.append("Duration: " + getDuration() + ",");
+            sb.append("Duration: ").append(getDuration()).append(",");
         if (getUsagePrice() != null)
-            sb.append("UsagePrice: " + getUsagePrice() + ",");
+            sb.append("UsagePrice: ").append(getUsagePrice()).append(",");
         if (getFixedPrice() != null)
-            sb.append("FixedPrice: " + getFixedPrice() + ",");
+            sb.append("FixedPrice: ").append(getFixedPrice()).append(",");
         if (getProductDescription() != null)
-            sb.append("ProductDescription: " + getProductDescription() + ",");
+            sb.append("ProductDescription: ").append(getProductDescription()).append(",");
         if (getInstanceTenancy() != null)
-            sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
+            sb.append("InstanceTenancy: ").append(getInstanceTenancy()).append(",");
         if (getCurrencyCode() != null)
-            sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+            sb.append("CurrencyCode: ").append(getCurrencyCode()).append(",");
         if (getOfferingType() != null)
-            sb.append("OfferingType: " + getOfferingType() + ",");
+            sb.append("OfferingType: ").append(getOfferingType()).append(",");
         if (getRecurringCharges() != null)
-            sb.append("RecurringCharges: " + getRecurringCharges() + ",");
+            sb.append("RecurringCharges: ").append(getRecurringCharges()).append(",");
         if (getMarketplace() != null)
-            sb.append("Marketplace: " + getMarketplace() + ",");
+            sb.append("Marketplace: ").append(getMarketplace()).append(",");
         if (getPricingDetails() != null)
-            sb.append("PricingDetails: " + getPricingDetails() + ",");
+            sb.append("PricingDetails: ").append(getPricingDetails()).append(",");
         if (getOfferingClass() != null)
-            sb.append("OfferingClass: " + getOfferingClass() + ",");
+            sb.append("OfferingClass: ").append(getOfferingClass()).append(",");
         if (getScope() != null)
-            sb.append("Scope: " + getScope());
+            sb.append("Scope: ").append(getScope());
         sb.append("}");
         return sb.toString();
     }
@@ -1209,4 +1214,5 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

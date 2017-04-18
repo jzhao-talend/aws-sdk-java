@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.RunInstancesRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.RunInstancesRequestMarshaller;
  * Contains the parameters for RunInstances.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RunInstancesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<RunInstancesRequest> {
 
     /**
@@ -170,11 +173,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
-     * CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later want to be able to
-     * terminate the instance, you must first change the value of the <code>disableApiTermination</code> attribute to
-     * <code>false</code> using <a>ModifyInstanceAttribute</a>. Alternatively, if you set
-     * <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance by
-     * running the shutdown command from the instance.
+     * CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     * <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -193,21 +194,32 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     private String instanceInitiatedShutdownBehavior;
     /**
      * <p>
-     * [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.
+     * [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet.
      * </p>
      * <p>
-     * Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     * <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     * <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     * </p>
-     * <p>
-     * You cannot specify this option if you're launching more than one instance in the request.
-     * </p>
-     * <p>
-     * Default: We select an IP address from the IP address range of the subnet.
+     * Only one private IP address can be designated as primary. You can't specify this option if you've specified the
+     * option to designate a private IP address as the primary IP address in a network interface specification. You
+     * cannot specify this option if you're launching more than one instance in the request.
      * </p>
      */
     private String privateIpAddress;
+    /**
+     * <p>
+     * [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network
+     * interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same
+     * request. You cannot specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> ipv6Addresses;
+    /**
+     * <p>
+     * [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6
+     * addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6
+     * addresses in the same request. You can specify this option if you've specified a minimum number of instances to
+     * launch.
+     * </p>
+     */
+    private Integer ipv6AddressCount;
     /**
      * <p>
      * Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see
@@ -248,6 +260,13 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private Boolean ebsOptimized;
+    /**
+     * <p>
+     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
+     * applied to all instances or volumes that are created during launch.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TagSpecification> tagSpecifications;
 
     /**
      * Default constructor for RunInstancesRequest object. Callers should use the setter or fluent setter (with...)
@@ -1360,11 +1379,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
-     * CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later want to be able to
-     * terminate the instance, you must first change the value of the <code>disableApiTermination</code> attribute to
-     * <code>false</code> using <a>ModifyInstanceAttribute</a>. Alternatively, if you set
-     * <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance by
-     * running the shutdown command from the instance.
+     * CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     * <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1372,11 +1389,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * 
      * @param disableApiTermination
      *        If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
-     *        console, CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later
-     *        want to be able to terminate the instance, you must first change the value of the
-     *        <code>disableApiTermination</code> attribute to <code>false</code> using <a>ModifyInstanceAttribute</a>.
-     *        Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you
-     *        can terminate the instance by running the shutdown command from the instance.</p>
+     *        console, CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     *        <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code>
+     *        to <code>terminate</code>, you can terminate the instance by running the shutdown command from the
+     *        instance.</p>
      *        <p>
      *        Default: <code>false</code>
      */
@@ -1388,22 +1404,19 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
-     * CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later want to be able to
-     * terminate the instance, you must first change the value of the <code>disableApiTermination</code> attribute to
-     * <code>false</code> using <a>ModifyInstanceAttribute</a>. Alternatively, if you set
-     * <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance by
-     * running the shutdown command from the instance.
+     * CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     * <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @return If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
-     *         console, CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later
-     *         want to be able to terminate the instance, you must first change the value of the
-     *         <code>disableApiTermination</code> attribute to <code>false</code> using <a>ModifyInstanceAttribute</a>.
-     *         Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you
-     *         can terminate the instance by running the shutdown command from the instance.</p>
+     *         console, CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch,
+     *         use <a>ModifyInstanceAttribute</a>. Alternatively, if you set
+     *         <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance
+     *         by running the shutdown command from the instance.</p>
      *         <p>
      *         Default: <code>false</code>
      */
@@ -1415,11 +1428,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
-     * CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later want to be able to
-     * terminate the instance, you must first change the value of the <code>disableApiTermination</code> attribute to
-     * <code>false</code> using <a>ModifyInstanceAttribute</a>. Alternatively, if you set
-     * <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance by
-     * running the shutdown command from the instance.
+     * CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     * <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1427,11 +1438,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * 
      * @param disableApiTermination
      *        If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
-     *        console, CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later
-     *        want to be able to terminate the instance, you must first change the value of the
-     *        <code>disableApiTermination</code> attribute to <code>false</code> using <a>ModifyInstanceAttribute</a>.
-     *        Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you
-     *        can terminate the instance by running the shutdown command from the instance.</p>
+     *        console, CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     *        <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code>
+     *        to <code>terminate</code>, you can terminate the instance by running the shutdown command from the
+     *        instance.</p>
      *        <p>
      *        Default: <code>false</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1445,22 +1455,19 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
-     * CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later want to be able to
-     * terminate the instance, you must first change the value of the <code>disableApiTermination</code> attribute to
-     * <code>false</code> using <a>ModifyInstanceAttribute</a>. Alternatively, if you set
-     * <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance by
-     * running the shutdown command from the instance.
+     * CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch, use
+     * <a>ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @return If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
-     *         console, CLI, or API; otherwise, you can. If you set this parameter to <code>true</code> and then later
-     *         want to be able to terminate the instance, you must first change the value of the
-     *         <code>disableApiTermination</code> attribute to <code>false</code> using <a>ModifyInstanceAttribute</a>.
-     *         Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you
-     *         can terminate the instance by running the shutdown command from the instance.</p>
+     *         console, CLI, or API; otherwise, you can. To change this attribute to <code>false</code> after launch,
+     *         use <a>ModifyInstanceAttribute</a>. Alternatively, if you set
+     *         <code>InstanceInitiatedShutdownBehavior</code> to <code>terminate</code>, you can terminate the instance
+     *         by running the shutdown command from the instance.</p>
      *         <p>
      *         Default: <code>false</code>
      */
@@ -1579,32 +1586,21 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.
+     * [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet.
      * </p>
      * <p>
-     * Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     * <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     * <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     * </p>
-     * <p>
-     * You cannot specify this option if you're launching more than one instance in the request.
-     * </p>
-     * <p>
-     * Default: We select an IP address from the IP address range of the subnet.
+     * Only one private IP address can be designated as primary. You can't specify this option if you've specified the
+     * option to designate a private IP address as the primary IP address in a network interface specification. You
+     * cannot specify this option if you're launching more than one instance in the request.
      * </p>
      * 
      * @param privateIpAddress
-     *        [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.</p>
+     *        [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the
+     *        subnet.</p>
      *        <p>
-     *        Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     *        <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     *        <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     *        </p>
-     *        <p>
-     *        You cannot specify this option if you're launching more than one instance in the request.
-     *        </p>
-     *        <p>
-     *        Default: We select an IP address from the IP address range of the subnet.
+     *        Only one private IP address can be designated as primary. You can't specify this option if you've
+     *        specified the option to designate a private IP address as the primary IP address in a network interface
+     *        specification. You cannot specify this option if you're launching more than one instance in the request.
      */
 
     public void setPrivateIpAddress(String privateIpAddress) {
@@ -1613,31 +1609,20 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.
+     * [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet.
      * </p>
      * <p>
-     * Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     * <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     * <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     * </p>
-     * <p>
-     * You cannot specify this option if you're launching more than one instance in the request.
-     * </p>
-     * <p>
-     * Default: We select an IP address from the IP address range of the subnet.
+     * Only one private IP address can be designated as primary. You can't specify this option if you've specified the
+     * option to designate a private IP address as the primary IP address in a network interface specification. You
+     * cannot specify this option if you're launching more than one instance in the request.
      * </p>
      * 
-     * @return [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.</p>
+     * @return [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the
+     *         subnet.</p>
      *         <p>
-     *         Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     *         <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     *         <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     *         </p>
-     *         <p>
-     *         You cannot specify this option if you're launching more than one instance in the request.
-     *         </p>
-     *         <p>
-     *         Default: We select an IP address from the IP address range of the subnet.
+     *         Only one private IP address can be designated as primary. You can't specify this option if you've
+     *         specified the option to designate a private IP address as the primary IP address in a network interface
+     *         specification. You cannot specify this option if you're launching more than one instance in the request.
      */
 
     public String getPrivateIpAddress() {
@@ -1646,37 +1631,177 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.
+     * [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet.
      * </p>
      * <p>
-     * Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     * <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     * <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     * </p>
-     * <p>
-     * You cannot specify this option if you're launching more than one instance in the request.
-     * </p>
-     * <p>
-     * Default: We select an IP address from the IP address range of the subnet.
+     * Only one private IP address can be designated as primary. You can't specify this option if you've specified the
+     * option to designate a private IP address as the primary IP address in a network interface specification. You
+     * cannot specify this option if you're launching more than one instance in the request.
      * </p>
      * 
      * @param privateIpAddress
-     *        [EC2-VPC] The primary IP address. You must specify a value from the IP address range of the subnet.</p>
+     *        [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the
+     *        subnet.</p>
      *        <p>
-     *        Only one private IP address can be designated as primary. Therefore, you can't specify this parameter if
-     *        <code>PrivateIpAddresses.n.Primary</code> is set to <code>true</code> and
-     *        <code>PrivateIpAddresses.n.PrivateIpAddress</code> is set to an IP address.
-     *        </p>
-     *        <p>
-     *        You cannot specify this option if you're launching more than one instance in the request.
-     *        </p>
-     *        <p>
-     *        Default: We select an IP address from the IP address range of the subnet.
+     *        Only one private IP address can be designated as primary. You can't specify this option if you've
+     *        specified the option to designate a private IP address as the primary IP address in a network interface
+     *        specification. You cannot specify this option if you're launching more than one instance in the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RunInstancesRequest withPrivateIpAddress(String privateIpAddress) {
         setPrivateIpAddress(privateIpAddress);
+        return this;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network
+     * interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same
+     * request. You cannot specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @return [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary
+     *         network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in
+     *         the same request. You cannot specify this option if you've specified a minimum number of instances to
+     *         launch.
+     */
+
+    public java.util.List<InstanceIpv6Address> getIpv6Addresses() {
+        if (ipv6Addresses == null) {
+            ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>();
+        }
+        return ipv6Addresses;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network
+     * interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same
+     * request. You cannot specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary
+     *        network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in
+     *        the same request. You cannot specify this option if you've specified a minimum number of instances to
+     *        launch.
+     */
+
+    public void setIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        if (ipv6Addresses == null) {
+            this.ipv6Addresses = null;
+            return;
+        }
+
+        this.ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses);
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network
+     * interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same
+     * request. You cannot specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6Addresses(java.util.Collection)} or {@link #withIpv6Addresses(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary
+     *        network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in
+     *        the same request. You cannot specify this option if you've specified a minimum number of instances to
+     *        launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withIpv6Addresses(InstanceIpv6Address... ipv6Addresses) {
+        if (this.ipv6Addresses == null) {
+            setIpv6Addresses(new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses.length));
+        }
+        for (InstanceIpv6Address ele : ipv6Addresses) {
+            this.ipv6Addresses.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network
+     * interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same
+     * request. You cannot specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        [EC2-VPC] Specify one or more IPv6 addresses from the range of the subnet to associate with the primary
+     *        network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in
+     *        the same request. You cannot specify this option if you've specified a minimum number of instances to
+     *        launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        setIpv6Addresses(ipv6Addresses);
+        return this;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6
+     * addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6
+     * addresses in the same request. You can specify this option if you've specified a minimum number of instances to
+     * launch.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses
+     *        the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign
+     *        specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum
+     *        number of instances to launch.
+     */
+
+    public void setIpv6AddressCount(Integer ipv6AddressCount) {
+        this.ipv6AddressCount = ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6
+     * addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6
+     * addresses in the same request. You can specify this option if you've specified a minimum number of instances to
+     * launch.
+     * </p>
+     * 
+     * @return [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses
+     *         the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign
+     *         specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum
+     *         number of instances to launch.
+     */
+
+    public Integer getIpv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6
+     * addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6
+     * addresses in the same request. You can specify this option if you've specified a minimum number of instances to
+     * launch.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses
+     *        the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign
+     *        specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum
+     *        number of instances to launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withIpv6AddressCount(Integer ipv6AddressCount) {
+        setIpv6AddressCount(ipv6AddressCount);
         return this;
     }
 
@@ -1996,6 +2121,87 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
 
     /**
+     * <p>
+     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
+     * applied to all instances or volumes that are created during launch.
+     * </p>
+     * 
+     * @return The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
+     *         are applied to all instances or volumes that are created during launch.
+     */
+
+    public java.util.List<TagSpecification> getTagSpecifications() {
+        if (tagSpecifications == null) {
+            tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>();
+        }
+        return tagSpecifications;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
+     * applied to all instances or volumes that are created during launch.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
+     *        are applied to all instances or volumes that are created during launch.
+     */
+
+    public void setTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        if (tagSpecifications == null) {
+            this.tagSpecifications = null;
+            return;
+        }
+
+        this.tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications);
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
+     * applied to all instances or volumes that are created during launch.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagSpecifications(java.util.Collection)} or {@link #withTagSpecifications(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
+     *        are applied to all instances or volumes that are created during launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withTagSpecifications(TagSpecification... tagSpecifications) {
+        if (this.tagSpecifications == null) {
+            setTagSpecifications(new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications.length));
+        }
+        for (TagSpecification ele : tagSpecifications) {
+            this.tagSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
+     * applied to all instances or volumes that are created during launch.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
+     *        are applied to all instances or volumes that are created during launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        setTagSpecifications(tagSpecifications);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -2018,49 +2224,55 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getImageId() != null)
-            sb.append("ImageId: " + getImageId() + ",");
+            sb.append("ImageId: ").append(getImageId()).append(",");
         if (getMinCount() != null)
-            sb.append("MinCount: " + getMinCount() + ",");
+            sb.append("MinCount: ").append(getMinCount()).append(",");
         if (getMaxCount() != null)
-            sb.append("MaxCount: " + getMaxCount() + ",");
+            sb.append("MaxCount: ").append(getMaxCount()).append(",");
         if (getKeyName() != null)
-            sb.append("KeyName: " + getKeyName() + ",");
+            sb.append("KeyName: ").append(getKeyName()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getSecurityGroupIds() != null)
-            sb.append("SecurityGroupIds: " + getSecurityGroupIds() + ",");
+            sb.append("SecurityGroupIds: ").append(getSecurityGroupIds()).append(",");
         if (getUserData() != null)
-            sb.append("UserData: " + getUserData() + ",");
+            sb.append("UserData: ").append(getUserData()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getPlacement() != null)
-            sb.append("Placement: " + getPlacement() + ",");
+            sb.append("Placement: ").append(getPlacement()).append(",");
         if (getKernelId() != null)
-            sb.append("KernelId: " + getKernelId() + ",");
+            sb.append("KernelId: ").append(getKernelId()).append(",");
         if (getRamdiskId() != null)
-            sb.append("RamdiskId: " + getRamdiskId() + ",");
+            sb.append("RamdiskId: ").append(getRamdiskId()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getMonitoring() != null)
-            sb.append("Monitoring: " + getMonitoring() + ",");
+            sb.append("Monitoring: ").append(getMonitoring()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getDisableApiTermination() != null)
-            sb.append("DisableApiTermination: " + getDisableApiTermination() + ",");
+            sb.append("DisableApiTermination: ").append(getDisableApiTermination()).append(",");
         if (getInstanceInitiatedShutdownBehavior() != null)
-            sb.append("InstanceInitiatedShutdownBehavior: " + getInstanceInitiatedShutdownBehavior() + ",");
+            sb.append("InstanceInitiatedShutdownBehavior: ").append(getInstanceInitiatedShutdownBehavior()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
+        if (getIpv6Addresses() != null)
+            sb.append("Ipv6Addresses: ").append(getIpv6Addresses()).append(",");
+        if (getIpv6AddressCount() != null)
+            sb.append("Ipv6AddressCount: ").append(getIpv6AddressCount()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getAdditionalInfo() != null)
-            sb.append("AdditionalInfo: " + getAdditionalInfo() + ",");
+            sb.append("AdditionalInfo: ").append(getAdditionalInfo()).append(",");
         if (getNetworkInterfaces() != null)
-            sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ",");
+            sb.append("NetworkInterfaces: ").append(getNetworkInterfaces()).append(",");
         if (getIamInstanceProfile() != null)
-            sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
+            sb.append("IamInstanceProfile: ").append(getIamInstanceProfile()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized());
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
+        if (getTagSpecifications() != null)
+            sb.append("TagSpecifications: ").append(getTagSpecifications());
         sb.append("}");
         return sb.toString();
     }
@@ -2144,6 +2356,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getPrivateIpAddress() != null && other.getPrivateIpAddress().equals(this.getPrivateIpAddress()) == false)
             return false;
+        if (other.getIpv6Addresses() == null ^ this.getIpv6Addresses() == null)
+            return false;
+        if (other.getIpv6Addresses() != null && other.getIpv6Addresses().equals(this.getIpv6Addresses()) == false)
+            return false;
+        if (other.getIpv6AddressCount() == null ^ this.getIpv6AddressCount() == null)
+            return false;
+        if (other.getIpv6AddressCount() != null && other.getIpv6AddressCount().equals(this.getIpv6AddressCount()) == false)
+            return false;
         if (other.getClientToken() == null ^ this.getClientToken() == null)
             return false;
         if (other.getClientToken() != null && other.getClientToken().equals(this.getClientToken()) == false)
@@ -2163,6 +2383,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         if (other.getEbsOptimized() == null ^ this.getEbsOptimized() == null)
             return false;
         if (other.getEbsOptimized() != null && other.getEbsOptimized().equals(this.getEbsOptimized()) == false)
+            return false;
+        if (other.getTagSpecifications() == null ^ this.getTagSpecifications() == null)
+            return false;
+        if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
             return false;
         return true;
     }
@@ -2189,11 +2413,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getDisableApiTermination() == null) ? 0 : getDisableApiTermination().hashCode());
         hashCode = prime * hashCode + ((getInstanceInitiatedShutdownBehavior() == null) ? 0 : getInstanceInitiatedShutdownBehavior().hashCode());
         hashCode = prime * hashCode + ((getPrivateIpAddress() == null) ? 0 : getPrivateIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getIpv6Addresses() == null) ? 0 : getIpv6Addresses().hashCode());
+        hashCode = prime * hashCode + ((getIpv6AddressCount() == null) ? 0 : getIpv6AddressCount().hashCode());
         hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
         hashCode = prime * hashCode + ((getAdditionalInfo() == null) ? 0 : getAdditionalInfo().hashCode());
         hashCode = prime * hashCode + ((getNetworkInterfaces() == null) ? 0 : getNetworkInterfaces().hashCode());
         hashCode = prime * hashCode + ((getIamInstanceProfile() == null) ? 0 : getIamInstanceProfile().hashCode());
         hashCode = prime * hashCode + ((getEbsOptimized() == null) ? 0 : getEbsOptimized().hashCode());
+        hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
         return hashCode;
     }
 

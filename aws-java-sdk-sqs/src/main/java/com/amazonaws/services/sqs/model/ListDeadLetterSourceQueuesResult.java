@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,35 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A list of your dead letter source queues.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListDeadLetterSourceQueues" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
+     * A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead
+     * letter queue.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> queueUrls;
 
     /**
      * <p>
-     * A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
+     * A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead
+     * letter queue.
      * </p>
      * 
-     * @return A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter
-     *         queue.
+     * @return A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a
+     *         dead letter queue.
      */
 
     public java.util.List<String> getQueueUrls() {
@@ -46,12 +53,13 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
+     * A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead
+     * letter queue.
      * </p>
      * 
      * @param queueUrls
-     *        A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter
-     *        queue.
+     *        A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a
+     *        dead letter queue.
      */
 
     public void setQueueUrls(java.util.Collection<String> queueUrls) {
@@ -65,7 +73,8 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
+     * A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead
+     * letter queue.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -74,8 +83,8 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
      * </p>
      * 
      * @param queueUrls
-     *        A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter
-     *        queue.
+     *        A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a
+     *        dead letter queue.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -91,12 +100,13 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
+     * A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a dead
+     * letter queue.
      * </p>
      * 
      * @param queueUrls
-     *        A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter
-     *        queue.
+     *        A list of source queue URLs that have the <code>RedrivePolicy</code> queue attribute configured with a
+     *        dead letter queue.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -117,7 +127,7 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrls() != null)
-            sb.append("QueueUrls: " + getQueueUrls());
+            sb.append("QueueUrls: ").append(getQueueUrls());
         sb.append("}");
         return sb.toString();
     }
@@ -156,4 +166,5 @@ public class ListDeadLetterSourceQueuesResult extends com.amazonaws.AmazonWebSer
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

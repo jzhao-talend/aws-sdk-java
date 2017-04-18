@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,24 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Configuration of requested EBS block device associated with the instance group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/EbsBlockDevice" target="_top">AWS
+ *      API Documentation</a>
  */
-public class EbsBlockDevice implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EbsBlockDevice implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume
+     * EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume
      * attached to an EC2 instance in the cluster.
      * </p>
      */
@@ -37,12 +44,12 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume
+     * EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume
      * attached to an EC2 instance in the cluster.
      * </p>
      * 
      * @param volumeSpecification
-     *        EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS
+     *        EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS
      *        volume attached to an EC2 instance in the cluster.
      */
 
@@ -52,11 +59,11 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume
+     * EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume
      * attached to an EC2 instance in the cluster.
      * </p>
      * 
-     * @return EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS
+     * @return EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS
      *         volume attached to an EC2 instance in the cluster.
      */
 
@@ -66,12 +73,12 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume
+     * EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume
      * attached to an EC2 instance in the cluster.
      * </p>
      * 
      * @param volumeSpecification
-     *        EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS
+     *        EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS
      *        volume attached to an EC2 instance in the cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -133,9 +140,9 @@ public class EbsBlockDevice implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVolumeSpecification() != null)
-            sb.append("VolumeSpecification: " + getVolumeSpecification() + ",");
+            sb.append("VolumeSpecification: ").append(getVolumeSpecification()).append(",");
         if (getDevice() != null)
-            sb.append("Device: " + getDevice());
+            sb.append("Device: ").append(getDevice());
         sb.append("}");
         return sb.toString();
     }
@@ -178,5 +185,11 @@ public class EbsBlockDevice implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.EbsBlockDeviceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

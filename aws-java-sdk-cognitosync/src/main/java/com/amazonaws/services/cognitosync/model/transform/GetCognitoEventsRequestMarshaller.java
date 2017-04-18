@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,67 +12,44 @@
  */
 package com.amazonaws.services.cognitosync.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.cognitosync.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * GetCognitoEventsRequest Marshaller
+ * GetCognitoEventsRequestMarshaller
  */
-public class GetCognitoEventsRequestMarshaller implements Marshaller<Request<GetCognitoEventsRequest>, GetCognitoEventsRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class GetCognitoEventsRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> IDENTITYPOOLID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PATH).marshallLocationName("IdentityPoolId").build();
 
-    public GetCognitoEventsRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final GetCognitoEventsRequestMarshaller instance = new GetCognitoEventsRequestMarshaller();
+
+    public static GetCognitoEventsRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<GetCognitoEventsRequest> marshall(GetCognitoEventsRequest getCognitoEventsRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(GetCognitoEventsRequest getCognitoEventsRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (getCognitoEventsRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<GetCognitoEventsRequest> request = new DefaultRequest<GetCognitoEventsRequest>(getCognitoEventsRequest, "AmazonCognitoSync");
-
-        request.setHttpMethod(HttpMethodName.GET);
-
-        String uriResourcePath = "/identitypools/{IdentityPoolId}/events";
-
-        uriResourcePath = uriResourcePath.replace(
-                "{IdentityPoolId}",
-                (getCognitoEventsRequest.getIdentityPoolId() != null) ? SdkHttpUtils.urlEncode(
-                        StringUtils.fromString(getCognitoEventsRequest.getIdentityPoolId()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
-        request.setContent(new ByteArrayInputStream(new byte[0]));
-        if (!request.getHeaders().containsKey("Content-Type")) {
-            request.addHeader("Content-Type", protocolFactory.getContentType());
+        try {
+            protocolMarshaller.marshall(getCognitoEventsRequest.getIdentityPoolId(), IDENTITYPOOLID_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

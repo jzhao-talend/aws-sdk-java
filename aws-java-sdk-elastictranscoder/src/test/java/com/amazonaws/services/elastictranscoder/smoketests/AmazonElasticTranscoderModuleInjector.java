@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.smoketests;
+
+import javax.annotation.Generated;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -27,6 +29,7 @@ import com.amazonaws.services.elastictranscoder.AmazonElasticTranscoderClient;
  * Injector that binds the AmazonWebServiceClient interface to the
  * com.amazonaws.services.elastictranscoder.AmazonElasticTranscoderClient
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticTranscoderModuleInjector implements InjectorSource {
 
     @Override

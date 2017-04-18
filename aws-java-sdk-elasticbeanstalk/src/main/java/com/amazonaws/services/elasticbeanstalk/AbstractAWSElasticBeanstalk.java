@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elasticbeanstalk;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.*;
 
@@ -19,6 +21,7 @@ import com.amazonaws.*;
  * Abstract implementation of {@code AWSElasticBeanstalk}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
 
     protected AbstractAWSElasticBeanstalk() {
@@ -80,6 +83,11 @@ public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
     }
 
     @Override
+    public CreatePlatformVersionResult createPlatformVersion(CreatePlatformVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateStorageLocationResult createStorageLocation(CreateStorageLocationRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -106,6 +114,11 @@ public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
 
     @Override
     public DeleteEnvironmentConfigurationResult deleteEnvironmentConfiguration(DeleteEnvironmentConfigurationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeletePlatformVersionResult deletePlatformVersion(DeletePlatformVersionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -185,6 +198,11 @@ public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
     }
 
     @Override
+    public DescribePlatformVersionResult describePlatformVersion(DescribePlatformVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListAvailableSolutionStacksResult listAvailableSolutionStacks(ListAvailableSolutionStacksRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -192,6 +210,11 @@ public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
     @Override
     public ListAvailableSolutionStacksResult listAvailableSolutionStacks() {
         return listAvailableSolutionStacks(new ListAvailableSolutionStacksRequest());
+    }
+
+    @Override
+    public ListPlatformVersionsResult listPlatformVersions(ListPlatformVersionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -231,6 +254,11 @@ public class AbstractAWSElasticBeanstalk implements AWSElasticBeanstalk {
 
     @Override
     public UpdateApplicationResult updateApplication(UpdateApplicationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateApplicationResourceLifecycleResult updateApplicationResourceLifecycle(UpdateApplicationResourceLifecycleRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the status of a cluster restore action. Returns null if the cluster was not created by restoring a
  * snapshot.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RestoreStatus" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RestoreStatus implements Serializable, Cloneable {
 
     /**
@@ -325,17 +330,17 @@ public class RestoreStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getCurrentRestoreRateInMegaBytesPerSecond() != null)
-            sb.append("CurrentRestoreRateInMegaBytesPerSecond: " + getCurrentRestoreRateInMegaBytesPerSecond() + ",");
+            sb.append("CurrentRestoreRateInMegaBytesPerSecond: ").append(getCurrentRestoreRateInMegaBytesPerSecond()).append(",");
         if (getSnapshotSizeInMegaBytes() != null)
-            sb.append("SnapshotSizeInMegaBytes: " + getSnapshotSizeInMegaBytes() + ",");
+            sb.append("SnapshotSizeInMegaBytes: ").append(getSnapshotSizeInMegaBytes()).append(",");
         if (getProgressInMegaBytes() != null)
-            sb.append("ProgressInMegaBytes: " + getProgressInMegaBytes() + ",");
+            sb.append("ProgressInMegaBytes: ").append(getProgressInMegaBytes()).append(",");
         if (getElapsedTimeInSeconds() != null)
-            sb.append("ElapsedTimeInSeconds: " + getElapsedTimeInSeconds() + ",");
+            sb.append("ElapsedTimeInSeconds: ").append(getElapsedTimeInSeconds()).append(",");
         if (getEstimatedTimeToCompletionInSeconds() != null)
-            sb.append("EstimatedTimeToCompletionInSeconds: " + getEstimatedTimeToCompletionInSeconds());
+            sb.append("EstimatedTimeToCompletionInSeconds: ").append(getEstimatedTimeToCompletionInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -401,4 +406,5 @@ public class RestoreStatus implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

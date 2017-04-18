@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.route53domains.AmazonRoute53DomainsClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -47,6 +51,7 @@ import com.amazonaws.services.route53domains.model.transform.*;
  * 
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implements AmazonRoute53Domains {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -59,29 +64,30 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
-                            com.amazonaws.services.route53domains.model.DuplicateRequestException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withModeledClass(
-                            com.amazonaws.services.route53domains.model.InvalidInputException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TLDRulesViolation").withModeledClass(
-                            com.amazonaws.services.route53domains.model.TLDRulesViolationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DomainLimitExceeded").withModeledClass(
-                            com.amazonaws.services.route53domains.model.DomainLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnsupportedTLD").withModeledClass(
-                            com.amazonaws.services.route53domains.model.UnsupportedTLDException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("OperationLimitExceeded").withModeledClass(
-                            com.amazonaws.services.route53domains.model.OperationLimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.route53domains.model.AmazonRoute53DomainsException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.DuplicateRequestException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.InvalidInputException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TLDRulesViolation").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.TLDRulesViolationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DomainLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.DomainLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedTLD").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.UnsupportedTLDException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OperationLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.route53domains.model.OperationLimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.route53domains.model.AmazonRoute53DomainsException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon Route 53 Domains. A credentials provider chain will
@@ -97,7 +103,9 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -120,7 +128,9 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *        proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -135,7 +145,10 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonRoute53DomainsClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -153,7 +166,10 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Route 53 Domains (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -170,7 +186,9 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -188,7 +206,10 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Route 53 Domains (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -208,12 +229,20 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *        proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonRoute53DomainsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonRoute53DomainsClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonRoute53DomainsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonRoute53DomainsClientBuilder builder() {
+        return AmazonRoute53DomainsClientBuilder.standard();
     }
 
     /**
@@ -259,9 +288,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.CheckDomainAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CheckDomainAvailabilityResult checkDomainAvailability(CheckDomainAvailabilityRequest checkDomainAvailabilityRequest) {
+    public CheckDomainAvailabilityResult checkDomainAvailability(CheckDomainAvailabilityRequest request) {
+        request = beforeClientExecution(request);
+        return executeCheckDomainAvailability(request);
+    }
+
+    @SdkInternalApi
+    final CheckDomainAvailabilityResult executeCheckDomainAvailability(CheckDomainAvailabilityRequest checkDomainAvailabilityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(checkDomainAvailabilityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -271,7 +309,8 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CheckDomainAvailabilityRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(checkDomainAvailabilityRequest));
+                request = new CheckDomainAvailabilityRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(checkDomainAvailabilityRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -312,9 +351,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.DeleteTagsForDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DeleteTagsForDomain"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteTagsForDomainResult deleteTagsForDomain(DeleteTagsForDomainRequest deleteTagsForDomainRequest) {
+    public DeleteTagsForDomainResult deleteTagsForDomain(DeleteTagsForDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTagsForDomain(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsForDomainResult executeDeleteTagsForDomain(DeleteTagsForDomainRequest deleteTagsForDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTagsForDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -324,7 +372,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteTagsForDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsForDomainRequest));
+                request = new DeleteTagsForDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsForDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -357,9 +405,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.DisableDomainAutoRenew
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainAutoRenew"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableDomainAutoRenewResult disableDomainAutoRenew(DisableDomainAutoRenewRequest disableDomainAutoRenewRequest) {
+    public DisableDomainAutoRenewResult disableDomainAutoRenew(DisableDomainAutoRenewRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableDomainAutoRenew(request);
+    }
+
+    @SdkInternalApi
+    final DisableDomainAutoRenewResult executeDisableDomainAutoRenew(DisableDomainAutoRenewRequest disableDomainAutoRenewRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableDomainAutoRenewRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -369,7 +426,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DisableDomainAutoRenewRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(disableDomainAutoRenewRequest));
+                request = new DisableDomainAutoRenewRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(disableDomainAutoRenewRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -414,9 +471,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.DisableDomainTransferLock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainTransferLock"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableDomainTransferLockResult disableDomainTransferLock(DisableDomainTransferLockRequest disableDomainTransferLockRequest) {
+    public DisableDomainTransferLockResult disableDomainTransferLock(DisableDomainTransferLockRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableDomainTransferLock(request);
+    }
+
+    @SdkInternalApi
+    final DisableDomainTransferLockResult executeDisableDomainTransferLock(DisableDomainTransferLockRequest disableDomainTransferLockRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableDomainTransferLockRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -426,7 +492,8 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DisableDomainTransferLockRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(disableDomainTransferLockRequest));
+                request = new DisableDomainTransferLockRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(disableDomainTransferLockRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -470,9 +537,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws TLDRulesViolationException
      *         The top-level domain does not support this operation.
      * @sample AmazonRoute53Domains.EnableDomainAutoRenew
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainAutoRenew"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableDomainAutoRenewResult enableDomainAutoRenew(EnableDomainAutoRenewRequest enableDomainAutoRenewRequest) {
+    public EnableDomainAutoRenewResult enableDomainAutoRenew(EnableDomainAutoRenewRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableDomainAutoRenew(request);
+    }
+
+    @SdkInternalApi
+    final EnableDomainAutoRenewResult executeEnableDomainAutoRenew(EnableDomainAutoRenewRequest enableDomainAutoRenewRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableDomainAutoRenewRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -482,7 +558,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new EnableDomainAutoRenewRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(enableDomainAutoRenewRequest));
+                request = new EnableDomainAutoRenewRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(enableDomainAutoRenewRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -526,9 +602,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.EnableDomainTransferLock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainTransferLock"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableDomainTransferLockResult enableDomainTransferLock(EnableDomainTransferLockRequest enableDomainTransferLockRequest) {
+    public EnableDomainTransferLockResult enableDomainTransferLock(EnableDomainTransferLockRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableDomainTransferLock(request);
+    }
+
+    @SdkInternalApi
+    final EnableDomainTransferLockResult executeEnableDomainTransferLock(EnableDomainTransferLockRequest enableDomainTransferLockRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableDomainTransferLockRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -538,7 +623,8 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new EnableDomainTransferLockRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(enableDomainTransferLockRequest));
+                request = new EnableDomainTransferLockRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(enableDomainTransferLockRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -578,9 +664,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.GetContactReachabilityStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetContactReachabilityStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetContactReachabilityStatusResult getContactReachabilityStatus(GetContactReachabilityStatusRequest getContactReachabilityStatusRequest) {
+    public GetContactReachabilityStatusResult getContactReachabilityStatus(GetContactReachabilityStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetContactReachabilityStatus(request);
+    }
+
+    @SdkInternalApi
+    final GetContactReachabilityStatusResult executeGetContactReachabilityStatus(GetContactReachabilityStatusRequest getContactReachabilityStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getContactReachabilityStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -590,7 +685,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetContactReachabilityStatusRequestMarshaller(protocolFactory).marshall(super
+                request = new GetContactReachabilityStatusRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(getContactReachabilityStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -627,9 +722,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.GetDomainDetail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetDomainDetailResult getDomainDetail(GetDomainDetailRequest getDomainDetailRequest) {
+    public GetDomainDetailResult getDomainDetail(GetDomainDetailRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDomainDetail(request);
+    }
+
+    @SdkInternalApi
+    final GetDomainDetailResult executeGetDomainDetail(GetDomainDetailRequest getDomainDetailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDomainDetailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -639,7 +743,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetDomainDetailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDomainDetailRequest));
+                request = new GetDomainDetailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDomainDetailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -685,9 +789,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.GetDomainSuggestions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainSuggestions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetDomainSuggestionsResult getDomainSuggestions(GetDomainSuggestionsRequest getDomainSuggestionsRequest) {
+    public GetDomainSuggestionsResult getDomainSuggestions(GetDomainSuggestionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDomainSuggestions(request);
+    }
+
+    @SdkInternalApi
+    final GetDomainSuggestionsResult executeGetDomainSuggestions(GetDomainSuggestionsRequest getDomainSuggestionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDomainSuggestionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -697,7 +810,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetDomainSuggestionsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDomainSuggestionsRequest));
+                request = new GetDomainSuggestionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDomainSuggestionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -729,9 +842,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *         operation that is already completed. For a domain name, it may not be a valid domain name or belong to
      *         the requester account.
      * @sample AmazonRoute53Domains.GetOperationDetail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetOperationDetail"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetOperationDetailResult getOperationDetail(GetOperationDetailRequest getOperationDetailRequest) {
+    public GetOperationDetailResult getOperationDetail(GetOperationDetailRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetOperationDetail(request);
+    }
+
+    @SdkInternalApi
+    final GetOperationDetailResult executeGetOperationDetail(GetOperationDetailRequest getOperationDetailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getOperationDetailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -741,7 +863,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetOperationDetailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getOperationDetailRequest));
+                request = new GetOperationDetailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getOperationDetailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -773,9 +895,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *         operation that is already completed. For a domain name, it may not be a valid domain name or belong to
      *         the requester account.
      * @sample AmazonRoute53Domains.ListDomains
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListDomains" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListDomainsResult listDomains(ListDomainsRequest listDomainsRequest) {
+    public ListDomainsResult listDomains(ListDomainsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDomains(request);
+    }
+
+    @SdkInternalApi
+    final ListDomainsResult executeListDomains(ListDomainsRequest listDomainsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDomainsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -785,7 +916,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListDomainsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDomainsRequest));
+                request = new ListDomainsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDomainsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -822,9 +953,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *         operation that is already completed. For a domain name, it may not be a valid domain name or belong to
      *         the requester account.
      * @sample AmazonRoute53Domains.ListOperations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListOperations" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListOperationsResult listOperations(ListOperationsRequest listOperationsRequest) {
+    public ListOperationsResult listOperations(ListOperationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListOperations(request);
+    }
+
+    @SdkInternalApi
+    final ListOperationsResult executeListOperations(ListOperationsRequest listOperationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listOperationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -834,7 +974,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListOperationsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listOperationsRequest));
+                request = new ListOperationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listOperationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -879,9 +1019,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.ListTagsForDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomain"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListTagsForDomainResult listTagsForDomain(ListTagsForDomainRequest listTagsForDomainRequest) {
+    public ListTagsForDomainResult listTagsForDomain(ListTagsForDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForDomain(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForDomainResult executeListTagsForDomain(ListTagsForDomainRequest listTagsForDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -891,7 +1040,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListTagsForDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForDomainRequest));
+                request = new ListTagsForDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -950,9 +1099,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws OperationLimitExceededException
      *         The number of operations or jobs running exceeded the allowed threshold for the account.
      * @sample AmazonRoute53Domains.RegisterDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RegisterDomainResult registerDomain(RegisterDomainRequest registerDomainRequest) {
+    public RegisterDomainResult registerDomain(RegisterDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterDomain(request);
+    }
+
+    @SdkInternalApi
+    final RegisterDomainResult executeRegisterDomain(RegisterDomainRequest registerDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(registerDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -962,7 +1120,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RegisterDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerDomainRequest));
+                request = new RegisterDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1010,9 +1168,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws OperationLimitExceededException
      *         The number of operations or jobs running exceeded the allowed threshold for the account.
      * @sample AmazonRoute53Domains.RenewDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RenewDomainResult renewDomain(RenewDomainRequest renewDomainRequest) {
+    public RenewDomainResult renewDomain(RenewDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeRenewDomain(request);
+    }
+
+    @SdkInternalApi
+    final RenewDomainResult executeRenewDomain(RenewDomainRequest renewDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(renewDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1022,7 +1189,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RenewDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(renewDomainRequest));
+                request = new RenewDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(renewDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1059,9 +1226,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.ResendContactReachabilityEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ResendContactReachabilityEmail"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ResendContactReachabilityEmailResult resendContactReachabilityEmail(ResendContactReachabilityEmailRequest resendContactReachabilityEmailRequest) {
+    public ResendContactReachabilityEmailResult resendContactReachabilityEmail(ResendContactReachabilityEmailRequest request) {
+        request = beforeClientExecution(request);
+        return executeResendContactReachabilityEmail(request);
+    }
+
+    @SdkInternalApi
+    final ResendContactReachabilityEmailResult executeResendContactReachabilityEmail(ResendContactReachabilityEmailRequest resendContactReachabilityEmailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resendContactReachabilityEmailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1071,7 +1247,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ResendContactReachabilityEmailRequestMarshaller(protocolFactory).marshall(super
+                request = new ResendContactReachabilityEmailRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(resendContactReachabilityEmailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1108,9 +1284,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.RetrieveDomainAuthCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RetrieveDomainAuthCode"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RetrieveDomainAuthCodeResult retrieveDomainAuthCode(RetrieveDomainAuthCodeRequest retrieveDomainAuthCodeRequest) {
+    public RetrieveDomainAuthCodeResult retrieveDomainAuthCode(RetrieveDomainAuthCodeRequest request) {
+        request = beforeClientExecution(request);
+        return executeRetrieveDomainAuthCode(request);
+    }
+
+    @SdkInternalApi
+    final RetrieveDomainAuthCodeResult executeRetrieveDomainAuthCode(RetrieveDomainAuthCodeRequest retrieveDomainAuthCodeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(retrieveDomainAuthCodeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1120,7 +1305,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RetrieveDomainAuthCodeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(retrieveDomainAuthCodeRequest));
+                request = new RetrieveDomainAuthCodeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(retrieveDomainAuthCodeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1185,9 +1370,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws OperationLimitExceededException
      *         The number of operations or jobs running exceeded the allowed threshold for the account.
      * @sample AmazonRoute53Domains.TransferDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/TransferDomain" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public TransferDomainResult transferDomain(TransferDomainRequest transferDomainRequest) {
+    public TransferDomainResult transferDomain(TransferDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeTransferDomain(request);
+    }
+
+    @SdkInternalApi
+    final TransferDomainResult executeTransferDomain(TransferDomainRequest transferDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(transferDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1197,7 +1391,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new TransferDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(transferDomainRequest));
+                request = new TransferDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(transferDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1243,9 +1437,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.UpdateDomainContact
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContact"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateDomainContactResult updateDomainContact(UpdateDomainContactRequest updateDomainContactRequest) {
+    public UpdateDomainContactResult updateDomainContact(UpdateDomainContactRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDomainContact(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDomainContactResult executeUpdateDomainContact(UpdateDomainContactRequest updateDomainContactRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDomainContactRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1255,7 +1458,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDomainContactRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDomainContactRequest));
+                request = new UpdateDomainContactRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDomainContactRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1304,9 +1507,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.UpdateDomainContactPrivacy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateDomainContactPrivacyResult updateDomainContactPrivacy(UpdateDomainContactPrivacyRequest updateDomainContactPrivacyRequest) {
+    public UpdateDomainContactPrivacyResult updateDomainContactPrivacy(UpdateDomainContactPrivacyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDomainContactPrivacy(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDomainContactPrivacyResult executeUpdateDomainContactPrivacy(UpdateDomainContactPrivacyRequest updateDomainContactPrivacyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDomainContactPrivacyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1316,7 +1528,8 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDomainContactPrivacyRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDomainContactPrivacyRequest));
+                request = new UpdateDomainContactPrivacyRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateDomainContactPrivacyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1363,9 +1576,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.UpdateDomainNameservers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainNameservers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateDomainNameserversResult updateDomainNameservers(UpdateDomainNameserversRequest updateDomainNameserversRequest) {
+    public UpdateDomainNameserversResult updateDomainNameservers(UpdateDomainNameserversRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDomainNameservers(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDomainNameserversResult executeUpdateDomainNameservers(UpdateDomainNameserversRequest updateDomainNameserversRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDomainNameserversRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1375,7 +1597,8 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDomainNameserversRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDomainNameserversRequest));
+                request = new UpdateDomainNameserversRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateDomainNameserversRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1416,9 +1639,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      * @throws UnsupportedTLDException
      *         Amazon Route 53 does not support this top-level domain.
      * @sample AmazonRoute53Domains.UpdateTagsForDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateTagsForDomain"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateTagsForDomainResult updateTagsForDomain(UpdateTagsForDomainRequest updateTagsForDomainRequest) {
+    public UpdateTagsForDomainResult updateTagsForDomain(UpdateTagsForDomainRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTagsForDomain(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTagsForDomainResult executeUpdateTagsForDomain(UpdateTagsForDomainRequest updateTagsForDomainRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateTagsForDomainRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1428,7 +1660,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateTagsForDomainRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTagsForDomainRequest));
+                request = new UpdateTagsForDomainRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTagsForDomainRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1460,9 +1692,18 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
      *         operation that is already completed. For a domain name, it may not be a valid domain name or belong to
      *         the requester account.
      * @sample AmazonRoute53Domains.ViewBilling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ViewBilling" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ViewBillingResult viewBilling(ViewBillingRequest viewBillingRequest) {
+    public ViewBillingResult viewBilling(ViewBillingRequest request) {
+        request = beforeClientExecution(request);
+        return executeViewBilling(request);
+    }
+
+    @SdkInternalApi
+    final ViewBillingResult executeViewBilling(ViewBillingRequest viewBillingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(viewBillingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1472,7 +1713,7 @@ public class AmazonRoute53DomainsClient extends AmazonWebServiceClient implement
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ViewBillingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(viewBillingRequest));
+                request = new ViewBillingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(viewBillingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

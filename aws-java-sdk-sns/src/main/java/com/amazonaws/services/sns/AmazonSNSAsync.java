@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.sns;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.sns.model.*;
 
 /**
  * Interface for accessing Amazon SNS asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.sns.AbstractAmazonSNSAsync} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Simple Notification Service</fullname>
  * <p>
@@ -35,6 +41,7 @@ import com.amazonaws.services.sns.model.*;
  * href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSNSAsync extends AmazonSNS {
 
     /**
@@ -46,6 +53,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @param addPermissionRequest
      * @return A Java Future containing the result of the AddPermission operation returned by the service.
      * @sample AmazonSNSAsync.AddPermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/AddPermission" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddPermissionResult> addPermissionAsync(AddPermissionRequest addPermissionRequest);
 
@@ -62,6 +71,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddPermission operation returned by the service.
      * @sample AmazonSNSAsyncHandler.AddPermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/AddPermission" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddPermissionResult> addPermissionAsync(AddPermissionRequest addPermissionRequest,
             com.amazonaws.handlers.AsyncHandler<AddPermissionRequest, AddPermissionResult> asyncHandler);
@@ -96,6 +107,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the CheckIfPhoneNumberIsOptedOut operation returned by the
      *         service.
      * @sample AmazonSNSAsync.CheckIfPhoneNumberIsOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CheckIfPhoneNumberIsOptedOutResult> checkIfPhoneNumberIsOptedOutAsync(
             CheckIfPhoneNumberIsOptedOutRequest checkIfPhoneNumberIsOptedOutRequest);
@@ -118,6 +131,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the CheckIfPhoneNumberIsOptedOut operation returned by the
      *         service.
      * @sample AmazonSNSAsyncHandler.CheckIfPhoneNumberIsOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CheckIfPhoneNumberIsOptedOutResult> checkIfPhoneNumberIsOptedOutAsync(
             CheckIfPhoneNumberIsOptedOutRequest checkIfPhoneNumberIsOptedOutRequest,
@@ -135,6 +150,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for ConfirmSubscription action.
      * @return A Java Future containing the result of the ConfirmSubscription operation returned by the service.
      * @sample AmazonSNSAsync.ConfirmSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ConfirmSubscription" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConfirmSubscriptionResult> confirmSubscriptionAsync(ConfirmSubscriptionRequest confirmSubscriptionRequest);
 
@@ -154,6 +171,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ConfirmSubscription operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ConfirmSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ConfirmSubscription" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConfirmSubscriptionResult> confirmSubscriptionAsync(ConfirmSubscriptionRequest confirmSubscriptionRequest,
             com.amazonaws.handlers.AsyncHandler<ConfirmSubscriptionRequest, ConfirmSubscriptionResult> asyncHandler);
@@ -221,6 +240,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for CreatePlatformApplication action.
      * @return A Java Future containing the result of the CreatePlatformApplication operation returned by the service.
      * @sample AmazonSNSAsync.CreatePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreatePlatformApplicationResult> createPlatformApplicationAsync(
             CreatePlatformApplicationRequest createPlatformApplicationRequest);
@@ -262,6 +283,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreatePlatformApplication operation returned by the service.
      * @sample AmazonSNSAsyncHandler.CreatePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreatePlatformApplicationResult> createPlatformApplicationAsync(
             CreatePlatformApplicationRequest createPlatformApplicationRequest,
@@ -290,6 +313,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for CreatePlatformEndpoint action.
      * @return A Java Future containing the result of the CreatePlatformEndpoint operation returned by the service.
      * @sample AmazonSNSAsync.CreatePlatformEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreatePlatformEndpointResult> createPlatformEndpointAsync(CreatePlatformEndpointRequest createPlatformEndpointRequest);
 
@@ -320,6 +345,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreatePlatformEndpoint operation returned by the service.
      * @sample AmazonSNSAsyncHandler.CreatePlatformEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreatePlatformEndpointResult> createPlatformEndpointAsync(CreatePlatformEndpointRequest createPlatformEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<CreatePlatformEndpointRequest, CreatePlatformEndpointResult> asyncHandler);
@@ -336,6 +363,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for CreateTopic action.
      * @return A Java Future containing the result of the CreateTopic operation returned by the service.
      * @sample AmazonSNSAsync.CreateTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTopicResult> createTopicAsync(CreateTopicRequest createTopicRequest);
 
@@ -355,6 +384,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTopic operation returned by the service.
      * @sample AmazonSNSAsyncHandler.CreateTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTopicResult> createTopicAsync(CreateTopicRequest createTopicRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTopicRequest, CreateTopicResult> asyncHandler);
@@ -389,6 +420,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for DeleteEndpoint action.
      * @return A Java Future containing the result of the DeleteEndpoint operation returned by the service.
      * @sample AmazonSNSAsync.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteEndpointResult> deleteEndpointAsync(DeleteEndpointRequest deleteEndpointRequest);
 
@@ -411,6 +444,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteEndpoint operation returned by the service.
      * @sample AmazonSNSAsyncHandler.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteEndpointResult> deleteEndpointAsync(DeleteEndpointRequest deleteEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteEndpointRequest, DeleteEndpointResult> asyncHandler);
@@ -426,6 +461,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for DeletePlatformApplication action.
      * @return A Java Future containing the result of the DeletePlatformApplication operation returned by the service.
      * @sample AmazonSNSAsync.DeletePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeletePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeletePlatformApplicationResult> deletePlatformApplicationAsync(
             DeletePlatformApplicationRequest deletePlatformApplicationRequest);
@@ -445,6 +482,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeletePlatformApplication operation returned by the service.
      * @sample AmazonSNSAsyncHandler.DeletePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeletePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeletePlatformApplicationResult> deletePlatformApplicationAsync(
             DeletePlatformApplicationRequest deletePlatformApplicationRequest,
@@ -460,6 +499,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @param deleteTopicRequest
      * @return A Java Future containing the result of the DeleteTopic operation returned by the service.
      * @sample AmazonSNSAsync.DeleteTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTopicResult> deleteTopicAsync(DeleteTopicRequest deleteTopicRequest);
 
@@ -477,6 +518,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTopic operation returned by the service.
      * @sample AmazonSNSAsyncHandler.DeleteTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTopicResult> deleteTopicAsync(DeleteTopicRequest deleteTopicRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTopicRequest, DeleteTopicResult> asyncHandler);
@@ -507,6 +550,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for GetEndpointAttributes action.
      * @return A Java Future containing the result of the GetEndpointAttributes operation returned by the service.
      * @sample AmazonSNSAsync.GetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetEndpointAttributesResult> getEndpointAttributesAsync(GetEndpointAttributesRequest getEndpointAttributesRequest);
 
@@ -525,6 +570,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetEndpointAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.GetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetEndpointAttributesResult> getEndpointAttributesAsync(GetEndpointAttributesRequest getEndpointAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<GetEndpointAttributesRequest, GetEndpointAttributesResult> asyncHandler);
@@ -542,6 +589,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the GetPlatformApplicationAttributes operation returned by the
      *         service.
      * @sample AmazonSNSAsync.GetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetPlatformApplicationAttributesResult> getPlatformApplicationAttributesAsync(
             GetPlatformApplicationAttributesRequest getPlatformApplicationAttributesRequest);
@@ -563,6 +612,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the GetPlatformApplicationAttributes operation returned by the
      *         service.
      * @sample AmazonSNSAsyncHandler.GetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetPlatformApplicationAttributesResult> getPlatformApplicationAttributesAsync(
             GetPlatformApplicationAttributesRequest getPlatformApplicationAttributesRequest,
@@ -580,6 +631,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        The input for the <code>GetSMSAttributes</code> request.
      * @return A Java Future containing the result of the GetSMSAttributes operation returned by the service.
      * @sample AmazonSNSAsync.GetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSMSAttributesResult> getSMSAttributesAsync(GetSMSAttributesRequest getSMSAttributesRequest);
 
@@ -599,6 +652,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSMSAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.GetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSMSAttributesResult> getSMSAttributesAsync(GetSMSAttributesRequest getSMSAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<GetSMSAttributesRequest, GetSMSAttributesResult> asyncHandler);
@@ -612,6 +667,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for GetSubscriptionAttributes.
      * @return A Java Future containing the result of the GetSubscriptionAttributes operation returned by the service.
      * @sample AmazonSNSAsync.GetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<GetSubscriptionAttributesResult> getSubscriptionAttributesAsync(
             GetSubscriptionAttributesRequest getSubscriptionAttributesRequest);
@@ -629,6 +686,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSubscriptionAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.GetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<GetSubscriptionAttributesResult> getSubscriptionAttributesAsync(
             GetSubscriptionAttributesRequest getSubscriptionAttributesRequest,
@@ -659,6 +718,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for GetTopicAttributes action.
      * @return A Java Future containing the result of the GetTopicAttributes operation returned by the service.
      * @sample AmazonSNSAsync.GetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetTopicAttributesResult> getTopicAttributesAsync(GetTopicAttributesRequest getTopicAttributesRequest);
 
@@ -676,6 +737,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetTopicAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.GetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetTopicAttributesResult> getTopicAttributesAsync(GetTopicAttributesRequest getTopicAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<GetTopicAttributesRequest, GetTopicAttributesResult> asyncHandler);
@@ -711,6 +774,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the ListEndpointsByPlatformApplication operation returned by the
      *         service.
      * @sample AmazonSNSAsync.ListEndpointsByPlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListEndpointsByPlatformApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListEndpointsByPlatformApplicationResult> listEndpointsByPlatformApplicationAsync(
             ListEndpointsByPlatformApplicationRequest listEndpointsByPlatformApplicationRequest);
@@ -735,6 +800,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the ListEndpointsByPlatformApplication operation returned by the
      *         service.
      * @sample AmazonSNSAsyncHandler.ListEndpointsByPlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListEndpointsByPlatformApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListEndpointsByPlatformApplicationResult> listEndpointsByPlatformApplicationAsync(
             ListEndpointsByPlatformApplicationRequest listEndpointsByPlatformApplicationRequest,
@@ -756,6 +823,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        The input for the <code>ListPhoneNumbersOptedOut</code> action.
      * @return A Java Future containing the result of the ListPhoneNumbersOptedOut operation returned by the service.
      * @sample AmazonSNSAsync.ListPhoneNumbersOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOut" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListPhoneNumbersOptedOutResult> listPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutRequest listPhoneNumbersOptedOutRequest);
 
@@ -779,6 +848,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListPhoneNumbersOptedOut operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ListPhoneNumbersOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOut" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListPhoneNumbersOptedOutResult> listPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutRequest listPhoneNumbersOptedOutRequest,
             com.amazonaws.handlers.AsyncHandler<ListPhoneNumbersOptedOutRequest, ListPhoneNumbersOptedOutResult> asyncHandler);
@@ -798,6 +869,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for ListPlatformApplications action.
      * @return A Java Future containing the result of the ListPlatformApplications operation returned by the service.
      * @sample AmazonSNSAsync.ListPlatformApplications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplications" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListPlatformApplicationsResult> listPlatformApplicationsAsync(ListPlatformApplicationsRequest listPlatformApplicationsRequest);
 
@@ -820,6 +893,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListPlatformApplications operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ListPlatformApplications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplications" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListPlatformApplicationsResult> listPlatformApplicationsAsync(ListPlatformApplicationsRequest listPlatformApplicationsRequest,
             com.amazonaws.handlers.AsyncHandler<ListPlatformApplicationsRequest, ListPlatformApplicationsResult> asyncHandler);
@@ -850,6 +925,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for ListSubscriptions action.
      * @return A Java Future containing the result of the ListSubscriptions operation returned by the service.
      * @sample AmazonSNSAsync.ListSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListSubscriptionsResult> listSubscriptionsAsync(ListSubscriptionsRequest listSubscriptionsRequest);
 
@@ -868,6 +945,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListSubscriptions operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ListSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListSubscriptionsResult> listSubscriptionsAsync(ListSubscriptionsRequest listSubscriptionsRequest,
             com.amazonaws.handlers.AsyncHandler<ListSubscriptionsRequest, ListSubscriptionsResult> asyncHandler);
@@ -913,6 +992,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for ListSubscriptionsByTopic action.
      * @return A Java Future containing the result of the ListSubscriptionsByTopic operation returned by the service.
      * @sample AmazonSNSAsync.ListSubscriptionsByTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListSubscriptionsByTopicResult> listSubscriptionsByTopicAsync(ListSubscriptionsByTopicRequest listSubscriptionsByTopicRequest);
 
@@ -931,6 +1012,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListSubscriptionsByTopic operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ListSubscriptionsByTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListSubscriptionsByTopicResult> listSubscriptionsByTopicAsync(ListSubscriptionsByTopicRequest listSubscriptionsByTopicRequest,
             com.amazonaws.handlers.AsyncHandler<ListSubscriptionsByTopicRequest, ListSubscriptionsByTopicResult> asyncHandler);
@@ -975,6 +1058,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @param listTopicsRequest
      * @return A Java Future containing the result of the ListTopics operation returned by the service.
      * @sample AmazonSNSAsync.ListTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTopicsResult> listTopicsAsync(ListTopicsRequest listTopicsRequest);
 
@@ -992,6 +1077,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTopics operation returned by the service.
      * @sample AmazonSNSAsyncHandler.ListTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTopicsResult> listTopicsAsync(ListTopicsRequest listTopicsRequest,
             com.amazonaws.handlers.AsyncHandler<ListTopicsRequest, ListTopicsResult> asyncHandler);
@@ -1038,6 +1125,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for the OptInPhoneNumber action.
      * @return A Java Future containing the result of the OptInPhoneNumber operation returned by the service.
      * @sample AmazonSNSAsync.OptInPhoneNumber
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/OptInPhoneNumber" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<OptInPhoneNumberResult> optInPhoneNumberAsync(OptInPhoneNumberRequest optInPhoneNumberRequest);
 
@@ -1058,6 +1147,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the OptInPhoneNumber operation returned by the service.
      * @sample AmazonSNSAsyncHandler.OptInPhoneNumber
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/OptInPhoneNumber" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<OptInPhoneNumberResult> optInPhoneNumberAsync(OptInPhoneNumberRequest optInPhoneNumberRequest,
             com.amazonaws.handlers.AsyncHandler<OptInPhoneNumberRequest, OptInPhoneNumberResult> asyncHandler);
@@ -1083,6 +1174,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for Publish action.
      * @return A Java Future containing the result of the Publish operation returned by the service.
      * @sample AmazonSNSAsync.Publish
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Publish" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PublishResult> publishAsync(PublishRequest publishRequest);
 
@@ -1111,6 +1204,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the Publish operation returned by the service.
      * @sample AmazonSNSAsyncHandler.Publish
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Publish" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PublishResult> publishAsync(PublishRequest publishRequest,
             com.amazonaws.handlers.AsyncHandler<PublishRequest, PublishResult> asyncHandler);
@@ -1154,6 +1249,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for RemovePermission action.
      * @return A Java Future containing the result of the RemovePermission operation returned by the service.
      * @sample AmazonSNSAsync.RemovePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/RemovePermission" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemovePermissionResult> removePermissionAsync(RemovePermissionRequest removePermissionRequest);
 
@@ -1170,6 +1267,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemovePermission operation returned by the service.
      * @sample AmazonSNSAsyncHandler.RemovePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/RemovePermission" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemovePermissionResult> removePermissionAsync(RemovePermissionRequest removePermissionRequest,
             com.amazonaws.handlers.AsyncHandler<RemovePermissionRequest, RemovePermissionResult> asyncHandler);
@@ -1200,6 +1299,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for SetEndpointAttributes action.
      * @return A Java Future containing the result of the SetEndpointAttributes operation returned by the service.
      * @sample AmazonSNSAsync.SetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetEndpointAttributesResult> setEndpointAttributesAsync(SetEndpointAttributesRequest setEndpointAttributesRequest);
 
@@ -1218,6 +1319,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetEndpointAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.SetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetEndpointAttributesResult> setEndpointAttributesAsync(SetEndpointAttributesRequest setEndpointAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<SetEndpointAttributesRequest, SetEndpointAttributesResult> asyncHandler);
@@ -1236,6 +1339,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the SetPlatformApplicationAttributes operation returned by the
      *         service.
      * @sample AmazonSNSAsync.SetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetPlatformApplicationAttributesResult> setPlatformApplicationAttributesAsync(
             SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest);
@@ -1258,6 +1363,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      * @return A Java Future containing the result of the SetPlatformApplicationAttributes operation returned by the
      *         service.
      * @sample AmazonSNSAsyncHandler.SetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetPlatformApplicationAttributesResult> setPlatformApplicationAttributesAsync(
             SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest,
@@ -1278,6 +1385,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        The input for the SetSMSAttributes action.
      * @return A Java Future containing the result of the SetSMSAttributes operation returned by the service.
      * @sample AmazonSNSAsync.SetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetSMSAttributesResult> setSMSAttributesAsync(SetSMSAttributesRequest setSMSAttributesRequest);
 
@@ -1300,6 +1409,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetSMSAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.SetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetSMSAttributesResult> setSMSAttributesAsync(SetSMSAttributesRequest setSMSAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<SetSMSAttributesRequest, SetSMSAttributesResult> asyncHandler);
@@ -1313,6 +1424,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for SetSubscriptionAttributes action.
      * @return A Java Future containing the result of the SetSubscriptionAttributes operation returned by the service.
      * @sample AmazonSNSAsync.SetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetSubscriptionAttributesResult> setSubscriptionAttributesAsync(
             SetSubscriptionAttributesRequest setSubscriptionAttributesRequest);
@@ -1330,6 +1443,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetSubscriptionAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.SetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetSubscriptionAttributesResult> setSubscriptionAttributesAsync(
             SetSubscriptionAttributesRequest setSubscriptionAttributesRequest,
@@ -1360,6 +1475,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for SetTopicAttributes action.
      * @return A Java Future containing the result of the SetTopicAttributes operation returned by the service.
      * @sample AmazonSNSAsync.SetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetTopicAttributesResult> setTopicAttributesAsync(SetTopicAttributesRequest setTopicAttributesRequest);
 
@@ -1376,6 +1493,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetTopicAttributes operation returned by the service.
      * @sample AmazonSNSAsyncHandler.SetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SetTopicAttributesResult> setTopicAttributesAsync(SetTopicAttributesRequest setTopicAttributesRequest,
             com.amazonaws.handlers.AsyncHandler<SetTopicAttributesRequest, SetTopicAttributesResult> asyncHandler);
@@ -1406,6 +1525,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for Subscribe action.
      * @return A Java Future containing the result of the Subscribe operation returned by the service.
      * @sample AmazonSNSAsync.Subscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SubscribeResult> subscribeAsync(SubscribeRequest subscribeRequest);
 
@@ -1424,6 +1545,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the Subscribe operation returned by the service.
      * @sample AmazonSNSAsyncHandler.Subscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SubscribeResult> subscribeAsync(SubscribeRequest subscribeRequest,
             com.amazonaws.handlers.AsyncHandler<SubscribeRequest, SubscribeResult> asyncHandler);
@@ -1456,6 +1579,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        Input for Unsubscribe action.
      * @return A Java Future containing the result of the Unsubscribe operation returned by the service.
      * @sample AmazonSNSAsync.Unsubscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Unsubscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UnsubscribeResult> unsubscribeAsync(UnsubscribeRequest unsubscribeRequest);
 
@@ -1476,6 +1601,8 @@ public interface AmazonSNSAsync extends AmazonSNS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the Unsubscribe operation returned by the service.
      * @sample AmazonSNSAsyncHandler.Unsubscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Unsubscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UnsubscribeResult> unsubscribeAsync(UnsubscribeRequest unsubscribeRequest,
             com.amazonaws.handlers.AsyncHandler<UnsubscribeRequest, UnsubscribeResult> asyncHandler);

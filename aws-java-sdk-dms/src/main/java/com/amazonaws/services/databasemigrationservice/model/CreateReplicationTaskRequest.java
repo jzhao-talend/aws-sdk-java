@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -81,7 +87,9 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
     private String tableMappings;
     /**
      * <p>
-     * Settings for the task, such as target metadata settings.
+     * Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     * Settings for AWS Database Migration Service Tasks</a>.
      * </p>
      */
     private String replicationTaskSettings;
@@ -505,11 +513,15 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Settings for the task, such as target metadata settings.
+     * Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     * Settings for AWS Database Migration Service Tasks</a>.
      * </p>
      * 
      * @param replicationTaskSettings
-     *        Settings for the task, such as target metadata settings.
+     *        Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     *        Settings for AWS Database Migration Service Tasks</a>.
      */
 
     public void setReplicationTaskSettings(String replicationTaskSettings) {
@@ -518,10 +530,14 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Settings for the task, such as target metadata settings.
+     * Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     * Settings for AWS Database Migration Service Tasks</a>.
      * </p>
      * 
-     * @return Settings for the task, such as target metadata settings.
+     * @return Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     *         href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     *         Settings for AWS Database Migration Service Tasks</a>.
      */
 
     public String getReplicationTaskSettings() {
@@ -530,11 +546,15 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Settings for the task, such as target metadata settings.
+     * Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     * Settings for AWS Database Migration Service Tasks</a>.
      * </p>
      * 
      * @param replicationTaskSettings
-     *        Settings for the task, such as target metadata settings.
+     *        Settings for the task, such as target metadata settings. For a complete list of task settings, see <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task
+     *        Settings for AWS Database Migration Service Tasks</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -665,23 +685,23 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationTaskIdentifier() != null)
-            sb.append("ReplicationTaskIdentifier: " + getReplicationTaskIdentifier() + ",");
+            sb.append("ReplicationTaskIdentifier: ").append(getReplicationTaskIdentifier()).append(",");
         if (getSourceEndpointArn() != null)
-            sb.append("SourceEndpointArn: " + getSourceEndpointArn() + ",");
+            sb.append("SourceEndpointArn: ").append(getSourceEndpointArn()).append(",");
         if (getTargetEndpointArn() != null)
-            sb.append("TargetEndpointArn: " + getTargetEndpointArn() + ",");
+            sb.append("TargetEndpointArn: ").append(getTargetEndpointArn()).append(",");
         if (getReplicationInstanceArn() != null)
-            sb.append("ReplicationInstanceArn: " + getReplicationInstanceArn() + ",");
+            sb.append("ReplicationInstanceArn: ").append(getReplicationInstanceArn()).append(",");
         if (getMigrationType() != null)
-            sb.append("MigrationType: " + getMigrationType() + ",");
+            sb.append("MigrationType: ").append(getMigrationType()).append(",");
         if (getTableMappings() != null)
-            sb.append("TableMappings: " + getTableMappings() + ",");
+            sb.append("TableMappings: ").append(getTableMappings()).append(",");
         if (getReplicationTaskSettings() != null)
-            sb.append("ReplicationTaskSettings: " + getReplicationTaskSettings() + ",");
+            sb.append("ReplicationTaskSettings: ").append(getReplicationTaskSettings()).append(",");
         if (getCdcStartTime() != null)
-            sb.append("CdcStartTime: " + getCdcStartTime() + ",");
+            sb.append("CdcStartTime: ").append(getCdcStartTime()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -756,4 +776,5 @@ public class CreateReplicationTaskRequest extends com.amazonaws.AmazonWebService
     public CreateReplicationTaskRequest clone() {
         return (CreateReplicationTaskRequest) super.clone();
     }
+
 }

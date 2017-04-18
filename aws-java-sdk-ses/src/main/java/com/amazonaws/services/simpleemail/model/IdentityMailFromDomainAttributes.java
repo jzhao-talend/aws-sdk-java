@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the custom MAIL FROM domain attributes of a verified identity (email address or domain).
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/IdentityMailFromDomainAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IdentityMailFromDomainAttributes implements Serializable, Cloneable {
 
     /**
@@ -354,11 +359,11 @@ public class IdentityMailFromDomainAttributes implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMailFromDomain() != null)
-            sb.append("MailFromDomain: " + getMailFromDomain() + ",");
+            sb.append("MailFromDomain: ").append(getMailFromDomain()).append(",");
         if (getMailFromDomainStatus() != null)
-            sb.append("MailFromDomainStatus: " + getMailFromDomainStatus() + ",");
+            sb.append("MailFromDomainStatus: ").append(getMailFromDomainStatus()).append(",");
         if (getBehaviorOnMXFailure() != null)
-            sb.append("BehaviorOnMXFailure: " + getBehaviorOnMXFailure());
+            sb.append("BehaviorOnMXFailure: ").append(getBehaviorOnMXFailure());
         sb.append("}");
         return sb.toString();
     }
@@ -407,4 +412,5 @@ public class IdentityMailFromDomainAttributes implements Serializable, Cloneable
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

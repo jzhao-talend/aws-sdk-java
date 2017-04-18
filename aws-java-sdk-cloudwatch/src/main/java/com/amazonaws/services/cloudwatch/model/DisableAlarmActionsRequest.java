@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,26 +13,31 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DisableAlarmActions" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The names of the alarms to disable actions for.
+     * The names of the alarms.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> alarmNames;
 
     /**
      * <p>
-     * The names of the alarms to disable actions for.
+     * The names of the alarms.
      * </p>
      * 
-     * @return The names of the alarms to disable actions for.
+     * @return The names of the alarms.
      */
 
     public java.util.List<String> getAlarmNames() {
@@ -44,11 +49,11 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The names of the alarms to disable actions for.
+     * The names of the alarms.
      * </p>
      * 
      * @param alarmNames
-     *        The names of the alarms to disable actions for.
+     *        The names of the alarms.
      */
 
     public void setAlarmNames(java.util.Collection<String> alarmNames) {
@@ -62,7 +67,7 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The names of the alarms to disable actions for.
+     * The names of the alarms.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -71,7 +76,7 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param alarmNames
-     *        The names of the alarms to disable actions for.
+     *        The names of the alarms.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -87,11 +92,11 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The names of the alarms to disable actions for.
+     * The names of the alarms.
      * </p>
      * 
      * @param alarmNames
-     *        The names of the alarms to disable actions for.
+     *        The names of the alarms.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -112,7 +117,7 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlarmNames() != null)
-            sb.append("AlarmNames: " + getAlarmNames());
+            sb.append("AlarmNames: ").append(getAlarmNames());
         sb.append("}");
         return sb.toString();
     }
@@ -147,4 +152,5 @@ public class DisableAlarmActionsRequest extends com.amazonaws.AmazonWebServiceRe
     public DisableAlarmActionsRequest clone() {
         return (DisableAlarmActionsRequest) super.clone();
     }
+
 }

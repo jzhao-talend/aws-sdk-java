@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes how many instances a stack has for each status.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/InstancesCount" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InstancesCount implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstancesCount implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -908,43 +915,43 @@ public class InstancesCount implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAssigning() != null)
-            sb.append("Assigning: " + getAssigning() + ",");
+            sb.append("Assigning: ").append(getAssigning()).append(",");
         if (getBooting() != null)
-            sb.append("Booting: " + getBooting() + ",");
+            sb.append("Booting: ").append(getBooting()).append(",");
         if (getConnectionLost() != null)
-            sb.append("ConnectionLost: " + getConnectionLost() + ",");
+            sb.append("ConnectionLost: ").append(getConnectionLost()).append(",");
         if (getDeregistering() != null)
-            sb.append("Deregistering: " + getDeregistering() + ",");
+            sb.append("Deregistering: ").append(getDeregistering()).append(",");
         if (getOnline() != null)
-            sb.append("Online: " + getOnline() + ",");
+            sb.append("Online: ").append(getOnline()).append(",");
         if (getPending() != null)
-            sb.append("Pending: " + getPending() + ",");
+            sb.append("Pending: ").append(getPending()).append(",");
         if (getRebooting() != null)
-            sb.append("Rebooting: " + getRebooting() + ",");
+            sb.append("Rebooting: ").append(getRebooting()).append(",");
         if (getRegistered() != null)
-            sb.append("Registered: " + getRegistered() + ",");
+            sb.append("Registered: ").append(getRegistered()).append(",");
         if (getRegistering() != null)
-            sb.append("Registering: " + getRegistering() + ",");
+            sb.append("Registering: ").append(getRegistering()).append(",");
         if (getRequested() != null)
-            sb.append("Requested: " + getRequested() + ",");
+            sb.append("Requested: ").append(getRequested()).append(",");
         if (getRunningSetup() != null)
-            sb.append("RunningSetup: " + getRunningSetup() + ",");
+            sb.append("RunningSetup: ").append(getRunningSetup()).append(",");
         if (getSetupFailed() != null)
-            sb.append("SetupFailed: " + getSetupFailed() + ",");
+            sb.append("SetupFailed: ").append(getSetupFailed()).append(",");
         if (getShuttingDown() != null)
-            sb.append("ShuttingDown: " + getShuttingDown() + ",");
+            sb.append("ShuttingDown: ").append(getShuttingDown()).append(",");
         if (getStartFailed() != null)
-            sb.append("StartFailed: " + getStartFailed() + ",");
+            sb.append("StartFailed: ").append(getStartFailed()).append(",");
         if (getStopped() != null)
-            sb.append("Stopped: " + getStopped() + ",");
+            sb.append("Stopped: ").append(getStopped()).append(",");
         if (getStopping() != null)
-            sb.append("Stopping: " + getStopping() + ",");
+            sb.append("Stopping: ").append(getStopping()).append(",");
         if (getTerminated() != null)
-            sb.append("Terminated: " + getTerminated() + ",");
+            sb.append("Terminated: ").append(getTerminated()).append(",");
         if (getTerminating() != null)
-            sb.append("Terminating: " + getTerminating() + ",");
+            sb.append("Terminating: ").append(getTerminating()).append(",");
         if (getUnassigning() != null)
-            sb.append("Unassigning: " + getUnassigning());
+            sb.append("Unassigning: ").append(getUnassigning());
         sb.append("}");
         return sb.toString();
     }
@@ -1072,5 +1079,11 @@ public class InstancesCount implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.InstancesCountMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

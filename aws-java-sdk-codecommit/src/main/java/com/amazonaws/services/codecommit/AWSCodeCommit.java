@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.codecommit;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,49 +22,127 @@ import com.amazonaws.services.codecommit.model.*;
 /**
  * Interface for accessing CodeCommit.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.codecommit.AbstractAWSCodeCommit} instead.
+ * </p>
+ * <p>
  * <fullname>AWS CodeCommit</fullname>
  * <p>
  * This is the <i>AWS CodeCommit API Reference</i>. This reference provides descriptions of the operations and data
- * types for AWS CodeCommit API.
+ * types for AWS CodeCommit API along with usage examples.
  * </p>
  * <p>
  * You can use the AWS CodeCommit API to work with the following objects:
  * </p>
+ * <p>
+ * Repositories, by calling the following:
+ * </p>
  * <ul>
- * <li>Repositories, by calling the following:
- * <ul>
- * <li><a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
- * account</li>
- * <li><a>CreateRepository</a>, which creates an AWS CodeCommit repository</li>
- * <li><a>DeleteRepository</a>, which deletes an AWS CodeCommit repository</li>
- * <li><a>GetRepository</a>, which returns information about a specified repository</li>
- * <li><a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account</li>
- * <li><a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository</li>
- * <li><a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
- * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
+ * account
+ * </p>
  * </li>
- * <li>Branches, by calling the following:
- * <ul>
- * <li><a>CreateBranch</a>, which creates a new branch in a specified repository</li>
- * <li><a>GetBranch</a>, which returns information about a specified branch</li>
- * <li><a>ListBranches</a>, which lists all branches for a specified repository</li>
- * <li><a>UpdateDefaultBranch</a>, which changes the default branch for a repository</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>CreateRepository</a>, which creates an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Information about committed code in a repository, by calling the following:
- * <ul>
- * <li><a>GetCommit</a>, which returns information about a commit, including commit messages and committer information.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>DeleteRepository</a>, which deletes an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Triggers, by calling the following:
- * <ul>
- * <li><a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository</li>
- * <li><a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
- * triggers</li>
- * <li><a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the
- * trigger target</li>
+ * <li>
+ * <p>
+ * <a>GetRepository</a>, which returns information about a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
+ * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.
+ * </p>
+ * </li>
  * </ul>
+ * <p>
+ * Branches, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateBranch</a>, which creates a new branch in a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetBranch</a>, which returns information about a specified branch
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListBranches</a>, which lists all branches for a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Information about committed code in a repository, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetCommit</a>, which returns information about a commit, including commit messages and author and committer
+ * information
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetDifferences</a>, which returns information about the differences in a valid commit specifier (such as a branch,
+ * tag, HEAD, commit ID or other fully qualified reference)
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Triggers, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
+ * triggers
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the trigger
+ * target
+ * </p>
  * </li>
  * </ul>
  * <p>
@@ -70,6 +150,7 @@ import com.amazonaws.services.codecommit.model.*;
  * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCodeCommit {
 
     /**
@@ -101,7 +182,11 @@ public interface AWSCodeCommit {
      *        The endpoint (ex: "codecommit.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://codecommit.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -122,7 +207,9 @@ public interface AWSCodeCommit {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -162,6 +249,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.BatchGetRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositories"
+     *      target="_top">AWS API Documentation</a>
      */
     BatchGetRepositoriesResult batchGetRepositories(BatchGetRepositoriesRequest batchGetRepositoriesRequest);
 
@@ -213,6 +302,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.CreateBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateBranchResult createBranch(CreateBranchRequest createBranchRequest);
 
@@ -249,6 +340,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.CreateRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateRepositoryResult createRepository(CreateRepositoryRequest createRepositoryRequest);
 
@@ -256,8 +349,12 @@ public interface AWSCodeCommit {
      * <p>
      * Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.
      * </p>
-     * <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted,
-     * all future push calls to the deleted repository will fail.</important>
+     * <important>
+     * <p>
+     * Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future
+     * push calls to the deleted repository will fail.
+     * </p>
+     * </important>
      * 
      * @param deleteRepositoryRequest
      *        Represents the input of a delete repository operation.
@@ -281,8 +378,54 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.DeleteRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest deleteRepositoryRequest);
+
+    /**
+     * <p>
+     * Returns the base-64 encoded content of an individual blob within a repository.
+     * </p>
+     * 
+     * @param getBlobRequest
+     *        Represents the input of a get blob operation.
+     * @return Result of the GetBlob operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws BlobIdRequiredException
+     *         A blob ID is required but was not specified.
+     * @throws InvalidBlobIdException
+     *         The specified blob is not valid.
+     * @throws BlobIdDoesNotExistException
+     *         The specified blob does not exist.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @throws FileTooLargeException
+     *         The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in
+     *         AWS CodeCommit, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS
+     *         CodeCommit User Guide</a>.
+     * @sample AWSCodeCommit.GetBlob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBlob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetBlobResult getBlob(GetBlobRequest getBlobRequest);
 
     /**
      * <p>
@@ -319,6 +462,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     GetBranchResult getBranch(GetBranchRequest getBranchRequest);
 
@@ -357,8 +502,61 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommit" target="_top">AWS API
+     *      Documentation</a>
      */
     GetCommitResult getCommit(GetCommitRequest getCommitRequest);
+
+    /**
+     * <p>
+     * Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or
+     * other fully qualified reference). Results can be limited to a specified path.
+     * </p>
+     * 
+     * @param getDifferencesRequest
+     * @return Result of the GetDifferences operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws InvalidContinuationTokenException
+     *         The specified continuation token is not valid.
+     * @throws InvalidMaxResultsException
+     *         The specified number of maximum results is not valid.
+     * @throws InvalidCommitIdException
+     *         The specified commit ID is not valid.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws PathDoesNotExistException
+     *         The specified path does not exist.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.GetDifferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetDifferences" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetDifferencesResult getDifferences(GetDifferencesRequest getDifferencesRequest);
 
     /**
      * <p>
@@ -397,6 +595,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     GetRepositoryResult getRepository(GetRepositoryRequest getRepositoryRequest);
 
@@ -429,6 +629,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.GetRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     GetRepositoryTriggersResult getRepositoryTriggers(GetRepositoryTriggersRequest getRepositoryTriggersRequest);
 
@@ -463,6 +665,8 @@ public interface AWSCodeCommit {
      * @throws InvalidContinuationTokenException
      *         The specified continuation token is not valid.
      * @sample AWSCodeCommit.ListBranches
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListBranches" target="_top">AWS API
+     *      Documentation</a>
      */
     ListBranchesResult listBranches(ListBranchesRequest listBranchesRequest);
 
@@ -481,6 +685,8 @@ public interface AWSCodeCommit {
      * @throws InvalidContinuationTokenException
      *         The specified continuation token is not valid.
      * @sample AWSCodeCommit.ListRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositories" target="_top">AWS
+     *      API Documentation</a>
      */
     ListRepositoriesResult listRepositories(ListRepositoriesRequest listRepositoriesRequest);
 
@@ -542,6 +748,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.PutRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     PutRepositoryTriggersResult putRepositoryTriggers(PutRepositoryTriggersRequest putRepositoryTriggersRequest);
 
@@ -605,6 +813,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.TestRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/TestRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     TestRepositoryTriggersResult testRepositoryTriggers(TestRepositoryTriggersRequest testRepositoryTriggersRequest);
 
@@ -649,6 +859,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.UpdateDefaultBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateDefaultBranch" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdateDefaultBranchResult updateDefaultBranch(UpdateDefaultBranchRequest updateDefaultBranchRequest);
 
@@ -691,6 +903,8 @@ public interface AWSCodeCommit {
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
      * @sample AWSCodeCommit.UpdateRepositoryDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryDescription"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateRepositoryDescriptionResult updateRepositoryDescription(UpdateRepositoryDescriptionRequest updateRepositoryDescriptionRequest);
 
@@ -719,6 +933,8 @@ public interface AWSCodeCommit {
      *         required repository parameter is missing, or when a specified repository does not exist.
      *         </p>
      * @sample AWSCodeCommit.UpdateRepositoryName
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryName"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateRepositoryNameResult updateRepositoryName(UpdateRepositoryNameRequest updateRepositoryNameRequest);
 

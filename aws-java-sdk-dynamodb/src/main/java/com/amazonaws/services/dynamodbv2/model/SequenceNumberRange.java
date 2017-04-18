@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The beginning and ending sequence numbers for the stream records contained within a shard.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/SequenceNumberRange"
+ *      target="_top">AWS API Documentation</a>
  */
-public class SequenceNumberRange implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SequenceNumberRange implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -126,9 +133,9 @@ public class SequenceNumberRange implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStartingSequenceNumber() != null)
-            sb.append("StartingSequenceNumber: " + getStartingSequenceNumber() + ",");
+            sb.append("StartingSequenceNumber: ").append(getStartingSequenceNumber()).append(",");
         if (getEndingSequenceNumber() != null)
-            sb.append("EndingSequenceNumber: " + getEndingSequenceNumber());
+            sb.append("EndingSequenceNumber: ").append(getEndingSequenceNumber());
         sb.append("}");
         return sb.toString();
     }
@@ -171,5 +178,11 @@ public class SequenceNumberRange implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.SequenceNumberRangeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

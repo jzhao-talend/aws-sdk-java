@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -43,7 +46,8 @@ import java.io.Serializable;
  * Amazon SWF Workflows</a>.
  * </p>
  */
-public class ScheduleLambdaFunctionDecisionAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScheduleLambdaFunctionDecisionAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -271,13 +275,13 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable, C
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getInput() != null)
-            sb.append("Input: " + getInput() + ",");
+            sb.append("Input: ").append(getInput()).append(",");
         if (getStartToCloseTimeout() != null)
-            sb.append("StartToCloseTimeout: " + getStartToCloseTimeout());
+            sb.append("StartToCloseTimeout: ").append(getStartToCloseTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -330,5 +334,12 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable, C
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.ScheduleLambdaFunctionDecisionAttributesMarshaller.getInstance().marshall(this,
+                protocolMarshaller);
     }
 }

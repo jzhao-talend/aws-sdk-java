@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about a deployment group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeploymentGroupInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeploymentGroupInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -93,6 +100,25 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
      * </p>
      */
     private AutoRollbackConfiguration autoRollbackConfiguration;
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     */
+    private DeploymentStyle deploymentStyle;
+    /**
+     * <p>
+     * Information about blue/green deployment options for a deployment group.
+     * </p>
+     */
+    private BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration;
+    /**
+     * <p>
+     * Information about the load balancer to use in a blue/green deployment.
+     * </p>
+     */
+    private LoadBalancerInfo loadBalancerInfo;
 
     /**
      * <p>
@@ -707,6 +733,132 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @param deploymentStyle
+     *        Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *        route deployment traffic behind a load balancer.
+     */
+
+    public void setDeploymentStyle(DeploymentStyle deploymentStyle) {
+        this.deploymentStyle = deploymentStyle;
+    }
+
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @return Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *         route deployment traffic behind a load balancer.
+     */
+
+    public DeploymentStyle getDeploymentStyle() {
+        return this.deploymentStyle;
+    }
+
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @param deploymentStyle
+     *        Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *        route deployment traffic behind a load balancer.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentGroupInfo withDeploymentStyle(DeploymentStyle deploymentStyle) {
+        setDeploymentStyle(deploymentStyle);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for a deployment group.
+     * </p>
+     * 
+     * @param blueGreenDeploymentConfiguration
+     *        Information about blue/green deployment options for a deployment group.
+     */
+
+    public void setBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration) {
+        this.blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for a deployment group.
+     * </p>
+     * 
+     * @return Information about blue/green deployment options for a deployment group.
+     */
+
+    public BlueGreenDeploymentConfiguration getBlueGreenDeploymentConfiguration() {
+        return this.blueGreenDeploymentConfiguration;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for a deployment group.
+     * </p>
+     * 
+     * @param blueGreenDeploymentConfiguration
+     *        Information about blue/green deployment options for a deployment group.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentGroupInfo withBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration) {
+        setBlueGreenDeploymentConfiguration(blueGreenDeploymentConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer to use in a blue/green deployment.
+     * </p>
+     * 
+     * @param loadBalancerInfo
+     *        Information about the load balancer to use in a blue/green deployment.
+     */
+
+    public void setLoadBalancerInfo(LoadBalancerInfo loadBalancerInfo) {
+        this.loadBalancerInfo = loadBalancerInfo;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer to use in a blue/green deployment.
+     * </p>
+     * 
+     * @return Information about the load balancer to use in a blue/green deployment.
+     */
+
+    public LoadBalancerInfo getLoadBalancerInfo() {
+        return this.loadBalancerInfo;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer to use in a blue/green deployment.
+     * </p>
+     * 
+     * @param loadBalancerInfo
+     *        Information about the load balancer to use in a blue/green deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentGroupInfo withLoadBalancerInfo(LoadBalancerInfo loadBalancerInfo) {
+        setLoadBalancerInfo(loadBalancerInfo);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -718,29 +870,35 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getDeploymentGroupId() != null)
-            sb.append("DeploymentGroupId: " + getDeploymentGroupId() + ",");
+            sb.append("DeploymentGroupId: ").append(getDeploymentGroupId()).append(",");
         if (getDeploymentGroupName() != null)
-            sb.append("DeploymentGroupName: " + getDeploymentGroupName() + ",");
+            sb.append("DeploymentGroupName: ").append(getDeploymentGroupName()).append(",");
         if (getDeploymentConfigName() != null)
-            sb.append("DeploymentConfigName: " + getDeploymentConfigName() + ",");
+            sb.append("DeploymentConfigName: ").append(getDeploymentConfigName()).append(",");
         if (getEc2TagFilters() != null)
-            sb.append("Ec2TagFilters: " + getEc2TagFilters() + ",");
+            sb.append("Ec2TagFilters: ").append(getEc2TagFilters()).append(",");
         if (getOnPremisesInstanceTagFilters() != null)
-            sb.append("OnPremisesInstanceTagFilters: " + getOnPremisesInstanceTagFilters() + ",");
+            sb.append("OnPremisesInstanceTagFilters: ").append(getOnPremisesInstanceTagFilters()).append(",");
         if (getAutoScalingGroups() != null)
-            sb.append("AutoScalingGroups: " + getAutoScalingGroups() + ",");
+            sb.append("AutoScalingGroups: ").append(getAutoScalingGroups()).append(",");
         if (getServiceRoleArn() != null)
-            sb.append("ServiceRoleArn: " + getServiceRoleArn() + ",");
+            sb.append("ServiceRoleArn: ").append(getServiceRoleArn()).append(",");
         if (getTargetRevision() != null)
-            sb.append("TargetRevision: " + getTargetRevision() + ",");
+            sb.append("TargetRevision: ").append(getTargetRevision()).append(",");
         if (getTriggerConfigurations() != null)
-            sb.append("TriggerConfigurations: " + getTriggerConfigurations() + ",");
+            sb.append("TriggerConfigurations: ").append(getTriggerConfigurations()).append(",");
         if (getAlarmConfiguration() != null)
-            sb.append("AlarmConfiguration: " + getAlarmConfiguration() + ",");
+            sb.append("AlarmConfiguration: ").append(getAlarmConfiguration()).append(",");
         if (getAutoRollbackConfiguration() != null)
-            sb.append("AutoRollbackConfiguration: " + getAutoRollbackConfiguration());
+            sb.append("AutoRollbackConfiguration: ").append(getAutoRollbackConfiguration()).append(",");
+        if (getDeploymentStyle() != null)
+            sb.append("DeploymentStyle: ").append(getDeploymentStyle()).append(",");
+        if (getBlueGreenDeploymentConfiguration() != null)
+            sb.append("BlueGreenDeploymentConfiguration: ").append(getBlueGreenDeploymentConfiguration()).append(",");
+        if (getLoadBalancerInfo() != null)
+            sb.append("LoadBalancerInfo: ").append(getLoadBalancerInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -803,6 +961,19 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
             return false;
         if (other.getAutoRollbackConfiguration() != null && other.getAutoRollbackConfiguration().equals(this.getAutoRollbackConfiguration()) == false)
             return false;
+        if (other.getDeploymentStyle() == null ^ this.getDeploymentStyle() == null)
+            return false;
+        if (other.getDeploymentStyle() != null && other.getDeploymentStyle().equals(this.getDeploymentStyle()) == false)
+            return false;
+        if (other.getBlueGreenDeploymentConfiguration() == null ^ this.getBlueGreenDeploymentConfiguration() == null)
+            return false;
+        if (other.getBlueGreenDeploymentConfiguration() != null
+                && other.getBlueGreenDeploymentConfiguration().equals(this.getBlueGreenDeploymentConfiguration()) == false)
+            return false;
+        if (other.getLoadBalancerInfo() == null ^ this.getLoadBalancerInfo() == null)
+            return false;
+        if (other.getLoadBalancerInfo() != null && other.getLoadBalancerInfo().equals(this.getLoadBalancerInfo()) == false)
+            return false;
         return true;
     }
 
@@ -823,6 +994,9 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getTriggerConfigurations() == null) ? 0 : getTriggerConfigurations().hashCode());
         hashCode = prime * hashCode + ((getAlarmConfiguration() == null) ? 0 : getAlarmConfiguration().hashCode());
         hashCode = prime * hashCode + ((getAutoRollbackConfiguration() == null) ? 0 : getAutoRollbackConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentStyle() == null) ? 0 : getDeploymentStyle().hashCode());
+        hashCode = prime * hashCode + ((getBlueGreenDeploymentConfiguration() == null) ? 0 : getBlueGreenDeploymentConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getLoadBalancerInfo() == null) ? 0 : getLoadBalancerInfo().hashCode());
         return hashCode;
     }
 
@@ -833,5 +1007,11 @@ public class DeploymentGroupInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.DeploymentGroupInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

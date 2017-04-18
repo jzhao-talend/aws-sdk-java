@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ReservedInstancesOffering StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReservedInstancesOfferingStaxUnmarshaller implements Unmarshaller<ReservedInstancesOffering, StaxUnmarshallerContext> {
 
     public ReservedInstancesOffering unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -95,6 +95,11 @@ public class ReservedInstancesOfferingStaxUnmarshaller implements Unmarshaller<R
                     continue;
                 }
 
+                if (context.testExpression("recurringCharges", targetDepth)) {
+                    reservedInstancesOffering.withRecurringCharges(new ArrayList<RecurringCharge>());
+                    continue;
+                }
+
                 if (context.testExpression("recurringCharges/item", targetDepth)) {
                     reservedInstancesOffering.withRecurringCharges(RecurringChargeStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -102,6 +107,11 @@ public class ReservedInstancesOfferingStaxUnmarshaller implements Unmarshaller<R
 
                 if (context.testExpression("marketplace", targetDepth)) {
                     reservedInstancesOffering.setMarketplace(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("pricingDetailsSet", targetDepth)) {
+                    reservedInstancesOffering.withPricingDetails(new ArrayList<PricingDetail>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateInstanceExportTaskRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.CreateInstanceExportTaskReques
  * Contains the parameters for CreateInstanceExportTask.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<CreateInstanceExportTaskRequest> {
 
@@ -266,13 +269,13 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getTargetEnvironment() != null)
-            sb.append("TargetEnvironment: " + getTargetEnvironment() + ",");
+            sb.append("TargetEnvironment: ").append(getTargetEnvironment()).append(",");
         if (getExportToS3Task() != null)
-            sb.append("ExportToS3Task: " + getExportToS3Task());
+            sb.append("ExportToS3Task: ").append(getExportToS3Task());
         sb.append("}");
         return sb.toString();
     }

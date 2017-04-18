@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.support.AWSSupportClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -122,6 +126,7 @@ import com.amazonaws.services.support.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSSupportClient extends AmazonWebServiceClient implements AWSSupport {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -134,38 +139,39 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AttachmentSetIdNotFound").withModeledClass(
-                            com.amazonaws.services.support.model.AttachmentSetIdNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CaseCreationLimitExceeded").withModeledClass(
-                            com.amazonaws.services.support.model.CaseCreationLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AttachmentIdNotFound").withModeledClass(
-                            com.amazonaws.services.support.model.AttachmentIdNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AttachmentSetExpired").withModeledClass(
-                            com.amazonaws.services.support.model.AttachmentSetExpiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AttachmentLimitExceeded").withModeledClass(
-                            com.amazonaws.services.support.model.AttachmentLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CaseIdNotFound").withModeledClass(
-                            com.amazonaws.services.support.model.CaseIdNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DescribeAttachmentLimitExceeded").withModeledClass(
-                            com.amazonaws.services.support.model.DescribeAttachmentLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
-                            com.amazonaws.services.support.model.InternalServerErrorException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AttachmentSetSizeLimitExceeded").withModeledClass(
-                            com.amazonaws.services.support.model.AttachmentSetSizeLimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.support.model.AWSSupportException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetIdNotFound").withModeledClass(
+                                    com.amazonaws.services.support.model.AttachmentSetIdNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CaseCreationLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.support.model.CaseCreationLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentIdNotFound").withModeledClass(
+                                    com.amazonaws.services.support.model.AttachmentIdNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetExpired").withModeledClass(
+                                    com.amazonaws.services.support.model.AttachmentSetExpiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.support.model.AttachmentLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CaseIdNotFound").withModeledClass(
+                                    com.amazonaws.services.support.model.CaseIdNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DescribeAttachmentLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.support.model.DescribeAttachmentLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
+                                    com.amazonaws.services.support.model.InternalServerErrorException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetSizeLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.support.model.AttachmentSetSizeLimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.support.model.AWSSupportException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS Support. A credentials provider chain will be used that
@@ -181,7 +187,9 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSSupportClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSSupportClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -204,7 +212,9 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSSupportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSupportClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -218,7 +228,10 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSSupportClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSSupportClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSSupportClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -236,7 +249,10 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Support (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSSupportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSupportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSupportClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -253,7 +269,9 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSSupportClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSSupportClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -271,7 +289,10 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Support (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSSupportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSupportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSupportClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -291,12 +312,20 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSSupportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSupportClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSSupportClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSSupportClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSSupportClientBuilder builder() {
+        return AWSSupportClientBuilder.standard();
     }
 
     /**
@@ -353,9 +382,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws AttachmentLimitExceededException
      *         The limit for the number of attachment sets created in a short period of time has been exceeded.
      * @sample AWSSupport.AddAttachmentsToSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AddAttachmentsToSetResult addAttachmentsToSet(AddAttachmentsToSetRequest addAttachmentsToSetRequest) {
+    public AddAttachmentsToSetResult addAttachmentsToSet(AddAttachmentsToSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddAttachmentsToSet(request);
+    }
+
+    @SdkInternalApi
+    final AddAttachmentsToSetResult executeAddAttachmentsToSet(AddAttachmentsToSetRequest addAttachmentsToSetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addAttachmentsToSetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -365,7 +403,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddAttachmentsToSetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addAttachmentsToSetRequest));
+                request = new AddAttachmentsToSetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addAttachmentsToSetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -410,9 +448,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws AttachmentSetExpiredException
      *         The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
      * @sample AWSSupport.AddCommunicationToCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AddCommunicationToCaseResult addCommunicationToCase(AddCommunicationToCaseRequest addCommunicationToCaseRequest) {
+    public AddCommunicationToCaseResult addCommunicationToCase(AddCommunicationToCaseRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddCommunicationToCase(request);
+    }
+
+    @SdkInternalApi
+    final AddCommunicationToCaseResult executeAddCommunicationToCase(AddCommunicationToCaseRequest addCommunicationToCaseRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addCommunicationToCaseRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -422,7 +469,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddCommunicationToCaseRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addCommunicationToCaseRequest));
+                request = new AddCommunicationToCaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addCommunicationToCaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -529,9 +576,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws AttachmentSetExpiredException
      *         The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
      * @sample AWSSupport.CreateCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateCaseResult createCase(CreateCaseRequest createCaseRequest) {
+    public CreateCaseResult createCase(CreateCaseRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateCase(request);
+    }
+
+    @SdkInternalApi
+    final CreateCaseResult executeCreateCase(CreateCaseRequest createCaseRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createCaseRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -541,7 +597,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateCaseRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createCaseRequest));
+                request = new CreateCaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createCaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -577,9 +633,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws AttachmentIdNotFoundException
      *         An attachment with the specified ID could not be found.
      * @sample AWSSupport.DescribeAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeAttachmentResult describeAttachment(DescribeAttachmentRequest describeAttachmentRequest) {
+    public DescribeAttachmentResult describeAttachment(DescribeAttachmentRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAttachment(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAttachmentResult executeDescribeAttachment(DescribeAttachmentRequest describeAttachmentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAttachmentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -589,7 +654,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeAttachmentRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeAttachmentRequest));
+                request = new DescribeAttachmentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeAttachmentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -643,9 +708,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.DescribeCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeCasesResult describeCases(DescribeCasesRequest describeCasesRequest) {
+    public DescribeCasesResult describeCases(DescribeCasesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCases(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCasesResult executeDescribeCases(DescribeCasesRequest describeCasesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCasesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -655,7 +729,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeCasesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCasesRequest));
+                request = new DescribeCasesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCasesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -702,9 +776,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.DescribeCommunications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeCommunicationsResult describeCommunications(DescribeCommunicationsRequest describeCommunicationsRequest) {
+    public DescribeCommunicationsResult describeCommunications(DescribeCommunicationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCommunications(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCommunicationsResult executeDescribeCommunications(DescribeCommunicationsRequest describeCommunicationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCommunicationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -714,7 +797,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeCommunicationsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCommunicationsRequest));
+                request = new DescribeCommunicationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCommunicationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -753,9 +836,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeServicesResult describeServices(DescribeServicesRequest describeServicesRequest) {
+    public DescribeServicesResult describeServices(DescribeServicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeServices(request);
+    }
+
+    @SdkInternalApi
+    final DescribeServicesResult executeDescribeServices(DescribeServicesRequest describeServicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeServicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -765,7 +857,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeServicesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeServicesRequest));
+                request = new DescribeServicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeServicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -800,9 +892,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeSeverityLevels
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeSeverityLevelsResult describeSeverityLevels(DescribeSeverityLevelsRequest describeSeverityLevelsRequest) {
+    public DescribeSeverityLevelsResult describeSeverityLevels(DescribeSeverityLevelsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSeverityLevels(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSeverityLevelsResult executeDescribeSeverityLevels(DescribeSeverityLevelsRequest describeSeverityLevelsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSeverityLevelsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -812,7 +913,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeSeverityLevelsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeSeverityLevelsRequest));
+                request = new DescribeSeverityLevelsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeSeverityLevelsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -855,10 +956,20 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckRefreshStatuses
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTrustedAdvisorCheckRefreshStatusesResult describeTrustedAdvisorCheckRefreshStatuses(
+    public DescribeTrustedAdvisorCheckRefreshStatusesResult describeTrustedAdvisorCheckRefreshStatuses(DescribeTrustedAdvisorCheckRefreshStatusesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTrustedAdvisorCheckRefreshStatuses(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTrustedAdvisorCheckRefreshStatusesResult executeDescribeTrustedAdvisorCheckRefreshStatuses(
             DescribeTrustedAdvisorCheckRefreshStatusesRequest describeTrustedAdvisorCheckRefreshStatusesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTrustedAdvisorCheckRefreshStatusesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -868,7 +979,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTrustedAdvisorCheckRefreshStatusesRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeTrustedAdvisorCheckRefreshStatusesRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeTrustedAdvisorCheckRefreshStatusesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -941,10 +1052,19 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTrustedAdvisorCheckResultResult describeTrustedAdvisorCheckResult(
+    public DescribeTrustedAdvisorCheckResultResult describeTrustedAdvisorCheckResult(DescribeTrustedAdvisorCheckResultRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTrustedAdvisorCheckResult(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTrustedAdvisorCheckResultResult executeDescribeTrustedAdvisorCheckResult(
             DescribeTrustedAdvisorCheckResultRequest describeTrustedAdvisorCheckResultRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTrustedAdvisorCheckResultRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -954,7 +1074,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTrustedAdvisorCheckResultRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeTrustedAdvisorCheckResultRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeTrustedAdvisorCheckResultRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -989,10 +1109,19 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorCheckSummaries
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTrustedAdvisorCheckSummariesResult describeTrustedAdvisorCheckSummaries(
+    public DescribeTrustedAdvisorCheckSummariesResult describeTrustedAdvisorCheckSummaries(DescribeTrustedAdvisorCheckSummariesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTrustedAdvisorCheckSummaries(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTrustedAdvisorCheckSummariesResult executeDescribeTrustedAdvisorCheckSummaries(
             DescribeTrustedAdvisorCheckSummariesRequest describeTrustedAdvisorCheckSummariesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTrustedAdvisorCheckSummariesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1002,7 +1131,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTrustedAdvisorCheckSummariesRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeTrustedAdvisorCheckSummariesRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeTrustedAdvisorCheckSummariesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1035,9 +1164,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.DescribeTrustedAdvisorChecks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTrustedAdvisorChecksResult describeTrustedAdvisorChecks(DescribeTrustedAdvisorChecksRequest describeTrustedAdvisorChecksRequest) {
+    public DescribeTrustedAdvisorChecksResult describeTrustedAdvisorChecks(DescribeTrustedAdvisorChecksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTrustedAdvisorChecks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTrustedAdvisorChecksResult executeDescribeTrustedAdvisorChecks(DescribeTrustedAdvisorChecksRequest describeTrustedAdvisorChecksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTrustedAdvisorChecksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1047,7 +1185,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTrustedAdvisorChecksRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeTrustedAdvisorChecksRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeTrustedAdvisorChecksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1106,9 +1244,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws InternalServerErrorException
      *         An internal server error occurred.
      * @sample AWSSupport.RefreshTrustedAdvisorCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RefreshTrustedAdvisorCheckResult refreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest refreshTrustedAdvisorCheckRequest) {
+    public RefreshTrustedAdvisorCheckResult refreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeRefreshTrustedAdvisorCheck(request);
+    }
+
+    @SdkInternalApi
+    final RefreshTrustedAdvisorCheckResult executeRefreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest refreshTrustedAdvisorCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(refreshTrustedAdvisorCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1118,7 +1265,8 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RefreshTrustedAdvisorCheckRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(refreshTrustedAdvisorCheckRequest));
+                request = new RefreshTrustedAdvisorCheckRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(refreshTrustedAdvisorCheckRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1151,9 +1299,18 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
      * @throws CaseIdNotFoundException
      *         The requested <code>caseId</code> could not be located.
      * @sample AWSSupport.ResolveCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResolveCaseResult resolveCase(ResolveCaseRequest resolveCaseRequest) {
+    public ResolveCaseResult resolveCase(ResolveCaseRequest request) {
+        request = beforeClientExecution(request);
+        return executeResolveCase(request);
+    }
+
+    @SdkInternalApi
+    final ResolveCaseResult executeResolveCase(ResolveCaseRequest resolveCaseRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resolveCaseRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1163,7 +1320,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ResolveCaseRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(resolveCaseRequest));
+                request = new ResolveCaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resolveCaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

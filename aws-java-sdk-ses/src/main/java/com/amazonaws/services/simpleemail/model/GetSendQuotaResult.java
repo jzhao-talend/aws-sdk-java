@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last
  * 24 hours.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendQuota" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetSendQuotaResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -209,11 +214,11 @@ public class GetSendQuotaResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMax24HourSend() != null)
-            sb.append("Max24HourSend: " + getMax24HourSend() + ",");
+            sb.append("Max24HourSend: ").append(getMax24HourSend()).append(",");
         if (getMaxSendRate() != null)
-            sb.append("MaxSendRate: " + getMaxSendRate() + ",");
+            sb.append("MaxSendRate: ").append(getMaxSendRate()).append(",");
         if (getSentLast24Hours() != null)
-            sb.append("SentLast24Hours: " + getSentLast24Hours());
+            sb.append("SentLast24Hours: ").append(getSentLast24Hours());
         sb.append("}");
         return sb.toString();
     }
@@ -262,4 +267,5 @@ public class GetSendQuotaResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

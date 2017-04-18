@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies the type of update to perform to an <a>IPSet</a> with <a>UpdateIPSet</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/IPSetUpdate" target="_top">AWS API
+ *      Documentation</a>
  */
-public class IPSetUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class IPSetUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -29,8 +36,8 @@ public class IPSetUpdate implements Serializable, Cloneable {
     private String action;
     /**
      * <p>
-     * The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests originate
-     * from.
+     * The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web
+     * requests originate from.
      * </p>
      */
     private IPSetDescriptor iPSetDescriptor;
@@ -110,13 +117,13 @@ public class IPSetUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests originate
-     * from.
+     * The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web
+     * requests originate from.
      * </p>
      * 
      * @param iPSetDescriptor
-     *        The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests
-     *        originate from.
+     *        The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation)
+     *        that web requests originate from.
      */
 
     public void setIPSetDescriptor(IPSetDescriptor iPSetDescriptor) {
@@ -125,12 +132,12 @@ public class IPSetUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests originate
-     * from.
+     * The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web
+     * requests originate from.
      * </p>
      * 
-     * @return The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests
-     *         originate from.
+     * @return The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation)
+     *         that web requests originate from.
      */
 
     public IPSetDescriptor getIPSetDescriptor() {
@@ -139,13 +146,13 @@ public class IPSetUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests originate
-     * from.
+     * The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web
+     * requests originate from.
      * </p>
      * 
      * @param iPSetDescriptor
-     *        The IP address type (<code>IPV4</code>) and the IP address range (in CIDR notation) that web requests
-     *        originate from.
+     *        The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation)
+     *        that web requests originate from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -166,9 +173,9 @@ public class IPSetUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAction() != null)
-            sb.append("Action: " + getAction() + ",");
+            sb.append("Action: ").append(getAction()).append(",");
         if (getIPSetDescriptor() != null)
-            sb.append("IPSetDescriptor: " + getIPSetDescriptor());
+            sb.append("IPSetDescriptor: ").append(getIPSetDescriptor());
         sb.append("}");
         return sb.toString();
     }
@@ -211,5 +218,11 @@ public class IPSetUpdate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.IPSetUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

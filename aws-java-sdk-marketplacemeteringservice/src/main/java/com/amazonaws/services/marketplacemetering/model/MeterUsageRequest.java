@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.marketplacemetering.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/meteringmarketplace-2016-01-14/MeterUsage" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -35,7 +40,7 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private java.util.Date timestamp;
     /**
      * <p>
-     * It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     * It will be one of the fcp dimension name provided during the publishing of the product.
      * </p>
      */
     private String usageDimension;
@@ -144,11 +149,11 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     * It will be one of the fcp dimension name provided during the publishing of the product.
      * </p>
      * 
      * @param usageDimension
-     *        It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     *        It will be one of the fcp dimension name provided during the publishing of the product.
      */
 
     public void setUsageDimension(String usageDimension) {
@@ -157,10 +162,10 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     * It will be one of the fcp dimension name provided during the publishing of the product.
      * </p>
      * 
-     * @return It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     * @return It will be one of the fcp dimension name provided during the publishing of the product.
      */
 
     public String getUsageDimension() {
@@ -169,11 +174,11 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     * It will be one of the fcp dimension name provided during the publishing of the product.
      * </p>
      * 
      * @param usageDimension
-     *        It will be one of the 'fcp dimension name' provided during the publishing of the product.
+     *        It will be one of the fcp dimension name provided during the publishing of the product.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -294,15 +299,15 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProductCode() != null)
-            sb.append("ProductCode: " + getProductCode() + ",");
+            sb.append("ProductCode: ").append(getProductCode()).append(",");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp() + ",");
+            sb.append("Timestamp: ").append(getTimestamp()).append(",");
         if (getUsageDimension() != null)
-            sb.append("UsageDimension: " + getUsageDimension() + ",");
+            sb.append("UsageDimension: ").append(getUsageDimension()).append(",");
         if (getUsageQuantity() != null)
-            sb.append("UsageQuantity: " + getUsageQuantity() + ",");
+            sb.append("UsageQuantity: ").append(getUsageQuantity()).append(",");
         if (getDryRun() != null)
-            sb.append("DryRun: " + getDryRun());
+            sb.append("DryRun: ").append(getDryRun());
         sb.append("}");
         return sb.toString();
     }
@@ -357,4 +362,5 @@ public class MeterUsageRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public MeterUsageRequest clone() {
         return (MeterUsageRequest) super.clone();
     }
+
 }

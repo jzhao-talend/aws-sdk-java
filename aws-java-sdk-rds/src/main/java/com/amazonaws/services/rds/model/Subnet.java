@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,16 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * This data type is used as a response element in the <a>DescribeDBSubnetGroups</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/Subnet" target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Subnet implements Serializable, Cloneable {
 
     /**
@@ -154,11 +158,11 @@ public class Subnet implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubnetIdentifier() != null)
-            sb.append("SubnetIdentifier: " + getSubnetIdentifier() + ",");
+            sb.append("SubnetIdentifier: ").append(getSubnetIdentifier()).append(",");
         if (getSubnetAvailabilityZone() != null)
-            sb.append("SubnetAvailabilityZone: " + getSubnetAvailabilityZone() + ",");
+            sb.append("SubnetAvailabilityZone: ").append(getSubnetAvailabilityZone()).append(",");
         if (getSubnetStatus() != null)
-            sb.append("SubnetStatus: " + getSubnetStatus());
+            sb.append("SubnetStatus: ").append(getSubnetStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -207,4 +211,5 @@ public class Subnet implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

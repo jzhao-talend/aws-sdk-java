@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,25 +13,31 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/PutScalingPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can have only
-     * one scaling policy with the same name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      */
     private String fleetId;
@@ -132,13 +138,13 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can have only
-     * one scaling policy with the same name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can
-     *        have only one scaling policy with the same name.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet
+     *        can have only one scaling policy with the same name.
      */
 
     public void setName(String name) {
@@ -147,12 +153,12 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can have only
-     * one scaling policy with the same name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
-     * @return Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can
-     *         have only one scaling policy with the same name.
+     * @return Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A
+     *         fleet can have only one scaling policy with the same name.
      */
 
     public String getName() {
@@ -161,13 +167,13 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can have only
-     * one scaling policy with the same name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique. A fleet can
-     *        have only one scaling policy with the same name.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet
+     *        can have only one scaling policy with the same name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,11 +184,11 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet to scale with this policy.
+     *        Unique identifier for a fleet to apply this policy to.
      */
 
     public void setFleetId(String fleetId) {
@@ -191,10 +197,10 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
-     * @return Unique identity for the fleet to scale with this policy.
+     * @return Unique identifier for a fleet to apply this policy to.
      */
 
     public String getFleetId() {
@@ -203,11 +209,11 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet to scale with this policy.
+     *        Unique identifier for a fleet to apply this policy to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1140,21 +1146,21 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getScalingAdjustment() != null)
-            sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+            sb.append("ScalingAdjustment: ").append(getScalingAdjustment()).append(",");
         if (getScalingAdjustmentType() != null)
-            sb.append("ScalingAdjustmentType: " + getScalingAdjustmentType() + ",");
+            sb.append("ScalingAdjustmentType: ").append(getScalingAdjustmentType()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: " + getThreshold() + ",");
+            sb.append("Threshold: ").append(getThreshold()).append(",");
         if (getComparisonOperator() != null)
-            sb.append("ComparisonOperator: " + getComparisonOperator() + ",");
+            sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
         if (getEvaluationPeriods() != null)
-            sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+            sb.append("EvaluationPeriods: ").append(getEvaluationPeriods()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName());
+            sb.append("MetricName: ").append(getMetricName());
         sb.append("}");
         return sb.toString();
     }
@@ -1224,4 +1230,5 @@ public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceReque
     public PutScalingPolicyRequest clone() {
         return (PutScalingPolicyRequest) super.clone();
     }
+
 }

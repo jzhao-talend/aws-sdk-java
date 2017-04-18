@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the possible values for a configuration option.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ConfigurationOptionDescription"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ConfigurationOptionDescription implements Serializable, Cloneable {
 
     /**
@@ -1174,27 +1179,27 @@ public class ConfigurationOptionDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDefaultValue() != null)
-            sb.append("DefaultValue: " + getDefaultValue() + ",");
+            sb.append("DefaultValue: ").append(getDefaultValue()).append(",");
         if (getChangeSeverity() != null)
-            sb.append("ChangeSeverity: " + getChangeSeverity() + ",");
+            sb.append("ChangeSeverity: ").append(getChangeSeverity()).append(",");
         if (getUserDefined() != null)
-            sb.append("UserDefined: " + getUserDefined() + ",");
+            sb.append("UserDefined: ").append(getUserDefined()).append(",");
         if (getValueType() != null)
-            sb.append("ValueType: " + getValueType() + ",");
+            sb.append("ValueType: ").append(getValueType()).append(",");
         if (getValueOptions() != null)
-            sb.append("ValueOptions: " + getValueOptions() + ",");
+            sb.append("ValueOptions: ").append(getValueOptions()).append(",");
         if (getMinValue() != null)
-            sb.append("MinValue: " + getMinValue() + ",");
+            sb.append("MinValue: ").append(getMinValue()).append(",");
         if (getMaxValue() != null)
-            sb.append("MaxValue: " + getMaxValue() + ",");
+            sb.append("MaxValue: ").append(getMaxValue()).append(",");
         if (getMaxLength() != null)
-            sb.append("MaxLength: " + getMaxLength() + ",");
+            sb.append("MaxLength: ").append(getMaxLength()).append(",");
         if (getRegex() != null)
-            sb.append("Regex: " + getRegex());
+            sb.append("Regex: ").append(getRegex());
         sb.append("}");
         return sb.toString();
     }
@@ -1283,4 +1288,5 @@ public class ConfigurationOptionDescription implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

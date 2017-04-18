@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeInternetGatewaysRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeInternetGatewaysReques
  * Contains the parameters for DescribeInternetGateways.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeInternetGatewaysRequest> {
 
@@ -57,7 +60,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -195,7 +200,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -236,6 +243,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -285,7 +295,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -327,6 +339,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -378,7 +393,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -425,6 +442,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -478,7 +498,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -520,6 +542,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -568,9 +593,9 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInternetGatewayIds() != null)
-            sb.append("InternetGatewayIds: " + getInternetGatewayIds() + ",");
+            sb.append("InternetGatewayIds: ").append(getInternetGatewayIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters());
         sb.append("}");
         return sb.toString();
     }

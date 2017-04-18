@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an entry in a list of grants.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GrantListEntry" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GrantListEntry implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GrantListEntry implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -516,23 +523,23 @@ public class GrantListEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getGrantId() != null)
-            sb.append("GrantId: " + getGrantId() + ",");
+            sb.append("GrantId: ").append(getGrantId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getGranteePrincipal() != null)
-            sb.append("GranteePrincipal: " + getGranteePrincipal() + ",");
+            sb.append("GranteePrincipal: ").append(getGranteePrincipal()).append(",");
         if (getRetiringPrincipal() != null)
-            sb.append("RetiringPrincipal: " + getRetiringPrincipal() + ",");
+            sb.append("RetiringPrincipal: ").append(getRetiringPrincipal()).append(",");
         if (getIssuingAccount() != null)
-            sb.append("IssuingAccount: " + getIssuingAccount() + ",");
+            sb.append("IssuingAccount: ").append(getIssuingAccount()).append(",");
         if (getOperations() != null)
-            sb.append("Operations: " + getOperations() + ",");
+            sb.append("Operations: ").append(getOperations()).append(",");
         if (getConstraints() != null)
-            sb.append("Constraints: " + getConstraints());
+            sb.append("Constraints: ").append(getConstraints());
         sb.append("}");
         return sb.toString();
     }
@@ -610,5 +617,11 @@ public class GrantListEntry implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kms.model.transform.GrantListEntryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

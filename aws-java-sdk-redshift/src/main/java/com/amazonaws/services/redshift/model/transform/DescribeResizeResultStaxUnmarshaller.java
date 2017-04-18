@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.redshift.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.redshift.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * DescribeResizeResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeResizeResultStaxUnmarshaller implements Unmarshaller<DescribeResizeResult, StaxUnmarshallerContext> {
 
     public DescribeResizeResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -65,13 +65,28 @@ public class DescribeResizeResultStaxUnmarshaller implements Unmarshaller<Descri
                     continue;
                 }
 
+                if (context.testExpression("ImportTablesCompleted", targetDepth)) {
+                    describeResizeResult.withImportTablesCompleted(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("ImportTablesCompleted/member", targetDepth)) {
                     describeResizeResult.withImportTablesCompleted(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("ImportTablesInProgress", targetDepth)) {
+                    describeResizeResult.withImportTablesInProgress(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("ImportTablesInProgress/member", targetDepth)) {
                     describeResizeResult.withImportTablesInProgress(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ImportTablesNotStarted", targetDepth)) {
+                    describeResizeResult.withImportTablesNotStarted(new ArrayList<String>());
                     continue;
                 }
 

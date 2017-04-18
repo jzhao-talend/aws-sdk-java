@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,11 @@ import java.io.Serializable;
  * default cluster the first time you use the Amazon ECS service, but you may also create other clusters. Clusters may
  * contain more than one instance type simultaneously.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Cluster" target="_top">AWS API Documentation</a>
  */
-public class Cluster implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -400,19 +406,19 @@ public class Cluster implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClusterArn() != null)
-            sb.append("ClusterArn: " + getClusterArn() + ",");
+            sb.append("ClusterArn: ").append(getClusterArn()).append(",");
         if (getClusterName() != null)
-            sb.append("ClusterName: " + getClusterName() + ",");
+            sb.append("ClusterName: ").append(getClusterName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getRegisteredContainerInstancesCount() != null)
-            sb.append("RegisteredContainerInstancesCount: " + getRegisteredContainerInstancesCount() + ",");
+            sb.append("RegisteredContainerInstancesCount: ").append(getRegisteredContainerInstancesCount()).append(",");
         if (getRunningTasksCount() != null)
-            sb.append("RunningTasksCount: " + getRunningTasksCount() + ",");
+            sb.append("RunningTasksCount: ").append(getRunningTasksCount()).append(",");
         if (getPendingTasksCount() != null)
-            sb.append("PendingTasksCount: " + getPendingTasksCount() + ",");
+            sb.append("PendingTasksCount: ").append(getPendingTasksCount()).append(",");
         if (getActiveServicesCount() != null)
-            sb.append("ActiveServicesCount: " + getActiveServicesCount());
+            sb.append("ActiveServicesCount: ").append(getActiveServicesCount());
         sb.append("}");
         return sb.toString();
     }
@@ -481,5 +487,11 @@ public class Cluster implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ClusterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

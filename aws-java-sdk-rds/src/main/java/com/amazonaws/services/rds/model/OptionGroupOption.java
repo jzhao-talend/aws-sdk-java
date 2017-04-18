@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Available option.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionGroupOption" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OptionGroupOption implements Serializable, Cloneable {
 
     /**
@@ -827,31 +832,31 @@ public class OptionGroupOption implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getMajorEngineVersion() != null)
-            sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");
+            sb.append("MajorEngineVersion: ").append(getMajorEngineVersion()).append(",");
         if (getMinimumRequiredMinorEngineVersion() != null)
-            sb.append("MinimumRequiredMinorEngineVersion: " + getMinimumRequiredMinorEngineVersion() + ",");
+            sb.append("MinimumRequiredMinorEngineVersion: ").append(getMinimumRequiredMinorEngineVersion()).append(",");
         if (getPortRequired() != null)
-            sb.append("PortRequired: " + getPortRequired() + ",");
+            sb.append("PortRequired: ").append(getPortRequired()).append(",");
         if (getDefaultPort() != null)
-            sb.append("DefaultPort: " + getDefaultPort() + ",");
+            sb.append("DefaultPort: ").append(getDefaultPort()).append(",");
         if (getOptionsDependedOn() != null)
-            sb.append("OptionsDependedOn: " + getOptionsDependedOn() + ",");
+            sb.append("OptionsDependedOn: ").append(getOptionsDependedOn()).append(",");
         if (getOptionsConflictsWith() != null)
-            sb.append("OptionsConflictsWith: " + getOptionsConflictsWith() + ",");
+            sb.append("OptionsConflictsWith: ").append(getOptionsConflictsWith()).append(",");
         if (getPersistent() != null)
-            sb.append("Persistent: " + getPersistent() + ",");
+            sb.append("Persistent: ").append(getPersistent()).append(",");
         if (getPermanent() != null)
-            sb.append("Permanent: " + getPermanent() + ",");
+            sb.append("Permanent: ").append(getPermanent()).append(",");
         if (getOptionGroupOptionSettings() != null)
-            sb.append("OptionGroupOptionSettings: " + getOptionGroupOptionSettings() + ",");
+            sb.append("OptionGroupOptionSettings: ").append(getOptionGroupOptionSettings()).append(",");
         if (getOptionGroupOptionVersions() != null)
-            sb.append("OptionGroupOptionVersions: " + getOptionGroupOptionVersions());
+            sb.append("OptionGroupOptionVersions: ").append(getOptionGroupOptionVersions());
         sb.append("}");
         return sb.toString();
     }
@@ -951,4 +956,5 @@ public class OptionGroupOption implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

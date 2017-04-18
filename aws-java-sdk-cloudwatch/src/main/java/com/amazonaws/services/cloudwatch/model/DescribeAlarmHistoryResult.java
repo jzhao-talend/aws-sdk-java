@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,35 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The output for <a>DescribeAlarmHistory</a>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmHistory" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of alarm histories in JSON format.
+     * The alarm histories, in JSON format.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<AlarmHistoryItem> alarmHistoryItems;
     /**
      * <p>
-     * A string that marks the start of the next batch of returned results.
+     * The token that marks the start of the next batch of returned results.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * A list of alarm histories in JSON format.
+     * The alarm histories, in JSON format.
      * </p>
      * 
-     * @return A list of alarm histories in JSON format.
+     * @return The alarm histories, in JSON format.
      */
 
     public java.util.List<AlarmHistoryItem> getAlarmHistoryItems() {
@@ -51,11 +53,11 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A list of alarm histories in JSON format.
+     * The alarm histories, in JSON format.
      * </p>
      * 
      * @param alarmHistoryItems
-     *        A list of alarm histories in JSON format.
+     *        The alarm histories, in JSON format.
      */
 
     public void setAlarmHistoryItems(java.util.Collection<AlarmHistoryItem> alarmHistoryItems) {
@@ -69,7 +71,7 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A list of alarm histories in JSON format.
+     * The alarm histories, in JSON format.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -78,7 +80,7 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param alarmHistoryItems
-     *        A list of alarm histories in JSON format.
+     *        The alarm histories, in JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -94,11 +96,11 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A list of alarm histories in JSON format.
+     * The alarm histories, in JSON format.
      * </p>
      * 
      * @param alarmHistoryItems
-     *        A list of alarm histories in JSON format.
+     *        The alarm histories, in JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -109,11 +111,11 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A string that marks the start of the next batch of returned results.
+     * The token that marks the start of the next batch of returned results.
      * </p>
      * 
      * @param nextToken
-     *        A string that marks the start of the next batch of returned results.
+     *        The token that marks the start of the next batch of returned results.
      */
 
     public void setNextToken(String nextToken) {
@@ -122,10 +124,10 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A string that marks the start of the next batch of returned results.
+     * The token that marks the start of the next batch of returned results.
      * </p>
      * 
-     * @return A string that marks the start of the next batch of returned results.
+     * @return The token that marks the start of the next batch of returned results.
      */
 
     public String getNextToken() {
@@ -134,11 +136,11 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A string that marks the start of the next batch of returned results.
+     * The token that marks the start of the next batch of returned results.
      * </p>
      * 
      * @param nextToken
-     *        A string that marks the start of the next batch of returned results.
+     *        The token that marks the start of the next batch of returned results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,9 +161,9 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlarmHistoryItems() != null)
-            sb.append("AlarmHistoryItems: " + getAlarmHistoryItems() + ",");
+            sb.append("AlarmHistoryItems: ").append(getAlarmHistoryItems()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -205,4 +207,5 @@ public class DescribeAlarmHistoryResult extends com.amazonaws.AmazonWebServiceRe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.simpleemail;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.simpleemail.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.simpleemail.model.*;
  * corresponding overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonSimpleEmailServiceAsync extends AbstractAmazonSimpleEmailService implements AmazonSimpleEmailServiceAsync {
 
     protected AbstractAmazonSimpleEmailServiceAsync() {
@@ -362,6 +365,7 @@ public class AbstractAmazonSimpleEmailServiceAsync extends AbstractAmazonSimpleE
      *
      * @see #getSendQuotaAsync(GetSendQuotaRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetSendQuotaResult> getSendQuotaAsync(
             com.amazonaws.handlers.AsyncHandler<GetSendQuotaRequest, GetSendQuotaResult> asyncHandler) {
 
@@ -397,6 +401,7 @@ public class AbstractAmazonSimpleEmailServiceAsync extends AbstractAmazonSimpleE
      *
      * @see #getSendStatisticsAsync(GetSendStatisticsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetSendStatisticsResult> getSendStatisticsAsync(
             com.amazonaws.handlers.AsyncHandler<GetSendStatisticsRequest, GetSendStatisticsResult> asyncHandler) {
 
@@ -445,6 +450,7 @@ public class AbstractAmazonSimpleEmailServiceAsync extends AbstractAmazonSimpleE
      *
      * @see #listIdentitiesAsync(ListIdentitiesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListIdentitiesResult> listIdentitiesAsync(
             com.amazonaws.handlers.AsyncHandler<ListIdentitiesRequest, ListIdentitiesResult> asyncHandler) {
 
@@ -519,6 +525,7 @@ public class AbstractAmazonSimpleEmailServiceAsync extends AbstractAmazonSimpleE
      *
      * @see #listVerifiedEmailAddressesAsync(ListVerifiedEmailAddressesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListVerifiedEmailAddressesResult> listVerifiedEmailAddressesAsync(
             com.amazonaws.handlers.AsyncHandler<ListVerifiedEmailAddressesRequest, ListVerifiedEmailAddressesResult> asyncHandler) {
 

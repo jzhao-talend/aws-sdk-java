@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -98,7 +99,11 @@ import java.io.Serializable;
  * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
  * >Cache Node Type-Specific Parameters for Redis</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheNode" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheNode implements Serializable, Cloneable {
 
     /**
@@ -450,19 +455,19 @@ public class CacheNode implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheNodeId() != null)
-            sb.append("CacheNodeId: " + getCacheNodeId() + ",");
+            sb.append("CacheNodeId: ").append(getCacheNodeId()).append(",");
         if (getCacheNodeStatus() != null)
-            sb.append("CacheNodeStatus: " + getCacheNodeStatus() + ",");
+            sb.append("CacheNodeStatus: ").append(getCacheNodeStatus()).append(",");
         if (getCacheNodeCreateTime() != null)
-            sb.append("CacheNodeCreateTime: " + getCacheNodeCreateTime() + ",");
+            sb.append("CacheNodeCreateTime: ").append(getCacheNodeCreateTime()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint() + ",");
+            sb.append("Endpoint: ").append(getEndpoint()).append(",");
         if (getParameterGroupStatus() != null)
-            sb.append("ParameterGroupStatus: " + getParameterGroupStatus() + ",");
+            sb.append("ParameterGroupStatus: ").append(getParameterGroupStatus()).append(",");
         if (getSourceCacheNodeId() != null)
-            sb.append("SourceCacheNodeId: " + getSourceCacheNodeId() + ",");
+            sb.append("SourceCacheNodeId: ").append(getSourceCacheNodeId()).append(",");
         if (getCustomerAvailabilityZone() != null)
-            sb.append("CustomerAvailabilityZone: " + getCustomerAvailabilityZone());
+            sb.append("CustomerAvailabilityZone: ").append(getCustomerAvailabilityZone());
         sb.append("}");
         return sb.toString();
     }
@@ -531,4 +536,5 @@ public class CacheNode implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

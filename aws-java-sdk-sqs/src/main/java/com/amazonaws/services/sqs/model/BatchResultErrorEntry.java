@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,29 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * This is used in the responses of batch API to give a detailed description of the result of an action on each entry in
  * the request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/BatchResultErrorEntry" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The id of an entry in a batch request.
+     * The <code>Id</code> of an entry in a batch request.
      * </p>
      */
     private String id;
     /**
      * <p>
-     * Whether the error happened due to the sender's fault.
+     * Specifies whether the error happened due to the sender's fault.
      * </p>
      */
     private Boolean senderFault;
@@ -49,11 +54,11 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The id of an entry in a batch request.
+     * The <code>Id</code> of an entry in a batch request.
      * </p>
      * 
      * @param id
-     *        The id of an entry in a batch request.
+     *        The <code>Id</code> of an entry in a batch request.
      */
 
     public void setId(String id) {
@@ -62,10 +67,10 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The id of an entry in a batch request.
+     * The <code>Id</code> of an entry in a batch request.
      * </p>
      * 
-     * @return The id of an entry in a batch request.
+     * @return The <code>Id</code> of an entry in a batch request.
      */
 
     public String getId() {
@@ -74,11 +79,11 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The id of an entry in a batch request.
+     * The <code>Id</code> of an entry in a batch request.
      * </p>
      * 
      * @param id
-     *        The id of an entry in a batch request.
+     *        The <code>Id</code> of an entry in a batch request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +94,11 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the error happened due to the sender's fault.
+     * Specifies whether the error happened due to the sender's fault.
      * </p>
      * 
      * @param senderFault
-     *        Whether the error happened due to the sender's fault.
+     *        Specifies whether the error happened due to the sender's fault.
      */
 
     public void setSenderFault(Boolean senderFault) {
@@ -102,10 +107,10 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the error happened due to the sender's fault.
+     * Specifies whether the error happened due to the sender's fault.
      * </p>
      * 
-     * @return Whether the error happened due to the sender's fault.
+     * @return Specifies whether the error happened due to the sender's fault.
      */
 
     public Boolean getSenderFault() {
@@ -114,11 +119,11 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the error happened due to the sender's fault.
+     * Specifies whether the error happened due to the sender's fault.
      * </p>
      * 
      * @param senderFault
-     *        Whether the error happened due to the sender's fault.
+     *        Specifies whether the error happened due to the sender's fault.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,10 +134,10 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the error happened due to the sender's fault.
+     * Specifies whether the error happened due to the sender's fault.
      * </p>
      * 
-     * @return Whether the error happened due to the sender's fault.
+     * @return Specifies whether the error happened due to the sender's fault.
      */
 
     public Boolean isSenderFault() {
@@ -231,13 +236,13 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getSenderFault() != null)
-            sb.append("SenderFault: " + getSenderFault() + ",");
+            sb.append("SenderFault: ").append(getSenderFault()).append(",");
         if (getCode() != null)
-            sb.append("Code: " + getCode() + ",");
+            sb.append("Code: ").append(getCode()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage());
+            sb.append("Message: ").append(getMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -291,4 +296,5 @@ public class BatchResultErrorEntry implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

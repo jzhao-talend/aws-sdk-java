@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a rule.
  * </p>
  */
-public class TopicRule implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TopicRule implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -405,19 +409,19 @@ public class TopicRule implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleName() != null)
-            sb.append("RuleName: " + getRuleName() + ",");
+            sb.append("RuleName: ").append(getRuleName()).append(",");
         if (getSql() != null)
-            sb.append("Sql: " + getSql() + ",");
+            sb.append("Sql: ").append(getSql()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getActions() != null)
-            sb.append("Actions: " + getActions() + ",");
+            sb.append("Actions: ").append(getActions()).append(",");
         if (getRuleDisabled() != null)
-            sb.append("RuleDisabled: " + getRuleDisabled() + ",");
+            sb.append("RuleDisabled: ").append(getRuleDisabled()).append(",");
         if (getAwsIotSqlVersion() != null)
-            sb.append("AwsIotSqlVersion: " + getAwsIotSqlVersion());
+            sb.append("AwsIotSqlVersion: ").append(getAwsIotSqlVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -485,5 +489,11 @@ public class TopicRule implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.iot.model.transform.TopicRuleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

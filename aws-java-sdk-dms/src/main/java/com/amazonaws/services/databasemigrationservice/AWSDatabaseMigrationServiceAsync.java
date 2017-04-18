@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.databasemigrationservice;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.databasemigrationservice.model.*;
 
 /**
@@ -19,14 +21,20 @@ import com.amazonaws.services.databasemigrationservice.model.*;
  * Future object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to
  * receive notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.databasemigrationservice.AbstractAWSDatabaseMigrationServiceAsync} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Database Migration Service</fullname>
  * <p>
  * AWS Database Migration Service (AWS DMS) can migrate your data to and from the most widely used commercial and
- * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora, and
- * MySQL. The service supports homogeneous migrations such as Oracle to Oracle, as well as heterogeneous migrations
- * between different database platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
+ * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora,
+ * MySQL, and SAP Adaptive Server Enterprise (ASE). The service supports homogeneous migrations such as Oracle to
+ * Oracle, as well as heterogeneous migrations between different database platforms, such as Oracle to MySQL or SQL
+ * Server to PostgreSQL.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationService {
 
     /**
@@ -39,6 +47,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param addTagsToResourceRequest
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest);
 
@@ -56,6 +66,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToResourceRequest, AddTagsToResourceResult> asyncHandler);
@@ -68,6 +80,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param createEndpointRequest
      * @return A Java Future containing the result of the CreateEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.CreateEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateEndpointResult> createEndpointAsync(CreateEndpointRequest createEndpointRequest);
 
@@ -83,6 +97,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.CreateEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateEndpointResult> createEndpointAsync(CreateEndpointRequest createEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<CreateEndpointRequest, CreateEndpointResult> asyncHandler);
@@ -95,6 +111,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param createReplicationInstanceRequest
      * @return A Java Future containing the result of the CreateReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.CreateReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationInstanceResult> createReplicationInstanceAsync(
             CreateReplicationInstanceRequest createReplicationInstanceRequest);
@@ -111,6 +129,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.CreateReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationInstanceResult> createReplicationInstanceAsync(
             CreateReplicationInstanceRequest createReplicationInstanceRequest,
@@ -125,6 +145,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the CreateReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.CreateReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationSubnetGroupResult> createReplicationSubnetGroupAsync(
             CreateReplicationSubnetGroupRequest createReplicationSubnetGroupRequest);
@@ -142,6 +164,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the CreateReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.CreateReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationSubnetGroupResult> createReplicationSubnetGroupAsync(
             CreateReplicationSubnetGroupRequest createReplicationSubnetGroupRequest,
@@ -155,6 +179,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param createReplicationTaskRequest
      * @return A Java Future containing the result of the CreateReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.CreateReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationTaskResult> createReplicationTaskAsync(CreateReplicationTaskRequest createReplicationTaskRequest);
 
@@ -170,6 +196,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.CreateReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReplicationTaskResult> createReplicationTaskAsync(CreateReplicationTaskRequest createReplicationTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CreateReplicationTaskRequest, CreateReplicationTaskResult> asyncHandler);
@@ -182,6 +210,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param deleteCertificateRequest
      * @return A Java Future containing the result of the DeleteCertificate operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest);
 
@@ -197,6 +227,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCertificate operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCertificateRequest, DeleteCertificateResult> asyncHandler);
@@ -215,6 +247,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param deleteEndpointRequest
      * @return A Java Future containing the result of the DeleteEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteEndpointResult> deleteEndpointAsync(DeleteEndpointRequest deleteEndpointRequest);
 
@@ -236,6 +270,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteEndpointResult> deleteEndpointAsync(DeleteEndpointRequest deleteEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteEndpointRequest, DeleteEndpointResult> asyncHandler);
@@ -254,6 +290,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param deleteReplicationInstanceRequest
      * @return A Java Future containing the result of the DeleteReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DeleteReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationInstanceResult> deleteReplicationInstanceAsync(
             DeleteReplicationInstanceRequest deleteReplicationInstanceRequest);
@@ -276,6 +314,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationInstanceResult> deleteReplicationInstanceAsync(
             DeleteReplicationInstanceRequest deleteReplicationInstanceRequest,
@@ -290,6 +330,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DeleteReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.DeleteReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationSubnetGroupResult> deleteReplicationSubnetGroupAsync(
             DeleteReplicationSubnetGroupRequest deleteReplicationSubnetGroupRequest);
@@ -307,6 +349,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DeleteReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationSubnetGroupResult> deleteReplicationSubnetGroupAsync(
             DeleteReplicationSubnetGroupRequest deleteReplicationSubnetGroupRequest,
@@ -320,6 +364,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param deleteReplicationTaskRequest
      * @return A Java Future containing the result of the DeleteReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DeleteReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationTaskResult> deleteReplicationTaskAsync(DeleteReplicationTaskRequest deleteReplicationTaskRequest);
 
@@ -335,6 +381,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReplicationTaskResult> deleteReplicationTaskAsync(DeleteReplicationTaskRequest deleteReplicationTaskRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteReplicationTaskRequest, DeleteReplicationTaskResult> asyncHandler);
@@ -352,6 +400,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeAccountAttributesRequest
      * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
             DescribeAccountAttributesRequest describeAccountAttributesRequest);
@@ -373,6 +423,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
             DescribeAccountAttributesRequest describeAccountAttributesRequest,
@@ -386,6 +438,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeCertificatesRequest
      * @return A Java Future containing the result of the DescribeCertificates operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(DescribeCertificatesRequest describeCertificatesRequest);
 
@@ -401,6 +455,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCertificates operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(DescribeCertificatesRequest describeCertificatesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCertificatesRequest, DescribeCertificatesResult> asyncHandler);
@@ -414,6 +470,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeConnectionsRequest
      * @return A Java Future containing the result of the DescribeConnections operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeConnectionsResult> describeConnectionsAsync(DescribeConnectionsRequest describeConnectionsRequest);
 
@@ -430,6 +488,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeConnections operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeConnectionsResult> describeConnectionsAsync(DescribeConnectionsRequest describeConnectionsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeConnectionsRequest, DescribeConnectionsResult> asyncHandler);
@@ -442,6 +502,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeEndpointTypesRequest
      * @return A Java Future containing the result of the DescribeEndpointTypes operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeEndpointTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpointTypes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEndpointTypesResult> describeEndpointTypesAsync(DescribeEndpointTypesRequest describeEndpointTypesRequest);
 
@@ -457,6 +519,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeEndpointTypes operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeEndpointTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpointTypes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEndpointTypesResult> describeEndpointTypesAsync(DescribeEndpointTypesRequest describeEndpointTypesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeEndpointTypesRequest, DescribeEndpointTypesResult> asyncHandler);
@@ -469,6 +533,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeEndpointsRequest
      * @return A Java Future containing the result of the DescribeEndpoints operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEndpointsResult> describeEndpointsAsync(DescribeEndpointsRequest describeEndpointsRequest);
 
@@ -484,6 +550,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeEndpoints operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEndpointsResult> describeEndpointsAsync(DescribeEndpointsRequest describeEndpointsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeEndpointsRequest, DescribeEndpointsResult> asyncHandler);
@@ -497,6 +565,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeOrderableReplicationInstances operation returned by
      *         the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeOrderableReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeOrderableReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeOrderableReplicationInstancesResult> describeOrderableReplicationInstancesAsync(
             DescribeOrderableReplicationInstancesRequest describeOrderableReplicationInstancesRequest);
@@ -514,6 +584,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeOrderableReplicationInstances operation returned by
      *         the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeOrderableReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeOrderableReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeOrderableReplicationInstancesResult> describeOrderableReplicationInstancesAsync(
             DescribeOrderableReplicationInstancesRequest describeOrderableReplicationInstancesRequest,
@@ -528,6 +600,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeRefreshSchemasStatus operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeRefreshSchemasStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeRefreshSchemasStatusResult> describeRefreshSchemasStatusAsync(
             DescribeRefreshSchemasStatusRequest describeRefreshSchemasStatusRequest);
@@ -545,6 +619,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeRefreshSchemasStatus operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeRefreshSchemasStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeRefreshSchemasStatusResult> describeRefreshSchemasStatusAsync(
             DescribeRefreshSchemasStatusRequest describeRefreshSchemasStatusRequest,
@@ -559,6 +635,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeReplicationInstances operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationInstancesResult> describeReplicationInstancesAsync(
             DescribeReplicationInstancesRequest describeReplicationInstancesRequest);
@@ -576,6 +654,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeReplicationInstances operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationInstancesResult> describeReplicationInstancesAsync(
             DescribeReplicationInstancesRequest describeReplicationInstancesRequest,
@@ -590,6 +670,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeReplicationSubnetGroups operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeReplicationSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationSubnetGroupsResult> describeReplicationSubnetGroupsAsync(
             DescribeReplicationSubnetGroupsRequest describeReplicationSubnetGroupsRequest);
@@ -607,6 +689,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the DescribeReplicationSubnetGroups operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeReplicationSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationSubnetGroupsResult> describeReplicationSubnetGroupsAsync(
             DescribeReplicationSubnetGroupsRequest describeReplicationSubnetGroupsRequest,
@@ -620,6 +704,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeReplicationTasksRequest
      * @return A Java Future containing the result of the DescribeReplicationTasks operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeReplicationTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationTasksResult> describeReplicationTasksAsync(DescribeReplicationTasksRequest describeReplicationTasksRequest);
 
@@ -635,6 +721,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReplicationTasks operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeReplicationTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationTasksResult> describeReplicationTasksAsync(DescribeReplicationTasksRequest describeReplicationTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeReplicationTasksRequest, DescribeReplicationTasksResult> asyncHandler);
@@ -648,6 +736,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeSchemasRequest
      * @return A Java Future containing the result of the DescribeSchemas operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSchemasResult> describeSchemasAsync(DescribeSchemasRequest describeSchemasRequest);
 
@@ -664,6 +754,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSchemas operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSchemasResult> describeSchemasAsync(DescribeSchemasRequest describeSchemasRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSchemasRequest, DescribeSchemasResult> asyncHandler);
@@ -677,6 +769,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param describeTableStatisticsRequest
      * @return A Java Future containing the result of the DescribeTableStatistics operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.DescribeTableStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeTableStatistics" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTableStatisticsResult> describeTableStatisticsAsync(DescribeTableStatisticsRequest describeTableStatisticsRequest);
 
@@ -693,6 +787,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTableStatistics operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribeTableStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeTableStatistics" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTableStatisticsResult> describeTableStatisticsAsync(DescribeTableStatisticsRequest describeTableStatisticsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTableStatisticsRequest, DescribeTableStatisticsResult> asyncHandler);
@@ -705,6 +801,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param importCertificateRequest
      * @return A Java Future containing the result of the ImportCertificate operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportCertificateResult> importCertificateAsync(ImportCertificateRequest importCertificateRequest);
 
@@ -720,6 +818,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportCertificate operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportCertificateResult> importCertificateAsync(ImportCertificateRequest importCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<ImportCertificateRequest, ImportCertificateResult> asyncHandler);
@@ -732,6 +832,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param listTagsForResourceRequest
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -747,6 +849,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
@@ -759,6 +863,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param modifyEndpointRequest
      * @return A Java Future containing the result of the ModifyEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.ModifyEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyEndpointResult> modifyEndpointAsync(ModifyEndpointRequest modifyEndpointRequest);
 
@@ -774,6 +880,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyEndpoint operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.ModifyEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyEndpointResult> modifyEndpointAsync(ModifyEndpointRequest modifyEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyEndpointRequest, ModifyEndpointResult> asyncHandler);
@@ -791,6 +899,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param modifyReplicationInstanceRequest
      * @return A Java Future containing the result of the ModifyReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.ModifyReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReplicationInstanceResult> modifyReplicationInstanceAsync(
             ModifyReplicationInstanceRequest modifyReplicationInstanceRequest);
@@ -812,6 +922,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyReplicationInstance operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.ModifyReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReplicationInstanceResult> modifyReplicationInstanceAsync(
             ModifyReplicationInstanceRequest modifyReplicationInstanceRequest,
@@ -826,6 +938,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the ModifyReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsync.ModifyReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReplicationSubnetGroupResult> modifyReplicationSubnetGroupAsync(
             ModifyReplicationSubnetGroupRequest modifyReplicationSubnetGroupRequest);
@@ -843,10 +957,49 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @return A Java Future containing the result of the ModifyReplicationSubnetGroup operation returned by the
      *         service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.ModifyReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReplicationSubnetGroupResult> modifyReplicationSubnetGroupAsync(
             ModifyReplicationSubnetGroupRequest modifyReplicationSubnetGroupRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyReplicationSubnetGroupRequest, ModifyReplicationSubnetGroupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Modifies the specified replication task.
+     * </p>
+     * <p>
+     * You can't modify the task endpoints. The task must be stopped before you can modify it.
+     * </p>
+     * 
+     * @param modifyReplicationTaskRequest
+     * @return A Java Future containing the result of the ModifyReplicationTask operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsync.ModifyReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyReplicationTaskResult> modifyReplicationTaskAsync(ModifyReplicationTaskRequest modifyReplicationTaskRequest);
+
+    /**
+     * <p>
+     * Modifies the specified replication task.
+     * </p>
+     * <p>
+     * You can't modify the task endpoints. The task must be stopped before you can modify it.
+     * </p>
+     * 
+     * @param modifyReplicationTaskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyReplicationTask operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsyncHandler.ModifyReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyReplicationTaskResult> modifyReplicationTaskAsync(ModifyReplicationTaskRequest modifyReplicationTaskRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyReplicationTaskRequest, ModifyReplicationTaskResult> asyncHandler);
 
     /**
      * <p>
@@ -857,6 +1010,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param refreshSchemasRequest
      * @return A Java Future containing the result of the RefreshSchemas operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.RefreshSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RefreshSchemasResult> refreshSchemasAsync(RefreshSchemasRequest refreshSchemasRequest);
 
@@ -873,6 +1028,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RefreshSchemas operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.RefreshSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RefreshSchemasResult> refreshSchemasAsync(RefreshSchemasRequest refreshSchemasRequest,
             com.amazonaws.handlers.AsyncHandler<RefreshSchemasRequest, RefreshSchemasResult> asyncHandler);
@@ -885,6 +1042,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param removeTagsFromResourceRequest
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -900,6 +1059,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest,
             com.amazonaws.handlers.AsyncHandler<RemoveTagsFromResourceRequest, RemoveTagsFromResourceResult> asyncHandler);
@@ -912,6 +1073,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param startReplicationTaskRequest
      * @return A Java Future containing the result of the StartReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.StartReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartReplicationTaskResult> startReplicationTaskAsync(StartReplicationTaskRequest startReplicationTaskRequest);
 
@@ -927,6 +1090,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.StartReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartReplicationTaskResult> startReplicationTaskAsync(StartReplicationTaskRequest startReplicationTaskRequest,
             com.amazonaws.handlers.AsyncHandler<StartReplicationTaskRequest, StartReplicationTaskResult> asyncHandler);
@@ -940,6 +1105,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param stopReplicationTaskRequest
      * @return A Java Future containing the result of the StopReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.StopReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StopReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopReplicationTaskResult> stopReplicationTaskAsync(StopReplicationTaskRequest stopReplicationTaskRequest);
 
@@ -956,6 +1123,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StopReplicationTask operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.StopReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StopReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopReplicationTaskResult> stopReplicationTaskAsync(StopReplicationTaskRequest stopReplicationTaskRequest,
             com.amazonaws.handlers.AsyncHandler<StopReplicationTaskRequest, StopReplicationTaskResult> asyncHandler);
@@ -968,6 +1137,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * @param testConnectionRequest
      * @return A Java Future containing the result of the TestConnection operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.TestConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<TestConnectionResult> testConnectionAsync(TestConnectionRequest testConnectionRequest);
 
@@ -983,6 +1154,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the TestConnection operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsyncHandler.TestConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<TestConnectionResult> testConnectionAsync(TestConnectionRequest testConnectionRequest,
             com.amazonaws.handlers.AsyncHandler<TestConnectionRequest, TestConnectionResult> asyncHandler);

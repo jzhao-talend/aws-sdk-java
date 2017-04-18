@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.ecr.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An object representing authorization data for an Amazon ECR registry.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/AuthorizationData" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AuthorizationData implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AuthorizationData implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -207,11 +214,11 @@ public class AuthorizationData implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAuthorizationToken() != null)
-            sb.append("AuthorizationToken: " + getAuthorizationToken() + ",");
+            sb.append("AuthorizationToken: ").append(getAuthorizationToken()).append(",");
         if (getExpiresAt() != null)
-            sb.append("ExpiresAt: " + getExpiresAt() + ",");
+            sb.append("ExpiresAt: ").append(getExpiresAt()).append(",");
         if (getProxyEndpoint() != null)
-            sb.append("ProxyEndpoint: " + getProxyEndpoint());
+            sb.append("ProxyEndpoint: ").append(getProxyEndpoint());
         sb.append("}");
         return sb.toString();
     }
@@ -259,5 +266,11 @@ public class AuthorizationData implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecr.model.transform.AuthorizationDataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

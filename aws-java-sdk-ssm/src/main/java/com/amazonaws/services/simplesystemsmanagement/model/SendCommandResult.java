@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,33 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/SendCommand" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SendCommandResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The request as it was received by SSM. Also provides the command ID which can be used future references to this
-     * request.
+     * The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     * references to this request.
      * </p>
      */
     private Command command;
 
     /**
      * <p>
-     * The request as it was received by SSM. Also provides the command ID which can be used future references to this
-     * request.
+     * The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     * references to this request.
      * </p>
      * 
      * @param command
-     *        The request as it was received by SSM. Also provides the command ID which can be used future references to
-     *        this request.
+     *        The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     *        references to this request.
      */
 
     public void setCommand(Command command) {
@@ -44,12 +48,12 @@ public class SendCommandResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The request as it was received by SSM. Also provides the command ID which can be used future references to this
-     * request.
+     * The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     * references to this request.
      * </p>
      * 
-     * @return The request as it was received by SSM. Also provides the command ID which can be used future references
-     *         to this request.
+     * @return The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     *         references to this request.
      */
 
     public Command getCommand() {
@@ -58,13 +62,13 @@ public class SendCommandResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The request as it was received by SSM. Also provides the command ID which can be used future references to this
-     * request.
+     * The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     * references to this request.
      * </p>
      * 
      * @param command
-     *        The request as it was received by SSM. Also provides the command ID which can be used future references to
-     *        this request.
+     *        The request as it was received by Systems Manager. Also provides the command ID which can be used future
+     *        references to this request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -85,7 +89,7 @@ public class SendCommandResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCommand() != null)
-            sb.append("Command: " + getCommand());
+            sb.append("Command: ").append(getCommand());
         sb.append("}");
         return sb.toString();
     }
@@ -124,4 +128,5 @@ public class SendCommandResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

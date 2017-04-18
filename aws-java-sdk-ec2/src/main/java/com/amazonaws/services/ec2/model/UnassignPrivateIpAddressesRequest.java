@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.UnassignPrivateIpAddressesRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.UnassignPrivateIpAddressesRequ
  * Contains the parameters for UnassignPrivateIpAddresses.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UnassignPrivateIpAddressesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<UnassignPrivateIpAddressesRequest> {
 
@@ -183,9 +186,9 @@ public class UnassignPrivateIpAddressesRequest extends AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getPrivateIpAddresses() != null)
-            sb.append("PrivateIpAddresses: " + getPrivateIpAddresses());
+            sb.append("PrivateIpAddresses: ").append(getPrivateIpAddresses());
         sb.append("}");
         return sb.toString();
     }

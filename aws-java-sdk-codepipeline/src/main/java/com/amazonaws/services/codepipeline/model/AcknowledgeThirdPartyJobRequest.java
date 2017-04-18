@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of an acknowledge third party job action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeThirdPartyJob"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -31,7 +37,7 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      * </p>
      */
     private String nonce;
@@ -86,12 +92,12 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      * </p>
      * 
      * @param nonce
      *        A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *        only one job worker. This number must be returned in the response.
+     *        only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      */
 
     public void setNonce(String nonce) {
@@ -101,11 +107,11 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      * </p>
      * 
      * @return A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *         only one job worker. This number must be returned in the response.
+     *         only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      */
 
     public String getNonce() {
@@ -115,12 +121,12 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      * </p>
      * 
      * @param nonce
      *        A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *        only one job worker. This number must be returned in the response.
+     *        only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,11 +193,11 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getNonce() != null)
-            sb.append("Nonce: " + getNonce() + ",");
+            sb.append("Nonce: ").append(getNonce()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken());
+            sb.append("ClientToken: ").append(getClientToken());
         sb.append("}");
         return sb.toString();
     }
@@ -236,4 +242,5 @@ public class AcknowledgeThirdPartyJobRequest extends com.amazonaws.AmazonWebServ
     public AcknowledgeThirdPartyJobRequest clone() {
         return (AcknowledgeThirdPartyJobRequest) super.clone();
     }
+
 }

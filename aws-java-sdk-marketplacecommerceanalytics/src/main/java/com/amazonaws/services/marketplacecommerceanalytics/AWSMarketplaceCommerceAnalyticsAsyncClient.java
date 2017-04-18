@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,18 +12,28 @@
  */
 package com.amazonaws.services.marketplacecommerceanalytics;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.marketplacecommerceanalytics.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing AWS Marketplace Commerce Analytics asynchronously. Each asynchronous method will return a
- * Java Future object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be
- * used to receive notification when an asynchronous operation completes.
+ * Client for accessing AWS Marketplace Commerce Analytics asynchronously. Each asynchronous method will return a Java
+ * Future object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to
+ * receive notification when an asynchronous operation completes.
  * <p>
  * Provides AWS Marketplace business intelligence data on-demand.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCommerceAnalyticsClient implements AWSMarketplaceCommerceAnalyticsAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -45,9 +55,11 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -69,10 +81,12 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -85,9 +99,11 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -98,8 +114,12 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -114,10 +134,14 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -132,9 +156,11 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -151,11 +177,13 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -166,10 +194,12 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -183,12 +213,21 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
+     *             and
+     *             {@link AWSMarketplaceCommerceAnalyticsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSMarketplaceCommerceAnalyticsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSMarketplaceCommerceAnalyticsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AWSMarketplaceCommerceAnalyticsAsyncClientBuilder asyncBuilder() {
+        return AWSMarketplaceCommerceAnalyticsAsyncClientBuilder.standard();
     }
 
     /**
@@ -208,7 +247,7 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -221,14 +260,15 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
     @Override
     public java.util.concurrent.Future<GenerateDataSetResult> generateDataSetAsync(final GenerateDataSetRequest request,
             final com.amazonaws.handlers.AsyncHandler<GenerateDataSetRequest, GenerateDataSetResult> asyncHandler) {
+        final GenerateDataSetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GenerateDataSetResult>() {
             @Override
             public GenerateDataSetResult call() throws Exception {
-                GenerateDataSetResult result;
+                GenerateDataSetResult result = null;
 
                 try {
-                    result = generateDataSet(request);
+                    result = executeGenerateDataSet(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -237,7 +277,7 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -253,14 +293,15 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
     @Override
     public java.util.concurrent.Future<StartSupportDataExportResult> startSupportDataExportAsync(final StartSupportDataExportRequest request,
             final com.amazonaws.handlers.AsyncHandler<StartSupportDataExportRequest, StartSupportDataExportResult> asyncHandler) {
+        final StartSupportDataExportRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<StartSupportDataExportResult>() {
             @Override
             public StartSupportDataExportResult call() throws Exception {
-                StartSupportDataExportResult result;
+                StartSupportDataExportResult result = null;
 
                 try {
-                    result = startSupportDataExport(request);
+                    result = executeStartSupportDataExport(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -269,7 +310,7 @@ public class AWSMarketplaceCommerceAnalyticsAsyncClient extends AWSMarketplaceCo
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

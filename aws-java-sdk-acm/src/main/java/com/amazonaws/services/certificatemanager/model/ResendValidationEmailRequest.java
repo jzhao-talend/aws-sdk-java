@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.certificatemanager.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ResendValidationEmail" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -36,7 +41,7 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
     private String certificateArn;
     /**
      * <p>
-     * The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     * The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      * </p>
      */
     private String domain;
@@ -165,11 +170,11 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     * The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      * </p>
      * 
      * @param domain
-     *        The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     *        The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      */
 
     public void setDomain(String domain) {
@@ -178,10 +183,10 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     * The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      * </p>
      * 
-     * @return The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     * @return The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      */
 
     public String getDomain() {
@@ -190,11 +195,11 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     * The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      * </p>
      * 
      * @param domain
-     *        The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.
+     *        The fully qualified domain name (FQDN) of the certificate that needs to be validated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -439,11 +444,11 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getValidationDomain() != null)
-            sb.append("ValidationDomain: " + getValidationDomain());
+            sb.append("ValidationDomain: ").append(getValidationDomain());
         sb.append("}");
         return sb.toString();
     }
@@ -488,4 +493,5 @@ public class ResendValidationEmailRequest extends com.amazonaws.AmazonWebService
     public ResendValidationEmailRequest clone() {
         return (ResendValidationEmailRequest) super.clone();
     }
+
 }

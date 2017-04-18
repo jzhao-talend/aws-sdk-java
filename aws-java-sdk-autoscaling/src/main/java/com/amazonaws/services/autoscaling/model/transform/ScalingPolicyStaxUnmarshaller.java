@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.autoscaling.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.autoscaling.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ScalingPolicy StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScalingPolicyStaxUnmarshaller implements Unmarshaller<ScalingPolicy, StaxUnmarshallerContext> {
 
     public ScalingPolicy unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -90,6 +90,11 @@ public class ScalingPolicyStaxUnmarshaller implements Unmarshaller<ScalingPolicy
                     continue;
                 }
 
+                if (context.testExpression("StepAdjustments", targetDepth)) {
+                    scalingPolicy.withStepAdjustments(new ArrayList<StepAdjustment>());
+                    continue;
+                }
+
                 if (context.testExpression("StepAdjustments/member", targetDepth)) {
                     scalingPolicy.withStepAdjustments(StepAdjustmentStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -102,6 +107,11 @@ public class ScalingPolicyStaxUnmarshaller implements Unmarshaller<ScalingPolicy
 
                 if (context.testExpression("EstimatedInstanceWarmup", targetDepth)) {
                     scalingPolicy.setEstimatedInstanceWarmup(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Alarms", targetDepth)) {
+                    scalingPolicy.withAlarms(new ArrayList<Alarm>());
                     continue;
                 }
 

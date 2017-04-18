@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,35 +13,39 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Tags for a configuration item. Tags are metadata that help you categorize IT assets.
  * </p>
  */
-public class ConfigurationTag implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConfigurationTag implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      */
     private String configurationType;
     /**
      * <p>
-     * The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     * The configuration ID for the item to tag. You can specify a list of keys and values.
      * </p>
      */
     private String configurationId;
     /**
      * <p>
-     * A type of tag to filter on. For example, <i>serverType</i>.
+     * A type of tag on which to filter. For example, <i>serverType</i>.
      * </p>
      */
     private String key;
     /**
      * <p>
-     * A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     * A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      * </p>
      */
     private String value;
@@ -54,11 +58,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      * 
      * @param configurationType
-     *        A type of IT asset that you want to tag.
+     *        A type of IT asset to tag.
      * @see ConfigurationItemType
      */
 
@@ -68,10 +72,10 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      * 
-     * @return A type of IT asset that you want to tag.
+     * @return A type of IT asset to tag.
      * @see ConfigurationItemType
      */
 
@@ -81,11 +85,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      * 
      * @param configurationType
-     *        A type of IT asset that you want to tag.
+     *        A type of IT asset to tag.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ConfigurationItemType
      */
@@ -97,11 +101,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      * 
      * @param configurationType
-     *        A type of IT asset that you want to tag.
+     *        A type of IT asset to tag.
      * @see ConfigurationItemType
      */
 
@@ -111,11 +115,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of IT asset that you want to tag.
+     * A type of IT asset to tag.
      * </p>
      * 
      * @param configurationType
-     *        A type of IT asset that you want to tag.
+     *        A type of IT asset to tag.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ConfigurationItemType
      */
@@ -127,11 +131,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     * The configuration ID for the item to tag. You can specify a list of keys and values.
      * </p>
      * 
      * @param configurationId
-     *        The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     *        The configuration ID for the item to tag. You can specify a list of keys and values.
      */
 
     public void setConfigurationId(String configurationId) {
@@ -140,10 +144,10 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     * The configuration ID for the item to tag. You can specify a list of keys and values.
      * </p>
      * 
-     * @return The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     * @return The configuration ID for the item to tag. You can specify a list of keys and values.
      */
 
     public String getConfigurationId() {
@@ -152,11 +156,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     * The configuration ID for the item to tag. You can specify a list of keys and values.
      * </p>
      * 
      * @param configurationId
-     *        The configuration ID for the item you want to tag. You can specify a list of keys and values.
+     *        The configuration ID for the item to tag. You can specify a list of keys and values.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,11 +171,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of tag to filter on. For example, <i>serverType</i>.
+     * A type of tag on which to filter. For example, <i>serverType</i>.
      * </p>
      * 
      * @param key
-     *        A type of tag to filter on. For example, <i>serverType</i>.
+     *        A type of tag on which to filter. For example, <i>serverType</i>.
      */
 
     public void setKey(String key) {
@@ -180,10 +184,10 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of tag to filter on. For example, <i>serverType</i>.
+     * A type of tag on which to filter. For example, <i>serverType</i>.
      * </p>
      * 
-     * @return A type of tag to filter on. For example, <i>serverType</i>.
+     * @return A type of tag on which to filter. For example, <i>serverType</i>.
      */
 
     public String getKey() {
@@ -192,11 +196,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A type of tag to filter on. For example, <i>serverType</i>.
+     * A type of tag on which to filter. For example, <i>serverType</i>.
      * </p>
      * 
      * @param key
-     *        A type of tag to filter on. For example, <i>serverType</i>.
+     *        A type of tag on which to filter. For example, <i>serverType</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -207,11 +211,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     * A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      * </p>
      * 
      * @param value
-     *        A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     *        A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      */
 
     public void setValue(String value) {
@@ -220,10 +224,10 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     * A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      * </p>
      * 
-     * @return A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     * @return A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      */
 
     public String getValue() {
@@ -232,11 +236,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     * A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      * </p>
      * 
      * @param value
-     *        A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.
+     *        A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -297,15 +301,15 @@ public class ConfigurationTag implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConfigurationType() != null)
-            sb.append("ConfigurationType: " + getConfigurationType() + ",");
+            sb.append("ConfigurationType: ").append(getConfigurationType()).append(",");
         if (getConfigurationId() != null)
-            sb.append("ConfigurationId: " + getConfigurationId() + ",");
+            sb.append("ConfigurationId: ").append(getConfigurationId()).append(",");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getTimeOfCreation() != null)
-            sb.append("TimeOfCreation: " + getTimeOfCreation());
+            sb.append("TimeOfCreation: ").append(getTimeOfCreation());
         sb.append("}");
         return sb.toString();
     }
@@ -363,5 +367,11 @@ public class ConfigurationTag implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationdiscovery.model.transform.ConfigurationTagMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

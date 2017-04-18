@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpledb.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListDomainsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /** The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100. */
@@ -105,9 +105,9 @@ public class ListDomainsRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaxNumberOfDomains() != null)
-            sb.append("MaxNumberOfDomains: " + getMaxNumberOfDomains() + ",");
+            sb.append("MaxNumberOfDomains: ").append(getMaxNumberOfDomains()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -147,4 +147,5 @@ public class ListDomainsRequest extends com.amazonaws.AmazonWebServiceRequest im
     public ListDomainsRequest clone() {
         return (ListDomainsRequest) super.clone();
     }
+
 }

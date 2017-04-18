@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,25 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a <i>BatchGetItem</i> operation.
+ * Represents the input of a <code>BatchGetItem</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/BatchGetItem" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from
-     * that table. Each table name can be used only once per <i>BatchGetItem</i> request.
+     * that table. Each table name can be used only once per <code>BatchGetItem</code> request.
      * </p>
      * <p>
      * Each element in the map of items to retrieve consists of the following:
@@ -33,15 +39,15 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code> (the
-     * default), an eventually consistent read is used.
+     * <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
+     * (the default), an eventually consistent read is used.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     * <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     * <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -76,7 +82,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * the complete list of reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -109,17 +115,17 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each primary
-     * key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to
-     * provide the partition key value. For a composite key, you must provide <i>both</i> the partition key value and
-     * the sort key value.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For each
+     * primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only
+     * need to provide the partition key value. For a composite key, you must provide <i>both</i> the partition key
+     * value and the sort key value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table. These
-     * attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be
-     * separated by commas.
+     * <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the table.
+     * These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
+     * be separated by commas.
      * </p>
      * <p>
      * If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are
@@ -133,26 +139,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> -
-     * </p>
-     * <important>
-     * <p>
-     * This is a legacy parameter, for backward compatibility. New applications should use <i>ProjectionExpression</i>
-     * instead. Do not combine legacy parameters and expression parameters in a single API call; otherwise, DynamoDB
-     * will return a <i>ValidationException</i> exception.
-     * </p>
-     * <p>
-     * This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve individual
-     * elements within a List or a Map.
-     * </p>
-     * </important>
-     * <p>
-     * The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes will be
-     * returned. If any of the requested attributes are not found, they will not appear in the result.
-     * </p>
-     * <p>
-     * Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     * capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     * <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead. For
+     * more information, see <a href=
+     * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     * >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </li>
      * </ul>
@@ -174,22 +164,22 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * 
      * @param requestItems
      *        A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *        from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *        from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *        <p>
      *        Each element in the map of items to retrieve consists of the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *        (the default), an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *        <code>false</code> (the default), an eventually consistent read is used.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *        <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *        <i>ExpressionAttributeNames</i>:
+     *        <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *        <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *        <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -224,7 +214,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        (For the complete list of reserved words, see <a
      *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *        Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *        following for <i>ExpressionAttributeNames</i>:
+     *        following for <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -257,16 +247,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *        primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *        you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *        partition key value and the sort key value.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *        each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *        key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *        the partition key value and the sort key value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *        These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *        <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *        table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *        expression must be separated by commas.
      *        </p>
      *        <p>
@@ -281,26 +271,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> -
-     *        </p>
-     *        <important>
-     *        <p>
-     *        This is a legacy parameter, for backward compatibility. New applications should use
-     *        <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *        single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *        </p>
-     *        <p>
-     *        This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *        individual elements within a List or a Map.
-     *        </p>
-     *        </important>
-     *        <p>
-     *        The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *        will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *        </p>
-     *        <p>
-     *        Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *        capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *        <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *        For more information, see <a href=
+     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *        >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *        </p>
      *        </li>
      */
@@ -314,22 +288,22 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * 
      * @param requestItems
      *        A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *        from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *        from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *        <p>
      *        Each element in the map of items to retrieve consists of the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *        (the default), an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *        <code>false</code> (the default), an eventually consistent read is used.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *        <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *        <i>ExpressionAttributeNames</i>:
+     *        <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *        <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *        <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -364,7 +338,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        (For the complete list of reserved words, see <a
      *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *        Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *        following for <i>ExpressionAttributeNames</i>:
+     *        following for <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -397,16 +371,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *        primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *        you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *        partition key value and the sort key value.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *        each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *        key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *        the partition key value and the sort key value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *        These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *        <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *        table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *        expression must be separated by commas.
      *        </p>
      *        <p>
@@ -421,26 +395,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> -
-     *        </p>
-     *        <important>
-     *        <p>
-     *        This is a legacy parameter, for backward compatibility. New applications should use
-     *        <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *        single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *        </p>
-     *        <p>
-     *        This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *        individual elements within a List or a Map.
-     *        </p>
-     *        </important>
-     *        <p>
-     *        The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *        will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *        </p>
-     *        <p>
-     *        Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *        capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *        <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *        For more information, see <a href=
+     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *        >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *        </p>
      *        </li>
      * @param returnConsumedCapacity
@@ -456,22 +414,22 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * 
      * @param requestItems
      *        A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *        from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *        from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *        <p>
      *        Each element in the map of items to retrieve consists of the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *        (the default), an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *        <code>false</code> (the default), an eventually consistent read is used.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *        <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *        <i>ExpressionAttributeNames</i>:
+     *        <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *        <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *        <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -506,7 +464,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        (For the complete list of reserved words, see <a
      *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *        Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *        following for <i>ExpressionAttributeNames</i>:
+     *        following for <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -539,16 +497,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *        primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *        you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *        partition key value and the sort key value.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *        each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *        key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *        the partition key value and the sort key value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *        These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *        <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *        table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *        expression must be separated by commas.
      *        </p>
      *        <p>
@@ -563,26 +521,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> -
-     *        </p>
-     *        <important>
-     *        <p>
-     *        This is a legacy parameter, for backward compatibility. New applications should use
-     *        <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *        single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *        </p>
-     *        <p>
-     *        This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *        individual elements within a List or a Map.
-     *        </p>
-     *        </important>
-     *        <p>
-     *        The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *        will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *        </p>
-     *        <p>
-     *        Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *        capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *        <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *        For more information, see <a href=
+     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *        >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *        </p>
      *        </li>
      * @param returnConsumedCapacity
@@ -595,7 +537,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from
-     * that table. Each table name can be used only once per <i>BatchGetItem</i> request.
+     * that table. Each table name can be used only once per <code>BatchGetItem</code> request.
      * </p>
      * <p>
      * Each element in the map of items to retrieve consists of the following:
@@ -603,15 +545,15 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code> (the
-     * default), an eventually consistent read is used.
+     * <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
+     * (the default), an eventually consistent read is used.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     * <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     * <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -646,7 +588,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * the complete list of reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -679,17 +621,17 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each primary
-     * key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to
-     * provide the partition key value. For a composite key, you must provide <i>both</i> the partition key value and
-     * the sort key value.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For each
+     * primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only
+     * need to provide the partition key value. For a composite key, you must provide <i>both</i> the partition key
+     * value and the sort key value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table. These
-     * attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be
-     * separated by commas.
+     * <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the table.
+     * These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
+     * be separated by commas.
      * </p>
      * <p>
      * If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are
@@ -703,47 +645,31 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> -
-     * </p>
-     * <important>
-     * <p>
-     * This is a legacy parameter, for backward compatibility. New applications should use <i>ProjectionExpression</i>
-     * instead. Do not combine legacy parameters and expression parameters in a single API call; otherwise, DynamoDB
-     * will return a <i>ValidationException</i> exception.
-     * </p>
-     * <p>
-     * This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve individual
-     * elements within a List or a Map.
-     * </p>
-     * </important>
-     * <p>
-     * The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes will be
-     * returned. If any of the requested attributes are not found, they will not appear in the result.
-     * </p>
-     * <p>
-     * Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     * capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     * <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead. For
+     * more information, see <a href=
+     * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     * >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </li>
      * </ul>
      * 
      * @return A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *         from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *         from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *         <p>
      *         Each element in the map of items to retrieve consists of the following:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *         (the default), an eventually consistent read is used.
+     *         <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *         <code>false</code> (the default), an eventually consistent read is used.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *         <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *         <i>ExpressionAttributeNames</i>:
+     *         <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *         <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *         <code>ExpressionAttributeNames</code>:
      *         </p>
      *         <ul>
      *         <li>
@@ -778,7 +704,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         expression. (For the complete list of reserved words, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *         Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *         following for <i>ExpressionAttributeNames</i>:
+     *         following for <code>ExpressionAttributeNames</code>:
      *         </p>
      *         <ul>
      *         <li>
@@ -811,16 +737,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </li>
      *         <li>
      *         <p>
-     *         <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *         primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *         you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *         partition key value and the sort key value.
+     *         <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *         each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *         key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *         the partition key value and the sort key value.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *         These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *         <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *         table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *         expression must be separated by commas.
      *         </p>
      *         <p>
@@ -835,26 +761,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </li>
      *         <li>
      *         <p>
-     *         <i>AttributesToGet</i> -
-     *         </p>
-     *         <important>
-     *         <p>
-     *         This is a legacy parameter, for backward compatibility. New applications should use
-     *         <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *         single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *         </p>
-     *         <p>
-     *         This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *         individual elements within a List or a Map.
-     *         </p>
-     *         </important>
-     *         <p>
-     *         The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *         will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *         </p>
-     *         <p>
-     *         Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *         capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *         <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *         For more information, see <a href=
+     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *         >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *         </p>
      *         </li>
      */
@@ -866,7 +776,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from
-     * that table. Each table name can be used only once per <i>BatchGetItem</i> request.
+     * that table. Each table name can be used only once per <code>BatchGetItem</code> request.
      * </p>
      * <p>
      * Each element in the map of items to retrieve consists of the following:
@@ -874,15 +784,15 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code> (the
-     * default), an eventually consistent read is used.
+     * <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
+     * (the default), an eventually consistent read is used.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     * <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     * <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -917,7 +827,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * the complete list of reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -950,17 +860,17 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each primary
-     * key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to
-     * provide the partition key value. For a composite key, you must provide <i>both</i> the partition key value and
-     * the sort key value.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For each
+     * primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only
+     * need to provide the partition key value. For a composite key, you must provide <i>both</i> the partition key
+     * value and the sort key value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table. These
-     * attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be
-     * separated by commas.
+     * <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the table.
+     * These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
+     * be separated by commas.
      * </p>
      * <p>
      * If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are
@@ -974,48 +884,32 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> -
-     * </p>
-     * <important>
-     * <p>
-     * This is a legacy parameter, for backward compatibility. New applications should use <i>ProjectionExpression</i>
-     * instead. Do not combine legacy parameters and expression parameters in a single API call; otherwise, DynamoDB
-     * will return a <i>ValidationException</i> exception.
-     * </p>
-     * <p>
-     * This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve individual
-     * elements within a List or a Map.
-     * </p>
-     * </important>
-     * <p>
-     * The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes will be
-     * returned. If any of the requested attributes are not found, they will not appear in the result.
-     * </p>
-     * <p>
-     * Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     * capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     * <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead. For
+     * more information, see <a href=
+     * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     * >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </li>
      * </ul>
      * 
      * @param requestItems
      *        A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *        from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *        from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *        <p>
      *        Each element in the map of items to retrieve consists of the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *        (the default), an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *        <code>false</code> (the default), an eventually consistent read is used.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *        <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *        <i>ExpressionAttributeNames</i>:
+     *        <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *        <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *        <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -1050,7 +944,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        (For the complete list of reserved words, see <a
      *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *        Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *        following for <i>ExpressionAttributeNames</i>:
+     *        following for <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -1083,16 +977,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *        primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *        you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *        partition key value and the sort key value.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *        each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *        key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *        the partition key value and the sort key value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *        These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *        <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *        table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *        expression must be separated by commas.
      *        </p>
      *        <p>
@@ -1107,26 +1001,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> -
-     *        </p>
-     *        <important>
-     *        <p>
-     *        This is a legacy parameter, for backward compatibility. New applications should use
-     *        <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *        single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *        </p>
-     *        <p>
-     *        This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *        individual elements within a List or a Map.
-     *        </p>
-     *        </important>
-     *        <p>
-     *        The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *        will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *        </p>
-     *        <p>
-     *        Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *        capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *        <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *        For more information, see <a href=
+     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *        >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *        </p>
      *        </li>
      */
@@ -1138,7 +1016,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from
-     * that table. Each table name can be used only once per <i>BatchGetItem</i> request.
+     * that table. Each table name can be used only once per <code>BatchGetItem</code> request.
      * </p>
      * <p>
      * Each element in the map of items to retrieve consists of the following:
@@ -1146,15 +1024,15 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code> (the
-     * default), an eventually consistent read is used.
+     * <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
+     * (the default), an eventually consistent read is used.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     * <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     * <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -1189,7 +1067,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * the complete list of reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved Words</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the following for
-     * <i>ExpressionAttributeNames</i>:
+     * <code>ExpressionAttributeNames</code>:
      * </p>
      * <ul>
      * <li>
@@ -1222,17 +1100,17 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each primary
-     * key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only need to
-     * provide the partition key value. For a composite key, you must provide <i>both</i> the partition key value and
-     * the sort key value.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For each
+     * primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key, you only
+     * need to provide the partition key value. For a composite key, you must provide <i>both</i> the partition key
+     * value and the sort key value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table. These
-     * attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be
-     * separated by commas.
+     * <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the table.
+     * These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
+     * be separated by commas.
      * </p>
      * <p>
      * If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are
@@ -1246,48 +1124,32 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> -
-     * </p>
-     * <important>
-     * <p>
-     * This is a legacy parameter, for backward compatibility. New applications should use <i>ProjectionExpression</i>
-     * instead. Do not combine legacy parameters and expression parameters in a single API call; otherwise, DynamoDB
-     * will return a <i>ValidationException</i> exception.
-     * </p>
-     * <p>
-     * This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve individual
-     * elements within a List or a Map.
-     * </p>
-     * </important>
-     * <p>
-     * The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes will be
-     * returned. If any of the requested attributes are not found, they will not appear in the result.
-     * </p>
-     * <p>
-     * Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     * capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     * <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead. For
+     * more information, see <a href=
+     * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     * >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </li>
      * </ul>
      * 
      * @param requestItems
      *        A map of one or more table names and, for each table, a map that describes one or more items to retrieve
-     *        from that table. Each table name can be used only once per <i>BatchGetItem</i> request.</p>
+     *        from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
      *        <p>
      *        Each element in the map of items to retrieve consists of the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - If <code>true</code>, a strongly consistent read is used; if <code>false</code>
-     *        (the default), an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - If <code>true</code>, a strongly consistent read is used; if
+     *        <code>false</code> (the default), an eventually consistent read is used.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ExpressionAttributeNames</i> - One or more substitution tokens for attribute names in the
-     *        <i>ProjectionExpression</i> parameter. The following are some use cases for using
-     *        <i>ExpressionAttributeNames</i>:
+     *        <code>ExpressionAttributeNames</code> - One or more substitution tokens for attribute names in the
+     *        <code>ProjectionExpression</code> parameter. The following are some use cases for using
+     *        <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -1322,7 +1184,7 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        (For the complete list of reserved words, see <a
      *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      *        Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this, you could specify the
-     *        following for <i>ExpressionAttributeNames</i>:
+     *        following for <code>ExpressionAttributeNames</code>:
      *        </p>
      *        <ul>
      *        <li>
@@ -1355,16 +1217,16 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table. For each
-     *        primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary key,
-     *        you only need to provide the partition key value. For a composite key, you must provide <i>both</i> the
-     *        partition key value and the sort key value.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table. For
+     *        each primary key, you must provide <i>all</i> of the key attributes. For example, with a simple primary
+     *        key, you only need to provide the partition key value. For a composite key, you must provide <i>both</i>
+     *        the partition key value and the sort key value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProjectionExpression</i> - A string that identifies one or more attributes to retrieve from the table.
-     *        These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
+     *        <code>ProjectionExpression</code> - A string that identifies one or more attributes to retrieve from the
+     *        table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the
      *        expression must be separated by commas.
      *        </p>
      *        <p>
@@ -1379,26 +1241,10 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> -
-     *        </p>
-     *        <important>
-     *        <p>
-     *        This is a legacy parameter, for backward compatibility. New applications should use
-     *        <i>ProjectionExpression</i> instead. Do not combine legacy parameters and expression parameters in a
-     *        single API call; otherwise, DynamoDB will return a <i>ValidationException</i> exception.
-     *        </p>
-     *        <p>
-     *        This parameter allows you to retrieve attributes of type List or Map; however, it cannot retrieve
-     *        individual elements within a List or a Map.
-     *        </p>
-     *        </important>
-     *        <p>
-     *        The names of one or more attributes to retrieve. If no attribute names are provided, then all attributes
-     *        will be returned. If any of the requested attributes are not found, they will not appear in the result.
-     *        </p>
-     *        <p>
-     *        Note that <i>AttributesToGet</i> has no effect on provisioned throughput consumption. DynamoDB determines
-     *        capacity units consumed based on item size, not on the amount of data that is returned to an application.
+     *        <code>AttributesToGet</code> - This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     *        For more information, see <a href=
+     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html"
+     *        >AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1491,9 +1337,9 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRequestItems() != null)
-            sb.append("RequestItems: " + getRequestItems() + ",");
+            sb.append("RequestItems: ").append(getRequestItems()).append(",");
         if (getReturnConsumedCapacity() != null)
-            sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity());
+            sb.append("ReturnConsumedCapacity: ").append(getReturnConsumedCapacity());
         sb.append("}");
         return sb.toString();
     }
@@ -1533,4 +1379,5 @@ public class BatchGetItemRequest extends com.amazonaws.AmazonWebServiceRequest i
     public BatchGetItemRequest clone() {
         return (BatchGetItemRequest) super.clone();
     }
+
 }

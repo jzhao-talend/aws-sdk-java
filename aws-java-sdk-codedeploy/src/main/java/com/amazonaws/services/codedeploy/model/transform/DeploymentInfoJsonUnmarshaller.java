@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.codedeploy.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.codedeploy.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * DeploymentInfo JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeploymentInfoJsonUnmarshaller implements Unmarshaller<DeploymentInfo, JsonUnmarshallerContext> {
 
     public DeploymentInfo unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class DeploymentInfoJsonUnmarshaller implements Unmarshaller<DeploymentIn
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -114,6 +115,30 @@ public class DeploymentInfoJsonUnmarshaller implements Unmarshaller<DeploymentIn
                 if (context.testExpression("rollbackInfo", targetDepth)) {
                     context.nextToken();
                     deploymentInfo.setRollbackInfo(RollbackInfoJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("deploymentStyle", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setDeploymentStyle(DeploymentStyleJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("targetInstances", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setTargetInstances(TargetInstancesJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("instanceTerminationWaitTimeStarted", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setInstanceTerminationWaitTimeStarted(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("blueGreenDeploymentConfiguration", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("loadBalancerInfo", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setLoadBalancerInfo(LoadBalancerInfoJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("additionalDeploymentStatusInfo", targetDepth)) {
+                    context.nextToken();
+                    deploymentInfo.setAdditionalDeploymentStatusInfo(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.securitytoken.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
  * The identity provider (IdP) reported that authentication failed. This might be because the claim is invalid.
@@ -21,6 +23,7 @@ package com.amazonaws.services.securitytoken.model;
  * has expired or has been explicitly revoked.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IDPRejectedClaimException extends com.amazonaws.services.securitytoken.model.AWSSecurityTokenServiceException {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -910,19 +910,19 @@ public class CreateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMLModelId() != null)
-            sb.append("MLModelId: " + getMLModelId() + ",");
+            sb.append("MLModelId: ").append(getMLModelId()).append(",");
         if (getMLModelName() != null)
-            sb.append("MLModelName: " + getMLModelName() + ",");
+            sb.append("MLModelName: ").append(getMLModelName()).append(",");
         if (getMLModelType() != null)
-            sb.append("MLModelType: " + getMLModelType() + ",");
+            sb.append("MLModelType: ").append(getMLModelType()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getTrainingDataSourceId() != null)
-            sb.append("TrainingDataSourceId: " + getTrainingDataSourceId() + ",");
+            sb.append("TrainingDataSourceId: ").append(getTrainingDataSourceId()).append(",");
         if (getRecipe() != null)
-            sb.append("Recipe: " + getRecipe() + ",");
+            sb.append("Recipe: ").append(getRecipe()).append(",");
         if (getRecipeUri() != null)
-            sb.append("RecipeUri: " + getRecipeUri());
+            sb.append("RecipeUri: ").append(getRecipeUri());
         sb.append("}");
         return sb.toString();
     }
@@ -987,4 +987,5 @@ public class CreateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest 
     public CreateMLModelRequest clone() {
         return (CreateMLModelRequest) super.clone();
     }
+
 }

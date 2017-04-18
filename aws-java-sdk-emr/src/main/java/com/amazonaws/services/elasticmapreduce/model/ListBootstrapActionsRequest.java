@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * This input determines which bootstrap actions to retrieve.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListBootstrapActions"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The cluster identifier for the bootstrap actions to list .
+     * The cluster identifier for the bootstrap actions to list.
      * </p>
      */
     private String clusterId;
@@ -37,11 +43,11 @@ public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The cluster identifier for the bootstrap actions to list .
+     * The cluster identifier for the bootstrap actions to list.
      * </p>
      * 
      * @param clusterId
-     *        The cluster identifier for the bootstrap actions to list .
+     *        The cluster identifier for the bootstrap actions to list.
      */
 
     public void setClusterId(String clusterId) {
@@ -50,10 +56,10 @@ public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The cluster identifier for the bootstrap actions to list .
+     * The cluster identifier for the bootstrap actions to list.
      * </p>
      * 
-     * @return The cluster identifier for the bootstrap actions to list .
+     * @return The cluster identifier for the bootstrap actions to list.
      */
 
     public String getClusterId() {
@@ -62,11 +68,11 @@ public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The cluster identifier for the bootstrap actions to list .
+     * The cluster identifier for the bootstrap actions to list.
      * </p>
      * 
      * @param clusterId
-     *        The cluster identifier for the bootstrap actions to list .
+     *        The cluster identifier for the bootstrap actions to list.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,9 +133,9 @@ public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClusterId() != null)
-            sb.append("ClusterId: " + getClusterId() + ",");
+            sb.append("ClusterId: ").append(getClusterId()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -169,4 +175,5 @@ public class ListBootstrapActionsRequest extends com.amazonaws.AmazonWebServiceR
     public ListBootstrapActionsRequest clone() {
         return (ListBootstrapActionsRequest) super.clone();
     }
+
 }

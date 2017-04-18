@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Represents the request to install an Android application (in .apk format) or an iOS application (in .ipa format) as
  * part of a remote access session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/InstallToRemoteAccessSession"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstallToRemoteAccessSessionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -128,9 +134,9 @@ public class InstallToRemoteAccessSessionRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRemoteAccessSessionArn() != null)
-            sb.append("RemoteAccessSessionArn: " + getRemoteAccessSessionArn() + ",");
+            sb.append("RemoteAccessSessionArn: ").append(getRemoteAccessSessionArn()).append(",");
         if (getAppArn() != null)
-            sb.append("AppArn: " + getAppArn());
+            sb.append("AppArn: ").append(getAppArn());
         sb.append("}");
         return sb.toString();
     }
@@ -170,4 +176,5 @@ public class InstallToRemoteAccessSessionRequest extends com.amazonaws.AmazonWeb
     public InstallToRemoteAccessSessionRequest clone() {
         return (InstallToRemoteAccessSessionRequest) super.clone();
     }
+
 }

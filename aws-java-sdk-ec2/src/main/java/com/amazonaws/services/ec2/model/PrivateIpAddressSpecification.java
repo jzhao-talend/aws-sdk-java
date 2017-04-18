@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,35 +13,40 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Describes a secondary private IP address for a network interface.
+ * Describes a secondary private IPv4 address for a network interface.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PrivateIpAddressSpecification" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      */
     private String privateIpAddress;
     /**
      * <p>
-     * Indicates whether the private IP address is the primary private IP address. Only one IP address can be designated
-     * as primary.
+     * Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be
+     * designated as primary.
      * </p>
      */
     private Boolean primary;
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddress
-     *        The private IP addresses.
+     *        The private IPv4 addresses.
      */
 
     public void setPrivateIpAddress(String privateIpAddress) {
@@ -50,10 +55,10 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
-     * @return The private IP addresses.
+     * @return The private IPv4 addresses.
      */
 
     public String getPrivateIpAddress() {
@@ -62,11 +67,11 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddress
-     *        The private IP addresses.
+     *        The private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -77,13 +82,13 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the private IP address is the primary private IP address. Only one IP address can be designated
-     * as primary.
+     * Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be
+     * designated as primary.
      * </p>
      * 
      * @param primary
-     *        Indicates whether the private IP address is the primary private IP address. Only one IP address can be
-     *        designated as primary.
+     *        Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can
+     *        be designated as primary.
      */
 
     public void setPrimary(Boolean primary) {
@@ -92,12 +97,12 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the private IP address is the primary private IP address. Only one IP address can be designated
-     * as primary.
+     * Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be
+     * designated as primary.
      * </p>
      * 
-     * @return Indicates whether the private IP address is the primary private IP address. Only one IP address can be
-     *         designated as primary.
+     * @return Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can
+     *         be designated as primary.
      */
 
     public Boolean getPrimary() {
@@ -106,13 +111,13 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the private IP address is the primary private IP address. Only one IP address can be designated
-     * as primary.
+     * Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be
+     * designated as primary.
      * </p>
      * 
      * @param primary
-     *        Indicates whether the private IP address is the primary private IP address. Only one IP address can be
-     *        designated as primary.
+     *        Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can
+     *        be designated as primary.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -123,12 +128,12 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the private IP address is the primary private IP address. Only one IP address can be designated
-     * as primary.
+     * Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be
+     * designated as primary.
      * </p>
      * 
-     * @return Indicates whether the private IP address is the primary private IP address. Only one IP address can be
-     *         designated as primary.
+     * @return Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can
+     *         be designated as primary.
      */
 
     public Boolean isPrimary() {
@@ -147,9 +152,9 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
         if (getPrimary() != null)
-            sb.append("Primary: " + getPrimary());
+            sb.append("Primary: ").append(getPrimary());
         sb.append("}");
         return sb.toString();
     }
@@ -193,4 +198,5 @@ public class PrivateIpAddressSpecification implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

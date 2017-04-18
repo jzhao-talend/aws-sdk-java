@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeHostReservationOfferingsRequestMarshaller;
@@ -20,6 +22,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeHostReservationOfferin
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeHostReservationOfferingsRequest> {
 
@@ -57,8 +60,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     * <code>All Upfront</code>).
+     * <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     * <code>AllUpfront</code>).
      * </p>
      * </li>
      * </ul>
@@ -241,8 +244,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     * <code>All Upfront</code>).
+     * <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     * <code>AllUpfront</code>).
      * </p>
      * </li>
      * </ul>
@@ -256,8 +259,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      *         </li>
      *         <li>
      *         <p>
-     *         <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code>
-     *         | <code>All Upfront</code>).
+     *         <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     *         <code>AllUpfront</code>).
      *         </p>
      *         </li>
      */
@@ -281,8 +284,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     * <code>All Upfront</code>).
+     * <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     * <code>AllUpfront</code>).
      * </p>
      * </li>
      * </ul>
@@ -297,8 +300,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     *        <code>All Upfront</code>).
+     *        <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     *        <code>AllUpfront</code>).
      *        </p>
      *        </li>
      */
@@ -324,8 +327,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     * <code>All Upfront</code>).
+     * <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     * <code>AllUpfront</code>).
      * </p>
      * </li>
      * </ul>
@@ -345,8 +348,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     *        <code>All Upfront</code>).
+     *        <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     *        <code>AllUpfront</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -374,8 +377,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     * <code>All Upfront</code>).
+     * <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     * <code>AllUpfront</code>).
      * </p>
      * </li>
      * </ul>
@@ -390,8 +393,8 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        <code>payment-option</code> - The payment option (<code>No Upfront</code> | <code>Partial Upfront</code> |
-     *        <code>All Upfront</code>).
+     *        <code>payment-option</code> - The payment option (<code>NoUpfront</code> | <code>PartialUpfront</code> |
+     *        <code>AllUpfront</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -517,17 +520,17 @@ public class DescribeHostReservationOfferingsRequest extends AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOfferingId() != null)
-            sb.append("OfferingId: " + getOfferingId() + ",");
+            sb.append("OfferingId: ").append(getOfferingId()).append(",");
         if (getMinDuration() != null)
-            sb.append("MinDuration: " + getMinDuration() + ",");
+            sb.append("MinDuration: ").append(getMinDuration()).append(",");
         if (getMaxDuration() != null)
-            sb.append("MaxDuration: " + getMaxDuration() + ",");
+            sb.append("MaxDuration: ").append(getMaxDuration()).append(",");
         if (getFilter() != null)
-            sb.append("Filter: " + getFilter() + ",");
+            sb.append("Filter: ").append(getFilter()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input to the UpdateCACertificate operation.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateCACertificateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -267,11 +270,11 @@ public class UpdateCACertificateRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateId() != null)
-            sb.append("CertificateId: " + getCertificateId() + ",");
+            sb.append("CertificateId: ").append(getCertificateId()).append(",");
         if (getNewStatus() != null)
-            sb.append("NewStatus: " + getNewStatus() + ",");
+            sb.append("NewStatus: ").append(getNewStatus()).append(",");
         if (getNewAutoRegistrationStatus() != null)
-            sb.append("NewAutoRegistrationStatus: " + getNewAutoRegistrationStatus());
+            sb.append("NewAutoRegistrationStatus: ").append(getNewAutoRegistrationStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -316,4 +319,5 @@ public class UpdateCACertificateRequest extends com.amazonaws.AmazonWebServiceRe
     public UpdateCACertificateRequest clone() {
         return (UpdateCACertificateRequest) super.clone();
     }
+
 }

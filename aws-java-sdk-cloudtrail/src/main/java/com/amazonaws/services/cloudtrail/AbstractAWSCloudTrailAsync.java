@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudtrail;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudtrail.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.cloudtrail.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSCloudTrailAsync extends AbstractAWSCloudTrail implements AWSCloudTrailAsync {
 
     protected AbstractAWSCloudTrailAsync() {
@@ -92,10 +95,24 @@ public class AbstractAWSCloudTrailAsync extends AbstractAWSCloudTrail implements
      *
      * @see #describeTrailsAsync(DescribeTrailsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeTrailsResult> describeTrailsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeTrailsRequest, DescribeTrailsResult> asyncHandler) {
 
         return describeTrailsAsync(new DescribeTrailsRequest(), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetEventSelectorsResult> getEventSelectorsAsync(GetEventSelectorsRequest request) {
+
+        return getEventSelectorsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetEventSelectorsResult> getEventSelectorsAsync(GetEventSelectorsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetEventSelectorsRequest, GetEventSelectorsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -140,6 +157,7 @@ public class AbstractAWSCloudTrailAsync extends AbstractAWSCloudTrail implements
      *
      * @see #listPublicKeysAsync(ListPublicKeysRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListPublicKeysResult> listPublicKeysAsync(
             com.amazonaws.handlers.AsyncHandler<ListPublicKeysRequest, ListPublicKeysResult> asyncHandler) {
 
@@ -188,10 +206,24 @@ public class AbstractAWSCloudTrailAsync extends AbstractAWSCloudTrail implements
      *
      * @see #lookupEventsAsync(LookupEventsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<LookupEventsResult> lookupEventsAsync(
             com.amazonaws.handlers.AsyncHandler<LookupEventsRequest, LookupEventsResult> asyncHandler) {
 
         return lookupEventsAsync(new LookupEventsRequest(), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutEventSelectorsResult> putEventSelectorsAsync(PutEventSelectorsRequest request) {
+
+        return putEventSelectorsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutEventSelectorsResult> putEventSelectorsAsync(PutEventSelectorsRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutEventSelectorsRequest, PutEventSelectorsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override

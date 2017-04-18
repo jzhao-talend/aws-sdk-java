@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a Spot instance request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotInstanceRequest" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpotInstanceRequest implements Serializable, Cloneable {
 
     /**
@@ -1083,41 +1088,41 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSpotInstanceRequestId() != null)
-            sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");
+            sb.append("SpotInstanceRequestId: ").append(getSpotInstanceRequestId()).append(",");
         if (getSpotPrice() != null)
-            sb.append("SpotPrice: " + getSpotPrice() + ",");
+            sb.append("SpotPrice: ").append(getSpotPrice()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getFault() != null)
-            sb.append("Fault: " + getFault() + ",");
+            sb.append("Fault: ").append(getFault()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getValidFrom() != null)
-            sb.append("ValidFrom: " + getValidFrom() + ",");
+            sb.append("ValidFrom: ").append(getValidFrom()).append(",");
         if (getValidUntil() != null)
-            sb.append("ValidUntil: " + getValidUntil() + ",");
+            sb.append("ValidUntil: ").append(getValidUntil()).append(",");
         if (getLaunchGroup() != null)
-            sb.append("LaunchGroup: " + getLaunchGroup() + ",");
+            sb.append("LaunchGroup: ").append(getLaunchGroup()).append(",");
         if (getAvailabilityZoneGroup() != null)
-            sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");
+            sb.append("AvailabilityZoneGroup: ").append(getAvailabilityZoneGroup()).append(",");
         if (getLaunchSpecification() != null)
-            sb.append("LaunchSpecification: " + getLaunchSpecification() + ",");
+            sb.append("LaunchSpecification: ").append(getLaunchSpecification()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getCreateTime() != null)
-            sb.append("CreateTime: " + getCreateTime() + ",");
+            sb.append("CreateTime: ").append(getCreateTime()).append(",");
         if (getProductDescription() != null)
-            sb.append("ProductDescription: " + getProductDescription() + ",");
+            sb.append("ProductDescription: ").append(getProductDescription()).append(",");
         if (getBlockDurationMinutes() != null)
-            sb.append("BlockDurationMinutes: " + getBlockDurationMinutes() + ",");
+            sb.append("BlockDurationMinutes: ").append(getBlockDurationMinutes()).append(",");
         if (getActualBlockHourlyPrice() != null)
-            sb.append("ActualBlockHourlyPrice: " + getActualBlockHourlyPrice() + ",");
+            sb.append("ActualBlockHourlyPrice: ").append(getActualBlockHourlyPrice()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getLaunchedAvailabilityZone() != null)
-            sb.append("LaunchedAvailabilityZone: " + getLaunchedAvailabilityZone());
+            sb.append("LaunchedAvailabilityZone: ").append(getLaunchedAvailabilityZone());
         sb.append("}");
         return sb.toString();
     }
@@ -1241,4 +1246,5 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

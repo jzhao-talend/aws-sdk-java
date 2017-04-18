@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeSpotPriceHistoryRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeSpotPriceHistoryReques
  * Contains the parameters for DescribeSpotPriceHistory.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeSpotPriceHistoryRequest> {
 
@@ -41,7 +44,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
     private java.util.Date endTime;
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> instanceTypes;
@@ -203,10 +206,11 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
-     * @return Filters the results by the specified instance types.
+     * @return Filters the results by the specified instance types. Note that T2 and HS1 instance types are not
+     *         supported.
      * @see InstanceType
      */
 
@@ -219,11 +223,12 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceTypes
-     *        Filters the results by the specified instance types.
+     *        Filters the results by the specified instance types. Note that T2 and HS1 instance types are not
+     *        supported.
      * @see InstanceType
      */
 
@@ -238,7 +243,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -247,7 +252,8 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
      * </p>
      * 
      * @param instanceTypes
-     *        Filters the results by the specified instance types.
+     *        Filters the results by the specified instance types. Note that T2 and HS1 instance types are not
+     *        supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -264,11 +270,12 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceTypes
-     *        Filters the results by the specified instance types.
+     *        Filters the results by the specified instance types. Note that T2 and HS1 instance types are not
+     *        supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -280,11 +287,12 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Filters the results by the specified instance types.
+     * Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceTypes
-     *        Filters the results by the specified instance types.
+     *        Filters the results by the specified instance types. Note that T2 and HS1 instance types are not
+     *        supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -852,21 +860,21 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getInstanceTypes() != null)
-            sb.append("InstanceTypes: " + getInstanceTypes() + ",");
+            sb.append("InstanceTypes: ").append(getInstanceTypes()).append(",");
         if (getProductDescriptions() != null)
-            sb.append("ProductDescriptions: " + getProductDescriptions() + ",");
+            sb.append("ProductDescriptions: ").append(getProductDescriptions()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for CreateRule.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateRule" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -30,9 +33,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private String listenerArn;
     /**
      * <p>
-     * A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     * pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     * characters:
+     * A condition. Each condition specifies a field name and a single value.
+     * </p>
+     * <p>
+     * If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com).
+     * A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following
+     * characters. Note that you can include up to three wildcard characters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A-Z, a-z, 0-9
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * - .
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * * (matches 0 or more characters)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ? (matches exactly 1 character)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case
+     * sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you
+     * can include up to three wildcard characters.
      * </p>
      * <ul>
      * <li>
@@ -118,9 +151,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     * pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     * characters:
+     * A condition. Each condition specifies a field name and a single value.
+     * </p>
+     * <p>
+     * If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com).
+     * A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following
+     * characters. Note that you can include up to three wildcard characters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A-Z, a-z, 0-9
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * - .
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * * (matches 0 or more characters)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ? (matches exactly 1 character)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case
+     * sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you
+     * can include up to three wildcard characters.
      * </p>
      * <ul>
      * <li>
@@ -150,9 +213,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </li>
      * </ul>
      * 
-     * @return A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A
-     *         path pattern is case sensitive, can be up to 255 characters in length, and can contain any of the
-     *         following characters:</p>
+     * @return A condition. Each condition specifies a field name and a single value.</p>
+     *         <p>
+     *         If the field name is <code>host-header</code>, you can specify a single host name (for example,
+     *         my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain
+     *         any of the following characters. Note that you can include up to three wildcard characters.
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         A-Z, a-z, 0-9
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         - .
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         (matches 0 or more characters)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ? (matches exactly 1 character)
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is
+     *         case sensitive, can be up to 128 characters in length, and can contain any of the following characters.
+     *         Note that you can include up to three wildcard characters.
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
@@ -187,9 +280,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     * pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     * characters:
+     * A condition. Each condition specifies a field name and a single value.
+     * </p>
+     * <p>
+     * If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com).
+     * A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following
+     * characters. Note that you can include up to three wildcard characters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A-Z, a-z, 0-9
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * - .
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * * (matches 0 or more characters)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ? (matches exactly 1 character)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case
+     * sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you
+     * can include up to three wildcard characters.
      * </p>
      * <ul>
      * <li>
@@ -220,9 +343,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </ul>
      * 
      * @param conditions
-     *        A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     *        pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     *        characters:</p>
+     *        A condition. Each condition specifies a field name and a single value.</p>
+     *        <p>
+     *        If the field name is <code>host-header</code>, you can specify a single host name (for example,
+     *        my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain
+     *        any of the following characters. Note that you can include up to three wildcard characters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        A-Z, a-z, 0-9
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        - .
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        (matches 0 or more characters)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        ? (matches exactly 1 character)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is
+     *        case sensitive, can be up to 128 characters in length, and can contain any of the following characters.
+     *        Note that you can include up to three wildcard characters.
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -262,9 +415,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     * pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     * characters:
+     * A condition. Each condition specifies a field name and a single value.
+     * </p>
+     * <p>
+     * If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com).
+     * A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following
+     * characters. Note that you can include up to three wildcard characters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A-Z, a-z, 0-9
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * - .
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * * (matches 0 or more characters)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ? (matches exactly 1 character)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case
+     * sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you
+     * can include up to three wildcard characters.
      * </p>
      * <ul>
      * <li>
@@ -300,9 +483,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @param conditions
-     *        A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     *        pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     *        characters:</p>
+     *        A condition. Each condition specifies a field name and a single value.</p>
+     *        <p>
+     *        If the field name is <code>host-header</code>, you can specify a single host name (for example,
+     *        my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain
+     *        any of the following characters. Note that you can include up to three wildcard characters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        A-Z, a-z, 0-9
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        - .
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        (matches 0 or more characters)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        ? (matches exactly 1 character)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is
+     *        case sensitive, can be up to 128 characters in length, and can contain any of the following characters.
+     *        Note that you can include up to three wildcard characters.
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -344,9 +557,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     * pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     * characters:
+     * A condition. Each condition specifies a field name and a single value.
+     * </p>
+     * <p>
+     * If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com).
+     * A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following
+     * characters. Note that you can include up to three wildcard characters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A-Z, a-z, 0-9
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * - .
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * * (matches 0 or more characters)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ? (matches exactly 1 character)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case
+     * sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you
+     * can include up to three wildcard characters.
      * </p>
      * <ul>
      * <li>
@@ -377,9 +620,39 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </ul>
      * 
      * @param conditions
-     *        A condition. Each condition has the field <code>path-pattern</code> and specifies one path pattern. A path
-     *        pattern is case sensitive, can be up to 255 characters in length, and can contain any of the following
-     *        characters:</p>
+     *        A condition. Each condition specifies a field name and a single value.</p>
+     *        <p>
+     *        If the field name is <code>host-header</code>, you can specify a single host name (for example,
+     *        my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain
+     *        any of the following characters. Note that you can include up to three wildcard characters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        A-Z, a-z, 0-9
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        - .
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        (matches 0 or more characters)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        ? (matches exactly 1 character)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is
+     *        case sensitive, can be up to 128 characters in length, and can contain any of the following characters.
+     *        Note that you can include up to three wildcard characters.
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -536,13 +809,13 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getListenerArn() != null)
-            sb.append("ListenerArn: " + getListenerArn() + ",");
+            sb.append("ListenerArn: ").append(getListenerArn()).append(",");
         if (getConditions() != null)
-            sb.append("Conditions: " + getConditions() + ",");
+            sb.append("Conditions: ").append(getConditions()).append(",");
         if (getPriority() != null)
-            sb.append("Priority: " + getPriority() + ",");
+            sb.append("Priority: ").append(getPriority()).append(",");
         if (getActions() != null)
-            sb.append("Actions: " + getActions());
+            sb.append("Actions: ").append(getActions());
         sb.append("}");
         return sb.toString();
     }
@@ -592,4 +865,5 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public CreateRuleRequest clone() {
         return (CreateRuleRequest) super.clone();
     }
+
 }

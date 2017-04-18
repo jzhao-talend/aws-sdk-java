@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a block device mapping for a Scheduled Instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstancesBlockDeviceMapping"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledInstancesBlockDeviceMapping implements Serializable, Cloneable {
 
     /**
@@ -271,13 +276,13 @@ public class ScheduledInstancesBlockDeviceMapping implements Serializable, Clone
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeviceName() != null)
-            sb.append("DeviceName: " + getDeviceName() + ",");
+            sb.append("DeviceName: ").append(getDeviceName()).append(",");
         if (getNoDevice() != null)
-            sb.append("NoDevice: " + getNoDevice() + ",");
+            sb.append("NoDevice: ").append(getNoDevice()).append(",");
         if (getVirtualName() != null)
-            sb.append("VirtualName: " + getVirtualName() + ",");
+            sb.append("VirtualName: ").append(getVirtualName()).append(",");
         if (getEbs() != null)
-            sb.append("Ebs: " + getEbs());
+            sb.append("Ebs: ").append(getEbs());
         sb.append("}");
         return sb.toString();
     }
@@ -331,4 +336,5 @@ public class ScheduledInstancesBlockDeviceMapping implements Serializable, Clone
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

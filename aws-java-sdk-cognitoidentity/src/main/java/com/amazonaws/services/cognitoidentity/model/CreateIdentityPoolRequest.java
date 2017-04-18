@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to the CreateIdentityPool action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/CreateIdentityPool"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -59,7 +65,7 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     private java.util.List<String> openIdConnectProviderARNs;
     /**
      * <p>
-     * An array of Amazon Cognito Identity user pools.
+     * An array of Amazon Cognito Identity user pools and their client IDs.
      * </p>
      */
     private java.util.List<CognitoIdentityProvider> cognitoIdentityProviders;
@@ -368,10 +374,10 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Cognito Identity user pools.
+     * An array of Amazon Cognito Identity user pools and their client IDs.
      * </p>
      * 
-     * @return An array of Amazon Cognito Identity user pools.
+     * @return An array of Amazon Cognito Identity user pools and their client IDs.
      */
 
     public java.util.List<CognitoIdentityProvider> getCognitoIdentityProviders() {
@@ -380,11 +386,11 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Cognito Identity user pools.
+     * An array of Amazon Cognito Identity user pools and their client IDs.
      * </p>
      * 
      * @param cognitoIdentityProviders
-     *        An array of Amazon Cognito Identity user pools.
+     *        An array of Amazon Cognito Identity user pools and their client IDs.
      */
 
     public void setCognitoIdentityProviders(java.util.Collection<CognitoIdentityProvider> cognitoIdentityProviders) {
@@ -398,7 +404,7 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Cognito Identity user pools.
+     * An array of Amazon Cognito Identity user pools and their client IDs.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -407,7 +413,7 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param cognitoIdentityProviders
-     *        An array of Amazon Cognito Identity user pools.
+     *        An array of Amazon Cognito Identity user pools and their client IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -423,11 +429,11 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Cognito Identity user pools.
+     * An array of Amazon Cognito Identity user pools and their client IDs.
      * </p>
      * 
      * @param cognitoIdentityProviders
-     *        An array of Amazon Cognito Identity user pools.
+     *        An array of Amazon Cognito Identity user pools and their client IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -518,19 +524,19 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPoolName() != null)
-            sb.append("IdentityPoolName: " + getIdentityPoolName() + ",");
+            sb.append("IdentityPoolName: ").append(getIdentityPoolName()).append(",");
         if (getAllowUnauthenticatedIdentities() != null)
-            sb.append("AllowUnauthenticatedIdentities: " + getAllowUnauthenticatedIdentities() + ",");
+            sb.append("AllowUnauthenticatedIdentities: ").append(getAllowUnauthenticatedIdentities()).append(",");
         if (getSupportedLoginProviders() != null)
-            sb.append("SupportedLoginProviders: " + getSupportedLoginProviders() + ",");
+            sb.append("SupportedLoginProviders: ").append(getSupportedLoginProviders()).append(",");
         if (getDeveloperProviderName() != null)
-            sb.append("DeveloperProviderName: " + getDeveloperProviderName() + ",");
+            sb.append("DeveloperProviderName: ").append(getDeveloperProviderName()).append(",");
         if (getOpenIdConnectProviderARNs() != null)
-            sb.append("OpenIdConnectProviderARNs: " + getOpenIdConnectProviderARNs() + ",");
+            sb.append("OpenIdConnectProviderARNs: ").append(getOpenIdConnectProviderARNs()).append(",");
         if (getCognitoIdentityProviders() != null)
-            sb.append("CognitoIdentityProviders: " + getCognitoIdentityProviders() + ",");
+            sb.append("CognitoIdentityProviders: ").append(getCognitoIdentityProviders()).append(",");
         if (getSamlProviderARNs() != null)
-            sb.append("SamlProviderARNs: " + getSamlProviderARNs());
+            sb.append("SamlProviderARNs: ").append(getSamlProviderARNs());
         sb.append("}");
         return sb.toString();
     }
@@ -596,4 +602,5 @@ public class CreateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     public CreateIdentityPoolRequest clone() {
         return (CreateIdentityPoolRequest) super.clone();
     }
+
 }

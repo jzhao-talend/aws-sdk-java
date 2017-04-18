@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.route53.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
  * You can create a hosted zone that has the same name as an existing hosted zone (example.com is common), but there is
@@ -19,6 +21,7 @@ package com.amazonaws.services.route53.model;
  * that limit. If you own the domain name and Amazon Route 53 generates this error, contact Customer Support.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DelegationSetNotAvailableException extends com.amazonaws.services.route53.model.AmazonRoute53Exception {
     private static final long serialVersionUID = 1L;
 

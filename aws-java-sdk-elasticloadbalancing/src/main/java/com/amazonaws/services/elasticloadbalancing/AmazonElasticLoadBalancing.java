@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elasticloadbalancing;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,6 +22,10 @@ import com.amazonaws.services.elasticloadbalancing.waiters.AmazonElasticLoadBala
 
 /**
  * Interface for accessing Elastic Load Balancing.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.elasticloadbalancing.AbstractAmazonElasticLoadBalancing} instead.
+ * </p>
  * <p>
  * <fullname>Elastic Load Balancing</fullname>
  * <p>
@@ -50,6 +56,7 @@ import com.amazonaws.services.elasticloadbalancing.waiters.AmazonElasticLoadBala
  * repeat an operation, it succeeds with a 200 OK response code.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonElasticLoadBalancing {
 
     /**
@@ -81,7 +88,11 @@ public interface AmazonElasticLoadBalancing {
      *        The endpoint (ex: "elasticloadbalancing.amazonaws.com") or a full URL, including the protocol (ex:
      *        "elasticloadbalancing.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -102,7 +113,9 @@ public interface AmazonElasticLoadBalancing {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -129,6 +142,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws DuplicateTagKeysException
      *         A tag key was specified more than once.
      * @sample AmazonElasticLoadBalancing.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AddTags" target="_top">AWS
+     *      API Documentation</a>
      */
     AddTagsResult addTags(AddTagsRequest addTagsRequest);
 
@@ -153,6 +168,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidSecurityGroupException
      *         One or more of the specified security groups do not exist.
      * @sample AmazonElasticLoadBalancing.ApplySecurityGroupsToLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ApplySecurityGroupsToLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     ApplySecurityGroupsToLoadBalancerResult applySecurityGroupsToLoadBalancer(ApplySecurityGroupsToLoadBalancerRequest applySecurityGroupsToLoadBalancerRequest);
 
@@ -178,6 +196,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidSubnetException
      *         The specified VPC has no associated Internet gateway.
      * @sample AmazonElasticLoadBalancing.AttachLoadBalancerToSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AttachLoadBalancerToSubnets"
+     *      target="_top">AWS API Documentation</a>
      */
     AttachLoadBalancerToSubnetsResult attachLoadBalancerToSubnets(AttachLoadBalancerToSubnetsRequest attachLoadBalancerToSubnetsRequest);
 
@@ -197,6 +217,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.ConfigureHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ConfigureHealthCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     ConfigureHealthCheckResult configureHealthCheck(ConfigureHealthCheckRequest configureHealthCheckRequest);
 
@@ -233,6 +255,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateAppCookieStickinessPolicy
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateAppCookieStickinessPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateAppCookieStickinessPolicyResult createAppCookieStickinessPolicy(CreateAppCookieStickinessPolicyRequest createAppCookieStickinessPolicyRequest);
 
@@ -269,6 +294,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateLBCookieStickinessPolicy
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLBCookieStickinessPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateLBCookieStickinessPolicyResult createLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest createLBCookieStickinessPolicyRequest);
 
@@ -320,6 +348,8 @@ public interface AmazonElasticLoadBalancing {
      *         A tag key was specified more than once.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest);
 
@@ -351,6 +381,8 @@ public interface AmazonElasticLoadBalancing {
      *         The requested configuration change is not valid.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancerListeners
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerListeners"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateLoadBalancerListenersResult createLoadBalancerListeners(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest);
 
@@ -377,6 +409,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancerPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateLoadBalancerPolicyResult createLoadBalancerPolicy(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest);
 
@@ -398,6 +432,8 @@ public interface AmazonElasticLoadBalancing {
      *        Contains the parameters for DeleteLoadBalancer.
      * @return Result of the DeleteLoadBalancer operation returned by the service.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest);
 
@@ -412,6 +448,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancerListeners
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerListeners"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteLoadBalancerListenersResult deleteLoadBalancerListeners(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest);
 
@@ -428,6 +466,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancerPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteLoadBalancerPolicyResult deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest);
 
@@ -453,6 +493,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.DeregisterInstancesFromLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeregisterInstancesFromLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     DeregisterInstancesFromLoadBalancerResult deregisterInstancesFromLoadBalancer(
             DeregisterInstancesFromLoadBalancerRequest deregisterInstancesFromLoadBalancerRequest);
@@ -473,6 +516,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.DescribeInstanceHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeInstanceHealth"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeInstanceHealthResult describeInstanceHealth(DescribeInstanceHealthRequest describeInstanceHealthRequest);
 
@@ -489,6 +534,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerAttributeNotFoundException
      *         The specified load balancer attribute does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest describeLoadBalancerAttributesRequest);
 
@@ -512,6 +560,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws PolicyNotFoundException
      *         One or more of the specified policies do not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerPolicies
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicies"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeLoadBalancerPoliciesResult describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest describeLoadBalancerPoliciesRequest);
 
@@ -543,6 +594,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws PolicyTypeNotFoundException
      *         One or more of the specified policy types do not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerPolicyTypes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicyTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeLoadBalancerPolicyTypesResult describeLoadBalancerPolicyTypes(DescribeLoadBalancerPolicyTypesRequest describeLoadBalancerPolicyTypesRequest);
 
@@ -566,6 +620,8 @@ public interface AmazonElasticLoadBalancing {
      *         The specified load balancer does not exist.
      * @throws DependencyThrottleException
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest);
 
@@ -587,6 +643,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeTags"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest);
 
@@ -608,6 +666,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DetachLoadBalancerFromSubnets
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DetachLoadBalancerFromSubnets"
+     *      target="_top">AWS API Documentation</a>
      */
     DetachLoadBalancerFromSubnetsResult detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest detachLoadBalancerFromSubnetsRequest);
 
@@ -635,6 +696,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DisableAvailabilityZonesForLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DisableAvailabilityZonesForLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     DisableAvailabilityZonesForLoadBalancerResult disableAvailabilityZonesForLoadBalancer(
             DisableAvailabilityZonesForLoadBalancerRequest disableAvailabilityZonesForLoadBalancerRequest);
@@ -659,6 +723,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.EnableAvailabilityZonesForLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/EnableAvailabilityZonesForLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     EnableAvailabilityZonesForLoadBalancerResult enableAvailabilityZonesForLoadBalancer(
             EnableAvailabilityZonesForLoadBalancerRequest enableAvailabilityZonesForLoadBalancerRequest);
@@ -713,6 +780,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.ModifyLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ModifyLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest modifyLoadBalancerAttributesRequest);
 
@@ -754,6 +824,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.RegisterInstancesWithLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RegisterInstancesWithLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     RegisterInstancesWithLoadBalancerResult registerInstancesWithLoadBalancer(RegisterInstancesWithLoadBalancerRequest registerInstancesWithLoadBalancerRequest);
 
@@ -768,6 +841,8 @@ public interface AmazonElasticLoadBalancing {
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RemoveTags"
+     *      target="_top">AWS API Documentation</a>
      */
     RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest);
 
@@ -797,6 +872,9 @@ public interface AmazonElasticLoadBalancing {
      *         The requested configuration change is not valid.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerListenerSSLCertificate
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerListenerSSLCertificate"
+     *      target="_top">AWS API Documentation</a>
      */
     SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(
             SetLoadBalancerListenerSSLCertificateRequest setLoadBalancerListenerSSLCertificateRequest);
@@ -834,6 +912,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerPoliciesForBackendServer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesForBackendServer"
+     *      target="_top">AWS API Documentation</a>
      */
     SetLoadBalancerPoliciesForBackendServerResult setLoadBalancerPoliciesForBackendServer(
             SetLoadBalancerPoliciesForBackendServerRequest setLoadBalancerPoliciesForBackendServerRequest);
@@ -867,6 +948,9 @@ public interface AmazonElasticLoadBalancing {
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerPoliciesOfListener
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesOfListener"
+     *      target="_top">AWS API Documentation</a>
      */
     SetLoadBalancerPoliciesOfListenerResult setLoadBalancerPoliciesOfListener(SetLoadBalancerPoliciesOfListenerRequest setLoadBalancerPoliciesOfListenerRequest);
 
@@ -894,4 +978,5 @@ public interface AmazonElasticLoadBalancing {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AmazonElasticLoadBalancingWaiters waiters();
+
 }

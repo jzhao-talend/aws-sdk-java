@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -105,6 +105,12 @@ public enum Region {
     EU_Ireland("eu-west-1","EU"),
 
     /**
+     * The EU (London) Amazon S3 Region. This region uses Amazon S3 servers located
+     * in London.
+     */
+    EU_London("eu-west-2"),
+
+    /**
      * The EU (Frankfurt) Amazon S3 Region. This region uses Amazon S3 servers
      * located in Frankfurt.
      * <p>
@@ -198,11 +204,24 @@ public enum Region {
     SA_SaoPaulo("sa-east-1"),
 
     /**
+     * The Canada (Central) Region. This region uses Amazon S3 servers
+     * located in Canada.
+     * <p>
+     * When using buckets in this region, set the client endpoint to
+     * <code>s3.ca-central-1.amazonaws.com</code> on all requests to these buckets
+     * to reduce any latency experienced after the first hour of creating a
+     * bucket in this region.
+     * </p>
+     */
+    CA_Central("ca-central-1"),
+
+    /**
      * The China (Beijing) Region. This region uses Amazon S3 servers
      * located in Beijing.
      * <p>
      * When using buckets in this region, you must set the client endpoint to
      * <code>s3.cn-north-1.amazonaws.com.cn</code>.
+     * </p>
      */
     CN_Beijing("cn-north-1");
 

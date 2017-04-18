@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.servermigration.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Object representing a Connector
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/Connector" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Connector implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Connector implements Serializable, Cloneable, StructuredPojo {
 
     private String connectorId;
 
@@ -406,25 +413,25 @@ public class Connector implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConnectorId() != null)
-            sb.append("ConnectorId: " + getConnectorId() + ",");
+            sb.append("ConnectorId: ").append(getConnectorId()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getCapabilityList() != null)
-            sb.append("CapabilityList: " + getCapabilityList() + ",");
+            sb.append("CapabilityList: ").append(getCapabilityList()).append(",");
         if (getVmManagerName() != null)
-            sb.append("VmManagerName: " + getVmManagerName() + ",");
+            sb.append("VmManagerName: ").append(getVmManagerName()).append(",");
         if (getVmManagerType() != null)
-            sb.append("VmManagerType: " + getVmManagerType() + ",");
+            sb.append("VmManagerType: ").append(getVmManagerType()).append(",");
         if (getVmManagerId() != null)
-            sb.append("VmManagerId: " + getVmManagerId() + ",");
+            sb.append("VmManagerId: ").append(getVmManagerId()).append(",");
         if (getIpAddress() != null)
-            sb.append("IpAddress: " + getIpAddress() + ",");
+            sb.append("IpAddress: ").append(getIpAddress()).append(",");
         if (getMacAddress() != null)
-            sb.append("MacAddress: " + getMacAddress() + ",");
+            sb.append("MacAddress: ").append(getMacAddress()).append(",");
         if (getAssociatedOn() != null)
-            sb.append("AssociatedOn: " + getAssociatedOn());
+            sb.append("AssociatedOn: ").append(getAssociatedOn());
         sb.append("}");
         return sb.toString();
     }
@@ -507,5 +514,11 @@ public class Connector implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servermigration.model.transform.ConnectorMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

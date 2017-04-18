@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ModifySubnetAttributeRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.ModifySubnetAttributeRequestMa
  * Contains the parameters for ModifySubnetAttribute.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<ModifySubnetAttributeRequest> {
 
@@ -33,11 +36,24 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
     private String subnetId;
     /**
      * <p>
-     * Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned public
-     * IP address.
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * a public IPv4 address. This includes a network interface that's created when launching an instance into the
+     * subnet (the instance therefore receives a public IPv4 address).
      * </p>
      */
     private Boolean mapPublicIpOnLaunch;
+    /**
+     * <p>
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the
+     * instance therefore receives an IPv6 address).
+     * </p>
+     * <p>
+     * If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an
+     * IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2 API.
+     * </p>
+     */
+    private Boolean assignIpv6AddressOnCreation;
 
     /**
      * <p>
@@ -81,13 +97,15 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned public
-     * IP address.
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * a public IPv4 address. This includes a network interface that's created when launching an instance into the
+     * subnet (the instance therefore receives a public IPv4 address).
      * </p>
      * 
      * @param mapPublicIpOnLaunch
-     *        Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned
-     *        public IP address.
+     *        Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *        assigned a public IPv4 address. This includes a network interface that's created when launching an
+     *        instance into the subnet (the instance therefore receives a public IPv4 address).
      */
 
     public void setMapPublicIpOnLaunch(Boolean mapPublicIpOnLaunch) {
@@ -96,12 +114,14 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned public
-     * IP address.
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * a public IPv4 address. This includes a network interface that's created when launching an instance into the
+     * subnet (the instance therefore receives a public IPv4 address).
      * </p>
      * 
-     * @return Specify <code>true</code> to indicate that instances launched into the specified subnet should be
-     *         assigned public IP address.
+     * @return Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *         assigned a public IPv4 address. This includes a network interface that's created when launching an
+     *         instance into the subnet (the instance therefore receives a public IPv4 address).
      */
 
     public Boolean getMapPublicIpOnLaunch() {
@@ -110,13 +130,15 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned public
-     * IP address.
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * a public IPv4 address. This includes a network interface that's created when launching an instance into the
+     * subnet (the instance therefore receives a public IPv4 address).
      * </p>
      * 
      * @param mapPublicIpOnLaunch
-     *        Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned
-     *        public IP address.
+     *        Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *        assigned a public IPv4 address. This includes a network interface that's created when launching an
+     *        instance into the subnet (the instance therefore receives a public IPv4 address).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,16 +149,118 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Specify <code>true</code> to indicate that instances launched into the specified subnet should be assigned public
-     * IP address.
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * a public IPv4 address. This includes a network interface that's created when launching an instance into the
+     * subnet (the instance therefore receives a public IPv4 address).
      * </p>
      * 
-     * @return Specify <code>true</code> to indicate that instances launched into the specified subnet should be
-     *         assigned public IP address.
+     * @return Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *         assigned a public IPv4 address. This includes a network interface that's created when launching an
+     *         instance into the subnet (the instance therefore receives a public IPv4 address).
      */
 
     public Boolean isMapPublicIpOnLaunch() {
         return this.mapPublicIpOnLaunch;
+    }
+
+    /**
+     * <p>
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the
+     * instance therefore receives an IPv6 address).
+     * </p>
+     * <p>
+     * If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an
+     * IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2 API.
+     * </p>
+     * 
+     * @param assignIpv6AddressOnCreation
+     *        Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *        assigned an IPv6 address. This includes a network interface that's created when launching an instance into
+     *        the subnet (the instance therefore receives an IPv6 address). </p>
+     *        <p>
+     *        If you enable the IPv6 addressing feature for your subnet, your network interface or instance only
+     *        receives an IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2
+     *        API.
+     */
+
+    public void setAssignIpv6AddressOnCreation(Boolean assignIpv6AddressOnCreation) {
+        this.assignIpv6AddressOnCreation = assignIpv6AddressOnCreation;
+    }
+
+    /**
+     * <p>
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the
+     * instance therefore receives an IPv6 address).
+     * </p>
+     * <p>
+     * If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an
+     * IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2 API.
+     * </p>
+     * 
+     * @return Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *         assigned an IPv6 address. This includes a network interface that's created when launching an instance
+     *         into the subnet (the instance therefore receives an IPv6 address). </p>
+     *         <p>
+     *         If you enable the IPv6 addressing feature for your subnet, your network interface or instance only
+     *         receives an IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2
+     *         API.
+     */
+
+    public Boolean getAssignIpv6AddressOnCreation() {
+        return this.assignIpv6AddressOnCreation;
+    }
+
+    /**
+     * <p>
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the
+     * instance therefore receives an IPv6 address).
+     * </p>
+     * <p>
+     * If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an
+     * IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2 API.
+     * </p>
+     * 
+     * @param assignIpv6AddressOnCreation
+     *        Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *        assigned an IPv6 address. This includes a network interface that's created when launching an instance into
+     *        the subnet (the instance therefore receives an IPv6 address). </p>
+     *        <p>
+     *        If you enable the IPv6 addressing feature for your subnet, your network interface or instance only
+     *        receives an IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2
+     *        API.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifySubnetAttributeRequest withAssignIpv6AddressOnCreation(Boolean assignIpv6AddressOnCreation) {
+        setAssignIpv6AddressOnCreation(assignIpv6AddressOnCreation);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be assigned
+     * an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the
+     * instance therefore receives an IPv6 address).
+     * </p>
+     * <p>
+     * If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an
+     * IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2 API.
+     * </p>
+     * 
+     * @return Specify <code>true</code> to indicate that network interfaces created in the specified subnet should be
+     *         assigned an IPv6 address. This includes a network interface that's created when launching an instance
+     *         into the subnet (the instance therefore receives an IPv6 address). </p>
+     *         <p>
+     *         If you enable the IPv6 addressing feature for your subnet, your network interface or instance only
+     *         receives an IPv6 address if it's created using version <code>2016-11-15</code> or later of the Amazon EC2
+     *         API.
+     */
+
+    public Boolean isAssignIpv6AddressOnCreation() {
+        return this.assignIpv6AddressOnCreation;
     }
 
     /**
@@ -162,9 +286,11 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getMapPublicIpOnLaunch() != null)
-            sb.append("MapPublicIpOnLaunch: " + getMapPublicIpOnLaunch());
+            sb.append("MapPublicIpOnLaunch: ").append(getMapPublicIpOnLaunch()).append(",");
+        if (getAssignIpv6AddressOnCreation() != null)
+            sb.append("AssignIpv6AddressOnCreation: ").append(getAssignIpv6AddressOnCreation());
         sb.append("}");
         return sb.toString();
     }
@@ -187,6 +313,10 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
             return false;
         if (other.getMapPublicIpOnLaunch() != null && other.getMapPublicIpOnLaunch().equals(this.getMapPublicIpOnLaunch()) == false)
             return false;
+        if (other.getAssignIpv6AddressOnCreation() == null ^ this.getAssignIpv6AddressOnCreation() == null)
+            return false;
+        if (other.getAssignIpv6AddressOnCreation() != null && other.getAssignIpv6AddressOnCreation().equals(this.getAssignIpv6AddressOnCreation()) == false)
+            return false;
         return true;
     }
 
@@ -197,6 +327,7 @@ public class ModifySubnetAttributeRequest extends AmazonWebServiceRequest implem
 
         hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
         hashCode = prime * hashCode + ((getMapPublicIpOnLaunch() == null) ? 0 : getMapPublicIpOnLaunch().hashCode());
+        hashCode = prime * hashCode + ((getAssignIpv6AddressOnCreation() == null) ? 0 : getAssignIpv6AddressOnCreation().hashCode());
         return hashCode;
     }
 

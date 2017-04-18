@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.databasemigrationservice.AWSDatabaseMigrationServiceClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -47,12 +51,14 @@ import com.amazonaws.services.databasemigrationservice.model.transform.*;
  * <fullname>AWS Database Migration Service</fullname>
  * <p>
  * AWS Database Migration Service (AWS DMS) can migrate your data to and from the most widely used commercial and
- * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora, and
- * MySQL. The service supports homogeneous migrations such as Oracle to Oracle, as well as heterogeneous migrations
- * between different database platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
+ * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora,
+ * MySQL, and SAP Adaptive Server Enterprise (ASE). The service supports homogeneous migrations such as Oracle to
+ * Oracle, as well as heterogeneous migrations between different database platforms, such as Oracle to MySQL or SQL
+ * Server to PostgreSQL.
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient implements AWSDatabaseMigrationService {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -65,50 +71,51 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.InvalidCertificateException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UpgradeDependencyFailureFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.UpgradeDependencyFailureException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InsufficientResourceCapacityFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.InsufficientResourceCapacityException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceQuotaExceededFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.ResourceQuotaExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AccessDeniedFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.AccessDeniedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.InvalidResourceStateException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("KMSKeyNotAccessibleFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.KMSKeyNotAccessibleException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("SubnetAlreadyInUse").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.SubnetAlreadyInUseException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.ResourceAlreadyExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSubnet").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.InvalidSubnetException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("StorageQuotaExceededFault").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.StorageQuotaExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ReplicationSubnetGroupDoesNotCoverEnoughAZs").withModeledClass(
-                            com.amazonaws.services.databasemigrationservice.model.ReplicationSubnetGroupDoesNotCoverEnoughAZsException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.InvalidCertificateException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UpgradeDependencyFailureFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.UpgradeDependencyFailureException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientResourceCapacityFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.InsufficientResourceCapacityException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceQuotaExceededFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.ResourceQuotaExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.AccessDeniedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.InvalidResourceStateException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KMSKeyNotAccessibleFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.KMSKeyNotAccessibleException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("SubnetAlreadyInUse").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.SubnetAlreadyInUseException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.ResourceAlreadyExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSubnet").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.InvalidSubnetException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("StorageQuotaExceededFault").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.StorageQuotaExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReplicationSubnetGroupDoesNotCoverEnoughAZs").withModeledClass(
+                                    com.amazonaws.services.databasemigrationservice.model.ReplicationSubnetGroupDoesNotCoverEnoughAZsException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS Database Migration Service. A credentials provider chain
@@ -124,7 +131,9 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -147,7 +156,9 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      *        (ex: proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -162,7 +173,11 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AWSDatabaseMigrationServiceClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -180,7 +195,10 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Database Migration Service
      *        (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDatabaseMigrationServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -197,7 +215,9 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -215,7 +235,10 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Database Migration Service
      *        (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDatabaseMigrationServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -235,12 +258,20 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      *        (ex: proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSDatabaseMigrationServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSDatabaseMigrationServiceClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSDatabaseMigrationServiceClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSDatabaseMigrationServiceClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSDatabaseMigrationServiceClientBuilder builder() {
+        return AWSDatabaseMigrationServiceClientBuilder.standard();
     }
 
     /**
@@ -283,9 +314,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest) {
+    public AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTagsToResource(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsToResourceResult executeAddTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsToResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -295,7 +335,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsToResourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToResourceRequest));
+                request = new AddTagsToResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -331,10 +371,21 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      *         The resource is in a state that prevents it from being used for database migration.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         AWS DMS was denied access to the endpoint.
      * @sample AWSDatabaseMigrationService.CreateEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateEndpointResult createEndpoint(CreateEndpointRequest createEndpointRequest) {
+    public CreateEndpointResult createEndpoint(CreateEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final CreateEndpointResult executeCreateEndpoint(CreateEndpointRequest createEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -344,7 +395,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateEndpointRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEndpointRequest));
+                request = new CreateEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -392,9 +443,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws KMSKeyNotAccessibleException
      *         AWS DMS cannot access the KMS key.
      * @sample AWSDatabaseMigrationService.CreateReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateReplicationInstanceResult createReplicationInstance(CreateReplicationInstanceRequest createReplicationInstanceRequest) {
+    public CreateReplicationInstanceResult createReplicationInstance(CreateReplicationInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReplicationInstance(request);
+    }
+
+    @SdkInternalApi
+    final CreateReplicationInstanceResult executeCreateReplicationInstance(CreateReplicationInstanceRequest createReplicationInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReplicationInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -404,7 +464,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateReplicationInstanceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createReplicationInstanceRequest));
+                request = new CreateReplicationInstanceRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createReplicationInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -445,9 +506,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidSubnetException
      *         The subnet provided is invalid.
      * @sample AWSDatabaseMigrationService.CreateReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateReplicationSubnetGroupResult createReplicationSubnetGroup(CreateReplicationSubnetGroupRequest createReplicationSubnetGroupRequest) {
+    public CreateReplicationSubnetGroupResult createReplicationSubnetGroup(CreateReplicationSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReplicationSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateReplicationSubnetGroupResult executeCreateReplicationSubnetGroup(CreateReplicationSubnetGroupRequest createReplicationSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReplicationSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -457,7 +527,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateReplicationSubnetGroupRequestMarshaller(protocolFactory).marshall(super
+                request = new CreateReplicationSubnetGroupRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(createReplicationSubnetGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -496,9 +566,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.CreateReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateReplicationTaskResult createReplicationTask(CreateReplicationTaskRequest createReplicationTaskRequest) {
+    public CreateReplicationTaskResult createReplicationTask(CreateReplicationTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateReplicationTask(request);
+    }
+
+    @SdkInternalApi
+    final CreateReplicationTaskResult executeCreateReplicationTask(CreateReplicationTaskRequest createReplicationTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createReplicationTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -508,7 +587,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateReplicationTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createReplicationTaskRequest));
+                request = new CreateReplicationTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createReplicationTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -540,9 +619,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest) {
+    public DeleteCertificateResult deleteCertificate(DeleteCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteCertificateResult executeDeleteCertificate(DeleteCertificateRequest deleteCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -552,7 +640,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCertificateRequest));
+                request = new DeleteCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -589,9 +677,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) {
+    public DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEndpointResult executeDeleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -601,7 +698,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteEndpointRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEndpointRequest));
+                request = new DeleteEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -638,9 +735,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DeleteReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteReplicationInstanceResult deleteReplicationInstance(DeleteReplicationInstanceRequest deleteReplicationInstanceRequest) {
+    public DeleteReplicationInstanceResult deleteReplicationInstance(DeleteReplicationInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteReplicationInstance(request);
+    }
+
+    @SdkInternalApi
+    final DeleteReplicationInstanceResult executeDeleteReplicationInstance(DeleteReplicationInstanceRequest deleteReplicationInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteReplicationInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -650,7 +756,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteReplicationInstanceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteReplicationInstanceRequest));
+                request = new DeleteReplicationInstanceRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteReplicationInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -682,9 +789,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DeleteReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteReplicationSubnetGroupResult deleteReplicationSubnetGroup(DeleteReplicationSubnetGroupRequest deleteReplicationSubnetGroupRequest) {
+    public DeleteReplicationSubnetGroupResult deleteReplicationSubnetGroup(DeleteReplicationSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteReplicationSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteReplicationSubnetGroupResult executeDeleteReplicationSubnetGroup(DeleteReplicationSubnetGroupRequest deleteReplicationSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteReplicationSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -694,7 +810,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteReplicationSubnetGroupRequestMarshaller(protocolFactory).marshall(super
+                request = new DeleteReplicationSubnetGroupRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(deleteReplicationSubnetGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -727,9 +843,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteReplicationTaskResult deleteReplicationTask(DeleteReplicationTaskRequest deleteReplicationTaskRequest) {
+    public DeleteReplicationTaskResult deleteReplicationTask(DeleteReplicationTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteReplicationTask(request);
+    }
+
+    @SdkInternalApi
+    final DeleteReplicationTaskResult executeDeleteReplicationTask(DeleteReplicationTaskRequest deleteReplicationTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteReplicationTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -739,7 +864,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteReplicationTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteReplicationTaskRequest));
+                request = new DeleteReplicationTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteReplicationTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -772,9 +897,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param describeAccountAttributesRequest
      * @return Result of the DescribeAccountAttributes operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAccountAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAccountAttributesResult executeDescribeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAccountAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -784,7 +918,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeAccountAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeAccountAttributesRequest));
+                request = new DescribeAccountAttributesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeAccountAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -814,9 +949,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest describeCertificatesRequest) {
+    public DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCertificates(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCertificatesResult executeDescribeCertificates(DescribeCertificatesRequest describeCertificatesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCertificatesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -826,7 +970,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeCertificatesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCertificatesRequest));
+                request = new DescribeCertificatesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCertificatesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -856,9 +1000,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeConnectionsResult describeConnections(DescribeConnectionsRequest describeConnectionsRequest) {
+    public DescribeConnectionsResult describeConnections(DescribeConnectionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeConnections(request);
+    }
+
+    @SdkInternalApi
+    final DescribeConnectionsResult executeDescribeConnections(DescribeConnectionsRequest describeConnectionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeConnectionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -868,7 +1021,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeConnectionsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeConnectionsRequest));
+                request = new DescribeConnectionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeConnectionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -895,9 +1048,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param describeEndpointTypesRequest
      * @return Result of the DescribeEndpointTypes operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeEndpointTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpointTypes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeEndpointTypesResult describeEndpointTypes(DescribeEndpointTypesRequest describeEndpointTypesRequest) {
+    public DescribeEndpointTypesResult describeEndpointTypes(DescribeEndpointTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEndpointTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEndpointTypesResult executeDescribeEndpointTypes(DescribeEndpointTypesRequest describeEndpointTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEndpointTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -907,7 +1069,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeEndpointTypesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEndpointTypesRequest));
+                request = new DescribeEndpointTypesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEndpointTypesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -937,9 +1099,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeEndpointsResult describeEndpoints(DescribeEndpointsRequest describeEndpointsRequest) {
+    public DescribeEndpointsResult describeEndpoints(DescribeEndpointsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEndpoints(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEndpointsResult executeDescribeEndpoints(DescribeEndpointsRequest describeEndpointsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEndpointsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -949,7 +1120,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeEndpointsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEndpointsRequest));
+                request = new DescribeEndpointsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEndpointsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -976,10 +1147,19 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param describeOrderableReplicationInstancesRequest
      * @return Result of the DescribeOrderableReplicationInstances operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeOrderableReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeOrderableReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeOrderableReplicationInstancesResult describeOrderableReplicationInstances(
+    public DescribeOrderableReplicationInstancesResult describeOrderableReplicationInstances(DescribeOrderableReplicationInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOrderableReplicationInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOrderableReplicationInstancesResult executeDescribeOrderableReplicationInstances(
             DescribeOrderableReplicationInstancesRequest describeOrderableReplicationInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeOrderableReplicationInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -989,7 +1169,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeOrderableReplicationInstancesRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeOrderableReplicationInstancesRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeOrderableReplicationInstancesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1022,9 +1202,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeRefreshSchemasStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeRefreshSchemasStatusResult describeRefreshSchemasStatus(DescribeRefreshSchemasStatusRequest describeRefreshSchemasStatusRequest) {
+    public DescribeRefreshSchemasStatusResult describeRefreshSchemasStatus(DescribeRefreshSchemasStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeRefreshSchemasStatus(request);
+    }
+
+    @SdkInternalApi
+    final DescribeRefreshSchemasStatusResult executeDescribeRefreshSchemasStatus(DescribeRefreshSchemasStatusRequest describeRefreshSchemasStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeRefreshSchemasStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1034,7 +1223,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeRefreshSchemasStatusRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeRefreshSchemasStatusRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeRefreshSchemasStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1065,9 +1254,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReplicationInstancesResult describeReplicationInstances(DescribeReplicationInstancesRequest describeReplicationInstancesRequest) {
+    public DescribeReplicationInstancesResult describeReplicationInstances(DescribeReplicationInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReplicationInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReplicationInstancesResult executeDescribeReplicationInstances(DescribeReplicationInstancesRequest describeReplicationInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReplicationInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1077,7 +1275,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeReplicationInstancesRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeReplicationInstancesRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeReplicationInstancesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1108,9 +1306,19 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReplicationSubnetGroupsResult describeReplicationSubnetGroups(DescribeReplicationSubnetGroupsRequest describeReplicationSubnetGroupsRequest) {
+    public DescribeReplicationSubnetGroupsResult describeReplicationSubnetGroups(DescribeReplicationSubnetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReplicationSubnetGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReplicationSubnetGroupsResult executeDescribeReplicationSubnetGroups(
+            DescribeReplicationSubnetGroupsRequest describeReplicationSubnetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReplicationSubnetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1120,7 +1328,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeReplicationSubnetGroupsRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeReplicationSubnetGroupsRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeReplicationSubnetGroupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1151,9 +1359,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeReplicationTasksResult describeReplicationTasks(DescribeReplicationTasksRequest describeReplicationTasksRequest) {
+    public DescribeReplicationTasksResult describeReplicationTasks(DescribeReplicationTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReplicationTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReplicationTasksResult executeDescribeReplicationTasks(DescribeReplicationTasksRequest describeReplicationTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReplicationTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1163,7 +1380,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeReplicationTasksRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeReplicationTasksRequest));
+                request = new DescribeReplicationTasksRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeReplicationTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1196,9 +1414,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeSchemasResult describeSchemas(DescribeSchemasRequest describeSchemasRequest) {
+    public DescribeSchemasResult describeSchemas(DescribeSchemasRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSchemas(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSchemasResult executeDescribeSchemas(DescribeSchemasRequest describeSchemasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSchemasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1208,7 +1435,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeSchemasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeSchemasRequest));
+                request = new DescribeSchemasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeSchemasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1240,9 +1467,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DescribeTableStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeTableStatistics" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeTableStatisticsResult describeTableStatistics(DescribeTableStatisticsRequest describeTableStatisticsRequest) {
+    public DescribeTableStatisticsResult describeTableStatistics(DescribeTableStatisticsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTableStatistics(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTableStatisticsResult executeDescribeTableStatistics(DescribeTableStatisticsRequest describeTableStatisticsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTableStatisticsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1252,7 +1488,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTableStatisticsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTableStatisticsRequest));
+                request = new DescribeTableStatisticsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeTableStatisticsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1284,9 +1521,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidCertificateException
      *         The certificate was not valid.
      * @sample AWSDatabaseMigrationService.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportCertificateResult importCertificate(ImportCertificateRequest importCertificateRequest) {
+    public ImportCertificateResult importCertificate(ImportCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportCertificate(request);
+    }
+
+    @SdkInternalApi
+    final ImportCertificateResult executeImportCertificate(ImportCertificateRequest importCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1296,7 +1542,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ImportCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(importCertificateRequest));
+                request = new ImportCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(importCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1325,9 +1571,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1337,7 +1592,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListTagsForResourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1372,9 +1627,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws KMSKeyNotAccessibleException
      *         AWS DMS cannot access the KMS key.
      * @sample AWSDatabaseMigrationService.ModifyEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyEndpointResult modifyEndpoint(ModifyEndpointRequest modifyEndpointRequest) {
+    public ModifyEndpointResult modifyEndpoint(ModifyEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final ModifyEndpointResult executeModifyEndpoint(ModifyEndpointRequest modifyEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1384,7 +1648,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ModifyEndpointRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyEndpointRequest));
+                request = new ModifyEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1428,9 +1692,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws UpgradeDependencyFailureException
      *         An upgrade dependency is preventing the database migration.
      * @sample AWSDatabaseMigrationService.ModifyReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ModifyReplicationInstanceResult modifyReplicationInstance(ModifyReplicationInstanceRequest modifyReplicationInstanceRequest) {
+    public ModifyReplicationInstanceResult modifyReplicationInstance(ModifyReplicationInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyReplicationInstance(request);
+    }
+
+    @SdkInternalApi
+    final ModifyReplicationInstanceResult executeModifyReplicationInstance(ModifyReplicationInstanceRequest modifyReplicationInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyReplicationInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1440,7 +1713,8 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ModifyReplicationInstanceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyReplicationInstanceRequest));
+                request = new ModifyReplicationInstanceRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(modifyReplicationInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1481,9 +1755,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidSubnetException
      *         The subnet provided is invalid.
      * @sample AWSDatabaseMigrationService.ModifyReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyReplicationSubnetGroupResult modifyReplicationSubnetGroup(ModifyReplicationSubnetGroupRequest modifyReplicationSubnetGroupRequest) {
+    public ModifyReplicationSubnetGroupResult modifyReplicationSubnetGroup(ModifyReplicationSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyReplicationSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final ModifyReplicationSubnetGroupResult executeModifyReplicationSubnetGroup(ModifyReplicationSubnetGroupRequest modifyReplicationSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyReplicationSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1493,7 +1776,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ModifyReplicationSubnetGroupRequestMarshaller(protocolFactory).marshall(super
+                request = new ModifyReplicationSubnetGroupRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(modifyReplicationSubnetGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1504,6 +1787,66 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
             HttpResponseHandler<AmazonWebServiceResponse<ModifyReplicationSubnetGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new ModifyReplicationSubnetGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies the specified replication task.
+     * </p>
+     * <p>
+     * You can't modify the task endpoints. The task must be stopped before you can modify it.
+     * </p>
+     * 
+     * @param modifyReplicationTaskRequest
+     * @return Result of the ModifyReplicationTask operation returned by the service.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws ResourceAlreadyExistsException
+     *         The resource you are attempting to create already exists.
+     * @throws KMSKeyNotAccessibleException
+     *         AWS DMS cannot access the KMS key.
+     * @sample AWSDatabaseMigrationService.ModifyReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ModifyReplicationTaskResult modifyReplicationTask(ModifyReplicationTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyReplicationTask(request);
+    }
+
+    @SdkInternalApi
+    final ModifyReplicationTaskResult executeModifyReplicationTask(ModifyReplicationTaskRequest modifyReplicationTaskRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyReplicationTaskRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyReplicationTaskRequest> request = null;
+        Response<ModifyReplicationTaskResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyReplicationTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyReplicationTaskRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ModifyReplicationTaskResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ModifyReplicationTaskResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1531,9 +1874,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.RefreshSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RefreshSchemasResult refreshSchemas(RefreshSchemasRequest refreshSchemasRequest) {
+    public RefreshSchemasResult refreshSchemas(RefreshSchemasRequest request) {
+        request = beforeClientExecution(request);
+        return executeRefreshSchemas(request);
+    }
+
+    @SdkInternalApi
+    final RefreshSchemasResult executeRefreshSchemas(RefreshSchemasRequest refreshSchemasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(refreshSchemasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1543,7 +1895,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RefreshSchemasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(refreshSchemasRequest));
+                request = new RefreshSchemasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(refreshSchemasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1572,9 +1924,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest) {
+    public RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTagsFromResource(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsFromResourceResult executeRemoveTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsFromResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1584,7 +1945,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemoveTagsFromResourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromResourceRequest));
+                request = new RemoveTagsFromResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1616,9 +1977,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.StartReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StartReplicationTaskResult startReplicationTask(StartReplicationTaskRequest startReplicationTaskRequest) {
+    public StartReplicationTaskResult startReplicationTask(StartReplicationTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartReplicationTask(request);
+    }
+
+    @SdkInternalApi
+    final StartReplicationTaskResult executeStartReplicationTask(StartReplicationTaskRequest startReplicationTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startReplicationTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1628,7 +1998,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartReplicationTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(startReplicationTaskRequest));
+                request = new StartReplicationTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startReplicationTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1660,9 +2030,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.StopReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StopReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StopReplicationTaskResult stopReplicationTask(StopReplicationTaskRequest stopReplicationTaskRequest) {
+    public StopReplicationTaskResult stopReplicationTask(StopReplicationTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopReplicationTask(request);
+    }
+
+    @SdkInternalApi
+    final StopReplicationTaskResult executeStopReplicationTask(StopReplicationTaskRequest stopReplicationTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(stopReplicationTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1672,7 +2051,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StopReplicationTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopReplicationTaskRequest));
+                request = new StopReplicationTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopReplicationTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1707,9 +2086,18 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.TestConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public TestConnectionResult testConnection(TestConnectionRequest testConnectionRequest) {
+    public TestConnectionResult testConnection(TestConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeTestConnection(request);
+    }
+
+    @SdkInternalApi
+    final TestConnectionResult executeTestConnection(TestConnectionRequest testConnectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(testConnectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1719,7 +2107,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new TestConnectionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(testConnectionRequest));
+                request = new TestConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(testConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

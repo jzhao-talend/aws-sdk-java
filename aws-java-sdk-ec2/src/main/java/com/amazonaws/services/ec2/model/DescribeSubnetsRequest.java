@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeSubnetsRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeSubnetsRequestMarshall
  * Contains the parameters for DescribeSubnets.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeSubnetsRequest> {
 
     /**
@@ -46,13 +49,13 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     * <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's
-     * CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
+     * <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the
+     * subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
      * <code>cidr-block</code> as the filter names.
      * </p>
      * </li>
@@ -60,6 +63,22 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * <p>
      * <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also
      * use <code>default-for-az</code> as the filter name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated
+     * with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.
      * </p>
      * </li>
      * <li>
@@ -74,7 +93,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -207,13 +228,13 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     * <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's
-     * CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
+     * <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the
+     * subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
      * <code>cidr-block</code> as the filter names.
      * </p>
      * </li>
@@ -221,6 +242,22 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * <p>
      * <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also
      * use <code>default-for-az</code> as the filter name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated
+     * with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.
      * </p>
      * </li>
      * <li>
@@ -235,7 +272,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -270,20 +309,37 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *         </li>
      *         <li>
      *         <p>
-     *         <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     *         <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the
-     *         subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
-     *         <code>cidr-block</code> as the filter names.
+     *         <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match
+     *         the subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code>
+     *         or <code>cidr-block</code> as the filter names.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You
      *         can also use <code>default-for-az</code> as the filter name.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block
+     *         associated with the subnet.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the
+     *         subnet.
      *         </p>
      *         </li>
      *         <li>
@@ -299,6 +355,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -343,13 +402,13 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     * <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's
-     * CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
+     * <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the
+     * subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
      * <code>cidr-block</code> as the filter names.
      * </p>
      * </li>
@@ -357,6 +416,22 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * <p>
      * <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also
      * use <code>default-for-az</code> as the filter name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated
+     * with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.
      * </p>
      * </li>
      * <li>
@@ -371,7 +446,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -407,20 +484,37 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     *        <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the
-     *        subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
-     *        <code>cidr-block</code> as the filter names.
+     *        <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match
+     *        the subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code>
+     *        or <code>cidr-block</code> as the filter names.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You
      *        can also use <code>default-for-az</code> as the filter name.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block
+     *        associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the
+     *        subnet.
      *        </p>
      *        </li>
      *        <li>
@@ -436,6 +530,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -482,13 +579,13 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     * <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's
-     * CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
+     * <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the
+     * subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
      * <code>cidr-block</code> as the filter names.
      * </p>
      * </li>
@@ -496,6 +593,22 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * <p>
      * <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also
      * use <code>default-for-az</code> as the filter name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated
+     * with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.
      * </p>
      * </li>
      * <li>
@@ -510,7 +623,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -551,20 +666,37 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     *        <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the
-     *        subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
-     *        <code>cidr-block</code> as the filter names.
+     *        <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match
+     *        the subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code>
+     *        or <code>cidr-block</code> as the filter names.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You
      *        can also use <code>default-for-az</code> as the filter name.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block
+     *        associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the
+     *        subnet.
      *        </p>
      *        </li>
      *        <li>
@@ -580,6 +712,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -628,13 +763,13 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     * <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's
-     * CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
+     * <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the
+     * subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
      * <code>cidr-block</code> as the filter names.
      * </p>
      * </li>
@@ -642,6 +777,22 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * <p>
      * <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also
      * use <code>default-for-az</code> as the filter name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated
+     * with the subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.
      * </p>
      * </li>
      * <li>
@@ -656,7 +807,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -692,20 +845,37 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>available-ip-address-count</code> - The number of IP addresses in the subnet that are available.
+     *        <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cidrBlock</code> - The CIDR block of the subnet. The CIDR block you specify must exactly match the
-     *        subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or
-     *        <code>cidr-block</code> as the filter names.
+     *        <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match
+     *        the subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code>
+     *        or <code>cidr-block</code> as the filter names.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You
      *        can also use <code>default-for-az</code> as the filter name.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block
+     *        associated with the subnet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the
+     *        subnet.
      *        </p>
      *        </li>
      *        <li>
@@ -721,6 +891,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -774,9 +947,9 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubnetIds() != null)
-            sb.append("SubnetIds: " + getSubnetIds() + ",");
+            sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters());
         sb.append("}");
         return sb.toString();
     }

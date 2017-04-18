@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,22 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * This output contains the boostrap actions detail .
+ * This output contains the bootstrap actions detail.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListBootstrapActions"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bootstrap actions associated with the cluster .
+     * The bootstrap actions associated with the cluster.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Command> bootstrapActions;
@@ -36,10 +41,10 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The bootstrap actions associated with the cluster .
+     * The bootstrap actions associated with the cluster.
      * </p>
      * 
-     * @return The bootstrap actions associated with the cluster .
+     * @return The bootstrap actions associated with the cluster.
      */
 
     public java.util.List<Command> getBootstrapActions() {
@@ -51,11 +56,11 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The bootstrap actions associated with the cluster .
+     * The bootstrap actions associated with the cluster.
      * </p>
      * 
      * @param bootstrapActions
-     *        The bootstrap actions associated with the cluster .
+     *        The bootstrap actions associated with the cluster.
      */
 
     public void setBootstrapActions(java.util.Collection<Command> bootstrapActions) {
@@ -69,7 +74,7 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The bootstrap actions associated with the cluster .
+     * The bootstrap actions associated with the cluster.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -78,7 +83,7 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param bootstrapActions
-     *        The bootstrap actions associated with the cluster .
+     *        The bootstrap actions associated with the cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -94,11 +99,11 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The bootstrap actions associated with the cluster .
+     * The bootstrap actions associated with the cluster.
      * </p>
      * 
      * @param bootstrapActions
-     *        The bootstrap actions associated with the cluster .
+     *        The bootstrap actions associated with the cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,9 +164,9 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBootstrapActions() != null)
-            sb.append("BootstrapActions: " + getBootstrapActions() + ",");
+            sb.append("BootstrapActions: ").append(getBootstrapActions()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -205,4 +210,5 @@ public class ListBootstrapActionsResult extends com.amazonaws.AmazonWebServiceRe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

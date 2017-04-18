@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.directory;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.directory.model.*;
 
 /**
@@ -19,12 +21,29 @@ import com.amazonaws.services.directory.model.*;
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.directory.AbstractAWSDirectoryServiceAsync} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Directory Service</fullname>
  * <p>
- * This is the <i>AWS Directory Service API Reference</i>. This guide provides detailed information about AWS Directory
- * Service operations, data types, parameters, and errors.
+ * AWS Directory Service is a web service that makes it easy for you to setup and run directories in the AWS cloud, or
+ * connect your AWS resources with an existing on-premises Microsoft Active Directory. This guide provides detailed
+ * information about AWS Directory Service operations, data types, parameters, and errors. For information about AWS
+ * Directory Services features, see <a href="https://aws.amazon.com/directoryservice/">AWS Directory Service</a> and the
+ * <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html">AWS Directory Service
+ * Administration Guide</a>.
  * </p>
+ * <note>
+ * <p>
+ * AWS provides SDKs that consist of libraries and sample code for various programming languages and platforms (Java,
+ * Ruby, .Net, iOS, Android, etc.). The SDKs provide a convenient way to create programmatic access to AWS Directory
+ * Service and other AWS services. For more information about the AWS SDKs, including how to download and install them,
+ * see <a href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
+ * </p>
+ * </note>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
 
     /**
@@ -34,10 +53,19 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * this address block. You can also use <i>AddIpRoutes</i> to facilitate routing traffic that uses public IP ranges
      * from your Microsoft AD on AWS to a peer VPC.
      * </p>
+     * <p>
+     * Before you call <i>AddIpRoutes</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>AddIpRoutes</i> operation, see <a
+     * href
+     * ="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
+     * Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
+     * </p>
      * 
      * @param addIpRoutesRequest
      * @return A Java Future containing the result of the AddIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsync.AddIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddIpRoutesResult> addIpRoutesAsync(AddIpRoutesRequest addIpRoutesRequest);
 
@@ -48,6 +76,13 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * this address block. You can also use <i>AddIpRoutes</i> to facilitate routing traffic that uses public IP ranges
      * from your Microsoft AD on AWS to a peer VPC.
      * </p>
+     * <p>
+     * Before you call <i>AddIpRoutes</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>AddIpRoutes</i> operation, see <a
+     * href
+     * ="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
+     * Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
+     * </p>
      * 
      * @param addIpRoutesRequest
      * @param asyncHandler
@@ -56,28 +91,30 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.AddIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddIpRoutesResult> addIpRoutesAsync(AddIpRoutesRequest addIpRoutesRequest,
             com.amazonaws.handlers.AsyncHandler<AddIpRoutesRequest, AddIpRoutesResult> asyncHandler);
 
     /**
      * <p>
-     * Adds or overwrites one or more tags for the specified Amazon Directory Services directory. Each directory can
-     * have a maximum of 10 tags. Each tag consists of a key and optional value. Tag keys must be unique to each
-     * resource.
+     * Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags.
+     * Each tag consists of a key and optional value. Tag keys must be unique to each resource.
      * </p>
      * 
      * @param addTagsToResourceRequest
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSDirectoryServiceAsync.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest);
 
     /**
      * <p>
-     * Adds or overwrites one or more tags for the specified Amazon Directory Services directory. Each directory can
-     * have a maximum of 10 tags. Each tag consists of a key and optional value. Tag keys must be unique to each
-     * resource.
+     * Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags.
+     * Each tag consists of a key and optional value. Tag keys must be unique to each resource.
      * </p>
      * 
      * @param addTagsToResourceRequest
@@ -87,25 +124,80 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToResourceRequest, AddTagsToResourceResult> asyncHandler);
 
     /**
      * <p>
+     * Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started
+     * replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled
+     * during any of the following states; <code>Initializing</code>, <code>CreatingSnapshot</code>, and
+     * <code>UpdatingSchema</code>.
+     * </p>
+     * 
+     * @param cancelSchemaExtensionRequest
+     * @return A Java Future containing the result of the CancelSchemaExtension operation returned by the service.
+     * @sample AWSDirectoryServiceAsync.CancelSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CancelSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelSchemaExtensionResult> cancelSchemaExtensionAsync(CancelSchemaExtensionRequest cancelSchemaExtensionRequest);
+
+    /**
+     * <p>
+     * Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started
+     * replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled
+     * during any of the following states; <code>Initializing</code>, <code>CreatingSnapshot</code>, and
+     * <code>UpdatingSchema</code>.
+     * </p>
+     * 
+     * @param cancelSchemaExtensionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CancelSchemaExtension operation returned by the service.
+     * @sample AWSDirectoryServiceAsyncHandler.CancelSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CancelSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelSchemaExtensionResult> cancelSchemaExtensionAsync(CancelSchemaExtensionRequest cancelSchemaExtensionRequest,
+            com.amazonaws.handlers.AsyncHandler<CancelSchemaExtensionRequest, CancelSchemaExtensionResult> asyncHandler);
+
+    /**
+     * <p>
      * Creates an AD Connector to connect to an on-premises directory.
+     * </p>
+     * <p>
+     * Before you call <i>ConnectDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>ConnectDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param connectDirectoryRequest
      *        Contains the inputs for the <a>ConnectDirectory</a> operation.
      * @return A Java Future containing the result of the ConnectDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsync.ConnectDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ConnectDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConnectDirectoryResult> connectDirectoryAsync(ConnectDirectoryRequest connectDirectoryRequest);
 
     /**
      * <p>
      * Creates an AD Connector to connect to an on-premises directory.
+     * </p>
+     * <p>
+     * Before you call <i>ConnectDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>ConnectDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param connectDirectoryRequest
@@ -116,6 +208,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ConnectDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.ConnectDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ConnectDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConnectDirectoryResult> connectDirectoryAsync(ConnectDirectoryRequest connectDirectoryRequest,
             com.amazonaws.handlers.AsyncHandler<ConnectDirectoryRequest, ConnectDirectoryResult> asyncHandler);
@@ -136,6 +230,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>CreateAlias</a> operation.
      * @return A Java Future containing the result of the CreateAlias operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest createAliasRequest);
 
@@ -159,6 +255,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateAlias operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest createAliasRequest,
             com.amazonaws.handlers.AsyncHandler<CreateAliasRequest, CreateAliasResult> asyncHandler);
@@ -172,6 +270,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>CreateComputer</a> operation.
      * @return A Java Future containing the result of the CreateComputer operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateComputer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateComputer" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateComputerResult> createComputerAsync(CreateComputerRequest createComputerRequest);
 
@@ -188,6 +288,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateComputer operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateComputer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateComputer" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateComputerResult> createComputerAsync(CreateComputerRequest createComputerRequest,
             com.amazonaws.handlers.AsyncHandler<CreateComputerRequest, CreateComputerResult> asyncHandler);
@@ -204,6 +306,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        domain.
      * @return A Java Future containing the result of the CreateConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateConditionalForwarderResult> createConditionalForwarderAsync(
             CreateConditionalForwarderRequest createConditionalForwarderRequest);
@@ -224,6 +328,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateConditionalForwarderResult> createConditionalForwarderAsync(
             CreateConditionalForwarderRequest createConditionalForwarderRequest,
@@ -233,17 +339,33 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * <p>
      * Creates a Simple AD directory.
      * </p>
+     * <p>
+     * Before you call <i>CreateDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>CreateDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
+     * </p>
      * 
      * @param createDirectoryRequest
      *        Contains the inputs for the <a>CreateDirectory</a> operation.
      * @return A Java Future containing the result of the CreateDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateDirectoryResult> createDirectoryAsync(CreateDirectoryRequest createDirectoryRequest);
 
     /**
      * <p>
      * Creates a Simple AD directory.
+     * </p>
+     * <p>
+     * Before you call <i>CreateDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>CreateDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param createDirectoryRequest
@@ -254,6 +376,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateDirectoryResult> createDirectoryAsync(CreateDirectoryRequest createDirectoryRequest,
             com.amazonaws.handlers.AsyncHandler<CreateDirectoryRequest, CreateDirectoryResult> asyncHandler);
@@ -262,17 +386,33 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * <p>
      * Creates a Microsoft AD in the AWS cloud.
      * </p>
+     * <p>
+     * Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required permissions have been explicitly
+     * granted through a policy. For details about what permissions are required to run the <i>CreateMicrosoftAD</i>
+     * operation, see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
+     * </p>
      * 
      * @param createMicrosoftADRequest
      *        Creates a Microsoft AD in the AWS cloud.
      * @return A Java Future containing the result of the CreateMicrosoftAD operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateMicrosoftAD
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateMicrosoftAD" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateMicrosoftADResult> createMicrosoftADAsync(CreateMicrosoftADRequest createMicrosoftADRequest);
 
     /**
      * <p>
      * Creates a Microsoft AD in the AWS cloud.
+     * </p>
+     * <p>
+     * Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required permissions have been explicitly
+     * granted through a policy. For details about what permissions are required to run the <i>CreateMicrosoftAD</i>
+     * operation, see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param createMicrosoftADRequest
@@ -283,6 +423,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateMicrosoftAD operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateMicrosoftAD
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateMicrosoftAD" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateMicrosoftADResult> createMicrosoftADAsync(CreateMicrosoftADRequest createMicrosoftADRequest,
             com.amazonaws.handlers.AsyncHandler<CreateMicrosoftADRequest, CreateMicrosoftADResult> asyncHandler);
@@ -301,6 +443,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>CreateSnapshot</a> operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest);
 
@@ -322,6 +466,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSnapshotRequest, CreateSnapshotResult> asyncHandler);
@@ -348,6 +494,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        AWS cloud and an external domain.
      * @return A Java Future containing the result of the CreateTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsync.CreateTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTrustResult> createTrustAsync(CreateTrustRequest createTrustRequest);
 
@@ -377,6 +525,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.CreateTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTrustResult> createTrustAsync(CreateTrustRequest createTrustRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTrustRequest, CreateTrustResult> asyncHandler);
@@ -390,6 +540,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Deletes a conditional forwarder.
      * @return A Java Future containing the result of the DeleteConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DeleteConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConditionalForwarderResult> deleteConditionalForwarderAsync(
             DeleteConditionalForwarderRequest deleteConditionalForwarderRequest);
@@ -407,6 +559,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DeleteConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConditionalForwarderResult> deleteConditionalForwarderAsync(
             DeleteConditionalForwarderRequest deleteConditionalForwarderRequest,
@@ -416,17 +570,33 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * <p>
      * Deletes an AWS Directory Service directory.
      * </p>
+     * <p>
+     * Before you call <i>DeleteDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>DeleteDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
+     * </p>
      * 
      * @param deleteDirectoryRequest
      *        Contains the inputs for the <a>DeleteDirectory</a> operation.
      * @return A Java Future containing the result of the DeleteDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DeleteDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteDirectoryResult> deleteDirectoryAsync(DeleteDirectoryRequest deleteDirectoryRequest);
 
     /**
      * <p>
      * Deletes an AWS Directory Service directory.
+     * </p>
+     * <p>
+     * Before you call <i>DeleteDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>DeleteDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param deleteDirectoryRequest
@@ -437,6 +607,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteDirectory operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DeleteDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteDirectoryResult> deleteDirectoryAsync(DeleteDirectoryRequest deleteDirectoryRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteDirectoryRequest, DeleteDirectoryResult> asyncHandler);
@@ -450,6 +622,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>DeleteSnapshot</a> operation.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotResult> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest);
 
@@ -466,6 +640,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotResult> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSnapshotRequest, DeleteSnapshotResult> asyncHandler);
@@ -480,6 +656,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        external domain.
      * @return A Java Future containing the result of the DeleteTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DeleteTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTrustResult> deleteTrustAsync(DeleteTrustRequest deleteTrustRequest);
 
@@ -497,6 +675,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DeleteTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTrustResult> deleteTrustAsync(DeleteTrustRequest deleteTrustRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTrustRequest, DeleteTrustResult> asyncHandler);
@@ -510,6 +690,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Removes the specified directory as a publisher to the specified SNS topic.
      * @return A Java Future containing the result of the DeregisterEventTopic operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DeregisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeregisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeregisterEventTopicResult> deregisterEventTopicAsync(DeregisterEventTopicRequest deregisterEventTopicRequest);
 
@@ -526,6 +708,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeregisterEventTopic operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DeregisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeregisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeregisterEventTopicResult> deregisterEventTopicAsync(DeregisterEventTopicRequest deregisterEventTopicRequest,
             com.amazonaws.handlers.AsyncHandler<DeregisterEventTopicRequest, DeregisterEventTopicResult> asyncHandler);
@@ -544,6 +728,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * @return A Java Future containing the result of the DescribeConditionalForwarders operation returned by the
      *         service.
      * @sample AWSDirectoryServiceAsync.DescribeConditionalForwarders
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeConditionalForwarders"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConditionalForwardersResult> describeConditionalForwardersAsync(
             DescribeConditionalForwardersRequest describeConditionalForwardersRequest);
@@ -566,6 +752,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * @return A Java Future containing the result of the DescribeConditionalForwarders operation returned by the
      *         service.
      * @sample AWSDirectoryServiceAsyncHandler.DescribeConditionalForwarders
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeConditionalForwarders"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConditionalForwardersResult> describeConditionalForwardersAsync(
             DescribeConditionalForwardersRequest describeConditionalForwardersRequest,
@@ -592,6 +780,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>DescribeDirectories</a> operation.
      * @return A Java Future containing the result of the DescribeDirectories operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DescribeDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeDirectories" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeDirectoriesResult> describeDirectoriesAsync(DescribeDirectoriesRequest describeDirectoriesRequest);
 
@@ -620,6 +810,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeDirectories operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DescribeDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeDirectories" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeDirectoriesResult> describeDirectoriesAsync(DescribeDirectoriesRequest describeDirectoriesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeDirectoriesRequest, DescribeDirectoriesResult> asyncHandler);
@@ -652,6 +844,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Describes event topics.
      * @return A Java Future containing the result of the DescribeEventTopics operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DescribeEventTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeEventTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEventTopicsResult> describeEventTopicsAsync(DescribeEventTopicsRequest describeEventTopicsRequest);
 
@@ -672,6 +866,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeEventTopics operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DescribeEventTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeEventTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEventTopicsResult> describeEventTopicsAsync(DescribeEventTopicsRequest describeEventTopicsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeEventTopicsRequest, DescribeEventTopicsResult> asyncHandler);
@@ -693,6 +889,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>DescribeSnapshots</a> operation.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest);
 
@@ -717,6 +915,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSnapshotsRequest, DescribeSnapshotsResult> asyncHandler);
@@ -750,6 +950,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        are are provided, such as directory ID or trust ID, this request describes all the trust relationships.
      * @return A Java Future containing the result of the DescribeTrusts operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DescribeTrusts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeTrusts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustsResult> describeTrustsAsync(DescribeTrustsRequest describeTrustsRequest);
 
@@ -771,6 +973,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTrusts operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DescribeTrusts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeTrusts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustsResult> describeTrustsAsync(DescribeTrustsRequest describeTrustsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTrustsRequest, DescribeTrustsResult> asyncHandler);
@@ -785,6 +989,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>DisableRadius</a> operation.
      * @return A Java Future containing the result of the DisableRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DisableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableRadiusResult> disableRadiusAsync(DisableRadiusRequest disableRadiusRequest);
 
@@ -802,6 +1008,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DisableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableRadiusResult> disableRadiusAsync(DisableRadiusRequest disableRadiusRequest,
             com.amazonaws.handlers.AsyncHandler<DisableRadiusRequest, DisableRadiusResult> asyncHandler);
@@ -815,6 +1023,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>DisableSso</a> operation.
      * @return A Java Future containing the result of the DisableSso operation returned by the service.
      * @sample AWSDirectoryServiceAsync.DisableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableSsoResult> disableSsoAsync(DisableSsoRequest disableSsoRequest);
 
@@ -831,6 +1041,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableSso operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.DisableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableSsoResult> disableSsoAsync(DisableSsoRequest disableSsoRequest,
             com.amazonaws.handlers.AsyncHandler<DisableSsoRequest, DisableSsoResult> asyncHandler);
@@ -845,6 +1057,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>EnableRadius</a> operation.
      * @return A Java Future containing the result of the EnableRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsync.EnableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableRadiusResult> enableRadiusAsync(EnableRadiusRequest enableRadiusRequest);
 
@@ -862,25 +1076,29 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.EnableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableRadiusResult> enableRadiusAsync(EnableRadiusRequest enableRadiusRequest,
             com.amazonaws.handlers.AsyncHandler<EnableRadiusRequest, EnableRadiusResult> asyncHandler);
 
     /**
      * <p>
-     * Enables single-sign on for a directory.
+     * Enables single sign-on for a directory.
      * </p>
      * 
      * @param enableSsoRequest
      *        Contains the inputs for the <a>EnableSso</a> operation.
      * @return A Java Future containing the result of the EnableSso operation returned by the service.
      * @sample AWSDirectoryServiceAsync.EnableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableSsoResult> enableSsoAsync(EnableSsoRequest enableSsoRequest);
 
     /**
      * <p>
-     * Enables single-sign on for a directory.
+     * Enables single sign-on for a directory.
      * </p>
      * 
      * @param enableSsoRequest
@@ -891,6 +1109,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableSso operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.EnableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableSsoResult> enableSsoAsync(EnableSsoRequest enableSsoRequest,
             com.amazonaws.handlers.AsyncHandler<EnableSsoRequest, EnableSsoResult> asyncHandler);
@@ -904,6 +1124,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>GetDirectoryLimits</a> operation.
      * @return A Java Future containing the result of the GetDirectoryLimits operation returned by the service.
      * @sample AWSDirectoryServiceAsync.GetDirectoryLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetDirectoryLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetDirectoryLimitsResult> getDirectoryLimitsAsync(GetDirectoryLimitsRequest getDirectoryLimitsRequest);
 
@@ -920,6 +1142,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetDirectoryLimits operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.GetDirectoryLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetDirectoryLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetDirectoryLimitsResult> getDirectoryLimitsAsync(GetDirectoryLimitsRequest getDirectoryLimitsRequest,
             com.amazonaws.handlers.AsyncHandler<GetDirectoryLimitsRequest, GetDirectoryLimitsResult> asyncHandler);
@@ -948,6 +1172,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>GetSnapshotLimits</a> operation.
      * @return A Java Future containing the result of the GetSnapshotLimits operation returned by the service.
      * @sample AWSDirectoryServiceAsync.GetSnapshotLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetSnapshotLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSnapshotLimitsResult> getSnapshotLimitsAsync(GetSnapshotLimitsRequest getSnapshotLimitsRequest);
 
@@ -964,6 +1190,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSnapshotLimits operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.GetSnapshotLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetSnapshotLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSnapshotLimitsResult> getSnapshotLimitsAsync(GetSnapshotLimitsRequest getSnapshotLimitsRequest,
             com.amazonaws.handlers.AsyncHandler<GetSnapshotLimitsRequest, GetSnapshotLimitsResult> asyncHandler);
@@ -976,6 +1204,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * @param listIpRoutesRequest
      * @return A Java Future containing the result of the ListIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsync.ListIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIpRoutesResult> listIpRoutesAsync(ListIpRoutesRequest listIpRoutesRequest);
 
@@ -991,24 +1221,59 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.ListIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIpRoutesResult> listIpRoutesAsync(ListIpRoutesRequest listIpRoutesRequest,
             com.amazonaws.handlers.AsyncHandler<ListIpRoutesRequest, ListIpRoutesResult> asyncHandler);
 
     /**
      * <p>
-     * Lists all tags on an Amazon Directory Services directory.
+     * Lists all schema extensions applied to a Microsoft AD Directory.
+     * </p>
+     * 
+     * @param listSchemaExtensionsRequest
+     * @return A Java Future containing the result of the ListSchemaExtensions operation returned by the service.
+     * @sample AWSDirectoryServiceAsync.ListSchemaExtensions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListSchemaExtensions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListSchemaExtensionsResult> listSchemaExtensionsAsync(ListSchemaExtensionsRequest listSchemaExtensionsRequest);
+
+    /**
+     * <p>
+     * Lists all schema extensions applied to a Microsoft AD Directory.
+     * </p>
+     * 
+     * @param listSchemaExtensionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListSchemaExtensions operation returned by the service.
+     * @sample AWSDirectoryServiceAsyncHandler.ListSchemaExtensions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListSchemaExtensions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListSchemaExtensionsResult> listSchemaExtensionsAsync(ListSchemaExtensionsRequest listSchemaExtensionsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListSchemaExtensionsRequest, ListSchemaExtensionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Lists all tags on a directory.
      * </p>
      * 
      * @param listTagsForResourceRequest
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSDirectoryServiceAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
 
     /**
      * <p>
-     * Lists all tags on an Amazon Directory Services directory.
+     * Lists all tags on a directory.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -1018,6 +1283,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
@@ -1034,6 +1301,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Registers a new event topic.
      * @return A Java Future containing the result of the RegisterEventTopic operation returned by the service.
      * @sample AWSDirectoryServiceAsync.RegisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RegisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterEventTopicResult> registerEventTopicAsync(RegisterEventTopicRequest registerEventTopicRequest);
 
@@ -1053,6 +1322,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RegisterEventTopic operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.RegisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RegisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterEventTopicResult> registerEventTopicAsync(RegisterEventTopicRequest registerEventTopicRequest,
             com.amazonaws.handlers.AsyncHandler<RegisterEventTopicRequest, RegisterEventTopicResult> asyncHandler);
@@ -1065,6 +1336,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      * @param removeIpRoutesRequest
      * @return A Java Future containing the result of the RemoveIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsync.RemoveIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveIpRoutesResult> removeIpRoutesAsync(RemoveIpRoutesRequest removeIpRoutesRequest);
 
@@ -1080,24 +1353,28 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveIpRoutes operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.RemoveIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveIpRoutesResult> removeIpRoutesAsync(RemoveIpRoutesRequest removeIpRoutesRequest,
             com.amazonaws.handlers.AsyncHandler<RemoveIpRoutesRequest, RemoveIpRoutesResult> asyncHandler);
 
     /**
      * <p>
-     * Removes tags from an Amazon Directory Services directory.
+     * Removes tags from a directory.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSDirectoryServiceAsync.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
     /**
      * <p>
-     * Removes tags from an Amazon Directory Services directory.
+     * Removes tags from a directory.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
@@ -1107,6 +1384,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest,
             com.amazonaws.handlers.AsyncHandler<RemoveTagsFromResourceRequest, RemoveTagsFromResourceResult> asyncHandler);
@@ -1129,6 +1408,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        An object representing the inputs for the <a>RestoreFromSnapshot</a> operation.
      * @return A Java Future containing the result of the RestoreFromSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsync.RestoreFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RestoreFromSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RestoreFromSnapshotResult> restoreFromSnapshotAsync(RestoreFromSnapshotRequest restoreFromSnapshotRequest);
 
@@ -1154,9 +1435,42 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RestoreFromSnapshot operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.RestoreFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RestoreFromSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RestoreFromSnapshotResult> restoreFromSnapshotAsync(RestoreFromSnapshotRequest restoreFromSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<RestoreFromSnapshotRequest, RestoreFromSnapshotResult> asyncHandler);
+
+    /**
+     * <p>
+     * Applies a schema extension to a Microsoft AD directory.
+     * </p>
+     * 
+     * @param startSchemaExtensionRequest
+     * @return A Java Future containing the result of the StartSchemaExtension operation returned by the service.
+     * @sample AWSDirectoryServiceAsync.StartSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/StartSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<StartSchemaExtensionResult> startSchemaExtensionAsync(StartSchemaExtensionRequest startSchemaExtensionRequest);
+
+    /**
+     * <p>
+     * Applies a schema extension to a Microsoft AD directory.
+     * </p>
+     * 
+     * @param startSchemaExtensionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StartSchemaExtension operation returned by the service.
+     * @sample AWSDirectoryServiceAsyncHandler.StartSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/StartSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<StartSchemaExtensionResult> startSchemaExtensionAsync(StartSchemaExtensionRequest startSchemaExtensionRequest,
+            com.amazonaws.handlers.AsyncHandler<StartSchemaExtensionRequest, StartSchemaExtensionResult> asyncHandler);
 
     /**
      * <p>
@@ -1167,6 +1481,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Updates a conditional forwarder.
      * @return A Java Future containing the result of the UpdateConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsync.UpdateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UpdateConditionalForwarderResult> updateConditionalForwarderAsync(
             UpdateConditionalForwarderRequest updateConditionalForwarderRequest);
@@ -1184,6 +1500,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateConditionalForwarder operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.UpdateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UpdateConditionalForwarderResult> updateConditionalForwarderAsync(
             UpdateConditionalForwarderRequest updateConditionalForwarderRequest,
@@ -1198,6 +1516,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        Contains the inputs for the <a>UpdateRadius</a> operation.
      * @return A Java Future containing the result of the UpdateRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsync.UpdateRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateRadiusResult> updateRadiusAsync(UpdateRadiusRequest updateRadiusRequest);
 
@@ -1214,6 +1534,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateRadius operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.UpdateRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateRadiusResult> updateRadiusAsync(UpdateRadiusRequest updateRadiusRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateRadiusRequest, UpdateRadiusResult> asyncHandler);
@@ -1231,6 +1553,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        an external domain.
      * @return A Java Future containing the result of the VerifyTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsync.VerifyTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/VerifyTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyTrustResult> verifyTrustAsync(VerifyTrustRequest verifyTrustRequest);
 
@@ -1251,6 +1575,8 @@ public interface AWSDirectoryServiceAsync extends AWSDirectoryService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the VerifyTrust operation returned by the service.
      * @sample AWSDirectoryServiceAsyncHandler.VerifyTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/VerifyTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyTrustResult> verifyTrustAsync(VerifyTrustRequest verifyTrustRequest,
             com.amazonaws.handlers.AsyncHandler<VerifyTrustRequest, VerifyTrustResult> asyncHandler);

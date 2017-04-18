@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,16 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * A single patch operation to apply to the specified resource. Please refer to
  * http://tools.ietf.org/html/rfc6902#section-4 for an explanation of how each operation is used.
  */
-public class PatchOperation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PatchOperation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -44,7 +48,10 @@ public class PatchOperation implements Serializable, Cloneable {
     private String path;
     /**
      * <p>
-     * The new target value of the update operation.
+     * The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose
+     * the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a
+     * href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for
+     * Parameters</a>.
      * </p>
      */
     private String value;
@@ -245,11 +252,18 @@ public class PatchOperation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The new target value of the update operation.
+     * The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose
+     * the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a
+     * href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for
+     * Parameters</a>.
      * </p>
      * 
      * @param value
-     *        The new target value of the update operation.
+     *        The new target value of the update operation. When using AWS CLI to update a property of a JSON value,
+     *        enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
+     *        shell, see <a
+     *        href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using
+     *        JSON for Parameters</a>.
      */
 
     public void setValue(String value) {
@@ -258,10 +272,17 @@ public class PatchOperation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The new target value of the update operation.
+     * The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose
+     * the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a
+     * href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for
+     * Parameters</a>.
      * </p>
      * 
-     * @return The new target value of the update operation.
+     * @return The new target value of the update operation. When using AWS CLI to update a property of a JSON value,
+     *         enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
+     *         shell, see <a
+     *         href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using
+     *         JSON for Parameters</a>.
      */
 
     public String getValue() {
@@ -270,11 +291,18 @@ public class PatchOperation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The new target value of the update operation.
+     * The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose
+     * the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a
+     * href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for
+     * Parameters</a>.
      * </p>
      * 
      * @param value
-     *        The new target value of the update operation.
+     *        The new target value of the update operation. When using AWS CLI to update a property of a JSON value,
+     *        enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
+     *        shell, see <a
+     *        href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using
+     *        JSON for Parameters</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -335,13 +363,13 @@ public class PatchOperation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOp() != null)
-            sb.append("Op: " + getOp() + ",");
+            sb.append("Op: ").append(getOp()).append(",");
         if (getPath() != null)
-            sb.append("Path: " + getPath() + ",");
+            sb.append("Path: ").append(getPath()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getFrom() != null)
-            sb.append("From: " + getFrom());
+            sb.append("From: ").append(getFrom());
         sb.append("}");
         return sb.toString();
     }
@@ -394,5 +422,11 @@ public class PatchOperation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.PatchOperationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

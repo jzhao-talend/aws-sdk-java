@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,20 +13,24 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The HLS content protection settings, if any, that you want Elastic Transcoder to apply to your output files.
  * </p>
  */
-public class HlsContentProtection implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class HlsContentProtection implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * The content protection method for your output. The only valid value is: <code>aes-128</code>.
      * </p>
      * <p>
-     * This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     * This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
      * playlist.
      * </p>
      */
@@ -87,15 +91,15 @@ public class HlsContentProtection implements Serializable, Cloneable {
      * The content protection method for your output. The only valid value is: <code>aes-128</code>.
      * </p>
      * <p>
-     * This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     * This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
      * playlist.
      * </p>
      * 
      * @param method
      *        The content protection method for your output. The only valid value is: <code>aes-128</code>.</p>
      *        <p>
-     *        This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the
-     *        output playlist.
+     *        This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     *        playlist.
      */
 
     public void setMethod(String method) {
@@ -107,14 +111,14 @@ public class HlsContentProtection implements Serializable, Cloneable {
      * The content protection method for your output. The only valid value is: <code>aes-128</code>.
      * </p>
      * <p>
-     * This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     * This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
      * playlist.
      * </p>
      * 
      * @return The content protection method for your output. The only valid value is: <code>aes-128</code>.</p>
      *         <p>
-     *         This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the
-     *         output playlist.
+     *         This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     *         playlist.
      */
 
     public String getMethod() {
@@ -126,15 +130,15 @@ public class HlsContentProtection implements Serializable, Cloneable {
      * The content protection method for your output. The only valid value is: <code>aes-128</code>.
      * </p>
      * <p>
-     * This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     * This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
      * playlist.
      * </p>
      * 
      * @param method
      *        The content protection method for your output. The only valid value is: <code>aes-128</code>.</p>
      *        <p>
-     *        This value will be written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the
-     *        output playlist.
+     *        This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output
+     *        playlist.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -466,17 +470,17 @@ public class HlsContentProtection implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMethod() != null)
-            sb.append("Method: " + getMethod() + ",");
+            sb.append("Method: ").append(getMethod()).append(",");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getKeyMd5() != null)
-            sb.append("KeyMd5: " + getKeyMd5() + ",");
+            sb.append("KeyMd5: ").append(getKeyMd5()).append(",");
         if (getInitializationVector() != null)
-            sb.append("InitializationVector: " + getInitializationVector() + ",");
+            sb.append("InitializationVector: ").append(getInitializationVector()).append(",");
         if (getLicenseAcquisitionUrl() != null)
-            sb.append("LicenseAcquisitionUrl: " + getLicenseAcquisitionUrl() + ",");
+            sb.append("LicenseAcquisitionUrl: ").append(getLicenseAcquisitionUrl()).append(",");
         if (getKeyStoragePolicy() != null)
-            sb.append("KeyStoragePolicy: " + getKeyStoragePolicy());
+            sb.append("KeyStoragePolicy: ").append(getKeyStoragePolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -539,5 +543,11 @@ public class HlsContentProtection implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.HlsContentProtectionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

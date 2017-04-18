@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an event.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/EventDescription" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EventDescription implements Serializable, Cloneable {
 
     /**
@@ -57,6 +62,12 @@ public class EventDescription implements Serializable, Cloneable {
      * </p>
      */
     private String environmentName;
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     */
+    private String platformArn;
     /**
      * <p>
      * The web service request ID for the activity of this event.
@@ -312,6 +323,46 @@ public class EventDescription implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @param platformArn
+     *        The ARN of the custom platform.
+     */
+
+    public void setPlatformArn(String platformArn) {
+        this.platformArn = platformArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @return The ARN of the custom platform.
+     */
+
+    public String getPlatformArn() {
+        return this.platformArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @param platformArn
+     *        The ARN of the custom platform.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EventDescription withPlatformArn(String platformArn) {
+        setPlatformArn(platformArn);
+        return this;
+    }
+
+    /**
+     * <p>
      * The web service request ID for the activity of this event.
      * </p>
      * 
@@ -435,21 +486,23 @@ public class EventDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEventDate() != null)
-            sb.append("EventDate: " + getEventDate() + ",");
+            sb.append("EventDate: ").append(getEventDate()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getVersionLabel() != null)
-            sb.append("VersionLabel: " + getVersionLabel() + ",");
+            sb.append("VersionLabel: ").append(getVersionLabel()).append(",");
         if (getTemplateName() != null)
-            sb.append("TemplateName: " + getTemplateName() + ",");
+            sb.append("TemplateName: ").append(getTemplateName()).append(",");
         if (getEnvironmentName() != null)
-            sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+            sb.append("EnvironmentName: ").append(getEnvironmentName()).append(",");
+        if (getPlatformArn() != null)
+            sb.append("PlatformArn: ").append(getPlatformArn()).append(",");
         if (getRequestId() != null)
-            sb.append("RequestId: " + getRequestId() + ",");
+            sb.append("RequestId: ").append(getRequestId()).append(",");
         if (getSeverity() != null)
-            sb.append("Severity: " + getSeverity());
+            sb.append("Severity: ").append(getSeverity());
         sb.append("}");
         return sb.toString();
     }
@@ -488,6 +541,10 @@ public class EventDescription implements Serializable, Cloneable {
             return false;
         if (other.getEnvironmentName() != null && other.getEnvironmentName().equals(this.getEnvironmentName()) == false)
             return false;
+        if (other.getPlatformArn() == null ^ this.getPlatformArn() == null)
+            return false;
+        if (other.getPlatformArn() != null && other.getPlatformArn().equals(this.getPlatformArn()) == false)
+            return false;
         if (other.getRequestId() == null ^ this.getRequestId() == null)
             return false;
         if (other.getRequestId() != null && other.getRequestId().equals(this.getRequestId()) == false)
@@ -510,6 +567,7 @@ public class EventDescription implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getVersionLabel() == null) ? 0 : getVersionLabel().hashCode());
         hashCode = prime * hashCode + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode());
         hashCode = prime * hashCode + ((getEnvironmentName() == null) ? 0 : getEnvironmentName().hashCode());
+        hashCode = prime * hashCode + ((getPlatformArn() == null) ? 0 : getPlatformArn().hashCode());
         hashCode = prime * hashCode + ((getRequestId() == null) ? 0 : getRequestId().hashCode());
         hashCode = prime * hashCode + ((getSeverity() == null) ? 0 : getSeverity().hashCode());
         return hashCode;
@@ -523,4 +581,5 @@ public class EventDescription implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

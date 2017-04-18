@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -21,7 +22,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UserDetail" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UserDetail implements Serializable, Cloneable {
 
     /**
@@ -521,21 +526,21 @@ public class UserDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPath() != null)
-            sb.append("Path: " + getPath() + ",");
+            sb.append("Path: ").append(getPath()).append(",");
         if (getUserName() != null)
-            sb.append("UserName: " + getUserName() + ",");
+            sb.append("UserName: ").append(getUserName()).append(",");
         if (getUserId() != null)
-            sb.append("UserId: " + getUserId() + ",");
+            sb.append("UserId: ").append(getUserId()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getCreateDate() != null)
-            sb.append("CreateDate: " + getCreateDate() + ",");
+            sb.append("CreateDate: ").append(getCreateDate()).append(",");
         if (getUserPolicyList() != null)
-            sb.append("UserPolicyList: " + getUserPolicyList() + ",");
+            sb.append("UserPolicyList: ").append(getUserPolicyList()).append(",");
         if (getGroupList() != null)
-            sb.append("GroupList: " + getGroupList() + ",");
+            sb.append("GroupList: ").append(getGroupList()).append(",");
         if (getAttachedManagedPolicies() != null)
-            sb.append("AttachedManagedPolicies: " + getAttachedManagedPolicies());
+            sb.append("AttachedManagedPolicies: ").append(getAttachedManagedPolicies());
         sb.append("}");
         return sb.toString();
     }
@@ -609,4 +614,5 @@ public class UserDetail implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

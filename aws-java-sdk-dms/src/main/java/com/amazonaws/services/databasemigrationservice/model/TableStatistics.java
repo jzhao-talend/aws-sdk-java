@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TableStatistics" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TableStatistics implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TableStatistics implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -446,23 +453,23 @@ public class TableStatistics implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSchemaName() != null)
-            sb.append("SchemaName: " + getSchemaName() + ",");
+            sb.append("SchemaName: ").append(getSchemaName()).append(",");
         if (getTableName() != null)
-            sb.append("TableName: " + getTableName() + ",");
+            sb.append("TableName: ").append(getTableName()).append(",");
         if (getInserts() != null)
-            sb.append("Inserts: " + getInserts() + ",");
+            sb.append("Inserts: ").append(getInserts()).append(",");
         if (getDeletes() != null)
-            sb.append("Deletes: " + getDeletes() + ",");
+            sb.append("Deletes: ").append(getDeletes()).append(",");
         if (getUpdates() != null)
-            sb.append("Updates: " + getUpdates() + ",");
+            sb.append("Updates: ").append(getUpdates()).append(",");
         if (getDdls() != null)
-            sb.append("Ddls: " + getDdls() + ",");
+            sb.append("Ddls: ").append(getDdls()).append(",");
         if (getFullLoadRows() != null)
-            sb.append("FullLoadRows: " + getFullLoadRows() + ",");
+            sb.append("FullLoadRows: ").append(getFullLoadRows()).append(",");
         if (getLastUpdateTime() != null)
-            sb.append("LastUpdateTime: " + getLastUpdateTime() + ",");
+            sb.append("LastUpdateTime: ").append(getLastUpdateTime()).append(",");
         if (getTableState() != null)
-            sb.append("TableState: " + getTableState());
+            sb.append("TableState: ").append(getTableState());
         sb.append("}");
         return sb.toString();
     }
@@ -540,5 +547,11 @@ public class TableStatistics implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.TableStatisticsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

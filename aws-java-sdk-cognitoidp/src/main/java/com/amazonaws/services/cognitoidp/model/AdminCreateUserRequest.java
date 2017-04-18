@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the request to create a user in the specified user pool.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminCreateUser" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AdminCreateUserRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -1134,21 +1140,21 @@ public class AdminCreateUserRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserPoolId() != null)
-            sb.append("UserPoolId: " + getUserPoolId() + ",");
+            sb.append("UserPoolId: ").append(getUserPoolId()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getUserAttributes() != null)
-            sb.append("UserAttributes: " + getUserAttributes() + ",");
+            sb.append("UserAttributes: ").append(getUserAttributes()).append(",");
         if (getValidationData() != null)
-            sb.append("ValidationData: " + getValidationData() + ",");
+            sb.append("ValidationData: ").append(getValidationData()).append(",");
         if (getTemporaryPassword() != null)
-            sb.append("TemporaryPassword: " + getTemporaryPassword() + ",");
+            sb.append("TemporaryPassword: ").append(getTemporaryPassword()).append(",");
         if (getForceAliasCreation() != null)
-            sb.append("ForceAliasCreation: " + getForceAliasCreation() + ",");
+            sb.append("ForceAliasCreation: ").append(getForceAliasCreation()).append(",");
         if (getMessageAction() != null)
-            sb.append("MessageAction: " + getMessageAction() + ",");
+            sb.append("MessageAction: ").append(getMessageAction()).append(",");
         if (getDesiredDeliveryMediums() != null)
-            sb.append("DesiredDeliveryMediums: " + getDesiredDeliveryMediums());
+            sb.append("DesiredDeliveryMediums: ").append(getDesiredDeliveryMediums());
         sb.append("}");
         return sb.toString();
     }
@@ -1218,4 +1224,5 @@ public class AdminCreateUserRequest extends com.amazonaws.AmazonWebServiceReques
     public AdminCreateUserRequest clone() {
         return (AdminCreateUserRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -29,6 +27,7 @@ import com.amazonaws.util.IdempotentUtils;
  * PurchaseScheduledInstancesRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PurchaseScheduledInstancesRequestMarshaller implements Marshaller<Request<PurchaseScheduledInstancesRequest>, PurchaseScheduledInstancesRequest> {
 
     public Request<PurchaseScheduledInstancesRequest> marshall(PurchaseScheduledInstancesRequest purchaseScheduledInstancesRequest) {
@@ -40,7 +39,7 @@ public class PurchaseScheduledInstancesRequestMarshaller implements Marshaller<R
         Request<PurchaseScheduledInstancesRequest> request = new DefaultRequest<PurchaseScheduledInstancesRequest>(purchaseScheduledInstancesRequest,
                 "AmazonEC2");
         request.addParameter("Action", "PurchaseScheduledInstances");
-        request.addParameter("Version", "2016-09-15");
+        request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
         request.addParameter("ClientToken", IdempotentUtils.resolveString(purchaseScheduledInstancesRequest.getClientToken()));

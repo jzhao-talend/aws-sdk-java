@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Initiates the authentication response, as an administrator.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminInitiateAuth" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -39,7 +44,11 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
      * </p>
      */
     private java.util.Map<String, String> challengeParameters;
-
+    /**
+     * <p>
+     * The result of the authentication response.
+     * </p>
+     */
     private AuthenticationResultType authenticationResult;
 
     /**
@@ -217,7 +226,12 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
+     * The result of the authentication response.
+     * </p>
+     * 
      * @param authenticationResult
+     *        The result of the authentication response.
      */
 
     public void setAuthenticationResult(AuthenticationResultType authenticationResult) {
@@ -225,7 +239,11 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * @return
+     * <p>
+     * The result of the authentication response.
+     * </p>
+     * 
+     * @return The result of the authentication response.
      */
 
     public AuthenticationResultType getAuthenticationResult() {
@@ -233,7 +251,12 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
+     * <p>
+     * The result of the authentication response.
+     * </p>
+     * 
      * @param authenticationResult
+     *        The result of the authentication response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -254,13 +277,13 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getChallengeName() != null)
-            sb.append("ChallengeName: " + getChallengeName() + ",");
+            sb.append("ChallengeName: ").append(getChallengeName()).append(",");
         if (getSession() != null)
-            sb.append("Session: " + getSession() + ",");
+            sb.append("Session: ").append(getSession()).append(",");
         if (getChallengeParameters() != null)
-            sb.append("ChallengeParameters: " + getChallengeParameters() + ",");
+            sb.append("ChallengeParameters: ").append(getChallengeParameters()).append(",");
         if (getAuthenticationResult() != null)
-            sb.append("AuthenticationResult: " + getAuthenticationResult());
+            sb.append("AuthenticationResult: ").append(getAuthenticationResult());
         sb.append("}");
         return sb.toString();
     }
@@ -314,4 +337,5 @@ public class AdminInitiateAuthResult extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

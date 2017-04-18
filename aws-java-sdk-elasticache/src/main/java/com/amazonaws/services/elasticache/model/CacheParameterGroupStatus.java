@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Status of the cache parameter group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheParameterGroupStatus"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheParameterGroupStatus implements Serializable, Cloneable {
 
     /**
@@ -214,11 +219,11 @@ public class CacheParameterGroupStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheParameterGroupName() != null)
-            sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");
+            sb.append("CacheParameterGroupName: ").append(getCacheParameterGroupName()).append(",");
         if (getParameterApplyStatus() != null)
-            sb.append("ParameterApplyStatus: " + getParameterApplyStatus() + ",");
+            sb.append("ParameterApplyStatus: ").append(getParameterApplyStatus()).append(",");
         if (getCacheNodeIdsToReboot() != null)
-            sb.append("CacheNodeIdsToReboot: " + getCacheNodeIdsToReboot());
+            sb.append("CacheNodeIdsToReboot: ").append(getCacheNodeIdsToReboot());
         sb.append("}");
         return sb.toString();
     }
@@ -267,4 +272,5 @@ public class CacheParameterGroupStatus implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

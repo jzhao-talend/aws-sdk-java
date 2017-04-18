@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ScheduledInstancesLaunchSpecification StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledInstancesLaunchSpecificationStaxUnmarshaller implements Unmarshaller<ScheduledInstancesLaunchSpecification, StaxUnmarshallerContext> {
 
     public ScheduledInstancesLaunchSpecification unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -52,6 +52,11 @@ public class ScheduledInstancesLaunchSpecificationStaxUnmarshaller implements Un
 
                 if (context.testExpression("KeyName", targetDepth)) {
                     scheduledInstancesLaunchSpecification.setKeyName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SecurityGroupId", targetDepth)) {
+                    scheduledInstancesLaunchSpecification.withSecurityGroupIds(new ArrayList<String>());
                     continue;
                 }
 
@@ -85,6 +90,11 @@ public class ScheduledInstancesLaunchSpecificationStaxUnmarshaller implements Un
                     continue;
                 }
 
+                if (context.testExpression("BlockDeviceMapping", targetDepth)) {
+                    scheduledInstancesLaunchSpecification.withBlockDeviceMappings(new ArrayList<ScheduledInstancesBlockDeviceMapping>());
+                    continue;
+                }
+
                 if (context.testExpression("BlockDeviceMapping/BlockDeviceMapping", targetDepth)) {
                     scheduledInstancesLaunchSpecification.withBlockDeviceMappings(ScheduledInstancesBlockDeviceMappingStaxUnmarshaller.getInstance()
                             .unmarshall(context));
@@ -98,6 +108,11 @@ public class ScheduledInstancesLaunchSpecificationStaxUnmarshaller implements Un
 
                 if (context.testExpression("SubnetId", targetDepth)) {
                     scheduledInstancesLaunchSpecification.setSubnetId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("NetworkInterface", targetDepth)) {
+                    scheduledInstancesLaunchSpecification.withNetworkInterfaces(new ArrayList<ScheduledInstancesNetworkInterface>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ApplicationDescription StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ApplicationDescriptionStaxUnmarshaller implements Unmarshaller<ApplicationDescription, StaxUnmarshallerContext> {
 
     public ApplicationDescription unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -65,8 +65,18 @@ public class ApplicationDescriptionStaxUnmarshaller implements Unmarshaller<Appl
                     continue;
                 }
 
+                if (context.testExpression("Versions", targetDepth)) {
+                    applicationDescription.withVersions(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("Versions/member", targetDepth)) {
                     applicationDescription.withVersions(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ConfigurationTemplates", targetDepth)) {
+                    applicationDescription.withConfigurationTemplates(new ArrayList<String>());
                     continue;
                 }
 
@@ -75,6 +85,10 @@ public class ApplicationDescriptionStaxUnmarshaller implements Unmarshaller<Appl
                     continue;
                 }
 
+                if (context.testExpression("ResourceLifecycleConfig", targetDepth)) {
+                    applicationDescription.setResourceLifecycleConfig(ApplicationResourceLifecycleConfigStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return applicationDescription;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the configuration of a destination in Amazon Redshift.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/RedshiftDestinationConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
-public class RedshiftDestinationConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RedshiftDestinationConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -53,15 +60,15 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
     private String password;
     /**
      * <p>
-     * Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
-     * value is 3600 (60 minutes).
+     * The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is
+     * 3600 (60 minutes).
      * </p>
      */
     private RedshiftRetryOptions retryOptions;
     /**
      * <p>
-     * The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions are
-     * described in the topic for <a>CreateDeliveryStream</a>.
+     * The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions
+     * are described in the topic for <a>CreateDeliveryStream</a>.
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
@@ -72,7 +79,25 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
     private S3DestinationConfiguration s3Configuration;
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The data processing configuration.
+     * </p>
+     */
+    private ProcessingConfiguration processingConfiguration;
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     */
+    private String s3BackupMode;
+    /**
+     * <p>
+     * The configuration for backup in Amazon S3.
+     * </p>
+     */
+    private S3DestinationConfiguration s3BackupConfiguration;
+    /**
+     * <p>
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      */
     private CloudWatchLoggingOptions cloudWatchLoggingOptions;
@@ -279,13 +304,13 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
-     * value is 3600 (60 minutes).
+     * The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is
+     * 3600 (60 minutes).
      * </p>
      * 
      * @param retryOptions
-     *        Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift.
-     *        Default value is 3600 (60 minutes).
+     *        The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
+     *        value is 3600 (60 minutes).
      */
 
     public void setRetryOptions(RedshiftRetryOptions retryOptions) {
@@ -294,12 +319,12 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
-     * value is 3600 (60 minutes).
+     * The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is
+     * 3600 (60 minutes).
      * </p>
      * 
-     * @return Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift.
-     *         Default value is 3600 (60 minutes).
+     * @return The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
+     *         value is 3600 (60 minutes).
      */
 
     public RedshiftRetryOptions getRetryOptions() {
@@ -308,13 +333,13 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
-     * value is 3600 (60 minutes).
+     * The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is
+     * 3600 (60 minutes).
      * </p>
      * 
      * @param retryOptions
-     *        Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift.
-     *        Default value is 3600 (60 minutes).
+     *        The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default
+     *        value is 3600 (60 minutes).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -325,8 +350,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions are
-     * described in the topic for <a>CreateDeliveryStream</a>.
+     * The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions
+     * are described in the topic for <a>CreateDeliveryStream</a>.
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
@@ -335,8 +360,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
      * </p>
      * 
      * @param s3Configuration
-     *        The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions
-     *        are described in the topic for <a>CreateDeliveryStream</a>.</p>
+     *        The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data.
+     *        Restrictions are described in the topic for <a>CreateDeliveryStream</a>.</p>
      *        <p>
      *        The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
      *        <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon Redshift <code>COPY</code>
@@ -349,8 +374,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions are
-     * described in the topic for <a>CreateDeliveryStream</a>.
+     * The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions
+     * are described in the topic for <a>CreateDeliveryStream</a>.
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
@@ -358,8 +383,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
      * that reads from the S3 bucket doesn't support these compression formats.
      * </p>
      * 
-     * @return The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions
-     *         are described in the topic for <a>CreateDeliveryStream</a>.</p>
+     * @return The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data.
+     *         Restrictions are described in the topic for <a>CreateDeliveryStream</a>.</p>
      *         <p>
      *         The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
      *         <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon Redshift <code>COPY</code>
@@ -372,8 +397,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions are
-     * described in the topic for <a>CreateDeliveryStream</a>.
+     * The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions
+     * are described in the topic for <a>CreateDeliveryStream</a>.
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
@@ -382,8 +407,8 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
      * </p>
      * 
      * @param s3Configuration
-     *        The S3 configuration for the intermediate location from which Amazon Redshift obtains data. Restrictions
-     *        are described in the topic for <a>CreateDeliveryStream</a>.</p>
+     *        The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data.
+     *        Restrictions are described in the topic for <a>CreateDeliveryStream</a>.</p>
      *        <p>
      *        The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
      *        <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon Redshift <code>COPY</code>
@@ -398,11 +423,164 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The data processing configuration.
+     * </p>
+     * 
+     * @param processingConfiguration
+     *        The data processing configuration.
+     */
+
+    public void setProcessingConfiguration(ProcessingConfiguration processingConfiguration) {
+        this.processingConfiguration = processingConfiguration;
+    }
+
+    /**
+     * <p>
+     * The data processing configuration.
+     * </p>
+     * 
+     * @return The data processing configuration.
+     */
+
+    public ProcessingConfiguration getProcessingConfiguration() {
+        return this.processingConfiguration;
+    }
+
+    /**
+     * <p>
+     * The data processing configuration.
+     * </p>
+     * 
+     * @param processingConfiguration
+     *        The data processing configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RedshiftDestinationConfiguration withProcessingConfiguration(ProcessingConfiguration processingConfiguration) {
+        setProcessingConfiguration(processingConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     * 
+     * @param s3BackupMode
+     *        The Amazon S3 backup mode.
+     * @see RedshiftS3BackupMode
+     */
+
+    public void setS3BackupMode(String s3BackupMode) {
+        this.s3BackupMode = s3BackupMode;
+    }
+
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     * 
+     * @return The Amazon S3 backup mode.
+     * @see RedshiftS3BackupMode
+     */
+
+    public String getS3BackupMode() {
+        return this.s3BackupMode;
+    }
+
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     * 
+     * @param s3BackupMode
+     *        The Amazon S3 backup mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see RedshiftS3BackupMode
+     */
+
+    public RedshiftDestinationConfiguration withS3BackupMode(String s3BackupMode) {
+        setS3BackupMode(s3BackupMode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     * 
+     * @param s3BackupMode
+     *        The Amazon S3 backup mode.
+     * @see RedshiftS3BackupMode
+     */
+
+    public void setS3BackupMode(RedshiftS3BackupMode s3BackupMode) {
+        this.s3BackupMode = s3BackupMode.toString();
+    }
+
+    /**
+     * <p>
+     * The Amazon S3 backup mode.
+     * </p>
+     * 
+     * @param s3BackupMode
+     *        The Amazon S3 backup mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see RedshiftS3BackupMode
+     */
+
+    public RedshiftDestinationConfiguration withS3BackupMode(RedshiftS3BackupMode s3BackupMode) {
+        setS3BackupMode(s3BackupMode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The configuration for backup in Amazon S3.
+     * </p>
+     * 
+     * @param s3BackupConfiguration
+     *        The configuration for backup in Amazon S3.
+     */
+
+    public void setS3BackupConfiguration(S3DestinationConfiguration s3BackupConfiguration) {
+        this.s3BackupConfiguration = s3BackupConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration for backup in Amazon S3.
+     * </p>
+     * 
+     * @return The configuration for backup in Amazon S3.
+     */
+
+    public S3DestinationConfiguration getS3BackupConfiguration() {
+        return this.s3BackupConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration for backup in Amazon S3.
+     * </p>
+     * 
+     * @param s3BackupConfiguration
+     *        The configuration for backup in Amazon S3.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RedshiftDestinationConfiguration withS3BackupConfiguration(S3DestinationConfiguration s3BackupConfiguration) {
+        setS3BackupConfiguration(s3BackupConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        Describes CloudWatch logging options for your delivery stream.
+     *        The CloudWatch logging options for your delivery stream.
      */
 
     public void setCloudWatchLoggingOptions(CloudWatchLoggingOptions cloudWatchLoggingOptions) {
@@ -411,10 +589,10 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
-     * @return Describes CloudWatch logging options for your delivery stream.
+     * @return The CloudWatch logging options for your delivery stream.
      */
 
     public CloudWatchLoggingOptions getCloudWatchLoggingOptions() {
@@ -423,11 +601,11 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        Describes CloudWatch logging options for your delivery stream.
+     *        The CloudWatch logging options for your delivery stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -448,21 +626,27 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getClusterJDBCURL() != null)
-            sb.append("ClusterJDBCURL: " + getClusterJDBCURL() + ",");
+            sb.append("ClusterJDBCURL: ").append(getClusterJDBCURL()).append(",");
         if (getCopyCommand() != null)
-            sb.append("CopyCommand: " + getCopyCommand() + ",");
+            sb.append("CopyCommand: ").append(getCopyCommand()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getPassword() != null)
-            sb.append("Password: " + getPassword() + ",");
+            sb.append("Password: ").append(getPassword()).append(",");
         if (getRetryOptions() != null)
-            sb.append("RetryOptions: " + getRetryOptions() + ",");
+            sb.append("RetryOptions: ").append(getRetryOptions()).append(",");
         if (getS3Configuration() != null)
-            sb.append("S3Configuration: " + getS3Configuration() + ",");
+            sb.append("S3Configuration: ").append(getS3Configuration()).append(",");
+        if (getProcessingConfiguration() != null)
+            sb.append("ProcessingConfiguration: ").append(getProcessingConfiguration()).append(",");
+        if (getS3BackupMode() != null)
+            sb.append("S3BackupMode: ").append(getS3BackupMode()).append(",");
+        if (getS3BackupConfiguration() != null)
+            sb.append("S3BackupConfiguration: ").append(getS3BackupConfiguration()).append(",");
         if (getCloudWatchLoggingOptions() != null)
-            sb.append("CloudWatchLoggingOptions: " + getCloudWatchLoggingOptions());
+            sb.append("CloudWatchLoggingOptions: ").append(getCloudWatchLoggingOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -505,6 +689,18 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
             return false;
         if (other.getS3Configuration() != null && other.getS3Configuration().equals(this.getS3Configuration()) == false)
             return false;
+        if (other.getProcessingConfiguration() == null ^ this.getProcessingConfiguration() == null)
+            return false;
+        if (other.getProcessingConfiguration() != null && other.getProcessingConfiguration().equals(this.getProcessingConfiguration()) == false)
+            return false;
+        if (other.getS3BackupMode() == null ^ this.getS3BackupMode() == null)
+            return false;
+        if (other.getS3BackupMode() != null && other.getS3BackupMode().equals(this.getS3BackupMode()) == false)
+            return false;
+        if (other.getS3BackupConfiguration() == null ^ this.getS3BackupConfiguration() == null)
+            return false;
+        if (other.getS3BackupConfiguration() != null && other.getS3BackupConfiguration().equals(this.getS3BackupConfiguration()) == false)
+            return false;
         if (other.getCloudWatchLoggingOptions() == null ^ this.getCloudWatchLoggingOptions() == null)
             return false;
         if (other.getCloudWatchLoggingOptions() != null && other.getCloudWatchLoggingOptions().equals(this.getCloudWatchLoggingOptions()) == false)
@@ -524,6 +720,9 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
         hashCode = prime * hashCode + ((getPassword() == null) ? 0 : getPassword().hashCode());
         hashCode = prime * hashCode + ((getRetryOptions() == null) ? 0 : getRetryOptions().hashCode());
         hashCode = prime * hashCode + ((getS3Configuration() == null) ? 0 : getS3Configuration().hashCode());
+        hashCode = prime * hashCode + ((getProcessingConfiguration() == null) ? 0 : getProcessingConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getS3BackupMode() == null) ? 0 : getS3BackupMode().hashCode());
+        hashCode = prime * hashCode + ((getS3BackupConfiguration() == null) ? 0 : getS3BackupConfiguration().hashCode());
         hashCode = prime * hashCode + ((getCloudWatchLoggingOptions() == null) ? 0 : getCloudWatchLoggingOptions().hashCode());
         return hashCode;
     }
@@ -535,5 +734,11 @@ public class RedshiftDestinationConfiguration implements Serializable, Cloneable
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.RedshiftDestinationConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

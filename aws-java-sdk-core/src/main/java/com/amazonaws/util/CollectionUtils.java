@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ public class CollectionUtils {
      * @return Empty string if collection is null or empty. Otherwise joins all strings in the collection with the separator.
      */
     public static String join(Collection<String> toJoin, String separator) {
-        if (toJoin == null || toJoin.isEmpty()) {
+        if (isNullOrEmpty(toJoin)) {
             return "";
         }
 

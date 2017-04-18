@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an Amazon Inspector agent. This data type is used as a response element in the
  * <a>ListAssessmentRunAgents</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AssessmentRunAgent" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AssessmentRunAgent implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssessmentRunAgent implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -453,19 +460,19 @@ public class AssessmentRunAgent implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAgentId() != null)
-            sb.append("AgentId: " + getAgentId() + ",");
+            sb.append("AgentId: ").append(getAgentId()).append(",");
         if (getAssessmentRunArn() != null)
-            sb.append("AssessmentRunArn: " + getAssessmentRunArn() + ",");
+            sb.append("AssessmentRunArn: ").append(getAssessmentRunArn()).append(",");
         if (getAgentHealth() != null)
-            sb.append("AgentHealth: " + getAgentHealth() + ",");
+            sb.append("AgentHealth: ").append(getAgentHealth()).append(",");
         if (getAgentHealthCode() != null)
-            sb.append("AgentHealthCode: " + getAgentHealthCode() + ",");
+            sb.append("AgentHealthCode: ").append(getAgentHealthCode()).append(",");
         if (getAgentHealthDetails() != null)
-            sb.append("AgentHealthDetails: " + getAgentHealthDetails() + ",");
+            sb.append("AgentHealthDetails: ").append(getAgentHealthDetails()).append(",");
         if (getAutoScalingGroup() != null)
-            sb.append("AutoScalingGroup: " + getAutoScalingGroup() + ",");
+            sb.append("AutoScalingGroup: ").append(getAutoScalingGroup()).append(",");
         if (getTelemetryMetadata() != null)
-            sb.append("TelemetryMetadata: " + getTelemetryMetadata());
+            sb.append("TelemetryMetadata: ").append(getTelemetryMetadata());
         sb.append("}");
         return sb.toString();
     }
@@ -533,5 +540,11 @@ public class AssessmentRunAgent implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.AssessmentRunAgentMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

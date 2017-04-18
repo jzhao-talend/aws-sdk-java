@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,14 @@
  */
 package com.amazonaws.auth.policy.actions;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.auth.policy.Action;
 
 /**
  * The available AWS access control policy actions for Amazon GameLift.
  */
-
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum GameliftActions implements Action {
 
     /** Represents any action executed on Amazon GameLift. */
@@ -31,6 +33,8 @@ public enum GameliftActions implements Action {
     CreateFleet("gamelift:CreateFleet"),
     /** Action for the CreateGameSession operation. */
     CreateGameSession("gamelift:CreateGameSession"),
+    /** Action for the CreateGameSessionQueue operation. */
+    CreateGameSessionQueue("gamelift:CreateGameSessionQueue"),
     /** Action for the CreatePlayerSession operation. */
     CreatePlayerSession("gamelift:CreatePlayerSession"),
     /** Action for the CreatePlayerSessions operation. */
@@ -41,6 +45,8 @@ public enum GameliftActions implements Action {
     DeleteBuild("gamelift:DeleteBuild"),
     /** Action for the DeleteFleet operation. */
     DeleteFleet("gamelift:DeleteFleet"),
+    /** Action for the DeleteGameSessionQueue operation. */
+    DeleteGameSessionQueue("gamelift:DeleteGameSessionQueue"),
     /** Action for the DeleteScalingPolicy operation. */
     DeleteScalingPolicy("gamelift:DeleteScalingPolicy"),
     /** Action for the DescribeAlias operation. */
@@ -61,6 +67,10 @@ public enum GameliftActions implements Action {
     DescribeFleetUtilization("gamelift:DescribeFleetUtilization"),
     /** Action for the DescribeGameSessionDetails operation. */
     DescribeGameSessionDetails("gamelift:DescribeGameSessionDetails"),
+    /** Action for the DescribeGameSessionPlacement operation. */
+    DescribeGameSessionPlacement("gamelift:DescribeGameSessionPlacement"),
+    /** Action for the DescribeGameSessionQueues operation. */
+    DescribeGameSessionQueues("gamelift:DescribeGameSessionQueues"),
     /** Action for the DescribeGameSessions operation. */
     DescribeGameSessions("gamelift:DescribeGameSessions"),
     /** Action for the DescribeInstances operation. */
@@ -73,6 +83,8 @@ public enum GameliftActions implements Action {
     DescribeScalingPolicies("gamelift:DescribeScalingPolicies"),
     /** Action for the GetGameSessionLogUrl operation. */
     GetGameSessionLogUrl("gamelift:GetGameSessionLogUrl"),
+    /** Action for the GetInstanceAccess operation. */
+    GetInstanceAccess("gamelift:GetInstanceAccess"),
     /** Action for the ListAliases operation. */
     ListAliases("gamelift:ListAliases"),
     /** Action for the ListBuilds operation. */
@@ -87,6 +99,10 @@ public enum GameliftActions implements Action {
     ResolveAlias("gamelift:ResolveAlias"),
     /** Action for the SearchGameSessions operation. */
     SearchGameSessions("gamelift:SearchGameSessions"),
+    /** Action for the StartGameSessionPlacement operation. */
+    StartGameSessionPlacement("gamelift:StartGameSessionPlacement"),
+    /** Action for the StopGameSessionPlacement operation. */
+    StopGameSessionPlacement("gamelift:StopGameSessionPlacement"),
     /** Action for the UpdateAlias operation. */
     UpdateAlias("gamelift:UpdateAlias"),
     /** Action for the UpdateBuild operation. */
@@ -99,6 +115,8 @@ public enum GameliftActions implements Action {
     UpdateFleetPortSettings("gamelift:UpdateFleetPortSettings"),
     /** Action for the UpdateGameSession operation. */
     UpdateGameSession("gamelift:UpdateGameSession"),
+    /** Action for the UpdateGameSessionQueue operation. */
+    UpdateGameSessionQueue("gamelift:UpdateGameSessionQueue"),
     /** Action for the UpdateRuntimeConfiguration operation. */
     UpdateRuntimeConfiguration("gamelift:UpdateRuntimeConfiguration"),
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,15 @@
  */
 package com.amazonaws.services.sqs.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
- * Indicates that the specified queue previously received a <code>PurgeQueue</code> request within the last 60 seconds,
- * the time it can take to delete the messages in the queue.
+ * Indicates that the specified queue previously received a <code>PurgeQueue</code> request within the last 60 seconds
+ * (the time it can take to delete the messages in the queue).
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PurgeQueueInProgressException extends com.amazonaws.services.sqs.model.AmazonSQSException {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,25 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for CreateTargetGroup.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateTargetGroup"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * The name of the target group.
+     * </p>
+     * <p>
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * </p>
      */
     private String name;
@@ -104,9 +111,16 @@ public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The name of the target group.
      * </p>
+     * <p>
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
+     * </p>
      * 
      * @param name
-     *        The name of the target group.
+     *        The name of the target group.</p>
+     *        <p>
+     *        This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     *        alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      */
 
     public void setName(String name) {
@@ -117,8 +131,15 @@ public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The name of the target group.
      * </p>
+     * <p>
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
+     * </p>
      * 
-     * @return The name of the target group.
+     * @return The name of the target group.</p>
+     *         <p>
+     *         This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     *         alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      */
 
     public String getName() {
@@ -129,9 +150,16 @@ public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The name of the target group.
      * </p>
+     * <p>
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
+     * </p>
      * 
      * @param name
-     *        The name of the target group.
+     *        The name of the target group.</p>
+     *        <p>
+     *        This name must be unique per region per account, can have a maximum of 32 characters, must contain only
+     *        alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -699,29 +727,29 @@ public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getHealthCheckProtocol() != null)
-            sb.append("HealthCheckProtocol: " + getHealthCheckProtocol() + ",");
+            sb.append("HealthCheckProtocol: ").append(getHealthCheckProtocol()).append(",");
         if (getHealthCheckPort() != null)
-            sb.append("HealthCheckPort: " + getHealthCheckPort() + ",");
+            sb.append("HealthCheckPort: ").append(getHealthCheckPort()).append(",");
         if (getHealthCheckPath() != null)
-            sb.append("HealthCheckPath: " + getHealthCheckPath() + ",");
+            sb.append("HealthCheckPath: ").append(getHealthCheckPath()).append(",");
         if (getHealthCheckIntervalSeconds() != null)
-            sb.append("HealthCheckIntervalSeconds: " + getHealthCheckIntervalSeconds() + ",");
+            sb.append("HealthCheckIntervalSeconds: ").append(getHealthCheckIntervalSeconds()).append(",");
         if (getHealthCheckTimeoutSeconds() != null)
-            sb.append("HealthCheckTimeoutSeconds: " + getHealthCheckTimeoutSeconds() + ",");
+            sb.append("HealthCheckTimeoutSeconds: ").append(getHealthCheckTimeoutSeconds()).append(",");
         if (getHealthyThresholdCount() != null)
-            sb.append("HealthyThresholdCount: " + getHealthyThresholdCount() + ",");
+            sb.append("HealthyThresholdCount: ").append(getHealthyThresholdCount()).append(",");
         if (getUnhealthyThresholdCount() != null)
-            sb.append("UnhealthyThresholdCount: " + getUnhealthyThresholdCount() + ",");
+            sb.append("UnhealthyThresholdCount: ").append(getUnhealthyThresholdCount()).append(",");
         if (getMatcher() != null)
-            sb.append("Matcher: " + getMatcher());
+            sb.append("Matcher: ").append(getMatcher());
         sb.append("}");
         return sb.toString();
     }
@@ -811,4 +839,5 @@ public class CreateTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
     public CreateTargetGroupRequest clone() {
         return (CreateTargetGroupRequest) super.clone();
     }
+
 }

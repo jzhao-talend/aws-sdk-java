@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -43,6 +44,7 @@ import java.io.Serializable;
  * </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutMethodResponseResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -311,11 +313,11 @@ public class PutMethodResponseResult extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatusCode() != null)
-            sb.append("StatusCode: " + getStatusCode() + ",");
+            sb.append("StatusCode: ").append(getStatusCode()).append(",");
         if (getResponseParameters() != null)
-            sb.append("ResponseParameters: " + getResponseParameters() + ",");
+            sb.append("ResponseParameters: ").append(getResponseParameters()).append(",");
         if (getResponseModels() != null)
-            sb.append("ResponseModels: " + getResponseModels());
+            sb.append("ResponseModels: ").append(getResponseModels());
         sb.append("}");
         return sb.toString();
     }
@@ -364,4 +366,5 @@ public class PutMethodResponseResult extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,21 @@
 package com.amazonaws.services.applicationautoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a step scaling policy configuration.
+ * Represents a step scaling policy configuration.
  * </p>
+ * 
+ * @see <a
+ *      href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/StepScalingPolicyConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
-public class StepScalingPolicyConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StepScalingPolicyConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -512,15 +520,15 @@ public class StepScalingPolicyConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAdjustmentType() != null)
-            sb.append("AdjustmentType: " + getAdjustmentType() + ",");
+            sb.append("AdjustmentType: ").append(getAdjustmentType()).append(",");
         if (getStepAdjustments() != null)
-            sb.append("StepAdjustments: " + getStepAdjustments() + ",");
+            sb.append("StepAdjustments: ").append(getStepAdjustments()).append(",");
         if (getMinAdjustmentMagnitude() != null)
-            sb.append("MinAdjustmentMagnitude: " + getMinAdjustmentMagnitude() + ",");
+            sb.append("MinAdjustmentMagnitude: ").append(getMinAdjustmentMagnitude()).append(",");
         if (getCooldown() != null)
-            sb.append("Cooldown: " + getCooldown() + ",");
+            sb.append("Cooldown: ").append(getCooldown()).append(",");
         if (getMetricAggregationType() != null)
-            sb.append("MetricAggregationType: " + getMetricAggregationType());
+            sb.append("MetricAggregationType: ").append(getMetricAggregationType());
         sb.append("}");
         return sb.toString();
     }
@@ -578,5 +586,11 @@ public class StepScalingPolicyConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationautoscaling.model.transform.StepScalingPolicyConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

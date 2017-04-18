@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an AWS customer account authorized to restore a snapshot.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/AccountWithRestoreAccess" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AccountWithRestoreAccess implements Serializable, Cloneable {
 
     /**
@@ -27,6 +32,13 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
      * </p>
      */
     private String accountId;
+    /**
+     * <p>
+     * The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is
+     * <code>amazon-redshift-support</code>.
+     * </p>
+     */
+    private String accountAlias;
 
     /**
      * <p>
@@ -69,6 +81,52 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is
+     * <code>amazon-redshift-support</code>.
+     * </p>
+     * 
+     * @param accountAlias
+     *        The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier
+     *        is <code>amazon-redshift-support</code>.
+     */
+
+    public void setAccountAlias(String accountAlias) {
+        this.accountAlias = accountAlias;
+    }
+
+    /**
+     * <p>
+     * The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is
+     * <code>amazon-redshift-support</code>.
+     * </p>
+     * 
+     * @return The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the
+     *         identifier is <code>amazon-redshift-support</code>.
+     */
+
+    public String getAccountAlias() {
+        return this.accountAlias;
+    }
+
+    /**
+     * <p>
+     * The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is
+     * <code>amazon-redshift-support</code>.
+     * </p>
+     * 
+     * @param accountAlias
+     *        The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier
+     *        is <code>amazon-redshift-support</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AccountWithRestoreAccess withAccountAlias(String accountAlias) {
+        setAccountAlias(accountAlias);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -80,7 +138,9 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccountId() != null)
-            sb.append("AccountId: " + getAccountId());
+            sb.append("AccountId: ").append(getAccountId()).append(",");
+        if (getAccountAlias() != null)
+            sb.append("AccountAlias: ").append(getAccountAlias());
         sb.append("}");
         return sb.toString();
     }
@@ -99,6 +159,10 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
             return false;
         if (other.getAccountId() != null && other.getAccountId().equals(this.getAccountId()) == false)
             return false;
+        if (other.getAccountAlias() == null ^ this.getAccountAlias() == null)
+            return false;
+        if (other.getAccountAlias() != null && other.getAccountAlias().equals(this.getAccountAlias()) == false)
+            return false;
         return true;
     }
 
@@ -108,6 +172,7 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getAccountId() == null) ? 0 : getAccountId().hashCode());
+        hashCode = prime * hashCode + ((getAccountAlias() == null) ? 0 : getAccountAlias().hashCode());
         return hashCode;
     }
 
@@ -119,4 +184,5 @@ public class AccountWithRestoreAccess implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

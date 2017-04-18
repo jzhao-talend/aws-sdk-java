@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The RegisterDomain request includes the following elements.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterDomainRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -1438,25 +1444,25 @@ public class RegisterDomainRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getIdnLangCode() != null)
-            sb.append("IdnLangCode: " + getIdnLangCode() + ",");
+            sb.append("IdnLangCode: ").append(getIdnLangCode()).append(",");
         if (getDurationInYears() != null)
-            sb.append("DurationInYears: " + getDurationInYears() + ",");
+            sb.append("DurationInYears: ").append(getDurationInYears()).append(",");
         if (getAutoRenew() != null)
-            sb.append("AutoRenew: " + getAutoRenew() + ",");
+            sb.append("AutoRenew: ").append(getAutoRenew()).append(",");
         if (getAdminContact() != null)
-            sb.append("AdminContact: " + getAdminContact() + ",");
+            sb.append("AdminContact: ").append(getAdminContact()).append(",");
         if (getRegistrantContact() != null)
-            sb.append("RegistrantContact: " + getRegistrantContact() + ",");
+            sb.append("RegistrantContact: ").append(getRegistrantContact()).append(",");
         if (getTechContact() != null)
-            sb.append("TechContact: " + getTechContact() + ",");
+            sb.append("TechContact: ").append(getTechContact()).append(",");
         if (getPrivacyProtectAdminContact() != null)
-            sb.append("PrivacyProtectAdminContact: " + getPrivacyProtectAdminContact() + ",");
+            sb.append("PrivacyProtectAdminContact: ").append(getPrivacyProtectAdminContact()).append(",");
         if (getPrivacyProtectRegistrantContact() != null)
-            sb.append("PrivacyProtectRegistrantContact: " + getPrivacyProtectRegistrantContact() + ",");
+            sb.append("PrivacyProtectRegistrantContact: ").append(getPrivacyProtectRegistrantContact()).append(",");
         if (getPrivacyProtectTechContact() != null)
-            sb.append("PrivacyProtectTechContact: " + getPrivacyProtectTechContact());
+            sb.append("PrivacyProtectTechContact: ").append(getPrivacyProtectTechContact());
         sb.append("}");
         return sb.toString();
     }
@@ -1537,4 +1543,5 @@ public class RegisterDomainRequest extends com.amazonaws.AmazonWebServiceRequest
     public RegisterDomainRequest clone() {
         return (RegisterDomainRequest) super.clone();
     }
+
 }

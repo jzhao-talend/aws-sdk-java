@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetPortSettings" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing port settings for the requested fleet ID.
+     * Object that contains port settings for the requested fleet ID.
      * </p>
      */
     private java.util.List<IpPermission> inboundPermissions;
 
     /**
      * <p>
-     * Object containing port settings for the requested fleet ID.
+     * Object that contains port settings for the requested fleet ID.
      * </p>
      * 
-     * @return Object containing port settings for the requested fleet ID.
+     * @return Object that contains port settings for the requested fleet ID.
      */
 
     public java.util.List<IpPermission> getInboundPermissions() {
@@ -42,11 +47,11 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing port settings for the requested fleet ID.
+     * Object that contains port settings for the requested fleet ID.
      * </p>
      * 
      * @param inboundPermissions
-     *        Object containing port settings for the requested fleet ID.
+     *        Object that contains port settings for the requested fleet ID.
      */
 
     public void setInboundPermissions(java.util.Collection<IpPermission> inboundPermissions) {
@@ -60,7 +65,7 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing port settings for the requested fleet ID.
+     * Object that contains port settings for the requested fleet ID.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -69,7 +74,7 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
      * </p>
      * 
      * @param inboundPermissions
-     *        Object containing port settings for the requested fleet ID.
+     *        Object that contains port settings for the requested fleet ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -85,11 +90,11 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing port settings for the requested fleet ID.
+     * Object that contains port settings for the requested fleet ID.
      * </p>
      * 
      * @param inboundPermissions
-     *        Object containing port settings for the requested fleet ID.
+     *        Object that contains port settings for the requested fleet ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -110,7 +115,7 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInboundPermissions() != null)
-            sb.append("InboundPermissions: " + getInboundPermissions());
+            sb.append("InboundPermissions: ").append(getInboundPermissions());
         sb.append("}");
         return sb.toString();
     }
@@ -149,4 +154,5 @@ public class DescribeFleetPortSettingsResult extends com.amazonaws.AmazonWebServ
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

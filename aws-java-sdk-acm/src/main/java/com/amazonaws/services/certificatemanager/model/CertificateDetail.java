@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.certificatemanager.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains detailed metadata about an ACM Certificate. This structure is returned in the response to a
+ * Contains metadata about an ACM certificate. This structure is returned in the response to a
  * <a>DescribeCertificate</a> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/CertificateDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CertificateDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CertificateDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -47,8 +54,9 @@ public class CertificateDetail implements Serializable, Cloneable {
     private java.util.List<String> subjectAlternativeNames;
     /**
      * <p>
-     * Contains information about the email address or addresses used for domain validation. This field exists only when
-     * the certificate type is <code>AMAZON_ISSUED</code>.
+     * Contains information about the initial validation of each domain name that occurs as a result of the
+     * <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>
+     * .
      * </p>
      */
     private java.util.List<DomainValidation> domainValidationOptions;
@@ -163,6 +171,14 @@ public class CertificateDetail implements Serializable, Cloneable {
      * </p>
      */
     private String type;
+    /**
+     * <p>
+     * Contains information about the status of ACM's <a
+     * href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate.
+     * This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * </p>
+     */
+    private RenewalSummary renewalSummary;
 
     /**
      * <p>
@@ -352,12 +368,14 @@ public class CertificateDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains information about the email address or addresses used for domain validation. This field exists only when
-     * the certificate type is <code>AMAZON_ISSUED</code>.
+     * Contains information about the initial validation of each domain name that occurs as a result of the
+     * <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>
+     * .
      * </p>
      * 
-     * @return Contains information about the email address or addresses used for domain validation. This field exists
-     *         only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * @return Contains information about the initial validation of each domain name that occurs as a result of the
+     *         <a>RequestCertificate</a> request. This field exists only when the certificate type is
+     *         <code>AMAZON_ISSUED</code>.
      */
 
     public java.util.List<DomainValidation> getDomainValidationOptions() {
@@ -366,13 +384,15 @@ public class CertificateDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains information about the email address or addresses used for domain validation. This field exists only when
-     * the certificate type is <code>AMAZON_ISSUED</code>.
+     * Contains information about the initial validation of each domain name that occurs as a result of the
+     * <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>
+     * .
      * </p>
      * 
      * @param domainValidationOptions
-     *        Contains information about the email address or addresses used for domain validation. This field exists
-     *        only when the certificate type is <code>AMAZON_ISSUED</code>.
+     *        Contains information about the initial validation of each domain name that occurs as a result of the
+     *        <a>RequestCertificate</a> request. This field exists only when the certificate type is
+     *        <code>AMAZON_ISSUED</code>.
      */
 
     public void setDomainValidationOptions(java.util.Collection<DomainValidation> domainValidationOptions) {
@@ -386,8 +406,9 @@ public class CertificateDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains information about the email address or addresses used for domain validation. This field exists only when
-     * the certificate type is <code>AMAZON_ISSUED</code>.
+     * Contains information about the initial validation of each domain name that occurs as a result of the
+     * <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>
+     * .
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -396,8 +417,9 @@ public class CertificateDetail implements Serializable, Cloneable {
      * </p>
      * 
      * @param domainValidationOptions
-     *        Contains information about the email address or addresses used for domain validation. This field exists
-     *        only when the certificate type is <code>AMAZON_ISSUED</code>.
+     *        Contains information about the initial validation of each domain name that occurs as a result of the
+     *        <a>RequestCertificate</a> request. This field exists only when the certificate type is
+     *        <code>AMAZON_ISSUED</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -413,13 +435,15 @@ public class CertificateDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains information about the email address or addresses used for domain validation. This field exists only when
-     * the certificate type is <code>AMAZON_ISSUED</code>.
+     * Contains information about the initial validation of each domain name that occurs as a result of the
+     * <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>
+     * .
      * </p>
      * 
      * @param domainValidationOptions
-     *        Contains information about the email address or addresses used for domain validation. This field exists
-     *        only when the certificate type is <code>AMAZON_ISSUED</code>.
+     *        Contains information about the initial validation of each domain name that occurs as a result of the
+     *        <a>RequestCertificate</a> request. This field exists only when the certificate type is
+     *        <code>AMAZON_ISSUED</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1396,6 +1420,58 @@ public class CertificateDetail implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Contains information about the status of ACM's <a
+     * href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate.
+     * This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * </p>
+     * 
+     * @param renewalSummary
+     *        Contains information about the status of ACM's <a
+     *        href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the
+     *        certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     */
+
+    public void setRenewalSummary(RenewalSummary renewalSummary) {
+        this.renewalSummary = renewalSummary;
+    }
+
+    /**
+     * <p>
+     * Contains information about the status of ACM's <a
+     * href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate.
+     * This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * </p>
+     * 
+     * @return Contains information about the status of ACM's <a
+     *         href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the
+     *         certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     */
+
+    public RenewalSummary getRenewalSummary() {
+        return this.renewalSummary;
+    }
+
+    /**
+     * <p>
+     * Contains information about the status of ACM's <a
+     * href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate.
+     * This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * </p>
+     * 
+     * @param renewalSummary
+     *        Contains information about the status of ACM's <a
+     *        href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the
+     *        certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CertificateDetail withRenewalSummary(RenewalSummary renewalSummary) {
+        setRenewalSummary(renewalSummary);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1407,45 +1483,47 @@ public class CertificateDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getSubjectAlternativeNames() != null)
-            sb.append("SubjectAlternativeNames: " + getSubjectAlternativeNames() + ",");
+            sb.append("SubjectAlternativeNames: ").append(getSubjectAlternativeNames()).append(",");
         if (getDomainValidationOptions() != null)
-            sb.append("DomainValidationOptions: " + getDomainValidationOptions() + ",");
+            sb.append("DomainValidationOptions: ").append(getDomainValidationOptions()).append(",");
         if (getSerial() != null)
-            sb.append("Serial: " + getSerial() + ",");
+            sb.append("Serial: ").append(getSerial()).append(",");
         if (getSubject() != null)
-            sb.append("Subject: " + getSubject() + ",");
+            sb.append("Subject: ").append(getSubject()).append(",");
         if (getIssuer() != null)
-            sb.append("Issuer: " + getIssuer() + ",");
+            sb.append("Issuer: ").append(getIssuer()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getIssuedAt() != null)
-            sb.append("IssuedAt: " + getIssuedAt() + ",");
+            sb.append("IssuedAt: ").append(getIssuedAt()).append(",");
         if (getImportedAt() != null)
-            sb.append("ImportedAt: " + getImportedAt() + ",");
+            sb.append("ImportedAt: ").append(getImportedAt()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getRevokedAt() != null)
-            sb.append("RevokedAt: " + getRevokedAt() + ",");
+            sb.append("RevokedAt: ").append(getRevokedAt()).append(",");
         if (getRevocationReason() != null)
-            sb.append("RevocationReason: " + getRevocationReason() + ",");
+            sb.append("RevocationReason: ").append(getRevocationReason()).append(",");
         if (getNotBefore() != null)
-            sb.append("NotBefore: " + getNotBefore() + ",");
+            sb.append("NotBefore: ").append(getNotBefore()).append(",");
         if (getNotAfter() != null)
-            sb.append("NotAfter: " + getNotAfter() + ",");
+            sb.append("NotAfter: ").append(getNotAfter()).append(",");
         if (getKeyAlgorithm() != null)
-            sb.append("KeyAlgorithm: " + getKeyAlgorithm() + ",");
+            sb.append("KeyAlgorithm: ").append(getKeyAlgorithm()).append(",");
         if (getSignatureAlgorithm() != null)
-            sb.append("SignatureAlgorithm: " + getSignatureAlgorithm() + ",");
+            sb.append("SignatureAlgorithm: ").append(getSignatureAlgorithm()).append(",");
         if (getInUseBy() != null)
-            sb.append("InUseBy: " + getInUseBy() + ",");
+            sb.append("InUseBy: ").append(getInUseBy()).append(",");
         if (getFailureReason() != null)
-            sb.append("FailureReason: " + getFailureReason() + ",");
+            sb.append("FailureReason: ").append(getFailureReason()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType());
+            sb.append("Type: ").append(getType()).append(",");
+        if (getRenewalSummary() != null)
+            sb.append("RenewalSummary: ").append(getRenewalSummary());
         sb.append("}");
         return sb.toString();
     }
@@ -1540,6 +1618,10 @@ public class CertificateDetail implements Serializable, Cloneable {
             return false;
         if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
+        if (other.getRenewalSummary() == null ^ this.getRenewalSummary() == null)
+            return false;
+        if (other.getRenewalSummary() != null && other.getRenewalSummary().equals(this.getRenewalSummary()) == false)
+            return false;
         return true;
     }
 
@@ -1568,6 +1650,7 @@ public class CertificateDetail implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getInUseBy() == null) ? 0 : getInUseBy().hashCode());
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getRenewalSummary() == null) ? 0 : getRenewalSummary().hashCode());
         return hashCode;
     }
 
@@ -1578,5 +1661,11 @@ public class CertificateDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.certificatemanager.model.transform.CertificateDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

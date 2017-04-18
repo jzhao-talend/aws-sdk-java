@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetSampledRequests" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -50,8 +55,8 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code>
-     * to return a sample of requests. Specify the date and time in Unix time format (in seconds). You can specify any
-     * time range in the previous three hours.
+     * to return a sample of requests. Specify the date and time in the following format:
+     * <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      * </p>
      */
     private TimeWindow timeWindow;
@@ -234,14 +239,14 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code>
-     * to return a sample of requests. Specify the date and time in Unix time format (in seconds). You can specify any
-     * time range in the previous three hours.
+     * to return a sample of requests. Specify the date and time in the following format:
+     * <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      * </p>
      * 
      * @param timeWindow
      *        The start date and time and the end date and time of the range for which you want
-     *        <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in Unix time
-     *        format (in seconds). You can specify any time range in the previous three hours.
+     *        <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following
+     *        format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      */
 
     public void setTimeWindow(TimeWindow timeWindow) {
@@ -251,13 +256,14 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code>
-     * to return a sample of requests. Specify the date and time in Unix time format (in seconds). You can specify any
-     * time range in the previous three hours.
+     * to return a sample of requests. Specify the date and time in the following format:
+     * <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      * </p>
      * 
      * @return The start date and time and the end date and time of the range for which you want
-     *         <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in Unix time
-     *         format (in seconds). You can specify any time range in the previous three hours.
+     *         <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the
+     *         following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three
+     *         hours.
      */
 
     public TimeWindow getTimeWindow() {
@@ -267,14 +273,14 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code>
-     * to return a sample of requests. Specify the date and time in Unix time format (in seconds). You can specify any
-     * time range in the previous three hours.
+     * to return a sample of requests. Specify the date and time in the following format:
+     * <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      * </p>
      * 
      * @param timeWindow
      *        The start date and time and the end date and time of the range for which you want
-     *        <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in Unix time
-     *        format (in seconds). You can specify any time range in the previous three hours.
+     *        <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following
+     *        format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -347,13 +353,13 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWebAclId() != null)
-            sb.append("WebAclId: " + getWebAclId() + ",");
+            sb.append("WebAclId: ").append(getWebAclId()).append(",");
         if (getRuleId() != null)
-            sb.append("RuleId: " + getRuleId() + ",");
+            sb.append("RuleId: ").append(getRuleId()).append(",");
         if (getTimeWindow() != null)
-            sb.append("TimeWindow: " + getTimeWindow() + ",");
+            sb.append("TimeWindow: ").append(getTimeWindow()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -403,4 +409,5 @@ public class GetSampledRequestsRequest extends com.amazonaws.AmazonWebServiceReq
     public GetSampledRequestsRequest clone() {
         return (GetSampledRequestsRequest) super.clone();
     }
+
 }

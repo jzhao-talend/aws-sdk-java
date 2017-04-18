@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains default WorkSpace creation information.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DefaultWorkspaceCreationProperties"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DefaultWorkspaceCreationProperties implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DefaultWorkspaceCreationProperties implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -300,15 +307,15 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEnableWorkDocs() != null)
-            sb.append("EnableWorkDocs: " + getEnableWorkDocs() + ",");
+            sb.append("EnableWorkDocs: ").append(getEnableWorkDocs()).append(",");
         if (getEnableInternetAccess() != null)
-            sb.append("EnableInternetAccess: " + getEnableInternetAccess() + ",");
+            sb.append("EnableInternetAccess: ").append(getEnableInternetAccess()).append(",");
         if (getDefaultOu() != null)
-            sb.append("DefaultOu: " + getDefaultOu() + ",");
+            sb.append("DefaultOu: ").append(getDefaultOu()).append(",");
         if (getCustomSecurityGroupId() != null)
-            sb.append("CustomSecurityGroupId: " + getCustomSecurityGroupId() + ",");
+            sb.append("CustomSecurityGroupId: ").append(getCustomSecurityGroupId()).append(",");
         if (getUserEnabledAsLocalAdministrator() != null)
-            sb.append("UserEnabledAsLocalAdministrator: " + getUserEnabledAsLocalAdministrator());
+            sb.append("UserEnabledAsLocalAdministrator: ").append(getUserEnabledAsLocalAdministrator());
         sb.append("}");
         return sb.toString();
     }
@@ -367,5 +374,11 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.workspaces.model.transform.DefaultWorkspaceCreationPropertiesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

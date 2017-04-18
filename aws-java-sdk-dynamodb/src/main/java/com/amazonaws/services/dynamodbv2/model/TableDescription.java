@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,31 +13,38 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents the properties of a table.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/TableDescription" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TableDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TableDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table and
-     * index key schema.
+     * An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table
+     * and index key schema.
      * </p>
      * <p>
-     * Each <i>AttributeDefinition</i> object in this array is composed of:
+     * Each <code>AttributeDefinition</code> object in this array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributeType</i> - The data type for the attribute.
+     * <code>AttributeType</code> - The data type for the attribute.
      * </p>
      * </li>
      * </ul>
@@ -51,17 +58,17 @@ public class TableDescription implements Serializable, Cloneable {
     private String tableName;
     /**
      * <p>
-     * The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:
+     * The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role of the attribute:
+     * <code>KeyType</code> - The role of the attribute:
      * </p>
      * <ul>
      * <li>
@@ -102,22 +109,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -166,25 +173,25 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index.
+     * <code>IndexName</code> - The name of the local secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -195,7 +202,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -207,24 +214,24 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately every
-     * six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately
+     * every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * </ul>
@@ -241,72 +248,72 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when
-     * a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index
-     * with data from the table. (This attribute does not appear for indexes that were created during a
-     * <i>CreateTable</i> operation.)
+     * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
+     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * index with data from the table. (This attribute does not appear for indexes that were created during a
+     * <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index.
+     * <code>IndexName</code> - The name of the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexStatus</i> - The current status of the global secondary index:
+     * <code>IndexStatus</code> - The current status of the global secondary index:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value approximately
-     * every six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
+     * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -317,7 +324,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -329,18 +336,18 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units, along with data about increases and decreases.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units, along with data about increases and decreases.
      * </p>
      * </li>
      * </ul>
@@ -360,7 +367,7 @@ public class TableDescription implements Serializable, Cloneable {
      * A timestamp, in ISO 8601 format, for this stream.
      * </p>
      * <p>
-     * Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a
+     * Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a
      * stream from another table might have the same timestamp. However, the combination of the following three elements
      * is guaranteed to be unique:
      * </p>
@@ -377,7 +384,7 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * the <i>StreamLabel</i>.
+     * the <code>StreamLabel</code>.
      * </p>
      * </li>
      * </ul>
@@ -392,39 +399,39 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table and
-     * index key schema.
+     * An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table
+     * and index key schema.
      * </p>
      * <p>
-     * Each <i>AttributeDefinition</i> object in this array is composed of:
+     * Each <code>AttributeDefinition</code> object in this array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributeType</i> - The data type for the attribute.
+     * <code>AttributeType</code> - The data type for the attribute.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the
-     *         table and index key schema.</p>
+     * @return An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in
+     *         the table and index key schema.</p>
      *         <p>
-     *         Each <i>AttributeDefinition</i> object in this array is composed of:
+     *         Each <code>AttributeDefinition</code> object in this array is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>AttributeName</i> - The name of the attribute.
+     *         <code>AttributeName</code> - The name of the attribute.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>AttributeType</i> - The data type for the attribute.
+     *         <code>AttributeType</code> - The data type for the attribute.
      *         </p>
      *         </li>
      */
@@ -435,40 +442,40 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table and
-     * index key schema.
+     * An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table
+     * and index key schema.
      * </p>
      * <p>
-     * Each <i>AttributeDefinition</i> object in this array is composed of:
+     * Each <code>AttributeDefinition</code> object in this array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributeType</i> - The data type for the attribute.
+     * <code>AttributeType</code> - The data type for the attribute.
      * </p>
      * </li>
      * </ul>
      * 
      * @param attributeDefinitions
-     *        An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table
-     *        and index key schema.</p>
+     *        An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the
+     *        table and index key schema.</p>
      *        <p>
-     *        Each <i>AttributeDefinition</i> object in this array is composed of:
+     *        Each <code>AttributeDefinition</code> object in this array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributeType</i> - The data type for the attribute.
+     *        <code>AttributeType</code> - The data type for the attribute.
      *        </p>
      *        </li>
      */
@@ -484,21 +491,21 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table and
-     * index key schema.
+     * An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table
+     * and index key schema.
      * </p>
      * <p>
-     * Each <i>AttributeDefinition</i> object in this array is composed of:
+     * Each <code>AttributeDefinition</code> object in this array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributeType</i> - The data type for the attribute.
+     * <code>AttributeType</code> - The data type for the attribute.
      * </p>
      * </li>
      * </ul>
@@ -509,20 +516,20 @@ public class TableDescription implements Serializable, Cloneable {
      * </p>
      * 
      * @param attributeDefinitions
-     *        An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table
-     *        and index key schema.</p>
+     *        An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the
+     *        table and index key schema.</p>
      *        <p>
-     *        Each <i>AttributeDefinition</i> object in this array is composed of:
+     *        Each <code>AttributeDefinition</code> object in this array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributeType</i> - The data type for the attribute.
+     *        <code>AttributeType</code> - The data type for the attribute.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -540,40 +547,40 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table and
-     * index key schema.
+     * An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the table
+     * and index key schema.
      * </p>
      * <p>
-     * Each <i>AttributeDefinition</i> object in this array is composed of:
+     * Each <code>AttributeDefinition</code> object in this array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributeType</i> - The data type for the attribute.
+     * <code>AttributeType</code> - The data type for the attribute.
      * </p>
      * </li>
      * </ul>
      * 
      * @param attributeDefinitions
-     *        An array of <i>AttributeDefinition</i> objects. Each of these objects describes one attribute in the table
-     *        and index key schema.</p>
+     *        An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute in the
+     *        table and index key schema.</p>
      *        <p>
-     *        Each <i>AttributeDefinition</i> object in this array is composed of:
+     *        Each <code>AttributeDefinition</code> object in this array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributeType</i> - The data type for the attribute.
+     *        <code>AttributeType</code> - The data type for the attribute.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -626,17 +633,17 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:
+     * The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role of the attribute:
+     * <code>KeyType</code> - The role of the attribute:
      * </p>
      * <ul>
      * <li>
@@ -669,16 +676,16 @@ public class TableDescription implements Serializable, Cloneable {
      * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
-     * @return The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:</p>
+     * @return The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>AttributeName</i> - The name of the attribute.
+     *         <code>AttributeName</code> - The name of the attribute.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>KeyType</i> - The role of the attribute:
+     *         <code>KeyType</code> - The role of the attribute:
      *         </p>
      *         <ul>
      *         <li>
@@ -717,17 +724,17 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:
+     * The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role of the attribute:
+     * <code>KeyType</code> - The role of the attribute:
      * </p>
      * <ul>
      * <li>
@@ -761,16 +768,16 @@ public class TableDescription implements Serializable, Cloneable {
      * </p>
      * 
      * @param keySchema
-     *        The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:</p>
+     *        The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role of the attribute:
+     *        <code>KeyType</code> - The role of the attribute:
      *        </p>
      *        <ul>
      *        <li>
@@ -814,17 +821,17 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:
+     * The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role of the attribute:
+     * <code>KeyType</code> - The role of the attribute:
      * </p>
      * <ul>
      * <li>
@@ -863,16 +870,16 @@ public class TableDescription implements Serializable, Cloneable {
      * </p>
      * 
      * @param keySchema
-     *        The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:</p>
+     *        The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role of the attribute:
+     *        <code>KeyType</code> - The role of the attribute:
      *        </p>
      *        <ul>
      *        <li>
@@ -918,17 +925,17 @@ public class TableDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:
+     * The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of the attribute.
+     * <code>AttributeName</code> - The name of the attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role of the attribute:
+     * <code>KeyType</code> - The role of the attribute:
      * </p>
      * <ul>
      * <li>
@@ -962,16 +969,16 @@ public class TableDescription implements Serializable, Cloneable {
      * </p>
      * 
      * @param keySchema
-     *        The primary key structure for the table. Each <i>KeySchemaElement</i> consists of:</p>
+     *        The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of the attribute.
+     *        <code>AttributeName</code> - The name of the attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role of the attribute:
+     *        <code>KeyType</code> - The role of the attribute:
      *        </p>
      *        <ul>
      *        <li>
@@ -1017,22 +1024,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -1042,22 +1049,22 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The table is being created.
+     *        <code>CREATING</code> - The table is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The table is being updated.
+     *        <code>UPDATING</code> - The table is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The table is being deleted.
+     *        <code>DELETING</code> - The table is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The table is ready for use.
+     *        <code>ACTIVE</code> - The table is ready for use.
      *        </p>
      *        </li>
      * @see TableStatus
@@ -1074,22 +1081,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -1098,22 +1105,22 @@ public class TableDescription implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>CREATING</i> - The table is being created.
+     *         <code>CREATING</code> - The table is being created.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>UPDATING</i> - The table is being updated.
+     *         <code>UPDATING</code> - The table is being updated.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>DELETING</i> - The table is being deleted.
+     *         <code>DELETING</code> - The table is being deleted.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ACTIVE</i> - The table is ready for use.
+     *         <code>ACTIVE</code> - The table is ready for use.
      *         </p>
      *         </li>
      * @see TableStatus
@@ -1130,22 +1137,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -1155,22 +1162,22 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The table is being created.
+     *        <code>CREATING</code> - The table is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The table is being updated.
+     *        <code>UPDATING</code> - The table is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The table is being deleted.
+     *        <code>DELETING</code> - The table is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The table is ready for use.
+     *        <code>ACTIVE</code> - The table is ready for use.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1189,22 +1196,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -1214,22 +1221,22 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The table is being created.
+     *        <code>CREATING</code> - The table is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The table is being updated.
+     *        <code>UPDATING</code> - The table is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The table is being deleted.
+     *        <code>DELETING</code> - The table is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The table is ready for use.
+     *        <code>ACTIVE</code> - The table is ready for use.
      *        </p>
      *        </li>
      * @see TableStatus
@@ -1246,22 +1253,22 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The table is being created.
+     * <code>CREATING</code> - The table is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The table is being updated.
+     * <code>UPDATING</code> - The table is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The table is being deleted.
+     * <code>DELETING</code> - The table is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The table is ready for use.
+     * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -1271,22 +1278,22 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The table is being created.
+     *        <code>CREATING</code> - The table is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The table is being updated.
+     *        <code>UPDATING</code> - The table is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The table is being deleted.
+     *        <code>DELETING</code> - The table is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The table is ready for use.
+     *        <code>ACTIVE</code> - The table is ready for use.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1531,25 +1538,25 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index.
+     * <code>IndexName</code> - The name of the local secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1560,7 +1567,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1572,24 +1579,24 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately every
-     * six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately
+     * every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * </ul>
@@ -1604,26 +1611,26 @@ public class TableDescription implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>IndexName</i> - The name of the local secondary index.
+     *         <code>IndexName</code> - The name of the local secondary index.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *         between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *         table.
+     *         <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *         must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key
+     *         as the table.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *         are in addition to the primary key attributes and index key attributes, which are automatically
+     *         <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *         These are in addition to the primary key attributes and index key attributes, which are automatically
      *         projected. Each attribute specification is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ProjectionType</i> - One of the following:
+     *         <code>ProjectionType</code> - One of the following:
      *         </p>
      *         <ul>
      *         <li>
@@ -1634,7 +1641,7 @@ public class TableDescription implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <i>NonKeyAttributes</i>.
+     *         projected attributes are in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1646,24 +1653,24 @@ public class TableDescription implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *         secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *         the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *         this counts as two distinct attributes when determining the total.
+     *         <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *         secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *         all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *         indexes, this counts as two distinct attributes when determining the total.
      *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
-     *         approximately every six hours. Recent changes might not be reflected in this value.
+     *         <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this
+     *         value approximately every six hours. Recent changes might not be reflected in this value.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately
-     *         every six hours. Recent changes might not be reflected in this value.
+     *         <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value
+     *         approximately every six hours. Recent changes might not be reflected in this value.
      *         </p>
      *         </li>
      *         </ul>
@@ -1684,25 +1691,25 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index.
+     * <code>IndexName</code> - The name of the local secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1713,7 +1720,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1725,24 +1732,24 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately every
-     * six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately
+     * every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * </ul>
@@ -1757,26 +1764,26 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index.
+     *        <code>IndexName</code> - The name of the local secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1787,7 +1794,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1799,24 +1806,24 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
-     *        approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this
+     *        value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately
-     *        every six hours. Recent changes might not be reflected in this value.
+     *        <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value
+     *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        </ul>
@@ -1842,25 +1849,25 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index.
+     * <code>IndexName</code> - The name of the local secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1871,7 +1878,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1883,24 +1890,24 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately every
-     * six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately
+     * every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * </ul>
@@ -1920,26 +1927,26 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index.
+     *        <code>IndexName</code> - The name of the local secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1950,7 +1957,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1962,24 +1969,24 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
-     *        approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this
+     *        value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately
-     *        every six hours. Recent changes might not be reflected in this value.
+     *        <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value
+     *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        </ul>
@@ -2007,25 +2014,25 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index.
+     * <code>IndexName</code> - The name of the local secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2036,7 +2043,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2048,24 +2055,24 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately every
-     * six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value approximately
+     * every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * </ul>
@@ -2080,26 +2087,26 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index.
+     *        <code>IndexName</code> - The name of the local secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -2110,7 +2117,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2122,24 +2129,24 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - Represents the total size of the index, in bytes. DynamoDB updates this value
-     *        approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - Represents the total size of the index, in bytes. DynamoDB updates this
+     *        value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - Represents the number of items in the index. DynamoDB updates this value approximately
-     *        every six hours. Recent changes might not be reflected in this value.
+     *        <code>ItemCount</code> - Represents the number of items in the index. DynamoDB updates this value
+     *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        </ul>
@@ -2161,72 +2168,72 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when
-     * a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index
-     * with data from the table. (This attribute does not appear for indexes that were created during a
-     * <i>CreateTable</i> operation.)
+     * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
+     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * index with data from the table. (This attribute does not appear for indexes that were created during a
+     * <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index.
+     * <code>IndexName</code> - The name of the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexStatus</i> - The current status of the global secondary index:
+     * <code>IndexStatus</code> - The current status of the global secondary index:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value approximately
-     * every six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
+     * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2237,7 +2244,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2249,18 +2256,18 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units, along with data about increases and decreases.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units, along with data about increases and decreases.
      * </p>
      * </li>
      * </ul>
@@ -2273,73 +2280,73 @@ public class TableDescription implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs
-     *         only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *         <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
+     *         occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
      *         populates the new index with data from the table. (This attribute does not appear for indexes that were
-     *         created during a <i>CreateTable</i> operation.)
+     *         created during a <code>CreateTable</code> operation.)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>IndexName</i> - The name of the global secondary index.
+     *         <code>IndexName</code> - The name of the global secondary index.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this
-     *         value approximately every six hours. Recent changes might not be reflected in this value.
+     *         <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates
+     *         this value approximately every six hours. Recent changes might not be reflected in this value.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>IndexStatus</i> - The current status of the global secondary index:
+     *         <code>IndexStatus</code> - The current status of the global secondary index:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>CREATING</i> - The index is being created.
+     *         <code>CREATING</code> - The index is being created.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>UPDATING</i> - The index is being updated.
+     *         <code>UPDATING</code> - The index is being updated.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>DELETING</i> - The index is being deleted.
+     *         <code>DELETING</code> - The index is being deleted.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ACTIVE</i> - The index is ready for use.
+     *         <code>ACTIVE</code> - The index is ready for use.
      *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value
+     *         <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
      *         approximately every six hours. Recent changes might not be reflected in this value.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *         between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *         table.
+     *         <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *         must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key
+     *         as the table.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *         are in addition to the primary key attributes and index key attributes, which are automatically
+     *         <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *         These are in addition to the primary key attributes and index key attributes, which are automatically
      *         projected. Each attribute specification is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ProjectionType</i> - One of the following:
+     *         <code>ProjectionType</code> - One of the following:
      *         </p>
      *         <ul>
      *         <li>
@@ -2350,7 +2357,7 @@ public class TableDescription implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <i>NonKeyAttributes</i>.
+     *         projected attributes are in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -2362,17 +2369,17 @@ public class TableDescription implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *         secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *         the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *         this counts as two distinct attributes when determining the total.
+     *         <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *         secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *         all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *         indexes, this counts as two distinct attributes when determining the total.
      *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *         <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *         consisting of read and write capacity units, along with data about increases and decreases.
      *         </p>
      *         </li>
@@ -2393,72 +2400,72 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when
-     * a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index
-     * with data from the table. (This attribute does not appear for indexes that were created during a
-     * <i>CreateTable</i> operation.)
+     * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
+     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * index with data from the table. (This attribute does not appear for indexes that were created during a
+     * <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index.
+     * <code>IndexName</code> - The name of the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexStatus</i> - The current status of the global secondary index:
+     * <code>IndexStatus</code> - The current status of the global secondary index:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value approximately
-     * every six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
+     * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2469,7 +2476,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2481,18 +2488,18 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units, along with data about increases and decreases.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units, along with data about increases and decreases.
      * </p>
      * </li>
      * </ul>
@@ -2506,73 +2513,73 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs
-     *        only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
+     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
-     *        created during a <i>CreateTable</i> operation.)
+     *        created during a <code>CreateTable</code> operation.)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index.
+     *        <code>IndexName</code> - The name of the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this
-     *        value approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates
+     *        this value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexStatus</i> - The current status of the global secondary index:
+     *        <code>IndexStatus</code> - The current status of the global secondary index:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value
+     *        <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
      *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -2583,7 +2590,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2595,17 +2602,17 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units, along with data about increases and decreases.
      *        </p>
      *        </li>
@@ -2631,72 +2638,72 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when
-     * a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index
-     * with data from the table. (This attribute does not appear for indexes that were created during a
-     * <i>CreateTable</i> operation.)
+     * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
+     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * index with data from the table. (This attribute does not appear for indexes that were created during a
+     * <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index.
+     * <code>IndexName</code> - The name of the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexStatus</i> - The current status of the global secondary index:
+     * <code>IndexStatus</code> - The current status of the global secondary index:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value approximately
-     * every six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
+     * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2707,7 +2714,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2719,18 +2726,18 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units, along with data about increases and decreases.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units, along with data about increases and decreases.
      * </p>
      * </li>
      * </ul>
@@ -2749,73 +2756,73 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs
-     *        only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
+     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
-     *        created during a <i>CreateTable</i> operation.)
+     *        created during a <code>CreateTable</code> operation.)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index.
+     *        <code>IndexName</code> - The name of the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this
-     *        value approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates
+     *        this value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexStatus</i> - The current status of the global secondary index:
+     *        <code>IndexStatus</code> - The current status of the global secondary index:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value
+     *        <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
      *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -2826,7 +2833,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2838,17 +2845,17 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units, along with data about increases and decreases.
      *        </p>
      *        </li>
@@ -2876,72 +2883,72 @@ public class TableDescription implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs only when
-     * a new global secondary index is added to the table; it is the process by which DynamoDB populates the new index
-     * with data from the table. (This attribute does not appear for indexes that were created during a
-     * <i>CreateTable</i> operation.)
+     * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
+     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * index with data from the table. (This attribute does not appear for indexes that were created during a
+     * <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index.
+     * <code>IndexName</code> - The name of the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this value
+     * <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates this value
      * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>IndexStatus</i> - The current status of the global secondary index:
+     * <code>IndexStatus</code> - The current status of the global secondary index:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value approximately
-     * every six hours. Recent changes might not be reflected in this value.
+     * <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
+     * approximately every six hours. Recent changes might not be reflected in this value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be between
-     * 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
+     * <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema must be
+     * between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2952,7 +2959,7 @@ public class TableDescription implements Serializable, Cloneable {
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2964,18 +2971,18 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units, along with data about increases and decreases.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units, along with data about increases and decreases.
      * </p>
      * </li>
      * </ul>
@@ -2989,73 +2996,73 @@ public class TableDescription implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>Backfilling</i> - If true, then the index is currently in the backfilling phase. Backfilling occurs
-     *        only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
+     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
-     *        created during a <i>CreateTable</i> operation.)
+     *        created during a <code>CreateTable</code> operation.)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index.
+     *        <code>IndexName</code> - The name of the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexSizeBytes</i> - The total size of the global secondary index, in bytes. DynamoDB updates this
-     *        value approximately every six hours. Recent changes might not be reflected in this value.
+     *        <code>IndexSizeBytes</code> - The total size of the global secondary index, in bytes. DynamoDB updates
+     *        this value approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>IndexStatus</i> - The current status of the global secondary index:
+     *        <code>IndexStatus</code> - The current status of the global secondary index:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ItemCount</i> - The number of items in the global secondary index. DynamoDB updates this value
+     *        <code>ItemCount</code> - The number of items in the global secondary index. DynamoDB updates this value
      *        approximately every six hours. Recent changes might not be reflected in this value.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the complete index key schema. The attribute names in the key schema must be
-     *        between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as the
-     *        table.
+     *        <code>KeySchema</code> - Specifies the complete index key schema. The attribute names in the key schema
+     *        must be between 1 and 255 characters (inclusive). The key schema must begin with the same partition key as
+     *        the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -3066,7 +3073,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -3078,17 +3085,17 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units, along with data about increases and decreases.
      *        </p>
      *        </li>
@@ -3148,7 +3155,7 @@ public class TableDescription implements Serializable, Cloneable {
      * A timestamp, in ISO 8601 format, for this stream.
      * </p>
      * <p>
-     * Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a
+     * Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a
      * stream from another table might have the same timestamp. However, the combination of the following three elements
      * is guaranteed to be unique:
      * </p>
@@ -3165,7 +3172,7 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * the <i>StreamLabel</i>.
+     * the <code>StreamLabel</code>.
      * </p>
      * </li>
      * </ul>
@@ -3173,9 +3180,9 @@ public class TableDescription implements Serializable, Cloneable {
      * @param latestStreamLabel
      *        A timestamp, in ISO 8601 format, for this stream.</p>
      *        <p>
-     *        Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that
-     *        a stream from another table might have the same timestamp. However, the combination of the following three
-     *        elements is guaranteed to be unique:
+     *        Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible
+     *        that a stream from another table might have the same timestamp. However, the combination of the following
+     *        three elements is guaranteed to be unique:
      *        </p>
      *        <ul>
      *        <li>
@@ -3190,7 +3197,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        the <i>StreamLabel</i>.
+     *        the <code>StreamLabel</code>.
      *        </p>
      *        </li>
      */
@@ -3204,7 +3211,7 @@ public class TableDescription implements Serializable, Cloneable {
      * A timestamp, in ISO 8601 format, for this stream.
      * </p>
      * <p>
-     * Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a
+     * Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a
      * stream from another table might have the same timestamp. However, the combination of the following three elements
      * is guaranteed to be unique:
      * </p>
@@ -3221,16 +3228,16 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * the <i>StreamLabel</i>.
+     * the <code>StreamLabel</code>.
      * </p>
      * </li>
      * </ul>
      * 
      * @return A timestamp, in ISO 8601 format, for this stream.</p>
      *         <p>
-     *         Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that
-     *         a stream from another table might have the same timestamp. However, the combination of the following
-     *         three elements is guaranteed to be unique:
+     *         Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is
+     *         possible that a stream from another table might have the same timestamp. However, the combination of the
+     *         following three elements is guaranteed to be unique:
      *         </p>
      *         <ul>
      *         <li>
@@ -3245,7 +3252,7 @@ public class TableDescription implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         the <i>StreamLabel</i>.
+     *         the <code>StreamLabel</code>.
      *         </p>
      *         </li>
      */
@@ -3259,7 +3266,7 @@ public class TableDescription implements Serializable, Cloneable {
      * A timestamp, in ISO 8601 format, for this stream.
      * </p>
      * <p>
-     * Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a
+     * Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a
      * stream from another table might have the same timestamp. However, the combination of the following three elements
      * is guaranteed to be unique:
      * </p>
@@ -3276,7 +3283,7 @@ public class TableDescription implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * the <i>StreamLabel</i>.
+     * the <code>StreamLabel</code>.
      * </p>
      * </li>
      * </ul>
@@ -3284,9 +3291,9 @@ public class TableDescription implements Serializable, Cloneable {
      * @param latestStreamLabel
      *        A timestamp, in ISO 8601 format, for this stream.</p>
      *        <p>
-     *        Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that
-     *        a stream from another table might have the same timestamp. However, the combination of the following three
-     *        elements is guaranteed to be unique:
+     *        Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible
+     *        that a stream from another table might have the same timestamp. However, the combination of the following
+     *        three elements is guaranteed to be unique:
      *        </p>
      *        <ul>
      *        <li>
@@ -3301,7 +3308,7 @@ public class TableDescription implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        the <i>StreamLabel</i>.
+     *        the <code>StreamLabel</code>.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -3364,33 +3371,33 @@ public class TableDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAttributeDefinitions() != null)
-            sb.append("AttributeDefinitions: " + getAttributeDefinitions() + ",");
+            sb.append("AttributeDefinitions: ").append(getAttributeDefinitions()).append(",");
         if (getTableName() != null)
-            sb.append("TableName: " + getTableName() + ",");
+            sb.append("TableName: ").append(getTableName()).append(",");
         if (getKeySchema() != null)
-            sb.append("KeySchema: " + getKeySchema() + ",");
+            sb.append("KeySchema: ").append(getKeySchema()).append(",");
         if (getTableStatus() != null)
-            sb.append("TableStatus: " + getTableStatus() + ",");
+            sb.append("TableStatus: ").append(getTableStatus()).append(",");
         if (getCreationDateTime() != null)
-            sb.append("CreationDateTime: " + getCreationDateTime() + ",");
+            sb.append("CreationDateTime: ").append(getCreationDateTime()).append(",");
         if (getProvisionedThroughput() != null)
-            sb.append("ProvisionedThroughput: " + getProvisionedThroughput() + ",");
+            sb.append("ProvisionedThroughput: ").append(getProvisionedThroughput()).append(",");
         if (getTableSizeBytes() != null)
-            sb.append("TableSizeBytes: " + getTableSizeBytes() + ",");
+            sb.append("TableSizeBytes: ").append(getTableSizeBytes()).append(",");
         if (getItemCount() != null)
-            sb.append("ItemCount: " + getItemCount() + ",");
+            sb.append("ItemCount: ").append(getItemCount()).append(",");
         if (getTableArn() != null)
-            sb.append("TableArn: " + getTableArn() + ",");
+            sb.append("TableArn: ").append(getTableArn()).append(",");
         if (getLocalSecondaryIndexes() != null)
-            sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() + ",");
+            sb.append("LocalSecondaryIndexes: ").append(getLocalSecondaryIndexes()).append(",");
         if (getGlobalSecondaryIndexes() != null)
-            sb.append("GlobalSecondaryIndexes: " + getGlobalSecondaryIndexes() + ",");
+            sb.append("GlobalSecondaryIndexes: ").append(getGlobalSecondaryIndexes()).append(",");
         if (getStreamSpecification() != null)
-            sb.append("StreamSpecification: " + getStreamSpecification() + ",");
+            sb.append("StreamSpecification: ").append(getStreamSpecification()).append(",");
         if (getLatestStreamLabel() != null)
-            sb.append("LatestStreamLabel: " + getLatestStreamLabel() + ",");
+            sb.append("LatestStreamLabel: ").append(getLatestStreamLabel()).append(",");
         if (getLatestStreamArn() != null)
-            sb.append("LatestStreamArn: " + getLatestStreamArn());
+            sb.append("LatestStreamArn: ").append(getLatestStreamArn());
         sb.append("}");
         return sb.toString();
     }
@@ -3493,5 +3500,11 @@ public class TableDescription implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.TableDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

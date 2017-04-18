@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,35 +13,40 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A cost allocation Tag that can be added to an ElastiCache cluster or replication group. Tags are composed of a
  * Key/Value pair. A tag with a null Value is permitted.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/Tag" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The key for the tag.
+     * The key for the tag. May not be null.
      * </p>
      */
     private String key;
     /**
      * <p>
-     * The tag's value. May not be null.
+     * The tag's value. May be null.
      * </p>
      */
     private String value;
 
     /**
      * <p>
-     * The key for the tag.
+     * The key for the tag. May not be null.
      * </p>
      * 
      * @param key
-     *        The key for the tag.
+     *        The key for the tag. May not be null.
      */
 
     public void setKey(String key) {
@@ -50,10 +55,10 @@ public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The key for the tag.
+     * The key for the tag. May not be null.
      * </p>
      * 
-     * @return The key for the tag.
+     * @return The key for the tag. May not be null.
      */
 
     public String getKey() {
@@ -62,11 +67,11 @@ public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The key for the tag.
+     * The key for the tag. May not be null.
      * </p>
      * 
      * @param key
-     *        The key for the tag.
+     *        The key for the tag. May not be null.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -77,11 +82,11 @@ public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tag's value. May not be null.
+     * The tag's value. May be null.
      * </p>
      * 
      * @param value
-     *        The tag's value. May not be null.
+     *        The tag's value. May be null.
      */
 
     public void setValue(String value) {
@@ -90,10 +95,10 @@ public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tag's value. May not be null.
+     * The tag's value. May be null.
      * </p>
      * 
-     * @return The tag's value. May not be null.
+     * @return The tag's value. May be null.
      */
 
     public String getValue() {
@@ -102,11 +107,11 @@ public class Tag implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tag's value. May not be null.
+     * The tag's value. May be null.
      * </p>
      * 
      * @param value
-     *        The tag's value. May not be null.
+     *        The tag's value. May be null.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,9 +132,9 @@ public class Tag implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue());
+            sb.append("Value: ").append(getValue());
         sb.append("}");
         return sb.toString();
     }
@@ -173,4 +178,5 @@ public class Tag implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about an application revision.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GenericRevisionInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GenericRevisionInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GenericRevisionInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -297,15 +304,15 @@ public class GenericRevisionInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getDeploymentGroups() != null)
-            sb.append("DeploymentGroups: " + getDeploymentGroups() + ",");
+            sb.append("DeploymentGroups: ").append(getDeploymentGroups()).append(",");
         if (getFirstUsedTime() != null)
-            sb.append("FirstUsedTime: " + getFirstUsedTime() + ",");
+            sb.append("FirstUsedTime: ").append(getFirstUsedTime()).append(",");
         if (getLastUsedTime() != null)
-            sb.append("LastUsedTime: " + getLastUsedTime() + ",");
+            sb.append("LastUsedTime: ").append(getLastUsedTime()).append(",");
         if (getRegisterTime() != null)
-            sb.append("RegisterTime: " + getRegisterTime());
+            sb.append("RegisterTime: ").append(getRegisterTime());
         sb.append("}");
         return sb.toString();
     }
@@ -363,5 +370,11 @@ public class GenericRevisionInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.GenericRevisionInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

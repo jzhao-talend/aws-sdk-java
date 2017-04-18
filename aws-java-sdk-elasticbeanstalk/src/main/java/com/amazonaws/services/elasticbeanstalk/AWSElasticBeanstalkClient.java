@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalkClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -67,6 +71,7 @@ import com.amazonaws.services.elasticbeanstalk.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements AWSElasticBeanstalk {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -98,7 +103,9 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -121,7 +128,9 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -136,7 +145,10 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSElasticBeanstalkClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -154,7 +166,10 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Beanstalk (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSElasticBeanstalkClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -171,7 +186,9 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -189,7 +206,10 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Beanstalk (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSElasticBeanstalkClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -209,12 +229,20 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSElasticBeanstalkClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSElasticBeanstalkClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSElasticBeanstalkClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSElasticBeanstalkClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSElasticBeanstalkClientBuilder builder() {
+        return AWSElasticBeanstalkClientBuilder.standard();
     }
 
     /**
@@ -238,7 +266,9 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
         exceptionUnmarshallers.add(new InvalidRequestExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ManagedActionInvalidStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InsufficientPrivilegesExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new TooManyPlatformsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyApplicationVersionsExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new CodeBuildNotInServiceRegionExceptionUnmarshaller());
         exceptionUnmarshallers.add(new S3SubscriptionRequiredExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SourceBundleDeletionExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyConfigurationTemplatesExceptionUnmarshaller());
@@ -247,6 +277,7 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
         exceptionUnmarshallers.add(new TooManyEnvironmentsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TooManyBucketsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ElasticBeanstalkServiceExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new PlatformVersionStillReferencedExceptionUnmarshaller());
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller(com.amazonaws.services.elasticbeanstalk.model.AWSElasticBeanstalkException.class));
 
         setServiceNameIntern(DEFAULT_SIGNING_NAME);
@@ -269,9 +300,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.AbortEnvironmentUpdate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/AbortEnvironmentUpdate"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AbortEnvironmentUpdateResult abortEnvironmentUpdate(AbortEnvironmentUpdateRequest abortEnvironmentUpdateRequest) {
+    public AbortEnvironmentUpdateResult abortEnvironmentUpdate(AbortEnvironmentUpdateRequest request) {
+        request = beforeClientExecution(request);
+        return executeAbortEnvironmentUpdate(request);
+    }
+
+    @SdkInternalApi
+    final AbortEnvironmentUpdateResult executeAbortEnvironmentUpdate(AbortEnvironmentUpdateRequest abortEnvironmentUpdateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(abortEnvironmentUpdateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -320,9 +360,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws ManagedActionInvalidStateException
      *         Cannot modify the managed action in its current state.
      * @sample AWSElasticBeanstalk.ApplyEnvironmentManagedAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplyEnvironmentManagedAction"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ApplyEnvironmentManagedActionResult applyEnvironmentManagedAction(ApplyEnvironmentManagedActionRequest applyEnvironmentManagedActionRequest) {
+    public ApplyEnvironmentManagedActionResult applyEnvironmentManagedAction(ApplyEnvironmentManagedActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeApplyEnvironmentManagedAction(request);
+    }
+
+    @SdkInternalApi
+    final ApplyEnvironmentManagedActionResult executeApplyEnvironmentManagedAction(ApplyEnvironmentManagedActionRequest applyEnvironmentManagedActionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(applyEnvironmentManagedActionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -360,9 +409,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Results message indicating whether a CNAME is available.
      * @return Result of the CheckDNSAvailability operation returned by the service.
      * @sample AWSElasticBeanstalk.CheckDNSAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CheckDNSAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CheckDNSAvailabilityResult checkDNSAvailability(CheckDNSAvailabilityRequest checkDNSAvailabilityRequest) {
+    public CheckDNSAvailabilityResult checkDNSAvailability(CheckDNSAvailabilityRequest request) {
+        request = beforeClientExecution(request);
+        return executeCheckDNSAvailability(request);
+    }
+
+    @SdkInternalApi
+    final CheckDNSAvailabilityResult executeCheckDNSAvailability(CheckDNSAvailabilityRequest checkDNSAvailabilityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(checkDNSAvailabilityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -409,9 +467,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.ComposeEnvironments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ComposeEnvironments"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ComposeEnvironmentsResult composeEnvironments(ComposeEnvironmentsRequest composeEnvironmentsRequest) {
+    public ComposeEnvironmentsResult composeEnvironments(ComposeEnvironmentsRequest request) {
+        request = beforeClientExecution(request);
+        return executeComposeEnvironments(request);
+    }
+
+    @SdkInternalApi
+    final ComposeEnvironmentsResult executeComposeEnvironments(ComposeEnvironmentsRequest composeEnvironmentsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(composeEnvironmentsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -452,9 +519,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyApplicationsException
      *         The specified account has reached its limit of applications.
      * @sample AWSElasticBeanstalk.CreateApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateApplicationResult createApplication(CreateApplicationRequest createApplicationRequest) {
+    public CreateApplicationResult createApplication(CreateApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateApplication(request);
+    }
+
+    @SdkInternalApi
+    final CreateApplicationResult executeCreateApplication(CreateApplicationRequest createApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -485,7 +561,21 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Creates an application version for the specified application.
+     * Creates an application version for the specified application. You can create an application version from a source
+     * bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
+     * </p>
+     * <p>
+     * Specify a commit in an AWS CodeCommit repository with <code>SourceBuildInformation</code>.
+     * </p>
+     * <p>
+     * Specify a build in an AWS CodeBuild with <code>SourceBuildInformation</code> and <code>BuildConfiguration</code>.
+     * </p>
+     * <p>
+     * Specify a source bundle in S3 with <code>SourceBundle</code>
+     * </p>
+     * <p>
+     * Omit both <code>SourceBuildInformation</code> and <code>SourceBundle</code> to use the default sample
+     * application.
      * </p>
      * <note>
      * <p>
@@ -504,11 +594,39 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @throws S3LocationNotInServiceRegionException
-     *         The specified S3 bucket does not belong to the S3 region in which the service is running.
+     *         The specified S3 bucket does not belong to the S3 region in which the service is running. The following
+     *         regions are supported:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IAD/us-east-1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PDX/us-west-2
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DUB/eu-west-1
+     *         </p>
+     *         </li>
+     * @throws CodeBuildNotInServiceRegionException
+     *         AWS CodeBuild is not available in the specified region.
      * @sample AWSElasticBeanstalk.CreateApplicationVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateApplicationVersion"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateApplicationVersionResult createApplicationVersion(CreateApplicationVersionRequest createApplicationVersionRequest) {
+    public CreateApplicationVersionResult createApplicationVersion(CreateApplicationVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateApplicationVersion(request);
+    }
+
+    @SdkInternalApi
+    final CreateApplicationVersionResult executeCreateApplicationVersion(CreateApplicationVersionRequest createApplicationVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createApplicationVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -573,9 +691,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyConfigurationTemplatesException
      *         The specified account has reached its limit of configuration templates.
      * @sample AWSElasticBeanstalk.CreateConfigurationTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateConfigurationTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateConfigurationTemplateResult createConfigurationTemplate(CreateConfigurationTemplateRequest createConfigurationTemplateRequest) {
+    public CreateConfigurationTemplateResult createConfigurationTemplate(CreateConfigurationTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateConfigurationTemplate(request);
+    }
+
+    @SdkInternalApi
+    final CreateConfigurationTemplateResult executeCreateConfigurationTemplate(CreateConfigurationTemplateRequest createConfigurationTemplateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createConfigurationTemplateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -616,9 +743,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.CreateEnvironment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateEnvironment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateEnvironmentResult createEnvironment(CreateEnvironmentRequest createEnvironmentRequest) {
+    public CreateEnvironmentResult createEnvironment(CreateEnvironmentRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEnvironment(request);
+    }
+
+    @SdkInternalApi
+    final CreateEnvironmentResult executeCreateEnvironment(CreateEnvironmentRequest createEnvironmentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createEnvironmentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -649,6 +785,61 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
+     * Create a new version of your custom platform.
+     * </p>
+     * 
+     * @param createPlatformVersionRequest
+     *        Request to create a new platform version.
+     * @return Result of the CreatePlatformVersion operation returned by the service.
+     * @throws InsufficientPrivilegesException
+     *         The specified account does not have sufficient privileges for one of more AWS services.
+     * @throws ElasticBeanstalkServiceException
+     *         A generic service exception has occurred.
+     * @throws TooManyPlatformsException
+     *         You have exceeded the maximum number of allowed platforms associated with the account.
+     * @sample AWSElasticBeanstalk.CreatePlatformVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreatePlatformVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreatePlatformVersionResult createPlatformVersion(CreatePlatformVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePlatformVersion(request);
+    }
+
+    @SdkInternalApi
+    final CreatePlatformVersionResult executeCreatePlatformVersion(CreatePlatformVersionRequest createPlatformVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createPlatformVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreatePlatformVersionRequest> request = null;
+        Response<CreatePlatformVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreatePlatformVersionRequestMarshaller().marshall(super.beforeMarshalling(createPlatformVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreatePlatformVersionResult> responseHandler = new StaxResponseHandler<CreatePlatformVersionResult>(
+                    new CreatePlatformVersionResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates the Amazon S3 storage location for the account.
      * </p>
      * <p>
@@ -664,9 +855,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.CreateStorageLocation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateStorageLocation"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateStorageLocationResult createStorageLocation(CreateStorageLocationRequest createStorageLocationRequest) {
+    public CreateStorageLocationResult createStorageLocation(CreateStorageLocationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStorageLocation(request);
+    }
+
+    @SdkInternalApi
+    final CreateStorageLocationResult executeCreateStorageLocation(CreateStorageLocationRequest createStorageLocationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createStorageLocationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -718,9 +918,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *         Unable to perform the specified operation because another operation that effects an element in this
      *         activity is already in progress.
      * @sample AWSElasticBeanstalk.DeleteApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteApplicationResult deleteApplication(DeleteApplicationRequest deleteApplicationRequest) {
+    public DeleteApplicationResult deleteApplication(DeleteApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteApplication(request);
+    }
+
+    @SdkInternalApi
+    final DeleteApplicationResult executeDeleteApplication(DeleteApplicationRequest deleteApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -771,11 +980,37 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *         Unable to perform the specified operation because another operation that effects an element in this
      *         activity is already in progress.
      * @throws S3LocationNotInServiceRegionException
-     *         The specified S3 bucket does not belong to the S3 region in which the service is running.
+     *         The specified S3 bucket does not belong to the S3 region in which the service is running. The following
+     *         regions are supported:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IAD/us-east-1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PDX/us-west-2
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DUB/eu-west-1
+     *         </p>
+     *         </li>
      * @sample AWSElasticBeanstalk.DeleteApplicationVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplicationVersion"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteApplicationVersionResult deleteApplicationVersion(DeleteApplicationVersionRequest deleteApplicationVersionRequest) {
+    public DeleteApplicationVersionResult deleteApplicationVersion(DeleteApplicationVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteApplicationVersion(request);
+    }
+
+    @SdkInternalApi
+    final DeleteApplicationVersionResult executeDeleteApplicationVersion(DeleteApplicationVersionRequest deleteApplicationVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteApplicationVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -822,9 +1057,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *         Unable to perform the specified operation because another operation that effects an element in this
      *         activity is already in progress.
      * @sample AWSElasticBeanstalk.DeleteConfigurationTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteConfigurationTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteConfigurationTemplateResult deleteConfigurationTemplate(DeleteConfigurationTemplateRequest deleteConfigurationTemplateRequest) {
+    public DeleteConfigurationTemplateResult deleteConfigurationTemplate(DeleteConfigurationTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteConfigurationTemplate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteConfigurationTemplateResult executeDeleteConfigurationTemplate(DeleteConfigurationTemplateRequest deleteConfigurationTemplateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteConfigurationTemplateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -868,9 +1112,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to delete a draft environment configuration.
      * @return Result of the DeleteEnvironmentConfiguration operation returned by the service.
      * @sample AWSElasticBeanstalk.DeleteEnvironmentConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteEnvironmentConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteEnvironmentConfigurationResult deleteEnvironmentConfiguration(DeleteEnvironmentConfigurationRequest deleteEnvironmentConfigurationRequest) {
+    public DeleteEnvironmentConfigurationResult deleteEnvironmentConfiguration(DeleteEnvironmentConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEnvironmentConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEnvironmentConfigurationResult executeDeleteEnvironmentConfiguration(DeleteEnvironmentConfigurationRequest deleteEnvironmentConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEnvironmentConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -901,16 +1154,82 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Retrieve a list of application versions stored in your AWS Elastic Beanstalk storage bucket.
+     * Deletes the specified version of a custom platform.
+     * </p>
+     * 
+     * @param deletePlatformVersionRequest
+     * @return Result of the DeletePlatformVersion operation returned by the service.
+     * @throws OperationInProgressException
+     *         Unable to perform the specified operation because another operation that effects an element in this
+     *         activity is already in progress.
+     * @throws InsufficientPrivilegesException
+     *         The specified account does not have sufficient privileges for one of more AWS services.
+     * @throws ElasticBeanstalkServiceException
+     *         A generic service exception has occurred.
+     * @throws PlatformVersionStillReferencedException
+     *         You cannot delete the platform version because there are still environments running on it.
+     * @sample AWSElasticBeanstalk.DeletePlatformVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeletePlatformVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeletePlatformVersionResult deletePlatformVersion(DeletePlatformVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePlatformVersion(request);
+    }
+
+    @SdkInternalApi
+    final DeletePlatformVersionResult executeDeletePlatformVersion(DeletePlatformVersionRequest deletePlatformVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deletePlatformVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeletePlatformVersionRequest> request = null;
+        Response<DeletePlatformVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeletePlatformVersionRequestMarshaller().marshall(super.beforeMarshalling(deletePlatformVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeletePlatformVersionResult> responseHandler = new StaxResponseHandler<DeletePlatformVersionResult>(
+                    new DeletePlatformVersionResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieve a list of application versions.
      * </p>
      * 
      * @param describeApplicationVersionsRequest
-     *        Result message containing a list of configuration descriptions.
+     *        Request to describe application versions.
      * @return Result of the DescribeApplicationVersions operation returned by the service.
      * @sample AWSElasticBeanstalk.DescribeApplicationVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeApplicationVersions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeApplicationVersionsResult describeApplicationVersions(DescribeApplicationVersionsRequest describeApplicationVersionsRequest) {
+    public DescribeApplicationVersionsResult describeApplicationVersions(DescribeApplicationVersionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeApplicationVersions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeApplicationVersionsResult executeDescribeApplicationVersions(DescribeApplicationVersionsRequest describeApplicationVersionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeApplicationVersionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -953,9 +1272,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to describe one or more applications.
      * @return Result of the DescribeApplications operation returned by the service.
      * @sample AWSElasticBeanstalk.DescribeApplications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeApplications"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeApplicationsResult describeApplications(DescribeApplicationsRequest describeApplicationsRequest) {
+    public DescribeApplicationsResult describeApplications(DescribeApplicationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeApplications(request);
+    }
+
+    @SdkInternalApi
+    final DescribeApplicationsResult executeDescribeApplications(DescribeApplicationsRequest describeApplicationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeApplicationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -997,14 +1325,23 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * </p>
      * 
      * @param describeConfigurationOptionsRequest
-     *        Result message containig a list of application version descriptions.
+     *        Result message containing a list of application version descriptions.
      * @return Result of the DescribeConfigurationOptions operation returned by the service.
      * @throws TooManyBucketsException
      *         The specified account has reached its limit of Amazon S3 buckets.
      * @sample AWSElasticBeanstalk.DescribeConfigurationOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeConfigurationOptions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeConfigurationOptionsResult describeConfigurationOptions(DescribeConfigurationOptionsRequest describeConfigurationOptionsRequest) {
+    public DescribeConfigurationOptionsResult describeConfigurationOptions(DescribeConfigurationOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeConfigurationOptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeConfigurationOptionsResult executeDescribeConfigurationOptions(DescribeConfigurationOptionsRequest describeConfigurationOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeConfigurationOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1061,9 +1398,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyBucketsException
      *         The specified account has reached its limit of Amazon S3 buckets.
      * @sample AWSElasticBeanstalk.DescribeConfigurationSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeConfigurationSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeConfigurationSettingsResult describeConfigurationSettings(DescribeConfigurationSettingsRequest describeConfigurationSettingsRequest) {
+    public DescribeConfigurationSettingsResult describeConfigurationSettings(DescribeConfigurationSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeConfigurationSettings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeConfigurationSettingsResult executeDescribeConfigurationSettings(DescribeConfigurationSettingsRequest describeConfigurationSettingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeConfigurationSettingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1107,9 +1453,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws ElasticBeanstalkServiceException
      *         A generic service exception has occurred.
      * @sample AWSElasticBeanstalk.DescribeEnvironmentHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentHealth"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEnvironmentHealthResult describeEnvironmentHealth(DescribeEnvironmentHealthRequest describeEnvironmentHealthRequest) {
+    public DescribeEnvironmentHealthResult describeEnvironmentHealth(DescribeEnvironmentHealthRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEnvironmentHealth(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEnvironmentHealthResult executeDescribeEnvironmentHealth(DescribeEnvironmentHealthRequest describeEnvironmentHealthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEnvironmentHealthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1149,10 +1504,20 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws ElasticBeanstalkServiceException
      *         A generic service exception has occurred.
      * @sample AWSElasticBeanstalk.DescribeEnvironmentManagedActionHistory
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentManagedActionHistory"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEnvironmentManagedActionHistoryResult describeEnvironmentManagedActionHistory(
+    public DescribeEnvironmentManagedActionHistoryResult describeEnvironmentManagedActionHistory(DescribeEnvironmentManagedActionHistoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEnvironmentManagedActionHistory(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEnvironmentManagedActionHistoryResult executeDescribeEnvironmentManagedActionHistory(
             DescribeEnvironmentManagedActionHistoryRequest describeEnvironmentManagedActionHistoryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEnvironmentManagedActionHistoryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1193,10 +1558,20 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws ElasticBeanstalkServiceException
      *         A generic service exception has occurred.
      * @sample AWSElasticBeanstalk.DescribeEnvironmentManagedActions
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentManagedActions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEnvironmentManagedActionsResult describeEnvironmentManagedActions(
+    public DescribeEnvironmentManagedActionsResult describeEnvironmentManagedActions(DescribeEnvironmentManagedActionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEnvironmentManagedActions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEnvironmentManagedActionsResult executeDescribeEnvironmentManagedActions(
             DescribeEnvironmentManagedActionsRequest describeEnvironmentManagedActionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEnvironmentManagedActionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1236,9 +1611,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.DescribeEnvironmentResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentResources"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEnvironmentResourcesResult describeEnvironmentResources(DescribeEnvironmentResourcesRequest describeEnvironmentResourcesRequest) {
+    public DescribeEnvironmentResourcesResult describeEnvironmentResources(DescribeEnvironmentResourcesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEnvironmentResources(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEnvironmentResourcesResult executeDescribeEnvironmentResources(DescribeEnvironmentResourcesRequest describeEnvironmentResourcesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEnvironmentResourcesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1276,9 +1660,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to describe one or more environments.
      * @return Result of the DescribeEnvironments operation returned by the service.
      * @sample AWSElasticBeanstalk.DescribeEnvironments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironments"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEnvironmentsResult describeEnvironments(DescribeEnvironmentsRequest describeEnvironmentsRequest) {
+    public DescribeEnvironmentsResult describeEnvironments(DescribeEnvironmentsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEnvironments(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEnvironmentsResult executeDescribeEnvironments(DescribeEnvironmentsRequest describeEnvironmentsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEnvironmentsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1326,9 +1719,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to retrieve a list of events for an environment.
      * @return Result of the DescribeEvents operation returned by the service.
      * @sample AWSElasticBeanstalk.DescribeEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEvents"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeEventsResult describeEvents(DescribeEventsRequest describeEventsRequest) {
+    public DescribeEventsResult describeEvents(DescribeEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEvents(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEventsResult executeDescribeEvents(DescribeEventsRequest describeEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1364,13 +1766,13 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Returns more detailed information about the health of the specified instances (for example, CPU utilization, load
-     * average, and causes). The <b>DescribeInstancesHealth</b> operation is only available with AWS Elastic Beanstalk
-     * Enhanced Health.
+     * Retrives detailed information about the health of instances in your AWS Elastic Beanstalk. This operation
+     * requires <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html">enhanced health
+     * reporting</a>.
      * </p>
      * 
      * @param describeInstancesHealthRequest
-     *        See the example below to learn how to create a request body.
+     *        Parameters for a call to <code>DescribeInstancesHealth</code>.
      * @return Result of the DescribeInstancesHealth operation returned by the service.
      * @throws InvalidRequestException
      *         One or more input parameters is not valid. Please correct the input parameters and try the operation
@@ -1378,9 +1780,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws ElasticBeanstalkServiceException
      *         A generic service exception has occurred.
      * @sample AWSElasticBeanstalk.DescribeInstancesHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeInstancesHealth"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeInstancesHealthResult describeInstancesHealth(DescribeInstancesHealthRequest describeInstancesHealthRequest) {
+    public DescribeInstancesHealthResult describeInstancesHealth(DescribeInstancesHealthRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInstancesHealth(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInstancesHealthResult executeDescribeInstancesHealth(DescribeInstancesHealthRequest describeInstancesHealthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInstancesHealthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1411,15 +1822,77 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Returns a list of the available solution stack names.
+     * Describes the version of the platform.
+     * </p>
+     * 
+     * @param describePlatformVersionRequest
+     * @return Result of the DescribePlatformVersion operation returned by the service.
+     * @throws InsufficientPrivilegesException
+     *         The specified account does not have sufficient privileges for one of more AWS services.
+     * @throws ElasticBeanstalkServiceException
+     *         A generic service exception has occurred.
+     * @sample AWSElasticBeanstalk.DescribePlatformVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribePlatformVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribePlatformVersionResult describePlatformVersion(DescribePlatformVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePlatformVersion(request);
+    }
+
+    @SdkInternalApi
+    final DescribePlatformVersionResult executeDescribePlatformVersion(DescribePlatformVersionRequest describePlatformVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describePlatformVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribePlatformVersionRequest> request = null;
+        Response<DescribePlatformVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribePlatformVersionRequestMarshaller().marshall(super.beforeMarshalling(describePlatformVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribePlatformVersionResult> responseHandler = new StaxResponseHandler<DescribePlatformVersionResult>(
+                    new DescribePlatformVersionResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns a list of the available solution stack names, with the public version first and then in reverse
+     * chronological order.
      * </p>
      * 
      * @param listAvailableSolutionStacksRequest
      * @return Result of the ListAvailableSolutionStacks operation returned by the service.
      * @sample AWSElasticBeanstalk.ListAvailableSolutionStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListAvailableSolutionStacks"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListAvailableSolutionStacksResult listAvailableSolutionStacks(ListAvailableSolutionStacksRequest listAvailableSolutionStacksRequest) {
+    public ListAvailableSolutionStacksResult listAvailableSolutionStacks(ListAvailableSolutionStacksRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAvailableSolutionStacks(request);
+    }
+
+    @SdkInternalApi
+    final ListAvailableSolutionStacksResult executeListAvailableSolutionStacks(ListAvailableSolutionStacksRequest listAvailableSolutionStacksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAvailableSolutionStacksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1455,6 +1928,58 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
+     * Lists the available platforms.
+     * </p>
+     * 
+     * @param listPlatformVersionsRequest
+     * @return Result of the ListPlatformVersions operation returned by the service.
+     * @throws InsufficientPrivilegesException
+     *         The specified account does not have sufficient privileges for one of more AWS services.
+     * @throws ElasticBeanstalkServiceException
+     *         A generic service exception has occurred.
+     * @sample AWSElasticBeanstalk.ListPlatformVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListPlatformVersions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListPlatformVersionsResult listPlatformVersions(ListPlatformVersionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPlatformVersions(request);
+    }
+
+    @SdkInternalApi
+    final ListPlatformVersionsResult executeListPlatformVersions(ListPlatformVersionsRequest listPlatformVersionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listPlatformVersionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListPlatformVersionsRequest> request = null;
+        Response<ListPlatformVersionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListPlatformVersionsRequestMarshaller().marshall(super.beforeMarshalling(listPlatformVersionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListPlatformVersionsResult> responseHandler = new StaxResponseHandler<ListPlatformVersionsResult>(
+                    new ListPlatformVersionsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a
      * specified environment and forces a restart.
      * </p>
@@ -1464,9 +1989,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.RebuildEnvironment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RebuildEnvironment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RebuildEnvironmentResult rebuildEnvironment(RebuildEnvironmentRequest rebuildEnvironmentRequest) {
+    public RebuildEnvironmentResult rebuildEnvironment(RebuildEnvironmentRequest request) {
+        request = beforeClientExecution(request);
+        return executeRebuildEnvironment(request);
+    }
+
+    @SdkInternalApi
+    final RebuildEnvironmentResult executeRebuildEnvironment(RebuildEnvironmentRequest rebuildEnvironmentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rebuildEnvironmentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1525,9 +2059,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to retrieve logs from an environment and store them in your Elastic Beanstalk storage bucket.
      * @return Result of the RequestEnvironmentInfo operation returned by the service.
      * @sample AWSElasticBeanstalk.RequestEnvironmentInfo
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RequestEnvironmentInfo"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RequestEnvironmentInfoResult requestEnvironmentInfo(RequestEnvironmentInfoRequest requestEnvironmentInfoRequest) {
+    public RequestEnvironmentInfoResult requestEnvironmentInfo(RequestEnvironmentInfoRequest request) {
+        request = beforeClientExecution(request);
+        return executeRequestEnvironmentInfo(request);
+    }
+
+    @SdkInternalApi
+    final RequestEnvironmentInfoResult executeRequestEnvironmentInfo(RequestEnvironmentInfoRequest requestEnvironmentInfoRequest) {
+
         ExecutionContext executionContext = createExecutionContext(requestEnvironmentInfoRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1564,9 +2107,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @param restartAppServerRequest
      * @return Result of the RestartAppServer operation returned by the service.
      * @sample AWSElasticBeanstalk.RestartAppServer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RestartAppServer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RestartAppServerResult restartAppServer(RestartAppServerRequest restartAppServerRequest) {
+    public RestartAppServerResult restartAppServer(RestartAppServerRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestartAppServer(request);
+    }
+
+    @SdkInternalApi
+    final RestartAppServerResult executeRestartAppServer(RestartAppServerRequest restartAppServerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restartAppServerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1614,9 +2166,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to download logs retrieved with <a>RequestEnvironmentInfo</a>.
      * @return Result of the RetrieveEnvironmentInfo operation returned by the service.
      * @sample AWSElasticBeanstalk.RetrieveEnvironmentInfo
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RetrieveEnvironmentInfo"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RetrieveEnvironmentInfoResult retrieveEnvironmentInfo(RetrieveEnvironmentInfoRequest retrieveEnvironmentInfoRequest) {
+    public RetrieveEnvironmentInfoResult retrieveEnvironmentInfo(RetrieveEnvironmentInfoRequest request) {
+        request = beforeClientExecution(request);
+        return executeRetrieveEnvironmentInfo(request);
+    }
+
+    @SdkInternalApi
+    final RetrieveEnvironmentInfoResult executeRetrieveEnvironmentInfo(RetrieveEnvironmentInfoRequest retrieveEnvironmentInfoRequest) {
+
         ExecutionContext executionContext = createExecutionContext(retrieveEnvironmentInfoRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1654,9 +2215,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Swaps the CNAMEs of two environments.
      * @return Result of the SwapEnvironmentCNAMEs operation returned by the service.
      * @sample AWSElasticBeanstalk.SwapEnvironmentCNAMEs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SwapEnvironmentCNAMEs"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SwapEnvironmentCNAMEsResult swapEnvironmentCNAMEs(SwapEnvironmentCNAMEsRequest swapEnvironmentCNAMEsRequest) {
+    public SwapEnvironmentCNAMEsResult swapEnvironmentCNAMEs(SwapEnvironmentCNAMEsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSwapEnvironmentCNAMEs(request);
+    }
+
+    @SdkInternalApi
+    final SwapEnvironmentCNAMEsResult executeSwapEnvironmentCNAMEs(SwapEnvironmentCNAMEsRequest swapEnvironmentCNAMEsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(swapEnvironmentCNAMEsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1701,9 +2271,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws InsufficientPrivilegesException
      *         The specified account does not have sufficient privileges for one of more AWS services.
      * @sample AWSElasticBeanstalk.TerminateEnvironment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/TerminateEnvironment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public TerminateEnvironmentResult terminateEnvironment(TerminateEnvironmentRequest terminateEnvironmentRequest) {
+    public TerminateEnvironmentResult terminateEnvironment(TerminateEnvironmentRequest request) {
+        request = beforeClientExecution(request);
+        return executeTerminateEnvironment(request);
+    }
+
+    @SdkInternalApi
+    final TerminateEnvironmentResult executeTerminateEnvironment(TerminateEnvironmentRequest terminateEnvironmentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(terminateEnvironmentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1747,9 +2326,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      *        Request to update an application.
      * @return Result of the UpdateApplication operation returned by the service.
      * @sample AWSElasticBeanstalk.UpdateApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateApplicationResult updateApplication(UpdateApplicationRequest updateApplicationRequest) {
+    public UpdateApplicationResult updateApplication(UpdateApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateApplication(request);
+    }
+
+    @SdkInternalApi
+    final UpdateApplicationResult executeUpdateApplication(UpdateApplicationRequest updateApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1780,6 +2368,59 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
+     * Modifies lifecycle settings for an application.
+     * </p>
+     * 
+     * @param updateApplicationResourceLifecycleRequest
+     * @return Result of the UpdateApplicationResourceLifecycle operation returned by the service.
+     * @throws InsufficientPrivilegesException
+     *         The specified account does not have sufficient privileges for one of more AWS services.
+     * @sample AWSElasticBeanstalk.UpdateApplicationResourceLifecycle
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplicationResourceLifecycle"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateApplicationResourceLifecycleResult updateApplicationResourceLifecycle(UpdateApplicationResourceLifecycleRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateApplicationResourceLifecycle(request);
+    }
+
+    @SdkInternalApi
+    final UpdateApplicationResourceLifecycleResult executeUpdateApplicationResourceLifecycle(
+            UpdateApplicationResourceLifecycleRequest updateApplicationResourceLifecycleRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateApplicationResourceLifecycleRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateApplicationResourceLifecycleRequest> request = null;
+        Response<UpdateApplicationResourceLifecycleResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateApplicationResourceLifecycleRequestMarshaller()
+                        .marshall(super.beforeMarshalling(updateApplicationResourceLifecycleRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UpdateApplicationResourceLifecycleResult> responseHandler = new StaxResponseHandler<UpdateApplicationResourceLifecycleResult>(
+                    new UpdateApplicationResourceLifecycleResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Updates the specified application version to have the specified properties.
      * </p>
      * <note>
@@ -1792,9 +2433,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @param updateApplicationVersionRequest
      * @return Result of the UpdateApplicationVersion operation returned by the service.
      * @sample AWSElasticBeanstalk.UpdateApplicationVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplicationVersion"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateApplicationVersionResult updateApplicationVersion(UpdateApplicationVersionRequest updateApplicationVersionRequest) {
+    public UpdateApplicationVersionResult updateApplicationVersion(UpdateApplicationVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateApplicationVersion(request);
+    }
+
+    @SdkInternalApi
+    final UpdateApplicationVersionResult executeUpdateApplicationVersion(UpdateApplicationVersionRequest updateApplicationVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateApplicationVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1852,9 +2502,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyBucketsException
      *         The specified account has reached its limit of Amazon S3 buckets.
      * @sample AWSElasticBeanstalk.UpdateConfigurationTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateConfigurationTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateConfigurationTemplateResult updateConfigurationTemplate(UpdateConfigurationTemplateRequest updateConfigurationTemplateRequest) {
+    public UpdateConfigurationTemplateResult updateConfigurationTemplate(UpdateConfigurationTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateConfigurationTemplate(request);
+    }
+
+    @SdkInternalApi
+    final UpdateConfigurationTemplateResult executeUpdateConfigurationTemplate(UpdateConfigurationTemplateRequest updateConfigurationTemplateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateConfigurationTemplateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1906,9 +2565,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyBucketsException
      *         The specified account has reached its limit of Amazon S3 buckets.
      * @sample AWSElasticBeanstalk.UpdateEnvironment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateEnvironment"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateEnvironmentResult updateEnvironment(UpdateEnvironmentRequest updateEnvironmentRequest) {
+    public UpdateEnvironmentResult updateEnvironment(UpdateEnvironmentRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateEnvironment(request);
+    }
+
+    @SdkInternalApi
+    final UpdateEnvironmentResult executeUpdateEnvironment(UpdateEnvironmentRequest updateEnvironmentRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateEnvironmentRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1955,9 +2623,18 @@ public class AWSElasticBeanstalkClient extends AmazonWebServiceClient implements
      * @throws TooManyBucketsException
      *         The specified account has reached its limit of Amazon S3 buckets.
      * @sample AWSElasticBeanstalk.ValidateConfigurationSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ValidateConfigurationSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ValidateConfigurationSettingsResult validateConfigurationSettings(ValidateConfigurationSettingsRequest validateConfigurationSettingsRequest) {
+    public ValidateConfigurationSettingsResult validateConfigurationSettings(ValidateConfigurationSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeValidateConfigurationSettings(request);
+    }
+
+    @SdkInternalApi
+    final ValidateConfigurationSettingsResult executeValidateConfigurationSettings(ValidateConfigurationSettingsRequest validateConfigurationSettingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(validateConfigurationSettingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents a matched event from a <code>FilterLogEvents</code> request.
+ * Represents a matched event.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilteredLogEvent" target="_top">AWS API
+ *      Documentation</a>
  */
-public class FilteredLogEvent implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class FilteredLogEvent implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -27,7 +34,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
      * </p>
      */
     private String logStreamName;
-
+    /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     */
     private Long timestamp;
     /**
      * <p>
@@ -35,11 +46,15 @@ public class FilteredLogEvent implements Serializable, Cloneable {
      * </p>
      */
     private String message;
-
+    /**
+     * <p>
+     * The time the event was ingested.
+     * </p>
+     */
     private Long ingestionTime;
     /**
      * <p>
-     * A unique identifier for this event.
+     * The ID of the event.
      * </p>
      */
     private String eventId;
@@ -85,7 +100,12 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param timestamp
+     *        The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public void setTimestamp(Long timestamp) {
@@ -93,7 +113,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
+     * @return The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public Long getTimestamp() {
@@ -101,7 +125,12 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param timestamp
+     *        The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -151,7 +180,12 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time the event was ingested.
+     * </p>
+     * 
      * @param ingestionTime
+     *        The time the event was ingested.
      */
 
     public void setIngestionTime(Long ingestionTime) {
@@ -159,7 +193,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The time the event was ingested.
+     * </p>
+     * 
+     * @return The time the event was ingested.
      */
 
     public Long getIngestionTime() {
@@ -167,7 +205,12 @@ public class FilteredLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time the event was ingested.
+     * </p>
+     * 
      * @param ingestionTime
+     *        The time the event was ingested.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,11 +221,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A unique identifier for this event.
+     * The ID of the event.
      * </p>
      * 
      * @param eventId
-     *        A unique identifier for this event.
+     *        The ID of the event.
      */
 
     public void setEventId(String eventId) {
@@ -191,10 +234,10 @@ public class FilteredLogEvent implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A unique identifier for this event.
+     * The ID of the event.
      * </p>
      * 
-     * @return A unique identifier for this event.
+     * @return The ID of the event.
      */
 
     public String getEventId() {
@@ -203,11 +246,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A unique identifier for this event.
+     * The ID of the event.
      * </p>
      * 
      * @param eventId
-     *        A unique identifier for this event.
+     *        The ID of the event.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -228,15 +271,15 @@ public class FilteredLogEvent implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogStreamName() != null)
-            sb.append("LogStreamName: " + getLogStreamName() + ",");
+            sb.append("LogStreamName: ").append(getLogStreamName()).append(",");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp() + ",");
+            sb.append("Timestamp: ").append(getTimestamp()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getIngestionTime() != null)
-            sb.append("IngestionTime: " + getIngestionTime() + ",");
+            sb.append("IngestionTime: ").append(getIngestionTime()).append(",");
         if (getEventId() != null)
-            sb.append("EventId: " + getEventId());
+            sb.append("EventId: ").append(getEventId());
         sb.append("}");
         return sb.toString();
     }
@@ -294,5 +337,11 @@ public class FilteredLogEvent implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.FilteredLogEventMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

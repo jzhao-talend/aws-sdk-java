@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,22 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the maximum hourly price (bid) for any Spot instance launched to fulfill the request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotPrice" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      */
     private String instanceType;
@@ -55,11 +60,11 @@ public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceType
-     *        The instance type.
+     *        The instance type. Note that T2 and HS1 instance types are not supported.
      * @see InstanceType
      */
 
@@ -69,10 +74,10 @@ public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
-     * @return The instance type.
+     * @return The instance type. Note that T2 and HS1 instance types are not supported.
      * @see InstanceType
      */
 
@@ -82,11 +87,11 @@ public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceType
-     *        The instance type.
+     *        The instance type. Note that T2 and HS1 instance types are not supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -98,11 +103,11 @@ public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceType
-     *        The instance type.
+     *        The instance type. Note that T2 and HS1 instance types are not supported.
      * @see InstanceType
      */
 
@@ -112,11 +117,11 @@ public class SpotPrice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type.
+     * The instance type. Note that T2 and HS1 instance types are not supported.
      * </p>
      * 
      * @param instanceType
-     *        The instance type.
+     *        The instance type. Note that T2 and HS1 instance types are not supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -337,15 +342,15 @@ public class SpotPrice implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getProductDescription() != null)
-            sb.append("ProductDescription: " + getProductDescription() + ",");
+            sb.append("ProductDescription: ").append(getProductDescription()).append(",");
         if (getSpotPrice() != null)
-            sb.append("SpotPrice: " + getSpotPrice() + ",");
+            sb.append("SpotPrice: ").append(getSpotPrice()).append(",");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp() + ",");
+            sb.append("Timestamp: ").append(getTimestamp()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone());
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone());
         sb.append("}");
         return sb.toString();
     }
@@ -404,4 +409,5 @@ public class SpotPrice implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

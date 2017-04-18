@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromDBSnapshot"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -208,7 +214,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      * Default: The same as source
      * </p>
      * <p>
-     * Constraint: Must be compatible with the engine of the source
+     * Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a
+     * MySQL 5.6 snapshot.
      * </p>
      * <p>
      * Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> |
@@ -1552,7 +1559,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      * Default: The same as source
      * </p>
      * <p>
-     * Constraint: Must be compatible with the engine of the source
+     * Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a
+     * MySQL 5.6 snapshot.
      * </p>
      * <p>
      * Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> |
@@ -1566,7 +1574,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      *        Default: The same as source
      *        </p>
      *        <p>
-     *        Constraint: Must be compatible with the engine of the source
+     *        Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance
+     *        from a MySQL 5.6 snapshot.
      *        </p>
      *        <p>
      *        Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code>
@@ -1586,7 +1595,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      * Default: The same as source
      * </p>
      * <p>
-     * Constraint: Must be compatible with the engine of the source
+     * Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a
+     * MySQL 5.6 snapshot.
      * </p>
      * <p>
      * Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> |
@@ -1599,7 +1609,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      *         Default: The same as source
      *         </p>
      *         <p>
-     *         Constraint: Must be compatible with the engine of the source
+     *         Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance
+     *         from a MySQL 5.6 snapshot.
      *         </p>
      *         <p>
      *         Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> |
@@ -1619,7 +1630,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      * Default: The same as source
      * </p>
      * <p>
-     * Constraint: Must be compatible with the engine of the source
+     * Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a
+     * MySQL 5.6 snapshot.
      * </p>
      * <p>
      * Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> |
@@ -1633,7 +1645,8 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
      *        Default: The same as source
      *        </p>
      *        <p>
-     *        Constraint: Must be compatible with the engine of the source
+     *        Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance
+     *        from a MySQL 5.6 snapshot.
      *        </p>
      *        <p>
      *        Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code>
@@ -2199,47 +2212,47 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getDBSnapshotIdentifier() != null)
-            sb.append("DBSnapshotIdentifier: " + getDBSnapshotIdentifier() + ",");
+            sb.append("DBSnapshotIdentifier: ").append(getDBSnapshotIdentifier()).append(",");
         if (getDBInstanceClass() != null)
-            sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+            sb.append("DBInstanceClass: ").append(getDBInstanceClass()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getDBSubnetGroupName() != null)
-            sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");
+            sb.append("DBSubnetGroupName: ").append(getDBSubnetGroupName()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible() + ",");
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getLicenseModel() != null)
-            sb.append("LicenseModel: " + getLicenseModel() + ",");
+            sb.append("LicenseModel: ").append(getLicenseModel()).append(",");
         if (getDBName() != null)
-            sb.append("DBName: " + getDBName() + ",");
+            sb.append("DBName: ").append(getDBName()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getIops() != null)
-            sb.append("Iops: " + getIops() + ",");
+            sb.append("Iops: ").append(getIops()).append(",");
         if (getOptionGroupName() != null)
-            sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+            sb.append("OptionGroupName: ").append(getOptionGroupName()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getTdeCredentialArn() != null)
-            sb.append("TdeCredentialArn: " + getTdeCredentialArn() + ",");
+            sb.append("TdeCredentialArn: ").append(getTdeCredentialArn()).append(",");
         if (getTdeCredentialPassword() != null)
-            sb.append("TdeCredentialPassword: " + getTdeCredentialPassword() + ",");
+            sb.append("TdeCredentialPassword: ").append(getTdeCredentialPassword()).append(",");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: " + getCopyTagsToSnapshot() + ",");
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
         if (getDomainIAMRoleName() != null)
-            sb.append("DomainIAMRoleName: " + getDomainIAMRoleName());
+            sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName());
         sb.append("}");
         return sb.toString();
     }
@@ -2374,4 +2387,5 @@ public class RestoreDBInstanceFromDBSnapshotRequest extends com.amazonaws.Amazon
     public RestoreDBInstanceFromDBSnapshotRequest clone() {
         return (RestoreDBInstanceFromDBSnapshotRequest) super.clone();
     }
+
 }

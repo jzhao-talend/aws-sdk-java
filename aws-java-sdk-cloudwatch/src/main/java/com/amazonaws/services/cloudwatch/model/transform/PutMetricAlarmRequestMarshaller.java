@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.cloudwatch.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.cloudwatch.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * PutMetricAlarmRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutMetricAlarmRequestMarshaller implements Marshaller<Request<PutMetricAlarmRequest>, PutMetricAlarmRequest> {
 
     public Request<PutMetricAlarmRequest> marshall(PutMetricAlarmRequest putMetricAlarmRequest) {
@@ -105,6 +103,10 @@ public class PutMetricAlarmRequestMarshaller implements Marshaller<Request<PutMe
             request.addParameter("Statistic", StringUtils.fromString(putMetricAlarmRequest.getStatistic()));
         }
 
+        if (putMetricAlarmRequest.getExtendedStatistic() != null) {
+            request.addParameter("ExtendedStatistic", StringUtils.fromString(putMetricAlarmRequest.getExtendedStatistic()));
+        }
+
         com.amazonaws.internal.SdkInternalList<Dimension> dimensionsList = (com.amazonaws.internal.SdkInternalList<Dimension>) putMetricAlarmRequest
                 .getDimensions();
         if (!dimensionsList.isEmpty() || !dimensionsList.isAutoConstruct()) {
@@ -141,6 +143,14 @@ public class PutMetricAlarmRequestMarshaller implements Marshaller<Request<PutMe
 
         if (putMetricAlarmRequest.getComparisonOperator() != null) {
             request.addParameter("ComparisonOperator", StringUtils.fromString(putMetricAlarmRequest.getComparisonOperator()));
+        }
+
+        if (putMetricAlarmRequest.getTreatMissingData() != null) {
+            request.addParameter("TreatMissingData", StringUtils.fromString(putMetricAlarmRequest.getTreatMissingData()));
+        }
+
+        if (putMetricAlarmRequest.getEvaluateLowSampleCountPercentile() != null) {
+            request.addParameter("EvaluateLowSampleCountPercentile", StringUtils.fromString(putMetricAlarmRequest.getEvaluateLowSampleCountPercentile()));
         }
 
         return request;

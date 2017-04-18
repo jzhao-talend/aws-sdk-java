@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetLoadBasedAutoScaling" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -35,14 +40,14 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds
-     * these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of instances.
+     * these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.
      * </p>
      */
     private AutoScalingThresholds upScaling;
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls
-     * below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of instances.
+     * below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.
      * </p>
      */
     private AutoScalingThresholds downScaling;
@@ -142,12 +147,12 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds
-     * these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of instances.
+     * these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.
      * </p>
      * 
      * @param upScaling
      *        An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load
-     *        exceeds these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of
+     *        exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of
      *        instances.
      */
 
@@ -158,11 +163,11 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds
-     * these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of instances.
+     * these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.
      * </p>
      * 
      * @return An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load
-     *         exceeds these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of
+     *         exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of
      *         instances.
      */
 
@@ -173,12 +178,12 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds
-     * these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of instances.
+     * these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.
      * </p>
      * 
      * @param upScaling
      *        An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load
-     *        exceeds these thresholds for a specified amount of time, AWS OpsWorks starts a specified number of
+     *        exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of
      *        instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -191,13 +196,13 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls
-     * below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of instances.
+     * below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.
      * </p>
      * 
      * @param downScaling
      *        An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load
-     *        falls below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of
-     *        instances.
+     *        falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number
+     *        of instances.
      */
 
     public void setDownScaling(AutoScalingThresholds downScaling) {
@@ -207,12 +212,12 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls
-     * below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of instances.
+     * below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.
      * </p>
      * 
      * @return An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load
-     *         falls below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of
-     *         instances.
+     *         falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number
+     *         of instances.
      */
 
     public AutoScalingThresholds getDownScaling() {
@@ -222,13 +227,13 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls
-     * below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of instances.
+     * below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.
      * </p>
      * 
      * @param downScaling
      *        An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load
-     *        falls below these thresholds for a specified amount of time, AWS OpsWorks stops a specified number of
-     *        instances.
+     *        falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number
+     *        of instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -249,13 +254,13 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLayerId() != null)
-            sb.append("LayerId: " + getLayerId() + ",");
+            sb.append("LayerId: ").append(getLayerId()).append(",");
         if (getEnable() != null)
-            sb.append("Enable: " + getEnable() + ",");
+            sb.append("Enable: ").append(getEnable()).append(",");
         if (getUpScaling() != null)
-            sb.append("UpScaling: " + getUpScaling() + ",");
+            sb.append("UpScaling: ").append(getUpScaling()).append(",");
         if (getDownScaling() != null)
-            sb.append("DownScaling: " + getDownScaling());
+            sb.append("DownScaling: ").append(getDownScaling());
         sb.append("}");
         return sb.toString();
     }
@@ -305,4 +310,5 @@ public class SetLoadBasedAutoScalingRequest extends com.amazonaws.AmazonWebServi
     public SetLoadBasedAutoScalingRequest clone() {
         return (SetLoadBasedAutoScalingRequest) super.clone();
     }
+
 }

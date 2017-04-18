@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,78 +13,43 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the ICMP type and code.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/IcmpTypeCode" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IcmpTypeCode implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     * The ICMP type. A value of -1 means all types.
      * </p>
      */
     private Integer type;
     /**
      * <p>
-     * The ICMP type. A value of -1 means all types.
+     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
      * </p>
      */
     private Integer code;
 
     /**
      * <p>
-     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     * The ICMP type. A value of -1 means all types.
      * </p>
      * 
      * @param type
-     *        The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     *        The ICMP type. A value of -1 means all types.
      */
 
     public void setType(Integer type) {
         this.type = type;
-    }
-
-    /**
-     * <p>
-     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
-     * </p>
-     * 
-     * @return The ICMP code. A value of -1 means all codes for the specified ICMP type.
-     */
-
-    public Integer getType() {
-        return this.type;
-    }
-
-    /**
-     * <p>
-     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
-     * </p>
-     * 
-     * @param type
-     *        The ICMP code. A value of -1 means all codes for the specified ICMP type.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public IcmpTypeCode withType(Integer type) {
-        setType(type);
-        return this;
-    }
-
-    /**
-     * <p>
-     * The ICMP type. A value of -1 means all types.
-     * </p>
-     * 
-     * @param code
-     *        The ICMP type. A value of -1 means all types.
-     */
-
-    public void setCode(Integer code) {
-        this.code = code;
     }
 
     /**
@@ -95,8 +60,8 @@ public class IcmpTypeCode implements Serializable, Cloneable {
      * @return The ICMP type. A value of -1 means all types.
      */
 
-    public Integer getCode() {
-        return this.code;
+    public Integer getType() {
+        return this.type;
     }
 
     /**
@@ -104,8 +69,48 @@ public class IcmpTypeCode implements Serializable, Cloneable {
      * The ICMP type. A value of -1 means all types.
      * </p>
      * 
-     * @param code
+     * @param type
      *        The ICMP type. A value of -1 means all types.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public IcmpTypeCode withType(Integer type) {
+        setType(type);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     * </p>
+     * 
+     * @param code
+     *        The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     */
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    /**
+     * <p>
+     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     * </p>
+     * 
+     * @return The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     */
+
+    public Integer getCode() {
+        return this.code;
+    }
+
+    /**
+     * <p>
+     * The ICMP code. A value of -1 means all codes for the specified ICMP type.
+     * </p>
+     * 
+     * @param code
+     *        The ICMP code. A value of -1 means all codes for the specified ICMP type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -126,9 +131,9 @@ public class IcmpTypeCode implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getCode() != null)
-            sb.append("Code: " + getCode());
+            sb.append("Code: ").append(getCode());
         sb.append("}");
         return sb.toString();
     }
@@ -172,4 +177,5 @@ public class IcmpTypeCode implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

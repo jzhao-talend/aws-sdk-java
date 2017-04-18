@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A uniquely identified group of stream records within a stream.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/Shard" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Shard implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Shard implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -172,11 +179,11 @@ public class Shard implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getShardId() != null)
-            sb.append("ShardId: " + getShardId() + ",");
+            sb.append("ShardId: ").append(getShardId()).append(",");
         if (getSequenceNumberRange() != null)
-            sb.append("SequenceNumberRange: " + getSequenceNumberRange() + ",");
+            sb.append("SequenceNumberRange: ").append(getSequenceNumberRange()).append(",");
         if (getParentShardId() != null)
-            sb.append("ParentShardId: " + getParentShardId());
+            sb.append("ParentShardId: ").append(getParentShardId());
         sb.append("}");
         return sb.toString();
     }
@@ -224,5 +231,11 @@ public class Shard implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.ShardMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

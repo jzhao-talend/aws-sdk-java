@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.apigateway;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,6 +22,10 @@ import com.amazonaws.services.apigateway.model.*;
 /**
  * Interface for accessing Amazon API Gateway.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.apigateway.AbstractAmazonApiGateway} instead.
+ * </p>
+ * <p>
  * <fullname>Amazon API Gateway</fullname>
  * <p>
  * Amazon API Gateway helps developers deliver robust, secure, and scalable mobile and web application back ends. Amazon
@@ -27,6 +33,7 @@ import com.amazonaws.services.apigateway.model.*;
  * EC2, or other publicly addressable web services that are hosted outside of AWS.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonApiGateway {
 
     /**
@@ -58,7 +65,11 @@ public interface AmazonApiGateway {
      *        The endpoint (ex: "apigateway.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://apigateway.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -79,7 +90,9 @@ public interface AmazonApiGateway {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -158,6 +171,34 @@ public interface AmazonApiGateway {
     CreateDeploymentResult createDeployment(CreateDeploymentRequest createDeploymentRequest);
 
     /**
+     * @param createDocumentationPartRequest
+     *        Creates a new documentation part of a given API.
+     * @return Result of the CreateDocumentationPart operation returned by the service.
+     * @throws BadRequestException
+     * @throws ConflictException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws LimitExceededException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.CreateDocumentationPart
+     */
+    CreateDocumentationPartResult createDocumentationPart(CreateDocumentationPartRequest createDocumentationPartRequest);
+
+    /**
+     * @param createDocumentationVersionRequest
+     *        Creates a new documentation version of a given API.
+     * @return Result of the CreateDocumentationVersion operation returned by the service.
+     * @throws BadRequestException
+     * @throws ConflictException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws LimitExceededException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.CreateDocumentationVersion
+     */
+    CreateDocumentationVersionResult createDocumentationVersion(CreateDocumentationVersionRequest createDocumentationVersionRequest);
+
+    /**
      * <p>
      * Creates a new domain name.
      * </p>
@@ -190,6 +231,23 @@ public interface AmazonApiGateway {
      * @sample AmazonApiGateway.CreateModel
      */
     CreateModelResult createModel(CreateModelRequest createModelRequest);
+
+    /**
+     * <p>
+     * Creates a <a>ReqeustValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param createRequestValidatorRequest
+     *        Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return Result of the CreateRequestValidator operation returned by the service.
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws LimitExceededException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.CreateRequestValidator
+     */
+    CreateRequestValidatorResult createRequestValidator(CreateRequestValidatorRequest createRequestValidatorRequest);
 
     /**
      * <p>
@@ -258,6 +316,7 @@ public interface AmazonApiGateway {
      * @throws TooManyRequestsException
      * @throws LimitExceededException
      * @throws ConflictException
+     * @throws NotFoundException
      * @sample AmazonApiGateway.CreateUsagePlan
      */
     CreateUsagePlanResult createUsagePlan(CreateUsagePlanRequest createUsagePlanRequest);
@@ -362,6 +421,32 @@ public interface AmazonApiGateway {
     DeleteDeploymentResult deleteDeployment(DeleteDeploymentRequest deleteDeploymentRequest);
 
     /**
+     * @param deleteDocumentationPartRequest
+     *        Deletes an existing documentation part of an API.
+     * @return Result of the DeleteDocumentationPart operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws ConflictException
+     * @throws BadRequestException
+     * @sample AmazonApiGateway.DeleteDocumentationPart
+     */
+    DeleteDocumentationPartResult deleteDocumentationPart(DeleteDocumentationPartRequest deleteDocumentationPartRequest);
+
+    /**
+     * @param deleteDocumentationVersionRequest
+     *        Deletes an existing documentation version of an API.
+     * @return Result of the DeleteDocumentationVersion operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws BadRequestException
+     * @throws ConflictException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.DeleteDocumentationVersion
+     */
+    DeleteDocumentationVersionResult deleteDocumentationVersion(DeleteDocumentationVersionRequest deleteDocumentationVersionRequest);
+
+    /**
      * <p>
      * Deletes the <a>DomainName</a> resource.
      * </p>
@@ -458,6 +543,23 @@ public interface AmazonApiGateway {
      * @sample AmazonApiGateway.DeleteModel
      */
     DeleteModelResult deleteModel(DeleteModelRequest deleteModelRequest);
+
+    /**
+     * <p>
+     * Deletes a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param deleteRequestValidatorRequest
+     *        Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return Result of the DeleteRequestValidator operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws BadRequestException
+     * @throws ConflictException
+     * @sample AmazonApiGateway.DeleteRequestValidator
+     */
+    DeleteRequestValidatorResult deleteRequestValidator(DeleteRequestValidatorRequest deleteRequestValidatorRequest);
 
     /**
      * <p>
@@ -762,6 +864,53 @@ public interface AmazonApiGateway {
     GetDeploymentsResult getDeployments(GetDeploymentsRequest getDeploymentsRequest);
 
     /**
+     * @param getDocumentationPartRequest
+     *        Gets a specified documentation part of a given API.
+     * @return Result of the GetDocumentationPart operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetDocumentationPart
+     */
+    GetDocumentationPartResult getDocumentationPart(GetDocumentationPartRequest getDocumentationPartRequest);
+
+    /**
+     * @param getDocumentationPartsRequest
+     *        Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API
+     *        entities (targets).
+     * @return Result of the GetDocumentationParts operation returned by the service.
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetDocumentationParts
+     */
+    GetDocumentationPartsResult getDocumentationParts(GetDocumentationPartsRequest getDocumentationPartsRequest);
+
+    /**
+     * @param getDocumentationVersionRequest
+     *        Gets a documentation snapshot of an API.
+     * @return Result of the GetDocumentationVersion operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetDocumentationVersion
+     */
+    GetDocumentationVersionResult getDocumentationVersion(GetDocumentationVersionRequest getDocumentationVersionRequest);
+
+    /**
+     * @param getDocumentationVersionsRequest
+     *        Gets the documentation versions of an API.
+     * @return Result of the GetDocumentationVersions operation returned by the service.
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetDocumentationVersions
+     */
+    GetDocumentationVersionsResult getDocumentationVersions(GetDocumentationVersionsRequest getDocumentationVersionsRequest);
+
+    /**
      * <p>
      * Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
      * </p>
@@ -917,6 +1066,37 @@ public interface AmazonApiGateway {
 
     /**
      * <p>
+     * Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorRequest
+     *        Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return Result of the GetRequestValidator operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetRequestValidator
+     */
+    GetRequestValidatorResult getRequestValidator(GetRequestValidatorRequest getRequestValidatorRequest);
+
+    /**
+     * <p>
+     * Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorsRequest
+     *        Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * @return Result of the GetRequestValidators operation returned by the service.
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetRequestValidators
+     */
+    GetRequestValidatorsResult getRequestValidators(GetRequestValidatorsRequest getRequestValidatorsRequest);
+
+    /**
+     * <p>
      * Lists information about a resource.
      * </p>
      * 
@@ -991,6 +1171,27 @@ public interface AmazonApiGateway {
      * @sample AmazonApiGateway.GetSdk
      */
     GetSdkResult getSdk(GetSdkRequest getSdkRequest);
+
+    /**
+     * @param getSdkTypeRequest
+     *        Get an <a>SdkType</a> instance.
+     * @return Result of the GetSdkType operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetSdkType
+     */
+    GetSdkTypeResult getSdkType(GetSdkTypeRequest getSdkTypeRequest);
+
+    /**
+     * @param getSdkTypesRequest
+     *        Get the <a>SdkTypes</a> collection.
+     * @return Result of the GetSdkTypes operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.GetSdkTypes
+     */
+    GetSdkTypesResult getSdkTypes(GetSdkTypesRequest getSdkTypesRequest);
 
     /**
      * <p>
@@ -1098,6 +1299,7 @@ public interface AmazonApiGateway {
      * @throws UnauthorizedException
      * @throws TooManyRequestsException
      * @throws ConflictException
+     * @throws NotFoundException
      * @sample AmazonApiGateway.GetUsagePlans
      */
     GetUsagePlansResult getUsagePlans(GetUsagePlansRequest getUsagePlansRequest);
@@ -1119,6 +1321,19 @@ public interface AmazonApiGateway {
      * @sample AmazonApiGateway.ImportApiKeys
      */
     ImportApiKeysResult importApiKeys(ImportApiKeysRequest importApiKeysRequest);
+
+    /**
+     * @param importDocumentationPartsRequest
+     *        Import documentation parts from an external (e.g., Swagger) definition file.
+     * @return Result of the ImportDocumentationParts operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws BadRequestException
+     * @throws LimitExceededException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.ImportDocumentationParts
+     */
+    ImportDocumentationPartsResult importDocumentationParts(ImportDocumentationPartsRequest importDocumentationPartsRequest);
 
     /**
      * <p>
@@ -1367,6 +1582,33 @@ public interface AmazonApiGateway {
     UpdateDeploymentResult updateDeployment(UpdateDeploymentRequest updateDeploymentRequest);
 
     /**
+     * @param updateDocumentationPartRequest
+     *        Updates an existing documentation part of a given API.
+     * @return Result of the UpdateDocumentationPart operation returned by the service.
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws ConflictException
+     * @throws LimitExceededException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.UpdateDocumentationPart
+     */
+    UpdateDocumentationPartResult updateDocumentationPart(UpdateDocumentationPartRequest updateDocumentationPartRequest);
+
+    /**
+     * @param updateDocumentationVersionRequest
+     *        Updates an existing documentation version of an API.
+     * @return Result of the UpdateDocumentationVersion operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws ConflictException
+     * @throws BadRequestException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.UpdateDocumentationVersion
+     */
+    UpdateDocumentationVersionResult updateDocumentationVersion(UpdateDocumentationVersionRequest updateDocumentationVersionRequest);
+
+    /**
      * <p>
      * Changes information about the <a>DomainName</a> resource.
      * </p>
@@ -1468,6 +1710,22 @@ public interface AmazonApiGateway {
      * @sample AmazonApiGateway.UpdateModel
      */
     UpdateModelResult updateModel(UpdateModelRequest updateModelRequest);
+
+    /**
+     * <p>
+     * Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param updateRequestValidatorRequest
+     *        Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return Result of the UpdateRequestValidator operation returned by the service.
+     * @throws UnauthorizedException
+     * @throws NotFoundException
+     * @throws BadRequestException
+     * @throws TooManyRequestsException
+     * @sample AmazonApiGateway.UpdateRequestValidator
+     */
+    UpdateRequestValidatorResult updateRequestValidator(UpdateRequestValidatorRequest updateRequestValidatorRequest);
 
     /**
      * <p>

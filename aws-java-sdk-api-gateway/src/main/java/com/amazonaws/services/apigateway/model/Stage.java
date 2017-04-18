@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,7 +24,8 @@ import java.io.Serializable;
  * <div class="seeAlso"> <a
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
  */
-public class Stage implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Stage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -83,15 +87,19 @@ public class Stage implements Serializable, Cloneable {
     private java.util.Map<String, String> variables;
     /**
      * <p>
-     * The date and time that the stage was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The version of the associated API documentation.
+     * </p>
+     */
+    private String documentationVersion;
+    /**
+     * <p>
+     * The timestamp when the stage was created.
      * </p>
      */
     private java.util.Date createdDate;
     /**
      * <p>
-     * The date and time that information about the stage was last updated, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage last updated.
      * </p>
      */
     private java.util.Date lastUpdatedDate;
@@ -572,13 +580,51 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that the stage was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @param documentationVersion
+     *        The version of the associated API documentation.
+     */
+
+    public void setDocumentationVersion(String documentationVersion) {
+        this.documentationVersion = documentationVersion;
+    }
+
+    /**
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @return The version of the associated API documentation.
+     */
+
+    public String getDocumentationVersion() {
+        return this.documentationVersion;
+    }
+
+    /**
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @param documentationVersion
+     *        The version of the associated API documentation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stage withDocumentationVersion(String documentationVersion) {
+        setDocumentationVersion(documentationVersion);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The timestamp when the stage was created.
      * </p>
      * 
      * @param createdDate
-     *        The date and time that the stage was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the stage was created.
      */
 
     public void setCreatedDate(java.util.Date createdDate) {
@@ -587,12 +633,10 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that the stage was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage was created.
      * </p>
      * 
-     * @return The date and time that the stage was created, in <a
-     *         href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the stage was created.
      */
 
     public java.util.Date getCreatedDate() {
@@ -601,13 +645,11 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that the stage was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage was created.
      * </p>
      * 
      * @param createdDate
-     *        The date and time that the stage was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the stage was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -618,13 +660,11 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that information about the stage was last updated, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage last updated.
      * </p>
      * 
      * @param lastUpdatedDate
-     *        The date and time that information about the stage was last updated, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the stage last updated.
      */
 
     public void setLastUpdatedDate(java.util.Date lastUpdatedDate) {
@@ -633,12 +673,10 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that information about the stage was last updated, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage last updated.
      * </p>
      * 
-     * @return The date and time that information about the stage was last updated, in <a
-     *         href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the stage last updated.
      */
 
     public java.util.Date getLastUpdatedDate() {
@@ -647,13 +685,11 @@ public class Stage implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time that information about the stage was last updated, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     * The timestamp when the stage last updated.
      * </p>
      * 
      * @param lastUpdatedDate
-     *        The date and time that information about the stage was last updated, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the stage last updated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -674,27 +710,29 @@ public class Stage implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeploymentId() != null)
-            sb.append("DeploymentId: " + getDeploymentId() + ",");
+            sb.append("DeploymentId: ").append(getDeploymentId()).append(",");
         if (getClientCertificateId() != null)
-            sb.append("ClientCertificateId: " + getClientCertificateId() + ",");
+            sb.append("ClientCertificateId: ").append(getClientCertificateId()).append(",");
         if (getStageName() != null)
-            sb.append("StageName: " + getStageName() + ",");
+            sb.append("StageName: ").append(getStageName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCacheClusterEnabled() != null)
-            sb.append("CacheClusterEnabled: " + getCacheClusterEnabled() + ",");
+            sb.append("CacheClusterEnabled: ").append(getCacheClusterEnabled()).append(",");
         if (getCacheClusterSize() != null)
-            sb.append("CacheClusterSize: " + getCacheClusterSize() + ",");
+            sb.append("CacheClusterSize: ").append(getCacheClusterSize()).append(",");
         if (getCacheClusterStatus() != null)
-            sb.append("CacheClusterStatus: " + getCacheClusterStatus() + ",");
+            sb.append("CacheClusterStatus: ").append(getCacheClusterStatus()).append(",");
         if (getMethodSettings() != null)
-            sb.append("MethodSettings: " + getMethodSettings() + ",");
+            sb.append("MethodSettings: ").append(getMethodSettings()).append(",");
         if (getVariables() != null)
-            sb.append("Variables: " + getVariables() + ",");
+            sb.append("Variables: ").append(getVariables()).append(",");
+        if (getDocumentationVersion() != null)
+            sb.append("DocumentationVersion: ").append(getDocumentationVersion()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate() + ",");
+            sb.append("CreatedDate: ").append(getCreatedDate()).append(",");
         if (getLastUpdatedDate() != null)
-            sb.append("LastUpdatedDate: " + getLastUpdatedDate());
+            sb.append("LastUpdatedDate: ").append(getLastUpdatedDate());
         sb.append("}");
         return sb.toString();
     }
@@ -745,6 +783,10 @@ public class Stage implements Serializable, Cloneable {
             return false;
         if (other.getVariables() != null && other.getVariables().equals(this.getVariables()) == false)
             return false;
+        if (other.getDocumentationVersion() == null ^ this.getDocumentationVersion() == null)
+            return false;
+        if (other.getDocumentationVersion() != null && other.getDocumentationVersion().equals(this.getDocumentationVersion()) == false)
+            return false;
         if (other.getCreatedDate() == null ^ this.getCreatedDate() == null)
             return false;
         if (other.getCreatedDate() != null && other.getCreatedDate().equals(this.getCreatedDate()) == false)
@@ -770,6 +812,7 @@ public class Stage implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getCacheClusterStatus() == null) ? 0 : getCacheClusterStatus().hashCode());
         hashCode = prime * hashCode + ((getMethodSettings() == null) ? 0 : getMethodSettings().hashCode());
         hashCode = prime * hashCode + ((getVariables() == null) ? 0 : getVariables().hashCode());
+        hashCode = prime * hashCode + ((getDocumentationVersion() == null) ? 0 : getDocumentationVersion().hashCode());
         hashCode = prime * hashCode + ((getCreatedDate() == null) ? 0 : getCreatedDate().hashCode());
         hashCode = prime * hashCode + ((getLastUpdatedDate() == null) ? 0 : getLastUpdatedDate().hashCode());
         return hashCode;
@@ -782,5 +825,11 @@ public class Stage implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.StageMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

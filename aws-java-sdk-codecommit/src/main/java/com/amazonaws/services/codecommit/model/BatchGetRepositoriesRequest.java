@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.codecommit.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a batch get repositories operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositories" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BatchGetRepositoriesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -111,7 +117,7 @@ public class BatchGetRepositoriesRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRepositoryNames() != null)
-            sb.append("RepositoryNames: " + getRepositoryNames());
+            sb.append("RepositoryNames: ").append(getRepositoryNames());
         sb.append("}");
         return sb.toString();
     }
@@ -146,4 +152,5 @@ public class BatchGetRepositoriesRequest extends com.amazonaws.AmazonWebServiceR
     public BatchGetRepositoriesRequest clone() {
         return (BatchGetRepositoriesRequest) super.clone();
     }
+
 }

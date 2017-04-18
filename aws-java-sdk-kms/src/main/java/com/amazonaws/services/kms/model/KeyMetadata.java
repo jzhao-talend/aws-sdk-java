@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,8 +24,12 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element for the <a>CreateKey</a> and <a>DescribeKey</a> operations.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/KeyMetadata" target="_top">AWS API
+ *      Documentation</a>
  */
-public class KeyMetadata implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -889,29 +896,29 @@ public class KeyMetadata implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAWSAccountId() != null)
-            sb.append("AWSAccountId: " + getAWSAccountId() + ",");
+            sb.append("AWSAccountId: ").append(getAWSAccountId()).append(",");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getKeyUsage() != null)
-            sb.append("KeyUsage: " + getKeyUsage() + ",");
+            sb.append("KeyUsage: ").append(getKeyUsage()).append(",");
         if (getKeyState() != null)
-            sb.append("KeyState: " + getKeyState() + ",");
+            sb.append("KeyState: ").append(getKeyState()).append(",");
         if (getDeletionDate() != null)
-            sb.append("DeletionDate: " + getDeletionDate() + ",");
+            sb.append("DeletionDate: ").append(getDeletionDate()).append(",");
         if (getValidTo() != null)
-            sb.append("ValidTo: " + getValidTo() + ",");
+            sb.append("ValidTo: ").append(getValidTo()).append(",");
         if (getOrigin() != null)
-            sb.append("Origin: " + getOrigin() + ",");
+            sb.append("Origin: ").append(getOrigin()).append(",");
         if (getExpirationModel() != null)
-            sb.append("ExpirationModel: " + getExpirationModel());
+            sb.append("ExpirationModel: ").append(getExpirationModel());
         sb.append("}");
         return sb.toString();
     }
@@ -1004,5 +1011,11 @@ public class KeyMetadata implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kms.model.transform.KeyMetadataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

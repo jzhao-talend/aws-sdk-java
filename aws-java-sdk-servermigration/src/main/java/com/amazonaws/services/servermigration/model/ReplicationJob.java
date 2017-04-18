@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.servermigration.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Object representing a Replication Job
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/ReplicationJob" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ReplicationJob implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplicationJob implements Serializable, Cloneable, StructuredPojo {
 
     private String replicationJobId;
 
@@ -518,33 +525,33 @@ public class ReplicationJob implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationJobId() != null)
-            sb.append("ReplicationJobId: " + getReplicationJobId() + ",");
+            sb.append("ReplicationJobId: ").append(getReplicationJobId()).append(",");
         if (getServerId() != null)
-            sb.append("ServerId: " + getServerId() + ",");
+            sb.append("ServerId: ").append(getServerId()).append(",");
         if (getServerType() != null)
-            sb.append("ServerType: " + getServerType() + ",");
+            sb.append("ServerType: ").append(getServerType()).append(",");
         if (getVmServer() != null)
-            sb.append("VmServer: " + getVmServer() + ",");
+            sb.append("VmServer: ").append(getVmServer()).append(",");
         if (getSeedReplicationTime() != null)
-            sb.append("SeedReplicationTime: " + getSeedReplicationTime() + ",");
+            sb.append("SeedReplicationTime: ").append(getSeedReplicationTime()).append(",");
         if (getFrequency() != null)
-            sb.append("Frequency: " + getFrequency() + ",");
+            sb.append("Frequency: ").append(getFrequency()).append(",");
         if (getNextReplicationRunStartTime() != null)
-            sb.append("NextReplicationRunStartTime: " + getNextReplicationRunStartTime() + ",");
+            sb.append("NextReplicationRunStartTime: ").append(getNextReplicationRunStartTime()).append(",");
         if (getLicenseType() != null)
-            sb.append("LicenseType: " + getLicenseType() + ",");
+            sb.append("LicenseType: ").append(getLicenseType()).append(",");
         if (getRoleName() != null)
-            sb.append("RoleName: " + getRoleName() + ",");
+            sb.append("RoleName: ").append(getRoleName()).append(",");
         if (getLatestAmiId() != null)
-            sb.append("LatestAmiId: " + getLatestAmiId() + ",");
+            sb.append("LatestAmiId: ").append(getLatestAmiId()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getReplicationRunList() != null)
-            sb.append("ReplicationRunList: " + getReplicationRunList());
+            sb.append("ReplicationRunList: ").append(getReplicationRunList());
         sb.append("}");
         return sb.toString();
     }
@@ -647,5 +654,11 @@ public class ReplicationJob implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servermigration.model.transform.ReplicationJobMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

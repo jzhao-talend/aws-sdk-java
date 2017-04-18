@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * SpotFleetRequestConfigData StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpotFleetRequestConfigDataStaxUnmarshaller implements Unmarshaller<SpotFleetRequestConfigData, StaxUnmarshallerContext> {
 
     public SpotFleetRequestConfigData unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -80,6 +80,11 @@ public class SpotFleetRequestConfigDataStaxUnmarshaller implements Unmarshaller<
                     continue;
                 }
 
+                if (context.testExpression("launchSpecifications", targetDepth)) {
+                    spotFleetRequestConfigData.withLaunchSpecifications(new ArrayList<SpotFleetLaunchSpecification>());
+                    continue;
+                }
+
                 if (context.testExpression("launchSpecifications/item", targetDepth)) {
                     spotFleetRequestConfigData.withLaunchSpecifications(SpotFleetLaunchSpecificationStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -102,6 +107,11 @@ public class SpotFleetRequestConfigDataStaxUnmarshaller implements Unmarshaller<
 
                 if (context.testExpression("type", targetDepth)) {
                     spotFleetRequestConfigData.setType(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("replaceUnhealthyInstances", targetDepth)) {
+                    spotFleetRequestConfigData.setReplaceUnhealthyInstances(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

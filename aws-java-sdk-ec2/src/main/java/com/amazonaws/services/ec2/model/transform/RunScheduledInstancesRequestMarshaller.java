@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -29,6 +27,7 @@ import com.amazonaws.util.IdempotentUtils;
  * RunScheduledInstancesRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RunScheduledInstancesRequestMarshaller implements Marshaller<Request<RunScheduledInstancesRequest>, RunScheduledInstancesRequest> {
 
     public Request<RunScheduledInstancesRequest> marshall(RunScheduledInstancesRequest runScheduledInstancesRequest) {
@@ -39,7 +38,7 @@ public class RunScheduledInstancesRequestMarshaller implements Marshaller<Reques
 
         Request<RunScheduledInstancesRequest> request = new DefaultRequest<RunScheduledInstancesRequest>(runScheduledInstancesRequest, "AmazonEC2");
         request.addParameter("Action", "RunScheduledInstances");
-        request.addParameter("Version", "2016-09-15");
+        request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
         request.addParameter("ClientToken", IdempotentUtils.resolveString(runScheduledInstancesRequest.getClientToken()));
@@ -261,6 +260,28 @@ public class RunScheduledInstancesRequestMarshaller implements Marshaller<Reques
                     if (scheduledInstancesLaunchSpecificationNetworkInterfacesListValue.getDeleteOnTermination() != null) {
                         request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".DeleteOnTermination",
                                 StringUtils.fromBoolean(scheduledInstancesLaunchSpecificationNetworkInterfacesListValue.getDeleteOnTermination()));
+                    }
+
+                    com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address> scheduledInstancesNetworkInterfaceIpv6AddressesList = (com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address>) scheduledInstancesLaunchSpecificationNetworkInterfacesListValue
+                            .getIpv6Addresses();
+                    if (!scheduledInstancesNetworkInterfaceIpv6AddressesList.isEmpty()
+                            || !scheduledInstancesNetworkInterfaceIpv6AddressesList.isAutoConstruct()) {
+                        int ipv6AddressesListIndex = 1;
+
+                        for (ScheduledInstancesIpv6Address scheduledInstancesNetworkInterfaceIpv6AddressesListValue : scheduledInstancesNetworkInterfaceIpv6AddressesList) {
+
+                            if (scheduledInstancesNetworkInterfaceIpv6AddressesListValue.getIpv6Address() != null) {
+                                request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".Ipv6Address."
+                                        + ipv6AddressesListIndex + ".Ipv6Address",
+                                        StringUtils.fromString(scheduledInstancesNetworkInterfaceIpv6AddressesListValue.getIpv6Address()));
+                            }
+                            ipv6AddressesListIndex++;
+                        }
+                    }
+
+                    if (scheduledInstancesLaunchSpecificationNetworkInterfacesListValue.getIpv6AddressCount() != null) {
+                        request.addParameter("LaunchSpecification.NetworkInterface." + networkInterfacesListIndex + ".Ipv6AddressCount",
+                                StringUtils.fromInteger(scheduledInstancesLaunchSpecificationNetworkInterfacesListValue.getIpv6AddressCount()));
                     }
                     networkInterfacesListIndex++;
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -35,8 +38,12 @@ import java.io.Serializable;
  * log and a failure log. The logs are saved in comma-separated value (CSV) format, and the name of each log includes
  * the ID of the job or job part that the log describes.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/JobLogs" target="_top">AWS API
+ *      Documentation</a>
  */
-public class JobLogs implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobLogs implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -189,11 +196,11 @@ public class JobLogs implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobCompletionReportURI() != null)
-            sb.append("JobCompletionReportURI: " + getJobCompletionReportURI() + ",");
+            sb.append("JobCompletionReportURI: ").append(getJobCompletionReportURI()).append(",");
         if (getJobSuccessLogURI() != null)
-            sb.append("JobSuccessLogURI: " + getJobSuccessLogURI() + ",");
+            sb.append("JobSuccessLogURI: ").append(getJobSuccessLogURI()).append(",");
         if (getJobFailureLogURI() != null)
-            sb.append("JobFailureLogURI: " + getJobFailureLogURI());
+            sb.append("JobFailureLogURI: ").append(getJobFailureLogURI());
         sb.append("}");
         return sb.toString();
     }
@@ -241,5 +248,11 @@ public class JobLogs implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.JobLogsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

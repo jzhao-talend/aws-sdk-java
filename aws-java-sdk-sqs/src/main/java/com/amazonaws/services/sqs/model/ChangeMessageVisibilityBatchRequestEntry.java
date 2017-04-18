@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,35 +13,44 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Encloses a receipt handle and an entry id for each message in <a>ChangeMessageVisibilityBatch</a>.
+ * Encloses a receipt handle and an entry id for each message in <code> <a>ChangeMessageVisibilityBatch</a> </code>.
  * </p>
  * <important>
  * <p>
- * All of the following parameters are list parameters that must be prefixed with
- * <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is an integer value starting with 1.
- * For example, a parameter list for this action might look like this:
+ * All of the following list parameters must be prefixed with <code>ChangeMessageVisibilityBatchRequestEntry.n</code>,
+ * where <code>n</code> is an integer value starting with <code>1</code>. For example, a parameter list for this action
+ * might look like this:
  * </p>
  * </important>
  * <p>
- * <code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2]]></code>
+ * <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code>
  * </p>
  * <p>
- * <code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=<replaceable>Your_Receipt_Handle</replaceable>]]></code>
+ * <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=&lt;replaceable&gt;Your_Receipt_Handle&lt;/replaceable&gt;</code>
  * </p>
  * <p>
- * <code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45]]></code>
+ * <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code>
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ChangeMessageVisibilityBatchRequestEntry"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      */
     private String id;
     /**
@@ -69,8 +78,10 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
      * (with...) methods to initialize any additional object members.
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      * @param receiptHandle
      *        A receipt handle.
      */
@@ -81,13 +92,19 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      */
 
     public void setId(String id) {
@@ -96,12 +113,18 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
-     * @return An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *         <code>Id</code>s of a batch request need to be unique within the request.
+     * @return An identifier for this particular receipt handle used to communicate the result.</p> <note>
+     *         <p>
+     *         The <code>Id</code>s of a batch request need to be unique within a request
+     *         </p>
      */
 
     public String getId() {
@@ -110,13 +133,19 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -217,11 +246,11 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getReceiptHandle() != null)
-            sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
+            sb.append("ReceiptHandle: ").append(getReceiptHandle()).append(",");
         if (getVisibilityTimeout() != null)
-            sb.append("VisibilityTimeout: " + getVisibilityTimeout());
+            sb.append("VisibilityTimeout: ").append(getVisibilityTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -270,4 +299,5 @@ public class ChangeMessageVisibilityBatchRequestEntry implements Serializable, C
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

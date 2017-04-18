@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,14 @@
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Input structure for the CancelJob operation.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String jobId;
@@ -88,9 +91,9 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getAPIVersion() != null)
-            sb.append("APIVersion: " + getAPIVersion());
+            sb.append("APIVersion: ").append(getAPIVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -130,4 +133,5 @@ public class CancelJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public CancelJobRequest clone() {
         return (CancelJobRequest) super.clone();
     }
+
 }

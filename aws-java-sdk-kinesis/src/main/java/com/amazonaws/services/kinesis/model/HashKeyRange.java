@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/HashKeyRange" target="_top">AWS API
+ *      Documentation</a>
  */
-public class HashKeyRange implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class HashKeyRange implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -126,9 +133,9 @@ public class HashKeyRange implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStartingHashKey() != null)
-            sb.append("StartingHashKey: " + getStartingHashKey() + ",");
+            sb.append("StartingHashKey: ").append(getStartingHashKey()).append(",");
         if (getEndingHashKey() != null)
-            sb.append("EndingHashKey: " + getEndingHashKey());
+            sb.append("EndingHashKey: ").append(getEndingHashKey());
         sb.append("}");
         return sb.toString();
     }
@@ -171,5 +178,11 @@ public class HashKeyRange implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesis.model.transform.HashKeyRangeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

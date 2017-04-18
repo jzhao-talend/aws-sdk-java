@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeNetworkAclsRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeNetworkAclsRequestMars
  * Contains the parameters for DescribeNetworkAcls.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeNetworkAclsRequest> {
 
     /**
@@ -60,7 +63,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>entry.cidr</code> - The CIDR range specified in the entry.
+     * <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -76,6 +79,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * <li>
      * <p>
      * <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -111,7 +119,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -258,7 +268,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>entry.cidr</code> - The CIDR range specified in the entry.
+     * <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -274,6 +284,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * <li>
      * <p>
      * <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -309,7 +324,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -358,7 +375,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *         </li>
      *         <li>
      *         <p>
-     *         <code>entry.cidr</code> - The CIDR range specified in the entry.
+     *         <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      *         </p>
      *         </li>
      *         <li>
@@ -374,6 +391,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *         <li>
      *         <p>
      *         <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      *         </p>
      *         </li>
      *         <li>
@@ -412,6 +434,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -470,7 +495,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>entry.cidr</code> - The CIDR range specified in the entry.
+     * <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -486,6 +511,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * <li>
      * <p>
      * <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -521,7 +551,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -571,7 +603,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>entry.cidr</code> - The CIDR range specified in the entry.
+     *        <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -587,6 +619,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -625,6 +662,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -685,7 +725,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>entry.cidr</code> - The CIDR range specified in the entry.
+     * <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -701,6 +741,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * <li>
      * <p>
      * <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -736,7 +781,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -791,7 +838,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>entry.cidr</code> - The CIDR range specified in the entry.
+     *        <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -807,6 +854,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -845,6 +897,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -907,7 +962,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>entry.cidr</code> - The CIDR range specified in the entry.
+     * <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -923,6 +978,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * <li>
      * <p>
      * <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      * </p>
      * </li>
      * <li>
@@ -958,7 +1018,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -1008,7 +1070,7 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        </li>
      *        <li>
      *        <p>
-     *        <code>entry.cidr</code> - The CIDR range specified in the entry.
+     *        <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -1024,6 +1086,11 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.
      *        </p>
      *        </li>
      *        <li>
@@ -1062,6 +1129,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -1115,9 +1185,9 @@ public class DescribeNetworkAclsRequest extends AmazonWebServiceRequest implemen
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNetworkAclIds() != null)
-            sb.append("NetworkAclIds: " + getNetworkAclIds() + ",");
+            sb.append("NetworkAclIds: ").append(getNetworkAclIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters());
         sb.append("}");
         return sb.toString();
     }

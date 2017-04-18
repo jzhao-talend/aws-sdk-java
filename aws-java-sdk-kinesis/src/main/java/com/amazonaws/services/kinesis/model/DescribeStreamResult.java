@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,31 +13,36 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the output for <code>DescribeStream</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStream" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeStreamResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and states
-     * whether there are more shards available.
+     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether
+     * there are more shards available.
      * </p>
      */
     private StreamDescription streamDescription;
 
     /**
      * <p>
-     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and states
-     * whether there are more shards available.
+     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether
+     * there are more shards available.
      * </p>
      * 
      * @param streamDescription
      *        The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and
-     *        states whether there are more shards available.
+     *        whether there are more shards available.
      */
 
     public void setStreamDescription(StreamDescription streamDescription) {
@@ -46,12 +51,12 @@ public class DescribeStreamResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and states
-     * whether there are more shards available.
+     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether
+     * there are more shards available.
      * </p>
      * 
      * @return The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and
-     *         states whether there are more shards available.
+     *         whether there are more shards available.
      */
 
     public StreamDescription getStreamDescription() {
@@ -60,13 +65,13 @@ public class DescribeStreamResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and states
-     * whether there are more shards available.
+     * The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether
+     * there are more shards available.
      * </p>
      * 
      * @param streamDescription
      *        The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and
-     *        states whether there are more shards available.
+     *        whether there are more shards available.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -87,7 +92,7 @@ public class DescribeStreamResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStreamDescription() != null)
-            sb.append("StreamDescription: " + getStreamDescription());
+            sb.append("StreamDescription: ").append(getStreamDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -126,4 +131,5 @@ public class DescribeStreamResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Routing configuration for a fleet alias.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/RoutingStrategy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RoutingStrategy implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RoutingStrategy implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -45,7 +52,7 @@ public class RoutingStrategy implements Serializable, Cloneable {
     private String type;
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet that the alias points to.
      * </p>
      */
     private String fleetId;
@@ -291,11 +298,11 @@ public class RoutingStrategy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet that the alias points to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
+     *        Unique identifier for a fleet that the alias points to.
      */
 
     public void setFleetId(String fleetId) {
@@ -304,10 +311,10 @@ public class RoutingStrategy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet that the alias points to.
      * </p>
      * 
-     * @return Unique identifier for a fleet.
+     * @return Unique identifier for a fleet that the alias points to.
      */
 
     public String getFleetId() {
@@ -316,11 +323,11 @@ public class RoutingStrategy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet that the alias points to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
+     *        Unique identifier for a fleet that the alias points to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -381,11 +388,11 @@ public class RoutingStrategy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage());
+            sb.append("Message: ").append(getMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -433,5 +440,11 @@ public class RoutingStrategy implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.RoutingStrategyMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

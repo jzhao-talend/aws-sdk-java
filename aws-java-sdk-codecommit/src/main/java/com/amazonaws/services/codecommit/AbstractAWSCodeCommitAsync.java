@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.codecommit;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.codecommit.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.codecommit.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSCodeCommitAsync extends AbstractAWSCodeCommit implements AWSCodeCommitAsync {
 
     protected AbstractAWSCodeCommitAsync() {
@@ -77,6 +80,19 @@ public class AbstractAWSCodeCommitAsync extends AbstractAWSCodeCommit implements
     }
 
     @Override
+    public java.util.concurrent.Future<GetBlobResult> getBlobAsync(GetBlobRequest request) {
+
+        return getBlobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetBlobResult> getBlobAsync(GetBlobRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetBlobRequest, GetBlobResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<GetBranchResult> getBranchAsync(GetBranchRequest request) {
 
         return getBranchAsync(request, null);
@@ -98,6 +114,19 @@ public class AbstractAWSCodeCommitAsync extends AbstractAWSCodeCommit implements
     @Override
     public java.util.concurrent.Future<GetCommitResult> getCommitAsync(GetCommitRequest request,
             com.amazonaws.handlers.AsyncHandler<GetCommitRequest, GetCommitResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetDifferencesResult> getDifferencesAsync(GetDifferencesRequest request) {
+
+        return getDifferencesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetDifferencesResult> getDifferencesAsync(GetDifferencesRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetDifferencesRequest, GetDifferencesResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

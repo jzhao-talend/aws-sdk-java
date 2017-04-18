@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input to the RegisterCACertificate operation.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterCACertificateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -243,13 +246,13 @@ public class RegisterCACertificateRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCaCertificate() != null)
-            sb.append("CaCertificate: " + getCaCertificate() + ",");
+            sb.append("CaCertificate: ").append(getCaCertificate()).append(",");
         if (getVerificationCertificate() != null)
-            sb.append("VerificationCertificate: " + getVerificationCertificate() + ",");
+            sb.append("VerificationCertificate: ").append(getVerificationCertificate()).append(",");
         if (getSetAsActive() != null)
-            sb.append("SetAsActive: " + getSetAsActive() + ",");
+            sb.append("SetAsActive: ").append(getSetAsActive()).append(",");
         if (getAllowAutoRegistration() != null)
-            sb.append("AllowAutoRegistration: " + getAllowAutoRegistration());
+            sb.append("AllowAutoRegistration: ").append(getAllowAutoRegistration());
         sb.append("}");
         return sb.toString();
     }
@@ -299,4 +302,5 @@ public class RegisterCACertificateRequest extends com.amazonaws.AmazonWebService
     public RegisterCACertificateRequest clone() {
         return (RegisterCACertificateRequest) super.clone();
     }
+
 }

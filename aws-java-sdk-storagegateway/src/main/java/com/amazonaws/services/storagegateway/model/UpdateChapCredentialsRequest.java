@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -41,7 +43,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateChapCredentials"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateChapCredentialsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -344,13 +350,13 @@ public class UpdateChapCredentialsRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetARN() != null)
-            sb.append("TargetARN: " + getTargetARN() + ",");
+            sb.append("TargetARN: ").append(getTargetARN()).append(",");
         if (getSecretToAuthenticateInitiator() != null)
-            sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");
+            sb.append("SecretToAuthenticateInitiator: ").append(getSecretToAuthenticateInitiator()).append(",");
         if (getInitiatorName() != null)
-            sb.append("InitiatorName: " + getInitiatorName() + ",");
+            sb.append("InitiatorName: ").append(getInitiatorName()).append(",");
         if (getSecretToAuthenticateTarget() != null)
-            sb.append("SecretToAuthenticateTarget: " + getSecretToAuthenticateTarget());
+            sb.append("SecretToAuthenticateTarget: ").append(getSecretToAuthenticateTarget());
         sb.append("}");
         return sb.toString();
     }
@@ -401,4 +407,5 @@ public class UpdateChapCredentialsRequest extends com.amazonaws.AmazonWebService
     public UpdateChapCredentialsRequest clone() {
         return (UpdateChapCredentialsRequest) super.clone();
     }
+
 }

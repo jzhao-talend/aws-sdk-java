@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.securitytoken;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.securitytoken.model.*;
 
 /**
  * Interface for accessing AWS STS asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.securitytoken.AbstractAWSSecurityTokenServiceAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS Security Token Service</fullname>
  * <p>
@@ -75,6 +81,7 @@ import com.amazonaws.services.securitytoken.model.*;
  * User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
 
     /**
@@ -173,6 +180,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param assumeRoleRequest
      * @return A Java Future containing the result of the AssumeRole operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.AssumeRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRole" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleResult> assumeRoleAsync(AssumeRoleRequest assumeRoleRequest);
 
@@ -276,6 +285,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssumeRole operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.AssumeRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRole" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleResult> assumeRoleAsync(AssumeRoleRequest assumeRoleRequest,
             com.amazonaws.handlers.AsyncHandler<AssumeRoleRequest, AssumeRoleResult> asyncHandler);
@@ -371,6 +382,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param assumeRoleWithSAMLRequest
      * @return A Java Future containing the result of the AssumeRoleWithSAML operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.AssumeRoleWithSAML
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithSAML" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleWithSAMLResult> assumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest assumeRoleWithSAMLRequest);
 
@@ -469,6 +482,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssumeRoleWithSAML operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.AssumeRoleWithSAML
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithSAML" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleWithSAMLResult> assumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest assumeRoleWithSAMLRequest,
             com.amazonaws.handlers.AsyncHandler<AssumeRoleWithSAMLRequest, AssumeRoleWithSAMLResult> asyncHandler);
@@ -554,7 +569,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual">Using Web Identity
+     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html">Using Web Identity
      * Federation APIs for Mobile Apps</a> and <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity"
      * >Federation Through a Web-based Identity Provider</a>.
@@ -588,6 +603,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param assumeRoleWithWebIdentityRequest
      * @return A Java Future containing the result of the AssumeRoleWithWebIdentity operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.AssumeRoleWithWebIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithWebIdentity" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleWithWebIdentityResult> assumeRoleWithWebIdentityAsync(
             AssumeRoleWithWebIdentityRequest assumeRoleWithWebIdentityRequest);
@@ -673,7 +690,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual">Using Web Identity
+     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html">Using Web Identity
      * Federation APIs for Mobile Apps</a> and <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity"
      * >Federation Through a Web-based Identity Provider</a>.
@@ -711,6 +728,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssumeRoleWithWebIdentity operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.AssumeRoleWithWebIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithWebIdentity" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AssumeRoleWithWebIdentityResult> assumeRoleWithWebIdentityAsync(
             AssumeRoleWithWebIdentityRequest assumeRoleWithWebIdentityRequest,
@@ -775,6 +794,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param decodeAuthorizationMessageRequest
      * @return A Java Future containing the result of the DecodeAuthorizationMessage operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.DecodeAuthorizationMessage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/DecodeAuthorizationMessage" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DecodeAuthorizationMessageResult> decodeAuthorizationMessageAsync(
             DecodeAuthorizationMessageRequest decodeAuthorizationMessageRequest);
@@ -842,6 +863,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DecodeAuthorizationMessage operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.DecodeAuthorizationMessage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/DecodeAuthorizationMessage" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DecodeAuthorizationMessageResult> decodeAuthorizationMessageAsync(
             DecodeAuthorizationMessageRequest decodeAuthorizationMessageRequest,
@@ -855,6 +878,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param getCallerIdentityRequest
      * @return A Java Future containing the result of the GetCallerIdentity operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.GetCallerIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetCallerIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCallerIdentityResult> getCallerIdentityAsync(GetCallerIdentityRequest getCallerIdentityRequest);
 
@@ -870,6 +895,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetCallerIdentity operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.GetCallerIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetCallerIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCallerIdentityResult> getCallerIdentityAsync(GetCallerIdentityRequest getCallerIdentityRequest,
             com.amazonaws.handlers.AsyncHandler<GetCallerIdentityRequest, GetCallerIdentityResult> asyncHandler);
@@ -924,7 +951,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS APIs.
+     * You cannot call any STS APIs except <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -981,6 +1008,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param getFederationTokenRequest
      * @return A Java Future containing the result of the GetFederationToken operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.GetFederationToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetFederationToken" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetFederationTokenResult> getFederationTokenAsync(GetFederationTokenRequest getFederationTokenRequest);
 
@@ -1034,7 +1063,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS APIs.
+     * You cannot call any STS APIs except <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -1095,6 +1124,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetFederationToken operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.GetFederationToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetFederationToken" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetFederationTokenResult> getFederationTokenAsync(GetFederationTokenRequest getFederationTokenRequest,
             com.amazonaws.handlers.AsyncHandler<GetFederationTokenRequest, GetFederationTokenResult> asyncHandler);
@@ -1133,7 +1164,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS API <i>except</i> <code>AssumeRole</code>.
+     * You cannot call any STS API <i>except</i> <code>AssumeRole</code> or <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -1161,6 +1192,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * @param getSessionTokenRequest
      * @return A Java Future containing the result of the GetSessionToken operation returned by the service.
      * @sample AWSSecurityTokenServiceAsync.GetSessionToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionToken" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSessionTokenResult> getSessionTokenAsync(GetSessionTokenRequest getSessionTokenRequest);
 
@@ -1198,7 +1231,7 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS API <i>except</i> <code>AssumeRole</code>.
+     * You cannot call any STS API <i>except</i> <code>AssumeRole</code> or <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -1230,6 +1263,8 @@ public interface AWSSecurityTokenServiceAsync extends AWSSecurityTokenService {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSessionToken operation returned by the service.
      * @sample AWSSecurityTokenServiceAsyncHandler.GetSessionToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionToken" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSessionTokenResult> getSessionTokenAsync(GetSessionTokenRequest getSessionTokenRequest,
             com.amazonaws.handlers.AsyncHandler<GetSessionTokenRequest, GetSessionTokenResult> asyncHandler);

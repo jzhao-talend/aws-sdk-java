@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the get device pool compatibility operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevicePoolCompatibility"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetDevicePoolCompatibilityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -1037,11 +1043,11 @@ public class GetDevicePoolCompatibilityRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDevicePoolArn() != null)
-            sb.append("DevicePoolArn: " + getDevicePoolArn() + ",");
+            sb.append("DevicePoolArn: ").append(getDevicePoolArn()).append(",");
         if (getAppArn() != null)
-            sb.append("AppArn: " + getAppArn() + ",");
+            sb.append("AppArn: ").append(getAppArn()).append(",");
         if (getTestType() != null)
-            sb.append("TestType: " + getTestType());
+            sb.append("TestType: ").append(getTestType());
         sb.append("}");
         return sb.toString();
     }
@@ -1086,4 +1092,5 @@ public class GetDevicePoolCompatibilityRequest extends com.amazonaws.AmazonWebSe
     public GetDevicePoolCompatibilityRequest clone() {
         return (GetDevicePoolCompatibilityRequest) super.clone();
     }
+
 }

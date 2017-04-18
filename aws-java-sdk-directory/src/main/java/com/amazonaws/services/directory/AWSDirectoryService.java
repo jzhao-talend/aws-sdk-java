@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.directory;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,12 +22,29 @@ import com.amazonaws.services.directory.model.*;
 /**
  * Interface for accessing Directory Service.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.directory.AbstractAWSDirectoryService} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Directory Service</fullname>
  * <p>
- * This is the <i>AWS Directory Service API Reference</i>. This guide provides detailed information about AWS Directory
- * Service operations, data types, parameters, and errors.
+ * AWS Directory Service is a web service that makes it easy for you to setup and run directories in the AWS cloud, or
+ * connect your AWS resources with an existing on-premises Microsoft Active Directory. This guide provides detailed
+ * information about AWS Directory Service operations, data types, parameters, and errors. For information about AWS
+ * Directory Services features, see <a href="https://aws.amazon.com/directoryservice/">AWS Directory Service</a> and the
+ * <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html">AWS Directory Service
+ * Administration Guide</a>.
  * </p>
+ * <note>
+ * <p>
+ * AWS provides SDKs that consist of libraries and sample code for various programming languages and platforms (Java,
+ * Ruby, .Net, iOS, Android, etc.). The SDKs provide a convenient way to create programmatic access to AWS Directory
+ * Service and other AWS services. For more information about the AWS SDKs, including how to download and install them,
+ * see <a href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
+ * </p>
+ * </note>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSDirectoryService {
 
     /**
@@ -57,7 +76,11 @@ public interface AWSDirectoryService {
      *        The endpoint (ex: "ds.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://ds.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -78,7 +101,9 @@ public interface AWSDirectoryService {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -87,6 +112,13 @@ public interface AWSDirectoryService {
      * block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. <i>AddIpRoutes</i> adds
      * this address block. You can also use <i>AddIpRoutes</i> to facilitate routing traffic that uses public IP ranges
      * from your Microsoft AD on AWS to a peer VPC.
+     * </p>
+     * <p>
+     * Before you call <i>AddIpRoutes</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>AddIpRoutes</i> operation, see <a
+     * href
+     * ="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS
+     * Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param addIpRoutesRequest
@@ -106,14 +138,15 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.AddIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     AddIpRoutesResult addIpRoutes(AddIpRoutesRequest addIpRoutesRequest);
 
     /**
      * <p>
-     * Adds or overwrites one or more tags for the specified Amazon Directory Services directory. Each directory can
-     * have a maximum of 10 tags. Each tag consists of a key and optional value. Tag keys must be unique to each
-     * resource.
+     * Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags.
+     * Each tag consists of a key and optional value. Tag keys must be unique to each resource.
      * </p>
      * 
      * @param addTagsToResourceRequest
@@ -129,12 +162,43 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest);
 
     /**
      * <p>
+     * Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started
+     * replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled
+     * during any of the following states; <code>Initializing</code>, <code>CreatingSnapshot</code>, and
+     * <code>UpdatingSchema</code>.
+     * </p>
+     * 
+     * @param cancelSchemaExtensionRequest
+     * @return Result of the CancelSchemaExtension operation returned by the service.
+     * @throws EntityDoesNotExistException
+     *         The specified entity could not be found.
+     * @throws ClientException
+     *         A client exception has occurred.
+     * @throws ServiceException
+     *         An exception has occurred in AWS Directory Service.
+     * @sample AWSDirectoryService.CancelSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CancelSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CancelSchemaExtensionResult cancelSchemaExtension(CancelSchemaExtensionRequest cancelSchemaExtensionRequest);
+
+    /**
+     * <p>
      * Creates an AD Connector to connect to an on-premises directory.
+     * </p>
+     * <p>
+     * Before you call <i>ConnectDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>ConnectDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param connectDirectoryRequest
@@ -150,6 +214,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.ConnectDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ConnectDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     ConnectDirectoryResult connectDirectory(ConnectDirectoryRequest connectDirectoryRequest);
 
@@ -179,6 +245,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateAliasResult createAlias(CreateAliasRequest createAliasRequest);
 
@@ -207,6 +275,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.CreateComputer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateComputer" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateComputerResult createComputer(CreateComputerRequest createComputerRequest);
 
@@ -236,12 +306,21 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.CreateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateConditionalForwarderResult createConditionalForwarder(CreateConditionalForwarderRequest createConditionalForwarderRequest);
 
     /**
      * <p>
      * Creates a Simple AD directory.
+     * </p>
+     * <p>
+     * Before you call <i>CreateDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>CreateDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param createDirectoryRequest
@@ -257,12 +336,21 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.CreateDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateDirectoryResult createDirectory(CreateDirectoryRequest createDirectoryRequest);
 
     /**
      * <p>
      * Creates a Microsoft AD in the AWS cloud.
+     * </p>
+     * <p>
+     * Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required permissions have been explicitly
+     * granted through a policy. For details about what permissions are required to run the <i>CreateMicrosoftAD</i>
+     * operation, see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param createMicrosoftADRequest
@@ -280,6 +368,8 @@ public interface AWSDirectoryService {
      * @throws UnsupportedOperationException
      *         The operation is not supported.
      * @sample AWSDirectoryService.CreateMicrosoftAD
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateMicrosoftAD" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateMicrosoftADResult createMicrosoftAD(CreateMicrosoftADRequest createMicrosoftADRequest);
 
@@ -308,6 +398,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest);
 
@@ -345,6 +437,8 @@ public interface AWSDirectoryService {
      * @throws UnsupportedOperationException
      *         The operation is not supported.
      * @sample AWSDirectoryService.CreateTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateTrustResult createTrust(CreateTrustRequest createTrustRequest);
 
@@ -369,12 +463,21 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DeleteConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteConditionalForwarderResult deleteConditionalForwarder(DeleteConditionalForwarderRequest deleteConditionalForwarderRequest);
 
     /**
      * <p>
      * Deletes an AWS Directory Service directory.
+     * </p>
+     * <p>
+     * Before you call <i>DeleteDirectory</i>, ensure that all of the required permissions have been explicitly granted
+     * through a policy. For details about what permissions are required to run the <i>DeleteDirectory</i> operation,
+     * see <a
+     * href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html"
+     * >AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.
      * </p>
      * 
      * @param deleteDirectoryRequest
@@ -387,6 +490,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DeleteDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteDirectory" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteDirectoryResult deleteDirectory(DeleteDirectoryRequest deleteDirectoryRequest);
 
@@ -407,6 +512,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteSnapshotResult deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest);
 
@@ -430,6 +537,8 @@ public interface AWSDirectoryService {
      * @throws UnsupportedOperationException
      *         The operation is not supported.
      * @sample AWSDirectoryService.DeleteTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteTrustResult deleteTrust(DeleteTrustRequest deleteTrustRequest);
 
@@ -450,6 +559,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DeregisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeregisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     DeregisterEventTopicResult deregisterEventTopic(DeregisterEventTopicRequest deregisterEventTopicRequest);
 
@@ -478,6 +589,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DescribeConditionalForwarders
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeConditionalForwarders"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeConditionalForwardersResult describeConditionalForwarders(DescribeConditionalForwardersRequest describeConditionalForwardersRequest);
 
@@ -512,6 +625,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DescribeDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeDirectories" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeDirectoriesResult describeDirectories(DescribeDirectoriesRequest describeDirectoriesRequest);
 
@@ -543,6 +658,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DescribeEventTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeEventTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeEventTopicsResult describeEventTopics(DescribeEventTopicsRequest describeEventTopicsRequest);
 
@@ -573,6 +690,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeSnapshotsResult describeSnapshots(DescribeSnapshotsRequest describeSnapshotsRequest);
 
@@ -609,6 +728,8 @@ public interface AWSDirectoryService {
      * @throws UnsupportedOperationException
      *         The operation is not supported.
      * @sample AWSDirectoryService.DescribeTrusts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeTrusts" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeTrustsResult describeTrusts(DescribeTrustsRequest describeTrustsRequest);
 
@@ -628,6 +749,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DisableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     DisableRadiusResult disableRadius(DisableRadiusRequest disableRadiusRequest);
 
@@ -650,6 +773,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.DisableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     DisableSsoResult disableSso(DisableSsoRequest disableSsoRequest);
 
@@ -673,12 +798,14 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.EnableRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     EnableRadiusResult enableRadius(EnableRadiusRequest enableRadiusRequest);
 
     /**
      * <p>
-     * Enables single-sign on for a directory.
+     * Enables single sign-on for a directory.
      * </p>
      * 
      * @param enableSsoRequest
@@ -695,6 +822,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.EnableSso
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableSso" target="_top">AWS API
+     *      Documentation</a>
      */
     EnableSsoResult enableSso(EnableSsoRequest enableSsoRequest);
 
@@ -713,6 +842,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.GetDirectoryLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetDirectoryLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     GetDirectoryLimitsResult getDirectoryLimits(GetDirectoryLimitsRequest getDirectoryLimitsRequest);
 
@@ -738,6 +869,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.GetSnapshotLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetSnapshotLimits" target="_top">AWS API
+     *      Documentation</a>
      */
     GetSnapshotLimitsResult getSnapshotLimits(GetSnapshotLimitsRequest getSnapshotLimitsRequest);
 
@@ -759,12 +892,35 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.ListIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     ListIpRoutesResult listIpRoutes(ListIpRoutesRequest listIpRoutesRequest);
 
     /**
      * <p>
-     * Lists all tags on an Amazon Directory Services directory.
+     * Lists all schema extensions applied to a Microsoft AD Directory.
+     * </p>
+     * 
+     * @param listSchemaExtensionsRequest
+     * @return Result of the ListSchemaExtensions operation returned by the service.
+     * @throws InvalidNextTokenException
+     *         The <i>NextToken</i> value is not valid.
+     * @throws EntityDoesNotExistException
+     *         The specified entity could not be found.
+     * @throws ClientException
+     *         A client exception has occurred.
+     * @throws ServiceException
+     *         An exception has occurred in AWS Directory Service.
+     * @sample AWSDirectoryService.ListSchemaExtensions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListSchemaExtensions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListSchemaExtensionsResult listSchemaExtensions(ListSchemaExtensionsRequest listSchemaExtensionsRequest);
+
+    /**
+     * <p>
+     * Lists all tags on a directory.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -780,6 +936,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -803,6 +961,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.RegisterEventTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RegisterEventTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     RegisterEventTopicResult registerEventTopic(RegisterEventTopicRequest registerEventTopicRequest);
 
@@ -824,12 +984,14 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.RemoveIpRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveIpRoutes" target="_top">AWS API
+     *      Documentation</a>
      */
     RemoveIpRoutesResult removeIpRoutes(RemoveIpRoutesRequest removeIpRoutesRequest);
 
     /**
      * <p>
-     * Removes tags from an Amazon Directory Services directory.
+     * Removes tags from a directory.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
@@ -843,6 +1005,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -872,8 +1036,36 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.RestoreFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RestoreFromSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     RestoreFromSnapshotResult restoreFromSnapshot(RestoreFromSnapshotRequest restoreFromSnapshotRequest);
+
+    /**
+     * <p>
+     * Applies a schema extension to a Microsoft AD directory.
+     * </p>
+     * 
+     * @param startSchemaExtensionRequest
+     * @return Result of the StartSchemaExtension operation returned by the service.
+     * @throws DirectoryUnavailableException
+     *         The specified directory is unavailable or could not be found.
+     * @throws EntityDoesNotExistException
+     *         The specified entity could not be found.
+     * @throws InvalidParameterException
+     *         One or more parameters are not valid.
+     * @throws SnapshotLimitExceededException
+     *         The maximum number of manual snapshots for the directory has been reached. You can use the
+     *         <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.
+     * @throws ClientException
+     *         A client exception has occurred.
+     * @throws ServiceException
+     *         An exception has occurred in AWS Directory Service.
+     * @sample AWSDirectoryService.StartSchemaExtension
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/StartSchemaExtension" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StartSchemaExtensionResult startSchemaExtension(StartSchemaExtensionRequest startSchemaExtensionRequest);
 
     /**
      * <p>
@@ -896,6 +1088,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.UpdateConditionalForwarder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateConditionalForwarder" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdateConditionalForwarderResult updateConditionalForwarder(UpdateConditionalForwarderRequest updateConditionalForwarderRequest);
 
@@ -916,6 +1110,8 @@ public interface AWSDirectoryService {
      * @throws ServiceException
      *         An exception has occurred in AWS Directory Service.
      * @sample AWSDirectoryService.UpdateRadius
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateRadius" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateRadiusResult updateRadius(UpdateRadiusRequest updateRadiusRequest);
 
@@ -942,6 +1138,8 @@ public interface AWSDirectoryService {
      * @throws UnsupportedOperationException
      *         The operation is not supported.
      * @sample AWSDirectoryService.VerifyTrust
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/VerifyTrust" target="_top">AWS API
+     *      Documentation</a>
      */
     VerifyTrustResult verifyTrust(VerifyTrustRequest verifyTrustRequest);
 

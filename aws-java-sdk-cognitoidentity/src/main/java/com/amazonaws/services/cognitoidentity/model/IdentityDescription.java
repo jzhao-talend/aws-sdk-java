@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,32 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
  * A description of the identity.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/IdentityDescription"
+ *      target="_top">AWS API Documentation</a>
  */
-public class IdentityDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class IdentityDescription implements Serializable, Cloneable, StructuredPojo {
 
-    /** A unique identifier in the format REGION:GUID. */
+    /**
+     * <p>
+     * A unique identifier in the format REGION:GUID.
+     * </p>
+     */
     private String identityId;
-    /** A set of optional name-value pairs that map provider names to provider tokens. */
+    /**
+     * <p>
+     * A set of optional name-value pairs that map provider names to provider tokens.
+     * </p>
+     */
     private java.util.List<String> logins;
     /**
      * <p>
@@ -37,7 +54,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     private java.util.Date lastModifiedDate;
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID.
+     * </p>
      * 
      * @param identityId
      *        A unique identifier in the format REGION:GUID.
@@ -48,7 +67,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID.
+     * </p>
      * 
      * @return A unique identifier in the format REGION:GUID.
      */
@@ -58,7 +79,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A unique identifier in the format REGION:GUID.
+     * </p>
      * 
      * @param identityId
      *        A unique identifier in the format REGION:GUID.
@@ -71,7 +94,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A set of optional name-value pairs that map provider names to provider tokens.
+     * </p>
      * 
      * @return A set of optional name-value pairs that map provider names to provider tokens.
      */
@@ -81,7 +106,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A set of optional name-value pairs that map provider names to provider tokens.
+     * </p>
      * 
      * @param logins
      *        A set of optional name-value pairs that map provider names to provider tokens.
@@ -97,7 +124,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A set of optional name-value pairs that map provider names to provider tokens.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setLogins(java.util.Collection)} or {@link #withLogins(java.util.Collection)} if you want to override the
@@ -120,7 +149,9 @@ public class IdentityDescription implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * A set of optional name-value pairs that map provider names to provider tokens.
+     * </p>
      * 
      * @param logins
      *        A set of optional name-value pairs that map provider names to provider tokens.
@@ -224,13 +255,13 @@ public class IdentityDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId() + ",");
+            sb.append("IdentityId: ").append(getIdentityId()).append(",");
         if (getLogins() != null)
-            sb.append("Logins: " + getLogins() + ",");
+            sb.append("Logins: ").append(getLogins()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getLastModifiedDate() != null)
-            sb.append("LastModifiedDate: " + getLastModifiedDate());
+            sb.append("LastModifiedDate: ").append(getLastModifiedDate());
         sb.append("}");
         return sb.toString();
     }
@@ -283,5 +314,11 @@ public class IdentityDescription implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidentity.model.transform.IdentityDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

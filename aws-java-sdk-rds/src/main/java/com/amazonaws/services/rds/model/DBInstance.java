@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -38,7 +39,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>DescribeDBInstances</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBInstance implements Serializable, Cloneable {
 
     /**
@@ -208,6 +213,12 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> readReplicaDBInstanceIdentifiers;
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> readReplicaDBClusterIdentifiers;
     /**
      * <p>
      * License model information for this DB instance.
@@ -1640,6 +1651,79 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @return Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     */
+
+    public java.util.List<String> getReadReplicaDBClusterIdentifiers() {
+        if (readReplicaDBClusterIdentifiers == null) {
+            readReplicaDBClusterIdentifiers = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return readReplicaDBClusterIdentifiers;
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     */
+
+    public void setReadReplicaDBClusterIdentifiers(java.util.Collection<String> readReplicaDBClusterIdentifiers) {
+        if (readReplicaDBClusterIdentifiers == null) {
+            this.readReplicaDBClusterIdentifiers = null;
+            return;
+        }
+
+        this.readReplicaDBClusterIdentifiers = new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBClusterIdentifiers);
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReadReplicaDBClusterIdentifiers(java.util.Collection)} or
+     * {@link #withReadReplicaDBClusterIdentifiers(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withReadReplicaDBClusterIdentifiers(String... readReplicaDBClusterIdentifiers) {
+        if (this.readReplicaDBClusterIdentifiers == null) {
+            setReadReplicaDBClusterIdentifiers(new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBClusterIdentifiers.length));
+        }
+        for (String ele : readReplicaDBClusterIdentifiers) {
+            this.readReplicaDBClusterIdentifiers.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withReadReplicaDBClusterIdentifiers(java.util.Collection<String> readReplicaDBClusterIdentifiers) {
+        setReadReplicaDBClusterIdentifiers(readReplicaDBClusterIdentifiers);
+        return this;
+    }
+
+    /**
+     * <p>
      * License model information for this DB instance.
      * </p>
      * 
@@ -2945,99 +3029,101 @@ public class DBInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getDBInstanceClass() != null)
-            sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+            sb.append("DBInstanceClass: ").append(getDBInstanceClass()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getDBInstanceStatus() != null)
-            sb.append("DBInstanceStatus: " + getDBInstanceStatus() + ",");
+            sb.append("DBInstanceStatus: ").append(getDBInstanceStatus()).append(",");
         if (getMasterUsername() != null)
-            sb.append("MasterUsername: " + getMasterUsername() + ",");
+            sb.append("MasterUsername: ").append(getMasterUsername()).append(",");
         if (getDBName() != null)
-            sb.append("DBName: " + getDBName() + ",");
+            sb.append("DBName: ").append(getDBName()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint() + ",");
+            sb.append("Endpoint: ").append(getEndpoint()).append(",");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getInstanceCreateTime() != null)
-            sb.append("InstanceCreateTime: " + getInstanceCreateTime() + ",");
+            sb.append("InstanceCreateTime: ").append(getInstanceCreateTime()).append(",");
         if (getPreferredBackupWindow() != null)
-            sb.append("PreferredBackupWindow: " + getPreferredBackupWindow() + ",");
+            sb.append("PreferredBackupWindow: ").append(getPreferredBackupWindow()).append(",");
         if (getBackupRetentionPeriod() != null)
-            sb.append("BackupRetentionPeriod: " + getBackupRetentionPeriod() + ",");
+            sb.append("BackupRetentionPeriod: ").append(getBackupRetentionPeriod()).append(",");
         if (getDBSecurityGroups() != null)
-            sb.append("DBSecurityGroups: " + getDBSecurityGroups() + ",");
+            sb.append("DBSecurityGroups: ").append(getDBSecurityGroups()).append(",");
         if (getVpcSecurityGroups() != null)
-            sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+            sb.append("VpcSecurityGroups: ").append(getVpcSecurityGroups()).append(",");
         if (getDBParameterGroups() != null)
-            sb.append("DBParameterGroups: " + getDBParameterGroups() + ",");
+            sb.append("DBParameterGroups: ").append(getDBParameterGroups()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getDBSubnetGroup() != null)
-            sb.append("DBSubnetGroup: " + getDBSubnetGroup() + ",");
+            sb.append("DBSubnetGroup: ").append(getDBSubnetGroup()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues() + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getLatestRestorableTime() != null)
-            sb.append("LatestRestorableTime: " + getLatestRestorableTime() + ",");
+            sb.append("LatestRestorableTime: ").append(getLatestRestorableTime()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getReadReplicaSourceDBInstanceIdentifier() != null)
-            sb.append("ReadReplicaSourceDBInstanceIdentifier: " + getReadReplicaSourceDBInstanceIdentifier() + ",");
+            sb.append("ReadReplicaSourceDBInstanceIdentifier: ").append(getReadReplicaSourceDBInstanceIdentifier()).append(",");
         if (getReadReplicaDBInstanceIdentifiers() != null)
-            sb.append("ReadReplicaDBInstanceIdentifiers: " + getReadReplicaDBInstanceIdentifiers() + ",");
+            sb.append("ReadReplicaDBInstanceIdentifiers: ").append(getReadReplicaDBInstanceIdentifiers()).append(",");
+        if (getReadReplicaDBClusterIdentifiers() != null)
+            sb.append("ReadReplicaDBClusterIdentifiers: ").append(getReadReplicaDBClusterIdentifiers()).append(",");
         if (getLicenseModel() != null)
-            sb.append("LicenseModel: " + getLicenseModel() + ",");
+            sb.append("LicenseModel: ").append(getLicenseModel()).append(",");
         if (getIops() != null)
-            sb.append("Iops: " + getIops() + ",");
+            sb.append("Iops: ").append(getIops()).append(",");
         if (getOptionGroupMemberships() != null)
-            sb.append("OptionGroupMemberships: " + getOptionGroupMemberships() + ",");
+            sb.append("OptionGroupMemberships: ").append(getOptionGroupMemberships()).append(",");
         if (getCharacterSetName() != null)
-            sb.append("CharacterSetName: " + getCharacterSetName() + ",");
+            sb.append("CharacterSetName: ").append(getCharacterSetName()).append(",");
         if (getSecondaryAvailabilityZone() != null)
-            sb.append("SecondaryAvailabilityZone: " + getSecondaryAvailabilityZone() + ",");
+            sb.append("SecondaryAvailabilityZone: ").append(getSecondaryAvailabilityZone()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible() + ",");
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getStatusInfos() != null)
-            sb.append("StatusInfos: " + getStatusInfos() + ",");
+            sb.append("StatusInfos: ").append(getStatusInfos()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getTdeCredentialArn() != null)
-            sb.append("TdeCredentialArn: " + getTdeCredentialArn() + ",");
+            sb.append("TdeCredentialArn: ").append(getTdeCredentialArn()).append(",");
         if (getDbInstancePort() != null)
-            sb.append("DbInstancePort: " + getDbInstancePort() + ",");
+            sb.append("DbInstancePort: ").append(getDbInstancePort()).append(",");
         if (getDBClusterIdentifier() != null)
-            sb.append("DBClusterIdentifier: " + getDBClusterIdentifier() + ",");
+            sb.append("DBClusterIdentifier: ").append(getDBClusterIdentifier()).append(",");
         if (getStorageEncrypted() != null)
-            sb.append("StorageEncrypted: " + getStorageEncrypted() + ",");
+            sb.append("StorageEncrypted: ").append(getStorageEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getDbiResourceId() != null)
-            sb.append("DbiResourceId: " + getDbiResourceId() + ",");
+            sb.append("DbiResourceId: ").append(getDbiResourceId()).append(",");
         if (getCACertificateIdentifier() != null)
-            sb.append("CACertificateIdentifier: " + getCACertificateIdentifier() + ",");
+            sb.append("CACertificateIdentifier: ").append(getCACertificateIdentifier()).append(",");
         if (getDomainMemberships() != null)
-            sb.append("DomainMemberships: " + getDomainMemberships() + ",");
+            sb.append("DomainMemberships: ").append(getDomainMemberships()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: " + getCopyTagsToSnapshot() + ",");
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
         if (getMonitoringInterval() != null)
-            sb.append("MonitoringInterval: " + getMonitoringInterval() + ",");
+            sb.append("MonitoringInterval: ").append(getMonitoringInterval()).append(",");
         if (getEnhancedMonitoringResourceArn() != null)
-            sb.append("EnhancedMonitoringResourceArn: " + getEnhancedMonitoringResourceArn() + ",");
+            sb.append("EnhancedMonitoringResourceArn: ").append(getEnhancedMonitoringResourceArn()).append(",");
         if (getMonitoringRoleArn() != null)
-            sb.append("MonitoringRoleArn: " + getMonitoringRoleArn() + ",");
+            sb.append("MonitoringRoleArn: ").append(getMonitoringRoleArn()).append(",");
         if (getPromotionTier() != null)
-            sb.append("PromotionTier: " + getPromotionTier() + ",");
+            sb.append("PromotionTier: ").append(getPromotionTier()).append(",");
         if (getDBInstanceArn() != null)
-            sb.append("DBInstanceArn: " + getDBInstanceArn() + ",");
+            sb.append("DBInstanceArn: ").append(getDBInstanceArn()).append(",");
         if (getTimezone() != null)
-            sb.append("Timezone: " + getTimezone());
+            sb.append("Timezone: ").append(getTimezone());
         sb.append("}");
         return sb.toString();
     }
@@ -3149,6 +3235,11 @@ public class DBInstance implements Serializable, Cloneable {
             return false;
         if (other.getReadReplicaDBInstanceIdentifiers() != null
                 && other.getReadReplicaDBInstanceIdentifiers().equals(this.getReadReplicaDBInstanceIdentifiers()) == false)
+            return false;
+        if (other.getReadReplicaDBClusterIdentifiers() == null ^ this.getReadReplicaDBClusterIdentifiers() == null)
+            return false;
+        if (other.getReadReplicaDBClusterIdentifiers() != null
+                && other.getReadReplicaDBClusterIdentifiers().equals(this.getReadReplicaDBClusterIdentifiers()) == false)
             return false;
         if (other.getLicenseModel() == null ^ this.getLicenseModel() == null)
             return false;
@@ -3275,6 +3366,7 @@ public class DBInstance implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
         hashCode = prime * hashCode + ((getReadReplicaSourceDBInstanceIdentifier() == null) ? 0 : getReadReplicaSourceDBInstanceIdentifier().hashCode());
         hashCode = prime * hashCode + ((getReadReplicaDBInstanceIdentifiers() == null) ? 0 : getReadReplicaDBInstanceIdentifiers().hashCode());
+        hashCode = prime * hashCode + ((getReadReplicaDBClusterIdentifiers() == null) ? 0 : getReadReplicaDBClusterIdentifiers().hashCode());
         hashCode = prime * hashCode + ((getLicenseModel() == null) ? 0 : getLicenseModel().hashCode());
         hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
         hashCode = prime * hashCode + ((getOptionGroupMemberships() == null) ? 0 : getOptionGroupMemberships().hashCode());
@@ -3309,4 +3401,5 @@ public class DBInstance implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

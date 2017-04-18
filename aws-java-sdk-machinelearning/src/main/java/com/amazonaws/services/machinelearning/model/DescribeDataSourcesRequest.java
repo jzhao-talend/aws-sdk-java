@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeDataSourcesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -995,27 +995,27 @@ public class DescribeDataSourcesRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFilterVariable() != null)
-            sb.append("FilterVariable: " + getFilterVariable() + ",");
+            sb.append("FilterVariable: ").append(getFilterVariable()).append(",");
         if (getEQ() != null)
-            sb.append("EQ: " + getEQ() + ",");
+            sb.append("EQ: ").append(getEQ()).append(",");
         if (getGT() != null)
-            sb.append("GT: " + getGT() + ",");
+            sb.append("GT: ").append(getGT()).append(",");
         if (getLT() != null)
-            sb.append("LT: " + getLT() + ",");
+            sb.append("LT: ").append(getLT()).append(",");
         if (getGE() != null)
-            sb.append("GE: " + getGE() + ",");
+            sb.append("GE: ").append(getGE()).append(",");
         if (getLE() != null)
-            sb.append("LE: " + getLE() + ",");
+            sb.append("LE: ").append(getLE()).append(",");
         if (getNE() != null)
-            sb.append("NE: " + getNE() + ",");
+            sb.append("NE: ").append(getNE()).append(",");
         if (getPrefix() != null)
-            sb.append("Prefix: " + getPrefix() + ",");
+            sb.append("Prefix: ").append(getPrefix()).append(",");
         if (getSortOrder() != null)
-            sb.append("SortOrder: " + getSortOrder() + ",");
+            sb.append("SortOrder: ").append(getSortOrder()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -1100,4 +1100,5 @@ public class DescribeDataSourcesRequest extends com.amazonaws.AmazonWebServiceRe
     public DescribeDataSourcesRequest clone() {
         return (DescribeDataSourcesRequest) super.clone();
     }
+
 }

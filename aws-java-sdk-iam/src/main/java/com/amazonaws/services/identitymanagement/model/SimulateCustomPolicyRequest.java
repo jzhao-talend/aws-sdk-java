@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulateCustomPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -31,10 +36,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * to restrict what a user can do while using the temporary credentials.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> policyInputList;
@@ -74,10 +79,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      */
     private String resourcePolicy;
@@ -182,15 +187,15 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
     private String resourceHandlingOption;
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      */
     private Integer maxItems;
@@ -214,10 +219,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * to restrict what a user can do while using the temporary credentials.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @return A list of policy documents to include in the simulation. Each document is specified as a string
@@ -229,10 +234,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to
      *         restrict what a user can do while using the temporary credentials.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *         characters consisting of any printable ASCII character ranging from the space character ( ) through end
-     *         of the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ),
-     *         and carriage return ( ).
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *         string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *         through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *         Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *         feed ( ), and carriage return ( ).
      */
 
     public java.util.List<String> getPolicyInputList() {
@@ -253,10 +259,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * to restrict what a user can do while using the temporary credentials.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @param policyInputList
@@ -269,10 +275,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *        href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to
      *        restrict what a user can do while using the temporary credentials.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *        characters consisting of any printable ASCII character ranging from the space character ( ) through end of
-     *        the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and
-     *        carriage return ( ).
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *        string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *        through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *        Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *        feed ( ), and carriage return ( ).
      */
 
     public void setPolicyInputList(java.util.Collection<String> policyInputList) {
@@ -295,10 +302,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * to restrict what a user can do while using the temporary credentials.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -316,10 +323,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *        href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to
      *        restrict what a user can do while using the temporary credentials.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *        characters consisting of any printable ASCII character ranging from the space character ( ) through end of
-     *        the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and
-     *        carriage return ( ).
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *        string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *        through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *        Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *        feed ( ), and carriage return ( ).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,10 +352,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * to restrict what a user can do while using the temporary credentials.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @param policyInputList
@@ -360,10 +368,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *        href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to
      *        restrict what a user can do while using the temporary credentials.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *        characters consisting of any printable ASCII character ranging from the space character ( ) through end of
-     *        the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and
-     *        carriage return ( ).
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *        string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *        through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *        Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *        feed ( ), and carriage return ( ).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -664,10 +673,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @param resourcePolicy
@@ -675,10 +684,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *        is treated as if it had this policy attached. You can include only one resource-based policy in a
      *        simulation.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *        characters consisting of any printable ASCII character ranging from the space character ( ) through end of
-     *        the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and
-     *        carriage return ( ).
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *        string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *        through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *        Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *        feed ( ), and carriage return ( ).
      */
 
     public void setResourcePolicy(String resourcePolicy) {
@@ -691,20 +701,21 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @return A resource-based policy to include in the simulation provided as a string. Each resource in the
      *         simulation is treated as if it had this policy attached. You can include only one resource-based policy
      *         in a simulation.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *         characters consisting of any printable ASCII character ranging from the space character ( ) through end
-     *         of the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ),
-     *         and carriage return ( ).
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *         string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *         through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *         Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *         feed ( ), and carriage return ( ).
      */
 
     public String getResourcePolicy() {
@@ -717,10 +728,10 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of any printable ASCII character ranging from the space character ( ) through end of the ASCII
-     * character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return (
-     * ).
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
+     * characters consisting of any printable ASCII character ranging from the space character ( ) through end of the
+     * ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set
+     * (through \u00FF). It also includes the special characters tab ( ), line feed ( ), and carriage return ( ).
      * </p>
      * 
      * @param resourcePolicy
@@ -728,10 +739,11 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
      *        is treated as if it had this policy attached. You can include only one resource-based policy in a
      *        simulation.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
-     *        characters consisting of any printable ASCII character ranging from the space character ( ) through end of
-     *        the ASCII character range (\u00FF). It also includes the special characters tab ( ), line feed ( ), and
-     *        carriage return ( ).
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
+     *        string of characters consisting of any printable ASCII character ranging from the space character ( )
+     *        through end of the ASCII character range as well as the printable characters in the Basic Latin and
+     *        Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab ( ), line
+     *        feed ( ), and carriage return ( ).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1384,26 +1396,26 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
      * @param maxItems
-     *        Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     *        additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     *        <code>true</code>.</p>
+     *        (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *        response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *        element is <code>true</code>.</p>
      *        <p>
-     *        This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     *        results, even when there are more results available. In that case, the <code>IsTruncated</code> response
-     *        element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent
-     *        call that tells the service where to continue from.
+     *        If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *        when there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     *        <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
+     *        the service where to continue from.
      */
 
     public void setMaxItems(Integer maxItems) {
@@ -1412,25 +1424,25 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
-     * @return Use this only when paginating results to indicate the maximum number of items you want in the response.
-     *         If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
-     *         is <code>true</code>.</p>
+     * @return (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *         response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *         element is <code>true</code>.</p>
      *         <p>
-     *         This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return
-     *         fewer results, even when there are more results available. In that case, the <code>IsTruncated</code>
-     *         response element returns <code>true</code> and <code>Marker</code> contains a value to include in the
-     *         subsequent call that tells the service where to continue from.
+     *         If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *         when there are more results available. In that case, the <code>IsTruncated</code> response element
+     *         returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that
+     *         tells the service where to continue from.
      */
 
     public Integer getMaxItems() {
@@ -1439,26 +1451,26 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
      * @param maxItems
-     *        Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     *        additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     *        <code>true</code>.</p>
+     *        (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *        response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *        element is <code>true</code>.</p>
      *        <p>
-     *        This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     *        results, even when there are more results available. In that case, the <code>IsTruncated</code> response
-     *        element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent
-     *        call that tells the service where to continue from.
+     *        If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *        when there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     *        <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
+     *        the service where to continue from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1531,25 +1543,25 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPolicyInputList() != null)
-            sb.append("PolicyInputList: " + getPolicyInputList() + ",");
+            sb.append("PolicyInputList: ").append(getPolicyInputList()).append(",");
         if (getActionNames() != null)
-            sb.append("ActionNames: " + getActionNames() + ",");
+            sb.append("ActionNames: ").append(getActionNames()).append(",");
         if (getResourceArns() != null)
-            sb.append("ResourceArns: " + getResourceArns() + ",");
+            sb.append("ResourceArns: ").append(getResourceArns()).append(",");
         if (getResourcePolicy() != null)
-            sb.append("ResourcePolicy: " + getResourcePolicy() + ",");
+            sb.append("ResourcePolicy: ").append(getResourcePolicy()).append(",");
         if (getResourceOwner() != null)
-            sb.append("ResourceOwner: " + getResourceOwner() + ",");
+            sb.append("ResourceOwner: ").append(getResourceOwner()).append(",");
         if (getCallerArn() != null)
-            sb.append("CallerArn: " + getCallerArn() + ",");
+            sb.append("CallerArn: ").append(getCallerArn()).append(",");
         if (getContextEntries() != null)
-            sb.append("ContextEntries: " + getContextEntries() + ",");
+            sb.append("ContextEntries: ").append(getContextEntries()).append(",");
         if (getResourceHandlingOption() != null)
-            sb.append("ResourceHandlingOption: " + getResourceHandlingOption() + ",");
+            sb.append("ResourceHandlingOption: ").append(getResourceHandlingOption()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems() + ",");
+            sb.append("MaxItems: ").append(getMaxItems()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -1629,4 +1641,5 @@ public class SimulateCustomPolicyRequest extends com.amazonaws.AmazonWebServiceR
     public SimulateCustomPolicyRequest clone() {
         return (SimulateCustomPolicyRequest) super.clone();
     }
+
 }

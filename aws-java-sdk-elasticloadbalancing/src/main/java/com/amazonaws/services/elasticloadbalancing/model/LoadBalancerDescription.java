@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticloadbalancing.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about a load balancer.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/LoadBalancerDescription"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LoadBalancerDescription implements Serializable, Cloneable {
 
     /**
@@ -1067,37 +1072,37 @@ public class LoadBalancerDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLoadBalancerName() != null)
-            sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+            sb.append("LoadBalancerName: ").append(getLoadBalancerName()).append(",");
         if (getDNSName() != null)
-            sb.append("DNSName: " + getDNSName() + ",");
+            sb.append("DNSName: ").append(getDNSName()).append(",");
         if (getCanonicalHostedZoneName() != null)
-            sb.append("CanonicalHostedZoneName: " + getCanonicalHostedZoneName() + ",");
+            sb.append("CanonicalHostedZoneName: ").append(getCanonicalHostedZoneName()).append(",");
         if (getCanonicalHostedZoneNameID() != null)
-            sb.append("CanonicalHostedZoneNameID: " + getCanonicalHostedZoneNameID() + ",");
+            sb.append("CanonicalHostedZoneNameID: ").append(getCanonicalHostedZoneNameID()).append(",");
         if (getListenerDescriptions() != null)
-            sb.append("ListenerDescriptions: " + getListenerDescriptions() + ",");
+            sb.append("ListenerDescriptions: ").append(getListenerDescriptions()).append(",");
         if (getPolicies() != null)
-            sb.append("Policies: " + getPolicies() + ",");
+            sb.append("Policies: ").append(getPolicies()).append(",");
         if (getBackendServerDescriptions() != null)
-            sb.append("BackendServerDescriptions: " + getBackendServerDescriptions() + ",");
+            sb.append("BackendServerDescriptions: ").append(getBackendServerDescriptions()).append(",");
         if (getAvailabilityZones() != null)
-            sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+            sb.append("AvailabilityZones: ").append(getAvailabilityZones()).append(",");
         if (getSubnets() != null)
-            sb.append("Subnets: " + getSubnets() + ",");
+            sb.append("Subnets: ").append(getSubnets()).append(",");
         if (getVPCId() != null)
-            sb.append("VPCId: " + getVPCId() + ",");
+            sb.append("VPCId: ").append(getVPCId()).append(",");
         if (getInstances() != null)
-            sb.append("Instances: " + getInstances() + ",");
+            sb.append("Instances: ").append(getInstances()).append(",");
         if (getHealthCheck() != null)
-            sb.append("HealthCheck: " + getHealthCheck() + ",");
+            sb.append("HealthCheck: ").append(getHealthCheck()).append(",");
         if (getSourceSecurityGroup() != null)
-            sb.append("SourceSecurityGroup: " + getSourceSecurityGroup() + ",");
+            sb.append("SourceSecurityGroup: ").append(getSourceSecurityGroup()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime() + ",");
+            sb.append("CreatedTime: ").append(getCreatedTime()).append(",");
         if (getScheme() != null)
-            sb.append("Scheme: " + getScheme());
+            sb.append("Scheme: ").append(getScheme());
         sb.append("}");
         return sb.toString();
     }
@@ -1211,4 +1216,5 @@ public class LoadBalancerDescription implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

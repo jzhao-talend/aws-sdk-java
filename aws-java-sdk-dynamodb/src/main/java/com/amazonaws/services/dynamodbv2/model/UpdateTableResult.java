@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of an <i>UpdateTable</i> operation.
+ * Represents the output of an <code>UpdateTable</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTable" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateTableResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * Represents the properties of the table.
+     * </p>
+     */
     private TableDescription tableDescription;
 
     /**
+     * <p>
+     * Represents the properties of the table.
+     * </p>
+     * 
      * @param tableDescription
+     *        Represents the properties of the table.
      */
 
     public void setTableDescription(TableDescription tableDescription) {
@@ -32,7 +47,11 @@ public class UpdateTableResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * @return
+     * <p>
+     * Represents the properties of the table.
+     * </p>
+     * 
+     * @return Represents the properties of the table.
      */
 
     public TableDescription getTableDescription() {
@@ -40,7 +59,12 @@ public class UpdateTableResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
+     * <p>
+     * Represents the properties of the table.
+     * </p>
+     * 
      * @param tableDescription
+     *        Represents the properties of the table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class UpdateTableResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTableDescription() != null)
-            sb.append("TableDescription: " + getTableDescription());
+            sb.append("TableDescription: ").append(getTableDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class UpdateTableResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

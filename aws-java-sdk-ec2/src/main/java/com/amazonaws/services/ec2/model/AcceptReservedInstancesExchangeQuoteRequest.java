@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.AcceptReservedInstancesExchangeQuoteRequestMarshaller;
@@ -22,31 +24,32 @@ import com.amazonaws.services.ec2.model.transform.AcceptReservedInstancesExchang
  * Contains the parameters for accepting the quote.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<AcceptReservedInstancesExchangeQuoteRequest> {
 
     /**
      * <p>
-     * The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved Instances
-     * of the same or higher value.
+     * The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or
+     * higher value.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> reservedInstanceIds;
     /**
      * <p>
-     * The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TargetConfigurationRequest> targetConfigurations;
 
     /**
      * <p>
-     * The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved Instances
-     * of the same or higher value.
+     * The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or
+     * higher value.
      * </p>
      * 
-     * @return The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved
-     *         Instances of the same or higher value.
+     * @return The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the
+     *         same or higher value.
      */
 
     public java.util.List<String> getReservedInstanceIds() {
@@ -58,13 +61,13 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved Instances
-     * of the same or higher value.
+     * The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or
+     * higher value.
      * </p>
      * 
      * @param reservedInstanceIds
-     *        The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved
-     *        Instances of the same or higher value.
+     *        The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the
+     *        same or higher value.
      */
 
     public void setReservedInstanceIds(java.util.Collection<String> reservedInstanceIds) {
@@ -78,8 +81,8 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved Instances
-     * of the same or higher value.
+     * The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or
+     * higher value.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -88,8 +91,8 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
      * </p>
      * 
      * @param reservedInstanceIds
-     *        The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved
-     *        Instances of the same or higher value.
+     *        The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the
+     *        same or higher value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -105,13 +108,13 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved Instances
-     * of the same or higher value.
+     * The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or
+     * higher value.
      * </p>
      * 
      * @param reservedInstanceIds
-     *        The IDs of the Convertible Reserved Instances that you want to exchange for other Convertible Reserved
-     *        Instances of the same or higher value.
+     *        The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the
+     *        same or higher value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -122,10 +125,11 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
      * </p>
      * 
-     * @return The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * @return The configurations of the Convertible Reserved Instance offerings that you are purchasing in this
+     *         exchange.
      */
 
     public java.util.List<TargetConfigurationRequest> getTargetConfigurations() {
@@ -137,11 +141,12 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
      * </p>
      * 
      * @param targetConfigurations
-     *        The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     *        The configurations of the Convertible Reserved Instance offerings that you are purchasing in this
+     *        exchange.
      */
 
     public void setTargetConfigurations(java.util.Collection<TargetConfigurationRequest> targetConfigurations) {
@@ -155,7 +160,7 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -164,7 +169,8 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
      * </p>
      * 
      * @param targetConfigurations
-     *        The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     *        The configurations of the Convertible Reserved Instance offerings that you are purchasing in this
+     *        exchange.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -180,11 +186,12 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
 
     /**
      * <p>
-     * The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     * The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
      * </p>
      * 
      * @param targetConfigurations
-     *        The configurations of the Convertible Reserved Instance offerings you are purchasing in this exchange.
+     *        The configurations of the Convertible Reserved Instance offerings that you are purchasing in this
+     *        exchange.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -216,9 +223,9 @@ public class AcceptReservedInstancesExchangeQuoteRequest extends AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservedInstanceIds() != null)
-            sb.append("ReservedInstanceIds: " + getReservedInstanceIds() + ",");
+            sb.append("ReservedInstanceIds: ").append(getReservedInstanceIds()).append(",");
         if (getTargetConfigurations() != null)
-            sb.append("TargetConfigurations: " + getTargetConfigurations());
+            sb.append("TargetConfigurations: ").append(getTargetConfigurations());
         sb.append("}");
         return sb.toString();
     }

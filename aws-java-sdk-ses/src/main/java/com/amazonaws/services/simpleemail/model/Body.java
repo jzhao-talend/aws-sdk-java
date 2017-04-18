@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should
  * display correctly in the widest variety of email clients.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/Body" target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Body implements Serializable, Cloneable {
 
     /**
@@ -160,9 +164,9 @@ public class Body implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getText() != null)
-            sb.append("Text: " + getText() + ",");
+            sb.append("Text: ").append(getText()).append(",");
         if (getHtml() != null)
-            sb.append("Html: " + getHtml());
+            sb.append("Html: ").append(getHtml());
         sb.append("}");
         return sb.toString();
     }
@@ -206,4 +210,5 @@ public class Body implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

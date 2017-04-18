@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.rds.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.rds.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * EventCategoriesMap StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EventCategoriesMapStaxUnmarshaller implements Unmarshaller<EventCategoriesMap, StaxUnmarshallerContext> {
 
     public EventCategoriesMap unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -47,6 +47,11 @@ public class EventCategoriesMapStaxUnmarshaller implements Unmarshaller<EventCat
 
                 if (context.testExpression("SourceType", targetDepth)) {
                     eventCategoriesMap.setSourceType(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("EventCategories", targetDepth)) {
+                    eventCategoriesMap.withEventCategories(new ArrayList<String>());
                     continue;
                 }
 

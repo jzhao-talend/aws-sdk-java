@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The refresh status of a Trusted Advisor check.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/TrustedAdvisorCheckRefreshStatus"
+ *      target="_top">AWS API Documentation</a>
  */
-public class TrustedAdvisorCheckRefreshStatus implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TrustedAdvisorCheckRefreshStatus implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -179,11 +186,11 @@ public class TrustedAdvisorCheckRefreshStatus implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCheckId() != null)
-            sb.append("CheckId: " + getCheckId() + ",");
+            sb.append("CheckId: ").append(getCheckId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getMillisUntilNextRefreshable() != null)
-            sb.append("MillisUntilNextRefreshable: " + getMillisUntilNextRefreshable());
+            sb.append("MillisUntilNextRefreshable: ").append(getMillisUntilNextRefreshable());
         sb.append("}");
         return sb.toString();
     }
@@ -231,5 +238,11 @@ public class TrustedAdvisorCheckRefreshStatus implements Serializable, Cloneable
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.support.model.transform.TrustedAdvisorCheckRefreshStatusMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

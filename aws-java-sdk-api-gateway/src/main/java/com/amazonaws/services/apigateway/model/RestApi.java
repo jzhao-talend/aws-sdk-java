@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,7 +24,8 @@ import java.io.Serializable;
  * <div class="seeAlso"> <a
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
  */
-public class RestApi implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RestApi implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -43,17 +47,29 @@ public class RestApi implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      */
     private java.util.Date createdDate;
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     */
+    private String version;
     /**
      * <p>
      * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      * </p>
      */
     private java.util.List<String> warnings;
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     */
+    private java.util.List<String> binaryMediaTypes;
 
     /**
      * <p>
@@ -177,13 +193,11 @@ public class RestApi implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the API was created.
      */
 
     public void setCreatedDate(java.util.Date createdDate) {
@@ -192,12 +206,10 @@ public class RestApi implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
-     * @return The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *         target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the API was created.
      */
 
     public java.util.Date getCreatedDate() {
@@ -206,18 +218,56 @@ public class RestApi implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the API was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestApi withCreatedDate(java.util.Date createdDate) {
         setCreatedDate(createdDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     * 
+     * @param version
+     *        A version identifier for the API.
+     */
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     * 
+     * @return A version identifier for the API.
+     */
+
+    public String getVersion() {
+        return this.version;
+    }
+
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     * 
+     * @param version
+     *        A version identifier for the API.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestApi withVersion(String version) {
+        setVersion(version);
         return this;
     }
 
@@ -292,6 +342,84 @@ public class RestApi implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @return The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *         only UTF-8-encoded text payloads.
+     */
+
+    public java.util.List<String> getBinaryMediaTypes() {
+        return binaryMediaTypes;
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     */
+
+    public void setBinaryMediaTypes(java.util.Collection<String> binaryMediaTypes) {
+        if (binaryMediaTypes == null) {
+            this.binaryMediaTypes = null;
+            return;
+        }
+
+        this.binaryMediaTypes = new java.util.ArrayList<String>(binaryMediaTypes);
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setBinaryMediaTypes(java.util.Collection)} or {@link #withBinaryMediaTypes(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestApi withBinaryMediaTypes(String... binaryMediaTypes) {
+        if (this.binaryMediaTypes == null) {
+            setBinaryMediaTypes(new java.util.ArrayList<String>(binaryMediaTypes.length));
+        }
+        for (String ele : binaryMediaTypes) {
+            this.binaryMediaTypes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestApi withBinaryMediaTypes(java.util.Collection<String> binaryMediaTypes) {
+        setBinaryMediaTypes(binaryMediaTypes);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -303,15 +431,19 @@ public class RestApi implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate() + ",");
+            sb.append("CreatedDate: ").append(getCreatedDate()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getWarnings() != null)
-            sb.append("Warnings: " + getWarnings());
+            sb.append("Warnings: ").append(getWarnings()).append(",");
+        if (getBinaryMediaTypes() != null)
+            sb.append("BinaryMediaTypes: ").append(getBinaryMediaTypes());
         sb.append("}");
         return sb.toString();
     }
@@ -342,9 +474,17 @@ public class RestApi implements Serializable, Cloneable {
             return false;
         if (other.getCreatedDate() != null && other.getCreatedDate().equals(this.getCreatedDate()) == false)
             return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
+            return false;
         if (other.getWarnings() == null ^ this.getWarnings() == null)
             return false;
         if (other.getWarnings() != null && other.getWarnings().equals(this.getWarnings()) == false)
+            return false;
+        if (other.getBinaryMediaTypes() == null ^ this.getBinaryMediaTypes() == null)
+            return false;
+        if (other.getBinaryMediaTypes() != null && other.getBinaryMediaTypes().equals(this.getBinaryMediaTypes()) == false)
             return false;
         return true;
     }
@@ -358,7 +498,9 @@ public class RestApi implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getCreatedDate() == null) ? 0 : getCreatedDate().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         hashCode = prime * hashCode + ((getWarnings() == null) ? 0 : getWarnings().hashCode());
+        hashCode = prime * hashCode + ((getBinaryMediaTypes() == null) ? 0 : getBinaryMediaTypes().hashCode());
         return hashCode;
     }
 
@@ -369,5 +511,11 @@ public class RestApi implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.RestApiMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

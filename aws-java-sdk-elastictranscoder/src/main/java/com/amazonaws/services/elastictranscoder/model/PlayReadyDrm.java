@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -26,7 +29,8 @@ import java.io.Serializable;
  * If you use DRM for an <code>HLSv3</code> playlist, your outputs must have a master playlist.
  * </p>
  */
-public class PlayReadyDrm implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PlayReadyDrm implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -61,9 +65,9 @@ public class PlayReadyDrm implements Serializable, Cloneable {
      * The ID for your DRM key, so that your DRM license provider knows which key to provide.
      * </p>
      * <p>
-     * The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
-     * inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID
-     * in big or little endian, check with your DRM provider.
+     * The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before inserting
+     * it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID in big or
+     * little endian, check with your DRM provider.
      * </p>
      */
     private String keyId;
@@ -268,15 +272,15 @@ public class PlayReadyDrm implements Serializable, Cloneable {
      * The ID for your DRM key, so that your DRM license provider knows which key to provide.
      * </p>
      * <p>
-     * The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
-     * inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID
-     * in big or little endian, check with your DRM provider.
+     * The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before inserting
+     * it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID in big or
+     * little endian, check with your DRM provider.
      * </p>
      * 
      * @param keyId
      *        The ID for your DRM key, so that your DRM license provider knows which key to provide.</p>
      *        <p>
-     *        The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
+     *        The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before
      *        inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your
      *        key ID in big or little endian, check with your DRM provider.
      */
@@ -290,14 +294,14 @@ public class PlayReadyDrm implements Serializable, Cloneable {
      * The ID for your DRM key, so that your DRM license provider knows which key to provide.
      * </p>
      * <p>
-     * The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
-     * inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID
-     * in big or little endian, check with your DRM provider.
+     * The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before inserting
+     * it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID in big or
+     * little endian, check with your DRM provider.
      * </p>
      * 
      * @return The ID for your DRM key, so that your DRM license provider knows which key to provide.</p>
      *         <p>
-     *         The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
+     *         The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before
      *         inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your
      *         key ID in big or little endian, check with your DRM provider.
      */
@@ -311,15 +315,15 @@ public class PlayReadyDrm implements Serializable, Cloneable {
      * The ID for your DRM key, so that your DRM license provider knows which key to provide.
      * </p>
      * <p>
-     * The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
-     * inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID
-     * in big or little endian, check with your DRM provider.
+     * The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before inserting
+     * it into the PlayReady DRM headers. If you are unsure whether your license server provides your key ID in big or
+     * little endian, check with your DRM provider.
      * </p>
      * 
      * @param keyId
      *        The ID for your DRM key, so that your DRM license provider knows which key to provide.</p>
      *        <p>
-     *        The key ID must be provided in big endian, and Elastic Transcoder will convert it to little endian before
+     *        The key ID must be provided in big endian, and Elastic Transcoder converts it to little endian before
      *        inserting it into the PlayReady DRM headers. If you are unsure whether your license server provides your
      *        key ID in big or little endian, check with your DRM provider.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -458,17 +462,17 @@ public class PlayReadyDrm implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFormat() != null)
-            sb.append("Format: " + getFormat() + ",");
+            sb.append("Format: ").append(getFormat()).append(",");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getKeyMd5() != null)
-            sb.append("KeyMd5: " + getKeyMd5() + ",");
+            sb.append("KeyMd5: ").append(getKeyMd5()).append(",");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getInitializationVector() != null)
-            sb.append("InitializationVector: " + getInitializationVector() + ",");
+            sb.append("InitializationVector: ").append(getInitializationVector()).append(",");
         if (getLicenseAcquisitionUrl() != null)
-            sb.append("LicenseAcquisitionUrl: " + getLicenseAcquisitionUrl());
+            sb.append("LicenseAcquisitionUrl: ").append(getLicenseAcquisitionUrl());
         sb.append("}");
         return sb.toString();
     }
@@ -531,5 +535,11 @@ public class PlayReadyDrm implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.PlayReadyDrmMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

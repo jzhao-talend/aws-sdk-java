@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.marketplacemetering;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.marketplacemetering.model.*;
 
 /**
@@ -19,9 +21,23 @@ import com.amazonaws.services.marketplacemetering.model.*;
  * corresponding overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSMarketplaceMeteringAsync extends AbstractAWSMarketplaceMetering implements AWSMarketplaceMeteringAsync {
 
     protected AbstractAWSMarketplaceMeteringAsync() {
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchMeterUsageResult> batchMeterUsageAsync(BatchMeterUsageRequest request) {
+
+        return batchMeterUsageAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchMeterUsageResult> batchMeterUsageAsync(BatchMeterUsageRequest request,
+            com.amazonaws.handlers.AsyncHandler<BatchMeterUsageRequest, BatchMeterUsageResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -33,6 +49,19 @@ public class AbstractAWSMarketplaceMeteringAsync extends AbstractAWSMarketplaceM
     @Override
     public java.util.concurrent.Future<MeterUsageResult> meterUsageAsync(MeterUsageRequest request,
             com.amazonaws.handlers.AsyncHandler<MeterUsageRequest, MeterUsageResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResolveCustomerResult> resolveCustomerAsync(ResolveCustomerRequest request) {
+
+        return resolveCustomerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResolveCustomerResult> resolveCustomerAsync(ResolveCustomerRequest request,
+            com.amazonaws.handlers.AsyncHandler<ResolveCustomerRequest, ResolveCustomerResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

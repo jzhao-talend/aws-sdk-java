@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.cloudwatchevents.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cloudwatchevents.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * Target JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TargetJsonUnmarshaller implements Unmarshaller<Target, JsonUnmarshallerContext> {
 
     public Target unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class TargetJsonUnmarshaller implements Unmarshaller<Target, JsonUnmarsha
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -55,6 +56,10 @@ public class TargetJsonUnmarshaller implements Unmarshaller<Target, JsonUnmarsha
                     context.nextToken();
                     target.setArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("RoleArn", targetDepth)) {
+                    context.nextToken();
+                    target.setRoleArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("Input", targetDepth)) {
                     context.nextToken();
                     target.setInput(context.getUnmarshaller(String.class).unmarshall(context));
@@ -62,6 +67,22 @@ public class TargetJsonUnmarshaller implements Unmarshaller<Target, JsonUnmarsha
                 if (context.testExpression("InputPath", targetDepth)) {
                     context.nextToken();
                     target.setInputPath(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("InputTransformer", targetDepth)) {
+                    context.nextToken();
+                    target.setInputTransformer(InputTransformerJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("KinesisParameters", targetDepth)) {
+                    context.nextToken();
+                    target.setKinesisParameters(KinesisParametersJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("RunCommandParameters", targetDepth)) {
+                    context.nextToken();
+                    target.setRunCommandParameters(RunCommandParametersJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("EcsParameters", targetDepth)) {
+                    context.nextToken();
+                    target.setEcsParameters(EcsParametersJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

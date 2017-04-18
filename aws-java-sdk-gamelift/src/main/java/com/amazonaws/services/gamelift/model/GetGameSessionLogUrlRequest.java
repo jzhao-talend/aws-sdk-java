@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,38 +13,35 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GetGameSessionLogUrl" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetGameSessionLogUrlRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to get logs for.
      * </p>
      */
     private String gameSessionId;
 
     /**
      * <p>
-     * Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to get logs for.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to get logs for.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -53,16 +50,10 @@ public class GetGameSessionLogUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to get logs for.
      * </p>
      * 
-     * @return Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *         &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created)
-     *         an auto-generated string.
+     * @return Unique identifier for the game session to get logs for.
      */
 
     public String getGameSessionId() {
@@ -71,17 +62,11 @@ public class GetGameSessionLogUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to get logs for.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to get logs for. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to get logs for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -102,7 +87,7 @@ public class GetGameSessionLogUrlRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId());
+            sb.append("GameSessionId: ").append(getGameSessionId());
         sb.append("}");
         return sb.toString();
     }
@@ -137,4 +122,5 @@ public class GetGameSessionLogUrlRequest extends com.amazonaws.AmazonWebServiceR
     public GetGameSessionLogUrlRequest clone() {
         return (GetGameSessionLogUrlRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,22 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Result message wrapping a list of application version descriptions.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeApplicationVersions"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ApplicationVersionDescription> applicationVersions;
@@ -36,10 +41,10 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * </p>
      * 
-     * @return List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * @return List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      */
 
     public java.util.List<ApplicationVersionDescription> getApplicationVersions() {
@@ -51,11 +56,11 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * </p>
      * 
      * @param applicationVersions
-     *        List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     *        List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      */
 
     public void setApplicationVersions(java.util.Collection<ApplicationVersionDescription> applicationVersions) {
@@ -69,7 +74,7 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -78,7 +83,7 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
      * </p>
      * 
      * @param applicationVersions
-     *        List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     *        List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -94,11 +99,11 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     * List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * </p>
      * 
      * @param applicationVersions
-     *        List of <code>ApplicationVersionDescription</code> objects sorted by order of creation.
+     *        List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,9 +164,9 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationVersions() != null)
-            sb.append("ApplicationVersions: " + getApplicationVersions() + ",");
+            sb.append("ApplicationVersions: ").append(getApplicationVersions()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -205,4 +210,5 @@ public class DescribeApplicationVersionsResult extends com.amazonaws.AmazonWebSe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

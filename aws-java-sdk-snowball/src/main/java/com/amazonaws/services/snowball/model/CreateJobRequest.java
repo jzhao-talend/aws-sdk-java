@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -79,8 +84,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String snowballCapacityPreference;
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -116,6 +121,20 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      */
     private Notification notification;
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     */
+    private String clusterId;
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     */
+    private String snowballType;
 
     /**
      * <p>
@@ -559,8 +578,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -590,9 +609,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball,
-     *        rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping
-     *        speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -626,8 +645,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -656,9 +675,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </li>
      * </ul>
      * 
-     * @return The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball,
-     *         rather it represents how quickly the Snowball moves to its destination while in transit. Regional
-     *         shipping speeds are as follows:</p>
+     * @return The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *         represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *         are as follows:</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -692,8 +711,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -723,9 +742,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball,
-     *        rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping
-     *        speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -761,8 +780,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -792,9 +811,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball,
-     *        rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping
-     *        speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -828,8 +847,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball, rather
-     * it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
      * follows:
      * </p>
      * <ul>
@@ -859,9 +878,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not dictate how soon you'll get the Snowball,
-     *        rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping
-     *        speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -936,6 +955,135 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *        <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     */
+
+    public void setClusterId(String clusterId) {
+        this.clusterId = clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @return The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *         <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     */
+
+    public String getClusterId() {
+        return this.clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *        <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withClusterId(String clusterId) {
+        setClusterId(clusterId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(String snowballType) {
+        this.snowballType = snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @return The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *         cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public String getSnowballType() {
+        return this.snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public CreateJobRequest withSnowballType(String snowballType) {
+        setSnowballType(snowballType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(SnowballType snowballType) {
+        this.snowballType = snowballType.toString();
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public CreateJobRequest withSnowballType(SnowballType snowballType) {
+        setSnowballType(snowballType);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -947,23 +1095,27 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobType() != null)
-            sb.append("JobType: " + getJobType() + ",");
+            sb.append("JobType: ").append(getJobType()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getAddressId() != null)
-            sb.append("AddressId: " + getAddressId() + ",");
+            sb.append("AddressId: ").append(getAddressId()).append(",");
         if (getKmsKeyARN() != null)
-            sb.append("KmsKeyARN: " + getKmsKeyARN() + ",");
+            sb.append("KmsKeyARN: ").append(getKmsKeyARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getSnowballCapacityPreference() != null)
-            sb.append("SnowballCapacityPreference: " + getSnowballCapacityPreference() + ",");
+            sb.append("SnowballCapacityPreference: ").append(getSnowballCapacityPreference()).append(",");
         if (getShippingOption() != null)
-            sb.append("ShippingOption: " + getShippingOption() + ",");
+            sb.append("ShippingOption: ").append(getShippingOption()).append(",");
         if (getNotification() != null)
-            sb.append("Notification: " + getNotification());
+            sb.append("Notification: ").append(getNotification()).append(",");
+        if (getClusterId() != null)
+            sb.append("ClusterId: ").append(getClusterId()).append(",");
+        if (getSnowballType() != null)
+            sb.append("SnowballType: ").append(getSnowballType());
         sb.append("}");
         return sb.toString();
     }
@@ -1014,6 +1166,14 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getNotification() != null && other.getNotification().equals(this.getNotification()) == false)
             return false;
+        if (other.getClusterId() == null ^ this.getClusterId() == null)
+            return false;
+        if (other.getClusterId() != null && other.getClusterId().equals(this.getClusterId()) == false)
+            return false;
+        if (other.getSnowballType() == null ^ this.getSnowballType() == null)
+            return false;
+        if (other.getSnowballType() != null && other.getSnowballType().equals(this.getSnowballType()) == false)
+            return false;
         return true;
     }
 
@@ -1031,6 +1191,8 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getSnowballCapacityPreference() == null) ? 0 : getSnowballCapacityPreference().hashCode());
         hashCode = prime * hashCode + ((getShippingOption() == null) ? 0 : getShippingOption().hashCode());
         hashCode = prime * hashCode + ((getNotification() == null) ? 0 : getNotification().hashCode());
+        hashCode = prime * hashCode + ((getClusterId() == null) ? 0 : getClusterId().hashCode());
+        hashCode = prime * hashCode + ((getSnowballType() == null) ? 0 : getSnowballType().hashCode());
         return hashCode;
     }
 
@@ -1038,4 +1200,5 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public CreateJobRequest clone() {
         return (CreateJobRequest) super.clone();
     }
+
 }

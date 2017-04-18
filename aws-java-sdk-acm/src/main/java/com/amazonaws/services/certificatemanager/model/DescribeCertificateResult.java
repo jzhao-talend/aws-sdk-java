@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,26 +13,30 @@
 package com.amazonaws.services.certificatemanager.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DescribeCertificate" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeCertificateResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     * Metadata about an ACM certificate.
      * </p>
      */
     private CertificateDetail certificate;
 
     /**
      * <p>
-     * Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     * Metadata about an ACM certificate.
      * </p>
      * 
      * @param certificate
-     *        Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     *        Metadata about an ACM certificate.
      */
 
     public void setCertificate(CertificateDetail certificate) {
@@ -41,10 +45,10 @@ public class DescribeCertificateResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     * Metadata about an ACM certificate.
      * </p>
      * 
-     * @return Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     * @return Metadata about an ACM certificate.
      */
 
     public CertificateDetail getCertificate() {
@@ -53,11 +57,11 @@ public class DescribeCertificateResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     * Metadata about an ACM certificate.
      * </p>
      * 
      * @param certificate
-     *        Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.
+     *        Metadata about an ACM certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -78,7 +82,7 @@ public class DescribeCertificateResult extends com.amazonaws.AmazonWebServiceRes
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificate() != null)
-            sb.append("Certificate: " + getCertificate());
+            sb.append("Certificate: ").append(getCertificate());
         sb.append("}");
         return sb.toString();
     }
@@ -117,4 +121,5 @@ public class DescribeCertificateResult extends com.amazonaws.AmazonWebServiceRes
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

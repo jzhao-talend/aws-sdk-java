@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.codepipeline;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.codepipeline.model.*;
 
 /**
  * Interface for accessing CodePipeline.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.codepipeline.AbstractAWSCodePipeline} instead.
+ * </p>
  * <p>
  * <fullname>AWS CodePipeline</fullname>
  * <p>
@@ -84,13 +90,13 @@ import com.amazonaws.services.codepipeline.model.*;
  * </li>
  * </ul>
  * <p>
- * Pipelines include <i>stages</i>, which are which are logical groupings of gates and actions. Each stage contains one
- * or more actions that must complete before the next stage begins. A stage will result in success or failure. If a
- * stage fails, then the pipeline stops at that stage and will remain stopped until either a new version of an artifact
- * appears in the source location, or a user takes action to re-run the most recent artifact through the pipeline. You
- * can call <a>GetPipelineState</a>, which displays the status of a pipeline, including the status of stages in the
- * pipeline, or <a>GetPipeline</a>, which returns the entire structure of the pipeline, including the stages of that
- * pipeline. For more information about the structure of stages and actions, also refer to the <a
+ * Pipelines include <i>stages</i>, which are logical groupings of gates and actions. Each stage contains one or more
+ * actions that must complete before the next stage begins. A stage will result in success or failure. If a stage fails,
+ * then the pipeline stops at that stage and will remain stopped until either a new version of an artifact appears in
+ * the source location, or a user takes action to re-run the most recent artifact through the pipeline. You can call
+ * <a>GetPipelineState</a>, which displays the status of a pipeline, including the status of stages in the pipeline, or
+ * <a>GetPipeline</a>, which returns the entire structure of the pipeline, including the stages of that pipeline. For
+ * more information about the structure of stages and actions, also refer to the <a
  * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS CodePipeline Pipeline
  * Structure Reference</a>.
  * </p>
@@ -197,6 +203,7 @@ import com.amazonaws.services.codepipeline.model.*;
  * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCodePipeline {
 
     /**
@@ -228,7 +235,11 @@ public interface AWSCodePipeline {
      *        The endpoint (ex: "codepipeline.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://codepipeline.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -249,7 +260,9 @@ public interface AWSCodePipeline {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -268,6 +281,8 @@ public interface AWSCodePipeline {
      * @throws JobNotFoundException
      *         The specified job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.AcknowledgeJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeJob" target="_top">AWS
+     *      API Documentation</a>
      */
     AcknowledgeJobResult acknowledgeJob(AcknowledgeJobRequest acknowledgeJobRequest);
 
@@ -288,6 +303,8 @@ public interface AWSCodePipeline {
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.AcknowledgeThirdPartyJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeThirdPartyJob"
+     *      target="_top">AWS API Documentation</a>
      */
     AcknowledgeThirdPartyJobResult acknowledgeThirdPartyJob(AcknowledgeThirdPartyJobRequest acknowledgeThirdPartyJobRequest);
 
@@ -305,6 +322,8 @@ public interface AWSCodePipeline {
      * @throws LimitExceededException
      *         The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.
      * @sample AWSCodePipeline.CreateCustomActionType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreateCustomActionType"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateCustomActionTypeResult createCustomActionType(CreateCustomActionTypeRequest createCustomActionTypeRequest);
 
@@ -331,6 +350,8 @@ public interface AWSCodePipeline {
      * @throws LimitExceededException
      *         The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.
      * @sample AWSCodePipeline.CreatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     CreatePipelineResult createPipeline(CreatePipelineRequest createPipelineRequest);
 
@@ -352,6 +373,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @sample AWSCodePipeline.DeleteCustomActionType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeleteCustomActionType"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteCustomActionTypeResult deleteCustomActionType(DeleteCustomActionTypeRequest deleteCustomActionTypeRequest);
 
@@ -366,6 +389,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @sample AWSCodePipeline.DeletePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeletePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     DeletePipelineResult deletePipeline(DeletePipelineRequest deletePipelineRequest);
 
@@ -384,6 +409,8 @@ public interface AWSCodePipeline {
      * @throws StageNotFoundException
      *         The specified stage was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.DisableStageTransition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DisableStageTransition"
+     *      target="_top">AWS API Documentation</a>
      */
     DisableStageTransitionResult disableStageTransition(DisableStageTransitionRequest disableStageTransitionRequest);
 
@@ -402,6 +429,8 @@ public interface AWSCodePipeline {
      * @throws StageNotFoundException
      *         The specified stage was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.EnableStageTransition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/EnableStageTransition"
+     *      target="_top">AWS API Documentation</a>
      */
     EnableStageTransitionResult enableStageTransition(EnableStageTransitionRequest enableStageTransitionRequest);
 
@@ -425,6 +454,8 @@ public interface AWSCodePipeline {
      * @throws JobNotFoundException
      *         The specified job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetJobDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetJobDetails" target="_top">AWS API
+     *      Documentation</a>
      */
     GetJobDetailsResult getJobDetails(GetJobDetailsRequest getJobDetailsRequest);
 
@@ -445,6 +476,8 @@ public interface AWSCodePipeline {
      * @throws PipelineVersionNotFoundException
      *         The specified pipeline version was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetPipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipeline" target="_top">AWS API
+     *      Documentation</a>
      */
     GetPipelineResult getPipeline(GetPipelineRequest getPipelineRequest);
 
@@ -465,6 +498,8 @@ public interface AWSCodePipeline {
      *         The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not
      *         belong to the specified pipeline.
      * @sample AWSCodePipeline.GetPipelineExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipelineExecution"
+     *      target="_top">AWS API Documentation</a>
      */
     GetPipelineExecutionResult getPipelineExecution(GetPipelineExecutionRequest getPipelineExecutionRequest);
 
@@ -481,6 +516,8 @@ public interface AWSCodePipeline {
      * @throws PipelineNotFoundException
      *         The specified pipeline was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetPipelineState
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipelineState" target="_top">AWS
+     *      API Documentation</a>
      */
     GetPipelineStateResult getPipelineState(GetPipelineStateRequest getPipelineStateRequest);
 
@@ -508,6 +545,8 @@ public interface AWSCodePipeline {
      * @throws InvalidJobException
      *         The specified job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetThirdPartyJobDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetThirdPartyJobDetails"
+     *      target="_top">AWS API Documentation</a>
      */
     GetThirdPartyJobDetailsResult getThirdPartyJobDetails(GetThirdPartyJobDetailsRequest getThirdPartyJobDetailsRequest);
 
@@ -525,6 +564,8 @@ public interface AWSCodePipeline {
      *         The next token was specified in an invalid format. Make sure that the next token you provided is the
      *         token returned by a previous call.
      * @sample AWSCodePipeline.ListActionTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypes" target="_top">AWS
+     *      API Documentation</a>
      */
     ListActionTypesResult listActionTypes(ListActionTypesRequest listActionTypesRequest);
 
@@ -540,6 +581,8 @@ public interface AWSCodePipeline {
      *         The next token was specified in an invalid format. Make sure that the next token you provided is the
      *         token returned by a previous call.
      * @sample AWSCodePipeline.ListPipelines
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelines" target="_top">AWS API
+     *      Documentation</a>
      */
     ListPipelinesResult listPipelines(ListPipelinesRequest listPipelinesRequest);
 
@@ -563,6 +606,8 @@ public interface AWSCodePipeline {
      * @throws ActionTypeNotFoundException
      *         The specified action type cannot be found.
      * @sample AWSCodePipeline.PollForJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PollForJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     PollForJobsResult pollForJobs(PollForJobsRequest pollForJobsRequest);
 
@@ -585,6 +630,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @sample AWSCodePipeline.PollForThirdPartyJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PollForThirdPartyJobs"
+     *      target="_top">AWS API Documentation</a>
      */
     PollForThirdPartyJobsResult pollForThirdPartyJobs(PollForThirdPartyJobsRequest pollForThirdPartyJobsRequest);
 
@@ -605,6 +652,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @sample AWSCodePipeline.PutActionRevision
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutActionRevision" target="_top">AWS
+     *      API Documentation</a>
      */
     PutActionRevisionResult putActionRevision(PutActionRevisionRequest putActionRevisionRequest);
 
@@ -630,6 +679,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @sample AWSCodePipeline.PutApprovalResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutApprovalResult" target="_top">AWS
+     *      API Documentation</a>
      */
     PutApprovalResultResult putApprovalResult(PutApprovalResultRequest putApprovalResultRequest);
 
@@ -648,6 +699,8 @@ public interface AWSCodePipeline {
      * @throws InvalidJobStateException
      *         The specified job state was specified in an invalid format.
      * @sample AWSCodePipeline.PutJobFailureResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobFailureResult"
+     *      target="_top">AWS API Documentation</a>
      */
     PutJobFailureResultResult putJobFailureResult(PutJobFailureResultRequest putJobFailureResultRequest);
 
@@ -666,6 +719,8 @@ public interface AWSCodePipeline {
      * @throws InvalidJobStateException
      *         The specified job state was specified in an invalid format.
      * @sample AWSCodePipeline.PutJobSuccessResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobSuccessResult"
+     *      target="_top">AWS API Documentation</a>
      */
     PutJobSuccessResultResult putJobSuccessResult(PutJobSuccessResultRequest putJobSuccessResultRequest);
 
@@ -687,6 +742,8 @@ public interface AWSCodePipeline {
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.PutThirdPartyJobFailureResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobFailureResult"
+     *      target="_top">AWS API Documentation</a>
      */
     PutThirdPartyJobFailureResultResult putThirdPartyJobFailureResult(PutThirdPartyJobFailureResultRequest putThirdPartyJobFailureResultRequest);
 
@@ -708,6 +765,8 @@ public interface AWSCodePipeline {
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.PutThirdPartyJobSuccessResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobSuccessResult"
+     *      target="_top">AWS API Documentation</a>
      */
     PutThirdPartyJobSuccessResultResult putThirdPartyJobSuccessResult(PutThirdPartyJobSuccessResultRequest putThirdPartyJobSuccessResultRequest);
 
@@ -733,6 +792,8 @@ public interface AWSCodePipeline {
      *         The stage has failed in a later run of the pipeline and the pipelineExecutionId associated with the
      *         request is out of date.
      * @sample AWSCodePipeline.RetryStageExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/RetryStageExecution"
+     *      target="_top">AWS API Documentation</a>
      */
     RetryStageExecutionResult retryStageExecution(RetryStageExecutionRequest retryStageExecutionRequest);
 
@@ -750,6 +811,8 @@ public interface AWSCodePipeline {
      * @throws PipelineNotFoundException
      *         The specified pipeline was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.StartPipelineExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StartPipelineExecution"
+     *      target="_top">AWS API Documentation</a>
      */
     StartPipelineExecutionResult startPipelineExecution(StartPipelineExecutionRequest startPipelineExecutionRequest);
 
@@ -774,6 +837,8 @@ public interface AWSCodePipeline {
      * @throws InvalidStructureException
      *         The specified structure was specified in an invalid format.
      * @sample AWSCodePipeline.UpdatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/UpdatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdatePipelineResult updatePipeline(UpdatePipelineRequest updatePipelineRequest);
 

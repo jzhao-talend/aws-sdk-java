@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type that contains the information about the request to list your traffic policy instances.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByPolicy"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListTrafficPolicyInstancesByPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -640,17 +646,17 @@ public class ListTrafficPolicyInstancesByPolicyRequest extends com.amazonaws.Ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTrafficPolicyId() != null)
-            sb.append("TrafficPolicyId: " + getTrafficPolicyId() + ",");
+            sb.append("TrafficPolicyId: ").append(getTrafficPolicyId()).append(",");
         if (getTrafficPolicyVersion() != null)
-            sb.append("TrafficPolicyVersion: " + getTrafficPolicyVersion() + ",");
+            sb.append("TrafficPolicyVersion: ").append(getTrafficPolicyVersion()).append(",");
         if (getHostedZoneIdMarker() != null)
-            sb.append("HostedZoneIdMarker: " + getHostedZoneIdMarker() + ",");
+            sb.append("HostedZoneIdMarker: ").append(getHostedZoneIdMarker()).append(",");
         if (getTrafficPolicyInstanceNameMarker() != null)
-            sb.append("TrafficPolicyInstanceNameMarker: " + getTrafficPolicyInstanceNameMarker() + ",");
+            sb.append("TrafficPolicyInstanceNameMarker: ").append(getTrafficPolicyInstanceNameMarker()).append(",");
         if (getTrafficPolicyInstanceTypeMarker() != null)
-            sb.append("TrafficPolicyInstanceTypeMarker: " + getTrafficPolicyInstanceTypeMarker() + ",");
+            sb.append("TrafficPolicyInstanceTypeMarker: ").append(getTrafficPolicyInstanceTypeMarker()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -712,4 +718,5 @@ public class ListTrafficPolicyInstancesByPolicyRequest extends com.amazonaws.Ama
     public ListTrafficPolicyInstancesByPolicyRequest clone() {
         return (ListTrafficPolicyInstancesByPolicyRequest) super.clone();
     }
+
 }

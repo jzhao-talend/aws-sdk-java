@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Describes the inputs for ListMetrics.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListMetrics" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -36,7 +39,7 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String metricName;
     /**
      * <p>
-     * A list of dimensions to filter against.
+     * The dimensions to filter against.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DimensionFilter> dimensions;
@@ -129,10 +132,10 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A list of dimensions to filter against.
+     * The dimensions to filter against.
      * </p>
      * 
-     * @return A list of dimensions to filter against.
+     * @return The dimensions to filter against.
      */
 
     public java.util.List<DimensionFilter> getDimensions() {
@@ -144,11 +147,11 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A list of dimensions to filter against.
+     * The dimensions to filter against.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions to filter against.
+     *        The dimensions to filter against.
      */
 
     public void setDimensions(java.util.Collection<DimensionFilter> dimensions) {
@@ -162,7 +165,7 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A list of dimensions to filter against.
+     * The dimensions to filter against.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -171,7 +174,7 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions to filter against.
+     *        The dimensions to filter against.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,11 +190,11 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A list of dimensions to filter against.
+     * The dimensions to filter against.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions to filter against.
+     *        The dimensions to filter against.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -252,13 +255,13 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getDimensions() != null)
-            sb.append("Dimensions: " + getDimensions() + ",");
+            sb.append("Dimensions: ").append(getDimensions()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -308,4 +311,5 @@ public class ListMetricsRequest extends com.amazonaws.AmazonWebServiceRequest im
     public ListMetricsRequest clone() {
         return (ListMetricsRequest) super.clone();
     }
+
 }

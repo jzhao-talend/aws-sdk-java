@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The unit of data of the Amazon Kinesis stream, which is composed of a sequence number, a partition key, and a data
  * blob.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/Record" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Record implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Record implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -138,7 +145,7 @@ public class Record implements Serializable, Cloneable {
      * MB).
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -190,6 +197,16 @@ public class Record implements Serializable, Cloneable {
      * inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before
      * base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1
      * MB).
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
      * </p>
      * 
      * @param data
@@ -257,13 +274,13 @@ public class Record implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSequenceNumber() != null)
-            sb.append("SequenceNumber: " + getSequenceNumber() + ",");
+            sb.append("SequenceNumber: ").append(getSequenceNumber()).append(",");
         if (getApproximateArrivalTimestamp() != null)
-            sb.append("ApproximateArrivalTimestamp: " + getApproximateArrivalTimestamp() + ",");
+            sb.append("ApproximateArrivalTimestamp: ").append(getApproximateArrivalTimestamp()).append(",");
         if (getData() != null)
-            sb.append("Data: " + getData() + ",");
+            sb.append("Data: ").append(getData()).append(",");
         if (getPartitionKey() != null)
-            sb.append("PartitionKey: " + getPartitionKey());
+            sb.append("PartitionKey: ").append(getPartitionKey());
         sb.append("}");
         return sb.toString();
     }
@@ -316,5 +333,11 @@ public class Record implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesis.model.transform.RecordMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

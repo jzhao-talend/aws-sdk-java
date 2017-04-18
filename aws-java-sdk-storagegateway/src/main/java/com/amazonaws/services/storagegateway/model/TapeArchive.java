@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents a virtual tape that is archived in the virtual tape shelf (VTS).
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/TapeArchive" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TapeArchive implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TapeArchive implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -33,6 +40,8 @@ public class TapeArchive implements Serializable, Cloneable {
      * </p>
      */
     private String tapeBarcode;
+
+    private java.util.Date tapeCreatedDate;
     /**
      * <p>
      * The size, in bytes, of the archived virtual tape.
@@ -50,7 +59,7 @@ public class TapeArchive implements Serializable, Cloneable {
     private java.util.Date completionTime;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.
+     * The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.
      * </p>
      * <p>
      * The virtual tape is retrieved from the virtual tape shelf (VTS).
@@ -141,6 +150,32 @@ public class TapeArchive implements Serializable, Cloneable {
 
     public TapeArchive withTapeBarcode(String tapeBarcode) {
         setTapeBarcode(tapeBarcode);
+        return this;
+    }
+
+    /**
+     * @param tapeCreatedDate
+     */
+
+    public void setTapeCreatedDate(java.util.Date tapeCreatedDate) {
+        this.tapeCreatedDate = tapeCreatedDate;
+    }
+
+    /**
+     * @return
+     */
+
+    public java.util.Date getTapeCreatedDate() {
+        return this.tapeCreatedDate;
+    }
+
+    /**
+     * @param tapeCreatedDate
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TapeArchive withTapeCreatedDate(java.util.Date tapeCreatedDate) {
+        setTapeCreatedDate(tapeCreatedDate);
         return this;
     }
 
@@ -241,14 +276,14 @@ public class TapeArchive implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.
+     * The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.
      * </p>
      * <p>
      * The virtual tape is retrieved from the virtual tape shelf (VTS).
      * </p>
      * 
      * @param retrievedTo
-     *        The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.</p>
+     *        The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p>
      *        <p>
      *        The virtual tape is retrieved from the virtual tape shelf (VTS).
      */
@@ -259,13 +294,13 @@ public class TapeArchive implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.
+     * The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.
      * </p>
      * <p>
      * The virtual tape is retrieved from the virtual tape shelf (VTS).
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.</p>
+     * @return The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p>
      *         <p>
      *         The virtual tape is retrieved from the virtual tape shelf (VTS).
      */
@@ -276,14 +311,14 @@ public class TapeArchive implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.
+     * The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.
      * </p>
      * <p>
      * The virtual tape is retrieved from the virtual tape shelf (VTS).
      * </p>
      * 
      * @param retrievedTo
-     *        The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.</p>
+     *        The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p>
      *        <p>
      *        The virtual tape is retrieved from the virtual tape shelf (VTS).
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -346,17 +381,19 @@ public class TapeArchive implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTapeARN() != null)
-            sb.append("TapeARN: " + getTapeARN() + ",");
+            sb.append("TapeARN: ").append(getTapeARN()).append(",");
         if (getTapeBarcode() != null)
-            sb.append("TapeBarcode: " + getTapeBarcode() + ",");
+            sb.append("TapeBarcode: ").append(getTapeBarcode()).append(",");
+        if (getTapeCreatedDate() != null)
+            sb.append("TapeCreatedDate: ").append(getTapeCreatedDate()).append(",");
         if (getTapeSizeInBytes() != null)
-            sb.append("TapeSizeInBytes: " + getTapeSizeInBytes() + ",");
+            sb.append("TapeSizeInBytes: ").append(getTapeSizeInBytes()).append(",");
         if (getCompletionTime() != null)
-            sb.append("CompletionTime: " + getCompletionTime() + ",");
+            sb.append("CompletionTime: ").append(getCompletionTime()).append(",");
         if (getRetrievedTo() != null)
-            sb.append("RetrievedTo: " + getRetrievedTo() + ",");
+            sb.append("RetrievedTo: ").append(getRetrievedTo()).append(",");
         if (getTapeStatus() != null)
-            sb.append("TapeStatus: " + getTapeStatus());
+            sb.append("TapeStatus: ").append(getTapeStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -378,6 +415,10 @@ public class TapeArchive implements Serializable, Cloneable {
         if (other.getTapeBarcode() == null ^ this.getTapeBarcode() == null)
             return false;
         if (other.getTapeBarcode() != null && other.getTapeBarcode().equals(this.getTapeBarcode()) == false)
+            return false;
+        if (other.getTapeCreatedDate() == null ^ this.getTapeCreatedDate() == null)
+            return false;
+        if (other.getTapeCreatedDate() != null && other.getTapeCreatedDate().equals(this.getTapeCreatedDate()) == false)
             return false;
         if (other.getTapeSizeInBytes() == null ^ this.getTapeSizeInBytes() == null)
             return false;
@@ -405,6 +446,7 @@ public class TapeArchive implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getTapeARN() == null) ? 0 : getTapeARN().hashCode());
         hashCode = prime * hashCode + ((getTapeBarcode() == null) ? 0 : getTapeBarcode().hashCode());
+        hashCode = prime * hashCode + ((getTapeCreatedDate() == null) ? 0 : getTapeCreatedDate().hashCode());
         hashCode = prime * hashCode + ((getTapeSizeInBytes() == null) ? 0 : getTapeSizeInBytes().hashCode());
         hashCode = prime * hashCode + ((getCompletionTime() == null) ? 0 : getCompletionTime().hashCode());
         hashCode = prime * hashCode + ((getRetrievedTo() == null) ? 0 : getRetrievedTo().hashCode());
@@ -419,5 +461,11 @@ public class TapeArchive implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.TapeArchiveMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

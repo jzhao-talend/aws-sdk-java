@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,9 @@
 package com.amazonaws.services.simpledb.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DomainMetadataResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.services.simpledb.SimpleDBResponseMetadata> implements
         Serializable, Cloneable {
 
@@ -285,19 +284,19 @@ public class DomainMetadataResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getItemCount() != null)
-            sb.append("ItemCount: " + getItemCount() + ",");
+            sb.append("ItemCount: ").append(getItemCount()).append(",");
         if (getItemNamesSizeBytes() != null)
-            sb.append("ItemNamesSizeBytes: " + getItemNamesSizeBytes() + ",");
+            sb.append("ItemNamesSizeBytes: ").append(getItemNamesSizeBytes()).append(",");
         if (getAttributeNameCount() != null)
-            sb.append("AttributeNameCount: " + getAttributeNameCount() + ",");
+            sb.append("AttributeNameCount: ").append(getAttributeNameCount()).append(",");
         if (getAttributeNamesSizeBytes() != null)
-            sb.append("AttributeNamesSizeBytes: " + getAttributeNamesSizeBytes() + ",");
+            sb.append("AttributeNamesSizeBytes: ").append(getAttributeNamesSizeBytes()).append(",");
         if (getAttributeValueCount() != null)
-            sb.append("AttributeValueCount: " + getAttributeValueCount() + ",");
+            sb.append("AttributeValueCount: ").append(getAttributeValueCount()).append(",");
         if (getAttributeValuesSizeBytes() != null)
-            sb.append("AttributeValuesSizeBytes: " + getAttributeValuesSizeBytes() + ",");
+            sb.append("AttributeValuesSizeBytes: ").append(getAttributeValuesSizeBytes()).append(",");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp());
+            sb.append("Timestamp: ").append(getTimestamp());
         sb.append("}");
         return sb.toString();
     }
@@ -366,4 +365,5 @@ public class DomainMetadataResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

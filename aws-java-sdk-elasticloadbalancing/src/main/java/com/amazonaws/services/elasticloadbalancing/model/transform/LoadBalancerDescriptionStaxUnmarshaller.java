@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticloadbalancing.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticloadbalancing.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * LoadBalancerDescription StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LoadBalancerDescriptionStaxUnmarshaller implements Unmarshaller<LoadBalancerDescription, StaxUnmarshallerContext> {
 
     public LoadBalancerDescription unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -65,6 +65,11 @@ public class LoadBalancerDescriptionStaxUnmarshaller implements Unmarshaller<Loa
                     continue;
                 }
 
+                if (context.testExpression("ListenerDescriptions", targetDepth)) {
+                    loadBalancerDescription.withListenerDescriptions(new ArrayList<ListenerDescription>());
+                    continue;
+                }
+
                 if (context.testExpression("ListenerDescriptions/member", targetDepth)) {
                     loadBalancerDescription.withListenerDescriptions(ListenerDescriptionStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -75,13 +80,28 @@ public class LoadBalancerDescriptionStaxUnmarshaller implements Unmarshaller<Loa
                     continue;
                 }
 
+                if (context.testExpression("BackendServerDescriptions", targetDepth)) {
+                    loadBalancerDescription.withBackendServerDescriptions(new ArrayList<BackendServerDescription>());
+                    continue;
+                }
+
                 if (context.testExpression("BackendServerDescriptions/member", targetDepth)) {
                     loadBalancerDescription.withBackendServerDescriptions(BackendServerDescriptionStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("AvailabilityZones", targetDepth)) {
+                    loadBalancerDescription.withAvailabilityZones(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("AvailabilityZones/member", targetDepth)) {
                     loadBalancerDescription.withAvailabilityZones(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Subnets", targetDepth)) {
+                    loadBalancerDescription.withSubnets(new ArrayList<String>());
                     continue;
                 }
 
@@ -92,6 +112,11 @@ public class LoadBalancerDescriptionStaxUnmarshaller implements Unmarshaller<Loa
 
                 if (context.testExpression("VPCId", targetDepth)) {
                     loadBalancerDescription.setVPCId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Instances", targetDepth)) {
+                    loadBalancerDescription.withInstances(new ArrayList<Instance>());
                     continue;
                 }
 
@@ -107,6 +132,11 @@ public class LoadBalancerDescriptionStaxUnmarshaller implements Unmarshaller<Loa
 
                 if (context.testExpression("SourceSecurityGroup", targetDepth)) {
                     loadBalancerDescription.setSourceSecurityGroup(SourceSecurityGroupStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SecurityGroups", targetDepth)) {
+                    loadBalancerDescription.withSecurityGroups(new ArrayList<String>());
                     continue;
                 }
 

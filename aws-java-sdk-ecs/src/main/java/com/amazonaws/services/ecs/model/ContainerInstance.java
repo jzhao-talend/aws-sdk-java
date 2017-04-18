@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An EC2 instance that is running the Amazon ECS agent and has been registered with a cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ContainerInstance" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ContainerInstance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ContainerInstance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -36,6 +43,16 @@ public class ContainerInstance implements Serializable, Cloneable {
      * </p>
      */
     private String ec2InstanceId;
+    /**
+     * <p>
+     * The version counter for the container instance. Every time a container instance experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
+     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     */
+    private Long version;
     /**
      * <p>
      * The version information for the Amazon ECS container agent and Docker daemon running on the container instance.
@@ -95,7 +112,8 @@ public class ContainerInstance implements Serializable, Cloneable {
     private String agentUpdateStatus;
     /**
      * <p>
-     * The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * The attributes set for the container instance, either by the Amazon ECS container agent at instance registration
+     * or manually with the <a>PutAttributes</a> operation.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Attribute> attributes;
@@ -198,6 +216,70 @@ public class ContainerInstance implements Serializable, Cloneable {
 
     public ContainerInstance withEc2InstanceId(String ec2InstanceId) {
         setEc2InstanceId(ec2InstanceId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The version counter for the container instance. Every time a container instance experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
+     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @param version
+     *        The version counter for the container instance. Every time a container instance experiences a change that
+     *        triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
+     *        container instance state with CloudWatch events, you can compare the version of a container instance
+     *        reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *        (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     */
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    /**
+     * <p>
+     * The version counter for the container instance. Every time a container instance experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
+     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @return The version counter for the container instance. Every time a container instance experiences a change that
+     *         triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
+     *         container instance state with CloudWatch events, you can compare the version of a container instance
+     *         reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *         (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     */
+
+    public Long getVersion() {
+        return this.version;
+    }
+
+    /**
+     * <p>
+     * The version counter for the container instance. Every time a container instance experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
+     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @param version
+     *        The version counter for the container instance. Every time a container instance experiences a change that
+     *        triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
+     *        container instance state with CloudWatch events, you can compare the version of a container instance
+     *        reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *        (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerInstance withVersion(Long version) {
+        setVersion(version);
         return this;
     }
 
@@ -709,10 +791,12 @@ public class ContainerInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * The attributes set for the container instance, either by the Amazon ECS container agent at instance registration
+     * or manually with the <a>PutAttributes</a> operation.
      * </p>
      * 
-     * @return The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * @return The attributes set for the container instance, either by the Amazon ECS container agent at instance
+     *         registration or manually with the <a>PutAttributes</a> operation.
      */
 
     public java.util.List<Attribute> getAttributes() {
@@ -724,11 +808,13 @@ public class ContainerInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * The attributes set for the container instance, either by the Amazon ECS container agent at instance registration
+     * or manually with the <a>PutAttributes</a> operation.
      * </p>
      * 
      * @param attributes
-     *        The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     *        The attributes set for the container instance, either by the Amazon ECS container agent at instance
+     *        registration or manually with the <a>PutAttributes</a> operation.
      */
 
     public void setAttributes(java.util.Collection<Attribute> attributes) {
@@ -742,7 +828,8 @@ public class ContainerInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * The attributes set for the container instance, either by the Amazon ECS container agent at instance registration
+     * or manually with the <a>PutAttributes</a> operation.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -751,7 +838,8 @@ public class ContainerInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param attributes
-     *        The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     *        The attributes set for the container instance, either by the Amazon ECS container agent at instance
+     *        registration or manually with the <a>PutAttributes</a> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -767,11 +855,13 @@ public class ContainerInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     * The attributes set for the container instance, either by the Amazon ECS container agent at instance registration
+     * or manually with the <a>PutAttributes</a> operation.
      * </p>
      * 
      * @param attributes
-     *        The attributes set for the container instance by the Amazon ECS container agent at instance registration.
+     *        The attributes set for the container instance, either by the Amazon ECS container agent at instance
+     *        registration or manually with the <a>PutAttributes</a> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -792,27 +882,29 @@ public class ContainerInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getContainerInstanceArn() != null)
-            sb.append("ContainerInstanceArn: " + getContainerInstanceArn() + ",");
+            sb.append("ContainerInstanceArn: ").append(getContainerInstanceArn()).append(",");
         if (getEc2InstanceId() != null)
-            sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");
+            sb.append("Ec2InstanceId: ").append(getEc2InstanceId()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getVersionInfo() != null)
-            sb.append("VersionInfo: " + getVersionInfo() + ",");
+            sb.append("VersionInfo: ").append(getVersionInfo()).append(",");
         if (getRemainingResources() != null)
-            sb.append("RemainingResources: " + getRemainingResources() + ",");
+            sb.append("RemainingResources: ").append(getRemainingResources()).append(",");
         if (getRegisteredResources() != null)
-            sb.append("RegisteredResources: " + getRegisteredResources() + ",");
+            sb.append("RegisteredResources: ").append(getRegisteredResources()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getAgentConnected() != null)
-            sb.append("AgentConnected: " + getAgentConnected() + ",");
+            sb.append("AgentConnected: ").append(getAgentConnected()).append(",");
         if (getRunningTasksCount() != null)
-            sb.append("RunningTasksCount: " + getRunningTasksCount() + ",");
+            sb.append("RunningTasksCount: ").append(getRunningTasksCount()).append(",");
         if (getPendingTasksCount() != null)
-            sb.append("PendingTasksCount: " + getPendingTasksCount() + ",");
+            sb.append("PendingTasksCount: ").append(getPendingTasksCount()).append(",");
         if (getAgentUpdateStatus() != null)
-            sb.append("AgentUpdateStatus: " + getAgentUpdateStatus() + ",");
+            sb.append("AgentUpdateStatus: ").append(getAgentUpdateStatus()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes());
+            sb.append("Attributes: ").append(getAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -834,6 +926,10 @@ public class ContainerInstance implements Serializable, Cloneable {
         if (other.getEc2InstanceId() == null ^ this.getEc2InstanceId() == null)
             return false;
         if (other.getEc2InstanceId() != null && other.getEc2InstanceId().equals(this.getEc2InstanceId()) == false)
+            return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
             return false;
         if (other.getVersionInfo() == null ^ this.getVersionInfo() == null)
             return false;
@@ -881,6 +977,7 @@ public class ContainerInstance implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getContainerInstanceArn() == null) ? 0 : getContainerInstanceArn().hashCode());
         hashCode = prime * hashCode + ((getEc2InstanceId() == null) ? 0 : getEc2InstanceId().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         hashCode = prime * hashCode + ((getVersionInfo() == null) ? 0 : getVersionInfo().hashCode());
         hashCode = prime * hashCode + ((getRemainingResources() == null) ? 0 : getRemainingResources().hashCode());
         hashCode = prime * hashCode + ((getRegisteredResources() == null) ? 0 : getRegisteredResources().hashCode());
@@ -900,5 +997,11 @@ public class ContainerInstance implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ContainerInstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

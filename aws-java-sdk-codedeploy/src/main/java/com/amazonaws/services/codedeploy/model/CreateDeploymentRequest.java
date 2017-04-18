@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a create deployment operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeployment" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -70,6 +76,12 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private Boolean ignoreApplicationStopFailures;
+    /**
+     * <p>
+     * Information about the instances that will belong to the replacement environment in a blue/green deployment.
+     * </p>
+     */
+    private TargetInstances targetInstances;
     /**
      * <p>
      * Configuration information for an automatic rollback that is added when a deployment is created.
@@ -417,6 +429,49 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
+     * Information about the instances that will belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @param targetInstances
+     *        Information about the instances that will belong to the replacement environment in a blue/green
+     *        deployment.
+     */
+
+    public void setTargetInstances(TargetInstances targetInstances) {
+        this.targetInstances = targetInstances;
+    }
+
+    /**
+     * <p>
+     * Information about the instances that will belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @return Information about the instances that will belong to the replacement environment in a blue/green
+     *         deployment.
+     */
+
+    public TargetInstances getTargetInstances() {
+        return this.targetInstances;
+    }
+
+    /**
+     * <p>
+     * Information about the instances that will belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @param targetInstances
+     *        Information about the instances that will belong to the replacement environment in a blue/green
+     *        deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDeploymentRequest withTargetInstances(TargetInstances targetInstances) {
+        setTargetInstances(targetInstances);
+        return this;
+    }
+
+    /**
+     * <p>
      * Configuration information for an automatic rollback that is added when a deployment is created.
      * </p>
      * 
@@ -527,21 +582,23 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getDeploymentGroupName() != null)
-            sb.append("DeploymentGroupName: " + getDeploymentGroupName() + ",");
+            sb.append("DeploymentGroupName: ").append(getDeploymentGroupName()).append(",");
         if (getRevision() != null)
-            sb.append("Revision: " + getRevision() + ",");
+            sb.append("Revision: ").append(getRevision()).append(",");
         if (getDeploymentConfigName() != null)
-            sb.append("DeploymentConfigName: " + getDeploymentConfigName() + ",");
+            sb.append("DeploymentConfigName: ").append(getDeploymentConfigName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getIgnoreApplicationStopFailures() != null)
-            sb.append("IgnoreApplicationStopFailures: " + getIgnoreApplicationStopFailures() + ",");
+            sb.append("IgnoreApplicationStopFailures: ").append(getIgnoreApplicationStopFailures()).append(",");
+        if (getTargetInstances() != null)
+            sb.append("TargetInstances: ").append(getTargetInstances()).append(",");
         if (getAutoRollbackConfiguration() != null)
-            sb.append("AutoRollbackConfiguration: " + getAutoRollbackConfiguration() + ",");
+            sb.append("AutoRollbackConfiguration: ").append(getAutoRollbackConfiguration()).append(",");
         if (getUpdateOutdatedInstancesOnly() != null)
-            sb.append("UpdateOutdatedInstancesOnly: " + getUpdateOutdatedInstancesOnly());
+            sb.append("UpdateOutdatedInstancesOnly: ").append(getUpdateOutdatedInstancesOnly());
         sb.append("}");
         return sb.toString();
     }
@@ -581,6 +638,10 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
         if (other.getIgnoreApplicationStopFailures() != null
                 && other.getIgnoreApplicationStopFailures().equals(this.getIgnoreApplicationStopFailures()) == false)
             return false;
+        if (other.getTargetInstances() == null ^ this.getTargetInstances() == null)
+            return false;
+        if (other.getTargetInstances() != null && other.getTargetInstances().equals(this.getTargetInstances()) == false)
+            return false;
         if (other.getAutoRollbackConfiguration() == null ^ this.getAutoRollbackConfiguration() == null)
             return false;
         if (other.getAutoRollbackConfiguration() != null && other.getAutoRollbackConfiguration().equals(this.getAutoRollbackConfiguration()) == false)
@@ -603,6 +664,7 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getDeploymentConfigName() == null) ? 0 : getDeploymentConfigName().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getIgnoreApplicationStopFailures() == null) ? 0 : getIgnoreApplicationStopFailures().hashCode());
+        hashCode = prime * hashCode + ((getTargetInstances() == null) ? 0 : getTargetInstances().hashCode());
         hashCode = prime * hashCode + ((getAutoRollbackConfiguration() == null) ? 0 : getAutoRollbackConfiguration().hashCode());
         hashCode = prime * hashCode + ((getUpdateOutdatedInstancesOnly() == null) ? 0 : getUpdateOutdatedInstancesOnly().hashCode());
         return hashCode;
@@ -612,4 +674,5 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     public CreateDeploymentRequest clone() {
         return (CreateDeploymentRequest) super.clone();
     }
+
 }

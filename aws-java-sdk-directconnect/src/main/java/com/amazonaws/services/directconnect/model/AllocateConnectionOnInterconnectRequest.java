@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the AllocateConnectionOnInterconnect operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocateConnectionOnInterconnect"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -33,7 +39,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      * Default: None
      * </p>
      * <p>
-     * Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     * Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      * </p>
      */
     private String bandwidth;
@@ -97,7 +103,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      * Default: None
      * </p>
      * <p>
-     * Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     * Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      * </p>
      * 
      * @param bandwidth
@@ -109,7 +115,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      *        Default: None
      *        </p>
      *        <p>
-     *        Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     *        Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      */
 
     public void setBandwidth(String bandwidth) {
@@ -127,7 +133,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      * Default: None
      * </p>
      * <p>
-     * Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     * Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      * </p>
      * 
      * @return Bandwidth of the connection.</p>
@@ -138,7 +144,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      *         Default: None
      *         </p>
      *         <p>
-     *         Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     *         Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      */
 
     public String getBandwidth() {
@@ -156,7 +162,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      * Default: None
      * </p>
      * <p>
-     * Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     * Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      * </p>
      * 
      * @param bandwidth
@@ -168,7 +174,7 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
      *        Default: None
      *        </p>
      *        <p>
-     *        Values: 50M, 100M, 200M, 300M, 400M, or 500M
+     *        Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -481,15 +487,15 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBandwidth() != null)
-            sb.append("Bandwidth: " + getBandwidth() + ",");
+            sb.append("Bandwidth: ").append(getBandwidth()).append(",");
         if (getConnectionName() != null)
-            sb.append("ConnectionName: " + getConnectionName() + ",");
+            sb.append("ConnectionName: ").append(getConnectionName()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getInterconnectId() != null)
-            sb.append("InterconnectId: " + getInterconnectId() + ",");
+            sb.append("InterconnectId: ").append(getInterconnectId()).append(",");
         if (getVlan() != null)
-            sb.append("Vlan: " + getVlan());
+            sb.append("Vlan: ").append(getVlan());
         sb.append("}");
         return sb.toString();
     }
@@ -544,4 +550,5 @@ public class AllocateConnectionOnInterconnectRequest extends com.amazonaws.Amazo
     public AllocateConnectionOnInterconnectRequest clone() {
         return (AllocateConnectionOnInterconnectRequest) super.clone();
     }
+
 }

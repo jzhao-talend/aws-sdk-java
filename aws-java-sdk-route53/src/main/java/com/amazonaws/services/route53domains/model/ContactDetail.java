@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * ContactDetail includes the following elements.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ContactDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ContactDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ContactDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -2438,33 +2445,33 @@ public class ContactDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFirstName() != null)
-            sb.append("FirstName: " + getFirstName() + ",");
+            sb.append("FirstName: ").append(getFirstName()).append(",");
         if (getLastName() != null)
-            sb.append("LastName: " + getLastName() + ",");
+            sb.append("LastName: ").append(getLastName()).append(",");
         if (getContactType() != null)
-            sb.append("ContactType: " + getContactType() + ",");
+            sb.append("ContactType: ").append(getContactType()).append(",");
         if (getOrganizationName() != null)
-            sb.append("OrganizationName: " + getOrganizationName() + ",");
+            sb.append("OrganizationName: ").append(getOrganizationName()).append(",");
         if (getAddressLine1() != null)
-            sb.append("AddressLine1: " + getAddressLine1() + ",");
+            sb.append("AddressLine1: ").append(getAddressLine1()).append(",");
         if (getAddressLine2() != null)
-            sb.append("AddressLine2: " + getAddressLine2() + ",");
+            sb.append("AddressLine2: ").append(getAddressLine2()).append(",");
         if (getCity() != null)
-            sb.append("City: " + getCity() + ",");
+            sb.append("City: ").append(getCity()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getCountryCode() != null)
-            sb.append("CountryCode: " + getCountryCode() + ",");
+            sb.append("CountryCode: ").append(getCountryCode()).append(",");
         if (getZipCode() != null)
-            sb.append("ZipCode: " + getZipCode() + ",");
+            sb.append("ZipCode: ").append(getZipCode()).append(",");
         if (getPhoneNumber() != null)
-            sb.append("PhoneNumber: " + getPhoneNumber() + ",");
+            sb.append("PhoneNumber: ").append(getPhoneNumber()).append(",");
         if (getEmail() != null)
-            sb.append("Email: " + getEmail() + ",");
+            sb.append("Email: ").append(getEmail()).append(",");
         if (getFax() != null)
-            sb.append("Fax: " + getFax() + ",");
+            sb.append("Fax: ").append(getFax()).append(",");
         if (getExtraParams() != null)
-            sb.append("ExtraParams: " + getExtraParams());
+            sb.append("ExtraParams: ").append(getExtraParams());
         sb.append("}");
         return sb.toString();
     }
@@ -2567,5 +2574,11 @@ public class ContactDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.route53domains.model.transform.ContactDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

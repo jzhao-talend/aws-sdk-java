@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -58,6 +59,7 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a
  * href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateAccountResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -296,13 +298,13 @@ public class UpdateAccountResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCloudwatchRoleArn() != null)
-            sb.append("CloudwatchRoleArn: " + getCloudwatchRoleArn() + ",");
+            sb.append("CloudwatchRoleArn: ").append(getCloudwatchRoleArn()).append(",");
         if (getThrottleSettings() != null)
-            sb.append("ThrottleSettings: " + getThrottleSettings() + ",");
+            sb.append("ThrottleSettings: ").append(getThrottleSettings()).append(",");
         if (getFeatures() != null)
-            sb.append("Features: " + getFeatures() + ",");
+            sb.append("Features: ").append(getFeatures()).append(",");
         if (getApiKeyVersion() != null)
-            sb.append("ApiKeyVersion: " + getApiKeyVersion());
+            sb.append("ApiKeyVersion: ").append(getApiKeyVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -356,4 +358,5 @@ public class UpdateAccountResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

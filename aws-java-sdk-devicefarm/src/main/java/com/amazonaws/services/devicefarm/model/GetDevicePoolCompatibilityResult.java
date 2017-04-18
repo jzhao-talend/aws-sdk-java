@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the result of describe device pool compatibility request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevicePoolCompatibility"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetDevicePoolCompatibilityResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -186,9 +191,9 @@ public class GetDevicePoolCompatibilityResult extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCompatibleDevices() != null)
-            sb.append("CompatibleDevices: " + getCompatibleDevices() + ",");
+            sb.append("CompatibleDevices: ").append(getCompatibleDevices()).append(",");
         if (getIncompatibleDevices() != null)
-            sb.append("IncompatibleDevices: " + getIncompatibleDevices());
+            sb.append("IncompatibleDevices: ").append(getIncompatibleDevices());
         sb.append("}");
         return sb.toString();
     }
@@ -232,4 +237,5 @@ public class GetDevicePoolCompatibilityResult extends com.amazonaws.AmazonWebSer
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

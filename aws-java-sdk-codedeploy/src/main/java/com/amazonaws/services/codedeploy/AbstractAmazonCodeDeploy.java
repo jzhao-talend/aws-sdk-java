@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.codedeploy;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.codedeploy.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.codedeploy.waiters.AmazonCodeDeployWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.codedeploy.waiters.AmazonCodeDeployWaiters;
  * Abstract implementation of {@code AmazonCodeDeploy}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonCodeDeploy implements AmazonCodeDeploy {
 
     protected AbstractAmazonCodeDeploy() {
@@ -83,6 +86,11 @@ public class AbstractAmazonCodeDeploy implements AmazonCodeDeploy {
     @Override
     public BatchGetOnPremisesInstancesResult batchGetOnPremisesInstances() {
         return batchGetOnPremisesInstances(new BatchGetOnPremisesInstancesRequest());
+    }
+
+    @Override
+    public ContinueDeploymentResult continueDeployment(ContinueDeploymentRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -231,6 +239,11 @@ public class AbstractAmazonCodeDeploy implements AmazonCodeDeploy {
     }
 
     @Override
+    public SkipWaitTimeForInstanceTerminationResult skipWaitTimeForInstanceTermination(SkipWaitTimeForInstanceTerminationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StopDeploymentResult stopDeployment(StopDeploymentRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -264,4 +277,5 @@ public class AbstractAmazonCodeDeploy implements AmazonCodeDeploy {
     public AmazonCodeDeployWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

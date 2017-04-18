@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A description of a single data modification that was performed on an item in a DynamoDB table.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/StreamRecord" target="_top">AWS API
+ *      Documentation</a>
  */
-public class StreamRecord implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StreamRecord implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -696,19 +703,19 @@ public class StreamRecord implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApproximateCreationDateTime() != null)
-            sb.append("ApproximateCreationDateTime: " + getApproximateCreationDateTime() + ",");
+            sb.append("ApproximateCreationDateTime: ").append(getApproximateCreationDateTime()).append(",");
         if (getKeys() != null)
-            sb.append("Keys: " + getKeys() + ",");
+            sb.append("Keys: ").append(getKeys()).append(",");
         if (getNewImage() != null)
-            sb.append("NewImage: " + getNewImage() + ",");
+            sb.append("NewImage: ").append(getNewImage()).append(",");
         if (getOldImage() != null)
-            sb.append("OldImage: " + getOldImage() + ",");
+            sb.append("OldImage: ").append(getOldImage()).append(",");
         if (getSequenceNumber() != null)
-            sb.append("SequenceNumber: " + getSequenceNumber() + ",");
+            sb.append("SequenceNumber: ").append(getSequenceNumber()).append(",");
         if (getSizeBytes() != null)
-            sb.append("SizeBytes: " + getSizeBytes() + ",");
+            sb.append("SizeBytes: ").append(getSizeBytes()).append(",");
         if (getStreamViewType() != null)
-            sb.append("StreamViewType: " + getStreamViewType());
+            sb.append("StreamViewType: ").append(getStreamViewType());
         sb.append("}");
         return sb.toString();
     }
@@ -776,5 +783,11 @@ public class StreamRecord implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.StreamRecordMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

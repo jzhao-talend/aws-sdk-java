@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A summary of the information about a CloudFront distribution.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DistributionSummary" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DistributionSummary implements Serializable, Cloneable {
 
     /**
@@ -951,41 +956,41 @@ public class DistributionSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getARN() != null)
-            sb.append("ARN: " + getARN() + ",");
+            sb.append("ARN: ").append(getARN()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getLastModifiedTime() != null)
-            sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");
+            sb.append("LastModifiedTime: ").append(getLastModifiedTime()).append(",");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getAliases() != null)
-            sb.append("Aliases: " + getAliases() + ",");
+            sb.append("Aliases: ").append(getAliases()).append(",");
         if (getOrigins() != null)
-            sb.append("Origins: " + getOrigins() + ",");
+            sb.append("Origins: ").append(getOrigins()).append(",");
         if (getDefaultCacheBehavior() != null)
-            sb.append("DefaultCacheBehavior: " + getDefaultCacheBehavior() + ",");
+            sb.append("DefaultCacheBehavior: ").append(getDefaultCacheBehavior()).append(",");
         if (getCacheBehaviors() != null)
-            sb.append("CacheBehaviors: " + getCacheBehaviors() + ",");
+            sb.append("CacheBehaviors: ").append(getCacheBehaviors()).append(",");
         if (getCustomErrorResponses() != null)
-            sb.append("CustomErrorResponses: " + getCustomErrorResponses() + ",");
+            sb.append("CustomErrorResponses: ").append(getCustomErrorResponses()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment() + ",");
+            sb.append("Comment: ").append(getComment()).append(",");
         if (getPriceClass() != null)
-            sb.append("PriceClass: " + getPriceClass() + ",");
+            sb.append("PriceClass: ").append(getPriceClass()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getViewerCertificate() != null)
-            sb.append("ViewerCertificate: " + getViewerCertificate() + ",");
+            sb.append("ViewerCertificate: ").append(getViewerCertificate()).append(",");
         if (getRestrictions() != null)
-            sb.append("Restrictions: " + getRestrictions() + ",");
+            sb.append("Restrictions: ").append(getRestrictions()).append(",");
         if (getWebACLId() != null)
-            sb.append("WebACLId: " + getWebACLId() + ",");
+            sb.append("WebACLId: ").append(getWebACLId()).append(",");
         if (getHttpVersion() != null)
-            sb.append("HttpVersion: " + getHttpVersion() + ",");
+            sb.append("HttpVersion: ").append(getHttpVersion()).append(",");
         if (getIsIPV6Enabled() != null)
-            sb.append("IsIPV6Enabled: " + getIsIPV6Enabled());
+            sb.append("IsIPV6Enabled: ").append(getIsIPV6Enabled());
         sb.append("}");
         return sb.toString();
     }
@@ -1109,4 +1114,5 @@ public class DistributionSummary implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

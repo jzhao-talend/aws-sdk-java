@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DetachLoadBalancerTargetGroupsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -158,9 +163,9 @@ public class DetachLoadBalancerTargetGroupsRequest extends com.amazonaws.AmazonW
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getTargetGroupARNs() != null)
-            sb.append("TargetGroupARNs: " + getTargetGroupARNs());
+            sb.append("TargetGroupARNs: ").append(getTargetGroupARNs());
         sb.append("}");
         return sb.toString();
     }
@@ -200,4 +205,5 @@ public class DetachLoadBalancerTargetGroupsRequest extends com.amazonaws.AmazonW
     public DetachLoadBalancerTargetGroupsRequest clone() {
         return (DetachLoadBalancerTargetGroupsRequest) super.clone();
     }
+
 }

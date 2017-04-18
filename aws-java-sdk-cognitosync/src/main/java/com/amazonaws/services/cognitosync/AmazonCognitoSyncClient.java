@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.cognitosync.AmazonCognitoSyncClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -68,6 +72,7 @@ import com.amazonaws.services.cognitosync.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements AmazonCognitoSync {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -80,51 +85,52 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .withContentTypeOverride("")
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ConcurrentModification").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.ConcurrentModificationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidConfiguration").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.InvalidConfigurationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameter").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.InvalidParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.DuplicateRequestException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceConflict").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.ResourceConflictException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LambdaThrottled").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.LambdaThrottledException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedError").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.NotAuthorizedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalError").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.InternalErrorException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TooManyRequests").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.TooManyRequestsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaFunctionOutput").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.InvalidLambdaFunctionOutputException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceeded").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.LimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AlreadyStreamed").withModeledClass(
-                            com.amazonaws.services.cognitosync.model.AlreadyStreamedException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.cognitosync.model.AmazonCognitoSyncException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .withContentTypeOverride("")
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModification").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.ConcurrentModificationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConfiguration").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.InvalidConfigurationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameter").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.InvalidParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.DuplicateRequestException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceConflict").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.ResourceConflictException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LambdaThrottled").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.LambdaThrottledException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedError").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.NotAuthorizedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalError").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.InternalErrorException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequests").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.TooManyRequestsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaFunctionOutput").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.InvalidLambdaFunctionOutputException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceeded").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.LimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AlreadyStreamed").withModeledClass(
+                                    com.amazonaws.services.cognitosync.model.AlreadyStreamedException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.cognitosync.model.AmazonCognitoSyncException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon Cognito Sync. A credentials provider chain will be
@@ -140,7 +146,9 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCognitoSyncClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -163,7 +171,9 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -178,7 +188,10 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonCognitoSyncClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -196,7 +209,10 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Cognito Sync (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoSyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -213,7 +229,9 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -231,7 +249,10 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Cognito Sync (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoSyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -251,12 +272,20 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonCognitoSyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoSyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCognitoSyncClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonCognitoSyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonCognitoSyncClientBuilder builder() {
+        return AmazonCognitoSyncClientBuilder.standard();
     }
 
     /**
@@ -314,9 +343,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *         An exception thrown when a bulk publish operation is requested less than 24 hours after a previous bulk
      *         publish operation completed successfully.
      * @sample AmazonCognitoSync.BulkPublish
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/BulkPublish" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public BulkPublishResult bulkPublish(BulkPublishRequest bulkPublishRequest) {
+    public BulkPublishResult bulkPublish(BulkPublishRequest request) {
+        request = beforeClientExecution(request);
+        return executeBulkPublish(request);
+    }
+
+    @SdkInternalApi
+    final BulkPublishResult executeBulkPublish(BulkPublishRequest bulkPublishRequest) {
+
         ExecutionContext executionContext = createExecutionContext(bulkPublishRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -326,7 +364,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new BulkPublishRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(bulkPublishRequest));
+                request = new BulkPublishRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(bulkPublishRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -373,9 +411,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      *         Thrown if an update can't be applied because the resource was changed by another call and this would
      *         result in a conflict.
      * @sample AmazonCognitoSync.DeleteDataset
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DeleteDataset" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDatasetResult deleteDataset(DeleteDatasetRequest deleteDatasetRequest) {
+    public DeleteDatasetResult deleteDataset(DeleteDatasetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDataset(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDatasetResult executeDeleteDataset(DeleteDatasetRequest deleteDatasetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDatasetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -385,7 +432,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteDatasetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDatasetRequest));
+                request = new DeleteDatasetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDatasetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -429,9 +476,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.DescribeDataset
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeDataset" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeDatasetResult describeDataset(DescribeDatasetRequest describeDatasetRequest) {
+    public DescribeDatasetResult describeDataset(DescribeDatasetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDataset(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDatasetResult executeDescribeDataset(DescribeDatasetRequest describeDatasetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDatasetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -441,7 +497,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeDatasetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDatasetRequest));
+                request = new DescribeDatasetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDatasetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -483,9 +539,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.DescribeIdentityPoolUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityPoolUsage"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeIdentityPoolUsageResult describeIdentityPoolUsage(DescribeIdentityPoolUsageRequest describeIdentityPoolUsageRequest) {
+    public DescribeIdentityPoolUsageResult describeIdentityPoolUsage(DescribeIdentityPoolUsageRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeIdentityPoolUsage(request);
+    }
+
+    @SdkInternalApi
+    final DescribeIdentityPoolUsageResult executeDescribeIdentityPoolUsage(DescribeIdentityPoolUsageRequest describeIdentityPoolUsageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeIdentityPoolUsageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -495,7 +560,8 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeIdentityPoolUsageRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeIdentityPoolUsageRequest));
+                request = new DescribeIdentityPoolUsageRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeIdentityPoolUsageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -538,9 +604,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.DescribeIdentityUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeIdentityUsageResult describeIdentityUsage(DescribeIdentityUsageRequest describeIdentityUsageRequest) {
+    public DescribeIdentityUsageResult describeIdentityUsage(DescribeIdentityUsageRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeIdentityUsage(request);
+    }
+
+    @SdkInternalApi
+    final DescribeIdentityUsageResult executeDescribeIdentityUsage(DescribeIdentityUsageRequest describeIdentityUsageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeIdentityUsageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -550,7 +625,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeIdentityUsageRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeIdentityUsageRequest));
+                request = new DescribeIdentityUsageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeIdentityUsageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -591,9 +666,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws InternalErrorException
      *         Indicates an internal service error.
      * @sample AmazonCognitoSync.GetBulkPublishDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetBulkPublishDetails"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetBulkPublishDetailsResult getBulkPublishDetails(GetBulkPublishDetailsRequest getBulkPublishDetailsRequest) {
+    public GetBulkPublishDetailsResult getBulkPublishDetails(GetBulkPublishDetailsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetBulkPublishDetails(request);
+    }
+
+    @SdkInternalApi
+    final GetBulkPublishDetailsResult executeGetBulkPublishDetails(GetBulkPublishDetailsRequest getBulkPublishDetailsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getBulkPublishDetailsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -603,7 +687,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetBulkPublishDetailsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBulkPublishDetailsRequest));
+                request = new GetBulkPublishDetailsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBulkPublishDetailsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -646,9 +730,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.GetCognitoEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetCognitoEvents" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetCognitoEventsResult getCognitoEvents(GetCognitoEventsRequest getCognitoEventsRequest) {
+    public GetCognitoEventsResult getCognitoEvents(GetCognitoEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCognitoEvents(request);
+    }
+
+    @SdkInternalApi
+    final GetCognitoEventsResult executeGetCognitoEvents(GetCognitoEventsRequest getCognitoEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCognitoEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -658,7 +751,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetCognitoEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCognitoEventsRequest));
+                request = new GetCognitoEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCognitoEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -700,9 +793,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.GetIdentityPoolConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetIdentityPoolConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetIdentityPoolConfigurationResult getIdentityPoolConfiguration(GetIdentityPoolConfigurationRequest getIdentityPoolConfigurationRequest) {
+    public GetIdentityPoolConfigurationResult getIdentityPoolConfiguration(GetIdentityPoolConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetIdentityPoolConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final GetIdentityPoolConfigurationResult executeGetIdentityPoolConfiguration(GetIdentityPoolConfigurationRequest getIdentityPoolConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getIdentityPoolConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -712,7 +814,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetIdentityPoolConfigurationRequestMarshaller(protocolFactory).marshall(super
+                request = new GetIdentityPoolConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(getIdentityPoolConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -755,9 +857,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.ListDatasets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListDatasets" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListDatasetsResult listDatasets(ListDatasetsRequest listDatasetsRequest) {
+    public ListDatasetsResult listDatasets(ListDatasetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDatasets(request);
+    }
+
+    @SdkInternalApi
+    final ListDatasetsResult executeListDatasets(ListDatasetsRequest listDatasetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDatasetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -767,7 +878,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListDatasetsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDatasetsRequest));
+                request = new ListDatasetsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDatasetsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -807,9 +918,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.ListIdentityPoolUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListIdentityPoolUsage"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListIdentityPoolUsageResult listIdentityPoolUsage(ListIdentityPoolUsageRequest listIdentityPoolUsageRequest) {
+    public ListIdentityPoolUsageResult listIdentityPoolUsage(ListIdentityPoolUsageRequest request) {
+        request = beforeClientExecution(request);
+        return executeListIdentityPoolUsage(request);
+    }
+
+    @SdkInternalApi
+    final ListIdentityPoolUsageResult executeListIdentityPoolUsage(ListIdentityPoolUsageRequest listIdentityPoolUsageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listIdentityPoolUsageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -819,7 +939,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListIdentityPoolUsageRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listIdentityPoolUsageRequest));
+                request = new ListIdentityPoolUsageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listIdentityPoolUsageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -862,9 +982,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws InternalErrorException
      *         Indicates an internal service error.
      * @sample AmazonCognitoSync.ListRecords
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListRecordsResult listRecords(ListRecordsRequest listRecordsRequest) {
+    public ListRecordsResult listRecords(ListRecordsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListRecords(request);
+    }
+
+    @SdkInternalApi
+    final ListRecordsResult executeListRecords(ListRecordsRequest listRecordsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listRecordsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -874,7 +1003,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListRecordsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listRecordsRequest));
+                request = new ListRecordsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listRecordsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -917,9 +1046,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.RegisterDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDevice" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RegisterDeviceResult registerDevice(RegisterDeviceRequest registerDeviceRequest) {
+    public RegisterDeviceResult registerDevice(RegisterDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterDevice(request);
+    }
+
+    @SdkInternalApi
+    final RegisterDeviceResult executeRegisterDevice(RegisterDeviceRequest registerDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(registerDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -929,7 +1067,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RegisterDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerDeviceRequest));
+                request = new RegisterDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -973,9 +1111,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.SetCognitoEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetCognitoEvents" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetCognitoEventsResult setCognitoEvents(SetCognitoEventsRequest setCognitoEventsRequest) {
+    public SetCognitoEventsResult setCognitoEvents(SetCognitoEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetCognitoEvents(request);
+    }
+
+    @SdkInternalApi
+    final SetCognitoEventsResult executeSetCognitoEvents(SetCognitoEventsRequest setCognitoEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setCognitoEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -985,7 +1132,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SetCognitoEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(setCognitoEventsRequest));
+                request = new SetCognitoEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(setCognitoEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1029,9 +1176,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws ConcurrentModificationException
      *         Thrown if there are parallel requests to modify a resource.
      * @sample AmazonCognitoSync.SetIdentityPoolConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetIdentityPoolConfigurationResult setIdentityPoolConfiguration(SetIdentityPoolConfigurationRequest setIdentityPoolConfigurationRequest) {
+    public SetIdentityPoolConfigurationResult setIdentityPoolConfiguration(SetIdentityPoolConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetIdentityPoolConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final SetIdentityPoolConfigurationResult executeSetIdentityPoolConfiguration(SetIdentityPoolConfigurationRequest setIdentityPoolConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setIdentityPoolConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1041,7 +1197,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SetIdentityPoolConfigurationRequestMarshaller(protocolFactory).marshall(super
+                request = new SetIdentityPoolConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(setIdentityPoolConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1086,9 +1242,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.SubscribeToDataset
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SubscribeToDataset"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SubscribeToDatasetResult subscribeToDataset(SubscribeToDatasetRequest subscribeToDatasetRequest) {
+    public SubscribeToDatasetResult subscribeToDataset(SubscribeToDatasetRequest request) {
+        request = beforeClientExecution(request);
+        return executeSubscribeToDataset(request);
+    }
+
+    @SdkInternalApi
+    final SubscribeToDatasetResult executeSubscribeToDataset(SubscribeToDatasetRequest subscribeToDatasetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(subscribeToDatasetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1098,7 +1263,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SubscribeToDatasetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(subscribeToDatasetRequest));
+                request = new SubscribeToDatasetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(subscribeToDatasetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1141,9 +1306,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws TooManyRequestsException
      *         Thrown if the request is throttled.
      * @sample AmazonCognitoSync.UnsubscribeFromDataset
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UnsubscribeFromDataset"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UnsubscribeFromDatasetResult unsubscribeFromDataset(UnsubscribeFromDatasetRequest unsubscribeFromDatasetRequest) {
+    public UnsubscribeFromDatasetResult unsubscribeFromDataset(UnsubscribeFromDatasetRequest request) {
+        request = beforeClientExecution(request);
+        return executeUnsubscribeFromDataset(request);
+    }
+
+    @SdkInternalApi
+    final UnsubscribeFromDatasetResult executeUnsubscribeFromDataset(UnsubscribeFromDatasetRequest unsubscribeFromDatasetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(unsubscribeFromDatasetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1153,7 +1327,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UnsubscribeFromDatasetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(unsubscribeFromDatasetRequest));
+                request = new UnsubscribeFromDatasetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(unsubscribeFromDatasetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1217,9 +1391,18 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
      * @throws InternalErrorException
      *         Indicates an internal service error.
      * @sample AmazonCognitoSync.UpdateRecords
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UpdateRecords" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateRecordsResult updateRecords(UpdateRecordsRequest updateRecordsRequest) {
+    public UpdateRecordsResult updateRecords(UpdateRecordsRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateRecords(request);
+    }
+
+    @SdkInternalApi
+    final UpdateRecordsResult executeUpdateRecords(UpdateRecordsRequest updateRecordsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateRecordsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1229,7 +1412,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateRecordsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateRecordsRequest));
+                request = new UpdateRecordsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateRecordsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

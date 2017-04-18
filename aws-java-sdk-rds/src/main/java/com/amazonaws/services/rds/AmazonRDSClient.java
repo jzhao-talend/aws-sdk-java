@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.rds.AmazonRDSClientBuilder;
 import com.amazonaws.services.rds.waiters.AmazonRDSWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -119,6 +123,7 @@ import com.amazonaws.services.rds.model.transform.*;
  * </ul>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -152,7 +157,9 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRDSClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonRDSClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -175,7 +182,9 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonRDSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRDSClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -189,7 +198,10 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonRDSClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonRDSClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonRDSClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -207,7 +219,10 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon RDS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonRDSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRDSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRDSClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -224,7 +239,9 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonRDSClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonRDSClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -242,7 +259,10 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon RDS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonRDSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRDSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonRDSClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -262,11 +282,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonRDSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRDSClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonRDSClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonRDSClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonRDSClientBuilder builder() {
+        return AmazonRDSClientBuilder.standard();
     }
 
     /**
@@ -392,9 +420,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterRoleQuotaExceededException
      *         You have exceeded the maximum number of IAM roles that can be associated with the specified DB cluster.
      * @sample AmazonRDS.AddRoleToDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddRoleToDBCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddRoleToDBClusterResult addRoleToDBCluster(AddRoleToDBClusterRequest addRoleToDBClusterRequest) {
+    public AddRoleToDBClusterResult addRoleToDBCluster(AddRoleToDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddRoleToDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final AddRoleToDBClusterResult executeAddRoleToDBCluster(AddRoleToDBClusterRequest addRoleToDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addRoleToDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -435,9 +472,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SourceNotFoundException
      *         The requested source could not be found.
      * @sample AmazonRDS.AddSourceIdentifierToSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddSourceIdentifierToSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EventSubscription addSourceIdentifierToSubscription(AddSourceIdentifierToSubscriptionRequest addSourceIdentifierToSubscriptionRequest) {
+    public EventSubscription addSourceIdentifierToSubscription(AddSourceIdentifierToSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddSourceIdentifierToSubscription(request);
+    }
+
+    @SdkInternalApi
+    final EventSubscription executeAddSourceIdentifierToSubscription(AddSourceIdentifierToSubscriptionRequest addSourceIdentifierToSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addSourceIdentifierToSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -482,10 +528,21 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
+     * @throws DBClusterNotFoundException
+     *         <i>DBClusterIdentifier</i> does not refer to an existing DB cluster.
      * @sample AmazonRDS.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest) {
+    public AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTagsToResource(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsToResourceResult executeAddTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsToResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -524,9 +581,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws ResourceNotFoundException
      *         The specified resource ID was not found.
      * @sample AmazonRDS.ApplyPendingMaintenanceAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ApplyPendingMaintenanceAction"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ResourcePendingMaintenanceActions applyPendingMaintenanceAction(ApplyPendingMaintenanceActionRequest applyPendingMaintenanceActionRequest) {
+    public ResourcePendingMaintenanceActions applyPendingMaintenanceAction(ApplyPendingMaintenanceActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeApplyPendingMaintenanceAction(request);
+    }
+
+    @SdkInternalApi
+    final ResourcePendingMaintenanceActions executeApplyPendingMaintenanceAction(ApplyPendingMaintenanceActionRequest applyPendingMaintenanceActionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(applyPendingMaintenanceActionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -585,9 +651,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws AuthorizationQuotaExceededException
      *         DB security group authorization quota has been reached.
      * @sample AmazonRDS.AuthorizeDBSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AuthorizeDBSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBSecurityGroup authorizeDBSecurityGroupIngress(AuthorizeDBSecurityGroupIngressRequest authorizeDBSecurityGroupIngressRequest) {
+    public DBSecurityGroup authorizeDBSecurityGroupIngress(AuthorizeDBSecurityGroupIngressRequest request) {
+        request = beforeClientExecution(request);
+        return executeAuthorizeDBSecurityGroupIngress(request);
+    }
+
+    @SdkInternalApi
+    final DBSecurityGroup executeAuthorizeDBSecurityGroupIngress(AuthorizeDBSecurityGroupIngressRequest authorizeDBSecurityGroupIngressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(authorizeDBSecurityGroupIngressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -629,9 +704,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupAlreadyExistsException
      *         A DB parameter group with the same name exists.
      * @sample AmazonRDS.CopyDBClusterParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBClusterParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBClusterParameterGroup copyDBClusterParameterGroup(CopyDBClusterParameterGroupRequest copyDBClusterParameterGroupRequest) {
+    public DBClusterParameterGroup copyDBClusterParameterGroup(CopyDBClusterParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyDBClusterParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterParameterGroup executeCopyDBClusterParameterGroup(CopyDBClusterParameterGroupRequest copyDBClusterParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyDBClusterParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -662,7 +746,93 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
 
     /**
      * <p>
-     * Creates a snapshot of a DB cluster. For more information on Amazon Aurora, see <a
+     * Copies a snapshot of a DB cluster.
+     * </p>
+     * <p>
+     * To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
+     * <code>SourceDBClusterSnapshotIdentifier</code> must be the Amazon Resource Name (ARN) of the shared DB cluster
+     * snapshot.
+     * </p>
+     * <p>
+     * You can copy an encrypted DB cluster snapshot from another AWS region. In that case, the region where you call
+     * the <code>CopyDBClusterSnapshot</code> action is the destination region for the encrypted DB cluster snapshot to
+     * be copied to. To copy an encrypted DB cluster snapshot from another region, you must provide the following
+     * values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy
+     * of the DB cluster snapshot in the destination region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PreSignedUrl</code> - A URL that contains a Signature Version 4 signed request for the
+     * <code>CopyDBClusterSnapshot</code> action to be called in the source region where the DB cluster snapshot will be
+     * copied from. The pre-signed URL must be a valid request for the <code>CopyDBClusterSnapshot</code> API action
+     * that can be executed in the source region that contains the encrypted DB cluster snapshot to be copied.
+     * </p>
+     * <p>
+     * The pre-signed URL request must contain the following parameter values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot
+     * in the destination region. This is the same identifier for both the <code>CopyDBClusterSnapshot</code> action
+     * that is called in the destination region, and the action contained in the pre-signed URL.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DestinationRegion</code> - The name of the region that the DB cluster snapshot will be created in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBClusterSnapshotIdentifier</code> - The DB cluster snapshot identifier for the encrypted DB cluster
+     * snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region.
+     * For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your
+     * <code>SourceDBClusterSnapshotIdentifier</code> looks like the following example:
+     * <code>arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn how to generate a Signature Version 4 signed request, see <a
+     * href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests:
+     * Using Query Parameters (AWS Signature Version 4)</a> and <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing
+     * Process</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>TargetDBClusterSnapshotIdentifier</code> - The identifier for the new copy of the DB cluster snapshot in
+     * the destination region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBClusterSnapshotIdentifier</code> - The DB cluster snapshot identifier for the encrypted DB cluster
+     * snapshot to be copied. This identifier must be in the ARN format for the source region and is the same value as
+     * the <code>SourceDBClusterSnapshotIdentifier</code> in the pre-signed URL.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To cancel the copy operation once it is in progress, delete the target DB cluster snapshot identified by
+     * <code>TargetDBClusterSnapshotIdentifier</code> while that DB cluster snapshot is in "copying" status.
+     * </p>
+     * <p>
+     * For more information on copying encrypted DB cluster snapshots from one region to another, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion"
+     * > Copying a DB Cluster Snapshot in the Same Account, Either in the Same Region or Across Regions</a> in the
+     * Amazon RDS User Guide.
+     * </p>
+     * <p>
+     * For more information on Amazon Aurora, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora on Amazon RDS</a> in the
      * <i>Amazon RDS User Guide.</i>
      * </p>
@@ -682,9 +852,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @sample AmazonRDS.CopyDBClusterSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBClusterSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBClusterSnapshot copyDBClusterSnapshot(CopyDBClusterSnapshotRequest copyDBClusterSnapshotRequest) {
+    public DBClusterSnapshot copyDBClusterSnapshot(CopyDBClusterSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyDBClusterSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterSnapshot executeCopyDBClusterSnapshot(CopyDBClusterSnapshotRequest copyDBClusterSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyDBClusterSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -726,9 +905,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupQuotaExceededException
      *         Request would result in user exceeding the allowed number of DB parameter groups.
      * @sample AmazonRDS.CopyDBParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBParameterGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBParameterGroup copyDBParameterGroup(CopyDBParameterGroupRequest copyDBParameterGroupRequest) {
+    public DBParameterGroup copyDBParameterGroup(CopyDBParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyDBParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBParameterGroup executeCopyDBParameterGroup(CopyDBParameterGroupRequest copyDBParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyDBParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -761,8 +949,86 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * Copies the specified DB snapshot. The source DB snapshot must be in the "available" state.
      * </p>
      * <p>
-     * If you are copying from a shared manual DB snapshot, the <code>SourceDBSnapshotIdentifier</code> must be the ARN
-     * of the shared DB snapshot.
+     * To copy a DB snapshot from a shared manual DB snapshot, <code>SourceDBSnapshotIdentifier</code> must be the
+     * Amazon Resource Name (ARN) of the shared DB snapshot.
+     * </p>
+     * <p>
+     * You can copy an encrypted DB snapshot from another AWS Region. In that case, the region where you call the
+     * <code>CopyDBSnapshot</code> action is the destination region for the encrypted DB snapshot to be copied to. To
+     * copy an encrypted DB snapshot from another region, you must provide the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy
+     * of the DB snapshot in the destination region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PreSignedUrl</code> - A URL that contains a Signature Version 4 signed request for the
+     * <code>CopyDBSnapshot</code> action to be called in the source region where the DB snapshot will be copied from.
+     * The presigned URL must be a valid request for the <code>CopyDBSnapshot</code> API action that can be executed in
+     * the source region that contains the encrypted DB snapshot to be copied.
+     * </p>
+     * <p>
+     * The presigned URL request must contain the following parameter values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DestinationRegion</code> - The AWS Region that the encrypted DB snapshot will be copied to. This region is
+     * the same one where the <code>CopyDBSnapshot</code> action is called that contains this presigned URL.
+     * </p>
+     * <p>
+     * For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you
+     * will call the <code>CopyDBSnapshot</code> action in the us-east-1 region and provide a presigned URL that
+     * contains a call to the <code>CopyDBSnapshot</code> action in the us-west-2 region. For this example, the
+     * <code>DestinationRegion</code> in the presigned URL must be set to the us-east-1 region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the
+     * destination region. This identifier is the same for both the <code>CopyDBSnapshot</code> action that is called in
+     * the destination region, and the action contained in the presigned URL.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBSnapshotIdentifier</code> - The DB snapshot identifier for the encrypted snapshot to be copied.
+     * This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you copy
+     * an encrypted DB snapshot from the us-west-2 region, then your <code>SourceDBSnapshotIdentifier</code> looks like
+     * this example: <code>arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn how to generate a Signature Version 4 signed request, see <a
+     * href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests:
+     * Using Query Parameters (AWS Signature Version 4)</a> and <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing
+     * Process</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>TargetDBSnapshotIdentifier</code> - The identifier for the new copy of the DB snapshot in the destination
+     * region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBSnapshotIdentifier</code> - The DB snapshot identifier for the encrypted snapshot to be copied.
+     * This identifier must be in the ARN format for the source region and is the same value as the
+     * <code>SourceDBSnapshotIdentifier</code> in the presigned URL.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information on copying encrypted snapshots from one region to another, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Encrypted.CrossRegion"
+     * > Copying an Encrypted DB Snapshot to Another Region</a> in the Amazon RDS User Guide.
      * </p>
      * 
      * @param copyDBSnapshotRequest
@@ -778,9 +1044,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @sample AmazonRDS.CopyDBSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSnapshot copyDBSnapshot(CopyDBSnapshotRequest copyDBSnapshotRequest) {
+    public DBSnapshot copyDBSnapshot(CopyDBSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyDBSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshot executeCopyDBSnapshot(CopyDBSnapshotRequest copyDBSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyDBSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -822,9 +1097,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws OptionGroupQuotaExceededException
      *         The quota of 20 option groups was exceeded for this AWS account.
      * @sample AmazonRDS.CopyOptionGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyOptionGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public OptionGroup copyOptionGroup(CopyOptionGroupRequest copyOptionGroupRequest) {
+    public OptionGroup copyOptionGroup(CopyOptionGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyOptionGroup(request);
+    }
+
+    @SdkInternalApi
+    final OptionGroup executeCopyOptionGroup(CopyOptionGroupRequest copyOptionGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(copyOptionGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -858,7 +1142,9 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * </p>
      * <p>
      * You can use the <code>ReplicationSourceIdentifier</code> parameter to create the DB cluster as a Read Replica of
-     * another DB cluster.
+     * another DB cluster or Amazon RDS MySQL DB instance. For cross-region replication where the DB cluster identified
+     * by <code>ReplicationSourceIdentifier</code> is encrypted, you must also specify the <code>PreSignedUrl</code>
+     * parameter.
      * </p>
      * <p>
      * For more information on Amazon Aurora, see <a
@@ -888,16 +1174,32 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *         The DB subnet group cannot be deleted because it is in use.
      * @throws InvalidSubnetException
      *         The requested subnet is invalid, or multiple subnets were requested that are not all in a common VPC.
+     * @throws InvalidDBInstanceStateException
+     *         The specified DB instance is not in the <i>available</i> state.
      * @throws DBClusterParameterGroupNotFoundException
      *         <i>DBClusterParameterGroupName</i> does not refer to an existing DB Cluster parameter group.
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @throws DBClusterNotFoundException
      *         <i>DBClusterIdentifier</i> does not refer to an existing DB cluster.
+     * @throws DBInstanceNotFoundException
+     *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
+     * @throws DBSubnetGroupDoesNotCoverEnoughAZsException
+     *         Subnets in the DB subnet group should cover at least two Availability Zones unless there is only one
+     *         Availability Zone.
      * @sample AmazonRDS.CreateDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBCluster createDBCluster(CreateDBClusterRequest createDBClusterRequest) {
+    public DBCluster createDBCluster(CreateDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeCreateDBCluster(CreateDBClusterRequest createDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -965,9 +1267,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupAlreadyExistsException
      *         A DB parameter group with the same name exists.
      * @sample AmazonRDS.CreateDBClusterParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBClusterParameterGroup createDBClusterParameterGroup(CreateDBClusterParameterGroupRequest createDBClusterParameterGroupRequest) {
+    public DBClusterParameterGroup createDBClusterParameterGroup(CreateDBClusterParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBClusterParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterParameterGroup executeCreateDBClusterParameterGroup(CreateDBClusterParameterGroupRequest createDBClusterParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBClusterParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1016,9 +1327,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBClusterSnapshotStateException
      *         The supplied value is not a valid DB cluster snapshot state.
      * @sample AmazonRDS.CreateDBClusterSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterSnapshot" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DBClusterSnapshot createDBClusterSnapshot(CreateDBClusterSnapshotRequest createDBClusterSnapshotRequest) {
+    public DBClusterSnapshot createDBClusterSnapshot(CreateDBClusterSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBClusterSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterSnapshot executeCreateDBClusterSnapshot(CreateDBClusterSnapshotRequest createDBClusterSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBClusterSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1093,9 +1413,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DomainNotFoundException
      *         <i>Domain</i> does not refer to an existing Active Directory Domain.
      * @sample AmazonRDS.CreateDBInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBInstance createDBInstance(CreateDBInstanceRequest createDBInstanceRequest) {
+    public DBInstance createDBInstance(CreateDBInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBInstance(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeCreateDBInstance(CreateDBInstanceRequest createDBInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1138,6 +1467,84 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * The source DB instance must have backup retention enabled.
      * </p>
      * </important>
+     * <p>
+     * You can create an encrypted Read Replica in a different AWS Region than the source DB instance. In that case, the
+     * region where you call the <code>CreateDBInstanceReadReplica</code> action is the destination region of the
+     * encrypted Read Replica. The source DB instance must be encrypted.
+     * </p>
+     * <p>
+     * To create an encrypted Read Replica in another AWS Region, you must provide the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the Read
+     * Replica in the destination region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PreSignedUrl</code> - A URL that contains a Signature Version 4 signed request for the
+     * <code> CreateDBInstanceReadReplica</code> API action in the AWS region that contains the source DB instance. The
+     * <code>PreSignedUrl</code> parameter must be used when encrypting a Read Replica from another AWS region.
+     * </p>
+     * <p>
+     * The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be
+     * executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the
+     * following parameter values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DestinationRegion</code> - The AWS Region that the Read Replica is created in. This region is the same one
+     * where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned URL.
+     * </p>
+     * <p>
+     * For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in
+     * the west-2 region, then you call the <code>CreateDBInstanceReadReplica</code> action in the us-east-1 region and
+     * provide a presigned URL that contains a call to the <code>CreateDBInstanceReadReplica</code> action in the
+     * us-west-2 region. For this example, the <code>DestinationRegion</code> in the presigned URL must be set to the
+     * us-east-1 region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the Read Replica in the destination
+     * region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action that is called
+     * in the destination region, and the action contained in the presigned URL.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted Read Replica to be
+     * created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if
+     * you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your
+     * <code>SourceDBInstanceIdentifier</code> would look like this example:
+     * <code> arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn how to generate a Signature Version 4 signed request, see <a
+     * href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests:
+     * Using Query Parameters (AWS Signature Version 4)</a> and <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing
+     * Process</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DBInstanceIdentifier</code> - The identifier for the encrypted Read Replica in the destination region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted Read Replica. This
+     * identifier must be in the ARN format for the source region and is the same value as the
+     * <code>SourceDBInstanceIdentifier</code> in the presigned URL.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createDBInstanceReadReplicaRequest
      * @return Result of the CreateDBInstanceReadReplica operation returned by the service.
@@ -1181,9 +1588,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @sample AmazonRDS.CreateDBInstanceReadReplica
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBInstanceReadReplica"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBInstance createDBInstanceReadReplica(CreateDBInstanceReadReplicaRequest createDBInstanceReadReplicaRequest) {
+    public DBInstance createDBInstanceReadReplica(CreateDBInstanceReadReplicaRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBInstanceReadReplica(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeCreateDBInstanceReadReplica(CreateDBInstanceReadReplicaRequest createDBInstanceReadReplicaRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBInstanceReadReplicaRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1242,9 +1658,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupAlreadyExistsException
      *         A DB parameter group with the same name exists.
      * @sample AmazonRDS.CreateDBParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBParameterGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBParameterGroup createDBParameterGroup(CreateDBParameterGroupRequest createDBParameterGroupRequest) {
+    public DBParameterGroup createDBParameterGroup(CreateDBParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBParameterGroup executeCreateDBParameterGroup(CreateDBParameterGroupRequest createDBParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1286,9 +1711,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSecurityGroupNotSupportedException
      *         A DB security group is not allowed for this action.
      * @sample AmazonRDS.CreateDBSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSecurityGroup createDBSecurityGroup(CreateDBSecurityGroupRequest createDBSecurityGroupRequest) {
+    public DBSecurityGroup createDBSecurityGroup(CreateDBSecurityGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBSecurityGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBSecurityGroup executeCreateDBSecurityGroup(CreateDBSecurityGroupRequest createDBSecurityGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBSecurityGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1332,9 +1766,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SnapshotQuotaExceededException
      *         Request would result in user exceeding the allowed number of DB snapshots.
      * @sample AmazonRDS.CreateDBSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSnapshot createDBSnapshot(CreateDBSnapshotRequest createDBSnapshotRequest) {
+    public DBSnapshot createDBSnapshot(CreateDBSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshot executeCreateDBSnapshot(CreateDBSnapshotRequest createDBSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1382,9 +1825,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidSubnetException
      *         The requested subnet is invalid, or multiple subnets were requested that are not all in a common VPC.
      * @sample AmazonRDS.CreateDBSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSubnetGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSubnetGroup createDBSubnetGroup(CreateDBSubnetGroupRequest createDBSubnetGroupRequest) {
+    public DBSubnetGroup createDBSubnetGroup(CreateDBSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDBSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBSubnetGroup executeCreateDBSubnetGroup(CreateDBSubnetGroupRequest createDBSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDBSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1449,9 +1901,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SourceNotFoundException
      *         The requested source could not be found.
      * @sample AmazonRDS.CreateEventSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateEventSubscription" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public EventSubscription createEventSubscription(CreateEventSubscriptionRequest createEventSubscriptionRequest) {
+    public EventSubscription createEventSubscription(CreateEventSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEventSubscription(request);
+    }
+
+    @SdkInternalApi
+    final EventSubscription executeCreateEventSubscription(CreateEventSubscriptionRequest createEventSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createEventSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1491,9 +1952,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws OptionGroupQuotaExceededException
      *         The quota of 20 option groups was exceeded for this AWS account.
      * @sample AmazonRDS.CreateOptionGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateOptionGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public OptionGroup createOptionGroup(CreateOptionGroupRequest createOptionGroupRequest) {
+    public OptionGroup createOptionGroup(CreateOptionGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateOptionGroup(request);
+    }
+
+    @SdkInternalApi
+    final OptionGroup executeCreateOptionGroup(CreateOptionGroupRequest createOptionGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createOptionGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1547,9 +2017,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBClusterSnapshotStateException
      *         The supplied value is not a valid DB cluster snapshot state.
      * @sample AmazonRDS.DeleteDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBCluster deleteDBCluster(DeleteDBClusterRequest deleteDBClusterRequest) {
+    public DBCluster deleteDBCluster(DeleteDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeDeleteDBCluster(DeleteDBClusterRequest deleteDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1595,9 +2074,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DeleteDBClusterParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteDBClusterParameterGroupResult deleteDBClusterParameterGroup(DeleteDBClusterParameterGroupRequest deleteDBClusterParameterGroupRequest) {
+    public DeleteDBClusterParameterGroupResult deleteDBClusterParameterGroup(DeleteDBClusterParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBClusterParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDBClusterParameterGroupResult executeDeleteDBClusterParameterGroup(DeleteDBClusterParameterGroupRequest deleteDBClusterParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBClusterParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1648,9 +2136,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterSnapshotNotFoundException
      *         <i>DBClusterSnapshotIdentifier</i> does not refer to an existing DB cluster snapshot.
      * @sample AmazonRDS.DeleteDBClusterSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterSnapshot" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DBClusterSnapshot deleteDBClusterSnapshot(DeleteDBClusterSnapshotRequest deleteDBClusterSnapshotRequest) {
+    public DBClusterSnapshot deleteDBClusterSnapshot(DeleteDBClusterSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBClusterSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterSnapshot executeDeleteDBClusterSnapshot(DeleteDBClusterSnapshotRequest deleteDBClusterSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBClusterSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1729,9 +2226,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBClusterStateException
      *         The DB cluster is not in a valid state.
      * @sample AmazonRDS.DeleteDBInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBInstance deleteDBInstance(DeleteDBInstanceRequest deleteDBInstanceRequest) {
+    public DBInstance deleteDBInstance(DeleteDBInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBInstance(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeDeleteDBInstance(DeleteDBInstanceRequest deleteDBInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1772,9 +2278,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DeleteDBParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBParameterGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDBParameterGroupResult deleteDBParameterGroup(DeleteDBParameterGroupRequest deleteDBParameterGroupRequest) {
+    public DeleteDBParameterGroupResult deleteDBParameterGroup(DeleteDBParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDBParameterGroupResult executeDeleteDBParameterGroup(DeleteDBParameterGroupRequest deleteDBParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1820,9 +2335,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSecurityGroupNotFoundException
      *         <i>DBSecurityGroupName</i> does not refer to an existing DB security group.
      * @sample AmazonRDS.DeleteDBSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDBSecurityGroupResult deleteDBSecurityGroup(DeleteDBSecurityGroupRequest deleteDBSecurityGroupRequest) {
+    public DeleteDBSecurityGroupResult deleteDBSecurityGroup(DeleteDBSecurityGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBSecurityGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDBSecurityGroupResult executeDeleteDBSecurityGroup(DeleteDBSecurityGroupRequest deleteDBSecurityGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBSecurityGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1868,9 +2392,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
      * @sample AmazonRDS.DeleteDBSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSnapshot deleteDBSnapshot(DeleteDBSnapshotRequest deleteDBSnapshotRequest) {
+    public DBSnapshot deleteDBSnapshot(DeleteDBSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshot executeDeleteDBSnapshot(DeleteDBSnapshotRequest deleteDBSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1917,9 +2450,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSubnetGroupNotFoundException
      *         <i>DBSubnetGroupName</i> does not refer to an existing DB subnet group.
      * @sample AmazonRDS.DeleteDBSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSubnetGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDBSubnetGroupResult deleteDBSubnetGroup(DeleteDBSubnetGroupRequest deleteDBSubnetGroupRequest) {
+    public DeleteDBSubnetGroupResult deleteDBSubnetGroup(DeleteDBSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDBSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDBSubnetGroupResult executeDeleteDBSubnetGroup(DeleteDBSubnetGroupRequest deleteDBSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDBSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1960,9 +2502,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidEventSubscriptionStateException
      *         This error can occur if someone else is modifying a subscription. You should retry the action.
      * @sample AmazonRDS.DeleteEventSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteEventSubscription" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public EventSubscription deleteEventSubscription(DeleteEventSubscriptionRequest deleteEventSubscriptionRequest) {
+    public EventSubscription deleteEventSubscription(DeleteEventSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEventSubscription(request);
+    }
+
+    @SdkInternalApi
+    final EventSubscription executeDeleteEventSubscription(DeleteEventSubscriptionRequest deleteEventSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEventSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2002,9 +2553,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidOptionGroupStateException
      *         The option group is not in the <i>available</i> state.
      * @sample AmazonRDS.DeleteOptionGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteOptionGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteOptionGroupResult deleteOptionGroup(DeleteOptionGroupRequest deleteOptionGroupRequest) {
+    public DeleteOptionGroupResult deleteOptionGroup(DeleteOptionGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteOptionGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteOptionGroupResult executeDeleteOptionGroup(DeleteOptionGroupRequest deleteOptionGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteOptionGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2046,9 +2606,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeAccountAttributesRequest
      * @return Result of the DescribeAccountAttributes operation returned by the service.
      * @sample AmazonRDS.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAccountAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAccountAttributesResult executeDescribeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAccountAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2092,9 +2661,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws CertificateNotFoundException
      *         <i>CertificateIdentifier</i> does not refer to an existing certificate.
      * @sample AmazonRDS.DescribeCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest describeCertificatesRequest) {
+    public DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCertificates(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCertificatesResult executeDescribeCertificates(DescribeCertificatesRequest describeCertificatesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCertificatesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2145,10 +2723,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DescribeDBClusterParameterGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterParameterGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeDBClusterParameterGroupsResult describeDBClusterParameterGroups(
+    public DescribeDBClusterParameterGroupsResult describeDBClusterParameterGroups(DescribeDBClusterParameterGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBClusterParameterGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBClusterParameterGroupsResult executeDescribeDBClusterParameterGroups(
             DescribeDBClusterParameterGroupsRequest describeDBClusterParameterGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBClusterParameterGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2197,9 +2784,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DescribeDBClusterParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeDBClusterParametersResult describeDBClusterParameters(DescribeDBClusterParametersRequest describeDBClusterParametersRequest) {
+    public DescribeDBClusterParametersResult describeDBClusterParameters(DescribeDBClusterParametersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBClusterParameters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBClusterParametersResult executeDescribeDBClusterParameters(DescribeDBClusterParametersRequest describeDBClusterParametersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBClusterParametersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2248,10 +2844,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterSnapshotNotFoundException
      *         <i>DBClusterSnapshotIdentifier</i> does not refer to an existing DB cluster snapshot.
      * @sample AmazonRDS.DescribeDBClusterSnapshotAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterSnapshotAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBClusterSnapshotAttributesResult describeDBClusterSnapshotAttributes(
+    public DBClusterSnapshotAttributesResult describeDBClusterSnapshotAttributes(DescribeDBClusterSnapshotAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBClusterSnapshotAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterSnapshotAttributesResult executeDescribeDBClusterSnapshotAttributes(
             DescribeDBClusterSnapshotAttributesRequest describeDBClusterSnapshotAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBClusterSnapshotAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2296,9 +2901,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterSnapshotNotFoundException
      *         <i>DBClusterSnapshotIdentifier</i> does not refer to an existing DB cluster snapshot.
      * @sample AmazonRDS.DescribeDBClusterSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterSnapshots" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeDBClusterSnapshotsResult describeDBClusterSnapshots(DescribeDBClusterSnapshotsRequest describeDBClusterSnapshotsRequest) {
+    public DescribeDBClusterSnapshotsResult describeDBClusterSnapshots(DescribeDBClusterSnapshotsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBClusterSnapshots(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBClusterSnapshotsResult executeDescribeDBClusterSnapshots(DescribeDBClusterSnapshotsRequest describeDBClusterSnapshotsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBClusterSnapshotsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2347,9 +2961,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterNotFoundException
      *         <i>DBClusterIdentifier</i> does not refer to an existing DB cluster.
      * @sample AmazonRDS.DescribeDBClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBClustersResult describeDBClusters(DescribeDBClustersRequest describeDBClustersRequest) {
+    public DescribeDBClustersResult describeDBClusters(DescribeDBClustersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBClusters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBClustersResult executeDescribeDBClusters(DescribeDBClustersRequest describeDBClustersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBClustersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2391,9 +3014,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeDBEngineVersionsRequest
      * @return Result of the DescribeDBEngineVersions operation returned by the service.
      * @sample AmazonRDS.DescribeDBEngineVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBEngineVersions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeDBEngineVersionsResult describeDBEngineVersions(DescribeDBEngineVersionsRequest describeDBEngineVersionsRequest) {
+    public DescribeDBEngineVersionsResult describeDBEngineVersions(DescribeDBEngineVersionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBEngineVersions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBEngineVersionsResult executeDescribeDBEngineVersions(DescribeDBEngineVersionsRequest describeDBEngineVersionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBEngineVersionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2437,9 +3069,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBInstanceNotFoundException
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @sample AmazonRDS.DescribeDBInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBInstancesResult describeDBInstances(DescribeDBInstancesRequest describeDBInstancesRequest) {
+    public DescribeDBInstancesResult describeDBInstances(DescribeDBInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBInstancesResult executeDescribeDBInstances(DescribeDBInstancesRequest describeDBInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2483,9 +3124,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBInstanceNotFoundException
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @sample AmazonRDS.DescribeDBLogFiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBLogFiles" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBLogFilesResult describeDBLogFiles(DescribeDBLogFilesRequest describeDBLogFilesRequest) {
+    public DescribeDBLogFilesResult describeDBLogFiles(DescribeDBLogFilesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBLogFiles(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBLogFilesResult executeDescribeDBLogFiles(DescribeDBLogFilesRequest describeDBLogFilesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBLogFilesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2525,9 +3175,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DescribeDBParameterGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBParameterGroups" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeDBParameterGroupsResult describeDBParameterGroups(DescribeDBParameterGroupsRequest describeDBParameterGroupsRequest) {
+    public DescribeDBParameterGroupsResult describeDBParameterGroups(DescribeDBParameterGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBParameterGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBParameterGroupsResult executeDescribeDBParameterGroups(DescribeDBParameterGroupsRequest describeDBParameterGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBParameterGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2571,9 +3230,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.DescribeDBParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBParameters" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBParametersResult describeDBParameters(DescribeDBParametersRequest describeDBParametersRequest) {
+    public DescribeDBParametersResult describeDBParameters(DescribeDBParametersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBParameters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBParametersResult executeDescribeDBParameters(DescribeDBParametersRequest describeDBParametersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBParametersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2613,9 +3281,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSecurityGroupNotFoundException
      *         <i>DBSecurityGroupName</i> does not refer to an existing DB security group.
      * @sample AmazonRDS.DescribeDBSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSecurityGroups" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeDBSecurityGroupsResult describeDBSecurityGroups(DescribeDBSecurityGroupsRequest describeDBSecurityGroupsRequest) {
+    public DescribeDBSecurityGroupsResult describeDBSecurityGroups(DescribeDBSecurityGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBSecurityGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBSecurityGroupsResult executeDescribeDBSecurityGroups(DescribeDBSecurityGroupsRequest describeDBSecurityGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBSecurityGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2669,9 +3346,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
      * @sample AmazonRDS.DescribeDBSnapshotAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshotAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBSnapshotAttributesResult describeDBSnapshotAttributes(DescribeDBSnapshotAttributesRequest describeDBSnapshotAttributesRequest) {
+    public DBSnapshotAttributesResult describeDBSnapshotAttributes(DescribeDBSnapshotAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBSnapshotAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshotAttributesResult executeDescribeDBSnapshotAttributes(DescribeDBSnapshotAttributesRequest describeDBSnapshotAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBSnapshotAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2715,9 +3401,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
      * @sample AmazonRDS.DescribeDBSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBSnapshotsResult describeDBSnapshots(DescribeDBSnapshotsRequest describeDBSnapshotsRequest) {
+    public DescribeDBSnapshotsResult describeDBSnapshots(DescribeDBSnapshotsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBSnapshots(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBSnapshotsResult executeDescribeDBSnapshots(DescribeDBSnapshotsRequest describeDBSnapshotsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBSnapshotsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2766,9 +3461,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBSubnetGroupNotFoundException
      *         <i>DBSubnetGroupName</i> does not refer to an existing DB subnet group.
      * @sample AmazonRDS.DescribeDBSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSubnetGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDBSubnetGroupsResult describeDBSubnetGroups(DescribeDBSubnetGroupsRequest describeDBSubnetGroupsRequest) {
+    public DescribeDBSubnetGroupsResult describeDBSubnetGroups(DescribeDBSubnetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDBSubnetGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDBSubnetGroupsResult executeDescribeDBSubnetGroups(DescribeDBSubnetGroupsRequest describeDBSubnetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDBSubnetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2815,9 +3519,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeEngineDefaultClusterParametersRequest
      * @return Result of the DescribeEngineDefaultClusterParameters operation returned by the service.
      * @sample AmazonRDS.DescribeEngineDefaultClusterParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEngineDefaultClusterParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EngineDefaults describeEngineDefaultClusterParameters(DescribeEngineDefaultClusterParametersRequest describeEngineDefaultClusterParametersRequest) {
+    public EngineDefaults describeEngineDefaultClusterParameters(DescribeEngineDefaultClusterParametersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEngineDefaultClusterParameters(request);
+    }
+
+    @SdkInternalApi
+    final EngineDefaults executeDescribeEngineDefaultClusterParameters(
+            DescribeEngineDefaultClusterParametersRequest describeEngineDefaultClusterParametersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEngineDefaultClusterParametersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2854,9 +3568,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeEngineDefaultParametersRequest
      * @return Result of the DescribeEngineDefaultParameters operation returned by the service.
      * @sample AmazonRDS.DescribeEngineDefaultParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEngineDefaultParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EngineDefaults describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest describeEngineDefaultParametersRequest) {
+    public EngineDefaults describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEngineDefaultParameters(request);
+    }
+
+    @SdkInternalApi
+    final EngineDefaults executeDescribeEngineDefaultParameters(DescribeEngineDefaultParametersRequest describeEngineDefaultParametersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEngineDefaultParametersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2895,9 +3618,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeEventCategoriesRequest
      * @return Result of the DescribeEventCategories operation returned by the service.
      * @sample AmazonRDS.DescribeEventCategories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventCategories" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeEventCategoriesResult describeEventCategories(DescribeEventCategoriesRequest describeEventCategoriesRequest) {
+    public DescribeEventCategoriesResult describeEventCategories(DescribeEventCategoriesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEventCategories(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEventCategoriesResult executeDescribeEventCategories(DescribeEventCategoriesRequest describeEventCategoriesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEventCategoriesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2945,9 +3677,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SubscriptionNotFoundException
      *         The subscription name does not exist.
      * @sample AmazonRDS.DescribeEventSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventSubscriptions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeEventSubscriptionsResult describeEventSubscriptions(DescribeEventSubscriptionsRequest describeEventSubscriptionsRequest) {
+    public DescribeEventSubscriptionsResult describeEventSubscriptions(DescribeEventSubscriptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEventSubscriptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEventSubscriptionsResult executeDescribeEventSubscriptions(DescribeEventSubscriptionsRequest describeEventSubscriptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEventSubscriptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2991,9 +3732,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeEventsRequest
      * @return Result of the DescribeEvents operation returned by the service.
      * @sample AmazonRDS.DescribeEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeEventsResult describeEvents(DescribeEventsRequest describeEventsRequest) {
+    public DescribeEventsResult describeEvents(DescribeEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEvents(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEventsResult executeDescribeEvents(DescribeEventsRequest describeEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3035,9 +3785,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeOptionGroupOptionsRequest
      * @return Result of the DescribeOptionGroupOptions operation returned by the service.
      * @sample AmazonRDS.DescribeOptionGroupOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroupOptions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeOptionGroupOptionsResult describeOptionGroupOptions(DescribeOptionGroupOptionsRequest describeOptionGroupOptionsRequest) {
+    public DescribeOptionGroupOptionsResult describeOptionGroupOptions(DescribeOptionGroupOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOptionGroupOptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOptionGroupOptionsResult executeDescribeOptionGroupOptions(DescribeOptionGroupOptionsRequest describeOptionGroupOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeOptionGroupOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3076,9 +3835,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws OptionGroupNotFoundException
      *         The specified option group could not be found.
      * @sample AmazonRDS.DescribeOptionGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeOptionGroupsResult describeOptionGroups(DescribeOptionGroupsRequest describeOptionGroupsRequest) {
+    public DescribeOptionGroupsResult describeOptionGroups(DescribeOptionGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOptionGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOptionGroupsResult executeDescribeOptionGroups(DescribeOptionGroupsRequest describeOptionGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeOptionGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3120,10 +3888,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeOrderableDBInstanceOptionsRequest
      * @return Result of the DescribeOrderableDBInstanceOptions operation returned by the service.
      * @sample AmazonRDS.DescribeOrderableDBInstanceOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOrderableDBInstanceOptions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeOrderableDBInstanceOptionsResult describeOrderableDBInstanceOptions(
+    public DescribeOrderableDBInstanceOptionsResult describeOrderableDBInstanceOptions(DescribeOrderableDBInstanceOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOrderableDBInstanceOptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOrderableDBInstanceOptionsResult executeDescribeOrderableDBInstanceOptions(
             DescribeOrderableDBInstanceOptionsRequest describeOrderableDBInstanceOptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeOrderableDBInstanceOptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3163,10 +3940,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws ResourceNotFoundException
      *         The specified resource ID was not found.
      * @sample AmazonRDS.DescribePendingMaintenanceActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribePendingMaintenanceActions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribePendingMaintenanceActionsResult describePendingMaintenanceActions(
+    public DescribePendingMaintenanceActionsResult describePendingMaintenanceActions(DescribePendingMaintenanceActionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePendingMaintenanceActions(request);
+    }
+
+    @SdkInternalApi
+    final DescribePendingMaintenanceActionsResult executeDescribePendingMaintenanceActions(
             DescribePendingMaintenanceActionsRequest describePendingMaintenanceActionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describePendingMaintenanceActionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3210,9 +3996,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws ReservedDBInstanceNotFoundException
      *         The specified reserved DB Instance not found.
      * @sample AmazonRDS.DescribeReservedDBInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReservedDBInstancesResult describeReservedDBInstances(DescribeReservedDBInstancesRequest describeReservedDBInstancesRequest) {
+    public DescribeReservedDBInstancesResult describeReservedDBInstances(DescribeReservedDBInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedDBInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedDBInstancesResult executeDescribeReservedDBInstances(DescribeReservedDBInstancesRequest describeReservedDBInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedDBInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3256,10 +4051,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws ReservedDBInstancesOfferingNotFoundException
      *         Specified offering does not exist.
      * @sample AmazonRDS.DescribeReservedDBInstancesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstancesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeReservedDBInstancesOfferingsResult describeReservedDBInstancesOfferings(
+    public DescribeReservedDBInstancesOfferingsResult describeReservedDBInstancesOfferings(DescribeReservedDBInstancesOfferingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeReservedDBInstancesOfferings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeReservedDBInstancesOfferingsResult executeDescribeReservedDBInstancesOfferings(
             DescribeReservedDBInstancesOfferingsRequest describeReservedDBInstancesOfferingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeReservedDBInstancesOfferingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3303,9 +4107,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @param describeSourceRegionsRequest
      * @return Result of the DescribeSourceRegions operation returned by the service.
      * @sample AmazonRDS.DescribeSourceRegions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeSourceRegions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeSourceRegionsResult describeSourceRegions(DescribeSourceRegionsRequest describeSourceRegionsRequest) {
+    public DescribeSourceRegionsResult describeSourceRegions(DescribeSourceRegionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSourceRegions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSourceRegionsResult executeDescribeSourceRegions(DescribeSourceRegionsRequest describeSourceRegionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSourceRegionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3346,9 +4159,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBLogFileNotFoundException
      *         <i>LogFileName</i> does not refer to an existing DB log file.
      * @sample AmazonRDS.DownloadDBLogFilePortion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DownloadDBLogFilePortion" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DownloadDBLogFilePortionResult downloadDBLogFilePortion(DownloadDBLogFilePortionRequest downloadDBLogFilePortionRequest) {
+    public DownloadDBLogFilePortionResult downloadDBLogFilePortion(DownloadDBLogFilePortionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDownloadDBLogFilePortion(request);
+    }
+
+    @SdkInternalApi
+    final DownloadDBLogFilePortionResult executeDownloadDBLogFilePortion(DownloadDBLogFilePortionRequest downloadDBLogFilePortionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(downloadDBLogFilePortionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3382,12 +4204,12 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * Forces a failover for a DB cluster.
      * </p>
      * <p>
-     * A failover for a DB cluster promotes one of the read-only instances in the DB cluster to the master DB instance
-     * (the cluster writer) and deletes the current primary instance.
+     * A failover for a DB cluster promotes one of the Aurora Replicas (read-only instances) in the DB cluster to be the
+     * primary instance (the cluster writer).
      * </p>
      * <p>
-     * Amazon Aurora will automatically fail over to a read-only instance, if one exists, when the primary instance
-     * fails. You can force a failover when you want to simulate a failure of a DB instance for testing. Because each
+     * Amazon Aurora will automatically fail over to an Aurora Replica, if one exists, when the primary instance fails.
+     * You can force a failover when you want to simulate a failure of a primary instance for testing. Because each
      * instance in a DB cluster has its own endpoint address, you will need to clean up and re-establish any existing
      * connections that use those endpoint addresses when the failover is complete.
      * </p>
@@ -3406,9 +4228,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBInstanceStateException
      *         The specified DB instance is not in the <i>available</i> state.
      * @sample AmazonRDS.FailoverDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/FailoverDBCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBCluster failoverDBCluster(FailoverDBClusterRequest failoverDBClusterRequest) {
+    public DBCluster failoverDBCluster(FailoverDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeFailoverDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeFailoverDBCluster(FailoverDBClusterRequest failoverDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(failoverDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3457,10 +4288,21 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
+     * @throws DBClusterNotFoundException
+     *         <i>DBClusterIdentifier</i> does not refer to an existing DB cluster.
      * @sample AmazonRDS.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3522,9 +4364,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBClusterAlreadyExistsException
      *         User already has a DB cluster with the given identifier.
      * @sample AmazonRDS.ModifyDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBCluster modifyDBCluster(ModifyDBClusterRequest modifyDBClusterRequest) {
+    public DBCluster modifyDBCluster(ModifyDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeModifyDBCluster(ModifyDBClusterRequest modifyDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3588,9 +4439,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBParameterGroupStateException
      *         The DB parameter group cannot be deleted because it is in use.
      * @sample AmazonRDS.ModifyDBClusterParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBClusterParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyDBClusterParameterGroupResult modifyDBClusterParameterGroup(ModifyDBClusterParameterGroupRequest modifyDBClusterParameterGroupRequest) {
+    public ModifyDBClusterParameterGroupResult modifyDBClusterParameterGroup(ModifyDBClusterParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBClusterParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final ModifyDBClusterParameterGroupResult executeModifyDBClusterParameterGroup(ModifyDBClusterParameterGroupRequest modifyDBClusterParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBClusterParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3648,9 +4508,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SharedSnapshotQuotaExceededException
      *         You have exceeded the maximum number of accounts that you can share a manual DB snapshot with.
      * @sample AmazonRDS.ModifyDBClusterSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBClusterSnapshotAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBClusterSnapshotAttributesResult modifyDBClusterSnapshotAttribute(ModifyDBClusterSnapshotAttributeRequest modifyDBClusterSnapshotAttributeRequest) {
+    public DBClusterSnapshotAttributesResult modifyDBClusterSnapshotAttribute(ModifyDBClusterSnapshotAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBClusterSnapshotAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DBClusterSnapshotAttributesResult executeModifyDBClusterSnapshotAttribute(
+            ModifyDBClusterSnapshotAttributeRequest modifyDBClusterSnapshotAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBClusterSnapshotAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3722,9 +4592,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DomainNotFoundException
      *         <i>Domain</i> does not refer to an existing Active Directory Domain.
      * @sample AmazonRDS.ModifyDBInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBInstance modifyDBInstance(ModifyDBInstanceRequest modifyDBInstanceRequest) {
+    public DBInstance modifyDBInstance(ModifyDBInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBInstance(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeModifyDBInstance(ModifyDBInstanceRequest modifyDBInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3782,9 +4661,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBParameterGroupStateException
      *         The DB parameter group cannot be deleted because it is in use.
      * @sample AmazonRDS.ModifyDBParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBParameterGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ModifyDBParameterGroupResult modifyDBParameterGroup(ModifyDBParameterGroupRequest modifyDBParameterGroupRequest) {
+    public ModifyDBParameterGroupResult modifyDBParameterGroup(ModifyDBParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final ModifyDBParameterGroupResult executeModifyDBParameterGroup(ModifyDBParameterGroupRequest modifyDBParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3803,6 +4691,59 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
 
             StaxResponseHandler<ModifyDBParameterGroupResult> responseHandler = new StaxResponseHandler<ModifyDBParameterGroupResult>(
                     new ModifyDBParameterGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version. You can update
+     * the engine version to either a new major or minor engine version.
+     * </p>
+     * <p>
+     * Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to MySQL 5.5.
+     * </p>
+     * 
+     * @param modifyDBSnapshotRequest
+     * @return Result of the ModifyDBSnapshot operation returned by the service.
+     * @throws DBSnapshotNotFoundException
+     *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
+     * @sample AmazonRDS.ModifyDBSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshot" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DBSnapshot modifyDBSnapshot(ModifyDBSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshot executeModifyDBSnapshot(ModifyDBSnapshotRequest modifyDBSnapshotRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyDBSnapshotRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyDBSnapshotRequest> request = null;
+        Response<DBSnapshot> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyDBSnapshotRequestMarshaller().marshall(super.beforeMarshalling(modifyDBSnapshotRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DBSnapshot> responseHandler = new StaxResponseHandler<DBSnapshot>(new DBSnapshotStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3842,9 +4783,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SharedSnapshotQuotaExceededException
      *         You have exceeded the maximum number of accounts that you can share a manual DB snapshot with.
      * @sample AmazonRDS.ModifyDBSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DBSnapshotAttributesResult modifyDBSnapshotAttribute(ModifyDBSnapshotAttributeRequest modifyDBSnapshotAttributeRequest) {
+    public DBSnapshotAttributesResult modifyDBSnapshotAttribute(ModifyDBSnapshotAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBSnapshotAttribute(request);
+    }
+
+    @SdkInternalApi
+    final DBSnapshotAttributesResult executeModifyDBSnapshotAttribute(ModifyDBSnapshotAttributeRequest modifyDBSnapshotAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBSnapshotAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3893,9 +4843,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidSubnetException
      *         The requested subnet is invalid, or multiple subnets were requested that are not all in a common VPC.
      * @sample AmazonRDS.ModifyDBSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSubnetGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBSubnetGroup modifyDBSubnetGroup(ModifyDBSubnetGroupRequest modifyDBSubnetGroupRequest) {
+    public DBSubnetGroup modifyDBSubnetGroup(ModifyDBSubnetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyDBSubnetGroup(request);
+    }
+
+    @SdkInternalApi
+    final DBSubnetGroup executeModifyDBSubnetGroup(ModifyDBSubnetGroupRequest modifyDBSubnetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyDBSubnetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3950,9 +4909,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SubscriptionCategoryNotFoundException
      *         The supplied category does not exist.
      * @sample AmazonRDS.ModifyEventSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyEventSubscription" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public EventSubscription modifyEventSubscription(ModifyEventSubscriptionRequest modifyEventSubscriptionRequest) {
+    public EventSubscription modifyEventSubscription(ModifyEventSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyEventSubscription(request);
+    }
+
+    @SdkInternalApi
+    final EventSubscription executeModifyEventSubscription(ModifyEventSubscriptionRequest modifyEventSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyEventSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3992,9 +4960,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws OptionGroupNotFoundException
      *         The specified option group could not be found.
      * @sample AmazonRDS.ModifyOptionGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyOptionGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public OptionGroup modifyOptionGroup(ModifyOptionGroupRequest modifyOptionGroupRequest) {
+    public OptionGroup modifyOptionGroup(ModifyOptionGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyOptionGroup(request);
+    }
+
+    @SdkInternalApi
+    final OptionGroup executeModifyOptionGroup(ModifyOptionGroupRequest modifyOptionGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyOptionGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4041,9 +5018,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBInstanceNotFoundException
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @sample AmazonRDS.PromoteReadReplica
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PromoteReadReplica" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBInstance promoteReadReplica(PromoteReadReplicaRequest promoteReadReplicaRequest) {
+    public DBInstance promoteReadReplica(PromoteReadReplicaRequest request) {
+        request = beforeClientExecution(request);
+        return executePromoteReadReplica(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executePromoteReadReplica(PromoteReadReplicaRequest promoteReadReplicaRequest) {
+
         ExecutionContext executionContext = createExecutionContext(promoteReadReplicaRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4083,9 +5069,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBClusterStateException
      *         The DB cluster is not in a valid state.
      * @sample AmazonRDS.PromoteReadReplicaDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PromoteReadReplicaDBCluster"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBCluster promoteReadReplicaDBCluster(PromoteReadReplicaDBClusterRequest promoteReadReplicaDBClusterRequest) {
+    public DBCluster promoteReadReplicaDBCluster(PromoteReadReplicaDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executePromoteReadReplicaDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executePromoteReadReplicaDBCluster(PromoteReadReplicaDBClusterRequest promoteReadReplicaDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(promoteReadReplicaDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4127,9 +5122,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws ReservedDBInstanceQuotaExceededException
      *         Request would exceed the user's DB Instance quota.
      * @sample AmazonRDS.PurchaseReservedDBInstancesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PurchaseReservedDBInstancesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ReservedDBInstance purchaseReservedDBInstancesOffering(PurchaseReservedDBInstancesOfferingRequest purchaseReservedDBInstancesOfferingRequest) {
+    public ReservedDBInstance purchaseReservedDBInstancesOffering(PurchaseReservedDBInstancesOfferingRequest request) {
+        request = beforeClientExecution(request);
+        return executePurchaseReservedDBInstancesOffering(request);
+    }
+
+    @SdkInternalApi
+    final ReservedDBInstance executePurchaseReservedDBInstancesOffering(PurchaseReservedDBInstancesOfferingRequest purchaseReservedDBInstancesOfferingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(purchaseReservedDBInstancesOfferingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4184,9 +5188,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBInstanceNotFoundException
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @sample AmazonRDS.RebootDBInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RebootDBInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBInstance rebootDBInstance(RebootDBInstanceRequest rebootDBInstanceRequest) {
+    public DBInstance rebootDBInstance(RebootDBInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeRebootDBInstance(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeRebootDBInstance(RebootDBInstanceRequest rebootDBInstanceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rebootDBInstanceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4230,9 +5243,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBClusterStateException
      *         The DB cluster is not in a valid state.
      * @sample AmazonRDS.RemoveRoleFromDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveRoleFromDBCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RemoveRoleFromDBClusterResult removeRoleFromDBCluster(RemoveRoleFromDBClusterRequest removeRoleFromDBClusterRequest) {
+    public RemoveRoleFromDBClusterResult removeRoleFromDBCluster(RemoveRoleFromDBClusterRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveRoleFromDBCluster(request);
+    }
+
+    @SdkInternalApi
+    final RemoveRoleFromDBClusterResult executeRemoveRoleFromDBCluster(RemoveRoleFromDBClusterRequest removeRoleFromDBClusterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeRoleFromDBClusterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4273,9 +5295,19 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws SourceNotFoundException
      *         The requested source could not be found.
      * @sample AmazonRDS.RemoveSourceIdentifierFromSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveSourceIdentifierFromSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EventSubscription removeSourceIdentifierFromSubscription(RemoveSourceIdentifierFromSubscriptionRequest removeSourceIdentifierFromSubscriptionRequest) {
+    public EventSubscription removeSourceIdentifierFromSubscription(RemoveSourceIdentifierFromSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveSourceIdentifierFromSubscription(request);
+    }
+
+    @SdkInternalApi
+    final EventSubscription executeRemoveSourceIdentifierFromSubscription(
+            RemoveSourceIdentifierFromSubscriptionRequest removeSourceIdentifierFromSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeSourceIdentifierFromSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4320,10 +5352,21 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *         <i>DBInstanceIdentifier</i> does not refer to an existing DB instance.
      * @throws DBSnapshotNotFoundException
      *         <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot.
+     * @throws DBClusterNotFoundException
+     *         <i>DBClusterIdentifier</i> does not refer to an existing DB cluster.
      * @sample AmazonRDS.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest) {
+    public RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTagsFromResource(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsFromResourceResult executeRemoveTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsFromResourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4378,9 +5421,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.ResetDBClusterParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResetDBClusterParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ResetDBClusterParameterGroupResult resetDBClusterParameterGroup(ResetDBClusterParameterGroupRequest resetDBClusterParameterGroupRequest) {
+    public ResetDBClusterParameterGroupResult resetDBClusterParameterGroup(ResetDBClusterParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetDBClusterParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final ResetDBClusterParameterGroupResult executeResetDBClusterParameterGroup(ResetDBClusterParameterGroupRequest resetDBClusterParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetDBClusterParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4426,9 +5478,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DBParameterGroupNotFoundException
      *         <i>DBParameterGroupName</i> does not refer to an existing DB parameter group.
      * @sample AmazonRDS.ResetDBParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResetDBParameterGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResetDBParameterGroupResult resetDBParameterGroup(ResetDBParameterGroupRequest resetDBParameterGroupRequest) {
+    public ResetDBParameterGroupResult resetDBParameterGroup(ResetDBParameterGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetDBParameterGroup(request);
+    }
+
+    @SdkInternalApi
+    final ResetDBParameterGroupResult executeResetDBParameterGroup(ResetDBParameterGroupRequest resetDBParameterGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resetDBParameterGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4498,9 +5559,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      *         There is insufficient storage available for the current action. You may be able to resolve this error by
      *         updating your subnet group to use different Availability Zones that have more storage available.
      * @sample AmazonRDS.RestoreDBClusterFromS3
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterFromS3" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DBCluster restoreDBClusterFromS3(RestoreDBClusterFromS3Request restoreDBClusterFromS3Request) {
+    public DBCluster restoreDBClusterFromS3(RestoreDBClusterFromS3Request request) {
+        request = beforeClientExecution(request);
+        return executeRestoreDBClusterFromS3(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeRestoreDBClusterFromS3(RestoreDBClusterFromS3Request restoreDBClusterFromS3Request) {
+
         ExecutionContext executionContext = createExecutionContext(restoreDBClusterFromS3Request);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4579,9 +5649,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @sample AmazonRDS.RestoreDBClusterFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterFromSnapshot"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBCluster restoreDBClusterFromSnapshot(RestoreDBClusterFromSnapshotRequest restoreDBClusterFromSnapshotRequest) {
+    public DBCluster restoreDBClusterFromSnapshot(RestoreDBClusterFromSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreDBClusterFromSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeRestoreDBClusterFromSnapshot(RestoreDBClusterFromSnapshotRequest restoreDBClusterFromSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restoreDBClusterFromSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4661,9 +5740,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws KMSKeyNotAccessibleException
      *         Error accessing KMS key.
      * @sample AmazonRDS.RestoreDBClusterToPointInTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterToPointInTime"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBCluster restoreDBClusterToPointInTime(RestoreDBClusterToPointInTimeRequest restoreDBClusterToPointInTimeRequest) {
+    public DBCluster restoreDBClusterToPointInTime(RestoreDBClusterToPointInTimeRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreDBClusterToPointInTime(request);
+    }
+
+    @SdkInternalApi
+    final DBCluster executeRestoreDBClusterToPointInTime(RestoreDBClusterToPointInTimeRequest restoreDBClusterToPointInTimeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restoreDBClusterToPointInTimeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4754,9 +5842,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DomainNotFoundException
      *         <i>Domain</i> does not refer to an existing Active Directory Domain.
      * @sample AmazonRDS.RestoreDBInstanceFromDBSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromDBSnapshot"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBInstance restoreDBInstanceFromDBSnapshot(RestoreDBInstanceFromDBSnapshotRequest restoreDBInstanceFromDBSnapshotRequest) {
+    public DBInstance restoreDBInstanceFromDBSnapshot(RestoreDBInstanceFromDBSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreDBInstanceFromDBSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeRestoreDBInstanceFromDBSnapshot(RestoreDBInstanceFromDBSnapshotRequest restoreDBInstanceFromDBSnapshotRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restoreDBInstanceFromDBSnapshotRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4842,9 +5939,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws DomainNotFoundException
      *         <i>Domain</i> does not refer to an existing Active Directory Domain.
      * @sample AmazonRDS.RestoreDBInstanceToPointInTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceToPointInTime"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBInstance restoreDBInstanceToPointInTime(RestoreDBInstanceToPointInTimeRequest restoreDBInstanceToPointInTimeRequest) {
+    public DBInstance restoreDBInstanceToPointInTime(RestoreDBInstanceToPointInTimeRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreDBInstanceToPointInTime(request);
+    }
+
+    @SdkInternalApi
+    final DBInstance executeRestoreDBInstanceToPointInTime(RestoreDBInstanceToPointInTimeRequest restoreDBInstanceToPointInTimeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(restoreDBInstanceToPointInTimeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4890,9 +5996,18 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
      * @throws InvalidDBSecurityGroupStateException
      *         The state of the DB security group does not allow deletion.
      * @sample AmazonRDS.RevokeDBSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RevokeDBSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DBSecurityGroup revokeDBSecurityGroupIngress(RevokeDBSecurityGroupIngressRequest revokeDBSecurityGroupIngressRequest) {
+    public DBSecurityGroup revokeDBSecurityGroupIngress(RevokeDBSecurityGroupIngressRequest request) {
+        request = beforeClientExecution(request);
+        return executeRevokeDBSecurityGroupIngress(request);
+    }
+
+    @SdkInternalApi
+    final DBSecurityGroup executeRevokeDBSecurityGroupIngress(RevokeDBSecurityGroupIngressRequest revokeDBSecurityGroupIngressRequest) {
+
         ExecutionContext executionContext = createExecutionContext(revokeDBSecurityGroupIngressRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4973,6 +6088,7 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonRDSWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -4982,6 +6098,14 @@ public class AmazonRDSClient extends AmazonWebServiceClient implements AmazonRDS
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

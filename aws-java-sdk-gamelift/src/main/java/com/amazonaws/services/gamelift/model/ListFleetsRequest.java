@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ListFleets" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the specified
+     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
      * build. To retrieve all fleets, leave this parameter empty.
      * </p>
      */
@@ -38,20 +44,20 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private Integer limit;
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the specified
+     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
      * build. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the
+     *        Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
      *        specified build. To retrieve all fleets, leave this parameter empty.
      */
 
@@ -61,11 +67,11 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the specified
+     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
      * build. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
-     * @return Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the
+     * @return Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
      *         specified build. To retrieve all fleets, leave this parameter empty.
      */
 
@@ -75,12 +81,12 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the specified
+     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
      * build. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier of the build to return fleets for. Use this parameter to return only fleets using the
+     *        Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
      *        specified build. To retrieve all fleets, leave this parameter empty.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -138,13 +144,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public void setNextToken(String nextToken) {
@@ -153,12 +159,12 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
-     * @return Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *         previous call to this action. To specify the start of the result set, do not specify a value.
+     * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
+     *         with a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public String getNextToken() {
@@ -167,13 +173,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -194,11 +200,11 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBuildId() != null)
-            sb.append("BuildId: " + getBuildId() + ",");
+            sb.append("BuildId: ").append(getBuildId()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -243,4 +249,5 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public ListFleetsRequest clone() {
         return (ListFleetsRequest) super.clone();
     }
+
 }

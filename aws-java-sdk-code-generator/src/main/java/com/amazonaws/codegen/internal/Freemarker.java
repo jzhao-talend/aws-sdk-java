@@ -46,7 +46,7 @@ public class Freemarker {
         Protocol templateProtocol = model.getMetadata().getProtocol();
         if (Protocol.CBOR.equals(model.getMetadata().getProtocol()) ||
             Protocol.ION.equals(model.getMetadata().getProtocol())) {
-            templateProtocol = Protocol.JSON;
+            templateProtocol = Protocol.AWS_JSON;
         }
         CodeGenTemplatesConfig protocolDefaultConfig = CodeGenTemplatesConfig.load(templateProtocol);
 
@@ -153,6 +153,10 @@ public class Freemarker {
         return getTemplate(templateConfig.getModelMarshaller());
     }
 
+    public Template getRequestMarshallerTemplate() throws IOException {
+        return getTemplate(templateConfig.getRequestMarshaller());
+    }
+
     public Template getModelUnmarshallerTemplate() throws IOException {
         return getTemplate(templateConfig.getModelUnmarshaller());
     }
@@ -179,6 +183,22 @@ public class Freemarker {
 
     public Template getCucumberPropertiesTemplate() throws IOException {
         return getTemplate(templateConfig.getCucumberPropertiesFile());
+    }
+
+    public Template getApiGatewayPomTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayPomTemplate());
+    }
+
+    public Template getApiGatewayGradleBuildTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayGradleBuildTemplate());
+    }
+
+    public Template getApiGatewayGradleSettingsTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayGradleSettingsTemplate());
+    }
+
+    public Template getApiGatewayReadmeTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayReadmeTemplate());
     }
 
     public Template getShapeTemplate(ShapeModel shape) throws IOException {
@@ -218,7 +238,9 @@ public class Freemarker {
 
     public Template getWaiterTemplate() throws IOException{
         return getTemplate(templateConfig.getWaiterClass());
+    }
 
-
+    public Template getCustomAuthorizerTemplate() throws IOException{
+        return getTemplate(templateConfig.getCustomRequestSignerClass());
     }
 }

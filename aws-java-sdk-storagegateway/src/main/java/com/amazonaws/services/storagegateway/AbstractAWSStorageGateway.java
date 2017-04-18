@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.storagegateway;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.storagegateway.model.*;
 import com.amazonaws.*;
 
@@ -19,6 +21,7 @@ import com.amazonaws.*;
  * Abstract implementation of {@code AWSStorageGateway}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSStorageGateway implements AWSStorageGateway {
 
     protected AbstractAWSStorageGateway() {
@@ -75,6 +78,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
     }
 
     @Override
+    public CreateNFSFileShareResult createNFSFileShare(CreateNFSFileShareRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateSnapshotResult createSnapshot(CreateSnapshotRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -106,6 +114,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
 
     @Override
     public DeleteChapCredentialsResult deleteChapCredentials(DeleteChapCredentialsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteFileShareResult deleteFileShare(DeleteFileShareRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -165,6 +178,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
     }
 
     @Override
+    public DescribeNFSFileSharesResult describeNFSFileShares(DescribeNFSFileSharesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeSnapshotScheduleResult describeSnapshotSchedule(DescribeSnapshotScheduleRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -215,6 +233,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
     }
 
     @Override
+    public ListFileSharesResult listFileShares(ListFileSharesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListGatewaysResult listGateways(ListGatewaysRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -256,6 +279,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
 
     @Override
     public ListVolumesResult listVolumes(ListVolumesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public RefreshCacheResult refreshCache(RefreshCacheRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -321,6 +349,11 @@ public class AbstractAWSStorageGateway implements AWSStorageGateway {
 
     @Override
     public UpdateMaintenanceStartTimeResult updateMaintenanceStartTime(UpdateMaintenanceStartTimeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateNFSFileShareResult updateNFSFileShare(UpdateNFSFileShareRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

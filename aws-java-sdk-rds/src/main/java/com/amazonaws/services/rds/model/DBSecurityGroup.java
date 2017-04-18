@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -43,7 +44,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>DescribeDBSecurityGroups</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBSecurityGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBSecurityGroup implements Serializable, Cloneable {
 
     /**
@@ -447,19 +452,19 @@ public class DBSecurityGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOwnerId() != null)
-            sb.append("OwnerId: " + getOwnerId() + ",");
+            sb.append("OwnerId: ").append(getOwnerId()).append(",");
         if (getDBSecurityGroupName() != null)
-            sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");
+            sb.append("DBSecurityGroupName: ").append(getDBSecurityGroupName()).append(",");
         if (getDBSecurityGroupDescription() != null)
-            sb.append("DBSecurityGroupDescription: " + getDBSecurityGroupDescription() + ",");
+            sb.append("DBSecurityGroupDescription: ").append(getDBSecurityGroupDescription()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getEC2SecurityGroups() != null)
-            sb.append("EC2SecurityGroups: " + getEC2SecurityGroups() + ",");
+            sb.append("EC2SecurityGroups: ").append(getEC2SecurityGroups()).append(",");
         if (getIPRanges() != null)
-            sb.append("IPRanges: " + getIPRanges() + ",");
+            sb.append("IPRanges: ").append(getIPRanges()).append(",");
         if (getDBSecurityGroupArn() != null)
-            sb.append("DBSecurityGroupArn: " + getDBSecurityGroupArn());
+            sb.append("DBSecurityGroupArn: ").append(getDBSecurityGroupArn());
         sb.append("}");
         return sb.toString();
     }
@@ -528,4 +533,5 @@ public class DBSecurityGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

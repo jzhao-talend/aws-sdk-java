@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,8 +24,12 @@ import java.io.Serializable;
  * a command invocation is created for each requested instance ID. A command invocation returns status and detail
  * information about a command you executed.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CommandInvocation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CommandInvocation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CommandInvocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -36,6 +43,13 @@ public class CommandInvocation implements Serializable, Cloneable {
      * </p>
      */
     private String instanceId;
+    /**
+     * <p>
+     * The name of the invocation target. For Amazon EC2 instances this is the value for the <code>aws:Name</code> tag.
+     * For on-premises instances, this is the name of the instance.
+     * </p>
+     */
+    private String instanceName;
     /**
      * <p>
      * User-specified information about the command, such as a brief description of what the command should do.
@@ -62,16 +76,101 @@ public class CommandInvocation implements Serializable, Cloneable {
     private String status;
     /**
      * <p>
+     * A detailed status of the command execution for each invocation (each instance targeted by the command).
+     * <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     * resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results
+     * than <code>Status</code>. For more information about these statuses, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     * Status</a>. <code>StatusDetails</code> can be one of the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Pending – The command has not been sent to the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * In Progress – The command has been sent to the instance but has not reached a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired. Delivery
+     * timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do contribute to
+     * whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Execution Timed Out – Command execution started on the instance, but the execution was not complete before the
+     * execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the parent
+     * command. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed – The command was not successful on the instance. For a plugin, this indicates that the result code was
+     * not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero.
+     * Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This is a terminal
+     * state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Canceled – The command was terminated before it was completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not be
+     * responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code> limit and
+     * don't contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is
+     * a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command invocations were
+     * canceled by the system. This is a terminal state.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String statusDetails;
+    /**
+     * <p>
      * Gets the trace output sent by the agent.
      * </p>
      */
     private String traceOutput;
+    /**
+     * <p>
+     * The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     */
+    private String standardOutputUrl;
+    /**
+     * <p>
+     * The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     */
+    private String standardErrorUrl;
 
     private com.amazonaws.internal.SdkInternalList<CommandPlugin> commandPlugins;
     /**
      * <p>
-     * The IAM service role that SSM uses to act on your behalf when sending notifications about command status changes
-     * on a per instance basis.
+     * The IAM service role that Run Command uses to act on your behalf when sending notifications about command status
+     * changes on a per instance basis.
      * </p>
      */
     private String serviceRole;
@@ -159,6 +258,52 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     public CommandInvocation withInstanceId(String instanceId) {
         setInstanceId(instanceId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the invocation target. For Amazon EC2 instances this is the value for the <code>aws:Name</code> tag.
+     * For on-premises instances, this is the name of the instance.
+     * </p>
+     * 
+     * @param instanceName
+     *        The name of the invocation target. For Amazon EC2 instances this is the value for the
+     *        <code>aws:Name</code> tag. For on-premises instances, this is the name of the instance.
+     */
+
+    public void setInstanceName(String instanceName) {
+        this.instanceName = instanceName;
+    }
+
+    /**
+     * <p>
+     * The name of the invocation target. For Amazon EC2 instances this is the value for the <code>aws:Name</code> tag.
+     * For on-premises instances, this is the name of the instance.
+     * </p>
+     * 
+     * @return The name of the invocation target. For Amazon EC2 instances this is the value for the
+     *         <code>aws:Name</code> tag. For on-premises instances, this is the name of the instance.
+     */
+
+    public String getInstanceName() {
+        return this.instanceName;
+    }
+
+    /**
+     * <p>
+     * The name of the invocation target. For Amazon EC2 instances this is the value for the <code>aws:Name</code> tag.
+     * For on-premises instances, this is the name of the instance.
+     * </p>
+     * 
+     * @param instanceName
+     *        The name of the invocation target. For Amazon EC2 instances this is the value for the
+     *        <code>aws:Name</code> tag. For on-premises instances, this is the name of the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CommandInvocation withInstanceName(String instanceName) {
+        setInstanceName(instanceName);
         return this;
     }
 
@@ -357,6 +502,424 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     /**
      * <p>
+     * A detailed status of the command execution for each invocation (each instance targeted by the command).
+     * <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     * resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results
+     * than <code>Status</code>. For more information about these statuses, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     * Status</a>. <code>StatusDetails</code> can be one of the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Pending – The command has not been sent to the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * In Progress – The command has been sent to the instance but has not reached a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired. Delivery
+     * timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do contribute to
+     * whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Execution Timed Out – Command execution started on the instance, but the execution was not complete before the
+     * execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the parent
+     * command. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed – The command was not successful on the instance. For a plugin, this indicates that the result code was
+     * not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero.
+     * Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This is a terminal
+     * state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Canceled – The command was terminated before it was completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not be
+     * responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code> limit and
+     * don't contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is
+     * a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command invocations were
+     * canceled by the system. This is a terminal state.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param statusDetails
+     *        A detailed status of the command execution for each invocation (each instance targeted by the command).
+     *        <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     *        resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different
+     *        results than <code>Status</code>. For more information about these statuses, see <a
+     *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     *        Status</a>. <code>StatusDetails</code> can be one of the following values:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Pending – The command has not been sent to the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        In Progress – The command has been sent to the instance but has not reached a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired.
+     *        Delivery timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do
+     *        contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This
+     *        is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Execution Timed Out – Command execution started on the instance, but the execution was not complete before
+     *        the execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the
+     *        parent command. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Failed – The command was not successful on the instance. For a plugin, this indicates that the result code
+     *        was not zero. For a command invocation, this indicates that the result code for one or more plugins was
+     *        not zero. Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This
+     *        is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Canceled – The command was terminated before it was completed. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not
+     *        be responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code>
+     *        limit and don't contribute to whether the parent command status is <code>Success</code> or
+     *        <code>Incomplete</code>. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command
+     *        invocations were canceled by the system. This is a terminal state.
+     *        </p>
+     *        </li>
+     */
+
+    public void setStatusDetails(String statusDetails) {
+        this.statusDetails = statusDetails;
+    }
+
+    /**
+     * <p>
+     * A detailed status of the command execution for each invocation (each instance targeted by the command).
+     * <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     * resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results
+     * than <code>Status</code>. For more information about these statuses, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     * Status</a>. <code>StatusDetails</code> can be one of the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Pending – The command has not been sent to the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * In Progress – The command has been sent to the instance but has not reached a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired. Delivery
+     * timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do contribute to
+     * whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Execution Timed Out – Command execution started on the instance, but the execution was not complete before the
+     * execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the parent
+     * command. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed – The command was not successful on the instance. For a plugin, this indicates that the result code was
+     * not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero.
+     * Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This is a terminal
+     * state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Canceled – The command was terminated before it was completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not be
+     * responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code> limit and
+     * don't contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is
+     * a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command invocations were
+     * canceled by the system. This is a terminal state.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A detailed status of the command execution for each invocation (each instance targeted by the command).
+     *         <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     *         resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different
+     *         results than <code>Status</code>. For more information about these statuses, see <a
+     *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     *         Status</a>. <code>StatusDetails</code> can be one of the following values:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Pending – The command has not been sent to the instance.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         In Progress – The command has been sent to the instance but has not reached a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired.
+     *         Delivery timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do
+     *         contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This
+     *         is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Execution Timed Out – Command execution started on the instance, but the execution was not complete
+     *         before the execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit
+     *         of the parent command. This is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Failed – The command was not successful on the instance. For a plugin, this indicates that the result
+     *         code was not zero. For a command invocation, this indicates that the result code for one or more plugins
+     *         was not zero. Invocation failures count against the <code>MaxErrors</code> limit of the parent command.
+     *         This is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Canceled – The command was terminated before it was completed. This is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not
+     *         be responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code>
+     *         limit and don't contribute to whether the parent command status is <code>Success</code> or
+     *         <code>Incomplete</code>. This is a terminal state.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command
+     *         invocations were canceled by the system. This is a terminal state.
+     *         </p>
+     *         </li>
+     */
+
+    public String getStatusDetails() {
+        return this.statusDetails;
+    }
+
+    /**
+     * <p>
+     * A detailed status of the command execution for each invocation (each instance targeted by the command).
+     * <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     * resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results
+     * than <code>Status</code>. For more information about these statuses, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     * Status</a>. <code>StatusDetails</code> can be one of the following values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Pending – The command has not been sent to the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * In Progress – The command has been sent to the instance but has not reached a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired. Delivery
+     * timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do contribute to
+     * whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Execution Timed Out – Command execution started on the instance, but the execution was not complete before the
+     * execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the parent
+     * command. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed – The command was not successful on the instance. For a plugin, this indicates that the result code was
+     * not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero.
+     * Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This is a terminal
+     * state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Canceled – The command was terminated before it was completed. This is a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not be
+     * responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code> limit and
+     * don't contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This is
+     * a terminal state.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command invocations were
+     * canceled by the system. This is a terminal state.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param statusDetails
+     *        A detailed status of the command execution for each invocation (each instance targeted by the command).
+     *        <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states
+     *        resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different
+     *        results than <code>Status</code>. For more information about these statuses, see <a
+     *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command
+     *        Status</a>. <code>StatusDetails</code> can be one of the following values:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Pending – The command has not been sent to the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        In Progress – The command has been sent to the instance but has not reached a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Success – The execution of the command or plugin was successfully completed. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Delivery Timed Out – The command was not delivered to the instance before the delivery timeout expired.
+     *        Delivery timeouts do not count against the parent command’s <code>MaxErrors</code> limit, but they do
+     *        contribute to whether the parent command status is <code>Success</code> or <code>Incomplete</code>. This
+     *        is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Execution Timed Out – Command execution started on the instance, but the execution was not complete before
+     *        the execution timeout expired. Execution timeouts count against the <code>MaxErrors</code> limit of the
+     *        parent command. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Failed – The command was not successful on the instance. For a plugin, this indicates that the result code
+     *        was not zero. For a command invocation, this indicates that the result code for one or more plugins was
+     *        not zero. Invocation failures count against the <code>MaxErrors</code> limit of the parent command. This
+     *        is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Canceled – The command was terminated before it was completed. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Undeliverable – The command can't be delivered to the instance. The instance might not exist or might not
+     *        be responding. Undeliverable invocations don't count against the parent command’s <code>MaxErrors</code>
+     *        limit and don't contribute to whether the parent command status is <code>Success</code> or
+     *        <code>Incomplete</code>. This is a terminal state.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Terminated – The parent command exceeded its <code>MaxErrors</code> limit and subsequent command
+     *        invocations were canceled by the system. This is a terminal state.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CommandInvocation withStatusDetails(String statusDetails) {
+        setStatusDetails(statusDetails);
+        return this;
+    }
+
+    /**
+     * <p>
      * Gets the trace output sent by the agent.
      * </p>
      * 
@@ -392,6 +955,110 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     public CommandInvocation withTraceOutput(String traceOutput) {
         setTraceOutput(traceOutput);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @param standardOutputUrl
+     *        The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *        command. For an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin
+     *        defined for the command, and the Amazon S3 bucket was defined for the command.
+     */
+
+    public void setStandardOutputUrl(String standardOutputUrl) {
+        this.standardOutputUrl = standardOutputUrl;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @return The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *         command. For an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin
+     *         defined for the command, and the Amazon S3 bucket was defined for the command.
+     */
+
+    public String getStandardOutputUrl() {
+        return this.standardOutputUrl;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @param standardOutputUrl
+     *        The URL to the plugin’s StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *        command. For an invocation, <code>StandardOutputUrl</code> is populated if there is just one plugin
+     *        defined for the command, and the Amazon S3 bucket was defined for the command.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CommandInvocation withStandardOutputUrl(String standardOutputUrl) {
+        setStandardOutputUrl(standardOutputUrl);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @param standardErrorUrl
+     *        The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *        command. For an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined
+     *        for the command, and the Amazon S3 bucket was defined for the command.
+     */
+
+    public void setStandardErrorUrl(String standardErrorUrl) {
+        this.standardErrorUrl = standardErrorUrl;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @return The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *         command. For an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin
+     *         defined for the command, and the Amazon S3 bucket was defined for the command.
+     */
+
+    public String getStandardErrorUrl() {
+        return this.standardErrorUrl;
+    }
+
+    /**
+     * <p>
+     * The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For
+     * an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined for the command,
+     * and the Amazon S3 bucket was defined for the command.
+     * </p>
+     * 
+     * @param standardErrorUrl
+     *        The URL to the plugin’s StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent
+     *        command. For an invocation, <code>StandardErrorUrl</code> is populated if there is just one plugin defined
+     *        for the command, and the Amazon S3 bucket was defined for the command.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CommandInvocation withStandardErrorUrl(String standardErrorUrl) {
+        setStandardErrorUrl(standardErrorUrl);
         return this;
     }
 
@@ -452,13 +1119,13 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IAM service role that SSM uses to act on your behalf when sending notifications about command status changes
-     * on a per instance basis.
+     * The IAM service role that Run Command uses to act on your behalf when sending notifications about command status
+     * changes on a per instance basis.
      * </p>
      * 
      * @param serviceRole
-     *        The IAM service role that SSM uses to act on your behalf when sending notifications about command status
-     *        changes on a per instance basis.
+     *        The IAM service role that Run Command uses to act on your behalf when sending notifications about command
+     *        status changes on a per instance basis.
      */
 
     public void setServiceRole(String serviceRole) {
@@ -467,12 +1134,12 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IAM service role that SSM uses to act on your behalf when sending notifications about command status changes
-     * on a per instance basis.
+     * The IAM service role that Run Command uses to act on your behalf when sending notifications about command status
+     * changes on a per instance basis.
      * </p>
      * 
-     * @return The IAM service role that SSM uses to act on your behalf when sending notifications about command status
-     *         changes on a per instance basis.
+     * @return The IAM service role that Run Command uses to act on your behalf when sending notifications about command
+     *         status changes on a per instance basis.
      */
 
     public String getServiceRole() {
@@ -481,13 +1148,13 @@ public class CommandInvocation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IAM service role that SSM uses to act on your behalf when sending notifications about command status changes
-     * on a per instance basis.
+     * The IAM service role that Run Command uses to act on your behalf when sending notifications about command status
+     * changes on a per instance basis.
      * </p>
      * 
      * @param serviceRole
-     *        The IAM service role that SSM uses to act on your behalf when sending notifications about command status
-     *        changes on a per instance basis.
+     *        The IAM service role that Run Command uses to act on your behalf when sending notifications about command
+     *        status changes on a per instance basis.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -548,25 +1215,33 @@ public class CommandInvocation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCommandId() != null)
-            sb.append("CommandId: " + getCommandId() + ",");
+            sb.append("CommandId: ").append(getCommandId()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
+        if (getInstanceName() != null)
+            sb.append("InstanceName: ").append(getInstanceName()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment() + ",");
+            sb.append("Comment: ").append(getComment()).append(",");
         if (getDocumentName() != null)
-            sb.append("DocumentName: " + getDocumentName() + ",");
+            sb.append("DocumentName: ").append(getDocumentName()).append(",");
         if (getRequestedDateTime() != null)
-            sb.append("RequestedDateTime: " + getRequestedDateTime() + ",");
+            sb.append("RequestedDateTime: ").append(getRequestedDateTime()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
+        if (getStatusDetails() != null)
+            sb.append("StatusDetails: ").append(getStatusDetails()).append(",");
         if (getTraceOutput() != null)
-            sb.append("TraceOutput: " + getTraceOutput() + ",");
+            sb.append("TraceOutput: ").append(getTraceOutput()).append(",");
+        if (getStandardOutputUrl() != null)
+            sb.append("StandardOutputUrl: ").append(getStandardOutputUrl()).append(",");
+        if (getStandardErrorUrl() != null)
+            sb.append("StandardErrorUrl: ").append(getStandardErrorUrl()).append(",");
         if (getCommandPlugins() != null)
-            sb.append("CommandPlugins: " + getCommandPlugins() + ",");
+            sb.append("CommandPlugins: ").append(getCommandPlugins()).append(",");
         if (getServiceRole() != null)
-            sb.append("ServiceRole: " + getServiceRole() + ",");
+            sb.append("ServiceRole: ").append(getServiceRole()).append(",");
         if (getNotificationConfig() != null)
-            sb.append("NotificationConfig: " + getNotificationConfig());
+            sb.append("NotificationConfig: ").append(getNotificationConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -589,6 +1264,10 @@ public class CommandInvocation implements Serializable, Cloneable {
             return false;
         if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
+        if (other.getInstanceName() == null ^ this.getInstanceName() == null)
+            return false;
+        if (other.getInstanceName() != null && other.getInstanceName().equals(this.getInstanceName()) == false)
+            return false;
         if (other.getComment() == null ^ this.getComment() == null)
             return false;
         if (other.getComment() != null && other.getComment().equals(this.getComment()) == false)
@@ -605,9 +1284,21 @@ public class CommandInvocation implements Serializable, Cloneable {
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
+        if (other.getStatusDetails() == null ^ this.getStatusDetails() == null)
+            return false;
+        if (other.getStatusDetails() != null && other.getStatusDetails().equals(this.getStatusDetails()) == false)
+            return false;
         if (other.getTraceOutput() == null ^ this.getTraceOutput() == null)
             return false;
         if (other.getTraceOutput() != null && other.getTraceOutput().equals(this.getTraceOutput()) == false)
+            return false;
+        if (other.getStandardOutputUrl() == null ^ this.getStandardOutputUrl() == null)
+            return false;
+        if (other.getStandardOutputUrl() != null && other.getStandardOutputUrl().equals(this.getStandardOutputUrl()) == false)
+            return false;
+        if (other.getStandardErrorUrl() == null ^ this.getStandardErrorUrl() == null)
+            return false;
+        if (other.getStandardErrorUrl() != null && other.getStandardErrorUrl().equals(this.getStandardErrorUrl()) == false)
             return false;
         if (other.getCommandPlugins() == null ^ this.getCommandPlugins() == null)
             return false;
@@ -631,11 +1322,15 @@ public class CommandInvocation implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getCommandId() == null) ? 0 : getCommandId().hashCode());
         hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getInstanceName() == null) ? 0 : getInstanceName().hashCode());
         hashCode = prime * hashCode + ((getComment() == null) ? 0 : getComment().hashCode());
         hashCode = prime * hashCode + ((getDocumentName() == null) ? 0 : getDocumentName().hashCode());
         hashCode = prime * hashCode + ((getRequestedDateTime() == null) ? 0 : getRequestedDateTime().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getStatusDetails() == null) ? 0 : getStatusDetails().hashCode());
         hashCode = prime * hashCode + ((getTraceOutput() == null) ? 0 : getTraceOutput().hashCode());
+        hashCode = prime * hashCode + ((getStandardOutputUrl() == null) ? 0 : getStandardOutputUrl().hashCode());
+        hashCode = prime * hashCode + ((getStandardErrorUrl() == null) ? 0 : getStandardErrorUrl().hashCode());
         hashCode = prime * hashCode + ((getCommandPlugins() == null) ? 0 : getCommandPlugins().hashCode());
         hashCode = prime * hashCode + ((getServiceRole() == null) ? 0 : getServiceRole().hashCode());
         hashCode = prime * hashCode + ((getNotificationConfig() == null) ? 0 : getNotificationConfig().hashCode());
@@ -649,5 +1344,11 @@ public class CommandInvocation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.CommandInvocationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

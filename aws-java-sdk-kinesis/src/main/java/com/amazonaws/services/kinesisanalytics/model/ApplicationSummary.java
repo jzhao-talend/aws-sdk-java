@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Provides application summary information, including the application Amazon Resource Name (ARN), name, and status.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ApplicationSummary"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ApplicationSummary implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ApplicationSummary implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -205,11 +212,11 @@ public class ApplicationSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getApplicationARN() != null)
-            sb.append("ApplicationARN: " + getApplicationARN() + ",");
+            sb.append("ApplicationARN: ").append(getApplicationARN()).append(",");
         if (getApplicationStatus() != null)
-            sb.append("ApplicationStatus: " + getApplicationStatus());
+            sb.append("ApplicationStatus: ").append(getApplicationStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -257,5 +264,11 @@ public class ApplicationSummary implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.ApplicationSummaryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

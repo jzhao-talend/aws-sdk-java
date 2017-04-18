@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -35,8 +38,12 @@ import java.io.Serializable;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/GlobalSecondaryIndexUpdate"
+ *      target="_top">AWS API Documentation</a>
  */
-public class GlobalSecondaryIndexUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GlobalSecondaryIndexUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -382,11 +389,11 @@ public class GlobalSecondaryIndexUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUpdate() != null)
-            sb.append("Update: " + getUpdate() + ",");
+            sb.append("Update: ").append(getUpdate()).append(",");
         if (getCreate() != null)
-            sb.append("Create: " + getCreate() + ",");
+            sb.append("Create: ").append(getCreate()).append(",");
         if (getDelete() != null)
-            sb.append("Delete: " + getDelete());
+            sb.append("Delete: ").append(getDelete());
         sb.append("}");
         return sb.toString();
     }
@@ -434,5 +441,11 @@ public class GlobalSecondaryIndexUpdate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.GlobalSecondaryIndexUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.snowball;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,15 +22,20 @@ import com.amazonaws.services.snowball.model.*;
 /**
  * Interface for accessing Amazon Snowball.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.snowball.AbstractAmazonSnowball} instead.
+ * </p>
  * <p>
- * AWS Import/Export Snowball is a petabyte-scale data transport solution that uses secure appliances to transfer large
- * amounts of data between your on-premises data centers and Amazon Simple Storage Service (Amazon S3). The Snowball
- * commands described here provide access to the same functionality that is available in the AWS Snowball Management
- * Console, which enables you to create and manage jobs for Snowball. To transfer data locally with a Snowball
- * appliance, you'll need to use the Snowball client or the Amazon S3 API adapter for Snowball. For more information,
- * see the <a href="http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html">User Guide</a>.
+ * <p>
+ * AWS Snowball is a petabyte-scale data transport solution that uses secure appliances to transfer large amounts of
+ * data between your on-premises data centers and Amazon Simple Storage Service (Amazon S3). The Snowball commands
+ * described here provide access to the same functionality that is available in the AWS Snowball Management Console,
+ * which enables you to create and manage jobs for Snowball. To transfer data locally with a Snowball appliance, you'll
+ * need to use the Snowball client or the Amazon S3 API adapter for Snowball. For more information, see the <a
+ * href="http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html">User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSnowball {
 
     /**
@@ -60,7 +67,11 @@ public interface AmazonSnowball {
      *        The endpoint (ex: "snowball.us-east-1.amazonaws.com/") or a full URL, including the protocol (ex:
      *        "snowball.us-east-1.amazonaws.com/") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -81,12 +92,36 @@ public interface AmazonSnowball {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
-     * Cancels the specified job. Note that you can only cancel a job before its <code>JobState</code> value changes to
+     * Cancels a cluster job. You can only cancel a cluster job while it's in the <code>AwaitingQuorum</code> status.
+     * You'll have at least an hour after creating a cluster job to cancel it.
+     * </p>
+     * 
+     * @param cancelClusterRequest
+     * @return Result of the CancelCluster operation returned by the service.
+     * @throws KMSRequestFailedException
+     *         The provided AWS Key Management Service key lacks the permissions to perform the specified
+     *         <a>CreateJob</a> or <a>UpdateJob</a> action.
+     * @throws InvalidJobStateException
+     *         The action can't be performed because the job's current state doesn't allow that action to be performed.
+     * @throws InvalidResourceException
+     *         The specified resource can't be found. Check the information you provided in your last request, and try
+     *         again.
+     * @sample AmazonSnowball.CancelCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CancelClusterResult cancelCluster(CancelClusterRequest cancelClusterRequest);
+
+    /**
+     * <p>
+     * Cancels the specified job. You can only cancel a job before its <code>JobState</code> value changes to
      * <code>PreparingAppliance</code>. Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
      * return a job's <code>JobState</code> as part of the response element data returned.
      * </p>
@@ -102,6 +137,8 @@ public interface AmazonSnowball {
      *         The provided AWS Key Management Service key lacks the permissions to perform the specified
      *         <a>CreateJob</a> or <a>UpdateJob</a> action.
      * @sample AmazonSnowball.CancelJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob" target="_top">AWS API
+     *      Documentation</a>
      */
     CancelJobResult cancelJob(CancelJobRequest cancelJobRequest);
 
@@ -122,14 +159,38 @@ public interface AmazonSnowball {
      *         The address is either outside the serviceable area for your region, or an error occurred. Check the
      *         address with your region's carrier and try again. If the issue persists, contact AWS Support.
      * @sample AmazonSnowball.CreateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateAddressResult createAddress(CreateAddressRequest createAddressRequest);
 
     /**
      * <p>
-     * Creates a job to import or export data between Amazon S3 and your on-premises data center. Note that your AWS
-     * account must have the right trust policies and permissions in place to create a job for Snowball. For more
-     * information, see <a>api-reference-policies</a>.
+     * Creates an empty cluster. Each cluster supports five nodes. You use the <a>CreateJob</a> action separately to
+     * create the jobs for each of these nodes. The cluster does not ship until these five node jobs have been created.
+     * </p>
+     * 
+     * @param createClusterRequest
+     * @return Result of the CreateCluster operation returned by the service.
+     * @throws InvalidResourceException
+     *         The specified resource can't be found. Check the information you provided in your last request, and try
+     *         again.
+     * @throws KMSRequestFailedException
+     *         The provided AWS Key Management Service key lacks the permissions to perform the specified
+     *         <a>CreateJob</a> or <a>UpdateJob</a> action.
+     * @throws InvalidInputCombinationException
+     *         Job or cluster creation failed. One ore more inputs were invalid. Confirm that the
+     *         <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try
+     *         again.
+     * @sample AmazonSnowball.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateClusterResult createCluster(CreateClusterRequest createClusterRequest);
+
+    /**
+     * <p>
+     * Creates a job to the other job attributes are inherited from the cluster. .
      * </p>
      * 
      * @param createJobRequest
@@ -140,7 +201,17 @@ public interface AmazonSnowball {
      * @throws KMSRequestFailedException
      *         The provided AWS Key Management Service key lacks the permissions to perform the specified
      *         <a>CreateJob</a> or <a>UpdateJob</a> action.
+     * @throws InvalidInputCombinationException
+     *         Job or cluster creation failed. One ore more inputs were invalid. Confirm that the
+     *         <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try
+     *         again.
+     * @throws ClusterLimitExceededException
+     *         Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your
+     *         cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster
+     *         has exactly five notes.
      * @sample AmazonSnowball.CreateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateJobResult createJob(CreateJobRequest createJobRequest);
 
@@ -156,6 +227,8 @@ public interface AmazonSnowball {
      *         The specified resource can't be found. Check the information you provided in your last request, and try
      *         again.
      * @sample AmazonSnowball.DescribeAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeAddressResult describeAddress(DescribeAddressRequest describeAddressRequest);
 
@@ -171,13 +244,32 @@ public interface AmazonSnowball {
      *         The specified resource can't be found. Check the information you provided in your last request, and try
      *         again.
      * @sample AmazonSnowball.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeAddressesResult describeAddresses(DescribeAddressesRequest describeAddressesRequest);
 
     /**
      * <p>
-     * Returns information about a specific job including shipping information, job status, and other important
+     * Returns information about a specific cluster including shipping information, cluster status, and other important
      * metadata.
+     * </p>
+     * 
+     * @param describeClusterRequest
+     * @return Result of the DescribeCluster operation returned by the service.
+     * @throws InvalidResourceException
+     *         The specified resource can't be found. Check the information you provided in your last request, and try
+     *         again.
+     * @sample AmazonSnowball.DescribeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeClusterResult describeCluster(DescribeClusterRequest describeClusterRequest);
+
+    /**
+     * <p>
+     * Returns information about a specific job including shipping information, job status, and other important
+     * metadata. .
      * </p>
      * 
      * @param describeJobRequest
@@ -186,6 +278,8 @@ public interface AmazonSnowball {
      *         The specified resource can't be found. Check the information you provided in your last request, and try
      *         again.
      * @sample AmazonSnowball.DescribeJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeJobResult describeJob(DescribeJobRequest describeJobRequest);
 
@@ -207,8 +301,8 @@ public interface AmazonSnowball {
      * gaining access to the Snowball associated with that job.
      * </p>
      * <p>
-     * Note that the credentials of a given job, including its manifest file and unlock code, expire 90 days after the
-     * job is created.
+     * The credentials of a given job, including its manifest file and unlock code, expire 90 days after the job is
+     * created.
      * </p>
      * 
      * @param getJobManifestRequest
@@ -219,6 +313,8 @@ public interface AmazonSnowball {
      * @throws InvalidJobStateException
      *         The action can't be performed because the job's current state doesn't allow that action to be performed.
      * @sample AmazonSnowball.GetJobManifest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest" target="_top">AWS API
+     *      Documentation</a>
      */
     GetJobManifestResult getJobManifest(GetJobManifestRequest getJobManifestRequest);
 
@@ -246,6 +342,8 @@ public interface AmazonSnowball {
      * @throws InvalidJobStateException
      *         The action can't be performed because the job's current state doesn't allow that action to be performed.
      * @sample AmazonSnowball.GetJobUnlockCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode" target="_top">AWS API
+     *      Documentation</a>
      */
     GetJobUnlockCodeResult getJobUnlockCode(GetJobUnlockCodeRequest getJobUnlockCodeRequest);
 
@@ -255,15 +353,49 @@ public interface AmazonSnowball {
      * account has in use.
      * </p>
      * <p>
-     * Note that the default service limit for the number of Snowballs that you can have at one time is 1. If you want
-     * to increase your service limit, contact AWS Support.
+     * The default service limit for the number of Snowballs that you can have at one time is 1. If you want to increase
+     * your service limit, contact AWS Support.
      * </p>
      * 
      * @param getSnowballUsageRequest
      * @return Result of the GetSnowballUsage operation returned by the service.
      * @sample AmazonSnowball.GetSnowballUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage" target="_top">AWS API
+     *      Documentation</a>
      */
     GetSnowballUsageResult getSnowballUsage(GetSnowballUsageRequest getSnowballUsageRequest);
+
+    /**
+     * <p>
+     * Returns an array of <code>JobListEntry</code> objects of the specified length. Each <code>JobListEntry</code>
+     * object is for a job in the specified cluster and contains a job's state, a job's ID, and other information.
+     * </p>
+     * 
+     * @param listClusterJobsRequest
+     * @return Result of the ListClusterJobs operation returned by the service.
+     * @throws InvalidResourceException
+     *         The specified resource can't be found. Check the information you provided in your last request, and try
+     *         again.
+     * @sample AmazonSnowball.ListClusterJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListClusterJobsResult listClusterJobs(ListClusterJobsRequest listClusterJobsRequest);
+
+    /**
+     * <p>
+     * Returns an array of <code>ClusterListEntry</code> objects of the specified length. Each
+     * <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status
+     * information.
+     * </p>
+     * 
+     * @param listClustersRequest
+     * @return Result of the ListClusters operation returned by the service.
+     * @sample AmazonSnowball.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListClustersResult listClusters(ListClustersRequest listClustersRequest);
 
     /**
      * <p>
@@ -276,8 +408,37 @@ public interface AmazonSnowball {
      * @param listJobsRequest
      * @return Result of the ListJobs operation returned by the service.
      * @sample AmazonSnowball.ListJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     ListJobsResult listJobs(ListJobsRequest listJobsRequest);
+
+    /**
+     * <p>
+     * While a cluster's <code>ClusterState</code> value is in the <code>AwaitingQuorum</code> state, you can update
+     * some of the information associated with a cluster. Once the cluster changes to a different job state, usually 60
+     * minutes after the cluster being created, this action is no longer available.
+     * </p>
+     * 
+     * @param updateClusterRequest
+     * @return Result of the UpdateCluster operation returned by the service.
+     * @throws InvalidResourceException
+     *         The specified resource can't be found. Check the information you provided in your last request, and try
+     *         again.
+     * @throws InvalidJobStateException
+     *         The action can't be performed because the job's current state doesn't allow that action to be performed.
+     * @throws KMSRequestFailedException
+     *         The provided AWS Key Management Service key lacks the permissions to perform the specified
+     *         <a>CreateJob</a> or <a>UpdateJob</a> action.
+     * @throws InvalidInputCombinationException
+     *         Job or cluster creation failed. One ore more inputs were invalid. Confirm that the
+     *         <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try
+     *         again.
+     * @sample AmazonSnowball.UpdateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateClusterResult updateCluster(UpdateClusterRequest updateClusterRequest);
 
     /**
      * <p>
@@ -296,7 +457,17 @@ public interface AmazonSnowball {
      * @throws KMSRequestFailedException
      *         The provided AWS Key Management Service key lacks the permissions to perform the specified
      *         <a>CreateJob</a> or <a>UpdateJob</a> action.
+     * @throws InvalidInputCombinationException
+     *         Job or cluster creation failed. One ore more inputs were invalid. Confirm that the
+     *         <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try
+     *         again.
+     * @throws ClusterLimitExceededException
+     *         Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your
+     *         cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster
+     *         has exactly five notes.
      * @sample AmazonSnowball.UpdateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateJobResult updateJob(UpdateJobRequest updateJobRequest);
 

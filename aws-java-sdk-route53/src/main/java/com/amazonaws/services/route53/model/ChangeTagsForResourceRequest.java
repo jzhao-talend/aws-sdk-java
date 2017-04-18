@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type that contains information about the tags that you want to add, edit, or delete.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeTagsForResource" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ChangeTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -486,13 +492,13 @@ public class ChangeTagsForResourceRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getAddTags() != null)
-            sb.append("AddTags: " + getAddTags() + ",");
+            sb.append("AddTags: ").append(getAddTags()).append(",");
         if (getRemoveTagKeys() != null)
-            sb.append("RemoveTagKeys: " + getRemoveTagKeys());
+            sb.append("RemoveTagKeys: ").append(getRemoveTagKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -542,4 +548,5 @@ public class ChangeTagsForResourceRequest extends com.amazonaws.AmazonWebService
     public ChangeTagsForResourceRequest clone() {
         return (ChangeTagsForResourceRequest) super.clone();
     }
+
 }

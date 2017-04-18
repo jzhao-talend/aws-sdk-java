@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,16 @@ public class AbstractDynamoDBMapper implements IDynamoDBMapper {
 
     protected final DynamoDBMapperConfig mergeConfig(DynamoDBMapperConfig overrides) {
         return this.config.merge(overrides);
+    }
+
+    @Override
+    public <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz) {
+        return getTableModel(clazz, config);
+    }
+
+    @Override
+    public <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz, DynamoDBMapperConfig config) {
+        throw new UnsupportedOperationException("operation not supported in " + getClass());
     }
 
     @Override

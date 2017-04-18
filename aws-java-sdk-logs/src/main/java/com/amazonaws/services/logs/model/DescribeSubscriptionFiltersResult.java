@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,31 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeSubscriptionFilters" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The subscription filters.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<SubscriptionFilter> subscriptionFilters;
 
     private String nextToken;
 
     /**
-     * @return
+     * <p>
+     * The subscription filters.
+     * </p>
+     * 
+     * @return The subscription filters.
      */
 
     public java.util.List<SubscriptionFilter> getSubscriptionFilters() {
@@ -35,7 +48,12 @@ public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebSe
     }
 
     /**
+     * <p>
+     * The subscription filters.
+     * </p>
+     * 
      * @param subscriptionFilters
+     *        The subscription filters.
      */
 
     public void setSubscriptionFilters(java.util.Collection<SubscriptionFilter> subscriptionFilters) {
@@ -49,12 +67,16 @@ public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
+     * The subscription filters.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSubscriptionFilters(java.util.Collection)} or {@link #withSubscriptionFilters(java.util.Collection)}
      * if you want to override the existing values.
      * </p>
      * 
      * @param subscriptionFilters
+     *        The subscription filters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +91,12 @@ public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebSe
     }
 
     /**
+     * <p>
+     * The subscription filters.
+     * </p>
+     * 
      * @param subscriptionFilters
+     *        The subscription filters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,9 +143,9 @@ public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubscriptionFilters() != null)
-            sb.append("SubscriptionFilters: " + getSubscriptionFilters() + ",");
+            sb.append("SubscriptionFilters: ").append(getSubscriptionFilters()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -162,4 +189,5 @@ public class DescribeSubscriptionFiltersResult extends com.amazonaws.AmazonWebSe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

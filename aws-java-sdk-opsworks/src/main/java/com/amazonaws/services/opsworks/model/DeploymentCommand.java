@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Used to specify a stack or deployment command.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeploymentCommand" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeploymentCommand implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeploymentCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -71,9 +78,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -119,9 +126,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary, after
-     * installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default
-     * value is <code>false</code>.
+     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary,
+     * after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The
+     * default value is <code>false</code>.
      * </p>
      * </li>
      * </ul>
@@ -184,9 +191,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -261,8 +268,8 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks
-     *        stores the previous version, up to a maximum of five versions. You can use this command to roll an app
-     *        back as many as four versions.
+     *        Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an
+     *        app back as many as four versions.
      *        </p>
      *        </li>
      *        <li>
@@ -342,9 +349,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -418,8 +425,8 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks
-     *         stores the previous version, up to a maximum of five versions. You can use this command to roll an app
-     *         back as many as four versions.
+     *         Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an
+     *         app back as many as four versions.
      *         </p>
      *         </li>
      *         <li>
@@ -499,9 +506,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -576,8 +583,8 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks
-     *        stores the previous version, up to a maximum of five versions. You can use this command to roll an app
-     *        back as many as four versions.
+     *        Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an
+     *        app back as many as four versions.
      *        </p>
      *        </li>
      *        <li>
@@ -659,9 +666,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -736,8 +743,8 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks
-     *        stores the previous version, up to a maximum of five versions. You can use this command to roll an app
-     *        back as many as four versions.
+     *        Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an
+     *        app back as many as four versions.
      *        </p>
      *        </li>
      *        <li>
@@ -817,9 +824,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four
-     * versions.
+     * <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks
+     * stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as
+     * many as four versions.
      * </p>
      * </li>
      * <li>
@@ -894,8 +901,8 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        <li>
      *        <p>
      *        <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks
-     *        stores the previous version, up to a maximum of five versions. You can use this command to roll an app
-     *        back as many as four versions.
+     *        Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an
+     *        app back as many as four versions.
      *        </p>
      *        </li>
      *        <li>
@@ -947,9 +954,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary, after
-     * installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default
-     * value is <code>false</code>.
+     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary,
+     * after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The
+     * default value is <code>false</code>.
      * </p>
      * </li>
      * </ul>
@@ -978,9 +985,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary,
-     *         after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>.
-     *         The default value is <code>false</code>.
+     *         <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if
+     *         necessary, after installing the updates. This argument can be set to either <code>true</code> or
+     *         <code>false</code>. The default value is <code>false</code>.
      *         </p>
      *         </li>
      *         </ul>
@@ -1018,9 +1025,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary, after
-     * installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default
-     * value is <code>false</code>.
+     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary,
+     * after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The
+     * default value is <code>false</code>.
      * </p>
      * </li>
      * </ul>
@@ -1050,9 +1057,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary,
-     *        after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>.
-     *        The default value is <code>false</code>.
+     *        <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if
+     *        necessary, after installing the updates. This argument can be set to either <code>true</code> or
+     *        <code>false</code>. The default value is <code>false</code>.
      *        </p>
      *        </li>
      *        </ul>
@@ -1087,9 +1094,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary, after
-     * installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default
-     * value is <code>false</code>.
+     * <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary,
+     * after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The
+     * default value is <code>false</code>.
      * </p>
      * </li>
      * </ul>
@@ -1119,9 +1126,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks to reboot the instances if necessary,
-     *        after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>.
-     *        The default value is <code>false</code>.
+     *        <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if
+     *        necessary, after installing the updates. This argument can be set to either <code>true</code> or
+     *        <code>false</code>. The default value is <code>false</code>.
      *        </p>
      *        </li>
      *        </ul>
@@ -1171,9 +1178,9 @@ public class DeploymentCommand implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArgs() != null)
-            sb.append("Args: " + getArgs());
+            sb.append("Args: ").append(getArgs());
         sb.append("}");
         return sb.toString();
     }
@@ -1216,5 +1223,11 @@ public class DeploymentCommand implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.DeploymentCommandMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,59 +13,88 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Information about agents associated with the user’s AWS account. Information includes agent IDs, IP addresses, media
- * access control (MAC) addresses, agent health, hostname where the agent resides, and agent version for each agent.
+ * Information about agents or connectors associated with the user’s AWS account. Information includes agent or
+ * connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the
+ * agent or connector resides, and agent version for each agent.
  * </p>
  */
-public class AgentInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AgentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The agent ID.
+     * The agent or connector ID.
      * </p>
      */
     private String agentId;
     /**
      * <p>
-     * The name of the host where the agent resides. The host can be a server or virtual machine.
+     * The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      * </p>
      */
     private String hostName;
     /**
      * <p>
-     * Network details about the host where the agent resides.
+     * Network details about the host where the agent or connector resides.
      * </p>
      */
     private java.util.List<AgentNetworkInfo> agentNetworkInfoList;
     /**
      * <p>
-     * This data type is currently not valid.
+     * The ID of the connector.
      * </p>
      */
     private String connectorId;
     /**
      * <p>
-     * The agent version.
+     * The agent or connector version.
      * </p>
      */
     private String version;
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      */
     private String health;
+    /**
+     * <p>
+     * Time since agent or connector health was reported.
+     * </p>
+     */
+    private String lastHealthPingTime;
+    /**
+     * <p>
+     * Status of the collection process for an agent or connector.
+     * </p>
+     */
+    private String collectionStatus;
+    /**
+     * <p>
+     * Type of agent.
+     * </p>
+     */
+    private String agentType;
+    /**
+     * <p>
+     * Agent's first registration timestamp in UTC.
+     * </p>
+     */
+    private String registeredTime;
 
     /**
      * <p>
-     * The agent ID.
+     * The agent or connector ID.
      * </p>
      * 
      * @param agentId
-     *        The agent ID.
+     *        The agent or connector ID.
      */
 
     public void setAgentId(String agentId) {
@@ -74,10 +103,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The agent ID.
+     * The agent or connector ID.
      * </p>
      * 
-     * @return The agent ID.
+     * @return The agent or connector ID.
      */
 
     public String getAgentId() {
@@ -86,11 +115,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The agent ID.
+     * The agent or connector ID.
      * </p>
      * 
      * @param agentId
-     *        The agent ID.
+     *        The agent or connector ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -101,11 +130,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the host where the agent resides. The host can be a server or virtual machine.
+     * The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      * </p>
      * 
      * @param hostName
-     *        The name of the host where the agent resides. The host can be a server or virtual machine.
+     *        The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      */
 
     public void setHostName(String hostName) {
@@ -114,10 +143,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the host where the agent resides. The host can be a server or virtual machine.
+     * The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      * </p>
      * 
-     * @return The name of the host where the agent resides. The host can be a server or virtual machine.
+     * @return The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      */
 
     public String getHostName() {
@@ -126,11 +155,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the host where the agent resides. The host can be a server or virtual machine.
+     * The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      * </p>
      * 
      * @param hostName
-     *        The name of the host where the agent resides. The host can be a server or virtual machine.
+     *        The name of the host where the agent or connector resides. The host can be a server or virtual machine.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -141,10 +170,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Network details about the host where the agent resides.
+     * Network details about the host where the agent or connector resides.
      * </p>
      * 
-     * @return Network details about the host where the agent resides.
+     * @return Network details about the host where the agent or connector resides.
      */
 
     public java.util.List<AgentNetworkInfo> getAgentNetworkInfoList() {
@@ -153,11 +182,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Network details about the host where the agent resides.
+     * Network details about the host where the agent or connector resides.
      * </p>
      * 
      * @param agentNetworkInfoList
-     *        Network details about the host where the agent resides.
+     *        Network details about the host where the agent or connector resides.
      */
 
     public void setAgentNetworkInfoList(java.util.Collection<AgentNetworkInfo> agentNetworkInfoList) {
@@ -171,7 +200,7 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Network details about the host where the agent resides.
+     * Network details about the host where the agent or connector resides.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -180,7 +209,7 @@ public class AgentInfo implements Serializable, Cloneable {
      * </p>
      * 
      * @param agentNetworkInfoList
-     *        Network details about the host where the agent resides.
+     *        Network details about the host where the agent or connector resides.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -196,11 +225,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Network details about the host where the agent resides.
+     * Network details about the host where the agent or connector resides.
      * </p>
      * 
      * @param agentNetworkInfoList
-     *        Network details about the host where the agent resides.
+     *        Network details about the host where the agent or connector resides.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -211,11 +240,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * This data type is currently not valid.
+     * The ID of the connector.
      * </p>
      * 
      * @param connectorId
-     *        This data type is currently not valid.
+     *        The ID of the connector.
      */
 
     public void setConnectorId(String connectorId) {
@@ -224,10 +253,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * This data type is currently not valid.
+     * The ID of the connector.
      * </p>
      * 
-     * @return This data type is currently not valid.
+     * @return The ID of the connector.
      */
 
     public String getConnectorId() {
@@ -236,11 +265,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * This data type is currently not valid.
+     * The ID of the connector.
      * </p>
      * 
      * @param connectorId
-     *        This data type is currently not valid.
+     *        The ID of the connector.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -251,11 +280,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The agent version.
+     * The agent or connector version.
      * </p>
      * 
      * @param version
-     *        The agent version.
+     *        The agent or connector version.
      */
 
     public void setVersion(String version) {
@@ -264,10 +293,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The agent version.
+     * The agent or connector version.
      * </p>
      * 
-     * @return The agent version.
+     * @return The agent or connector version.
      */
 
     public String getVersion() {
@@ -276,11 +305,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The agent version.
+     * The agent or connector version.
      * </p>
      * 
      * @param version
-     *        The agent version.
+     *        The agent or connector version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -291,11 +320,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      * 
      * @param health
-     *        The health of the agent.
+     *        The health of the agent or connector.
      * @see AgentStatus
      */
 
@@ -305,10 +334,10 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      * 
-     * @return The health of the agent.
+     * @return The health of the agent or connector.
      * @see AgentStatus
      */
 
@@ -318,11 +347,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      * 
      * @param health
-     *        The health of the agent.
+     *        The health of the agent or connector.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AgentStatus
      */
@@ -334,11 +363,11 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      * 
      * @param health
-     *        The health of the agent.
+     *        The health of the agent or connector.
      * @see AgentStatus
      */
 
@@ -348,17 +377,177 @@ public class AgentInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The health of the agent.
+     * The health of the agent or connector.
      * </p>
      * 
      * @param health
-     *        The health of the agent.
+     *        The health of the agent or connector.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AgentStatus
      */
 
     public AgentInfo withHealth(AgentStatus health) {
         setHealth(health);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Time since agent or connector health was reported.
+     * </p>
+     * 
+     * @param lastHealthPingTime
+     *        Time since agent or connector health was reported.
+     */
+
+    public void setLastHealthPingTime(String lastHealthPingTime) {
+        this.lastHealthPingTime = lastHealthPingTime;
+    }
+
+    /**
+     * <p>
+     * Time since agent or connector health was reported.
+     * </p>
+     * 
+     * @return Time since agent or connector health was reported.
+     */
+
+    public String getLastHealthPingTime() {
+        return this.lastHealthPingTime;
+    }
+
+    /**
+     * <p>
+     * Time since agent or connector health was reported.
+     * </p>
+     * 
+     * @param lastHealthPingTime
+     *        Time since agent or connector health was reported.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AgentInfo withLastHealthPingTime(String lastHealthPingTime) {
+        setLastHealthPingTime(lastHealthPingTime);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Status of the collection process for an agent or connector.
+     * </p>
+     * 
+     * @param collectionStatus
+     *        Status of the collection process for an agent or connector.
+     */
+
+    public void setCollectionStatus(String collectionStatus) {
+        this.collectionStatus = collectionStatus;
+    }
+
+    /**
+     * <p>
+     * Status of the collection process for an agent or connector.
+     * </p>
+     * 
+     * @return Status of the collection process for an agent or connector.
+     */
+
+    public String getCollectionStatus() {
+        return this.collectionStatus;
+    }
+
+    /**
+     * <p>
+     * Status of the collection process for an agent or connector.
+     * </p>
+     * 
+     * @param collectionStatus
+     *        Status of the collection process for an agent or connector.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AgentInfo withCollectionStatus(String collectionStatus) {
+        setCollectionStatus(collectionStatus);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Type of agent.
+     * </p>
+     * 
+     * @param agentType
+     *        Type of agent.
+     */
+
+    public void setAgentType(String agentType) {
+        this.agentType = agentType;
+    }
+
+    /**
+     * <p>
+     * Type of agent.
+     * </p>
+     * 
+     * @return Type of agent.
+     */
+
+    public String getAgentType() {
+        return this.agentType;
+    }
+
+    /**
+     * <p>
+     * Type of agent.
+     * </p>
+     * 
+     * @param agentType
+     *        Type of agent.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AgentInfo withAgentType(String agentType) {
+        setAgentType(agentType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Agent's first registration timestamp in UTC.
+     * </p>
+     * 
+     * @param registeredTime
+     *        Agent's first registration timestamp in UTC.
+     */
+
+    public void setRegisteredTime(String registeredTime) {
+        this.registeredTime = registeredTime;
+    }
+
+    /**
+     * <p>
+     * Agent's first registration timestamp in UTC.
+     * </p>
+     * 
+     * @return Agent's first registration timestamp in UTC.
+     */
+
+    public String getRegisteredTime() {
+        return this.registeredTime;
+    }
+
+    /**
+     * <p>
+     * Agent's first registration timestamp in UTC.
+     * </p>
+     * 
+     * @param registeredTime
+     *        Agent's first registration timestamp in UTC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AgentInfo withRegisteredTime(String registeredTime) {
+        setRegisteredTime(registeredTime);
         return this;
     }
 
@@ -374,17 +563,25 @@ public class AgentInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAgentId() != null)
-            sb.append("AgentId: " + getAgentId() + ",");
+            sb.append("AgentId: ").append(getAgentId()).append(",");
         if (getHostName() != null)
-            sb.append("HostName: " + getHostName() + ",");
+            sb.append("HostName: ").append(getHostName()).append(",");
         if (getAgentNetworkInfoList() != null)
-            sb.append("AgentNetworkInfoList: " + getAgentNetworkInfoList() + ",");
+            sb.append("AgentNetworkInfoList: ").append(getAgentNetworkInfoList()).append(",");
         if (getConnectorId() != null)
-            sb.append("ConnectorId: " + getConnectorId() + ",");
+            sb.append("ConnectorId: ").append(getConnectorId()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getHealth() != null)
-            sb.append("Health: " + getHealth());
+            sb.append("Health: ").append(getHealth()).append(",");
+        if (getLastHealthPingTime() != null)
+            sb.append("LastHealthPingTime: ").append(getLastHealthPingTime()).append(",");
+        if (getCollectionStatus() != null)
+            sb.append("CollectionStatus: ").append(getCollectionStatus()).append(",");
+        if (getAgentType() != null)
+            sb.append("AgentType: ").append(getAgentType()).append(",");
+        if (getRegisteredTime() != null)
+            sb.append("RegisteredTime: ").append(getRegisteredTime());
         sb.append("}");
         return sb.toString();
     }
@@ -423,6 +620,22 @@ public class AgentInfo implements Serializable, Cloneable {
             return false;
         if (other.getHealth() != null && other.getHealth().equals(this.getHealth()) == false)
             return false;
+        if (other.getLastHealthPingTime() == null ^ this.getLastHealthPingTime() == null)
+            return false;
+        if (other.getLastHealthPingTime() != null && other.getLastHealthPingTime().equals(this.getLastHealthPingTime()) == false)
+            return false;
+        if (other.getCollectionStatus() == null ^ this.getCollectionStatus() == null)
+            return false;
+        if (other.getCollectionStatus() != null && other.getCollectionStatus().equals(this.getCollectionStatus()) == false)
+            return false;
+        if (other.getAgentType() == null ^ this.getAgentType() == null)
+            return false;
+        if (other.getAgentType() != null && other.getAgentType().equals(this.getAgentType()) == false)
+            return false;
+        if (other.getRegisteredTime() == null ^ this.getRegisteredTime() == null)
+            return false;
+        if (other.getRegisteredTime() != null && other.getRegisteredTime().equals(this.getRegisteredTime()) == false)
+            return false;
         return true;
     }
 
@@ -437,6 +650,10 @@ public class AgentInfo implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getConnectorId() == null) ? 0 : getConnectorId().hashCode());
         hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         hashCode = prime * hashCode + ((getHealth() == null) ? 0 : getHealth().hashCode());
+        hashCode = prime * hashCode + ((getLastHealthPingTime() == null) ? 0 : getLastHealthPingTime().hashCode());
+        hashCode = prime * hashCode + ((getCollectionStatus() == null) ? 0 : getCollectionStatus().hashCode());
+        hashCode = prime * hashCode + ((getAgentType() == null) ? 0 : getAgentType().hashCode());
+        hashCode = prime * hashCode + ((getRegisteredTime() == null) ? 0 : getRegisteredTime().hashCode());
         return hashCode;
     }
 
@@ -447,5 +664,11 @@ public class AgentInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationdiscovery.model.transform.AgentInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

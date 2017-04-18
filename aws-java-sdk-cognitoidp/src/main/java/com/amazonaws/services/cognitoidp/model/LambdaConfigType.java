@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies the type of configuration for AWS Lambda triggers.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/LambdaConfigType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class LambdaConfigType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class LambdaConfigType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -402,21 +409,21 @@ public class LambdaConfigType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPreSignUp() != null)
-            sb.append("PreSignUp: " + getPreSignUp() + ",");
+            sb.append("PreSignUp: ").append(getPreSignUp()).append(",");
         if (getCustomMessage() != null)
-            sb.append("CustomMessage: " + getCustomMessage() + ",");
+            sb.append("CustomMessage: ").append(getCustomMessage()).append(",");
         if (getPostConfirmation() != null)
-            sb.append("PostConfirmation: " + getPostConfirmation() + ",");
+            sb.append("PostConfirmation: ").append(getPostConfirmation()).append(",");
         if (getPreAuthentication() != null)
-            sb.append("PreAuthentication: " + getPreAuthentication() + ",");
+            sb.append("PreAuthentication: ").append(getPreAuthentication()).append(",");
         if (getPostAuthentication() != null)
-            sb.append("PostAuthentication: " + getPostAuthentication() + ",");
+            sb.append("PostAuthentication: ").append(getPostAuthentication()).append(",");
         if (getDefineAuthChallenge() != null)
-            sb.append("DefineAuthChallenge: " + getDefineAuthChallenge() + ",");
+            sb.append("DefineAuthChallenge: ").append(getDefineAuthChallenge()).append(",");
         if (getCreateAuthChallenge() != null)
-            sb.append("CreateAuthChallenge: " + getCreateAuthChallenge() + ",");
+            sb.append("CreateAuthChallenge: ").append(getCreateAuthChallenge()).append(",");
         if (getVerifyAuthChallengeResponse() != null)
-            sb.append("VerifyAuthChallengeResponse: " + getVerifyAuthChallengeResponse());
+            sb.append("VerifyAuthChallengeResponse: ").append(getVerifyAuthChallengeResponse());
         sb.append("}");
         return sb.toString();
     }
@@ -489,5 +496,11 @@ public class LambdaConfigType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.LambdaConfigTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

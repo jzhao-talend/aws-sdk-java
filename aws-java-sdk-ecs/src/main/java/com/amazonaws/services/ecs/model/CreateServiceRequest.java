@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateService" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -46,8 +51,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A load balancer object representing the load balancer to use with your service. Currently, you are limited to one
-     * load balancer per service. After you create a service, the load balancer name, container name, and container port
-     * specified in the service definition are immutable.
+     * load balancer or target group per service. After you create a service, the load balancer name or target group
+     * ARN, container name, and container port specified in the service definition are immutable.
      * </p>
      * <p>
      * For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container
@@ -100,6 +105,20 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private DeploymentConfiguration deploymentConfiguration;
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     * constraints per task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<PlacementConstraint> placementConstraints;
+    /**
+     * <p>
+     * The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules
+     * per service.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<PlacementStrategy> placementStrategy;
 
     /**
      * <p>
@@ -254,8 +273,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A load balancer object representing the load balancer to use with your service. Currently, you are limited to one
-     * load balancer per service. After you create a service, the load balancer name, container name, and container port
-     * specified in the service definition are immutable.
+     * load balancer or target group per service. After you create a service, the load balancer name or target group
+     * ARN, container name, and container port specified in the service definition are immutable.
      * </p>
      * <p>
      * For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container
@@ -271,8 +290,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @return A load balancer object representing the load balancer to use with your service. Currently, you are
-     *         limited to one load balancer per service. After you create a service, the load balancer name, container
-     *         name, and container port specified in the service definition are immutable.</p>
+     *         limited to one load balancer or target group per service. After you create a service, the load balancer
+     *         name or target group ARN, container name, and container port specified in the service definition are
+     *         immutable.</p>
      *         <p>
      *         For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the
      *         container name (as it appears in a container definition), and the container port to access from the load
@@ -296,8 +316,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A load balancer object representing the load balancer to use with your service. Currently, you are limited to one
-     * load balancer per service. After you create a service, the load balancer name, container name, and container port
-     * specified in the service definition are immutable.
+     * load balancer or target group per service. After you create a service, the load balancer name or target group
+     * ARN, container name, and container port specified in the service definition are immutable.
      * </p>
      * <p>
      * For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container
@@ -314,8 +334,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param loadBalancers
      *        A load balancer object representing the load balancer to use with your service. Currently, you are limited
-     *        to one load balancer per service. After you create a service, the load balancer name, container name, and
-     *        container port specified in the service definition are immutable.</p>
+     *        to one load balancer or target group per service. After you create a service, the load balancer name or
+     *        target group ARN, container name, and container port specified in the service definition are
+     *        immutable.</p>
      *        <p>
      *        For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the
      *        container name (as it appears in a container definition), and the container port to access from the load
@@ -341,8 +362,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A load balancer object representing the load balancer to use with your service. Currently, you are limited to one
-     * load balancer per service. After you create a service, the load balancer name, container name, and container port
-     * specified in the service definition are immutable.
+     * load balancer or target group per service. After you create a service, the load balancer name or target group
+     * ARN, container name, and container port specified in the service definition are immutable.
      * </p>
      * <p>
      * For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container
@@ -364,8 +385,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param loadBalancers
      *        A load balancer object representing the load balancer to use with your service. Currently, you are limited
-     *        to one load balancer per service. After you create a service, the load balancer name, container name, and
-     *        container port specified in the service definition are immutable.</p>
+     *        to one load balancer or target group per service. After you create a service, the load balancer name or
+     *        target group ARN, container name, and container port specified in the service definition are
+     *        immutable.</p>
      *        <p>
      *        For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the
      *        container name (as it appears in a container definition), and the container port to access from the load
@@ -393,8 +415,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A load balancer object representing the load balancer to use with your service. Currently, you are limited to one
-     * load balancer per service. After you create a service, the load balancer name, container name, and container port
-     * specified in the service definition are immutable.
+     * load balancer or target group per service. After you create a service, the load balancer name or target group
+     * ARN, container name, and container port specified in the service definition are immutable.
      * </p>
      * <p>
      * For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container
@@ -411,8 +433,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param loadBalancers
      *        A load balancer object representing the load balancer to use with your service. Currently, you are limited
-     *        to one load balancer per service. After you create a service, the load balancer name, container name, and
-     *        container port specified in the service definition are immutable.</p>
+     *        to one load balancer or target group per service. After you create a service, the load balancer name or
+     *        target group ARN, container name, and container port specified in the service definition are
+     *        immutable.</p>
      *        <p>
      *        For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the
      *        container name (as it appears in a container definition), and the container port to access from the load
@@ -668,6 +691,172 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     * constraints per task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @return An array of placement constraint objects to use for tasks in your service. You can specify a maximum of
+     *         10 constraints per task (this limit includes constraints in the task definition and those specified at
+     *         run time).
+     */
+
+    public java.util.List<PlacementConstraint> getPlacementConstraints() {
+        if (placementConstraints == null) {
+            placementConstraints = new com.amazonaws.internal.SdkInternalList<PlacementConstraint>();
+        }
+        return placementConstraints;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     * constraints per task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     *        constraints per task (this limit includes constraints in the task definition and those specified at run
+     *        time).
+     */
+
+    public void setPlacementConstraints(java.util.Collection<PlacementConstraint> placementConstraints) {
+        if (placementConstraints == null) {
+            this.placementConstraints = null;
+            return;
+        }
+
+        this.placementConstraints = new com.amazonaws.internal.SdkInternalList<PlacementConstraint>(placementConstraints);
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     * constraints per task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementConstraints(java.util.Collection)} or {@link #withPlacementConstraints(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     *        constraints per task (this limit includes constraints in the task definition and those specified at run
+     *        time).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServiceRequest withPlacementConstraints(PlacementConstraint... placementConstraints) {
+        if (this.placementConstraints == null) {
+            setPlacementConstraints(new com.amazonaws.internal.SdkInternalList<PlacementConstraint>(placementConstraints.length));
+        }
+        for (PlacementConstraint ele : placementConstraints) {
+            this.placementConstraints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     * constraints per task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10
+     *        constraints per task (this limit includes constraints in the task definition and those specified at run
+     *        time).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServiceRequest withPlacementConstraints(java.util.Collection<PlacementConstraint> placementConstraints) {
+        setPlacementConstraints(placementConstraints);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules
+     * per service.
+     * </p>
+     * 
+     * @return The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy
+     *         rules per service.
+     */
+
+    public java.util.List<PlacementStrategy> getPlacementStrategy() {
+        if (placementStrategy == null) {
+            placementStrategy = new com.amazonaws.internal.SdkInternalList<PlacementStrategy>();
+        }
+        return placementStrategy;
+    }
+
+    /**
+     * <p>
+     * The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules
+     * per service.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy
+     *        rules per service.
+     */
+
+    public void setPlacementStrategy(java.util.Collection<PlacementStrategy> placementStrategy) {
+        if (placementStrategy == null) {
+            this.placementStrategy = null;
+            return;
+        }
+
+        this.placementStrategy = new com.amazonaws.internal.SdkInternalList<PlacementStrategy>(placementStrategy);
+    }
+
+    /**
+     * <p>
+     * The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules
+     * per service.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementStrategy(java.util.Collection)} or {@link #withPlacementStrategy(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy
+     *        rules per service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServiceRequest withPlacementStrategy(PlacementStrategy... placementStrategy) {
+        if (this.placementStrategy == null) {
+            setPlacementStrategy(new com.amazonaws.internal.SdkInternalList<PlacementStrategy>(placementStrategy.length));
+        }
+        for (PlacementStrategy ele : placementStrategy) {
+            this.placementStrategy.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules
+     * per service.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy
+     *        rules per service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServiceRequest withPlacementStrategy(java.util.Collection<PlacementStrategy> placementStrategy) {
+        setPlacementStrategy(placementStrategy);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -679,21 +868,25 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCluster() != null)
-            sb.append("Cluster: " + getCluster() + ",");
+            sb.append("Cluster: ").append(getCluster()).append(",");
         if (getServiceName() != null)
-            sb.append("ServiceName: " + getServiceName() + ",");
+            sb.append("ServiceName: ").append(getServiceName()).append(",");
         if (getTaskDefinition() != null)
-            sb.append("TaskDefinition: " + getTaskDefinition() + ",");
+            sb.append("TaskDefinition: ").append(getTaskDefinition()).append(",");
         if (getLoadBalancers() != null)
-            sb.append("LoadBalancers: " + getLoadBalancers() + ",");
+            sb.append("LoadBalancers: ").append(getLoadBalancers()).append(",");
         if (getDesiredCount() != null)
-            sb.append("DesiredCount: " + getDesiredCount() + ",");
+            sb.append("DesiredCount: ").append(getDesiredCount()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getRole() != null)
-            sb.append("Role: " + getRole() + ",");
+            sb.append("Role: ").append(getRole()).append(",");
         if (getDeploymentConfiguration() != null)
-            sb.append("DeploymentConfiguration: " + getDeploymentConfiguration());
+            sb.append("DeploymentConfiguration: ").append(getDeploymentConfiguration()).append(",");
+        if (getPlacementConstraints() != null)
+            sb.append("PlacementConstraints: ").append(getPlacementConstraints()).append(",");
+        if (getPlacementStrategy() != null)
+            sb.append("PlacementStrategy: ").append(getPlacementStrategy());
         sb.append("}");
         return sb.toString();
     }
@@ -740,6 +933,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getDeploymentConfiguration() != null && other.getDeploymentConfiguration().equals(this.getDeploymentConfiguration()) == false)
             return false;
+        if (other.getPlacementConstraints() == null ^ this.getPlacementConstraints() == null)
+            return false;
+        if (other.getPlacementConstraints() != null && other.getPlacementConstraints().equals(this.getPlacementConstraints()) == false)
+            return false;
+        if (other.getPlacementStrategy() == null ^ this.getPlacementStrategy() == null)
+            return false;
+        if (other.getPlacementStrategy() != null && other.getPlacementStrategy().equals(this.getPlacementStrategy()) == false)
+            return false;
         return true;
     }
 
@@ -756,6 +957,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
         hashCode = prime * hashCode + ((getRole() == null) ? 0 : getRole().hashCode());
         hashCode = prime * hashCode + ((getDeploymentConfiguration() == null) ? 0 : getDeploymentConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getPlacementConstraints() == null) ? 0 : getPlacementConstraints().hashCode());
+        hashCode = prime * hashCode + ((getPlacementStrategy() == null) ? 0 : getPlacementStrategy().hashCode());
         return hashCode;
     }
 
@@ -763,4 +966,5 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     public CreateServiceRequest clone() {
         return (CreateServiceRequest) super.clone();
     }
+
 }

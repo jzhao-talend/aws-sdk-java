@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.marketplacecommerceanalytics.AWSMarketplaceCommerceAnalyticsClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -47,6 +51,7 @@ import com.amazonaws.services.marketplacecommerceanalytics.model.transform.*;
  * Provides AWS Marketplace business intelligence data on-demand.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClient implements AWSMarketplaceCommerceAnalytics {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -59,14 +64,15 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withModeledClass(
-                            com.amazonaws.services.marketplacecommerceanalytics.model.MarketplaceCommerceAnalyticsException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.marketplacecommerceanalytics.model.AWSMarketplaceCommerceAnalyticsException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withModeledClass(
+                                    com.amazonaws.services.marketplacecommerceanalytics.model.MarketplaceCommerceAnalyticsException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.marketplacecommerceanalytics.model.AWSMarketplaceCommerceAnalyticsException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS Marketplace Commerce Analytics. A credentials provider
@@ -82,7 +88,9 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -105,7 +113,9 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      *        Analytics (ex: proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -120,7 +130,11 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AWSMarketplaceCommerceAnalyticsClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -138,7 +152,10 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Marketplace Commerce
      *        Analytics (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -155,7 +172,9 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -173,7 +192,10 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Marketplace Commerce
      *        Analytics (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -193,12 +215,20 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      *        Analytics (ex: proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSMarketplaceCommerceAnalyticsClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSMarketplaceCommerceAnalyticsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSMarketplaceCommerceAnalyticsClientBuilder builder() {
+        return AWSMarketplaceCommerceAnalyticsClientBuilder.standard();
     }
 
     /**
@@ -244,9 +274,18 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      * @throws MarketplaceCommerceAnalyticsException
      *         This exception is thrown when an internal service error occurs.
      * @sample AWSMarketplaceCommerceAnalytics.GenerateDataSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GenerateDataSetResult generateDataSet(GenerateDataSetRequest generateDataSetRequest) {
+    public GenerateDataSetResult generateDataSet(GenerateDataSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeGenerateDataSet(request);
+    }
+
+    @SdkInternalApi
+    final GenerateDataSetResult executeGenerateDataSet(GenerateDataSetRequest generateDataSetRequest) {
+
         ExecutionContext executionContext = createExecutionContext(generateDataSetRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -256,7 +295,7 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GenerateDataSetRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(generateDataSetRequest));
+                request = new GenerateDataSetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(generateDataSetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -291,9 +330,19 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
      * @throws MarketplaceCommerceAnalyticsException
      *         This exception is thrown when an internal service error occurs.
      * @sample AWSMarketplaceCommerceAnalytics.StartSupportDataExport
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public StartSupportDataExportResult startSupportDataExport(StartSupportDataExportRequest startSupportDataExportRequest) {
+    public StartSupportDataExportResult startSupportDataExport(StartSupportDataExportRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartSupportDataExport(request);
+    }
+
+    @SdkInternalApi
+    final StartSupportDataExportResult executeStartSupportDataExport(StartSupportDataExportRequest startSupportDataExportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startSupportDataExportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -303,7 +352,7 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartSupportDataExportRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(startSupportDataExportRequest));
+                request = new StartSupportDataExportRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startSupportDataExportRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

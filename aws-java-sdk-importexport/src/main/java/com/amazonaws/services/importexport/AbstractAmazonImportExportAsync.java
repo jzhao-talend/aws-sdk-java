@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.importexport;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.importexport.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.importexport.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonImportExportAsync extends AbstractAmazonImportExport implements AmazonImportExportAsync {
 
     protected AbstractAmazonImportExportAsync() {
@@ -105,6 +108,7 @@ public class AbstractAmazonImportExportAsync extends AbstractAmazonImportExport 
      *
      * @see #listJobsAsync(ListJobsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListJobsResult> listJobsAsync(com.amazonaws.handlers.AsyncHandler<ListJobsRequest, ListJobsResult> asyncHandler) {
 
         return listJobsAsync(new ListJobsRequest(), asyncHandler);

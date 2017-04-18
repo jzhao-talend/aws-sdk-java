@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,14 +12,23 @@
  */
 package com.amazonaws.services.kinesis;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.kinesis.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Kinesis asynchronously. Each asynchronous method will return a Java Future object
- * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
- * notification when an asynchronous operation completes.
+ * Client for accessing Kinesis asynchronously. Each asynchronous method will return a Java Future object representing
+ * the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when
+ * an asynchronous operation completes.
  * <p>
  * <fullname>Amazon Kinesis Streams Service API Reference</fullname>
  * <p>
@@ -27,6 +36,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements AmazonKinesisAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -48,9 +58,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonKinesisAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -72,10 +84,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonKinesisAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -88,9 +101,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -101,8 +116,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -117,10 +135,12 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -135,9 +155,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -154,10 +176,12 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -168,9 +192,11 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -184,12 +210,18 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonKinesisAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonKinesisAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonKinesisAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonKinesisAsyncClientBuilder asyncBuilder() {
+        return AmazonKinesisAsyncClientBuilder.standard();
     }
 
     /**
@@ -208,7 +240,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -221,14 +253,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<AddTagsToStreamResult> addTagsToStreamAsync(final AddTagsToStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<AddTagsToStreamRequest, AddTagsToStreamResult> asyncHandler) {
+        final AddTagsToStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AddTagsToStreamResult>() {
             @Override
             public AddTagsToStreamResult call() throws Exception {
-                AddTagsToStreamResult result;
+                AddTagsToStreamResult result = null;
 
                 try {
-                    result = addTagsToStream(request);
+                    result = executeAddTagsToStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -237,7 +270,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -253,14 +286,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<CreateStreamResult> createStreamAsync(final CreateStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateStreamRequest, CreateStreamResult> asyncHandler) {
+        final CreateStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateStreamResult>() {
             @Override
             public CreateStreamResult call() throws Exception {
-                CreateStreamResult result;
+                CreateStreamResult result = null;
 
                 try {
-                    result = createStream(request);
+                    result = executeCreateStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -269,7 +303,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -292,6 +326,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #createStreamAsync(CreateStreamRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<CreateStreamResult> createStreamAsync(String streamName, Integer shardCount,
             com.amazonaws.handlers.AsyncHandler<CreateStreamRequest, CreateStreamResult> asyncHandler) {
 
@@ -308,14 +343,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     public java.util.concurrent.Future<DecreaseStreamRetentionPeriodResult> decreaseStreamRetentionPeriodAsync(
             final DecreaseStreamRetentionPeriodRequest request,
             final com.amazonaws.handlers.AsyncHandler<DecreaseStreamRetentionPeriodRequest, DecreaseStreamRetentionPeriodResult> asyncHandler) {
+        final DecreaseStreamRetentionPeriodRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DecreaseStreamRetentionPeriodResult>() {
             @Override
             public DecreaseStreamRetentionPeriodResult call() throws Exception {
-                DecreaseStreamRetentionPeriodResult result;
+                DecreaseStreamRetentionPeriodResult result = null;
 
                 try {
-                    result = decreaseStreamRetentionPeriod(request);
+                    result = executeDecreaseStreamRetentionPeriod(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -324,7 +360,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -340,14 +376,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<DeleteStreamResult> deleteStreamAsync(final DeleteStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteStreamRequest, DeleteStreamResult> asyncHandler) {
+        final DeleteStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteStreamResult>() {
             @Override
             public DeleteStreamResult call() throws Exception {
-                DeleteStreamResult result;
+                DeleteStreamResult result = null;
 
                 try {
-                    result = deleteStream(request);
+                    result = executeDeleteStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -356,7 +393,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -379,10 +416,44 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #deleteStreamAsync(DeleteStreamRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DeleteStreamResult> deleteStreamAsync(String streamName,
             com.amazonaws.handlers.AsyncHandler<DeleteStreamRequest, DeleteStreamResult> asyncHandler) {
 
         return deleteStreamAsync(new DeleteStreamRequest().withStreamName(streamName), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeLimitsResult> describeLimitsAsync(DescribeLimitsRequest request) {
+
+        return describeLimitsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeLimitsResult> describeLimitsAsync(final DescribeLimitsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeLimitsRequest, DescribeLimitsResult> asyncHandler) {
+        final DescribeLimitsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeLimitsResult>() {
+            @Override
+            public DescribeLimitsResult call() throws Exception {
+                DescribeLimitsResult result = null;
+
+                try {
+                    result = executeDescribeLimits(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -394,14 +465,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<DescribeStreamResult> describeStreamAsync(final DescribeStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeStreamRequest, DescribeStreamResult> asyncHandler) {
+        final DescribeStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeStreamResult>() {
             @Override
             public DescribeStreamResult call() throws Exception {
-                DescribeStreamResult result;
+                DescribeStreamResult result = null;
 
                 try {
-                    result = describeStream(request);
+                    result = executeDescribeStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -410,7 +482,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -433,6 +505,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #describeStreamAsync(DescribeStreamRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeStreamResult> describeStreamAsync(String streamName,
             com.amazonaws.handlers.AsyncHandler<DescribeStreamRequest, DescribeStreamResult> asyncHandler) {
 
@@ -455,6 +528,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #describeStreamAsync(DescribeStreamRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeStreamResult> describeStreamAsync(String streamName, String exclusiveStartShardId,
             com.amazonaws.handlers.AsyncHandler<DescribeStreamRequest, DescribeStreamResult> asyncHandler) {
 
@@ -477,6 +551,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #describeStreamAsync(DescribeStreamRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeStreamResult> describeStreamAsync(String streamName, Integer limit, String exclusiveStartShardId,
             com.amazonaws.handlers.AsyncHandler<DescribeStreamRequest, DescribeStreamResult> asyncHandler) {
 
@@ -493,14 +568,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<DisableEnhancedMonitoringResult> disableEnhancedMonitoringAsync(final DisableEnhancedMonitoringRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableEnhancedMonitoringRequest, DisableEnhancedMonitoringResult> asyncHandler) {
+        final DisableEnhancedMonitoringRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableEnhancedMonitoringResult>() {
             @Override
             public DisableEnhancedMonitoringResult call() throws Exception {
-                DisableEnhancedMonitoringResult result;
+                DisableEnhancedMonitoringResult result = null;
 
                 try {
-                    result = disableEnhancedMonitoring(request);
+                    result = executeDisableEnhancedMonitoring(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -509,7 +585,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -525,14 +601,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<EnableEnhancedMonitoringResult> enableEnhancedMonitoringAsync(final EnableEnhancedMonitoringRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableEnhancedMonitoringRequest, EnableEnhancedMonitoringResult> asyncHandler) {
+        final EnableEnhancedMonitoringRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableEnhancedMonitoringResult>() {
             @Override
             public EnableEnhancedMonitoringResult call() throws Exception {
-                EnableEnhancedMonitoringResult result;
+                EnableEnhancedMonitoringResult result = null;
 
                 try {
-                    result = enableEnhancedMonitoring(request);
+                    result = executeEnableEnhancedMonitoring(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -541,7 +618,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -557,14 +634,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<GetRecordsResult> getRecordsAsync(final GetRecordsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetRecordsRequest, GetRecordsResult> asyncHandler) {
+        final GetRecordsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetRecordsResult>() {
             @Override
             public GetRecordsResult call() throws Exception {
-                GetRecordsResult result;
+                GetRecordsResult result = null;
 
                 try {
-                    result = getRecords(request);
+                    result = executeGetRecords(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -573,7 +651,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -589,14 +667,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<GetShardIteratorResult> getShardIteratorAsync(final GetShardIteratorRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetShardIteratorRequest, GetShardIteratorResult> asyncHandler) {
+        final GetShardIteratorRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetShardIteratorResult>() {
             @Override
             public GetShardIteratorResult call() throws Exception {
-                GetShardIteratorResult result;
+                GetShardIteratorResult result = null;
 
                 try {
-                    result = getShardIterator(request);
+                    result = executeGetShardIterator(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -605,7 +684,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -628,6 +707,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #getShardIteratorAsync(GetShardIteratorRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetShardIteratorResult> getShardIteratorAsync(String streamName, String shardId, String shardIteratorType,
             com.amazonaws.handlers.AsyncHandler<GetShardIteratorRequest, GetShardIteratorResult> asyncHandler) {
 
@@ -653,6 +733,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #getShardIteratorAsync(GetShardIteratorRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetShardIteratorResult> getShardIteratorAsync(String streamName, String shardId, String shardIteratorType,
             String startingSequenceNumber, com.amazonaws.handlers.AsyncHandler<GetShardIteratorRequest, GetShardIteratorResult> asyncHandler) {
 
@@ -670,14 +751,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     public java.util.concurrent.Future<IncreaseStreamRetentionPeriodResult> increaseStreamRetentionPeriodAsync(
             final IncreaseStreamRetentionPeriodRequest request,
             final com.amazonaws.handlers.AsyncHandler<IncreaseStreamRetentionPeriodRequest, IncreaseStreamRetentionPeriodResult> asyncHandler) {
+        final IncreaseStreamRetentionPeriodRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<IncreaseStreamRetentionPeriodResult>() {
             @Override
             public IncreaseStreamRetentionPeriodResult call() throws Exception {
-                IncreaseStreamRetentionPeriodResult result;
+                IncreaseStreamRetentionPeriodResult result = null;
 
                 try {
-                    result = increaseStreamRetentionPeriod(request);
+                    result = executeIncreaseStreamRetentionPeriod(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -686,7 +768,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -702,14 +784,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<ListStreamsResult> listStreamsAsync(final ListStreamsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListStreamsRequest, ListStreamsResult> asyncHandler) {
+        final ListStreamsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListStreamsResult>() {
             @Override
             public ListStreamsResult call() throws Exception {
-                ListStreamsResult result;
+                ListStreamsResult result = null;
 
                 try {
-                    result = listStreams(request);
+                    result = executeListStreams(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -718,7 +801,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -741,6 +824,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #listStreamsAsync(ListStreamsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListStreamsResult> listStreamsAsync(
             com.amazonaws.handlers.AsyncHandler<ListStreamsRequest, ListStreamsResult> asyncHandler) {
 
@@ -763,6 +847,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #listStreamsAsync(ListStreamsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListStreamsResult> listStreamsAsync(String exclusiveStartStreamName,
             com.amazonaws.handlers.AsyncHandler<ListStreamsRequest, ListStreamsResult> asyncHandler) {
 
@@ -785,6 +870,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #listStreamsAsync(ListStreamsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListStreamsResult> listStreamsAsync(Integer limit, String exclusiveStartStreamName,
             com.amazonaws.handlers.AsyncHandler<ListStreamsRequest, ListStreamsResult> asyncHandler) {
 
@@ -800,14 +886,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<ListTagsForStreamResult> listTagsForStreamAsync(final ListTagsForStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListTagsForStreamRequest, ListTagsForStreamResult> asyncHandler) {
+        final ListTagsForStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListTagsForStreamResult>() {
             @Override
             public ListTagsForStreamResult call() throws Exception {
-                ListTagsForStreamResult result;
+                ListTagsForStreamResult result = null;
 
                 try {
-                    result = listTagsForStream(request);
+                    result = executeListTagsForStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -816,7 +903,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -832,14 +919,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<MergeShardsResult> mergeShardsAsync(final MergeShardsRequest request,
             final com.amazonaws.handlers.AsyncHandler<MergeShardsRequest, MergeShardsResult> asyncHandler) {
+        final MergeShardsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<MergeShardsResult>() {
             @Override
             public MergeShardsResult call() throws Exception {
-                MergeShardsResult result;
+                MergeShardsResult result = null;
 
                 try {
-                    result = mergeShards(request);
+                    result = executeMergeShards(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -848,7 +936,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -872,6 +960,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #mergeShardsAsync(MergeShardsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<MergeShardsResult> mergeShardsAsync(String streamName, String shardToMerge, String adjacentShardToMerge,
             com.amazonaws.handlers.AsyncHandler<MergeShardsRequest, MergeShardsResult> asyncHandler) {
 
@@ -888,14 +977,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<PutRecordResult> putRecordAsync(final PutRecordRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutRecordRequest, PutRecordResult> asyncHandler) {
+        final PutRecordRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutRecordResult>() {
             @Override
             public PutRecordResult call() throws Exception {
-                PutRecordResult result;
+                PutRecordResult result = null;
 
                 try {
-                    result = putRecord(request);
+                    result = executePutRecord(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -904,7 +994,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -927,6 +1017,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #putRecordAsync(PutRecordRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<PutRecordResult> putRecordAsync(String streamName, java.nio.ByteBuffer data, String partitionKey,
             com.amazonaws.handlers.AsyncHandler<PutRecordRequest, PutRecordResult> asyncHandler) {
 
@@ -951,6 +1042,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #putRecordAsync(PutRecordRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<PutRecordResult> putRecordAsync(String streamName, java.nio.ByteBuffer data, String partitionKey,
             String sequenceNumberForOrdering, com.amazonaws.handlers.AsyncHandler<PutRecordRequest, PutRecordResult> asyncHandler) {
 
@@ -968,14 +1060,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<PutRecordsResult> putRecordsAsync(final PutRecordsRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutRecordsRequest, PutRecordsResult> asyncHandler) {
+        final PutRecordsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutRecordsResult>() {
             @Override
             public PutRecordsResult call() throws Exception {
-                PutRecordsResult result;
+                PutRecordsResult result = null;
 
                 try {
-                    result = putRecords(request);
+                    result = executePutRecords(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -984,7 +1077,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1000,14 +1093,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<RemoveTagsFromStreamResult> removeTagsFromStreamAsync(final RemoveTagsFromStreamRequest request,
             final com.amazonaws.handlers.AsyncHandler<RemoveTagsFromStreamRequest, RemoveTagsFromStreamResult> asyncHandler) {
+        final RemoveTagsFromStreamRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RemoveTagsFromStreamResult>() {
             @Override
             public RemoveTagsFromStreamResult call() throws Exception {
-                RemoveTagsFromStreamResult result;
+                RemoveTagsFromStreamResult result = null;
 
                 try {
-                    result = removeTagsFromStream(request);
+                    result = executeRemoveTagsFromStream(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1016,7 +1110,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1032,14 +1126,15 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
     @Override
     public java.util.concurrent.Future<SplitShardResult> splitShardAsync(final SplitShardRequest request,
             final com.amazonaws.handlers.AsyncHandler<SplitShardRequest, SplitShardResult> asyncHandler) {
+        final SplitShardRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SplitShardResult>() {
             @Override
             public SplitShardResult call() throws Exception {
-                SplitShardResult result;
+                SplitShardResult result = null;
 
                 try {
-                    result = splitShard(request);
+                    result = executeSplitShard(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1048,7 +1143,7 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1071,11 +1166,45 @@ public class AmazonKinesisAsyncClient extends AmazonKinesisClient implements Ama
      *
      * @see #splitShardAsync(SplitShardRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<SplitShardResult> splitShardAsync(String streamName, String shardToSplit, String newStartingHashKey,
             com.amazonaws.handlers.AsyncHandler<SplitShardRequest, SplitShardResult> asyncHandler) {
 
         return splitShardAsync(new SplitShardRequest().withStreamName(streamName).withShardToSplit(shardToSplit).withNewStartingHashKey(newStartingHashKey),
                 asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateShardCountResult> updateShardCountAsync(UpdateShardCountRequest request) {
+
+        return updateShardCountAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateShardCountResult> updateShardCountAsync(final UpdateShardCountRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateShardCountRequest, UpdateShardCountResult> asyncHandler) {
+        final UpdateShardCountRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateShardCountResult>() {
+            @Override
+            public UpdateShardCountResult call() throws Exception {
+                UpdateShardCountResult result = null;
+
+                try {
+                    result = executeUpdateShardCount(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     /**

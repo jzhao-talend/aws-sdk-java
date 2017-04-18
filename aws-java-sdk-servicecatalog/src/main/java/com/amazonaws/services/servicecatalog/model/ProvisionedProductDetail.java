@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Detailed information about a ProvisionedProduct object.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisionedProductDetail"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProvisionedProductDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProvisionedProductDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -59,13 +66,14 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
     private String statusMessage;
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      */
     private String idempotencyToken;
@@ -351,11 +359,11 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time the ProvisionedProduct was created.
+     *        The UTC timestamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -364,10 +372,10 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
-     * @return The time the ProvisionedProduct was created.
+     * @return The UTC timestamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -376,11 +384,11 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time the ProvisionedProduct was created.
+     *        The UTC timestamp of the creation time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -391,11 +399,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        An idempotency token that uniquely identifies this ProvisionedProduct.
+     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *        multiple requests, provided that you also specify a different idempotency token for each request.
      */
 
     public void setIdempotencyToken(String idempotencyToken) {
@@ -404,10 +414,12 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
-     * @return An idempotency token that uniquely identifies this ProvisionedProduct.
+     * @return A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *         multiple requests, provided that you also specify a different idempotency token for each request.
      */
 
     public String getIdempotencyToken() {
@@ -416,11 +428,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        An idempotency token that uniquely identifies this ProvisionedProduct.
+     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *        multiple requests, provided that you also specify a different idempotency token for each request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -481,23 +495,23 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime() + ",");
+            sb.append("CreatedTime: ").append(getCreatedTime()).append(",");
         if (getIdempotencyToken() != null)
-            sb.append("IdempotencyToken: " + getIdempotencyToken() + ",");
+            sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
         if (getLastRecordId() != null)
-            sb.append("LastRecordId: " + getLastRecordId());
+            sb.append("LastRecordId: ").append(getLastRecordId());
         sb.append("}");
         return sb.toString();
     }
@@ -575,5 +589,11 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProvisionedProductDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -23,32 +26,37 @@ import java.io.Serializable;
  * </p>
  * <p>
  * The policy is evaluated when a player tries to create a new game session. For example, with a policy of 10 new game
- * sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, GameLift checks that
- * the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60 minutes.
+ * sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, Amazon GameLift
+ * checks that the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60
+ * minutes.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ResourceCreationLimitPolicy"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ResourceCreationLimitPolicy implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Maximum number of game sessions an individual can create during the policy period.
+     * Maximum number of game sessions that an individual can create during the policy period.
      * </p>
      */
     private Integer newGameSessionsPerCreator;
     /**
      * <p>
-     * Time span used to evaluate the resource creation limit policy.
+     * Time span used in evaluating the resource creation limit policy.
      * </p>
      */
     private Integer policyPeriodInMinutes;
 
     /**
      * <p>
-     * Maximum number of game sessions an individual can create during the policy period.
+     * Maximum number of game sessions that an individual can create during the policy period.
      * </p>
      * 
      * @param newGameSessionsPerCreator
-     *        Maximum number of game sessions an individual can create during the policy period.
+     *        Maximum number of game sessions that an individual can create during the policy period.
      */
 
     public void setNewGameSessionsPerCreator(Integer newGameSessionsPerCreator) {
@@ -57,10 +65,10 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Maximum number of game sessions an individual can create during the policy period.
+     * Maximum number of game sessions that an individual can create during the policy period.
      * </p>
      * 
-     * @return Maximum number of game sessions an individual can create during the policy period.
+     * @return Maximum number of game sessions that an individual can create during the policy period.
      */
 
     public Integer getNewGameSessionsPerCreator() {
@@ -69,11 +77,11 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Maximum number of game sessions an individual can create during the policy period.
+     * Maximum number of game sessions that an individual can create during the policy period.
      * </p>
      * 
      * @param newGameSessionsPerCreator
-     *        Maximum number of game sessions an individual can create during the policy period.
+     *        Maximum number of game sessions that an individual can create during the policy period.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -84,11 +92,11 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time span used to evaluate the resource creation limit policy.
+     * Time span used in evaluating the resource creation limit policy.
      * </p>
      * 
      * @param policyPeriodInMinutes
-     *        Time span used to evaluate the resource creation limit policy.
+     *        Time span used in evaluating the resource creation limit policy.
      */
 
     public void setPolicyPeriodInMinutes(Integer policyPeriodInMinutes) {
@@ -97,10 +105,10 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time span used to evaluate the resource creation limit policy.
+     * Time span used in evaluating the resource creation limit policy.
      * </p>
      * 
-     * @return Time span used to evaluate the resource creation limit policy.
+     * @return Time span used in evaluating the resource creation limit policy.
      */
 
     public Integer getPolicyPeriodInMinutes() {
@@ -109,11 +117,11 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time span used to evaluate the resource creation limit policy.
+     * Time span used in evaluating the resource creation limit policy.
      * </p>
      * 
      * @param policyPeriodInMinutes
-     *        Time span used to evaluate the resource creation limit policy.
+     *        Time span used in evaluating the resource creation limit policy.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -134,9 +142,9 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNewGameSessionsPerCreator() != null)
-            sb.append("NewGameSessionsPerCreator: " + getNewGameSessionsPerCreator() + ",");
+            sb.append("NewGameSessionsPerCreator: ").append(getNewGameSessionsPerCreator()).append(",");
         if (getPolicyPeriodInMinutes() != null)
-            sb.append("PolicyPeriodInMinutes: " + getPolicyPeriodInMinutes());
+            sb.append("PolicyPeriodInMinutes: ").append(getPolicyPeriodInMinutes());
         sb.append("}");
         return sb.toString();
     }
@@ -179,5 +187,11 @@ public class ResourceCreationLimitPolicy implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.ResourceCreationLimitPolicyMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

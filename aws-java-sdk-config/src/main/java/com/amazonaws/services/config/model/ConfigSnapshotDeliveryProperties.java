@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -80,8 +83,12 @@ import java.io.Serializable;
  * To update the <code>deliveryFrequency</code> with which AWS Config delivers your configuration snapshots, use the
  * <code>PutDeliveryChannel</code> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigSnapshotDeliveryProperties"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ConfigSnapshotDeliveryProperties implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConfigSnapshotDeliveryProperties implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -175,7 +182,7 @@ public class ConfigSnapshotDeliveryProperties implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeliveryFrequency() != null)
-            sb.append("DeliveryFrequency: " + getDeliveryFrequency());
+            sb.append("DeliveryFrequency: ").append(getDeliveryFrequency());
         sb.append("}");
         return sb.toString();
     }
@@ -213,5 +220,11 @@ public class ConfigSnapshotDeliveryProperties implements Serializable, Cloneable
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.ConfigSnapshotDeliveryPropertiesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

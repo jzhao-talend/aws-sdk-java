@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,23 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * node group (shard) configuration options. Each node group (shard) configuration has the following: <code>Slots</code>, <code>PrimaryAvailabilityZone</code>, <code>ReplicaAvailabilityZones</code>, <code>ReplicaCount</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/NodeGroupConfiguration" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NodeGroupConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383. The
-     * string is in the format <code>startkey-endkey</code>.
+     * A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is
+     * in the format <code>startkey-endkey</code>.
      * </p>
      * <p>
      * Example: <code>"0-3999"</code>
@@ -53,16 +58,16 @@ public class NodeGroupConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383. The
-     * string is in the format <code>startkey-endkey</code>.
+     * A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is
+     * in the format <code>startkey-endkey</code>.
      * </p>
      * <p>
      * Example: <code>"0-3999"</code>
      * </p>
      * 
      * @param slots
-     *        A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383.
-     *        The string is in the format <code>startkey-endkey</code>.</p>
+     *        A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The
+     *        string is in the format <code>startkey-endkey</code>.</p>
      *        <p>
      *        Example: <code>"0-3999"</code>
      */
@@ -73,15 +78,15 @@ public class NodeGroupConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383. The
-     * string is in the format <code>startkey-endkey</code>.
+     * A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is
+     * in the format <code>startkey-endkey</code>.
      * </p>
      * <p>
      * Example: <code>"0-3999"</code>
      * </p>
      * 
-     * @return A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383.
-     *         The string is in the format <code>startkey-endkey</code>.</p>
+     * @return A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The
+     *         string is in the format <code>startkey-endkey</code>.</p>
      *         <p>
      *         Example: <code>"0-3999"</code>
      */
@@ -92,16 +97,16 @@ public class NodeGroupConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383. The
-     * string is in the format <code>startkey-endkey</code>.
+     * A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is
+     * in the format <code>startkey-endkey</code>.
      * </p>
      * <p>
      * Example: <code>"0-3999"</code>
      * </p>
      * 
      * @param slots
-     *        A string that specifies the keyspaces as a series of comma separated values. Keyspaces are 0 to 16,383.
-     *        The string is in the format <code>startkey-endkey</code>.</p>
+     *        A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The
+     *        string is in the format <code>startkey-endkey</code>.</p>
      *        <p>
      *        Example: <code>"0-3999"</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -289,13 +294,13 @@ public class NodeGroupConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSlots() != null)
-            sb.append("Slots: " + getSlots() + ",");
+            sb.append("Slots: ").append(getSlots()).append(",");
         if (getReplicaCount() != null)
-            sb.append("ReplicaCount: " + getReplicaCount() + ",");
+            sb.append("ReplicaCount: ").append(getReplicaCount()).append(",");
         if (getPrimaryAvailabilityZone() != null)
-            sb.append("PrimaryAvailabilityZone: " + getPrimaryAvailabilityZone() + ",");
+            sb.append("PrimaryAvailabilityZone: ").append(getPrimaryAvailabilityZone()).append(",");
         if (getReplicaAvailabilityZones() != null)
-            sb.append("ReplicaAvailabilityZones: " + getReplicaAvailabilityZones());
+            sb.append("ReplicaAvailabilityZones: ").append(getReplicaAvailabilityZones());
         sb.append("}");
         return sb.toString();
     }
@@ -349,4 +354,5 @@ public class NodeGroupConfiguration implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

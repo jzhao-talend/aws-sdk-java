@@ -1,9 +1,10 @@
 ${fileHeader}
-package ${metadata.packageName}.model.transform;
+package ${transformPackage};
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -19,6 +20,7 @@ import com.amazonaws.util.IdempotentUtils;
  * ${shapeName} Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ${shapeName}Marshaller implements Marshaller<Request<${shapeName}>, ${shapeName}> {
 
 <#assign shape = shapes[shapeName]/>
@@ -32,7 +34,7 @@ public class ${shapeName}Marshaller implements Marshaller<Request<${shapeName}>,
 
        <#assign serviceNameForRequest = customConfig.customServiceNameForRequest!metadata.syncInterface />
 
-        <@DefaultRequestCreation.content shape serviceNameForRequest/>
+        Request<${shape.shapeName}> request = new DefaultRequest<${shape.shapeName}>(${shape.variable.variableName}, "${serviceNameForRequest}");
         request.addParameter("Action", "${shape.marshaller.action}");
         <#if metadata.apiVersion?has_content>request.addParameter("Version", "${metadata.apiVersion}");</#if>
         <#if shape.marshaller.verb?has_content>request.setHttpMethod(HttpMethodName.${shape.marshaller.verb});</#if>

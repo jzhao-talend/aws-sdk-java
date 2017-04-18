@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,38 +13,50 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeSubscriptionFilters" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The log group name for which subscription filters are to be listed.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
     /**
      * <p>
-     * Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a value, no
-     * prefix filter is applied.
+     * The prefix to match. If you don't specify a value, no prefix filter is applied.
      * </p>
      */
     private String filterNamePrefix;
-
+    /**
+     * <p>
+     * The token for the next set of items to return. (You received this token from a previous call.)
+     * </p>
+     */
     private String nextToken;
-
+    /**
+     * <p>
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+     * </p>
+     */
     private Integer limit;
 
     /**
      * <p>
-     * The log group name for which subscription filters are to be listed.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The log group name for which subscription filters are to be listed.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -53,10 +65,10 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The log group name for which subscription filters are to be listed.
+     * The name of the log group.
      * </p>
      * 
-     * @return The log group name for which subscription filters are to be listed.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -65,11 +77,11 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The log group name for which subscription filters are to be listed.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The log group name for which subscription filters are to be listed.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,13 +92,11 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a value, no
-     * prefix filter is applied.
+     * The prefix to match. If you don't specify a value, no prefix filter is applied.
      * </p>
      * 
      * @param filterNamePrefix
-     *        Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a
-     *        value, no prefix filter is applied.
+     *        The prefix to match. If you don't specify a value, no prefix filter is applied.
      */
 
     public void setFilterNamePrefix(String filterNamePrefix) {
@@ -95,12 +105,10 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a value, no
-     * prefix filter is applied.
+     * The prefix to match. If you don't specify a value, no prefix filter is applied.
      * </p>
      * 
-     * @return Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a
-     *         value, no prefix filter is applied.
+     * @return The prefix to match. If you don't specify a value, no prefix filter is applied.
      */
 
     public String getFilterNamePrefix() {
@@ -109,13 +117,11 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a value, no
-     * prefix filter is applied.
+     * The prefix to match. If you don't specify a value, no prefix filter is applied.
      * </p>
      * 
      * @param filterNamePrefix
-     *        Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a
-     *        value, no prefix filter is applied.
+     *        The prefix to match. If you don't specify a value, no prefix filter is applied.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -125,7 +131,12 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * The token for the next set of items to return. (You received this token from a previous call.)
+     * </p>
+     * 
      * @param nextToken
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -133,7 +144,11 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * @return
+     * <p>
+     * The token for the next set of items to return. (You received this token from a previous call.)
+     * </p>
+     * 
+     * @return The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -141,7 +156,12 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * The token for the next set of items to return. (You received this token from a previous call.)
+     * </p>
+     * 
      * @param nextToken
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -151,7 +171,12 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+     * </p>
+     * 
      * @param limit
+     *        The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      */
 
     public void setLimit(Integer limit) {
@@ -159,7 +184,11 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * @return
+     * <p>
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+     * </p>
+     * 
+     * @return The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      */
 
     public Integer getLimit() {
@@ -167,7 +196,12 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+     * </p>
+     * 
      * @param limit
+     *        The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,13 +222,13 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getFilterNamePrefix() != null)
-            sb.append("FilterNamePrefix: " + getFilterNamePrefix() + ",");
+            sb.append("FilterNamePrefix: ").append(getFilterNamePrefix()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -244,4 +278,5 @@ public class DescribeSubscriptionFiltersRequest extends com.amazonaws.AmazonWebS
     public DescribeSubscriptionFiltersRequest clone() {
         return (DescribeSubscriptionFiltersRequest) super.clone();
     }
+
 }

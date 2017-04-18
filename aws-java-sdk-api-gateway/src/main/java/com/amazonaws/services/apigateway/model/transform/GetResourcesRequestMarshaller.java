@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,73 +12,50 @@
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.apigateway.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * GetResourcesRequest Marshaller
+ * GetResourcesRequestMarshaller
  */
-public class GetResourcesRequestMarshaller implements Marshaller<Request<GetResourcesRequest>, GetResourcesRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class GetResourcesRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> RESTAPIID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("restapi_id").build();
+    private static final MarshallingInfo<String> POSITION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("position").build();
+    private static final MarshallingInfo<Integer> LIMIT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("limit").build();
 
-    public GetResourcesRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final GetResourcesRequestMarshaller instance = new GetResourcesRequestMarshaller();
+
+    public static GetResourcesRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<GetResourcesRequest> marshall(GetResourcesRequest getResourcesRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(GetResourcesRequest getResourcesRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (getResourcesRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<GetResourcesRequest> request = new DefaultRequest<GetResourcesRequest>(getResourcesRequest, "AmazonApiGateway");
-
-        request.setHttpMethod(HttpMethodName.GET);
-
-        String uriResourcePath = "/restapis/{restapi_id}/resources";
-
-        uriResourcePath = uriResourcePath.replace("{restapi_id}",
-                (getResourcesRequest.getRestApiId() != null) ? SdkHttpUtils.urlEncode(StringUtils.fromString(getResourcesRequest.getRestApiId()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
-        if (getResourcesRequest.getPosition() != null) {
-            request.addParameter("position", StringUtils.fromString(getResourcesRequest.getPosition()));
+        try {
+            protocolMarshaller.marshall(getResourcesRequest.getRestApiId(), RESTAPIID_BINDING);
+            protocolMarshaller.marshall(getResourcesRequest.getPosition(), POSITION_BINDING);
+            protocolMarshaller.marshall(getResourcesRequest.getLimit(), LIMIT_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        if (getResourcesRequest.getLimit() != null) {
-            request.addParameter("limit", StringUtils.fromInteger(getResourcesRequest.getLimit()));
-        }
-
-        request.setContent(new ByteArrayInputStream(new byte[0]));
-        if (!request.getHeaders().containsKey("Content-Type")) {
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        }
-
-        return request;
     }
 
 }

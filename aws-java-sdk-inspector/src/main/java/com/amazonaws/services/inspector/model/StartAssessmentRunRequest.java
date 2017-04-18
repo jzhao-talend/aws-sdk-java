@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/StartAssessmentRun" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -28,8 +33,8 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
     private String assessmentTemplateArn;
     /**
      * <p>
-     * You can specify the name for the assessment run, or you can use the auto-generated name that is based on the
-     * assessment template name. The name must be unique for the assessment template.
+     * You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is
+     * used to start the assessment run.
      * </p>
      */
     private String assessmentRunName;
@@ -76,13 +81,13 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * You can specify the name for the assessment run, or you can use the auto-generated name that is based on the
-     * assessment template name. The name must be unique for the assessment template.
+     * You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is
+     * used to start the assessment run.
      * </p>
      * 
      * @param assessmentRunName
-     *        You can specify the name for the assessment run, or you can use the auto-generated name that is based on
-     *        the assessment template name. The name must be unique for the assessment template.
+     *        You can specify the name for the assessment run. The name must be unique for the assessment template whose
+     *        ARN is used to start the assessment run.
      */
 
     public void setAssessmentRunName(String assessmentRunName) {
@@ -91,12 +96,12 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * You can specify the name for the assessment run, or you can use the auto-generated name that is based on the
-     * assessment template name. The name must be unique for the assessment template.
+     * You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is
+     * used to start the assessment run.
      * </p>
      * 
-     * @return You can specify the name for the assessment run, or you can use the auto-generated name that is based on
-     *         the assessment template name. The name must be unique for the assessment template.
+     * @return You can specify the name for the assessment run. The name must be unique for the assessment template
+     *         whose ARN is used to start the assessment run.
      */
 
     public String getAssessmentRunName() {
@@ -105,13 +110,13 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * You can specify the name for the assessment run, or you can use the auto-generated name that is based on the
-     * assessment template name. The name must be unique for the assessment template.
+     * You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is
+     * used to start the assessment run.
      * </p>
      * 
      * @param assessmentRunName
-     *        You can specify the name for the assessment run, or you can use the auto-generated name that is based on
-     *        the assessment template name. The name must be unique for the assessment template.
+     *        You can specify the name for the assessment run. The name must be unique for the assessment template whose
+     *        ARN is used to start the assessment run.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -132,9 +137,9 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAssessmentTemplateArn() != null)
-            sb.append("AssessmentTemplateArn: " + getAssessmentTemplateArn() + ",");
+            sb.append("AssessmentTemplateArn: ").append(getAssessmentTemplateArn()).append(",");
         if (getAssessmentRunName() != null)
-            sb.append("AssessmentRunName: " + getAssessmentRunName());
+            sb.append("AssessmentRunName: ").append(getAssessmentRunName());
         sb.append("}");
         return sb.toString();
     }
@@ -174,4 +179,5 @@ public class StartAssessmentRunRequest extends com.amazonaws.AmazonWebServiceReq
     public StartAssessmentRunRequest clone() {
         return (StartAssessmentRunRequest) super.clone();
     }
+
 }

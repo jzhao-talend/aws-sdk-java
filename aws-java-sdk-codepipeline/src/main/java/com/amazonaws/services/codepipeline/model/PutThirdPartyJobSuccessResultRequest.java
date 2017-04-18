@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a put third party job success result action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobSuccessResult"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutThirdPartyJobSuccessResultRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -257,15 +263,15 @@ public class PutThirdPartyJobSuccessResultRequest extends com.amazonaws.AmazonWe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getCurrentRevision() != null)
-            sb.append("CurrentRevision: " + getCurrentRevision() + ",");
+            sb.append("CurrentRevision: ").append(getCurrentRevision()).append(",");
         if (getContinuationToken() != null)
-            sb.append("ContinuationToken: " + getContinuationToken() + ",");
+            sb.append("ContinuationToken: ").append(getContinuationToken()).append(",");
         if (getExecutionDetails() != null)
-            sb.append("ExecutionDetails: " + getExecutionDetails());
+            sb.append("ExecutionDetails: ").append(getExecutionDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -320,4 +326,5 @@ public class PutThirdPartyJobSuccessResultRequest extends com.amazonaws.AmazonWe
     public PutThirdPartyJobSuccessResultRequest clone() {
         return (PutThirdPartyJobSuccessResultRequest) super.clone();
     }
+
 }

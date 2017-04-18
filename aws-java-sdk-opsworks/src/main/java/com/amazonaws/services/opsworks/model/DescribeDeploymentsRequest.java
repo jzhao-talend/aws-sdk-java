@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeDeployments" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeDeploymentsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -231,11 +236,11 @@ public class DescribeDeploymentsRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getAppId() != null)
-            sb.append("AppId: " + getAppId() + ",");
+            sb.append("AppId: ").append(getAppId()).append(",");
         if (getDeploymentIds() != null)
-            sb.append("DeploymentIds: " + getDeploymentIds());
+            sb.append("DeploymentIds: ").append(getDeploymentIds());
         sb.append("}");
         return sb.toString();
     }
@@ -280,4 +285,5 @@ public class DescribeDeploymentsRequest extends com.amazonaws.AmazonWebServiceRe
     public DescribeDeploymentsRequest clone() {
         return (DescribeDeploymentsRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateVolumeRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.CreateVolumeRequestMarshaller;
  * Contains the parameters for CreateVolume.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateVolumeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<CreateVolumeRequest> {
 
     /**
@@ -66,7 +69,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision for the
-     * volume, with a maximum ratio of 30 IOPS/GiB.
+     * volume, with a maximum ratio of 50 IOPS/GiB.
      * </p>
      * <p>
      * Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
@@ -95,6 +98,12 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private String kmsKeyId;
+    /**
+     * <p>
+     * The tags to apply to the volume during creation.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TagSpecification> tagSpecifications;
 
     /**
      * Default constructor for CreateVolumeRequest object. Callers should use the setter or fluent setter (with...)
@@ -439,7 +448,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision for the
-     * volume, with a maximum ratio of 30 IOPS/GiB.
+     * volume, with a maximum ratio of 50 IOPS/GiB.
      * </p>
      * <p>
      * Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
@@ -447,7 +456,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * 
      * @param iops
      *        Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision
-     *        for the volume, with a maximum ratio of 30 IOPS/GiB.</p>
+     *        for the volume, with a maximum ratio of 50 IOPS/GiB.</p>
      *        <p>
      *        Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
      */
@@ -459,14 +468,14 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision for the
-     * volume, with a maximum ratio of 30 IOPS/GiB.
+     * volume, with a maximum ratio of 50 IOPS/GiB.
      * </p>
      * <p>
      * Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
      * </p>
      * 
      * @return Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision
-     *         for the volume, with a maximum ratio of 30 IOPS/GiB.</p>
+     *         for the volume, with a maximum ratio of 50 IOPS/GiB.</p>
      *         <p>
      *         Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
      */
@@ -478,7 +487,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision for the
-     * volume, with a maximum ratio of 30 IOPS/GiB.
+     * volume, with a maximum ratio of 50 IOPS/GiB.
      * </p>
      * <p>
      * Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
@@ -486,7 +495,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * 
      * @param iops
      *        Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision
-     *        for the volume, with a maximum ratio of 30 IOPS/GiB.</p>
+     *        for the volume, with a maximum ratio of 50 IOPS/GiB.</p>
      *        <p>
      *        Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -667,6 +676,79 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     }
 
     /**
+     * <p>
+     * The tags to apply to the volume during creation.
+     * </p>
+     * 
+     * @return The tags to apply to the volume during creation.
+     */
+
+    public java.util.List<TagSpecification> getTagSpecifications() {
+        if (tagSpecifications == null) {
+            tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>();
+        }
+        return tagSpecifications;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the volume during creation.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the volume during creation.
+     */
+
+    public void setTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        if (tagSpecifications == null) {
+            this.tagSpecifications = null;
+            return;
+        }
+
+        this.tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications);
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the volume during creation.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagSpecifications(java.util.Collection)} or {@link #withTagSpecifications(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the volume during creation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateVolumeRequest withTagSpecifications(TagSpecification... tagSpecifications) {
+        if (this.tagSpecifications == null) {
+            setTagSpecifications(new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications.length));
+        }
+        for (TagSpecification ele : tagSpecifications) {
+            this.tagSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the volume during creation.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the volume during creation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateVolumeRequest withTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        setTagSpecifications(tagSpecifications);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -689,19 +771,21 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSize() != null)
-            sb.append("Size: " + getSize() + ",");
+            sb.append("Size: ").append(getSize()).append(",");
         if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
+            sb.append("SnapshotId: ").append(getSnapshotId()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getVolumeType() != null)
-            sb.append("VolumeType: " + getVolumeType() + ",");
+            sb.append("VolumeType: ").append(getVolumeType()).append(",");
         if (getIops() != null)
-            sb.append("Iops: " + getIops() + ",");
+            sb.append("Iops: ").append(getIops()).append(",");
         if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
+            sb.append("Encrypted: ").append(getEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId());
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
+        if (getTagSpecifications() != null)
+            sb.append("TagSpecifications: ").append(getTagSpecifications());
         sb.append("}");
         return sb.toString();
     }
@@ -744,6 +828,10 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
+        if (other.getTagSpecifications() == null ^ this.getTagSpecifications() == null)
+            return false;
+        if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
+            return false;
         return true;
     }
 
@@ -759,6 +847,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
         hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
         return hashCode;
     }
 

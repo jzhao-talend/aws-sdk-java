@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,38 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteSubscriptionFilter" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group that is associated with the subscription filter to delete.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
     /**
      * <p>
-     * The name of the subscription filter to delete.
+     * The name of the subscription filter.
      * </p>
      */
     private String filterName;
 
     /**
      * <p>
-     * The name of the log group that is associated with the subscription filter to delete.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group that is associated with the subscription filter to delete.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -48,10 +53,10 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the log group that is associated with the subscription filter to delete.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group that is associated with the subscription filter to delete.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -60,11 +65,11 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the log group that is associated with the subscription filter to delete.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group that is associated with the subscription filter to delete.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -75,11 +80,11 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the subscription filter to delete.
+     * The name of the subscription filter.
      * </p>
      * 
      * @param filterName
-     *        The name of the subscription filter to delete.
+     *        The name of the subscription filter.
      */
 
     public void setFilterName(String filterName) {
@@ -88,10 +93,10 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the subscription filter to delete.
+     * The name of the subscription filter.
      * </p>
      * 
-     * @return The name of the subscription filter to delete.
+     * @return The name of the subscription filter.
      */
 
     public String getFilterName() {
@@ -100,11 +105,11 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The name of the subscription filter to delete.
+     * The name of the subscription filter.
      * </p>
      * 
      * @param filterName
-     *        The name of the subscription filter to delete.
+     *        The name of the subscription filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -125,9 +130,9 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getFilterName() != null)
-            sb.append("FilterName: " + getFilterName());
+            sb.append("FilterName: ").append(getFilterName());
         sb.append("}");
         return sb.toString();
     }
@@ -167,4 +172,5 @@ public class DeleteSubscriptionFilterRequest extends com.amazonaws.AmazonWebServ
     public DeleteSubscriptionFilterRequest clone() {
         return (DeleteSubscriptionFilterRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the AllocatePublicVirtualInterface operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocatePublicVirtualInterface"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AllocatePublicVirtualInterfaceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -227,11 +233,11 @@ public class AllocatePublicVirtualInterfaceRequest extends com.amazonaws.AmazonW
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: " + getConnectionId() + ",");
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getNewPublicVirtualInterfaceAllocation() != null)
-            sb.append("NewPublicVirtualInterfaceAllocation: " + getNewPublicVirtualInterfaceAllocation());
+            sb.append("NewPublicVirtualInterfaceAllocation: ").append(getNewPublicVirtualInterfaceAllocation());
         sb.append("}");
         return sb.toString();
     }
@@ -277,4 +283,5 @@ public class AllocatePublicVirtualInterfaceRequest extends com.amazonaws.AmazonW
     public AllocatePublicVirtualInterfaceRequest clone() {
         return (AllocatePublicVirtualInterfaceRequest) super.clone();
     }
+
 }

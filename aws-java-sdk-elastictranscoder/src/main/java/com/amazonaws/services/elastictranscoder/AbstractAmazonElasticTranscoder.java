@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elastictranscoder;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elastictranscoder.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.elastictranscoder.waiters.AmazonElasticTranscoderWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.elastictranscoder.waiters.AmazonElasticTranscoderW
  * Abstract implementation of {@code AmazonElasticTranscoder}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonElasticTranscoder implements AmazonElasticTranscoder {
 
     protected AbstractAmazonElasticTranscoder() {
@@ -111,6 +114,7 @@ public class AbstractAmazonElasticTranscoder implements AmazonElasticTranscoder 
     }
 
     @Override
+    @Deprecated
     public TestRoleResult testRole(TestRoleRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -144,4 +148,5 @@ public class AbstractAmazonElasticTranscoder implements AmazonElasticTranscoder 
     public AmazonElasticTranscoderWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

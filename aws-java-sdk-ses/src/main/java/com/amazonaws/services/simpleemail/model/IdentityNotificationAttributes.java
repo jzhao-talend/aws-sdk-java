@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,7 +21,11 @@ import java.io.Serializable;
  * Service (Amazon SNS) topics set for bounce, complaint, and/or delivery notifications, and whether feedback forwarding
  * is enabled for bounce and complaint notifications.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/IdentityNotificationAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IdentityNotificationAttributes implements Serializable, Cloneable {
 
     /**
@@ -521,19 +526,19 @@ public class IdentityNotificationAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBounceTopic() != null)
-            sb.append("BounceTopic: " + getBounceTopic() + ",");
+            sb.append("BounceTopic: ").append(getBounceTopic()).append(",");
         if (getComplaintTopic() != null)
-            sb.append("ComplaintTopic: " + getComplaintTopic() + ",");
+            sb.append("ComplaintTopic: ").append(getComplaintTopic()).append(",");
         if (getDeliveryTopic() != null)
-            sb.append("DeliveryTopic: " + getDeliveryTopic() + ",");
+            sb.append("DeliveryTopic: ").append(getDeliveryTopic()).append(",");
         if (getForwardingEnabled() != null)
-            sb.append("ForwardingEnabled: " + getForwardingEnabled() + ",");
+            sb.append("ForwardingEnabled: ").append(getForwardingEnabled()).append(",");
         if (getHeadersInBounceNotificationsEnabled() != null)
-            sb.append("HeadersInBounceNotificationsEnabled: " + getHeadersInBounceNotificationsEnabled() + ",");
+            sb.append("HeadersInBounceNotificationsEnabled: ").append(getHeadersInBounceNotificationsEnabled()).append(",");
         if (getHeadersInComplaintNotificationsEnabled() != null)
-            sb.append("HeadersInComplaintNotificationsEnabled: " + getHeadersInComplaintNotificationsEnabled() + ",");
+            sb.append("HeadersInComplaintNotificationsEnabled: ").append(getHeadersInComplaintNotificationsEnabled()).append(",");
         if (getHeadersInDeliveryNotificationsEnabled() != null)
-            sb.append("HeadersInDeliveryNotificationsEnabled: " + getHeadersInDeliveryNotificationsEnabled());
+            sb.append("HeadersInDeliveryNotificationsEnabled: ").append(getHeadersInDeliveryNotificationsEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -605,4 +610,5 @@ public class IdentityNotificationAttributes implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

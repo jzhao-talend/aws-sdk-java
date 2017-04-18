@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the format of the data in the streaming source, and how each data element maps to corresponding columns
  * created in the in-application stream.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/SourceSchema" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SourceSchema implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SourceSchema implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -203,11 +210,11 @@ public class SourceSchema implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecordFormat() != null)
-            sb.append("RecordFormat: " + getRecordFormat() + ",");
+            sb.append("RecordFormat: ").append(getRecordFormat()).append(",");
         if (getRecordEncoding() != null)
-            sb.append("RecordEncoding: " + getRecordEncoding() + ",");
+            sb.append("RecordEncoding: ").append(getRecordEncoding()).append(",");
         if (getRecordColumns() != null)
-            sb.append("RecordColumns: " + getRecordColumns());
+            sb.append("RecordColumns: ").append(getRecordColumns());
         sb.append("}");
         return sb.toString();
     }
@@ -255,5 +262,11 @@ public class SourceSchema implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.SourceSchemaMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

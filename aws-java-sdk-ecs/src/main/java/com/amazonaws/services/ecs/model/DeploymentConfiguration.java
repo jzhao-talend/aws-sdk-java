@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,21 +13,28 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and
  * starting tasks.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeploymentConfiguration" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeploymentConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeploymentConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are
      * allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum
-     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
-     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.
+     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>
+     * /100, rounded down to the nearest integer value.
      * </p>
      */
     private Integer maximumPercent;
@@ -35,8 +42,8 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that
      * must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during
-     * a deployment is the <code>desiredCount</code> multiplied by the <code>minimumHealthyPercent</code>/100, rounded
-     * up to the nearest integer value.
+     * a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to
+     * the nearest integer value.
      * </p>
      */
     private Integer minimumHealthyPercent;
@@ -45,14 +52,14 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are
      * allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum
-     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
-     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.
+     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>
+     * /100, rounded down to the nearest integer value.
      * </p>
      * 
      * @param maximumPercent
      *        The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that
      *        are allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment.
-     *        The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *        The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by
      *        <code>maximumPercent</code>/100, rounded down to the nearest integer value.
      */
 
@@ -64,13 +71,13 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are
      * allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum
-     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
-     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.
+     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>
+     * /100, rounded down to the nearest integer value.
      * </p>
      * 
      * @return The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that
      *         are allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment.
-     *         The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *         The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by
      *         <code>maximumPercent</code>/100, rounded down to the nearest integer value.
      */
 
@@ -82,14 +89,14 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are
      * allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum
-     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
-     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.
+     * number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>
+     * /100, rounded down to the nearest integer value.
      * </p>
      * 
      * @param maximumPercent
      *        The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that
      *        are allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment.
-     *        The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *        The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by
      *        <code>maximumPercent</code>/100, rounded down to the nearest integer value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -103,14 +110,14 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that
      * must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during
-     * a deployment is the <code>desiredCount</code> multiplied by the <code>minimumHealthyPercent</code>/100, rounded
-     * up to the nearest integer value.
+     * a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to
+     * the nearest integer value.
      * </p>
      * 
      * @param minimumHealthyPercent
      *        The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running
      *        tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum
-     *        healthy tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *        healthy tasks during a deployment is the <code>desiredCount</code> multiplied by
      *        <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.
      */
 
@@ -122,13 +129,13 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that
      * must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during
-     * a deployment is the <code>desiredCount</code> multiplied by the <code>minimumHealthyPercent</code>/100, rounded
-     * up to the nearest integer value.
+     * a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to
+     * the nearest integer value.
      * </p>
      * 
      * @return The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running
      *         tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum
-     *         healthy tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *         healthy tasks during a deployment is the <code>desiredCount</code> multiplied by
      *         <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.
      */
 
@@ -140,14 +147,14 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
      * <p>
      * The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that
      * must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during
-     * a deployment is the <code>desiredCount</code> multiplied by the <code>minimumHealthyPercent</code>/100, rounded
-     * up to the nearest integer value.
+     * a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to
+     * the nearest integer value.
      * </p>
      * 
      * @param minimumHealthyPercent
      *        The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running
      *        tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum
-     *        healthy tasks during a deployment is the <code>desiredCount</code> multiplied by the
+     *        healthy tasks during a deployment is the <code>desiredCount</code> multiplied by
      *        <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -169,9 +176,9 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaximumPercent() != null)
-            sb.append("MaximumPercent: " + getMaximumPercent() + ",");
+            sb.append("MaximumPercent: ").append(getMaximumPercent()).append(",");
         if (getMinimumHealthyPercent() != null)
-            sb.append("MinimumHealthyPercent: " + getMinimumHealthyPercent());
+            sb.append("MinimumHealthyPercent: ").append(getMinimumHealthyPercent());
         sb.append("}");
         return sb.toString();
     }
@@ -214,5 +221,11 @@ public class DeploymentConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.DeploymentConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

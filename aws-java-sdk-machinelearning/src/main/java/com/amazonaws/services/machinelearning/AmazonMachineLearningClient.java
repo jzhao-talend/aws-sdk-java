@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.machinelearning.AmazonMachineLearningClientBuilder;
 import com.amazonaws.services.machinelearning.waiters.AmazonMachineLearningWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -48,6 +52,7 @@ import com.amazonaws.services.machinelearning.model.transform.*;
  * Definition of the public APIs exposed by Amazon Machine Learning
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonMachineLearningClient extends AmazonWebServiceClient implements AmazonMachineLearning {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -62,35 +67,36 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.InvalidTagException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.InvalidInputException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatchException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.IdempotentParameterMismatchException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TagLimitExceededException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.TagLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.InternalServerException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.LimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("PredictorNotMountedException").withModeledClass(
-                            com.amazonaws.services.machinelearning.model.PredictorNotMountedException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.machinelearning.model.AmazonMachineLearningException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.InvalidTagException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.InvalidInputException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatchException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.IdempotentParameterMismatchException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TagLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.TagLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.InternalServerException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.LimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PredictorNotMountedException").withModeledClass(
+                                    com.amazonaws.services.machinelearning.model.PredictorNotMountedException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.machinelearning.model.AmazonMachineLearningException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon Machine Learning. A credentials provider chain will
@@ -106,7 +112,9 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonMachineLearningClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -129,7 +137,9 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      *        proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonMachineLearningClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -144,7 +154,10 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonMachineLearningClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonMachineLearningClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -162,7 +175,10 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Machine Learning (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonMachineLearningClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonMachineLearningClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -179,7 +195,9 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonMachineLearningClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -197,7 +215,10 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Machine Learning (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonMachineLearningClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonMachineLearningClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -217,12 +238,20 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      *        proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonMachineLearningClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonMachineLearningClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonMachineLearningClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonMachineLearningClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonMachineLearningClientBuilder builder() {
+        return AmazonMachineLearningClientBuilder.standard();
     }
 
     /**
@@ -272,7 +301,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.AddTags
      */
     @Override
-    public AddTagsResult addTags(AddTagsRequest addTagsRequest) {
+    public AddTagsResult addTags(AddTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTags(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsResult executeAddTags(AddTagsRequest addTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -282,7 +318,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
+                request = new AddTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -331,7 +367,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateBatchPrediction
      */
     @Override
-    public CreateBatchPredictionResult createBatchPrediction(CreateBatchPredictionRequest createBatchPredictionRequest) {
+    public CreateBatchPredictionResult createBatchPrediction(CreateBatchPredictionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateBatchPrediction(request);
+    }
+
+    @SdkInternalApi
+    final CreateBatchPredictionResult executeCreateBatchPrediction(CreateBatchPredictionRequest createBatchPredictionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createBatchPredictionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -341,7 +384,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateBatchPredictionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createBatchPredictionRequest));
+                request = new CreateBatchPredictionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createBatchPredictionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -394,7 +437,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateDataSourceFromRDS
      */
     @Override
-    public CreateDataSourceFromRDSResult createDataSourceFromRDS(CreateDataSourceFromRDSRequest createDataSourceFromRDSRequest) {
+    public CreateDataSourceFromRDSResult createDataSourceFromRDS(CreateDataSourceFromRDSRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDataSourceFromRDS(request);
+    }
+
+    @SdkInternalApi
+    final CreateDataSourceFromRDSResult executeCreateDataSourceFromRDS(CreateDataSourceFromRDSRequest createDataSourceFromRDSRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDataSourceFromRDSRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -404,7 +454,8 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateDataSourceFromRDSRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDataSourceFromRDSRequest));
+                request = new CreateDataSourceFromRDSRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createDataSourceFromRDSRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -477,7 +528,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateDataSourceFromRedshift
      */
     @Override
-    public CreateDataSourceFromRedshiftResult createDataSourceFromRedshift(CreateDataSourceFromRedshiftRequest createDataSourceFromRedshiftRequest) {
+    public CreateDataSourceFromRedshiftResult createDataSourceFromRedshift(CreateDataSourceFromRedshiftRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateDataSourceFromRedshift(request);
+    }
+
+    @SdkInternalApi
+    final CreateDataSourceFromRedshiftResult executeCreateDataSourceFromRedshift(CreateDataSourceFromRedshiftRequest createDataSourceFromRedshiftRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createDataSourceFromRedshiftRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -487,7 +545,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateDataSourceFromRedshiftRequestMarshaller(protocolFactory).marshall(super
+                request = new CreateDataSourceFromRedshiftRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(createDataSourceFromRedshiftRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -554,7 +612,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateDataSourceFromS3
      */
     @Override
-    public CreateDataSourceFromS3Result createDataSourceFromS3(CreateDataSourceFromS3Request createDataSourceFromS3Request) {
+    public CreateDataSourceFromS3Result createDataSourceFromS3(CreateDataSourceFromS3Request request) {
+        request = beforeClientExecution(request);
+        return executeCreateDataSourceFromS3(request);
+    }
+
+    @SdkInternalApi
+    final CreateDataSourceFromS3Result executeCreateDataSourceFromS3(CreateDataSourceFromS3Request createDataSourceFromS3Request) {
+
         ExecutionContext executionContext = createExecutionContext(createDataSourceFromS3Request);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -564,7 +629,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateDataSourceFromS3RequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDataSourceFromS3Request));
+                request = new CreateDataSourceFromS3RequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDataSourceFromS3Request));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -617,7 +682,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateEvaluation
      */
     @Override
-    public CreateEvaluationResult createEvaluation(CreateEvaluationRequest createEvaluationRequest) {
+    public CreateEvaluationResult createEvaluation(CreateEvaluationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEvaluation(request);
+    }
+
+    @SdkInternalApi
+    final CreateEvaluationResult executeCreateEvaluation(CreateEvaluationRequest createEvaluationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createEvaluationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -627,7 +699,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateEvaluationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEvaluationRequest));
+                request = new CreateEvaluationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEvaluationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -682,7 +754,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateMLModel
      */
     @Override
-    public CreateMLModelResult createMLModel(CreateMLModelRequest createMLModelRequest) {
+    public CreateMLModelResult createMLModel(CreateMLModelRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateMLModel(request);
+    }
+
+    @SdkInternalApi
+    final CreateMLModelResult executeCreateMLModel(CreateMLModelRequest createMLModelRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createMLModelRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -692,7 +771,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateMLModelRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createMLModelRequest));
+                request = new CreateMLModelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createMLModelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -729,7 +808,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.CreateRealtimeEndpoint
      */
     @Override
-    public CreateRealtimeEndpointResult createRealtimeEndpoint(CreateRealtimeEndpointRequest createRealtimeEndpointRequest) {
+    public CreateRealtimeEndpointResult createRealtimeEndpoint(CreateRealtimeEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRealtimeEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final CreateRealtimeEndpointResult executeCreateRealtimeEndpoint(CreateRealtimeEndpointRequest createRealtimeEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRealtimeEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -739,7 +825,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateRealtimeEndpointRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createRealtimeEndpointRequest));
+                request = new CreateRealtimeEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createRealtimeEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -782,7 +868,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteBatchPrediction
      */
     @Override
-    public DeleteBatchPredictionResult deleteBatchPrediction(DeleteBatchPredictionRequest deleteBatchPredictionRequest) {
+    public DeleteBatchPredictionResult deleteBatchPrediction(DeleteBatchPredictionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteBatchPrediction(request);
+    }
+
+    @SdkInternalApi
+    final DeleteBatchPredictionResult executeDeleteBatchPrediction(DeleteBatchPredictionRequest deleteBatchPredictionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteBatchPredictionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -792,7 +885,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteBatchPredictionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteBatchPredictionRequest));
+                request = new DeleteBatchPredictionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteBatchPredictionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -835,7 +928,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteDataSource
      */
     @Override
-    public DeleteDataSourceResult deleteDataSource(DeleteDataSourceRequest deleteDataSourceRequest) {
+    public DeleteDataSourceResult deleteDataSource(DeleteDataSourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDataSource(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDataSourceResult executeDeleteDataSource(DeleteDataSourceRequest deleteDataSourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDataSourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -845,7 +945,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteDataSourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDataSourceRequest));
+                request = new DeleteDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -889,7 +989,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteEvaluation
      */
     @Override
-    public DeleteEvaluationResult deleteEvaluation(DeleteEvaluationRequest deleteEvaluationRequest) {
+    public DeleteEvaluationResult deleteEvaluation(DeleteEvaluationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEvaluation(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEvaluationResult executeDeleteEvaluation(DeleteEvaluationRequest deleteEvaluationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEvaluationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -899,7 +1006,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteEvaluationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEvaluationRequest));
+                request = new DeleteEvaluationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEvaluationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -941,7 +1048,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteMLModel
      */
     @Override
-    public DeleteMLModelResult deleteMLModel(DeleteMLModelRequest deleteMLModelRequest) {
+    public DeleteMLModelResult deleteMLModel(DeleteMLModelRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteMLModel(request);
+    }
+
+    @SdkInternalApi
+    final DeleteMLModelResult executeDeleteMLModel(DeleteMLModelRequest deleteMLModelRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteMLModelRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -951,7 +1065,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteMLModelRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteMLModelRequest));
+                request = new DeleteMLModelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteMLModelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -986,7 +1100,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteRealtimeEndpoint
      */
     @Override
-    public DeleteRealtimeEndpointResult deleteRealtimeEndpoint(DeleteRealtimeEndpointRequest deleteRealtimeEndpointRequest) {
+    public DeleteRealtimeEndpointResult deleteRealtimeEndpoint(DeleteRealtimeEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRealtimeEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRealtimeEndpointResult executeDeleteRealtimeEndpoint(DeleteRealtimeEndpointRequest deleteRealtimeEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRealtimeEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -996,7 +1117,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteRealtimeEndpointRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRealtimeEndpointRequest));
+                request = new DeleteRealtimeEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRealtimeEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1037,7 +1158,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DeleteTags
      */
     @Override
-    public DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest) {
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTags(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsResult executeDeleteTags(DeleteTagsRequest deleteTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1047,7 +1175,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsRequest));
+                request = new DeleteTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1080,7 +1208,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DescribeBatchPredictions
      */
     @Override
-    public DescribeBatchPredictionsResult describeBatchPredictions(DescribeBatchPredictionsRequest describeBatchPredictionsRequest) {
+    public DescribeBatchPredictionsResult describeBatchPredictions(DescribeBatchPredictionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeBatchPredictions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeBatchPredictionsResult executeDescribeBatchPredictions(DescribeBatchPredictionsRequest describeBatchPredictionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeBatchPredictionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1090,7 +1225,8 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeBatchPredictionsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeBatchPredictionsRequest));
+                request = new DescribeBatchPredictionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeBatchPredictionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1129,7 +1265,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DescribeDataSources
      */
     @Override
-    public DescribeDataSourcesResult describeDataSources(DescribeDataSourcesRequest describeDataSourcesRequest) {
+    public DescribeDataSourcesResult describeDataSources(DescribeDataSourcesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDataSources(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDataSourcesResult executeDescribeDataSources(DescribeDataSourcesRequest describeDataSourcesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDataSourcesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1139,7 +1282,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeDataSourcesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDataSourcesRequest));
+                request = new DescribeDataSourcesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDataSourcesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1177,7 +1320,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DescribeEvaluations
      */
     @Override
-    public DescribeEvaluationsResult describeEvaluations(DescribeEvaluationsRequest describeEvaluationsRequest) {
+    public DescribeEvaluationsResult describeEvaluations(DescribeEvaluationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEvaluations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEvaluationsResult executeDescribeEvaluations(DescribeEvaluationsRequest describeEvaluationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeEvaluationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1187,7 +1337,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeEvaluationsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEvaluationsRequest));
+                request = new DescribeEvaluationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeEvaluationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1225,7 +1375,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DescribeMLModels
      */
     @Override
-    public DescribeMLModelsResult describeMLModels(DescribeMLModelsRequest describeMLModelsRequest) {
+    public DescribeMLModelsResult describeMLModels(DescribeMLModelsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMLModels(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMLModelsResult executeDescribeMLModels(DescribeMLModelsRequest describeMLModelsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeMLModelsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1235,7 +1392,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeMLModelsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMLModelsRequest));
+                request = new DescribeMLModelsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMLModelsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1275,7 +1432,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.DescribeTags
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1285,7 +1449,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTagsRequest));
+                request = new DescribeTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1321,7 +1485,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.GetBatchPrediction
      */
     @Override
-    public GetBatchPredictionResult getBatchPrediction(GetBatchPredictionRequest getBatchPredictionRequest) {
+    public GetBatchPredictionResult getBatchPrediction(GetBatchPredictionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetBatchPrediction(request);
+    }
+
+    @SdkInternalApi
+    final GetBatchPredictionResult executeGetBatchPrediction(GetBatchPredictionRequest getBatchPredictionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getBatchPredictionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1331,7 +1502,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetBatchPredictionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBatchPredictionRequest));
+                request = new GetBatchPredictionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBatchPredictionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1371,7 +1542,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.GetDataSource
      */
     @Override
-    public GetDataSourceResult getDataSource(GetDataSourceRequest getDataSourceRequest) {
+    public GetDataSourceResult getDataSource(GetDataSourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDataSource(request);
+    }
+
+    @SdkInternalApi
+    final GetDataSourceResult executeGetDataSource(GetDataSourceRequest getDataSourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDataSourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1381,7 +1559,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetDataSourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDataSourceRequest));
+                request = new GetDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1417,7 +1595,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.GetEvaluation
      */
     @Override
-    public GetEvaluationResult getEvaluation(GetEvaluationRequest getEvaluationRequest) {
+    public GetEvaluationResult getEvaluation(GetEvaluationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEvaluation(request);
+    }
+
+    @SdkInternalApi
+    final GetEvaluationResult executeGetEvaluation(GetEvaluationRequest getEvaluationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getEvaluationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1427,7 +1612,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetEvaluationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEvaluationRequest));
+                request = new GetEvaluationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEvaluationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1466,7 +1651,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.GetMLModel
      */
     @Override
-    public GetMLModelResult getMLModel(GetMLModelRequest getMLModelRequest) {
+    public GetMLModelResult getMLModel(GetMLModelRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetMLModel(request);
+    }
+
+    @SdkInternalApi
+    final GetMLModelResult executeGetMLModel(GetMLModelRequest getMLModelRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getMLModelRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1476,7 +1668,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetMLModelRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMLModelRequest));
+                request = new GetMLModelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMLModelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1522,7 +1714,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.Predict
      */
     @Override
-    public PredictResult predict(PredictRequest predictRequest) {
+    public PredictResult predict(PredictRequest request) {
+        request = beforeClientExecution(request);
+        return executePredict(request);
+    }
+
+    @SdkInternalApi
+    final PredictResult executePredict(PredictRequest predictRequest) {
+
         ExecutionContext executionContext = createExecutionContext(predictRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1532,7 +1731,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PredictRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(predictRequest));
+                request = new PredictRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(predictRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1570,7 +1769,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.UpdateBatchPrediction
      */
     @Override
-    public UpdateBatchPredictionResult updateBatchPrediction(UpdateBatchPredictionRequest updateBatchPredictionRequest) {
+    public UpdateBatchPredictionResult updateBatchPrediction(UpdateBatchPredictionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateBatchPrediction(request);
+    }
+
+    @SdkInternalApi
+    final UpdateBatchPredictionResult executeUpdateBatchPrediction(UpdateBatchPredictionRequest updateBatchPredictionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateBatchPredictionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1580,7 +1786,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateBatchPredictionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateBatchPredictionRequest));
+                request = new UpdateBatchPredictionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateBatchPredictionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1619,7 +1825,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.UpdateDataSource
      */
     @Override
-    public UpdateDataSourceResult updateDataSource(UpdateDataSourceRequest updateDataSourceRequest) {
+    public UpdateDataSourceResult updateDataSource(UpdateDataSourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDataSource(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDataSourceResult executeUpdateDataSource(UpdateDataSourceRequest updateDataSourceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDataSourceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1629,7 +1842,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDataSourceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDataSourceRequest));
+                request = new UpdateDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1667,7 +1880,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.UpdateEvaluation
      */
     @Override
-    public UpdateEvaluationResult updateEvaluation(UpdateEvaluationRequest updateEvaluationRequest) {
+    public UpdateEvaluationResult updateEvaluation(UpdateEvaluationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateEvaluation(request);
+    }
+
+    @SdkInternalApi
+    final UpdateEvaluationResult executeUpdateEvaluation(UpdateEvaluationRequest updateEvaluationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateEvaluationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1677,7 +1897,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateEvaluationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateEvaluationRequest));
+                request = new UpdateEvaluationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateEvaluationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1715,7 +1935,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
      * @sample AmazonMachineLearning.UpdateMLModel
      */
     @Override
-    public UpdateMLModelResult updateMLModel(UpdateMLModelRequest updateMLModelRequest) {
+    public UpdateMLModelResult updateMLModel(UpdateMLModelRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateMLModel(request);
+    }
+
+    @SdkInternalApi
+    final UpdateMLModelResult executeUpdateMLModel(UpdateMLModelRequest updateMLModelRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateMLModelRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1725,7 +1952,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateMLModelRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateMLModelRequest));
+                request = new UpdateMLModelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateMLModelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1797,6 +2024,7 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonMachineLearningWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -1806,6 +2034,14 @@ public class AmazonMachineLearningClient extends AmazonWebServiceClient implemen
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

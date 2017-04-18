@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,22 +13,42 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A log event is a record of some activity that was recorded by the application or resource being monitored. The log
- * event record that CloudWatch Logs understands contains two properties: the timestamp of when the event occurred, and
- * the raw event message.
+ * Represents a log event, which is a record of activity that was recorded by the application or resource being
+ * monitored.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/InputLogEvent" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InputLogEvent implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InputLogEvent implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     */
     private Long timestamp;
-
+    /**
+     * <p>
+     * The raw event message.
+     * </p>
+     */
     private String message;
 
     /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param timestamp
+     *        The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public void setTimestamp(Long timestamp) {
@@ -36,7 +56,11 @@ public class InputLogEvent implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
+     * @return The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public Long getTimestamp() {
@@ -44,7 +68,12 @@ public class InputLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param timestamp
+     *        The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -54,7 +83,12 @@ public class InputLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The raw event message.
+     * </p>
+     * 
      * @param message
+     *        The raw event message.
      */
 
     public void setMessage(String message) {
@@ -62,7 +96,11 @@ public class InputLogEvent implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The raw event message.
+     * </p>
+     * 
+     * @return The raw event message.
      */
 
     public String getMessage() {
@@ -70,7 +108,12 @@ public class InputLogEvent implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The raw event message.
+     * </p>
+     * 
      * @param message
+     *        The raw event message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -91,9 +134,9 @@ public class InputLogEvent implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp() + ",");
+            sb.append("Timestamp: ").append(getTimestamp()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage());
+            sb.append("Message: ").append(getMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -136,5 +179,11 @@ public class InputLogEvent implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.InputLogEventMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

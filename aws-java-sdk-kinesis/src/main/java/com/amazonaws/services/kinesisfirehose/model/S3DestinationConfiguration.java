@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the configuration of a destination in Amazon S3.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/S3DestinationConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
-public class S3DestinationConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class S3DestinationConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -39,7 +46,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
      * folder in the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
-     * <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer Guide</a>.
+     * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      */
     private String prefix;
@@ -68,7 +75,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
     private EncryptionConfiguration encryptionConfiguration;
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      */
     private CloudWatchLoggingOptions cloudWatchLoggingOptions;
@@ -159,7 +166,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
      * folder in the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
-     * <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer Guide</a>.
+     * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @param prefix
@@ -167,8 +174,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      *        extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it
      *        appears as a folder in the S3 bucket. For more information, see <a
      *        href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
-     *        in the <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer
-     *        Guide</a>.
+     *        in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      */
 
     public void setPrefix(String prefix) {
@@ -181,15 +187,14 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
      * folder in the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
-     * <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer Guide</a>.
+     * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @return The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an
      *         extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash,
      *         it appears as a folder in the S3 bucket. For more information, see <a
      *         href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
-     *         in the <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer
-     *         Guide</a>.
+     *         in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      */
 
     public String getPrefix() {
@@ -202,7 +207,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
      * folder in the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
-     * <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer Guide</a>.
+     * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @param prefix
@@ -210,8 +215,7 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
      *        extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it
      *        appears as a folder in the S3 bucket. For more information, see <a
      *        href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
-     *        in the <a href="http://docs.aws.amazon.com/firehose/latest/dev/">Amazon Kinesis Firehose Developer
-     *        Guide</a>.
+     *        in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -420,11 +424,11 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        Describes CloudWatch logging options for your delivery stream.
+     *        The CloudWatch logging options for your delivery stream.
      */
 
     public void setCloudWatchLoggingOptions(CloudWatchLoggingOptions cloudWatchLoggingOptions) {
@@ -433,10 +437,10 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
-     * @return Describes CloudWatch logging options for your delivery stream.
+     * @return The CloudWatch logging options for your delivery stream.
      */
 
     public CloudWatchLoggingOptions getCloudWatchLoggingOptions() {
@@ -445,11 +449,11 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Describes CloudWatch logging options for your delivery stream.
+     * The CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        Describes CloudWatch logging options for your delivery stream.
+     *        The CloudWatch logging options for your delivery stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -470,19 +474,19 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getBucketARN() != null)
-            sb.append("BucketARN: " + getBucketARN() + ",");
+            sb.append("BucketARN: ").append(getBucketARN()).append(",");
         if (getPrefix() != null)
-            sb.append("Prefix: " + getPrefix() + ",");
+            sb.append("Prefix: ").append(getPrefix()).append(",");
         if (getBufferingHints() != null)
-            sb.append("BufferingHints: " + getBufferingHints() + ",");
+            sb.append("BufferingHints: ").append(getBufferingHints()).append(",");
         if (getCompressionFormat() != null)
-            sb.append("CompressionFormat: " + getCompressionFormat() + ",");
+            sb.append("CompressionFormat: ").append(getCompressionFormat()).append(",");
         if (getEncryptionConfiguration() != null)
-            sb.append("EncryptionConfiguration: " + getEncryptionConfiguration() + ",");
+            sb.append("EncryptionConfiguration: ").append(getEncryptionConfiguration()).append(",");
         if (getCloudWatchLoggingOptions() != null)
-            sb.append("CloudWatchLoggingOptions: " + getCloudWatchLoggingOptions());
+            sb.append("CloudWatchLoggingOptions: ").append(getCloudWatchLoggingOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -550,5 +554,11 @@ public class S3DestinationConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.S3DestinationConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/Evaluation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Evaluation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Evaluation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -59,7 +66,8 @@ public class Evaluation implements Serializable, Cloneable {
      * <p>
      * The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      * indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations,
-     * the time indicates when AWS Config delivered the configuration snapshot that triggered the evaluation.
+     * the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example,
+     * every 24 hours).
      * </p>
      */
     private java.util.Date orderingTimestamp;
@@ -356,14 +364,15 @@ public class Evaluation implements Serializable, Cloneable {
      * <p>
      * The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      * indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations,
-     * the time indicates when AWS Config delivered the configuration snapshot that triggered the evaluation.
+     * the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example,
+     * every 24 hours).
      * </p>
      * 
      * @param orderingTimestamp
      *        The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      *        indicates when AWS Config created the configuration item that triggered the evaluation. For periodic
-     *        evaluations, the time indicates when AWS Config delivered the configuration snapshot that triggered the
-     *        evaluation.
+     *        evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you
+     *        specified (for example, every 24 hours).
      */
 
     public void setOrderingTimestamp(java.util.Date orderingTimestamp) {
@@ -374,13 +383,14 @@ public class Evaluation implements Serializable, Cloneable {
      * <p>
      * The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      * indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations,
-     * the time indicates when AWS Config delivered the configuration snapshot that triggered the evaluation.
+     * the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example,
+     * every 24 hours).
      * </p>
      * 
      * @return The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      *         indicates when AWS Config created the configuration item that triggered the evaluation. For periodic
-     *         evaluations, the time indicates when AWS Config delivered the configuration snapshot that triggered the
-     *         evaluation.
+     *         evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you
+     *         specified (for example, every 24 hours).
      */
 
     public java.util.Date getOrderingTimestamp() {
@@ -391,14 +401,15 @@ public class Evaluation implements Serializable, Cloneable {
      * <p>
      * The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      * indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations,
-     * the time indicates when AWS Config delivered the configuration snapshot that triggered the evaluation.
+     * the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example,
+     * every 24 hours).
      * </p>
      * 
      * @param orderingTimestamp
      *        The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time
      *        indicates when AWS Config created the configuration item that triggered the evaluation. For periodic
-     *        evaluations, the time indicates when AWS Config delivered the configuration snapshot that triggered the
-     *        evaluation.
+     *        evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you
+     *        specified (for example, every 24 hours).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -419,15 +430,15 @@ public class Evaluation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getComplianceResourceType() != null)
-            sb.append("ComplianceResourceType: " + getComplianceResourceType() + ",");
+            sb.append("ComplianceResourceType: ").append(getComplianceResourceType()).append(",");
         if (getComplianceResourceId() != null)
-            sb.append("ComplianceResourceId: " + getComplianceResourceId() + ",");
+            sb.append("ComplianceResourceId: ").append(getComplianceResourceId()).append(",");
         if (getComplianceType() != null)
-            sb.append("ComplianceType: " + getComplianceType() + ",");
+            sb.append("ComplianceType: ").append(getComplianceType()).append(",");
         if (getAnnotation() != null)
-            sb.append("Annotation: " + getAnnotation() + ",");
+            sb.append("Annotation: ").append(getAnnotation()).append(",");
         if (getOrderingTimestamp() != null)
-            sb.append("OrderingTimestamp: " + getOrderingTimestamp());
+            sb.append("OrderingTimestamp: ").append(getOrderingTimestamp());
         sb.append("}");
         return sb.toString();
     }
@@ -485,5 +496,11 @@ public class Evaluation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.EvaluationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a delivery stream.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/DeliveryStreamDescription" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DeliveryStreamDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeliveryStreamDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -41,9 +48,9 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
     private String deliveryStreamStatus;
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the delivery
-     * stream, the VersionId is changed, and the current VersionId is required when updating the destination. This is so
-     * that the service knows it is applying the changes to the correct version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      */
     private String versionId;
@@ -227,16 +234,15 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the delivery
-     * stream, the VersionId is changed, and the current VersionId is required when updating the destination. This is so
-     * that the service knows it is applying the changes to the correct version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
      * @param versionId
-     *        Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the
-     *        delivery stream, the VersionId is changed, and the current VersionId is required when updating the
-     *        destination. This is so that the service knows it is applying the changes to the correct version of the
-     *        delivery stream.
+     *        Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *        version ID is required when updating the destination. This is so that the service knows it is applying the
+     *        changes to the correct version of the delivery stream.
      */
 
     public void setVersionId(String versionId) {
@@ -245,15 +251,14 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the delivery
-     * stream, the VersionId is changed, and the current VersionId is required when updating the destination. This is so
-     * that the service knows it is applying the changes to the correct version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
-     * @return Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the
-     *         delivery stream, the VersionId is changed, and the current VersionId is required when updating the
-     *         destination. This is so that the service knows it is applying the changes to the correct version of the
-     *         delivery stream.
+     * @return Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *         version ID is required when updating the destination. This is so that the service knows it is applying
+     *         the changes to the correct version of the delivery stream.
      */
 
     public String getVersionId() {
@@ -262,16 +267,15 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the delivery
-     * stream, the VersionId is changed, and the current VersionId is required when updating the destination. This is so
-     * that the service knows it is applying the changes to the correct version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
      * @param versionId
-     *        Used when calling the <a>UpdateDestination</a> operation. Each time the destination is updated for the
-     *        delivery stream, the VersionId is changed, and the current VersionId is required when updating the
-     *        destination. This is so that the service knows it is applying the changes to the correct version of the
-     *        delivery stream.
+     *        Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *        version ID is required when updating the destination. This is so that the service knows it is applying the
+     *        changes to the correct version of the delivery stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -494,21 +498,21 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeliveryStreamName() != null)
-            sb.append("DeliveryStreamName: " + getDeliveryStreamName() + ",");
+            sb.append("DeliveryStreamName: ").append(getDeliveryStreamName()).append(",");
         if (getDeliveryStreamARN() != null)
-            sb.append("DeliveryStreamARN: " + getDeliveryStreamARN() + ",");
+            sb.append("DeliveryStreamARN: ").append(getDeliveryStreamARN()).append(",");
         if (getDeliveryStreamStatus() != null)
-            sb.append("DeliveryStreamStatus: " + getDeliveryStreamStatus() + ",");
+            sb.append("DeliveryStreamStatus: ").append(getDeliveryStreamStatus()).append(",");
         if (getVersionId() != null)
-            sb.append("VersionId: " + getVersionId() + ",");
+            sb.append("VersionId: ").append(getVersionId()).append(",");
         if (getCreateTimestamp() != null)
-            sb.append("CreateTimestamp: " + getCreateTimestamp() + ",");
+            sb.append("CreateTimestamp: ").append(getCreateTimestamp()).append(",");
         if (getLastUpdateTimestamp() != null)
-            sb.append("LastUpdateTimestamp: " + getLastUpdateTimestamp() + ",");
+            sb.append("LastUpdateTimestamp: ").append(getLastUpdateTimestamp()).append(",");
         if (getDestinations() != null)
-            sb.append("Destinations: " + getDestinations() + ",");
+            sb.append("Destinations: ").append(getDestinations()).append(",");
         if (getHasMoreDestinations() != null)
-            sb.append("HasMoreDestinations: " + getHasMoreDestinations());
+            sb.append("HasMoreDestinations: ").append(getHasMoreDestinations());
         sb.append("}");
         return sb.toString();
     }
@@ -581,5 +585,11 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.DeliveryStreamDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

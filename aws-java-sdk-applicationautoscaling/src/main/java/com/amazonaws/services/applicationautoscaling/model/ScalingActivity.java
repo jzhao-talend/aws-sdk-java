@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,46 +13,94 @@
 package com.amazonaws.services.applicationautoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a scaling activity.
+ * Represents a scaling activity.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/ScalingActivity"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ScalingActivity implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScalingActivity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier string for the scaling activity.
+     * The unique identifier of the scaling activity.
      * </p>
      */
     private String activityId;
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      */
     private String serviceNamespace;
     /**
      * <p>
-     * The resource type and unique identifier string for the resource associated with the scaling activity. For Amazon
-     * ECS services, the resource type is <code>services</code>, and the identifier is the cluster name and service
-     * name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet requests, the resource
-     * type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scaling activity. This string consists of the resource type
+     * and unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String resourceId;
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String scalableDimension;
     /**
@@ -100,11 +148,11 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unique identifier string for the scaling activity.
+     * The unique identifier of the scaling activity.
      * </p>
      * 
      * @param activityId
-     *        The unique identifier string for the scaling activity.
+     *        The unique identifier of the scaling activity.
      */
 
     public void setActivityId(String activityId) {
@@ -113,10 +161,10 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unique identifier string for the scaling activity.
+     * The unique identifier of the scaling activity.
      * </p>
      * 
-     * @return The unique identifier string for the scaling activity.
+     * @return The unique identifier of the scaling activity.
      */
 
     public String getActivityId() {
@@ -125,11 +173,11 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unique identifier string for the scaling activity.
+     * The unique identifier of the scaling activity.
      * </p>
      * 
      * @param activityId
-     *        The unique identifier string for the scaling activity.
+     *        The unique identifier of the scaling activity.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -140,17 +188,15 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scaling activity is associated with. For more information, see
-     *        <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -160,16 +206,14 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
-     * @return The namespace for the AWS service that the scaling activity is associated with. For more information, see
-     *         <a href=
-     *         "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *         >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * @return The namespace of the AWS service. For more information, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *         >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -179,17 +223,15 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scaling activity is associated with. For more information, see
-     *        <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
      */
@@ -201,17 +243,15 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scaling activity is associated with. For more information, see
-     *        <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -221,17 +261,15 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scaling activity is associated with. For more information, see <a
-     * href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scaling activity is associated with. For more information, see
-     *        <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
      */
@@ -243,19 +281,64 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource associated with the scaling activity. For Amazon
-     * ECS services, the resource type is <code>services</code>, and the identifier is the cluster name and service
-     * name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet requests, the resource
-     * type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scaling activity. This string consists of the resource type
+     * and unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param resourceId
-     *        The resource type and unique identifier string for the resource associated with the scaling activity. For
-     *        Amazon ECS services, the resource type is <code>services</code>, and the identifier is the cluster name
-     *        and service name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     *        requests, the resource type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet
-     *        request ID; for example, <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        The identifier of the resource associated with the scaling activity. This string consists of the resource
+     *        type and unique identifier.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *        service name. Example: <code>service/default/sample-webapp</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *        and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     *        Example: <code>fleet/sample-fleet</code>.
+     *        </p>
+     *        </li>
      */
 
     public void setResourceId(String resourceId) {
@@ -264,18 +347,64 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource associated with the scaling activity. For Amazon
-     * ECS services, the resource type is <code>services</code>, and the identifier is the cluster name and service
-     * name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet requests, the resource
-     * type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scaling activity. This string consists of the resource type
+     * and unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The resource type and unique identifier string for the resource associated with the scaling activity. For
-     *         Amazon ECS services, the resource type is <code>services</code>, and the identifier is the cluster name
-     *         and service name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     *         requests, the resource type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet
-     *         request ID; for example, <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * @return The identifier of the resource associated with the scaling activity. This string consists of the resource
+     *         type and unique identifier.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *         service name. Example: <code>service/default/sample-webapp</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is
+     *         the Spot fleet request ID. Example:
+     *         <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *         and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet
+     *         name. Example: <code>fleet/sample-fleet</code>.
+     *         </p>
+     *         </li>
      */
 
     public String getResourceId() {
@@ -284,19 +413,64 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource associated with the scaling activity. For Amazon
-     * ECS services, the resource type is <code>services</code>, and the identifier is the cluster name and service
-     * name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet requests, the resource
-     * type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scaling activity. This string consists of the resource type
+     * and unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param resourceId
-     *        The resource type and unique identifier string for the resource associated with the scaling activity. For
-     *        Amazon ECS services, the resource type is <code>services</code>, and the identifier is the cluster name
-     *        and service name; for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     *        requests, the resource type is <code>spot-fleet-request</code>, and the identifier is the Spot fleet
-     *        request ID; for example, <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        The identifier of the resource associated with the scaling activity. This string consists of the resource
+     *        type and unique identifier.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *        service name. Example: <code>service/default/sample-webapp</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *        and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     *        Example: <code>fleet/sample-fleet</code>.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -307,17 +481,55 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     *        namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the
-     *        desired task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the
-     *        target capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension. This string consists of the service namespace, resource type, and scaling
+     *        property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
      * @see ScalableDimension
      */
 
@@ -327,16 +539,54 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     *         namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the
-     *         desired task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     *         the target capacity of an Amazon EC2 Spot fleet request.
+     * @return The scalable dimension. This string consists of the service namespace, resource type, and scaling
+     *         property.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *         </p>
+     *         </li>
      * @see ScalableDimension
      */
 
@@ -346,17 +596,55 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     *        namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the
-     *        desired task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the
-     *        target capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension. This string consists of the service namespace, resource type, and scaling
+     *        property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalableDimension
      */
@@ -368,17 +656,55 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     *        namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the
-     *        desired task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the
-     *        target capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension. This string consists of the service namespace, resource type, and scaling
+     *        property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
      * @see ScalableDimension
      */
 
@@ -388,17 +714,55 @@ public class ScalingActivity implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     * namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scaling activity. The scalable dimension contains the service
-     *        namespace, resource type, and scaling property, such as <code>ecs:service:DesiredCount</code> for the
-     *        desired task count of an Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for the
-     *        target capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension. This string consists of the service namespace, resource type, and scaling
+     *        property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalableDimension
      */
@@ -733,27 +1097,27 @@ public class ScalingActivity implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActivityId() != null)
-            sb.append("ActivityId: " + getActivityId() + ",");
+            sb.append("ActivityId: ").append(getActivityId()).append(",");
         if (getServiceNamespace() != null)
-            sb.append("ServiceNamespace: " + getServiceNamespace() + ",");
+            sb.append("ServiceNamespace: ").append(getServiceNamespace()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getScalableDimension() != null)
-            sb.append("ScalableDimension: " + getScalableDimension() + ",");
+            sb.append("ScalableDimension: ").append(getScalableDimension()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCause() != null)
-            sb.append("Cause: " + getCause() + ",");
+            sb.append("Cause: ").append(getCause()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getStatusCode() != null)
-            sb.append("StatusCode: " + getStatusCode() + ",");
+            sb.append("StatusCode: ").append(getStatusCode()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getDetails() != null)
-            sb.append("Details: " + getDetails());
+            sb.append("Details: ").append(getDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -841,5 +1205,11 @@ public class ScalingActivity implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationautoscaling.model.transform.ScalingActivityMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

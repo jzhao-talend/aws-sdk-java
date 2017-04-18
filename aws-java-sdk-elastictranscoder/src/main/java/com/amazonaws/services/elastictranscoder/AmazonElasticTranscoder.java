@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elastictranscoder;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -21,11 +23,16 @@ import com.amazonaws.services.elastictranscoder.waiters.AmazonElasticTranscoderW
 /**
  * Interface for accessing Amazon Elastic Transcoder.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.elastictranscoder.AbstractAmazonElasticTranscoder} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Elastic Transcoder Service</fullname>
  * <p>
  * The AWS Elastic Transcoder Service.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonElasticTranscoder {
 
     /**
@@ -57,7 +64,11 @@ public interface AmazonElasticTranscoder {
      *        The endpoint (ex: "elastictranscoder.us-east-1.amazonaws.com/") or a full URL, including the protocol (ex:
      *        "elastictranscoder.us-east-1.amazonaws.com/") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -78,16 +89,22 @@ public interface AmazonElasticTranscoder {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
      * The CancelJob operation cancels an unfinished job.
      * </p>
-     * <note>You can only cancel a job that has a status of <code>Submitted</code>. To prevent a pipeline from starting
-     * to process a job while you're getting the job identifier, use <a>UpdatePipelineStatus</a> to temporarily pause
-     * the pipeline.</note>
+     * <note>
+     * <p>
+     * You can only cancel a job that has a status of <code>Submitted</code>. To prevent a pipeline from starting to
+     * process a job while you're getting the job identifier, use <a>UpdatePipelineStatus</a> to temporarily pause the
+     * pipeline.
+     * </p>
+     * </note>
      * 
      * @param cancelJobRequest
      *        The <code>CancelJobRequest</code> structure.
@@ -169,13 +186,17 @@ public interface AmazonElasticTranscoder {
      * <p>
      * The CreatePreset operation creates a preset with settings that you specify.
      * </p>
-     * <important>Elastic Transcoder checks the CreatePreset settings to ensure that they meet Elastic Transcoder
-     * requirements and to determine whether they comply with H.264 standards. If your settings are not valid for
-     * Elastic Transcoder, Elastic Transcoder returns an HTTP 400 response (<code>ValidationException</code>) and does
-     * not create the preset. If the settings are valid for Elastic Transcoder but aren't strictly compliant with the
-     * H.264 standard, Elastic Transcoder creates the preset and returns a warning message in the response. This helps
-     * you determine whether your settings comply with the H.264 standard while giving you greater flexibility with
-     * respect to the video that Elastic Transcoder produces.</important>
+     * <important>
+     * <p>
+     * Elastic Transcoder checks the CreatePreset settings to ensure that they meet Elastic Transcoder requirements and
+     * to determine whether they comply with H.264 standards. If your settings are not valid for Elastic Transcoder,
+     * Elastic Transcoder returns an HTTP 400 response (<code>ValidationException</code>) and does not create the
+     * preset. If the settings are valid for Elastic Transcoder but aren't strictly compliant with the H.264 standard,
+     * Elastic Transcoder creates the preset and returns a warning message in the response. This helps you determine
+     * whether your settings comply with the H.264 standard while giving you greater flexibility with respect to the
+     * video that Elastic Transcoder produces.
+     * </p>
+     * </important>
      * <p>
      * Elastic Transcoder uses the H.264 video-compression format. For more information, see the International
      * Telecommunication Union publication <i>Recommendation ITU-T H.264: Advanced video coding for generic audiovisual
@@ -449,15 +470,20 @@ public interface AmazonElasticTranscoder {
      *         Elastic Transcoder encountered an unexpected exception while trying to fulfill the request.
      * @sample AmazonElasticTranscoder.TestRole
      */
+    @Deprecated
     TestRoleResult testRole(TestRoleRequest testRoleRequest);
 
     /**
      * <p>
-     * Use the <code>UpdatePipeline</code> operation to update settings for a pipeline. <important>When you change
-     * pipeline settings, your changes take effect immediately. Jobs that you have already submitted and that Elastic
-     * Transcoder has not started to process are affected in addition to jobs that you submit after you change settings.
-     * </important>
+     * Use the <code>UpdatePipeline</code> operation to update settings for a pipeline.
      * </p>
+     * <important>
+     * <p>
+     * When you change pipeline settings, your changes take effect immediately. Jobs that you have already submitted and
+     * that Elastic Transcoder has not started to process are affected in addition to jobs that you submit after you
+     * change settings.
+     * </p>
+     * </important>
      * 
      * @param updatePipelineRequest
      *        The <code>UpdatePipelineRequest</code> structure.
@@ -564,4 +590,5 @@ public interface AmazonElasticTranscoder {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AmazonElasticTranscoderWaiters waiters();
+
 }

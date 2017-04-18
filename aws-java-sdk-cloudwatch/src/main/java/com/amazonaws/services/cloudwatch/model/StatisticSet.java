@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The <code>StatisticSet</code> data type describes the <code>StatisticValues</code> component of <a>MetricDatum</a>,
- * and represents a set of statistics that describes a specific metric.
+ * Represents a set of statistics that describes a specific metric.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/StatisticSet" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StatisticSet implements Serializable, Cloneable {
 
     /**
@@ -219,13 +223,13 @@ public class StatisticSet implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSampleCount() != null)
-            sb.append("SampleCount: " + getSampleCount() + ",");
+            sb.append("SampleCount: ").append(getSampleCount()).append(",");
         if (getSum() != null)
-            sb.append("Sum: " + getSum() + ",");
+            sb.append("Sum: ").append(getSum()).append(",");
         if (getMinimum() != null)
-            sb.append("Minimum: " + getMinimum() + ",");
+            sb.append("Minimum: ").append(getMinimum()).append(",");
         if (getMaximum() != null)
-            sb.append("Maximum: " + getMaximum());
+            sb.append("Maximum: ").append(getMaximum());
         sb.append("}");
         return sb.toString();
     }
@@ -279,4 +283,5 @@ public class StatisticSet implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

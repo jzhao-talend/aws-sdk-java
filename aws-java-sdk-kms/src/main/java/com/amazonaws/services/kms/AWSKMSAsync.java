@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.kms;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.kms.model.*;
 
 /**
  * Interface for accessing KMS asynchronously. Each asynchronous method will return a Java Future object representing
  * the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when
  * an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.kms.AbstractAWSKMSAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS Key Management Service</fullname>
  * <p>
@@ -122,6 +128,7 @@ import com.amazonaws.services.kms.model.*;
  * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSKMSAsync extends AWSKMS {
 
     /**
@@ -138,6 +145,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param cancelKeyDeletionRequest
      * @return A Java Future containing the result of the CancelKeyDeletion operation returned by the service.
      * @sample AWSKMSAsync.CancelKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelKeyDeletionResult> cancelKeyDeletionAsync(CancelKeyDeletionRequest cancelKeyDeletionRequest);
 
@@ -159,6 +168,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelKeyDeletion operation returned by the service.
      * @sample AWSKMSAsyncHandler.CancelKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelKeyDeletionResult> cancelKeyDeletionAsync(CancelKeyDeletionRequest cancelKeyDeletionRequest,
             com.amazonaws.handlers.AsyncHandler<CancelKeyDeletionRequest, CancelKeyDeletionResult> asyncHandler);
@@ -181,6 +192,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param createAliasRequest
      * @return A Java Future containing the result of the CreateAlias operation returned by the service.
      * @sample AWSKMSAsync.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest createAliasRequest);
 
@@ -206,6 +219,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateAlias operation returned by the service.
      * @sample AWSKMSAsyncHandler.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest createAliasRequest,
             com.amazonaws.handlers.AsyncHandler<CreateAliasRequest, CreateAliasResult> asyncHandler);
@@ -224,6 +239,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param createGrantRequest
      * @return A Java Future containing the result of the CreateGrant operation returned by the service.
      * @sample AWSKMSAsync.CreateGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateGrantResult> createGrantAsync(CreateGrantRequest createGrantRequest);
 
@@ -245,6 +262,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateGrant operation returned by the service.
      * @sample AWSKMSAsyncHandler.CreateGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateGrantResult> createGrantAsync(CreateGrantRequest createGrantRequest,
             com.amazonaws.handlers.AsyncHandler<CreateGrantRequest, CreateGrantResult> asyncHandler);
@@ -275,6 +294,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param createKeyRequest
      * @return A Java Future containing the result of the CreateKey operation returned by the service.
      * @sample AWSKMSAsync.CreateKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateKeyResult> createKeyAsync(CreateKeyRequest createKeyRequest);
 
@@ -308,6 +329,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateKey operation returned by the service.
      * @sample AWSKMSAsyncHandler.CreateKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateKeyResult> createKeyAsync(CreateKeyRequest createKeyRequest,
             com.amazonaws.handlers.AsyncHandler<CreateKeyRequest, CreateKeyResult> asyncHandler);
@@ -360,6 +383,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param decryptRequest
      * @return A Java Future containing the result of the Decrypt operation returned by the service.
      * @sample AWSKMSAsync.Decrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DecryptResult> decryptAsync(DecryptRequest decryptRequest);
 
@@ -401,6 +426,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the Decrypt operation returned by the service.
      * @sample AWSKMSAsyncHandler.Decrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DecryptResult> decryptAsync(DecryptRequest decryptRequest,
             com.amazonaws.handlers.AsyncHandler<DecryptRequest, DecryptResult> asyncHandler);
@@ -413,6 +440,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param deleteAliasRequest
      * @return A Java Future containing the result of the DeleteAlias operation returned by the service.
      * @sample AWSKMSAsync.DeleteAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteAliasResult> deleteAliasAsync(DeleteAliasRequest deleteAliasRequest);
 
@@ -428,6 +457,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteAlias operation returned by the service.
      * @sample AWSKMSAsyncHandler.DeleteAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteAliasResult> deleteAliasAsync(DeleteAliasRequest deleteAliasRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteAliasRequest, DeleteAliasResult> asyncHandler);
@@ -451,6 +482,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param deleteImportedKeyMaterialRequest
      * @return A Java Future containing the result of the DeleteImportedKeyMaterial operation returned by the service.
      * @sample AWSKMSAsync.DeleteImportedKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteImportedKeyMaterialResult> deleteImportedKeyMaterialAsync(
             DeleteImportedKeyMaterialRequest deleteImportedKeyMaterialRequest);
@@ -478,6 +511,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteImportedKeyMaterial operation returned by the service.
      * @sample AWSKMSAsyncHandler.DeleteImportedKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteImportedKeyMaterialResult> deleteImportedKeyMaterialAsync(
             DeleteImportedKeyMaterialRequest deleteImportedKeyMaterialRequest,
@@ -491,6 +526,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param describeKeyRequest
      * @return A Java Future containing the result of the DescribeKey operation returned by the service.
      * @sample AWSKMSAsync.DescribeKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeKeyResult> describeKeyAsync(DescribeKeyRequest describeKeyRequest);
 
@@ -506,6 +543,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeKey operation returned by the service.
      * @sample AWSKMSAsyncHandler.DescribeKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeKeyResult> describeKeyAsync(DescribeKeyRequest describeKeyRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeKeyRequest, DescribeKeyResult> asyncHandler);
@@ -521,6 +560,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param disableKeyRequest
      * @return A Java Future containing the result of the DisableKey operation returned by the service.
      * @sample AWSKMSAsync.DisableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableKeyResult> disableKeyAsync(DisableKeyRequest disableKeyRequest);
 
@@ -539,6 +580,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableKey operation returned by the service.
      * @sample AWSKMSAsyncHandler.DisableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableKeyResult> disableKeyAsync(DisableKeyRequest disableKeyRequest,
             com.amazonaws.handlers.AsyncHandler<DisableKeyRequest, DisableKeyResult> asyncHandler);
@@ -551,6 +594,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param disableKeyRotationRequest
      * @return A Java Future containing the result of the DisableKeyRotation operation returned by the service.
      * @sample AWSKMSAsync.DisableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableKeyRotationResult> disableKeyRotationAsync(DisableKeyRotationRequest disableKeyRotationRequest);
 
@@ -566,6 +611,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableKeyRotation operation returned by the service.
      * @sample AWSKMSAsyncHandler.DisableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableKeyRotationResult> disableKeyRotationAsync(DisableKeyRotationRequest disableKeyRotationRequest,
             com.amazonaws.handlers.AsyncHandler<DisableKeyRotationRequest, DisableKeyRotationResult> asyncHandler);
@@ -578,6 +625,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param enableKeyRequest
      * @return A Java Future containing the result of the EnableKey operation returned by the service.
      * @sample AWSKMSAsync.EnableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableKeyResult> enableKeyAsync(EnableKeyRequest enableKeyRequest);
 
@@ -593,6 +642,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableKey operation returned by the service.
      * @sample AWSKMSAsyncHandler.EnableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableKeyResult> enableKeyAsync(EnableKeyRequest enableKeyRequest,
             com.amazonaws.handlers.AsyncHandler<EnableKeyRequest, EnableKeyResult> asyncHandler);
@@ -605,6 +656,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param enableKeyRotationRequest
      * @return A Java Future containing the result of the EnableKeyRotation operation returned by the service.
      * @sample AWSKMSAsync.EnableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableKeyRotationResult> enableKeyRotationAsync(EnableKeyRotationRequest enableKeyRotationRequest);
 
@@ -620,6 +673,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableKeyRotation operation returned by the service.
      * @sample AWSKMSAsyncHandler.EnableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableKeyRotationResult> enableKeyRotationAsync(EnableKeyRotationRequest enableKeyRotationRequest,
             com.amazonaws.handlers.AsyncHandler<EnableKeyRotationRequest, EnableKeyRotationResult> asyncHandler);
@@ -660,6 +715,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param encryptRequest
      * @return A Java Future containing the result of the Encrypt operation returned by the service.
      * @sample AWSKMSAsync.Encrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EncryptResult> encryptAsync(EncryptRequest encryptRequest);
 
@@ -703,6 +760,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the Encrypt operation returned by the service.
      * @sample AWSKMSAsyncHandler.Encrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EncryptResult> encryptAsync(EncryptRequest encryptRequest,
             com.amazonaws.handlers.AsyncHandler<EncryptRequest, EncryptResult> asyncHandler);
@@ -775,6 +834,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param generateDataKeyRequest
      * @return A Java Future containing the result of the GenerateDataKey operation returned by the service.
      * @sample AWSKMSAsync.GenerateDataKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataKeyResult> generateDataKeyAsync(GenerateDataKeyRequest generateDataKeyRequest);
 
@@ -850,6 +911,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GenerateDataKey operation returned by the service.
      * @sample AWSKMSAsyncHandler.GenerateDataKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataKeyResult> generateDataKeyAsync(GenerateDataKeyRequest generateDataKeyRequest,
             com.amazonaws.handlers.AsyncHandler<GenerateDataKeyRequest, GenerateDataKeyResult> asyncHandler);
@@ -874,6 +937,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @return A Java Future containing the result of the GenerateDataKeyWithoutPlaintext operation returned by the
      *         service.
      * @sample AWSKMSAsync.GenerateDataKeyWithoutPlaintext
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataKeyWithoutPlaintextResult> generateDataKeyWithoutPlaintextAsync(
             GenerateDataKeyWithoutPlaintextRequest generateDataKeyWithoutPlaintextRequest);
@@ -902,6 +967,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @return A Java Future containing the result of the GenerateDataKeyWithoutPlaintext operation returned by the
      *         service.
      * @sample AWSKMSAsyncHandler.GenerateDataKeyWithoutPlaintext
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataKeyWithoutPlaintextResult> generateDataKeyWithoutPlaintextAsync(
             GenerateDataKeyWithoutPlaintextRequest generateDataKeyWithoutPlaintextRequest,
@@ -915,6 +982,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param generateRandomRequest
      * @return A Java Future containing the result of the GenerateRandom operation returned by the service.
      * @sample AWSKMSAsync.GenerateRandom
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GenerateRandomResult> generateRandomAsync(GenerateRandomRequest generateRandomRequest);
 
@@ -930,6 +999,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GenerateRandom operation returned by the service.
      * @sample AWSKMSAsyncHandler.GenerateRandom
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GenerateRandomResult> generateRandomAsync(GenerateRandomRequest generateRandomRequest,
             com.amazonaws.handlers.AsyncHandler<GenerateRandomRequest, GenerateRandomResult> asyncHandler);
@@ -957,6 +1028,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param getKeyPolicyRequest
      * @return A Java Future containing the result of the GetKeyPolicy operation returned by the service.
      * @sample AWSKMSAsync.GetKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetKeyPolicyResult> getKeyPolicyAsync(GetKeyPolicyRequest getKeyPolicyRequest);
 
@@ -972,6 +1045,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetKeyPolicy operation returned by the service.
      * @sample AWSKMSAsyncHandler.GetKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetKeyPolicyResult> getKeyPolicyAsync(GetKeyPolicyRequest getKeyPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<GetKeyPolicyRequest, GetKeyPolicyResult> asyncHandler);
@@ -984,6 +1059,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param getKeyRotationStatusRequest
      * @return A Java Future containing the result of the GetKeyRotationStatus operation returned by the service.
      * @sample AWSKMSAsync.GetKeyRotationStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetKeyRotationStatusResult> getKeyRotationStatusAsync(GetKeyRotationStatusRequest getKeyRotationStatusRequest);
 
@@ -999,6 +1076,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetKeyRotationStatus operation returned by the service.
      * @sample AWSKMSAsyncHandler.GetKeyRotationStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetKeyRotationStatusResult> getKeyRotationStatusAsync(GetKeyRotationStatusRequest getKeyRotationStatusRequest,
             com.amazonaws.handlers.AsyncHandler<GetKeyRotationStatusRequest, GetKeyRotationStatusResult> asyncHandler);
@@ -1026,6 +1105,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param getParametersForImportRequest
      * @return A Java Future containing the result of the GetParametersForImport operation returned by the service.
      * @sample AWSKMSAsync.GetParametersForImport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetParametersForImportResult> getParametersForImportAsync(GetParametersForImportRequest getParametersForImportRequest);
 
@@ -1056,6 +1137,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetParametersForImport operation returned by the service.
      * @sample AWSKMSAsyncHandler.GetParametersForImport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetParametersForImportResult> getParametersForImportAsync(GetParametersForImportRequest getParametersForImportRequest,
             com.amazonaws.handlers.AsyncHandler<GetParametersForImportRequest, GetParametersForImportResult> asyncHandler);
@@ -1088,6 +1171,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param importKeyMaterialRequest
      * @return A Java Future containing the result of the ImportKeyMaterial operation returned by the service.
      * @sample AWSKMSAsync.ImportKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportKeyMaterialResult> importKeyMaterialAsync(ImportKeyMaterialRequest importKeyMaterialRequest);
 
@@ -1123,6 +1208,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportKeyMaterial operation returned by the service.
      * @sample AWSKMSAsyncHandler.ImportKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportKeyMaterialResult> importKeyMaterialAsync(ImportKeyMaterialRequest importKeyMaterialRequest,
             com.amazonaws.handlers.AsyncHandler<ImportKeyMaterialRequest, ImportKeyMaterialResult> asyncHandler);
@@ -1135,6 +1222,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param listAliasesRequest
      * @return A Java Future containing the result of the ListAliases operation returned by the service.
      * @sample AWSKMSAsync.ListAliases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListAliasesResult> listAliasesAsync(ListAliasesRequest listAliasesRequest);
 
@@ -1150,6 +1239,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListAliases operation returned by the service.
      * @sample AWSKMSAsyncHandler.ListAliases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListAliasesResult> listAliasesAsync(ListAliasesRequest listAliasesRequest,
             com.amazonaws.handlers.AsyncHandler<ListAliasesRequest, ListAliasesResult> asyncHandler);
@@ -1176,6 +1267,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param listGrantsRequest
      * @return A Java Future containing the result of the ListGrants operation returned by the service.
      * @sample AWSKMSAsync.ListGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListGrantsResult> listGrantsAsync(ListGrantsRequest listGrantsRequest);
 
@@ -1191,6 +1284,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListGrants operation returned by the service.
      * @sample AWSKMSAsyncHandler.ListGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListGrantsResult> listGrantsAsync(ListGrantsRequest listGrantsRequest,
             com.amazonaws.handlers.AsyncHandler<ListGrantsRequest, ListGrantsResult> asyncHandler);
@@ -1203,6 +1298,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param listKeyPoliciesRequest
      * @return A Java Future containing the result of the ListKeyPolicies operation returned by the service.
      * @sample AWSKMSAsync.ListKeyPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListKeyPoliciesResult> listKeyPoliciesAsync(ListKeyPoliciesRequest listKeyPoliciesRequest);
 
@@ -1218,6 +1315,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListKeyPolicies operation returned by the service.
      * @sample AWSKMSAsyncHandler.ListKeyPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListKeyPoliciesResult> listKeyPoliciesAsync(ListKeyPoliciesRequest listKeyPoliciesRequest,
             com.amazonaws.handlers.AsyncHandler<ListKeyPoliciesRequest, ListKeyPoliciesResult> asyncHandler);
@@ -1230,6 +1329,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param listKeysRequest
      * @return A Java Future containing the result of the ListKeys operation returned by the service.
      * @sample AWSKMSAsync.ListKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListKeysResult> listKeysAsync(ListKeysRequest listKeysRequest);
 
@@ -1245,6 +1346,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListKeys operation returned by the service.
      * @sample AWSKMSAsyncHandler.ListKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListKeysResult> listKeysAsync(ListKeysRequest listKeysRequest,
             com.amazonaws.handlers.AsyncHandler<ListKeysRequest, ListKeysResult> asyncHandler);
@@ -1265,6 +1368,37 @@ public interface AWSKMSAsync extends AWSKMS {
 
     /**
      * <p>
+     * Returns a list of all tags for the specified customer master key (CMK).
+     * </p>
+     * 
+     * @param listResourceTagsRequest
+     * @return A Java Future containing the result of the ListResourceTags operation returned by the service.
+     * @sample AWSKMSAsync.ListResourceTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListResourceTagsResult> listResourceTagsAsync(ListResourceTagsRequest listResourceTagsRequest);
+
+    /**
+     * <p>
+     * Returns a list of all tags for the specified customer master key (CMK).
+     * </p>
+     * 
+     * @param listResourceTagsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListResourceTags operation returned by the service.
+     * @sample AWSKMSAsyncHandler.ListResourceTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListResourceTagsResult> listResourceTagsAsync(ListResourceTagsRequest listResourceTagsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListResourceTagsRequest, ListResourceTagsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of all grants for which the grant's <code>RetiringPrincipal</code> matches the one specified.
      * </p>
      * <p>
@@ -1274,6 +1408,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param listRetirableGrantsRequest
      * @return A Java Future containing the result of the ListRetirableGrants operation returned by the service.
      * @sample AWSKMSAsync.ListRetirableGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListRetirableGrantsResult> listRetirableGrantsAsync(ListRetirableGrantsRequest listRetirableGrantsRequest);
 
@@ -1292,6 +1428,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListRetirableGrants operation returned by the service.
      * @sample AWSKMSAsyncHandler.ListRetirableGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListRetirableGrantsResult> listRetirableGrantsAsync(ListRetirableGrantsRequest listRetirableGrantsRequest,
             com.amazonaws.handlers.AsyncHandler<ListRetirableGrantsRequest, ListRetirableGrantsResult> asyncHandler);
@@ -1309,6 +1447,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param putKeyPolicyRequest
      * @return A Java Future containing the result of the PutKeyPolicy operation returned by the service.
      * @sample AWSKMSAsync.PutKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PutKeyPolicyResult> putKeyPolicyAsync(PutKeyPolicyRequest putKeyPolicyRequest);
 
@@ -1329,42 +1469,50 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the PutKeyPolicy operation returned by the service.
      * @sample AWSKMSAsyncHandler.PutKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PutKeyPolicyResult> putKeyPolicyAsync(PutKeyPolicyRequest putKeyPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<PutKeyPolicyRequest, PutKeyPolicyResult> asyncHandler);
 
     /**
      * <p>
-     * Encrypts data on the server side with a new customer master key without exposing the plaintext of the data on the
-     * client side. The data is first decrypted and then encrypted. This operation can also be used to change the
-     * encryption context of a ciphertext.
+     * Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data
+     * on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change
+     * the encryption context of a ciphertext.
      * </p>
      * <p>
-     * Unlike other actions, <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code> on the
-     * source key and once as <code>ReEncryptTo</code> on the destination key. We therefore recommend that you include
-     * the <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit re-encryption from or to the
-     * key. The statement is included automatically when you authorize use of the key through the console but must be
-     * included manually when you set a policy by using the <a>PutKeyPolicy</a> function.
+     * Unlike other operations, <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code> on the
+     * source CMK and once as <code>ReEncryptTo</code> on the destination CMK. We recommend that you include the
+     * <code>"kms:ReEncrypt*"</code> permission in your <a
+     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key policies</a> to permit
+     * reencryption from or to the CMK. This permission is automatically included in the key policy when you create a
+     * CMK through the console, but you must include it manually when you create a CMK programmatically or when you set
+     * a key policy with the <a>PutKeyPolicy</a> operation.
      * </p>
      * 
      * @param reEncryptRequest
      * @return A Java Future containing the result of the ReEncrypt operation returned by the service.
      * @sample AWSKMSAsync.ReEncrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReEncryptResult> reEncryptAsync(ReEncryptRequest reEncryptRequest);
 
     /**
      * <p>
-     * Encrypts data on the server side with a new customer master key without exposing the plaintext of the data on the
-     * client side. The data is first decrypted and then encrypted. This operation can also be used to change the
-     * encryption context of a ciphertext.
+     * Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data
+     * on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change
+     * the encryption context of a ciphertext.
      * </p>
      * <p>
-     * Unlike other actions, <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code> on the
-     * source key and once as <code>ReEncryptTo</code> on the destination key. We therefore recommend that you include
-     * the <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit re-encryption from or to the
-     * key. The statement is included automatically when you authorize use of the key through the console but must be
-     * included manually when you set a policy by using the <a>PutKeyPolicy</a> function.
+     * Unlike other operations, <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code> on the
+     * source CMK and once as <code>ReEncryptTo</code> on the destination CMK. We recommend that you include the
+     * <code>"kms:ReEncrypt*"</code> permission in your <a
+     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key policies</a> to permit
+     * reencryption from or to the CMK. This permission is automatically included in the key policy when you create a
+     * CMK through the console, but you must include it manually when you create a CMK programmatically or when you set
+     * a key policy with the <a>PutKeyPolicy</a> operation.
      * </p>
      * 
      * @param reEncryptRequest
@@ -1374,70 +1522,74 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReEncrypt operation returned by the service.
      * @sample AWSKMSAsyncHandler.ReEncrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReEncryptResult> reEncryptAsync(ReEncryptRequest reEncryptRequest,
             com.amazonaws.handlers.AsyncHandler<ReEncryptRequest, ReEncryptResult> asyncHandler);
 
     /**
      * <p>
-     * Retires a grant. You can retire a grant when you're done using it to clean up. You should revoke a grant when you
-     * intend to actively deny operations that depend on it. The following are permitted to call this API:
+     * Retires a grant. To clean up, you can retire a grant when you're done using it. You should revoke a grant when
+     * you intend to actively deny operations that depend on it. The following are permitted to call this API:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * The account that created the grant
+     * The AWS account (root user) under which the grant was created
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>RetiringPrincipal</code>, if present
+     * The <code>RetiringPrincipal</code>, if present in the grant
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee operation
+     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation specified in the grant
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The grant to retire must be identified by its grant token or by a combination of the key ARN and the grant ID. A
-     * grant token is a unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier of
-     * a grant. Both are returned by the <code>CreateGrant</code> function.
+     * You must identify the grant to retire by its grant token or by a combination of the grant ID and the Amazon
+     * Resource Name (ARN) of the customer master key (CMK). A grant token is a unique variable-length base64-encoded
+     * string. A grant ID is a 64 character unique identifier of a grant. The <a>CreateGrant</a> operation returns both.
      * </p>
      * 
      * @param retireGrantRequest
      * @return A Java Future containing the result of the RetireGrant operation returned by the service.
      * @sample AWSKMSAsync.RetireGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RetireGrantResult> retireGrantAsync(RetireGrantRequest retireGrantRequest);
 
     /**
      * <p>
-     * Retires a grant. You can retire a grant when you're done using it to clean up. You should revoke a grant when you
-     * intend to actively deny operations that depend on it. The following are permitted to call this API:
+     * Retires a grant. To clean up, you can retire a grant when you're done using it. You should revoke a grant when
+     * you intend to actively deny operations that depend on it. The following are permitted to call this API:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * The account that created the grant
+     * The AWS account (root user) under which the grant was created
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>RetiringPrincipal</code>, if present
+     * The <code>RetiringPrincipal</code>, if present in the grant
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee operation
+     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation specified in the grant
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The grant to retire must be identified by its grant token or by a combination of the key ARN and the grant ID. A
-     * grant token is a unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier of
-     * a grant. Both are returned by the <code>CreateGrant</code> function.
+     * You must identify the grant to retire by its grant token or by a combination of the grant ID and the Amazon
+     * Resource Name (ARN) of the customer master key (CMK). A grant token is a unique variable-length base64-encoded
+     * string. A grant ID is a 64 character unique identifier of a grant. The <a>CreateGrant</a> operation returns both.
      * </p>
      * 
      * @param retireGrantRequest
@@ -1447,6 +1599,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RetireGrant operation returned by the service.
      * @sample AWSKMSAsyncHandler.RetireGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RetireGrantResult> retireGrantAsync(RetireGrantRequest retireGrantRequest,
             com.amazonaws.handlers.AsyncHandler<RetireGrantRequest, RetireGrantResult> asyncHandler);
@@ -1473,6 +1627,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param revokeGrantRequest
      * @return A Java Future containing the result of the RevokeGrant operation returned by the service.
      * @sample AWSKMSAsync.RevokeGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RevokeGrantResult> revokeGrantAsync(RevokeGrantRequest revokeGrantRequest);
 
@@ -1488,6 +1644,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RevokeGrant operation returned by the service.
      * @sample AWSKMSAsyncHandler.RevokeGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RevokeGrantResult> revokeGrantAsync(RevokeGrantRequest revokeGrantRequest,
             com.amazonaws.handlers.AsyncHandler<RevokeGrantRequest, RevokeGrantResult> asyncHandler);
@@ -1498,7 +1656,7 @@ public interface AWSKMSAsync extends AWSKMS {
      * before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this
      * operation is successful, the state of the CMK changes to <code>PendingDeletion</code>. Before the waiting period
      * ends, you can use <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the waiting period ends, AWS
-     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that point to it.
+     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
      * </p>
      * <important>
      * <p>
@@ -1516,6 +1674,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param scheduleKeyDeletionRequest
      * @return A Java Future containing the result of the ScheduleKeyDeletion operation returned by the service.
      * @sample AWSKMSAsync.ScheduleKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ScheduleKeyDeletionResult> scheduleKeyDeletionAsync(ScheduleKeyDeletionRequest scheduleKeyDeletionRequest);
 
@@ -1525,7 +1685,7 @@ public interface AWSKMSAsync extends AWSKMS {
      * before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this
      * operation is successful, the state of the CMK changes to <code>PendingDeletion</code>. Before the waiting period
      * ends, you can use <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the waiting period ends, AWS
-     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that point to it.
+     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
      * </p>
      * <important>
      * <p>
@@ -1547,9 +1707,101 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ScheduleKeyDeletion operation returned by the service.
      * @sample AWSKMSAsyncHandler.ScheduleKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ScheduleKeyDeletionResult> scheduleKeyDeletionAsync(ScheduleKeyDeletionRequest scheduleKeyDeletionRequest,
             com.amazonaws.handlers.AsyncHandler<ScheduleKeyDeletionRequest, ScheduleKeyDeletionResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds or overwrites one or more tags for the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be
+     * empty (null) strings.
+     * </p>
+     * <p>
+     * You cannot use the same tag key more than once per CMK. For example, consider a CMK with one tag whose tag key is
+     * <code>Purpose</code> and tag value is <code>Test</code>. If you send a <code>TagResource</code> request for this
+     * CMK with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it does not create a second tag.
+     * Instead, the original tag is overwritten with the new tag value.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AWSKMSAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Adds or overwrites one or more tags for the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be
+     * empty (null) strings.
+     * </p>
+     * <p>
+     * You cannot use the same tag key more than once per CMK. For example, consider a CMK with one tag whose tag key is
+     * <code>Purpose</code> and tag value is <code>Test</code>. If you send a <code>TagResource</code> request for this
+     * CMK with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it does not create a second tag.
+     * Instead, the original tag is overwritten with the new tag value.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AWSKMSAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Removes the specified tag or tags from the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * To remove a tag, you specify the tag key for each tag to remove. You do not specify the tag value. To overwrite
+     * the tag value for an existing tag, use <a>TagResource</a>.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AWSKMSAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Removes the specified tag or tags from the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * To remove a tag, you specify the tag key for each tag to remove. You do not specify the tag value. To overwrite
+     * the tag value for an existing tag, use <a>TagResource</a>.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AWSKMSAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
 
     /**
      * <p>
@@ -1571,6 +1823,8 @@ public interface AWSKMSAsync extends AWSKMS {
      * @param updateAliasRequest
      * @return A Java Future containing the result of the UpdateAlias operation returned by the service.
      * @sample AWSKMSAsync.UpdateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateAliasResult> updateAliasAsync(UpdateAliasRequest updateAliasRequest);
 
@@ -1598,24 +1852,28 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateAlias operation returned by the service.
      * @sample AWSKMSAsyncHandler.UpdateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateAliasResult> updateAliasAsync(UpdateAliasRequest updateAliasRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateAliasRequest, UpdateAliasResult> asyncHandler);
 
     /**
      * <p>
-     * Updates the description of a key.
+     * Updates the description of a customer master key (CMK).
      * </p>
      * 
      * @param updateKeyDescriptionRequest
      * @return A Java Future containing the result of the UpdateKeyDescription operation returned by the service.
      * @sample AWSKMSAsync.UpdateKeyDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateKeyDescriptionResult> updateKeyDescriptionAsync(UpdateKeyDescriptionRequest updateKeyDescriptionRequest);
 
     /**
      * <p>
-     * Updates the description of a key.
+     * Updates the description of a customer master key (CMK).
      * </p>
      * 
      * @param updateKeyDescriptionRequest
@@ -1625,6 +1883,8 @@ public interface AWSKMSAsync extends AWSKMS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateKeyDescription operation returned by the service.
      * @sample AWSKMSAsyncHandler.UpdateKeyDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateKeyDescriptionResult> updateKeyDescriptionAsync(UpdateKeyDescriptionRequest updateKeyDescriptionRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateKeyDescriptionRequest, UpdateKeyDescriptionResult> asyncHandler);

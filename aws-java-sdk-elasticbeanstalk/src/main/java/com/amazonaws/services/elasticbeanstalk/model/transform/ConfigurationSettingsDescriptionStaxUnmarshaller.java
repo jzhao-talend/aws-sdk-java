@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ConfigurationSettingsDescription StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ConfigurationSettingsDescriptionStaxUnmarshaller implements Unmarshaller<ConfigurationSettingsDescription, StaxUnmarshallerContext> {
 
     public ConfigurationSettingsDescription unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -47,6 +47,11 @@ public class ConfigurationSettingsDescriptionStaxUnmarshaller implements Unmarsh
 
                 if (context.testExpression("SolutionStackName", targetDepth)) {
                     configurationSettingsDescription.setSolutionStackName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("PlatformArn", targetDepth)) {
+                    configurationSettingsDescription.setPlatformArn(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
@@ -82,6 +87,11 @@ public class ConfigurationSettingsDescriptionStaxUnmarshaller implements Unmarsh
 
                 if (context.testExpression("DateUpdated", targetDepth)) {
                     configurationSettingsDescription.setDateUpdated(DateStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("OptionSettings", targetDepth)) {
+                    configurationSettingsDescription.withOptionSettings(new ArrayList<ConfigurationOptionSetting>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an alias.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/AliasListEntry" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AliasListEntry implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AliasListEntry implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -35,7 +42,7 @@ public class AliasListEntry implements Serializable, Cloneable {
     private String aliasArn;
     /**
      * <p>
-     * String that contains the key identifier pointed to by the alias.
+     * String that contains the key identifier referred to by the alias.
      * </p>
      */
     private String targetKeyId;
@@ -122,11 +129,11 @@ public class AliasListEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * String that contains the key identifier pointed to by the alias.
+     * String that contains the key identifier referred to by the alias.
      * </p>
      * 
      * @param targetKeyId
-     *        String that contains the key identifier pointed to by the alias.
+     *        String that contains the key identifier referred to by the alias.
      */
 
     public void setTargetKeyId(String targetKeyId) {
@@ -135,10 +142,10 @@ public class AliasListEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * String that contains the key identifier pointed to by the alias.
+     * String that contains the key identifier referred to by the alias.
      * </p>
      * 
-     * @return String that contains the key identifier pointed to by the alias.
+     * @return String that contains the key identifier referred to by the alias.
      */
 
     public String getTargetKeyId() {
@@ -147,11 +154,11 @@ public class AliasListEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * String that contains the key identifier pointed to by the alias.
+     * String that contains the key identifier referred to by the alias.
      * </p>
      * 
      * @param targetKeyId
-     *        String that contains the key identifier pointed to by the alias.
+     *        String that contains the key identifier referred to by the alias.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -172,11 +179,11 @@ public class AliasListEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAliasName() != null)
-            sb.append("AliasName: " + getAliasName() + ",");
+            sb.append("AliasName: ").append(getAliasName()).append(",");
         if (getAliasArn() != null)
-            sb.append("AliasArn: " + getAliasArn() + ",");
+            sb.append("AliasArn: ").append(getAliasArn()).append(",");
         if (getTargetKeyId() != null)
-            sb.append("TargetKeyId: " + getTargetKeyId());
+            sb.append("TargetKeyId: ").append(getTargetKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -224,5 +231,11 @@ public class AliasListEntry implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kms.model.transform.AliasListEntryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

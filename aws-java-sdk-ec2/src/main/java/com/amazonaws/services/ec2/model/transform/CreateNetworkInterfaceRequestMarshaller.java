@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * CreateNetworkInterfaceRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateNetworkInterfaceRequestMarshaller implements Marshaller<Request<CreateNetworkInterfaceRequest>, CreateNetworkInterfaceRequest> {
 
     public Request<CreateNetworkInterfaceRequest> marshall(CreateNetworkInterfaceRequest createNetworkInterfaceRequest) {
@@ -39,7 +37,7 @@ public class CreateNetworkInterfaceRequestMarshaller implements Marshaller<Reque
 
         Request<CreateNetworkInterfaceRequest> request = new DefaultRequest<CreateNetworkInterfaceRequest>(createNetworkInterfaceRequest, "AmazonEC2");
         request.addParameter("Action", "CreateNetworkInterface");
-        request.addParameter("Version", "2016-09-15");
+        request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
         if (createNetworkInterfaceRequest.getSubnetId() != null) {
@@ -89,6 +87,25 @@ public class CreateNetworkInterfaceRequestMarshaller implements Marshaller<Reque
 
         if (createNetworkInterfaceRequest.getSecondaryPrivateIpAddressCount() != null) {
             request.addParameter("SecondaryPrivateIpAddressCount", StringUtils.fromInteger(createNetworkInterfaceRequest.getSecondaryPrivateIpAddressCount()));
+        }
+
+        com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> createNetworkInterfaceRequestIpv6AddressesList = (com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>) createNetworkInterfaceRequest
+                .getIpv6Addresses();
+        if (!createNetworkInterfaceRequestIpv6AddressesList.isEmpty() || !createNetworkInterfaceRequestIpv6AddressesList.isAutoConstruct()) {
+            int ipv6AddressesListIndex = 1;
+
+            for (InstanceIpv6Address createNetworkInterfaceRequestIpv6AddressesListValue : createNetworkInterfaceRequestIpv6AddressesList) {
+
+                if (createNetworkInterfaceRequestIpv6AddressesListValue.getIpv6Address() != null) {
+                    request.addParameter("Ipv6Addresses." + ipv6AddressesListIndex + ".Ipv6Address",
+                            StringUtils.fromString(createNetworkInterfaceRequestIpv6AddressesListValue.getIpv6Address()));
+                }
+                ipv6AddressesListIndex++;
+            }
+        }
+
+        if (createNetworkInterfaceRequest.getIpv6AddressCount() != null) {
+            request.addParameter("Ipv6AddressCount", StringUtils.fromInteger(createNetworkInterfaceRequest.getIpv6AddressCount()));
         }
 
         return request;

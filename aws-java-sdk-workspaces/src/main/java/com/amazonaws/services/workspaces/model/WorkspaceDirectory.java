@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/WorkspaceDirectory" target="_top">AWS API
+ *      Documentation</a>
  */
-public class WorkspaceDirectory implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WorkspaceDirectory implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -732,29 +739,29 @@ public class WorkspaceDirectory implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getAlias() != null)
-            sb.append("Alias: " + getAlias() + ",");
+            sb.append("Alias: ").append(getAlias()).append(",");
         if (getDirectoryName() != null)
-            sb.append("DirectoryName: " + getDirectoryName() + ",");
+            sb.append("DirectoryName: ").append(getDirectoryName()).append(",");
         if (getRegistrationCode() != null)
-            sb.append("RegistrationCode: " + getRegistrationCode() + ",");
+            sb.append("RegistrationCode: ").append(getRegistrationCode()).append(",");
         if (getSubnetIds() != null)
-            sb.append("SubnetIds: " + getSubnetIds() + ",");
+            sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
         if (getDnsIpAddresses() != null)
-            sb.append("DnsIpAddresses: " + getDnsIpAddresses() + ",");
+            sb.append("DnsIpAddresses: ").append(getDnsIpAddresses()).append(",");
         if (getCustomerUserName() != null)
-            sb.append("CustomerUserName: " + getCustomerUserName() + ",");
+            sb.append("CustomerUserName: ").append(getCustomerUserName()).append(",");
         if (getIamRoleId() != null)
-            sb.append("IamRoleId: " + getIamRoleId() + ",");
+            sb.append("IamRoleId: ").append(getIamRoleId()).append(",");
         if (getDirectoryType() != null)
-            sb.append("DirectoryType: " + getDirectoryType() + ",");
+            sb.append("DirectoryType: ").append(getDirectoryType()).append(",");
         if (getWorkspaceSecurityGroupId() != null)
-            sb.append("WorkspaceSecurityGroupId: " + getWorkspaceSecurityGroupId() + ",");
+            sb.append("WorkspaceSecurityGroupId: ").append(getWorkspaceSecurityGroupId()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getWorkspaceCreationProperties() != null)
-            sb.append("WorkspaceCreationProperties: " + getWorkspaceCreationProperties());
+            sb.append("WorkspaceCreationProperties: ").append(getWorkspaceCreationProperties());
         sb.append("}");
         return sb.toString();
     }
@@ -847,5 +854,11 @@ public class WorkspaceDirectory implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.workspaces.model.transform.WorkspaceDirectoryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

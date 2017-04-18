@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.identitymanagement.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * UserDetail StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UserDetailStaxUnmarshaller implements Unmarshaller<UserDetail, StaxUnmarshallerContext> {
 
     public UserDetail unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -70,13 +70,28 @@ public class UserDetailStaxUnmarshaller implements Unmarshaller<UserDetail, Stax
                     continue;
                 }
 
+                if (context.testExpression("UserPolicyList", targetDepth)) {
+                    userDetail.withUserPolicyList(new ArrayList<PolicyDetail>());
+                    continue;
+                }
+
                 if (context.testExpression("UserPolicyList/member", targetDepth)) {
                     userDetail.withUserPolicyList(PolicyDetailStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("GroupList", targetDepth)) {
+                    userDetail.withGroupList(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("GroupList/member", targetDepth)) {
                     userDetail.withGroupList(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("AttachedManagedPolicies", targetDepth)) {
+                    userDetail.withAttachedManagedPolicies(new ArrayList<AttachedPolicy>());
                     continue;
                 }
 

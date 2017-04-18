@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The Stack data type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/Stack" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Stack implements Serializable, Cloneable {
 
     /**
@@ -1129,37 +1134,37 @@ public class Stack implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getStackName() != null)
-            sb.append("StackName: " + getStackName() + ",");
+            sb.append("StackName: ").append(getStackName()).append(",");
         if (getChangeSetId() != null)
-            sb.append("ChangeSetId: " + getChangeSetId() + ",");
+            sb.append("ChangeSetId: ").append(getChangeSetId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getLastUpdatedTime() != null)
-            sb.append("LastUpdatedTime: " + getLastUpdatedTime() + ",");
+            sb.append("LastUpdatedTime: ").append(getLastUpdatedTime()).append(",");
         if (getStackStatus() != null)
-            sb.append("StackStatus: " + getStackStatus() + ",");
+            sb.append("StackStatus: ").append(getStackStatus()).append(",");
         if (getStackStatusReason() != null)
-            sb.append("StackStatusReason: " + getStackStatusReason() + ",");
+            sb.append("StackStatusReason: ").append(getStackStatusReason()).append(",");
         if (getDisableRollback() != null)
-            sb.append("DisableRollback: " + getDisableRollback() + ",");
+            sb.append("DisableRollback: ").append(getDisableRollback()).append(",");
         if (getNotificationARNs() != null)
-            sb.append("NotificationARNs: " + getNotificationARNs() + ",");
+            sb.append("NotificationARNs: ").append(getNotificationARNs()).append(",");
         if (getTimeoutInMinutes() != null)
-            sb.append("TimeoutInMinutes: " + getTimeoutInMinutes() + ",");
+            sb.append("TimeoutInMinutes: ").append(getTimeoutInMinutes()).append(",");
         if (getCapabilities() != null)
-            sb.append("Capabilities: " + getCapabilities() + ",");
+            sb.append("Capabilities: ").append(getCapabilities()).append(",");
         if (getOutputs() != null)
-            sb.append("Outputs: " + getOutputs() + ",");
+            sb.append("Outputs: ").append(getOutputs()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -1273,4 +1278,5 @@ public class Stack implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

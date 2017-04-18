@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancingClientBuilder;
 import com.amazonaws.services.elasticloadbalancing.waiters.AmazonElasticLoadBalancingWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -75,6 +79,7 @@ import com.amazonaws.services.elasticloadbalancing.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient implements AmazonElasticLoadBalancing {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -108,7 +113,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -131,7 +138,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -146,7 +155,11 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AmazonElasticLoadBalancingClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -164,7 +177,10 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Load Balancing (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -181,7 +197,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -199,7 +217,10 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Load Balancing (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -219,12 +240,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonElasticLoadBalancingClientBuilder builder() {
+        return AmazonElasticLoadBalancingClientBuilder.standard();
     }
 
     /**
@@ -301,9 +330,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws DuplicateTagKeysException
      *         A tag key was specified more than once.
      * @sample AmazonElasticLoadBalancing.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AddTags" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AddTagsResult addTags(AddTagsRequest addTagsRequest) {
+    public AddTagsResult addTags(AddTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTags(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsResult executeAddTags(AddTagsRequest addTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -352,10 +390,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidSecurityGroupException
      *         One or more of the specified security groups do not exist.
      * @sample AmazonElasticLoadBalancing.ApplySecurityGroupsToLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ApplySecurityGroupsToLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ApplySecurityGroupsToLoadBalancerResult applySecurityGroupsToLoadBalancer(
+    public ApplySecurityGroupsToLoadBalancerResult applySecurityGroupsToLoadBalancer(ApplySecurityGroupsToLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeApplySecurityGroupsToLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final ApplySecurityGroupsToLoadBalancerResult executeApplySecurityGroupsToLoadBalancer(
             ApplySecurityGroupsToLoadBalancerRequest applySecurityGroupsToLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(applySecurityGroupsToLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -406,9 +454,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidSubnetException
      *         The specified VPC has no associated Internet gateway.
      * @sample AmazonElasticLoadBalancing.AttachLoadBalancerToSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AttachLoadBalancerToSubnets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AttachLoadBalancerToSubnetsResult attachLoadBalancerToSubnets(AttachLoadBalancerToSubnetsRequest attachLoadBalancerToSubnetsRequest) {
+    public AttachLoadBalancerToSubnetsResult attachLoadBalancerToSubnets(AttachLoadBalancerToSubnetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachLoadBalancerToSubnets(request);
+    }
+
+    @SdkInternalApi
+    final AttachLoadBalancerToSubnetsResult executeAttachLoadBalancerToSubnets(AttachLoadBalancerToSubnetsRequest attachLoadBalancerToSubnetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachLoadBalancerToSubnetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -453,9 +510,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.ConfigureHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ConfigureHealthCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ConfigureHealthCheckResult configureHealthCheck(ConfigureHealthCheckRequest configureHealthCheckRequest) {
+    public ConfigureHealthCheckResult configureHealthCheck(ConfigureHealthCheckRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfigureHealthCheck(request);
+    }
+
+    @SdkInternalApi
+    final ConfigureHealthCheckResult executeConfigureHealthCheck(ConfigureHealthCheckRequest configureHealthCheckRequest) {
+
         ExecutionContext executionContext = createExecutionContext(configureHealthCheckRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -517,9 +583,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateAppCookieStickinessPolicy
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateAppCookieStickinessPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateAppCookieStickinessPolicyResult createAppCookieStickinessPolicy(CreateAppCookieStickinessPolicyRequest createAppCookieStickinessPolicyRequest) {
+    public CreateAppCookieStickinessPolicyResult createAppCookieStickinessPolicy(CreateAppCookieStickinessPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAppCookieStickinessPolicy(request);
+    }
+
+    @SdkInternalApi
+    final CreateAppCookieStickinessPolicyResult executeCreateAppCookieStickinessPolicy(
+            CreateAppCookieStickinessPolicyRequest createAppCookieStickinessPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createAppCookieStickinessPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -581,9 +658,19 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateLBCookieStickinessPolicy
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLBCookieStickinessPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLBCookieStickinessPolicyResult createLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest createLBCookieStickinessPolicyRequest) {
+    public CreateLBCookieStickinessPolicyResult createLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLBCookieStickinessPolicy(request);
+    }
+
+    @SdkInternalApi
+    final CreateLBCookieStickinessPolicyResult executeCreateLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest createLBCookieStickinessPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLBCookieStickinessPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -660,9 +747,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         A tag key was specified more than once.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) {
+    public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final CreateLoadBalancerResult executeCreateLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -719,9 +815,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         The requested configuration change is not valid.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancerListeners
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerListeners"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLoadBalancerListenersResult createLoadBalancerListeners(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest) {
+    public CreateLoadBalancerListenersResult createLoadBalancerListeners(CreateLoadBalancerListenersRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLoadBalancerListeners(request);
+    }
+
+    @SdkInternalApi
+    final CreateLoadBalancerListenersResult executeCreateLoadBalancerListeners(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLoadBalancerListenersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -773,9 +878,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancerPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLoadBalancerPolicyResult createLoadBalancerPolicy(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) {
+    public CreateLoadBalancerPolicyResult createLoadBalancerPolicy(CreateLoadBalancerPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLoadBalancerPolicy(request);
+    }
+
+    @SdkInternalApi
+    final CreateLoadBalancerPolicyResult executeCreateLoadBalancerPolicy(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLoadBalancerPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -822,9 +936,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *        Contains the parameters for DeleteLoadBalancer.
      * @return Result of the DeleteLoadBalancer operation returned by the service.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) {
+    public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLoadBalancerResult executeDeleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -864,9 +987,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancerListeners
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerListeners"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLoadBalancerListenersResult deleteLoadBalancerListeners(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest) {
+    public DeleteLoadBalancerListenersResult deleteLoadBalancerListeners(DeleteLoadBalancerListenersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLoadBalancerListeners(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLoadBalancerListenersResult executeDeleteLoadBalancerListeners(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerListenersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -908,9 +1040,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancerPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLoadBalancerPolicyResult deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) {
+    public DeleteLoadBalancerPolicyResult deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLoadBalancerPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLoadBalancerPolicyResult executeDeleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -961,10 +1102,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.DeregisterInstancesFromLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeregisterInstancesFromLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeregisterInstancesFromLoadBalancerResult deregisterInstancesFromLoadBalancer(
+    public DeregisterInstancesFromLoadBalancerResult deregisterInstancesFromLoadBalancer(DeregisterInstancesFromLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeregisterInstancesFromLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final DeregisterInstancesFromLoadBalancerResult executeDeregisterInstancesFromLoadBalancer(
             DeregisterInstancesFromLoadBalancerRequest deregisterInstancesFromLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deregisterInstancesFromLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1010,9 +1161,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.DescribeInstanceHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeInstanceHealth"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeInstanceHealthResult describeInstanceHealth(DescribeInstanceHealthRequest describeInstanceHealthRequest) {
+    public DescribeInstanceHealthResult describeInstanceHealth(DescribeInstanceHealthRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInstanceHealth(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInstanceHealthResult executeDescribeInstanceHealth(DescribeInstanceHealthRequest describeInstanceHealthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeInstanceHealthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1054,9 +1214,19 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerAttributeNotFoundException
      *         The specified load balancer attribute does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest describeLoadBalancerAttributesRequest) {
+    public DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancerAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancerAttributesResult executeDescribeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest describeLoadBalancerAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancerAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1105,9 +1275,19 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws PolicyNotFoundException
      *         One or more of the specified policies do not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerPolicies
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicies"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancerPoliciesResult describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest describeLoadBalancerPoliciesRequest) {
+    public DescribeLoadBalancerPoliciesResult describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancerPolicies(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancerPoliciesResult executeDescribeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest describeLoadBalancerPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancerPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1162,9 +1342,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws PolicyTypeNotFoundException
      *         One or more of the specified policy types do not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerPolicyTypes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicyTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancerPolicyTypesResult describeLoadBalancerPolicyTypes(DescribeLoadBalancerPolicyTypesRequest describeLoadBalancerPolicyTypesRequest) {
+    public DescribeLoadBalancerPolicyTypesResult describeLoadBalancerPolicyTypes(DescribeLoadBalancerPolicyTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancerPolicyTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancerPolicyTypesResult executeDescribeLoadBalancerPolicyTypes(
+            DescribeLoadBalancerPolicyTypesRequest describeLoadBalancerPolicyTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancerPolicyTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1211,9 +1402,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         The specified load balancer does not exist.
      * @throws DependencyThrottleException
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancers(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancersResult executeDescribeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1258,9 +1458,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1306,9 +1515,19 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DetachLoadBalancerFromSubnets
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DetachLoadBalancerFromSubnets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DetachLoadBalancerFromSubnetsResult detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest detachLoadBalancerFromSubnetsRequest) {
+    public DetachLoadBalancerFromSubnetsResult detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachLoadBalancerFromSubnets(request);
+    }
+
+    @SdkInternalApi
+    final DetachLoadBalancerFromSubnetsResult executeDetachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest detachLoadBalancerFromSubnetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachLoadBalancerFromSubnetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1361,10 +1580,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.DisableAvailabilityZonesForLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DisableAvailabilityZonesForLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableAvailabilityZonesForLoadBalancerResult disableAvailabilityZonesForLoadBalancer(
+    public DisableAvailabilityZonesForLoadBalancerResult disableAvailabilityZonesForLoadBalancer(DisableAvailabilityZonesForLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableAvailabilityZonesForLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final DisableAvailabilityZonesForLoadBalancerResult executeDisableAvailabilityZonesForLoadBalancer(
             DisableAvailabilityZonesForLoadBalancerRequest disableAvailabilityZonesForLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableAvailabilityZonesForLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1414,10 +1643,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.EnableAvailabilityZonesForLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/EnableAvailabilityZonesForLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableAvailabilityZonesForLoadBalancerResult enableAvailabilityZonesForLoadBalancer(
+    public EnableAvailabilityZonesForLoadBalancerResult enableAvailabilityZonesForLoadBalancer(EnableAvailabilityZonesForLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableAvailabilityZonesForLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final EnableAvailabilityZonesForLoadBalancerResult executeEnableAvailabilityZonesForLoadBalancer(
             EnableAvailabilityZonesForLoadBalancerRequest enableAvailabilityZonesForLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableAvailabilityZonesForLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1497,9 +1736,19 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.ModifyLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ModifyLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest modifyLoadBalancerAttributesRequest) {
+    public ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyLoadBalancerAttributes(request);
+    }
+
+    @SdkInternalApi
+    final ModifyLoadBalancerAttributesResult executeModifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest modifyLoadBalancerAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyLoadBalancerAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1566,10 +1815,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidInstanceException
      *         The specified endpoint is not valid.
      * @sample AmazonElasticLoadBalancing.RegisterInstancesWithLoadBalancer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RegisterInstancesWithLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RegisterInstancesWithLoadBalancerResult registerInstancesWithLoadBalancer(
+    public RegisterInstancesWithLoadBalancerResult registerInstancesWithLoadBalancer(RegisterInstancesWithLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterInstancesWithLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final RegisterInstancesWithLoadBalancerResult executeRegisterInstancesWithLoadBalancer(
             RegisterInstancesWithLoadBalancerRequest registerInstancesWithLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(registerInstancesWithLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1609,9 +1868,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RemoveTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest) {
+    public RemoveTagsResult removeTags(RemoveTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTags(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsResult executeRemoveTags(RemoveTagsRequest removeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1665,10 +1933,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         The requested configuration change is not valid.
      * @throws UnsupportedProtocolException
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerListenerSSLCertificate
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerListenerSSLCertificate"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(
+    public SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(SetLoadBalancerListenerSSLCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetLoadBalancerListenerSSLCertificate(request);
+    }
+
+    @SdkInternalApi
+    final SetLoadBalancerListenerSSLCertificateResult executeSetLoadBalancerListenerSSLCertificate(
             SetLoadBalancerListenerSSLCertificateRequest setLoadBalancerListenerSSLCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setLoadBalancerListenerSSLCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1731,10 +2009,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerPoliciesForBackendServer
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesForBackendServer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetLoadBalancerPoliciesForBackendServerResult setLoadBalancerPoliciesForBackendServer(
+    public SetLoadBalancerPoliciesForBackendServerResult setLoadBalancerPoliciesForBackendServer(SetLoadBalancerPoliciesForBackendServerRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetLoadBalancerPoliciesForBackendServer(request);
+    }
+
+    @SdkInternalApi
+    final SetLoadBalancerPoliciesForBackendServerResult executeSetLoadBalancerPoliciesForBackendServer(
             SetLoadBalancerPoliciesForBackendServerRequest setLoadBalancerPoliciesForBackendServerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setLoadBalancerPoliciesForBackendServerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1793,10 +2081,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidConfigurationRequestException
      *         The requested configuration change is not valid.
      * @sample AmazonElasticLoadBalancing.SetLoadBalancerPoliciesOfListener
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesOfListener"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetLoadBalancerPoliciesOfListenerResult setLoadBalancerPoliciesOfListener(
+    public SetLoadBalancerPoliciesOfListenerResult setLoadBalancerPoliciesOfListener(SetLoadBalancerPoliciesOfListenerRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetLoadBalancerPoliciesOfListener(request);
+    }
+
+    @SdkInternalApi
+    final SetLoadBalancerPoliciesOfListenerResult executeSetLoadBalancerPoliciesOfListener(
             SetLoadBalancerPoliciesOfListenerRequest setLoadBalancerPoliciesOfListenerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setLoadBalancerPoliciesOfListenerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1878,6 +2176,7 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonElasticLoadBalancingWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -1887,6 +2186,14 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

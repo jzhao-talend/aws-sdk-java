@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains directory limit information for a region.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DirectoryLimits" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DirectoryLimits implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DirectoryLimits implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -484,23 +491,23 @@ public class DirectoryLimits implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCloudOnlyDirectoriesLimit() != null)
-            sb.append("CloudOnlyDirectoriesLimit: " + getCloudOnlyDirectoriesLimit() + ",");
+            sb.append("CloudOnlyDirectoriesLimit: ").append(getCloudOnlyDirectoriesLimit()).append(",");
         if (getCloudOnlyDirectoriesCurrentCount() != null)
-            sb.append("CloudOnlyDirectoriesCurrentCount: " + getCloudOnlyDirectoriesCurrentCount() + ",");
+            sb.append("CloudOnlyDirectoriesCurrentCount: ").append(getCloudOnlyDirectoriesCurrentCount()).append(",");
         if (getCloudOnlyDirectoriesLimitReached() != null)
-            sb.append("CloudOnlyDirectoriesLimitReached: " + getCloudOnlyDirectoriesLimitReached() + ",");
+            sb.append("CloudOnlyDirectoriesLimitReached: ").append(getCloudOnlyDirectoriesLimitReached()).append(",");
         if (getCloudOnlyMicrosoftADLimit() != null)
-            sb.append("CloudOnlyMicrosoftADLimit: " + getCloudOnlyMicrosoftADLimit() + ",");
+            sb.append("CloudOnlyMicrosoftADLimit: ").append(getCloudOnlyMicrosoftADLimit()).append(",");
         if (getCloudOnlyMicrosoftADCurrentCount() != null)
-            sb.append("CloudOnlyMicrosoftADCurrentCount: " + getCloudOnlyMicrosoftADCurrentCount() + ",");
+            sb.append("CloudOnlyMicrosoftADCurrentCount: ").append(getCloudOnlyMicrosoftADCurrentCount()).append(",");
         if (getCloudOnlyMicrosoftADLimitReached() != null)
-            sb.append("CloudOnlyMicrosoftADLimitReached: " + getCloudOnlyMicrosoftADLimitReached() + ",");
+            sb.append("CloudOnlyMicrosoftADLimitReached: ").append(getCloudOnlyMicrosoftADLimitReached()).append(",");
         if (getConnectedDirectoriesLimit() != null)
-            sb.append("ConnectedDirectoriesLimit: " + getConnectedDirectoriesLimit() + ",");
+            sb.append("ConnectedDirectoriesLimit: ").append(getConnectedDirectoriesLimit()).append(",");
         if (getConnectedDirectoriesCurrentCount() != null)
-            sb.append("ConnectedDirectoriesCurrentCount: " + getConnectedDirectoriesCurrentCount() + ",");
+            sb.append("ConnectedDirectoriesCurrentCount: ").append(getConnectedDirectoriesCurrentCount()).append(",");
         if (getConnectedDirectoriesLimitReached() != null)
-            sb.append("ConnectedDirectoriesLimitReached: " + getConnectedDirectoriesLimitReached());
+            sb.append("ConnectedDirectoriesLimitReached: ").append(getConnectedDirectoriesLimitReached());
         sb.append("}");
         return sb.toString();
     }
@@ -584,5 +591,11 @@ public class DirectoryLimits implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directory.model.transform.DirectoryLimitsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

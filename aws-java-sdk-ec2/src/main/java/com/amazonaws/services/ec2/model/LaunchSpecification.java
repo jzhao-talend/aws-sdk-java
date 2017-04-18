@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the launch specification for an instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/LaunchSpecification" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LaunchSpecification implements Serializable, Cloneable {
 
     /**
@@ -89,7 +94,8 @@ public class LaunchSpecification implements Serializable, Cloneable {
     private String subnetId;
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security
+     * group IDs using the network interface.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<InstanceNetworkInterfaceSpecification> networkInterfaces;
@@ -634,10 +640,12 @@ public class LaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security
+     * group IDs using the network interface.
      * </p>
      * 
-     * @return One or more network interfaces.
+     * @return One or more network interfaces. If you specify a network interface, you must specify subnet IDs and
+     *         security group IDs using the network interface.
      */
 
     public java.util.List<InstanceNetworkInterfaceSpecification> getNetworkInterfaces() {
@@ -649,11 +657,13 @@ public class LaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security
+     * group IDs using the network interface.
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify subnet IDs and
+     *        security group IDs using the network interface.
      */
 
     public void setNetworkInterfaces(java.util.Collection<InstanceNetworkInterfaceSpecification> networkInterfaces) {
@@ -667,7 +677,8 @@ public class LaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security
+     * group IDs using the network interface.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -676,7 +687,8 @@ public class LaunchSpecification implements Serializable, Cloneable {
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify subnet IDs and
+     *        security group IDs using the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -692,11 +704,13 @@ public class LaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security
+     * group IDs using the network interface.
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify subnet IDs and
+     *        security group IDs using the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1041,37 +1055,37 @@ public class LaunchSpecification implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getImageId() != null)
-            sb.append("ImageId: " + getImageId() + ",");
+            sb.append("ImageId: ").append(getImageId()).append(",");
         if (getKeyName() != null)
-            sb.append("KeyName: " + getKeyName() + ",");
+            sb.append("KeyName: ").append(getKeyName()).append(",");
         if (getUserData() != null)
-            sb.append("UserData: " + getUserData() + ",");
+            sb.append("UserData: ").append(getUserData()).append(",");
         if (getAddressingType() != null)
-            sb.append("AddressingType: " + getAddressingType() + ",");
+            sb.append("AddressingType: ").append(getAddressingType()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getPlacement() != null)
-            sb.append("Placement: " + getPlacement() + ",");
+            sb.append("Placement: ").append(getPlacement()).append(",");
         if (getKernelId() != null)
-            sb.append("KernelId: " + getKernelId() + ",");
+            sb.append("KernelId: ").append(getKernelId()).append(",");
         if (getRamdiskId() != null)
-            sb.append("RamdiskId: " + getRamdiskId() + ",");
+            sb.append("RamdiskId: ").append(getRamdiskId()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getNetworkInterfaces() != null)
-            sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ",");
+            sb.append("NetworkInterfaces: ").append(getNetworkInterfaces()).append(",");
         if (getIamInstanceProfile() != null)
-            sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
+            sb.append("IamInstanceProfile: ").append(getIamInstanceProfile()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getAllSecurityGroups() != null)
-            sb.append("AllSecurityGroups: " + getAllSecurityGroups() + ",");
+            sb.append("AllSecurityGroups: ").append(getAllSecurityGroups()).append(",");
         if (getMonitoringEnabled() != null)
-            sb.append("MonitoringEnabled: " + getMonitoringEnabled() + ",");
+            sb.append("MonitoringEnabled: ").append(getMonitoringEnabled()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups());
+            sb.append("SecurityGroups: ").append(getSecurityGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -1185,4 +1199,5 @@ public class LaunchSpecification implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,33 +12,75 @@
  */
 package com.amazonaws.services.sqs;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.sqs.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon SQS asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing Amazon SQS asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
  * <p>
- * Welcome to the <i>Amazon Simple Queue Service API Reference</i>. This section describes who should read this guide,
- * how the guide is organized, and other resources related to the Amazon Simple Queue Service (Amazon SQS).
+ * Welcome to the <i>Amazon Simple Queue Service API Reference</i>.
  * </p>
  * <p>
- * Amazon SQS offers reliable and scalable hosted queues for storing messages as they travel between computers. By using
- * Amazon SQS, you can move data between distributed components of your applications that perform different tasks
- * without losing messages or requiring each component to be always available.
+ * Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable hosted queue for storing messages as they
+ * travel between applications or microservices. Amazon SQS moves data between distributed application components and
+ * helps you decouple these components.
  * </p>
+ * <note>
  * <p>
- * Helpful Links:
+ * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html">Standard
+ * queues</a> are available in all regions. <a
+ * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO queues</a> are
+ * available in US West (Oregon) and US East (Ohio).
+ * </p>
+ * </note>
+ * <p>
+ * You can use <a href="http://aws.amazon.com/tools/#sdk">AWS SDKs</a> to access Amazon SQS using your favorite
+ * programming language. The SDKs perform tasks such as the following automatically:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a href="http://queue.amazonaws.com/doc/2012-11-05/QueueService.wsdl">Current WSDL (2012-11-05)</a>
+ * Cryptographically sign your service requests
  * </p>
  * </li>
+ * <li>
+ * <p>
+ * Retry requests
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Handle error responses
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * <b>Additional Information</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a href="http://aws.amazon.com/sqs/">Amazon SQS Product Page</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <i>Amazon SQS Developer Guide</i>
+ * </p>
+ * <ul>
  * <li>
  * <p>
  * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/MakingRequestsArticle.html">Making
@@ -47,53 +89,34 @@ import com.amazonaws.annotation.ThreadSafe;
  * </li>
  * <li>
  * <p>
- * <a href="http://aws.amazon.com/sqs/">Amazon SQS product page</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSMessageAttributes.html">Using
+ * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Using
  * Amazon SQS Message Attributes</a>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html">Using
+ * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">Using
  * Amazon SQS Dead Letter Queues</a>
  * </p>
  * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <i>Amazon Web Services General Reference</i>
+ * </p>
+ * <ul>
  * <li>
  * <p>
  * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region">Regions and Endpoints</a>
  * </p>
  * </li>
  * </ul>
- * <p>
- * We also provide SDKs that enable you to access Amazon SQS from your preferred programming language. The SDKs contain
- * functionality that automatically takes care of tasks such as:
- * </p>
- * <ul>
- * <li>
- * <p>
- * Cryptographically signing your service requests
- * </p>
- * </li>
- * <li>
- * <p>
- * Retrying requests
- * </p>
- * </li>
- * <li>
- * <p>
- * Handling error responses
- * </p>
  * </li>
  * </ul>
- * <p>
- * For a list of available SDKs, go to <a href="http://aws.amazon.com/tools/">Tools for Amazon Web Services</a>.
- * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -115,9 +138,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonSQSAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -139,10 +164,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonSQSAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -155,9 +181,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -168,8 +196,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -184,10 +215,12 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -202,9 +235,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -221,10 +256,12 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -235,9 +272,11 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -251,12 +290,18 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSQSAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonSQSAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSQSAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSQSAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonSQSAsyncClientBuilder asyncBuilder() {
+        return AmazonSQSAsyncClientBuilder.standard();
     }
 
     /**
@@ -275,7 +320,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -288,14 +333,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<AddPermissionResult> addPermissionAsync(final AddPermissionRequest request,
             final com.amazonaws.handlers.AsyncHandler<AddPermissionRequest, AddPermissionResult> asyncHandler) {
+        final AddPermissionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AddPermissionResult>() {
             @Override
             public AddPermissionResult call() throws Exception {
-                AddPermissionResult result;
+                AddPermissionResult result = null;
 
                 try {
-                    result = addPermission(request);
+                    result = executeAddPermission(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -304,7 +350,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -328,6 +374,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #addPermissionAsync(AddPermissionRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<AddPermissionResult> addPermissionAsync(String queueUrl, String label, java.util.List<String> aWSAccountIds,
             java.util.List<String> actions, com.amazonaws.handlers.AsyncHandler<AddPermissionRequest, AddPermissionResult> asyncHandler) {
 
@@ -344,14 +391,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<ChangeMessageVisibilityResult> changeMessageVisibilityAsync(final ChangeMessageVisibilityRequest request,
             final com.amazonaws.handlers.AsyncHandler<ChangeMessageVisibilityRequest, ChangeMessageVisibilityResult> asyncHandler) {
+        final ChangeMessageVisibilityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ChangeMessageVisibilityResult>() {
             @Override
             public ChangeMessageVisibilityResult call() throws Exception {
-                ChangeMessageVisibilityResult result;
+                ChangeMessageVisibilityResult result = null;
 
                 try {
-                    result = changeMessageVisibility(request);
+                    result = executeChangeMessageVisibility(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -360,7 +408,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -385,6 +433,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #changeMessageVisibilityAsync(ChangeMessageVisibilityRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ChangeMessageVisibilityResult> changeMessageVisibilityAsync(String queueUrl, String receiptHandle,
             Integer visibilityTimeout, com.amazonaws.handlers.AsyncHandler<ChangeMessageVisibilityRequest, ChangeMessageVisibilityResult> asyncHandler) {
 
@@ -402,14 +451,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<ChangeMessageVisibilityBatchResult> changeMessageVisibilityBatchAsync(final ChangeMessageVisibilityBatchRequest request,
             final com.amazonaws.handlers.AsyncHandler<ChangeMessageVisibilityBatchRequest, ChangeMessageVisibilityBatchResult> asyncHandler) {
+        final ChangeMessageVisibilityBatchRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ChangeMessageVisibilityBatchResult>() {
             @Override
             public ChangeMessageVisibilityBatchResult call() throws Exception {
-                ChangeMessageVisibilityBatchResult result;
+                ChangeMessageVisibilityBatchResult result = null;
 
                 try {
-                    result = changeMessageVisibilityBatch(request);
+                    result = executeChangeMessageVisibilityBatch(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -418,7 +468,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -442,6 +492,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #changeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ChangeMessageVisibilityBatchResult> changeMessageVisibilityBatchAsync(String queueUrl,
             java.util.List<ChangeMessageVisibilityBatchRequestEntry> entries,
             com.amazonaws.handlers.AsyncHandler<ChangeMessageVisibilityBatchRequest, ChangeMessageVisibilityBatchResult> asyncHandler) {
@@ -458,14 +509,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<CreateQueueResult> createQueueAsync(final CreateQueueRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateQueueRequest, CreateQueueResult> asyncHandler) {
+        final CreateQueueRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateQueueResult>() {
             @Override
             public CreateQueueResult call() throws Exception {
-                CreateQueueResult result;
+                CreateQueueResult result = null;
 
                 try {
-                    result = createQueue(request);
+                    result = executeCreateQueue(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -474,7 +526,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -497,6 +549,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #createQueueAsync(CreateQueueRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<CreateQueueResult> createQueueAsync(String queueName,
             com.amazonaws.handlers.AsyncHandler<CreateQueueRequest, CreateQueueResult> asyncHandler) {
 
@@ -512,14 +565,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<DeleteMessageResult> deleteMessageAsync(final DeleteMessageRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteMessageRequest, DeleteMessageResult> asyncHandler) {
+        final DeleteMessageRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteMessageResult>() {
             @Override
             public DeleteMessageResult call() throws Exception {
-                DeleteMessageResult result;
+                DeleteMessageResult result = null;
 
                 try {
-                    result = deleteMessage(request);
+                    result = executeDeleteMessage(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -528,7 +582,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -551,6 +605,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #deleteMessageAsync(DeleteMessageRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DeleteMessageResult> deleteMessageAsync(String queueUrl, String receiptHandle,
             com.amazonaws.handlers.AsyncHandler<DeleteMessageRequest, DeleteMessageResult> asyncHandler) {
 
@@ -566,14 +621,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<DeleteMessageBatchResult> deleteMessageBatchAsync(final DeleteMessageBatchRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteMessageBatchRequest, DeleteMessageBatchResult> asyncHandler) {
+        final DeleteMessageBatchRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteMessageBatchResult>() {
             @Override
             public DeleteMessageBatchResult call() throws Exception {
-                DeleteMessageBatchResult result;
+                DeleteMessageBatchResult result = null;
 
                 try {
-                    result = deleteMessageBatch(request);
+                    result = executeDeleteMessageBatch(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -582,7 +638,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -605,6 +661,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #deleteMessageBatchAsync(DeleteMessageBatchRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DeleteMessageBatchResult> deleteMessageBatchAsync(String queueUrl,
             java.util.List<DeleteMessageBatchRequestEntry> entries,
             com.amazonaws.handlers.AsyncHandler<DeleteMessageBatchRequest, DeleteMessageBatchResult> asyncHandler) {
@@ -621,14 +678,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<DeleteQueueResult> deleteQueueAsync(final DeleteQueueRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteQueueRequest, DeleteQueueResult> asyncHandler) {
+        final DeleteQueueRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteQueueResult>() {
             @Override
             public DeleteQueueResult call() throws Exception {
-                DeleteQueueResult result;
+                DeleteQueueResult result = null;
 
                 try {
-                    result = deleteQueue(request);
+                    result = executeDeleteQueue(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -637,7 +695,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -660,6 +718,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #deleteQueueAsync(DeleteQueueRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DeleteQueueResult> deleteQueueAsync(String queueUrl,
             com.amazonaws.handlers.AsyncHandler<DeleteQueueRequest, DeleteQueueResult> asyncHandler) {
 
@@ -675,14 +734,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<GetQueueAttributesResult> getQueueAttributesAsync(final GetQueueAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetQueueAttributesRequest, GetQueueAttributesResult> asyncHandler) {
+        final GetQueueAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetQueueAttributesResult>() {
             @Override
             public GetQueueAttributesResult call() throws Exception {
-                GetQueueAttributesResult result;
+                GetQueueAttributesResult result = null;
 
                 try {
-                    result = getQueueAttributes(request);
+                    result = executeGetQueueAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -691,7 +751,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -714,6 +774,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #getQueueAttributesAsync(GetQueueAttributesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetQueueAttributesResult> getQueueAttributesAsync(String queueUrl, java.util.List<String> attributeNames,
             com.amazonaws.handlers.AsyncHandler<GetQueueAttributesRequest, GetQueueAttributesResult> asyncHandler) {
 
@@ -729,14 +790,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<GetQueueUrlResult> getQueueUrlAsync(final GetQueueUrlRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetQueueUrlRequest, GetQueueUrlResult> asyncHandler) {
+        final GetQueueUrlRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetQueueUrlResult>() {
             @Override
             public GetQueueUrlResult call() throws Exception {
-                GetQueueUrlResult result;
+                GetQueueUrlResult result = null;
 
                 try {
-                    result = getQueueUrl(request);
+                    result = executeGetQueueUrl(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -745,7 +807,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -768,6 +830,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #getQueueUrlAsync(GetQueueUrlRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<GetQueueUrlResult> getQueueUrlAsync(String queueName,
             com.amazonaws.handlers.AsyncHandler<GetQueueUrlRequest, GetQueueUrlResult> asyncHandler) {
 
@@ -783,14 +846,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<ListDeadLetterSourceQueuesResult> listDeadLetterSourceQueuesAsync(final ListDeadLetterSourceQueuesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDeadLetterSourceQueuesRequest, ListDeadLetterSourceQueuesResult> asyncHandler) {
+        final ListDeadLetterSourceQueuesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDeadLetterSourceQueuesResult>() {
             @Override
             public ListDeadLetterSourceQueuesResult call() throws Exception {
-                ListDeadLetterSourceQueuesResult result;
+                ListDeadLetterSourceQueuesResult result = null;
 
                 try {
-                    result = listDeadLetterSourceQueues(request);
+                    result = executeListDeadLetterSourceQueues(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -799,7 +863,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -815,14 +879,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<ListQueuesResult> listQueuesAsync(final ListQueuesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListQueuesRequest, ListQueuesResult> asyncHandler) {
+        final ListQueuesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListQueuesResult>() {
             @Override
             public ListQueuesResult call() throws Exception {
-                ListQueuesResult result;
+                ListQueuesResult result = null;
 
                 try {
-                    result = listQueues(request);
+                    result = executeListQueues(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -831,7 +896,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -854,6 +919,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #listQueuesAsync(ListQueuesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListQueuesResult> listQueuesAsync(com.amazonaws.handlers.AsyncHandler<ListQueuesRequest, ListQueuesResult> asyncHandler) {
 
         return listQueuesAsync(new ListQueuesRequest(), asyncHandler);
@@ -875,6 +941,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #listQueuesAsync(ListQueuesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListQueuesResult> listQueuesAsync(String queueNamePrefix,
             com.amazonaws.handlers.AsyncHandler<ListQueuesRequest, ListQueuesResult> asyncHandler) {
 
@@ -890,14 +957,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<PurgeQueueResult> purgeQueueAsync(final PurgeQueueRequest request,
             final com.amazonaws.handlers.AsyncHandler<PurgeQueueRequest, PurgeQueueResult> asyncHandler) {
+        final PurgeQueueRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PurgeQueueResult>() {
             @Override
             public PurgeQueueResult call() throws Exception {
-                PurgeQueueResult result;
+                PurgeQueueResult result = null;
 
                 try {
-                    result = purgeQueue(request);
+                    result = executePurgeQueue(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -906,7 +974,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -922,14 +990,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<ReceiveMessageResult> receiveMessageAsync(final ReceiveMessageRequest request,
             final com.amazonaws.handlers.AsyncHandler<ReceiveMessageRequest, ReceiveMessageResult> asyncHandler) {
+        final ReceiveMessageRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ReceiveMessageResult>() {
             @Override
             public ReceiveMessageResult call() throws Exception {
-                ReceiveMessageResult result;
+                ReceiveMessageResult result = null;
 
                 try {
-                    result = receiveMessage(request);
+                    result = executeReceiveMessage(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -938,7 +1007,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -961,6 +1030,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #receiveMessageAsync(ReceiveMessageRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ReceiveMessageResult> receiveMessageAsync(String queueUrl,
             com.amazonaws.handlers.AsyncHandler<ReceiveMessageRequest, ReceiveMessageResult> asyncHandler) {
 
@@ -976,14 +1046,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<RemovePermissionResult> removePermissionAsync(final RemovePermissionRequest request,
             final com.amazonaws.handlers.AsyncHandler<RemovePermissionRequest, RemovePermissionResult> asyncHandler) {
+        final RemovePermissionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RemovePermissionResult>() {
             @Override
             public RemovePermissionResult call() throws Exception {
-                RemovePermissionResult result;
+                RemovePermissionResult result = null;
 
                 try {
-                    result = removePermission(request);
+                    result = executeRemovePermission(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -992,7 +1063,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1015,6 +1086,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #removePermissionAsync(RemovePermissionRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<RemovePermissionResult> removePermissionAsync(String queueUrl, String label,
             com.amazonaws.handlers.AsyncHandler<RemovePermissionRequest, RemovePermissionResult> asyncHandler) {
 
@@ -1030,14 +1102,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<SendMessageResult> sendMessageAsync(final SendMessageRequest request,
             final com.amazonaws.handlers.AsyncHandler<SendMessageRequest, SendMessageResult> asyncHandler) {
+        final SendMessageRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SendMessageResult>() {
             @Override
             public SendMessageResult call() throws Exception {
-                SendMessageResult result;
+                SendMessageResult result = null;
 
                 try {
-                    result = sendMessage(request);
+                    result = executeSendMessage(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1046,7 +1119,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1069,6 +1142,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #sendMessageAsync(SendMessageRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<SendMessageResult> sendMessageAsync(String queueUrl, String messageBody,
             com.amazonaws.handlers.AsyncHandler<SendMessageRequest, SendMessageResult> asyncHandler) {
 
@@ -1084,14 +1158,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<SendMessageBatchResult> sendMessageBatchAsync(final SendMessageBatchRequest request,
             final com.amazonaws.handlers.AsyncHandler<SendMessageBatchRequest, SendMessageBatchResult> asyncHandler) {
+        final SendMessageBatchRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SendMessageBatchResult>() {
             @Override
             public SendMessageBatchResult call() throws Exception {
-                SendMessageBatchResult result;
+                SendMessageBatchResult result = null;
 
                 try {
-                    result = sendMessageBatch(request);
+                    result = executeSendMessageBatch(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1100,7 +1175,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1123,6 +1198,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #sendMessageBatchAsync(SendMessageBatchRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<SendMessageBatchResult> sendMessageBatchAsync(String queueUrl, java.util.List<SendMessageBatchRequestEntry> entries,
             com.amazonaws.handlers.AsyncHandler<SendMessageBatchRequest, SendMessageBatchResult> asyncHandler) {
 
@@ -1138,14 +1214,15 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
     @Override
     public java.util.concurrent.Future<SetQueueAttributesResult> setQueueAttributesAsync(final SetQueueAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetQueueAttributesRequest, SetQueueAttributesResult> asyncHandler) {
+        final SetQueueAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetQueueAttributesResult>() {
             @Override
             public SetQueueAttributesResult call() throws Exception {
-                SetQueueAttributesResult result;
+                SetQueueAttributesResult result = null;
 
                 try {
-                    result = setQueueAttributes(request);
+                    result = executeSetQueueAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1154,7 +1231,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1177,6 +1254,7 @@ public class AmazonSQSAsyncClient extends AmazonSQSClient implements AmazonSQSAs
      *
      * @see #setQueueAttributesAsync(SetQueueAttributesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<SetQueueAttributesResult> setQueueAttributesAsync(String queueUrl, java.util.Map<String, String> attributes,
             com.amazonaws.handlers.AsyncHandler<SetQueueAttributesRequest, SetQueueAttributesResult> asyncHandler) {
 

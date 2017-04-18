@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,14 @@
  */
 package com.amazonaws.auth.policy.actions;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.auth.policy.Action;
 
 /**
  * The available AWS access control policy actions for Amazon Glacier.
  */
-
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum GlacierActions implements Action {
 
     /** Represents any action executed on Amazon Glacier. */
@@ -69,10 +71,14 @@ public enum GlacierActions implements Action {
     ListMultipartUploads("glacier:ListMultipartUploads"),
     /** Action for the ListParts operation. */
     ListParts("glacier:ListParts"),
+    /** Action for the ListProvisionedCapacity operation. */
+    ListProvisionedCapacity("glacier:ListProvisionedCapacity"),
     /** Action for the ListTagsForVault operation. */
     ListTagsForVault("glacier:ListTagsForVault"),
     /** Action for the ListVaults operation. */
     ListVaults("glacier:ListVaults"),
+    /** Action for the PurchaseProvisionedCapacity operation. */
+    PurchaseProvisionedCapacity("glacier:PurchaseProvisionedCapacity"),
     /** Action for the RemoveTagsFromVault operation. */
     RemoveTagsFromVault("glacier:RemoveTagsFromVault"),
     /** Action for the SetDataRetrievalPolicy operation. */

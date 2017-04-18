@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateStack" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -52,9 +57,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code>
-     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks infers the value of the other parameter. If you
-     * specify neither parameter, AWS OpsWorks sets these parameters to the first valid Availability Zone for the
-     * specified region and the corresponding default VPC subnet ID, respectively.
+     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter.
+     * If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone
+     * for the specified region and the corresponding default VPC subnet ID, respectively.
      * </p>
      * <p>
      * If you specify a nondefault VPC ID, note the following:
@@ -72,7 +77,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks with a VPC, see <a
+     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
      * For more information on default VPC and EC2-Classic, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
@@ -87,9 +92,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private com.amazonaws.internal.SdkInternalMap<String, String> attributes;
     /**
      * <p>
-     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS resources
-     * on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more
-     * information about IAM ARNs, see <a
+     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
+     * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
+     * For more information about IAM ARNs, see <a
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      */
@@ -110,8 +115,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -122,7 +127,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -148,7 +153,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      */
@@ -280,27 +285,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private Boolean useCustomCookbooks;
     /**
      * <p>
-     * Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
      * </p>
      * <p>
-     * AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated with
-     * layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security
-     * groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     * AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated
+     * with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom
+     * security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer (default
-     * setting). You can associate additional security groups with a layer after you create it, but you cannot delete
-     * the built-in security group.
+     * True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer
+     * (default setting). You can associate additional security groups with a layer after you create it, but you cannot
+     * delete the built-in security group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate EC2
-     * security groups and associate a security group with each layer that you create. However, you can still manually
-     * associate a built-in security group with a layer on creation; custom security groups are required only for those
-     * layers that need custom settings.
+     * False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate
+     * EC2 security groups and associate a security group with each layer that you create. However, you can still
+     * manually associate a built-in security group with a layer on creation; custom security groups are required only
+     * for those layers that need custom settings.
      * </p>
      * </li>
      * </ul>
@@ -336,27 +341,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String defaultRootDeviceType;
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent versions
-     * on the stack's instances as soon as they are available.
+     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent
+     * versions on the stack's instances as soon as they are available.
      * </p>
      * </li>
      * <li>
      * <p>
      * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit
-     * the stack configuration and specify a new version. AWS OpsWorks then automatically installs that version on the
-     * stack's instances.
+     * the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version
+     * on the stack's instances.
      * </p>
      * </li>
      * </ul>
      * <p>
      * The default setting is the most recent release of the agent. To specify an agent version, you must use the
      * complete version number, not the abbreviated number shown on the console. For a list of available agent version
-     * numbers, call <a>DescribeAgentVersions</a>.
+     * numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * <note>
      * <p>
@@ -472,9 +477,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code>
-     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks infers the value of the other parameter. If you
-     * specify neither parameter, AWS OpsWorks sets these parameters to the first valid Availability Zone for the
-     * specified region and the corresponding default VPC subnet ID, respectively.
+     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter.
+     * If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone
+     * for the specified region and the corresponding default VPC subnet ID, respectively.
      * </p>
      * <p>
      * If you specify a nondefault VPC ID, note the following:
@@ -492,7 +497,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks with a VPC, see <a
+     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
      * For more information on default VPC and EC2-Classic, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
@@ -517,9 +522,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        If the VPC ID corresponds to a default VPC and you have specified either the
      *        <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks
-     *        infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks sets these
-     *        parameters to the first valid Availability Zone for the specified region and the corresponding default VPC
-     *        subnet ID, respectively.
+     *        Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets
+     *        these parameters to the first valid Availability Zone for the specified region and the corresponding
+     *        default VPC subnet ID, respectively.
      *        </p>
      *        <p>
      *        If you specify a nondefault VPC ID, note the following:
@@ -537,7 +542,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on how to use AWS OpsWorks with a VPC, see <a
+     *        For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
      *        VPC</a>. For more information on default VPC and EC2-Classic, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
@@ -567,9 +572,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code>
-     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks infers the value of the other parameter. If you
-     * specify neither parameter, AWS OpsWorks sets these parameters to the first valid Availability Zone for the
-     * specified region and the corresponding default VPC subnet ID, respectively.
+     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter.
+     * If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone
+     * for the specified region and the corresponding default VPC subnet ID, respectively.
      * </p>
      * <p>
      * If you specify a nondefault VPC ID, note the following:
@@ -587,7 +592,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks with a VPC, see <a
+     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
      * For more information on default VPC and EC2-Classic, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
@@ -611,9 +616,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <p>
      *         If the VPC ID corresponds to a default VPC and you have specified either the
      *         <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks
-     *         infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks sets these
-     *         parameters to the first valid Availability Zone for the specified region and the corresponding default
-     *         VPC subnet ID, respectively.
+     *         Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks
+     *         sets these parameters to the first valid Availability Zone for the specified region and the corresponding
+     *         default VPC subnet ID, respectively.
      *         </p>
      *         <p>
      *         If you specify a nondefault VPC ID, note the following:
@@ -631,7 +636,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         </ul>
      *         <p>
-     *         For more information on how to use AWS OpsWorks with a VPC, see <a
+     *         For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
      *         VPC</a>. For more information on default VPC and EC2-Classic, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
@@ -661,9 +666,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code>
-     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks infers the value of the other parameter. If you
-     * specify neither parameter, AWS OpsWorks sets these parameters to the first valid Availability Zone for the
-     * specified region and the corresponding default VPC subnet ID, respectively.
+     * or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter.
+     * If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone
+     * for the specified region and the corresponding default VPC subnet ID, respectively.
      * </p>
      * <p>
      * If you specify a nondefault VPC ID, note the following:
@@ -681,7 +686,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks with a VPC, see <a
+     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
      * For more information on default VPC and EC2-Classic, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
@@ -706,9 +711,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        If the VPC ID corresponds to a default VPC and you have specified either the
      *        <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks
-     *        infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks sets these
-     *        parameters to the first valid Availability Zone for the specified region and the corresponding default VPC
-     *        subnet ID, respectively.
+     *        Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets
+     *        these parameters to the first valid Availability Zone for the specified region and the corresponding
+     *        default VPC subnet ID, respectively.
      *        </p>
      *        <p>
      *        If you specify a nondefault VPC ID, note the following:
@@ -726,7 +731,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on how to use AWS OpsWorks with a VPC, see <a
+     *        For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
      *        VPC</a>. For more information on default VPC and EC2-Classic, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
@@ -805,16 +810,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS resources
-     * on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more
-     * information about IAM ARNs, see <a
+     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
+     * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
+     * For more information about IAM ARNs, see <a
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param serviceRoleArn
-     *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS
-     *        resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing
-     *        IAM role. For more information about IAM ARNs, see <a
+     *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
+     *        AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
+     *        existing IAM role. For more information about IAM ARNs, see <a
      *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
@@ -824,15 +829,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS resources
-     * on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more
-     * information about IAM ARNs, see <a
+     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
+     * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
+     * For more information about IAM ARNs, see <a
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
-     * @return The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS
-     *         resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing
-     *         IAM role. For more information about IAM ARNs, see <a
+     * @return The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
+     *         AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
+     *         existing IAM role. For more information about IAM ARNs, see <a
      *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
@@ -842,16 +847,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS resources
-     * on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more
-     * information about IAM ARNs, see <a
+     * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
+     * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
+     * For more information about IAM ARNs, see <a
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param serviceRoleArn
-     *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks to work with AWS
-     *        resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing
-     *        IAM role. For more information about IAM ARNs, see <a
+     *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
+     *        AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
+     *        existing IAM role. For more information about IAM ARNs, see <a
      *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -921,8 +926,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -933,7 +938,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -959,7 +964,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -969,8 +974,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -981,7 +987,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CentOS 7</code>
+     *        <code>CentOS Linux 7</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1009,7 +1015,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        The default option is the current Amazon Linux version. For more information on the supported operating
      *        systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     *        OpsWorks Operating Systems</a>.
+     *        OpsWorks Stacks Operating Systems</a>.
      */
 
     public void setDefaultOs(String defaultOs) {
@@ -1024,8 +1030,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -1036,7 +1042,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -1062,7 +1068,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -1071,8 +1077,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *         <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *         <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or
+     *         <code>Amazon Linux 2015.03</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1083,7 +1090,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         <code>CentOS 7</code>
+     *         <code>CentOS Linux 7</code>
      *         </p>
      *         </li>
      *         <li>
@@ -1111,7 +1118,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <p>
      *         The default option is the current Amazon Linux version. For more information on the supported operating
      *         systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     *         OpsWorks Operating Systems</a>.
+     *         OpsWorks Stacks Operating Systems</a>.
      */
 
     public String getDefaultOs() {
@@ -1126,8 +1133,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -1138,7 +1145,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -1164,7 +1171,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -1174,8 +1181,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -1186,7 +1194,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CentOS 7</code>
+     *        <code>CentOS Linux 7</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1214,7 +1222,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        The default option is the current Amazon Linux version. For more information on the supported operating
      *        systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     *        OpsWorks Operating Systems</a>.
+     *        OpsWorks Stacks Operating Systems</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2016,27 +2024,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
      * </p>
      * <p>
-     * AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated with
-     * layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security
-     * groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     * AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated
+     * with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom
+     * security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer (default
-     * setting). You can associate additional security groups with a layer after you create it, but you cannot delete
-     * the built-in security group.
+     * True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer
+     * (default setting). You can associate additional security groups with a layer after you create it, but you cannot
+     * delete the built-in security group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate EC2
-     * security groups and associate a security group with each layer that you create. However, you can still manually
-     * associate a built-in security group with a layer on creation; custom security groups are required only for those
-     * layers that need custom settings.
+     * False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate
+     * EC2 security groups and associate a security group with each layer that you create. However, you can still
+     * manually associate a built-in security group with a layer on creation; custom security groups are required only
+     * for those layers that need custom settings.
      * </p>
      * </li>
      * </ul>
@@ -2046,26 +2054,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param useOpsworksSecurityGroups
-     *        Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.</p>
+     *        Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
      *        <p>
-     *        AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated
-     *        with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own
-     *        custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     *        AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are
+     *        associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide
+     *        your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer
-     *        (default setting). You can associate additional security groups with a layer after you create it, but you
-     *        cannot delete the built-in security group.
+     *        True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each
+     *        layer (default setting). You can associate additional security groups with a layer after you create it,
+     *        but you cannot delete the built-in security group.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate
-     *        EC2 security groups and associate a security group with each layer that you create. However, you can still
-     *        manually associate a built-in security group with a layer on creation; custom security groups are required
-     *        only for those layers that need custom settings.
+     *        False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create
+     *        appropriate EC2 security groups and associate a security group with each layer that you create. However,
+     *        you can still manually associate a built-in security group with a layer on creation; custom security
+     *        groups are required only for those layers that need custom settings.
      *        </p>
      *        </li>
      *        </ul>
@@ -2081,27 +2089,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
      * </p>
      * <p>
-     * AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated with
-     * layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security
-     * groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     * AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated
+     * with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom
+     * security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer (default
-     * setting). You can associate additional security groups with a layer after you create it, but you cannot delete
-     * the built-in security group.
+     * True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer
+     * (default setting). You can associate additional security groups with a layer after you create it, but you cannot
+     * delete the built-in security group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate EC2
-     * security groups and associate a security group with each layer that you create. However, you can still manually
-     * associate a built-in security group with a layer on creation; custom security groups are required only for those
-     * layers that need custom settings.
+     * False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate
+     * EC2 security groups and associate a security group with each layer that you create. However, you can still
+     * manually associate a built-in security group with a layer on creation; custom security groups are required only
+     * for those layers that need custom settings.
      * </p>
      * </li>
      * </ul>
@@ -2110,26 +2118,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
-     * @return Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.</p>
+     * @return Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
      *         <p>
-     *         AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are
+     *         AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are
      *         associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide
      *         your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer
-     *         (default setting). You can associate additional security groups with a layer after you create it, but you
-     *         cannot delete the built-in security group.
+     *         True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each
+     *         layer (default setting). You can associate additional security groups with a layer after you create it,
+     *         but you cannot delete the built-in security group.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate
-     *         EC2 security groups and associate a security group with each layer that you create. However, you can
-     *         still manually associate a built-in security group with a layer on creation; custom security groups are
-     *         required only for those layers that need custom settings.
+     *         False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create
+     *         appropriate EC2 security groups and associate a security group with each layer that you create. However,
+     *         you can still manually associate a built-in security group with a layer on creation; custom security
+     *         groups are required only for those layers that need custom settings.
      *         </p>
      *         </li>
      *         </ul>
@@ -2145,27 +2153,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
      * </p>
      * <p>
-     * AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated with
-     * layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security
-     * groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     * AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated
+     * with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom
+     * security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer (default
-     * setting). You can associate additional security groups with a layer after you create it, but you cannot delete
-     * the built-in security group.
+     * True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer
+     * (default setting). You can associate additional security groups with a layer after you create it, but you cannot
+     * delete the built-in security group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate EC2
-     * security groups and associate a security group with each layer that you create. However, you can still manually
-     * associate a built-in security group with a layer on creation; custom security groups are required only for those
-     * layers that need custom settings.
+     * False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate
+     * EC2 security groups and associate a security group with each layer that you create. However, you can still
+     * manually associate a built-in security group with a layer on creation; custom security groups are required only
+     * for those layers that need custom settings.
      * </p>
      * </li>
      * </ul>
@@ -2175,26 +2183,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param useOpsworksSecurityGroups
-     *        Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.</p>
+     *        Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
      *        <p>
-     *        AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated
-     *        with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own
-     *        custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     *        AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are
+     *        associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide
+     *        your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer
-     *        (default setting). You can associate additional security groups with a layer after you create it, but you
-     *        cannot delete the built-in security group.
+     *        True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each
+     *        layer (default setting). You can associate additional security groups with a layer after you create it,
+     *        but you cannot delete the built-in security group.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate
-     *        EC2 security groups and associate a security group with each layer that you create. However, you can still
-     *        manually associate a built-in security group with a layer on creation; custom security groups are required
-     *        only for those layers that need custom settings.
+     *        False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create
+     *        appropriate EC2 security groups and associate a security group with each layer that you create. However,
+     *        you can still manually associate a built-in security group with a layer on creation; custom security
+     *        groups are required only for those layers that need custom settings.
      *        </p>
      *        </li>
      *        </ul>
@@ -2212,27 +2220,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
      * </p>
      * <p>
-     * AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are associated with
-     * layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security
-     * groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
+     * AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated
+     * with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom
+     * security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer (default
-     * setting). You can associate additional security groups with a layer after you create it, but you cannot delete
-     * the built-in security group.
+     * True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer
+     * (default setting). You can associate additional security groups with a layer after you create it, but you cannot
+     * delete the built-in security group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate EC2
-     * security groups and associate a security group with each layer that you create. However, you can still manually
-     * associate a built-in security group with a layer on creation; custom security groups are required only for those
-     * layers that need custom settings.
+     * False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate
+     * EC2 security groups and associate a security group with each layer that you create. However, you can still
+     * manually associate a built-in security group with a layer on creation; custom security groups are required only
+     * for those layers that need custom settings.
      * </p>
      * </li>
      * </ul>
@@ -2241,26 +2249,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
-     * @return Whether to associate the AWS OpsWorks built-in security groups with the stack's layers.</p>
+     * @return Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
      *         <p>
-     *         AWS OpsWorks provides a standard set of built-in security groups, one for each layer, which are
+     *         AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are
      *         associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide
      *         your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         True - AWS OpsWorks automatically associates the appropriate built-in security group with each layer
-     *         (default setting). You can associate additional security groups with a layer after you create it, but you
-     *         cannot delete the built-in security group.
+     *         True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each
+     *         layer (default setting). You can associate additional security groups with a layer after you create it,
+     *         but you cannot delete the built-in security group.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         False - AWS OpsWorks does not associate built-in security groups with layers. You must create appropriate
-     *         EC2 security groups and associate a security group with each layer that you create. However, you can
-     *         still manually associate a built-in security group with a layer on creation; custom security groups are
-     *         required only for those layers that need custom settings.
+     *         False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create
+     *         appropriate EC2 security groups and associate a security group with each layer that you create. However,
+     *         you can still manually associate a built-in security group with a layer on creation; custom security
+     *         groups are required only for those layers that need custom settings.
      *         </p>
      *         </li>
      *         </ul>
@@ -2495,27 +2503,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent versions
-     * on the stack's instances as soon as they are available.
+     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent
+     * versions on the stack's instances as soon as they are available.
      * </p>
      * </li>
      * <li>
      * <p>
      * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit
-     * the stack configuration and specify a new version. AWS OpsWorks then automatically installs that version on the
-     * stack's instances.
+     * the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version
+     * on the stack's instances.
      * </p>
      * </li>
      * </ul>
      * <p>
      * The default setting is the most recent release of the agent. To specify an agent version, you must use the
      * complete version number, not the abbreviated number shown on the console. For a list of available agent version
-     * numbers, call <a>DescribeAgentVersions</a>.
+     * numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * <note>
      * <p>
@@ -2525,26 +2533,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </note>
      * 
      * @param agentVersion
-     *        The default AWS OpsWorks agent version. You have the following options:</p>
+     *        The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent
-     *        versions on the stack's instances as soon as they are available.
+     *        Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new
+     *        agent versions on the stack's instances as soon as they are available.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must
-     *        edit the stack configuration and specify a new version. AWS OpsWorks then automatically installs that
-     *        version on the stack's instances.
+     *        edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs
+     *        that version on the stack's instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
      *        The default setting is the most recent release of the agent. To specify an agent version, you must use the
      *        complete version number, not the abbreviated number shown on the console. For a list of available agent
-     *        version numbers, call <a>DescribeAgentVersions</a>.
+     *        version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      *        </p>
      *        <note>
      *        <p>
@@ -2559,27 +2567,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent versions
-     * on the stack's instances as soon as they are available.
+     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent
+     * versions on the stack's instances as soon as they are available.
      * </p>
      * </li>
      * <li>
      * <p>
      * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit
-     * the stack configuration and specify a new version. AWS OpsWorks then automatically installs that version on the
-     * stack's instances.
+     * the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version
+     * on the stack's instances.
      * </p>
      * </li>
      * </ul>
      * <p>
      * The default setting is the most recent release of the agent. To specify an agent version, you must use the
      * complete version number, not the abbreviated number shown on the console. For a list of available agent version
-     * numbers, call <a>DescribeAgentVersions</a>.
+     * numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * <note>
      * <p>
@@ -2588,26 +2596,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * 
-     * @return The default AWS OpsWorks agent version. You have the following options:</p>
+     * @return The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent
-     *         versions on the stack's instances as soon as they are available.
+     *         Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new
+     *         agent versions on the stack's instances as soon as they are available.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must
-     *         edit the stack configuration and specify a new version. AWS OpsWorks then automatically installs that
-     *         version on the stack's instances.
+     *         edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs
+     *         that version on the stack's instances.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
      *         The default setting is the most recent release of the agent. To specify an agent version, you must use
      *         the complete version number, not the abbreviated number shown on the console. For a list of available
-     *         agent version numbers, call <a>DescribeAgentVersions</a>.
+     *         agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      *         </p>
      *         <note>
      *         <p>
@@ -2622,27 +2630,27 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent versions
-     * on the stack's instances as soon as they are available.
+     * Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent
+     * versions on the stack's instances as soon as they are available.
      * </p>
      * </li>
      * <li>
      * <p>
      * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit
-     * the stack configuration and specify a new version. AWS OpsWorks then automatically installs that version on the
-     * stack's instances.
+     * the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version
+     * on the stack's instances.
      * </p>
      * </li>
      * </ul>
      * <p>
      * The default setting is the most recent release of the agent. To specify an agent version, you must use the
      * complete version number, not the abbreviated number shown on the console. For a list of available agent version
-     * numbers, call <a>DescribeAgentVersions</a>.
+     * numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * <note>
      * <p>
@@ -2652,26 +2660,26 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </note>
      * 
      * @param agentVersion
-     *        The default AWS OpsWorks agent version. You have the following options:</p>
+     *        The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks automatically installs new agent
-     *        versions on the stack's instances as soon as they are available.
+     *        Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new
+     *        agent versions on the stack's instances as soon as they are available.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must
-     *        edit the stack configuration and specify a new version. AWS OpsWorks then automatically installs that
-     *        version on the stack's instances.
+     *        edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs
+     *        that version on the stack's instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
      *        The default setting is the most recent release of the agent. To specify an agent version, you must use the
      *        complete version number, not the abbreviated number shown on the console. For a list of available agent
-     *        version numbers, call <a>DescribeAgentVersions</a>.
+     *        version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      *        </p>
      *        <note>
      *        <p>
@@ -2698,43 +2706,43 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getServiceRoleArn() != null)
-            sb.append("ServiceRoleArn: " + getServiceRoleArn() + ",");
+            sb.append("ServiceRoleArn: ").append(getServiceRoleArn()).append(",");
         if (getDefaultInstanceProfileArn() != null)
-            sb.append("DefaultInstanceProfileArn: " + getDefaultInstanceProfileArn() + ",");
+            sb.append("DefaultInstanceProfileArn: ").append(getDefaultInstanceProfileArn()).append(",");
         if (getDefaultOs() != null)
-            sb.append("DefaultOs: " + getDefaultOs() + ",");
+            sb.append("DefaultOs: ").append(getDefaultOs()).append(",");
         if (getHostnameTheme() != null)
-            sb.append("HostnameTheme: " + getHostnameTheme() + ",");
+            sb.append("HostnameTheme: ").append(getHostnameTheme()).append(",");
         if (getDefaultAvailabilityZone() != null)
-            sb.append("DefaultAvailabilityZone: " + getDefaultAvailabilityZone() + ",");
+            sb.append("DefaultAvailabilityZone: ").append(getDefaultAvailabilityZone()).append(",");
         if (getDefaultSubnetId() != null)
-            sb.append("DefaultSubnetId: " + getDefaultSubnetId() + ",");
+            sb.append("DefaultSubnetId: ").append(getDefaultSubnetId()).append(",");
         if (getCustomJson() != null)
-            sb.append("CustomJson: " + getCustomJson() + ",");
+            sb.append("CustomJson: ").append(getCustomJson()).append(",");
         if (getConfigurationManager() != null)
-            sb.append("ConfigurationManager: " + getConfigurationManager() + ",");
+            sb.append("ConfigurationManager: ").append(getConfigurationManager()).append(",");
         if (getChefConfiguration() != null)
-            sb.append("ChefConfiguration: " + getChefConfiguration() + ",");
+            sb.append("ChefConfiguration: ").append(getChefConfiguration()).append(",");
         if (getUseCustomCookbooks() != null)
-            sb.append("UseCustomCookbooks: " + getUseCustomCookbooks() + ",");
+            sb.append("UseCustomCookbooks: ").append(getUseCustomCookbooks()).append(",");
         if (getUseOpsworksSecurityGroups() != null)
-            sb.append("UseOpsworksSecurityGroups: " + getUseOpsworksSecurityGroups() + ",");
+            sb.append("UseOpsworksSecurityGroups: ").append(getUseOpsworksSecurityGroups()).append(",");
         if (getCustomCookbooksSource() != null)
-            sb.append("CustomCookbooksSource: " + getCustomCookbooksSource() + ",");
+            sb.append("CustomCookbooksSource: ").append(getCustomCookbooksSource()).append(",");
         if (getDefaultSshKeyName() != null)
-            sb.append("DefaultSshKeyName: " + getDefaultSshKeyName() + ",");
+            sb.append("DefaultSshKeyName: ").append(getDefaultSshKeyName()).append(",");
         if (getDefaultRootDeviceType() != null)
-            sb.append("DefaultRootDeviceType: " + getDefaultRootDeviceType() + ",");
+            sb.append("DefaultRootDeviceType: ").append(getDefaultRootDeviceType()).append(",");
         if (getAgentVersion() != null)
-            sb.append("AgentVersion: " + getAgentVersion());
+            sb.append("AgentVersion: ").append(getAgentVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -2859,4 +2867,5 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateStackRequest clone() {
         return (CreateStackRequest) super.clone();
     }
+
 }

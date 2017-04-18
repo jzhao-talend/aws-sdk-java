@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,32 +13,77 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A log stream is sequence of log events from a single emitter of logs.
+ * Represents a log stream, which is a sequence of log events from a single emitter of logs.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/LogStream" target="_top">AWS API
+ *      Documentation</a>
  */
-public class LogStream implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class LogStream implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The name of the log stream.
+     * </p>
+     */
     private String logStreamName;
-
+    /**
+     * <p>
+     * The creation time of the stream.
+     * </p>
+     */
     private Long creationTime;
-
+    /**
+     * <p>
+     * The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     */
     private Long firstEventTimestamp;
-
+    /**
+     * <p>
+     * The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     */
     private Long lastEventTimestamp;
-
+    /**
+     * <p>
+     * The ingestion time.
+     * </p>
+     */
     private Long lastIngestionTime;
-
+    /**
+     * <p>
+     * The sequence token.
+     * </p>
+     */
     private String uploadSequenceToken;
-
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the log stream.
+     * </p>
+     */
     private String arn;
-
+    /**
+     * <p>
+     * The number of bytes stored.
+     * </p>
+     */
     private Long storedBytes;
 
     /**
+     * <p>
+     * The name of the log stream.
+     * </p>
+     * 
      * @param logStreamName
+     *        The name of the log stream.
      */
 
     public void setLogStreamName(String logStreamName) {
@@ -46,7 +91,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The name of the log stream.
+     * </p>
+     * 
+     * @return The name of the log stream.
      */
 
     public String getLogStreamName() {
@@ -54,7 +103,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the log stream.
+     * </p>
+     * 
      * @param logStreamName
+     *        The name of the log stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -64,7 +118,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The creation time of the stream.
+     * </p>
+     * 
      * @param creationTime
+     *        The creation time of the stream.
      */
 
     public void setCreationTime(Long creationTime) {
@@ -72,7 +131,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The creation time of the stream.
+     * </p>
+     * 
+     * @return The creation time of the stream.
      */
 
     public Long getCreationTime() {
@@ -80,7 +143,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The creation time of the stream.
+     * </p>
+     * 
      * @param creationTime
+     *        The creation time of the stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -90,7 +158,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param firstEventTimestamp
+     *        The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public void setFirstEventTimestamp(Long firstEventTimestamp) {
@@ -98,7 +171,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
+     * @return The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public Long getFirstEventTimestamp() {
@@ -106,7 +183,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param firstEventTimestamp
+     *        The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,7 +198,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param lastEventTimestamp
+     *        The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public void setLastEventTimestamp(Long lastEventTimestamp) {
@@ -124,7 +211,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
+     * @return The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      */
 
     public Long getLastEventTimestamp() {
@@ -132,7 +223,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+     * </p>
+     * 
      * @param lastEventTimestamp
+     *        The time of the last event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -142,7 +238,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The ingestion time.
+     * </p>
+     * 
      * @param lastIngestionTime
+     *        The ingestion time.
      */
 
     public void setLastIngestionTime(Long lastIngestionTime) {
@@ -150,7 +251,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The ingestion time.
+     * </p>
+     * 
+     * @return The ingestion time.
      */
 
     public Long getLastIngestionTime() {
@@ -158,7 +263,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The ingestion time.
+     * </p>
+     * 
      * @param lastIngestionTime
+     *        The ingestion time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +278,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The sequence token.
+     * </p>
+     * 
      * @param uploadSequenceToken
+     *        The sequence token.
      */
 
     public void setUploadSequenceToken(String uploadSequenceToken) {
@@ -176,7 +291,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The sequence token.
+     * </p>
+     * 
+     * @return The sequence token.
      */
 
     public String getUploadSequenceToken() {
@@ -184,7 +303,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The sequence token.
+     * </p>
+     * 
      * @param uploadSequenceToken
+     *        The sequence token.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -194,7 +318,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the log stream.
+     * </p>
+     * 
      * @param arn
+     *        The Amazon Resource Name (ARN) of the log stream.
      */
 
     public void setArn(String arn) {
@@ -202,7 +331,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The Amazon Resource Name (ARN) of the log stream.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the log stream.
      */
 
     public String getArn() {
@@ -210,7 +343,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the log stream.
+     * </p>
+     * 
      * @param arn
+     *        The Amazon Resource Name (ARN) of the log stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -220,7 +358,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The number of bytes stored.
+     * </p>
+     * 
      * @param storedBytes
+     *        The number of bytes stored.
      */
 
     public void setStoredBytes(Long storedBytes) {
@@ -228,7 +371,11 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The number of bytes stored.
+     * </p>
+     * 
+     * @return The number of bytes stored.
      */
 
     public Long getStoredBytes() {
@@ -236,7 +383,12 @@ public class LogStream implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The number of bytes stored.
+     * </p>
+     * 
      * @param storedBytes
+     *        The number of bytes stored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -257,21 +409,21 @@ public class LogStream implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogStreamName() != null)
-            sb.append("LogStreamName: " + getLogStreamName() + ",");
+            sb.append("LogStreamName: ").append(getLogStreamName()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getFirstEventTimestamp() != null)
-            sb.append("FirstEventTimestamp: " + getFirstEventTimestamp() + ",");
+            sb.append("FirstEventTimestamp: ").append(getFirstEventTimestamp()).append(",");
         if (getLastEventTimestamp() != null)
-            sb.append("LastEventTimestamp: " + getLastEventTimestamp() + ",");
+            sb.append("LastEventTimestamp: ").append(getLastEventTimestamp()).append(",");
         if (getLastIngestionTime() != null)
-            sb.append("LastIngestionTime: " + getLastIngestionTime() + ",");
+            sb.append("LastIngestionTime: ").append(getLastIngestionTime()).append(",");
         if (getUploadSequenceToken() != null)
-            sb.append("UploadSequenceToken: " + getUploadSequenceToken() + ",");
+            sb.append("UploadSequenceToken: ").append(getUploadSequenceToken()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getStoredBytes() != null)
-            sb.append("StoredBytes: " + getStoredBytes());
+            sb.append("StoredBytes: ").append(getStoredBytes());
         sb.append("}");
         return sb.toString();
     }
@@ -344,5 +496,11 @@ public class LogStream implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.LogStreamMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.opsworks;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -21,22 +23,26 @@ import com.amazonaws.services.opsworks.waiters.AWSOpsWorksWaiters;
 /**
  * Interface for accessing AWS OpsWorks.
  * <p>
- * <fullname>AWS OpsWorks</fullname>
- * <p>
- * Welcome to the <i>AWS OpsWorks API Reference</i>. This guide provides descriptions, syntax, and usage examples for
- * AWS OpsWorks actions and data types, including common parameters and error codes.
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.opsworks.AbstractAWSOpsWorks} instead.
  * </p>
  * <p>
- * AWS OpsWorks is an application management service that provides an integrated experience for overseeing the complete
- * application lifecycle. For information about this product, go to the <a href="http://aws.amazon.com/opsworks/">AWS
- * OpsWorks</a> details page.
+ * <fullname>AWS OpsWorks</fullname>
+ * <p>
+ * Welcome to the <i>AWS OpsWorks Stacks API Reference</i>. This guide provides descriptions, syntax, and usage examples
+ * for AWS OpsWorks Stacks actions and data types, including common parameters and error codes.
+ * </p>
+ * <p>
+ * AWS OpsWorks Stacks is an application management service that provides an integrated experience for overseeing the
+ * complete application lifecycle. For information about this product, go to the <a
+ * href="http://aws.amazon.com/opsworks/">AWS OpsWorks</a> details page.
  * </p>
  * <p>
  * <b>SDKs and CLI</b>
  * </p>
  * <p>
- * The most common way to use the AWS OpsWorks API is by using the AWS Command Line Interface (CLI) or by using one of
- * the AWS SDKs to implement applications in your preferred language. For more information, see:
+ * The most common way to use the AWS OpsWorks Stacks API is by using the AWS Command Line Interface (CLI) or by using
+ * one of the AWS SDKs to implement applications in your preferred language. For more information, see:
  * </p>
  * <ul>
  * <li>
@@ -82,13 +88,18 @@ import com.amazonaws.services.opsworks.waiters.AWSOpsWorksWaiters;
  * <b>Endpoints</b>
  * </p>
  * <p>
- * AWS OpsWorks supports the following endpoints, all HTTPS. You must connect to one of the following endpoints. Stacks
- * can only be accessed or managed within the endpoint in which they are created.
+ * AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You must connect to one of the following endpoints.
+ * Stacks can only be accessed or managed within the endpoint in which they are created.
  * </p>
  * <ul>
  * <li>
  * <p>
  * opsworks.us-east-1.amazonaws.com
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * opsworks.us-east-2.amazonaws.com
  * </p>
  * </li>
  * <li>
@@ -104,6 +115,11 @@ import com.amazonaws.services.opsworks.waiters.AWSOpsWorksWaiters;
  * <li>
  * <p>
  * opsworks.eu-west-1.amazonaws.com
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * opsworks.eu-west-2.amazonaws.com
  * </p>
  * </li>
  * <li>
@@ -158,6 +174,7 @@ import com.amazonaws.services.opsworks.waiters.AWSOpsWorksWaiters;
  * </p>
  * </note>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSOpsWorks {
 
     /**
@@ -189,7 +206,11 @@ public interface AWSOpsWorks {
      *        The endpoint (ex: "opsworks.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://opsworks.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -210,7 +231,9 @@ public interface AWSOpsWorks {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -230,7 +253,7 @@ public interface AWSOpsWorks {
      * </li>
      * <li>
      * <p>
-     * You cannot use this action with instances that were created with AWS OpsWorks.
+     * You cannot use this action with instances that were created with AWS OpsWorks Stacks.
      * </p>
      * </li>
      * </ul>
@@ -249,6 +272,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.AssignInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssignInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     AssignInstanceResult assignInstance(AssignInstanceRequest assignInstanceRequest);
 
@@ -273,6 +298,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.AssignVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssignVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     AssignVolumeResult assignVolume(AssignVolumeRequest assignVolumeRequest);
 
@@ -296,6 +323,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.AssociateElasticIp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssociateElasticIp" target="_top">AWS
+     *      API Documentation</a>
      */
     AssociateElasticIpResult associateElasticIp(AssociateElasticIpRequest associateElasticIpRequest);
 
@@ -326,6 +355,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.AttachElasticLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AttachElasticLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     AttachElasticLoadBalancerResult attachElasticLoadBalancer(AttachElasticLoadBalancerRequest attachElasticLoadBalancerRequest);
 
@@ -349,6 +380,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.CloneStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CloneStack" target="_top">AWS API
+     *      Documentation</a>
      */
     CloneStackResult cloneStack(CloneStackRequest cloneStackRequest);
 
@@ -371,6 +404,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.CreateApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateApp" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateAppResult createApp(CreateAppRequest createAppRequest);
 
@@ -394,6 +429,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.CreateDeployment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateDeployment" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateDeploymentResult createDeployment(CreateDeploymentRequest createDeploymentRequest);
 
@@ -417,6 +454,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.CreateInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateInstanceResult createInstance(CreateInstanceRequest createInstanceRequest);
 
@@ -448,6 +487,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.CreateLayer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateLayer" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateLayerResult createLayer(CreateLayerRequest createLayerRequest);
 
@@ -468,6 +509,8 @@ public interface AWSOpsWorks {
      * @throws ValidationException
      *         Indicates that a request was not valid.
      * @sample AWSOpsWorks.CreateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateStackResult createStack(CreateStackRequest createStackRequest);
 
@@ -487,6 +530,8 @@ public interface AWSOpsWorks {
      * @throws ValidationException
      *         Indicates that a request was not valid.
      * @sample AWSOpsWorks.CreateUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateUserProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateUserProfileResult createUserProfile(CreateUserProfileRequest createUserProfileRequest);
 
@@ -508,6 +553,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeleteApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteApp" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteAppResult deleteApp(DeleteAppRequest deleteAppRequest);
 
@@ -534,6 +581,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeleteInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteInstanceResult deleteInstance(DeleteInstanceRequest deleteInstanceRequest);
 
@@ -558,6 +607,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeleteLayer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteLayer" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteLayerResult deleteLayer(DeleteLayerRequest deleteLayerRequest);
 
@@ -581,6 +632,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeleteStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteStack" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteStackResult deleteStack(DeleteStackRequest deleteStackRequest);
 
@@ -602,6 +655,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeleteUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteUserProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteUserProfileResult deleteUserProfile(DeleteUserProfileRequest deleteUserProfileRequest);
 
@@ -625,6 +680,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeregisterEcsCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterEcsCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     DeregisterEcsClusterResult deregisterEcsCluster(DeregisterEcsClusterRequest deregisterEcsClusterRequest);
 
@@ -648,13 +705,16 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeregisterElasticIp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterElasticIp" target="_top">AWS
+     *      API Documentation</a>
      */
     DeregisterElasticIpResult deregisterElasticIp(DeregisterElasticIpRequest deregisterElasticIpRequest);
 
     /**
      * <p>
      * Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and
-     * returns it to your control. This action can not be used with instances that were created with AWS OpsWorks.
+     * returns it to your control. This action can not be used with instances that were created with AWS OpsWorks
+     * Stacks.
      * </p>
      * <p>
      * <b>Required Permissions</b>: To use this action, an IAM user must have a Manage permissions level for the stack
@@ -670,6 +730,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeregisterInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     DeregisterInstanceResult deregisterInstance(DeregisterInstanceRequest deregisterInstanceRequest);
 
@@ -691,6 +753,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeregisterRdsDbInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterRdsDbInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     DeregisterRdsDbInstanceResult deregisterRdsDbInstance(DeregisterRdsDbInstanceRequest deregisterRdsDbInstanceRequest);
 
@@ -713,13 +777,15 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DeregisterVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     DeregisterVolumeResult deregisterVolume(DeregisterVolumeRequest deregisterVolumeRequest);
 
     /**
      * <p>
-     * Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager.
-     * <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or
+     * Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration
+     * manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or
      * configuration manager.
      * </p>
      * 
@@ -730,6 +796,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeAgentVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeAgentVersions" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeAgentVersionsResult describeAgentVersions(DescribeAgentVersionsRequest describeAgentVersionsRequest);
 
@@ -739,7 +807,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -757,6 +825,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeApps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeApps" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeAppsResult describeApps(DescribeAppsRequest describeAppsRequest);
 
@@ -766,7 +836,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -784,6 +854,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeCommands
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeCommands" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeCommandsResult describeCommands(DescribeCommandsRequest describeCommandsRequest);
 
@@ -793,7 +865,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -811,6 +883,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeDeployments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeDeployments" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeDeploymentsResult describeDeployments(DescribeDeploymentsRequest describeDeploymentsRequest);
 
@@ -818,7 +892,7 @@ public interface AWSOpsWorks {
      * <p>
      * Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the
      * <code>MaxResults</code> and <code>NextToken</code> parameters to paginate the response. However, AWS OpsWorks
-     * currently supports only one cluster per layer, so the result set has a maximum of one element.
+     * Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
      * </p>
      * <p>
      * <b>Required Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or Manage permissions
@@ -826,6 +900,9 @@ public interface AWSOpsWorks {
      * permissions, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
      * Permissions</a>.
+     * </p>
+     * <p>
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * 
      * @param describeEcsClustersRequest
@@ -835,6 +912,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeEcsClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeEcsClusters" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeEcsClustersResult describeEcsClusters(DescribeEcsClustersRequest describeEcsClustersRequest);
 
@@ -845,7 +924,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -863,6 +942,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeElasticIps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeElasticIps" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeElasticIpsResult describeElasticIps(DescribeElasticIpsRequest describeElasticIpsRequest);
 
@@ -872,7 +953,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -890,6 +971,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeElasticLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeElasticLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeElasticLoadBalancersResult describeElasticLoadBalancers(DescribeElasticLoadBalancersRequest describeElasticLoadBalancersRequest);
 
@@ -899,7 +982,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -917,6 +1000,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeInstancesResult describeInstances(DescribeInstancesRequest describeInstancesRequest);
 
@@ -926,7 +1011,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -944,6 +1029,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeLayers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeLayers" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeLayersResult describeLayers(DescribeLayersRequest describeLayersRequest);
 
@@ -971,6 +1058,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeLoadBasedAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeLoadBasedAutoScaling"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeLoadBasedAutoScalingResult describeLoadBasedAutoScaling(DescribeLoadBasedAutoScalingRequest describeLoadBasedAutoScalingRequest);
 
@@ -988,6 +1077,8 @@ public interface AWSOpsWorks {
      * @param describeMyUserProfileRequest
      * @return Result of the DescribeMyUserProfile operation returned by the service.
      * @sample AWSOpsWorks.DescribeMyUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeMyUserProfile" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeMyUserProfileResult describeMyUserProfile(DescribeMyUserProfileRequest describeMyUserProfileRequest);
 
@@ -1009,6 +1100,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribePermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribePermissions" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribePermissionsResult describePermissions(DescribePermissionsRequest describePermissionsRequest);
 
@@ -1018,7 +1111,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -1036,6 +1129,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeRaidArrays
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeRaidArrays" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeRaidArraysResult describeRaidArrays(DescribeRaidArraysRequest describeRaidArraysRequest);
 
@@ -1050,6 +1145,9 @@ public interface AWSOpsWorks {
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
      * Permissions</a>.
      * </p>
+     * <p>
+     * This call accepts only one resource-identifying parameter.
+     * </p>
      * 
      * @param describeRdsDbInstancesRequest
      * @return Result of the DescribeRdsDbInstances operation returned by the service.
@@ -1058,12 +1156,14 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeRdsDbInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeRdsDbInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeRdsDbInstancesResult describeRdsDbInstances(DescribeRdsDbInstancesRequest describeRdsDbInstancesRequest);
 
     /**
      * <p>
-     * Describes AWS OpsWorks service errors.
+     * Describes AWS OpsWorks Stacks service errors.
      * </p>
      * <p>
      * <b>Required Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or Manage permissions
@@ -1071,6 +1171,9 @@ public interface AWSOpsWorks {
      * permissions, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
      * Permissions</a>.
+     * </p>
+     * <p>
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * 
      * @param describeServiceErrorsRequest
@@ -1080,6 +1183,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeServiceErrors
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeServiceErrors" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeServiceErrorsResult describeServiceErrors(DescribeServiceErrorsRequest describeServiceErrorsRequest);
 
@@ -1102,6 +1207,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeStackProvisioningParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStackProvisioningParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStackProvisioningParametersResult describeStackProvisioningParameters(
             DescribeStackProvisioningParametersRequest describeStackProvisioningParametersRequest);
@@ -1126,6 +1233,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeStackSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStackSummary" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeStackSummaryResult describeStackSummary(DescribeStackSummaryRequest describeStackSummaryRequest);
 
@@ -1148,6 +1257,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStacks" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeStacksResult describeStacks(DescribeStacksRequest describeStacksRequest);
 
@@ -1175,6 +1286,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeTimeBasedAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeTimeBasedAutoScaling"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTimeBasedAutoScalingResult describeTimeBasedAutoScaling(DescribeTimeBasedAutoScalingRequest describeTimeBasedAutoScalingRequest);
 
@@ -1196,6 +1309,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeUserProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeUserProfiles" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeUserProfilesResult describeUserProfiles(DescribeUserProfilesRequest describeUserProfilesRequest);
 
@@ -1205,7 +1320,7 @@ public interface AWSOpsWorks {
      * </p>
      * <note>
      * <p>
-     * You must specify at least one of the parameters.
+     * This call accepts only one resource-identifying parameter.
      * </p>
      * </note>
      * <p>
@@ -1223,6 +1338,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DescribeVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeVolumesResult describeVolumes(DescribeVolumesRequest describeVolumesRequest);
 
@@ -1242,6 +1359,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DetachElasticLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DetachElasticLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     DetachElasticLoadBalancerResult detachElasticLoadBalancer(DetachElasticLoadBalancerRequest detachElasticLoadBalancerRequest);
 
@@ -1265,6 +1384,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.DisassociateElasticIp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DisassociateElasticIp" target="_top">AWS
+     *      API Documentation</a>
      */
     DisassociateElasticIpResult disassociateElasticIp(DisassociateElasticIpRequest disassociateElasticIpRequest);
 
@@ -1286,6 +1407,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.GetHostnameSuggestion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/GetHostnameSuggestion" target="_top">AWS
+     *      API Documentation</a>
      */
     GetHostnameSuggestionResult getHostnameSuggestion(GetHostnameSuggestionRequest getHostnameSuggestionRequest);
 
@@ -1306,6 +1429,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.GrantAccess
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/GrantAccess" target="_top">AWS API
+     *      Documentation</a>
      */
     GrantAccessResult grantAccess(GrantAccessRequest grantAccessRequest);
 
@@ -1329,6 +1454,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RebootInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RebootInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     RebootInstanceResult rebootInstance(RebootInstanceRequest rebootInstanceRequest);
 
@@ -1353,6 +1480,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RegisterEcsCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterEcsCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     RegisterEcsClusterResult registerEcsCluster(RegisterEcsClusterRequest registerEcsClusterRequest);
 
@@ -1377,23 +1506,33 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RegisterElasticIp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterElasticIp" target="_top">AWS API
+     *      Documentation</a>
      */
     RegisterElasticIpResult registerElasticIp(RegisterElasticIpRequest registerElasticIpRequest);
 
     /**
      * <p>
-     * Registers instances with a specified stack that were created outside of AWS OpsWorks.
+     * Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.
      * </p>
      * <note>
      * <p>
-     * We do not recommend using this action to register instances. The complete registration operation has two primary
-     * steps, installing the AWS OpsWorks agent on the instance and registering the instance with the stack.
+     * We do not recommend using this action to register instances. The complete registration operation includes two
+     * tasks: installing the AWS OpsWorks Stacks agent on the instance, and registering the instance with the stack.
      * <code>RegisterInstance</code> handles only the second step. You should instead use the AWS CLI
      * <code>register</code> command, which performs the entire registration operation. For more information, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html"> Registering an
-     * Instance with an AWS OpsWorks Stack</a>.
+     * Instance with an AWS OpsWorks Stacks Stack</a>.
      * </p>
      * </note>
+     * <p>
+     * Registered instances have the same requirements as instances that are created by using the <a>CreateInstance</a>
+     * API. For example, registered instances must be running a supported Linux-based operating system, and they must
+     * have a supported instance type. For more information about requirements for instances that you want to register,
+     * see <a href=
+     * "http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html">
+     * Preparing the Instance</a>.
+     * </p>
      * <p>
      * <b>Required Permissions</b>: To use this action, an IAM user must have a Manage permissions level for the stack
      * or an attached policy that explicitly grants permissions. For more information on user permissions, see <a
@@ -1408,6 +1547,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RegisterInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     RegisterInstanceResult registerInstance(RegisterInstanceRequest registerInstanceRequest);
 
@@ -1429,6 +1570,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RegisterRdsDbInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterRdsDbInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     RegisterRdsDbInstanceResult registerRdsDbInstance(RegisterRdsDbInstanceRequest registerRdsDbInstanceRequest);
 
@@ -1453,6 +1596,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.RegisterVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     RegisterVolumeResult registerVolume(RegisterVolumeRequest registerVolumeRequest);
 
@@ -1483,6 +1628,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.SetLoadBasedAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetLoadBasedAutoScaling"
+     *      target="_top">AWS API Documentation</a>
      */
     SetLoadBasedAutoScalingResult setLoadBasedAutoScaling(SetLoadBasedAutoScalingRequest setLoadBasedAutoScalingRequest);
 
@@ -1505,6 +1652,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.SetPermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetPermission" target="_top">AWS API
+     *      Documentation</a>
      */
     SetPermissionResult setPermission(SetPermissionRequest setPermissionRequest);
 
@@ -1528,6 +1677,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.SetTimeBasedAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetTimeBasedAutoScaling"
+     *      target="_top">AWS API Documentation</a>
      */
     SetTimeBasedAutoScalingResult setTimeBasedAutoScaling(SetTimeBasedAutoScalingRequest setTimeBasedAutoScalingRequest);
 
@@ -1551,6 +1702,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.StartInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StartInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     StartInstanceResult startInstance(StartInstanceRequest startInstanceRequest);
 
@@ -1572,6 +1725,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.StartStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StartStack" target="_top">AWS API
+     *      Documentation</a>
      */
     StartStackResult startStack(StartStackRequest startStackRequest);
 
@@ -1596,6 +1751,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.StopInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StopInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     StopInstanceResult stopInstance(StopInstanceRequest stopInstanceRequest);
 
@@ -1617,6 +1774,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.StopStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StopStack" target="_top">AWS API
+     *      Documentation</a>
      */
     StopStackResult stopStack(StopStackRequest stopStackRequest);
 
@@ -1624,7 +1783,7 @@ public interface AWSOpsWorks {
      * <p>
      * Unassigns a registered instance from all of it's layers. The instance remains in the stack as an unassigned
      * instance and can be assigned to another layer, as needed. You cannot use this action with instances that were
-     * created with AWS OpsWorks.
+     * created with AWS OpsWorks Stacks.
      * </p>
      * <p>
      * <b>Required Permissions</b>: To use this action, an IAM user must have a Manage permissions level for the stack
@@ -1640,6 +1799,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UnassignInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UnassignInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     UnassignInstanceResult unassignInstance(UnassignInstanceRequest unassignInstanceRequest);
 
@@ -1662,6 +1823,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UnassignVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UnassignVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     UnassignVolumeResult unassignVolume(UnassignVolumeRequest unassignVolumeRequest);
 
@@ -1683,6 +1846,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateApp" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateAppResult updateApp(UpdateAppRequest updateAppRequest);
 
@@ -1705,6 +1870,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateElasticIp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateElasticIp" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateElasticIpResult updateElasticIp(UpdateElasticIpRequest updateElasticIpRequest);
 
@@ -1726,6 +1893,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateInstanceResult updateInstance(UpdateInstanceRequest updateInstanceRequest);
 
@@ -1747,6 +1916,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateLayer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateLayer" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateLayerResult updateLayer(UpdateLayerRequest updateLayerRequest);
 
@@ -1766,6 +1937,8 @@ public interface AWSOpsWorks {
      * @throws ValidationException
      *         Indicates that a request was not valid.
      * @sample AWSOpsWorks.UpdateMyUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateMyUserProfile" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdateMyUserProfileResult updateMyUserProfile(UpdateMyUserProfileRequest updateMyUserProfileRequest);
 
@@ -1787,6 +1960,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateRdsDbInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateRdsDbInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdateRdsDbInstanceResult updateRdsDbInstance(UpdateRdsDbInstanceRequest updateRdsDbInstanceRequest);
 
@@ -1808,6 +1983,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateStackResult updateStack(UpdateStackRequest updateStackRequest);
 
@@ -1829,6 +2006,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateUserProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateUserProfileResult updateUserProfile(UpdateUserProfileRequest updateUserProfileRequest);
 
@@ -1851,6 +2030,8 @@ public interface AWSOpsWorks {
      * @throws ResourceNotFoundException
      *         Indicates that a resource was not found.
      * @sample AWSOpsWorks.UpdateVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateVolumeResult updateVolume(UpdateVolumeRequest updateVolumeRequest);
 
@@ -1878,4 +2059,5 @@ public interface AWSOpsWorks {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AWSOpsWorksWaiters waiters();
+
 }

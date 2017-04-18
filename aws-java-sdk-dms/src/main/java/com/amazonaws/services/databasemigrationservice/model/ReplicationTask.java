@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ReplicationTask" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ReplicationTask implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplicationTask implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -93,6 +100,12 @@ public class ReplicationTask implements Serializable, Cloneable {
      * </p>
      */
     private String lastFailureMessage;
+    /**
+     * <p>
+     * The reason the replication task was stopped.
+     * </p>
+     */
+    private String stopReason;
     /**
      * <p>
      * The date the replication task was created.
@@ -630,6 +643,46 @@ public class ReplicationTask implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The reason the replication task was stopped.
+     * </p>
+     * 
+     * @param stopReason
+     *        The reason the replication task was stopped.
+     */
+
+    public void setStopReason(String stopReason) {
+        this.stopReason = stopReason;
+    }
+
+    /**
+     * <p>
+     * The reason the replication task was stopped.
+     * </p>
+     * 
+     * @return The reason the replication task was stopped.
+     */
+
+    public String getStopReason() {
+        return this.stopReason;
+    }
+
+    /**
+     * <p>
+     * The reason the replication task was stopped.
+     * </p>
+     * 
+     * @param stopReason
+     *        The reason the replication task was stopped.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReplicationTask withStopReason(String stopReason) {
+        setStopReason(stopReason);
+        return this;
+    }
+
+    /**
+     * <p>
      * The date the replication task was created.
      * </p>
      * 
@@ -800,31 +853,33 @@ public class ReplicationTask implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationTaskIdentifier() != null)
-            sb.append("ReplicationTaskIdentifier: " + getReplicationTaskIdentifier() + ",");
+            sb.append("ReplicationTaskIdentifier: ").append(getReplicationTaskIdentifier()).append(",");
         if (getSourceEndpointArn() != null)
-            sb.append("SourceEndpointArn: " + getSourceEndpointArn() + ",");
+            sb.append("SourceEndpointArn: ").append(getSourceEndpointArn()).append(",");
         if (getTargetEndpointArn() != null)
-            sb.append("TargetEndpointArn: " + getTargetEndpointArn() + ",");
+            sb.append("TargetEndpointArn: ").append(getTargetEndpointArn()).append(",");
         if (getReplicationInstanceArn() != null)
-            sb.append("ReplicationInstanceArn: " + getReplicationInstanceArn() + ",");
+            sb.append("ReplicationInstanceArn: ").append(getReplicationInstanceArn()).append(",");
         if (getMigrationType() != null)
-            sb.append("MigrationType: " + getMigrationType() + ",");
+            sb.append("MigrationType: ").append(getMigrationType()).append(",");
         if (getTableMappings() != null)
-            sb.append("TableMappings: " + getTableMappings() + ",");
+            sb.append("TableMappings: ").append(getTableMappings()).append(",");
         if (getReplicationTaskSettings() != null)
-            sb.append("ReplicationTaskSettings: " + getReplicationTaskSettings() + ",");
+            sb.append("ReplicationTaskSettings: ").append(getReplicationTaskSettings()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getLastFailureMessage() != null)
-            sb.append("LastFailureMessage: " + getLastFailureMessage() + ",");
+            sb.append("LastFailureMessage: ").append(getLastFailureMessage()).append(",");
+        if (getStopReason() != null)
+            sb.append("StopReason: ").append(getStopReason()).append(",");
         if (getReplicationTaskCreationDate() != null)
-            sb.append("ReplicationTaskCreationDate: " + getReplicationTaskCreationDate() + ",");
+            sb.append("ReplicationTaskCreationDate: ").append(getReplicationTaskCreationDate()).append(",");
         if (getReplicationTaskStartDate() != null)
-            sb.append("ReplicationTaskStartDate: " + getReplicationTaskStartDate() + ",");
+            sb.append("ReplicationTaskStartDate: ").append(getReplicationTaskStartDate()).append(",");
         if (getReplicationTaskArn() != null)
-            sb.append("ReplicationTaskArn: " + getReplicationTaskArn() + ",");
+            sb.append("ReplicationTaskArn: ").append(getReplicationTaskArn()).append(",");
         if (getReplicationTaskStats() != null)
-            sb.append("ReplicationTaskStats: " + getReplicationTaskStats());
+            sb.append("ReplicationTaskStats: ").append(getReplicationTaskStats());
         sb.append("}");
         return sb.toString();
     }
@@ -875,6 +930,10 @@ public class ReplicationTask implements Serializable, Cloneable {
             return false;
         if (other.getLastFailureMessage() != null && other.getLastFailureMessage().equals(this.getLastFailureMessage()) == false)
             return false;
+        if (other.getStopReason() == null ^ this.getStopReason() == null)
+            return false;
+        if (other.getStopReason() != null && other.getStopReason().equals(this.getStopReason()) == false)
+            return false;
         if (other.getReplicationTaskCreationDate() == null ^ this.getReplicationTaskCreationDate() == null)
             return false;
         if (other.getReplicationTaskCreationDate() != null && other.getReplicationTaskCreationDate().equals(this.getReplicationTaskCreationDate()) == false)
@@ -908,6 +967,7 @@ public class ReplicationTask implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getReplicationTaskSettings() == null) ? 0 : getReplicationTaskSettings().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getLastFailureMessage() == null) ? 0 : getLastFailureMessage().hashCode());
+        hashCode = prime * hashCode + ((getStopReason() == null) ? 0 : getStopReason().hashCode());
         hashCode = prime * hashCode + ((getReplicationTaskCreationDate() == null) ? 0 : getReplicationTaskCreationDate().hashCode());
         hashCode = prime * hashCode + ((getReplicationTaskStartDate() == null) ? 0 : getReplicationTaskStartDate().hashCode());
         hashCode = prime * hashCode + ((getReplicationTaskArn() == null) ? 0 : getReplicationTaskArn().hashCode());
@@ -922,5 +982,11 @@ public class ReplicationTask implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.ReplicationTaskMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

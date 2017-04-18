@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A communication associated with an AWS Support case. The communication consists of the case ID, the message body,
  * attachment information, the account email address, and the date and time of the communication.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/Communication" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Communication implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Communication implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -305,15 +312,15 @@ public class Communication implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCaseId() != null)
-            sb.append("CaseId: " + getCaseId() + ",");
+            sb.append("CaseId: ").append(getCaseId()).append(",");
         if (getBody() != null)
-            sb.append("Body: " + getBody() + ",");
+            sb.append("Body: ").append(getBody()).append(",");
         if (getSubmittedBy() != null)
-            sb.append("SubmittedBy: " + getSubmittedBy() + ",");
+            sb.append("SubmittedBy: ").append(getSubmittedBy()).append(",");
         if (getTimeCreated() != null)
-            sb.append("TimeCreated: " + getTimeCreated() + ",");
+            sb.append("TimeCreated: ").append(getTimeCreated()).append(",");
         if (getAttachmentSet() != null)
-            sb.append("AttachmentSet: " + getAttachmentSet());
+            sb.append("AttachmentSet: ").append(getAttachmentSet());
         sb.append("}");
         return sb.toString();
     }
@@ -371,5 +378,11 @@ public class Communication implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.support.model.transform.CommunicationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

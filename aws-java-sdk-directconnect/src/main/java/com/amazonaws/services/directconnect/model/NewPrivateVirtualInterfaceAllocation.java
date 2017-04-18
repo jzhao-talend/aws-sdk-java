@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A structure containing information about a private virtual interface that will be provisioned on a connection.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/NewPrivateVirtualInterfaceAllocation"
+ *      target="_top">AWS API Documentation</a>
  */
-public class NewPrivateVirtualInterfaceAllocation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class NewPrivateVirtualInterfaceAllocation implements Serializable, Cloneable, StructuredPojo {
 
     private String virtualInterfaceName;
 
@@ -30,6 +37,8 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
     private String authKey;
 
     private String amazonAddress;
+
+    private String addressFamily;
 
     private String customerAddress;
 
@@ -164,6 +173,55 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
     }
 
     /**
+     * @param addressFamily
+     * @see AddressFamily
+     */
+
+    public void setAddressFamily(String addressFamily) {
+        this.addressFamily = addressFamily;
+    }
+
+    /**
+     * @return
+     * @see AddressFamily
+     */
+
+    public String getAddressFamily() {
+        return this.addressFamily;
+    }
+
+    /**
+     * @param addressFamily
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AddressFamily
+     */
+
+    public NewPrivateVirtualInterfaceAllocation withAddressFamily(String addressFamily) {
+        setAddressFamily(addressFamily);
+        return this;
+    }
+
+    /**
+     * @param addressFamily
+     * @see AddressFamily
+     */
+
+    public void setAddressFamily(AddressFamily addressFamily) {
+        this.addressFamily = addressFamily.toString();
+    }
+
+    /**
+     * @param addressFamily
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AddressFamily
+     */
+
+    public NewPrivateVirtualInterfaceAllocation withAddressFamily(AddressFamily addressFamily) {
+        setAddressFamily(addressFamily);
+        return this;
+    }
+
+    /**
      * @param customerAddress
      */
 
@@ -201,17 +259,19 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVirtualInterfaceName() != null)
-            sb.append("VirtualInterfaceName: " + getVirtualInterfaceName() + ",");
+            sb.append("VirtualInterfaceName: ").append(getVirtualInterfaceName()).append(",");
         if (getVlan() != null)
-            sb.append("Vlan: " + getVlan() + ",");
+            sb.append("Vlan: ").append(getVlan()).append(",");
         if (getAsn() != null)
-            sb.append("Asn: " + getAsn() + ",");
+            sb.append("Asn: ").append(getAsn()).append(",");
         if (getAuthKey() != null)
-            sb.append("AuthKey: " + getAuthKey() + ",");
+            sb.append("AuthKey: ").append(getAuthKey()).append(",");
         if (getAmazonAddress() != null)
-            sb.append("AmazonAddress: " + getAmazonAddress() + ",");
+            sb.append("AmazonAddress: ").append(getAmazonAddress()).append(",");
+        if (getAddressFamily() != null)
+            sb.append("AddressFamily: ").append(getAddressFamily()).append(",");
         if (getCustomerAddress() != null)
-            sb.append("CustomerAddress: " + getCustomerAddress());
+            sb.append("CustomerAddress: ").append(getCustomerAddress());
         sb.append("}");
         return sb.toString();
     }
@@ -246,6 +306,10 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
             return false;
         if (other.getAmazonAddress() != null && other.getAmazonAddress().equals(this.getAmazonAddress()) == false)
             return false;
+        if (other.getAddressFamily() == null ^ this.getAddressFamily() == null)
+            return false;
+        if (other.getAddressFamily() != null && other.getAddressFamily().equals(this.getAddressFamily()) == false)
+            return false;
         if (other.getCustomerAddress() == null ^ this.getCustomerAddress() == null)
             return false;
         if (other.getCustomerAddress() != null && other.getCustomerAddress().equals(this.getCustomerAddress()) == false)
@@ -263,6 +327,7 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
         hashCode = prime * hashCode + ((getAsn() == null) ? 0 : getAsn().hashCode());
         hashCode = prime * hashCode + ((getAuthKey() == null) ? 0 : getAuthKey().hashCode());
         hashCode = prime * hashCode + ((getAmazonAddress() == null) ? 0 : getAmazonAddress().hashCode());
+        hashCode = prime * hashCode + ((getAddressFamily() == null) ? 0 : getAddressFamily().hashCode());
         hashCode = prime * hashCode + ((getCustomerAddress() == null) ? 0 : getCustomerAddress().hashCode());
         return hashCode;
     }
@@ -274,5 +339,11 @@ public class NewPrivateVirtualInterfaceAllocation implements Serializable, Clone
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directconnect.model.transform.NewPrivateVirtualInterfaceAllocationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

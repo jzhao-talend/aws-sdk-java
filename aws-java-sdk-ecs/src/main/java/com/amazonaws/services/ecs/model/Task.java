@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Details on a task in a cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Task" target="_top">AWS API Documentation</a>
  */
-public class Task implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -78,6 +84,15 @@ public class Task implements Serializable, Cloneable {
     private String startedBy;
     /**
      * <p>
+     * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
+     * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can
+     * compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for
+     * the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     */
+    private Long version;
+    /**
+     * <p>
      * The reason the task was stopped.
      * </p>
      */
@@ -102,6 +117,12 @@ public class Task implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date stoppedAt;
+    /**
+     * <p>
+     * The name of the task group associated with the task.
+     * </p>
+     */
+    private String group;
 
     /**
      * <p>
@@ -504,6 +525,67 @@ public class Task implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
+     * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can
+     * compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for
+     * the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @param version
+     *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
+     *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
+     *        events, you can compare the version of a task reported by the Amazon ECS APIs with the version reported in
+     *        CloudWatch events for the task (inside the <code>detail</code> object) to verify that the version in your
+     *        event stream is current.
+     */
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    /**
+     * <p>
+     * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
+     * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can
+     * compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for
+     * the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @return The version counter for the task. Every time a task experiences a change that triggers a CloudWatch
+     *         event, the version counter is incremented. If you are replicating your Amazon ECS task state with
+     *         CloudWatch events, you can compare the version of a task reported by the Amazon ECS APIs with the version
+     *         reported in CloudWatch events for the task (inside the <code>detail</code> object) to verify that the
+     *         version in your event stream is current.
+     */
+
+    public Long getVersion() {
+        return this.version;
+    }
+
+    /**
+     * <p>
+     * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
+     * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can
+     * compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for
+     * the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.
+     * </p>
+     * 
+     * @param version
+     *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
+     *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
+     *        events, you can compare the version of a task reported by the Amazon ECS APIs with the version reported in
+     *        CloudWatch events for the task (inside the <code>detail</code> object) to verify that the version in your
+     *        event stream is current.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withVersion(Long version) {
+        setVersion(version);
+        return this;
+    }
+
+    /**
+     * <p>
      * The reason the task was stopped.
      * </p>
      * 
@@ -675,6 +757,46 @@ public class Task implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the task group associated with the task.
+     * </p>
+     * 
+     * @param group
+     *        The name of the task group associated with the task.
+     */
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    /**
+     * <p>
+     * The name of the task group associated with the task.
+     * </p>
+     * 
+     * @return The name of the task group associated with the task.
+     */
+
+    public String getGroup() {
+        return this.group;
+    }
+
+    /**
+     * <p>
+     * The name of the task group associated with the task.
+     * </p>
+     * 
+     * @param group
+     *        The name of the task group associated with the task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withGroup(String group) {
+        setGroup(group);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -686,31 +808,35 @@ public class Task implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskArn() != null)
-            sb.append("TaskArn: " + getTaskArn() + ",");
+            sb.append("TaskArn: ").append(getTaskArn()).append(",");
         if (getClusterArn() != null)
-            sb.append("ClusterArn: " + getClusterArn() + ",");
+            sb.append("ClusterArn: ").append(getClusterArn()).append(",");
         if (getTaskDefinitionArn() != null)
-            sb.append("TaskDefinitionArn: " + getTaskDefinitionArn() + ",");
+            sb.append("TaskDefinitionArn: ").append(getTaskDefinitionArn()).append(",");
         if (getContainerInstanceArn() != null)
-            sb.append("ContainerInstanceArn: " + getContainerInstanceArn() + ",");
+            sb.append("ContainerInstanceArn: ").append(getContainerInstanceArn()).append(",");
         if (getOverrides() != null)
-            sb.append("Overrides: " + getOverrides() + ",");
+            sb.append("Overrides: ").append(getOverrides()).append(",");
         if (getLastStatus() != null)
-            sb.append("LastStatus: " + getLastStatus() + ",");
+            sb.append("LastStatus: ").append(getLastStatus()).append(",");
         if (getDesiredStatus() != null)
-            sb.append("DesiredStatus: " + getDesiredStatus() + ",");
+            sb.append("DesiredStatus: ").append(getDesiredStatus()).append(",");
         if (getContainers() != null)
-            sb.append("Containers: " + getContainers() + ",");
+            sb.append("Containers: ").append(getContainers()).append(",");
         if (getStartedBy() != null)
-            sb.append("StartedBy: " + getStartedBy() + ",");
+            sb.append("StartedBy: ").append(getStartedBy()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getStoppedReason() != null)
-            sb.append("StoppedReason: " + getStoppedReason() + ",");
+            sb.append("StoppedReason: ").append(getStoppedReason()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getStartedAt() != null)
-            sb.append("StartedAt: " + getStartedAt() + ",");
+            sb.append("StartedAt: ").append(getStartedAt()).append(",");
         if (getStoppedAt() != null)
-            sb.append("StoppedAt: " + getStoppedAt());
+            sb.append("StoppedAt: ").append(getStoppedAt()).append(",");
+        if (getGroup() != null)
+            sb.append("Group: ").append(getGroup());
         sb.append("}");
         return sb.toString();
     }
@@ -761,6 +887,10 @@ public class Task implements Serializable, Cloneable {
             return false;
         if (other.getStartedBy() != null && other.getStartedBy().equals(this.getStartedBy()) == false)
             return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
+            return false;
         if (other.getStoppedReason() == null ^ this.getStoppedReason() == null)
             return false;
         if (other.getStoppedReason() != null && other.getStoppedReason().equals(this.getStoppedReason()) == false)
@@ -776,6 +906,10 @@ public class Task implements Serializable, Cloneable {
         if (other.getStoppedAt() == null ^ this.getStoppedAt() == null)
             return false;
         if (other.getStoppedAt() != null && other.getStoppedAt().equals(this.getStoppedAt()) == false)
+            return false;
+        if (other.getGroup() == null ^ this.getGroup() == null)
+            return false;
+        if (other.getGroup() != null && other.getGroup().equals(this.getGroup()) == false)
             return false;
         return true;
     }
@@ -794,10 +928,12 @@ public class Task implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDesiredStatus() == null) ? 0 : getDesiredStatus().hashCode());
         hashCode = prime * hashCode + ((getContainers() == null) ? 0 : getContainers().hashCode());
         hashCode = prime * hashCode + ((getStartedBy() == null) ? 0 : getStartedBy().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         hashCode = prime * hashCode + ((getStoppedReason() == null) ? 0 : getStoppedReason().hashCode());
         hashCode = prime * hashCode + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
         hashCode = prime * hashCode + ((getStartedAt() == null) ? 0 : getStartedAt().hashCode());
         hashCode = prime * hashCode + ((getStoppedAt() == null) ? 0 : getStoppedAt().hashCode());
+        hashCode = prime * hashCode + ((getGroup() == null) ? 0 : getGroup().hashCode());
         return hashCode;
     }
 
@@ -808,5 +944,11 @@ public class Task implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.TaskMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

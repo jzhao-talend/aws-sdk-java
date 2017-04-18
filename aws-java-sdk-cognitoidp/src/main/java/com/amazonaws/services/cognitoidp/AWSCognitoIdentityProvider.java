@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cognitoidp;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.cognitoidp.model.*;
 
 /**
  * Interface for accessing Amazon Cognito Identity Provider.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.cognitoidp.AbstractAWSCognitoIdentityProvider} instead.
+ * </p>
  * <p>
  * <p>
  * Using the Amazon Cognito Your User Pools API, you can create a user pool to manage directories and users. You can
@@ -31,6 +37,7 @@ import com.amazonaws.services.cognitoidp.model.*;
  * For more information, see the Amazon Cognito Documentation.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCognitoIdentityProvider {
 
     /**
@@ -62,7 +69,11 @@ public interface AWSCognitoIdentityProvider {
      *        The endpoint (ex: "cognito-idp.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://cognito-idp.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -83,7 +94,9 @@ public interface AWSCognitoIdentityProvider {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -108,12 +121,45 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AddCustomAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AddCustomAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     AddCustomAttributesResult addCustomAttributes(AddCustomAttributesRequest addCustomAttributesRequest);
 
     /**
      * <p>
+     * Adds the specified user to the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminAddUserToGroupRequest
+     * @return Result of the AdminAddUserToGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminAddUserToGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminAddUserToGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AdminAddUserToGroupResult adminAddUserToGroup(AdminAddUserToGroupRequest adminAddUserToGroupRequest);
+
+    /**
+     * <p>
      * Confirms user registration as an admin without using a confirmation code. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminConfirmSignUpRequest
@@ -145,6 +191,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminConfirmSignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminConfirmSignUp" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminConfirmSignUpResult adminConfirmSignUp(AdminConfirmSignUpRequest adminConfirmSignUpRequest);
 
@@ -199,12 +247,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminCreateUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminCreateUser" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminCreateUserResult adminCreateUser(AdminCreateUserRequest adminCreateUserRequest);
 
     /**
      * <p>
      * Deletes a user as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserRequest
@@ -223,12 +276,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDeleteUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUser" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminDeleteUserResult adminDeleteUser(AdminDeleteUserRequest adminDeleteUserRequest);
 
     /**
      * <p>
      * Deletes the user attributes in a user pool as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserAttributesRequest
@@ -247,12 +305,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDeleteUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminDeleteUserAttributesResult adminDeleteUserAttributes(AdminDeleteUserAttributesRequest adminDeleteUserAttributesRequest);
 
     /**
      * <p>
      * Disables the specified user as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminDisableUserRequest
@@ -271,12 +334,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDisableUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDisableUser" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminDisableUserResult adminDisableUser(AdminDisableUserRequest adminDisableUserRequest);
 
     /**
      * <p>
      * Enables the specified user as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminEnableUserRequest
@@ -295,12 +363,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminEnableUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminEnableUser" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminEnableUserResult adminEnableUser(AdminEnableUserRequest adminEnableUserRequest);
 
     /**
      * <p>
      * Forgets the device, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminForgetDeviceRequest
@@ -321,12 +394,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminForgetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminForgetDevice" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminForgetDeviceResult adminForgetDevice(AdminForgetDeviceRequest adminForgetDeviceRequest);
 
     /**
      * <p>
      * Gets the device, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminGetDeviceRequest
@@ -345,12 +423,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.AdminGetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     AdminGetDeviceResult adminGetDevice(AdminGetDeviceRequest adminGetDeviceRequest);
 
     /**
      * <p>
      * Gets the specified user by user name in a user pool as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminGetUserRequest
@@ -369,12 +452,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminGetUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetUser" target="_top">AWS API
+     *      Documentation</a>
      */
     AdminGetUserResult adminGetUser(AdminGetUserRequest adminGetUserRequest);
 
     /**
      * <p>
      * Initiates the authentication flow, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminInitiateAuthRequest
@@ -416,12 +504,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws UserNotConfirmedException
      *         This exception is thrown when a user is not confirmed successfully.
      * @sample AWSCognitoIdentityProvider.AdminInitiateAuth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminInitiateAuth" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminInitiateAuthResult adminInitiateAuth(AdminInitiateAuthRequest adminInitiateAuthRequest);
 
     /**
      * <p>
      * Lists devices, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminListDevicesRequest
@@ -440,8 +533,66 @@ public interface AWSCognitoIdentityProvider {
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.AdminListDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListDevices" target="_top">AWS
+     *      API Documentation</a>
      */
     AdminListDevicesResult adminListDevices(AdminListDevicesRequest adminListDevicesRequest);
+
+    /**
+     * <p>
+     * Lists the groups that the user belongs to.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminListGroupsForUserRequest
+     * @return Result of the AdminListGroupsForUser operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminListGroupsForUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListGroupsForUser"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AdminListGroupsForUserResult adminListGroupsForUser(AdminListGroupsForUserRequest adminListGroupsForUserRequest);
+
+    /**
+     * <p>
+     * Removes the specified user from the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminRemoveUserFromGroupRequest
+     * @return Result of the AdminRemoveUserFromGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminRemoveUserFromGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRemoveUserFromGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AdminRemoveUserFromGroupResult adminRemoveUserFromGroup(AdminRemoveUserFromGroupRequest adminRemoveUserFromGroupRequest);
 
     /**
      * <p>
@@ -454,6 +605,9 @@ public interface AWSCognitoIdentityProvider {
      * if the user pool has phone verification selected and a verified phone number exists for the user, or if email
      * verification is selected and a verified email exists for the user, calling this API will also result in sending a
      * message to the end user with the code to change their password.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminResetUserPasswordRequest
@@ -482,12 +636,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminResetUserPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminResetUserPassword"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminResetUserPasswordResult adminResetUserPassword(AdminResetUserPasswordRequest adminResetUserPasswordRequest);
 
     /**
      * <p>
      * Responds to an authentication challenge, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminRespondToAuthChallengeRequest
@@ -539,12 +698,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws UserNotConfirmedException
      *         This exception is thrown when a user is not confirmed successfully.
      * @sample AWSCognitoIdentityProvider.AdminRespondToAuthChallenge
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRespondToAuthChallenge"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminRespondToAuthChallengeResult adminRespondToAuthChallenge(AdminRespondToAuthChallengeRequest adminRespondToAuthChallengeRequest);
 
     /**
      * <p>
      * Sets all the user settings for a specified user name. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminSetUserSettingsRequest
@@ -561,12 +725,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminSetUserSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminSetUserSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminSetUserSettingsResult adminSetUserSettings(AdminSetUserSettingsRequest adminSetUserSettingsRequest);
 
     /**
      * <p>
      * Updates the device status as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminUpdateDeviceStatusRequest
@@ -587,12 +756,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUpdateDeviceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateDeviceStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminUpdateDeviceStatusResult adminUpdateDeviceStatus(AdminUpdateDeviceStatusRequest adminUpdateDeviceStatusRequest);
 
     /**
      * <p>
      * Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminUpdateUserAttributesRequest
@@ -623,12 +797,17 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUpdateUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminUpdateUserAttributesResult adminUpdateUserAttributes(AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest);
 
     /**
      * <p>
      * Signs out users from all devices, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminUserGlobalSignOutRequest
@@ -647,6 +826,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUserGlobalSignOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUserGlobalSignOut"
+     *      target="_top">AWS API Documentation</a>
      */
     AdminUserGlobalSignOutResult adminUserGlobalSignOut(AdminUserGlobalSignOutRequest adminUserGlobalSignOutRequest);
 
@@ -679,6 +860,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ChangePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ChangePassword" target="_top">AWS API
+     *      Documentation</a>
      */
     ChangePasswordResult changePassword(ChangePasswordRequest changePasswordRequest);
 
@@ -715,6 +898,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     ConfirmDeviceResult confirmDevice(ConfirmDeviceRequest confirmDeviceRequest);
 
@@ -760,6 +945,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmForgotPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmForgotPassword"
+     *      target="_top">AWS API Documentation</a>
      */
     ConfirmForgotPasswordResult confirmForgotPassword(ConfirmForgotPasswordRequest confirmForgotPasswordRequest);
 
@@ -805,8 +992,40 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmSignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmSignUp" target="_top">AWS API
+     *      Documentation</a>
      */
     ConfirmSignUpResult confirmSignUp(ConfirmSignUpRequest confirmSignUpRequest);
+
+    /**
+     * <p>
+     * Creates a new group in the specified user pool.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param createGroupRequest
+     * @return Result of the CreateGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws GroupExistsException
+     *         This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws LimitExceededException
+     *         This exception is thrown when a user exceeds the limit for a requested AWS resource.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.CreateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateGroupResult createGroup(CreateGroupRequest createGroupRequest);
 
     /**
      * <p>
@@ -831,6 +1050,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserImportJob"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateUserImportJobResult createUserImportJob(CreateUserImportJobRequest createUserImportJobRequest);
 
@@ -860,9 +1081,13 @@ public interface AWSCognitoIdentityProvider {
      *         400.
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateUserPoolResult createUserPool(CreateUserPoolRequest createUserPoolRequest);
 
@@ -887,8 +1112,36 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateUserPoolClientResult createUserPoolClient(CreateUserPoolClientRequest createUserPoolClientRequest);
+
+    /**
+     * <p>
+     * Deletes a group. Currently only groups with no members can be deleted.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param deleteGroupRequest
+     * @return Result of the DeleteGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.DeleteGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteGroupResult deleteGroup(DeleteGroupRequest deleteGroupRequest);
 
     /**
      * <p>
@@ -915,6 +1168,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUser" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteUserResult deleteUser(DeleteUserRequest deleteUserRequest);
 
@@ -943,6 +1198,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteUserAttributesResult deleteUserAttributes(DeleteUserAttributesRequest deleteUserAttributesRequest);
 
@@ -968,6 +1225,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteUserPoolResult deleteUserPool(DeleteUserPoolRequest deleteUserPoolRequest);
 
@@ -990,6 +1249,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteUserPoolClientResult deleteUserPoolClient(DeleteUserPoolClientRequest deleteUserPoolClientRequest);
 
@@ -1012,6 +1273,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserImportJob"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeUserImportJobResult describeUserImportJob(DescribeUserImportJobRequest describeUserImportJobRequest);
 
@@ -1031,9 +1294,13 @@ public interface AWSCognitoIdentityProvider {
      *         This exception gets thrown when the user has made too many requests for a given operation.
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPool" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeUserPoolResult describeUserPool(DescribeUserPoolRequest describeUserPoolRequest);
 
@@ -1056,6 +1323,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeUserPoolClientResult describeUserPoolClient(DescribeUserPoolClientRequest describeUserPoolClientRequest);
 
@@ -1086,6 +1355,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ForgetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     ForgetDeviceResult forgetDevice(ForgetDeviceRequest forgetDeviceRequest);
 
@@ -1134,6 +1405,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ForgotPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgotPassword" target="_top">AWS API
+     *      Documentation</a>
      */
     ForgotPasswordResult forgotPassword(ForgotPasswordRequest forgotPasswordRequest);
 
@@ -1156,6 +1429,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetCSVHeader
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetCSVHeader" target="_top">AWS API
+     *      Documentation</a>
      */
     GetCSVHeaderResult getCSVHeader(GetCSVHeaderRequest getCSVHeaderRequest);
 
@@ -1186,8 +1461,36 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     GetDeviceResult getDevice(GetDeviceRequest getDeviceRequest);
+
+    /**
+     * <p>
+     * Gets a group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param getGroupRequest
+     * @return Result of the GetGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.GetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetGroupResult getGroup(GetGroupRequest getGroupRequest);
 
     /**
      * <p>
@@ -1214,6 +1517,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUser" target="_top">AWS API
+     *      Documentation</a>
      */
     GetUserResult getUser(GetUserRequest getUserRequest);
 
@@ -1264,6 +1569,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetUserAttributeVerificationCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUserAttributeVerificationCode"
+     *      target="_top">AWS API Documentation</a>
      */
     GetUserAttributeVerificationCodeResult getUserAttributeVerificationCode(GetUserAttributeVerificationCodeRequest getUserAttributeVerificationCodeRequest);
 
@@ -1290,6 +1597,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GlobalSignOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GlobalSignOut" target="_top">AWS API
+     *      Documentation</a>
      */
     GlobalSignOutResult globalSignOut(GlobalSignOutRequest globalSignOutRequest);
 
@@ -1328,6 +1637,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.InitiateAuth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth" target="_top">AWS API
+     *      Documentation</a>
      */
     InitiateAuthResult initiateAuth(InitiateAuthRequest initiateAuthRequest);
 
@@ -1358,8 +1669,36 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListDevices" target="_top">AWS API
+     *      Documentation</a>
      */
     ListDevicesResult listDevices(ListDevicesRequest listDevicesRequest);
+
+    /**
+     * <p>
+     * Lists the groups associated with a user pool.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param listGroupsRequest
+     * @return Result of the ListGroups operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.ListGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListGroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListGroupsResult listGroups(ListGroupsRequest listGroupsRequest);
 
     /**
      * <p>
@@ -1380,6 +1719,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserImportJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserImportJobs" target="_top">AWS
+     *      API Documentation</a>
      */
     ListUserImportJobsResult listUserImportJobs(ListUserImportJobsRequest listUserImportJobsRequest);
 
@@ -1402,6 +1743,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserPoolClients
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPoolClients"
+     *      target="_top">AWS API Documentation</a>
      */
     ListUserPoolClientsResult listUserPoolClients(ListUserPoolClientsRequest listUserPoolClientsRequest);
 
@@ -1422,6 +1765,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserPools
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPools" target="_top">AWS API
+     *      Documentation</a>
      */
     ListUserPoolsResult listUserPools(ListUserPoolsRequest listUserPoolsRequest);
 
@@ -1444,8 +1789,36 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUsers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsers" target="_top">AWS API
+     *      Documentation</a>
      */
     ListUsersResult listUsers(ListUsersRequest listUsersRequest);
+
+    /**
+     * <p>
+     * Lists the users in the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param listUsersInGroupRequest
+     * @return Result of the ListUsersInGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.ListUsersInGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsersInGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListUsersInGroupResult listUsersInGroup(ListUsersInGroupRequest listUsersInGroupRequest);
 
     /**
      * <p>
@@ -1490,6 +1863,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ResendConfirmationCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ResendConfirmationCode"
+     *      target="_top">AWS API Documentation</a>
      */
     ResendConfirmationCodeResult resendConfirmationCode(ResendConfirmationCodeRequest resendConfirmationCodeRequest);
 
@@ -1547,6 +1922,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.RespondToAuthChallenge
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallenge"
+     *      target="_top">AWS API Documentation</a>
      */
     RespondToAuthChallengeResult respondToAuthChallenge(RespondToAuthChallengeRequest respondToAuthChallengeRequest);
 
@@ -1574,6 +1951,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.SetUserSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUserSettings" target="_top">AWS
+     *      API Documentation</a>
      */
     SetUserSettingsResult setUserSettings(SetUserSettingsRequest setUserSettingsRequest);
 
@@ -1620,6 +1999,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws CodeDeliveryFailureException
      *         This exception is thrown when a verification code fails to deliver successfully.
      * @sample AWSCognitoIdentityProvider.SignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SignUp" target="_top">AWS API
+     *      Documentation</a>
      */
     SignUpResult signUp(SignUpRequest signUpRequest);
 
@@ -1644,6 +2025,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.StartUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StartUserImportJob" target="_top">AWS
+     *      API Documentation</a>
      */
     StartUserImportJobResult startUserImportJob(StartUserImportJobRequest startUserImportJobRequest);
 
@@ -1668,6 +2051,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.StopUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StopUserImportJob" target="_top">AWS
+     *      API Documentation</a>
      */
     StopUserImportJobResult stopUserImportJob(StopUserImportJobRequest stopUserImportJobRequest);
 
@@ -1698,8 +2083,36 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateDeviceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateDeviceStatus" target="_top">AWS
+     *      API Documentation</a>
      */
     UpdateDeviceStatusResult updateDeviceStatus(UpdateDeviceStatusRequest updateDeviceStatusRequest);
+
+    /**
+     * <p>
+     * Updates the specified group with the specified attributes.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param updateGroupRequest
+     * @return Result of the UpdateGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.UpdateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateGroupResult updateGroup(UpdateGroupRequest updateGroupRequest);
 
     /**
      * <p>
@@ -1754,6 +2167,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateUserAttributesResult updateUserAttributes(UpdateUserAttributesRequest updateUserAttributesRequest);
 
@@ -1787,10 +2202,14 @@ public interface AWSCognitoIdentityProvider {
      *         This exception is thrown when the trust relationship is invalid for the role provided for SMS
      *         configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID
      *         provided in the role does not match what is provided in the SMS configuration for the user pool.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InvalidEmailRoleAccessPolicyException
      *         This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code:
      *         400.
      * @sample AWSCognitoIdentityProvider.UpdateUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateUserPoolResult updateUserPool(UpdateUserPoolRequest updateUserPoolRequest);
 
@@ -1813,6 +2232,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateUserPoolClientResult updateUserPoolClient(UpdateUserPoolClientRequest updateUserPoolClientRequest);
 
@@ -1847,6 +2268,8 @@ public interface AWSCognitoIdentityProvider {
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.VerifyUserAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/VerifyUserAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     VerifyUserAttributeResult verifyUserAttribute(VerifyUserAttributeRequest verifyUserAttributeRequest);
 

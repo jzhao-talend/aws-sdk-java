@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The input for the <a>DeliveryChannelStatus</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeDeliveryChannelStatus"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeDeliveryChannelStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -114,7 +120,7 @@ public class DescribeDeliveryChannelStatusRequest extends com.amazonaws.AmazonWe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeliveryChannelNames() != null)
-            sb.append("DeliveryChannelNames: " + getDeliveryChannelNames());
+            sb.append("DeliveryChannelNames: ").append(getDeliveryChannelNames());
         sb.append("}");
         return sb.toString();
     }
@@ -149,4 +155,5 @@ public class DescribeDeliveryChannelStatusRequest extends com.amazonaws.AmazonWe
     public DescribeDeliveryChannelStatusRequest clone() {
         return (DescribeDeliveryChannelStatusRequest) super.clone();
     }
+
 }

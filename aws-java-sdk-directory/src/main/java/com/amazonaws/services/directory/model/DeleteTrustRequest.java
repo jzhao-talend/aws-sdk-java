@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external
  * domain.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrust" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteTrustRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -140,9 +146,9 @@ public class DeleteTrustRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTrustId() != null)
-            sb.append("TrustId: " + getTrustId() + ",");
+            sb.append("TrustId: ").append(getTrustId()).append(",");
         if (getDeleteAssociatedConditionalForwarder() != null)
-            sb.append("DeleteAssociatedConditionalForwarder: " + getDeleteAssociatedConditionalForwarder());
+            sb.append("DeleteAssociatedConditionalForwarder: ").append(getDeleteAssociatedConditionalForwarder());
         sb.append("}");
         return sb.toString();
     }
@@ -183,4 +189,5 @@ public class DeleteTrustRequest extends com.amazonaws.AmazonWebServiceRequest im
     public DeleteTrustRequest clone() {
         return (DeleteTrustRequest) super.clone();
     }
+
 }

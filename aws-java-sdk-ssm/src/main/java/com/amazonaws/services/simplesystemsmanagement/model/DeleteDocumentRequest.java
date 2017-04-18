@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteDocument" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteDocumentRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the document.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the document.
      */
 
     public void setName(String name) {
@@ -42,10 +47,10 @@ public class DeleteDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the document.
      * </p>
      * 
-     * @return The name of the SSM document.
+     * @return The name of the document.
      */
 
     public String getName() {
@@ -54,11 +59,11 @@ public class DeleteDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the document.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -79,7 +84,7 @@ public class DeleteDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName());
+            sb.append("Name: ").append(getName());
         sb.append("}");
         return sb.toString();
     }
@@ -114,4 +119,5 @@ public class DeleteDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
     public DeleteDocumentRequest clone() {
         return (DeleteDocumentRequest) super.clone();
     }
+
 }

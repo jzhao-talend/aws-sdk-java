@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.ecs;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.ecs.model.*;
 
 /**
  * Interface for accessing Amazon ECS asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.ecs.AbstractAmazonECSAsync} instead.
+ * </p>
  * <p>
  * <p>
  * Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast, container management service that makes it easy
@@ -33,6 +39,7 @@ import com.amazonaws.services.ecs.model.*;
  * infrastructure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonECSAsync extends AmazonECS {
 
     /**
@@ -45,6 +52,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param createClusterRequest
      * @return A Java Future containing the result of the CreateCluster operation returned by the service.
      * @sample AmazonECSAsync.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateClusterResult> createClusterAsync(CreateClusterRequest createClusterRequest);
 
@@ -62,6 +71,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCluster operation returned by the service.
      * @sample AmazonECSAsyncHandler.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateClusterResult> createClusterAsync(CreateClusterRequest createClusterRequest,
             com.amazonaws.handlers.AsyncHandler<CreateClusterRequest, CreateClusterResult> asyncHandler);
@@ -104,26 +115,24 @@ public interface AmazonECSAsync extends AmazonECS {
      * The <code>minimumHealthyPercent</code> represents a lower limit on the number of your service's tasks that must
      * remain in the <code>RUNNING</code> state during a deployment, as a percentage of the <code>desiredCount</code>
      * (rounded up to the nearest integer). This parameter enables you to deploy without using additional cluster
-     * capacity. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>minimumHealthyPercent</code> of 50%, the scheduler may stop two existing tasks to free up cluster capacity
-     * before starting two new tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy
-     * if they are in the <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are
-     * considered healthy if they are in the <code>RUNNING</code> state and the container instance it is hosted on is
-     * reported as healthy by the load balancer. The default value for <code>minimumHealthyPercent</code> is 50% in the
-     * console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+     * capacity. For example, if <code>desiredCount</code> is four tasks and the minimum is 50%, the scheduler can stop
+     * two existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that do not use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance
+     * they are hosted on is reported as healthy by the load balancer. The default value is 50% in the console and 100%
+     * for the AWS CLI, the AWS SDKs, and the APIs.
      * </p>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of your service's tasks that
      * are allowed in the <code>RUNNING</code> or <code>PENDING</code> state during a deployment, as a percentage of the
      * <code>desiredCount</code> (rounded down to the nearest integer). This parameter enables you to define the
-     * deployment batch size. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>maximumPercent</code> value of 200%, the scheduler may start four new tasks before stopping the four older
-     * tasks (provided that the cluster resources required to do this are available). The default value for
-     * <code>maximumPercent</code> is 200%.
+     * deployment batch size. For example, if <code>desiredCount</code> is four tasks and the maximum is 200%, the
+     * scheduler can start four new tasks before stopping the four older tasks (provided that the cluster resources
+     * required to do this are available). The default value is 200%.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster using the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -132,6 +141,12 @@ public interface AmazonECSAsync extends AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -146,10 +161,14 @@ public interface AmazonECSAsync extends AmazonECS {
      * </p>
      * </li>
      * </ul>
+     * </li>
+     * </ul>
      * 
      * @param createServiceRequest
      * @return A Java Future containing the result of the CreateService operation returned by the service.
      * @sample AmazonECSAsync.CreateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateServiceResult> createServiceAsync(CreateServiceRequest createServiceRequest);
 
@@ -176,26 +195,24 @@ public interface AmazonECSAsync extends AmazonECS {
      * The <code>minimumHealthyPercent</code> represents a lower limit on the number of your service's tasks that must
      * remain in the <code>RUNNING</code> state during a deployment, as a percentage of the <code>desiredCount</code>
      * (rounded up to the nearest integer). This parameter enables you to deploy without using additional cluster
-     * capacity. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>minimumHealthyPercent</code> of 50%, the scheduler may stop two existing tasks to free up cluster capacity
-     * before starting two new tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy
-     * if they are in the <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are
-     * considered healthy if they are in the <code>RUNNING</code> state and the container instance it is hosted on is
-     * reported as healthy by the load balancer. The default value for <code>minimumHealthyPercent</code> is 50% in the
-     * console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+     * capacity. For example, if <code>desiredCount</code> is four tasks and the minimum is 50%, the scheduler can stop
+     * two existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that do not use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use
+     * a load balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance
+     * they are hosted on is reported as healthy by the load balancer. The default value is 50% in the console and 100%
+     * for the AWS CLI, the AWS SDKs, and the APIs.
      * </p>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of your service's tasks that
      * are allowed in the <code>RUNNING</code> or <code>PENDING</code> state during a deployment, as a percentage of the
      * <code>desiredCount</code> (rounded down to the nearest integer). This parameter enables you to define the
-     * deployment batch size. For example, if your service has a <code>desiredCount</code> of four tasks and a
-     * <code>maximumPercent</code> value of 200%, the scheduler may start four new tasks before stopping the four older
-     * tasks (provided that the cluster resources required to do this are available). The default value for
-     * <code>maximumPercent</code> is 200%.
+     * deployment batch size. For example, if <code>desiredCount</code> is four tasks and the maximum is 200%, the
+     * scheduler can start four new tasks before stopping the four older tasks (provided that the cluster resources
+     * required to do this are available). The default value is 200%.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster using the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -204,6 +221,12 @@ public interface AmazonECSAsync extends AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -218,6 +241,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * </p>
      * </li>
      * </ul>
+     * </li>
+     * </ul>
      * 
      * @param createServiceRequest
      * @param asyncHandler
@@ -226,9 +251,42 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateService operation returned by the service.
      * @sample AmazonECSAsyncHandler.CreateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateServiceResult> createServiceAsync(CreateServiceRequest createServiceRequest,
             com.amazonaws.handlers.AsyncHandler<CreateServiceRequest, CreateServiceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes one or more custom attributes from an Amazon ECS resource.
+     * </p>
+     * 
+     * @param deleteAttributesRequest
+     * @return A Java Future containing the result of the DeleteAttributes operation returned by the service.
+     * @sample AmazonECSAsync.DeleteAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteAttributesResult> deleteAttributesAsync(DeleteAttributesRequest deleteAttributesRequest);
+
+    /**
+     * <p>
+     * Deletes one or more custom attributes from an Amazon ECS resource.
+     * </p>
+     * 
+     * @param deleteAttributesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteAttributes operation returned by the service.
+     * @sample AmazonECSAsyncHandler.DeleteAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteAttributesResult> deleteAttributesAsync(DeleteAttributesRequest deleteAttributesRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteAttributesRequest, DeleteAttributesResult> asyncHandler);
 
     /**
      * <p>
@@ -240,6 +298,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param deleteClusterRequest
      * @return A Java Future containing the result of the DeleteCluster operation returned by the service.
      * @sample AmazonECSAsync.DeleteCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteClusterResult> deleteClusterAsync(DeleteClusterRequest deleteClusterRequest);
 
@@ -257,6 +317,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCluster operation returned by the service.
      * @sample AmazonECSAsyncHandler.DeleteCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteCluster" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteClusterResult> deleteClusterAsync(DeleteClusterRequest deleteClusterRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteClusterRequest, DeleteClusterResult> asyncHandler);
@@ -283,6 +345,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param deleteServiceRequest
      * @return A Java Future containing the result of the DeleteService operation returned by the service.
      * @sample AmazonECSAsync.DeleteService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteServiceResult> deleteServiceAsync(DeleteServiceRequest deleteServiceRequest);
 
@@ -312,6 +376,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteService operation returned by the service.
      * @sample AmazonECSAsyncHandler.DeleteService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteServiceResult> deleteServiceAsync(DeleteServiceRequest deleteServiceRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteServiceRequest, DeleteServiceResult> asyncHandler);
@@ -342,6 +408,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param deregisterContainerInstanceRequest
      * @return A Java Future containing the result of the DeregisterContainerInstance operation returned by the service.
      * @sample AmazonECSAsync.DeregisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterContainerInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeregisterContainerInstanceResult> deregisterContainerInstanceAsync(
             DeregisterContainerInstanceRequest deregisterContainerInstanceRequest);
@@ -376,6 +444,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeregisterContainerInstance operation returned by the service.
      * @sample AmazonECSAsyncHandler.DeregisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterContainerInstance"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeregisterContainerInstanceResult> deregisterContainerInstanceAsync(
             DeregisterContainerInstanceRequest deregisterContainerInstanceRequest,
@@ -397,6 +467,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param deregisterTaskDefinitionRequest
      * @return A Java Future containing the result of the DeregisterTaskDefinition operation returned by the service.
      * @sample AmazonECSAsync.DeregisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterTaskDefinition" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeregisterTaskDefinitionResult> deregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest deregisterTaskDefinitionRequest);
 
@@ -420,6 +492,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeregisterTaskDefinition operation returned by the service.
      * @sample AmazonECSAsyncHandler.DeregisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterTaskDefinition" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeregisterTaskDefinitionResult> deregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest deregisterTaskDefinitionRequest,
             com.amazonaws.handlers.AsyncHandler<DeregisterTaskDefinitionRequest, DeregisterTaskDefinitionResult> asyncHandler);
@@ -432,6 +506,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param describeClustersRequest
      * @return A Java Future containing the result of the DescribeClusters operation returned by the service.
      * @sample AmazonECSAsync.DescribeClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeClustersResult> describeClustersAsync(DescribeClustersRequest describeClustersRequest);
 
@@ -447,6 +523,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeClusters operation returned by the service.
      * @sample AmazonECSAsyncHandler.DescribeClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeClustersResult> describeClustersAsync(DescribeClustersRequest describeClustersRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeClustersRequest, DescribeClustersResult> asyncHandler);
@@ -475,6 +553,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param describeContainerInstancesRequest
      * @return A Java Future containing the result of the DescribeContainerInstances operation returned by the service.
      * @sample AmazonECSAsync.DescribeContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeContainerInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeContainerInstancesResult> describeContainerInstancesAsync(
             DescribeContainerInstancesRequest describeContainerInstancesRequest);
@@ -492,6 +572,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeContainerInstances operation returned by the service.
      * @sample AmazonECSAsyncHandler.DescribeContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeContainerInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeContainerInstancesResult> describeContainerInstancesAsync(
             DescribeContainerInstancesRequest describeContainerInstancesRequest,
@@ -505,6 +587,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param describeServicesRequest
      * @return A Java Future containing the result of the DescribeServices operation returned by the service.
      * @sample AmazonECSAsync.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeServicesResult> describeServicesAsync(DescribeServicesRequest describeServicesRequest);
 
@@ -520,6 +604,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeServices operation returned by the service.
      * @sample AmazonECSAsyncHandler.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeServicesResult> describeServicesAsync(DescribeServicesRequest describeServicesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeServicesRequest, DescribeServicesResult> asyncHandler);
@@ -539,6 +625,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param describeTaskDefinitionRequest
      * @return A Java Future containing the result of the DescribeTaskDefinition operation returned by the service.
      * @sample AmazonECSAsync.DescribeTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTaskDefinitionResult> describeTaskDefinitionAsync(DescribeTaskDefinitionRequest describeTaskDefinitionRequest);
 
@@ -561,6 +649,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTaskDefinition operation returned by the service.
      * @sample AmazonECSAsyncHandler.DescribeTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTaskDefinitionResult> describeTaskDefinitionAsync(DescribeTaskDefinitionRequest describeTaskDefinitionRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTaskDefinitionRequest, DescribeTaskDefinitionResult> asyncHandler);
@@ -573,6 +663,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param describeTasksRequest
      * @return A Java Future containing the result of the DescribeTasks operation returned by the service.
      * @sample AmazonECSAsync.DescribeTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTasksResult> describeTasksAsync(DescribeTasksRequest describeTasksRequest);
 
@@ -588,6 +680,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTasks operation returned by the service.
      * @sample AmazonECSAsyncHandler.DescribeTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTasksResult> describeTasksAsync(DescribeTasksRequest describeTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTasksRequest, DescribeTasksResult> asyncHandler);
@@ -606,6 +700,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param discoverPollEndpointRequest
      * @return A Java Future containing the result of the DiscoverPollEndpoint operation returned by the service.
      * @sample AmazonECSAsync.DiscoverPollEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DiscoverPollEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DiscoverPollEndpointResult> discoverPollEndpointAsync(DiscoverPollEndpointRequest discoverPollEndpointRequest);
 
@@ -627,6 +723,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DiscoverPollEndpoint operation returned by the service.
      * @sample AmazonECSAsyncHandler.DiscoverPollEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DiscoverPollEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DiscoverPollEndpointResult> discoverPollEndpointAsync(DiscoverPollEndpointRequest discoverPollEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<DiscoverPollEndpointRequest, DiscoverPollEndpointResult> asyncHandler);
@@ -648,12 +746,53 @@ public interface AmazonECSAsync extends AmazonECS {
 
     /**
      * <p>
+     * Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a
+     * target type and cluster, <code>LisAttributes</code> returns a list of attribute objects, one for each attribute
+     * on each resource. You can filter the list of results to a single attribute name to only return results that have
+     * that name. You can also filter the results by attribute name and value, for example, to see which container
+     * instances in a cluster are running a Linux AMI (<code>ecs.os-type=linux</code>).
+     * </p>
+     * 
+     * @param listAttributesRequest
+     * @return A Java Future containing the result of the ListAttributes operation returned by the service.
+     * @sample AmazonECSAsync.ListAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListAttributesResult> listAttributesAsync(ListAttributesRequest listAttributesRequest);
+
+    /**
+     * <p>
+     * Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a
+     * target type and cluster, <code>LisAttributes</code> returns a list of attribute objects, one for each attribute
+     * on each resource. You can filter the list of results to a single attribute name to only return results that have
+     * that name. You can also filter the results by attribute name and value, for example, to see which container
+     * instances in a cluster are running a Linux AMI (<code>ecs.os-type=linux</code>).
+     * </p>
+     * 
+     * @param listAttributesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListAttributes operation returned by the service.
+     * @sample AmazonECSAsyncHandler.ListAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListAttributesResult> listAttributesAsync(ListAttributesRequest listAttributesRequest,
+            com.amazonaws.handlers.AsyncHandler<ListAttributesRequest, ListAttributesResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of existing clusters.
      * </p>
      * 
      * @param listClustersRequest
      * @return A Java Future containing the result of the ListClusters operation returned by the service.
      * @sample AmazonECSAsync.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListClustersResult> listClustersAsync(ListClustersRequest listClustersRequest);
 
@@ -669,6 +808,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListClusters operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListClusters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListClustersResult> listClustersAsync(ListClustersRequest listClustersRequest,
             com.amazonaws.handlers.AsyncHandler<ListClustersRequest, ListClustersResult> asyncHandler);
@@ -689,18 +830,28 @@ public interface AmazonECSAsync extends AmazonECS {
 
     /**
      * <p>
-     * Returns a list of container instances in a specified cluster.
+     * Returns a list of container instances in a specified cluster. You can filter the results of a
+     * <code>ListContainerInstances</code> operation with cluster query language statements inside the
+     * <code>filter</code> parameter. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
      * 
      * @param listContainerInstancesRequest
      * @return A Java Future containing the result of the ListContainerInstances operation returned by the service.
      * @sample AmazonECSAsync.ListContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListContainerInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListContainerInstancesResult> listContainerInstancesAsync(ListContainerInstancesRequest listContainerInstancesRequest);
 
     /**
      * <p>
-     * Returns a list of container instances in a specified cluster.
+     * Returns a list of container instances in a specified cluster. You can filter the results of a
+     * <code>ListContainerInstances</code> operation with cluster query language statements inside the
+     * <code>filter</code> parameter. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
      * 
      * @param listContainerInstancesRequest
@@ -710,6 +861,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListContainerInstances operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListContainerInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListContainerInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListContainerInstancesResult> listContainerInstancesAsync(ListContainerInstancesRequest listContainerInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<ListContainerInstancesRequest, ListContainerInstancesResult> asyncHandler);
@@ -737,6 +890,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param listServicesRequest
      * @return A Java Future containing the result of the ListServices operation returned by the service.
      * @sample AmazonECSAsync.ListServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListServicesResult> listServicesAsync(ListServicesRequest listServicesRequest);
 
@@ -752,6 +907,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListServices operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListServicesResult> listServicesAsync(ListServicesRequest listServicesRequest,
             com.amazonaws.handlers.AsyncHandler<ListServicesRequest, ListServicesResult> asyncHandler);
@@ -784,6 +941,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param listTaskDefinitionFamiliesRequest
      * @return A Java Future containing the result of the ListTaskDefinitionFamilies operation returned by the service.
      * @sample AmazonECSAsync.ListTaskDefinitionFamilies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitionFamilies" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListTaskDefinitionFamiliesResult> listTaskDefinitionFamiliesAsync(
             ListTaskDefinitionFamiliesRequest listTaskDefinitionFamiliesRequest);
@@ -806,6 +965,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTaskDefinitionFamilies operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListTaskDefinitionFamilies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitionFamilies" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListTaskDefinitionFamiliesResult> listTaskDefinitionFamiliesAsync(
             ListTaskDefinitionFamiliesRequest listTaskDefinitionFamiliesRequest,
@@ -835,6 +996,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param listTaskDefinitionsRequest
      * @return A Java Future containing the result of the ListTaskDefinitions operation returned by the service.
      * @sample AmazonECSAsync.ListTaskDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTaskDefinitionsResult> listTaskDefinitionsAsync(ListTaskDefinitionsRequest listTaskDefinitionsRequest);
 
@@ -851,6 +1014,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTaskDefinitions operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListTaskDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTaskDefinitionsResult> listTaskDefinitionsAsync(ListTaskDefinitionsRequest listTaskDefinitionsRequest,
             com.amazonaws.handlers.AsyncHandler<ListTaskDefinitionsRequest, ListTaskDefinitionsResult> asyncHandler);
@@ -884,6 +1049,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param listTasksRequest
      * @return A Java Future containing the result of the ListTasks operation returned by the service.
      * @sample AmazonECSAsync.ListTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTasksResult> listTasksAsync(ListTasksRequest listTasksRequest);
 
@@ -905,6 +1072,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTasks operation returned by the service.
      * @sample AmazonECSAsyncHandler.ListTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTasksResult> listTasksAsync(ListTasksRequest listTasksRequest,
             com.amazonaws.handlers.AsyncHandler<ListTasksRequest, ListTasksResult> asyncHandler);
@@ -924,6 +1093,45 @@ public interface AmazonECSAsync extends AmazonECS {
     java.util.concurrent.Future<ListTasksResult> listTasksAsync(com.amazonaws.handlers.AsyncHandler<ListTasksRequest, ListTasksResult> asyncHandler);
 
     /**
+     * <p>
+     * Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the
+     * attribute exists, its value is replaced with the specified value. To delete an attribute, use
+     * <a>DeleteAttributes</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes"
+     * >Attributes</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param putAttributesRequest
+     * @return A Java Future containing the result of the PutAttributes operation returned by the service.
+     * @sample AmazonECSAsync.PutAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PutAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<PutAttributesResult> putAttributesAsync(PutAttributesRequest putAttributesRequest);
+
+    /**
+     * <p>
+     * Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the
+     * attribute exists, its value is replaced with the specified value. To delete an attribute, use
+     * <a>DeleteAttributes</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes"
+     * >Attributes</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param putAttributesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutAttributes operation returned by the service.
+     * @sample AmazonECSAsyncHandler.PutAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PutAttributes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<PutAttributesResult> putAttributesAsync(PutAttributesRequest putAttributesRequest,
+            com.amazonaws.handlers.AsyncHandler<PutAttributesRequest, PutAttributesResult> asyncHandler);
+
+    /**
      * <note>
      * <p>
      * This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the
@@ -937,6 +1145,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param registerContainerInstanceRequest
      * @return A Java Future containing the result of the RegisterContainerInstance operation returned by the service.
      * @sample AmazonECSAsync.RegisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterContainerInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RegisterContainerInstanceResult> registerContainerInstanceAsync(
             RegisterContainerInstanceRequest registerContainerInstanceRequest);
@@ -959,6 +1169,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RegisterContainerInstance operation returned by the service.
      * @sample AmazonECSAsyncHandler.RegisterContainerInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterContainerInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RegisterContainerInstanceResult> registerContainerInstanceAsync(
             RegisterContainerInstanceRequest registerContainerInstanceRequest,
@@ -989,6 +1201,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param registerTaskDefinitionRequest
      * @return A Java Future containing the result of the RegisterTaskDefinition operation returned by the service.
      * @sample AmazonECSAsync.RegisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterTaskDefinitionResult> registerTaskDefinitionAsync(RegisterTaskDefinitionRequest registerTaskDefinitionRequest);
 
@@ -1021,37 +1235,49 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RegisterTaskDefinition operation returned by the service.
      * @sample AmazonECSAsyncHandler.RegisterTaskDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterTaskDefinition" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterTaskDefinitionResult> registerTaskDefinitionAsync(RegisterTaskDefinitionRequest registerTaskDefinitionRequest,
             com.amazonaws.handlers.AsyncHandler<RegisterTaskDefinitionRequest, RegisterTaskDefinitionResult> asyncHandler);
 
     /**
      * <p>
-     * Start a task using random placement and the default Amazon ECS scheduler. To use your own scheduler or place a
-     * task on a specific container instance, use <code>StartTask</code> instead.
+     * Starts a new task using the specified task definition.
      * </p>
-     * <important>
      * <p>
-     * The <code>count</code> parameter is limited to 10 tasks per call.
+     * You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement
+     * constraints and placement strategies. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
+     * <p>
+     * Alternatively, you can use <a>StartTask</a> to use your own scheduler or place tasks manually on specific
+     * container instances.
+     * </p>
      * 
      * @param runTaskRequest
      * @return A Java Future containing the result of the RunTask operation returned by the service.
      * @sample AmazonECSAsync.RunTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RunTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunTaskResult> runTaskAsync(RunTaskRequest runTaskRequest);
 
     /**
      * <p>
-     * Start a task using random placement and the default Amazon ECS scheduler. To use your own scheduler or place a
-     * task on a specific container instance, use <code>StartTask</code> instead.
+     * Starts a new task using the specified task definition.
      * </p>
-     * <important>
      * <p>
-     * The <code>count</code> parameter is limited to 10 tasks per call.
+     * You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement
+     * constraints and placement strategies. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
+     * <p>
+     * Alternatively, you can use <a>StartTask</a> to use your own scheduler or place tasks manually on specific
+     * container instances.
+     * </p>
      * 
      * @param runTaskRequest
      * @param asyncHandler
@@ -1060,37 +1286,39 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RunTask operation returned by the service.
      * @sample AmazonECSAsyncHandler.RunTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RunTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunTaskResult> runTaskAsync(RunTaskRequest runTaskRequest,
             com.amazonaws.handlers.AsyncHandler<RunTaskRequest, RunTaskResult> asyncHandler);
 
     /**
      * <p>
-     * Starts a new task from the specified task definition on the specified container instance or instances. To use the
-     * default Amazon ECS scheduler to place your task, use <code>RunTask</code> instead.
+     * Starts a new task from the specified task definition on the specified container instance or instances.
      * </p>
-     * <important>
      * <p>
-     * The list of container instances to start tasks on is limited to 10.
+     * Alternatively, you can use <a>RunTask</a> to place tasks for you. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
      * 
      * @param startTaskRequest
      * @return A Java Future containing the result of the StartTask operation returned by the service.
      * @sample AmazonECSAsync.StartTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StartTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartTaskResult> startTaskAsync(StartTaskRequest startTaskRequest);
 
     /**
      * <p>
-     * Starts a new task from the specified task definition on the specified container instance or instances. To use the
-     * default Amazon ECS scheduler to place your task, use <code>RunTask</code> instead.
+     * Starts a new task from the specified task definition on the specified container instance or instances.
      * </p>
-     * <important>
      * <p>
-     * The list of container instances to start tasks on is limited to 10.
+     * Alternatively, you can use <a>RunTask</a> to place tasks for you. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html">Scheduling Tasks</a> in
+     * the <i>Amazon EC2 Container Service Developer Guide</i>.
      * </p>
-     * </important>
      * 
      * @param startTaskRequest
      * @param asyncHandler
@@ -1099,6 +1327,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartTask operation returned by the service.
      * @sample AmazonECSAsyncHandler.StartTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StartTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartTaskResult> startTaskAsync(StartTaskRequest startTaskRequest,
             com.amazonaws.handlers.AsyncHandler<StartTaskRequest, StartTaskResult> asyncHandler);
@@ -1117,6 +1347,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param stopTaskRequest
      * @return A Java Future containing the result of the StopTask operation returned by the service.
      * @sample AmazonECSAsync.StopTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StopTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopTaskResult> stopTaskAsync(StopTaskRequest stopTaskRequest);
 
@@ -1138,6 +1370,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StopTask operation returned by the service.
      * @sample AmazonECSAsyncHandler.StopTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StopTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopTaskResult> stopTaskAsync(StopTaskRequest stopTaskRequest,
             com.amazonaws.handlers.AsyncHandler<StopTaskRequest, StopTaskResult> asyncHandler);
@@ -1156,6 +1390,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param submitContainerStateChangeRequest
      * @return A Java Future containing the result of the SubmitContainerStateChange operation returned by the service.
      * @sample AmazonECSAsync.SubmitContainerStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitContainerStateChange" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SubmitContainerStateChangeResult> submitContainerStateChangeAsync(
             SubmitContainerStateChangeRequest submitContainerStateChangeRequest);
@@ -1178,6 +1414,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SubmitContainerStateChange operation returned by the service.
      * @sample AmazonECSAsyncHandler.SubmitContainerStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitContainerStateChange" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SubmitContainerStateChangeResult> submitContainerStateChangeAsync(
             SubmitContainerStateChangeRequest submitContainerStateChangeRequest,
@@ -1212,6 +1450,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param submitTaskStateChangeRequest
      * @return A Java Future containing the result of the SubmitTaskStateChange operation returned by the service.
      * @sample AmazonECSAsync.SubmitTaskStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitTaskStateChange" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SubmitTaskStateChangeResult> submitTaskStateChangeAsync(SubmitTaskStateChangeRequest submitTaskStateChangeRequest);
 
@@ -1233,6 +1473,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SubmitTaskStateChange operation returned by the service.
      * @sample AmazonECSAsyncHandler.SubmitTaskStateChange
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitTaskStateChange" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SubmitTaskStateChangeResult> submitTaskStateChangeAsync(SubmitTaskStateChangeRequest submitTaskStateChangeRequest,
             com.amazonaws.handlers.AsyncHandler<SubmitTaskStateChangeRequest, SubmitTaskStateChangeResult> asyncHandler);
@@ -1255,6 +1497,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * @param updateContainerAgentRequest
      * @return A Java Future containing the result of the UpdateContainerAgent operation returned by the service.
      * @sample AmazonECSAsync.UpdateContainerAgent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerAgent" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateContainerAgentResult> updateContainerAgentAsync(UpdateContainerAgentRequest updateContainerAgentRequest);
 
@@ -1280,9 +1524,146 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateContainerAgent operation returned by the service.
      * @sample AmazonECSAsyncHandler.UpdateContainerAgent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerAgent" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateContainerAgentResult> updateContainerAgentAsync(UpdateContainerAgentRequest updateContainerAgentRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateContainerAgentRequest, UpdateContainerAgentResult> asyncHandler);
+
+    /**
+     * <p>
+     * Modifies the status of an Amazon ECS container instance.
+     * </p>
+     * <p>
+     * You can change the status of a container instance to <code>DRAINING</code> to manually remove an instance from a
+     * cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>DRAINING</code>, Amazon ECS prevents new tasks from being scheduled
+     * for placement on the container instance and replacement service tasks are started on other container instances in
+     * the cluster if the resources are available. Service tasks on the container instance that are in the
+     * <code>PENDING</code> state are stopped immediately.
+     * </p>
+     * <p>
+     * Service tasks on the container instance that are in the <code>RUNNING</code> state are stopped and replaced
+     * according the service's deployment configuration parameters, <code>minimumHealthyPercent</code> and
+     * <code>maximumPercent</code>. Note that you can change the deployment configuration of your service using
+     * <a>UpdateService</a>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during task replacement. For example, <code>desiredCount</code> is four tasks, a minimum of 50%
+     * allows the scheduler to stop two existing tasks before starting two new tasks. If the minimum is 100%, the
+     * service scheduler can't remove existing tasks until the replacement tasks are considered healthy. Tasks for
+     * services that do not use a load balancer are considered healthy if they are in the <code>RUNNING</code> state.
+     * Tasks for services that use a load balancer are considered healthy if they are in the <code>RUNNING</code> state
+     * and the container instance they are hosted on is reported as healthy by the load balancer.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during task
+     * replacement, which enables you to define the replacement batch size. For example, if <code>desiredCount</code> of
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four tasks to be drained (provided that
+     * the cluster resources required to do this are available). If the maximum is 100%, then replacement tasks can't
+     * start until the draining tasks have stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Any <code>PENDING</code> or <code>RUNNING</code> tasks that do not belong to a service are not affected; you must
+     * wait for them to finish or stop them manually.
+     * </p>
+     * <p>
+     * A container instance has completed draining when it has no more <code>RUNNING</code> tasks. You can verify this
+     * using <a>ListTasks</a>.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>ACTIVE</code>, the Amazon ECS scheduler can begin scheduling tasks on
+     * the instance again.
+     * </p>
+     * 
+     * @param updateContainerInstancesStateRequest
+     * @return A Java Future containing the result of the UpdateContainerInstancesState operation returned by the
+     *         service.
+     * @sample AmazonECSAsync.UpdateContainerInstancesState
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerInstancesState"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContainerInstancesStateResult> updateContainerInstancesStateAsync(
+            UpdateContainerInstancesStateRequest updateContainerInstancesStateRequest);
+
+    /**
+     * <p>
+     * Modifies the status of an Amazon ECS container instance.
+     * </p>
+     * <p>
+     * You can change the status of a container instance to <code>DRAINING</code> to manually remove an instance from a
+     * cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>DRAINING</code>, Amazon ECS prevents new tasks from being scheduled
+     * for placement on the container instance and replacement service tasks are started on other container instances in
+     * the cluster if the resources are available. Service tasks on the container instance that are in the
+     * <code>PENDING</code> state are stopped immediately.
+     * </p>
+     * <p>
+     * Service tasks on the container instance that are in the <code>RUNNING</code> state are stopped and replaced
+     * according the service's deployment configuration parameters, <code>minimumHealthyPercent</code> and
+     * <code>maximumPercent</code>. Note that you can change the deployment configuration of your service using
+     * <a>UpdateService</a>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during task replacement. For example, <code>desiredCount</code> is four tasks, a minimum of 50%
+     * allows the scheduler to stop two existing tasks before starting two new tasks. If the minimum is 100%, the
+     * service scheduler can't remove existing tasks until the replacement tasks are considered healthy. Tasks for
+     * services that do not use a load balancer are considered healthy if they are in the <code>RUNNING</code> state.
+     * Tasks for services that use a load balancer are considered healthy if they are in the <code>RUNNING</code> state
+     * and the container instance they are hosted on is reported as healthy by the load balancer.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during task
+     * replacement, which enables you to define the replacement batch size. For example, if <code>desiredCount</code> of
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four tasks to be drained (provided that
+     * the cluster resources required to do this are available). If the maximum is 100%, then replacement tasks can't
+     * start until the draining tasks have stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Any <code>PENDING</code> or <code>RUNNING</code> tasks that do not belong to a service are not affected; you must
+     * wait for them to finish or stop them manually.
+     * </p>
+     * <p>
+     * A container instance has completed draining when it has no more <code>RUNNING</code> tasks. You can verify this
+     * using <a>ListTasks</a>.
+     * </p>
+     * <p>
+     * When you set a container instance to <code>ACTIVE</code>, the Amazon ECS scheduler can begin scheduling tasks on
+     * the instance again.
+     * </p>
+     * 
+     * @param updateContainerInstancesStateRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateContainerInstancesState operation returned by the
+     *         service.
+     * @sample AmazonECSAsyncHandler.UpdateContainerInstancesState
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerInstancesState"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContainerInstancesStateResult> updateContainerInstancesStateAsync(
+            UpdateContainerInstancesStateRequest updateContainerInstancesStateRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateContainerInstancesStateRequest, UpdateContainerInstancesStateResult> asyncHandler);
 
     /**
      * <p>
@@ -1300,21 +1681,26 @@ public interface AmazonECSAsync extends AmazonECS {
      * task definition of a service, the service scheduler uses the deployment configuration parameters,
      * <code>minimumHealthyPercent</code> and <code>maximumPercent</code>, to determine the deployment strategy.
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * If the <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the <code>desiredCount</code>
-     * temporarily during a deployment. For example, if your service has a <code>desiredCount</code> of four tasks, a
-     * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two existing tasks before starting two new
-     * tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy if they are in the
-     * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are considered healthy if they
-     * are in the <code>RUNNING</code> state and the container instance it is hosted on is reported as healthy by the
-     * load balancer.
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during a deployment. For example, if <code>desiredCount</code> is four tasks, a minimum of 50% allows
+     * the scheduler to stop two existing tasks before starting two new tasks. Tasks for services that do not use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance they are
+     * hosted on is reported as healthy by the load balancer.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during a
-     * deployment, which enables you to define the deployment batch size. For example, if your service has a
-     * <code>desiredCount</code> of four tasks, a <code>maximumPercent</code> value of 200% starts four new tasks before
-     * stopping the four older tasks (provided that the cluster resources required to do this are available).
+     * deployment, which enables you to define the deployment batch size. For example, if <code>desiredCount</code> is
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four older tasks (provided that the
+     * cluster resources required to do this are available).
      * </p>
+     * </li>
+     * </ul>
      * <p>
      * When <a>UpdateService</a> stops a task during a deployment, the equivalent of <code>docker stop</code> is issued
      * to the containers running in the task. This results in a <code>SIGTERM</code> and a 30-second timeout, after
@@ -1322,8 +1708,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * <code>SIGTERM</code> gracefully and exits within 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster with the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -1332,6 +1718,12 @@ public interface AmazonECSAsync extends AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -1346,10 +1738,33 @@ public interface AmazonECSAsync extends AmazonECS {
      * </p>
      * </li>
      * </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * When the service scheduler stops running tasks, it attempts to maintain balance across the Availability Zones in
+     * your cluster using the following logic:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Sort the container instances by the largest number of running tasks for this service in the same Availability
+     * Zone as the instance. For example, if zone A has one running service task and zones B and C each have two,
+     * container instances in either zone B or C are considered optimal for termination.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stop the task on a container instance in an optimal Availability Zone (based on the previous steps), favoring
+     * container instances with the largest number of running tasks for this service.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateServiceRequest
      * @return A Java Future containing the result of the UpdateService operation returned by the service.
      * @sample AmazonECSAsync.UpdateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateServiceResult> updateServiceAsync(UpdateServiceRequest updateServiceRequest);
 
@@ -1369,21 +1784,26 @@ public interface AmazonECSAsync extends AmazonECS {
      * task definition of a service, the service scheduler uses the deployment configuration parameters,
      * <code>minimumHealthyPercent</code> and <code>maximumPercent</code>, to determine the deployment strategy.
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * If the <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the <code>desiredCount</code>
-     * temporarily during a deployment. For example, if your service has a <code>desiredCount</code> of four tasks, a
-     * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two existing tasks before starting two new
-     * tasks. Tasks for services that <i>do not</i> use a load balancer are considered healthy if they are in the
-     * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load balancer are considered healthy if they
-     * are in the <code>RUNNING</code> state and the container instance it is hosted on is reported as healthy by the
-     * load balancer.
+     * If <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore <code>desiredCount</code>
+     * temporarily during a deployment. For example, if <code>desiredCount</code> is four tasks, a minimum of 50% allows
+     * the scheduler to stop two existing tasks before starting two new tasks. Tasks for services that do not use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state. Tasks for services that use a load
+     * balancer are considered healthy if they are in the <code>RUNNING</code> state and the container instance they are
+     * hosted on is reported as healthy by the load balancer.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * The <code>maximumPercent</code> parameter represents an upper limit on the number of running tasks during a
-     * deployment, which enables you to define the deployment batch size. For example, if your service has a
-     * <code>desiredCount</code> of four tasks, a <code>maximumPercent</code> value of 200% starts four new tasks before
-     * stopping the four older tasks (provided that the cluster resources required to do this are available).
+     * deployment, which enables you to define the deployment batch size. For example, if <code>desiredCount</code> is
+     * four tasks, a maximum of 200% starts four new tasks before stopping the four older tasks (provided that the
+     * cluster resources required to do this are available).
      * </p>
+     * </li>
+     * </ul>
      * <p>
      * When <a>UpdateService</a> stops a task during a deployment, the equivalent of <code>docker stop</code> is issued
      * to the containers running in the task. This results in a <code>SIGTERM</code> and a 30-second timeout, after
@@ -1391,8 +1811,8 @@ public interface AmazonECSAsync extends AmazonECS {
      * <code>SIGTERM</code> gracefully and exits within 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
      * </p>
      * <p>
-     * When the service scheduler launches new tasks, it attempts to balance them across the Availability Zones in your
-     * cluster with the following logic:
+     * When the service scheduler launches new tasks, it determines task placement in your cluster with the following
+     * logic:
      * </p>
      * <ul>
      * <li>
@@ -1401,6 +1821,12 @@ public interface AmazonECSAsync extends AmazonECS {
      * example, they have the required CPU, memory, ports, and container instance attributes).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although
+     * you can choose a different placement strategy):
+     * </p>
+     * <ul>
      * <li>
      * <p>
      * Sort the valid container instances by the fewest number of running tasks for this service in the same
@@ -1415,6 +1841,27 @@ public interface AmazonECSAsync extends AmazonECS {
      * </p>
      * </li>
      * </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * When the service scheduler stops running tasks, it attempts to maintain balance across the Availability Zones in
+     * your cluster using the following logic:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Sort the container instances by the largest number of running tasks for this service in the same Availability
+     * Zone as the instance. For example, if zone A has one running service task and zones B and C each have two,
+     * container instances in either zone B or C are considered optimal for termination.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stop the task on a container instance in an optimal Availability Zone (based on the previous steps), favoring
+     * container instances with the largest number of running tasks for this service.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateServiceRequest
      * @param asyncHandler
@@ -1423,6 +1870,8 @@ public interface AmazonECSAsync extends AmazonECS {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateService operation returned by the service.
      * @sample AmazonECSAsyncHandler.UpdateService
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateService" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateServiceResult> updateServiceAsync(UpdateServiceRequest updateServiceRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateServiceRequest, UpdateServiceResult> asyncHandler);

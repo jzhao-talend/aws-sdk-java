@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * An AWS Identity and Access Management (IAM) role that can be used by the associated Amazon Redshift cluster to access
  * other AWS services.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ClusterIamRole" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ClusterIamRole implements Serializable, Cloneable {
 
     /**
@@ -271,9 +276,9 @@ public class ClusterIamRole implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIamRoleArn() != null)
-            sb.append("IamRoleArn: " + getIamRoleArn() + ",");
+            sb.append("IamRoleArn: ").append(getIamRoleArn()).append(",");
         if (getApplyStatus() != null)
-            sb.append("ApplyStatus: " + getApplyStatus());
+            sb.append("ApplyStatus: ").append(getApplyStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -317,4 +322,5 @@ public class ClusterIamRole implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

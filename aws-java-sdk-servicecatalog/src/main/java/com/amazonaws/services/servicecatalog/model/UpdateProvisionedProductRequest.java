@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateProvisionedProduct"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateProvisionedProductRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -533,21 +538,21 @@ public class UpdateProvisionedProductRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAcceptLanguage() != null)
-            sb.append("AcceptLanguage: " + getAcceptLanguage() + ",");
+            sb.append("AcceptLanguage: ").append(getAcceptLanguage()).append(",");
         if (getProvisionedProductName() != null)
-            sb.append("ProvisionedProductName: " + getProvisionedProductName() + ",");
+            sb.append("ProvisionedProductName: ").append(getProvisionedProductName()).append(",");
         if (getProvisionedProductId() != null)
-            sb.append("ProvisionedProductId: " + getProvisionedProductId() + ",");
+            sb.append("ProvisionedProductId: ").append(getProvisionedProductId()).append(",");
         if (getProductId() != null)
-            sb.append("ProductId: " + getProductId() + ",");
+            sb.append("ProductId: ").append(getProductId()).append(",");
         if (getProvisioningArtifactId() != null)
-            sb.append("ProvisioningArtifactId: " + getProvisioningArtifactId() + ",");
+            sb.append("ProvisioningArtifactId: ").append(getProvisioningArtifactId()).append(",");
         if (getPathId() != null)
-            sb.append("PathId: " + getPathId() + ",");
+            sb.append("PathId: ").append(getPathId()).append(",");
         if (getProvisioningParameters() != null)
-            sb.append("ProvisioningParameters: " + getProvisioningParameters() + ",");
+            sb.append("ProvisioningParameters: ").append(getProvisioningParameters()).append(",");
         if (getUpdateToken() != null)
-            sb.append("UpdateToken: " + getUpdateToken());
+            sb.append("UpdateToken: ").append(getUpdateToken());
         sb.append("}");
         return sb.toString();
     }
@@ -617,4 +622,5 @@ public class UpdateProvisionedProductRequest extends com.amazonaws.AmazonWebServ
     public UpdateProvisionedProductRequest clone() {
         return (UpdateProvisionedProductRequest) super.clone();
     }
+
 }

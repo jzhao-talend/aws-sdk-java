@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.ecr;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.ecr.model.*;
 
 /**
  * Interface for accessing Amazon ECR.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.ecr.AbstractAmazonECR} instead.
+ * </p>
  * <p>
  * <p>
  * Amazon EC2 Container Registry (Amazon ECR) is a managed AWS Docker registry service. Customers can use the familiar
@@ -28,6 +34,7 @@ import com.amazonaws.services.ecr.model.*;
  * images.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonECR {
 
     /**
@@ -58,7 +65,11 @@ public interface AmazonECR {
      * @param endpoint
      *        The endpoint (ex: "ecr.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "ecr.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -79,7 +90,9 @@ public interface AmazonECR {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -88,8 +101,8 @@ public interface AmazonECR {
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -103,6 +116,8 @@ public interface AmazonECR {
      * @throws ServerException
      *         These errors are usually caused by a server-side issue.
      * @sample AmazonECR.BatchCheckLayerAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchCheckLayerAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     BatchCheckLayerAvailabilityResult batchCheckLayerAvailability(BatchCheckLayerAvailabilityRequest batchCheckLayerAvailabilityRequest);
 
@@ -110,6 +125,13 @@ public interface AmazonECR {
      * <p>
      * Deletes a list of specified images within a specified repository. Images are specified with either
      * <code>imageTag</code> or <code>imageDigest</code>.
+     * </p>
+     * <p>
+     * You can remove a tag from an image by specifying the image's tag in your request. When you remove the last tag
+     * from an image, the image is deleted from your repository.
+     * </p>
+     * <p>
+     * You can completely delete an image (and all of its tags) by specifying the image's digest in your request.
      * </p>
      * 
      * @param batchDeleteImageRequest
@@ -124,6 +146,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.BatchDeleteImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchDeleteImage" target="_top">AWS API
+     *      Documentation</a>
      */
     BatchDeleteImageResult batchDeleteImage(BatchDeleteImageRequest batchDeleteImageRequest);
 
@@ -143,6 +167,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.BatchGetImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchGetImage" target="_top">AWS API
+     *      Documentation</a>
      */
     BatchGetImageResult batchGetImage(BatchGetImageRequest batchGetImageRequest);
 
@@ -154,8 +180,8 @@ public interface AmazonECR {
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -180,6 +206,8 @@ public interface AmazonECR {
      * @throws EmptyUploadException
      *         The specified layer upload does not contain any layer parts.
      * @sample AmazonECR.CompleteLayerUpload
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/CompleteLayerUpload" target="_top">AWS API
+     *      Documentation</a>
      */
     CompleteLayerUploadResult completeLayerUpload(CompleteLayerUploadRequest completeLayerUploadRequest);
 
@@ -202,6 +230,8 @@ public interface AmazonECR {
      *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon EC2 Container Registry User Guide.
      * @sample AmazonECR.CreateRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/CreateRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateRepositoryResult createRepository(CreateRepositoryRequest createRepositoryRequest);
 
@@ -224,6 +254,8 @@ public interface AmazonECR {
      *         The specified repository contains images. To delete a repository that contains images, you must force the
      *         deletion with the <code>force</code> parameter.
      * @sample AmazonECR.DeleteRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest deleteRepositoryRequest);
 
@@ -244,12 +276,14 @@ public interface AmazonECR {
      * @throws RepositoryPolicyNotFoundException
      *         The specified repository and registry combination does not have an associated repository policy.
      * @sample AmazonECR.DeleteRepositoryPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteRepositoryPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteRepositoryPolicyResult deleteRepositoryPolicy(DeleteRepositoryPolicyRequest deleteRepositoryPolicyRequest);
 
     /**
      * <p>
-     * Returns metadata about the images in a repository, including image size and creation date.
+     * Returns metadata about the images in a repository, including image size, image tags, and creation date.
      * </p>
      * <note>
      * <p>
@@ -271,6 +305,8 @@ public interface AmazonECR {
      * @throws ImageNotFoundException
      *         The image requested does not exist in the specified repository.
      * @sample AmazonECR.DescribeImages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DescribeImages" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeImagesResult describeImages(DescribeImagesRequest describeImagesRequest);
 
@@ -289,6 +325,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.DescribeRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DescribeRepositories" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeRepositoriesResult describeRepositories(DescribeRepositoriesRequest describeRepositoriesRequest);
 
@@ -311,6 +349,8 @@ public interface AmazonECR {
      * @throws InvalidParameterException
      *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECR.GetAuthorizationToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetAuthorizationToken" target="_top">AWS API
+     *      Documentation</a>
      */
     GetAuthorizationTokenResult getAuthorizationToken(GetAuthorizationTokenRequest getAuthorizationTokenRequest);
 
@@ -321,8 +361,8 @@ public interface AmazonECR {
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -341,6 +381,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.GetDownloadUrlForLayer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetDownloadUrlForLayer" target="_top">AWS API
+     *      Documentation</a>
      */
     GetDownloadUrlForLayerResult getDownloadUrlForLayer(GetDownloadUrlForLayerRequest getDownloadUrlForLayerRequest);
 
@@ -361,6 +403,8 @@ public interface AmazonECR {
      * @throws RepositoryPolicyNotFoundException
      *         The specified repository and registry combination does not have an associated repository policy.
      * @sample AmazonECR.GetRepositoryPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetRepositoryPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     GetRepositoryPolicyResult getRepositoryPolicy(GetRepositoryPolicyRequest getRepositoryPolicyRequest);
 
@@ -370,8 +414,8 @@ public interface AmazonECR {
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -385,6 +429,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.InitiateLayerUpload
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/InitiateLayerUpload" target="_top">AWS API
+     *      Documentation</a>
      */
     InitiateLayerUploadResult initiateLayerUpload(InitiateLayerUploadRequest initiateLayerUploadRequest);
 
@@ -409,17 +455,19 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.ListImages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/ListImages" target="_top">AWS API
+     *      Documentation</a>
      */
     ListImagesResult listImages(ListImagesRequest listImagesRequest);
 
     /**
      * <p>
-     * Creates or updates the image manifest associated with an image.
+     * Creates or updates the image manifest and tags associated with an image.
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -443,6 +491,8 @@ public interface AmazonECR {
      *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon EC2 Container Registry User Guide.
      * @sample AmazonECR.PutImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutImage" target="_top">AWS API
+     *      Documentation</a>
      */
     PutImageResult putImage(PutImageRequest putImageRequest);
 
@@ -461,6 +511,8 @@ public interface AmazonECR {
      *         The specified repository could not be found. Check the spelling of the specified repository and ensure
      *         that you are performing operations on the correct registry.
      * @sample AmazonECR.SetRepositoryPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/SetRepositoryPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     SetRepositoryPolicyResult setRepositoryPolicy(SetRepositoryPolicyRequest setRepositoryPolicyRequest);
 
@@ -470,8 +522,8 @@ public interface AmazonECR {
      * </p>
      * <note>
      * <p>
-     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the
-     * <code>docker</code> CLI to pull, tag, and push images.
+     * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
+     * and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.
      * </p>
      * </note>
      * 
@@ -495,6 +547,8 @@ public interface AmazonECR {
      *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon EC2 Container Registry User Guide.
      * @sample AmazonECR.UploadLayerPart
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/UploadLayerPart" target="_top">AWS API
+     *      Documentation</a>
      */
     UploadLayerPartResult uploadLayerPart(UploadLayerPartRequest uploadLayerPartRequest);
 

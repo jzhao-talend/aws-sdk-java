@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the schedule run operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ScheduleRun" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -58,6 +64,12 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      */
     private ScheduleRunConfiguration configuration;
+    /**
+     * <p>
+     * Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     * </p>
+     */
+    private ExecutionConfiguration executionConfiguration;
 
     /**
      * <p>
@@ -300,6 +312,46 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     * </p>
+     * 
+     * @param executionConfiguration
+     *        Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     */
+
+    public void setExecutionConfiguration(ExecutionConfiguration executionConfiguration) {
+        this.executionConfiguration = executionConfiguration;
+    }
+
+    /**
+     * <p>
+     * Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     * </p>
+     * 
+     * @return Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     */
+
+    public ExecutionConfiguration getExecutionConfiguration() {
+        return this.executionConfiguration;
+    }
+
+    /**
+     * <p>
+     * Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     * </p>
+     * 
+     * @param executionConfiguration
+     *        Specifies configuration information about a test run, such as the execution timeout (in minutes).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ScheduleRunRequest withExecutionConfiguration(ExecutionConfiguration executionConfiguration) {
+        setExecutionConfiguration(executionConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -311,17 +363,19 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProjectArn() != null)
-            sb.append("ProjectArn: " + getProjectArn() + ",");
+            sb.append("ProjectArn: ").append(getProjectArn()).append(",");
         if (getAppArn() != null)
-            sb.append("AppArn: " + getAppArn() + ",");
+            sb.append("AppArn: ").append(getAppArn()).append(",");
         if (getDevicePoolArn() != null)
-            sb.append("DevicePoolArn: " + getDevicePoolArn() + ",");
+            sb.append("DevicePoolArn: ").append(getDevicePoolArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getTest() != null)
-            sb.append("Test: " + getTest() + ",");
+            sb.append("Test: ").append(getTest()).append(",");
         if (getConfiguration() != null)
-            sb.append("Configuration: " + getConfiguration());
+            sb.append("Configuration: ").append(getConfiguration()).append(",");
+        if (getExecutionConfiguration() != null)
+            sb.append("ExecutionConfiguration: ").append(getExecutionConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -360,6 +414,10 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getConfiguration() != null && other.getConfiguration().equals(this.getConfiguration()) == false)
             return false;
+        if (other.getExecutionConfiguration() == null ^ this.getExecutionConfiguration() == null)
+            return false;
+        if (other.getExecutionConfiguration() != null && other.getExecutionConfiguration().equals(this.getExecutionConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -374,6 +432,7 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getTest() == null) ? 0 : getTest().hashCode());
         hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getExecutionConfiguration() == null) ? 0 : getExecutionConfiguration().hashCode());
         return hashCode;
     }
 
@@ -381,4 +440,5 @@ public class ScheduleRunRequest extends com.amazonaws.AmazonWebServiceRequest im
     public ScheduleRunRequest clone() {
         return (ScheduleRunRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Summarizes the number of layers, instances, and apps in a stack.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StackSummary" target="_top">AWS API
+ *      Documentation</a>
  */
-public class StackSummary implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StackSummary implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -310,17 +317,17 @@ public class StackSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getLayersCount() != null)
-            sb.append("LayersCount: " + getLayersCount() + ",");
+            sb.append("LayersCount: ").append(getLayersCount()).append(",");
         if (getAppsCount() != null)
-            sb.append("AppsCount: " + getAppsCount() + ",");
+            sb.append("AppsCount: ").append(getAppsCount()).append(",");
         if (getInstancesCount() != null)
-            sb.append("InstancesCount: " + getInstancesCount());
+            sb.append("InstancesCount: ").append(getInstancesCount());
         sb.append("}");
         return sb.toString();
     }
@@ -383,5 +390,11 @@ public class StackSummary implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.StackSummaryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

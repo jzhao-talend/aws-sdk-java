@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -21,6 +23,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * associated API stages, specified in the payload.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateUsagePlanRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -296,15 +299,15 @@ public class CreateUsagePlanRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getApiStages() != null)
-            sb.append("ApiStages: " + getApiStages() + ",");
+            sb.append("ApiStages: ").append(getApiStages()).append(",");
         if (getThrottle() != null)
-            sb.append("Throttle: " + getThrottle() + ",");
+            sb.append("Throttle: ").append(getThrottle()).append(",");
         if (getQuota() != null)
-            sb.append("Quota: " + getQuota());
+            sb.append("Quota: ").append(getQuota());
         sb.append("}");
         return sb.toString();
     }
@@ -359,4 +362,5 @@ public class CreateUsagePlanRequest extends com.amazonaws.AmazonWebServiceReques
     public CreateUsagePlanRequest clone() {
         return (CreateUsagePlanRequest) super.clone();
     }
+
 }

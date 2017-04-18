@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.simpledb;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.simpledb.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon SimpleDB asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing Amazon SimpleDB asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -37,6 +46,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements AmazonSimpleDBAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -58,9 +68,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonSimpleDBAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -82,10 +94,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -98,9 +111,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -111,8 +126,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -127,10 +145,12 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -145,9 +165,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -164,10 +186,12 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -178,9 +202,11 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -194,12 +220,18 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonSimpleDBAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonSimpleDBAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonSimpleDBAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonSimpleDBAsyncClientBuilder asyncBuilder() {
+        return AmazonSimpleDBAsyncClientBuilder.standard();
     }
 
     /**
@@ -218,7 +250,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -231,14 +263,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<BatchDeleteAttributesResult> batchDeleteAttributesAsync(final BatchDeleteAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<BatchDeleteAttributesRequest, BatchDeleteAttributesResult> asyncHandler) {
+        final BatchDeleteAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<BatchDeleteAttributesResult>() {
             @Override
             public BatchDeleteAttributesResult call() throws Exception {
-                BatchDeleteAttributesResult result;
+                BatchDeleteAttributesResult result = null;
 
                 try {
-                    result = batchDeleteAttributes(request);
+                    result = executeBatchDeleteAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -247,7 +280,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -263,14 +296,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<BatchPutAttributesResult> batchPutAttributesAsync(final BatchPutAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<BatchPutAttributesRequest, BatchPutAttributesResult> asyncHandler) {
+        final BatchPutAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<BatchPutAttributesResult>() {
             @Override
             public BatchPutAttributesResult call() throws Exception {
-                BatchPutAttributesResult result;
+                BatchPutAttributesResult result = null;
 
                 try {
-                    result = batchPutAttributes(request);
+                    result = executeBatchPutAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -279,7 +313,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -295,14 +329,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<CreateDomainResult> createDomainAsync(final CreateDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateDomainRequest, CreateDomainResult> asyncHandler) {
+        final CreateDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateDomainResult>() {
             @Override
             public CreateDomainResult call() throws Exception {
-                CreateDomainResult result;
+                CreateDomainResult result = null;
 
                 try {
-                    result = createDomain(request);
+                    result = executeCreateDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -311,7 +346,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -327,14 +362,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<DeleteAttributesResult> deleteAttributesAsync(final DeleteAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteAttributesRequest, DeleteAttributesResult> asyncHandler) {
+        final DeleteAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteAttributesResult>() {
             @Override
             public DeleteAttributesResult call() throws Exception {
-                DeleteAttributesResult result;
+                DeleteAttributesResult result = null;
 
                 try {
-                    result = deleteAttributes(request);
+                    result = executeDeleteAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -343,7 +379,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -359,14 +395,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<DeleteDomainResult> deleteDomainAsync(final DeleteDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteDomainRequest, DeleteDomainResult> asyncHandler) {
+        final DeleteDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteDomainResult>() {
             @Override
             public DeleteDomainResult call() throws Exception {
-                DeleteDomainResult result;
+                DeleteDomainResult result = null;
 
                 try {
-                    result = deleteDomain(request);
+                    result = executeDeleteDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -375,7 +412,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -391,14 +428,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<DomainMetadataResult> domainMetadataAsync(final DomainMetadataRequest request,
             final com.amazonaws.handlers.AsyncHandler<DomainMetadataRequest, DomainMetadataResult> asyncHandler) {
+        final DomainMetadataRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DomainMetadataResult>() {
             @Override
             public DomainMetadataResult call() throws Exception {
-                DomainMetadataResult result;
+                DomainMetadataResult result = null;
 
                 try {
-                    result = domainMetadata(request);
+                    result = executeDomainMetadata(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -407,7 +445,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -423,14 +461,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<GetAttributesResult> getAttributesAsync(final GetAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetAttributesRequest, GetAttributesResult> asyncHandler) {
+        final GetAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetAttributesResult>() {
             @Override
             public GetAttributesResult call() throws Exception {
-                GetAttributesResult result;
+                GetAttributesResult result = null;
 
                 try {
-                    result = getAttributes(request);
+                    result = executeGetAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -439,7 +478,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -455,14 +494,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<ListDomainsResult> listDomainsAsync(final ListDomainsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDomainsRequest, ListDomainsResult> asyncHandler) {
+        final ListDomainsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDomainsResult>() {
             @Override
             public ListDomainsResult call() throws Exception {
-                ListDomainsResult result;
+                ListDomainsResult result = null;
 
                 try {
-                    result = listDomains(request);
+                    result = executeListDomains(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -471,7 +511,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -494,6 +534,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
      *
      * @see #listDomainsAsync(ListDomainsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListDomainsResult> listDomainsAsync(
             com.amazonaws.handlers.AsyncHandler<ListDomainsRequest, ListDomainsResult> asyncHandler) {
 
@@ -509,14 +550,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<PutAttributesResult> putAttributesAsync(final PutAttributesRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutAttributesRequest, PutAttributesResult> asyncHandler) {
+        final PutAttributesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutAttributesResult>() {
             @Override
             public PutAttributesResult call() throws Exception {
-                PutAttributesResult result;
+                PutAttributesResult result = null;
 
                 try {
-                    result = putAttributes(request);
+                    result = executePutAttributes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -525,7 +567,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -541,14 +583,15 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
     @Override
     public java.util.concurrent.Future<SelectResult> selectAsync(final SelectRequest request,
             final com.amazonaws.handlers.AsyncHandler<SelectRequest, SelectResult> asyncHandler) {
+        final SelectRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SelectResult>() {
             @Override
             public SelectResult call() throws Exception {
-                SelectResult result;
+                SelectResult result = null;
 
                 try {
-                    result = select(request);
+                    result = executeSelect(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -557,7 +600,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient implements A
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

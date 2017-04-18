@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,82 +12,47 @@
  */
 package com.amazonaws.services.iot.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.iot.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * RejectCertificateTransferRequest Marshaller
+ * RejectCertificateTransferRequestMarshaller
  */
-public class RejectCertificateTransferRequestMarshaller implements Marshaller<Request<RejectCertificateTransferRequest>, RejectCertificateTransferRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class RejectCertificateTransferRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> CERTIFICATEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PATH).marshallLocationName("certificateId").build();
+    private static final MarshallingInfo<String> REJECTREASON_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("rejectReason").build();
 
-    public RejectCertificateTransferRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final RejectCertificateTransferRequestMarshaller instance = new RejectCertificateTransferRequestMarshaller();
+
+    public static RejectCertificateTransferRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<RejectCertificateTransferRequest> marshall(RejectCertificateTransferRequest rejectCertificateTransferRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(RejectCertificateTransferRequest rejectCertificateTransferRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (rejectCertificateTransferRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<RejectCertificateTransferRequest> request = new DefaultRequest<RejectCertificateTransferRequest>(rejectCertificateTransferRequest, "AWSIot");
-
-        request.setHttpMethod(HttpMethodName.PATCH);
-
-        String uriResourcePath = "/reject-certificate-transfer/{certificateId}";
-
-        uriResourcePath = uriResourcePath.replace(
-                "{certificateId}",
-                (rejectCertificateTransferRequest.getCertificateId() != null) ? SdkHttpUtils.urlEncode(
-                        StringUtils.fromString(rejectCertificateTransferRequest.getCertificateId()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
         try {
-            final StructuredJsonGenerator jsonGenerator = protocolFactory.createGenerator();
-            jsonGenerator.writeStartObject();
-
-            if (rejectCertificateTransferRequest.getRejectReason() != null) {
-                jsonGenerator.writeFieldName("rejectReason").writeValue(rejectCertificateTransferRequest.getRejectReason());
-            }
-
-            jsonGenerator.writeEndObject();
-
-            byte[] content = jsonGenerator.getBytes();
-            request.setContent(new ByteArrayInputStream(content));
-            request.addHeader("Content-Length", Integer.toString(content.length));
-            if (!request.getHeaders().containsKey("Content-Type")) {
-                request.addHeader("Content-Type", protocolFactory.getContentType());
-            }
-        } catch (Throwable t) {
-            throw new SdkClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
+            protocolMarshaller.marshall(rejectCertificateTransferRequest.getCertificateId(), CERTIFICATEID_BINDING);
+            protocolMarshaller.marshall(rejectCertificateTransferRequest.getRejectReason(), REJECTREASON_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

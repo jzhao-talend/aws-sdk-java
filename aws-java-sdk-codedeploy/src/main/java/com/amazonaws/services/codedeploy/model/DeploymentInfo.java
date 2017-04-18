@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about a deployment.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeploymentInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeploymentInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -151,6 +158,46 @@ public class DeploymentInfo implements Serializable, Cloneable {
      * </p>
      */
     private RollbackInfo rollbackInfo;
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     */
+    private DeploymentStyle deploymentStyle;
+    /**
+     * <p>
+     * Information about the instances that belong to the replacement environment in a blue/green deployment.
+     * </p>
+     */
+    private TargetInstances targetInstances;
+    /**
+     * <p>
+     * Indicates whether the wait period set for the termination of instances in the original environment has started.
+     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * starts.
+     * </p>
+     */
+    private Boolean instanceTerminationWaitTimeStarted;
+    /**
+     * <p>
+     * Information about blue/green deployment options for this deployment.
+     * </p>
+     */
+    private BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration;
+    /**
+     * <p>
+     * Information about the load balancer used in this blue/green deployment.
+     * </p>
+     */
+    private LoadBalancerInfo loadBalancerInfo;
+    /**
+     * <p>
+     * Provides information about the results of a deployment, such as whether instances in the original environment in
+     * a blue/green deployment were not terminated.
+     * </p>
+     */
+    private String additionalDeploymentStatusInfo;
 
     /**
      * <p>
@@ -1168,6 +1215,286 @@ public class DeploymentInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @param deploymentStyle
+     *        Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *        route deployment traffic behind a load balancer.
+     */
+
+    public void setDeploymentStyle(DeploymentStyle deploymentStyle) {
+        this.deploymentStyle = deploymentStyle;
+    }
+
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @return Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *         route deployment traffic behind a load balancer.
+     */
+
+    public DeploymentStyle getDeploymentStyle() {
+        return this.deploymentStyle;
+    }
+
+    /**
+     * <p>
+     * Information about the type of deployment, either standard or blue/green, you want to run and whether to route
+     * deployment traffic behind a load balancer.
+     * </p>
+     * 
+     * @param deploymentStyle
+     *        Information about the type of deployment, either standard or blue/green, you want to run and whether to
+     *        route deployment traffic behind a load balancer.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withDeploymentStyle(DeploymentStyle deploymentStyle) {
+        setDeploymentStyle(deploymentStyle);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the instances that belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @param targetInstances
+     *        Information about the instances that belong to the replacement environment in a blue/green deployment.
+     */
+
+    public void setTargetInstances(TargetInstances targetInstances) {
+        this.targetInstances = targetInstances;
+    }
+
+    /**
+     * <p>
+     * Information about the instances that belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @return Information about the instances that belong to the replacement environment in a blue/green deployment.
+     */
+
+    public TargetInstances getTargetInstances() {
+        return this.targetInstances;
+    }
+
+    /**
+     * <p>
+     * Information about the instances that belong to the replacement environment in a blue/green deployment.
+     * </p>
+     * 
+     * @param targetInstances
+     *        Information about the instances that belong to the replacement environment in a blue/green deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withTargetInstances(TargetInstances targetInstances) {
+        setTargetInstances(targetInstances);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the wait period set for the termination of instances in the original environment has started.
+     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * starts.
+     * </p>
+     * 
+     * @param instanceTerminationWaitTimeStarted
+     *        Indicates whether the wait period set for the termination of instances in the original environment has
+     *        started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *        termination wait period starts.
+     */
+
+    public void setInstanceTerminationWaitTimeStarted(Boolean instanceTerminationWaitTimeStarted) {
+        this.instanceTerminationWaitTimeStarted = instanceTerminationWaitTimeStarted;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the wait period set for the termination of instances in the original environment has started.
+     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * starts.
+     * </p>
+     * 
+     * @return Indicates whether the wait period set for the termination of instances in the original environment has
+     *         started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *         termination wait period starts.
+     */
+
+    public Boolean getInstanceTerminationWaitTimeStarted() {
+        return this.instanceTerminationWaitTimeStarted;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the wait period set for the termination of instances in the original environment has started.
+     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * starts.
+     * </p>
+     * 
+     * @param instanceTerminationWaitTimeStarted
+     *        Indicates whether the wait period set for the termination of instances in the original environment has
+     *        started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *        termination wait period starts.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withInstanceTerminationWaitTimeStarted(Boolean instanceTerminationWaitTimeStarted) {
+        setInstanceTerminationWaitTimeStarted(instanceTerminationWaitTimeStarted);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the wait period set for the termination of instances in the original environment has started.
+     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * starts.
+     * </p>
+     * 
+     * @return Indicates whether the wait period set for the termination of instances in the original environment has
+     *         started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *         termination wait period starts.
+     */
+
+    public Boolean isInstanceTerminationWaitTimeStarted() {
+        return this.instanceTerminationWaitTimeStarted;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for this deployment.
+     * </p>
+     * 
+     * @param blueGreenDeploymentConfiguration
+     *        Information about blue/green deployment options for this deployment.
+     */
+
+    public void setBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration) {
+        this.blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for this deployment.
+     * </p>
+     * 
+     * @return Information about blue/green deployment options for this deployment.
+     */
+
+    public BlueGreenDeploymentConfiguration getBlueGreenDeploymentConfiguration() {
+        return this.blueGreenDeploymentConfiguration;
+    }
+
+    /**
+     * <p>
+     * Information about blue/green deployment options for this deployment.
+     * </p>
+     * 
+     * @param blueGreenDeploymentConfiguration
+     *        Information about blue/green deployment options for this deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration blueGreenDeploymentConfiguration) {
+        setBlueGreenDeploymentConfiguration(blueGreenDeploymentConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer used in this blue/green deployment.
+     * </p>
+     * 
+     * @param loadBalancerInfo
+     *        Information about the load balancer used in this blue/green deployment.
+     */
+
+    public void setLoadBalancerInfo(LoadBalancerInfo loadBalancerInfo) {
+        this.loadBalancerInfo = loadBalancerInfo;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer used in this blue/green deployment.
+     * </p>
+     * 
+     * @return Information about the load balancer used in this blue/green deployment.
+     */
+
+    public LoadBalancerInfo getLoadBalancerInfo() {
+        return this.loadBalancerInfo;
+    }
+
+    /**
+     * <p>
+     * Information about the load balancer used in this blue/green deployment.
+     * </p>
+     * 
+     * @param loadBalancerInfo
+     *        Information about the load balancer used in this blue/green deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withLoadBalancerInfo(LoadBalancerInfo loadBalancerInfo) {
+        setLoadBalancerInfo(loadBalancerInfo);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Provides information about the results of a deployment, such as whether instances in the original environment in
+     * a blue/green deployment were not terminated.
+     * </p>
+     * 
+     * @param additionalDeploymentStatusInfo
+     *        Provides information about the results of a deployment, such as whether instances in the original
+     *        environment in a blue/green deployment were not terminated.
+     */
+
+    public void setAdditionalDeploymentStatusInfo(String additionalDeploymentStatusInfo) {
+        this.additionalDeploymentStatusInfo = additionalDeploymentStatusInfo;
+    }
+
+    /**
+     * <p>
+     * Provides information about the results of a deployment, such as whether instances in the original environment in
+     * a blue/green deployment were not terminated.
+     * </p>
+     * 
+     * @return Provides information about the results of a deployment, such as whether instances in the original
+     *         environment in a blue/green deployment were not terminated.
+     */
+
+    public String getAdditionalDeploymentStatusInfo() {
+        return this.additionalDeploymentStatusInfo;
+    }
+
+    /**
+     * <p>
+     * Provides information about the results of a deployment, such as whether instances in the original environment in
+     * a blue/green deployment were not terminated.
+     * </p>
+     * 
+     * @param additionalDeploymentStatusInfo
+     *        Provides information about the results of a deployment, such as whether instances in the original
+     *        environment in a blue/green deployment were not terminated.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentInfo withAdditionalDeploymentStatusInfo(String additionalDeploymentStatusInfo) {
+        setAdditionalDeploymentStatusInfo(additionalDeploymentStatusInfo);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1179,39 +1506,51 @@ public class DeploymentInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getDeploymentGroupName() != null)
-            sb.append("DeploymentGroupName: " + getDeploymentGroupName() + ",");
+            sb.append("DeploymentGroupName: ").append(getDeploymentGroupName()).append(",");
         if (getDeploymentConfigName() != null)
-            sb.append("DeploymentConfigName: " + getDeploymentConfigName() + ",");
+            sb.append("DeploymentConfigName: ").append(getDeploymentConfigName()).append(",");
         if (getDeploymentId() != null)
-            sb.append("DeploymentId: " + getDeploymentId() + ",");
+            sb.append("DeploymentId: ").append(getDeploymentId()).append(",");
         if (getRevision() != null)
-            sb.append("Revision: " + getRevision() + ",");
+            sb.append("Revision: ").append(getRevision()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getErrorInformation() != null)
-            sb.append("ErrorInformation: " + getErrorInformation() + ",");
+            sb.append("ErrorInformation: ").append(getErrorInformation()).append(",");
         if (getCreateTime() != null)
-            sb.append("CreateTime: " + getCreateTime() + ",");
+            sb.append("CreateTime: ").append(getCreateTime()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getCompleteTime() != null)
-            sb.append("CompleteTime: " + getCompleteTime() + ",");
+            sb.append("CompleteTime: ").append(getCompleteTime()).append(",");
         if (getDeploymentOverview() != null)
-            sb.append("DeploymentOverview: " + getDeploymentOverview() + ",");
+            sb.append("DeploymentOverview: ").append(getDeploymentOverview()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreator() != null)
-            sb.append("Creator: " + getCreator() + ",");
+            sb.append("Creator: ").append(getCreator()).append(",");
         if (getIgnoreApplicationStopFailures() != null)
-            sb.append("IgnoreApplicationStopFailures: " + getIgnoreApplicationStopFailures() + ",");
+            sb.append("IgnoreApplicationStopFailures: ").append(getIgnoreApplicationStopFailures()).append(",");
         if (getAutoRollbackConfiguration() != null)
-            sb.append("AutoRollbackConfiguration: " + getAutoRollbackConfiguration() + ",");
+            sb.append("AutoRollbackConfiguration: ").append(getAutoRollbackConfiguration()).append(",");
         if (getUpdateOutdatedInstancesOnly() != null)
-            sb.append("UpdateOutdatedInstancesOnly: " + getUpdateOutdatedInstancesOnly() + ",");
+            sb.append("UpdateOutdatedInstancesOnly: ").append(getUpdateOutdatedInstancesOnly()).append(",");
         if (getRollbackInfo() != null)
-            sb.append("RollbackInfo: " + getRollbackInfo());
+            sb.append("RollbackInfo: ").append(getRollbackInfo()).append(",");
+        if (getDeploymentStyle() != null)
+            sb.append("DeploymentStyle: ").append(getDeploymentStyle()).append(",");
+        if (getTargetInstances() != null)
+            sb.append("TargetInstances: ").append(getTargetInstances()).append(",");
+        if (getInstanceTerminationWaitTimeStarted() != null)
+            sb.append("InstanceTerminationWaitTimeStarted: ").append(getInstanceTerminationWaitTimeStarted()).append(",");
+        if (getBlueGreenDeploymentConfiguration() != null)
+            sb.append("BlueGreenDeploymentConfiguration: ").append(getBlueGreenDeploymentConfiguration()).append(",");
+        if (getLoadBalancerInfo() != null)
+            sb.append("LoadBalancerInfo: ").append(getLoadBalancerInfo()).append(",");
+        if (getAdditionalDeploymentStatusInfo() != null)
+            sb.append("AdditionalDeploymentStatusInfo: ").append(getAdditionalDeploymentStatusInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -1295,6 +1634,33 @@ public class DeploymentInfo implements Serializable, Cloneable {
             return false;
         if (other.getRollbackInfo() != null && other.getRollbackInfo().equals(this.getRollbackInfo()) == false)
             return false;
+        if (other.getDeploymentStyle() == null ^ this.getDeploymentStyle() == null)
+            return false;
+        if (other.getDeploymentStyle() != null && other.getDeploymentStyle().equals(this.getDeploymentStyle()) == false)
+            return false;
+        if (other.getTargetInstances() == null ^ this.getTargetInstances() == null)
+            return false;
+        if (other.getTargetInstances() != null && other.getTargetInstances().equals(this.getTargetInstances()) == false)
+            return false;
+        if (other.getInstanceTerminationWaitTimeStarted() == null ^ this.getInstanceTerminationWaitTimeStarted() == null)
+            return false;
+        if (other.getInstanceTerminationWaitTimeStarted() != null
+                && other.getInstanceTerminationWaitTimeStarted().equals(this.getInstanceTerminationWaitTimeStarted()) == false)
+            return false;
+        if (other.getBlueGreenDeploymentConfiguration() == null ^ this.getBlueGreenDeploymentConfiguration() == null)
+            return false;
+        if (other.getBlueGreenDeploymentConfiguration() != null
+                && other.getBlueGreenDeploymentConfiguration().equals(this.getBlueGreenDeploymentConfiguration()) == false)
+            return false;
+        if (other.getLoadBalancerInfo() == null ^ this.getLoadBalancerInfo() == null)
+            return false;
+        if (other.getLoadBalancerInfo() != null && other.getLoadBalancerInfo().equals(this.getLoadBalancerInfo()) == false)
+            return false;
+        if (other.getAdditionalDeploymentStatusInfo() == null ^ this.getAdditionalDeploymentStatusInfo() == null)
+            return false;
+        if (other.getAdditionalDeploymentStatusInfo() != null
+                && other.getAdditionalDeploymentStatusInfo().equals(this.getAdditionalDeploymentStatusInfo()) == false)
+            return false;
         return true;
     }
 
@@ -1320,6 +1686,12 @@ public class DeploymentInfo implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAutoRollbackConfiguration() == null) ? 0 : getAutoRollbackConfiguration().hashCode());
         hashCode = prime * hashCode + ((getUpdateOutdatedInstancesOnly() == null) ? 0 : getUpdateOutdatedInstancesOnly().hashCode());
         hashCode = prime * hashCode + ((getRollbackInfo() == null) ? 0 : getRollbackInfo().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentStyle() == null) ? 0 : getDeploymentStyle().hashCode());
+        hashCode = prime * hashCode + ((getTargetInstances() == null) ? 0 : getTargetInstances().hashCode());
+        hashCode = prime * hashCode + ((getInstanceTerminationWaitTimeStarted() == null) ? 0 : getInstanceTerminationWaitTimeStarted().hashCode());
+        hashCode = prime * hashCode + ((getBlueGreenDeploymentConfiguration() == null) ? 0 : getBlueGreenDeploymentConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getLoadBalancerInfo() == null) ? 0 : getLoadBalancerInfo().hashCode());
+        hashCode = prime * hashCode + ((getAdditionalDeploymentStatusInfo() == null) ? 0 : getAdditionalDeploymentStatusInfo().hashCode());
         return hashCode;
     }
 
@@ -1330,5 +1702,11 @@ public class DeploymentInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.DeploymentInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

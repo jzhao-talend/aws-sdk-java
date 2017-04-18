@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.importexport;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.importexport.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing AWS Import/Export asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing AWS Import/Export asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -28,6 +37,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * connectivity.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonImportExportAsyncClient extends AmazonImportExportClient implements AmazonImportExportAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -49,9 +59,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonImportExportAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -73,10 +85,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonImportExportAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -89,9 +102,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -102,8 +117,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -118,10 +136,12 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -136,9 +156,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -155,10 +177,12 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -169,9 +193,11 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -185,12 +211,18 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonImportExportAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonImportExportAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonImportExportAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonImportExportAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonImportExportAsyncClientBuilder asyncBuilder() {
+        return AmazonImportExportAsyncClientBuilder.standard();
     }
 
     /**
@@ -210,7 +242,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -223,14 +255,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<CancelJobResult> cancelJobAsync(final CancelJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<CancelJobRequest, CancelJobResult> asyncHandler) {
+        final CancelJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CancelJobResult>() {
             @Override
             public CancelJobResult call() throws Exception {
-                CancelJobResult result;
+                CancelJobResult result = null;
 
                 try {
-                    result = cancelJob(request);
+                    result = executeCancelJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -239,7 +272,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -255,14 +288,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<CreateJobResult> createJobAsync(final CreateJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateJobRequest, CreateJobResult> asyncHandler) {
+        final CreateJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateJobResult>() {
             @Override
             public CreateJobResult call() throws Exception {
-                CreateJobResult result;
+                CreateJobResult result = null;
 
                 try {
-                    result = createJob(request);
+                    result = executeCreateJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -271,7 +305,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -287,14 +321,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<GetShippingLabelResult> getShippingLabelAsync(final GetShippingLabelRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetShippingLabelRequest, GetShippingLabelResult> asyncHandler) {
+        final GetShippingLabelRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetShippingLabelResult>() {
             @Override
             public GetShippingLabelResult call() throws Exception {
-                GetShippingLabelResult result;
+                GetShippingLabelResult result = null;
 
                 try {
-                    result = getShippingLabel(request);
+                    result = executeGetShippingLabel(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -303,7 +338,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -319,14 +354,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<GetStatusResult> getStatusAsync(final GetStatusRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetStatusRequest, GetStatusResult> asyncHandler) {
+        final GetStatusRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetStatusResult>() {
             @Override
             public GetStatusResult call() throws Exception {
-                GetStatusResult result;
+                GetStatusResult result = null;
 
                 try {
-                    result = getStatus(request);
+                    result = executeGetStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -335,7 +371,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -351,14 +387,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<ListJobsResult> listJobsAsync(final ListJobsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListJobsRequest, ListJobsResult> asyncHandler) {
+        final ListJobsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListJobsResult>() {
             @Override
             public ListJobsResult call() throws Exception {
-                ListJobsResult result;
+                ListJobsResult result = null;
 
                 try {
-                    result = listJobs(request);
+                    result = executeListJobs(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -367,7 +404,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -390,6 +427,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
      *
      * @see #listJobsAsync(ListJobsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListJobsResult> listJobsAsync(com.amazonaws.handlers.AsyncHandler<ListJobsRequest, ListJobsResult> asyncHandler) {
 
         return listJobsAsync(new ListJobsRequest(), asyncHandler);
@@ -404,14 +442,15 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
     @Override
     public java.util.concurrent.Future<UpdateJobResult> updateJobAsync(final UpdateJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateJobRequest, UpdateJobResult> asyncHandler) {
+        final UpdateJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateJobResult>() {
             @Override
             public UpdateJobResult call() throws Exception {
-                UpdateJobResult result;
+                UpdateJobResult result = null;
 
                 try {
-                    result = updateJob(request);
+                    result = executeUpdateJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -420,7 +459,7 @@ public class AmazonImportExportAsyncClient extends AmazonImportExportClient impl
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

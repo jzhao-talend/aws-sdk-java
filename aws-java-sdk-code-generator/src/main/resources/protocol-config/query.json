@@ -104,10 +104,7 @@
         }, {
           "location" : "/macros/marshaller/common/IdempotencyTokenMacro.ftl",
           "importAsNamespace" : "IdempotencyTokenMacro"
-        }, {
-         "location": "/macros/marshaller/common/DefaultRequestCreation.ftl",
-         "importAsNamespace": "DefaultRequestCreation"
-       }
+        }
     ]
   },
   "modelUnmarshaller": {
@@ -124,6 +121,9 @@
           "importAsNamespace" : "MapEntryUnmarshallerMacro"
         }
     ]
+  },
+  "baseExceptionClass": {
+    "mainTemplate" : "/templates/common/base-exception-class.ftl"
   },
   "exceptionClass": {
     "mainTemplate" : "/templates/common/model-exception-class.ftl"

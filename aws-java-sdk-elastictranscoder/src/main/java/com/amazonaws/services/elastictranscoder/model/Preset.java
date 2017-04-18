@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -22,7 +25,8 @@ import java.io.Serializable;
  * preset you want to use when you create a job.
  * </p>
  */
-public class Preset implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Preset implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -472,23 +476,23 @@ public class Preset implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getContainer() != null)
-            sb.append("Container: " + getContainer() + ",");
+            sb.append("Container: ").append(getContainer()).append(",");
         if (getAudio() != null)
-            sb.append("Audio: " + getAudio() + ",");
+            sb.append("Audio: ").append(getAudio()).append(",");
         if (getVideo() != null)
-            sb.append("Video: " + getVideo() + ",");
+            sb.append("Video: ").append(getVideo()).append(",");
         if (getThumbnails() != null)
-            sb.append("Thumbnails: " + getThumbnails() + ",");
+            sb.append("Thumbnails: ").append(getThumbnails()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType());
+            sb.append("Type: ").append(getType());
         sb.append("}");
         return sb.toString();
     }
@@ -566,5 +570,11 @@ public class Preset implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.PresetMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

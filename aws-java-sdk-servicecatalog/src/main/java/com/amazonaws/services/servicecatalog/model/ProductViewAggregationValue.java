@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A single product view aggregation value/count pair, containing metadata about each product to which the calling user
  * has access.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProductViewAggregationValue"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProductViewAggregationValue implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProductViewAggregationValue implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -127,9 +134,9 @@ public class ProductViewAggregationValue implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getApproximateCount() != null)
-            sb.append("ApproximateCount: " + getApproximateCount());
+            sb.append("ApproximateCount: ").append(getApproximateCount());
         sb.append("}");
         return sb.toString();
     }
@@ -172,5 +179,11 @@ public class ProductViewAggregationValue implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProductViewAggregationValueMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

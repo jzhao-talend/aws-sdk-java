@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,21 @@
 package com.amazonaws.services.certificatemanager.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RequestCertificate" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
+     * Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM
      * Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain.
      * For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
      * </p>
@@ -48,53 +53,23 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
     private String idempotencyToken;
     /**
      * <p>
-     * The base validation domain that will act as the suffix of the email addresses that are used to send the emails.
-     * This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For
-     * example, if you requested a certificate for <code>test.example.com</code> and specify
-     * <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical
-     * contact, and administrative contact in WHOIS and the following five addresses:
+     * The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * admin@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * administrator@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * hostmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * postmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * webmaster@example.com
-     * </p>
-     * </li>
-     * </ul>
      */
     private java.util.List<DomainValidationOption> domainValidationOptions;
 
     /**
      * <p>
-     * Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
+     * Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM
      * Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain.
      * For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
      * </p>
      * 
      * @param domainName
-     *        Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
-     *        Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same
-     *        domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
+     *        Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an
+     *        ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the
+     *        same domain. For example, *.example.com protects www.example.com, site.example.com, and
+     *        images.example.com.
      */
 
     public void setDomainName(String domainName) {
@@ -103,14 +78,15 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
+     * Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM
      * Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain.
      * For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
      * </p>
      * 
-     * @return Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
-     *         Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same
-     *         domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
+     * @return Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an
+     *         ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the
+     *         same domain. For example, *.example.com protects www.example.com, site.example.com, and
+     *         images.example.com.
      */
 
     public String getDomainName() {
@@ -119,15 +95,16 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
+     * Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM
      * Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain.
      * For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
      * </p>
      * 
      * @param domainName
-     *        Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM
-     *        Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same
-     *        domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
+     *        Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an
+     *        ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the
+     *        same domain. For example, *.example.com protects www.example.com, site.example.com, and
+     *        images.example.com.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -288,71 +265,10 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The base validation domain that will act as the suffix of the email addresses that are used to send the emails.
-     * This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For
-     * example, if you requested a certificate for <code>test.example.com</code> and specify
-     * <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical
-     * contact, and administrative contact in WHOIS and the following five addresses:
+     * The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * admin@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * administrator@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * hostmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * postmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * webmaster@example.com
-     * </p>
-     * </li>
-     * </ul>
      * 
-     * @return The base validation domain that will act as the suffix of the email addresses that are used to send the
-     *         emails. This must be the same as the <code>Domain</code> value or a superdomain of the
-     *         <code>Domain</code> value. For example, if you requested a certificate for <code>test.example.com</code>
-     *         and specify <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain
-     *         registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         admin@example.com
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         administrator@example.com
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         hostmaster@example.com
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         postmaster@example.com
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         webmaster@example.com
-     *         </p>
-     *         </li>
+     * @return The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      */
 
     public java.util.List<DomainValidationOption> getDomainValidationOptions() {
@@ -361,72 +277,11 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The base validation domain that will act as the suffix of the email addresses that are used to send the emails.
-     * This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For
-     * example, if you requested a certificate for <code>test.example.com</code> and specify
-     * <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical
-     * contact, and administrative contact in WHOIS and the following five addresses:
+     * The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * admin@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * administrator@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * hostmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * postmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * webmaster@example.com
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param domainValidationOptions
-     *        The base validation domain that will act as the suffix of the email addresses that are used to send the
-     *        emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code>
-     *        value. For example, if you requested a certificate for <code>test.example.com</code> and specify
-     *        <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant,
-     *        technical contact, and administrative contact in WHOIS and the following five addresses:</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        admin@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        administrator@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        hostmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        postmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        webmaster@example.com
-     *        </p>
-     *        </li>
+     *        The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      */
 
     public void setDomainValidationOptions(java.util.Collection<DomainValidationOption> domainValidationOptions) {
@@ -440,39 +295,8 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The base validation domain that will act as the suffix of the email addresses that are used to send the emails.
-     * This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For
-     * example, if you requested a certificate for <code>test.example.com</code> and specify
-     * <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical
-     * contact, and administrative contact in WHOIS and the following five addresses:
+     * The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * admin@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * administrator@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * hostmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * postmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * webmaster@example.com
-     * </p>
-     * </li>
-     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setDomainValidationOptions(java.util.Collection)} or
@@ -480,37 +304,7 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param domainValidationOptions
-     *        The base validation domain that will act as the suffix of the email addresses that are used to send the
-     *        emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code>
-     *        value. For example, if you requested a certificate for <code>test.example.com</code> and specify
-     *        <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant,
-     *        technical contact, and administrative contact in WHOIS and the following five addresses:</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        admin@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        administrator@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        hostmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        postmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        webmaster@example.com
-     *        </p>
-     *        </li>
+     *        The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -526,72 +320,11 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The base validation domain that will act as the suffix of the email addresses that are used to send the emails.
-     * This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For
-     * example, if you requested a certificate for <code>test.example.com</code> and specify
-     * <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical
-     * contact, and administrative contact in WHOIS and the following five addresses:
+     * The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * admin@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * administrator@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * hostmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * postmaster@example.com
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * webmaster@example.com
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param domainValidationOptions
-     *        The base validation domain that will act as the suffix of the email addresses that are used to send the
-     *        emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code>
-     *        value. For example, if you requested a certificate for <code>test.example.com</code> and specify
-     *        <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant,
-     *        technical contact, and administrative contact in WHOIS and the following five addresses:</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        admin@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        administrator@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        hostmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        postmaster@example.com
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        webmaster@example.com
-     *        </p>
-     *        </li>
+     *        The domain name that you want ACM to use to send you emails to validate your ownership of the domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -612,13 +345,13 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getSubjectAlternativeNames() != null)
-            sb.append("SubjectAlternativeNames: " + getSubjectAlternativeNames() + ",");
+            sb.append("SubjectAlternativeNames: ").append(getSubjectAlternativeNames()).append(",");
         if (getIdempotencyToken() != null)
-            sb.append("IdempotencyToken: " + getIdempotencyToken() + ",");
+            sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
         if (getDomainValidationOptions() != null)
-            sb.append("DomainValidationOptions: " + getDomainValidationOptions());
+            sb.append("DomainValidationOptions: ").append(getDomainValidationOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -668,4 +401,5 @@ public class RequestCertificateRequest extends com.amazonaws.AmazonWebServiceReq
     public RequestCertificateRequest clone() {
         return (RequestCertificateRequest) super.clone();
     }
+
 }

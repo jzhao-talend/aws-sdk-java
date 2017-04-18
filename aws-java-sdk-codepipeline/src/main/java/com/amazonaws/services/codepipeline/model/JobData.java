@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents additional information about a job required for a job worker to complete the job.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/JobData" target="_top">AWS API
+ *      Documentation</a>
  */
-public class JobData implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobData implements Serializable, Cloneable, StructuredPojo {
 
     private ActionTypeId actionTypeId;
 
@@ -378,21 +385,21 @@ public class JobData implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActionTypeId() != null)
-            sb.append("ActionTypeId: " + getActionTypeId() + ",");
+            sb.append("ActionTypeId: ").append(getActionTypeId()).append(",");
         if (getActionConfiguration() != null)
-            sb.append("ActionConfiguration: " + getActionConfiguration() + ",");
+            sb.append("ActionConfiguration: ").append(getActionConfiguration()).append(",");
         if (getPipelineContext() != null)
-            sb.append("PipelineContext: " + getPipelineContext() + ",");
+            sb.append("PipelineContext: ").append(getPipelineContext()).append(",");
         if (getInputArtifacts() != null)
-            sb.append("InputArtifacts: " + getInputArtifacts() + ",");
+            sb.append("InputArtifacts: ").append(getInputArtifacts()).append(",");
         if (getOutputArtifacts() != null)
-            sb.append("OutputArtifacts: " + getOutputArtifacts() + ",");
+            sb.append("OutputArtifacts: ").append(getOutputArtifacts()).append(",");
         if (getArtifactCredentials() != null)
-            sb.append("ArtifactCredentials: " + getArtifactCredentials() + ",");
+            sb.append("ArtifactCredentials: ").append(getArtifactCredentials()).append(",");
         if (getContinuationToken() != null)
-            sb.append("ContinuationToken: " + getContinuationToken() + ",");
+            sb.append("ContinuationToken: ").append(getContinuationToken()).append(",");
         if (getEncryptionKey() != null)
-            sb.append("EncryptionKey: " + getEncryptionKey());
+            sb.append("EncryptionKey: ").append(getEncryptionKey());
         sb.append("}");
         return sb.toString();
     }
@@ -465,5 +472,11 @@ public class JobData implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.JobDataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

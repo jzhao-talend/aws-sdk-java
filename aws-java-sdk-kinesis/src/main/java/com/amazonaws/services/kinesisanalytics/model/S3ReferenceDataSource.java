@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -23,8 +26,12 @@ import java.io.Serializable;
  * An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the
  * <a>UpdateApplication</a> operation to trigger reloading of data into your application.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/S3ReferenceDataSource"
+ *      target="_top">AWS API Documentation</a>
  */
-public class S3ReferenceDataSource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class S3ReferenceDataSource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -191,11 +198,11 @@ public class S3ReferenceDataSource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBucketARN() != null)
-            sb.append("BucketARN: " + getBucketARN() + ",");
+            sb.append("BucketARN: ").append(getBucketARN()).append(",");
         if (getFileKey() != null)
-            sb.append("FileKey: " + getFileKey() + ",");
+            sb.append("FileKey: ").append(getFileKey()).append(",");
         if (getReferenceRoleARN() != null)
-            sb.append("ReferenceRoleARN: " + getReferenceRoleARN());
+            sb.append("ReferenceRoleARN: ").append(getReferenceRoleARN());
         sb.append("}");
         return sb.toString();
     }
@@ -243,5 +250,11 @@ public class S3ReferenceDataSource implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.S3ReferenceDataSourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

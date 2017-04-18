@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.ecr.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An object representing an Amazon ECR image layer.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/Layer" target="_top">AWS API Documentation</a>
  */
-public class Layer implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Layer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -29,7 +35,7 @@ public class Layer implements Serializable, Cloneable {
     private String layerDigest;
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      */
     private String layerAvailability;
@@ -39,6 +45,13 @@ public class Layer implements Serializable, Cloneable {
      * </p>
      */
     private Long layerSize;
+    /**
+     * <p>
+     * The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     * <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     * </p>
+     */
+    private String mediaType;
 
     /**
      * <p>
@@ -82,12 +95,11 @@ public class Layer implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      * 
      * @param layerAvailability
-     *        The availability status of the image layer. Valid values are <code>AVAILABLE</code> and
-     *        <code>UNAVAILABLE</code>.
+     *        The availability status of the image layer.
      * @see LayerAvailability
      */
 
@@ -97,11 +109,10 @@ public class Layer implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      * 
-     * @return The availability status of the image layer. Valid values are <code>AVAILABLE</code> and
-     *         <code>UNAVAILABLE</code>.
+     * @return The availability status of the image layer.
      * @see LayerAvailability
      */
 
@@ -111,12 +122,11 @@ public class Layer implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      * 
      * @param layerAvailability
-     *        The availability status of the image layer. Valid values are <code>AVAILABLE</code> and
-     *        <code>UNAVAILABLE</code>.
+     *        The availability status of the image layer.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LayerAvailability
      */
@@ -128,12 +138,11 @@ public class Layer implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      * 
      * @param layerAvailability
-     *        The availability status of the image layer. Valid values are <code>AVAILABLE</code> and
-     *        <code>UNAVAILABLE</code>.
+     *        The availability status of the image layer.
      * @see LayerAvailability
      */
 
@@ -143,12 +152,11 @@ public class Layer implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.
+     * The availability status of the image layer.
      * </p>
      * 
      * @param layerAvailability
-     *        The availability status of the image layer. Valid values are <code>AVAILABLE</code> and
-     *        <code>UNAVAILABLE</code>.
+     *        The availability status of the image layer.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LayerAvailability
      */
@@ -199,6 +207,52 @@ public class Layer implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     * <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     * </p>
+     * 
+     * @param mediaType
+     *        The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     *        <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     */
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    /**
+     * <p>
+     * The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     * <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     * </p>
+     * 
+     * @return The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     *         <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     */
+
+    public String getMediaType() {
+        return this.mediaType;
+    }
+
+    /**
+     * <p>
+     * The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     * <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     * </p>
+     * 
+     * @param mediaType
+     *        The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or
+     *        <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Layer withMediaType(String mediaType) {
+        setMediaType(mediaType);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -210,11 +264,13 @@ public class Layer implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLayerDigest() != null)
-            sb.append("LayerDigest: " + getLayerDigest() + ",");
+            sb.append("LayerDigest: ").append(getLayerDigest()).append(",");
         if (getLayerAvailability() != null)
-            sb.append("LayerAvailability: " + getLayerAvailability() + ",");
+            sb.append("LayerAvailability: ").append(getLayerAvailability()).append(",");
         if (getLayerSize() != null)
-            sb.append("LayerSize: " + getLayerSize());
+            sb.append("LayerSize: ").append(getLayerSize()).append(",");
+        if (getMediaType() != null)
+            sb.append("MediaType: ").append(getMediaType());
         sb.append("}");
         return sb.toString();
     }
@@ -241,6 +297,10 @@ public class Layer implements Serializable, Cloneable {
             return false;
         if (other.getLayerSize() != null && other.getLayerSize().equals(this.getLayerSize()) == false)
             return false;
+        if (other.getMediaType() == null ^ this.getMediaType() == null)
+            return false;
+        if (other.getMediaType() != null && other.getMediaType().equals(this.getMediaType()) == false)
+            return false;
         return true;
     }
 
@@ -252,6 +312,7 @@ public class Layer implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getLayerDigest() == null) ? 0 : getLayerDigest().hashCode());
         hashCode = prime * hashCode + ((getLayerAvailability() == null) ? 0 : getLayerAvailability().hashCode());
         hashCode = prime * hashCode + ((getLayerSize() == null) ? 0 : getLayerSize().hashCode());
+        hashCode = prime * hashCode + ((getMediaType() == null) ? 0 : getMediaType().hashCode());
         return hashCode;
     }
 
@@ -262,5 +323,11 @@ public class Layer implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecr.model.transform.LayerMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

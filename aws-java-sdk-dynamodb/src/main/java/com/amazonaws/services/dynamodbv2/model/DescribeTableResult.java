@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a <i>DescribeTable</i> operation.
+ * Represents the output of a <code>DescribeTable</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTable" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeTableResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The properties of the table.
+     * </p>
+     */
     private TableDescription table;
 
     /**
+     * <p>
+     * The properties of the table.
+     * </p>
+     * 
      * @param table
+     *        The properties of the table.
      */
 
     public void setTable(TableDescription table) {
@@ -32,7 +47,11 @@ public class DescribeTableResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * @return
+     * <p>
+     * The properties of the table.
+     * </p>
+     * 
+     * @return The properties of the table.
      */
 
     public TableDescription getTable() {
@@ -40,7 +59,12 @@ public class DescribeTableResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
+     * <p>
+     * The properties of the table.
+     * </p>
+     * 
      * @param table
+     *        The properties of the table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class DescribeTableResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTable() != null)
-            sb.append("Table: " + getTable());
+            sb.append("Table: ").append(getTable());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class DescribeTableResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

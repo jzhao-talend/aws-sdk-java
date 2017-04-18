@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.identitymanagement.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ListEntitiesForPolicyResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListEntitiesForPolicyResultStaxUnmarshaller implements Unmarshaller<ListEntitiesForPolicyResult, StaxUnmarshallerContext> {
 
     public ListEntitiesForPolicyResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -45,13 +45,28 @@ public class ListEntitiesForPolicyResultStaxUnmarshaller implements Unmarshaller
 
             if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
+                if (context.testExpression("PolicyGroups", targetDepth)) {
+                    listEntitiesForPolicyResult.withPolicyGroups(new ArrayList<PolicyGroup>());
+                    continue;
+                }
+
                 if (context.testExpression("PolicyGroups/member", targetDepth)) {
                     listEntitiesForPolicyResult.withPolicyGroups(PolicyGroupStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("PolicyUsers", targetDepth)) {
+                    listEntitiesForPolicyResult.withPolicyUsers(new ArrayList<PolicyUser>());
+                    continue;
+                }
+
                 if (context.testExpression("PolicyUsers/member", targetDepth)) {
                     listEntitiesForPolicyResult.withPolicyUsers(PolicyUserStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("PolicyRoles", targetDepth)) {
+                    listEntitiesForPolicyResult.withPolicyRoles(new ArrayList<PolicyRole>());
                     continue;
                 }
 

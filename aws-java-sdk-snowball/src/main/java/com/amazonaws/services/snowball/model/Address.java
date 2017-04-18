@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,8 +24,12 @@ import java.io.Serializable;
  * region. Although no individual elements of the <code>Address</code> are required, if the address is invalid or
  * unsupported, then an exception is thrown.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/Address" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Address implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Address implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -74,13 +81,13 @@ public class Address implements Serializable, Cloneable {
     private String stateOrProvince;
     /**
      * <p>
-     * The prefecture or district in an address that a Snowball is to be delivered to.
+     * The prefecture or district that the appliance will be shipped to.
      * </p>
      */
     private String prefectureOrDistrict;
     /**
      * <p>
-     * A landmark listed in an address that a Snowball is to be delivered to.
+     * The landmark identifying the address that the appliance will be shipped to.
      * </p>
      */
     private String landmark;
@@ -425,11 +432,11 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The prefecture or district in an address that a Snowball is to be delivered to.
+     * The prefecture or district that the appliance will be shipped to.
      * </p>
      * 
      * @param prefectureOrDistrict
-     *        The prefecture or district in an address that a Snowball is to be delivered to.
+     *        The prefecture or district that the appliance will be shipped to.
      */
 
     public void setPrefectureOrDistrict(String prefectureOrDistrict) {
@@ -438,10 +445,10 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The prefecture or district in an address that a Snowball is to be delivered to.
+     * The prefecture or district that the appliance will be shipped to.
      * </p>
      * 
-     * @return The prefecture or district in an address that a Snowball is to be delivered to.
+     * @return The prefecture or district that the appliance will be shipped to.
      */
 
     public String getPrefectureOrDistrict() {
@@ -450,11 +457,11 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The prefecture or district in an address that a Snowball is to be delivered to.
+     * The prefecture or district that the appliance will be shipped to.
      * </p>
      * 
      * @param prefectureOrDistrict
-     *        The prefecture or district in an address that a Snowball is to be delivered to.
+     *        The prefecture or district that the appliance will be shipped to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -465,11 +472,11 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A landmark listed in an address that a Snowball is to be delivered to.
+     * The landmark identifying the address that the appliance will be shipped to.
      * </p>
      * 
      * @param landmark
-     *        A landmark listed in an address that a Snowball is to be delivered to.
+     *        The landmark identifying the address that the appliance will be shipped to.
      */
 
     public void setLandmark(String landmark) {
@@ -478,10 +485,10 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A landmark listed in an address that a Snowball is to be delivered to.
+     * The landmark identifying the address that the appliance will be shipped to.
      * </p>
      * 
-     * @return A landmark listed in an address that a Snowball is to be delivered to.
+     * @return The landmark identifying the address that the appliance will be shipped to.
      */
 
     public String getLandmark() {
@@ -490,11 +497,11 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A landmark listed in an address that a Snowball is to be delivered to.
+     * The landmark identifying the address that the appliance will be shipped to.
      * </p>
      * 
      * @param landmark
-     *        A landmark listed in an address that a Snowball is to be delivered to.
+     *        The landmark identifying the address that the appliance will be shipped to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -635,31 +642,31 @@ public class Address implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAddressId() != null)
-            sb.append("AddressId: " + getAddressId() + ",");
+            sb.append("AddressId: ").append(getAddressId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getCompany() != null)
-            sb.append("Company: " + getCompany() + ",");
+            sb.append("Company: ").append(getCompany()).append(",");
         if (getStreet1() != null)
-            sb.append("Street1: " + getStreet1() + ",");
+            sb.append("Street1: ").append(getStreet1()).append(",");
         if (getStreet2() != null)
-            sb.append("Street2: " + getStreet2() + ",");
+            sb.append("Street2: ").append(getStreet2()).append(",");
         if (getStreet3() != null)
-            sb.append("Street3: " + getStreet3() + ",");
+            sb.append("Street3: ").append(getStreet3()).append(",");
         if (getCity() != null)
-            sb.append("City: " + getCity() + ",");
+            sb.append("City: ").append(getCity()).append(",");
         if (getStateOrProvince() != null)
-            sb.append("StateOrProvince: " + getStateOrProvince() + ",");
+            sb.append("StateOrProvince: ").append(getStateOrProvince()).append(",");
         if (getPrefectureOrDistrict() != null)
-            sb.append("PrefectureOrDistrict: " + getPrefectureOrDistrict() + ",");
+            sb.append("PrefectureOrDistrict: ").append(getPrefectureOrDistrict()).append(",");
         if (getLandmark() != null)
-            sb.append("Landmark: " + getLandmark() + ",");
+            sb.append("Landmark: ").append(getLandmark()).append(",");
         if (getCountry() != null)
-            sb.append("Country: " + getCountry() + ",");
+            sb.append("Country: ").append(getCountry()).append(",");
         if (getPostalCode() != null)
-            sb.append("PostalCode: " + getPostalCode() + ",");
+            sb.append("PostalCode: ").append(getPostalCode()).append(",");
         if (getPhoneNumber() != null)
-            sb.append("PhoneNumber: " + getPhoneNumber());
+            sb.append("PhoneNumber: ").append(getPhoneNumber());
         sb.append("}");
         return sb.toString();
     }
@@ -757,5 +764,11 @@ public class Address implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.AddressMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

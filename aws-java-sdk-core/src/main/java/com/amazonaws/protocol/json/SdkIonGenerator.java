@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2016-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -43,6 +43,16 @@ abstract class SdkIonGenerator implements StructuredJsonGenerator {
     public StructuredJsonGenerator writeStartArray() {
         try {
             writer.stepIn(IonType.LIST);
+        } catch (IOException e) {
+            throw new SdkClientException(e);
+        }
+        return this;
+    }
+
+    @Override
+    public StructuredJsonGenerator writeNull() {
+        try {
+            writer.writeNull();
         } catch (IOException e) {
             throw new SdkClientException(e);
         }

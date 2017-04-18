@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * Image StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshallerContext> {
 
     public Image unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -72,6 +72,11 @@ public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshall
 
                 if (context.testExpression("isPublic", targetDepth)) {
                     image.setPublic(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("productCodes", targetDepth)) {
+                    image.withProductCodes(new ArrayList<ProductCode>());
                     continue;
                 }
 
@@ -145,6 +150,11 @@ public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshall
                     continue;
                 }
 
+                if (context.testExpression("blockDeviceMapping", targetDepth)) {
+                    image.withBlockDeviceMappings(new ArrayList<BlockDeviceMapping>());
+                    continue;
+                }
+
                 if (context.testExpression("blockDeviceMapping/item", targetDepth)) {
                     image.withBlockDeviceMappings(BlockDeviceMappingStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -152,6 +162,11 @@ public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshall
 
                 if (context.testExpression("virtualizationType", targetDepth)) {
                     image.setVirtualizationType(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("tagSet", targetDepth)) {
+                    image.withTags(new ArrayList<Tag>());
                     continue;
                 }
 

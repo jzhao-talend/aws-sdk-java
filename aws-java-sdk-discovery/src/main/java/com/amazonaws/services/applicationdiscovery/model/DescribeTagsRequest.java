@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -29,7 +29,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
     private java.util.List<TagFilter> filters;
     /**
      * <p>
-     * The total number of items to return. The maximum value is 100.
+     * The total number of items to return in a single page of output. The maximum value is 100.
      * </p>
      */
     private Integer maxResults;
@@ -124,11 +124,11 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The total number of items to return. The maximum value is 100.
+     * The total number of items to return in a single page of output. The maximum value is 100.
      * </p>
      * 
      * @param maxResults
-     *        The total number of items to return. The maximum value is 100.
+     *        The total number of items to return in a single page of output. The maximum value is 100.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -137,10 +137,10 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The total number of items to return. The maximum value is 100.
+     * The total number of items to return in a single page of output. The maximum value is 100.
      * </p>
      * 
-     * @return The total number of items to return. The maximum value is 100.
+     * @return The total number of items to return in a single page of output. The maximum value is 100.
      */
 
     public Integer getMaxResults() {
@@ -149,11 +149,11 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The total number of items to return. The maximum value is 100.
+     * The total number of items to return in a single page of output. The maximum value is 100.
      * </p>
      * 
      * @param maxResults
-     *        The total number of items to return. The maximum value is 100.
+     *        The total number of items to return in a single page of output. The maximum value is 100.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -214,11 +214,11 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -263,4 +263,5 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
     public DescribeTagsRequest clone() {
         return (DescribeTagsRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,31 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDestinations" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The destinations.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<Destination> destinations;
 
     private String nextToken;
 
     /**
-     * @return
+     * <p>
+     * The destinations.
+     * </p>
+     * 
+     * @return The destinations.
      */
 
     public java.util.List<Destination> getDestinations() {
@@ -35,7 +48,12 @@ public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * The destinations.
+     * </p>
+     * 
      * @param destinations
+     *        The destinations.
      */
 
     public void setDestinations(java.util.Collection<Destination> destinations) {
@@ -49,12 +67,16 @@ public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
+     * The destinations.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setDestinations(java.util.Collection)} or {@link #withDestinations(java.util.Collection)} if you want to
      * override the existing values.
      * </p>
      * 
      * @param destinations
+     *        The destinations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +91,12 @@ public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * The destinations.
+     * </p>
+     * 
      * @param destinations
+     *        The destinations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,9 +143,9 @@ public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDestinations() != null)
-            sb.append("Destinations: " + getDestinations() + ",");
+            sb.append("Destinations: ").append(getDestinations()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -162,4 +189,5 @@ public class DescribeDestinationsResult extends com.amazonaws.AmazonWebServiceRe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

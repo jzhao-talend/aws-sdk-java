@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.marketplacecommerceanalytics;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.marketplacecommerceanalytics.model.*;
 
 /**
@@ -19,8 +21,13 @@ import com.amazonaws.services.marketplacecommerceanalytics.model.*;
  * Java Future object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be
  * used to receive notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.marketplacecommerceanalytics.AbstractAWSMarketplaceCommerceAnalyticsAsync} instead.
+ * </p>
+ * <p>
  * Provides AWS Marketplace business intelligence data on-demand.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSMarketplaceCommerceAnalyticsAsync extends AWSMarketplaceCommerceAnalytics {
 
     /**
@@ -36,6 +43,8 @@ public interface AWSMarketplaceCommerceAnalyticsAsync extends AWSMarketplaceComm
      *        Container for the parameters to the GenerateDataSet operation.
      * @return A Java Future containing the result of the GenerateDataSet operation returned by the service.
      * @sample AWSMarketplaceCommerceAnalyticsAsync.GenerateDataSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataSetResult> generateDataSetAsync(GenerateDataSetRequest generateDataSetRequest);
 
@@ -56,6 +65,8 @@ public interface AWSMarketplaceCommerceAnalyticsAsync extends AWSMarketplaceComm
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GenerateDataSet operation returned by the service.
      * @sample AWSMarketplaceCommerceAnalyticsAsyncHandler.GenerateDataSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GenerateDataSetResult> generateDataSetAsync(GenerateDataSetRequest generateDataSetRequest,
             com.amazonaws.handlers.AsyncHandler<GenerateDataSetRequest, GenerateDataSetResult> asyncHandler);
@@ -74,6 +85,9 @@ public interface AWSMarketplaceCommerceAnalyticsAsync extends AWSMarketplaceComm
      *        Container for the parameters to the StartSupportDataExport operation.
      * @return A Java Future containing the result of the StartSupportDataExport operation returned by the service.
      * @sample AWSMarketplaceCommerceAnalyticsAsync.StartSupportDataExport
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<StartSupportDataExportResult> startSupportDataExportAsync(StartSupportDataExportRequest startSupportDataExportRequest);
 
@@ -95,6 +109,9 @@ public interface AWSMarketplaceCommerceAnalyticsAsync extends AWSMarketplaceComm
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartSupportDataExport operation returned by the service.
      * @sample AWSMarketplaceCommerceAnalyticsAsyncHandler.StartSupportDataExport
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<StartSupportDataExportResult> startSupportDataExportAsync(StartSupportDataExportRequest startSupportDataExportRequest,
             com.amazonaws.handlers.AsyncHandler<StartSupportDataExportRequest, StartSupportDataExportResult> asyncHandler);

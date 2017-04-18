@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The <a>MetricAlarm</a> data type represents an alarm. You can use <a>PutMetricAlarm</a> to create or update an alarm.
+ * Represents an alarm.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/MetricAlarm" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MetricAlarm implements Serializable, Cloneable {
 
     /**
@@ -35,7 +40,7 @@ public class MetricAlarm implements Serializable, Cloneable {
     private String alarmArn;
     /**
      * <p>
-     * The description for the alarm.
+     * The description of the alarm.
      * </p>
      */
     private String alarmDescription;
@@ -47,34 +52,29 @@ public class MetricAlarm implements Serializable, Cloneable {
     private java.util.Date alarmConfigurationUpdatedTimestamp;
     /**
      * <p>
-     * Indicates whether actions should be executed during any changes to the alarm's state.
+     * Indicates whether actions should be executed during any changes to the alarm state.
      * </p>
      */
     private Boolean actionsEnabled;
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action
+     * is specified as an Amazon Resource Name (ARN).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> oKActions;
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each
+     * action is specified as an Amazon Resource Name (ARN).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> alarmActions;
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any
-     * other state. Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other
+     * state. Each action is specified as an Amazon Resource Name (ARN).
      * </p>
-     * <important>
-     * <p>
-     * The current WSDL lists this attribute as <code>UnknownActions</code>.
-     * </p>
-     * </important>
      */
     private com.amazonaws.internal.SdkInternalList<String> insufficientDataActions;
     /**
@@ -85,55 +85,62 @@ public class MetricAlarm implements Serializable, Cloneable {
     private String stateValue;
     /**
      * <p>
-     * A human-readable explanation for the alarm's state.
+     * An explanation for the alarm state, in text format.
      * </p>
      */
     private String stateReason;
     /**
      * <p>
-     * An explanation for the alarm's state in machine-readable JSON format
+     * An explanation for the alarm state, in JSON format.
      * </p>
      */
     private String stateReasonData;
     /**
      * <p>
-     * The time stamp of the last update to the alarm's state.
+     * The time stamp of the last update to the alarm state.
      * </p>
      */
     private java.util.Date stateUpdatedTimestamp;
     /**
      * <p>
-     * The name of the alarm's metric.
+     * The name of the metric associated with the alarm.
      * </p>
      */
     private String metricName;
     /**
      * <p>
-     * The namespace of alarm's associated metric.
+     * The namespace of the metric associated with the alarm.
      * </p>
      */
     private String namespace;
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      */
     private String statistic;
     /**
      * <p>
-     * The list of dimensions associated with the alarm's associated metric.
+     * The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     * </p>
+     */
+    private String extendedStatistic;
+    /**
+     * <p>
+     * The dimensions for the metric associated with the alarm.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Dimension> dimensions;
     /**
      * <p>
-     * The period in seconds over which the statistic is applied.
+     * The period, in seconds, over which the statistic is applied.
      * </p>
      */
     private Integer period;
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      */
     private String unit;
@@ -145,17 +152,21 @@ public class MetricAlarm implements Serializable, Cloneable {
     private Integer evaluationPeriods;
     /**
      * <p>
-     * The value against which the specified statistic is compared.
+     * The value to compare with the specified statistic.
      * </p>
      */
     private Double threshold;
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      */
     private String comparisonOperator;
+
+    private String treatMissingData;
+
+    private String evaluateLowSampleCountPercentile;
 
     /**
      * <p>
@@ -239,11 +250,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description for the alarm.
+     * The description of the alarm.
      * </p>
      * 
      * @param alarmDescription
-     *        The description for the alarm.
+     *        The description of the alarm.
      */
 
     public void setAlarmDescription(String alarmDescription) {
@@ -252,10 +263,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description for the alarm.
+     * The description of the alarm.
      * </p>
      * 
-     * @return The description for the alarm.
+     * @return The description of the alarm.
      */
 
     public String getAlarmDescription() {
@@ -264,11 +275,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description for the alarm.
+     * The description of the alarm.
      * </p>
      * 
      * @param alarmDescription
-     *        The description for the alarm.
+     *        The description of the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -319,11 +330,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether actions should be executed during any changes to the alarm's state.
+     * Indicates whether actions should be executed during any changes to the alarm state.
      * </p>
      * 
      * @param actionsEnabled
-     *        Indicates whether actions should be executed during any changes to the alarm's state.
+     *        Indicates whether actions should be executed during any changes to the alarm state.
      */
 
     public void setActionsEnabled(Boolean actionsEnabled) {
@@ -332,10 +343,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether actions should be executed during any changes to the alarm's state.
+     * Indicates whether actions should be executed during any changes to the alarm state.
      * </p>
      * 
-     * @return Indicates whether actions should be executed during any changes to the alarm's state.
+     * @return Indicates whether actions should be executed during any changes to the alarm state.
      */
 
     public Boolean getActionsEnabled() {
@@ -344,11 +355,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether actions should be executed during any changes to the alarm's state.
+     * Indicates whether actions should be executed during any changes to the alarm state.
      * </p>
      * 
      * @param actionsEnabled
-     *        Indicates whether actions should be executed during any changes to the alarm's state.
+     *        Indicates whether actions should be executed during any changes to the alarm state.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -359,10 +370,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether actions should be executed during any changes to the alarm's state.
+     * Indicates whether actions should be executed during any changes to the alarm state.
      * </p>
      * 
-     * @return Indicates whether actions should be executed during any changes to the alarm's state.
+     * @return Indicates whether actions should be executed during any changes to the alarm state.
      */
 
     public Boolean isActionsEnabled() {
@@ -371,12 +382,12 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action
+     * is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
-     * @return The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other
-     *         state. Each action is specified as an Amazon Resource Name (ARN).
+     * @return The actions to execute when this alarm transitions to the <code>OK</code> state from any other state.
+     *         Each action is specified as an Amazon Resource Name (ARN).
      */
 
     public java.util.List<String> getOKActions() {
@@ -388,13 +399,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action
+     * is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
      * @param oKActions
-     *        The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each
+     *        action is specified as an Amazon Resource Name (ARN).
      */
 
     public void setOKActions(java.util.Collection<String> oKActions) {
@@ -408,8 +419,8 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action
+     * is specified as an Amazon Resource Name (ARN).
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -418,8 +429,8 @@ public class MetricAlarm implements Serializable, Cloneable {
      * </p>
      * 
      * @param oKActions
-     *        The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each
+     *        action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -435,13 +446,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action
+     * is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
      * @param oKActions
-     *        The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each
+     *        action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -452,12 +463,12 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each
+     * action is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
-     * @return The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any
-     *         other state. Each action is specified as an Amazon Resource Name (ARN).
+     * @return The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state.
+     *         Each action is specified as an Amazon Resource Name (ARN).
      */
 
     public java.util.List<String> getAlarmActions() {
@@ -469,13 +480,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each
+     * action is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
      * @param alarmActions
-     *        The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state.
+     *        Each action is specified as an Amazon Resource Name (ARN).
      */
 
     public void setAlarmActions(java.util.Collection<String> alarmActions) {
@@ -489,8 +500,8 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each
+     * action is specified as an Amazon Resource Name (ARN).
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -499,8 +510,8 @@ public class MetricAlarm implements Serializable, Cloneable {
      * </p>
      * 
      * @param alarmActions
-     *        The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state.
+     *        Each action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -516,13 +527,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state.
-     * Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each
+     * action is specified as an Amazon Resource Name (ARN).
      * </p>
      * 
      * @param alarmActions
-     *        The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other
-     *        state. Each action is specified as an Amazon Resource Name (ARN).
+     *        The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state.
+     *        Each action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -533,20 +544,12 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any
-     * other state. Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other
+     * state. Each action is specified as an Amazon Resource Name (ARN).
      * </p>
-     * <important>
-     * <p>
-     * The current WSDL lists this attribute as <code>UnknownActions</code>.
-     * </p>
-     * </important>
      * 
-     * @return The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state
-     *         from any other state. Each action is specified as an Amazon Resource Name (ARN). </p> <important>
-     *         <p>
-     *         The current WSDL lists this attribute as <code>UnknownActions</code>.
-     *         </p>
+     * @return The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any
+     *         other state. Each action is specified as an Amazon Resource Name (ARN).
      */
 
     public java.util.List<String> getInsufficientDataActions() {
@@ -558,21 +561,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any
-     * other state. Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other
+     * state. Each action is specified as an Amazon Resource Name (ARN).
      * </p>
-     * <important>
-     * <p>
-     * The current WSDL lists this attribute as <code>UnknownActions</code>.
-     * </p>
-     * </important>
      * 
      * @param insufficientDataActions
-     *        The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state
-     *        from any other state. Each action is specified as an Amazon Resource Name (ARN). </p> <important>
-     *        <p>
-     *        The current WSDL lists this attribute as <code>UnknownActions</code>.
-     *        </p>
+     *        The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any
+     *        other state. Each action is specified as an Amazon Resource Name (ARN).
      */
 
     public void setInsufficientDataActions(java.util.Collection<String> insufficientDataActions) {
@@ -586,14 +581,9 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any
-     * other state. Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other
+     * state. Each action is specified as an Amazon Resource Name (ARN).
      * </p>
-     * <important>
-     * <p>
-     * The current WSDL lists this attribute as <code>UnknownActions</code>.
-     * </p>
-     * </important>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setInsufficientDataActions(java.util.Collection)} or
@@ -601,11 +591,8 @@ public class MetricAlarm implements Serializable, Cloneable {
      * </p>
      * 
      * @param insufficientDataActions
-     *        The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state
-     *        from any other state. Each action is specified as an Amazon Resource Name (ARN). </p> <important>
-     *        <p>
-     *        The current WSDL lists this attribute as <code>UnknownActions</code>.
-     *        </p>
+     *        The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any
+     *        other state. Each action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -621,21 +608,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any
-     * other state. Each action is specified as an Amazon Resource Name (ARN).
+     * The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other
+     * state. Each action is specified as an Amazon Resource Name (ARN).
      * </p>
-     * <important>
-     * <p>
-     * The current WSDL lists this attribute as <code>UnknownActions</code>.
-     * </p>
-     * </important>
      * 
      * @param insufficientDataActions
-     *        The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state
-     *        from any other state. Each action is specified as an Amazon Resource Name (ARN). </p> <important>
-     *        <p>
-     *        The current WSDL lists this attribute as <code>UnknownActions</code>.
-     *        </p>
+     *        The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any
+     *        other state. Each action is specified as an Amazon Resource Name (ARN).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -719,11 +698,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A human-readable explanation for the alarm's state.
+     * An explanation for the alarm state, in text format.
      * </p>
      * 
      * @param stateReason
-     *        A human-readable explanation for the alarm's state.
+     *        An explanation for the alarm state, in text format.
      */
 
     public void setStateReason(String stateReason) {
@@ -732,10 +711,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A human-readable explanation for the alarm's state.
+     * An explanation for the alarm state, in text format.
      * </p>
      * 
-     * @return A human-readable explanation for the alarm's state.
+     * @return An explanation for the alarm state, in text format.
      */
 
     public String getStateReason() {
@@ -744,11 +723,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A human-readable explanation for the alarm's state.
+     * An explanation for the alarm state, in text format.
      * </p>
      * 
      * @param stateReason
-     *        A human-readable explanation for the alarm's state.
+     *        An explanation for the alarm state, in text format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -759,11 +738,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An explanation for the alarm's state in machine-readable JSON format
+     * An explanation for the alarm state, in JSON format.
      * </p>
      * 
      * @param stateReasonData
-     *        An explanation for the alarm's state in machine-readable JSON format
+     *        An explanation for the alarm state, in JSON format.
      */
 
     public void setStateReasonData(String stateReasonData) {
@@ -772,10 +751,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An explanation for the alarm's state in machine-readable JSON format
+     * An explanation for the alarm state, in JSON format.
      * </p>
      * 
-     * @return An explanation for the alarm's state in machine-readable JSON format
+     * @return An explanation for the alarm state, in JSON format.
      */
 
     public String getStateReasonData() {
@@ -784,11 +763,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An explanation for the alarm's state in machine-readable JSON format
+     * An explanation for the alarm state, in JSON format.
      * </p>
      * 
      * @param stateReasonData
-     *        An explanation for the alarm's state in machine-readable JSON format
+     *        An explanation for the alarm state, in JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -799,11 +778,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time stamp of the last update to the alarm's state.
+     * The time stamp of the last update to the alarm state.
      * </p>
      * 
      * @param stateUpdatedTimestamp
-     *        The time stamp of the last update to the alarm's state.
+     *        The time stamp of the last update to the alarm state.
      */
 
     public void setStateUpdatedTimestamp(java.util.Date stateUpdatedTimestamp) {
@@ -812,10 +791,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time stamp of the last update to the alarm's state.
+     * The time stamp of the last update to the alarm state.
      * </p>
      * 
-     * @return The time stamp of the last update to the alarm's state.
+     * @return The time stamp of the last update to the alarm state.
      */
 
     public java.util.Date getStateUpdatedTimestamp() {
@@ -824,11 +803,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time stamp of the last update to the alarm's state.
+     * The time stamp of the last update to the alarm state.
      * </p>
      * 
      * @param stateUpdatedTimestamp
-     *        The time stamp of the last update to the alarm's state.
+     *        The time stamp of the last update to the alarm state.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -839,11 +818,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the alarm's metric.
+     * The name of the metric associated with the alarm.
      * </p>
      * 
      * @param metricName
-     *        The name of the alarm's metric.
+     *        The name of the metric associated with the alarm.
      */
 
     public void setMetricName(String metricName) {
@@ -852,10 +831,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the alarm's metric.
+     * The name of the metric associated with the alarm.
      * </p>
      * 
-     * @return The name of the alarm's metric.
+     * @return The name of the metric associated with the alarm.
      */
 
     public String getMetricName() {
@@ -864,11 +843,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the alarm's metric.
+     * The name of the metric associated with the alarm.
      * </p>
      * 
      * @param metricName
-     *        The name of the alarm's metric.
+     *        The name of the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -879,11 +858,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace of alarm's associated metric.
+     * The namespace of the metric associated with the alarm.
      * </p>
      * 
      * @param namespace
-     *        The namespace of alarm's associated metric.
+     *        The namespace of the metric associated with the alarm.
      */
 
     public void setNamespace(String namespace) {
@@ -892,10 +871,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace of alarm's associated metric.
+     * The namespace of the metric associated with the alarm.
      * </p>
      * 
-     * @return The namespace of alarm's associated metric.
+     * @return The namespace of the metric associated with the alarm.
      */
 
     public String getNamespace() {
@@ -904,11 +883,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace of alarm's associated metric.
+     * The namespace of the metric associated with the alarm.
      * </p>
      * 
      * @param namespace
-     *        The namespace of alarm's associated metric.
+     *        The namespace of the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -919,11 +898,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistic
-     *        The statistic to apply to the alarm's associated metric.
+     *        The statistic for the metric associated with the alarm, other than percentile. For percentile statistics,
+     *        use <code>ExtendedStatistic</code>.
      * @see Statistic
      */
 
@@ -933,10 +914,12 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      * 
-     * @return The statistic to apply to the alarm's associated metric.
+     * @return The statistic for the metric associated with the alarm, other than percentile. For percentile statistics,
+     *         use <code>ExtendedStatistic</code>.
      * @see Statistic
      */
 
@@ -946,11 +929,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistic
-     *        The statistic to apply to the alarm's associated metric.
+     *        The statistic for the metric associated with the alarm, other than percentile. For percentile statistics,
+     *        use <code>ExtendedStatistic</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Statistic
      */
@@ -962,11 +947,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistic
-     *        The statistic to apply to the alarm's associated metric.
+     *        The statistic for the metric associated with the alarm, other than percentile. For percentile statistics,
+     *        use <code>ExtendedStatistic</code>.
      * @see Statistic
      */
 
@@ -976,11 +963,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The statistic to apply to the alarm's associated metric.
+     * The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use
+     * <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistic
-     *        The statistic to apply to the alarm's associated metric.
+     *        The statistic for the metric associated with the alarm, other than percentile. For percentile statistics,
+     *        use <code>ExtendedStatistic</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Statistic
      */
@@ -992,10 +981,50 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of dimensions associated with the alarm's associated metric.
+     * The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
      * </p>
      * 
-     * @return The list of dimensions associated with the alarm's associated metric.
+     * @param extendedStatistic
+     *        The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     */
+
+    public void setExtendedStatistic(String extendedStatistic) {
+        this.extendedStatistic = extendedStatistic;
+    }
+
+    /**
+     * <p>
+     * The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     * </p>
+     * 
+     * @return The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     */
+
+    public String getExtendedStatistic() {
+        return this.extendedStatistic;
+    }
+
+    /**
+     * <p>
+     * The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     * </p>
+     * 
+     * @param extendedStatistic
+     *        The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricAlarm withExtendedStatistic(String extendedStatistic) {
+        setExtendedStatistic(extendedStatistic);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The dimensions for the metric associated with the alarm.
+     * </p>
+     * 
+     * @return The dimensions for the metric associated with the alarm.
      */
 
     public java.util.List<Dimension> getDimensions() {
@@ -1007,11 +1036,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of dimensions associated with the alarm's associated metric.
+     * The dimensions for the metric associated with the alarm.
      * </p>
      * 
      * @param dimensions
-     *        The list of dimensions associated with the alarm's associated metric.
+     *        The dimensions for the metric associated with the alarm.
      */
 
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
@@ -1025,7 +1054,7 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of dimensions associated with the alarm's associated metric.
+     * The dimensions for the metric associated with the alarm.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1034,7 +1063,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      * </p>
      * 
      * @param dimensions
-     *        The list of dimensions associated with the alarm's associated metric.
+     *        The dimensions for the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1050,11 +1079,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of dimensions associated with the alarm's associated metric.
+     * The dimensions for the metric associated with the alarm.
      * </p>
      * 
      * @param dimensions
-     *        The list of dimensions associated with the alarm's associated metric.
+     *        The dimensions for the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1065,11 +1094,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The period in seconds over which the statistic is applied.
+     * The period, in seconds, over which the statistic is applied.
      * </p>
      * 
      * @param period
-     *        The period in seconds over which the statistic is applied.
+     *        The period, in seconds, over which the statistic is applied.
      */
 
     public void setPeriod(Integer period) {
@@ -1078,10 +1107,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The period in seconds over which the statistic is applied.
+     * The period, in seconds, over which the statistic is applied.
      * </p>
      * 
-     * @return The period in seconds over which the statistic is applied.
+     * @return The period, in seconds, over which the statistic is applied.
      */
 
     public Integer getPeriod() {
@@ -1090,11 +1119,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The period in seconds over which the statistic is applied.
+     * The period, in seconds, over which the statistic is applied.
      * </p>
      * 
      * @param period
-     *        The period in seconds over which the statistic is applied.
+     *        The period, in seconds, over which the statistic is applied.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1105,11 +1134,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      * 
      * @param unit
-     *        The unit of the alarm's associated metric.
+     *        The unit of the metric associated with the alarm.
      * @see StandardUnit
      */
 
@@ -1119,10 +1148,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      * 
-     * @return The unit of the alarm's associated metric.
+     * @return The unit of the metric associated with the alarm.
      * @see StandardUnit
      */
 
@@ -1132,11 +1161,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      * 
      * @param unit
-     *        The unit of the alarm's associated metric.
+     *        The unit of the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -1148,11 +1177,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      * 
      * @param unit
-     *        The unit of the alarm's associated metric.
+     *        The unit of the metric associated with the alarm.
      * @see StandardUnit
      */
 
@@ -1162,11 +1191,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the alarm's associated metric.
+     * The unit of the metric associated with the alarm.
      * </p>
      * 
      * @param unit
-     *        The unit of the alarm's associated metric.
+     *        The unit of the metric associated with the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -1218,11 +1247,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value against which the specified statistic is compared.
+     * The value to compare with the specified statistic.
      * </p>
      * 
      * @param threshold
-     *        The value against which the specified statistic is compared.
+     *        The value to compare with the specified statistic.
      */
 
     public void setThreshold(Double threshold) {
@@ -1231,10 +1260,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value against which the specified statistic is compared.
+     * The value to compare with the specified statistic.
      * </p>
      * 
-     * @return The value against which the specified statistic is compared.
+     * @return The value to compare with the specified statistic.
      */
 
     public Double getThreshold() {
@@ -1243,11 +1272,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value against which the specified statistic is compared.
+     * The value to compare with the specified statistic.
      * </p>
      * 
      * @param threshold
-     *        The value against which the specified statistic is compared.
+     *        The value to compare with the specified statistic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1258,13 +1287,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      * 
      * @param comparisonOperator
-     *        The arithmetic operation to use when comparing the specified <code>Statistic</code> and
-     *        <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand.
+     *        The arithmetic operation to use when comparing the specified statistic and threshold. The specified
+     *        statistic value is used as the first operand.
      * @see ComparisonOperator
      */
 
@@ -1274,12 +1303,12 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      * 
-     * @return The arithmetic operation to use when comparing the specified <code>Statistic</code> and
-     *         <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand.
+     * @return The arithmetic operation to use when comparing the specified statistic and threshold. The specified
+     *         statistic value is used as the first operand.
      * @see ComparisonOperator
      */
 
@@ -1289,13 +1318,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      * 
      * @param comparisonOperator
-     *        The arithmetic operation to use when comparing the specified <code>Statistic</code> and
-     *        <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand.
+     *        The arithmetic operation to use when comparing the specified statistic and threshold. The specified
+     *        statistic value is used as the first operand.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComparisonOperator
      */
@@ -1307,13 +1336,13 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      * 
      * @param comparisonOperator
-     *        The arithmetic operation to use when comparing the specified <code>Statistic</code> and
-     *        <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand.
+     *        The arithmetic operation to use when comparing the specified statistic and threshold. The specified
+     *        statistic value is used as the first operand.
      * @see ComparisonOperator
      */
 
@@ -1323,19 +1352,71 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>.
-     * The specified <code>Statistic</code> value is used as the first operand.
+     * The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic
+     * value is used as the first operand.
      * </p>
      * 
      * @param comparisonOperator
-     *        The arithmetic operation to use when comparing the specified <code>Statistic</code> and
-     *        <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand.
+     *        The arithmetic operation to use when comparing the specified statistic and threshold. The specified
+     *        statistic value is used as the first operand.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComparisonOperator
      */
 
     public MetricAlarm withComparisonOperator(ComparisonOperator comparisonOperator) {
         setComparisonOperator(comparisonOperator);
+        return this;
+    }
+
+    /**
+     * @param treatMissingData
+     */
+
+    public void setTreatMissingData(String treatMissingData) {
+        this.treatMissingData = treatMissingData;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getTreatMissingData() {
+        return this.treatMissingData;
+    }
+
+    /**
+     * @param treatMissingData
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricAlarm withTreatMissingData(String treatMissingData) {
+        setTreatMissingData(treatMissingData);
+        return this;
+    }
+
+    /**
+     * @param evaluateLowSampleCountPercentile
+     */
+
+    public void setEvaluateLowSampleCountPercentile(String evaluateLowSampleCountPercentile) {
+        this.evaluateLowSampleCountPercentile = evaluateLowSampleCountPercentile;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getEvaluateLowSampleCountPercentile() {
+        return this.evaluateLowSampleCountPercentile;
+    }
+
+    /**
+     * @param evaluateLowSampleCountPercentile
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricAlarm withEvaluateLowSampleCountPercentile(String evaluateLowSampleCountPercentile) {
+        setEvaluateLowSampleCountPercentile(evaluateLowSampleCountPercentile);
         return this;
     }
 
@@ -1351,47 +1432,53 @@ public class MetricAlarm implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlarmName() != null)
-            sb.append("AlarmName: " + getAlarmName() + ",");
+            sb.append("AlarmName: ").append(getAlarmName()).append(",");
         if (getAlarmArn() != null)
-            sb.append("AlarmArn: " + getAlarmArn() + ",");
+            sb.append("AlarmArn: ").append(getAlarmArn()).append(",");
         if (getAlarmDescription() != null)
-            sb.append("AlarmDescription: " + getAlarmDescription() + ",");
+            sb.append("AlarmDescription: ").append(getAlarmDescription()).append(",");
         if (getAlarmConfigurationUpdatedTimestamp() != null)
-            sb.append("AlarmConfigurationUpdatedTimestamp: " + getAlarmConfigurationUpdatedTimestamp() + ",");
+            sb.append("AlarmConfigurationUpdatedTimestamp: ").append(getAlarmConfigurationUpdatedTimestamp()).append(",");
         if (getActionsEnabled() != null)
-            sb.append("ActionsEnabled: " + getActionsEnabled() + ",");
+            sb.append("ActionsEnabled: ").append(getActionsEnabled()).append(",");
         if (getOKActions() != null)
-            sb.append("OKActions: " + getOKActions() + ",");
+            sb.append("OKActions: ").append(getOKActions()).append(",");
         if (getAlarmActions() != null)
-            sb.append("AlarmActions: " + getAlarmActions() + ",");
+            sb.append("AlarmActions: ").append(getAlarmActions()).append(",");
         if (getInsufficientDataActions() != null)
-            sb.append("InsufficientDataActions: " + getInsufficientDataActions() + ",");
+            sb.append("InsufficientDataActions: ").append(getInsufficientDataActions()).append(",");
         if (getStateValue() != null)
-            sb.append("StateValue: " + getStateValue() + ",");
+            sb.append("StateValue: ").append(getStateValue()).append(",");
         if (getStateReason() != null)
-            sb.append("StateReason: " + getStateReason() + ",");
+            sb.append("StateReason: ").append(getStateReason()).append(",");
         if (getStateReasonData() != null)
-            sb.append("StateReasonData: " + getStateReasonData() + ",");
+            sb.append("StateReasonData: ").append(getStateReasonData()).append(",");
         if (getStateUpdatedTimestamp() != null)
-            sb.append("StateUpdatedTimestamp: " + getStateUpdatedTimestamp() + ",");
+            sb.append("StateUpdatedTimestamp: ").append(getStateUpdatedTimestamp()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getStatistic() != null)
-            sb.append("Statistic: " + getStatistic() + ",");
+            sb.append("Statistic: ").append(getStatistic()).append(",");
+        if (getExtendedStatistic() != null)
+            sb.append("ExtendedStatistic: ").append(getExtendedStatistic()).append(",");
         if (getDimensions() != null)
-            sb.append("Dimensions: " + getDimensions() + ",");
+            sb.append("Dimensions: ").append(getDimensions()).append(",");
         if (getPeriod() != null)
-            sb.append("Period: " + getPeriod() + ",");
+            sb.append("Period: ").append(getPeriod()).append(",");
         if (getUnit() != null)
-            sb.append("Unit: " + getUnit() + ",");
+            sb.append("Unit: ").append(getUnit()).append(",");
         if (getEvaluationPeriods() != null)
-            sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+            sb.append("EvaluationPeriods: ").append(getEvaluationPeriods()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: " + getThreshold() + ",");
+            sb.append("Threshold: ").append(getThreshold()).append(",");
         if (getComparisonOperator() != null)
-            sb.append("ComparisonOperator: " + getComparisonOperator());
+            sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
+        if (getTreatMissingData() != null)
+            sb.append("TreatMissingData: ").append(getTreatMissingData()).append(",");
+        if (getEvaluateLowSampleCountPercentile() != null)
+            sb.append("EvaluateLowSampleCountPercentile: ").append(getEvaluateLowSampleCountPercentile());
         sb.append("}");
         return sb.toString();
     }
@@ -1467,6 +1554,10 @@ public class MetricAlarm implements Serializable, Cloneable {
             return false;
         if (other.getStatistic() != null && other.getStatistic().equals(this.getStatistic()) == false)
             return false;
+        if (other.getExtendedStatistic() == null ^ this.getExtendedStatistic() == null)
+            return false;
+        if (other.getExtendedStatistic() != null && other.getExtendedStatistic().equals(this.getExtendedStatistic()) == false)
+            return false;
         if (other.getDimensions() == null ^ this.getDimensions() == null)
             return false;
         if (other.getDimensions() != null && other.getDimensions().equals(this.getDimensions()) == false)
@@ -1491,6 +1582,15 @@ public class MetricAlarm implements Serializable, Cloneable {
             return false;
         if (other.getComparisonOperator() != null && other.getComparisonOperator().equals(this.getComparisonOperator()) == false)
             return false;
+        if (other.getTreatMissingData() == null ^ this.getTreatMissingData() == null)
+            return false;
+        if (other.getTreatMissingData() != null && other.getTreatMissingData().equals(this.getTreatMissingData()) == false)
+            return false;
+        if (other.getEvaluateLowSampleCountPercentile() == null ^ this.getEvaluateLowSampleCountPercentile() == null)
+            return false;
+        if (other.getEvaluateLowSampleCountPercentile() != null
+                && other.getEvaluateLowSampleCountPercentile().equals(this.getEvaluateLowSampleCountPercentile()) == false)
+            return false;
         return true;
     }
 
@@ -1514,12 +1614,15 @@ public class MetricAlarm implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getMetricName() == null) ? 0 : getMetricName().hashCode());
         hashCode = prime * hashCode + ((getNamespace() == null) ? 0 : getNamespace().hashCode());
         hashCode = prime * hashCode + ((getStatistic() == null) ? 0 : getStatistic().hashCode());
+        hashCode = prime * hashCode + ((getExtendedStatistic() == null) ? 0 : getExtendedStatistic().hashCode());
         hashCode = prime * hashCode + ((getDimensions() == null) ? 0 : getDimensions().hashCode());
         hashCode = prime * hashCode + ((getPeriod() == null) ? 0 : getPeriod().hashCode());
         hashCode = prime * hashCode + ((getUnit() == null) ? 0 : getUnit().hashCode());
         hashCode = prime * hashCode + ((getEvaluationPeriods() == null) ? 0 : getEvaluationPeriods().hashCode());
         hashCode = prime * hashCode + ((getThreshold() == null) ? 0 : getThreshold().hashCode());
         hashCode = prime * hashCode + ((getComparisonOperator() == null) ? 0 : getComparisonOperator().hashCode());
+        hashCode = prime * hashCode + ((getTreatMissingData() == null) ? 0 : getTreatMissingData().hashCode());
+        hashCode = prime * hashCode + ((getEvaluateLowSampleCountPercentile() == null) ? 0 : getEvaluateLowSampleCountPercentile().hashCode());
         return hashCode;
     }
 
@@ -1531,4 +1634,5 @@ public class MetricAlarm implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

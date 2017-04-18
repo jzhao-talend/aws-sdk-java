@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Provides details of the <code>ActivityTaskScheduled</code> event.
  * </p>
  */
-public class ActivityTaskScheduledEventAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActivityTaskScheduledEventAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -639,27 +643,27 @@ public class ActivityTaskScheduledEventAttributes implements Serializable, Clone
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActivityType() != null)
-            sb.append("ActivityType: " + getActivityType() + ",");
+            sb.append("ActivityType: ").append(getActivityType()).append(",");
         if (getActivityId() != null)
-            sb.append("ActivityId: " + getActivityId() + ",");
+            sb.append("ActivityId: ").append(getActivityId()).append(",");
         if (getInput() != null)
-            sb.append("Input: " + getInput() + ",");
+            sb.append("Input: ").append(getInput()).append(",");
         if (getControl() != null)
-            sb.append("Control: " + getControl() + ",");
+            sb.append("Control: ").append(getControl()).append(",");
         if (getScheduleToStartTimeout() != null)
-            sb.append("ScheduleToStartTimeout: " + getScheduleToStartTimeout() + ",");
+            sb.append("ScheduleToStartTimeout: ").append(getScheduleToStartTimeout()).append(",");
         if (getScheduleToCloseTimeout() != null)
-            sb.append("ScheduleToCloseTimeout: " + getScheduleToCloseTimeout() + ",");
+            sb.append("ScheduleToCloseTimeout: ").append(getScheduleToCloseTimeout()).append(",");
         if (getStartToCloseTimeout() != null)
-            sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() + ",");
+            sb.append("StartToCloseTimeout: ").append(getStartToCloseTimeout()).append(",");
         if (getTaskList() != null)
-            sb.append("TaskList: " + getTaskList() + ",");
+            sb.append("TaskList: ").append(getTaskList()).append(",");
         if (getTaskPriority() != null)
-            sb.append("TaskPriority: " + getTaskPriority() + ",");
+            sb.append("TaskPriority: ").append(getTaskPriority()).append(",");
         if (getDecisionTaskCompletedEventId() != null)
-            sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
+            sb.append("DecisionTaskCompletedEventId: ").append(getDecisionTaskCompletedEventId()).append(",");
         if (getHeartbeatTimeout() != null)
-            sb.append("HeartbeatTimeout: " + getHeartbeatTimeout());
+            sb.append("HeartbeatTimeout: ").append(getHeartbeatTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -747,5 +751,11 @@ public class ActivityTaskScheduledEventAttributes implements Serializable, Clone
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.ActivityTaskScheduledEventAttributesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

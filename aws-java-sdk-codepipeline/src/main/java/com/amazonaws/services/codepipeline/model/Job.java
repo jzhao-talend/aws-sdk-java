@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents information about a job.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/Job" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Job implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -36,7 +43,7 @@ public class Job implements Serializable, Cloneable {
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Use this number in an <a>AcknowledgeJob</a> request.
      * </p>
      */
     private String nonce;
@@ -130,12 +137,12 @@ public class Job implements Serializable, Cloneable {
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Use this number in an <a>AcknowledgeJob</a> request.
      * </p>
      * 
      * @param nonce
      *        A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *        only one job worker. This number must be returned in the response.
+     *        only one job worker. Use this number in an <a>AcknowledgeJob</a> request.
      */
 
     public void setNonce(String nonce) {
@@ -145,11 +152,11 @@ public class Job implements Serializable, Cloneable {
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Use this number in an <a>AcknowledgeJob</a> request.
      * </p>
      * 
      * @return A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *         only one job worker. This number must be returned in the response.
+     *         only one job worker. Use this number in an <a>AcknowledgeJob</a> request.
      */
 
     public String getNonce() {
@@ -159,12 +166,12 @@ public class Job implements Serializable, Cloneable {
     /**
      * <p>
      * A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one
-     * job worker. This number must be returned in the response.
+     * job worker. Use this number in an <a>AcknowledgeJob</a> request.
      * </p>
      * 
      * @param nonce
      *        A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by
-     *        only one job worker. This number must be returned in the response.
+     *        only one job worker. Use this number in an <a>AcknowledgeJob</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -225,13 +232,13 @@ public class Job implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getData() != null)
-            sb.append("Data: " + getData() + ",");
+            sb.append("Data: ").append(getData()).append(",");
         if (getNonce() != null)
-            sb.append("Nonce: " + getNonce() + ",");
+            sb.append("Nonce: ").append(getNonce()).append(",");
         if (getAccountId() != null)
-            sb.append("AccountId: " + getAccountId());
+            sb.append("AccountId: ").append(getAccountId());
         sb.append("}");
         return sb.toString();
     }
@@ -284,5 +291,11 @@ public class Job implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.JobMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

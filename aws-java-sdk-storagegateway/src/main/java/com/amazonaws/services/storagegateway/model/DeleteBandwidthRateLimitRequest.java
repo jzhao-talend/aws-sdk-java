@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,37 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
+ * <p>
+ * A JSON object containing the following fields:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>DeleteBandwidthRateLimitInput$BandwidthType</a>
+ * </p>
+ * </li>
+ * </ul>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteBandwidthRateLimit"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String gatewayARN;
-
+    /**
+     * <p>
+     * One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
+     * </p>
+     * <p>
+     * Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
+     * </p>
+     */
     private String bandwidthType;
 
     /**
@@ -51,7 +73,17 @@ public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
+     * <p>
+     * One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
+     * </p>
+     * <p>
+     * Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
+     * </p>
+     * 
      * @param bandwidthType
+     *        One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p>
+     *        <p>
+     *        Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
      */
 
     public void setBandwidthType(String bandwidthType) {
@@ -59,7 +91,16 @@ public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
-     * @return
+     * <p>
+     * One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
+     * </p>
+     * <p>
+     * Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
+     * </p>
+     * 
+     * @return One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p>
+     *         <p>
+     *         Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
      */
 
     public String getBandwidthType() {
@@ -67,7 +108,17 @@ public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
+     * <p>
+     * One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.
+     * </p>
+     * <p>
+     * Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
+     * </p>
+     * 
      * @param bandwidthType
+     *        One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p>
+     *        <p>
+     *        Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -88,9 +139,9 @@ public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getBandwidthType() != null)
-            sb.append("BandwidthType: " + getBandwidthType());
+            sb.append("BandwidthType: ").append(getBandwidthType());
         sb.append("}");
         return sb.toString();
     }
@@ -130,4 +181,5 @@ public class DeleteBandwidthRateLimitRequest extends com.amazonaws.AmazonWebServ
     public DeleteBandwidthRateLimitRequest clone() {
         return (DeleteBandwidthRateLimitRequest) super.clone();
     }
+
 }

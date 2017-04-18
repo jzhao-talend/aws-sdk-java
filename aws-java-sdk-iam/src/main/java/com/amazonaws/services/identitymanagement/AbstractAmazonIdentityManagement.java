@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.identitymanagement;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.identitymanagement.waiters.AmazonIdentityManagementWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.identitymanagement.waiters.AmazonIdentityManagemen
  * Abstract implementation of {@code AmazonIdentityManagement}. Convenient method forms pass through to the
  * corresponding overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonIdentityManagement implements AmazonIdentityManagement {
 
     protected AbstractAmazonIdentityManagement() {
@@ -126,6 +129,11 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
     }
 
     @Override
+    public CreateServiceSpecificCredentialResult createServiceSpecificCredential(CreateServiceSpecificCredentialRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateUserResult createUser(CreateUserRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -217,6 +225,11 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
 
     @Override
     public DeleteServerCertificateResult deleteServerCertificate(DeleteServerCertificateRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteServiceSpecificCredentialResult deleteServiceSpecificCredential(DeleteServiceSpecificCredentialRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -556,6 +569,11 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
     }
 
     @Override
+    public ListServiceSpecificCredentialsResult listServiceSpecificCredentials(ListServiceSpecificCredentialsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListSigningCertificatesResult listSigningCertificates(ListSigningCertificatesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -617,6 +635,11 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
 
     @Override
     public RemoveUserFromGroupResult removeUserFromGroup(RemoveUserFromGroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ResetServiceSpecificCredentialResult resetServiceSpecificCredential(ResetServiceSpecificCredentialRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -686,6 +709,11 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
     }
 
     @Override
+    public UpdateServiceSpecificCredentialResult updateServiceSpecificCredential(UpdateServiceSpecificCredentialRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateSigningCertificateResult updateSigningCertificate(UpdateSigningCertificateRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -724,4 +752,5 @@ public class AbstractAmazonIdentityManagement implements AmazonIdentityManagemen
     public AmazonIdentityManagementWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

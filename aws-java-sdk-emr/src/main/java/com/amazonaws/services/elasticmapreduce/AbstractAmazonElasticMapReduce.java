@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elasticmapreduce;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticmapreduce.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.elasticmapreduce.waiters.AmazonElasticMapReduceWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.elasticmapreduce.waiters.AmazonElasticMapReduceWai
  * Abstract implementation of {@code AmazonElasticMapReduce}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
 
     protected AbstractAmazonElasticMapReduce() {
@@ -36,6 +39,11 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
     }
 
     @Override
+    public AddInstanceFleetResult addInstanceFleet(AddInstanceFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public AddInstanceGroupsResult addInstanceGroups(AddInstanceGroupsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -47,6 +55,11 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
 
     @Override
     public AddTagsResult addTags(AddTagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CancelStepsResult cancelSteps(CancelStepsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -103,6 +116,11 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
     }
 
     @Override
+    public ListInstanceFleetsResult listInstanceFleets(ListInstanceFleetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListInstanceGroupsResult listInstanceGroups(ListInstanceGroupsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -123,6 +141,11 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
     }
 
     @Override
+    public ModifyInstanceFleetResult modifyInstanceFleet(ModifyInstanceFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ModifyInstanceGroupsResult modifyInstanceGroups(ModifyInstanceGroupsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -130,6 +153,16 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
     @Override
     public ModifyInstanceGroupsResult modifyInstanceGroups() {
         return modifyInstanceGroups(new ModifyInstanceGroupsRequest());
+    }
+
+    @Override
+    public PutAutoScalingPolicyResult putAutoScalingPolicy(PutAutoScalingPolicyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public RemoveAutoScalingPolicyResult removeAutoScalingPolicy(RemoveAutoScalingPolicyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -171,4 +204,5 @@ public class AbstractAmazonElasticMapReduce implements AmazonElasticMapReduce {
     public AmazonElasticMapReduceWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

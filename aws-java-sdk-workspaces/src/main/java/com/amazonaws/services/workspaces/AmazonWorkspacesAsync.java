@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.workspaces;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.workspaces.model.*;
 
 /**
@@ -19,11 +21,16 @@ import com.amazonaws.services.workspaces.model.*;
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.workspaces.AbstractAmazonWorkspacesAsync} instead.
+ * </p>
+ * <p>
  * <fullname>Amazon WorkSpaces Service</fullname>
  * <p>
  * This reference provides detailed information about the Amazon WorkSpaces operations.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
 
     /**
@@ -35,6 +42,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        The request of the <a>CreateTags</a> operation.
      * @return A Java Future containing the result of the CreateTags operation returned by the service.
      * @sample AmazonWorkspacesAsync.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTagsResult> createTagsAsync(CreateTagsRequest createTagsRequest);
 
@@ -51,6 +60,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTags operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTagsResult> createTagsAsync(CreateTagsRequest createTagsRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTagsRequest, CreateTagsResult> asyncHandler);
@@ -69,6 +80,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>CreateWorkspaces</a> operation.
      * @return A Java Future containing the result of the CreateWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.CreateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateWorkspacesResult> createWorkspacesAsync(CreateWorkspacesRequest createWorkspacesRequest);
 
@@ -90,6 +103,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.CreateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateWorkspacesResult> createWorkspacesAsync(CreateWorkspacesRequest createWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<CreateWorkspacesRequest, CreateWorkspacesResult> asyncHandler);
@@ -103,6 +118,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        The request of the <a>DeleteTags</a> operation.
      * @return A Java Future containing the result of the DeleteTags operation returned by the service.
      * @sample AmazonWorkspacesAsync.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTagsResult> deleteTagsAsync(DeleteTagsRequest deleteTagsRequest);
 
@@ -119,6 +136,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTags operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTagsResult> deleteTagsAsync(DeleteTagsRequest deleteTagsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTagsRequest, DeleteTagsResult> asyncHandler);
@@ -132,6 +151,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        The request of the <a>DescribeTags</a> operation.
      * @return A Java Future containing the result of the DescribeTags operation returned by the service.
      * @sample AmazonWorkspacesAsync.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(DescribeTagsRequest describeTagsRequest);
 
@@ -148,6 +169,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTags operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(DescribeTagsRequest describeTagsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTagsRequest, DescribeTagsResult> asyncHandler);
@@ -170,6 +193,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.
      * @return A Java Future containing the result of the DescribeWorkspaceBundles operation returned by the service.
      * @sample AmazonWorkspacesAsync.DescribeWorkspaceBundles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspaceBundlesResult> describeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest describeWorkspaceBundlesRequest);
 
@@ -195,6 +220,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeWorkspaceBundles operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.DescribeWorkspaceBundles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspaceBundlesResult> describeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest describeWorkspaceBundlesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeWorkspaceBundlesRequest, DescribeWorkspaceBundlesResult> asyncHandler);
@@ -230,6 +257,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @return A Java Future containing the result of the DescribeWorkspaceDirectories operation returned by the
      *         service.
      * @sample AmazonWorkspacesAsync.DescribeWorkspaceDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspaceDirectoriesResult> describeWorkspaceDirectoriesAsync(
             DescribeWorkspaceDirectoriesRequest describeWorkspaceDirectoriesRequest);
@@ -254,6 +283,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @return A Java Future containing the result of the DescribeWorkspaceDirectories operation returned by the
      *         service.
      * @sample AmazonWorkspacesAsyncHandler.DescribeWorkspaceDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspaceDirectoriesResult> describeWorkspaceDirectoriesAsync(
             DescribeWorkspaceDirectoriesRequest describeWorkspaceDirectoriesRequest,
@@ -292,6 +323,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>DescribeWorkspaces</a> operation.
      * @return A Java Future containing the result of the DescribeWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.DescribeWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspacesResult> describeWorkspacesAsync(DescribeWorkspacesRequest describeWorkspacesRequest);
 
@@ -317,6 +350,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.DescribeWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspacesResult> describeWorkspacesAsync(DescribeWorkspacesRequest describeWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeWorkspacesRequest, DescribeWorkspacesResult> asyncHandler);
@@ -345,6 +380,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @return A Java Future containing the result of the DescribeWorkspacesConnectionStatus operation returned by the
      *         service.
      * @sample AmazonWorkspacesAsync.DescribeWorkspacesConnectionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspacesConnectionStatusResult> describeWorkspacesConnectionStatusAsync(
             DescribeWorkspacesConnectionStatusRequest describeWorkspacesConnectionStatusRequest);
@@ -362,6 +399,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @return A Java Future containing the result of the DescribeWorkspacesConnectionStatus operation returned by the
      *         service.
      * @sample AmazonWorkspacesAsyncHandler.DescribeWorkspacesConnectionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkspacesConnectionStatusResult> describeWorkspacesConnectionStatusAsync(
             DescribeWorkspacesConnectionStatusRequest describeWorkspacesConnectionStatusRequest,
@@ -375,6 +414,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @param modifyWorkspacePropertiesRequest
      * @return A Java Future containing the result of the ModifyWorkspaceProperties operation returned by the service.
      * @sample AmazonWorkspacesAsync.ModifyWorkspaceProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyWorkspacePropertiesResult> modifyWorkspacePropertiesAsync(
             ModifyWorkspacePropertiesRequest modifyWorkspacePropertiesRequest);
@@ -391,6 +432,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyWorkspaceProperties operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.ModifyWorkspaceProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyWorkspacePropertiesResult> modifyWorkspacePropertiesAsync(
             ModifyWorkspacePropertiesRequest modifyWorkspacePropertiesRequest,
@@ -414,6 +457,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>RebootWorkspaces</a> operation.
      * @return A Java Future containing the result of the RebootWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.RebootWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RebootWorkspacesResult> rebootWorkspacesAsync(RebootWorkspacesRequest rebootWorkspacesRequest);
 
@@ -439,6 +484,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RebootWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.RebootWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RebootWorkspacesResult> rebootWorkspacesAsync(RebootWorkspacesRequest rebootWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<RebootWorkspacesRequest, RebootWorkspacesResult> asyncHandler);
@@ -480,6 +527,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>RebuildWorkspaces</a> operation.
      * @return A Java Future containing the result of the RebuildWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.RebuildWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RebuildWorkspacesResult> rebuildWorkspacesAsync(RebuildWorkspacesRequest rebuildWorkspacesRequest);
 
@@ -524,6 +573,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RebuildWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.RebuildWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RebuildWorkspacesResult> rebuildWorkspacesAsync(RebuildWorkspacesRequest rebuildWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<RebuildWorkspacesRequest, RebuildWorkspacesResult> asyncHandler);
@@ -537,6 +588,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @param startWorkspacesRequest
      * @return A Java Future containing the result of the StartWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.StartWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartWorkspacesResult> startWorkspacesAsync(StartWorkspacesRequest startWorkspacesRequest);
 
@@ -553,6 +606,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.StartWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartWorkspacesResult> startWorkspacesAsync(StartWorkspacesRequest startWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<StartWorkspacesRequest, StartWorkspacesResult> asyncHandler);
@@ -566,6 +621,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      * @param stopWorkspacesRequest
      * @return A Java Future containing the result of the StopWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.StopWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopWorkspacesResult> stopWorkspacesAsync(StopWorkspacesRequest stopWorkspacesRequest);
 
@@ -582,6 +639,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StopWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.StopWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopWorkspacesResult> stopWorkspacesAsync(StopWorkspacesRequest stopWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<StopWorkspacesRequest, StopWorkspacesResult> asyncHandler);
@@ -607,6 +666,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        Contains the inputs for the <a>TerminateWorkspaces</a> operation.
      * @return A Java Future containing the result of the TerminateWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsync.TerminateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<TerminateWorkspacesResult> terminateWorkspacesAsync(TerminateWorkspacesRequest terminateWorkspacesRequest);
 
@@ -635,6 +696,8 @@ public interface AmazonWorkspacesAsync extends AmazonWorkspaces {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the TerminateWorkspaces operation returned by the service.
      * @sample AmazonWorkspacesAsyncHandler.TerminateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<TerminateWorkspacesResult> terminateWorkspacesAsync(TerminateWorkspacesRequest terminateWorkspacesRequest,
             com.amazonaws.handlers.AsyncHandler<TerminateWorkspacesRequest, TerminateWorkspacesResult> asyncHandler);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A <code>PutRecords</code> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecords" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutRecordsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -160,9 +166,9 @@ public class PutRecordsRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecords() != null)
-            sb.append("Records: " + getRecords() + ",");
+            sb.append("Records: ").append(getRecords()).append(",");
         if (getStreamName() != null)
-            sb.append("StreamName: " + getStreamName());
+            sb.append("StreamName: ").append(getStreamName());
         sb.append("}");
         return sb.toString();
     }
@@ -202,4 +208,5 @@ public class PutRecordsRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public PutRecordsRequest clone() {
         return (PutRecordsRequest) super.clone();
     }
+
 }

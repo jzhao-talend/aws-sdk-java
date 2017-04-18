@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The channel through which AWS Config delivers notifications and updated configuration states.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeliveryChannel" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeliveryChannel implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeliveryChannel implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -62,7 +69,11 @@ public class DeliveryChannel implements Serializable, Cloneable {
      * </p>
      */
     private String snsTopicARN;
-
+    /**
+     * <p>
+     * The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+     * </p>
+     */
     private ConfigSnapshotDeliveryProperties configSnapshotDeliveryProperties;
 
     /**
@@ -322,7 +333,12 @@ public class DeliveryChannel implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+     * </p>
+     * 
      * @param configSnapshotDeliveryProperties
+     *        The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
      */
 
     public void setConfigSnapshotDeliveryProperties(ConfigSnapshotDeliveryProperties configSnapshotDeliveryProperties) {
@@ -330,7 +346,11 @@ public class DeliveryChannel implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+     * </p>
+     * 
+     * @return The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
      */
 
     public ConfigSnapshotDeliveryProperties getConfigSnapshotDeliveryProperties() {
@@ -338,7 +358,12 @@ public class DeliveryChannel implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+     * </p>
+     * 
      * @param configSnapshotDeliveryProperties
+     *        The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -359,15 +384,15 @@ public class DeliveryChannel implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getS3BucketName() != null)
-            sb.append("S3BucketName: " + getS3BucketName() + ",");
+            sb.append("S3BucketName: ").append(getS3BucketName()).append(",");
         if (getS3KeyPrefix() != null)
-            sb.append("S3KeyPrefix: " + getS3KeyPrefix() + ",");
+            sb.append("S3KeyPrefix: ").append(getS3KeyPrefix()).append(",");
         if (getSnsTopicARN() != null)
-            sb.append("SnsTopicARN: " + getSnsTopicARN() + ",");
+            sb.append("SnsTopicARN: ").append(getSnsTopicARN()).append(",");
         if (getConfigSnapshotDeliveryProperties() != null)
-            sb.append("ConfigSnapshotDeliveryProperties: " + getConfigSnapshotDeliveryProperties());
+            sb.append("ConfigSnapshotDeliveryProperties: ").append(getConfigSnapshotDeliveryProperties());
         sb.append("}");
         return sb.toString();
     }
@@ -426,5 +451,11 @@ public class DeliveryChannel implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.DeliveryChannelMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

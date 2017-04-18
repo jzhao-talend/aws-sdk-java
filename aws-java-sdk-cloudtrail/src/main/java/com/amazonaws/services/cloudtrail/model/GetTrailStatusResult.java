@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Returns the objects or data listed below if successful. Otherwise, returns an error.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/GetTrailStatus" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetTrailStatusResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -985,39 +990,39 @@ public class GetTrailStatusResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIsLogging() != null)
-            sb.append("IsLogging: " + getIsLogging() + ",");
+            sb.append("IsLogging: ").append(getIsLogging()).append(",");
         if (getLatestDeliveryError() != null)
-            sb.append("LatestDeliveryError: " + getLatestDeliveryError() + ",");
+            sb.append("LatestDeliveryError: ").append(getLatestDeliveryError()).append(",");
         if (getLatestNotificationError() != null)
-            sb.append("LatestNotificationError: " + getLatestNotificationError() + ",");
+            sb.append("LatestNotificationError: ").append(getLatestNotificationError()).append(",");
         if (getLatestDeliveryTime() != null)
-            sb.append("LatestDeliveryTime: " + getLatestDeliveryTime() + ",");
+            sb.append("LatestDeliveryTime: ").append(getLatestDeliveryTime()).append(",");
         if (getLatestNotificationTime() != null)
-            sb.append("LatestNotificationTime: " + getLatestNotificationTime() + ",");
+            sb.append("LatestNotificationTime: ").append(getLatestNotificationTime()).append(",");
         if (getStartLoggingTime() != null)
-            sb.append("StartLoggingTime: " + getStartLoggingTime() + ",");
+            sb.append("StartLoggingTime: ").append(getStartLoggingTime()).append(",");
         if (getStopLoggingTime() != null)
-            sb.append("StopLoggingTime: " + getStopLoggingTime() + ",");
+            sb.append("StopLoggingTime: ").append(getStopLoggingTime()).append(",");
         if (getLatestCloudWatchLogsDeliveryError() != null)
-            sb.append("LatestCloudWatchLogsDeliveryError: " + getLatestCloudWatchLogsDeliveryError() + ",");
+            sb.append("LatestCloudWatchLogsDeliveryError: ").append(getLatestCloudWatchLogsDeliveryError()).append(",");
         if (getLatestCloudWatchLogsDeliveryTime() != null)
-            sb.append("LatestCloudWatchLogsDeliveryTime: " + getLatestCloudWatchLogsDeliveryTime() + ",");
+            sb.append("LatestCloudWatchLogsDeliveryTime: ").append(getLatestCloudWatchLogsDeliveryTime()).append(",");
         if (getLatestDigestDeliveryTime() != null)
-            sb.append("LatestDigestDeliveryTime: " + getLatestDigestDeliveryTime() + ",");
+            sb.append("LatestDigestDeliveryTime: ").append(getLatestDigestDeliveryTime()).append(",");
         if (getLatestDigestDeliveryError() != null)
-            sb.append("LatestDigestDeliveryError: " + getLatestDigestDeliveryError() + ",");
+            sb.append("LatestDigestDeliveryError: ").append(getLatestDigestDeliveryError()).append(",");
         if (getLatestDeliveryAttemptTime() != null)
-            sb.append("LatestDeliveryAttemptTime: " + getLatestDeliveryAttemptTime() + ",");
+            sb.append("LatestDeliveryAttemptTime: ").append(getLatestDeliveryAttemptTime()).append(",");
         if (getLatestNotificationAttemptTime() != null)
-            sb.append("LatestNotificationAttemptTime: " + getLatestNotificationAttemptTime() + ",");
+            sb.append("LatestNotificationAttemptTime: ").append(getLatestNotificationAttemptTime()).append(",");
         if (getLatestNotificationAttemptSucceeded() != null)
-            sb.append("LatestNotificationAttemptSucceeded: " + getLatestNotificationAttemptSucceeded() + ",");
+            sb.append("LatestNotificationAttemptSucceeded: ").append(getLatestNotificationAttemptSucceeded()).append(",");
         if (getLatestDeliveryAttemptSucceeded() != null)
-            sb.append("LatestDeliveryAttemptSucceeded: " + getLatestDeliveryAttemptSucceeded() + ",");
+            sb.append("LatestDeliveryAttemptSucceeded: ").append(getLatestDeliveryAttemptSucceeded()).append(",");
         if (getTimeLoggingStarted() != null)
-            sb.append("TimeLoggingStarted: " + getTimeLoggingStarted() + ",");
+            sb.append("TimeLoggingStarted: ").append(getTimeLoggingStarted()).append(",");
         if (getTimeLoggingStopped() != null)
-            sb.append("TimeLoggingStopped: " + getTimeLoggingStopped());
+            sb.append("TimeLoggingStopped: ").append(getTimeLoggingStopped());
         sb.append("}");
         return sb.toString();
     }
@@ -1141,4 +1146,5 @@ public class GetTrailStatusResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

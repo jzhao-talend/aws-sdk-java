@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The version of the database engine that a DB instance can be upgraded to.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/UpgradeTarget" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpgradeTarget implements Serializable, Cloneable {
 
     /**
@@ -297,15 +302,15 @@ public class UpgradeTarget implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getAutoUpgrade() != null)
-            sb.append("AutoUpgrade: " + getAutoUpgrade() + ",");
+            sb.append("AutoUpgrade: ").append(getAutoUpgrade()).append(",");
         if (getIsMajorVersionUpgrade() != null)
-            sb.append("IsMajorVersionUpgrade: " + getIsMajorVersionUpgrade());
+            sb.append("IsMajorVersionUpgrade: ").append(getIsMajorVersionUpgrade());
         sb.append("}");
         return sb.toString();
     }
@@ -364,4 +369,5 @@ public class UpgradeTarget implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

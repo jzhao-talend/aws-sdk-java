@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents enhanced metrics types.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/EnhancedMetrics" target="_top">AWS API
+ *      Documentation</a>
  */
-public class EnhancedMetrics implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EnhancedMetrics implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -29,14 +36,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -54,14 +93,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -74,14 +145,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      *         The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      *         </p>
      *         <ul>
-     *         <li> <code>IncomingBytes</code></li>
-     *         <li> <code>IncomingRecords</code></li>
-     *         <li> <code>OutgoingBytes</code></li>
-     *         <li> <code>OutgoingRecords</code></li>
-     *         <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     *         <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     *         <li> <code>IteratorAgeMilliseconds</code></li>
-     *         <li> <code>ALL</code></li>
+     *         <li>
+     *         <p>
+     *         <code>IncomingBytes</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>IncomingRecords</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>OutgoingBytes</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>OutgoingRecords</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>WriteProvisionedThroughputExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ReadProvisionedThroughputExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>IteratorAgeMilliseconds</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ALL</code>
+     *         </p>
+     *         </li>
      *         </ul>
      *         <p>
      *         For more information, see <a
@@ -106,14 +209,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -127,14 +262,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      *        The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      *        </p>
      *        <ul>
-     *        <li> <code>IncomingBytes</code></li>
-     *        <li> <code>IncomingRecords</code></li>
-     *        <li> <code>OutgoingBytes</code></li>
-     *        <li> <code>OutgoingRecords</code></li>
-     *        <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     *        <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     *        <li> <code>IteratorAgeMilliseconds</code></li>
-     *        <li> <code>ALL</code></li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>WriteProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ReadProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IteratorAgeMilliseconds</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ALL</code>
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        For more information, see <a
@@ -160,14 +327,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -186,14 +385,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      *        The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      *        </p>
      *        <ul>
-     *        <li> <code>IncomingBytes</code></li>
-     *        <li> <code>IncomingRecords</code></li>
-     *        <li> <code>OutgoingBytes</code></li>
-     *        <li> <code>OutgoingRecords</code></li>
-     *        <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     *        <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     *        <li> <code>IteratorAgeMilliseconds</code></li>
-     *        <li> <code>ALL</code></li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>WriteProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ReadProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IteratorAgeMilliseconds</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ALL</code>
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        For more information, see <a
@@ -221,14 +452,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -242,14 +505,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      *        The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      *        </p>
      *        <ul>
-     *        <li> <code>IncomingBytes</code></li>
-     *        <li> <code>IncomingRecords</code></li>
-     *        <li> <code>OutgoingBytes</code></li>
-     *        <li> <code>OutgoingRecords</code></li>
-     *        <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     *        <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     *        <li> <code>IteratorAgeMilliseconds</code></li>
-     *        <li> <code>ALL</code></li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>WriteProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ReadProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IteratorAgeMilliseconds</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ALL</code>
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        For more information, see <a
@@ -272,14 +567,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      * The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      * </p>
      * <ul>
-     * <li> <code>IncomingBytes</code></li>
-     * <li> <code>IncomingRecords</code></li>
-     * <li> <code>OutgoingBytes</code></li>
-     * <li> <code>OutgoingRecords</code></li>
-     * <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     * <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     * <li> <code>IteratorAgeMilliseconds</code></li>
-     * <li> <code>ALL</code></li>
+     * <li>
+     * <p>
+     * <code>IncomingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IncomingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingBytes</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OutgoingRecords</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>WriteProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ReadProvisionedThroughputExceeded</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IteratorAgeMilliseconds</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ALL</code>
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For more information, see <a
@@ -293,14 +620,46 @@ public class EnhancedMetrics implements Serializable, Cloneable {
      *        The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.
      *        </p>
      *        <ul>
-     *        <li> <code>IncomingBytes</code></li>
-     *        <li> <code>IncomingRecords</code></li>
-     *        <li> <code>OutgoingBytes</code></li>
-     *        <li> <code>OutgoingRecords</code></li>
-     *        <li> <code>WriteProvisionedThroughputExceeded</code></li>
-     *        <li> <code>ReadProvisionedThroughputExceeded</code></li>
-     *        <li> <code>IteratorAgeMilliseconds</code></li>
-     *        <li> <code>ALL</code></li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IncomingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingBytes</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OutgoingRecords</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>WriteProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ReadProvisionedThroughputExceeded</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IteratorAgeMilliseconds</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ALL</code>
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        For more information, see <a
@@ -335,7 +694,7 @@ public class EnhancedMetrics implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getShardLevelMetrics() != null)
-            sb.append("ShardLevelMetrics: " + getShardLevelMetrics());
+            sb.append("ShardLevelMetrics: ").append(getShardLevelMetrics());
         sb.append("}");
         return sb.toString();
     }
@@ -373,5 +732,11 @@ public class EnhancedMetrics implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesis.model.transform.EnhancedMetricsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

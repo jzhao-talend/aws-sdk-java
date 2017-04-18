@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionConfiguration" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -74,14 +80,39 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     private VpcConfig vpcConfig;
     /**
      * <p>
+     * The parent object that contains your environment's configuration settings.
+     * </p>
+     */
+    private Environment environment;
+    /**
+     * <p>
      * The runtime environment for the Lambda function.
      * </p>
      * <p>
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      */
     private String runtime;
+    /**
+     * <p>
+     * The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     */
+    private DeadLetterConfig deadLetterConfig;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect
+     * to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     * </p>
+     */
+    private String kMSKeyArn;
 
     /**
      * <p>
@@ -432,18 +463,70 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
+     * The parent object that contains your environment's configuration settings.
+     * </p>
+     * 
+     * @param environment
+     *        The parent object that contains your environment's configuration settings.
+     */
+
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
+
+    /**
+     * <p>
+     * The parent object that contains your environment's configuration settings.
+     * </p>
+     * 
+     * @return The parent object that contains your environment's configuration settings.
+     */
+
+    public Environment getEnvironment() {
+        return this.environment;
+    }
+
+    /**
+     * <p>
+     * The parent object that contains your environment's configuration settings.
+     * </p>
+     * 
+     * @param environment
+     *        The parent object that contains your environment's configuration settings.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateFunctionConfigurationRequest withEnvironment(Environment environment) {
+        setEnvironment(environment);
+        return this;
+    }
+
+    /**
+     * <p>
      * The runtime environment for the Lambda function.
      * </p>
      * <p>
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      * 
      * @param runtime
      *        The runtime environment for the Lambda function.</p>
      *        <p>
      *        To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the
      *        value to "nodejs".
+     *        </p>
+     *        <note>
+     *        <p>
+     *        You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as
+     *        of early 2017.
+     *        </p>
      * @see Runtime
      */
 
@@ -459,11 +542,23 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      * 
      * @return The runtime environment for the Lambda function.</p>
      *         <p>
      *         To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the
      *         value to "nodejs".
+     *         </p>
+     *         <note>
+     *         <p>
+     *         You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as
+     *         of early 2017.
+     *         </p>
      * @see Runtime
      */
 
@@ -479,12 +574,24 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      * 
      * @param runtime
      *        The runtime environment for the Lambda function.</p>
      *        <p>
      *        To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the
      *        value to "nodejs".
+     *        </p>
+     *        <note>
+     *        <p>
+     *        You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as
+     *        of early 2017.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Runtime
      */
@@ -502,12 +609,24 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      * 
      * @param runtime
      *        The runtime environment for the Lambda function.</p>
      *        <p>
      *        To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the
      *        value to "nodejs".
+     *        </p>
+     *        <note>
+     *        <p>
+     *        You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as
+     *        of early 2017.
+     *        </p>
      * @see Runtime
      */
 
@@ -523,18 +642,119 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value
      * to "nodejs".
      * </p>
+     * <note>
+     * <p>
+     * You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early
+     * 2017.
+     * </p>
+     * </note>
      * 
      * @param runtime
      *        The runtime environment for the Lambda function.</p>
      *        <p>
      *        To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the
      *        value to "nodejs".
+     *        </p>
+     *        <note>
+     *        <p>
+     *        You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as
+     *        of early 2017.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Runtime
      */
 
     public UpdateFunctionConfigurationRequest withRuntime(Runtime runtime) {
         setRuntime(runtime);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * 
+     * @param deadLetterConfig
+     *        The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
+     *        topic.
+     */
+
+    public void setDeadLetterConfig(DeadLetterConfig deadLetterConfig) {
+        this.deadLetterConfig = deadLetterConfig;
+    }
+
+    /**
+     * <p>
+     * The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * 
+     * @return The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon
+     *         SNS topic.
+     */
+
+    public DeadLetterConfig getDeadLetterConfig() {
+        return this.deadLetterConfig;
+    }
+
+    /**
+     * <p>
+     * The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * 
+     * @param deadLetterConfig
+     *        The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
+     *        topic.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateFunctionConfigurationRequest withDeadLetterConfig(DeadLetterConfig deadLetterConfig) {
+        setDeadLetterConfig(deadLetterConfig);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect
+     * to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     * </p>
+     * 
+     * @param kMSKeyArn
+     *        The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If
+     *        you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     */
+
+    public void setKMSKeyArn(String kMSKeyArn) {
+        this.kMSKeyArn = kMSKeyArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect
+     * to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If
+     *         you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     */
+
+    public String getKMSKeyArn() {
+        return this.kMSKeyArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect
+     * to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     * </p>
+     * 
+     * @param kMSKeyArn
+     *        The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If
+     *        you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateFunctionConfigurationRequest withKMSKeyArn(String kMSKeyArn) {
+        setKMSKeyArn(kMSKeyArn);
         return this;
     }
 
@@ -550,21 +770,27 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFunctionName() != null)
-            sb.append("FunctionName: " + getFunctionName() + ",");
+            sb.append("FunctionName: ").append(getFunctionName()).append(",");
         if (getRole() != null)
-            sb.append("Role: " + getRole() + ",");
+            sb.append("Role: ").append(getRole()).append(",");
         if (getHandler() != null)
-            sb.append("Handler: " + getHandler() + ",");
+            sb.append("Handler: ").append(getHandler()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getTimeout() != null)
-            sb.append("Timeout: " + getTimeout() + ",");
+            sb.append("Timeout: ").append(getTimeout()).append(",");
         if (getMemorySize() != null)
-            sb.append("MemorySize: " + getMemorySize() + ",");
+            sb.append("MemorySize: ").append(getMemorySize()).append(",");
         if (getVpcConfig() != null)
-            sb.append("VpcConfig: " + getVpcConfig() + ",");
+            sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
+        if (getEnvironment() != null)
+            sb.append("Environment: ").append(getEnvironment()).append(",");
         if (getRuntime() != null)
-            sb.append("Runtime: " + getRuntime());
+            sb.append("Runtime: ").append(getRuntime()).append(",");
+        if (getDeadLetterConfig() != null)
+            sb.append("DeadLetterConfig: ").append(getDeadLetterConfig()).append(",");
+        if (getKMSKeyArn() != null)
+            sb.append("KMSKeyArn: ").append(getKMSKeyArn());
         sb.append("}");
         return sb.toString();
     }
@@ -607,9 +833,21 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
             return false;
+        if (other.getEnvironment() == null ^ this.getEnvironment() == null)
+            return false;
+        if (other.getEnvironment() != null && other.getEnvironment().equals(this.getEnvironment()) == false)
+            return false;
         if (other.getRuntime() == null ^ this.getRuntime() == null)
             return false;
         if (other.getRuntime() != null && other.getRuntime().equals(this.getRuntime()) == false)
+            return false;
+        if (other.getDeadLetterConfig() == null ^ this.getDeadLetterConfig() == null)
+            return false;
+        if (other.getDeadLetterConfig() != null && other.getDeadLetterConfig().equals(this.getDeadLetterConfig()) == false)
+            return false;
+        if (other.getKMSKeyArn() == null ^ this.getKMSKeyArn() == null)
+            return false;
+        if (other.getKMSKeyArn() != null && other.getKMSKeyArn().equals(this.getKMSKeyArn()) == false)
             return false;
         return true;
     }
@@ -626,7 +864,10 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getTimeout() == null) ? 0 : getTimeout().hashCode());
         hashCode = prime * hashCode + ((getMemorySize() == null) ? 0 : getMemorySize().hashCode());
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
+        hashCode = prime * hashCode + ((getEnvironment() == null) ? 0 : getEnvironment().hashCode());
         hashCode = prime * hashCode + ((getRuntime() == null) ? 0 : getRuntime().hashCode());
+        hashCode = prime * hashCode + ((getDeadLetterConfig() == null) ? 0 : getDeadLetterConfig().hashCode());
+        hashCode = prime * hashCode + ((getKMSKeyArn() == null) ? 0 : getKMSKeyArn().hashCode());
         return hashCode;
     }
 
@@ -634,4 +875,5 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     public UpdateFunctionConfigurationRequest clone() {
         return (UpdateFunctionConfigurationRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,35 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The result of the <a>ListTargetsByRule</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/ListTargetsByRule" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Lists the targets assigned to the rule.
+     * The targets assigned to the rule.
      * </p>
      */
     private java.util.List<Target> targets;
     /**
      * <p>
-     * Indicates that there are additional results to retrieve.
+     * Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Lists the targets assigned to the rule.
+     * The targets assigned to the rule.
      * </p>
      * 
-     * @return Lists the targets assigned to the rule.
+     * @return The targets assigned to the rule.
      */
 
     public java.util.List<Target> getTargets() {
@@ -48,11 +50,11 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Lists the targets assigned to the rule.
+     * The targets assigned to the rule.
      * </p>
      * 
      * @param targets
-     *        Lists the targets assigned to the rule.
+     *        The targets assigned to the rule.
      */
 
     public void setTargets(java.util.Collection<Target> targets) {
@@ -66,7 +68,7 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Lists the targets assigned to the rule.
+     * The targets assigned to the rule.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -75,7 +77,7 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
      * </p>
      * 
      * @param targets
-     *        Lists the targets assigned to the rule.
+     *        The targets assigned to the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -91,11 +93,11 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Lists the targets assigned to the rule.
+     * The targets assigned to the rule.
      * </p>
      * 
      * @param targets
-     *        Lists the targets assigned to the rule.
+     *        The targets assigned to the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,11 +108,12 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Indicates that there are additional results to retrieve.
+     * Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
      * </p>
      * 
      * @param nextToken
-     *        Indicates that there are additional results to retrieve.
+     *        Indicates whether there are additional results to retrieve. If there are no more results, the value is
+     *        null.
      */
 
     public void setNextToken(String nextToken) {
@@ -119,10 +122,11 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Indicates that there are additional results to retrieve.
+     * Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
      * </p>
      * 
-     * @return Indicates that there are additional results to retrieve.
+     * @return Indicates whether there are additional results to retrieve. If there are no more results, the value is
+     *         null.
      */
 
     public String getNextToken() {
@@ -131,11 +135,12 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Indicates that there are additional results to retrieve.
+     * Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
      * </p>
      * 
      * @param nextToken
-     *        Indicates that there are additional results to retrieve.
+     *        Indicates whether there are additional results to retrieve. If there are no more results, the value is
+     *        null.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,9 +161,9 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargets() != null)
-            sb.append("Targets: " + getTargets() + ",");
+            sb.append("Targets: ").append(getTargets()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -202,4 +207,5 @@ public class ListTargetsByRuleResult extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

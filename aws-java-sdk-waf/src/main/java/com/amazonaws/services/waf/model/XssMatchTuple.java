@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,27 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you
  * want AWS WAF to inspect a header, the name of the header.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/XssMatchTuple" target="_top">AWS API
+ *      Documentation</a>
  */
-public class XssMatchTuple implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class XssMatchTuple implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * Specifies where in a web request to look for cross-site scripting attacks.
+     * </p>
+     */
     private FieldToMatch fieldToMatch;
     /**
      * <p>
@@ -167,7 +179,12 @@ public class XssMatchTuple implements Serializable, Cloneable {
     private String textTransformation;
 
     /**
+     * <p>
+     * Specifies where in a web request to look for cross-site scripting attacks.
+     * </p>
+     * 
      * @param fieldToMatch
+     *        Specifies where in a web request to look for cross-site scripting attacks.
      */
 
     public void setFieldToMatch(FieldToMatch fieldToMatch) {
@@ -175,7 +192,11 @@ public class XssMatchTuple implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Specifies where in a web request to look for cross-site scripting attacks.
+     * </p>
+     * 
+     * @return Specifies where in a web request to look for cross-site scripting attacks.
      */
 
     public FieldToMatch getFieldToMatch() {
@@ -183,7 +204,12 @@ public class XssMatchTuple implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Specifies where in a web request to look for cross-site scripting attacks.
+     * </p>
+     * 
      * @param fieldToMatch
+     *        Specifies where in a web request to look for cross-site scripting attacks.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1637,9 +1663,9 @@ public class XssMatchTuple implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFieldToMatch() != null)
-            sb.append("FieldToMatch: " + getFieldToMatch() + ",");
+            sb.append("FieldToMatch: ").append(getFieldToMatch()).append(",");
         if (getTextTransformation() != null)
-            sb.append("TextTransformation: " + getTextTransformation());
+            sb.append("TextTransformation: ").append(getTextTransformation());
         sb.append("}");
         return sb.toString();
     }
@@ -1682,5 +1708,11 @@ public class XssMatchTuple implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.XssMatchTupleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,31 +13,36 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information to use when checking for a successful response from a target.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/Matcher" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Matcher implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a range of
-     * values (for example, "200-299").
+     * The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple
+     * values (for example, "200,202") or a range of values (for example, "200-299").
      * </p>
      */
     private String httpCode;
 
     /**
      * <p>
-     * The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a range of
-     * values (for example, "200-299").
+     * The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple
+     * values (for example, "200,202") or a range of values (for example, "200-299").
      * </p>
      * 
      * @param httpCode
-     *        The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a
-     *        range of values (for example, "200-299").
+     *        The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify
+     *        multiple values (for example, "200,202") or a range of values (for example, "200-299").
      */
 
     public void setHttpCode(String httpCode) {
@@ -46,12 +51,12 @@ public class Matcher implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a range of
-     * values (for example, "200-299").
+     * The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple
+     * values (for example, "200,202") or a range of values (for example, "200-299").
      * </p>
      * 
-     * @return The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a
-     *         range of values (for example, "200-299").
+     * @return The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify
+     *         multiple values (for example, "200,202") or a range of values (for example, "200-299").
      */
 
     public String getHttpCode() {
@@ -60,13 +65,13 @@ public class Matcher implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a range of
-     * values (for example, "200-299").
+     * The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple
+     * values (for example, "200,202") or a range of values (for example, "200-299").
      * </p>
      * 
      * @param httpCode
-     *        The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a
-     *        range of values (for example, "200-299").
+     *        The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify
+     *        multiple values (for example, "200,202") or a range of values (for example, "200-299").
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -87,7 +92,7 @@ public class Matcher implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHttpCode() != null)
-            sb.append("HttpCode: " + getHttpCode());
+            sb.append("HttpCode: ").append(getHttpCode());
         sb.append("}");
         return sb.toString();
     }
@@ -126,4 +131,5 @@ public class Matcher implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

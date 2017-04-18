@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,66 +13,31 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about items that were not successfully processed in a batch call.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnsuccessfulItem" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UnsuccessfulItem implements Serializable, Cloneable {
 
-    /**
-     * <p>
-     * Information about the error.
-     * </p>
-     */
-    private UnsuccessfulItemError error;
     /**
      * <p>
      * The ID of the resource.
      * </p>
      */
     private String resourceId;
-
     /**
      * <p>
      * Information about the error.
      * </p>
-     * 
-     * @param error
-     *        Information about the error.
      */
-
-    public void setError(UnsuccessfulItemError error) {
-        this.error = error;
-    }
-
-    /**
-     * <p>
-     * Information about the error.
-     * </p>
-     * 
-     * @return Information about the error.
-     */
-
-    public UnsuccessfulItemError getError() {
-        return this.error;
-    }
-
-    /**
-     * <p>
-     * Information about the error.
-     * </p>
-     * 
-     * @param error
-     *        Information about the error.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public UnsuccessfulItem withError(UnsuccessfulItemError error) {
-        setError(error);
-        return this;
-    }
+    private UnsuccessfulItemError error;
 
     /**
      * <p>
@@ -115,6 +80,46 @@ public class UnsuccessfulItem implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the error.
+     * </p>
+     * 
+     * @param error
+     *        Information about the error.
+     */
+
+    public void setError(UnsuccessfulItemError error) {
+        this.error = error;
+    }
+
+    /**
+     * <p>
+     * Information about the error.
+     * </p>
+     * 
+     * @return Information about the error.
+     */
+
+    public UnsuccessfulItemError getError() {
+        return this.error;
+    }
+
+    /**
+     * <p>
+     * Information about the error.
+     * </p>
+     * 
+     * @param error
+     *        Information about the error.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UnsuccessfulItem withError(UnsuccessfulItemError error) {
+        setError(error);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -125,10 +130,10 @@ public class UnsuccessfulItem implements Serializable, Cloneable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getError() != null)
-            sb.append("Error: " + getError() + ",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId());
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
+        if (getError() != null)
+            sb.append("Error: ").append(getError());
         sb.append("}");
         return sb.toString();
     }
@@ -143,13 +148,13 @@ public class UnsuccessfulItem implements Serializable, Cloneable {
         if (obj instanceof UnsuccessfulItem == false)
             return false;
         UnsuccessfulItem other = (UnsuccessfulItem) obj;
-        if (other.getError() == null ^ this.getError() == null)
-            return false;
-        if (other.getError() != null && other.getError().equals(this.getError()) == false)
-            return false;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
         if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
+            return false;
+        if (other.getError() == null ^ this.getError() == null)
+            return false;
+        if (other.getError() != null && other.getError().equals(this.getError()) == false)
             return false;
         return true;
     }
@@ -159,8 +164,8 @@ public class UnsuccessfulItem implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getError() == null) ? 0 : getError().hashCode());
         hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
+        hashCode = prime * hashCode + ((getError() == null) ? 0 : getError().hashCode());
         return hashCode;
     }
 
@@ -172,4 +177,5 @@ public class UnsuccessfulItem implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

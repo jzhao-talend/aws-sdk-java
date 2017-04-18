@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * This data type is used as a response element in the action <a>DescribeDBEngineVersions</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBEngineVersion" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
@@ -572,23 +577,23 @@ public class DBEngineVersion implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getDBParameterGroupFamily() != null)
-            sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");
+            sb.append("DBParameterGroupFamily: ").append(getDBParameterGroupFamily()).append(",");
         if (getDBEngineDescription() != null)
-            sb.append("DBEngineDescription: " + getDBEngineDescription() + ",");
+            sb.append("DBEngineDescription: ").append(getDBEngineDescription()).append(",");
         if (getDBEngineVersionDescription() != null)
-            sb.append("DBEngineVersionDescription: " + getDBEngineVersionDescription() + ",");
+            sb.append("DBEngineVersionDescription: ").append(getDBEngineVersionDescription()).append(",");
         if (getDefaultCharacterSet() != null)
-            sb.append("DefaultCharacterSet: " + getDefaultCharacterSet() + ",");
+            sb.append("DefaultCharacterSet: ").append(getDefaultCharacterSet()).append(",");
         if (getSupportedCharacterSets() != null)
-            sb.append("SupportedCharacterSets: " + getSupportedCharacterSets() + ",");
+            sb.append("SupportedCharacterSets: ").append(getSupportedCharacterSets()).append(",");
         if (getValidUpgradeTarget() != null)
-            sb.append("ValidUpgradeTarget: " + getValidUpgradeTarget() + ",");
+            sb.append("ValidUpgradeTarget: ").append(getValidUpgradeTarget()).append(",");
         if (getSupportedTimezones() != null)
-            sb.append("SupportedTimezones: " + getSupportedTimezones());
+            sb.append("SupportedTimezones: ").append(getSupportedTimezones());
         sb.append("}");
         return sb.toString();
     }
@@ -667,4 +672,5 @@ public class DBEngineVersion implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

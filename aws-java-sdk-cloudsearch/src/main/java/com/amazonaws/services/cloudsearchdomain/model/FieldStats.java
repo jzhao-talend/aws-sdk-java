@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.cloudsearchdomain.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The statistics for a field calculated in the request.
  * </p>
  */
-public class FieldStats implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class FieldStats implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -540,21 +544,21 @@ public class FieldStats implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMin() != null)
-            sb.append("Min: " + getMin() + ",");
+            sb.append("Min: ").append(getMin()).append(",");
         if (getMax() != null)
-            sb.append("Max: " + getMax() + ",");
+            sb.append("Max: ").append(getMax()).append(",");
         if (getCount() != null)
-            sb.append("Count: " + getCount() + ",");
+            sb.append("Count: ").append(getCount()).append(",");
         if (getMissing() != null)
-            sb.append("Missing: " + getMissing() + ",");
+            sb.append("Missing: ").append(getMissing()).append(",");
         if (getSum() != null)
-            sb.append("Sum: " + getSum() + ",");
+            sb.append("Sum: ").append(getSum()).append(",");
         if (getSumOfSquares() != null)
-            sb.append("SumOfSquares: " + getSumOfSquares() + ",");
+            sb.append("SumOfSquares: ").append(getSumOfSquares()).append(",");
         if (getMean() != null)
-            sb.append("Mean: " + getMean() + ",");
+            sb.append("Mean: ").append(getMean()).append(",");
         if (getStddev() != null)
-            sb.append("Stddev: " + getStddev());
+            sb.append("Stddev: ").append(getStddev());
         sb.append("}");
         return sb.toString();
     }
@@ -627,5 +631,11 @@ public class FieldStats implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudsearchdomain.model.transform.FieldStatsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

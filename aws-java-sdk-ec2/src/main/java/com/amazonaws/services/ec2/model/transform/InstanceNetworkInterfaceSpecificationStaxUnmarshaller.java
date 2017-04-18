@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * InstanceNetworkInterfaceSpecification StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceNetworkInterfaceSpecificationStaxUnmarshaller implements Unmarshaller<InstanceNetworkInterfaceSpecification, StaxUnmarshallerContext> {
 
     public InstanceNetworkInterfaceSpecification unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -70,6 +70,11 @@ public class InstanceNetworkInterfaceSpecificationStaxUnmarshaller implements Un
                     continue;
                 }
 
+                if (context.testExpression("SecurityGroupId", targetDepth)) {
+                    instanceNetworkInterfaceSpecification.withGroups(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("SecurityGroupId/SecurityGroupId", targetDepth)) {
                     instanceNetworkInterfaceSpecification.withGroups(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -77,6 +82,11 @@ public class InstanceNetworkInterfaceSpecificationStaxUnmarshaller implements Un
 
                 if (context.testExpression("deleteOnTermination", targetDepth)) {
                     instanceNetworkInterfaceSpecification.setDeleteOnTermination(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("privateIpAddressesSet", targetDepth)) {
+                    instanceNetworkInterfaceSpecification.withPrivateIpAddresses(new ArrayList<PrivateIpAddressSpecification>());
                     continue;
                 }
 
@@ -93,6 +103,21 @@ public class InstanceNetworkInterfaceSpecificationStaxUnmarshaller implements Un
 
                 if (context.testExpression("associatePublicIpAddress", targetDepth)) {
                     instanceNetworkInterfaceSpecification.setAssociatePublicIpAddress(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ipv6AddressesSet", targetDepth)) {
+                    instanceNetworkInterfaceSpecification.withIpv6Addresses(new ArrayList<InstanceIpv6Address>());
+                    continue;
+                }
+
+                if (context.testExpression("ipv6AddressesSet/item", targetDepth)) {
+                    instanceNetworkInterfaceSpecification.withIpv6Addresses(InstanceIpv6AddressStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ipv6AddressCount", targetDepth)) {
+                    instanceNetworkInterfaceSpecification.setIpv6AddressCount(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,12 @@
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * Output structure for the ListJobs operation.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private com.amazonaws.internal.SdkInternalList<Job> jobs;
@@ -124,9 +126,9 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobs() != null)
-            sb.append("Jobs: " + getJobs() + ",");
+            sb.append("Jobs: ").append(getJobs()).append(",");
         if (getIsTruncated() != null)
-            sb.append("IsTruncated: " + getIsTruncated());
+            sb.append("IsTruncated: ").append(getIsTruncated());
         sb.append("}");
         return sb.toString();
     }
@@ -170,4 +172,5 @@ public class ListJobsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

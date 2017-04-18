@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a virtual tape object.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/Tape" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Tape implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Tape implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -33,6 +40,8 @@ public class Tape implements Serializable, Cloneable {
      * </p>
      */
     private String tapeBarcode;
+
+    private java.util.Date tapeCreatedDate;
     /**
      * <p>
      * The size, in bytes, of the virtual tape.
@@ -138,6 +147,32 @@ public class Tape implements Serializable, Cloneable {
 
     public Tape withTapeBarcode(String tapeBarcode) {
         setTapeBarcode(tapeBarcode);
+        return this;
+    }
+
+    /**
+     * @param tapeCreatedDate
+     */
+
+    public void setTapeCreatedDate(java.util.Date tapeCreatedDate) {
+        this.tapeCreatedDate = tapeCreatedDate;
+    }
+
+    /**
+     * @return
+     */
+
+    public java.util.Date getTapeCreatedDate() {
+        return this.tapeCreatedDate;
+    }
+
+    /**
+     * @param tapeCreatedDate
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Tape withTapeCreatedDate(java.util.Date tapeCreatedDate) {
+        setTapeCreatedDate(tapeCreatedDate);
         return this;
     }
 
@@ -331,17 +366,19 @@ public class Tape implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTapeARN() != null)
-            sb.append("TapeARN: " + getTapeARN() + ",");
+            sb.append("TapeARN: ").append(getTapeARN()).append(",");
         if (getTapeBarcode() != null)
-            sb.append("TapeBarcode: " + getTapeBarcode() + ",");
+            sb.append("TapeBarcode: ").append(getTapeBarcode()).append(",");
+        if (getTapeCreatedDate() != null)
+            sb.append("TapeCreatedDate: ").append(getTapeCreatedDate()).append(",");
         if (getTapeSizeInBytes() != null)
-            sb.append("TapeSizeInBytes: " + getTapeSizeInBytes() + ",");
+            sb.append("TapeSizeInBytes: ").append(getTapeSizeInBytes()).append(",");
         if (getTapeStatus() != null)
-            sb.append("TapeStatus: " + getTapeStatus() + ",");
+            sb.append("TapeStatus: ").append(getTapeStatus()).append(",");
         if (getVTLDevice() != null)
-            sb.append("VTLDevice: " + getVTLDevice() + ",");
+            sb.append("VTLDevice: ").append(getVTLDevice()).append(",");
         if (getProgress() != null)
-            sb.append("Progress: " + getProgress());
+            sb.append("Progress: ").append(getProgress());
         sb.append("}");
         return sb.toString();
     }
@@ -363,6 +400,10 @@ public class Tape implements Serializable, Cloneable {
         if (other.getTapeBarcode() == null ^ this.getTapeBarcode() == null)
             return false;
         if (other.getTapeBarcode() != null && other.getTapeBarcode().equals(this.getTapeBarcode()) == false)
+            return false;
+        if (other.getTapeCreatedDate() == null ^ this.getTapeCreatedDate() == null)
+            return false;
+        if (other.getTapeCreatedDate() != null && other.getTapeCreatedDate().equals(this.getTapeCreatedDate()) == false)
             return false;
         if (other.getTapeSizeInBytes() == null ^ this.getTapeSizeInBytes() == null)
             return false;
@@ -390,6 +431,7 @@ public class Tape implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getTapeARN() == null) ? 0 : getTapeARN().hashCode());
         hashCode = prime * hashCode + ((getTapeBarcode() == null) ? 0 : getTapeBarcode().hashCode());
+        hashCode = prime * hashCode + ((getTapeCreatedDate() == null) ? 0 : getTapeCreatedDate().hashCode());
         hashCode = prime * hashCode + ((getTapeSizeInBytes() == null) ? 0 : getTapeSizeInBytes().hashCode());
         hashCode = prime * hashCode + ((getTapeStatus() == null) ? 0 : getTapeStatus().hashCode());
         hashCode = prime * hashCode + ((getVTLDevice() == null) ? 0 : getVTLDevice().hashCode());
@@ -404,5 +446,11 @@ public class Tape implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.TapeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

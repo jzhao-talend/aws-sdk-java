@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type containing the hosted zone request information.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHostedZone" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -39,7 +45,7 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly created
-     * hosted cannot be resolved anywhere other than the given VPC.
+     * hosted can't be resolved anywhere other than the given VPC.
      * </p>
      */
     private VPC vPC;
@@ -211,12 +217,12 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly created
-     * hosted cannot be resolved anywhere other than the given VPC.
+     * hosted can't be resolved anywhere other than the given VPC.
      * </p>
      * 
      * @param vPC
      *        The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly
-     *        created hosted cannot be resolved anywhere other than the given VPC.
+     *        created hosted can't be resolved anywhere other than the given VPC.
      */
 
     public void setVPC(VPC vPC) {
@@ -226,11 +232,11 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly created
-     * hosted cannot be resolved anywhere other than the given VPC.
+     * hosted can't be resolved anywhere other than the given VPC.
      * </p>
      * 
      * @return The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly
-     *         created hosted cannot be resolved anywhere other than the given VPC.
+     *         created hosted can't be resolved anywhere other than the given VPC.
      */
 
     public VPC getVPC() {
@@ -240,12 +246,12 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly created
-     * hosted cannot be resolved anywhere other than the given VPC.
+     * hosted can't be resolved anywhere other than the given VPC.
      * </p>
      * 
      * @param vPC
      *        The VPC that you want your hosted zone to be associated with. By providing this parameter, your newly
-     *        created hosted cannot be resolved anywhere other than the given VPC.
+     *        created hosted can't be resolved anywhere other than the given VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -539,15 +545,15 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getVPC() != null)
-            sb.append("VPC: " + getVPC() + ",");
+            sb.append("VPC: ").append(getVPC()).append(",");
         if (getCallerReference() != null)
-            sb.append("CallerReference: " + getCallerReference() + ",");
+            sb.append("CallerReference: ").append(getCallerReference()).append(",");
         if (getHostedZoneConfig() != null)
-            sb.append("HostedZoneConfig: " + getHostedZoneConfig() + ",");
+            sb.append("HostedZoneConfig: ").append(getHostedZoneConfig()).append(",");
         if (getDelegationSetId() != null)
-            sb.append("DelegationSetId: " + getDelegationSetId());
+            sb.append("DelegationSetId: ").append(getDelegationSetId());
         sb.append("}");
         return sb.toString();
     }
@@ -602,4 +608,5 @@ public class CreateHostedZoneRequest extends com.amazonaws.AmazonWebServiceReque
     public CreateHostedZoneRequest clone() {
         return (CreateHostedZoneRequest) super.clone();
     }
+
 }

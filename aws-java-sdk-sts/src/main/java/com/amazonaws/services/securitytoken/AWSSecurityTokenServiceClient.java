@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -101,6 +105,7 @@ import com.amazonaws.services.securitytoken.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implements AWSSecurityTokenService {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -132,7 +137,9 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -155,7 +162,9 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -169,7 +178,10 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSSecurityTokenServiceClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -187,7 +199,10 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS STS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSecurityTokenServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -204,7 +219,9 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -222,7 +239,10 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS STS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSecurityTokenServiceClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -242,12 +262,20 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSSecurityTokenServiceClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSSecurityTokenServiceClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSSecurityTokenServiceClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSSecurityTokenServiceClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSSecurityTokenServiceClientBuilder builder() {
+        return AWSSecurityTokenServiceClientBuilder.standard();
     }
 
     /**
@@ -394,9 +422,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRole" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AssumeRoleResult assumeRole(AssumeRoleRequest assumeRoleRequest) {
+    public AssumeRoleResult assumeRole(AssumeRoleRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssumeRole(request);
+    }
+
+    @SdkInternalApi
+    final AssumeRoleResult executeAssumeRole(AssumeRoleRequest assumeRoleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(assumeRoleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -538,9 +575,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRoleWithSAML
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithSAML" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AssumeRoleWithSAMLResult assumeRoleWithSAML(AssumeRoleWithSAMLRequest assumeRoleWithSAMLRequest) {
+    public AssumeRoleWithSAMLResult assumeRoleWithSAML(AssumeRoleWithSAMLRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssumeRoleWithSAML(request);
+    }
+
+    @SdkInternalApi
+    final AssumeRoleWithSAMLResult executeAssumeRoleWithSAML(AssumeRoleWithSAMLRequest assumeRoleWithSAMLRequest) {
+
         ExecutionContext executionContext = createExecutionContext(assumeRoleWithSAMLRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -650,7 +696,7 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual">Using Web Identity
+     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html">Using Web Identity
      * Federation APIs for Mobile Apps</a> and <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity"
      * >Federation Through a Web-based Identity Provider</a>.
@@ -712,9 +758,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRoleWithWebIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithWebIdentity" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AssumeRoleWithWebIdentityResult assumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest assumeRoleWithWebIdentityRequest) {
+    public AssumeRoleWithWebIdentityResult assumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssumeRoleWithWebIdentity(request);
+    }
+
+    @SdkInternalApi
+    final AssumeRoleWithWebIdentityResult executeAssumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest assumeRoleWithWebIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(assumeRoleWithWebIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -805,9 +860,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         The error returned if the message passed to <code>DecodeAuthorizationMessage</code> was invalid. This can
      *         happen if the token contains invalid characters, such as linebreaks.
      * @sample AWSSecurityTokenService.DecodeAuthorizationMessage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/DecodeAuthorizationMessage" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DecodeAuthorizationMessageResult decodeAuthorizationMessage(DecodeAuthorizationMessageRequest decodeAuthorizationMessageRequest) {
+    public DecodeAuthorizationMessageResult decodeAuthorizationMessage(DecodeAuthorizationMessageRequest request) {
+        request = beforeClientExecution(request);
+        return executeDecodeAuthorizationMessage(request);
+    }
+
+    @SdkInternalApi
+    final DecodeAuthorizationMessageResult executeDecodeAuthorizationMessage(DecodeAuthorizationMessageRequest decodeAuthorizationMessageRequest) {
+
         ExecutionContext executionContext = createExecutionContext(decodeAuthorizationMessageRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -844,9 +908,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * @param getCallerIdentityRequest
      * @return Result of the GetCallerIdentity operation returned by the service.
      * @sample AWSSecurityTokenService.GetCallerIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetCallerIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCallerIdentityResult getCallerIdentity(GetCallerIdentityRequest getCallerIdentityRequest) {
+    public GetCallerIdentityResult getCallerIdentity(GetCallerIdentityRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCallerIdentity(request);
+    }
+
+    @SdkInternalApi
+    final GetCallerIdentityResult executeGetCallerIdentity(GetCallerIdentityRequest getCallerIdentityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCallerIdentityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -925,7 +998,7 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS APIs.
+     * You cannot call any STS APIs except <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -993,9 +1066,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.GetFederationToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetFederationToken" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetFederationTokenResult getFederationToken(GetFederationTokenRequest getFederationTokenRequest) {
+    public GetFederationTokenResult getFederationToken(GetFederationTokenRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetFederationToken(request);
+    }
+
+    @SdkInternalApi
+    final GetFederationTokenResult executeGetFederationToken(GetFederationTokenRequest getFederationTokenRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getFederationTokenRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1058,7 +1140,7 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS API <i>except</i> <code>AssumeRole</code>.
+     * You cannot call any STS API <i>except</i> <code>AssumeRole</code> or <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -1091,9 +1173,18 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.GetSessionToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionToken" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetSessionTokenResult getSessionToken(GetSessionTokenRequest getSessionTokenRequest) {
+    public GetSessionTokenResult getSessionToken(GetSessionTokenRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSessionToken(request);
+    }
+
+    @SdkInternalApi
+    final GetSessionTokenResult executeGetSessionToken(GetSessionTokenRequest getSessionTokenRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getSessionTokenRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);

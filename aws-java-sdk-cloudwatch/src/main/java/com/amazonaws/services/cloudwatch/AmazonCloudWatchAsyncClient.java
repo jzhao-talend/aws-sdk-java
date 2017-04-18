@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.cloudwatch;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudwatch.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing CloudWatch asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing CloudWatch asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -39,6 +48,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implements AmazonCloudWatchAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -60,9 +70,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCloudWatchAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -84,10 +96,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -100,9 +113,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -113,8 +128,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -129,10 +147,12 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -147,9 +167,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -166,10 +188,12 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -180,9 +204,11 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -196,12 +222,18 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudWatchAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudWatchAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudWatchAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonCloudWatchAsyncClientBuilder asyncBuilder() {
+        return AmazonCloudWatchAsyncClientBuilder.standard();
     }
 
     /**
@@ -220,7 +252,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -233,14 +265,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<DeleteAlarmsResult> deleteAlarmsAsync(final DeleteAlarmsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteAlarmsRequest, DeleteAlarmsResult> asyncHandler) {
+        final DeleteAlarmsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteAlarmsResult>() {
             @Override
             public DeleteAlarmsResult call() throws Exception {
-                DeleteAlarmsResult result;
+                DeleteAlarmsResult result = null;
 
                 try {
-                    result = deleteAlarms(request);
+                    result = executeDeleteAlarms(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -249,7 +282,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -265,14 +298,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<DescribeAlarmHistoryResult> describeAlarmHistoryAsync(final DescribeAlarmHistoryRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeAlarmHistoryRequest, DescribeAlarmHistoryResult> asyncHandler) {
+        final DescribeAlarmHistoryRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeAlarmHistoryResult>() {
             @Override
             public DescribeAlarmHistoryResult call() throws Exception {
-                DescribeAlarmHistoryResult result;
+                DescribeAlarmHistoryResult result = null;
 
                 try {
-                    result = describeAlarmHistory(request);
+                    result = executeDescribeAlarmHistory(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -281,7 +315,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -304,6 +338,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see #describeAlarmHistoryAsync(DescribeAlarmHistoryRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAlarmHistoryResult> describeAlarmHistoryAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAlarmHistoryRequest, DescribeAlarmHistoryResult> asyncHandler) {
 
@@ -319,14 +354,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<DescribeAlarmsResult> describeAlarmsAsync(final DescribeAlarmsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeAlarmsRequest, DescribeAlarmsResult> asyncHandler) {
+        final DescribeAlarmsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeAlarmsResult>() {
             @Override
             public DescribeAlarmsResult call() throws Exception {
-                DescribeAlarmsResult result;
+                DescribeAlarmsResult result = null;
 
                 try {
-                    result = describeAlarms(request);
+                    result = executeDescribeAlarms(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -335,7 +371,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -358,6 +394,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see #describeAlarmsAsync(DescribeAlarmsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeAlarmsResult> describeAlarmsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeAlarmsRequest, DescribeAlarmsResult> asyncHandler) {
 
@@ -373,14 +410,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<DescribeAlarmsForMetricResult> describeAlarmsForMetricAsync(final DescribeAlarmsForMetricRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeAlarmsForMetricRequest, DescribeAlarmsForMetricResult> asyncHandler) {
+        final DescribeAlarmsForMetricRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeAlarmsForMetricResult>() {
             @Override
             public DescribeAlarmsForMetricResult call() throws Exception {
-                DescribeAlarmsForMetricResult result;
+                DescribeAlarmsForMetricResult result = null;
 
                 try {
-                    result = describeAlarmsForMetric(request);
+                    result = executeDescribeAlarmsForMetric(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -389,7 +427,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -405,14 +443,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<DisableAlarmActionsResult> disableAlarmActionsAsync(final DisableAlarmActionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableAlarmActionsRequest, DisableAlarmActionsResult> asyncHandler) {
+        final DisableAlarmActionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableAlarmActionsResult>() {
             @Override
             public DisableAlarmActionsResult call() throws Exception {
-                DisableAlarmActionsResult result;
+                DisableAlarmActionsResult result = null;
 
                 try {
-                    result = disableAlarmActions(request);
+                    result = executeDisableAlarmActions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -421,7 +460,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -437,14 +476,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<EnableAlarmActionsResult> enableAlarmActionsAsync(final EnableAlarmActionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableAlarmActionsRequest, EnableAlarmActionsResult> asyncHandler) {
+        final EnableAlarmActionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableAlarmActionsResult>() {
             @Override
             public EnableAlarmActionsResult call() throws Exception {
-                EnableAlarmActionsResult result;
+                EnableAlarmActionsResult result = null;
 
                 try {
-                    result = enableAlarmActions(request);
+                    result = executeEnableAlarmActions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -453,7 +493,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -469,14 +509,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<GetMetricStatisticsResult> getMetricStatisticsAsync(final GetMetricStatisticsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetMetricStatisticsRequest, GetMetricStatisticsResult> asyncHandler) {
+        final GetMetricStatisticsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetMetricStatisticsResult>() {
             @Override
             public GetMetricStatisticsResult call() throws Exception {
-                GetMetricStatisticsResult result;
+                GetMetricStatisticsResult result = null;
 
                 try {
-                    result = getMetricStatistics(request);
+                    result = executeGetMetricStatistics(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -485,7 +526,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -501,14 +542,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<ListMetricsResult> listMetricsAsync(final ListMetricsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListMetricsRequest, ListMetricsResult> asyncHandler) {
+        final ListMetricsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListMetricsResult>() {
             @Override
             public ListMetricsResult call() throws Exception {
-                ListMetricsResult result;
+                ListMetricsResult result = null;
 
                 try {
-                    result = listMetrics(request);
+                    result = executeListMetrics(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -517,7 +559,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -540,6 +582,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
      *
      * @see #listMetricsAsync(ListMetricsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListMetricsResult> listMetricsAsync(
             com.amazonaws.handlers.AsyncHandler<ListMetricsRequest, ListMetricsResult> asyncHandler) {
 
@@ -555,14 +598,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<PutMetricAlarmResult> putMetricAlarmAsync(final PutMetricAlarmRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutMetricAlarmRequest, PutMetricAlarmResult> asyncHandler) {
+        final PutMetricAlarmRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutMetricAlarmResult>() {
             @Override
             public PutMetricAlarmResult call() throws Exception {
-                PutMetricAlarmResult result;
+                PutMetricAlarmResult result = null;
 
                 try {
-                    result = putMetricAlarm(request);
+                    result = executePutMetricAlarm(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -571,7 +615,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -587,14 +631,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<PutMetricDataResult> putMetricDataAsync(final PutMetricDataRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutMetricDataRequest, PutMetricDataResult> asyncHandler) {
+        final PutMetricDataRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutMetricDataResult>() {
             @Override
             public PutMetricDataResult call() throws Exception {
-                PutMetricDataResult result;
+                PutMetricDataResult result = null;
 
                 try {
-                    result = putMetricData(request);
+                    result = executePutMetricData(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -603,7 +648,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -619,14 +664,15 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
     @Override
     public java.util.concurrent.Future<SetAlarmStateResult> setAlarmStateAsync(final SetAlarmStateRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetAlarmStateRequest, SetAlarmStateResult> asyncHandler) {
+        final SetAlarmStateRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetAlarmStateResult>() {
             @Override
             public SetAlarmStateResult call() throws Exception {
-                SetAlarmStateResult result;
+                SetAlarmStateResult result = null;
 
                 try {
-                    result = setAlarmState(request);
+                    result = executeSetAlarmState(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -635,7 +681,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient implemen
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

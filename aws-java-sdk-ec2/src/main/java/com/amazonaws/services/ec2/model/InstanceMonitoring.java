@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Describes the monitoring information of the instance.
+ * Describes the monitoring of an instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/InstanceMonitoring" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceMonitoring implements Serializable, Cloneable {
 
     /**
@@ -29,7 +34,7 @@ public class InstanceMonitoring implements Serializable, Cloneable {
     private String instanceId;
     /**
      * <p>
-     * The monitoring information.
+     * The monitoring for the instance.
      * </p>
      */
     private Monitoring monitoring;
@@ -76,11 +81,11 @@ public class InstanceMonitoring implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The monitoring information.
+     * The monitoring for the instance.
      * </p>
      * 
      * @param monitoring
-     *        The monitoring information.
+     *        The monitoring for the instance.
      */
 
     public void setMonitoring(Monitoring monitoring) {
@@ -89,10 +94,10 @@ public class InstanceMonitoring implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The monitoring information.
+     * The monitoring for the instance.
      * </p>
      * 
-     * @return The monitoring information.
+     * @return The monitoring for the instance.
      */
 
     public Monitoring getMonitoring() {
@@ -101,11 +106,11 @@ public class InstanceMonitoring implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The monitoring information.
+     * The monitoring for the instance.
      * </p>
      * 
      * @param monitoring
-     *        The monitoring information.
+     *        The monitoring for the instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -126,9 +131,9 @@ public class InstanceMonitoring implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getMonitoring() != null)
-            sb.append("Monitoring: " + getMonitoring());
+            sb.append("Monitoring: ").append(getMonitoring());
         sb.append("}");
         return sb.toString();
     }
@@ -172,4 +177,5 @@ public class InstanceMonitoring implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

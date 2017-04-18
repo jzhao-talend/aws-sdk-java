@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating Apps</a> or <a
  * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Custom Recipes and Cookbooks</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Source" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Source implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Source implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -75,7 +82,7 @@ public class Source implements Serializable, Cloneable {
      * >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      */
     private String password;
@@ -84,15 +91,15 @@ public class Source implements Serializable, Cloneable {
      * In requests, the repository's SSH key.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      */
     private String sshKey;
     /**
      * <p>
-     * The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One of the
-     * simplest approaches is to have branches or revisions in your repository that represent different versions that
-     * can potentially be deployed.
+     * The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One
+     * of the simplest approaches is to have branches or revisions in your repository that represent different versions
+     * that can potentially be deployed.
      * </p>
      */
     private String revision;
@@ -344,7 +351,7 @@ public class Source implements Serializable, Cloneable {
      * >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param password
@@ -367,7 +374,7 @@ public class Source implements Serializable, Cloneable {
      *        >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      *        </p>
      *        <p>
-     *        In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public void setPassword(String password) {
@@ -396,7 +403,7 @@ public class Source implements Serializable, Cloneable {
      * >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @return When included in a request, the parameter depends on the repository type.</p>
@@ -418,7 +425,7 @@ public class Source implements Serializable, Cloneable {
      *         >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      *         </p>
      *         <p>
-     *         In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *         In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public String getPassword() {
@@ -447,7 +454,7 @@ public class Source implements Serializable, Cloneable {
      * >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param password
@@ -470,7 +477,7 @@ public class Source implements Serializable, Cloneable {
      *        >http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.
      *        </p>
      *        <p>
-     *        In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -484,13 +491,13 @@ public class Source implements Serializable, Cloneable {
      * In requests, the repository's SSH key.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param sshKey
      *        In requests, the repository's SSH key.</p>
      *        <p>
-     *        In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public void setSshKey(String sshKey) {
@@ -502,12 +509,12 @@ public class Source implements Serializable, Cloneable {
      * In requests, the repository's SSH key.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @return In requests, the repository's SSH key.</p>
      *         <p>
-     *         In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *         In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      */
 
     public String getSshKey() {
@@ -519,13 +526,13 @@ public class Source implements Serializable, Cloneable {
      * In requests, the repository's SSH key.
      * </p>
      * <p>
-     * In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     * In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * </p>
      * 
      * @param sshKey
      *        In requests, the repository's SSH key.</p>
      *        <p>
-     *        In responses, AWS OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value.
+     *        In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -536,15 +543,15 @@ public class Source implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One of the
-     * simplest approaches is to have branches or revisions in your repository that represent different versions that
-     * can potentially be deployed.
+     * The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One
+     * of the simplest approaches is to have branches or revisions in your repository that represent different versions
+     * that can potentially be deployed.
      * </p>
      * 
      * @param revision
-     *        The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One
-     *        of the simplest approaches is to have branches or revisions in your repository that represent different
-     *        versions that can potentially be deployed.
+     *        The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an
+     *        application. One of the simplest approaches is to have branches or revisions in your repository that
+     *        represent different versions that can potentially be deployed.
      */
 
     public void setRevision(String revision) {
@@ -553,14 +560,14 @@ public class Source implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One of the
-     * simplest approaches is to have branches or revisions in your repository that represent different versions that
-     * can potentially be deployed.
+     * The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One
+     * of the simplest approaches is to have branches or revisions in your repository that represent different versions
+     * that can potentially be deployed.
      * </p>
      * 
-     * @return The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One
-     *         of the simplest approaches is to have branches or revisions in your repository that represent different
-     *         versions that can potentially be deployed.
+     * @return The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an
+     *         application. One of the simplest approaches is to have branches or revisions in your repository that
+     *         represent different versions that can potentially be deployed.
      */
 
     public String getRevision() {
@@ -569,15 +576,15 @@ public class Source implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One of the
-     * simplest approaches is to have branches or revisions in your repository that represent different versions that
-     * can potentially be deployed.
+     * The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One
+     * of the simplest approaches is to have branches or revisions in your repository that represent different versions
+     * that can potentially be deployed.
      * </p>
      * 
      * @param revision
-     *        The application's version. AWS OpsWorks enables you to easily deploy new versions of an application. One
-     *        of the simplest approaches is to have branches or revisions in your repository that represent different
-     *        versions that can potentially be deployed.
+     *        The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an
+     *        application. One of the simplest approaches is to have branches or revisions in your repository that
+     *        represent different versions that can potentially be deployed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -598,17 +605,17 @@ public class Source implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getUrl() != null)
-            sb.append("Url: " + getUrl() + ",");
+            sb.append("Url: ").append(getUrl()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getPassword() != null)
-            sb.append("Password: " + getPassword() + ",");
+            sb.append("Password: ").append(getPassword()).append(",");
         if (getSshKey() != null)
-            sb.append("SshKey: " + getSshKey() + ",");
+            sb.append("SshKey: ").append(getSshKey()).append(",");
         if (getRevision() != null)
-            sb.append("Revision: " + getRevision());
+            sb.append("Revision: ").append(getRevision());
         sb.append("}");
         return sb.toString();
     }
@@ -671,5 +678,11 @@ public class Source implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.SourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

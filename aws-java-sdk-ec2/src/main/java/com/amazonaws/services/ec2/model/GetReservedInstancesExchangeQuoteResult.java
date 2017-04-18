@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceResult;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceResult;
  * Contains the output of GetReservedInstancesExchangeQuote.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
@@ -29,7 +32,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ReservedInstanceReservationValue> reservedInstanceValueSet;
-
+    /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     */
     private ReservationValue reservedInstanceValueRollup;
     /**
      * <p>
@@ -37,7 +44,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TargetReservationValue> targetConfigurationValueSet;
-
+    /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     */
     private ReservationValue targetConfigurationValueRollup;
     /**
      * <p>
@@ -59,13 +70,13 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     private java.util.Date outputReservedInstancesWillExpireAt;
     /**
      * <p>
-     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * </p>
      */
     private Boolean isValidExchange;
     /**
      * <p>
-     * Describes the reason why the exchange can not be completed.
+     * Describes the reason why the exchange cannot be completed.
      * </p>
      */
     private String validationFailureReason;
@@ -144,7 +155,12 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
      * @param reservedInstanceValueRollup
+     *        The cost associated with the Reserved Instance.
      */
 
     public void setReservedInstanceValueRollup(ReservationValue reservedInstanceValueRollup) {
@@ -152,7 +168,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
-     * @return
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
+     * @return The cost associated with the Reserved Instance.
      */
 
     public ReservationValue getReservedInstanceValueRollup() {
@@ -160,7 +180,12 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
      * @param reservedInstanceValueRollup
+     *        The cost associated with the Reserved Instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -243,7 +268,12 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
      * @param targetConfigurationValueRollup
+     *        The cost associated with the Reserved Instance.
      */
 
     public void setTargetConfigurationValueRollup(ReservationValue targetConfigurationValueRollup) {
@@ -251,7 +281,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
-     * @return
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
+     * @return The cost associated with the Reserved Instance.
      */
 
     public ReservationValue getTargetConfigurationValueRollup() {
@@ -259,7 +293,12 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
     }
 
     /**
+     * <p>
+     * The cost associated with the Reserved Instance.
+     * </p>
+     * 
      * @param targetConfigurationValueRollup
+     *        The cost associated with the Reserved Instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -390,11 +429,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * </p>
      * 
      * @param isValidExchange
-     *        If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     *        If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      */
 
     public void setIsValidExchange(Boolean isValidExchange) {
@@ -403,10 +442,10 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * </p>
      * 
-     * @return If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * @return If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      */
 
     public Boolean getIsValidExchange() {
@@ -415,11 +454,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * </p>
      * 
      * @param isValidExchange
-     *        If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     *        If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -430,10 +469,10 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      * </p>
      * 
-     * @return If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be performed.
+     * @return If <code>true</code>, the exchange is valid. If <code>false</code>, the exchange cannot be completed.
      */
 
     public Boolean isValidExchange() {
@@ -442,11 +481,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * Describes the reason why the exchange can not be completed.
+     * Describes the reason why the exchange cannot be completed.
      * </p>
      * 
      * @param validationFailureReason
-     *        Describes the reason why the exchange can not be completed.
+     *        Describes the reason why the exchange cannot be completed.
      */
 
     public void setValidationFailureReason(String validationFailureReason) {
@@ -455,10 +494,10 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * Describes the reason why the exchange can not be completed.
+     * Describes the reason why the exchange cannot be completed.
      * </p>
      * 
-     * @return Describes the reason why the exchange can not be completed.
+     * @return Describes the reason why the exchange cannot be completed.
      */
 
     public String getValidationFailureReason() {
@@ -467,11 +506,11 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * Describes the reason why the exchange can not be completed.
+     * Describes the reason why the exchange cannot be completed.
      * </p>
      * 
      * @param validationFailureReason
-     *        Describes the reason why the exchange can not be completed.
+     *        Describes the reason why the exchange cannot be completed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -492,23 +531,23 @@ public class GetReservedInstancesExchangeQuoteResult extends com.amazonaws.Amazo
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservedInstanceValueSet() != null)
-            sb.append("ReservedInstanceValueSet: " + getReservedInstanceValueSet() + ",");
+            sb.append("ReservedInstanceValueSet: ").append(getReservedInstanceValueSet()).append(",");
         if (getReservedInstanceValueRollup() != null)
-            sb.append("ReservedInstanceValueRollup: " + getReservedInstanceValueRollup() + ",");
+            sb.append("ReservedInstanceValueRollup: ").append(getReservedInstanceValueRollup()).append(",");
         if (getTargetConfigurationValueSet() != null)
-            sb.append("TargetConfigurationValueSet: " + getTargetConfigurationValueSet() + ",");
+            sb.append("TargetConfigurationValueSet: ").append(getTargetConfigurationValueSet()).append(",");
         if (getTargetConfigurationValueRollup() != null)
-            sb.append("TargetConfigurationValueRollup: " + getTargetConfigurationValueRollup() + ",");
+            sb.append("TargetConfigurationValueRollup: ").append(getTargetConfigurationValueRollup()).append(",");
         if (getPaymentDue() != null)
-            sb.append("PaymentDue: " + getPaymentDue() + ",");
+            sb.append("PaymentDue: ").append(getPaymentDue()).append(",");
         if (getCurrencyCode() != null)
-            sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+            sb.append("CurrencyCode: ").append(getCurrencyCode()).append(",");
         if (getOutputReservedInstancesWillExpireAt() != null)
-            sb.append("OutputReservedInstancesWillExpireAt: " + getOutputReservedInstancesWillExpireAt() + ",");
+            sb.append("OutputReservedInstancesWillExpireAt: ").append(getOutputReservedInstancesWillExpireAt()).append(",");
         if (getIsValidExchange() != null)
-            sb.append("IsValidExchange: " + getIsValidExchange() + ",");
+            sb.append("IsValidExchange: ").append(getIsValidExchange()).append(",");
         if (getValidationFailureReason() != null)
-            sb.append("ValidationFailureReason: " + getValidationFailureReason());
+            sb.append("ValidationFailureReason: ").append(getValidationFailureReason());
         sb.append("}");
         return sb.toString();
     }

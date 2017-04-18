@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Details about the timing of a job.
  * </p>
  */
-public class Timing implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Timing implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -172,11 +176,11 @@ public class Timing implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubmitTimeMillis() != null)
-            sb.append("SubmitTimeMillis: " + getSubmitTimeMillis() + ",");
+            sb.append("SubmitTimeMillis: ").append(getSubmitTimeMillis()).append(",");
         if (getStartTimeMillis() != null)
-            sb.append("StartTimeMillis: " + getStartTimeMillis() + ",");
+            sb.append("StartTimeMillis: ").append(getStartTimeMillis()).append(",");
         if (getFinishTimeMillis() != null)
-            sb.append("FinishTimeMillis: " + getFinishTimeMillis());
+            sb.append("FinishTimeMillis: ").append(getFinishTimeMillis());
         sb.append("}");
         return sb.toString();
     }
@@ -224,5 +228,11 @@ public class Timing implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.TimingMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

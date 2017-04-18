@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -57,6 +58,7 @@ import java.io.Serializable;
  * <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's
  * method</a> </div>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -67,7 +69,9 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
     private String httpMethod;
     /**
      * <p>
-     * The method's authorization type.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      */
     private String authorizationType;
@@ -84,6 +88,20 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
      * </p>
      */
     private Boolean apiKeyRequired;
+    /**
+     * <p>
+     * The identifier of a <a>RequestValidator</a> for request validation.
+     * </p>
+     */
+    private String requestValidatorId;
+    /**
+     * <p>
+     * A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code>
+     * of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     * href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     * </p>
+     */
+    private String operationName;
     /**
      * <p>
      * A key-value map defining required or optional method request parameters that can be accepted by Amazon API
@@ -204,11 +222,15 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The method's authorization type.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
      * @param authorizationType
-     *        The method's authorization type.
+     *        The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *        for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *        <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
      */
 
     public void setAuthorizationType(String authorizationType) {
@@ -217,10 +239,14 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The method's authorization type.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
-     * @return The method's authorization type.
+     * @return The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *         for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *         <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
      */
 
     public String getAuthorizationType() {
@@ -229,11 +255,15 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The method's authorization type.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
      * @param authorizationType
-     *        The method's authorization type.
+     *        The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *        for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *        <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -338,6 +368,98 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
 
     public Boolean isApiKeyRequired() {
         return this.apiKeyRequired;
+    }
+
+    /**
+     * <p>
+     * The identifier of a <a>RequestValidator</a> for request validation.
+     * </p>
+     * 
+     * @param requestValidatorId
+     *        The identifier of a <a>RequestValidator</a> for request validation.
+     */
+
+    public void setRequestValidatorId(String requestValidatorId) {
+        this.requestValidatorId = requestValidatorId;
+    }
+
+    /**
+     * <p>
+     * The identifier of a <a>RequestValidator</a> for request validation.
+     * </p>
+     * 
+     * @return The identifier of a <a>RequestValidator</a> for request validation.
+     */
+
+    public String getRequestValidatorId() {
+        return this.requestValidatorId;
+    }
+
+    /**
+     * <p>
+     * The identifier of a <a>RequestValidator</a> for request validation.
+     * </p>
+     * 
+     * @param requestValidatorId
+     *        The identifier of a <a>RequestValidator</a> for request validation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateMethodResult withRequestValidatorId(String requestValidatorId) {
+        setRequestValidatorId(requestValidatorId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code>
+     * of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     * href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     * </p>
+     * 
+     * @param operationName
+     *        A human-friendly operation identifier for the method. For example, you can assign the
+     *        <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     *        href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     */
+
+    public void setOperationName(String operationName) {
+        this.operationName = operationName;
+    }
+
+    /**
+     * <p>
+     * A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code>
+     * of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     * href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     * </p>
+     * 
+     * @return A human-friendly operation identifier for the method. For example, you can assign the
+     *         <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     *         href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     */
+
+    public String getOperationName() {
+        return this.operationName;
+    }
+
+    /**
+     * <p>
+     * A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code>
+     * of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     * href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     * </p>
+     * 
+     * @param operationName
+     *        A human-friendly operation identifier for the method. For example, you can assign the
+     *        <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a
+     *        href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateMethodResult withOperationName(String operationName) {
+        setOperationName(operationName);
+        return this;
     }
 
     /**
@@ -899,21 +1021,25 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHttpMethod() != null)
-            sb.append("HttpMethod: " + getHttpMethod() + ",");
+            sb.append("HttpMethod: ").append(getHttpMethod()).append(",");
         if (getAuthorizationType() != null)
-            sb.append("AuthorizationType: " + getAuthorizationType() + ",");
+            sb.append("AuthorizationType: ").append(getAuthorizationType()).append(",");
         if (getAuthorizerId() != null)
-            sb.append("AuthorizerId: " + getAuthorizerId() + ",");
+            sb.append("AuthorizerId: ").append(getAuthorizerId()).append(",");
         if (getApiKeyRequired() != null)
-            sb.append("ApiKeyRequired: " + getApiKeyRequired() + ",");
+            sb.append("ApiKeyRequired: ").append(getApiKeyRequired()).append(",");
+        if (getRequestValidatorId() != null)
+            sb.append("RequestValidatorId: ").append(getRequestValidatorId()).append(",");
+        if (getOperationName() != null)
+            sb.append("OperationName: ").append(getOperationName()).append(",");
         if (getRequestParameters() != null)
-            sb.append("RequestParameters: " + getRequestParameters() + ",");
+            sb.append("RequestParameters: ").append(getRequestParameters()).append(",");
         if (getRequestModels() != null)
-            sb.append("RequestModels: " + getRequestModels() + ",");
+            sb.append("RequestModels: ").append(getRequestModels()).append(",");
         if (getMethodResponses() != null)
-            sb.append("MethodResponses: " + getMethodResponses() + ",");
+            sb.append("MethodResponses: ").append(getMethodResponses()).append(",");
         if (getMethodIntegration() != null)
-            sb.append("MethodIntegration: " + getMethodIntegration());
+            sb.append("MethodIntegration: ").append(getMethodIntegration());
         sb.append("}");
         return sb.toString();
     }
@@ -944,6 +1070,14 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
             return false;
         if (other.getApiKeyRequired() != null && other.getApiKeyRequired().equals(this.getApiKeyRequired()) == false)
             return false;
+        if (other.getRequestValidatorId() == null ^ this.getRequestValidatorId() == null)
+            return false;
+        if (other.getRequestValidatorId() != null && other.getRequestValidatorId().equals(this.getRequestValidatorId()) == false)
+            return false;
+        if (other.getOperationName() == null ^ this.getOperationName() == null)
+            return false;
+        if (other.getOperationName() != null && other.getOperationName().equals(this.getOperationName()) == false)
+            return false;
         if (other.getRequestParameters() == null ^ this.getRequestParameters() == null)
             return false;
         if (other.getRequestParameters() != null && other.getRequestParameters().equals(this.getRequestParameters()) == false)
@@ -972,6 +1106,8 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
         hashCode = prime * hashCode + ((getAuthorizationType() == null) ? 0 : getAuthorizationType().hashCode());
         hashCode = prime * hashCode + ((getAuthorizerId() == null) ? 0 : getAuthorizerId().hashCode());
         hashCode = prime * hashCode + ((getApiKeyRequired() == null) ? 0 : getApiKeyRequired().hashCode());
+        hashCode = prime * hashCode + ((getRequestValidatorId() == null) ? 0 : getRequestValidatorId().hashCode());
+        hashCode = prime * hashCode + ((getOperationName() == null) ? 0 : getOperationName().hashCode());
         hashCode = prime * hashCode + ((getRequestParameters() == null) ? 0 : getRequestParameters().hashCode());
         hashCode = prime * hashCode + ((getRequestModels() == null) ? 0 : getRequestModels().hashCode());
         hashCode = prime * hashCode + ((getMethodResponses() == null) ? 0 : getMethodResponses().hashCode());
@@ -987,4 +1123,5 @@ public class UpdateMethodResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

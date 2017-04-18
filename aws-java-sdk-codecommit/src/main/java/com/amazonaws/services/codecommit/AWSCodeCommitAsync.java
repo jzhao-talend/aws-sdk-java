@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.codecommit;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.codecommit.model.*;
 
 /**
@@ -19,49 +21,127 @@ import com.amazonaws.services.codecommit.model.*;
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.codecommit.AbstractAWSCodeCommitAsync} instead.
+ * </p>
+ * <p>
  * <fullname>AWS CodeCommit</fullname>
  * <p>
  * This is the <i>AWS CodeCommit API Reference</i>. This reference provides descriptions of the operations and data
- * types for AWS CodeCommit API.
+ * types for AWS CodeCommit API along with usage examples.
  * </p>
  * <p>
  * You can use the AWS CodeCommit API to work with the following objects:
  * </p>
+ * <p>
+ * Repositories, by calling the following:
+ * </p>
  * <ul>
- * <li>Repositories, by calling the following:
- * <ul>
- * <li><a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
- * account</li>
- * <li><a>CreateRepository</a>, which creates an AWS CodeCommit repository</li>
- * <li><a>DeleteRepository</a>, which deletes an AWS CodeCommit repository</li>
- * <li><a>GetRepository</a>, which returns information about a specified repository</li>
- * <li><a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account</li>
- * <li><a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository</li>
- * <li><a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
- * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>BatchGetRepositories</a>, which returns information about one or more repositories associated with your AWS
+ * account
+ * </p>
  * </li>
- * <li>Branches, by calling the following:
- * <ul>
- * <li><a>CreateBranch</a>, which creates a new branch in a specified repository</li>
- * <li><a>GetBranch</a>, which returns information about a specified branch</li>
- * <li><a>ListBranches</a>, which lists all branches for a specified repository</li>
- * <li><a>UpdateDefaultBranch</a>, which changes the default branch for a repository</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>CreateRepository</a>, which creates an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Information about committed code in a repository, by calling the following:
- * <ul>
- * <li><a>GetCommit</a>, which returns information about a commit, including commit messages and committer information.</li>
- * </ul>
+ * <li>
+ * <p>
+ * <a>DeleteRepository</a>, which deletes an AWS CodeCommit repository
+ * </p>
  * </li>
- * <li>Triggers, by calling the following:
- * <ul>
- * <li><a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository</li>
- * <li><a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
- * triggers</li>
- * <li><a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the
- * trigger target</li>
+ * <li>
+ * <p>
+ * <a>GetRepository</a>, which returns information about a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListRepositories</a>, which lists all AWS CodeCommit repositories associated with your AWS account
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryDescription</a>, which sets or updates the description of the repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateRepositoryName</a>, which changes the name of the repository. If you change the name of a repository, no
+ * other users of that repository will be able to access it until you send them the new HTTPS or SSH URL to use.
+ * </p>
+ * </li>
  * </ul>
+ * <p>
+ * Branches, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateBranch</a>, which creates a new branch in a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetBranch</a>, which returns information about a specified branch
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListBranches</a>, which lists all branches for a specified repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Information about committed code in a repository, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetCommit</a>, which returns information about a commit, including commit messages and author and committer
+ * information
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetDifferences</a>, which returns information about the differences in a valid commit specifier (such as a branch,
+ * tag, HEAD, commit ID or other fully qualified reference)
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Triggers, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>GetRepositoryTriggers</a>, which returns information about triggers configured for a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>PutRepositoryTriggers</a>, which replaces all triggers for a repository and can be used to create or delete
+ * triggers
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>TestRepositoryTriggers</a>, which tests the functionality of a repository trigger by sending data to the trigger
+ * target
+ * </p>
  * </li>
  * </ul>
  * <p>
@@ -69,6 +149,7 @@ import com.amazonaws.services.codecommit.model.*;
  * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
@@ -88,6 +169,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a batch get repositories operation.
      * @return A Java Future containing the result of the BatchGetRepositories operation returned by the service.
      * @sample AWSCodeCommitAsync.BatchGetRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositories"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<BatchGetRepositoriesResult> batchGetRepositoriesAsync(BatchGetRepositoriesRequest batchGetRepositoriesRequest);
 
@@ -112,6 +195,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the BatchGetRepositories operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.BatchGetRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositories"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<BatchGetRepositoriesResult> batchGetRepositoriesAsync(BatchGetRepositoriesRequest batchGetRepositoriesRequest,
             com.amazonaws.handlers.AsyncHandler<BatchGetRepositoriesRequest, BatchGetRepositoriesResult> asyncHandler);
@@ -131,6 +216,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a create branch operation.
      * @return A Java Future containing the result of the CreateBranch operation returned by the service.
      * @sample AWSCodeCommitAsync.CreateBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateBranchResult> createBranchAsync(CreateBranchRequest createBranchRequest);
 
@@ -153,6 +240,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateBranch operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.CreateBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateBranchResult> createBranchAsync(CreateBranchRequest createBranchRequest,
             com.amazonaws.handlers.AsyncHandler<CreateBranchRequest, CreateBranchResult> asyncHandler);
@@ -166,6 +255,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a create repository operation.
      * @return A Java Future containing the result of the CreateRepository operation returned by the service.
      * @sample AWSCodeCommitAsync.CreateRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateRepositoryResult> createRepositoryAsync(CreateRepositoryRequest createRepositoryRequest);
 
@@ -182,6 +273,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateRepository operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.CreateRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateRepositoryResult> createRepositoryAsync(CreateRepositoryRequest createRepositoryRequest,
             com.amazonaws.handlers.AsyncHandler<CreateRepositoryRequest, CreateRepositoryResult> asyncHandler);
@@ -190,13 +283,19 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      * <p>
      * Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.
      * </p>
-     * <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted,
-     * all future push calls to the deleted repository will fail.</important>
+     * <important>
+     * <p>
+     * Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future
+     * push calls to the deleted repository will fail.
+     * </p>
+     * </important>
      * 
      * @param deleteRepositoryRequest
      *        Represents the input of a delete repository operation.
      * @return A Java Future containing the result of the DeleteRepository operation returned by the service.
      * @sample AWSCodeCommitAsync.DeleteRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteRepositoryResult> deleteRepositoryAsync(DeleteRepositoryRequest deleteRepositoryRequest);
 
@@ -204,8 +303,12 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      * <p>
      * Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.
      * </p>
-     * <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted,
-     * all future push calls to the deleted repository will fail.</important>
+     * <important>
+     * <p>
+     * Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future
+     * push calls to the deleted repository will fail.
+     * </p>
+     * </important>
      * 
      * @param deleteRepositoryRequest
      *        Represents the input of a delete repository operation.
@@ -215,9 +318,44 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteRepository operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.DeleteRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteRepository" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteRepositoryResult> deleteRepositoryAsync(DeleteRepositoryRequest deleteRepositoryRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteRepositoryRequest, DeleteRepositoryResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the base-64 encoded content of an individual blob within a repository.
+     * </p>
+     * 
+     * @param getBlobRequest
+     *        Represents the input of a get blob operation.
+     * @return A Java Future containing the result of the GetBlob operation returned by the service.
+     * @sample AWSCodeCommitAsync.GetBlob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBlob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetBlobResult> getBlobAsync(GetBlobRequest getBlobRequest);
+
+    /**
+     * <p>
+     * Returns the base-64 encoded content of an individual blob within a repository.
+     * </p>
+     * 
+     * @param getBlobRequest
+     *        Represents the input of a get blob operation.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetBlob operation returned by the service.
+     * @sample AWSCodeCommitAsyncHandler.GetBlob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBlob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetBlobResult> getBlobAsync(GetBlobRequest getBlobRequest,
+            com.amazonaws.handlers.AsyncHandler<GetBlobRequest, GetBlobResult> asyncHandler);
 
     /**
      * <p>
@@ -228,6 +366,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a get branch operation.
      * @return A Java Future containing the result of the GetBranch operation returned by the service.
      * @sample AWSCodeCommitAsync.GetBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetBranchResult> getBranchAsync(GetBranchRequest getBranchRequest);
 
@@ -244,6 +384,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetBranch operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.GetBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranch" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetBranchResult> getBranchAsync(GetBranchRequest getBranchRequest,
             com.amazonaws.handlers.AsyncHandler<GetBranchRequest, GetBranchResult> asyncHandler);
@@ -257,6 +399,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a get commit operation.
      * @return A Java Future containing the result of the GetCommit operation returned by the service.
      * @sample AWSCodeCommitAsync.GetCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommit" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCommitResult> getCommitAsync(GetCommitRequest getCommitRequest);
 
@@ -273,9 +417,44 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetCommit operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.GetCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommit" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetCommitResult> getCommitAsync(GetCommitRequest getCommitRequest,
             com.amazonaws.handlers.AsyncHandler<GetCommitRequest, GetCommitResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or
+     * other fully qualified reference). Results can be limited to a specified path.
+     * </p>
+     * 
+     * @param getDifferencesRequest
+     * @return A Java Future containing the result of the GetDifferences operation returned by the service.
+     * @sample AWSCodeCommitAsync.GetDifferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetDifferences" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDifferencesResult> getDifferencesAsync(GetDifferencesRequest getDifferencesRequest);
+
+    /**
+     * <p>
+     * Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or
+     * other fully qualified reference). Results can be limited to a specified path.
+     * </p>
+     * 
+     * @param getDifferencesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDifferences operation returned by the service.
+     * @sample AWSCodeCommitAsyncHandler.GetDifferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetDifferences" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDifferencesResult> getDifferencesAsync(GetDifferencesRequest getDifferencesRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDifferencesRequest, GetDifferencesResult> asyncHandler);
 
     /**
      * <p>
@@ -294,6 +473,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a get repository operation.
      * @return A Java Future containing the result of the GetRepository operation returned by the service.
      * @sample AWSCodeCommitAsync.GetRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetRepositoryResult> getRepositoryAsync(GetRepositoryRequest getRepositoryRequest);
 
@@ -318,6 +499,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetRepository operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.GetRepository
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepository" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetRepositoryResult> getRepositoryAsync(GetRepositoryRequest getRepositoryRequest,
             com.amazonaws.handlers.AsyncHandler<GetRepositoryRequest, GetRepositoryResult> asyncHandler);
@@ -331,6 +514,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a get repository triggers operation.
      * @return A Java Future containing the result of the GetRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsync.GetRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetRepositoryTriggersResult> getRepositoryTriggersAsync(GetRepositoryTriggersRequest getRepositoryTriggersRequest);
 
@@ -347,6 +532,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.GetRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetRepositoryTriggersResult> getRepositoryTriggersAsync(GetRepositoryTriggersRequest getRepositoryTriggersRequest,
             com.amazonaws.handlers.AsyncHandler<GetRepositoryTriggersRequest, GetRepositoryTriggersResult> asyncHandler);
@@ -360,6 +547,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a list branches operation.
      * @return A Java Future containing the result of the ListBranches operation returned by the service.
      * @sample AWSCodeCommitAsync.ListBranches
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListBranches" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListBranchesResult> listBranchesAsync(ListBranchesRequest listBranchesRequest);
 
@@ -376,6 +565,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListBranches operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.ListBranches
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListBranches" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListBranchesResult> listBranchesAsync(ListBranchesRequest listBranchesRequest,
             com.amazonaws.handlers.AsyncHandler<ListBranchesRequest, ListBranchesResult> asyncHandler);
@@ -389,6 +580,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a list repositories operation.
      * @return A Java Future containing the result of the ListRepositories operation returned by the service.
      * @sample AWSCodeCommitAsync.ListRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositories" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListRepositoriesResult> listRepositoriesAsync(ListRepositoriesRequest listRepositoriesRequest);
 
@@ -405,6 +598,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListRepositories operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.ListRepositories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositories" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListRepositoriesResult> listRepositoriesAsync(ListRepositoriesRequest listRepositoriesRequest,
             com.amazonaws.handlers.AsyncHandler<ListRepositoriesRequest, ListRepositoriesResult> asyncHandler);
@@ -418,6 +613,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input ofa put repository triggers operation.
      * @return A Java Future containing the result of the PutRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsync.PutRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<PutRepositoryTriggersResult> putRepositoryTriggersAsync(PutRepositoryTriggersRequest putRepositoryTriggersRequest);
 
@@ -434,6 +631,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the PutRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.PutRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<PutRepositoryTriggersResult> putRepositoryTriggersAsync(PutRepositoryTriggersRequest putRepositoryTriggersRequest,
             com.amazonaws.handlers.AsyncHandler<PutRepositoryTriggersRequest, PutRepositoryTriggersResult> asyncHandler);
@@ -449,6 +648,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of a test repository triggers operation.
      * @return A Java Future containing the result of the TestRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsync.TestRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/TestRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<TestRepositoryTriggersResult> testRepositoryTriggersAsync(TestRepositoryTriggersRequest testRepositoryTriggersRequest);
 
@@ -467,6 +668,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the TestRepositoryTriggers operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.TestRepositoryTriggers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/TestRepositoryTriggers"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<TestRepositoryTriggersResult> testRepositoryTriggersAsync(TestRepositoryTriggersRequest testRepositoryTriggersRequest,
             com.amazonaws.handlers.AsyncHandler<TestRepositoryTriggersRequest, TestRepositoryTriggersResult> asyncHandler);
@@ -486,6 +689,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of an update default branch operation.
      * @return A Java Future containing the result of the UpdateDefaultBranch operation returned by the service.
      * @sample AWSCodeCommitAsync.UpdateDefaultBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateDefaultBranch" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UpdateDefaultBranchResult> updateDefaultBranchAsync(UpdateDefaultBranchRequest updateDefaultBranchRequest);
 
@@ -508,6 +713,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateDefaultBranch operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.UpdateDefaultBranch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateDefaultBranch" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UpdateDefaultBranchResult> updateDefaultBranchAsync(UpdateDefaultBranchRequest updateDefaultBranchRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateDefaultBranchRequest, UpdateDefaultBranchResult> asyncHandler);
@@ -529,6 +736,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of an update repository description operation.
      * @return A Java Future containing the result of the UpdateRepositoryDescription operation returned by the service.
      * @sample AWSCodeCommitAsync.UpdateRepositoryDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryDescription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateRepositoryDescriptionResult> updateRepositoryDescriptionAsync(
             UpdateRepositoryDescriptionRequest updateRepositoryDescriptionRequest);
@@ -554,6 +763,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateRepositoryDescription operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.UpdateRepositoryDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryDescription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateRepositoryDescriptionResult> updateRepositoryDescriptionAsync(
             UpdateRepositoryDescriptionRequest updateRepositoryDescriptionRequest,
@@ -572,6 +783,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        Represents the input of an update repository description operation.
      * @return A Java Future containing the result of the UpdateRepositoryName operation returned by the service.
      * @sample AWSCodeCommitAsync.UpdateRepositoryName
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryName"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateRepositoryNameResult> updateRepositoryNameAsync(UpdateRepositoryNameRequest updateRepositoryNameRequest);
 
@@ -592,6 +805,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateRepositoryName operation returned by the service.
      * @sample AWSCodeCommitAsyncHandler.UpdateRepositoryName
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UpdateRepositoryName"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateRepositoryNameResult> updateRepositoryNameAsync(UpdateRepositoryNameRequest updateRepositoryNameRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateRepositoryNameRequest, UpdateRepositoryNameResult> asyncHandler);

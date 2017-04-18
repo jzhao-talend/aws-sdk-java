@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elasticfilesystem;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.elasticfilesystem.model.*;
 
 /**
  * Interface for accessing EFS.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.elasticfilesystem.AbstractAmazonElasticFileSystem} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Elastic File System</fullname>
  * <p>
@@ -28,6 +34,7 @@ import com.amazonaws.services.elasticfilesystem.model.*;
  * href="http://docs.aws.amazon.com/efs/latest/ug/api-reference.html">User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonElasticFileSystem {
 
     /**
@@ -59,7 +66,11 @@ public interface AmazonElasticFileSystem {
      *        The endpoint (ex: "elasticfilesystem.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://elasticfilesystem.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -80,7 +91,9 @@ public interface AmazonElasticFileSystem {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -159,6 +172,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemLimitExceededException
      *         Returned if the AWS account has already created maximum number of file systems allowed per account.
      * @sample AmazonElasticFileSystem.CreateFileSystem
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateFileSystem"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateFileSystemResult createFileSystem(CreateFileSystemRequest createFileSystemRequest);
 
@@ -266,7 +281,7 @@ public interface AmazonElasticFileSystem {
      * </li>
      * </ul>
      * <p>
-     * Each Amazon EFS mount target has one corresponding requestor-managed EC2 network interface. After the network
+     * Each Amazon EFS mount target has one corresponding requester-managed EC2 network interface. After the network
      * interface is created, Amazon EFS sets the <code>NetworkInterfaceId</code> field in the mount target's description
      * to the network interface ID, and the <code>IpAddress</code> field to its address. If network interface creation
      * fails, the entire <code>CreateMountTarget</code> operation fails.
@@ -276,8 +291,8 @@ public interface AmazonElasticFileSystem {
      * <note>
      * <p>
      * The <code>CreateMountTarget</code> call returns only after creating the network interface, but while the mount
-     * target state is still <code>creating</code>. You can check the mount target creation status by calling the
-     * <a>DescribeFileSystems</a> operation, which among other things returns the mount target state.
+     * target state is still <code>creating</code>, you can check the mount target creation status by calling the
+     * <a>DescribeMountTargets</a> operation, which among other things returns the mount target state.
      * </p>
      * </note>
      * <p>
@@ -352,6 +367,8 @@ public interface AmazonElasticFileSystem {
      *         Returned if one of the specified security groups does not exist in the subnet's VPC.
      * @throws UnsupportedAvailabilityZoneException
      * @sample AmazonElasticFileSystem.CreateMountTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateMountTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateMountTargetResult createMountTarget(CreateMountTargetRequest createMountTargetRequest);
 
@@ -376,6 +393,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemNotFoundException
      *         Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.
      * @sample AmazonElasticFileSystem.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateTags" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateTagsResult createTags(CreateTagsRequest createTagsRequest);
 
@@ -412,6 +431,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemInUseException
      *         Returned if a file system has mount targets.
      * @sample AmazonElasticFileSystem.DeleteFileSystem
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteFileSystem"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteFileSystemResult deleteFileSystem(DeleteFileSystemRequest deleteFileSystemRequest);
 
@@ -468,6 +489,8 @@ public interface AmazonElasticFileSystem {
      * @throws MountTargetNotFoundException
      *         Returned if there is no mount target with the specified ID found in the caller's account.
      * @sample AmazonElasticFileSystem.DeleteMountTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteMountTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteMountTargetResult deleteMountTarget(DeleteMountTargetRequest deleteMountTargetRequest);
 
@@ -492,6 +515,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemNotFoundException
      *         Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.
      * @sample AmazonElasticFileSystem.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteTags" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest);
 
@@ -535,6 +560,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemNotFoundException
      *         Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.
      * @sample AmazonElasticFileSystem.DescribeFileSystems
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeFileSystems"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeFileSystemsResult describeFileSystems(DescribeFileSystemsRequest describeFileSystemsRequest);
 
@@ -579,6 +606,9 @@ public interface AmazonElasticFileSystem {
      * @throws IncorrectMountTargetStateException
      *         Returned if the mount target is not in the correct state for the operation.
      * @sample AmazonElasticFileSystem.DescribeMountTargetSecurityGroups
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeMountTargetSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeMountTargetSecurityGroupsResult describeMountTargetSecurityGroups(DescribeMountTargetSecurityGroupsRequest describeMountTargetSecurityGroupsRequest);
 
@@ -605,6 +635,8 @@ public interface AmazonElasticFileSystem {
      * @throws MountTargetNotFoundException
      *         Returned if there is no mount target with the specified ID found in the caller's account.
      * @sample AmazonElasticFileSystem.DescribeMountTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeMountTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeMountTargetsResult describeMountTargets(DescribeMountTargetsRequest describeMountTargetsRequest);
 
@@ -628,6 +660,8 @@ public interface AmazonElasticFileSystem {
      * @throws FileSystemNotFoundException
      *         Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.
      * @sample AmazonElasticFileSystem.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeTags" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest);
 
@@ -674,6 +708,9 @@ public interface AmazonElasticFileSystem {
      * @throws SecurityGroupNotFoundException
      *         Returned if one of the specified security groups does not exist in the subnet's VPC.
      * @sample AmazonElasticFileSystem.ModifyMountTargetSecurityGroups
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/ModifyMountTargetSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     ModifyMountTargetSecurityGroupsResult modifyMountTargetSecurityGroups(ModifyMountTargetSecurityGroupsRequest modifyMountTargetSecurityGroupsRequest);
 

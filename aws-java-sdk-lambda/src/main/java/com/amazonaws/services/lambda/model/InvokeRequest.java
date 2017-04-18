@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/Invoke" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -479,7 +485,7 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
      * JSON that you want to provide to your Lambda function as input.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -520,6 +526,16 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
      * <p>
      * JSON that you want to provide to your Lambda function as input.
      * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
      * 
      * @param payload
      *        JSON that you want to provide to your Lambda function as input.
@@ -536,7 +552,7 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
      * JSON that you want to provide to your Lambda function as input.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -556,6 +572,16 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
     /**
      * <p>
      * JSON that you want to provide to your Lambda function as input.
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
      * </p>
      * 
      * @param payload
@@ -655,17 +681,17 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFunctionName() != null)
-            sb.append("FunctionName: " + getFunctionName() + ",");
+            sb.append("FunctionName: ").append(getFunctionName()).append(",");
         if (getInvocationType() != null)
-            sb.append("InvocationType: " + getInvocationType() + ",");
+            sb.append("InvocationType: ").append(getInvocationType()).append(",");
         if (getLogType() != null)
-            sb.append("LogType: " + getLogType() + ",");
+            sb.append("LogType: ").append(getLogType()).append(",");
         if (getClientContext() != null)
-            sb.append("ClientContext: " + getClientContext() + ",");
+            sb.append("ClientContext: ").append(getClientContext()).append(",");
         if (getPayload() != null)
-            sb.append("Payload: " + getPayload() + ",");
+            sb.append("Payload: ").append(getPayload()).append(",");
         if (getQualifier() != null)
-            sb.append("Qualifier: " + getQualifier());
+            sb.append("Qualifier: ").append(getQualifier());
         sb.append("}");
         return sb.toString();
     }
@@ -725,4 +751,5 @@ public class InvokeRequest extends com.amazonaws.AmazonWebServiceRequest impleme
     public InvokeRequest clone() {
         return (InvokeRequest) super.clone();
     }
+
 }

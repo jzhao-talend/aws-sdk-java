@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,33 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Configuration of the script to run during a bootstrap action.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ScriptBootstrapActionConfig"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScriptBootstrapActionConfig implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file
+     * system.
+     * </p>
+     */
     private String path;
-
+    /**
+     * <p>
+     * A list of command line arguments to pass to the bootstrap action script.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<String> args;
 
     /**
@@ -35,7 +54,10 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
      * methods to initialize any additional object members.
      * 
      * @param path
+     *        Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a
+     *        local file system.
      * @param args
+     *        A list of command line arguments to pass to the bootstrap action script.
      */
     public ScriptBootstrapActionConfig(String path, java.util.List<String> args) {
         setPath(path);
@@ -43,7 +65,14 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file
+     * system.
+     * </p>
+     * 
      * @param path
+     *        Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a
+     *        local file system.
      */
 
     public void setPath(String path) {
@@ -51,7 +80,13 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file
+     * system.
+     * </p>
+     * 
+     * @return Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a
+     *         local file system.
      */
 
     public String getPath() {
@@ -59,7 +94,14 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file
+     * system.
+     * </p>
+     * 
      * @param path
+     *        Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a
+     *        local file system.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +111,11 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A list of command line arguments to pass to the bootstrap action script.
+     * </p>
+     * 
+     * @return A list of command line arguments to pass to the bootstrap action script.
      */
 
     public java.util.List<String> getArgs() {
@@ -80,7 +126,12 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A list of command line arguments to pass to the bootstrap action script.
+     * </p>
+     * 
      * @param args
+     *        A list of command line arguments to pass to the bootstrap action script.
      */
 
     public void setArgs(java.util.Collection<String> args) {
@@ -94,12 +145,16 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
 
     /**
      * <p>
+     * A list of command line arguments to pass to the bootstrap action script.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setArgs(java.util.Collection)} or {@link #withArgs(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param args
+     *        A list of command line arguments to pass to the bootstrap action script.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,7 +169,12 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A list of command line arguments to pass to the bootstrap action script.
+     * </p>
+     * 
      * @param args
+     *        A list of command line arguments to pass to the bootstrap action script.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,9 +195,9 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPath() != null)
-            sb.append("Path: " + getPath() + ",");
+            sb.append("Path: ").append(getPath()).append(",");
         if (getArgs() != null)
-            sb.append("Args: " + getArgs());
+            sb.append("Args: ").append(getArgs());
         sb.append("}");
         return sb.toString();
     }
@@ -180,5 +240,11 @@ public class ScriptBootstrapActionConfig implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.ScriptBootstrapActionConfigMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

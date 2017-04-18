@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a <i>CreateTable</i> operation.
+ * Represents the input of a <code>CreateTable</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateTable" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -36,23 +42,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String tableName;
     /**
      * <p>
-     * Specifies the attributes that make up the primary key for a table or an index. The attributes in <i>KeySchema</i>
-     * must also be defined in the <i>AttributeDefinitions</i> array. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
-     * <i>Amazon DynamoDB Developer Guide</i>.
+     * Specifies the attributes that make up the primary key for a table or an index. The attributes in
+     * <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information,
+     * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
-     * Each <i>KeySchemaElement</i> in the array is composed of:
+     * Each <code>KeySchemaElement</code> in the array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of this key attribute.
+     * <code>AttributeName</code> - The name of this key attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role that the key attribute will assume:
+     * <code>KeyType</code> - The role that the key attribute will assume:
      * </p>
      * <ul>
      * <li>
@@ -81,13 +87,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * <p>
-     * For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
+     * For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of
      * <code>HASH</code>.
      * </p>
      * <p>
      * For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order:
-     * The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have a
-     * <i>KeyType</i> of <code>RANGE</code>.
+     * The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a
+     * <code>KeyType</code> of <code>RANGE</code>.
      * </p>
      * <p>
      * For more information, see <a href=
@@ -108,25 +114,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with the
-     * same partition key as the table.
+     * <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin with
+     * the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -137,7 +143,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -149,10 +155,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
@@ -168,24 +174,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     * <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -196,7 +202,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -208,24 +214,34 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units.
      * </p>
      * </li>
      * </ul>
      */
     private java.util.List<GlobalSecondaryIndex> globalSecondaryIndexes;
-
+    /**
+     * <p>
+     * Represents the provisioned throughput settings for a specified table or index. The settings can be modified using
+     * the <code>UpdateTable</code> operation.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     */
     private ProvisionedThroughput provisionedThroughput;
     /**
      * <p>
@@ -234,33 +250,33 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     * <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what information
-     * is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     * <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code> determines what
+     * information is written to the table's stream. Valid values for <code>StreamViewType</code> are:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     * <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     * <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     * <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     * <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the stream.
      * </p>
      * </li>
      * </ul>
@@ -284,21 +300,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        The name of the table to create.
      * @param keySchema
      *        Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *        <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *        <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *        <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *        information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
      *        the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *        <p>
-     *        Each <i>KeySchemaElement</i> in the array is composed of:
+     *        Each <code>KeySchemaElement</code> in the array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of this key attribute.
+     *        <code>AttributeName</code> - The name of this key attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role that the key attribute will assume:
+     *        <code>KeyType</code> - The role that the key attribute will assume:
      *        </p>
      *        <ul>
      *        <li>
@@ -327,13 +344,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </p>
      *        </note>
      *        <p>
-     *        For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *        <code>HASH</code>.
+     *        For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code>
+     *        of <code>HASH</code>.
      *        </p>
      *        <p>
      *        For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *        order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have
-     *        a <i>KeyType</i> of <code>RANGE</code>.
+     *        order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *        must have a <code>KeyType</code> of <code>RANGE</code>.
      *        </p>
      *        <p>
      *        For more information, see <a href=
@@ -355,21 +372,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        The name of the table to create.
      * @param keySchema
      *        Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *        <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *        <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *        <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *        information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
      *        the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *        <p>
-     *        Each <i>KeySchemaElement</i> in the array is composed of:
+     *        Each <code>KeySchemaElement</code> in the array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of this key attribute.
+     *        <code>AttributeName</code> - The name of this key attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role that the key attribute will assume:
+     *        <code>KeyType</code> - The role that the key attribute will assume:
      *        </p>
      *        <ul>
      *        <li>
@@ -398,19 +416,26 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </p>
      *        </note>
      *        <p>
-     *        For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *        <code>HASH</code>.
+     *        For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code>
+     *        of <code>HASH</code>.
      *        </p>
      *        <p>
      *        For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *        order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have
-     *        a <i>KeyType</i> of <code>RANGE</code>.
+     *        order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *        must have a <code>KeyType</code> of <code>RANGE</code>.
      *        </p>
      *        <p>
      *        For more information, see <a href=
      *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key"
      *        >Specifying the Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for a specified table or index. The settings can be
+     *        modified using the <code>UpdateTable</code> operation.
+     *        </p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      */
     public CreateTableRequest(java.util.List<AttributeDefinition> attributeDefinitions, String tableName, java.util.List<KeySchemaElement> keySchema,
             ProvisionedThroughput provisionedThroughput) {
@@ -532,23 +557,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Specifies the attributes that make up the primary key for a table or an index. The attributes in <i>KeySchema</i>
-     * must also be defined in the <i>AttributeDefinitions</i> array. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
-     * <i>Amazon DynamoDB Developer Guide</i>.
+     * Specifies the attributes that make up the primary key for a table or an index. The attributes in
+     * <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information,
+     * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
-     * Each <i>KeySchemaElement</i> in the array is composed of:
+     * Each <code>KeySchemaElement</code> in the array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of this key attribute.
+     * <code>AttributeName</code> - The name of this key attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role that the key attribute will assume:
+     * <code>KeyType</code> - The role that the key attribute will assume:
      * </p>
      * <ul>
      * <li>
@@ -577,13 +602,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * <p>
-     * For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
+     * For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of
      * <code>HASH</code>.
      * </p>
      * <p>
      * For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order:
-     * The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have a
-     * <i>KeyType</i> of <code>RANGE</code>.
+     * The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a
+     * <code>KeyType</code> of <code>RANGE</code>.
      * </p>
      * <p>
      * For more information, see <a href=
@@ -592,21 +617,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @return Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *         <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *         <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     *         <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *         information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *         the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *         <p>
-     *         Each <i>KeySchemaElement</i> in the array is composed of:
+     *         Each <code>KeySchemaElement</code> in the array is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>AttributeName</i> - The name of this key attribute.
+     *         <code>AttributeName</code> - The name of this key attribute.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>KeyType</i> - The role that the key attribute will assume:
+     *         <code>KeyType</code> - The role that the key attribute will assume:
      *         </p>
      *         <ul>
      *         <li>
@@ -635,13 +661,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </p>
      *         </note>
      *         <p>
-     *         For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *         <code>HASH</code>.
+     *         For a simple primary key (partition key), you must provide exactly one element with a
+     *         <code>KeyType</code> of <code>HASH</code>.
      *         </p>
      *         <p>
      *         For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *         order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must
-     *         have a <i>KeyType</i> of <code>RANGE</code>.
+     *         order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *         must have a <code>KeyType</code> of <code>RANGE</code>.
      *         </p>
      *         <p>
      *         For more information, see <a href=
@@ -655,23 +681,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Specifies the attributes that make up the primary key for a table or an index. The attributes in <i>KeySchema</i>
-     * must also be defined in the <i>AttributeDefinitions</i> array. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
-     * <i>Amazon DynamoDB Developer Guide</i>.
+     * Specifies the attributes that make up the primary key for a table or an index. The attributes in
+     * <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information,
+     * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
-     * Each <i>KeySchemaElement</i> in the array is composed of:
+     * Each <code>KeySchemaElement</code> in the array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of this key attribute.
+     * <code>AttributeName</code> - The name of this key attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role that the key attribute will assume:
+     * <code>KeyType</code> - The role that the key attribute will assume:
      * </p>
      * <ul>
      * <li>
@@ -700,13 +726,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * <p>
-     * For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
+     * For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of
      * <code>HASH</code>.
      * </p>
      * <p>
      * For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order:
-     * The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have a
-     * <i>KeyType</i> of <code>RANGE</code>.
+     * The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a
+     * <code>KeyType</code> of <code>RANGE</code>.
      * </p>
      * <p>
      * For more information, see <a href=
@@ -716,21 +742,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param keySchema
      *        Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *        <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *        <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *        <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *        information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
      *        the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *        <p>
-     *        Each <i>KeySchemaElement</i> in the array is composed of:
+     *        Each <code>KeySchemaElement</code> in the array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of this key attribute.
+     *        <code>AttributeName</code> - The name of this key attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role that the key attribute will assume:
+     *        <code>KeyType</code> - The role that the key attribute will assume:
      *        </p>
      *        <ul>
      *        <li>
@@ -759,13 +786,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </p>
      *        </note>
      *        <p>
-     *        For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *        <code>HASH</code>.
+     *        For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code>
+     *        of <code>HASH</code>.
      *        </p>
      *        <p>
      *        For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *        order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have
-     *        a <i>KeyType</i> of <code>RANGE</code>.
+     *        order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *        must have a <code>KeyType</code> of <code>RANGE</code>.
      *        </p>
      *        <p>
      *        For more information, see <a href=
@@ -784,23 +811,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Specifies the attributes that make up the primary key for a table or an index. The attributes in <i>KeySchema</i>
-     * must also be defined in the <i>AttributeDefinitions</i> array. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
-     * <i>Amazon DynamoDB Developer Guide</i>.
+     * Specifies the attributes that make up the primary key for a table or an index. The attributes in
+     * <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information,
+     * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
-     * Each <i>KeySchemaElement</i> in the array is composed of:
+     * Each <code>KeySchemaElement</code> in the array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of this key attribute.
+     * <code>AttributeName</code> - The name of this key attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role that the key attribute will assume:
+     * <code>KeyType</code> - The role that the key attribute will assume:
      * </p>
      * <ul>
      * <li>
@@ -829,13 +856,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * <p>
-     * For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
+     * For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of
      * <code>HASH</code>.
      * </p>
      * <p>
      * For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order:
-     * The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have a
-     * <i>KeyType</i> of <code>RANGE</code>.
+     * The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a
+     * <code>KeyType</code> of <code>RANGE</code>.
      * </p>
      * <p>
      * For more information, see <a href=
@@ -850,21 +877,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param keySchema
      *        Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *        <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *        <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *        <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *        information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
      *        the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *        <p>
-     *        Each <i>KeySchemaElement</i> in the array is composed of:
+     *        Each <code>KeySchemaElement</code> in the array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of this key attribute.
+     *        <code>AttributeName</code> - The name of this key attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role that the key attribute will assume:
+     *        <code>KeyType</code> - The role that the key attribute will assume:
      *        </p>
      *        <ul>
      *        <li>
@@ -893,13 +921,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </p>
      *        </note>
      *        <p>
-     *        For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *        <code>HASH</code>.
+     *        For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code>
+     *        of <code>HASH</code>.
      *        </p>
      *        <p>
      *        For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *        order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have
-     *        a <i>KeyType</i> of <code>RANGE</code>.
+     *        order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *        must have a <code>KeyType</code> of <code>RANGE</code>.
      *        </p>
      *        <p>
      *        For more information, see <a href=
@@ -920,23 +948,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Specifies the attributes that make up the primary key for a table or an index. The attributes in <i>KeySchema</i>
-     * must also be defined in the <i>AttributeDefinitions</i> array. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
-     * <i>Amazon DynamoDB Developer Guide</i>.
+     * Specifies the attributes that make up the primary key for a table or an index. The attributes in
+     * <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more information,
+     * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
-     * Each <i>KeySchemaElement</i> in the array is composed of:
+     * Each <code>KeySchemaElement</code> in the array is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>AttributeName</i> - The name of this key attribute.
+     * <code>AttributeName</code> - The name of this key attribute.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>KeyType</i> - The role that the key attribute will assume:
+     * <code>KeyType</code> - The role that the key attribute will assume:
      * </p>
      * <ul>
      * <li>
@@ -965,13 +993,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * </note>
      * <p>
-     * For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
+     * For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code> of
      * <code>HASH</code>.
      * </p>
      * <p>
      * For a composite primary key (partition key and sort key), you must provide exactly two elements, in this order:
-     * The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have a
-     * <i>KeyType</i> of <code>RANGE</code>.
+     * The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element must have a
+     * <code>KeyType</code> of <code>RANGE</code>.
      * </p>
      * <p>
      * For more information, see <a href=
@@ -981,21 +1009,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param keySchema
      *        Specifies the attributes that make up the primary key for a table or an index. The attributes in
-     *        <i>KeySchema</i> must also be defined in the <i>AttributeDefinitions</i> array. For more information, see
-     *        <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
+     *        <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
+     *        information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in
      *        the <i>Amazon DynamoDB Developer Guide</i>.</p>
      *        <p>
-     *        Each <i>KeySchemaElement</i> in the array is composed of:
+     *        Each <code>KeySchemaElement</code> in the array is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>AttributeName</i> - The name of this key attribute.
+     *        <code>AttributeName</code> - The name of this key attribute.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>KeyType</i> - The role that the key attribute will assume:
+     *        <code>KeyType</code> - The role that the key attribute will assume:
      *        </p>
      *        <ul>
      *        <li>
@@ -1024,13 +1053,13 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </p>
      *        </note>
      *        <p>
-     *        For a simple primary key (partition key), you must provide exactly one element with a <i>KeyType</i> of
-     *        <code>HASH</code>.
+     *        For a simple primary key (partition key), you must provide exactly one element with a <code>KeyType</code>
+     *        of <code>HASH</code>.
      *        </p>
      *        <p>
      *        For a composite primary key (partition key and sort key), you must provide exactly two elements, in this
-     *        order: The first element must have a <i>KeyType</i> of <code>HASH</code>, and the second element must have
-     *        a <i>KeyType</i> of <code>RANGE</code>.
+     *        order: The first element must have a <code>KeyType</code> of <code>HASH</code>, and the second element
+     *        must have a <code>KeyType</code> of <code>RANGE</code>.
      *        </p>
      *        <p>
      *        For more information, see <a href=
@@ -1056,25 +1085,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with the
-     * same partition key as the table.
+     * <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin with
+     * the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1085,7 +1114,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1097,10 +1126,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
@@ -1116,25 +1145,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     *         <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      *         </p>
      *         <p/></li>
      *         <li>
      *         <p>
-     *         <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with
-     *         the same partition key as the table.
+     *         <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must
+     *         begin with the same partition key as the table.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *         are in addition to the primary key attributes and index key attributes, which are automatically
+     *         <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *         These are in addition to the primary key attributes and index key attributes, which are automatically
      *         projected. Each attribute specification is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ProjectionType</i> - One of the following:
+     *         <code>ProjectionType</code> - One of the following:
      *         </p>
      *         <ul>
      *         <li>
@@ -1145,7 +1174,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <i>NonKeyAttributes</i>.
+     *         projected attributes are in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1157,10 +1186,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *         secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *         the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *         this counts as two distinct attributes when determining the total.
+     *         <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *         secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *         all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *         indexes, this counts as two distinct attributes when determining the total.
      *         </p>
      *         </li>
      *         </ul>
@@ -1183,25 +1212,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with the
-     * same partition key as the table.
+     * <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin with
+     * the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1212,7 +1241,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1224,10 +1253,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
@@ -1244,25 +1273,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with
-     *        the same partition key as the table.
+     *        <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin
+     *        with the same partition key as the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1273,7 +1302,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1285,10 +1314,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
@@ -1316,25 +1345,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with the
-     * same partition key as the table.
+     * <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin with
+     * the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1345,7 +1374,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1357,10 +1386,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
@@ -1382,25 +1411,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with
-     *        the same partition key as the table.
+     *        <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin
+     *        with the same partition key as the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1411,7 +1440,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1423,10 +1452,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
@@ -1456,25 +1485,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with the
-     * same partition key as the table.
+     * <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin with
+     * the same partition key as the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1485,7 +1514,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1497,10 +1526,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
@@ -1517,25 +1546,25 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the local secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the local secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the local secondary index. The key schema must begin with
-     *        the same partition key as the table.
+     *        <code>KeySchema</code> - Specifies the key schema for the local secondary index. The key schema must begin
+     *        with the same partition key as the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1546,7 +1575,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1558,10 +1587,10 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
@@ -1582,24 +1611,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     * <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1610,7 +1639,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1622,18 +1651,18 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units.
      * </p>
      * </li>
      * </ul>
@@ -1643,24 +1672,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     *         <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      *         </p>
      *         <p/></li>
      *         <li>
      *         <p>
-     *         <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     *         <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *         are in addition to the primary key attributes and index key attributes, which are automatically
+     *         <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *         These are in addition to the primary key attributes and index key attributes, which are automatically
      *         projected. Each attribute specification is composed of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ProjectionType</i> - One of the following:
+     *         <code>ProjectionType</code> - One of the following:
      *         </p>
      *         <ul>
      *         <li>
@@ -1671,7 +1700,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <i>NonKeyAttributes</i>.
+     *         projected attributes are in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1683,17 +1712,17 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *         secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *         the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *         this counts as two distinct attributes when determining the total.
+     *         <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *         secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *         all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *         indexes, this counts as two distinct attributes when determining the total.
      *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *         <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *         consisting of read and write capacity units.
      *         </p>
      *         </li>
@@ -1711,24 +1740,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     * <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1739,7 +1768,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1751,18 +1780,18 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units.
      * </p>
      * </li>
      * </ul>
@@ -1773,24 +1802,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     *        <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1801,7 +1830,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1813,17 +1842,17 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units.
      *        </p>
      *        </li>
@@ -1846,24 +1875,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     * <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -1874,7 +1903,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1886,18 +1915,18 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units.
      * </p>
      * </li>
      * </ul>
@@ -1913,24 +1942,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     *        <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -1941,7 +1970,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1953,17 +1982,17 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units.
      *        </p>
      *        </li>
@@ -1988,24 +2017,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     * <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      * </p>
      * <p/></li>
      * <li>
      * <p>
-     * <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     * <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These are in
-     * addition to the primary key attributes and index key attributes, which are automatically projected. Each
+     * <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index. These
+     * are in addition to the primary key attributes and index key attributes, which are automatically projected. Each
      * attribute specification is composed of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ProjectionType</i> - One of the following:
+     * <code>ProjectionType</code> - One of the following:
      * </p>
      * <ul>
      * <li>
@@ -2016,7 +2045,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <i>NonKeyAttributes</i>.
+     * attributes are in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2028,18 +2057,18 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the secondary
-     * index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of the secondary
-     * indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two
-     * distinct attributes when determining the total.
+     * <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     * secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across all of
+     * the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
+     * counts as two distinct attributes when determining the total.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index, consisting of
-     * read and write capacity units.
+     * <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
+     * consisting of read and write capacity units.
      * </p>
      * </li>
      * </ul>
@@ -2050,24 +2079,24 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>IndexName</i> - The name of the global secondary index. Must be unique only for this table.
+     *        <code>IndexName</code> - The name of the global secondary index. Must be unique only for this table.
      *        </p>
      *        <p/></li>
      *        <li>
      *        <p>
-     *        <i>KeySchema</i> - Specifies the key schema for the global secondary index.
+     *        <code>KeySchema</code> - Specifies the key schema for the global secondary index.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>Projection</i> - Specifies attributes that are copied (projected) from the table into the index. These
-     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
-     *        Each attribute specification is composed of:
+     *        <code>Projection</code> - Specifies attributes that are copied (projected) from the table into the index.
+     *        These are in addition to the primary key attributes and index key attributes, which are automatically
+     *        projected. Each attribute specification is composed of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ProjectionType</i> - One of the following:
+     *        <code>ProjectionType</code> - One of the following:
      *        </p>
      *        <ul>
      *        <li>
@@ -2078,7 +2107,7 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <i>NonKeyAttributes</i>.
+     *        projected attributes are in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2090,17 +2119,17 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NonKeyAttributes</i> - A list of one or more non-key attribute names that are projected into the
-     *        secondary index. The total count of attributes provided in <i>NonKeyAttributes</i>, summed across all of
-     *        the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes,
-     *        this counts as two distinct attributes when determining the total.
+     *        <code>NonKeyAttributes</code> - A list of one or more non-key attribute names that are projected into the
+     *        secondary index. The total count of attributes provided in <code>NonKeyAttributes</code>, summed across
+     *        all of the secondary indexes, must not exceed 20. If you project the same attribute into two different
+     *        indexes, this counts as two distinct attributes when determining the total.
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ProvisionedThroughput</i> - The provisioned throughput settings for the global secondary index,
+     *        <code>ProvisionedThroughput</code> - The provisioned throughput settings for the global secondary index,
      *        consisting of read and write capacity units.
      *        </p>
      *        </li>
@@ -2113,7 +2142,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for a specified table or index. The settings can be modified using
+     * the <code>UpdateTable</code> operation.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for a specified table or index. The settings can be
+     *        modified using the <code>UpdateTable</code> operation.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public void setProvisionedThroughput(ProvisionedThroughput provisionedThroughput) {
@@ -2121,7 +2166,22 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * @return
+     * <p>
+     * Represents the provisioned throughput settings for a specified table or index. The settings can be modified using
+     * the <code>UpdateTable</code> operation.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
+     * @return Represents the provisioned throughput settings for a specified table or index. The settings can be
+     *         modified using the <code>UpdateTable</code> operation.</p>
+     *         <p>
+     *         For current minimum and maximum provisioned throughput values, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *         <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public ProvisionedThroughput getProvisionedThroughput() {
@@ -2129,7 +2189,23 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for a specified table or index. The settings can be modified using
+     * the <code>UpdateTable</code> operation.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for a specified table or index. The settings can be
+     *        modified using the <code>UpdateTable</code> operation.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2145,33 +2221,33 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     * <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what information
-     * is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     * <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code> determines what
+     * information is written to the table's stream. Valid values for <code>StreamViewType</code> are:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     * <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     * <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     * <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     * <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the stream.
      * </p>
      * </li>
      * </ul>
@@ -2183,33 +2259,35 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     *        <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what
-     *        information is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     *        <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code>
+     *        determines what information is written to the table's stream. Valid values for <code>StreamViewType</code>
+     *        are:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     *        <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     *        <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     *        <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     *        <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the
+     *        stream.
      *        </p>
      *        </li>
      *        </ul>
@@ -2227,33 +2305,33 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     * <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what information
-     * is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     * <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code> determines what
+     * information is written to the table's stream. Valid values for <code>StreamViewType</code> are:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     * <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     * <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     * <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     * <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the stream.
      * </p>
      * </li>
      * </ul>
@@ -2264,33 +2342,36 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     *         <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what
-     *         information is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     *         <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code>
+     *         determines what information is written to the table's stream. Valid values for
+     *         <code>StreamViewType</code> are:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     *         <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     *         <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     *         <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the
+     *         stream.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     *         <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the
+     *         stream.
      *         </p>
      *         </li>
      *         </ul>
@@ -2308,33 +2389,33 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     * <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what information
-     * is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     * <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code> determines what
+     * information is written to the table's stream. Valid values for <code>StreamViewType</code> are:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     * <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     * <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     * <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     * <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the stream.
      * </p>
      * </li>
      * </ul>
@@ -2346,33 +2427,35 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>StreamEnabled</i> - Indicates whether Streams is to be enabled (true) or disabled (false).
+     *        <code>StreamEnabled</code> - Indicates whether Streams is to be enabled (true) or disabled (false).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>StreamViewType</i> - When an item in the table is modified, <i>StreamViewType</i> determines what
-     *        information is written to the table's stream. Valid values for <i>StreamViewType</i> are:
+     *        <code>StreamViewType</code> - When an item in the table is modified, <code>StreamViewType</code>
+     *        determines what information is written to the table's stream. Valid values for <code>StreamViewType</code>
+     *        are:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>KEYS_ONLY</i> - Only the key attributes of the modified item are written to the stream.
+     *        <code>KEYS_ONLY</code> - Only the key attributes of the modified item are written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NEW_IMAGE</i> - The entire item, as it appears after it was modified, is written to the stream.
+     *        <code>NEW_IMAGE</code> - The entire item, as it appears after it was modified, is written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>OLD_IMAGE</i> - The entire item, as it appeared before it was modified, is written to the stream.
+     *        <code>OLD_IMAGE</code> - The entire item, as it appeared before it was modified, is written to the stream.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>NEW_AND_OLD_IMAGES</i> - Both the new and the old item images of the item are written to the stream.
+     *        <code>NEW_AND_OLD_IMAGES</code> - Both the new and the old item images of the item are written to the
+     *        stream.
      *        </p>
      *        </li>
      *        </ul>
@@ -2397,19 +2480,19 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAttributeDefinitions() != null)
-            sb.append("AttributeDefinitions: " + getAttributeDefinitions() + ",");
+            sb.append("AttributeDefinitions: ").append(getAttributeDefinitions()).append(",");
         if (getTableName() != null)
-            sb.append("TableName: " + getTableName() + ",");
+            sb.append("TableName: ").append(getTableName()).append(",");
         if (getKeySchema() != null)
-            sb.append("KeySchema: " + getKeySchema() + ",");
+            sb.append("KeySchema: ").append(getKeySchema()).append(",");
         if (getLocalSecondaryIndexes() != null)
-            sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() + ",");
+            sb.append("LocalSecondaryIndexes: ").append(getLocalSecondaryIndexes()).append(",");
         if (getGlobalSecondaryIndexes() != null)
-            sb.append("GlobalSecondaryIndexes: " + getGlobalSecondaryIndexes() + ",");
+            sb.append("GlobalSecondaryIndexes: ").append(getGlobalSecondaryIndexes()).append(",");
         if (getProvisionedThroughput() != null)
-            sb.append("ProvisionedThroughput: " + getProvisionedThroughput() + ",");
+            sb.append("ProvisionedThroughput: ").append(getProvisionedThroughput()).append(",");
         if (getStreamSpecification() != null)
-            sb.append("StreamSpecification: " + getStreamSpecification());
+            sb.append("StreamSpecification: ").append(getStreamSpecification());
         sb.append("}");
         return sb.toString();
     }
@@ -2474,4 +2557,5 @@ public class CreateTableRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateTableRequest clone() {
         return (CreateTableRequest) super.clone();
     }
+
 }

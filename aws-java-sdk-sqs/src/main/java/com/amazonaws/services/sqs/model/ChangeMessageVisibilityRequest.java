@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,21 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ChangeMessageVisibility" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue whose message's visibility is changed.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
@@ -31,14 +36,15 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
     private String queueUrl;
     /**
      * <p>
-     * The receipt handle associated with the message whose visibility timeout should be changed. This parameter is
-     * returned by the <a>ReceiveMessage</a> action.
+     * The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by
+     * the <code> <a>ReceiveMessage</a> </code> action.
      * </p>
      */
     private String receiptHandle;
     /**
      * <p>
-     * The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     * The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     * <code>43200</code>. Maximum: 12 hours.
      * </p>
      */
     private Integer visibilityTimeout;
@@ -55,14 +61,15 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
      * methods to initialize any additional object members.
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue whose message's visibility is changed.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      * @param receiptHandle
-     *        The receipt handle associated with the message whose visibility timeout should be changed. This parameter
-     *        is returned by the <a>ReceiveMessage</a> action.
+     *        The receipt handle associated with the message whose visibility timeout is changed. This parameter is
+     *        returned by the <code> <a>ReceiveMessage</a> </code> action.
      * @param visibilityTimeout
-     *        The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     *        The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     *        <code>43200</code>. Maximum: 12 hours.
      */
     public ChangeMessageVisibilityRequest(String queueUrl, String receiptHandle, Integer visibilityTimeout) {
         setQueueUrl(queueUrl);
@@ -72,14 +79,14 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue whose message's visibility is changed.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue whose message's visibility is changed.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      */
@@ -90,13 +97,13 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue whose message's visibility is changed.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
-     * @return The URL of the Amazon SQS queue to take action on.</p>
+     * @return The URL of the Amazon SQS queue whose message's visibility is changed.</p>
      *         <p>
      *         Queue URLs are case-sensitive.
      */
@@ -107,14 +114,14 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The URL of the Amazon SQS queue to take action on.
+     * The URL of the Amazon SQS queue whose message's visibility is changed.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The URL of the Amazon SQS queue to take action on.</p>
+     *        The URL of the Amazon SQS queue whose message's visibility is changed.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -127,13 +134,13 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The receipt handle associated with the message whose visibility timeout should be changed. This parameter is
-     * returned by the <a>ReceiveMessage</a> action.
+     * The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by
+     * the <code> <a>ReceiveMessage</a> </code> action.
      * </p>
      * 
      * @param receiptHandle
-     *        The receipt handle associated with the message whose visibility timeout should be changed. This parameter
-     *        is returned by the <a>ReceiveMessage</a> action.
+     *        The receipt handle associated with the message whose visibility timeout is changed. This parameter is
+     *        returned by the <code> <a>ReceiveMessage</a> </code> action.
      */
 
     public void setReceiptHandle(String receiptHandle) {
@@ -142,12 +149,12 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The receipt handle associated with the message whose visibility timeout should be changed. This parameter is
-     * returned by the <a>ReceiveMessage</a> action.
+     * The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by
+     * the <code> <a>ReceiveMessage</a> </code> action.
      * </p>
      * 
-     * @return The receipt handle associated with the message whose visibility timeout should be changed. This parameter
-     *         is returned by the <a>ReceiveMessage</a> action.
+     * @return The receipt handle associated with the message whose visibility timeout is changed. This parameter is
+     *         returned by the <code> <a>ReceiveMessage</a> </code> action.
      */
 
     public String getReceiptHandle() {
@@ -156,13 +163,13 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The receipt handle associated with the message whose visibility timeout should be changed. This parameter is
-     * returned by the <a>ReceiveMessage</a> action.
+     * The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by
+     * the <code> <a>ReceiveMessage</a> </code> action.
      * </p>
      * 
      * @param receiptHandle
-     *        The receipt handle associated with the message whose visibility timeout should be changed. This parameter
-     *        is returned by the <a>ReceiveMessage</a> action.
+     *        The receipt handle associated with the message whose visibility timeout is changed. This parameter is
+     *        returned by the <code> <a>ReceiveMessage</a> </code> action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,11 +180,13 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     * The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     * <code>43200</code>. Maximum: 12 hours.
      * </p>
      * 
      * @param visibilityTimeout
-     *        The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     *        The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     *        <code>43200</code>. Maximum: 12 hours.
      */
 
     public void setVisibilityTimeout(Integer visibilityTimeout) {
@@ -186,10 +195,12 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     * The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     * <code>43200</code>. Maximum: 12 hours.
      * </p>
      * 
-     * @return The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     * @return The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     *         <code>43200</code>. Maximum: 12 hours.
      */
 
     public Integer getVisibilityTimeout() {
@@ -198,11 +209,13 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     * The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     * <code>43200</code>. Maximum: 12 hours.
      * </p>
      * 
      * @param visibilityTimeout
-     *        The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the message's visibility timeout.
+     *        The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to
+     *        <code>43200</code>. Maximum: 12 hours.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -223,11 +236,11 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrl() != null)
-            sb.append("QueueUrl: " + getQueueUrl() + ",");
+            sb.append("QueueUrl: ").append(getQueueUrl()).append(",");
         if (getReceiptHandle() != null)
-            sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
+            sb.append("ReceiptHandle: ").append(getReceiptHandle()).append(",");
         if (getVisibilityTimeout() != null)
-            sb.append("VisibilityTimeout: " + getVisibilityTimeout());
+            sb.append("VisibilityTimeout: ").append(getVisibilityTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -272,4 +285,5 @@ public class ChangeMessageVisibilityRequest extends com.amazonaws.AmazonWebServi
     public ChangeMessageVisibilityRequest clone() {
         return (ChangeMessageVisibilityRequest) super.clone();
     }
+
 }

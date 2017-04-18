@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateWebACL" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -60,7 +65,12 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </ul>
      */
     private java.util.List<WebACLUpdate> updates;
-
+    /**
+     * <p>
+     * A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't
+     * match the criteria in any of the rules in a web ACL.
+     * </p>
+     */
     private WafAction defaultAction;
 
     /**
@@ -384,7 +394,14 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't
+     * match the criteria in any of the rules in a web ACL.
+     * </p>
+     * 
      * @param defaultAction
+     *        A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request
+     *        doesn't match the criteria in any of the rules in a web ACL.
      */
 
     public void setDefaultAction(WafAction defaultAction) {
@@ -392,7 +409,13 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * @return
+     * <p>
+     * A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't
+     * match the criteria in any of the rules in a web ACL.
+     * </p>
+     * 
+     * @return A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request
+     *         doesn't match the criteria in any of the rules in a web ACL.
      */
 
     public WafAction getDefaultAction() {
@@ -400,7 +423,14 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't
+     * match the criteria in any of the rules in a web ACL.
+     * </p>
+     * 
      * @param defaultAction
+     *        A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request
+     *        doesn't match the criteria in any of the rules in a web ACL.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -421,13 +451,13 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWebACLId() != null)
-            sb.append("WebACLId: " + getWebACLId() + ",");
+            sb.append("WebACLId: ").append(getWebACLId()).append(",");
         if (getChangeToken() != null)
-            sb.append("ChangeToken: " + getChangeToken() + ",");
+            sb.append("ChangeToken: ").append(getChangeToken()).append(",");
         if (getUpdates() != null)
-            sb.append("Updates: " + getUpdates() + ",");
+            sb.append("Updates: ").append(getUpdates()).append(",");
         if (getDefaultAction() != null)
-            sb.append("DefaultAction: " + getDefaultAction());
+            sb.append("DefaultAction: ").append(getDefaultAction());
         sb.append("}");
         return sb.toString();
     }
@@ -477,4 +507,5 @@ public class UpdateWebACLRequest extends com.amazonaws.AmazonWebServiceRequest i
     public UpdateWebACLRequest clone() {
         return (UpdateWebACLRequest) super.clone();
     }
+
 }

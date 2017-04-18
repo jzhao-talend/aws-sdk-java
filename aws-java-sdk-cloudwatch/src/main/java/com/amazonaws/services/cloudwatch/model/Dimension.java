@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,17 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The <code>Dimension</code> data type further expands on the identity of a metric using a Name, Value pair.
+ * Expands the identity of a metric.
  * </p>
- * <p>
- * For examples that use one or more dimensions, see <a>PutMetricData</a>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/Dimension" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Dimension implements Serializable, Cloneable {
 
     /**
@@ -32,7 +34,7 @@ public class Dimension implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * The value representing the dimension measurement
+     * The value representing the dimension measurement.
      * </p>
      */
     private String value;
@@ -79,11 +81,11 @@ public class Dimension implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value representing the dimension measurement
+     * The value representing the dimension measurement.
      * </p>
      * 
      * @param value
-     *        The value representing the dimension measurement
+     *        The value representing the dimension measurement.
      */
 
     public void setValue(String value) {
@@ -92,10 +94,10 @@ public class Dimension implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value representing the dimension measurement
+     * The value representing the dimension measurement.
      * </p>
      * 
-     * @return The value representing the dimension measurement
+     * @return The value representing the dimension measurement.
      */
 
     public String getValue() {
@@ -104,11 +106,11 @@ public class Dimension implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The value representing the dimension measurement
+     * The value representing the dimension measurement.
      * </p>
      * 
      * @param value
-     *        The value representing the dimension measurement
+     *        The value representing the dimension measurement.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,9 +131,9 @@ public class Dimension implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue());
+            sb.append("Value: ").append(getValue());
         sb.append("}");
         return sb.toString();
     }
@@ -175,4 +177,5 @@ public class Dimension implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

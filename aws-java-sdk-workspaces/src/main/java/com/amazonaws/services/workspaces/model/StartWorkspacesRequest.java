@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -112,7 +117,7 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStartWorkspaceRequests() != null)
-            sb.append("StartWorkspaceRequests: " + getStartWorkspaceRequests());
+            sb.append("StartWorkspaceRequests: ").append(getStartWorkspaceRequests());
         sb.append("}");
         return sb.toString();
     }
@@ -147,4 +152,5 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
     public StartWorkspacesRequest clone() {
         return (StartWorkspacesRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeprecateActivityTypeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -125,9 +125,9 @@ public class DeprecateActivityTypeRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getActivityType() != null)
-            sb.append("ActivityType: " + getActivityType());
+            sb.append("ActivityType: ").append(getActivityType());
         sb.append("}");
         return sb.toString();
     }
@@ -167,4 +167,5 @@ public class DeprecateActivityTypeRequest extends com.amazonaws.AmazonWebService
     public DeprecateActivityTypeRequest clone() {
         return (DeprecateActivityTypeRequest) super.clone();
     }
+
 }

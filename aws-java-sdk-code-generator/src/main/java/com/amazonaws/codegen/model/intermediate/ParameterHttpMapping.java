@@ -16,6 +16,7 @@
 package com.amazonaws.codegen.model.intermediate;
 
 import com.amazonaws.codegen.model.service.Location;
+import com.amazonaws.protocol.MarshallLocation;
 
 public class ParameterHttpMapping {
 
@@ -29,6 +30,7 @@ public class ParameterHttpMapping {
     private boolean isStreaming;
     private Location location;
     private boolean flattened;
+    private boolean isGreedy;
 
     public boolean getIsPayload() {
         return isPayload;
@@ -148,6 +150,36 @@ public class ParameterHttpMapping {
     public ParameterHttpMapping withAdditionalMarshallingPath(String additionalMarshallingPath) {
         this.additionalMarshallingPath = additionalMarshallingPath;
         return this;
+    }
+
+    public boolean isGreedy() {
+        return isGreedy;
+    }
+
+    public ParameterHttpMapping setIsGreedy(boolean greedy) {
+        isGreedy = greedy;
+        return this;
+    }
+
+    public ParameterHttpMapping withIsGreedy(boolean greedy) {
+        setIsGreedy(greedy);
+        return this;
+    }
+
+    public MarshallLocation getMarshallLocation() {
+        if(location == null) {
+            return MarshallLocation.PAYLOAD;
+        }
+        switch (location) {
+            case HEADER:
+            case HEADERS:
+                return MarshallLocation.HEADER;
+            case QUERY_STRING:
+                return MarshallLocation.QUERY_PARAM;
+            case URI:
+                return isGreedy ? MarshallLocation.GREEDY_PATH : MarshallLocation.PATH;
+        }
+        return MarshallLocation.PAYLOAD;
     }
 
 }

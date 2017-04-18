@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,19 +12,27 @@
  */
 package com.amazonaws.auth.policy.actions;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.auth.policy.Action;
 
 /**
  * The available AWS access control policy actions for AWS Application Discovery Service.
  */
-
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum DiscoveryActions implements Action {
 
     /** Represents any action executed on AWS Application Discovery Service. */
     AllDiscoveryActions("discovery:*"),
 
+    /** Action for the AssociateConfigurationItemsToApplication operation. */
+    AssociateConfigurationItemsToApplication("discovery:AssociateConfigurationItemsToApplication"),
+    /** Action for the CreateApplication operation. */
+    CreateApplication("discovery:CreateApplication"),
     /** Action for the CreateTags operation. */
     CreateTags("discovery:CreateTags"),
+    /** Action for the DeleteApplications operation. */
+    DeleteApplications("discovery:DeleteApplications"),
     /** Action for the DeleteTags operation. */
     DeleteTags("discovery:DeleteTags"),
     /** Action for the DescribeAgents operation. */
@@ -33,16 +41,28 @@ public enum DiscoveryActions implements Action {
     DescribeConfigurations("discovery:DescribeConfigurations"),
     /** Action for the DescribeExportConfigurations operation. */
     DescribeExportConfigurations("discovery:DescribeExportConfigurations"),
+    /** Action for the DescribeExportTasks operation. */
+    DescribeExportTasks("discovery:DescribeExportTasks"),
     /** Action for the DescribeTags operation. */
     DescribeTags("discovery:DescribeTags"),
+    /** Action for the DisassociateConfigurationItemsFromApplication operation. */
+    DisassociateConfigurationItemsFromApplication("discovery:DisassociateConfigurationItemsFromApplication"),
     /** Action for the ExportConfigurations operation. */
     ExportConfigurations("discovery:ExportConfigurations"),
+    /** Action for the GetDiscoverySummary operation. */
+    GetDiscoverySummary("discovery:GetDiscoverySummary"),
     /** Action for the ListConfigurations operation. */
     ListConfigurations("discovery:ListConfigurations"),
+    /** Action for the ListServerNeighbors operation. */
+    ListServerNeighbors("discovery:ListServerNeighbors"),
     /** Action for the StartDataCollectionByAgentIds operation. */
     StartDataCollectionByAgentIds("discovery:StartDataCollectionByAgentIds"),
+    /** Action for the StartExportTask operation. */
+    StartExportTask("discovery:StartExportTask"),
     /** Action for the StopDataCollectionByAgentIds operation. */
     StopDataCollectionByAgentIds("discovery:StopDataCollectionByAgentIds"),
+    /** Action for the UpdateApplication operation. */
+    UpdateApplication("discovery:UpdateApplication"),
 
     ;
 

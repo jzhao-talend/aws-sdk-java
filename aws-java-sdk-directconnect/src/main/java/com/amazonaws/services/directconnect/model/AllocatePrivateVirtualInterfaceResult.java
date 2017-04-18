@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocatePrivateVirtualInterface"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
@@ -49,6 +54,8 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
 
     private String customerAddress;
 
+    private String addressFamily;
+
     private String virtualInterfaceState;
     /**
      * <p>
@@ -60,6 +67,8 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
     private String virtualGatewayId;
 
     private com.amazonaws.internal.SdkInternalList<RouteFilterPrefix> routeFilterPrefixes;
+
+    private com.amazonaws.internal.SdkInternalList<BGPPeer> bgpPeers;
 
     /**
      * <p>
@@ -362,6 +371,55 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
     }
 
     /**
+     * @param addressFamily
+     * @see AddressFamily
+     */
+
+    public void setAddressFamily(String addressFamily) {
+        this.addressFamily = addressFamily;
+    }
+
+    /**
+     * @return
+     * @see AddressFamily
+     */
+
+    public String getAddressFamily() {
+        return this.addressFamily;
+    }
+
+    /**
+     * @param addressFamily
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AddressFamily
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withAddressFamily(String addressFamily) {
+        setAddressFamily(addressFamily);
+        return this;
+    }
+
+    /**
+     * @param addressFamily
+     * @see AddressFamily
+     */
+
+    public void setAddressFamily(AddressFamily addressFamily) {
+        this.addressFamily = addressFamily.toString();
+    }
+
+    /**
+     * @param addressFamily
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AddressFamily
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withAddressFamily(AddressFamily addressFamily) {
+        setAddressFamily(addressFamily);
+        return this;
+    }
+
+    /**
      * @param virtualInterfaceState
      * @see VirtualInterfaceState
      */
@@ -532,6 +590,61 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
     }
 
     /**
+     * @return
+     */
+
+    public java.util.List<BGPPeer> getBgpPeers() {
+        if (bgpPeers == null) {
+            bgpPeers = new com.amazonaws.internal.SdkInternalList<BGPPeer>();
+        }
+        return bgpPeers;
+    }
+
+    /**
+     * @param bgpPeers
+     */
+
+    public void setBgpPeers(java.util.Collection<BGPPeer> bgpPeers) {
+        if (bgpPeers == null) {
+            this.bgpPeers = null;
+            return;
+        }
+
+        this.bgpPeers = new com.amazonaws.internal.SdkInternalList<BGPPeer>(bgpPeers);
+    }
+
+    /**
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setBgpPeers(java.util.Collection)} or {@link #withBgpPeers(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param bgpPeers
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withBgpPeers(BGPPeer... bgpPeers) {
+        if (this.bgpPeers == null) {
+            setBgpPeers(new com.amazonaws.internal.SdkInternalList<BGPPeer>(bgpPeers.length));
+        }
+        for (BGPPeer ele : bgpPeers) {
+            this.bgpPeers.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * @param bgpPeers
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withBgpPeers(java.util.Collection<BGPPeer> bgpPeers) {
+        setBgpPeers(bgpPeers);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -543,35 +656,39 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getVirtualInterfaceId() != null)
-            sb.append("VirtualInterfaceId: " + getVirtualInterfaceId() + ",");
+            sb.append("VirtualInterfaceId: ").append(getVirtualInterfaceId()).append(",");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation() + ",");
+            sb.append("Location: ").append(getLocation()).append(",");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: " + getConnectionId() + ",");
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
         if (getVirtualInterfaceType() != null)
-            sb.append("VirtualInterfaceType: " + getVirtualInterfaceType() + ",");
+            sb.append("VirtualInterfaceType: ").append(getVirtualInterfaceType()).append(",");
         if (getVirtualInterfaceName() != null)
-            sb.append("VirtualInterfaceName: " + getVirtualInterfaceName() + ",");
+            sb.append("VirtualInterfaceName: ").append(getVirtualInterfaceName()).append(",");
         if (getVlan() != null)
-            sb.append("Vlan: " + getVlan() + ",");
+            sb.append("Vlan: ").append(getVlan()).append(",");
         if (getAsn() != null)
-            sb.append("Asn: " + getAsn() + ",");
+            sb.append("Asn: ").append(getAsn()).append(",");
         if (getAuthKey() != null)
-            sb.append("AuthKey: " + getAuthKey() + ",");
+            sb.append("AuthKey: ").append(getAuthKey()).append(",");
         if (getAmazonAddress() != null)
-            sb.append("AmazonAddress: " + getAmazonAddress() + ",");
+            sb.append("AmazonAddress: ").append(getAmazonAddress()).append(",");
         if (getCustomerAddress() != null)
-            sb.append("CustomerAddress: " + getCustomerAddress() + ",");
+            sb.append("CustomerAddress: ").append(getCustomerAddress()).append(",");
+        if (getAddressFamily() != null)
+            sb.append("AddressFamily: ").append(getAddressFamily()).append(",");
         if (getVirtualInterfaceState() != null)
-            sb.append("VirtualInterfaceState: " + getVirtualInterfaceState() + ",");
+            sb.append("VirtualInterfaceState: ").append(getVirtualInterfaceState()).append(",");
         if (getCustomerRouterConfig() != null)
-            sb.append("CustomerRouterConfig: " + getCustomerRouterConfig() + ",");
+            sb.append("CustomerRouterConfig: ").append(getCustomerRouterConfig()).append(",");
         if (getVirtualGatewayId() != null)
-            sb.append("VirtualGatewayId: " + getVirtualGatewayId() + ",");
+            sb.append("VirtualGatewayId: ").append(getVirtualGatewayId()).append(",");
         if (getRouteFilterPrefixes() != null)
-            sb.append("RouteFilterPrefixes: " + getRouteFilterPrefixes());
+            sb.append("RouteFilterPrefixes: ").append(getRouteFilterPrefixes()).append(",");
+        if (getBgpPeers() != null)
+            sb.append("BgpPeers: ").append(getBgpPeers());
         sb.append("}");
         return sb.toString();
     }
@@ -630,6 +747,10 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
             return false;
         if (other.getCustomerAddress() != null && other.getCustomerAddress().equals(this.getCustomerAddress()) == false)
             return false;
+        if (other.getAddressFamily() == null ^ this.getAddressFamily() == null)
+            return false;
+        if (other.getAddressFamily() != null && other.getAddressFamily().equals(this.getAddressFamily()) == false)
+            return false;
         if (other.getVirtualInterfaceState() == null ^ this.getVirtualInterfaceState() == null)
             return false;
         if (other.getVirtualInterfaceState() != null && other.getVirtualInterfaceState().equals(this.getVirtualInterfaceState()) == false)
@@ -645,6 +766,10 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
         if (other.getRouteFilterPrefixes() == null ^ this.getRouteFilterPrefixes() == null)
             return false;
         if (other.getRouteFilterPrefixes() != null && other.getRouteFilterPrefixes().equals(this.getRouteFilterPrefixes()) == false)
+            return false;
+        if (other.getBgpPeers() == null ^ this.getBgpPeers() == null)
+            return false;
+        if (other.getBgpPeers() != null && other.getBgpPeers().equals(this.getBgpPeers()) == false)
             return false;
         return true;
     }
@@ -665,10 +790,12 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
         hashCode = prime * hashCode + ((getAuthKey() == null) ? 0 : getAuthKey().hashCode());
         hashCode = prime * hashCode + ((getAmazonAddress() == null) ? 0 : getAmazonAddress().hashCode());
         hashCode = prime * hashCode + ((getCustomerAddress() == null) ? 0 : getCustomerAddress().hashCode());
+        hashCode = prime * hashCode + ((getAddressFamily() == null) ? 0 : getAddressFamily().hashCode());
         hashCode = prime * hashCode + ((getVirtualInterfaceState() == null) ? 0 : getVirtualInterfaceState().hashCode());
         hashCode = prime * hashCode + ((getCustomerRouterConfig() == null) ? 0 : getCustomerRouterConfig().hashCode());
         hashCode = prime * hashCode + ((getVirtualGatewayId() == null) ? 0 : getVirtualGatewayId().hashCode());
         hashCode = prime * hashCode + ((getRouteFilterPrefixes() == null) ? 0 : getRouteFilterPrefixes().hashCode());
+        hashCode = prime * hashCode + ((getBgpPeers() == null) ? 0 : getBgpPeers().hashCode());
         return hashCode;
     }
 
@@ -680,4 +807,5 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

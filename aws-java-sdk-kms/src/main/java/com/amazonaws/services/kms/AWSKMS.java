@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.kms;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.kms.model.*;
 
 /**
  * Interface for accessing KMS.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.kms.AbstractAWSKMS} instead.
+ * </p>
  * <p>
  * <fullname>AWS Key Management Service</fullname>
  * <p>
@@ -123,6 +129,7 @@ import com.amazonaws.services.kms.model.*;
  * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSKMS {
 
     /**
@@ -154,7 +161,11 @@ public interface AWSKMS {
      *        The endpoint (ex: "kms.us-east-1.amazonaws.com/") or a full URL, including the protocol (ex:
      *        "https://kms.us-east-1.amazonaws.com/") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -175,7 +186,9 @@ public interface AWSKMS {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -206,6 +219,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.CancelKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     CancelKeyDeletionResult cancelKeyDeletion(CancelKeyDeletionRequest cancelKeyDeletionRequest);
 
@@ -247,6 +262,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateAliasResult createAlias(CreateAliasRequest createAliasRequest);
 
@@ -286,6 +303,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.CreateGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateGrantResult createGrant(CreateGrantRequest createGrantRequest);
 
@@ -329,7 +348,11 @@ public interface AWSKMS {
      *         The request was rejected because a limit was exceeded. For more information, see <a
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html">Limits</a> in the <i>AWS Key
      *         Management Service Developer Guide</i>.
+     * @throws TagException
+     *         The request was rejected because one or more tags are not valid.
      * @sample AWSKMS.CreateKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateKeyResult createKey(CreateKeyRequest createKeyRequest);
 
@@ -394,6 +417,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.Decrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     DecryptResult decrypt(DecryptRequest decryptRequest);
 
@@ -417,6 +442,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.DeleteAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteAliasResult deleteAlias(DeleteAliasRequest deleteAliasRequest);
 
@@ -456,6 +483,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.DeleteImportedKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteImportedKeyMaterialResult deleteImportedKeyMaterial(DeleteImportedKeyMaterialRequest deleteImportedKeyMaterialRequest);
 
@@ -475,6 +504,8 @@ public interface AWSKMS {
      * @throws KMSInternalException
      *         The request was rejected because an internal exception occurred. The request can be retried.
      * @sample AWSKMS.DescribeKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeKeyResult describeKey(DescribeKeyRequest describeKeyRequest);
 
@@ -503,6 +534,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.DisableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     DisableKeyResult disableKey(DisableKeyRequest disableKeyRequest);
 
@@ -533,6 +566,8 @@ public interface AWSKMS {
      *         The request was rejected because a specified parameter is not supported or a specified resource is not
      *         valid for this operation.
      * @sample AWSKMS.DisableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     DisableKeyRotationResult disableKeyRotation(DisableKeyRotationRequest disableKeyRotationRequest);
 
@@ -562,6 +597,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.EnableKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey" target="_top">AWS API
+     *      Documentation</a>
      */
     EnableKeyResult enableKey(EnableKeyRequest enableKeyRequest);
 
@@ -592,6 +629,8 @@ public interface AWSKMS {
      *         The request was rejected because a specified parameter is not supported or a specified resource is not
      *         valid for this operation.
      * @sample AWSKMS.EnableKeyRotation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation" target="_top">AWS API
+     *      Documentation</a>
      */
     EnableKeyRotationResult enableKeyRotation(EnableKeyRotationRequest enableKeyRotationRequest);
 
@@ -651,6 +690,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.Encrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     EncryptResult encrypt(EncryptRequest encryptRequest);
 
@@ -742,6 +783,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.GenerateDataKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey" target="_top">AWS API
+     *      Documentation</a>
      */
     GenerateDataKeyResult generateDataKey(GenerateDataKeyRequest generateDataKeyRequest);
 
@@ -784,6 +827,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.GenerateDataKeyWithoutPlaintext
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext"
+     *      target="_top">AWS API Documentation</a>
      */
     GenerateDataKeyWithoutPlaintextResult generateDataKeyWithoutPlaintext(GenerateDataKeyWithoutPlaintextRequest generateDataKeyWithoutPlaintextRequest);
 
@@ -799,6 +844,8 @@ public interface AWSKMS {
      * @throws KMSInternalException
      *         The request was rejected because an internal exception occurred. The request can be retried.
      * @sample AWSKMS.GenerateRandom
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom" target="_top">AWS API
+     *      Documentation</a>
      */
     GenerateRandomResult generateRandom(GenerateRandomRequest generateRandomRequest);
 
@@ -831,6 +878,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.GetKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     GetKeyPolicyResult getKeyPolicy(GetKeyPolicyRequest getKeyPolicyRequest);
 
@@ -859,6 +908,8 @@ public interface AWSKMS {
      *         The request was rejected because a specified parameter is not supported or a specified resource is not
      *         valid for this operation.
      * @sample AWSKMS.GetKeyRotationStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     GetKeyRotationStatusResult getKeyRotationStatus(GetKeyRotationStatusRequest getKeyRotationStatusRequest);
 
@@ -902,6 +953,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.GetParametersForImport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport" target="_top">AWS API
+     *      Documentation</a>
      */
     GetParametersForImportResult getParametersForImport(GetParametersForImportRequest getParametersForImportRequest);
 
@@ -962,6 +1015,8 @@ public interface AWSKMS {
      *         The request was rejected because the provided import token is invalid or is associated with a different
      *         customer master key (CMK).
      * @sample AWSKMS.ImportKeyMaterial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial" target="_top">AWS API
+     *      Documentation</a>
      */
     ImportKeyMaterialResult importKeyMaterial(ImportKeyMaterialRequest importKeyMaterialRequest);
 
@@ -980,6 +1035,8 @@ public interface AWSKMS {
      * @throws KMSInternalException
      *         The request was rejected because an internal exception occurred. The request can be retried.
      * @sample AWSKMS.ListAliases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases" target="_top">AWS API
+     *      Documentation</a>
      */
     ListAliasesResult listAliases(ListAliasesRequest listAliasesRequest);
 
@@ -1015,6 +1072,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.ListGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     ListGrantsResult listGrants(ListGrantsRequest listGrantsRequest);
 
@@ -1040,6 +1099,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.ListKeyPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     ListKeyPoliciesResult listKeyPolicies(ListKeyPoliciesRequest listKeyPoliciesRequest);
 
@@ -1058,6 +1119,8 @@ public interface AWSKMS {
      *         The request was rejected because the marker that specifies where pagination should next begin is not
      *         valid.
      * @sample AWSKMS.ListKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     ListKeysResult listKeys(ListKeysRequest listKeysRequest);
 
@@ -1067,6 +1130,28 @@ public interface AWSKMS {
      * @see #listKeys(ListKeysRequest)
      */
     ListKeysResult listKeys();
+
+    /**
+     * <p>
+     * Returns a list of all tags for the specified customer master key (CMK).
+     * </p>
+     * 
+     * @param listResourceTagsRequest
+     * @return Result of the ListResourceTags operation returned by the service.
+     * @throws KMSInternalException
+     *         The request was rejected because an internal exception occurred. The request can be retried.
+     * @throws NotFoundException
+     *         The request was rejected because the specified entity or resource could not be found.
+     * @throws InvalidArnException
+     *         The request was rejected because a specified ARN was not valid.
+     * @throws InvalidMarkerException
+     *         The request was rejected because the marker that specifies where pagination should next begin is not
+     *         valid.
+     * @sample AWSKMS.ListResourceTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListResourceTagsResult listResourceTags(ListResourceTagsRequest listResourceTagsRequest);
 
     /**
      * <p>
@@ -1090,6 +1175,8 @@ public interface AWSKMS {
      * @throws KMSInternalException
      *         The request was rejected because an internal exception occurred. The request can be retried.
      * @sample AWSKMS.ListRetirableGrants
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants" target="_top">AWS API
+     *      Documentation</a>
      */
     ListRetirableGrantsResult listRetirableGrants(ListRetirableGrantsRequest listRetirableGrantsRequest);
 
@@ -1129,21 +1216,25 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.PutKeyPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     PutKeyPolicyResult putKeyPolicy(PutKeyPolicyRequest putKeyPolicyRequest);
 
     /**
      * <p>
-     * Encrypts data on the server side with a new customer master key without exposing the plaintext of the data on the
-     * client side. The data is first decrypted and then encrypted. This operation can also be used to change the
-     * encryption context of a ciphertext.
+     * Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data
+     * on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change
+     * the encryption context of a ciphertext.
      * </p>
      * <p>
-     * Unlike other actions, <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code> on the
-     * source key and once as <code>ReEncryptTo</code> on the destination key. We therefore recommend that you include
-     * the <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit re-encryption from or to the
-     * key. The statement is included automatically when you authorize use of the key through the console but must be
-     * included manually when you set a policy by using the <a>PutKeyPolicy</a> function.
+     * Unlike other operations, <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code> on the
+     * source CMK and once as <code>ReEncryptTo</code> on the destination CMK. We recommend that you include the
+     * <code>"kms:ReEncrypt*"</code> permission in your <a
+     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key policies</a> to permit
+     * reencryption from or to the CMK. This permission is automatically included in the key policy when you create a
+     * CMK through the console, but you must include it manually when you create a CMK programmatically or when you set
+     * a key policy with the <a>PutKeyPolicy</a> operation.
      * </p>
      * 
      * @param reEncryptRequest
@@ -1171,35 +1262,37 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.ReEncrypt
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt" target="_top">AWS API
+     *      Documentation</a>
      */
     ReEncryptResult reEncrypt(ReEncryptRequest reEncryptRequest);
 
     /**
      * <p>
-     * Retires a grant. You can retire a grant when you're done using it to clean up. You should revoke a grant when you
-     * intend to actively deny operations that depend on it. The following are permitted to call this API:
+     * Retires a grant. To clean up, you can retire a grant when you're done using it. You should revoke a grant when
+     * you intend to actively deny operations that depend on it. The following are permitted to call this API:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * The account that created the grant
+     * The AWS account (root user) under which the grant was created
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>RetiringPrincipal</code>, if present
+     * The <code>RetiringPrincipal</code>, if present in the grant
      * </p>
      * </li>
      * <li>
      * <p>
-     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee operation
+     * The <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation specified in the grant
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The grant to retire must be identified by its grant token or by a combination of the key ARN and the grant ID. A
-     * grant token is a unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier of
-     * a grant. Both are returned by the <code>CreateGrant</code> function.
+     * You must identify the grant to retire by its grant token or by a combination of the grant ID and the Amazon
+     * Resource Name (ARN) of the customer master key (CMK). A grant token is a unique variable-length base64-encoded
+     * string. A grant ID is a 64 character unique identifier of a grant. The <a>CreateGrant</a> operation returns both.
      * </p>
      * 
      * @param retireGrantRequest
@@ -1221,6 +1314,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.RetireGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     RetireGrantResult retireGrant(RetireGrantRequest retireGrantRequest);
 
@@ -1255,6 +1350,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.RevokeGrant
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant" target="_top">AWS API
+     *      Documentation</a>
      */
     RevokeGrantResult revokeGrant(RevokeGrantRequest revokeGrantRequest);
 
@@ -1264,7 +1361,7 @@ public interface AWSKMS {
      * before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this
      * operation is successful, the state of the CMK changes to <code>PendingDeletion</code>. Before the waiting period
      * ends, you can use <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the waiting period ends, AWS
-     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that point to it.
+     * KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that refer to it.
      * </p>
      * <important>
      * <p>
@@ -1296,8 +1393,82 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.ScheduleKeyDeletion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion" target="_top">AWS API
+     *      Documentation</a>
      */
     ScheduleKeyDeletionResult scheduleKeyDeletion(ScheduleKeyDeletionRequest scheduleKeyDeletionRequest);
+
+    /**
+     * <p>
+     * Adds or overwrites one or more tags for the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be
+     * empty (null) strings.
+     * </p>
+     * <p>
+     * You cannot use the same tag key more than once per CMK. For example, consider a CMK with one tag whose tag key is
+     * <code>Purpose</code> and tag value is <code>Test</code>. If you send a <code>TagResource</code> request for this
+     * CMK with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it does not create a second tag.
+     * Instead, the original tag is overwritten with the new tag value.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws KMSInternalException
+     *         The request was rejected because an internal exception occurred. The request can be retried.
+     * @throws NotFoundException
+     *         The request was rejected because the specified entity or resource could not be found.
+     * @throws InvalidArnException
+     *         The request was rejected because a specified ARN was not valid.
+     * @throws KMSInvalidStateException
+     *         The request was rejected because the state of the specified resource is not valid for this request.</p>
+     *         <p>
+     *         For more information about how key state affects the use of a CMK, see <a
+     *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
+     *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @throws LimitExceededException
+     *         The request was rejected because a limit was exceeded. For more information, see <a
+     *         href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html">Limits</a> in the <i>AWS Key
+     *         Management Service Developer Guide</i>.
+     * @throws TagException
+     *         The request was rejected because one or more tags are not valid.
+     * @sample AWSKMS.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes the specified tag or tags from the specified customer master key (CMK).
+     * </p>
+     * <p>
+     * To remove a tag, you specify the tag key for each tag to remove. You do not specify the tag value. To overwrite
+     * the tag value for an existing tag, use <a>TagResource</a>.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws KMSInternalException
+     *         The request was rejected because an internal exception occurred. The request can be retried.
+     * @throws NotFoundException
+     *         The request was rejected because the specified entity or resource could not be found.
+     * @throws InvalidArnException
+     *         The request was rejected because a specified ARN was not valid.
+     * @throws KMSInvalidStateException
+     *         The request was rejected because the state of the specified resource is not valid for this request.</p>
+     *         <p>
+     *         For more information about how key state affects the use of a CMK, see <a
+     *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
+     *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @throws TagException
+     *         The request was rejected because one or more tags are not valid.
+     * @sample AWSKMS.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
 
     /**
      * <p>
@@ -1331,12 +1502,14 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.UpdateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateAliasResult updateAlias(UpdateAliasRequest updateAliasRequest);
 
     /**
      * <p>
-     * Updates the description of a key.
+     * Updates the description of a customer master key (CMK).
      * </p>
      * 
      * @param updateKeyDescriptionRequest
@@ -1356,6 +1529,8 @@ public interface AWSKMS {
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a
      *         Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @sample AWSKMS.UpdateKeyDescription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription" target="_top">AWS API
+     *      Documentation</a>
      */
     UpdateKeyDescriptionResult updateKeyDescription(UpdateKeyDescriptionRequest updateKeyDescriptionRequest);
 

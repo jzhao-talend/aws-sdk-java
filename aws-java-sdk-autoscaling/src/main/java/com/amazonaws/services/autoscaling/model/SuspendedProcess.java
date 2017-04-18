@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an Auto Scaling process that has been suspended. For more information, see <a>ProcessType</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendedProcess" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SuspendedProcess implements Serializable, Cloneable {
 
     /**
@@ -126,9 +131,9 @@ public class SuspendedProcess implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProcessName() != null)
-            sb.append("ProcessName: " + getProcessName() + ",");
+            sb.append("ProcessName: ").append(getProcessName()).append(",");
         if (getSuspensionReason() != null)
-            sb.append("SuspensionReason: " + getSuspensionReason());
+            sb.append("SuspensionReason: ").append(getSuspensionReason());
         sb.append("}");
         return sb.toString();
     }
@@ -172,4 +177,5 @@ public class SuspendedProcess implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

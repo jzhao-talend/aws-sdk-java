@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Describes the placement for the instance.
+ * Describes the placement of an instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Placement" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Placement implements Serializable, Cloneable {
 
     /**
@@ -43,7 +48,7 @@ public class Placement implements Serializable, Cloneable {
     private String tenancy;
     /**
      * <p>
-     * The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
      */
@@ -249,12 +254,12 @@ public class Placement implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
      * 
      * @param hostId
-     *        The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     *        The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      *        <a>ImportInstance</a> command.
      */
 
@@ -264,11 +269,11 @@ public class Placement implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
      * 
-     * @return The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     * @return The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      *         <a>ImportInstance</a> command.
      */
 
@@ -278,12 +283,12 @@ public class Placement implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
      * 
      * @param hostId
-     *        The ID of the Dedicted host on which the instance resides. This parameter is not support for the
+     *        The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      *        <a>ImportInstance</a> command.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -351,15 +356,15 @@ public class Placement implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getGroupName() != null)
-            sb.append("GroupName: " + getGroupName() + ",");
+            sb.append("GroupName: ").append(getGroupName()).append(",");
         if (getTenancy() != null)
-            sb.append("Tenancy: " + getTenancy() + ",");
+            sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getHostId() != null)
-            sb.append("HostId: " + getHostId() + ",");
+            sb.append("HostId: ").append(getHostId()).append(",");
         if (getAffinity() != null)
-            sb.append("Affinity: " + getAffinity());
+            sb.append("Affinity: ").append(getAffinity());
         sb.append("}");
         return sb.toString();
     }
@@ -418,4 +423,5 @@ public class Placement implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

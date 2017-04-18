@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * This entity represents an instance group, which is a group of instances that have common purpose. For example, CORE
  * instance group is used for HDFS.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/InstanceGroup" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InstanceGroup implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceGroup implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -108,6 +115,14 @@ public class InstanceGroup implements Serializable, Cloneable {
      * </p>
      */
     private ShrinkPolicy shrinkPolicy;
+    /**
+     * <p>
+     * An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     * automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response
+     * to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     * </p>
+     */
+    private AutoScalingPolicyDescription autoScalingPolicy;
 
     /**
      * <p>
@@ -836,6 +851,58 @@ public class InstanceGroup implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     * automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response
+     * to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     * </p>
+     * 
+     * @param autoScalingPolicy
+     *        An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     *        automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in
+     *        response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     */
+
+    public void setAutoScalingPolicy(AutoScalingPolicyDescription autoScalingPolicy) {
+        this.autoScalingPolicy = autoScalingPolicy;
+    }
+
+    /**
+     * <p>
+     * An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     * automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response
+     * to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     * </p>
+     * 
+     * @return An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster.
+     *         The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances
+     *         in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     */
+
+    public AutoScalingPolicyDescription getAutoScalingPolicy() {
+        return this.autoScalingPolicy;
+    }
+
+    /**
+     * <p>
+     * An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     * automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response
+     * to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     * </p>
+     * 
+     * @param autoScalingPolicy
+     *        An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The
+     *        automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in
+     *        response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceGroup withAutoScalingPolicy(AutoScalingPolicyDescription autoScalingPolicy) {
+        setAutoScalingPolicy(autoScalingPolicy);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -847,31 +914,33 @@ public class InstanceGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getMarket() != null)
-            sb.append("Market: " + getMarket() + ",");
+            sb.append("Market: ").append(getMarket()).append(",");
         if (getInstanceGroupType() != null)
-            sb.append("InstanceGroupType: " + getInstanceGroupType() + ",");
+            sb.append("InstanceGroupType: ").append(getInstanceGroupType()).append(",");
         if (getBidPrice() != null)
-            sb.append("BidPrice: " + getBidPrice() + ",");
+            sb.append("BidPrice: ").append(getBidPrice()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getRequestedInstanceCount() != null)
-            sb.append("RequestedInstanceCount: " + getRequestedInstanceCount() + ",");
+            sb.append("RequestedInstanceCount: ").append(getRequestedInstanceCount()).append(",");
         if (getRunningInstanceCount() != null)
-            sb.append("RunningInstanceCount: " + getRunningInstanceCount() + ",");
+            sb.append("RunningInstanceCount: ").append(getRunningInstanceCount()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getConfigurations() != null)
-            sb.append("Configurations: " + getConfigurations() + ",");
+            sb.append("Configurations: ").append(getConfigurations()).append(",");
         if (getEbsBlockDevices() != null)
-            sb.append("EbsBlockDevices: " + getEbsBlockDevices() + ",");
+            sb.append("EbsBlockDevices: ").append(getEbsBlockDevices()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getShrinkPolicy() != null)
-            sb.append("ShrinkPolicy: " + getShrinkPolicy());
+            sb.append("ShrinkPolicy: ").append(getShrinkPolicy()).append(",");
+        if (getAutoScalingPolicy() != null)
+            sb.append("AutoScalingPolicy: ").append(getAutoScalingPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -938,6 +1007,10 @@ public class InstanceGroup implements Serializable, Cloneable {
             return false;
         if (other.getShrinkPolicy() != null && other.getShrinkPolicy().equals(this.getShrinkPolicy()) == false)
             return false;
+        if (other.getAutoScalingPolicy() == null ^ this.getAutoScalingPolicy() == null)
+            return false;
+        if (other.getAutoScalingPolicy() != null && other.getAutoScalingPolicy().equals(this.getAutoScalingPolicy()) == false)
+            return false;
         return true;
     }
 
@@ -959,6 +1032,7 @@ public class InstanceGroup implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEbsBlockDevices() == null) ? 0 : getEbsBlockDevices().hashCode());
         hashCode = prime * hashCode + ((getEbsOptimized() == null) ? 0 : getEbsOptimized().hashCode());
         hashCode = prime * hashCode + ((getShrinkPolicy() == null) ? 0 : getShrinkPolicy().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingPolicy() == null) ? 0 : getAutoScalingPolicy().hashCode());
         return hashCode;
     }
 
@@ -969,5 +1043,11 @@ public class InstanceGroup implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.InstanceGroupMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

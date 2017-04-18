@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the buffering to perform before delivering data to the Amazon ES destination.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/ElasticsearchBufferingHints"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ElasticsearchBufferingHints implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ElasticsearchBufferingHints implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -34,9 +41,9 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
      * 5.
      * </p>
      * <p>
-     * We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into the
-     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set <b>SizeInMBs</b> to be
-     * 10 MB or higher.
+     * We recommend setting this parameter to a value greater than the amount of data you typically ingest into the
+     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB
+     * or higher.
      * </p>
      */
     private Integer sizeInMBs;
@@ -93,18 +100,18 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
      * 5.
      * </p>
      * <p>
-     * We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into the
-     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set <b>SizeInMBs</b> to be
-     * 10 MB or higher.
+     * We recommend setting this parameter to a value greater than the amount of data you typically ingest into the
+     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB
+     * or higher.
      * </p>
      * 
      * @param sizeInMBs
      *        Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default
      *        value is 5.</p>
      *        <p>
-     *        We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into
-     *        the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set
-     *        <b>SizeInMBs</b> to be 10 MB or higher.
+     *        We recommend setting this parameter to a value greater than the amount of data you typically ingest into
+     *        the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should
+     *        be 10 MB or higher.
      */
 
     public void setSizeInMBs(Integer sizeInMBs) {
@@ -117,17 +124,17 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
      * 5.
      * </p>
      * <p>
-     * We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into the
-     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set <b>SizeInMBs</b> to be
-     * 10 MB or higher.
+     * We recommend setting this parameter to a value greater than the amount of data you typically ingest into the
+     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB
+     * or higher.
      * </p>
      * 
      * @return Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default
      *         value is 5.</p>
      *         <p>
-     *         We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest
-     *         into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set
-     *         <b>SizeInMBs</b> to be 10 MB or higher.
+     *         We recommend setting this parameter to a value greater than the amount of data you typically ingest into
+     *         the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value
+     *         should be 10 MB or higher.
      */
 
     public Integer getSizeInMBs() {
@@ -140,18 +147,18 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
      * 5.
      * </p>
      * <p>
-     * We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into the
-     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set <b>SizeInMBs</b> to be
-     * 10 MB or higher.
+     * We recommend setting this parameter to a value greater than the amount of data you typically ingest into the
+     * delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB
+     * or higher.
      * </p>
      * 
      * @param sizeInMBs
      *        Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default
      *        value is 5.</p>
      *        <p>
-     *        We recommend setting <b>SizeInMBs</b> to a value greater than the amount of data you typically ingest into
-     *        the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set
-     *        <b>SizeInMBs</b> to be 10 MB or higher.
+     *        We recommend setting this parameter to a value greater than the amount of data you typically ingest into
+     *        the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should
+     *        be 10 MB or higher.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -172,9 +179,9 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIntervalInSeconds() != null)
-            sb.append("IntervalInSeconds: " + getIntervalInSeconds() + ",");
+            sb.append("IntervalInSeconds: ").append(getIntervalInSeconds()).append(",");
         if (getSizeInMBs() != null)
-            sb.append("SizeInMBs: " + getSizeInMBs());
+            sb.append("SizeInMBs: ").append(getSizeInMBs());
         sb.append("}");
         return sb.toString();
     }
@@ -217,5 +224,11 @@ public class ElasticsearchBufferingHints implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.ElasticsearchBufferingHintsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

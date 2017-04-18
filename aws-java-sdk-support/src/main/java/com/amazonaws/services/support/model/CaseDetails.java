@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -88,8 +91,12 @@ import java.io.Serializable;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CaseDetails" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CaseDetails implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CaseDetails implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -713,29 +720,29 @@ public class CaseDetails implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCaseId() != null)
-            sb.append("CaseId: " + getCaseId() + ",");
+            sb.append("CaseId: ").append(getCaseId()).append(",");
         if (getDisplayId() != null)
-            sb.append("DisplayId: " + getDisplayId() + ",");
+            sb.append("DisplayId: ").append(getDisplayId()).append(",");
         if (getSubject() != null)
-            sb.append("Subject: " + getSubject() + ",");
+            sb.append("Subject: ").append(getSubject()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getServiceCode() != null)
-            sb.append("ServiceCode: " + getServiceCode() + ",");
+            sb.append("ServiceCode: ").append(getServiceCode()).append(",");
         if (getCategoryCode() != null)
-            sb.append("CategoryCode: " + getCategoryCode() + ",");
+            sb.append("CategoryCode: ").append(getCategoryCode()).append(",");
         if (getSeverityCode() != null)
-            sb.append("SeverityCode: " + getSeverityCode() + ",");
+            sb.append("SeverityCode: ").append(getSeverityCode()).append(",");
         if (getSubmittedBy() != null)
-            sb.append("SubmittedBy: " + getSubmittedBy() + ",");
+            sb.append("SubmittedBy: ").append(getSubmittedBy()).append(",");
         if (getTimeCreated() != null)
-            sb.append("TimeCreated: " + getTimeCreated() + ",");
+            sb.append("TimeCreated: ").append(getTimeCreated()).append(",");
         if (getRecentCommunications() != null)
-            sb.append("RecentCommunications: " + getRecentCommunications() + ",");
+            sb.append("RecentCommunications: ").append(getRecentCommunications()).append(",");
         if (getCcEmailAddresses() != null)
-            sb.append("CcEmailAddresses: " + getCcEmailAddresses() + ",");
+            sb.append("CcEmailAddresses: ").append(getCcEmailAddresses()).append(",");
         if (getLanguage() != null)
-            sb.append("Language: " + getLanguage());
+            sb.append("Language: ").append(getLanguage());
         sb.append("}");
         return sb.toString();
     }
@@ -828,5 +835,11 @@ public class CaseDetails implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.support.model.transform.CaseDetailsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

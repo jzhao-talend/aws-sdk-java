@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information regarding the export status of the discovered data. The value is an array of objects.
  * </p>
  */
-public class ExportInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ExportInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -49,7 +53,7 @@ public class ExportInfo implements Serializable, Cloneable {
     private String configurationsDownloadUrl;
     /**
      * <p>
-     * The time the configuration data export was initiated.
+     * The time that the configuration data export was initiated.
      * </p>
      */
     private java.util.Date exportRequestTime;
@@ -261,11 +265,11 @@ public class ExportInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the configuration data export was initiated.
+     * The time that the configuration data export was initiated.
      * </p>
      * 
      * @param exportRequestTime
-     *        The time the configuration data export was initiated.
+     *        The time that the configuration data export was initiated.
      */
 
     public void setExportRequestTime(java.util.Date exportRequestTime) {
@@ -274,10 +278,10 @@ public class ExportInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the configuration data export was initiated.
+     * The time that the configuration data export was initiated.
      * </p>
      * 
-     * @return The time the configuration data export was initiated.
+     * @return The time that the configuration data export was initiated.
      */
 
     public java.util.Date getExportRequestTime() {
@@ -286,11 +290,11 @@ public class ExportInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the configuration data export was initiated.
+     * The time that the configuration data export was initiated.
      * </p>
      * 
      * @param exportRequestTime
-     *        The time the configuration data export was initiated.
+     *        The time that the configuration data export was initiated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -311,15 +315,15 @@ public class ExportInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExportId() != null)
-            sb.append("ExportId: " + getExportId() + ",");
+            sb.append("ExportId: ").append(getExportId()).append(",");
         if (getExportStatus() != null)
-            sb.append("ExportStatus: " + getExportStatus() + ",");
+            sb.append("ExportStatus: ").append(getExportStatus()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getConfigurationsDownloadUrl() != null)
-            sb.append("ConfigurationsDownloadUrl: " + getConfigurationsDownloadUrl() + ",");
+            sb.append("ConfigurationsDownloadUrl: ").append(getConfigurationsDownloadUrl()).append(",");
         if (getExportRequestTime() != null)
-            sb.append("ExportRequestTime: " + getExportRequestTime());
+            sb.append("ExportRequestTime: ").append(getExportRequestTime());
         sb.append("}");
         return sb.toString();
     }
@@ -377,5 +381,11 @@ public class ExportInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationdiscovery.model.transform.ExportInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

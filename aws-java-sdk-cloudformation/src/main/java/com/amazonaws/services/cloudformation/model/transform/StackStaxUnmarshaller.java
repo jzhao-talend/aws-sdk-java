@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.cloudformation.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * Stack StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StackStaxUnmarshaller implements Unmarshaller<Stack, StaxUnmarshallerContext> {
 
     public Stack unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -65,6 +65,11 @@ public class StackStaxUnmarshaller implements Unmarshaller<Stack, StaxUnmarshall
                     continue;
                 }
 
+                if (context.testExpression("Parameters", targetDepth)) {
+                    stack.withParameters(new ArrayList<Parameter>());
+                    continue;
+                }
+
                 if (context.testExpression("Parameters/member", targetDepth)) {
                     stack.withParameters(ParameterStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -95,6 +100,11 @@ public class StackStaxUnmarshaller implements Unmarshaller<Stack, StaxUnmarshall
                     continue;
                 }
 
+                if (context.testExpression("NotificationARNs", targetDepth)) {
+                    stack.withNotificationARNs(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("NotificationARNs/member", targetDepth)) {
                     stack.withNotificationARNs(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -105,8 +115,18 @@ public class StackStaxUnmarshaller implements Unmarshaller<Stack, StaxUnmarshall
                     continue;
                 }
 
+                if (context.testExpression("Capabilities", targetDepth)) {
+                    stack.withCapabilities(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("Capabilities/member", targetDepth)) {
                     stack.withCapabilities(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Outputs", targetDepth)) {
+                    stack.withOutputs(new ArrayList<Output>());
                     continue;
                 }
 
@@ -117,6 +137,11 @@ public class StackStaxUnmarshaller implements Unmarshaller<Stack, StaxUnmarshall
 
                 if (context.testExpression("RoleARN", targetDepth)) {
                     stack.setRoleARN(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Tags", targetDepth)) {
+                    stack.withTags(new ArrayList<Tag>());
                     continue;
                 }
 

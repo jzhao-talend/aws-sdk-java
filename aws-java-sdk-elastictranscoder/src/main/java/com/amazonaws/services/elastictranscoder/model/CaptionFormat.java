@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The file format of the output captions. If you leave this value blank, Elastic Transcoder returns an error.
  * </p>
  */
-public class CaptionFormat implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CaptionFormat implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -93,18 +97,26 @@ public class CaptionFormat implements Serializable, Cloneable {
      * The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:
      * </p>
      * <ul>
-     * <li><i>description</i> is a description of the video.</li>
-     * <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
-     * code for the language of the caption in the output file names.</li>
+     * <li>
+     * <p>
+     * <i>description</i> is a description of the video.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter code
+     * for the language of the caption in the output file names.
+     * </p>
+     * </li>
      * </ul>
      * <p>
-     * If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
-     * appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
-     * Transcoder automatically appends the count to the end of the segment files.
+     * If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically appends "
+     * <code>{language}</code>" to the value that you specify for the description. In addition, Elastic Transcoder
+     * automatically appends the count to the end of the segment files.
      * </p>
      * <p>
-     * For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
-     * language of the captions is English (en), the name of the first caption file will be Sydney-en-sunrise00000.srt.
+     * For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
+     * language of the captions is English (en), the name of the first caption file is be Sydney-en-sunrise00000.srt.
      * </p>
      */
     private String pattern;
@@ -523,35 +535,51 @@ public class CaptionFormat implements Serializable, Cloneable {
      * The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:
      * </p>
      * <ul>
-     * <li><i>description</i> is a description of the video.</li>
-     * <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
-     * code for the language of the caption in the output file names.</li>
+     * <li>
+     * <p>
+     * <i>description</i> is a description of the video.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter code
+     * for the language of the caption in the output file names.
+     * </p>
+     * </li>
      * </ul>
      * <p>
-     * If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
-     * appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
-     * Transcoder automatically appends the count to the end of the segment files.
+     * If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically appends "
+     * <code>{language}</code>" to the value that you specify for the description. In addition, Elastic Transcoder
+     * automatically appends the count to the end of the segment files.
      * </p>
      * <p>
-     * For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
-     * language of the captions is English (en), the name of the first caption file will be Sydney-en-sunrise00000.srt.
+     * For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
+     * language of the captions is English (en), the name of the first caption file is be Sydney-en-sunrise00000.srt.
      * </p>
      * 
      * @param pattern
      *        The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:</p>
      *        <ul>
-     *        <li><i>description</i> is a description of the video.</li>
-     *        <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or
-     *        three-letter code for the language of the caption in the output file names.</li>
+     *        <li>
+     *        <p>
+     *        <i>description</i> is a description of the video.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
+     *        code for the language of the caption in the output file names.
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
-     *        If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder
-     *        automatically appends "<code>{language}</code>" to the value that you specify for the description. In
-     *        addition, Elastic Transcoder automatically appends the count to the end of the segment files.
+     *        If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
+     *        appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
+     *        Transcoder automatically appends the count to the end of the segment files.
      *        </p>
      *        <p>
-     *        For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise",
-     *        and the language of the captions is English (en), the name of the first caption file will be
+     *        For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and
+     *        the language of the captions is English (en), the name of the first caption file is be
      *        Sydney-en-sunrise00000.srt.
      */
 
@@ -564,34 +592,50 @@ public class CaptionFormat implements Serializable, Cloneable {
      * The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:
      * </p>
      * <ul>
-     * <li><i>description</i> is a description of the video.</li>
-     * <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
-     * code for the language of the caption in the output file names.</li>
+     * <li>
+     * <p>
+     * <i>description</i> is a description of the video.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter code
+     * for the language of the caption in the output file names.
+     * </p>
+     * </li>
      * </ul>
      * <p>
-     * If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
-     * appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
-     * Transcoder automatically appends the count to the end of the segment files.
+     * If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically appends "
+     * <code>{language}</code>" to the value that you specify for the description. In addition, Elastic Transcoder
+     * automatically appends the count to the end of the segment files.
      * </p>
      * <p>
-     * For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
-     * language of the captions is English (en), the name of the first caption file will be Sydney-en-sunrise00000.srt.
+     * For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
+     * language of the captions is English (en), the name of the first caption file is be Sydney-en-sunrise00000.srt.
      * </p>
      * 
      * @return The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:</p>
      *         <ul>
-     *         <li><i>description</i> is a description of the video.</li>
-     *         <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or
-     *         three-letter code for the language of the caption in the output file names.</li>
+     *         <li>
+     *         <p>
+     *         <i>description</i> is a description of the video.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
+     *         code for the language of the caption in the output file names.
+     *         </p>
+     *         </li>
      *         </ul>
      *         <p>
-     *         If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder
-     *         automatically appends "<code>{language}</code>" to the value that you specify for the description. In
-     *         addition, Elastic Transcoder automatically appends the count to the end of the segment files.
+     *         If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
+     *         appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
+     *         Transcoder automatically appends the count to the end of the segment files.
      *         </p>
      *         <p>
-     *         For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise",
-     *         and the language of the captions is English (en), the name of the first caption file will be
+     *         For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and
+     *         the language of the captions is English (en), the name of the first caption file is be
      *         Sydney-en-sunrise00000.srt.
      */
 
@@ -604,35 +648,51 @@ public class CaptionFormat implements Serializable, Cloneable {
      * The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:
      * </p>
      * <ul>
-     * <li><i>description</i> is a description of the video.</li>
-     * <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
-     * code for the language of the caption in the output file names.</li>
+     * <li>
+     * <p>
+     * <i>description</i> is a description of the video.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter code
+     * for the language of the caption in the output file names.
+     * </p>
+     * </li>
      * </ul>
      * <p>
-     * If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
-     * appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
-     * Transcoder automatically appends the count to the end of the segment files.
+     * If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically appends "
+     * <code>{language}</code>" to the value that you specify for the description. In addition, Elastic Transcoder
+     * automatically appends the count to the end of the segment files.
      * </p>
      * <p>
-     * For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
-     * language of the captions is English (en), the name of the first caption file will be Sydney-en-sunrise00000.srt.
+     * For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and the
+     * language of the captions is English (en), the name of the first caption file is be Sydney-en-sunrise00000.srt.
      * </p>
      * 
      * @param pattern
      *        The prefix for caption filenames, in the form <i>description</i>-<code>{language}</code>, where:</p>
      *        <ul>
-     *        <li><i>description</i> is a description of the video.</li>
-     *        <li><code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or
-     *        three-letter code for the language of the caption in the output file names.</li>
+     *        <li>
+     *        <p>
+     *        <i>description</i> is a description of the video.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>{language}</code> is a literal value that Elastic Transcoder replaces with the two- or three-letter
+     *        code for the language of the caption in the output file names.
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
-     *        If you don&apos;t include <code>{language}</code> in the file name pattern, Elastic Transcoder
-     *        automatically appends "<code>{language}</code>" to the value that you specify for the description. In
-     *        addition, Elastic Transcoder automatically appends the count to the end of the segment files.
+     *        If you don't include <code>{language}</code> in the file name pattern, Elastic Transcoder automatically
+     *        appends "<code>{language}</code>" to the value that you specify for the description. In addition, Elastic
+     *        Transcoder automatically appends the count to the end of the segment files.
      *        </p>
      *        <p>
-     *        For example, suppose you&apos;re transcoding into srt format. When you enter "Sydney-{language}-sunrise",
-     *        and the language of the captions is English (en), the name of the first caption file will be
+     *        For example, suppose you're transcoding into srt format. When you enter "Sydney-{language}-sunrise", and
+     *        the language of the captions is English (en), the name of the first caption file is be
      *        Sydney-en-sunrise00000.srt.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -694,11 +754,11 @@ public class CaptionFormat implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFormat() != null)
-            sb.append("Format: " + getFormat() + ",");
+            sb.append("Format: ").append(getFormat()).append(",");
         if (getPattern() != null)
-            sb.append("Pattern: " + getPattern() + ",");
+            sb.append("Pattern: ").append(getPattern()).append(",");
         if (getEncryption() != null)
-            sb.append("Encryption: " + getEncryption());
+            sb.append("Encryption: ").append(getEncryption());
         sb.append("}");
         return sb.toString();
     }
@@ -746,5 +806,11 @@ public class CaptionFormat implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.CaptionFormatMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,14 @@
  */
 package com.amazonaws.auth.policy.actions;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.auth.policy.Action;
 
 /**
  * The available AWS access control policy actions for AWS CloudFormation.
  */
-
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum CloudFormationActions implements Action {
 
     /** Represents any action executed on AWS CloudFormation. */
@@ -61,6 +63,8 @@ public enum CloudFormationActions implements Action {
     ListChangeSets("cloudformation:ListChangeSets"),
     /** Action for the ListExports operation. */
     ListExports("cloudformation:ListExports"),
+    /** Action for the ListImports operation. */
+    ListImports("cloudformation:ListImports"),
     /** Action for the ListStackResources operation. */
     ListStackResources("cloudformation:ListStackResources"),
     /** Action for the ListStacks operation. */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.cognitoidentity;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cognitoidentity.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon Cognito Identity asynchronously. Each asynchronous method will return a Java Future
+ * Client for accessing Amazon Cognito Identity asynchronously. Each asynchronous method will return a Java Future
  * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -57,6 +66,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClient implements AmazonCognitoIdentityAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -78,9 +88,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCognitoIdentityAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -102,10 +114,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -118,9 +131,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -131,8 +146,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -147,10 +165,12 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -165,9 +185,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -184,11 +206,12 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -199,10 +222,11 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -216,12 +240,19 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCognitoIdentityAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCognitoIdentityAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCognitoIdentityAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCognitoIdentityAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonCognitoIdentityAsyncClientBuilder asyncBuilder() {
+        return AmazonCognitoIdentityAsyncClientBuilder.standard();
     }
 
     /**
@@ -241,7 +272,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -254,14 +285,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<CreateIdentityPoolResult> createIdentityPoolAsync(final CreateIdentityPoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateIdentityPoolRequest, CreateIdentityPoolResult> asyncHandler) {
+        final CreateIdentityPoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateIdentityPoolResult>() {
             @Override
             public CreateIdentityPoolResult call() throws Exception {
-                CreateIdentityPoolResult result;
+                CreateIdentityPoolResult result = null;
 
                 try {
-                    result = createIdentityPool(request);
+                    result = executeCreateIdentityPool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -270,7 +302,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -286,14 +318,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<DeleteIdentitiesResult> deleteIdentitiesAsync(final DeleteIdentitiesRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteIdentitiesRequest, DeleteIdentitiesResult> asyncHandler) {
+        final DeleteIdentitiesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteIdentitiesResult>() {
             @Override
             public DeleteIdentitiesResult call() throws Exception {
-                DeleteIdentitiesResult result;
+                DeleteIdentitiesResult result = null;
 
                 try {
-                    result = deleteIdentities(request);
+                    result = executeDeleteIdentities(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -302,7 +335,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -318,14 +351,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<DeleteIdentityPoolResult> deleteIdentityPoolAsync(final DeleteIdentityPoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteIdentityPoolRequest, DeleteIdentityPoolResult> asyncHandler) {
+        final DeleteIdentityPoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteIdentityPoolResult>() {
             @Override
             public DeleteIdentityPoolResult call() throws Exception {
-                DeleteIdentityPoolResult result;
+                DeleteIdentityPoolResult result = null;
 
                 try {
-                    result = deleteIdentityPool(request);
+                    result = executeDeleteIdentityPool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -334,7 +368,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -350,14 +384,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<DescribeIdentityResult> describeIdentityAsync(final DescribeIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeIdentityRequest, DescribeIdentityResult> asyncHandler) {
+        final DescribeIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeIdentityResult>() {
             @Override
             public DescribeIdentityResult call() throws Exception {
-                DescribeIdentityResult result;
+                DescribeIdentityResult result = null;
 
                 try {
-                    result = describeIdentity(request);
+                    result = executeDescribeIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -366,7 +401,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -382,14 +417,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<DescribeIdentityPoolResult> describeIdentityPoolAsync(final DescribeIdentityPoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeIdentityPoolRequest, DescribeIdentityPoolResult> asyncHandler) {
+        final DescribeIdentityPoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeIdentityPoolResult>() {
             @Override
             public DescribeIdentityPoolResult call() throws Exception {
-                DescribeIdentityPoolResult result;
+                DescribeIdentityPoolResult result = null;
 
                 try {
-                    result = describeIdentityPool(request);
+                    result = executeDescribeIdentityPool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -398,7 +434,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -414,14 +450,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<GetCredentialsForIdentityResult> getCredentialsForIdentityAsync(final GetCredentialsForIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetCredentialsForIdentityRequest, GetCredentialsForIdentityResult> asyncHandler) {
+        final GetCredentialsForIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetCredentialsForIdentityResult>() {
             @Override
             public GetCredentialsForIdentityResult call() throws Exception {
-                GetCredentialsForIdentityResult result;
+                GetCredentialsForIdentityResult result = null;
 
                 try {
-                    result = getCredentialsForIdentity(request);
+                    result = executeGetCredentialsForIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -430,7 +467,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -446,14 +483,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<GetIdResult> getIdAsync(final GetIdRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetIdRequest, GetIdResult> asyncHandler) {
+        final GetIdRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetIdResult>() {
             @Override
             public GetIdResult call() throws Exception {
-                GetIdResult result;
+                GetIdResult result = null;
 
                 try {
-                    result = getId(request);
+                    result = executeGetId(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -462,7 +500,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -478,14 +516,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<GetIdentityPoolRolesResult> getIdentityPoolRolesAsync(final GetIdentityPoolRolesRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetIdentityPoolRolesRequest, GetIdentityPoolRolesResult> asyncHandler) {
+        final GetIdentityPoolRolesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetIdentityPoolRolesResult>() {
             @Override
             public GetIdentityPoolRolesResult call() throws Exception {
-                GetIdentityPoolRolesResult result;
+                GetIdentityPoolRolesResult result = null;
 
                 try {
-                    result = getIdentityPoolRoles(request);
+                    result = executeGetIdentityPoolRoles(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -494,7 +533,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -510,14 +549,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<GetOpenIdTokenResult> getOpenIdTokenAsync(final GetOpenIdTokenRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetOpenIdTokenRequest, GetOpenIdTokenResult> asyncHandler) {
+        final GetOpenIdTokenRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetOpenIdTokenResult>() {
             @Override
             public GetOpenIdTokenResult call() throws Exception {
-                GetOpenIdTokenResult result;
+                GetOpenIdTokenResult result = null;
 
                 try {
-                    result = getOpenIdToken(request);
+                    result = executeGetOpenIdToken(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -526,7 +566,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -544,14 +584,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     public java.util.concurrent.Future<GetOpenIdTokenForDeveloperIdentityResult> getOpenIdTokenForDeveloperIdentityAsync(
             final GetOpenIdTokenForDeveloperIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetOpenIdTokenForDeveloperIdentityRequest, GetOpenIdTokenForDeveloperIdentityResult> asyncHandler) {
+        final GetOpenIdTokenForDeveloperIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetOpenIdTokenForDeveloperIdentityResult>() {
             @Override
             public GetOpenIdTokenForDeveloperIdentityResult call() throws Exception {
-                GetOpenIdTokenForDeveloperIdentityResult result;
+                GetOpenIdTokenForDeveloperIdentityResult result = null;
 
                 try {
-                    result = getOpenIdTokenForDeveloperIdentity(request);
+                    result = executeGetOpenIdTokenForDeveloperIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -560,7 +601,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -576,14 +617,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<ListIdentitiesResult> listIdentitiesAsync(final ListIdentitiesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListIdentitiesRequest, ListIdentitiesResult> asyncHandler) {
+        final ListIdentitiesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListIdentitiesResult>() {
             @Override
             public ListIdentitiesResult call() throws Exception {
-                ListIdentitiesResult result;
+                ListIdentitiesResult result = null;
 
                 try {
-                    result = listIdentities(request);
+                    result = executeListIdentities(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -592,7 +634,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -608,14 +650,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<ListIdentityPoolsResult> listIdentityPoolsAsync(final ListIdentityPoolsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListIdentityPoolsRequest, ListIdentityPoolsResult> asyncHandler) {
+        final ListIdentityPoolsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListIdentityPoolsResult>() {
             @Override
             public ListIdentityPoolsResult call() throws Exception {
-                ListIdentityPoolsResult result;
+                ListIdentityPoolsResult result = null;
 
                 try {
-                    result = listIdentityPools(request);
+                    result = executeListIdentityPools(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -624,7 +667,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -640,14 +683,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<LookupDeveloperIdentityResult> lookupDeveloperIdentityAsync(final LookupDeveloperIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<LookupDeveloperIdentityRequest, LookupDeveloperIdentityResult> asyncHandler) {
+        final LookupDeveloperIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<LookupDeveloperIdentityResult>() {
             @Override
             public LookupDeveloperIdentityResult call() throws Exception {
-                LookupDeveloperIdentityResult result;
+                LookupDeveloperIdentityResult result = null;
 
                 try {
-                    result = lookupDeveloperIdentity(request);
+                    result = executeLookupDeveloperIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -656,7 +700,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -672,14 +716,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<MergeDeveloperIdentitiesResult> mergeDeveloperIdentitiesAsync(final MergeDeveloperIdentitiesRequest request,
             final com.amazonaws.handlers.AsyncHandler<MergeDeveloperIdentitiesRequest, MergeDeveloperIdentitiesResult> asyncHandler) {
+        final MergeDeveloperIdentitiesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<MergeDeveloperIdentitiesResult>() {
             @Override
             public MergeDeveloperIdentitiesResult call() throws Exception {
-                MergeDeveloperIdentitiesResult result;
+                MergeDeveloperIdentitiesResult result = null;
 
                 try {
-                    result = mergeDeveloperIdentities(request);
+                    result = executeMergeDeveloperIdentities(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -688,7 +733,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -704,14 +749,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<SetIdentityPoolRolesResult> setIdentityPoolRolesAsync(final SetIdentityPoolRolesRequest request,
             final com.amazonaws.handlers.AsyncHandler<SetIdentityPoolRolesRequest, SetIdentityPoolRolesResult> asyncHandler) {
+        final SetIdentityPoolRolesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SetIdentityPoolRolesResult>() {
             @Override
             public SetIdentityPoolRolesResult call() throws Exception {
-                SetIdentityPoolRolesResult result;
+                SetIdentityPoolRolesResult result = null;
 
                 try {
-                    result = setIdentityPoolRoles(request);
+                    result = executeSetIdentityPoolRoles(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -720,7 +766,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -736,14 +782,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<UnlinkDeveloperIdentityResult> unlinkDeveloperIdentityAsync(final UnlinkDeveloperIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<UnlinkDeveloperIdentityRequest, UnlinkDeveloperIdentityResult> asyncHandler) {
+        final UnlinkDeveloperIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UnlinkDeveloperIdentityResult>() {
             @Override
             public UnlinkDeveloperIdentityResult call() throws Exception {
-                UnlinkDeveloperIdentityResult result;
+                UnlinkDeveloperIdentityResult result = null;
 
                 try {
-                    result = unlinkDeveloperIdentity(request);
+                    result = executeUnlinkDeveloperIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -752,7 +799,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -768,14 +815,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<UnlinkIdentityResult> unlinkIdentityAsync(final UnlinkIdentityRequest request,
             final com.amazonaws.handlers.AsyncHandler<UnlinkIdentityRequest, UnlinkIdentityResult> asyncHandler) {
+        final UnlinkIdentityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UnlinkIdentityResult>() {
             @Override
             public UnlinkIdentityResult call() throws Exception {
-                UnlinkIdentityResult result;
+                UnlinkIdentityResult result = null;
 
                 try {
-                    result = unlinkIdentity(request);
+                    result = executeUnlinkIdentity(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -784,7 +832,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -800,14 +848,15 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
     @Override
     public java.util.concurrent.Future<UpdateIdentityPoolResult> updateIdentityPoolAsync(final UpdateIdentityPoolRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateIdentityPoolRequest, UpdateIdentityPoolResult> asyncHandler) {
+        final UpdateIdentityPoolRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateIdentityPoolResult>() {
             @Override
             public UpdateIdentityPoolResult call() throws Exception {
-                UpdateIdentityPoolResult result;
+                UpdateIdentityPoolResult result = null;
 
                 try {
-                    result = updateIdentityPool(request);
+                    result = executeUpdateIdentityPool(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -816,7 +865,7 @@ public class AmazonCognitoIdentityAsyncClient extends AmazonCognitoIdentityClien
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents information about the remote access session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/RemoteAccessSession" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RemoteAccessSession implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RemoteAccessSession implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -153,7 +160,11 @@ public class RemoteAccessSession implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date stopped;
-
+    /**
+     * <p>
+     * The device (phone or tablet) used in the remote access session.
+     * </p>
+     */
     private Device device;
     /**
      * <p>
@@ -164,7 +175,11 @@ public class RemoteAccessSession implements Serializable, Cloneable {
      * </p>
      */
     private String billingMethod;
-
+    /**
+     * <p>
+     * The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+     * </p>
+     */
     private DeviceMinutes deviceMinutes;
     /**
      * <p>
@@ -1390,7 +1405,12 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The device (phone or tablet) used in the remote access session.
+     * </p>
+     * 
      * @param device
+     *        The device (phone or tablet) used in the remote access session.
      */
 
     public void setDevice(Device device) {
@@ -1398,7 +1418,11 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The device (phone or tablet) used in the remote access session.
+     * </p>
+     * 
+     * @return The device (phone or tablet) used in the remote access session.
      */
 
     public Device getDevice() {
@@ -1406,7 +1430,12 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The device (phone or tablet) used in the remote access session.
+     * </p>
+     * 
      * @param device
+     *        The device (phone or tablet) used in the remote access session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1519,7 +1548,12 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+     * </p>
+     * 
      * @param deviceMinutes
+     *        The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
      */
 
     public void setDeviceMinutes(DeviceMinutes deviceMinutes) {
@@ -1527,7 +1561,12 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+     * </p>
+     * 
+     * @return The number of minutes a device is used in a remote access sesssion (including setup and teardown
+     *         minutes).
      */
 
     public DeviceMinutes getDeviceMinutes() {
@@ -1535,7 +1574,12 @@ public class RemoteAccessSession implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+     * </p>
+     * 
      * @param deviceMinutes
+     *        The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1596,29 +1640,29 @@ public class RemoteAccessSession implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getCreated() != null)
-            sb.append("Created: " + getCreated() + ",");
+            sb.append("Created: ").append(getCreated()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getResult() != null)
-            sb.append("Result: " + getResult() + ",");
+            sb.append("Result: ").append(getResult()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getStarted() != null)
-            sb.append("Started: " + getStarted() + ",");
+            sb.append("Started: ").append(getStarted()).append(",");
         if (getStopped() != null)
-            sb.append("Stopped: " + getStopped() + ",");
+            sb.append("Stopped: ").append(getStopped()).append(",");
         if (getDevice() != null)
-            sb.append("Device: " + getDevice() + ",");
+            sb.append("Device: ").append(getDevice()).append(",");
         if (getBillingMethod() != null)
-            sb.append("BillingMethod: " + getBillingMethod() + ",");
+            sb.append("BillingMethod: ").append(getBillingMethod()).append(",");
         if (getDeviceMinutes() != null)
-            sb.append("DeviceMinutes: " + getDeviceMinutes() + ",");
+            sb.append("DeviceMinutes: ").append(getDeviceMinutes()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint());
+            sb.append("Endpoint: ").append(getEndpoint());
         sb.append("}");
         return sb.toString();
     }
@@ -1711,5 +1755,11 @@ public class RemoteAccessSession implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.RemoteAccessSessionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

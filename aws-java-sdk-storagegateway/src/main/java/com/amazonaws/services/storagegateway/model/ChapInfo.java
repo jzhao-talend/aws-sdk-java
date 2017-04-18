@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your
  * gateway and iSCSI initiators.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ChapInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ChapInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ChapInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -251,13 +258,13 @@ public class ChapInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetARN() != null)
-            sb.append("TargetARN: " + getTargetARN() + ",");
+            sb.append("TargetARN: ").append(getTargetARN()).append(",");
         if (getSecretToAuthenticateInitiator() != null)
-            sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");
+            sb.append("SecretToAuthenticateInitiator: ").append(getSecretToAuthenticateInitiator()).append(",");
         if (getInitiatorName() != null)
-            sb.append("InitiatorName: " + getInitiatorName() + ",");
+            sb.append("InitiatorName: ").append(getInitiatorName()).append(",");
         if (getSecretToAuthenticateTarget() != null)
-            sb.append("SecretToAuthenticateTarget: " + getSecretToAuthenticateTarget());
+            sb.append("SecretToAuthenticateTarget: ").append(getSecretToAuthenticateTarget());
         sb.append("}");
         return sb.toString();
     }
@@ -311,5 +318,11 @@ public class ChapInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.ChapInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

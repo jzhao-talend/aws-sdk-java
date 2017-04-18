@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents information about the state of transitions between one stage and another stage.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/TransitionState" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TransitionState implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TransitionState implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -230,13 +237,13 @@ public class TransitionState implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getLastChangedBy() != null)
-            sb.append("LastChangedBy: " + getLastChangedBy() + ",");
+            sb.append("LastChangedBy: ").append(getLastChangedBy()).append(",");
         if (getLastChangedAt() != null)
-            sb.append("LastChangedAt: " + getLastChangedAt() + ",");
+            sb.append("LastChangedAt: ").append(getLastChangedAt()).append(",");
         if (getDisabledReason() != null)
-            sb.append("DisabledReason: " + getDisabledReason());
+            sb.append("DisabledReason: ").append(getDisabledReason());
         sb.append("}");
         return sb.toString();
     }
@@ -289,5 +296,11 @@ public class TransitionState implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.TransitionStateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

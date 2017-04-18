@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ModifySnapshotAttributeRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.ModifySnapshotAttributeRequest
  * Contains the parameters for ModifySnapshotAttribute.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<ModifySnapshotAttributeRequest> {
 
@@ -549,17 +552,17 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
+            sb.append("SnapshotId: ").append(getSnapshotId()).append(",");
         if (getAttribute() != null)
-            sb.append("Attribute: " + getAttribute() + ",");
+            sb.append("Attribute: ").append(getAttribute()).append(",");
         if (getOperationType() != null)
-            sb.append("OperationType: " + getOperationType() + ",");
+            sb.append("OperationType: ").append(getOperationType()).append(",");
         if (getUserIds() != null)
-            sb.append("UserIds: " + getUserIds() + ",");
+            sb.append("UserIds: ").append(getUserIds()).append(",");
         if (getGroupNames() != null)
-            sb.append("GroupNames: " + getGroupNames() + ",");
+            sb.append("GroupNames: ").append(getGroupNames()).append(",");
         if (getCreateVolumePermission() != null)
-            sb.append("CreateVolumePermission: " + getCreateVolumePermission());
+            sb.append("CreateVolumePermission: ").append(getCreateVolumePermission());
         sb.append("}");
         return sb.toString();
     }

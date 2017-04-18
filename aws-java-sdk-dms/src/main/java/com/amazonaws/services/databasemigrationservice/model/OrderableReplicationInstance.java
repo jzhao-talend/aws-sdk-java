@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/OrderableReplicationInstance" target="_top">AWS
+ *      API Documentation</a>
  */
-public class OrderableReplicationInstance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class OrderableReplicationInstance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -379,19 +386,19 @@ public class OrderableReplicationInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getReplicationInstanceClass() != null)
-            sb.append("ReplicationInstanceClass: " + getReplicationInstanceClass() + ",");
+            sb.append("ReplicationInstanceClass: ").append(getReplicationInstanceClass()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getMinAllocatedStorage() != null)
-            sb.append("MinAllocatedStorage: " + getMinAllocatedStorage() + ",");
+            sb.append("MinAllocatedStorage: ").append(getMinAllocatedStorage()).append(",");
         if (getMaxAllocatedStorage() != null)
-            sb.append("MaxAllocatedStorage: " + getMaxAllocatedStorage() + ",");
+            sb.append("MaxAllocatedStorage: ").append(getMaxAllocatedStorage()).append(",");
         if (getDefaultAllocatedStorage() != null)
-            sb.append("DefaultAllocatedStorage: " + getDefaultAllocatedStorage() + ",");
+            sb.append("DefaultAllocatedStorage: ").append(getDefaultAllocatedStorage()).append(",");
         if (getIncludedAllocatedStorage() != null)
-            sb.append("IncludedAllocatedStorage: " + getIncludedAllocatedStorage());
+            sb.append("IncludedAllocatedStorage: ").append(getIncludedAllocatedStorage());
         sb.append("}");
         return sb.toString();
     }
@@ -459,5 +466,11 @@ public class OrderableReplicationInstance implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.OrderableReplicationInstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

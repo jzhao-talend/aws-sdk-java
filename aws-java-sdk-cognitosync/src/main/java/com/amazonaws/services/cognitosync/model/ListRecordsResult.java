@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,15 @@
 package com.amazonaws.services.cognitosync.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * Returned for a successful ListRecordsRequest.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListRecordsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /** A list of all records. */
@@ -438,23 +443,23 @@ public class ListRecordsResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecords() != null)
-            sb.append("Records: " + getRecords() + ",");
+            sb.append("Records: ").append(getRecords()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getCount() != null)
-            sb.append("Count: " + getCount() + ",");
+            sb.append("Count: ").append(getCount()).append(",");
         if (getDatasetSyncCount() != null)
-            sb.append("DatasetSyncCount: " + getDatasetSyncCount() + ",");
+            sb.append("DatasetSyncCount: ").append(getDatasetSyncCount()).append(",");
         if (getLastModifiedBy() != null)
-            sb.append("LastModifiedBy: " + getLastModifiedBy() + ",");
+            sb.append("LastModifiedBy: ").append(getLastModifiedBy()).append(",");
         if (getMergedDatasetNames() != null)
-            sb.append("MergedDatasetNames: " + getMergedDatasetNames() + ",");
+            sb.append("MergedDatasetNames: ").append(getMergedDatasetNames()).append(",");
         if (getDatasetExists() != null)
-            sb.append("DatasetExists: " + getDatasetExists() + ",");
+            sb.append("DatasetExists: ").append(getDatasetExists()).append(",");
         if (getDatasetDeletedAfterRequestedSyncCount() != null)
-            sb.append("DatasetDeletedAfterRequestedSyncCount: " + getDatasetDeletedAfterRequestedSyncCount() + ",");
+            sb.append("DatasetDeletedAfterRequestedSyncCount: ").append(getDatasetDeletedAfterRequestedSyncCount()).append(",");
         if (getSyncSessionToken() != null)
-            sb.append("SyncSessionToken: " + getSyncSessionToken());
+            sb.append("SyncSessionToken: ").append(getSyncSessionToken());
         sb.append("}");
         return sb.toString();
     }
@@ -534,4 +539,5 @@ public class ListRecordsResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

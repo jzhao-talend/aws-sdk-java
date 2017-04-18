@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a scaling policy.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ScalingPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScalingPolicy implements Serializable, Cloneable {
 
     /**
@@ -740,31 +745,31 @@ public class ScalingPolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getPolicyName() != null)
-            sb.append("PolicyName: " + getPolicyName() + ",");
+            sb.append("PolicyName: ").append(getPolicyName()).append(",");
         if (getPolicyARN() != null)
-            sb.append("PolicyARN: " + getPolicyARN() + ",");
+            sb.append("PolicyARN: ").append(getPolicyARN()).append(",");
         if (getPolicyType() != null)
-            sb.append("PolicyType: " + getPolicyType() + ",");
+            sb.append("PolicyType: ").append(getPolicyType()).append(",");
         if (getAdjustmentType() != null)
-            sb.append("AdjustmentType: " + getAdjustmentType() + ",");
+            sb.append("AdjustmentType: ").append(getAdjustmentType()).append(",");
         if (getMinAdjustmentStep() != null)
-            sb.append("MinAdjustmentStep: " + getMinAdjustmentStep() + ",");
+            sb.append("MinAdjustmentStep: ").append(getMinAdjustmentStep()).append(",");
         if (getMinAdjustmentMagnitude() != null)
-            sb.append("MinAdjustmentMagnitude: " + getMinAdjustmentMagnitude() + ",");
+            sb.append("MinAdjustmentMagnitude: ").append(getMinAdjustmentMagnitude()).append(",");
         if (getScalingAdjustment() != null)
-            sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+            sb.append("ScalingAdjustment: ").append(getScalingAdjustment()).append(",");
         if (getCooldown() != null)
-            sb.append("Cooldown: " + getCooldown() + ",");
+            sb.append("Cooldown: ").append(getCooldown()).append(",");
         if (getStepAdjustments() != null)
-            sb.append("StepAdjustments: " + getStepAdjustments() + ",");
+            sb.append("StepAdjustments: ").append(getStepAdjustments()).append(",");
         if (getMetricAggregationType() != null)
-            sb.append("MetricAggregationType: " + getMetricAggregationType() + ",");
+            sb.append("MetricAggregationType: ").append(getMetricAggregationType()).append(",");
         if (getEstimatedInstanceWarmup() != null)
-            sb.append("EstimatedInstanceWarmup: " + getEstimatedInstanceWarmup() + ",");
+            sb.append("EstimatedInstanceWarmup: ").append(getEstimatedInstanceWarmup()).append(",");
         if (getAlarms() != null)
-            sb.append("Alarms: " + getAlarms());
+            sb.append("Alarms: ").append(getAlarms());
         sb.append("}");
         return sb.toString();
     }
@@ -863,4 +868,5 @@ public class ScalingPolicy implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

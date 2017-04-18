@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.glacier.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * JobParameters JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class JobParametersJsonUnmarshaller implements Unmarshaller<JobParameters, JsonUnmarshallerContext> {
 
     public JobParameters unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class JobParametersJsonUnmarshaller implements Unmarshaller<JobParameters
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -70,6 +71,10 @@ public class JobParametersJsonUnmarshaller implements Unmarshaller<JobParameters
                 if (context.testExpression("RetrievalByteRange", targetDepth)) {
                     context.nextToken();
                     jobParameters.setRetrievalByteRange(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Tier", targetDepth)) {
+                    context.nextToken();
+                    jobParameters.setTier(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("InventoryRetrievalParameters", targetDepth)) {
                     context.nextToken();

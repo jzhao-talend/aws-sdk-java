@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the request to update the user pool client.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPoolClient" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -42,7 +48,7 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     private String clientName;
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      */
     private Integer refreshTokenValidity;
@@ -187,11 +193,11 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
      * @param refreshTokenValidity
-     *        The validity of the refresh token.
+     *        The validity of the refresh token, in days.
      */
 
     public void setRefreshTokenValidity(Integer refreshTokenValidity) {
@@ -200,10 +206,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
-     * @return The validity of the refresh token.
+     * @return The validity of the refresh token, in days.
      */
 
     public Integer getRefreshTokenValidity() {
@@ -212,11 +218,11 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
      * @param refreshTokenValidity
-     *        The validity of the refresh token.
+     *        The validity of the refresh token, in days.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -475,19 +481,19 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserPoolId() != null)
-            sb.append("UserPoolId: " + getUserPoolId() + ",");
+            sb.append("UserPoolId: ").append(getUserPoolId()).append(",");
         if (getClientId() != null)
-            sb.append("ClientId: " + getClientId() + ",");
+            sb.append("ClientId: ").append(getClientId()).append(",");
         if (getClientName() != null)
-            sb.append("ClientName: " + getClientName() + ",");
+            sb.append("ClientName: ").append(getClientName()).append(",");
         if (getRefreshTokenValidity() != null)
-            sb.append("RefreshTokenValidity: " + getRefreshTokenValidity() + ",");
+            sb.append("RefreshTokenValidity: ").append(getRefreshTokenValidity()).append(",");
         if (getReadAttributes() != null)
-            sb.append("ReadAttributes: " + getReadAttributes() + ",");
+            sb.append("ReadAttributes: ").append(getReadAttributes()).append(",");
         if (getWriteAttributes() != null)
-            sb.append("WriteAttributes: " + getWriteAttributes() + ",");
+            sb.append("WriteAttributes: ").append(getWriteAttributes()).append(",");
         if (getExplicitAuthFlows() != null)
-            sb.append("ExplicitAuthFlows: " + getExplicitAuthFlows());
+            sb.append("ExplicitAuthFlows: ").append(getExplicitAuthFlows());
         sb.append("}");
         return sb.toString();
     }
@@ -552,4 +558,5 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     public UpdateUserPoolClientRequest clone() {
         return (UpdateUserPoolClientRequest) super.clone();
     }
+
 }

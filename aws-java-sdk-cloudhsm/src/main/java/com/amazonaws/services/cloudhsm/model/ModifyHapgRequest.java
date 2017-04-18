@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.cloudhsm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ModifyHapg" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyHapgRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -204,11 +209,11 @@ public class ModifyHapgRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHapgArn() != null)
-            sb.append("HapgArn: " + getHapgArn() + ",");
+            sb.append("HapgArn: ").append(getHapgArn()).append(",");
         if (getLabel() != null)
-            sb.append("Label: " + getLabel() + ",");
+            sb.append("Label: ").append(getLabel()).append(",");
         if (getPartitionSerialList() != null)
-            sb.append("PartitionSerialList: " + getPartitionSerialList());
+            sb.append("PartitionSerialList: ").append(getPartitionSerialList());
         sb.append("}");
         return sb.toString();
     }
@@ -253,4 +258,5 @@ public class ModifyHapgRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public ModifyHapgRequest clone() {
         return (ModifyHapgRequest) super.clone();
     }
+
 }

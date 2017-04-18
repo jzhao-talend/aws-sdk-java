@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -50,13 +54,14 @@ import com.amazonaws.services.lambda.model.transform.*;
  * </p>
  * <p>
  * This is the <i>AWS Lambda API Reference</i>. The AWS Lambda Developer Guide provides additional information. For the
- * service overview, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>,
- * and for information about how the service works, go to <a
+ * service overview, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>, and
+ * for information about how the service works, see <a
  * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the
  * <i>AWS Lambda Developer Guide</i>.
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -69,7 +74,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
@@ -94,6 +99,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                             new JsonErrorShapeMetadata().withErrorCode("PolicyLengthExceededException").withModeledClass(
                                     com.amazonaws.services.lambda.model.PolicyLengthExceededException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KMSAccessDeniedException").withModeledClass(
+                                    com.amazonaws.services.lambda.model.KMSAccessDeniedException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceConflictException").withModeledClass(
                                     com.amazonaws.services.lambda.model.ResourceConflictException.class))
                     .addErrorMetadata(
@@ -109,11 +117,20 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                             new JsonErrorShapeMetadata().withErrorCode("ENILimitReachedException").withModeledClass(
                                     com.amazonaws.services.lambda.model.ENILimitReachedException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KMSInvalidStateException").withModeledClass(
+                                    com.amazonaws.services.lambda.model.KMSInvalidStateException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidZipFileException").withModeledClass(
                                     com.amazonaws.services.lambda.model.InvalidZipFileException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KMSDisabledException").withModeledClass(
+                                    com.amazonaws.services.lambda.model.KMSDisabledException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("SubnetIPAddressLimitReachedException").withModeledClass(
                                     com.amazonaws.services.lambda.model.SubnetIPAddressLimitReachedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KMSNotFoundException").withModeledClass(
+                                    com.amazonaws.services.lambda.model.KMSNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidSubnetIDException").withModeledClass(
                                     com.amazonaws.services.lambda.model.InvalidSubnetIDException.class))
@@ -145,7 +162,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSLambdaClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSLambdaClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -168,7 +187,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSLambdaClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLambdaClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -182,7 +203,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSLambdaClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSLambdaClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSLambdaClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -200,7 +224,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Lambda (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSLambdaClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLambdaClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLambdaClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -217,7 +244,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSLambdaClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSLambdaClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -235,7 +264,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Lambda (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSLambdaClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLambdaClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLambdaClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -255,11 +287,19 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSLambdaClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLambdaClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSLambdaClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSLambdaClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSLambdaClientBuilder builder() {
+        return AWSLambdaClientBuilder.standard();
     }
 
     /**
@@ -327,9 +367,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         Lambda function access policy is limited to 20 KB.
      * @throws TooManyRequestsException
      * @sample AWSLambda.AddPermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AddPermission" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddPermissionResult addPermission(AddPermissionRequest addPermissionRequest) {
+    public AddPermissionResult addPermission(AddPermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddPermission(request);
+    }
+
+    @SdkInternalApi
+    final AddPermissionResult executeAddPermission(AddPermissionRequest addPermissionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addPermissionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -339,7 +388,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddPermissionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addPermissionRequest));
+                request = new AddPermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addPermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -382,9 +431,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.CreateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateAliasResult createAlias(CreateAliasRequest createAliasRequest) {
+    public CreateAliasResult createAlias(CreateAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAlias(request);
+    }
+
+    @SdkInternalApi
+    final CreateAliasResult executeCreateAlias(CreateAliasRequest createAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -394,7 +452,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateAliasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAliasRequest));
+                request = new CreateAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -424,7 +482,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * <important>
      * <p>
      * This event source mapping is relevant only in the AWS Lambda pull model, where AWS Lambda invokes the function.
-     * For more information, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
+     * For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
      * Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>.
      * </p>
      * </important>
@@ -461,9 +519,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @sample AWSLambda.CreateEventSourceMapping
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateEventSourceMapping"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateEventSourceMappingResult createEventSourceMapping(CreateEventSourceMappingRequest createEventSourceMappingRequest) {
+    public CreateEventSourceMappingResult createEventSourceMapping(CreateEventSourceMappingRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEventSourceMapping(request);
+    }
+
+    @SdkInternalApi
+    final CreateEventSourceMappingResult executeCreateEventSourceMapping(CreateEventSourceMappingRequest createEventSourceMappingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createEventSourceMappingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -473,7 +540,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateEventSourceMappingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEventSourceMappingRequest));
+                request = new CreateEventSourceMappingRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -527,9 +595,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
      * @sample AWSLambda.CreateFunction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateFunction" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateFunctionResult createFunction(CreateFunctionRequest createFunctionRequest) {
+    public CreateFunctionResult createFunction(CreateFunctionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateFunction(request);
+    }
+
+    @SdkInternalApi
+    final CreateFunctionResult executeCreateFunction(CreateFunctionRequest createFunctionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createFunctionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -539,7 +616,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateFunctionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createFunctionRequest));
+                request = new CreateFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -577,9 +654,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.DeleteAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteAliasResult deleteAlias(DeleteAliasRequest deleteAliasRequest) {
+    public DeleteAliasResult deleteAlias(DeleteAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAlias(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAliasResult executeDeleteAlias(DeleteAliasRequest deleteAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -589,7 +675,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteAliasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAliasRequest));
+                request = new DeleteAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -630,9 +716,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.DeleteEventSourceMapping
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteEventSourceMapping"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteEventSourceMappingResult deleteEventSourceMapping(DeleteEventSourceMappingRequest deleteEventSourceMappingRequest) {
+    public DeleteEventSourceMappingResult deleteEventSourceMapping(DeleteEventSourceMappingRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEventSourceMapping(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEventSourceMappingResult executeDeleteEventSourceMapping(DeleteEventSourceMappingRequest deleteEventSourceMappingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEventSourceMappingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -642,7 +737,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteEventSourceMappingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEventSourceMappingRequest));
+                request = new DeleteEventSourceMappingRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -697,9 +793,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws ResourceConflictException
      *         The resource already exists.
      * @sample AWSLambda.DeleteFunction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteFunction" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteFunctionResult deleteFunction(DeleteFunctionRequest deleteFunctionRequest) {
+    public DeleteFunctionResult deleteFunction(DeleteFunctionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteFunction(request);
+    }
+
+    @SdkInternalApi
+    final DeleteFunctionResult executeDeleteFunction(DeleteFunctionRequest deleteFunctionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteFunctionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -709,7 +814,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteFunctionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFunctionRequest));
+                request = new DeleteFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -718,6 +823,62 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteFunctionResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteFunctionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns a customer's account settings.
+     * </p>
+     * <p>
+     * You can use this operation to retrieve Lambda limits information, such as code size and concurrency limits. For
+     * more information about limits, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">AWS Lambda
+     * Limits</a>. You can also retrieve resource usage statistics, such as code storage usage and function count.
+     * </p>
+     * 
+     * @param getAccountSettingsRequest
+     * @return Result of the GetAccountSettings operation returned by the service.
+     * @throws TooManyRequestsException
+     * @throws ServiceException
+     *         The AWS Lambda service encountered an internal error.
+     * @sample AWSLambda.GetAccountSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetAccountSettings" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAccountSettingsResult getAccountSettings(GetAccountSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccountSettings(request);
+    }
+
+    @SdkInternalApi
+    final GetAccountSettingsResult executeGetAccountSettings(GetAccountSettingsRequest getAccountSettingsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAccountSettingsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAccountSettingsRequest> request = null;
+        Response<GetAccountSettingsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAccountSettingsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAccountSettingsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAccountSettingsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAccountSettingsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -751,9 +912,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.GetAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetAliasResult getAlias(GetAliasRequest getAliasRequest) {
+    public GetAliasResult getAlias(GetAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAlias(request);
+    }
+
+    @SdkInternalApi
+    final GetAliasResult executeGetAlias(GetAliasRequest getAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -763,7 +933,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetAliasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAliasRequest));
+                request = new GetAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -803,9 +973,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.GetEventSourceMapping
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetEventSourceMapping" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetEventSourceMappingResult getEventSourceMapping(GetEventSourceMappingRequest getEventSourceMappingRequest) {
+    public GetEventSourceMappingResult getEventSourceMapping(GetEventSourceMappingRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEventSourceMapping(request);
+    }
+
+    @SdkInternalApi
+    final GetEventSourceMappingResult executeGetEventSourceMapping(GetEventSourceMappingRequest getEventSourceMappingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getEventSourceMappingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -815,7 +994,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetEventSourceMappingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEventSourceMappingRequest));
+                request = new GetEventSourceMappingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -866,9 +1045,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @sample AWSLambda.GetFunction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunction" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetFunctionResult getFunction(GetFunctionRequest getFunctionRequest) {
+    public GetFunctionResult getFunction(GetFunctionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetFunction(request);
+    }
+
+    @SdkInternalApi
+    final GetFunctionResult executeGetFunction(GetFunctionRequest getFunctionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getFunctionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -878,7 +1066,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetFunctionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFunctionRequest));
+                request = new GetFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -927,9 +1115,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @sample AWSLambda.GetFunctionConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetFunctionConfigurationResult getFunctionConfiguration(GetFunctionConfigurationRequest getFunctionConfigurationRequest) {
+    public GetFunctionConfigurationResult getFunctionConfiguration(GetFunctionConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetFunctionConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final GetFunctionConfigurationResult executeGetFunctionConfiguration(GetFunctionConfigurationRequest getFunctionConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getFunctionConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -939,7 +1136,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetFunctionConfigurationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFunctionConfigurationRequest));
+                request = new GetFunctionConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getFunctionConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -990,9 +1188,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @sample AWSLambda.GetPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetPolicyResult getPolicy(GetPolicyRequest getPolicyRequest) {
+    public GetPolicyResult getPolicy(GetPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetPolicyResult executeGetPolicy(GetPolicyRequest getPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1002,7 +1209,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetPolicyRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPolicyRequest));
+                request = new GetPolicyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPolicyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1023,7 +1230,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
 
     /**
      * <p>
-     * Invokes a specific Lambda function.
+     * Invokes a specific Lambda function. For an example, see <a
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually"
+     * >Create the Lambda Function and Test It Manually</a>.
      * </p>
      * <p>
      * If you are using the versioning feature, you can invoke the specific function version by providing function
@@ -1075,10 +1284,31 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The Security Group ID provided in the Lambda function VPC configuration is invalid.
      * @throws InvalidZipFileException
      *         AWS Lambda could not unzip the function zip file.
+     * @throws KMSDisabledException
+     *         Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the
+     *         Lambda function's KMS key settings.
+     * @throws KMSInvalidStateException
+     *         Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state
+     *         for Decrypt. Check the function's KMS key settings.
+     * @throws KMSAccessDeniedException
+     *         Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda
+     *         function's KMS permissions.
+     * @throws KMSNotFoundException
+     *         Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the
+     *         function's KMS key settings.
      * @sample AWSLambda.Invoke
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/Invoke" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public InvokeResult invoke(InvokeRequest invokeRequest) {
+    public InvokeResult invoke(InvokeRequest request) {
+        request = beforeClientExecution(request);
+        return executeInvoke(request);
+    }
+
+    @SdkInternalApi
+    final InvokeResult executeInvoke(InvokeRequest invokeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(invokeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1088,7 +1318,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new InvokeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeRequest));
+                request = new InvokeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1131,10 +1361,19 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws InvalidRequestContentException
      *         The request body could not be parsed as JSON.
      * @sample AWSLambda.InvokeAsync
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/InvokeAsync" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     @Deprecated
-    public InvokeAsyncResult invokeAsync(InvokeAsyncRequest invokeAsyncRequest) {
+    public InvokeAsyncResult invokeAsync(InvokeAsyncRequest request) {
+        request = beforeClientExecution(request);
+        return executeInvokeAsync(request);
+    }
+
+    @SdkInternalApi
+    final InvokeAsyncResult executeInvokeAsync(InvokeAsyncRequest invokeAsyncRequest) {
+
         ExecutionContext executionContext = createExecutionContext(invokeAsyncRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1144,7 +1383,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new InvokeAsyncRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeAsyncRequest));
+                request = new InvokeAsyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeAsyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1186,9 +1425,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.ListAliases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListAliases" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListAliasesResult listAliases(ListAliasesRequest listAliasesRequest) {
+    public ListAliasesResult listAliases(ListAliasesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAliases(request);
+    }
+
+    @SdkInternalApi
+    final ListAliasesResult executeListAliases(ListAliasesRequest listAliasesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAliasesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1198,7 +1446,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListAliasesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAliasesRequest));
+                request = new ListAliasesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAliasesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1249,9 +1497,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.ListEventSourceMappings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListEventSourceMappings" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListEventSourceMappingsResult listEventSourceMappings(ListEventSourceMappingsRequest listEventSourceMappingsRequest) {
+    public ListEventSourceMappingsResult listEventSourceMappings(ListEventSourceMappingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListEventSourceMappings(request);
+    }
+
+    @SdkInternalApi
+    final ListEventSourceMappingsResult executeListEventSourceMappings(ListEventSourceMappingsRequest listEventSourceMappingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listEventSourceMappingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1261,7 +1518,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListEventSourceMappingsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listEventSourceMappingsRequest));
+                request = new ListEventSourceMappingsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(listEventSourceMappingsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1307,9 +1565,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The AWS Lambda service encountered an internal error.
      * @throws TooManyRequestsException
      * @sample AWSLambda.ListFunctions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListFunctionsResult listFunctions(ListFunctionsRequest listFunctionsRequest) {
+    public ListFunctionsResult listFunctions(ListFunctionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListFunctions(request);
+    }
+
+    @SdkInternalApi
+    final ListFunctionsResult executeListFunctions(ListFunctionsRequest listFunctionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listFunctionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1319,7 +1586,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListFunctionsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listFunctionsRequest));
+                request = new ListFunctionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listFunctionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1363,9 +1630,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.ListVersionsByFunction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListVersionsByFunction" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListVersionsByFunctionResult listVersionsByFunction(ListVersionsByFunctionRequest listVersionsByFunctionRequest) {
+    public ListVersionsByFunctionResult listVersionsByFunction(ListVersionsByFunctionRequest request) {
+        request = beforeClientExecution(request);
+        return executeListVersionsByFunction(request);
+    }
+
+    @SdkInternalApi
+    final ListVersionsByFunctionResult executeListVersionsByFunction(ListVersionsByFunctionRequest listVersionsByFunctionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listVersionsByFunctionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1375,7 +1651,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListVersionsByFunctionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listVersionsByFunctionRequest));
+                request = new ListVersionsByFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listVersionsByFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1420,9 +1696,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
      * @sample AWSLambda.PublishVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PublishVersion" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PublishVersionResult publishVersion(PublishVersionRequest publishVersionRequest) {
+    public PublishVersionResult publishVersion(PublishVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executePublishVersion(request);
+    }
+
+    @SdkInternalApi
+    final PublishVersionResult executePublishVersion(PublishVersionRequest publishVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(publishVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1432,7 +1717,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PublishVersionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(publishVersionRequest));
+                request = new PublishVersionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(publishVersionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1482,9 +1767,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.RemovePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/RemovePermission" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemovePermissionResult removePermission(RemovePermissionRequest removePermissionRequest) {
+    public RemovePermissionResult removePermission(RemovePermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemovePermission(request);
+    }
+
+    @SdkInternalApi
+    final RemovePermissionResult executeRemovePermission(RemovePermissionRequest removePermissionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removePermissionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1494,7 +1788,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemovePermissionRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removePermissionRequest));
+                request = new RemovePermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removePermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1536,9 +1830,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.UpdateAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateAliasResult updateAlias(UpdateAliasRequest updateAliasRequest) {
+    public UpdateAliasResult updateAlias(UpdateAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAlias(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAliasResult executeUpdateAlias(UpdateAliasRequest updateAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1548,7 +1851,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateAliasRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAliasRequest));
+                request = new UpdateAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1603,9 +1906,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws ResourceConflictException
      *         The resource already exists.
      * @sample AWSLambda.UpdateEventSourceMapping
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateEventSourceMapping"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateEventSourceMappingResult updateEventSourceMapping(UpdateEventSourceMappingRequest updateEventSourceMappingRequest) {
+    public UpdateEventSourceMappingResult updateEventSourceMapping(UpdateEventSourceMappingRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateEventSourceMapping(request);
+    }
+
+    @SdkInternalApi
+    final UpdateEventSourceMappingResult executeUpdateEventSourceMapping(UpdateEventSourceMappingRequest updateEventSourceMappingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateEventSourceMappingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1615,7 +1927,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateEventSourceMappingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateEventSourceMappingRequest));
+                request = new UpdateEventSourceMappingRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1666,9 +1979,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
      * @sample AWSLambda.UpdateFunctionCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionCode" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateFunctionCodeResult updateFunctionCode(UpdateFunctionCodeRequest updateFunctionCodeRequest) {
+    public UpdateFunctionCodeResult updateFunctionCode(UpdateFunctionCodeRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateFunctionCode(request);
+    }
+
+    @SdkInternalApi
+    final UpdateFunctionCodeResult executeUpdateFunctionCode(UpdateFunctionCodeRequest updateFunctionCodeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateFunctionCodeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1678,7 +2000,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateFunctionCodeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateFunctionCodeRequest));
+                request = new UpdateFunctionCodeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateFunctionCodeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1726,9 +2048,18 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
      * @sample AWSLambda.UpdateFunctionConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateFunctionConfigurationResult updateFunctionConfiguration(UpdateFunctionConfigurationRequest updateFunctionConfigurationRequest) {
+    public UpdateFunctionConfigurationResult updateFunctionConfiguration(UpdateFunctionConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateFunctionConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final UpdateFunctionConfigurationResult executeUpdateFunctionConfiguration(UpdateFunctionConfigurationRequest updateFunctionConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateFunctionConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1738,7 +2069,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateFunctionConfigurationRequestMarshaller(protocolFactory).marshall(super
+                request = new UpdateFunctionConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(updateFunctionConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);

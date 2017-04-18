@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an event that was returned by a lookup request. The result includes a representation of a
  * CloudTrail event.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/Event" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Event implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Event implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -40,6 +47,12 @@ public class Event implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date eventTime;
+    /**
+     * <p>
+     * The AWS service that the request was made to.
+     * </p>
+     */
+    private String eventSource;
     /**
      * <p>
      * A user name or role name of the requester that called the API in the event returned.
@@ -176,6 +189,46 @@ public class Event implements Serializable, Cloneable {
 
     public Event withEventTime(java.util.Date eventTime) {
         setEventTime(eventTime);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The AWS service that the request was made to.
+     * </p>
+     * 
+     * @param eventSource
+     *        The AWS service that the request was made to.
+     */
+
+    public void setEventSource(String eventSource) {
+        this.eventSource = eventSource;
+    }
+
+    /**
+     * <p>
+     * The AWS service that the request was made to.
+     * </p>
+     * 
+     * @return The AWS service that the request was made to.
+     */
+
+    public String getEventSource() {
+        return this.eventSource;
+    }
+
+    /**
+     * <p>
+     * The AWS service that the request was made to.
+     * </p>
+     * 
+     * @param eventSource
+     *        The AWS service that the request was made to.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Event withEventSource(String eventSource) {
+        setEventSource(eventSource);
         return this;
     }
 
@@ -344,17 +397,19 @@ public class Event implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEventId() != null)
-            sb.append("EventId: " + getEventId() + ",");
+            sb.append("EventId: ").append(getEventId()).append(",");
         if (getEventName() != null)
-            sb.append("EventName: " + getEventName() + ",");
+            sb.append("EventName: ").append(getEventName()).append(",");
         if (getEventTime() != null)
-            sb.append("EventTime: " + getEventTime() + ",");
+            sb.append("EventTime: ").append(getEventTime()).append(",");
+        if (getEventSource() != null)
+            sb.append("EventSource: ").append(getEventSource()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getCloudTrailEvent() != null)
-            sb.append("CloudTrailEvent: " + getCloudTrailEvent());
+            sb.append("CloudTrailEvent: ").append(getCloudTrailEvent());
         sb.append("}");
         return sb.toString();
     }
@@ -381,6 +436,10 @@ public class Event implements Serializable, Cloneable {
             return false;
         if (other.getEventTime() != null && other.getEventTime().equals(this.getEventTime()) == false)
             return false;
+        if (other.getEventSource() == null ^ this.getEventSource() == null)
+            return false;
+        if (other.getEventSource() != null && other.getEventSource().equals(this.getEventSource()) == false)
+            return false;
         if (other.getUsername() == null ^ this.getUsername() == null)
             return false;
         if (other.getUsername() != null && other.getUsername().equals(this.getUsername()) == false)
@@ -404,6 +463,7 @@ public class Event implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEventId() == null) ? 0 : getEventId().hashCode());
         hashCode = prime * hashCode + ((getEventName() == null) ? 0 : getEventName().hashCode());
         hashCode = prime * hashCode + ((getEventTime() == null) ? 0 : getEventTime().hashCode());
+        hashCode = prime * hashCode + ((getEventSource() == null) ? 0 : getEventSource().hashCode());
         hashCode = prime * hashCode + ((getUsername() == null) ? 0 : getUsername().hashCode());
         hashCode = prime * hashCode + ((getResources() == null) ? 0 : getResources().hashCode());
         hashCode = prime * hashCode + ((getCloudTrailEvent() == null) ? 0 : getCloudTrailEvent().hashCode());
@@ -417,5 +477,11 @@ public class Event implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudtrail.model.transform.EventMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.securitytoken.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetFederationToken" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -27,9 +32,8 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      * an Amazon S3 bucket policy.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      */
     private String name;
@@ -93,9 +97,9 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      *        (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based
      *        policy, such as in an Amazon S3 bucket policy.</p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      */
     public GetFederationTokenRequest(String name) {
         setName(name);
@@ -108,9 +112,8 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      * an Amazon S3 bucket policy.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param name
@@ -118,9 +121,9 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      *        (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based
      *        policy, such as in an Amazon S3 bucket policy.</p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      */
 
     public void setName(String name) {
@@ -134,18 +137,17 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      * an Amazon S3 bucket policy.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @return The name of the federated user. The name is used as an identifier for the temporary security credentials
      *         (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based
      *         policy, such as in an Amazon S3 bucket policy.</p>
      *         <p>
-     *         The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *         upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *         the following characters: =,.@-
+     *         The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *         alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *         characters: =,.@-
      */
 
     public String getName() {
@@ -159,9 +161,8 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      * an Amazon S3 bucket policy.
      * </p>
      * <p>
-     * The format for this parameter, as described by its regex pattern, is a string of characters consisting of upper-
-     * and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
-     * characters: =,.@-
+     * The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     * alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
      * </p>
      * 
      * @param name
@@ -169,9 +170,9 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
      *        (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based
      *        policy, such as in an Amazon S3 bucket policy.</p>
      *        <p>
-     *        The format for this parameter, as described by its regex pattern, is a string of characters consisting of
-     *        upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of
-     *        the following characters: =,.@-
+     *        The regex used to validate this parameter is a string of characters consisting of upper- and lower-case
+     *        alphanumeric characters with no spaces. You can also include underscores or any of the following
+     *        characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -461,11 +462,11 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getPolicy() != null)
-            sb.append("Policy: " + getPolicy() + ",");
+            sb.append("Policy: ").append(getPolicy()).append(",");
         if (getDurationSeconds() != null)
-            sb.append("DurationSeconds: " + getDurationSeconds());
+            sb.append("DurationSeconds: ").append(getDurationSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -510,4 +511,5 @@ public class GetFederationTokenRequest extends com.amazonaws.AmazonWebServiceReq
     public GetFederationTokenRequest clone() {
         return (GetFederationTokenRequest) super.clone();
     }
+
 }

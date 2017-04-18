@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.storagegateway;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.storagegateway.model.*;
 
 /**
  * Interface for accessing AWS Storage Gateway.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.storagegateway.AbstractAWSStorageGateway} instead.
+ * </p>
  * <p>
  * <fullname>AWS Storage Gateway Service</fullname>
  * <p>
@@ -33,29 +39,32 @@ import com.amazonaws.services.storagegateway.model.*;
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayHTTPRequestsHeaders.html">AWS
- * Storage Gateway Required Request Headers</a>: Describes the required headers that you must send with every POST
+ * <a href=
+ * "http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders"
+ * >AWS Storage Gateway Required Request Headers</a>: Describes the required headers that you must send with every POST
  * request to AWS Storage Gateway.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewaySigningRequests.html">Signing
- * Requests</a>: AWS Storage Gateway requires that you authenticate every request you send; this topic describes how
- * sign such a request.
+ * <a href=
+ * "http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests"
+ * >Signing Requests</a>: AWS Storage Gateway requires that you authenticate every request you send; this topic
+ * describes how sign such a request.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/APIErrorResponses.html">Error Responses</a>:
- * Provides reference information about AWS Storage Gateway errors.
+ * <a
+ * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses">Error
+ * Responses</a>: Provides reference information about AWS Storage Gateway errors.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPIOperations.html">Operations
- * in AWS Storage Gateway</a>: Contains detailed descriptions of all AWS Storage Gateway operations, their request
- * parameters, response elements, possible errors, and examples of requests and responses.
+ * <a href="http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html">Operations in AWS Storage
+ * Gateway</a>: Contains detailed descriptions of all AWS Storage Gateway operations, their request parameters, response
+ * elements, possible errors, and examples of requests and responses.
  * </p>
  * </li>
  * <li>
@@ -94,6 +103,7 @@ import com.amazonaws.services.storagegateway.model.*;
  * </p>
  * </important>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSStorageGateway {
 
     /**
@@ -125,7 +135,11 @@ public interface AWSStorageGateway {
      *        The endpoint (ex: "storagegateway.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://storagegateway.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -146,15 +160,17 @@ public interface AWSStorageGateway {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
      * Activates the gateway you previously deployed on your host. For more information, see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html">
-     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the you want to
-     * use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
+     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the region you
+     * want to use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
      * activation key, and a name for your gateway. The activation process also associates your gateway with your
      * account; for more information, see <a>UpdateGatewayInformation</a>.
      * </p>
@@ -210,13 +226,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ActivateGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     ActivateGatewayResult activateGateway(ActivateGatewayRequest activateGatewayRequest);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as cache for a cached-volume gateway. This operation is supported only
-     * for the gateway-cached volume architecture (see <a
+     * Configures one or more gateway local disks as cache for a cached volumes gateway. This operation is only
+     * supported in the cached volumes gateway architecture (see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">Storage Gateway
      * Concepts</a>).
      * </p>
@@ -234,6 +252,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.AddCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddCache" target="_top">AWS API
+     *      Documentation</a>
      */
     AddCacheResult addCache(AddCacheRequest addCacheRequest);
 
@@ -280,13 +300,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddTagsToResource"
+     *      target="_top">AWS API Documentation</a>
      */
     AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest);
 
     /**
      * <p>
      * Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported
-     * for both the gateway-stored and gateway-cached volume architectures.
+     * for both the stored volumes and cached volumes gateway architectures.
      * </p>
      * <p>
      * In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and
@@ -302,13 +324,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.AddUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddUploadBuffer" target="_top">AWS
+     *      API Documentation</a>
      */
     AddUploadBufferResult addUploadBuffer(AddUploadBufferRequest addUploadBufferRequest);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as working storage for a gateway. This operation is supported only for
-     * the gateway-stored volume architecture. This operation is deprecated in cached-volumes API version 20120630. Use
+     * Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in
+     * the stored volume gateway architecture. This operation is deprecated in cached-volumes API version 20120630. Use
      * <a>AddUploadBuffer</a> instead.
      * </p>
      * <note>
@@ -338,12 +362,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.AddWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     AddWorkingStorageResult addWorkingStorage(AddWorkingStorageRequest addWorkingStorageRequest);
 
     /**
      * <p>
      * Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param cancelArchivalRequest
@@ -356,6 +383,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CancelArchival
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelArchival" target="_top">AWS
+     *      API Documentation</a>
      */
     CancelArchivalResult cancelArchival(CancelArchivalRequest cancelArchivalRequest);
 
@@ -375,13 +404,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CancelRetrieval
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelRetrieval" target="_top">AWS
+     *      API Documentation</a>
      */
     CancelRetrievalResult cancelRetrieval(CancelRetrievalRequest cancelRetrievalRequest);
 
     /**
      * <p>
-     * Creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached
-     * volume architecture.
+     * Creates a cached volume on a specified cached volumes gateway. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <note>
      * <p>
@@ -392,8 +423,13 @@ public interface AWSStorageGateway {
      * <p>
      * In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address
      * on which to expose the target, and a unique client token. In response, AWS Storage Gateway creates the volume and
-     * returns information about it such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN
-     * that initiators can use to connect to the volume target.
+     * returns information about it. This information includes the volume Amazon Resource Name (ARN), its size, and the
+     * iSCSI target ARN that initiators can use to connect to the volume target.
+     * </p>
+     * <p>
+     * Optionally, you can provide the ARN for an existing volume as the <code>SourceVolumeARN</code> for this cached
+     * volume, which creates an exact copy of the existing volume’s latest recovery point. The
+     * <code>VolumeSizeInBytes</code> value must be equal to or larger than the size of the copied volume, in bytes.
      * </p>
      * 
      * @param createCachediSCSIVolumeRequest
@@ -405,8 +441,32 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CreateCachediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateCachediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateCachediSCSIVolumeResult createCachediSCSIVolume(CreateCachediSCSIVolumeRequest createCachediSCSIVolumeRequest);
+
+    /**
+     * <p>
+     * Creates a file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point
+     * backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using a Network File System (NFS)
+     * interface. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param createNFSFileShareRequest
+     *        CreateNFSFileShareInput
+     * @return Result of the CreateNFSFileShare operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.CreateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateNFSFileShareResult createNFSFileShare(CreateNFSFileShareRequest createNFSFileShareRequest);
 
     /**
      * <p>
@@ -425,7 +485,7 @@ public interface AWSStorageGateway {
      * provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the
      * snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you
      * a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to
-     * create a volume from a snapshot.
+     * create a volume from a snapshot. This operation is only supported in stored and cached volumes gateways.
      * </p>
      * <note>
      * <p>
@@ -460,18 +520,23 @@ public interface AWSStorageGateway {
      * @throws InternalServerErrorException
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
+     * @throws ServiceUnavailableErrorException
+     *         An internal server error has occurred because the service is unavailable. For more information, see the
+     *         error and message fields.
      * @sample AWSStorageGateway.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshot" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest);
 
     /**
      * <p>
-     * Initiates a snapshot of a gateway from a volume recovery point. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <p>
      * A volume recovery point is a point in time at which all data of the volume is consistent and from which you can
-     * create a snapshot. To get a list of volume recovery point for gateway-cached volumes, use
+     * create a snapshot. To get a list of volume recovery point for cached volumes gateway, use
      * <a>ListVolumeRecoveryPoints</a>.
      * </p>
      * <p>
@@ -496,14 +561,20 @@ public interface AWSStorageGateway {
      * @throws InternalServerErrorException
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
+     * @throws ServiceUnavailableErrorException
+     *         An internal server error has occurred because the service is unavailable. For more information, see the
+     *         error and message fields.
      * @sample AWSStorageGateway.CreateSnapshotFromVolumeRecoveryPoint
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshotFromVolumeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateSnapshotFromVolumeRecoveryPointResult createSnapshotFromVolumeRecoveryPoint(
             CreateSnapshotFromVolumeRecoveryPointRequest createSnapshotFromVolumeRecoveryPointRequest);
 
     /**
      * <p>
-     * Creates a volume on a specified gateway. This operation is supported only for the gateway-stored volume
+     * Creates a volume on a specified gateway. This operation is only supported in the stored volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -553,12 +624,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CreateStorediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateStorediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateStorediSCSIVolumeResult createStorediSCSIVolume(CreateStorediSCSIVolumeRequest createStorediSCSIVolumeRequest);
 
     /**
      * <p>
      * Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape.
+     * This operation is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -577,12 +651,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CreateTapeWithBarcode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapeWithBarcode"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateTapeWithBarcodeResult createTapeWithBarcode(CreateTapeWithBarcodeRequest createTapeWithBarcodeRequest);
 
     /**
      * <p>
-     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes.
+     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation
+     * is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -601,6 +678,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.CreateTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateTapesResult createTapes(CreateTapesRequest createTapesRequest);
 
@@ -612,6 +691,13 @@ public interface AWSStorageGateway {
      * </p>
      * 
      * @param deleteBandwidthRateLimitRequest
+     *        A JSON object containing the following fields:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a>DeleteBandwidthRateLimitInput$BandwidthType</a>
+     *        </p>
+     *        </li>
      * @return Result of the DeleteBandwidthRateLimit operation returned by the service.
      * @throws InvalidGatewayRequestException
      *         An exception occurred because an invalid gateway request was issued to the service. For more information,
@@ -620,6 +706,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteBandwidthRateLimitResult deleteBandwidthRateLimit(DeleteBandwidthRateLimitRequest deleteBandwidthRateLimitRequest);
 
@@ -650,8 +738,30 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteChapCredentialsResult deleteChapCredentials(DeleteChapCredentialsRequest deleteChapCredentialsRequest);
+
+    /**
+     * <p>
+     * Deletes a file share from a file gateway. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param deleteFileShareRequest
+     *        DeleteFileShareInput
+     * @return Result of the DeleteFileShare operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.DeleteFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteFileShare" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteFileShareResult deleteFileShare(DeleteFileShareRequest deleteFileShareRequest);
 
     /**
      * <p>
@@ -684,6 +794,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteGatewayResult deleteGateway(DeleteGatewayRequest deleteGatewayRequest);
 
@@ -714,12 +826,14 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteSnapshotScheduleResult deleteSnapshotSchedule(DeleteSnapshotScheduleRequest deleteSnapshotScheduleRequest);
 
     /**
      * <p>
-     * Deletes the specified virtual tape.
+     * Deletes the specified virtual tape. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param deleteTapeRequest
@@ -732,12 +846,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteTape
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTape" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteTapeResult deleteTape(DeleteTapeRequest deleteTapeRequest);
 
     /**
      * <p>
-     * Deletes the specified virtual tape from the virtual tape shelf (VTS).
+     * Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in tape
+     * gateways.
      * </p>
      * 
      * @param deleteTapeArchiveRequest
@@ -750,14 +867,16 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteTapeArchiveResult deleteTapeArchive(DeleteTapeArchiveRequest deleteTapeArchiveRequest);
 
     /**
      * <p>
      * Deletes the specified gateway volume that you previously created using the <a>CreateCachediSCSIVolume</a> or
-     * <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local disk that was configured as the storage
-     * volume is not deleted. You can reuse the local disk to create another storage volume.
+     * <a>CreateStorediSCSIVolume</a> API. For stored volumes gateways, the local disk that was configured as the
+     * storage volume is not deleted. You can reuse the local disk to create another storage volume.
      * </p>
      * <p>
      * Before you delete a gateway volume, make sure there are no iSCSI connections to the volume you are deleting. You
@@ -780,6 +899,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteVolume" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteVolumeResult deleteVolume(DeleteVolumeRequest deleteVolumeRequest);
 
@@ -804,12 +925,14 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeBandwidthRateLimitResult describeBandwidthRateLimit(DescribeBandwidthRateLimitRequest describeBandwidthRateLimitRequest);
 
     /**
      * <p>
-     * Returns information about the cache of a gateway. This operation is supported only for the gateway-cached volume
+     * Returns information about the cache of a gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -826,13 +949,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCache" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeCacheResult describeCache(DescribeCacheRequest describeCacheRequest);
 
     /**
      * <p>
-     * Returns a description of the gateway volumes specified in the request. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Returns a description of the gateway volumes specified in the request. This operation is only supported in the
+     * cached volumes gateway architecture.
      * </p>
      * <p>
      * The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway
@@ -848,6 +973,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeCachediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCachediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeCachediSCSIVolumesResult describeCachediSCSIVolumes(DescribeCachediSCSIVolumesRequest describeCachediSCSIVolumesRequest);
 
@@ -867,6 +994,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeChapCredentialsResult describeChapCredentials(DescribeChapCredentialsRequest describeChapCredentialsRequest);
 
@@ -887,6 +1016,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeGatewayInformationResult describeGatewayInformation(DescribeGatewayInformationRequest describeGatewayInformationRequest);
 
@@ -906,8 +1037,31 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeMaintenanceStartTimeResult describeMaintenanceStartTime(DescribeMaintenanceStartTimeRequest describeMaintenanceStartTimeRequest);
+
+    /**
+     * <p>
+     * Gets a description for one or more file shares from a file gateway. This operation is only supported in file
+     * gateways.
+     * </p>
+     * 
+     * @param describeNFSFileSharesRequest
+     *        DescribeNFSFileSharesInput
+     * @return Result of the DescribeNFSFileShares operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.DescribeNFSFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeNFSFileShares"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeNFSFileSharesResult describeNFSFileShares(DescribeNFSFileSharesRequest describeNFSFileSharesRequest);
 
     /**
      * <p>
@@ -925,6 +1079,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeSnapshotScheduleResult describeSnapshotSchedule(DescribeSnapshotScheduleRequest describeSnapshotScheduleRequest);
 
@@ -932,7 +1088,7 @@ public interface AWSStorageGateway {
      * <p>
      * Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the
      * request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by
-     * volume ARNs.
+     * volume ARNs. This operation is only supported in stored volumes gateways.
      * </p>
      * 
      * @param describeStorediSCSIVolumesRequest
@@ -945,6 +1101,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeStorediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeStorediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStorediSCSIVolumesResult describeStorediSCSIVolumes(DescribeStorediSCSIVolumesRequest describeStorediSCSIVolumesRequest);
 
@@ -954,7 +1112,7 @@ public interface AWSStorageGateway {
      * </p>
      * <p>
      * If a specific <code>TapeARN</code> is not specified, AWS Storage Gateway returns a description of all virtual
-     * tapes found in the VTS associated with your account.
+     * tapes found in the VTS associated with your account. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeArchivesRequest
@@ -967,6 +1125,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeTapeArchives
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeArchives"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTapeArchivesResult describeTapeArchives(DescribeTapeArchivesRequest describeTapeArchivesRequest);
 
@@ -979,11 +1139,12 @@ public interface AWSStorageGateway {
 
     /**
      * <p>
-     * Returns a list of virtual tape recovery points that are available for the specified gateway-VTL.
+     * Returns a list of virtual tape recovery points that are available for the specified tape gateway.
      * </p>
      * <p>
      * A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is
      * consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeRecoveryPointsRequest
@@ -996,13 +1157,16 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeTapeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeTapeRecoveryPointsResult describeTapeRecoveryPoints(DescribeTapeRecoveryPointsRequest describeTapeRecoveryPointsRequest);
 
     /**
      * <p>
      * Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a <code>TapeARN</code> is
-     * not specified, returns a description of all virtual tapes associated with the specified gateway.
+     * not specified, returns a description of all virtual tapes associated with the specified gateway. This operation
+     * is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapesRequest
@@ -1015,13 +1179,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapes" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeTapesResult describeTapes(DescribeTapesRequest describeTapesRequest);
 
     /**
      * <p>
-     * Returns information about the upload buffer of a gateway. This operation is supported for both the gateway-stored
-     * and gateway-cached volume architectures.
+     * Returns information about the upload buffer of a gateway. This operation is supported for both the stored volume
+     * and cached volumes gateway architectures.
      * </p>
      * <p>
      * The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload
@@ -1037,16 +1203,18 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeUploadBuffer"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeUploadBufferResult describeUploadBuffer(DescribeUploadBufferRequest describeUploadBufferRequest);
 
     /**
      * <p>
-     * Returns a description of virtual tape library (VTL) devices for the specified gateway. In the response, AWS
+     * Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, AWS
      * Storage Gateway returns VTL device information.
      * </p>
      * <p>
-     * The list of VTL devices must be from one gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeVTLDevicesRequest
@@ -1059,13 +1227,15 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeVTLDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeVTLDevices"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeVTLDevicesResult describeVTLDevices(DescribeVTLDevicesRequest describeVTLDevicesRequest);
 
     /**
      * <p>
-     * Returns information about the working storage of a gateway. This operation is supported only for the
-     * gateway-stored volume architecture. This operation is deprecated in cached-volumes API version (20120630). Use
+     * Returns information about the working storage of a gateway. This operation is only supported in the stored
+     * volumes gateway architecture. This operation is deprecated in cached-volumes API version (20120630). Use
      * DescribeUploadBuffer instead.
      * </p>
      * <note>
@@ -1089,6 +1259,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DescribeWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeWorkingStorageResult describeWorkingStorage(DescribeWorkingStorageRequest describeWorkingStorageRequest);
 
@@ -1098,7 +1270,7 @@ public interface AWSStorageGateway {
      * disable the gateway so you can recover virtual tapes.
      * </p>
      * <p>
-     * Use this operation for a gateway-VTL that is not reachable or not functioning.
+     * Use this operation for a tape gateway that is not reachable or not functioning.
      * </p>
      * <important>
      * <p>
@@ -1116,8 +1288,31 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.DisableGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DisableGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     DisableGatewayResult disableGateway(DisableGatewayRequest disableGatewayRequest);
+
+    /**
+     * <p>
+     * Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling
+     * user account. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param listFileSharesRequest
+     *        ListFileShareInput
+     * @return Result of the ListFileShares operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.ListFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListFileShares" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListFileSharesResult listFileShares(ListFileSharesRequest listFileSharesRequest);
 
     /**
      * <p>
@@ -1155,6 +1350,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     ListGatewaysResult listGateways(ListGatewaysRequest listGatewaysRequest);
 
@@ -1187,6 +1384,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListLocalDisks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListLocalDisks" target="_top">AWS
+     *      API Documentation</a>
      */
     ListLocalDisksResult listLocalDisks(ListLocalDisksRequest listLocalDisksRequest);
 
@@ -1205,6 +1404,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
      */
     ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -1225,7 +1426,8 @@ public interface AWSStorageGateway {
      * This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can
      * optionally specify the <code>Limit</code> parameter in the body to limit the number of tapes in the response. If
      * the number of tapes returned in the response is truncated, the response includes a <code>Marker</code> element
-     * that you can use in your subsequent request to retrieve the next set of tapes.
+     * that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported
+     * in tape gateways.
      * </p>
      * 
      * @param listTapesRequest
@@ -1254,6 +1456,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTapesResult listTapes(ListTapesRequest listTapesRequest);
 
@@ -1273,18 +1477,20 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListVolumeInitiators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeInitiators"
+     *      target="_top">AWS API Documentation</a>
      */
     ListVolumeInitiatorsResult listVolumeInitiators(ListVolumeInitiatorsRequest listVolumeInitiatorsRequest);
 
     /**
      * <p>
-     * Lists the recovery points for a specified gateway. This operation is supported only for the gateway-cached volume
+     * Lists the recovery points for a specified gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
-     * Each gateway-cached volume has one recovery point. A volume recovery point is a point in time at which all data
-     * of the volume is consistent and from which you can create a snapshot. To create a snapshot from a volume recovery
-     * point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
+     * Each cache volume has one recovery point. A volume recovery point is a point in time at which all data of the
+     * volume is consistent and from which you can create a snapshot or clone a new cached volume from a source volume.
+     * To create a snapshot from a volume recovery point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
      * </p>
      * 
      * @param listVolumeRecoveryPointsRequest
@@ -1296,13 +1502,16 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListVolumeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     ListVolumeRecoveryPointsResult listVolumeRecoveryPoints(ListVolumeRecoveryPointsRequest listVolumeRecoveryPointsRequest);
 
     /**
      * <p>
      * Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the
-     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> API.
+     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> or the
+     * <a>DescribeCachediSCSIVolumes</a> API.
      * </p>
      * <p>
      * The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can
@@ -1332,8 +1541,30 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ListVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     ListVolumesResult listVolumes(ListVolumesRequest listVolumesRequest);
+
+    /**
+     * <p>
+     * Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were
+     * added or removed since the gateway last listed the bucket's contents and cached the results.
+     * </p>
+     * 
+     * @param refreshCacheRequest
+     * @return Result of the RefreshCache operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.RefreshCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RefreshCache" target="_top">AWS
+     *      API Documentation</a>
+     */
+    RefreshCacheResult refreshCache(RefreshCacheRequest refreshCacheRequest);
 
     /**
      * <p>
@@ -1350,6 +1581,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RemoveTagsFromResource"
+     *      target="_top">AWS API Documentation</a>
      */
     RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -1384,12 +1617,14 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ResetCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ResetCache" target="_top">AWS API
+     *      Documentation</a>
      */
     ResetCacheResult resetCache(ResetCacheRequest resetCacheRequest);
 
     /**
      * <p>
-     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a gateway-VTL. Virtual tapes archived in
+     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in
      * the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway,
      * even though it is also listed in the VTS.
      * </p>
@@ -1408,6 +1643,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.RetrieveTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     RetrieveTapeArchiveResult retrieveTapeArchive(RetrieveTapeArchiveRequest retrieveTapeArchiveRequest);
 
@@ -1422,7 +1659,7 @@ public interface AWSStorageGateway {
      * <note>
      * <p>
      * The virtual tape can be retrieved to only one gateway. The retrieved tape is read-only. The virtual tape can be
-     * retrieved to only a gateway-VTL. There is no charge for retrieving recovery points.
+     * retrieved to only a tape gateway. There is no charge for retrieving recovery points.
      * </p>
      * </note>
      * 
@@ -1436,6 +1673,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.RetrieveTapeRecoveryPoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     RetrieveTapeRecoveryPointResult retrieveTapeRecoveryPoint(RetrieveTapeRecoveryPointRequest retrieveTapeRecoveryPointRequest);
 
@@ -1456,6 +1695,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.SetLocalConsolePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/SetLocalConsolePassword"
+     *      target="_top">AWS API Documentation</a>
      */
     SetLocalConsolePasswordResult setLocalConsolePassword(SetLocalConsolePasswordRequest setLocalConsolePasswordRequest);
 
@@ -1501,6 +1742,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.ShutdownGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ShutdownGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     ShutdownGatewayResult shutdownGateway(ShutdownGatewayRequest shutdownGatewayRequest);
 
@@ -1531,6 +1774,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.StartGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/StartGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     StartGatewayResult startGateway(StartGatewayRequest startGatewayRequest);
 
@@ -1568,6 +1813,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateBandwidthRateLimitResult updateBandwidthRateLimit(UpdateBandwidthRateLimitRequest updateBandwidthRateLimitRequest);
 
@@ -1614,6 +1861,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateChapCredentialsResult updateChapCredentials(UpdateChapCredentialsRequest updateChapCredentialsRequest);
 
@@ -1638,6 +1887,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateGatewayInformationResult updateGatewayInformation(UpdateGatewayInformationRequest updateGatewayInformationRequest);
 
@@ -1673,6 +1924,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateGatewaySoftwareNow
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewaySoftwareNow"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateGatewaySoftwareNowResult updateGatewaySoftwareNow(UpdateGatewaySoftwareNowRequest updateGatewaySoftwareNowRequest);
 
@@ -1708,8 +1961,35 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateMaintenanceStartTimeResult updateMaintenanceStartTime(UpdateMaintenanceStartTimeRequest updateMaintenanceStartTimeRequest);
+
+    /**
+     * <p>
+     * Updates a file share. This operation is only supported in file gateways.
+     * </p>
+     * <note>
+     * <p>
+     * To leave a file share field unchanged, set the corresponding input field to null.
+     * </p>
+     * </note>
+     * 
+     * @param updateNFSFileShareRequest
+     *        UpdateNFSFileShareInput
+     * @return Result of the UpdateNFSFileShare operation returned by the service.
+     * @throws InvalidGatewayRequestException
+     *         An exception occurred because an invalid gateway request was issued to the service. For more information,
+     *         see the error and message fields.
+     * @throws InternalServerErrorException
+     *         An internal server error has occurred during the request. For more information, see the error and message
+     *         fields.
+     * @sample AWSStorageGateway.UpdateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateNFSFileShareResult updateNFSFileShare(UpdateNFSFileShareRequest updateNFSFileShareRequest);
 
     /**
      * <p>
@@ -1755,14 +2035,16 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateSnapshotScheduleResult updateSnapshotSchedule(UpdateSnapshotScheduleRequest updateSnapshotScheduleRequest);
 
     /**
      * <p>
-     * Updates the type of medium changer in a gateway-VTL. When you activate a gateway-VTL, you select a medium changer
-     * type for the gateway-VTL. This operation enables you to select a different type of medium changer after a
-     * gateway-VTL is activated.
+     * Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium
+     * changer type for the tape gateway. This operation enables you to select a different type of medium changer after
+     * a tape gateway is activated. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param updateVTLDeviceTypeRequest
@@ -1774,6 +2056,8 @@ public interface AWSStorageGateway {
      *         An internal server error has occurred during the request. For more information, see the error and message
      *         fields.
      * @sample AWSStorageGateway.UpdateVTLDeviceType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateVTLDeviceType"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateVTLDeviceTypeResult updateVTLDeviceType(UpdateVTLDeviceTypeRequest updateVTLDeviceTypeRequest);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A cluster step consisting of a JAR file whose main function will be executed. The main function submits a job for
  * Hadoop to execute and waits for the job to finish or fail.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/HadoopStepConfig" target="_top">AWS
+ *      API Documentation</a>
  */
-public class HadoopStepConfig implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class HadoopStepConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -290,13 +297,13 @@ public class HadoopStepConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJar() != null)
-            sb.append("Jar: " + getJar() + ",");
+            sb.append("Jar: ").append(getJar()).append(",");
         if (getProperties() != null)
-            sb.append("Properties: " + getProperties() + ",");
+            sb.append("Properties: ").append(getProperties()).append(",");
         if (getMainClass() != null)
-            sb.append("MainClass: " + getMainClass() + ",");
+            sb.append("MainClass: ").append(getMainClass()).append(",");
         if (getArgs() != null)
-            sb.append("Args: " + getArgs());
+            sb.append("Args: ").append(getArgs());
         sb.append("}");
         return sb.toString();
     }
@@ -349,5 +356,11 @@ public class HadoopStepConfig implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.HadoopStepConfigMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

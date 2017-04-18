@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an
  * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/KeyRange" target="_top">AWS API
+ *      Documentation</a>
  */
-public class KeyRange implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class KeyRange implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -129,9 +136,9 @@ public class KeyRange implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBeginMarker() != null)
-            sb.append("BeginMarker: " + getBeginMarker() + ",");
+            sb.append("BeginMarker: ").append(getBeginMarker()).append(",");
         if (getEndMarker() != null)
-            sb.append("EndMarker: " + getEndMarker());
+            sb.append("EndMarker: ").append(getEndMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -174,5 +181,11 @@ public class KeyRange implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.KeyRangeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

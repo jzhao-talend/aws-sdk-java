@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * RetrieveTapeArchiveInput
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeArchive" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -34,7 +40,7 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
      * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * <p>
-     * You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     * You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      * </p>
      */
     private String gatewayARN;
@@ -86,14 +92,14 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
      * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * <p>
-     * You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     * You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      * </p>
      * 
      * @param gatewayARN
      *        The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the
      *        <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
      *        <p>
-     *        You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     *        You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      */
 
     public void setGatewayARN(String gatewayARN) {
@@ -106,13 +112,13 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
      * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * <p>
-     * You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     * You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the
      *         <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
      *         <p>
-     *         You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     *         You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      */
 
     public String getGatewayARN() {
@@ -125,14 +131,14 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
      * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * <p>
-     * You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     * You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      * </p>
      * 
      * @param gatewayARN
      *        The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the
      *        <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
      *        <p>
-     *        You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.
+     *        You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -153,9 +159,9 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTapeARN() != null)
-            sb.append("TapeARN: " + getTapeARN() + ",");
+            sb.append("TapeARN: ").append(getTapeARN()).append(",");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN());
+            sb.append("GatewayARN: ").append(getGatewayARN());
         sb.append("}");
         return sb.toString();
     }
@@ -195,4 +201,5 @@ public class RetrieveTapeArchiveRequest extends com.amazonaws.AmazonWebServiceRe
     public RetrieveTapeArchiveRequest clone() {
         return (RetrieveTapeArchiveRequest) super.clone();
     }
+
 }

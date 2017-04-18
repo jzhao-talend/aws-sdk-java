@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for ModifyTargetGroup.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroup"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -483,23 +486,23 @@ public class ModifyTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetGroupArn() != null)
-            sb.append("TargetGroupArn: " + getTargetGroupArn() + ",");
+            sb.append("TargetGroupArn: ").append(getTargetGroupArn()).append(",");
         if (getHealthCheckProtocol() != null)
-            sb.append("HealthCheckProtocol: " + getHealthCheckProtocol() + ",");
+            sb.append("HealthCheckProtocol: ").append(getHealthCheckProtocol()).append(",");
         if (getHealthCheckPort() != null)
-            sb.append("HealthCheckPort: " + getHealthCheckPort() + ",");
+            sb.append("HealthCheckPort: ").append(getHealthCheckPort()).append(",");
         if (getHealthCheckPath() != null)
-            sb.append("HealthCheckPath: " + getHealthCheckPath() + ",");
+            sb.append("HealthCheckPath: ").append(getHealthCheckPath()).append(",");
         if (getHealthCheckIntervalSeconds() != null)
-            sb.append("HealthCheckIntervalSeconds: " + getHealthCheckIntervalSeconds() + ",");
+            sb.append("HealthCheckIntervalSeconds: ").append(getHealthCheckIntervalSeconds()).append(",");
         if (getHealthCheckTimeoutSeconds() != null)
-            sb.append("HealthCheckTimeoutSeconds: " + getHealthCheckTimeoutSeconds() + ",");
+            sb.append("HealthCheckTimeoutSeconds: ").append(getHealthCheckTimeoutSeconds()).append(",");
         if (getHealthyThresholdCount() != null)
-            sb.append("HealthyThresholdCount: " + getHealthyThresholdCount() + ",");
+            sb.append("HealthyThresholdCount: ").append(getHealthyThresholdCount()).append(",");
         if (getUnhealthyThresholdCount() != null)
-            sb.append("UnhealthyThresholdCount: " + getUnhealthyThresholdCount() + ",");
+            sb.append("UnhealthyThresholdCount: ").append(getUnhealthyThresholdCount()).append(",");
         if (getMatcher() != null)
-            sb.append("Matcher: " + getMatcher());
+            sb.append("Matcher: ").append(getMatcher());
         sb.append("}");
         return sb.toString();
     }
@@ -574,4 +577,5 @@ public class ModifyTargetGroupRequest extends com.amazonaws.AmazonWebServiceRequ
     public ModifyTargetGroupRequest clone() {
         return (ModifyTargetGroupRequest) super.clone();
     }
+
 }

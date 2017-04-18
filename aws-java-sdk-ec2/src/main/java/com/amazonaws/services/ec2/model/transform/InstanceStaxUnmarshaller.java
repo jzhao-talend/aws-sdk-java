@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * Instance StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnmarshallerContext> {
 
     public Instance unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -82,6 +82,11 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
 
                 if (context.testExpression("amiLaunchIndex", targetDepth)) {
                     instance.setAmiLaunchIndex(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("productCodes", targetDepth)) {
+                    instance.withProductCodes(new ArrayList<ProductCode>());
                     continue;
                 }
 
@@ -165,6 +170,11 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
                     continue;
                 }
 
+                if (context.testExpression("blockDeviceMapping", targetDepth)) {
+                    instance.withBlockDeviceMappings(new ArrayList<InstanceBlockDeviceMapping>());
+                    continue;
+                }
+
                 if (context.testExpression("blockDeviceMapping/item", targetDepth)) {
                     instance.withBlockDeviceMappings(InstanceBlockDeviceMappingStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -190,8 +200,18 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
                     continue;
                 }
 
+                if (context.testExpression("tagSet", targetDepth)) {
+                    instance.withTags(new ArrayList<Tag>());
+                    continue;
+                }
+
                 if (context.testExpression("tagSet/item", targetDepth)) {
                     instance.withTags(TagStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("groupSet", targetDepth)) {
+                    instance.withSecurityGroups(new ArrayList<GroupIdentifier>());
                     continue;
                 }
 
@@ -207,6 +227,11 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
 
                 if (context.testExpression("hypervisor", targetDepth)) {
                     instance.setHypervisor(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("networkInterfaceSet", targetDepth)) {
+                    instance.withNetworkInterfaces(new ArrayList<InstanceNetworkInterface>());
                     continue;
                 }
 

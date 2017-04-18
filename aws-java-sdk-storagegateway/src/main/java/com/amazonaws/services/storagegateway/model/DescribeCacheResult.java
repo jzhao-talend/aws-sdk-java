@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,14 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCache" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeCacheResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private String gatewayARN;
@@ -256,19 +260,19 @@ public class DescribeCacheResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getDiskIds() != null)
-            sb.append("DiskIds: " + getDiskIds() + ",");
+            sb.append("DiskIds: ").append(getDiskIds()).append(",");
         if (getCacheAllocatedInBytes() != null)
-            sb.append("CacheAllocatedInBytes: " + getCacheAllocatedInBytes() + ",");
+            sb.append("CacheAllocatedInBytes: ").append(getCacheAllocatedInBytes()).append(",");
         if (getCacheUsedPercentage() != null)
-            sb.append("CacheUsedPercentage: " + getCacheUsedPercentage() + ",");
+            sb.append("CacheUsedPercentage: ").append(getCacheUsedPercentage()).append(",");
         if (getCacheDirtyPercentage() != null)
-            sb.append("CacheDirtyPercentage: " + getCacheDirtyPercentage() + ",");
+            sb.append("CacheDirtyPercentage: ").append(getCacheDirtyPercentage()).append(",");
         if (getCacheHitPercentage() != null)
-            sb.append("CacheHitPercentage: " + getCacheHitPercentage() + ",");
+            sb.append("CacheHitPercentage: ").append(getCacheHitPercentage()).append(",");
         if (getCacheMissPercentage() != null)
-            sb.append("CacheMissPercentage: " + getCacheMissPercentage());
+            sb.append("CacheMissPercentage: ").append(getCacheMissPercentage());
         sb.append("}");
         return sb.toString();
     }
@@ -337,4 +341,5 @@ public class DescribeCacheResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

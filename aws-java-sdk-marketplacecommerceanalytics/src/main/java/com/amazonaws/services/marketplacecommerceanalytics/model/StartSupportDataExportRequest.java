@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,20 +13,26 @@
 package com.amazonaws.services.marketplacecommerceanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the StartSupportDataExport operation.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -40,7 +46,7 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      */
     private String dataSetType;
     /**
-     * The start date from which to retrieve the data set. This parameter only affects the
+     * The start date from which to retrieve the data set in UTC. This parameter only affects the
      * customer_support_contacts_data data set type.
      */
     private java.util.Date fromDate;
@@ -74,9 +80,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -91,10 +97,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * @param dataSetType
      *        Specifies the data set type to be written to the output csv file. The data set types
      *        customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file
-     *        containing the following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date,
-     *        Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     *        Operation Type, and Operation Time. Currently, only the test_customer_support_contacts_data value is
-     *        supported </p>
+     *        containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription
+     *        Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     *        Code, ZIP Code, Operation Type, and Operation Time. </p>
      *        <p>
      *        <ul>
      *        <li><i>customer_support_contacts_data</i> Customer support contact data. The data set will contain all
@@ -114,9 +119,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -130,10 +135,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * 
      * @return Specifies the data set type to be written to the output csv file. The data set types
      *         customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file
-     *         containing the following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date,
-     *         Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP
-     *         Code, Operation Type, and Operation Time. Currently, only the test_customer_support_contacts_data value
-     *         is supported </p>
+     *         containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription
+     *         Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     *         Code, ZIP Code, Operation Type, and Operation Time. </p>
      *         <p>
      *         <ul>
      *         <li><i>customer_support_contacts_data</i> Customer support contact data. The data set will contain all
@@ -153,9 +157,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -170,10 +174,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * @param dataSetType
      *        Specifies the data set type to be written to the output csv file. The data set types
      *        customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file
-     *        containing the following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date,
-     *        Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     *        Operation Type, and Operation Time. Currently, only the test_customer_support_contacts_data value is
-     *        supported </p>
+     *        containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription
+     *        Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     *        Code, ZIP Code, Operation Type, and Operation Time. </p>
      *        <p>
      *        <ul>
      *        <li><i>customer_support_contacts_data</i> Customer support contact data. The data set will contain all
@@ -195,9 +198,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -212,10 +215,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * @param dataSetType
      *        Specifies the data set type to be written to the output csv file. The data set types
      *        customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file
-     *        containing the following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date,
-     *        Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     *        Operation Type, and Operation Time. Currently, only the test_customer_support_contacts_data value is
-     *        supported </p>
+     *        containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription
+     *        Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     *        Code, ZIP Code, Operation Type, and Operation Time. </p>
      *        <p>
      *        <ul>
      *        <li><i>customer_support_contacts_data</i> Customer support contact data. The data set will contain all
@@ -235,9 +237,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Specifies the data set type to be written to the output csv file. The data set types
      * customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file containing the
-     * following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-     * Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code, Operation Type, and
-     * Operation Time. Currently, only the test_customer_support_contacts_data value is supported
+     * following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription Start Date,
+     * Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
+     * Operation Type, and Operation Time.
      * </p>
      * <p>
      * <ul>
@@ -252,10 +254,9 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
      * @param dataSetType
      *        Specifies the data set type to be written to the output csv file. The data set types
      *        customer_support_contacts_data and test_customer_support_contacts_data both result in a csv file
-     *        containing the following fields: Product Id, Customer Guid, Subscription Guid, Subscription Start Date,
-     *        Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     *        Operation Type, and Operation Time. Currently, only the test_customer_support_contacts_data value is
-     *        supported </p>
+     *        containing the following fields: Product Id, Product Code, Customer Guid, Subscription Guid, Subscription
+     *        Start Date, Organization, AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     *        Code, ZIP Code, Operation Type, and Operation Time. </p>
      *        <p>
      *        <ul>
      *        <li><i>customer_support_contacts_data</i> Customer support contact data. The data set will contain all
@@ -274,11 +275,11 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects the
+     * The start date from which to retrieve the data set in UTC. This parameter only affects the
      * customer_support_contacts_data data set type.
      * 
      * @param fromDate
-     *        The start date from which to retrieve the data set. This parameter only affects the
+     *        The start date from which to retrieve the data set in UTC. This parameter only affects the
      *        customer_support_contacts_data data set type.
      */
 
@@ -287,10 +288,10 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects the
+     * The start date from which to retrieve the data set in UTC. This parameter only affects the
      * customer_support_contacts_data data set type.
      * 
-     * @return The start date from which to retrieve the data set. This parameter only affects the
+     * @return The start date from which to retrieve the data set in UTC. This parameter only affects the
      *         customer_support_contacts_data data set type.
      */
 
@@ -299,11 +300,11 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects the
+     * The start date from which to retrieve the data set in UTC. This parameter only affects the
      * customer_support_contacts_data data set type.
      * 
      * @param fromDate
-     *        The start date from which to retrieve the data set. This parameter only affects the
+     *        The start date from which to retrieve the data set in UTC. This parameter only affects the
      *        customer_support_contacts_data data set type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -558,19 +559,19 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataSetType() != null)
-            sb.append("DataSetType: " + getDataSetType() + ",");
+            sb.append("DataSetType: ").append(getDataSetType()).append(",");
         if (getFromDate() != null)
-            sb.append("FromDate: " + getFromDate() + ",");
+            sb.append("FromDate: ").append(getFromDate()).append(",");
         if (getRoleNameArn() != null)
-            sb.append("RoleNameArn: " + getRoleNameArn() + ",");
+            sb.append("RoleNameArn: ").append(getRoleNameArn()).append(",");
         if (getDestinationS3BucketName() != null)
-            sb.append("DestinationS3BucketName: " + getDestinationS3BucketName() + ",");
+            sb.append("DestinationS3BucketName: ").append(getDestinationS3BucketName()).append(",");
         if (getDestinationS3Prefix() != null)
-            sb.append("DestinationS3Prefix: " + getDestinationS3Prefix() + ",");
+            sb.append("DestinationS3Prefix: ").append(getDestinationS3Prefix()).append(",");
         if (getSnsTopicArn() != null)
-            sb.append("SnsTopicArn: " + getSnsTopicArn() + ",");
+            sb.append("SnsTopicArn: ").append(getSnsTopicArn()).append(",");
         if (getCustomerDefinedValues() != null)
-            sb.append("CustomerDefinedValues: " + getCustomerDefinedValues());
+            sb.append("CustomerDefinedValues: ").append(getCustomerDefinedValues());
         sb.append("}");
         return sb.toString();
     }
@@ -635,4 +636,5 @@ public class StartSupportDataExportRequest extends com.amazonaws.AmazonWebServic
     public StartSupportDataExportRequest clone() {
         return (StartSupportDataExportRequest) super.clone();
     }
+
 }

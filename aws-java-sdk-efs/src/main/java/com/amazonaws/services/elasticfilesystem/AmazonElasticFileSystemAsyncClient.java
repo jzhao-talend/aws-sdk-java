@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,14 +12,23 @@
  */
 package com.amazonaws.services.elasticfilesystem;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticfilesystem.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing EFS asynchronously. Each asynchronous method will return a Java Future object representing
- * the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when
- * an asynchronous operation completes.
+ * Client for accessing EFS asynchronously. Each asynchronous method will return a Java Future object representing the
+ * asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive notification when an
+ * asynchronous operation completes.
  * <p>
  * <fullname>Amazon Elastic File System</fullname>
  * <p>
@@ -30,6 +39,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemClient implements AmazonElasticFileSystemAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -51,9 +61,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonElasticFileSystemAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -75,10 +87,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -91,9 +104,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -104,8 +119,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -120,10 +138,12 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -138,9 +158,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -157,11 +179,12 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -172,10 +195,11 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -189,12 +213,19 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticFileSystemAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticFileSystemAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticFileSystemAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticFileSystemAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonElasticFileSystemAsyncClientBuilder asyncBuilder() {
+        return AmazonElasticFileSystemAsyncClientBuilder.standard();
     }
 
     /**
@@ -213,7 +244,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -226,14 +257,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<CreateFileSystemResult> createFileSystemAsync(final CreateFileSystemRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateFileSystemRequest, CreateFileSystemResult> asyncHandler) {
+        final CreateFileSystemRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateFileSystemResult>() {
             @Override
             public CreateFileSystemResult call() throws Exception {
-                CreateFileSystemResult result;
+                CreateFileSystemResult result = null;
 
                 try {
-                    result = createFileSystem(request);
+                    result = executeCreateFileSystem(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -242,7 +274,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -258,14 +290,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<CreateMountTargetResult> createMountTargetAsync(final CreateMountTargetRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateMountTargetRequest, CreateMountTargetResult> asyncHandler) {
+        final CreateMountTargetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateMountTargetResult>() {
             @Override
             public CreateMountTargetResult call() throws Exception {
-                CreateMountTargetResult result;
+                CreateMountTargetResult result = null;
 
                 try {
-                    result = createMountTarget(request);
+                    result = executeCreateMountTarget(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -274,7 +307,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -290,14 +323,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<CreateTagsResult> createTagsAsync(final CreateTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateTagsRequest, CreateTagsResult> asyncHandler) {
+        final CreateTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateTagsResult>() {
             @Override
             public CreateTagsResult call() throws Exception {
-                CreateTagsResult result;
+                CreateTagsResult result = null;
 
                 try {
-                    result = createTags(request);
+                    result = executeCreateTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -306,7 +340,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -322,14 +356,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DeleteFileSystemResult> deleteFileSystemAsync(final DeleteFileSystemRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteFileSystemRequest, DeleteFileSystemResult> asyncHandler) {
+        final DeleteFileSystemRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteFileSystemResult>() {
             @Override
             public DeleteFileSystemResult call() throws Exception {
-                DeleteFileSystemResult result;
+                DeleteFileSystemResult result = null;
 
                 try {
-                    result = deleteFileSystem(request);
+                    result = executeDeleteFileSystem(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -338,7 +373,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -354,14 +389,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DeleteMountTargetResult> deleteMountTargetAsync(final DeleteMountTargetRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteMountTargetRequest, DeleteMountTargetResult> asyncHandler) {
+        final DeleteMountTargetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteMountTargetResult>() {
             @Override
             public DeleteMountTargetResult call() throws Exception {
-                DeleteMountTargetResult result;
+                DeleteMountTargetResult result = null;
 
                 try {
-                    result = deleteMountTarget(request);
+                    result = executeDeleteMountTarget(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -370,7 +406,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -386,14 +422,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DeleteTagsResult> deleteTagsAsync(final DeleteTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteTagsRequest, DeleteTagsResult> asyncHandler) {
+        final DeleteTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteTagsResult>() {
             @Override
             public DeleteTagsResult call() throws Exception {
-                DeleteTagsResult result;
+                DeleteTagsResult result = null;
 
                 try {
-                    result = deleteTags(request);
+                    result = executeDeleteTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -402,7 +439,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -418,14 +455,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DescribeFileSystemsResult> describeFileSystemsAsync(final DescribeFileSystemsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeFileSystemsRequest, DescribeFileSystemsResult> asyncHandler) {
+        final DescribeFileSystemsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeFileSystemsResult>() {
             @Override
             public DescribeFileSystemsResult call() throws Exception {
-                DescribeFileSystemsResult result;
+                DescribeFileSystemsResult result = null;
 
                 try {
-                    result = describeFileSystems(request);
+                    result = executeDescribeFileSystems(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -434,7 +472,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -457,6 +495,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
      *
      * @see #describeFileSystemsAsync(DescribeFileSystemsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeFileSystemsResult> describeFileSystemsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeFileSystemsRequest, DescribeFileSystemsResult> asyncHandler) {
 
@@ -474,14 +513,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     public java.util.concurrent.Future<DescribeMountTargetSecurityGroupsResult> describeMountTargetSecurityGroupsAsync(
             final DescribeMountTargetSecurityGroupsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeMountTargetSecurityGroupsRequest, DescribeMountTargetSecurityGroupsResult> asyncHandler) {
+        final DescribeMountTargetSecurityGroupsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeMountTargetSecurityGroupsResult>() {
             @Override
             public DescribeMountTargetSecurityGroupsResult call() throws Exception {
-                DescribeMountTargetSecurityGroupsResult result;
+                DescribeMountTargetSecurityGroupsResult result = null;
 
                 try {
-                    result = describeMountTargetSecurityGroups(request);
+                    result = executeDescribeMountTargetSecurityGroups(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -490,7 +530,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -506,14 +546,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DescribeMountTargetsResult> describeMountTargetsAsync(final DescribeMountTargetsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeMountTargetsRequest, DescribeMountTargetsResult> asyncHandler) {
+        final DescribeMountTargetsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeMountTargetsResult>() {
             @Override
             public DescribeMountTargetsResult call() throws Exception {
-                DescribeMountTargetsResult result;
+                DescribeMountTargetsResult result = null;
 
                 try {
-                    result = describeMountTargets(request);
+                    result = executeDescribeMountTargets(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -522,7 +563,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -538,14 +579,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     @Override
     public java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(final DescribeTagsRequest request,
             final com.amazonaws.handlers.AsyncHandler<DescribeTagsRequest, DescribeTagsResult> asyncHandler) {
+        final DescribeTagsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DescribeTagsResult>() {
             @Override
             public DescribeTagsResult call() throws Exception {
-                DescribeTagsResult result;
+                DescribeTagsResult result = null;
 
                 try {
-                    result = describeTags(request);
+                    result = executeDescribeTags(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -554,7 +596,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -572,14 +614,15 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
     public java.util.concurrent.Future<ModifyMountTargetSecurityGroupsResult> modifyMountTargetSecurityGroupsAsync(
             final ModifyMountTargetSecurityGroupsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ModifyMountTargetSecurityGroupsRequest, ModifyMountTargetSecurityGroupsResult> asyncHandler) {
+        final ModifyMountTargetSecurityGroupsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ModifyMountTargetSecurityGroupsResult>() {
             @Override
             public ModifyMountTargetSecurityGroupsResult call() throws Exception {
-                ModifyMountTargetSecurityGroupsResult result;
+                ModifyMountTargetSecurityGroupsResult result = null;
 
                 try {
-                    result = modifyMountTargetSecurityGroups(request);
+                    result = executeModifyMountTargetSecurityGroups(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -588,7 +631,7 @@ public class AmazonElasticFileSystemAsyncClient extends AmazonElasticFileSystemC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.datapipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the parameters for ActivatePipeline.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ActivatePipelineRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -209,11 +215,11 @@ public class ActivatePipelineRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPipelineId() != null)
-            sb.append("PipelineId: " + getPipelineId() + ",");
+            sb.append("PipelineId: ").append(getPipelineId()).append(",");
         if (getParameterValues() != null)
-            sb.append("ParameterValues: " + getParameterValues() + ",");
+            sb.append("ParameterValues: ").append(getParameterValues()).append(",");
         if (getStartTimestamp() != null)
-            sb.append("StartTimestamp: " + getStartTimestamp());
+            sb.append("StartTimestamp: ").append(getStartTimestamp());
         sb.append("}");
         return sb.toString();
     }
@@ -258,4 +264,5 @@ public class ActivatePipelineRequest extends com.amazonaws.AmazonWebServiceReque
     public ActivatePipelineRequest clone() {
         return (ActivatePipelineRequest) super.clone();
     }
+
 }

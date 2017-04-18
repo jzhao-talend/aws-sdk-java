@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.sns.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -26,7 +27,11 @@ import java.io.Serializable;
  * currently 256 KB (262,144 bytes). For more information, see <a
  * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html">Using Amazon SNS Message Attributes</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/MessageAttributeValue" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MessageAttributeValue implements Serializable, Cloneable {
 
     /**
@@ -164,7 +169,7 @@ public class MessageAttributeValue implements Serializable, Cloneable {
      * Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -206,6 +211,16 @@ public class MessageAttributeValue implements Serializable, Cloneable {
      * <p>
      * Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.
      * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
      * 
      * @param binaryValue
      *        Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.
@@ -229,11 +244,11 @@ public class MessageAttributeValue implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataType() != null)
-            sb.append("DataType: " + getDataType() + ",");
+            sb.append("DataType: ").append(getDataType()).append(",");
         if (getStringValue() != null)
-            sb.append("StringValue: " + getStringValue() + ",");
+            sb.append("StringValue: ").append(getStringValue()).append(",");
         if (getBinaryValue() != null)
-            sb.append("BinaryValue: " + getBinaryValue());
+            sb.append("BinaryValue: ").append(getBinaryValue());
         sb.append("}");
         return sb.toString();
     }
@@ -282,4 +297,5 @@ public class MessageAttributeValue implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The captions to be created, if any.
  * </p>
  */
-public class Captions implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Captions implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -52,6 +56,7 @@ public class Captions implements Serializable, Cloneable {
      * <code>MergePolicy</code> cannot be null.
      * </p>
      */
+    @Deprecated
     private String mergePolicy;
     /**
      * <p>
@@ -59,6 +64,7 @@ public class Captions implements Serializable, Cloneable {
      * leave <code>CaptionSources</code> blank.
      * </p>
      */
+    @Deprecated
     private com.amazonaws.internal.SdkInternalList<CaptionSource> captionSources;
     /**
      * <p>
@@ -127,7 +133,7 @@ public class Captions implements Serializable, Cloneable {
      *        <p>
      *        <code>MergePolicy</code> cannot be null.
      */
-
+    @Deprecated
     public void setMergePolicy(String mergePolicy) {
         this.mergePolicy = mergePolicy;
     }
@@ -191,7 +197,7 @@ public class Captions implements Serializable, Cloneable {
      *         <p>
      *         <code>MergePolicy</code> cannot be null.
      */
-
+    @Deprecated
     public String getMergePolicy() {
         return this.mergePolicy;
     }
@@ -256,7 +262,7 @@ public class Captions implements Serializable, Cloneable {
      *        <code>MergePolicy</code> cannot be null.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
-
+    @Deprecated
     public Captions withMergePolicy(String mergePolicy) {
         setMergePolicy(mergePolicy);
         return this;
@@ -271,7 +277,7 @@ public class Captions implements Serializable, Cloneable {
      * @return Source files for the input sidecar captions used during the transcoding process. To omit all sidecar
      *         captions, leave <code>CaptionSources</code> blank.
      */
-
+    @Deprecated
     public java.util.List<CaptionSource> getCaptionSources() {
         if (captionSources == null) {
             captionSources = new com.amazonaws.internal.SdkInternalList<CaptionSource>();
@@ -289,7 +295,7 @@ public class Captions implements Serializable, Cloneable {
      *        Source files for the input sidecar captions used during the transcoding process. To omit all sidecar
      *        captions, leave <code>CaptionSources</code> blank.
      */
-
+    @Deprecated
     public void setCaptionSources(java.util.Collection<CaptionSource> captionSources) {
         if (captionSources == null) {
             this.captionSources = null;
@@ -315,7 +321,7 @@ public class Captions implements Serializable, Cloneable {
      *        captions, leave <code>CaptionSources</code> blank.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
-
+    @Deprecated
     public Captions withCaptionSources(CaptionSource... captionSources) {
         if (this.captionSources == null) {
             setCaptionSources(new com.amazonaws.internal.SdkInternalList<CaptionSource>(captionSources.length));
@@ -337,7 +343,7 @@ public class Captions implements Serializable, Cloneable {
      *        captions, leave <code>CaptionSources</code> blank.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
-
+    @Deprecated
     public Captions withCaptionSources(java.util.Collection<CaptionSource> captionSources) {
         setCaptionSources(captionSources);
         return this;
@@ -436,11 +442,11 @@ public class Captions implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMergePolicy() != null)
-            sb.append("MergePolicy: " + getMergePolicy() + ",");
+            sb.append("MergePolicy: ").append(getMergePolicy()).append(",");
         if (getCaptionSources() != null)
-            sb.append("CaptionSources: " + getCaptionSources() + ",");
+            sb.append("CaptionSources: ").append(getCaptionSources()).append(",");
         if (getCaptionFormats() != null)
-            sb.append("CaptionFormats: " + getCaptionFormats());
+            sb.append("CaptionFormats: ").append(getCaptionFormats());
         sb.append("}");
         return sb.toString();
     }
@@ -488,5 +494,11 @@ public class Captions implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.CaptionsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

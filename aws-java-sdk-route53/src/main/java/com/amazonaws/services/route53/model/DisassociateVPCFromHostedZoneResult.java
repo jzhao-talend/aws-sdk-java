@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,34 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains the response information for the disassociate request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DisassociateVPCFromHostedZone"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DisassociateVPCFromHostedZoneResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
     /**
      * <p>
-     * A complex type that describes the changes made to your hosted zone.
+     * A complex type that describes the changes made to the specified private hosted zone.
      * </p>
      */
     private ChangeInfo changeInfo;
 
     /**
      * <p>
-     * A complex type that describes the changes made to your hosted zone.
+     * A complex type that describes the changes made to the specified private hosted zone.
      * </p>
      * 
      * @param changeInfo
-     *        A complex type that describes the changes made to your hosted zone.
+     *        A complex type that describes the changes made to the specified private hosted zone.
      */
 
     public void setChangeInfo(ChangeInfo changeInfo) {
@@ -44,10 +49,10 @@ public class DisassociateVPCFromHostedZoneResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A complex type that describes the changes made to your hosted zone.
+     * A complex type that describes the changes made to the specified private hosted zone.
      * </p>
      * 
-     * @return A complex type that describes the changes made to your hosted zone.
+     * @return A complex type that describes the changes made to the specified private hosted zone.
      */
 
     public ChangeInfo getChangeInfo() {
@@ -56,11 +61,11 @@ public class DisassociateVPCFromHostedZoneResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A complex type that describes the changes made to your hosted zone.
+     * A complex type that describes the changes made to the specified private hosted zone.
      * </p>
      * 
      * @param changeInfo
-     *        A complex type that describes the changes made to your hosted zone.
+     *        A complex type that describes the changes made to the specified private hosted zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -81,7 +86,7 @@ public class DisassociateVPCFromHostedZoneResult extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getChangeInfo() != null)
-            sb.append("ChangeInfo: " + getChangeInfo());
+            sb.append("ChangeInfo: ").append(getChangeInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -120,4 +125,5 @@ public class DisassociateVPCFromHostedZoneResult extends com.amazonaws.AmazonWeb
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

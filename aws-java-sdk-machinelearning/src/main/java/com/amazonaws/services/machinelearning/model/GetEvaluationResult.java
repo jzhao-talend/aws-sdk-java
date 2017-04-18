@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the output of a <code>GetEvaluation</code> operation and describes an <code>Evaluation</code>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetEvaluationResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -1064,35 +1066,35 @@ public class GetEvaluationResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEvaluationId() != null)
-            sb.append("EvaluationId: " + getEvaluationId() + ",");
+            sb.append("EvaluationId: ").append(getEvaluationId()).append(",");
         if (getMLModelId() != null)
-            sb.append("MLModelId: " + getMLModelId() + ",");
+            sb.append("MLModelId: ").append(getMLModelId()).append(",");
         if (getEvaluationDataSourceId() != null)
-            sb.append("EvaluationDataSourceId: " + getEvaluationDataSourceId() + ",");
+            sb.append("EvaluationDataSourceId: ").append(getEvaluationDataSourceId()).append(",");
         if (getInputDataLocationS3() != null)
-            sb.append("InputDataLocationS3: " + getInputDataLocationS3() + ",");
+            sb.append("InputDataLocationS3: ").append(getInputDataLocationS3()).append(",");
         if (getCreatedByIamUser() != null)
-            sb.append("CreatedByIamUser: " + getCreatedByIamUser() + ",");
+            sb.append("CreatedByIamUser: ").append(getCreatedByIamUser()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getLastUpdatedAt() != null)
-            sb.append("LastUpdatedAt: " + getLastUpdatedAt() + ",");
+            sb.append("LastUpdatedAt: ").append(getLastUpdatedAt()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getPerformanceMetrics() != null)
-            sb.append("PerformanceMetrics: " + getPerformanceMetrics() + ",");
+            sb.append("PerformanceMetrics: ").append(getPerformanceMetrics()).append(",");
         if (getLogUri() != null)
-            sb.append("LogUri: " + getLogUri() + ",");
+            sb.append("LogUri: ").append(getLogUri()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getComputeTime() != null)
-            sb.append("ComputeTime: " + getComputeTime() + ",");
+            sb.append("ComputeTime: ").append(getComputeTime()).append(",");
         if (getFinishedAt() != null)
-            sb.append("FinishedAt: " + getFinishedAt() + ",");
+            sb.append("FinishedAt: ").append(getFinishedAt()).append(",");
         if (getStartedAt() != null)
-            sb.append("StartedAt: " + getStartedAt());
+            sb.append("StartedAt: ").append(getStartedAt());
         sb.append("}");
         return sb.toString();
     }
@@ -1201,4 +1203,5 @@ public class GetEvaluationResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

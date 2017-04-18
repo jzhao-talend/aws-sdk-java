@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/Endpoint" target="_top">AWS API Documentation</a>
  */
-public class Endpoint implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -34,7 +40,8 @@ public class Endpoint implements Serializable, Cloneable {
     private String endpointType;
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      */
     private String engineName;
@@ -228,11 +235,13 @@ public class Endpoint implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The database engine name.
+     *        The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE,
+     *        and SQLSERVER.
      */
 
     public void setEngineName(String engineName) {
@@ -241,10 +250,12 @@ public class Endpoint implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
-     * @return The database engine name.
+     * @return The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     *         SYBASE, and SQLSERVER.
      */
 
     public String getEngineName() {
@@ -253,11 +264,13 @@ public class Endpoint implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The database engine name.
+     *        The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE,
+     *        and SQLSERVER.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -781,31 +794,31 @@ public class Endpoint implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEndpointIdentifier() != null)
-            sb.append("EndpointIdentifier: " + getEndpointIdentifier() + ",");
+            sb.append("EndpointIdentifier: ").append(getEndpointIdentifier()).append(",");
         if (getEndpointType() != null)
-            sb.append("EndpointType: " + getEndpointType() + ",");
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getServerName() != null)
-            sb.append("ServerName: " + getServerName() + ",");
+            sb.append("ServerName: ").append(getServerName()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getDatabaseName() != null)
-            sb.append("DatabaseName: " + getDatabaseName() + ",");
+            sb.append("DatabaseName: ").append(getDatabaseName()).append(",");
         if (getExtraConnectionAttributes() != null)
-            sb.append("ExtraConnectionAttributes: " + getExtraConnectionAttributes() + ",");
+            sb.append("ExtraConnectionAttributes: ").append(getExtraConnectionAttributes()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getEndpointArn() != null)
-            sb.append("EndpointArn: " + getEndpointArn() + ",");
+            sb.append("EndpointArn: ").append(getEndpointArn()).append(",");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getSslMode() != null)
-            sb.append("SslMode: " + getSslMode());
+            sb.append("SslMode: ").append(getSslMode());
         sb.append("}");
         return sb.toString();
     }
@@ -903,5 +916,11 @@ public class Endpoint implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.EndpointMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

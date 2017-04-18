@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents information about a current revision.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CurrentRevision" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CurrentRevision implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CurrentRevision implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -218,13 +225,13 @@ public class CurrentRevision implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRevision() != null)
-            sb.append("Revision: " + getRevision() + ",");
+            sb.append("Revision: ").append(getRevision()).append(",");
         if (getChangeIdentifier() != null)
-            sb.append("ChangeIdentifier: " + getChangeIdentifier() + ",");
+            sb.append("ChangeIdentifier: ").append(getChangeIdentifier()).append(",");
         if (getCreated() != null)
-            sb.append("Created: " + getCreated() + ",");
+            sb.append("Created: ").append(getCreated()).append(",");
         if (getRevisionSummary() != null)
-            sb.append("RevisionSummary: " + getRevisionSummary());
+            sb.append("RevisionSummary: ").append(getRevisionSummary());
         sb.append("}");
         return sb.toString();
     }
@@ -277,5 +284,11 @@ public class CurrentRevision implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.CurrentRevisionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

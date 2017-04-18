@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DetachElasticLoadBalancer" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DetachElasticLoadBalancerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -125,9 +130,9 @@ public class DetachElasticLoadBalancerRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getElasticLoadBalancerName() != null)
-            sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");
+            sb.append("ElasticLoadBalancerName: ").append(getElasticLoadBalancerName()).append(",");
         if (getLayerId() != null)
-            sb.append("LayerId: " + getLayerId());
+            sb.append("LayerId: ").append(getLayerId());
         sb.append("}");
         return sb.toString();
     }
@@ -167,4 +172,5 @@ public class DetachElasticLoadBalancerRequest extends com.amazonaws.AmazonWebSer
     public DetachElasticLoadBalancerRequest clone() {
         return (DetachElasticLoadBalancerRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.cloudtrail.AWSCloudTrailClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -64,11 +68,12 @@ import com.amazonaws.services.cloudtrail.model.transform.*;
  * </p>
  * </note>
  * <p>
- * See the CloudTrail User Guide for information about the data that is included with each AWS API call listed in the
- * log files.
+ * See the <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS CloudTrail
+ * User Guide</a> for information about the data that is included with each AWS API call listed in the log files.
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCloudTrail {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -81,109 +86,114 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTokenException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidTokenException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CloudTrailARNInvalidException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.CloudTrailARNInvalidException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidCloudWatchLogsRoleArnException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidCloudWatchLogsRoleArnException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidKmsKeyIdException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidKmsKeyIdException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTimeRangeException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidTimeRangeException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.UnsupportedOperationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TrailNotProvidedException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.TrailNotProvidedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidCloudWatchLogsLogGroupArnException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidCloudWatchLogsLogGroupArnException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("KmsException").withModeledClass(com.amazonaws.services.cloudtrail.model.KmsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("S3BucketDoesNotExistException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.S3BucketDoesNotExistException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameterCombinationException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidParameterCombinationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidMaxResultsException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidMaxResultsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TagsLimitExceededException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.TagsLimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidS3BucketNameException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidS3BucketNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CloudWatchLogsDeliveryUnavailableException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.CloudWatchLogsDeliveryUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTrailNameException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidTrailNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSnsTopicNameException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidSnsTopicNameException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InsufficientEncryptionPolicyException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InsufficientEncryptionPolicyException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTagParameterException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidTagParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("KmsKeyNotFoundException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.KmsKeyNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.OperationNotPermittedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TrailNotFoundException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.TrailNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidLookupAttributesException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidLookupAttributesException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MaximumNumberOfTrailsExceededException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.MaximumNumberOfTrailsExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidS3PrefixException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidS3PrefixException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InsufficientSnsTopicPolicyException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InsufficientSnsTopicPolicyException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidNextTokenException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InsufficientS3BucketPolicyException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InsufficientS3BucketPolicyException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidHomeRegionException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.InvalidHomeRegionException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceTypeNotSupportedException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.ResourceTypeNotSupportedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TrailAlreadyExistsException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.TrailAlreadyExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("KmsKeyDisabledException").withModeledClass(
-                            com.amazonaws.services.cloudtrail.model.KmsKeyDisabledException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.cloudtrail.model.AWSCloudTrailException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTokenException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidTokenException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CloudTrailARNInvalidException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.CloudTrailARNInvalidException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCloudWatchLogsRoleArnException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidCloudWatchLogsRoleArnException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidKmsKeyIdException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidKmsKeyIdException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTimeRangeException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidTimeRangeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEventSelectorsException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidEventSelectorsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.UnsupportedOperationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TrailNotProvidedException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.TrailNotProvidedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCloudWatchLogsLogGroupArnException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidCloudWatchLogsLogGroupArnException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KmsException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.KmsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("S3BucketDoesNotExistException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.S3BucketDoesNotExistException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterCombinationException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidParameterCombinationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxResultsException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidMaxResultsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TagsLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.TagsLimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3BucketNameException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidS3BucketNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CloudWatchLogsDeliveryUnavailableException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.CloudWatchLogsDeliveryUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTrailNameException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidTrailNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSnsTopicNameException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidSnsTopicNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientEncryptionPolicyException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InsufficientEncryptionPolicyException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagParameterException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidTagParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KmsKeyNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.KmsKeyNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.OperationNotPermittedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TrailNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.TrailNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLookupAttributesException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidLookupAttributesException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumNumberOfTrailsExceededException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.MaximumNumberOfTrailsExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3PrefixException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidS3PrefixException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientSnsTopicPolicyException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InsufficientSnsTopicPolicyException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidNextTokenException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientS3BucketPolicyException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InsufficientS3BucketPolicyException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidHomeRegionException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.InvalidHomeRegionException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceTypeNotSupportedException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.ResourceTypeNotSupportedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TrailAlreadyExistsException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.TrailAlreadyExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("KmsKeyDisabledException").withModeledClass(
+                                    com.amazonaws.services.cloudtrail.model.KmsKeyDisabledException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.cloudtrail.model.AWSCloudTrailException.class));
 
     /**
      * Constructs a new client to invoke service methods on CloudTrail. A credentials provider chain will be used that
@@ -199,7 +209,9 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCloudTrailClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSCloudTrailClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -222,7 +234,9 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCloudTrailClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -236,7 +250,10 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSCloudTrailClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSCloudTrailClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -254,7 +271,10 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CloudTrail (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCloudTrailClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCloudTrailClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -271,7 +291,9 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSCloudTrailClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -289,7 +311,10 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to CloudTrail (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCloudTrailClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCloudTrailClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -309,12 +334,20 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSCloudTrailClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCloudTrailClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCloudTrailClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSCloudTrailClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSCloudTrailClientBuilder builder() {
+        return AWSCloudTrailClientBuilder.standard();
     }
 
     /**
@@ -346,7 +379,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
 
     /**
      * <p>
-     * Adds one or more tags to a trail, up to a limit of 10. Tags must be unique per trail. Overwrites an existing
+     * Adds one or more tags to a trail, up to a limit of 50. Tags must be unique per trail. Overwrites an existing
      * tag's value when a new value is specified for an existing tag key. If you specify a key without a value, the tag
      * will be created with the specified key and a value of null. You can tag a trail that applies to all regions only
      * from the region in which the trail was created (that is, from its home region).
@@ -365,7 +398,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws ResourceTypeNotSupportedException
      *         This exception is thrown when the specified resource type is not supported by CloudTrail.
      * @throws TagsLimitExceededException
-     *         The number of tags per trail has exceeded the permitted amount. Currently, the limit is 10.
+     *         The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.
      * @throws InvalidTrailNameException
      *         This exception is thrown when the provided trail name is not valid. Trail names must meet the following
      *         requirements:
@@ -405,9 +438,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws OperationNotPermittedException
      *         This exception is thrown when the requested operation is not permitted.
      * @sample AWSCloudTrail.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/AddTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsResult addTags(AddTagsRequest addTagsRequest) {
+    public AddTagsResult addTags(AddTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTags(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsResult executeAddTags(AddTagsRequest addTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -417,7 +459,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
+                request = new AddTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -518,9 +560,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws OperationNotPermittedException
      *         This exception is thrown when the requested operation is not permitted.
      * @sample AWSCloudTrail.CreateTrail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/CreateTrail" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateTrailResult createTrail(CreateTrailRequest createTrailRequest) {
+    public CreateTrailResult createTrail(CreateTrailRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTrail(request);
+    }
+
+    @SdkInternalApi
+    final CreateTrailResult executeCreateTrail(CreateTrailRequest createTrailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTrailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -530,7 +581,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateTrailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTrailRequest));
+                request = new CreateTrailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTrailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -595,9 +646,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *         This exception is thrown when an operation is called on a trail from a region other than the region in
      *         which the trail was created.
      * @sample AWSCloudTrail.DeleteTrail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/DeleteTrail" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteTrailResult deleteTrail(DeleteTrailRequest deleteTrailRequest) {
+    public DeleteTrailResult deleteTrail(DeleteTrailRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTrail(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTrailResult executeDeleteTrail(DeleteTrailRequest deleteTrailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTrailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -607,7 +667,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteTrailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTrailRequest));
+                request = new DeleteTrailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTrailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -639,9 +699,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws OperationNotPermittedException
      *         This exception is thrown when the requested operation is not permitted.
      * @sample AWSCloudTrail.DescribeTrails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/DescribeTrails" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeTrailsResult describeTrails(DescribeTrailsRequest describeTrailsRequest) {
+    public DescribeTrailsResult describeTrails(DescribeTrailsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTrails(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTrailsResult executeDescribeTrails(DescribeTrailsRequest describeTrailsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTrailsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -651,7 +720,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTrailsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTrailsRequest));
+                request = new DescribeTrailsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTrailsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -673,6 +742,113 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
     @Override
     public DescribeTrailsResult describeTrails() {
         return describeTrails(new DescribeTrailsRequest());
+    }
+
+    /**
+     * <p>
+     * Describes the settings for the event selectors that you configured for your trail. The information returned for
+     * your event selectors includes the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The S3 objects that you are logging for data events.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your event selector includes management events.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your event selector includes read-only events, write-only events, or all.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a href=
+     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html"
+     * >Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.
+     * </p>
+     * 
+     * @param getEventSelectorsRequest
+     * @return Result of the GetEventSelectors operation returned by the service.
+     * @throws TrailNotFoundException
+     *         This exception is thrown when the trail with the given name is not found.
+     * @throws InvalidTrailNameException
+     *         This exception is thrown when the provided trail name is not valid. Trail names must meet the following
+     *         requirements:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Start with a letter or number, and end with a letter or number
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be between 3 and 128 characters
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and
+     *         <code>my--namespace</code> are invalid.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not be in IP address format (for example, 192.168.5.4)
+     *         </p>
+     *         </li>
+     * @throws UnsupportedOperationException
+     *         This exception is thrown when the requested operation is not supported.
+     * @throws OperationNotPermittedException
+     *         This exception is thrown when the requested operation is not permitted.
+     * @sample AWSCloudTrail.GetEventSelectors
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/GetEventSelectors" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public GetEventSelectorsResult getEventSelectors(GetEventSelectorsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEventSelectors(request);
+    }
+
+    @SdkInternalApi
+    final GetEventSelectorsResult executeGetEventSelectors(GetEventSelectorsRequest getEventSelectorsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getEventSelectorsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetEventSelectorsRequest> request = null;
+        Response<GetEventSelectorsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetEventSelectorsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEventSelectorsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetEventSelectorsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetEventSelectorsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
 
     /**
@@ -719,9 +895,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *         </p>
      *         </li>
      * @sample AWSCloudTrail.GetTrailStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/GetTrailStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetTrailStatusResult getTrailStatus(GetTrailStatusRequest getTrailStatusRequest) {
+    public GetTrailStatusResult getTrailStatus(GetTrailStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTrailStatus(request);
+    }
+
+    @SdkInternalApi
+    final GetTrailStatusResult executeGetTrailStatus(GetTrailStatusRequest getTrailStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getTrailStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -731,7 +916,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetTrailStatusRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTrailStatusRequest));
+                request = new GetTrailStatusRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTrailStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -776,9 +961,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws InvalidTokenException
      *         Reserved for future use.
      * @sample AWSCloudTrail.ListPublicKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListPublicKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListPublicKeysResult listPublicKeys(ListPublicKeysRequest listPublicKeysRequest) {
+    public ListPublicKeysResult listPublicKeys(ListPublicKeysRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPublicKeys(request);
+    }
+
+    @SdkInternalApi
+    final ListPublicKeysResult executeListPublicKeys(ListPublicKeysRequest listPublicKeysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPublicKeysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -788,7 +982,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListPublicKeysRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listPublicKeysRequest));
+                request = new ListPublicKeysRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listPublicKeysRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -867,9 +1061,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws InvalidTokenException
      *         Reserved for future use.
      * @sample AWSCloudTrail.ListTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTagsResult listTags(ListTagsRequest listTagsRequest) {
+    public ListTagsResult listTags(ListTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTags(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsResult executeListTags(ListTagsRequest listTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -879,7 +1082,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsRequest));
+                request = new ListTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -902,11 +1105,43 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * <p>
      * Looks up API activity events captured by CloudTrail that create, update, or delete resources in your account.
      * Events for a region can be looked up for the times in which you had CloudTrail turned on in that region during
-     * the last seven days. Lookup supports five different attributes: time range (defined by a start time and end
-     * time), user name, event name, resource type, and resource name. All attributes are optional. The maximum number
-     * of attributes that can be specified in any one lookup request are time range and one other attribute. The default
-     * number of results returned is 10, with a maximum of 50 possible. The response includes a token that you can use
-     * to get the next page of results.
+     * the last seven days. Lookup supports the following attributes:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Event ID
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Event name
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Event source
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Resource name
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Resource type
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * User name
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * All attributes are optional. The default number of results returned is 10, with a maximum of 50 possible. The
+     * response includes a token that you can use to get the next page of results.
      * </p>
      * <important>
      * <p>
@@ -934,9 +1169,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *         Invalid token or token that was previously used in a request with different parameters. This exception is
      *         thrown if the token is invalid.
      * @sample AWSCloudTrail.LookupEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/LookupEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public LookupEventsResult lookupEvents(LookupEventsRequest lookupEventsRequest) {
+    public LookupEventsResult lookupEvents(LookupEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeLookupEvents(request);
+    }
+
+    @SdkInternalApi
+    final LookupEventsResult executeLookupEvents(LookupEventsRequest lookupEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(lookupEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -946,7 +1190,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new LookupEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(lookupEventsRequest));
+                request = new LookupEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(lookupEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -968,6 +1212,156 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
     @Override
     public LookupEventsResult lookupEvents() {
         return lookupEvents(new LookupEventsRequest());
+    }
+
+    /**
+     * <p>
+     * Configures an event selector for your trail. Use event selectors to specify whether you want your trail to log
+     * management and/or data events. When an event occurs in your account, CloudTrail evaluates the event selectors in
+     * all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If
+     * the event doesn't match any event selector, the trail doesn't log the event.
+     * </p>
+     * <p>
+     * Example
+     * </p>
+     * <ol>
+     * <li>
+     * <p>
+     * You create an event selector for a trail and specify that you want write-only events.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The EC2 <code>GetConsoleOutput</code> and <code>RunInstances</code> API operations occur in your account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * CloudTrail evaluates whether the events match your event selectors.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>RunInstances</code> is a write-only event and it matches your event selector. The trail logs the event.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>GetConsoleOutput</code> is a read-only event but it doesn't match your event selector. The trail
+     * doesn't log the event.
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * The <code>PutEventSelectors</code> operation must be called from the region in which the trail was created;
+     * otherwise, an <code>InvalidHomeRegionException</code> is thrown.
+     * </p>
+     * <p>
+     * You can configure up to five event selectors for each trail. For more information, see <a href=
+     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html"
+     * >Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.
+     * </p>
+     * 
+     * @param putEventSelectorsRequest
+     * @return Result of the PutEventSelectors operation returned by the service.
+     * @throws TrailNotFoundException
+     *         This exception is thrown when the trail with the given name is not found.
+     * @throws InvalidTrailNameException
+     *         This exception is thrown when the provided trail name is not valid. Trail names must meet the following
+     *         requirements:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Start with a letter or number, and end with a letter or number
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be between 3 and 128 characters
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and
+     *         <code>my--namespace</code> are invalid.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not be in IP address format (for example, 192.168.5.4)
+     *         </p>
+     *         </li>
+     * @throws InvalidHomeRegionException
+     *         This exception is thrown when an operation is called on a trail from a region other than the region in
+     *         which the trail was created.
+     * @throws InvalidEventSelectorsException
+     *         This exception is thrown when the <code>PutEventSelectors</code> operation is called with an invalid
+     *         number of event selectors, data resources, or an invalid value for a parameter:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Specify a valid number of event selectors (1 to 5) for a trail.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Specify a valid number of data resources (1 to 250) for an event selector.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Specify a valid value for a parameter. For example, specifying the <code>ReadWriteType</code> parameter
+     *         with a value of <code>read-only</code> is invalid.
+     *         </p>
+     *         </li>
+     * @throws UnsupportedOperationException
+     *         This exception is thrown when the requested operation is not supported.
+     * @throws OperationNotPermittedException
+     *         This exception is thrown when the requested operation is not permitted.
+     * @sample AWSCloudTrail.PutEventSelectors
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/PutEventSelectors" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public PutEventSelectorsResult putEventSelectors(PutEventSelectorsRequest request) {
+        request = beforeClientExecution(request);
+        return executePutEventSelectors(request);
+    }
+
+    @SdkInternalApi
+    final PutEventSelectorsResult executePutEventSelectors(PutEventSelectorsRequest putEventSelectorsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putEventSelectorsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutEventSelectorsRequest> request = null;
+        Response<PutEventSelectorsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutEventSelectorsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putEventSelectorsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutEventSelectorsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new PutEventSelectorsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
 
     /**
@@ -1026,9 +1420,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws OperationNotPermittedException
      *         This exception is thrown when the requested operation is not permitted.
      * @sample AWSCloudTrail.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/RemoveTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest) {
+    public RemoveTagsResult removeTags(RemoveTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTags(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsResult executeRemoveTags(RemoveTagsRequest removeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1038,7 +1441,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemoveTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsRequest));
+                request = new RemoveTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1103,9 +1506,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *         This exception is thrown when an operation is called on a trail from a region other than the region in
      *         which the trail was created.
      * @sample AWSCloudTrail.StartLogging
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/StartLogging" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StartLoggingResult startLogging(StartLoggingRequest startLoggingRequest) {
+    public StartLoggingResult startLogging(StartLoggingRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartLogging(request);
+    }
+
+    @SdkInternalApi
+    final StartLoggingResult executeStartLogging(StartLoggingRequest startLoggingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startLoggingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1115,7 +1527,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartLoggingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(startLoggingRequest));
+                request = new StartLoggingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startLoggingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1182,9 +1594,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      *         This exception is thrown when an operation is called on a trail from a region other than the region in
      *         which the trail was created.
      * @sample AWSCloudTrail.StopLogging
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/StopLogging" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StopLoggingResult stopLogging(StopLoggingRequest stopLoggingRequest) {
+    public StopLoggingResult stopLogging(StopLoggingRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopLogging(request);
+    }
+
+    @SdkInternalApi
+    final StopLoggingResult executeStopLogging(StopLoggingRequest stopLoggingRequest) {
+
         ExecutionContext executionContext = createExecutionContext(stopLoggingRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1194,7 +1615,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StopLoggingRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopLoggingRequest));
+                request = new StopLoggingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopLoggingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1299,9 +1720,18 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
      * @throws OperationNotPermittedException
      *         This exception is thrown when the requested operation is not permitted.
      * @sample AWSCloudTrail.UpdateTrail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/UpdateTrail" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateTrailResult updateTrail(UpdateTrailRequest updateTrailRequest) {
+    public UpdateTrailResult updateTrail(UpdateTrailRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTrail(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTrailResult executeUpdateTrail(UpdateTrailRequest updateTrailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateTrailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1311,7 +1741,7 @@ public class AWSCloudTrailClient extends AmazonWebServiceClient implements AWSCl
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateTrailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTrailRequest));
+                request = new UpdateTrailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTrailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

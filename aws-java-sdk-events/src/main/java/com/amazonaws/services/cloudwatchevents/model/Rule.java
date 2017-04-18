@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,23 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information about a rule in Amazon CloudWatch Events. A ListRulesResult contains a list of Rules.
+ * Contains information about a rule in Amazon CloudWatch Events.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/Rule" target="_top">AWS API Documentation</a>
  */
-public class Rule implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Rule implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      */
     private String name;
@@ -41,7 +47,7 @@ public class Rule implements Serializable, Cloneable {
     private String eventPattern;
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      */
     private String state;
@@ -59,18 +65,18 @@ public class Rule implements Serializable, Cloneable {
     private String scheduleExpression;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     * The Amazon Resource Name (ARN) of the role that is used for target invocation.
      * </p>
      */
     private String roleArn;
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The rule's name.
+     *        The name of the rule.
      */
 
     public void setName(String name) {
@@ -79,10 +85,10 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
-     * @return The rule's name.
+     * @return The name of the rule.
      */
 
     public String getName() {
@@ -91,11 +97,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The rule's name.
+     *        The name of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -186,11 +192,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      * 
      * @param state
-     *        The rule's state.
+     *        The state of the rule.
      * @see RuleState
      */
 
@@ -200,10 +206,10 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      * 
-     * @return The rule's state.
+     * @return The state of the rule.
      * @see RuleState
      */
 
@@ -213,11 +219,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      * 
      * @param state
-     *        The rule's state.
+     *        The state of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RuleState
      */
@@ -229,11 +235,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      * 
      * @param state
-     *        The rule's state.
+     *        The state of the rule.
      * @see RuleState
      */
 
@@ -243,11 +249,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's state.
+     * The state of the rule.
      * </p>
      * 
      * @param state
-     *        The rule's state.
+     *        The state of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RuleState
      */
@@ -339,11 +345,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     * The Amazon Resource Name (ARN) of the role that is used for target invocation.
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     *        The Amazon Resource Name (ARN) of the role that is used for target invocation.
      */
 
     public void setRoleArn(String roleArn) {
@@ -352,10 +358,10 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     * The Amazon Resource Name (ARN) of the role that is used for target invocation.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     * @return The Amazon Resource Name (ARN) of the role that is used for target invocation.
      */
 
     public String getRoleArn() {
@@ -364,11 +370,11 @@ public class Rule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     * The Amazon Resource Name (ARN) of the role that is used for target invocation.
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
+     *        The Amazon Resource Name (ARN) of the role that is used for target invocation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -389,19 +395,19 @@ public class Rule implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getEventPattern() != null)
-            sb.append("EventPattern: " + getEventPattern() + ",");
+            sb.append("EventPattern: ").append(getEventPattern()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getScheduleExpression() != null)
-            sb.append("ScheduleExpression: " + getScheduleExpression() + ",");
+            sb.append("ScheduleExpression: ").append(getScheduleExpression()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn());
         sb.append("}");
         return sb.toString();
     }
@@ -469,5 +475,11 @@ public class Rule implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudwatchevents.model.transform.RuleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

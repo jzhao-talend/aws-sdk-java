@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * (such as the source bucket name and object key name), the in-application table name that is created, and updated
  * mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ReferenceDataSourceUpdate"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReferenceDataSourceUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -216,13 +223,13 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReferenceId() != null)
-            sb.append("ReferenceId: " + getReferenceId() + ",");
+            sb.append("ReferenceId: ").append(getReferenceId()).append(",");
         if (getTableNameUpdate() != null)
-            sb.append("TableNameUpdate: " + getTableNameUpdate() + ",");
+            sb.append("TableNameUpdate: ").append(getTableNameUpdate()).append(",");
         if (getS3ReferenceDataSourceUpdate() != null)
-            sb.append("S3ReferenceDataSourceUpdate: " + getS3ReferenceDataSourceUpdate() + ",");
+            sb.append("S3ReferenceDataSourceUpdate: ").append(getS3ReferenceDataSourceUpdate()).append(",");
         if (getReferenceSchemaUpdate() != null)
-            sb.append("ReferenceSchemaUpdate: " + getReferenceSchemaUpdate());
+            sb.append("ReferenceSchemaUpdate: ").append(getReferenceSchemaUpdate());
         sb.append("}");
         return sb.toString();
     }
@@ -275,5 +282,11 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.ReferenceDataSourceUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

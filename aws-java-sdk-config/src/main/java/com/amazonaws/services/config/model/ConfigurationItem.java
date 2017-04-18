@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,20 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A list that contains detailed configurations of a specified resource.
  * </p>
- * <note>
- * <p>
- * Currently, the list does not contain information about non-AWS components (for example, applications on your Amazon
- * EC2 instances).
- * </p>
- * </note>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigurationItem" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ConfigurationItem implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConfigurationItem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -1151,41 +1152,41 @@ public class ConfigurationItem implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getAccountId() != null)
-            sb.append("AccountId: " + getAccountId() + ",");
+            sb.append("AccountId: ").append(getAccountId()).append(",");
         if (getConfigurationItemCaptureTime() != null)
-            sb.append("ConfigurationItemCaptureTime: " + getConfigurationItemCaptureTime() + ",");
+            sb.append("ConfigurationItemCaptureTime: ").append(getConfigurationItemCaptureTime()).append(",");
         if (getConfigurationItemStatus() != null)
-            sb.append("ConfigurationItemStatus: " + getConfigurationItemStatus() + ",");
+            sb.append("ConfigurationItemStatus: ").append(getConfigurationItemStatus()).append(",");
         if (getConfigurationStateId() != null)
-            sb.append("ConfigurationStateId: " + getConfigurationStateId() + ",");
+            sb.append("ConfigurationStateId: ").append(getConfigurationStateId()).append(",");
         if (getConfigurationItemMD5Hash() != null)
-            sb.append("ConfigurationItemMD5Hash: " + getConfigurationItemMD5Hash() + ",");
+            sb.append("ConfigurationItemMD5Hash: ").append(getConfigurationItemMD5Hash()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getResourceName() != null)
-            sb.append("ResourceName: " + getResourceName() + ",");
+            sb.append("ResourceName: ").append(getResourceName()).append(",");
         if (getAwsRegion() != null)
-            sb.append("AwsRegion: " + getAwsRegion() + ",");
+            sb.append("AwsRegion: ").append(getAwsRegion()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getResourceCreationTime() != null)
-            sb.append("ResourceCreationTime: " + getResourceCreationTime() + ",");
+            sb.append("ResourceCreationTime: ").append(getResourceCreationTime()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getRelatedEvents() != null)
-            sb.append("RelatedEvents: " + getRelatedEvents() + ",");
+            sb.append("RelatedEvents: ").append(getRelatedEvents()).append(",");
         if (getRelationships() != null)
-            sb.append("Relationships: " + getRelationships() + ",");
+            sb.append("Relationships: ").append(getRelationships()).append(",");
         if (getConfiguration() != null)
-            sb.append("Configuration: " + getConfiguration() + ",");
+            sb.append("Configuration: ").append(getConfiguration()).append(",");
         if (getSupplementaryConfiguration() != null)
-            sb.append("SupplementaryConfiguration: " + getSupplementaryConfiguration());
+            sb.append("SupplementaryConfiguration: ").append(getSupplementaryConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -1308,5 +1309,11 @@ public class ConfigurationItem implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.ConfigurationItemMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

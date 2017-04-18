@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,22 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListDeadLetterSourceQueues" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The queue URL of a dead letter queue.
+     * The URL of a dead letter queue.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
@@ -42,7 +48,7 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
      * (with...) methods to initialize any additional object members.
      * 
      * @param queueUrl
-     *        The queue URL of a dead letter queue.</p>
+     *        The URL of a dead letter queue.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      */
@@ -52,14 +58,14 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The queue URL of a dead letter queue.
+     * The URL of a dead letter queue.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The queue URL of a dead letter queue.</p>
+     *        The URL of a dead letter queue.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      */
@@ -70,13 +76,13 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The queue URL of a dead letter queue.
+     * The URL of a dead letter queue.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
-     * @return The queue URL of a dead letter queue.</p>
+     * @return The URL of a dead letter queue.</p>
      *         <p>
      *         Queue URLs are case-sensitive.
      */
@@ -87,14 +93,14 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The queue URL of a dead letter queue.
+     * The URL of a dead letter queue.
      * </p>
      * <p>
      * Queue URLs are case-sensitive.
      * </p>
      * 
      * @param queueUrl
-     *        The queue URL of a dead letter queue.</p>
+     *        The URL of a dead letter queue.</p>
      *        <p>
      *        Queue URLs are case-sensitive.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -117,7 +123,7 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueueUrl() != null)
-            sb.append("QueueUrl: " + getQueueUrl());
+            sb.append("QueueUrl: ").append(getQueueUrl());
         sb.append("}");
         return sb.toString();
     }
@@ -152,4 +158,5 @@ public class ListDeadLetterSourceQueuesRequest extends com.amazonaws.AmazonWebSe
     public ListDeadLetterSourceQueuesRequest clone() {
         return (ListDeadLetterSourceQueuesRequest) super.clone();
     }
+
 }

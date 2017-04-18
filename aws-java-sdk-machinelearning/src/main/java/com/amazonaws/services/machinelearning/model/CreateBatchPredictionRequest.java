@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateBatchPredictionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -316,15 +316,15 @@ public class CreateBatchPredictionRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBatchPredictionId() != null)
-            sb.append("BatchPredictionId: " + getBatchPredictionId() + ",");
+            sb.append("BatchPredictionId: ").append(getBatchPredictionId()).append(",");
         if (getBatchPredictionName() != null)
-            sb.append("BatchPredictionName: " + getBatchPredictionName() + ",");
+            sb.append("BatchPredictionName: ").append(getBatchPredictionName()).append(",");
         if (getMLModelId() != null)
-            sb.append("MLModelId: " + getMLModelId() + ",");
+            sb.append("MLModelId: ").append(getMLModelId()).append(",");
         if (getBatchPredictionDataSourceId() != null)
-            sb.append("BatchPredictionDataSourceId: " + getBatchPredictionDataSourceId() + ",");
+            sb.append("BatchPredictionDataSourceId: ").append(getBatchPredictionDataSourceId()).append(",");
         if (getOutputUri() != null)
-            sb.append("OutputUri: " + getOutputUri());
+            sb.append("OutputUri: ").append(getOutputUri());
         sb.append("}");
         return sb.toString();
     }
@@ -379,4 +379,5 @@ public class CreateBatchPredictionRequest extends com.amazonaws.AmazonWebService
     public CreateBatchPredictionRequest clone() {
         return (CreateBatchPredictionRequest) super.clone();
     }
+
 }

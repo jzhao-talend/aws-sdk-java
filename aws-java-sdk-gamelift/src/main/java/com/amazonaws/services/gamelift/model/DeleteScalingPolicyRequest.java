@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,35 +13,41 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteScalingPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet to be deleted.
      * </p>
      */
     private String fleetId;
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -50,10 +56,10 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * @return Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public String getName() {
@@ -62,11 +68,11 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names do not need to be unique.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -77,11 +83,11 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet to be deleted.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
+     *        Unique identifier for a fleet to be deleted.
      */
 
     public void setFleetId(String fleetId) {
@@ -90,10 +96,10 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet to be deleted.
      * </p>
      * 
-     * @return Unique identifier for a fleet.
+     * @return Unique identifier for a fleet to be deleted.
      */
 
     public String getFleetId() {
@@ -102,11 +108,11 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet to be deleted.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
+     *        Unique identifier for a fleet to be deleted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,9 +133,9 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId());
+            sb.append("FleetId: ").append(getFleetId());
         sb.append("}");
         return sb.toString();
     }
@@ -169,4 +175,5 @@ public class DeleteScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRe
     public DeleteScalingPolicyRequest clone() {
         return (DeleteScalingPolicyRequest) super.clone();
     }
+
 }

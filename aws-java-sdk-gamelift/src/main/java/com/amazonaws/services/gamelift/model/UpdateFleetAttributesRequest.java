@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,30 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateFleetAttributes" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update attribute metadata for.
+     * Unique identifier for a fleet to update attribute metadata for.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      */
     private String name;
@@ -69,11 +75,11 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update attribute metadata for.
+     * Unique identifier for a fleet to update attribute metadata for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for the fleet you want to update attribute metadata for.
+     *        Unique identifier for a fleet to update attribute metadata for.
      */
 
     public void setFleetId(String fleetId) {
@@ -82,10 +88,10 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update attribute metadata for.
+     * Unique identifier for a fleet to update attribute metadata for.
      * </p>
      * 
-     * @return Unique identifier for the fleet you want to update attribute metadata for.
+     * @return Unique identifier for a fleet to update attribute metadata for.
      */
 
     public String getFleetId() {
@@ -94,11 +100,11 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet you want to update attribute metadata for.
+     * Unique identifier for a fleet to update attribute metadata for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for the fleet you want to update attribute metadata for.
+     *        Unique identifier for a fleet to update attribute metadata for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -109,11 +115,11 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     *        Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -122,10 +128,10 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * @return Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      */
 
     public String getName() {
@@ -134,11 +140,11 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     *        Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -452,15 +458,15 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getNewGameSessionProtectionPolicy() != null)
-            sb.append("NewGameSessionProtectionPolicy: " + getNewGameSessionProtectionPolicy() + ",");
+            sb.append("NewGameSessionProtectionPolicy: ").append(getNewGameSessionProtectionPolicy()).append(",");
         if (getResourceCreationLimitPolicy() != null)
-            sb.append("ResourceCreationLimitPolicy: " + getResourceCreationLimitPolicy());
+            sb.append("ResourceCreationLimitPolicy: ").append(getResourceCreationLimitPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -516,4 +522,5 @@ public class UpdateFleetAttributesRequest extends com.amazonaws.AmazonWebService
     public UpdateFleetAttributesRequest clone() {
         return (UpdateFleetAttributesRequest) super.clone();
     }
+
 }

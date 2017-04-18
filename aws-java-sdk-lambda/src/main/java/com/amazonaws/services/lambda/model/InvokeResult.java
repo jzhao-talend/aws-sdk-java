@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Upon success, returns an empty response. Otherwise, throws an exception.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/Invoke" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -49,7 +54,7 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     private String logResult;
     /**
      * <p>
-     * It is the JSON representation of the object returned by the Lambda function. In This is present only if the
+     * It is the JSON representation of the object returned by the Lambda function. This is present only if the
      * invocation type is <code>RequestResponse</code>.
      * </p>
      * <p>
@@ -230,7 +235,7 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
 
     /**
      * <p>
-     * It is the JSON representation of the object returned by the Lambda function. In This is present only if the
+     * It is the JSON representation of the object returned by the Lambda function. This is present only if the
      * invocation type is <code>RequestResponse</code>.
      * </p>
      * <p>
@@ -239,7 +244,7 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * message.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -250,8 +255,8 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * </p>
      * 
      * @param payload
-     *        It is the JSON representation of the object returned by the Lambda function. In This is present only if
-     *        the invocation type is <code>RequestResponse</code>. </p>
+     *        It is the JSON representation of the object returned by the Lambda function. This is present only if the
+     *        invocation type is <code>RequestResponse</code>. </p>
      *        <p>
      *        In the event of a function error this field contains a message describing the error. For the
      *        <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code>
@@ -264,7 +269,7 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
 
     /**
      * <p>
-     * It is the JSON representation of the object returned by the Lambda function. In This is present only if the
+     * It is the JSON representation of the object returned by the Lambda function. This is present only if the
      * invocation type is <code>RequestResponse</code>.
      * </p>
      * <p>
@@ -280,8 +285,8 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * {@code position}.
      * </p>
      * 
-     * @return It is the JSON representation of the object returned by the Lambda function. In This is present only if
-     *         the invocation type is <code>RequestResponse</code>. </p>
+     * @return It is the JSON representation of the object returned by the Lambda function. This is present only if the
+     *         invocation type is <code>RequestResponse</code>. </p>
      *         <p>
      *         In the event of a function error this field contains a message describing the error. For the
      *         <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code>
@@ -294,7 +299,7 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
 
     /**
      * <p>
-     * It is the JSON representation of the object returned by the Lambda function. In This is present only if the
+     * It is the JSON representation of the object returned by the Lambda function. This is present only if the
      * invocation type is <code>RequestResponse</code>.
      * </p>
      * <p>
@@ -302,10 +307,20 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * errors the Lambda function will report this message. For <code>Unhandled</code> errors AWS Lambda reports the
      * message.
      * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
      * 
      * @param payload
-     *        It is the JSON representation of the object returned by the Lambda function. In This is present only if
-     *        the invocation type is <code>RequestResponse</code>. </p>
+     *        It is the JSON representation of the object returned by the Lambda function. This is present only if the
+     *        invocation type is <code>RequestResponse</code>. </p>
      *        <p>
      *        In the event of a function error this field contains a message describing the error. For the
      *        <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code>
@@ -330,13 +345,13 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatusCode() != null)
-            sb.append("StatusCode: " + getStatusCode() + ",");
+            sb.append("StatusCode: ").append(getStatusCode()).append(",");
         if (getFunctionError() != null)
-            sb.append("FunctionError: " + getFunctionError() + ",");
+            sb.append("FunctionError: ").append(getFunctionError()).append(",");
         if (getLogResult() != null)
-            sb.append("LogResult: " + getLogResult() + ",");
+            sb.append("LogResult: ").append(getLogResult()).append(",");
         if (getPayload() != null)
-            sb.append("Payload: " + getPayload());
+            sb.append("Payload: ").append(getPayload());
         sb.append("}");
         return sb.toString();
     }
@@ -390,4 +405,5 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.glacier;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.glacier.model.*;
 
 /**
  * Interface for accessing Amazon Glacier asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.glacier.AbstractAmazonGlacierAsync} instead.
+ * </p>
  * <p>
  * <p>
  * Amazon Glacier is a storage solution for "cold data."
@@ -32,8 +38,8 @@ import com.amazonaws.services.glacier.model.*;
  * <p>
  * Amazon Glacier is a great storage choice when low storage cost is paramount, your data is rarely retrieved, and
  * retrieval latency of several hours is acceptable. If your application requires fast or frequent access to your data,
- * consider using Amazon S3. For more information, go to <a href="http://aws.amazon.com/s3/">Amazon Simple Storage
- * Service (Amazon S3)</a>.
+ * consider using Amazon S3. For more information, see <a href="http://aws.amazon.com/s3/">Amazon Simple Storage Service
+ * (Amazon S3)</a>.
  * </p>
  * <p>
  * You can store any kind of data in any format. There is no maximum limit on the total amount of data you can store in
@@ -60,6 +66,7 @@ import com.amazonaws.services.glacier.model.*;
  * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonGlacierAsync extends AmazonGlacier {
 
     /**
@@ -83,7 +90,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">Abort Multipart
@@ -91,11 +98,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * 
      * @param abortMultipartUploadRequest
-     *        Provides options to abort a multipart upload identified by the upload ID. </p>
+     *        Provides options to abort a multipart upload identified by the upload ID.</p>
      *        <p>
-     *        For information about the underlying REST API, go to <a
+     *        For information about the underlying REST API, see <a
      *        href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">Abort Multipart
-     *        Upload</a>. For conceptual information, go to <a
+     *        Upload</a>. For conceptual information, see <a
      *        href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with
      *        Archives in Amazon Glacier</a>.
      * @return A Java Future containing the result of the AbortMultipartUpload operation returned by the service.
@@ -124,7 +131,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">Abort Multipart
@@ -132,11 +139,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * 
      * @param abortMultipartUploadRequest
-     *        Provides options to abort a multipart upload identified by the upload ID. </p>
+     *        Provides options to abort a multipart upload identified by the upload ID.</p>
      *        <p>
-     *        For information about the underlying REST API, go to <a
+     *        For information about the underlying REST API, see <a
      *        href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">Abort Multipart
-     *        Upload</a>. For conceptual information, go to <a
+     *        Upload</a>. For conceptual information, see <a
      *        href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with
      *        Archives in Amazon Glacier</a>.
      * @param asyncHandler
@@ -286,7 +293,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html">Complete Multipart
@@ -342,7 +349,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html">Complete Multipart
@@ -432,7 +439,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * <p>
      * You must use the following guidelines when naming a vault.
      * </p>
-     * <p>
      * <ul>
      * <li>
      * <p>
@@ -445,7 +451,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * This operation is idempotent.
      * </p>
@@ -457,7 +462,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html">Creating a Vault in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html">Create Vault
      * </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -479,7 +484,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * <p>
      * You must use the following guidelines when naming a vault.
      * </p>
-     * <p>
      * <ul>
      * <li>
      * <p>
@@ -492,7 +496,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * This operation is idempotent.
      * </p>
@@ -504,7 +507,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html">Creating a Vault in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html">Create Vault
      * </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -529,10 +532,18 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * following scenarios:
      * </p>
      * <ul>
-     * <li>If the archive retrieval job is actively preparing the data for download when Amazon Glacier receives the
-     * delete archive request, the archival retrieval operation might fail.</li>
-     * <li>If the archive retrieval job has successfully prepared the archive for download when Amazon Glacier receives
-     * the delete archive request, you will be able to download the output.</li>
+     * <li>
+     * <p>
+     * If the archive retrieval job is actively preparing the data for download when Amazon Glacier receives the delete
+     * archive request, the archival retrieval operation might fail.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the archive retrieval job has successfully prepared the archive for download when Amazon Glacier receives the
+     * delete archive request, you will be able to download the output.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * This operation is idempotent. Attempting to delete an already-deleted archive does not result in an error.
@@ -545,7 +556,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html">Deleting an Archive in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html">Delete
      * Archive</a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -565,10 +576,18 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * following scenarios:
      * </p>
      * <ul>
-     * <li>If the archive retrieval job is actively preparing the data for download when Amazon Glacier receives the
-     * delete archive request, the archival retrieval operation might fail.</li>
-     * <li>If the archive retrieval job has successfully prepared the archive for download when Amazon Glacier receives
-     * the delete archive request, you will be able to download the output.</li>
+     * <li>
+     * <p>
+     * If the archive retrieval job is actively preparing the data for download when Amazon Glacier receives the delete
+     * archive request, the archival retrieval operation might fail.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the archive retrieval job has successfully prepared the archive for download when Amazon Glacier receives the
+     * delete archive request, you will be able to download the output.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * This operation is idempotent. Attempting to delete an already-deleted archive does not result in an error.
@@ -581,7 +600,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html">Deleting an Archive in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html">Delete
      * Archive</a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -622,7 +641,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html">Deleting a Vault in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html">Delete Vault
      * </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -658,7 +677,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html">Deleting a Vault in Amazon
      * Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html">Delete Vault
      * </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -735,7 +754,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html">Delete Vault
@@ -763,7 +782,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html">Delete Vault
@@ -806,7 +825,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For information about the underlying REST API, go to <a
+     * For information about the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html">Working with Archives in
      * Amazon Glacier</a> in the <i>Amazon Glacier Developer Guide</i>.
      * </p>
@@ -842,7 +861,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For information about the underlying REST API, go to <a
+     * For information about the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html">Working with Archives in
      * Amazon Glacier</a> in the <i>Amazon Glacier Developer Guide</i>.
      * </p>
@@ -878,7 +897,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html">Retrieving Vault Metadata
      * in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html">Describe Vault </a> in the
@@ -911,7 +930,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html">Retrieving Vault Metadata
      * in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html">Describe Vault </a> in the
@@ -972,44 +991,32 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * inventory.
      * </p>
      * <p>
-     * A job ID will not expire for at least 24 hours after Amazon Glacier completes the job. That is, you can download
+     * You can download all the job output or download a portion of the output by specifying a byte range. In the case
+     * of an archive retrieval job, depending on the byte range you specify, Amazon Glacier returns the checksum for the
+     * portion of the data. You can compute the checksum on the client and verify that the values match to ensure the
+     * portion you downloaded is the correct data.
+     * </p>
+     * <p>
+     * A job ID will not expire for at least 24 hours after Amazon Glacier completes the job. That a byte range. For
+     * both archive and inventory retrieval jobs, you should verify the downloaded size against the size returned in the
+     * headers from the <b>Get Job Output</b> response.
+     * </p>
+     * <p>
+     * For archive retrieval jobs, you should also verify that the size is what you expected. If you download a portion
+     * of the output, the expected size is based on the range of bytes you specified. For example, if you specify a
+     * range of <code>bytes=0-1048575</code>, you should verify your download size is 1,048,576 bytes. If you download
+     * an entire archive, the expected size is the size of the archive when you uploaded it to Amazon Glacier The
+     * expected size is also returned in the headers from the <b>Get Job Output</b> response.
+     * </p>
+     * <p>
+     * In the case of an archive retrieval job, depending on the byte range you specify, Amazon Glacier returns the
+     * checksum for the portion of the data. To ensure the portion you downloaded is the correct data, compute the
+     * checksum on the client, verify that the values match, and verify that the size is what you expected.
+     * </p>
+     * <p>
+     * A job ID does not expire for at least 24 hours after Amazon Glacier completes the job. That is, you can download
      * the job output within the 24 hours period after Amazon Glacier completes the job.
      * </p>
-     * <p>
-     * If the job output is large, then you can use the <code>Range</code> request header to retrieve a portion of the
-     * output. This allows you to download the entire output in smaller chunks of bytes. For example, suppose you have 1
-     * GB of job output you want to download and you decide to download 128 MB chunks of data at a time, which is a
-     * total of eight Get Job Output requests. You use the following process to download the job output:
-     * </p>
-     * <ol>
-     * <li>
-     * <p>
-     * Download a 128 MB chunk of output by specifying the appropriate byte range using the <code>Range</code> header.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Along with the data, the response includes a SHA256 tree hash of the payload. You compute the checksum of the
-     * payload on the client and compare it with the checksum you received in the response to ensure you received all
-     * the expected data.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Repeat steps 1 and 2 for all the eight 128 MB chunks of output data, each time specifying the appropriate byte
-     * range.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * After downloading all the parts of the job output, you have a list of eight checksum values. Compute the tree
-     * hash of these values to find the checksum of the entire output. Using the <a>DescribeJob</a> API, obtain job
-     * information of the job that provided you the output. The response includes the checksum of the entire archive
-     * stored in Amazon Glacier. You compare this value with the checksum you computed to ensure you have downloaded the
-     * entire archive content with no errors.
-     * </p>
-     * </li>
-     * </ol>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
      * Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform
@@ -1018,7 +1025,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html">Downloading a Vault
      * Inventory</a>, <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html">Downloading an
@@ -1040,44 +1047,32 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * inventory.
      * </p>
      * <p>
-     * A job ID will not expire for at least 24 hours after Amazon Glacier completes the job. That is, you can download
+     * You can download all the job output or download a portion of the output by specifying a byte range. In the case
+     * of an archive retrieval job, depending on the byte range you specify, Amazon Glacier returns the checksum for the
+     * portion of the data. You can compute the checksum on the client and verify that the values match to ensure the
+     * portion you downloaded is the correct data.
+     * </p>
+     * <p>
+     * A job ID will not expire for at least 24 hours after Amazon Glacier completes the job. That a byte range. For
+     * both archive and inventory retrieval jobs, you should verify the downloaded size against the size returned in the
+     * headers from the <b>Get Job Output</b> response.
+     * </p>
+     * <p>
+     * For archive retrieval jobs, you should also verify that the size is what you expected. If you download a portion
+     * of the output, the expected size is based on the range of bytes you specified. For example, if you specify a
+     * range of <code>bytes=0-1048575</code>, you should verify your download size is 1,048,576 bytes. If you download
+     * an entire archive, the expected size is the size of the archive when you uploaded it to Amazon Glacier The
+     * expected size is also returned in the headers from the <b>Get Job Output</b> response.
+     * </p>
+     * <p>
+     * In the case of an archive retrieval job, depending on the byte range you specify, Amazon Glacier returns the
+     * checksum for the portion of the data. To ensure the portion you downloaded is the correct data, compute the
+     * checksum on the client, verify that the values match, and verify that the size is what you expected.
+     * </p>
+     * <p>
+     * A job ID does not expire for at least 24 hours after Amazon Glacier completes the job. That is, you can download
      * the job output within the 24 hours period after Amazon Glacier completes the job.
      * </p>
-     * <p>
-     * If the job output is large, then you can use the <code>Range</code> request header to retrieve a portion of the
-     * output. This allows you to download the entire output in smaller chunks of bytes. For example, suppose you have 1
-     * GB of job output you want to download and you decide to download 128 MB chunks of data at a time, which is a
-     * total of eight Get Job Output requests. You use the following process to download the job output:
-     * </p>
-     * <ol>
-     * <li>
-     * <p>
-     * Download a 128 MB chunk of output by specifying the appropriate byte range using the <code>Range</code> header.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Along with the data, the response includes a SHA256 tree hash of the payload. You compute the checksum of the
-     * payload on the client and compare it with the checksum you received in the response to ensure you received all
-     * the expected data.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Repeat steps 1 and 2 for all the eight 128 MB chunks of output data, each time specifying the appropriate byte
-     * range.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * After downloading all the parts of the job output, you have a list of eight checksum values. Compute the tree
-     * hash of these values to find the checksum of the entire output. Using the <a>DescribeJob</a> API, obtain job
-     * information of the job that provided you the output. The response includes the checksum of the entire archive
-     * stored in Amazon Glacier. You compare this value with the checksum you computed to ensure you have downloaded the
-     * entire archive content with no errors.
-     * </p>
-     * </li>
-     * </ol>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
      * Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform
@@ -1086,7 +1081,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html">Downloading a Vault
      * Inventory</a>, <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html">Downloading an
@@ -1151,6 +1146,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * <p>
      * This operation retrieves the following attributes from the <code>lock-policy</code> subresource set on the
      * specified vault:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -1173,7 +1169,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * A vault lock is put into the <code>InProgress</code> state by calling <a>InitiateVaultLock</a>. A vault lock is
      * put into the <code>Locked</code> state by calling <a>CompleteVaultLock</a>. You can abort the vault locking
@@ -1198,6 +1193,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * <p>
      * This operation retrieves the following attributes from the <code>lock-policy</code> subresource set on the
      * specified vault:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -1220,7 +1216,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * A vault lock is put into the <code>InProgress</code> state by calling <a>InitiateVaultLock</a>. A vault lock is
      * put into the <code>Locked</code> state by calling <a>CompleteVaultLock</a>. You can abort the vault locking
@@ -1248,13 +1243,12 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
 
     /**
      * <p>
-     * This operation retrieves the <code class="code">notification-configuration</code> subresource of the specified
-     * vault.
+     * This operation retrieves the <code>notification-configuration</code> subresource of the specified vault.
      * </p>
      * <p>
      * For information about setting a notification configuration on a vault, see <a>SetVaultNotifications</a>. If a
-     * notification configuration for a vault is not set, the operation returns a
-     * <code class="code">404 Not Found</code> error. For more information about vault notifications, see <a
+     * notification configuration for a vault is not set, the operation returns a <code>404 Not Found</code> error. For
+     * more information about vault notifications, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a>.
      * </p>
@@ -1266,7 +1260,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html">Get Vault
@@ -1282,13 +1276,12 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
 
     /**
      * <p>
-     * This operation retrieves the <code class="code">notification-configuration</code> subresource of the specified
-     * vault.
+     * This operation retrieves the <code>notification-configuration</code> subresource of the specified vault.
      * </p>
      * <p>
      * For information about setting a notification configuration on a vault, see <a>SetVaultNotifications</a>. If a
-     * notification configuration for a vault is not set, the operation returns a
-     * <code class="code">404 Not Found</code> error. For more information about vault notifications, see <a
+     * notification configuration for a vault is not set, the operation returns a <code>404 Not Found</code> error. For
+     * more information about vault notifications, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a>.
      * </p>
@@ -1300,7 +1293,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html">Get Vault
@@ -1457,9 +1450,41 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html">Initiate a Job</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html">Downloading a Vault Inventory</a>
+     * </p>
+     * <p>
+     * <b>Expedited and Bulk Archive Retrievals</b>
+     * </p>
+     * <p>
+     * When retrieving an archive, you can specify one of the following options in the <code>Tier</code> field of the
+     * request body:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>Standard</b> The default type of retrieval, which allows access to any of your archives within several hours.
+     * Standard retrievals typically complete within 3–5 hours.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Bulk</b> Amazon Glacier’s lowest-cost retrieval option, which enables you to retrieve large amounts of data
+     * inexpensively in a day. Bulk retrieval requests typically complete within 5–12 hours.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Expedited</b> Amazon Glacier’s option for the fastest retrievals. Archives requested using the expedited
+     * retrievals typically become accessible within 1–5 minutes.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information about expedited and bulk retrievals, see <a
+     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html">Retrieving
+     * Amazon Glacier Archives</a>.
      * </p>
      * 
      * @param initiateJobRequest
@@ -1607,9 +1632,41 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html">Initiate a Job</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html">Downloading a Vault Inventory</a>
+     * </p>
+     * <p>
+     * <b>Expedited and Bulk Archive Retrievals</b>
+     * </p>
+     * <p>
+     * When retrieving an archive, you can specify one of the following options in the <code>Tier</code> field of the
+     * request body:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>Standard</b> The default type of retrieval, which allows access to any of your archives within several hours.
+     * Standard retrievals typically complete within 3–5 hours.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Bulk</b> Amazon Glacier’s lowest-cost retrieval option, which enables you to retrieve large amounts of data
+     * inexpensively in a day. Bulk retrieval requests typically complete within 5–12 hours.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Expedited</b> Amazon Glacier’s option for the fastest retrievals. Archives requested using the expedited
+     * retrievals typically become accessible within 1–5 minutes.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information about expedited and bulk retrievals, see <a
+     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html">Retrieving
+     * Amazon Glacier Archives</a>.
      * </p>
      * 
      * @param initiateJobRequest
@@ -1660,7 +1717,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html">Initiate Multipart
@@ -1710,7 +1767,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html">Initiate Multipart
@@ -1732,6 +1789,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
     /**
      * <p>
      * This operation initiates the vault locking process by doing the following:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -1749,7 +1807,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * You can set one vault lock policy for each vault and this policy can be up to 20 KB in size. For more information
      * about vault lock policies, see <a
@@ -1787,6 +1844,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
     /**
      * <p>
      * This operation initiates the vault locking process by doing the following:
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -1804,7 +1862,6 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * </li>
      * </ul>
-     * </p>
      * <p>
      * You can set one vault lock policy for each vault and this policy can be up to 20 KB in size. For more information
      * about vault lock policies, see <a
@@ -1860,35 +1917,32 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </note>
      * <p>
      * To retrieve an archive or retrieve a vault inventory from Amazon Glacier, you first initiate a job, and after the
-     * job completes, you download the data. For an archive retrieval, the output is the archive data, and for an
-     * inventory retrieval, it is the inventory list. The List Job operation returns a list of these jobs sorted by job
-     * initiation time.
+     * job completes, you download the data. For an archive retrieval, the output is the archive data. For an inventory
+     * retrieval, it is the inventory list. The List Job operation returns a list of these jobs sorted by job initiation
+     * time.
      * </p>
      * <p>
-     * This List Jobs operation supports pagination. By default, this operation returns up to 1,000 jobs in the
-     * response. You should always check the response for a <code>marker</code> at which to continue the list; if there
-     * are no more items the <code>marker</code> is <code>null</code>. To return a list of jobs that begins at a
-     * specific job, set the <code>marker</code> request parameter to the value you obtained from a previous List Jobs
-     * request. You can also limit the number of jobs returned in the response by specifying the <code>limit</code>
-     * parameter in the request.
+     * The List Jobs operation supports pagination. You should always check the response <code>Marker</code> field. If
+     * there are no more jobs to list, the <code>Marker</code> field is set to <code>null</code>. If there are more jobs
+     * to list, the <code>Marker</code> field is set to a non-null value, which you can use to continue the pagination
+     * of the list. To return a list of jobs that begins at a specific job, set the marker request parameter to the
+     * <code>Marker</code> value for that job that you obtained from a previous List Jobs request.
      * </p>
      * <p>
-     * Additionally, you can filter the jobs list returned by specifying an optional <code>statuscode</code>
-     * (InProgress, Succeeded, or Failed) and <code>completed</code> (true, false) parameter. The
-     * <code>statuscode</code> allows you to specify that only jobs that match a specified status are returned. The
-     * <code>completed</code> parameter allows you to specify that only jobs in a specific completion state are
-     * returned.
+     * You can set a maximum limit for the number of jobs returned in the response by specifying the <code>limit</code>
+     * parameter in the request. The default limit is 1000. The number of jobs returned might be fewer than the limit,
+     * but the number of returned jobs never exceeds the limit.
      * </p>
      * <p>
-     * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
-     * Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform
-     * specific actions. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">Access Control
-     * Using AWS Identity and Access Management (IAM)</a>.
+     * Additionally, you can filter the jobs list returned by specifying the optional <code>statuscode</code> parameter
+     * or <code>completed</code> parameter, or both. Using the <code>statuscode</code> parameter, you can specify to
+     * return only jobs that match either the <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>
+     * status. Using the <code>completed</code> parameter, you can specify to return only jobs that were completed (
+     * <code>true</code>) or jobs that were not completed (<code>false</code>).
      * </p>
      * <p>
-     * For the underlying REST API, go to <a
-     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html">List Jobs </a>
+     * For the underlying REST API, see <a
+     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html">List Jobs</a>.
      * </p>
      * 
      * @param listJobsRequest
@@ -1914,35 +1968,32 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </note>
      * <p>
      * To retrieve an archive or retrieve a vault inventory from Amazon Glacier, you first initiate a job, and after the
-     * job completes, you download the data. For an archive retrieval, the output is the archive data, and for an
-     * inventory retrieval, it is the inventory list. The List Job operation returns a list of these jobs sorted by job
-     * initiation time.
+     * job completes, you download the data. For an archive retrieval, the output is the archive data. For an inventory
+     * retrieval, it is the inventory list. The List Job operation returns a list of these jobs sorted by job initiation
+     * time.
      * </p>
      * <p>
-     * This List Jobs operation supports pagination. By default, this operation returns up to 1,000 jobs in the
-     * response. You should always check the response for a <code>marker</code> at which to continue the list; if there
-     * are no more items the <code>marker</code> is <code>null</code>. To return a list of jobs that begins at a
-     * specific job, set the <code>marker</code> request parameter to the value you obtained from a previous List Jobs
-     * request. You can also limit the number of jobs returned in the response by specifying the <code>limit</code>
-     * parameter in the request.
+     * The List Jobs operation supports pagination. You should always check the response <code>Marker</code> field. If
+     * there are no more jobs to list, the <code>Marker</code> field is set to <code>null</code>. If there are more jobs
+     * to list, the <code>Marker</code> field is set to a non-null value, which you can use to continue the pagination
+     * of the list. To return a list of jobs that begins at a specific job, set the marker request parameter to the
+     * <code>Marker</code> value for that job that you obtained from a previous List Jobs request.
      * </p>
      * <p>
-     * Additionally, you can filter the jobs list returned by specifying an optional <code>statuscode</code>
-     * (InProgress, Succeeded, or Failed) and <code>completed</code> (true, false) parameter. The
-     * <code>statuscode</code> allows you to specify that only jobs that match a specified status are returned. The
-     * <code>completed</code> parameter allows you to specify that only jobs in a specific completion state are
-     * returned.
+     * You can set a maximum limit for the number of jobs returned in the response by specifying the <code>limit</code>
+     * parameter in the request. The default limit is 1000. The number of jobs returned might be fewer than the limit,
+     * but the number of returned jobs never exceeds the limit.
      * </p>
      * <p>
-     * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
-     * Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform
-     * specific actions. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">Access Control
-     * Using AWS Identity and Access Management (IAM)</a>.
+     * Additionally, you can filter the jobs list returned by specifying the optional <code>statuscode</code> parameter
+     * or <code>completed</code> parameter, or both. Using the <code>statuscode</code> parameter, you can specify to
+     * return only jobs that match either the <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>
+     * status. Using the <code>completed</code> parameter, you can specify to return only jobs that were completed (
+     * <code>true</code>) or jobs that were not completed (<code>false</code>).
      * </p>
      * <p>
-     * For the underlying REST API, go to <a
-     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html">List Jobs </a>
+     * For the underlying REST API, see <a
+     * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html">List Jobs</a>.
      * </p>
      * 
      * @param listJobsRequest
@@ -1984,7 +2035,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html">List Multipart Uploads
@@ -2025,7 +2076,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html">List Multipart Uploads
@@ -2053,11 +2104,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * <p>
      * The List Parts operation supports pagination. By default, this operation returns up to 1,000 uploaded parts in
-     * the response. You should always check the response for a <code class="code">marker</code> at which to continue
-     * the list; if there are no more items the <code class="code">marker</code> is <code class="code">null</code>. To
-     * return a list of parts that begins at a specific part, set the <code>marker</code> request parameter to the value
-     * you obtained from a previous List Parts request. You can also limit the number of parts returned in the response
-     * by specifying the <code>limit</code> parameter in the request.
+     * the response. You should always check the response for a <code>marker</code> at which to continue the list; if
+     * there are no more items the <code>marker</code> is <code>null</code>. To return a list of parts that begins at a
+     * specific part, set the <code>marker</code> request parameter to the value you obtained from a previous List Parts
+     * request. You can also limit the number of parts returned in the response by specifying the <code>limit</code>
+     * parameter in the request.
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2067,7 +2118,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html">List Parts</a> in the
@@ -2091,11 +2142,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * <p>
      * The List Parts operation supports pagination. By default, this operation returns up to 1,000 uploaded parts in
-     * the response. You should always check the response for a <code class="code">marker</code> at which to continue
-     * the list; if there are no more items the <code class="code">marker</code> is <code class="code">null</code>. To
-     * return a list of parts that begins at a specific part, set the <code>marker</code> request parameter to the value
-     * you obtained from a previous List Parts request. You can also limit the number of parts returned in the response
-     * by specifying the <code>limit</code> parameter in the request.
+     * the response. You should always check the response for a <code>marker</code> at which to continue the list; if
+     * there are no more items the <code>marker</code> is <code>null</code>. To return a list of parts that begins at a
+     * specific part, set the <code>marker</code> request parameter to the value you obtained from a previous List Parts
+     * request. You can also limit the number of parts returned in the response by specifying the <code>limit</code>
+     * parameter in the request.
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2105,7 +2156,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
+     * For conceptual information and the underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in
      * Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html">List Parts</a> in the
@@ -2124,6 +2175,33 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      */
     java.util.concurrent.Future<ListPartsResult> listPartsAsync(ListPartsRequest listPartsRequest,
             com.amazonaws.handlers.AsyncHandler<ListPartsRequest, ListPartsResult> asyncHandler);
+
+    /**
+     * <p>
+     * This operation lists the provisioned capacity for the specified AWS account.
+     * </p>
+     * 
+     * @param listProvisionedCapacityRequest
+     * @return A Java Future containing the result of the ListProvisionedCapacity operation returned by the service.
+     * @sample AmazonGlacierAsync.ListProvisionedCapacity
+     */
+    java.util.concurrent.Future<ListProvisionedCapacityResult> listProvisionedCapacityAsync(ListProvisionedCapacityRequest listProvisionedCapacityRequest);
+
+    /**
+     * <p>
+     * This operation lists the provisioned capacity for the specified AWS account.
+     * </p>
+     * 
+     * @param listProvisionedCapacityRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListProvisionedCapacity operation returned by the service.
+     * @sample AmazonGlacierAsyncHandler.ListProvisionedCapacity
+     */
+    java.util.concurrent.Future<ListProvisionedCapacityResult> listProvisionedCapacityAsync(ListProvisionedCapacityRequest listProvisionedCapacityRequest,
+            com.amazonaws.handlers.AsyncHandler<ListProvisionedCapacityRequest, ListProvisionedCapacityResult> asyncHandler);
 
     /**
      * <p>
@@ -2165,12 +2243,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * <p>
      * By default, this operation returns up to 1,000 items. If there are more vaults to list, the response
-     * <code class="code">marker</code> field contains the vault Amazon Resource Name (ARN) at which to continue the
-     * list with a new List Vaults request; otherwise, the <code class="code">marker</code> field is
-     * <code class="code">null</code>. To return a list of vaults that begins at a specific vault, set the
-     * <code class="code">marker</code> request parameter to the vault ARN you obtained from a previous List Vaults
-     * request. You can also limit the number of vaults returned in the response by specifying the
-     * <code class="code">limit</code> parameter in the request.
+     * <code>marker</code> field contains the vault Amazon Resource Name (ARN) at which to continue the list with a new
+     * List Vaults request; otherwise, the <code>marker</code> field is <code>null</code>. To return a list of vaults
+     * that begins at a specific vault, set the <code>marker</code> request parameter to the vault ARN you obtained from
+     * a previous List Vaults request. You can also limit the number of vaults returned in the response by specifying
+     * the <code>limit</code> parameter in the request.
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2180,7 +2257,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html">Retrieving Vault Metadata
      * in Amazon Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html">List
      * Vaults </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -2201,12 +2278,11 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * </p>
      * <p>
      * By default, this operation returns up to 1,000 items. If there are more vaults to list, the response
-     * <code class="code">marker</code> field contains the vault Amazon Resource Name (ARN) at which to continue the
-     * list with a new List Vaults request; otherwise, the <code class="code">marker</code> field is
-     * <code class="code">null</code>. To return a list of vaults that begins at a specific vault, set the
-     * <code class="code">marker</code> request parameter to the vault ARN you obtained from a previous List Vaults
-     * request. You can also limit the number of vaults returned in the response by specifying the
-     * <code class="code">limit</code> parameter in the request.
+     * <code>marker</code> field contains the vault Amazon Resource Name (ARN) at which to continue the list with a new
+     * List Vaults request; otherwise, the <code>marker</code> field is <code>null</code>. To return a list of vaults
+     * that begins at a specific vault, set the <code>marker</code> request parameter to the vault ARN you obtained from
+     * a previous List Vaults request. You can also limit the number of vaults returned in the response by specifying
+     * the <code>limit</code> parameter in the request.
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2216,7 +2292,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html">Retrieving Vault Metadata
      * in Amazon Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html">List
      * Vaults </a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -2234,6 +2310,35 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      */
     java.util.concurrent.Future<ListVaultsResult> listVaultsAsync(ListVaultsRequest listVaultsRequest,
             com.amazonaws.handlers.AsyncHandler<ListVaultsRequest, ListVaultsResult> asyncHandler);
+
+    /**
+     * <p>
+     * This operation purchases a provisioned capacity unit for an AWS account.
+     * </p>
+     * 
+     * @param purchaseProvisionedCapacityRequest
+     * @return A Java Future containing the result of the PurchaseProvisionedCapacity operation returned by the service.
+     * @sample AmazonGlacierAsync.PurchaseProvisionedCapacity
+     */
+    java.util.concurrent.Future<PurchaseProvisionedCapacityResult> purchaseProvisionedCapacityAsync(
+            PurchaseProvisionedCapacityRequest purchaseProvisionedCapacityRequest);
+
+    /**
+     * <p>
+     * This operation purchases a provisioned capacity unit for an AWS account.
+     * </p>
+     * 
+     * @param purchaseProvisionedCapacityRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PurchaseProvisionedCapacity operation returned by the service.
+     * @sample AmazonGlacierAsyncHandler.PurchaseProvisionedCapacity
+     */
+    java.util.concurrent.Future<PurchaseProvisionedCapacityResult> purchaseProvisionedCapacityAsync(
+            PurchaseProvisionedCapacityRequest purchaseProvisionedCapacityRequest,
+            com.amazonaws.handlers.AsyncHandler<PurchaseProvisionedCapacityRequest, PurchaseProvisionedCapacityResult> asyncHandler);
 
     /**
      * <p>
@@ -2360,21 +2465,29 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * don't get any notifications.
      * </p>
      * <p>
-     * To configure vault notifications, send a PUT request to the <code class="code">notification-configuration</code>
-     * subresource of the vault. The request should include a JSON document that provides an Amazon SNS topic and
-     * specific events for which you want Amazon Glacier to send notifications to the topic.
+     * To configure vault notifications, send a PUT request to the <code>notification-configuration</code> subresource
+     * of the vault. The request should include a JSON document that provides an Amazon SNS topic and specific events
+     * for which you want Amazon Glacier to send notifications to the topic.
      * </p>
      * <p>
      * Amazon SNS topics must grant permission to the vault to be allowed to publish notifications to the topic. You can
      * configure a vault to publish a notification for the following vault events:
      * </p>
      * <ul>
-     * <li><b>ArchiveRetrievalCompleted</b> This event occurs when a job that was initiated for an archive retrieval is
+     * <li>
+     * <p>
+     * <b>ArchiveRetrievalCompleted</b> This event occurs when a job that was initiated for an archive retrieval is
      * completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The notification
-     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.</li>
-     * <li><b>InventoryRetrievalCompleted</b> This event occurs when a job that was initiated for an inventory retrieval
-     * is completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The
-     * notification sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.</li>
+     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>InventoryRetrievalCompleted</b> This event occurs when a job that was initiated for an inventory retrieval is
+     * completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The notification
+     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2384,7 +2497,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html">Set Vault
@@ -2404,21 +2517,29 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * don't get any notifications.
      * </p>
      * <p>
-     * To configure vault notifications, send a PUT request to the <code class="code">notification-configuration</code>
-     * subresource of the vault. The request should include a JSON document that provides an Amazon SNS topic and
-     * specific events for which you want Amazon Glacier to send notifications to the topic.
+     * To configure vault notifications, send a PUT request to the <code>notification-configuration</code> subresource
+     * of the vault. The request should include a JSON document that provides an Amazon SNS topic and specific events
+     * for which you want Amazon Glacier to send notifications to the topic.
      * </p>
      * <p>
      * Amazon SNS topics must grant permission to the vault to be allowed to publish notifications to the topic. You can
      * configure a vault to publish a notification for the following vault events:
      * </p>
      * <ul>
-     * <li><b>ArchiveRetrievalCompleted</b> This event occurs when a job that was initiated for an archive retrieval is
+     * <li>
+     * <p>
+     * <b>ArchiveRetrievalCompleted</b> This event occurs when a job that was initiated for an archive retrieval is
      * completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The notification
-     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.</li>
-     * <li><b>InventoryRetrievalCompleted</b> This event occurs when a job that was initiated for an inventory retrieval
-     * is completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The
-     * notification sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.</li>
+     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>InventoryRetrievalCompleted</b> This event occurs when a job that was initiated for an inventory retrieval is
+     * completed (<a>InitiateJob</a>). The status of the completed job can be "Succeeded" or "Failed". The notification
+     * sent to the SNS topic is the same output as returned from <a>DescribeJob</a>.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access
@@ -2428,7 +2549,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
      * Notifications in Amazon Glacier</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html">Set Vault
@@ -2450,8 +2571,8 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
     /**
      * <p>
      * This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your
-     * data is durably persisted. Amazon Glacier returns the archive ID in the
-     * <code class="code">x-amz-archive-id</code> header of the response.
+     * data is durably persisted. Amazon Glacier returns the archive ID in the <code>x-amz-archive-id</code> header of
+     * the response.
      * </p>
      * <p>
      * You must use the archive ID to access your data in Amazon Glacier. After you upload an archive, you should save
@@ -2483,7 +2604,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html">Uploading an Archive in
      * Amazon Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload
      * Archive</a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -2499,8 +2620,8 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
     /**
      * <p>
      * This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your
-     * data is durably persisted. Amazon Glacier returns the archive ID in the
-     * <code class="code">x-amz-archive-id</code> header of the response.
+     * data is durably persisted. Amazon Glacier returns the archive ID in the <code>x-amz-archive-id</code> header of
+     * the response.
      * </p>
      * <p>
      * You must use the archive ID to access your data in Amazon Glacier. After you upload an archive, you should save
@@ -2532,7 +2653,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html">Uploading an Archive in
      * Amazon Glacier</a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload
      * Archive</a> in the <i>Amazon Glacier Developer Guide</i>.
@@ -2581,10 +2702,14 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Complete Multipart Upload request will fail.
      * </p>
      * </note></li>
-     * <li><b>Range does not align</b>The byte range value in the request does not align with the part size specified in
-     * the corresponding initiate request. For example, if you specify a part size of 4194304 bytes (4 MB), then 0 to
+     * <li>
+     * <p>
+     * <b>Range does not align</b>The byte range value in the request does not align with the part size specified in the
+     * corresponding initiate request. For example, if you specify a part size of 4194304 bytes (4 MB), then 0 to
      * 4194303 bytes (4 MB - 1) and 4194304 (4 MB) to 8388607 (8 MB - 1) are valid part ranges. However, if you set a
-     * range value of 2 MB to 6 MB, the range does not align with the part size and the upload will fail.</li>
+     * range value of 2 MB to 6 MB, the range does not align with the part size and the upload will fail.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * This operation is idempotent. If you upload the same part multiple times, the data included in the most recent
@@ -2598,7 +2723,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html">Upload Part </a> in the <i>Amazon
@@ -2643,10 +2768,14 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Complete Multipart Upload request will fail.
      * </p>
      * </note></li>
-     * <li><b>Range does not align</b>The byte range value in the request does not align with the part size specified in
-     * the corresponding initiate request. For example, if you specify a part size of 4194304 bytes (4 MB), then 0 to
+     * <li>
+     * <p>
+     * <b>Range does not align</b>The byte range value in the request does not align with the part size specified in the
+     * corresponding initiate request. For example, if you specify a part size of 4194304 bytes (4 MB), then 0 to
      * 4194303 bytes (4 MB - 1) and 4194304 (4 MB) to 8388607 (8 MB - 1) are valid part ranges. However, if you set a
-     * range value of 2 MB to 6 MB, the range does not align with the part size and the upload will fail.</li>
+     * range value of 2 MB to 6 MB, the range does not align with the part size and the upload will fail.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * This operation is idempotent. If you upload the same part multiple times, the data included in the most recent
@@ -2660,7 +2789,7 @@ public interface AmazonGlacierAsync extends AmazonGlacier {
      * Using AWS Identity and Access Management (IAM)</a>.
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
+     * For conceptual information and underlying REST API, see <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html">Uploading Large Archives in
      * Parts (Multipart Upload)</a> and <a
      * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html">Upload Part </a> in the <i>Amazon

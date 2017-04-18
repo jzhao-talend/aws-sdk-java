@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a network interface for a Scheduled Instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstancesNetworkInterface"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledInstancesNetworkInterface implements Serializable, Cloneable {
 
     /**
@@ -47,28 +52,28 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
     private String description;
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      */
     private String privateIpAddress;
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ScheduledInstancesPrivateIpAddressConfig> privateIpAddressConfigs;
     /**
      * <p>
-     * The number of secondary private IP addresses.
+     * The number of secondary private IPv4 addresses.
      * </p>
      */
     private Integer secondaryPrivateIpAddressCount;
     /**
      * <p>
-     * Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can only be
-     * assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing
-     * one. You cannot specify more than one network interface in the request. If launching into a default subnet, the
-     * default value is <code>true</code>.
+     * Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address can
+     * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
+     * existing one. You cannot specify more than one network interface in the request. If launching into a default
+     * subnet, the default value is <code>true</code>.
      * </p>
      */
     private Boolean associatePublicIpAddress;
@@ -84,6 +89,19 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
      * </p>
      */
     private Boolean deleteOnTermination;
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the subnet range.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address> ipv6Addresses;
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically selected
+     * from the subnet range.
+     * </p>
+     */
+    private Integer ipv6AddressCount;
 
     /**
      * <p>
@@ -247,11 +265,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
      * @param privateIpAddress
-     *        The IP address of the network interface within the subnet.
+     *        The IPv4 address of the network interface within the subnet.
      */
 
     public void setPrivateIpAddress(String privateIpAddress) {
@@ -260,10 +278,10 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
-     * @return The IP address of the network interface within the subnet.
+     * @return The IPv4 address of the network interface within the subnet.
      */
 
     public String getPrivateIpAddress() {
@@ -272,11 +290,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
      * @param privateIpAddress
-     *        The IP address of the network interface within the subnet.
+     *        The IPv4 address of the network interface within the subnet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -287,10 +305,10 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
-     * @return The private IP addresses.
+     * @return The private IPv4 addresses.
      */
 
     public java.util.List<ScheduledInstancesPrivateIpAddressConfig> getPrivateIpAddressConfigs() {
@@ -302,11 +320,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddressConfigs
-     *        The private IP addresses.
+     *        The private IPv4 addresses.
      */
 
     public void setPrivateIpAddressConfigs(java.util.Collection<ScheduledInstancesPrivateIpAddressConfig> privateIpAddressConfigs) {
@@ -320,7 +338,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -329,7 +347,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
      * </p>
      * 
      * @param privateIpAddressConfigs
-     *        The private IP addresses.
+     *        The private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -345,11 +363,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The private IP addresses.
+     * The private IPv4 addresses.
      * </p>
      * 
      * @param privateIpAddressConfigs
-     *        The private IP addresses.
+     *        The private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -360,11 +378,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The number of secondary private IP addresses.
+     * The number of secondary private IPv4 addresses.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses.
+     *        The number of secondary private IPv4 addresses.
      */
 
     public void setSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
@@ -373,10 +391,10 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The number of secondary private IP addresses.
+     * The number of secondary private IPv4 addresses.
      * </p>
      * 
-     * @return The number of secondary private IP addresses.
+     * @return The number of secondary private IPv4 addresses.
      */
 
     public Integer getSecondaryPrivateIpAddressCount() {
@@ -385,11 +403,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The number of secondary private IP addresses.
+     * The number of secondary private IPv4 addresses.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses.
+     *        The number of secondary private IPv4 addresses.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -400,17 +418,17 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can only be
-     * assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing
-     * one. You cannot specify more than one network interface in the request. If launching into a default subnet, the
-     * default value is <code>true</code>.
+     * Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address can
+     * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
+     * existing one. You cannot specify more than one network interface in the request. If launching into a default
+     * subnet, the default value is <code>true</code>.
      * </p>
      * 
      * @param associatePublicIpAddress
-     *        Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can
-     *        only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not
-     *        an existing one. You cannot specify more than one network interface in the request. If launching into a
-     *        default subnet, the default value is <code>true</code>.
+     *        Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address
+     *        can only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
+     *        not an existing one. You cannot specify more than one network interface in the request. If launching into
+     *        a default subnet, the default value is <code>true</code>.
      */
 
     public void setAssociatePublicIpAddress(Boolean associatePublicIpAddress) {
@@ -419,16 +437,16 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can only be
-     * assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing
-     * one. You cannot specify more than one network interface in the request. If launching into a default subnet, the
-     * default value is <code>true</code>.
+     * Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address can
+     * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
+     * existing one. You cannot specify more than one network interface in the request. If launching into a default
+     * subnet, the default value is <code>true</code>.
      * </p>
      * 
-     * @return Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can
-     *         only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
-     *         not an existing one. You cannot specify more than one network interface in the request. If launching into
-     *         a default subnet, the default value is <code>true</code>.
+     * @return Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address
+     *         can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     *         interface, not an existing one. You cannot specify more than one network interface in the request. If
+     *         launching into a default subnet, the default value is <code>true</code>.
      */
 
     public Boolean getAssociatePublicIpAddress() {
@@ -437,17 +455,17 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can only be
-     * assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing
-     * one. You cannot specify more than one network interface in the request. If launching into a default subnet, the
-     * default value is <code>true</code>.
+     * Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address can
+     * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
+     * existing one. You cannot specify more than one network interface in the request. If launching into a default
+     * subnet, the default value is <code>true</code>.
      * </p>
      * 
      * @param associatePublicIpAddress
-     *        Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can
-     *        only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not
-     *        an existing one. You cannot specify more than one network interface in the request. If launching into a
-     *        default subnet, the default value is <code>true</code>.
+     *        Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address
+     *        can only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
+     *        not an existing one. You cannot specify more than one network interface in the request. If launching into
+     *        a default subnet, the default value is <code>true</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -458,16 +476,16 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can only be
-     * assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing
-     * one. You cannot specify more than one network interface in the request. If launching into a default subnet, the
-     * default value is <code>true</code>.
+     * Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address can
+     * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
+     * existing one. You cannot specify more than one network interface in the request. If launching into a default
+     * subnet, the default value is <code>true</code>.
      * </p>
      * 
-     * @return Indicates whether to assign a public IP address to instances launched in a VPC. The public IP address can
-     *         only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
-     *         not an existing one. You cannot specify more than one network interface in the request. If launching into
-     *         a default subnet, the default value is <code>true</code>.
+     * @return Indicates whether to assign a public IPv4 address to instances launched in a VPC. The public IPv4 address
+     *         can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     *         interface, not an existing one. You cannot specify more than one network interface in the request. If
+     *         launching into a default subnet, the default value is <code>true</code>.
      */
 
     public Boolean isAssociatePublicIpAddress() {
@@ -600,6 +618,125 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
     }
 
     /**
+     * <p>
+     * One or more specific IPv6 addresses from the subnet range.
+     * </p>
+     * 
+     * @return One or more specific IPv6 addresses from the subnet range.
+     */
+
+    public java.util.List<ScheduledInstancesIpv6Address> getIpv6Addresses() {
+        if (ipv6Addresses == null) {
+            ipv6Addresses = new com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address>();
+        }
+        return ipv6Addresses;
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the subnet range.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the subnet range.
+     */
+
+    public void setIpv6Addresses(java.util.Collection<ScheduledInstancesIpv6Address> ipv6Addresses) {
+        if (ipv6Addresses == null) {
+            this.ipv6Addresses = null;
+            return;
+        }
+
+        this.ipv6Addresses = new com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address>(ipv6Addresses);
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the subnet range.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6Addresses(java.util.Collection)} or {@link #withIpv6Addresses(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the subnet range.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ScheduledInstancesNetworkInterface withIpv6Addresses(ScheduledInstancesIpv6Address... ipv6Addresses) {
+        if (this.ipv6Addresses == null) {
+            setIpv6Addresses(new com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address>(ipv6Addresses.length));
+        }
+        for (ScheduledInstancesIpv6Address ele : ipv6Addresses) {
+            this.ipv6Addresses.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more specific IPv6 addresses from the subnet range.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more specific IPv6 addresses from the subnet range.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ScheduledInstancesNetworkInterface withIpv6Addresses(java.util.Collection<ScheduledInstancesIpv6Address> ipv6Addresses) {
+        setIpv6Addresses(ipv6Addresses);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically selected
+     * from the subnet range.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically
+     *        selected from the subnet range.
+     */
+
+    public void setIpv6AddressCount(Integer ipv6AddressCount) {
+        this.ipv6AddressCount = ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically selected
+     * from the subnet range.
+     * </p>
+     * 
+     * @return The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically
+     *         selected from the subnet range.
+     */
+
+    public Integer getIpv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically selected
+     * from the subnet range.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        The number of IPv6 addresses to assign to the network interface. The IPv6 addresses are automatically
+     *        selected from the subnet range.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ScheduledInstancesNetworkInterface withIpv6AddressCount(Integer ipv6AddressCount) {
+        setIpv6AddressCount(ipv6AddressCount);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -611,25 +748,29 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getDeviceIndex() != null)
-            sb.append("DeviceIndex: " + getDeviceIndex() + ",");
+            sb.append("DeviceIndex: ").append(getDeviceIndex()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
         if (getPrivateIpAddressConfigs() != null)
-            sb.append("PrivateIpAddressConfigs: " + getPrivateIpAddressConfigs() + ",");
+            sb.append("PrivateIpAddressConfigs: ").append(getPrivateIpAddressConfigs()).append(",");
         if (getSecondaryPrivateIpAddressCount() != null)
-            sb.append("SecondaryPrivateIpAddressCount: " + getSecondaryPrivateIpAddressCount() + ",");
+            sb.append("SecondaryPrivateIpAddressCount: ").append(getSecondaryPrivateIpAddressCount()).append(",");
         if (getAssociatePublicIpAddress() != null)
-            sb.append("AssociatePublicIpAddress: " + getAssociatePublicIpAddress() + ",");
+            sb.append("AssociatePublicIpAddress: ").append(getAssociatePublicIpAddress()).append(",");
         if (getGroups() != null)
-            sb.append("Groups: " + getGroups() + ",");
+            sb.append("Groups: ").append(getGroups()).append(",");
         if (getDeleteOnTermination() != null)
-            sb.append("DeleteOnTermination: " + getDeleteOnTermination());
+            sb.append("DeleteOnTermination: ").append(getDeleteOnTermination()).append(",");
+        if (getIpv6Addresses() != null)
+            sb.append("Ipv6Addresses: ").append(getIpv6Addresses()).append(",");
+        if (getIpv6AddressCount() != null)
+            sb.append("Ipv6AddressCount: ").append(getIpv6AddressCount());
         sb.append("}");
         return sb.toString();
     }
@@ -685,6 +826,14 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
             return false;
         if (other.getDeleteOnTermination() != null && other.getDeleteOnTermination().equals(this.getDeleteOnTermination()) == false)
             return false;
+        if (other.getIpv6Addresses() == null ^ this.getIpv6Addresses() == null)
+            return false;
+        if (other.getIpv6Addresses() != null && other.getIpv6Addresses().equals(this.getIpv6Addresses()) == false)
+            return false;
+        if (other.getIpv6AddressCount() == null ^ this.getIpv6AddressCount() == null)
+            return false;
+        if (other.getIpv6AddressCount() != null && other.getIpv6AddressCount().equals(this.getIpv6AddressCount()) == false)
+            return false;
         return true;
     }
 
@@ -703,6 +852,8 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
         hashCode = prime * hashCode + ((getAssociatePublicIpAddress() == null) ? 0 : getAssociatePublicIpAddress().hashCode());
         hashCode = prime * hashCode + ((getGroups() == null) ? 0 : getGroups().hashCode());
         hashCode = prime * hashCode + ((getDeleteOnTermination() == null) ? 0 : getDeleteOnTermination().hashCode());
+        hashCode = prime * hashCode + ((getIpv6Addresses() == null) ? 0 : getIpv6Addresses().hashCode());
+        hashCode = prime * hashCode + ((getIpv6AddressCount() == null) ? 0 : getIpv6AddressCount().hashCode());
         return hashCode;
     }
 
@@ -714,4 +865,5 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

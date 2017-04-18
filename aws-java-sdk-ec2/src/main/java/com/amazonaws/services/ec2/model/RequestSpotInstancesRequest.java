@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.RequestSpotInstancesRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.RequestSpotInstancesRequestMar
  * Contains the parameters for RequestSpotInstances.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RequestSpotInstancesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<RequestSpotInstancesRequest> {
 
@@ -872,25 +875,25 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest impleme
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSpotPrice() != null)
-            sb.append("SpotPrice: " + getSpotPrice() + ",");
+            sb.append("SpotPrice: ").append(getSpotPrice()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount() + ",");
+            sb.append("InstanceCount: ").append(getInstanceCount()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getValidFrom() != null)
-            sb.append("ValidFrom: " + getValidFrom() + ",");
+            sb.append("ValidFrom: ").append(getValidFrom()).append(",");
         if (getValidUntil() != null)
-            sb.append("ValidUntil: " + getValidUntil() + ",");
+            sb.append("ValidUntil: ").append(getValidUntil()).append(",");
         if (getLaunchGroup() != null)
-            sb.append("LaunchGroup: " + getLaunchGroup() + ",");
+            sb.append("LaunchGroup: ").append(getLaunchGroup()).append(",");
         if (getAvailabilityZoneGroup() != null)
-            sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");
+            sb.append("AvailabilityZoneGroup: ").append(getAvailabilityZoneGroup()).append(",");
         if (getBlockDurationMinutes() != null)
-            sb.append("BlockDurationMinutes: " + getBlockDurationMinutes() + ",");
+            sb.append("BlockDurationMinutes: ").append(getBlockDurationMinutes()).append(",");
         if (getLaunchSpecification() != null)
-            sb.append("LaunchSpecification: " + getLaunchSpecification());
+            sb.append("LaunchSpecification: ").append(getLaunchSpecification());
         sb.append("}");
         return sb.toString();
     }

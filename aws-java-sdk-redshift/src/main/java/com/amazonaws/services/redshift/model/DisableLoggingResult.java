@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the status of logging for a cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DisableLogging" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DisableLoggingResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -322,17 +327,17 @@ public class DisableLoggingResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLoggingEnabled() != null)
-            sb.append("LoggingEnabled: " + getLoggingEnabled() + ",");
+            sb.append("LoggingEnabled: ").append(getLoggingEnabled()).append(",");
         if (getBucketName() != null)
-            sb.append("BucketName: " + getBucketName() + ",");
+            sb.append("BucketName: ").append(getBucketName()).append(",");
         if (getS3KeyPrefix() != null)
-            sb.append("S3KeyPrefix: " + getS3KeyPrefix() + ",");
+            sb.append("S3KeyPrefix: ").append(getS3KeyPrefix()).append(",");
         if (getLastSuccessfulDeliveryTime() != null)
-            sb.append("LastSuccessfulDeliveryTime: " + getLastSuccessfulDeliveryTime() + ",");
+            sb.append("LastSuccessfulDeliveryTime: ").append(getLastSuccessfulDeliveryTime()).append(",");
         if (getLastFailureTime() != null)
-            sb.append("LastFailureTime: " + getLastFailureTime() + ",");
+            sb.append("LastFailureTime: ").append(getLastFailureTime()).append(",");
         if (getLastFailureMessage() != null)
-            sb.append("LastFailureMessage: " + getLastFailureMessage());
+            sb.append("LastFailureMessage: ").append(getLastFailureMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -396,4 +401,5 @@ public class DisableLoggingResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

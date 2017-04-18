@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpledb.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutAttributesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /** The name of the domain in which to perform the operation. */
@@ -266,13 +266,13 @@ public class PutAttributesRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getItemName() != null)
-            sb.append("ItemName: " + getItemName() + ",");
+            sb.append("ItemName: ").append(getItemName()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getExpected() != null)
-            sb.append("Expected: " + getExpected());
+            sb.append("Expected: ").append(getExpected());
         sb.append("}");
         return sb.toString();
     }
@@ -322,4 +322,5 @@ public class PutAttributesRequest extends com.amazonaws.AmazonWebServiceRequest 
     public PutAttributesRequest clone() {
         return (PutAttributesRequest) super.clone();
     }
+
 }

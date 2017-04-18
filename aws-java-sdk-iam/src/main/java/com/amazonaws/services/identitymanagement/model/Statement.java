@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -23,7 +24,11 @@ import java.io.Serializable;
  * This data type is used by the <code>MatchedStatements</code> member of the <code> <a>EvaluationResult</a> </code>
  * type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/Statement" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Statement implements Serializable, Cloneable {
 
     /**
@@ -256,13 +261,13 @@ public class Statement implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSourcePolicyId() != null)
-            sb.append("SourcePolicyId: " + getSourcePolicyId() + ",");
+            sb.append("SourcePolicyId: ").append(getSourcePolicyId()).append(",");
         if (getSourcePolicyType() != null)
-            sb.append("SourcePolicyType: " + getSourcePolicyType() + ",");
+            sb.append("SourcePolicyType: ").append(getSourcePolicyType()).append(",");
         if (getStartPosition() != null)
-            sb.append("StartPosition: " + getStartPosition() + ",");
+            sb.append("StartPosition: ").append(getStartPosition()).append(",");
         if (getEndPosition() != null)
-            sb.append("EndPosition: " + getEndPosition());
+            sb.append("EndPosition: ").append(getEndPosition());
         sb.append("}");
         return sb.toString();
     }
@@ -316,4 +321,5 @@ public class Statement implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

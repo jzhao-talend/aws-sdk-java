@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,34 +13,41 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents the status of an export task.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ExportTaskStatus" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ExportTaskStatus implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ExportTaskStatus implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      */
     private String code;
     /**
      * <p>
-     * Status message related to the <code>code</code>.
+     * The status message related to the status code.
      * </p>
      */
     private String message;
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      * 
      * @param code
-     *        Status code of the export task.
+     *        The status code of the export task.
      * @see ExportTaskStatusCode
      */
 
@@ -50,10 +57,10 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      * 
-     * @return Status code of the export task.
+     * @return The status code of the export task.
      * @see ExportTaskStatusCode
      */
 
@@ -63,11 +70,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      * 
      * @param code
-     *        Status code of the export task.
+     *        The status code of the export task.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ExportTaskStatusCode
      */
@@ -79,11 +86,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      * 
      * @param code
-     *        Status code of the export task.
+     *        The status code of the export task.
      * @see ExportTaskStatusCode
      */
 
@@ -93,11 +100,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status code of the export task.
+     * The status code of the export task.
      * </p>
      * 
      * @param code
-     *        Status code of the export task.
+     *        The status code of the export task.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ExportTaskStatusCode
      */
@@ -109,11 +116,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status message related to the <code>code</code>.
+     * The status message related to the status code.
      * </p>
      * 
      * @param message
-     *        Status message related to the <code>code</code>.
+     *        The status message related to the status code.
      */
 
     public void setMessage(String message) {
@@ -122,10 +129,10 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status message related to the <code>code</code>.
+     * The status message related to the status code.
      * </p>
      * 
-     * @return Status message related to the <code>code</code>.
+     * @return The status message related to the status code.
      */
 
     public String getMessage() {
@@ -134,11 +141,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Status message related to the <code>code</code>.
+     * The status message related to the status code.
      * </p>
      * 
      * @param message
-     *        Status message related to the <code>code</code>.
+     *        The status message related to the status code.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,9 +166,9 @@ public class ExportTaskStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCode() != null)
-            sb.append("Code: " + getCode() + ",");
+            sb.append("Code: ").append(getCode()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage());
+            sb.append("Message: ").append(getMessage());
         sb.append("}");
         return sb.toString();
     }
@@ -204,5 +211,11 @@ public class ExportTaskStatus implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.ExportTaskStatusMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

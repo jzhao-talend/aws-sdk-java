@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents a new global secondary index to be added to an existing table.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateGlobalSecondaryIndexAction"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -33,9 +40,23 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      * </p>
      */
     private java.util.List<KeySchemaElement> keySchema;
-
+    /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
+     * primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     */
     private Projection projection;
-
+    /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     */
     private ProvisionedThroughput provisionedThroughput;
 
     /**
@@ -149,7 +170,14 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
+     * primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
      * @param projection
+     *        Represents attributes that are copied (projected) from the table into an index. These are in addition to
+     *        the primary key attributes and index key attributes, which are automatically projected.
      */
 
     public void setProjection(Projection projection) {
@@ -157,7 +185,13 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
-     * @return
+     * <p>
+     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
+     * primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
+     * @return Represents attributes that are copied (projected) from the table into an index. These are in addition to
+     *         the primary key attributes and index key attributes, which are automatically projected.
      */
 
     public Projection getProjection() {
@@ -165,7 +199,14 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
+     * primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
      * @param projection
+     *        Represents attributes that are copied (projected) from the table into an index. These are in addition to
+     *        the primary key attributes and index key attributes, which are automatically projected.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -175,7 +216,21 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public void setProvisionedThroughput(ProvisionedThroughput provisionedThroughput) {
@@ -183,7 +238,20 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
-     * @return
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
+     * @return Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *         <p>
+     *         For current minimum and maximum provisioned throughput values, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *         <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public ProvisionedThroughput getProvisionedThroughput() {
@@ -191,7 +259,21 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -212,13 +294,13 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIndexName() != null)
-            sb.append("IndexName: " + getIndexName() + ",");
+            sb.append("IndexName: ").append(getIndexName()).append(",");
         if (getKeySchema() != null)
-            sb.append("KeySchema: " + getKeySchema() + ",");
+            sb.append("KeySchema: ").append(getKeySchema()).append(",");
         if (getProjection() != null)
-            sb.append("Projection: " + getProjection() + ",");
+            sb.append("Projection: ").append(getProjection()).append(",");
         if (getProvisionedThroughput() != null)
-            sb.append("ProvisionedThroughput: " + getProvisionedThroughput());
+            sb.append("ProvisionedThroughput: ").append(getProvisionedThroughput());
         sb.append("}");
         return sb.toString();
     }
@@ -271,5 +353,11 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.CreateGlobalSecondaryIndexActionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

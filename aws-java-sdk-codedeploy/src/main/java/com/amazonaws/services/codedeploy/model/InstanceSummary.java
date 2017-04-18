@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about an instance in a deployment.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/InstanceSummary" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InstanceSummary implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceSummary implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -83,6 +90,24 @@ public class InstanceSummary implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LifecycleEvent> lifecycleEvents;
+    /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String instanceType;
 
     /**
      * <p>
@@ -666,6 +691,194 @@ public class InstanceSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param instanceType
+     *        Information about which environment an instance belongs to in a blue/green deployment.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        BLUE: The instance is part of the original environment.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GREEN: The instance is part of the replacement environment.
+     *        </p>
+     *        </li>
+     * @see InstanceType
+     */
+
+    public void setInstanceType(String instanceType) {
+        this.instanceType = instanceType;
+    }
+
+    /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return Information about which environment an instance belongs to in a blue/green deployment.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         BLUE: The instance is part of the original environment.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         GREEN: The instance is part of the replacement environment.
+     *         </p>
+     *         </li>
+     * @see InstanceType
+     */
+
+    public String getInstanceType() {
+        return this.instanceType;
+    }
+
+    /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param instanceType
+     *        Information about which environment an instance belongs to in a blue/green deployment.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        BLUE: The instance is part of the original environment.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GREEN: The instance is part of the replacement environment.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceType
+     */
+
+    public InstanceSummary withInstanceType(String instanceType) {
+        setInstanceType(instanceType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param instanceType
+     *        Information about which environment an instance belongs to in a blue/green deployment.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        BLUE: The instance is part of the original environment.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GREEN: The instance is part of the replacement environment.
+     *        </p>
+     *        </li>
+     * @see InstanceType
+     */
+
+    public void setInstanceType(InstanceType instanceType) {
+        this.instanceType = instanceType.toString();
+    }
+
+    /**
+     * <p>
+     * Information about which environment an instance belongs to in a blue/green deployment.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * BLUE: The instance is part of the original environment.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GREEN: The instance is part of the replacement environment.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param instanceType
+     *        Information about which environment an instance belongs to in a blue/green deployment.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        BLUE: The instance is part of the original environment.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GREEN: The instance is part of the replacement environment.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceType
+     */
+
+    public InstanceSummary withInstanceType(InstanceType instanceType) {
+        setInstanceType(instanceType);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -677,15 +890,17 @@ public class InstanceSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeploymentId() != null)
-            sb.append("DeploymentId: " + getDeploymentId() + ",");
+            sb.append("DeploymentId: ").append(getDeploymentId()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getLastUpdatedAt() != null)
-            sb.append("LastUpdatedAt: " + getLastUpdatedAt() + ",");
+            sb.append("LastUpdatedAt: ").append(getLastUpdatedAt()).append(",");
         if (getLifecycleEvents() != null)
-            sb.append("LifecycleEvents: " + getLifecycleEvents());
+            sb.append("LifecycleEvents: ").append(getLifecycleEvents()).append(",");
+        if (getInstanceType() != null)
+            sb.append("InstanceType: ").append(getInstanceType());
         sb.append("}");
         return sb.toString();
     }
@@ -720,6 +935,10 @@ public class InstanceSummary implements Serializable, Cloneable {
             return false;
         if (other.getLifecycleEvents() != null && other.getLifecycleEvents().equals(this.getLifecycleEvents()) == false)
             return false;
+        if (other.getInstanceType() == null ^ this.getInstanceType() == null)
+            return false;
+        if (other.getInstanceType() != null && other.getInstanceType().equals(this.getInstanceType()) == false)
+            return false;
         return true;
     }
 
@@ -733,6 +952,7 @@ public class InstanceSummary implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getLastUpdatedAt() == null) ? 0 : getLastUpdatedAt().hashCode());
         hashCode = prime * hashCode + ((getLifecycleEvents() == null) ? 0 : getLifecycleEvents().hashCode());
+        hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         return hashCode;
     }
 
@@ -743,5 +963,11 @@ public class InstanceSummary implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.InstanceSummaryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

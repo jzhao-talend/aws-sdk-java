@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,15 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup" target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -25,9 +29,9 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
      * The name of the group.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      */
     private String groupName;
@@ -41,15 +45,15 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
     private String marker;
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      */
     private Integer maxItems;
@@ -68,7 +72,7 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
      * @param groupName
      *        The name of the group.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
      *        any of the following characters: =,.@-
      */
@@ -81,15 +85,15 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
      * The name of the group.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param groupName
      *        The name of the group.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
      *        any of the following characters: =,.@-
      */
@@ -103,14 +107,14 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
      * The name of the group.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @return The name of the group.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
      *         any of the following characters: =,.@-
      */
@@ -124,15 +128,15 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
      * The name of the group.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param groupName
      *        The name of the group.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
      *        any of the following characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -197,26 +201,26 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
      * @param maxItems
-     *        Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     *        additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     *        <code>true</code>.</p>
+     *        (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *        response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *        element is <code>true</code>.</p>
      *        <p>
-     *        This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     *        results, even when there are more results available. In that case, the <code>IsTruncated</code> response
-     *        element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent
-     *        call that tells the service where to continue from.
+     *        If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *        when there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     *        <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
+     *        the service where to continue from.
      */
 
     public void setMaxItems(Integer maxItems) {
@@ -225,25 +229,25 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
-     * @return Use this only when paginating results to indicate the maximum number of items you want in the response.
-     *         If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
-     *         is <code>true</code>.</p>
+     * @return (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *         response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *         element is <code>true</code>.</p>
      *         <p>
-     *         This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return
-     *         fewer results, even when there are more results available. In that case, the <code>IsTruncated</code>
-     *         response element returns <code>true</code> and <code>Marker</code> contains a value to include in the
-     *         subsequent call that tells the service where to continue from.
+     *         If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *         when there are more results available. In that case, the <code>IsTruncated</code> response element
+     *         returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that
+     *         tells the service where to continue from.
      */
 
     public Integer getMaxItems() {
@@ -252,26 +256,26 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     * additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     * <code>true</code>.
+     * (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     * response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element
+     * is <code>true</code>.
      * </p>
      * <p>
-     * This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     * results, even when there are more results available. In that case, the <code>IsTruncated</code> response element
-     * returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
-     * the service where to continue from.
+     * If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when
+     * there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     * <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the
+     * service where to continue from.
      * </p>
      * 
      * @param maxItems
-     *        Use this only when paginating results to indicate the maximum number of items you want in the response. If
-     *        additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is
-     *        <code>true</code>.</p>
+     *        (Optional) Use this only when paginating results to indicate the maximum number of items you want in the
+     *        response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response
+     *        element is <code>true</code>.</p>
      *        <p>
-     *        This parameter is optional. If you do not include it, it defaults to 100. Note that IAM might return fewer
-     *        results, even when there are more results available. In that case, the <code>IsTruncated</code> response
-     *        element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent
-     *        call that tells the service where to continue from.
+     *        If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even
+     *        when there are more results available. In that case, the <code>IsTruncated</code> response element returns
+     *        <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells
+     *        the service where to continue from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -292,11 +296,11 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGroupName() != null)
-            sb.append("GroupName: " + getGroupName() + ",");
+            sb.append("GroupName: ").append(getGroupName()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -341,4 +345,5 @@ public class GetGroupRequest extends com.amazonaws.AmazonWebServiceRequest imple
     public GetGroupRequest clone() {
         return (GetGroupRequest) super.clone();
     }
+
 }

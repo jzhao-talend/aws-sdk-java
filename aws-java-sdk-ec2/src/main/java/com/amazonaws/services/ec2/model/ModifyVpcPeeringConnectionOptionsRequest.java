@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ModifyVpcPeeringConnectionOptionsRequestMarshaller;
@@ -20,6 +22,7 @@ import com.amazonaws.services.ec2.model.transform.ModifyVpcPeeringConnectionOpti
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyVpcPeeringConnectionOptionsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<ModifyVpcPeeringConnectionOptionsRequest> {
 
@@ -185,11 +188,11 @@ public class ModifyVpcPeeringConnectionOptionsRequest extends AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVpcPeeringConnectionId() != null)
-            sb.append("VpcPeeringConnectionId: " + getVpcPeeringConnectionId() + ",");
+            sb.append("VpcPeeringConnectionId: ").append(getVpcPeeringConnectionId()).append(",");
         if (getRequesterPeeringConnectionOptions() != null)
-            sb.append("RequesterPeeringConnectionOptions: " + getRequesterPeeringConnectionOptions() + ",");
+            sb.append("RequesterPeeringConnectionOptions: ").append(getRequesterPeeringConnectionOptions()).append(",");
         if (getAccepterPeeringConnectionOptions() != null)
-            sb.append("AccepterPeeringConnectionOptions: " + getAccepterPeeringConnectionOptions());
+            sb.append("AccepterPeeringConnectionOptions: ").append(getAccepterPeeringConnectionOptions());
         sb.append("}");
         return sb.toString();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -23,6 +24,7 @@ import java.io.Serializable;
  * <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use
  * API Keys</a> </div>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -45,6 +47,12 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
     private String name;
     /**
      * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     */
+    private String customerId;
+    /**
+     * <p>
      * The description of the API Key.
      * </p>
      */
@@ -57,14 +65,13 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
     private Boolean enabled;
     /**
      * <p>
-     * The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API Key was created.
      * </p>
      */
     private java.util.Date createdDate;
     /**
      * <p>
-     * When the API Key was last updated, in ISO 8601 format.
+     * The timestamp when the API Key was last updated.
      * </p>
      */
     private java.util.Date lastUpdatedDate;
@@ -197,6 +204,46 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @param customerId
+     *        An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     */
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    /**
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @return An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     */
+
+    public String getCustomerId() {
+        return this.customerId;
+    }
+
+    /**
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @param customerId
+     *        An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateApiKeyResult withCustomerId(String customerId) {
+        setCustomerId(customerId);
+        return this;
+    }
+
+    /**
+     * <p>
      * The description of the API Key.
      * </p>
      * 
@@ -289,13 +336,11 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API Key was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the API Key was created.
      */
 
     public void setCreatedDate(java.util.Date createdDate) {
@@ -304,12 +349,10 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API Key was created.
      * </p>
      * 
-     * @return The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *         target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the API Key was created.
      */
 
     public java.util.Date getCreatedDate() {
@@ -318,13 +361,11 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API Key was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API Key was created, in <a href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the API Key was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -335,11 +376,11 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * When the API Key was last updated, in ISO 8601 format.
+     * The timestamp when the API Key was last updated.
      * </p>
      * 
      * @param lastUpdatedDate
-     *        When the API Key was last updated, in ISO 8601 format.
+     *        The timestamp when the API Key was last updated.
      */
 
     public void setLastUpdatedDate(java.util.Date lastUpdatedDate) {
@@ -348,10 +389,10 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * When the API Key was last updated, in ISO 8601 format.
+     * The timestamp when the API Key was last updated.
      * </p>
      * 
-     * @return When the API Key was last updated, in ISO 8601 format.
+     * @return The timestamp when the API Key was last updated.
      */
 
     public java.util.Date getLastUpdatedDate() {
@@ -360,11 +401,11 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * When the API Key was last updated, in ISO 8601 format.
+     * The timestamp when the API Key was last updated.
      * </p>
      * 
      * @param lastUpdatedDate
-     *        When the API Key was last updated, in ISO 8601 format.
+     *        The timestamp when the API Key was last updated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -455,21 +496,23 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
+        if (getCustomerId() != null)
+            sb.append("CustomerId: ").append(getCustomerId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate() + ",");
+            sb.append("CreatedDate: ").append(getCreatedDate()).append(",");
         if (getLastUpdatedDate() != null)
-            sb.append("LastUpdatedDate: " + getLastUpdatedDate() + ",");
+            sb.append("LastUpdatedDate: ").append(getLastUpdatedDate()).append(",");
         if (getStageKeys() != null)
-            sb.append("StageKeys: " + getStageKeys());
+            sb.append("StageKeys: ").append(getStageKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -495,6 +538,10 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
         if (other.getName() == null ^ this.getName() == null)
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
+        if (other.getCustomerId() == null ^ this.getCustomerId() == null)
+            return false;
+        if (other.getCustomerId() != null && other.getCustomerId().equals(this.getCustomerId()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
@@ -527,6 +574,7 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
         hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getCustomerId() == null) ? 0 : getCustomerId().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
         hashCode = prime * hashCode + ((getCreatedDate() == null) ? 0 : getCreatedDate().hashCode());
@@ -543,4 +591,5 @@ public class CreateApiKeyResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

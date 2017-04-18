@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -36,7 +37,11 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling
  * Lifecycle</a> in the <i>Auto Scaling User Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/LifecycleHook" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LifecycleHook implements Serializable, Cloneable {
 
     /**
@@ -791,23 +796,23 @@ public class LifecycleHook implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLifecycleHookName() != null)
-            sb.append("LifecycleHookName: " + getLifecycleHookName() + ",");
+            sb.append("LifecycleHookName: ").append(getLifecycleHookName()).append(",");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getLifecycleTransition() != null)
-            sb.append("LifecycleTransition: " + getLifecycleTransition() + ",");
+            sb.append("LifecycleTransition: ").append(getLifecycleTransition()).append(",");
         if (getNotificationTargetARN() != null)
-            sb.append("NotificationTargetARN: " + getNotificationTargetARN() + ",");
+            sb.append("NotificationTargetARN: ").append(getNotificationTargetARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getNotificationMetadata() != null)
-            sb.append("NotificationMetadata: " + getNotificationMetadata() + ",");
+            sb.append("NotificationMetadata: ").append(getNotificationMetadata()).append(",");
         if (getHeartbeatTimeout() != null)
-            sb.append("HeartbeatTimeout: " + getHeartbeatTimeout() + ",");
+            sb.append("HeartbeatTimeout: ").append(getHeartbeatTimeout()).append(",");
         if (getGlobalTimeout() != null)
-            sb.append("GlobalTimeout: " + getGlobalTimeout() + ",");
+            sb.append("GlobalTimeout: ").append(getGlobalTimeout()).append(",");
         if (getDefaultResult() != null)
-            sb.append("DefaultResult: " + getDefaultResult());
+            sb.append("DefaultResult: ").append(getDefaultResult());
         sb.append("}");
         return sb.toString();
     }
@@ -886,4 +891,5 @@ public class LifecycleHook implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

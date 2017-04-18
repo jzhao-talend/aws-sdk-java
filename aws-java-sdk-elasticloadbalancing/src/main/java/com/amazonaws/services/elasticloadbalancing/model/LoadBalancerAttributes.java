@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticloadbalancing.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The attributes for a load balancer.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/LoadBalancerAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LoadBalancerAttributes implements Serializable, Cloneable {
 
     /**
@@ -460,15 +465,15 @@ public class LoadBalancerAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCrossZoneLoadBalancing() != null)
-            sb.append("CrossZoneLoadBalancing: " + getCrossZoneLoadBalancing() + ",");
+            sb.append("CrossZoneLoadBalancing: ").append(getCrossZoneLoadBalancing()).append(",");
         if (getAccessLog() != null)
-            sb.append("AccessLog: " + getAccessLog() + ",");
+            sb.append("AccessLog: ").append(getAccessLog()).append(",");
         if (getConnectionDraining() != null)
-            sb.append("ConnectionDraining: " + getConnectionDraining() + ",");
+            sb.append("ConnectionDraining: ").append(getConnectionDraining()).append(",");
         if (getConnectionSettings() != null)
-            sb.append("ConnectionSettings: " + getConnectionSettings() + ",");
+            sb.append("ConnectionSettings: ").append(getConnectionSettings()).append(",");
         if (getAdditionalAttributes() != null)
-            sb.append("AdditionalAttributes: " + getAdditionalAttributes());
+            sb.append("AdditionalAttributes: ").append(getAdditionalAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -527,4 +532,5 @@ public class LoadBalancerAttributes implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

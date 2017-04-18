@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Provides information about a pending maintenance action for a resource.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PendingMaintenanceAction" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PendingMaintenanceAction implements Serializable, Cloneable {
 
     /**
@@ -366,17 +371,17 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAction() != null)
-            sb.append("Action: " + getAction() + ",");
+            sb.append("Action: ").append(getAction()).append(",");
         if (getAutoAppliedAfterDate() != null)
-            sb.append("AutoAppliedAfterDate: " + getAutoAppliedAfterDate() + ",");
+            sb.append("AutoAppliedAfterDate: ").append(getAutoAppliedAfterDate()).append(",");
         if (getForcedApplyDate() != null)
-            sb.append("ForcedApplyDate: " + getForcedApplyDate() + ",");
+            sb.append("ForcedApplyDate: ").append(getForcedApplyDate()).append(",");
         if (getOptInStatus() != null)
-            sb.append("OptInStatus: " + getOptInStatus() + ",");
+            sb.append("OptInStatus: ").append(getOptInStatus()).append(",");
         if (getCurrentApplyDate() != null)
-            sb.append("CurrentApplyDate: " + getCurrentApplyDate() + ",");
+            sb.append("CurrentApplyDate: ").append(getCurrentApplyDate()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -440,4 +445,5 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

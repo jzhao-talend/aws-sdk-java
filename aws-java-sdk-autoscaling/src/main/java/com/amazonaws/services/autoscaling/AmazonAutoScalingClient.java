@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.autoscaling.AmazonAutoScalingClientBuilder;
 import com.amazonaws.services.autoscaling.waiters.AmazonAutoScalingWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -53,6 +57,7 @@ import com.amazonaws.services.autoscaling.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonAutoScalingClient extends AmazonWebServiceClient implements AmazonAutoScaling {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -86,7 +91,9 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonAutoScalingClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -109,7 +116,9 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonAutoScalingClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -123,7 +132,10 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonAutoScalingClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonAutoScalingClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -141,7 +153,10 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Auto Scaling (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonAutoScalingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonAutoScalingClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -158,7 +173,9 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonAutoScalingClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -176,7 +193,10 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Auto Scaling (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonAutoScalingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonAutoScalingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -196,12 +216,20 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonAutoScalingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonAutoScalingClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonAutoScalingClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonAutoScalingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonAutoScalingClientBuilder builder() {
+        return AmazonAutoScalingClientBuilder.standard();
     }
 
     /**
@@ -266,9 +294,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.AttachInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AttachInstancesResult attachInstances(AttachInstancesRequest attachInstancesRequest) {
+    public AttachInstancesResult attachInstances(AttachInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachInstances(request);
+    }
+
+    @SdkInternalApi
+    final AttachInstancesResult executeAttachInstances(AttachInstancesRequest attachInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -318,9 +355,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.AttachLoadBalancerTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancerTargetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AttachLoadBalancerTargetGroupsResult attachLoadBalancerTargetGroups(AttachLoadBalancerTargetGroupsRequest attachLoadBalancerTargetGroupsRequest) {
+    public AttachLoadBalancerTargetGroupsResult attachLoadBalancerTargetGroups(AttachLoadBalancerTargetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachLoadBalancerTargetGroups(request);
+    }
+
+    @SdkInternalApi
+    final AttachLoadBalancerTargetGroupsResult executeAttachLoadBalancerTargetGroups(AttachLoadBalancerTargetGroupsRequest attachLoadBalancerTargetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachLoadBalancerTargetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -373,9 +419,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.AttachLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AttachLoadBalancersResult attachLoadBalancers(AttachLoadBalancersRequest attachLoadBalancersRequest) {
+    public AttachLoadBalancersResult attachLoadBalancers(AttachLoadBalancersRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachLoadBalancers(request);
+    }
+
+    @SdkInternalApi
+    final AttachLoadBalancersResult executeAttachLoadBalancers(AttachLoadBalancersRequest attachLoadBalancersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachLoadBalancersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -458,9 +513,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.CompleteLifecycleAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleAction"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CompleteLifecycleActionResult completeLifecycleAction(CompleteLifecycleActionRequest completeLifecycleActionRequest) {
+    public CompleteLifecycleActionResult completeLifecycleAction(CompleteLifecycleActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCompleteLifecycleAction(request);
+    }
+
+    @SdkInternalApi
+    final CompleteLifecycleActionResult executeCompleteLifecycleAction(CompleteLifecycleActionRequest completeLifecycleActionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(completeLifecycleActionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -515,9 +579,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.CreateAutoScalingGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateAutoScalingGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateAutoScalingGroupResult createAutoScalingGroup(CreateAutoScalingGroupRequest createAutoScalingGroupRequest) {
+    public CreateAutoScalingGroupResult createAutoScalingGroup(CreateAutoScalingGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAutoScalingGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateAutoScalingGroupResult executeCreateAutoScalingGroup(CreateAutoScalingGroupRequest createAutoScalingGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createAutoScalingGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -572,9 +645,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.CreateLaunchConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLaunchConfigurationResult createLaunchConfiguration(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) {
+    public CreateLaunchConfigurationResult createLaunchConfiguration(CreateLaunchConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLaunchConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final CreateLaunchConfigurationResult executeCreateLaunchConfiguration(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLaunchConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -629,9 +711,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.CreateOrUpdateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateOrUpdateTagsResult createOrUpdateTags(CreateOrUpdateTagsRequest createOrUpdateTagsRequest) {
+    public CreateOrUpdateTagsResult createOrUpdateTags(CreateOrUpdateTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateOrUpdateTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateOrUpdateTagsResult executeCreateOrUpdateTags(CreateOrUpdateTagsRequest createOrUpdateTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createOrUpdateTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -693,9 +784,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteAutoScalingGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteAutoScalingGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteAutoScalingGroupResult deleteAutoScalingGroup(DeleteAutoScalingGroupRequest deleteAutoScalingGroupRequest) {
+    public DeleteAutoScalingGroupResult deleteAutoScalingGroup(DeleteAutoScalingGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAutoScalingGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAutoScalingGroupResult executeDeleteAutoScalingGroup(DeleteAutoScalingGroupRequest deleteAutoScalingGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteAutoScalingGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -742,9 +842,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteLaunchConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLaunchConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLaunchConfigurationResult deleteLaunchConfiguration(DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest) {
+    public DeleteLaunchConfigurationResult deleteLaunchConfiguration(DeleteLaunchConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLaunchConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLaunchConfigurationResult executeDeleteLaunchConfiguration(DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLaunchConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -789,9 +898,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteLifecycleHook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLifecycleHook"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLifecycleHookResult deleteLifecycleHook(DeleteLifecycleHookRequest deleteLifecycleHookRequest) {
+    public DeleteLifecycleHookResult deleteLifecycleHook(DeleteLifecycleHookRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLifecycleHook(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLifecycleHookResult executeDeleteLifecycleHook(DeleteLifecycleHookRequest deleteLifecycleHookRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLifecycleHookRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -832,9 +950,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteNotificationConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteNotificationConfigurationResult deleteNotificationConfiguration(DeleteNotificationConfigurationRequest deleteNotificationConfigurationRequest) {
+    public DeleteNotificationConfigurationResult deleteNotificationConfiguration(DeleteNotificationConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteNotificationConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final DeleteNotificationConfigurationResult executeDeleteNotificationConfiguration(
+            DeleteNotificationConfigurationRequest deleteNotificationConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteNotificationConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -879,9 +1007,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeletePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeletePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeletePolicyResult deletePolicy(DeletePolicyRequest deletePolicyRequest) {
+    public DeletePolicyResult deletePolicy(DeletePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeletePolicyResult executeDeletePolicy(DeletePolicyRequest deletePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -921,9 +1058,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteScheduledAction"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteScheduledActionResult deleteScheduledAction(DeleteScheduledActionRequest deleteScheduledActionRequest) {
+    public DeleteScheduledActionResult deleteScheduledAction(DeleteScheduledActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteScheduledAction(request);
+    }
+
+    @SdkInternalApi
+    final DeleteScheduledActionResult executeDeleteScheduledAction(DeleteScheduledActionRequest deleteScheduledActionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteScheduledActionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -964,9 +1110,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest) {
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTags(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsResult executeDeleteTags(DeleteTagsRequest deleteTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1010,9 +1165,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeAccountLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAccountLimits"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeAccountLimitsResult describeAccountLimits(DescribeAccountLimitsRequest describeAccountLimitsRequest) {
+    public DescribeAccountLimitsResult describeAccountLimits(DescribeAccountLimitsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAccountLimits(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAccountLimitsResult executeDescribeAccountLimits(DescribeAccountLimitsRequest describeAccountLimitsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAccountLimitsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1057,9 +1221,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeAdjustmentTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAdjustmentTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeAdjustmentTypesResult describeAdjustmentTypes(DescribeAdjustmentTypesRequest describeAdjustmentTypesRequest) {
+    public DescribeAdjustmentTypesResult describeAdjustmentTypes(DescribeAdjustmentTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAdjustmentTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAdjustmentTypesResult executeDescribeAdjustmentTypes(DescribeAdjustmentTypesRequest describeAdjustmentTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAdjustmentTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1107,9 +1280,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeAutoScalingGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeAutoScalingGroupsResult describeAutoScalingGroups(DescribeAutoScalingGroupsRequest describeAutoScalingGroupsRequest) {
+    public DescribeAutoScalingGroupsResult describeAutoScalingGroups(DescribeAutoScalingGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAutoScalingGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAutoScalingGroupsResult executeDescribeAutoScalingGroups(DescribeAutoScalingGroupsRequest describeAutoScalingGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAutoScalingGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1157,9 +1339,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeAutoScalingInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeAutoScalingInstancesResult describeAutoScalingInstances(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest) {
+    public DescribeAutoScalingInstancesResult describeAutoScalingInstances(DescribeAutoScalingInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAutoScalingInstances(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAutoScalingInstancesResult executeDescribeAutoScalingInstances(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAutoScalingInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1204,10 +1395,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeAutoScalingNotificationTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingNotificationTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeAutoScalingNotificationTypesResult describeAutoScalingNotificationTypes(
+    public DescribeAutoScalingNotificationTypesResult describeAutoScalingNotificationTypes(DescribeAutoScalingNotificationTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAutoScalingNotificationTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAutoScalingNotificationTypesResult executeDescribeAutoScalingNotificationTypes(
             DescribeAutoScalingNotificationTypesRequest describeAutoScalingNotificationTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeAutoScalingNotificationTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1256,9 +1456,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeLaunchConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLaunchConfigurations"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLaunchConfigurationsResult describeLaunchConfigurations(DescribeLaunchConfigurationsRequest describeLaunchConfigurationsRequest) {
+    public DescribeLaunchConfigurationsResult describeLaunchConfigurations(DescribeLaunchConfigurationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLaunchConfigurations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLaunchConfigurationsResult executeDescribeLaunchConfigurations(DescribeLaunchConfigurationsRequest describeLaunchConfigurationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLaunchConfigurationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1303,9 +1512,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeLifecycleHookTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHookTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLifecycleHookTypesResult describeLifecycleHookTypes(DescribeLifecycleHookTypesRequest describeLifecycleHookTypesRequest) {
+    public DescribeLifecycleHookTypesResult describeLifecycleHookTypes(DescribeLifecycleHookTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLifecycleHookTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLifecycleHookTypesResult executeDescribeLifecycleHookTypes(DescribeLifecycleHookTypesRequest describeLifecycleHookTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLifecycleHookTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1351,9 +1569,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeLifecycleHooks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHooks"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLifecycleHooksResult describeLifecycleHooks(DescribeLifecycleHooksRequest describeLifecycleHooksRequest) {
+    public DescribeLifecycleHooksResult describeLifecycleHooks(DescribeLifecycleHooksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLifecycleHooks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLifecycleHooksResult executeDescribeLifecycleHooks(DescribeLifecycleHooksRequest describeLifecycleHooksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLifecycleHooksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1394,10 +1621,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeLoadBalancerTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancerTargetGroupsResult describeLoadBalancerTargetGroups(
+    public DescribeLoadBalancerTargetGroupsResult describeLoadBalancerTargetGroups(DescribeLoadBalancerTargetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancerTargetGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancerTargetGroupsResult executeDescribeLoadBalancerTargetGroups(
             DescribeLoadBalancerTargetGroupsRequest describeLoadBalancerTargetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancerTargetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1442,9 +1678,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancers(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancersResult executeDescribeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1488,9 +1733,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeMetricCollectionTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeMetricCollectionTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeMetricCollectionTypesResult describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest describeMetricCollectionTypesRequest) {
+    public DescribeMetricCollectionTypesResult describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMetricCollectionTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMetricCollectionTypesResult executeDescribeMetricCollectionTypes(DescribeMetricCollectionTypesRequest describeMetricCollectionTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeMetricCollectionTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1538,10 +1792,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeNotificationConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurations"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeNotificationConfigurationsResult describeNotificationConfigurations(
+    public DescribeNotificationConfigurationsResult describeNotificationConfigurations(DescribeNotificationConfigurationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNotificationConfigurations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNotificationConfigurationsResult executeDescribeNotificationConfigurations(
             DescribeNotificationConfigurationsRequest describeNotificationConfigurationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeNotificationConfigurationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1590,9 +1853,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribePolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribePolicies" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribePoliciesResult describePolicies(DescribePoliciesRequest describePoliciesRequest) {
+    public DescribePoliciesResult describePolicies(DescribePoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribePolicies(request);
+    }
+
+    @SdkInternalApi
+    final DescribePoliciesResult executeDescribePolicies(DescribePoliciesRequest describePoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describePoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1640,9 +1912,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeScalingActivities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivities"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeScalingActivitiesResult describeScalingActivities(DescribeScalingActivitiesRequest describeScalingActivitiesRequest) {
+    public DescribeScalingActivitiesResult describeScalingActivities(DescribeScalingActivitiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScalingActivities(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScalingActivitiesResult executeDescribeScalingActivities(DescribeScalingActivitiesRequest describeScalingActivitiesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeScalingActivitiesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1687,9 +1968,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeScalingProcessTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingProcessTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeScalingProcessTypesResult describeScalingProcessTypes(DescribeScalingProcessTypesRequest describeScalingProcessTypesRequest) {
+    public DescribeScalingProcessTypesResult describeScalingProcessTypes(DescribeScalingProcessTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScalingProcessTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScalingProcessTypesResult executeDescribeScalingProcessTypes(DescribeScalingProcessTypesRequest describeScalingProcessTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeScalingProcessTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1738,9 +2028,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeScheduledActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeScheduledActionsResult describeScheduledActions(DescribeScheduledActionsRequest describeScheduledActionsRequest) {
+    public DescribeScheduledActionsResult describeScheduledActions(DescribeScheduledActionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScheduledActions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScheduledActionsResult executeDescribeScheduledActions(DescribeScheduledActionsRequest describeScheduledActionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeScheduledActionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1797,9 +2096,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1843,9 +2151,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DescribeTerminationPolicyTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTerminationPolicyTypes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTerminationPolicyTypesResult describeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest describeTerminationPolicyTypesRequest) {
+    public DescribeTerminationPolicyTypesResult describeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTerminationPolicyTypes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTerminationPolicyTypesResult executeDescribeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest describeTerminationPolicyTypesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTerminationPolicyTypesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1908,9 +2225,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DetachInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DetachInstancesResult detachInstances(DetachInstancesRequest detachInstancesRequest) {
+    public DetachInstancesResult detachInstances(DetachInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachInstances(request);
+    }
+
+    @SdkInternalApi
+    final DetachInstancesResult executeDetachInstances(DetachInstancesRequest detachInstancesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachInstancesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1950,9 +2276,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DetachLoadBalancerTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DetachLoadBalancerTargetGroupsResult detachLoadBalancerTargetGroups(DetachLoadBalancerTargetGroupsRequest detachLoadBalancerTargetGroupsRequest) {
+    public DetachLoadBalancerTargetGroupsResult detachLoadBalancerTargetGroups(DetachLoadBalancerTargetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachLoadBalancerTargetGroups(request);
+    }
+
+    @SdkInternalApi
+    final DetachLoadBalancerTargetGroupsResult executeDetachLoadBalancerTargetGroups(DetachLoadBalancerTargetGroupsRequest detachLoadBalancerTargetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachLoadBalancerTargetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2002,9 +2337,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DetachLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DetachLoadBalancersResult detachLoadBalancers(DetachLoadBalancersRequest detachLoadBalancersRequest) {
+    public DetachLoadBalancersResult detachLoadBalancers(DetachLoadBalancersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachLoadBalancers(request);
+    }
+
+    @SdkInternalApi
+    final DetachLoadBalancersResult executeDetachLoadBalancers(DetachLoadBalancersRequest detachLoadBalancersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachLoadBalancersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2050,9 +2394,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.DisableMetricsCollection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DisableMetricsCollection"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableMetricsCollectionResult disableMetricsCollection(DisableMetricsCollectionRequest disableMetricsCollectionRequest) {
+    public DisableMetricsCollectionResult disableMetricsCollection(DisableMetricsCollectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableMetricsCollection(request);
+    }
+
+    @SdkInternalApi
+    final DisableMetricsCollectionResult executeDisableMetricsCollection(DisableMetricsCollectionRequest disableMetricsCollectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableMetricsCollectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2095,9 +2448,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.EnableMetricsCollection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnableMetricsCollection"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableMetricsCollectionResult enableMetricsCollection(EnableMetricsCollectionRequest enableMetricsCollectionRequest) {
+    public EnableMetricsCollectionResult enableMetricsCollection(EnableMetricsCollectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableMetricsCollection(request);
+    }
+
+    @SdkInternalApi
+    final EnableMetricsCollectionResult executeEnableMetricsCollection(EnableMetricsCollectionRequest enableMetricsCollectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableMetricsCollectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2143,9 +2505,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.EnterStandby
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnterStandby" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public EnterStandbyResult enterStandby(EnterStandbyRequest enterStandbyRequest) {
+    public EnterStandbyResult enterStandby(EnterStandbyRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnterStandby(request);
+    }
+
+    @SdkInternalApi
+    final EnterStandbyResult executeEnterStandby(EnterStandbyRequest enterStandbyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enterStandbyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2187,9 +2558,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.ExecutePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExecutePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ExecutePolicyResult executePolicy(ExecutePolicyRequest executePolicyRequest) {
+    public ExecutePolicyResult executePolicy(ExecutePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeExecutePolicy(request);
+    }
+
+    @SdkInternalApi
+    final ExecutePolicyResult executeExecutePolicy(ExecutePolicyRequest executePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(executePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2234,9 +2614,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.ExitStandby
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExitStandby" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ExitStandbyResult exitStandby(ExitStandbyRequest exitStandbyRequest) {
+    public ExitStandbyResult exitStandby(ExitStandbyRequest request) {
+        request = beforeClientExecution(request);
+        return executeExitStandby(request);
+    }
+
+    @SdkInternalApi
+    final ExitStandbyResult executeExitStandby(ExitStandbyRequest exitStandbyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(exitStandbyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2326,9 +2715,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.PutLifecycleHook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutLifecycleHook" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public PutLifecycleHookResult putLifecycleHook(PutLifecycleHookRequest putLifecycleHookRequest) {
+    public PutLifecycleHookResult putLifecycleHook(PutLifecycleHookRequest request) {
+        request = beforeClientExecution(request);
+        return executePutLifecycleHook(request);
+    }
+
+    @SdkInternalApi
+    final PutLifecycleHookResult executePutLifecycleHook(PutLifecycleHookRequest putLifecycleHookRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putLifecycleHookRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2381,9 +2779,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.PutNotificationConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public PutNotificationConfigurationResult putNotificationConfiguration(PutNotificationConfigurationRequest putNotificationConfigurationRequest) {
+    public PutNotificationConfigurationResult putNotificationConfiguration(PutNotificationConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executePutNotificationConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final PutNotificationConfigurationResult executePutNotificationConfiguration(PutNotificationConfigurationRequest putNotificationConfigurationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putNotificationConfigurationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2435,9 +2842,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.PutScalingPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest putScalingPolicyRequest) {
+    public PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutScalingPolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutScalingPolicyResult executePutScalingPolicy(PutScalingPolicyRequest putScalingPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putScalingPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2489,9 +2905,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.PutScheduledUpdateGroupAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupAction"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public PutScheduledUpdateGroupActionResult putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest putScheduledUpdateGroupActionRequest) {
+    public PutScheduledUpdateGroupActionResult putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest request) {
+        request = beforeClientExecution(request);
+        return executePutScheduledUpdateGroupAction(request);
+    }
+
+    @SdkInternalApi
+    final PutScheduledUpdateGroupActionResult executePutScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest putScheduledUpdateGroupActionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putScheduledUpdateGroupActionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2570,9 +2995,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.RecordLifecycleActionHeartbeat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/RecordLifecycleActionHeartbeat"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RecordLifecycleActionHeartbeatResult recordLifecycleActionHeartbeat(RecordLifecycleActionHeartbeatRequest recordLifecycleActionHeartbeatRequest) {
+    public RecordLifecycleActionHeartbeatResult recordLifecycleActionHeartbeat(RecordLifecycleActionHeartbeatRequest request) {
+        request = beforeClientExecution(request);
+        return executeRecordLifecycleActionHeartbeat(request);
+    }
+
+    @SdkInternalApi
+    final RecordLifecycleActionHeartbeatResult executeRecordLifecycleActionHeartbeat(RecordLifecycleActionHeartbeatRequest recordLifecycleActionHeartbeatRequest) {
+
         ExecutionContext executionContext = createExecutionContext(recordLifecycleActionHeartbeatRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2621,9 +3055,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.ResumeProcesses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ResumeProcesses" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ResumeProcessesResult resumeProcesses(ResumeProcessesRequest resumeProcessesRequest) {
+    public ResumeProcessesResult resumeProcesses(ResumeProcessesRequest request) {
+        request = beforeClientExecution(request);
+        return executeResumeProcesses(request);
+    }
+
+    @SdkInternalApi
+    final ResumeProcessesResult executeResumeProcesses(ResumeProcessesRequest resumeProcessesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resumeProcessesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2671,9 +3114,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.SetDesiredCapacity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetDesiredCapacity" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetDesiredCapacityResult setDesiredCapacity(SetDesiredCapacityRequest setDesiredCapacityRequest) {
+    public SetDesiredCapacityResult setDesiredCapacity(SetDesiredCapacityRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetDesiredCapacity(request);
+    }
+
+    @SdkInternalApi
+    final SetDesiredCapacityResult executeSetDesiredCapacity(SetDesiredCapacityRequest setDesiredCapacityRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setDesiredCapacityRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2719,9 +3171,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.SetInstanceHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceHealth" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetInstanceHealthResult setInstanceHealth(SetInstanceHealthRequest setInstanceHealthRequest) {
+    public SetInstanceHealthResult setInstanceHealth(SetInstanceHealthRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetInstanceHealth(request);
+    }
+
+    @SdkInternalApi
+    final SetInstanceHealthResult executeSetInstanceHealth(SetInstanceHealthRequest setInstanceHealthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setInstanceHealthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2770,9 +3231,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.SetInstanceProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceProtection"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetInstanceProtectionResult setInstanceProtection(SetInstanceProtectionRequest setInstanceProtectionRequest) {
+    public SetInstanceProtectionResult setInstanceProtection(SetInstanceProtectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetInstanceProtection(request);
+    }
+
+    @SdkInternalApi
+    final SetInstanceProtectionResult executeSetInstanceProtection(SetInstanceProtectionRequest setInstanceProtectionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setInstanceProtectionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2827,9 +3297,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.SuspendProcesses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SuspendProcessesResult suspendProcesses(SuspendProcessesRequest suspendProcessesRequest) {
+    public SuspendProcessesResult suspendProcesses(SuspendProcessesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSuspendProcesses(request);
+    }
+
+    @SdkInternalApi
+    final SuspendProcessesResult executeSuspendProcesses(SuspendProcessesRequest suspendProcessesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(suspendProcessesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2875,10 +3354,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.TerminateInstanceInAutoScalingGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/TerminateInstanceInAutoScalingGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public TerminateInstanceInAutoScalingGroupResult terminateInstanceInAutoScalingGroup(
+    public TerminateInstanceInAutoScalingGroupResult terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeTerminateInstanceInAutoScalingGroup(request);
+    }
+
+    @SdkInternalApi
+    final TerminateInstanceInAutoScalingGroupResult executeTerminateInstanceInAutoScalingGroup(
             TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(terminateInstanceInAutoScalingGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2956,9 +3444,18 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
      * @sample AmazonAutoScaling.UpdateAutoScalingGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/UpdateAutoScalingGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateAutoScalingGroupResult updateAutoScalingGroup(UpdateAutoScalingGroupRequest updateAutoScalingGroupRequest) {
+    public UpdateAutoScalingGroupResult updateAutoScalingGroup(UpdateAutoScalingGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAutoScalingGroup(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAutoScalingGroupResult executeUpdateAutoScalingGroup(UpdateAutoScalingGroupRequest updateAutoScalingGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateAutoScalingGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3040,6 +3537,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonAutoScalingWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -3049,6 +3547,14 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

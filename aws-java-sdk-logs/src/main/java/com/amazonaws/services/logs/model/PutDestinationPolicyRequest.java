@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestinationPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -28,7 +33,8 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
     private String destinationName;
     /**
      * <p>
-     * An IAM policy document that authorizes cross-account users to deliver their log events to associated destination.
+     * An IAM policy document that authorizes cross-account users to deliver their log events to the associated
+     * destination.
      * </p>
      */
     private String accessPolicy;
@@ -75,11 +81,12 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An IAM policy document that authorizes cross-account users to deliver their log events to associated destination.
+     * An IAM policy document that authorizes cross-account users to deliver their log events to the associated
+     * destination.
      * </p>
      * 
      * @param accessPolicy
-     *        An IAM policy document that authorizes cross-account users to deliver their log events to associated
+     *        An IAM policy document that authorizes cross-account users to deliver their log events to the associated
      *        destination.
      */
 
@@ -89,10 +96,11 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An IAM policy document that authorizes cross-account users to deliver their log events to associated destination.
+     * An IAM policy document that authorizes cross-account users to deliver their log events to the associated
+     * destination.
      * </p>
      * 
-     * @return An IAM policy document that authorizes cross-account users to deliver their log events to associated
+     * @return An IAM policy document that authorizes cross-account users to deliver their log events to the associated
      *         destination.
      */
 
@@ -102,11 +110,12 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An IAM policy document that authorizes cross-account users to deliver their log events to associated destination.
+     * An IAM policy document that authorizes cross-account users to deliver their log events to the associated
+     * destination.
      * </p>
      * 
      * @param accessPolicy
-     *        An IAM policy document that authorizes cross-account users to deliver their log events to associated
+     *        An IAM policy document that authorizes cross-account users to deliver their log events to the associated
      *        destination.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -128,9 +137,9 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDestinationName() != null)
-            sb.append("DestinationName: " + getDestinationName() + ",");
+            sb.append("DestinationName: ").append(getDestinationName()).append(",");
         if (getAccessPolicy() != null)
-            sb.append("AccessPolicy: " + getAccessPolicy());
+            sb.append("AccessPolicy: ").append(getAccessPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -170,4 +179,5 @@ public class PutDestinationPolicyRequest extends com.amazonaws.AmazonWebServiceR
     public PutDestinationPolicyRequest clone() {
         return (PutDestinationPolicyRequest) super.clone();
     }
+
 }

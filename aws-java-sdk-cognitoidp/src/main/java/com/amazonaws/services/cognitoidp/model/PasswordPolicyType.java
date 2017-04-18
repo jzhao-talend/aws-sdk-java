@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The password policy type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/PasswordPolicyType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class PasswordPolicyType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PasswordPolicyType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -348,15 +355,15 @@ public class PasswordPolicyType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMinimumLength() != null)
-            sb.append("MinimumLength: " + getMinimumLength() + ",");
+            sb.append("MinimumLength: ").append(getMinimumLength()).append(",");
         if (getRequireUppercase() != null)
-            sb.append("RequireUppercase: " + getRequireUppercase() + ",");
+            sb.append("RequireUppercase: ").append(getRequireUppercase()).append(",");
         if (getRequireLowercase() != null)
-            sb.append("RequireLowercase: " + getRequireLowercase() + ",");
+            sb.append("RequireLowercase: ").append(getRequireLowercase()).append(",");
         if (getRequireNumbers() != null)
-            sb.append("RequireNumbers: " + getRequireNumbers() + ",");
+            sb.append("RequireNumbers: ").append(getRequireNumbers()).append(",");
         if (getRequireSymbols() != null)
-            sb.append("RequireSymbols: " + getRequireSymbols());
+            sb.append("RequireSymbols: ").append(getRequireSymbols());
         sb.append("}");
         return sb.toString();
     }
@@ -414,5 +421,11 @@ public class PasswordPolicyType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.PasswordPolicyTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

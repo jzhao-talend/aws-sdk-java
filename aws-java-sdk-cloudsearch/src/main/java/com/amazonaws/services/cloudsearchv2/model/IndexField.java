@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.cloudsearchv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,6 +21,7 @@ import java.io.Serializable;
  * depend on the <code><a>IndexFieldType</a></code>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IndexField implements Serializable, Cloneable {
 
     /**
@@ -524,31 +526,31 @@ public class IndexField implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIndexFieldName() != null)
-            sb.append("IndexFieldName: " + getIndexFieldName() + ",");
+            sb.append("IndexFieldName: ").append(getIndexFieldName()).append(",");
         if (getIndexFieldType() != null)
-            sb.append("IndexFieldType: " + getIndexFieldType() + ",");
+            sb.append("IndexFieldType: ").append(getIndexFieldType()).append(",");
         if (getIntOptions() != null)
-            sb.append("IntOptions: " + getIntOptions() + ",");
+            sb.append("IntOptions: ").append(getIntOptions()).append(",");
         if (getDoubleOptions() != null)
-            sb.append("DoubleOptions: " + getDoubleOptions() + ",");
+            sb.append("DoubleOptions: ").append(getDoubleOptions()).append(",");
         if (getLiteralOptions() != null)
-            sb.append("LiteralOptions: " + getLiteralOptions() + ",");
+            sb.append("LiteralOptions: ").append(getLiteralOptions()).append(",");
         if (getTextOptions() != null)
-            sb.append("TextOptions: " + getTextOptions() + ",");
+            sb.append("TextOptions: ").append(getTextOptions()).append(",");
         if (getDateOptions() != null)
-            sb.append("DateOptions: " + getDateOptions() + ",");
+            sb.append("DateOptions: ").append(getDateOptions()).append(",");
         if (getLatLonOptions() != null)
-            sb.append("LatLonOptions: " + getLatLonOptions() + ",");
+            sb.append("LatLonOptions: ").append(getLatLonOptions()).append(",");
         if (getIntArrayOptions() != null)
-            sb.append("IntArrayOptions: " + getIntArrayOptions() + ",");
+            sb.append("IntArrayOptions: ").append(getIntArrayOptions()).append(",");
         if (getDoubleArrayOptions() != null)
-            sb.append("DoubleArrayOptions: " + getDoubleArrayOptions() + ",");
+            sb.append("DoubleArrayOptions: ").append(getDoubleArrayOptions()).append(",");
         if (getLiteralArrayOptions() != null)
-            sb.append("LiteralArrayOptions: " + getLiteralArrayOptions() + ",");
+            sb.append("LiteralArrayOptions: ").append(getLiteralArrayOptions()).append(",");
         if (getTextArrayOptions() != null)
-            sb.append("TextArrayOptions: " + getTextArrayOptions() + ",");
+            sb.append("TextArrayOptions: ").append(getTextArrayOptions()).append(",");
         if (getDateArrayOptions() != null)
-            sb.append("DateArrayOptions: " + getDateArrayOptions());
+            sb.append("DateArrayOptions: ").append(getDateArrayOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -647,4 +649,5 @@ public class IndexField implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.datapipeline;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.datapipeline.model.*;
 
 /**
  * Interface for accessing AWS Data Pipeline.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.datapipeline.AbstractDataPipeline} instead.
+ * </p>
  * <p>
  * <p>
  * AWS Data Pipeline configures and manages a data-driven workflow called a pipeline. AWS Data Pipeline handles the
@@ -41,6 +47,7 @@ import com.amazonaws.services.datapipeline.model.*;
  * service.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface DataPipeline {
 
     /**
@@ -72,7 +79,11 @@ public interface DataPipeline {
      *        The endpoint (ex: "datapipeline.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "datapipeline.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -93,7 +104,9 @@ public interface DataPipeline {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -123,6 +136,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ActivatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     ActivatePipelineResult activatePipeline(ActivatePipelineRequest activatePipelineRequest);
 
@@ -145,6 +160,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags" target="_top">AWS API
+     *      Documentation</a>
      */
     AddTagsResult addTags(AddTagsRequest addTagsRequest);
 
@@ -163,6 +180,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.CreatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     CreatePipelineResult createPipeline(CreatePipelineRequest createPipelineRequest);
 
@@ -190,6 +209,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DeactivatePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline"
+     *      target="_top">AWS API Documentation</a>
      */
     DeactivatePipelineResult deactivatePipeline(DeactivatePipelineRequest deactivatePipelineRequest);
 
@@ -216,6 +237,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DeletePipeline
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline" target="_top">AWS
+     *      API Documentation</a>
      */
     DeletePipelineResult deletePipeline(DeletePipelineRequest deletePipelineRequest);
 
@@ -239,6 +262,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.DescribeObjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeObjectsResult describeObjects(DescribeObjectsRequest describeObjectsRequest);
 
@@ -268,6 +293,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.DescribePipelines
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribePipelinesResult describePipelines(DescribePipelinesRequest describePipelinesRequest);
 
@@ -293,6 +320,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.EvaluateExpression
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression"
+     *      target="_top">AWS API Documentation</a>
      */
     EvaluateExpressionResult evaluateExpression(EvaluateExpressionRequest evaluateExpressionRequest);
 
@@ -316,6 +345,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.GetPipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     GetPipelineDefinitionResult getPipelineDefinition(GetPipelineDefinitionRequest getPipelineDefinitionRequest);
 
@@ -334,6 +365,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ListPipelines
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines" target="_top">AWS API
+     *      Documentation</a>
      */
     ListPipelinesResult listPipelines(ListPipelinesRequest listPipelinesRequest);
 
@@ -372,6 +405,8 @@ public interface DataPipeline {
      * @throws TaskNotFoundException
      *         The specified task was not found.
      * @sample DataPipeline.PollForTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask" target="_top">AWS API
+     *      Documentation</a>
      */
     PollForTaskResult pollForTask(PollForTaskRequest pollForTaskRequest);
 
@@ -409,6 +444,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.PutPipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     PutPipelineDefinitionResult putPipelineDefinition(PutPipelineDefinitionRequest putPipelineDefinitionRequest);
 
@@ -431,6 +468,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.QueryObjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects" target="_top">AWS API
+     *      Documentation</a>
      */
     QueryObjectsResult queryObjects(QueryObjectsRequest queryObjectsRequest);
 
@@ -453,6 +492,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags" target="_top">AWS API
+     *      Documentation</a>
      */
     RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest);
 
@@ -486,6 +527,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.ReportTaskProgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress"
+     *      target="_top">AWS API Documentation</a>
      */
     ReportTaskProgressResult reportTaskProgress(ReportTaskProgressRequest reportTaskProgressRequest);
 
@@ -506,6 +549,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.ReportTaskRunnerHeartbeat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat"
+     *      target="_top">AWS API Documentation</a>
      */
     ReportTaskRunnerHeartbeatResult reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest reportTaskRunnerHeartbeatRequest);
 
@@ -531,6 +576,8 @@ public interface DataPipeline {
      *         generated with the correct credentials, and that you haven't exceeded any of the service limits for your
      *         account.
      * @sample DataPipeline.SetStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     SetStatusResult setStatus(SetStatusRequest setStatusRequest);
 
@@ -558,6 +605,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.SetTaskStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     SetTaskStatusResult setTaskStatus(SetTaskStatusRequest setTaskStatusRequest);
 
@@ -580,6 +629,8 @@ public interface DataPipeline {
      * @throws PipelineDeletedException
      *         The specified pipeline has been deleted.
      * @sample DataPipeline.ValidatePipelineDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition"
+     *      target="_top">AWS API Documentation</a>
      */
     ValidatePipelineDefinitionResult validatePipelineDefinition(ValidatePipelineDefinitionRequest validatePipelineDefinitionRequest);
 

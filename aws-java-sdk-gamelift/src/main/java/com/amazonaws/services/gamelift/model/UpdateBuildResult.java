@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateBuild" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the updated build record.
+     * Object that contains the updated build record.
      * </p>
      */
     private Build build;
 
     /**
      * <p>
-     * Object containing the updated build record.
+     * Object that contains the updated build record.
      * </p>
      * 
      * @param build
-     *        Object containing the updated build record.
+     *        Object that contains the updated build record.
      */
 
     public void setBuild(Build build) {
@@ -43,10 +48,10 @@ public class UpdateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object containing the updated build record.
+     * Object that contains the updated build record.
      * </p>
      * 
-     * @return Object containing the updated build record.
+     * @return Object that contains the updated build record.
      */
 
     public Build getBuild() {
@@ -55,11 +60,11 @@ public class UpdateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object containing the updated build record.
+     * Object that contains the updated build record.
      * </p>
      * 
      * @param build
-     *        Object containing the updated build record.
+     *        Object that contains the updated build record.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class UpdateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBuild() != null)
-            sb.append("Build: " + getBuild());
+            sb.append("Build: ").append(getBuild());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class UpdateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

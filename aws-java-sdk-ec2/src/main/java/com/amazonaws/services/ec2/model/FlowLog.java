@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,16 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a flow log.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/FlowLog" target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class FlowLog implements Serializable, Cloneable {
 
     /**
@@ -509,23 +513,23 @@ public class FlowLog implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getFlowLogId() != null)
-            sb.append("FlowLogId: " + getFlowLogId() + ",");
+            sb.append("FlowLogId: ").append(getFlowLogId()).append(",");
         if (getFlowLogStatus() != null)
-            sb.append("FlowLogStatus: " + getFlowLogStatus() + ",");
+            sb.append("FlowLogStatus: ").append(getFlowLogStatus()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTrafficType() != null)
-            sb.append("TrafficType: " + getTrafficType() + ",");
+            sb.append("TrafficType: ").append(getTrafficType()).append(",");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getDeliverLogsStatus() != null)
-            sb.append("DeliverLogsStatus: " + getDeliverLogsStatus() + ",");
+            sb.append("DeliverLogsStatus: ").append(getDeliverLogsStatus()).append(",");
         if (getDeliverLogsErrorMessage() != null)
-            sb.append("DeliverLogsErrorMessage: " + getDeliverLogsErrorMessage() + ",");
+            sb.append("DeliverLogsErrorMessage: ").append(getDeliverLogsErrorMessage()).append(",");
         if (getDeliverLogsPermissionArn() != null)
-            sb.append("DeliverLogsPermissionArn: " + getDeliverLogsPermissionArn());
+            sb.append("DeliverLogsPermissionArn: ").append(getDeliverLogsPermissionArn());
         sb.append("}");
         return sb.toString();
     }
@@ -604,4 +608,5 @@ public class FlowLog implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * A <code>RenewDomain</code> request includes the number of years that you want to renew for and the current expiration
  * year.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RenewDomainRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String domainName;
@@ -345,11 +351,11 @@ public class RenewDomainRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getDurationInYears() != null)
-            sb.append("DurationInYears: " + getDurationInYears() + ",");
+            sb.append("DurationInYears: ").append(getDurationInYears()).append(",");
         if (getCurrentExpiryYear() != null)
-            sb.append("CurrentExpiryYear: " + getCurrentExpiryYear());
+            sb.append("CurrentExpiryYear: ").append(getCurrentExpiryYear());
         sb.append("}");
         return sb.toString();
     }
@@ -394,4 +400,5 @@ public class RenewDomainRequest extends com.amazonaws.AmazonWebServiceRequest im
     public RenewDomainRequest clone() {
         return (RenewDomainRequest) super.clone();
     }
+
 }

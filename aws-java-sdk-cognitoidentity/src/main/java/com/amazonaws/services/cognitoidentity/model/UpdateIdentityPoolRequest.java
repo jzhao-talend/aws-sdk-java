@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,26 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * An object representing a Cognito identity pool.
+ * <p>
+ * An object representing an Amazon Cognito identity pool.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UpdateIdentityPool"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** An identity pool ID in the format REGION:GUID. */
+    /**
+     * <p>
+     * An identity pool ID in the format REGION:GUID.
+     * </p>
+     */
     private String identityPoolId;
     /**
      * <p>
@@ -28,7 +40,11 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      */
     private String identityPoolName;
-    /** TRUE if the identity pool supports unauthenticated logins. */
+    /**
+     * <p>
+     * TRUE if the identity pool supports unauthenticated logins.
+     * </p>
+     */
     private Boolean allowUnauthenticatedIdentities;
     /**
      * <p>
@@ -62,7 +78,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     private java.util.List<String> samlProviderARNs;
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @param identityPoolId
      *        An identity pool ID in the format REGION:GUID.
@@ -73,7 +91,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @return An identity pool ID in the format REGION:GUID.
      */
@@ -83,7 +103,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @param identityPoolId
      *        An identity pool ID in the format REGION:GUID.
@@ -136,7 +158,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * TRUE if the identity pool supports unauthenticated logins.
+     * </p>
      * 
      * @param allowUnauthenticatedIdentities
      *        TRUE if the identity pool supports unauthenticated logins.
@@ -147,7 +171,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * TRUE if the identity pool supports unauthenticated logins.
+     * </p>
      * 
      * @return TRUE if the identity pool supports unauthenticated logins.
      */
@@ -157,7 +183,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * TRUE if the identity pool supports unauthenticated logins.
+     * </p>
      * 
      * @param allowUnauthenticatedIdentities
      *        TRUE if the identity pool supports unauthenticated logins.
@@ -170,7 +198,9 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
      * TRUE if the identity pool supports unauthenticated logins.
+     * </p>
      * 
      * @return TRUE if the identity pool supports unauthenticated logins.
      */
@@ -502,21 +532,21 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPoolId() != null)
-            sb.append("IdentityPoolId: " + getIdentityPoolId() + ",");
+            sb.append("IdentityPoolId: ").append(getIdentityPoolId()).append(",");
         if (getIdentityPoolName() != null)
-            sb.append("IdentityPoolName: " + getIdentityPoolName() + ",");
+            sb.append("IdentityPoolName: ").append(getIdentityPoolName()).append(",");
         if (getAllowUnauthenticatedIdentities() != null)
-            sb.append("AllowUnauthenticatedIdentities: " + getAllowUnauthenticatedIdentities() + ",");
+            sb.append("AllowUnauthenticatedIdentities: ").append(getAllowUnauthenticatedIdentities()).append(",");
         if (getSupportedLoginProviders() != null)
-            sb.append("SupportedLoginProviders: " + getSupportedLoginProviders() + ",");
+            sb.append("SupportedLoginProviders: ").append(getSupportedLoginProviders()).append(",");
         if (getDeveloperProviderName() != null)
-            sb.append("DeveloperProviderName: " + getDeveloperProviderName() + ",");
+            sb.append("DeveloperProviderName: ").append(getDeveloperProviderName()).append(",");
         if (getOpenIdConnectProviderARNs() != null)
-            sb.append("OpenIdConnectProviderARNs: " + getOpenIdConnectProviderARNs() + ",");
+            sb.append("OpenIdConnectProviderARNs: ").append(getOpenIdConnectProviderARNs()).append(",");
         if (getCognitoIdentityProviders() != null)
-            sb.append("CognitoIdentityProviders: " + getCognitoIdentityProviders() + ",");
+            sb.append("CognitoIdentityProviders: ").append(getCognitoIdentityProviders()).append(",");
         if (getSamlProviderARNs() != null)
-            sb.append("SamlProviderARNs: " + getSamlProviderARNs());
+            sb.append("SamlProviderARNs: ").append(getSamlProviderARNs());
         sb.append("}");
         return sb.toString();
     }
@@ -587,4 +617,5 @@ public class UpdateIdentityPoolRequest extends com.amazonaws.AmazonWebServiceReq
     public UpdateIdentityPoolRequest clone() {
         return (UpdateIdentityPoolRequest) super.clone();
     }
+
 }

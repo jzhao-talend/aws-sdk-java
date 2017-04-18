@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.simpleworkflow;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.simpleworkflow.model.*;
 
 /**
  * Interface for accessing Amazon SWF asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.simpleworkflow.AbstractAmazonSimpleWorkflowAsync} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Simple Workflow Service</fullname>
  * <p>
@@ -35,6 +41,7 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/">Amazon SWF Developer Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSimpleWorkflowAsync extends AmazonSimpleWorkflow {
 
     /**

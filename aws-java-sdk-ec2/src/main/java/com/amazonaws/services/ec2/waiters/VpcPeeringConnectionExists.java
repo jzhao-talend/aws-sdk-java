@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,16 +17,15 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.waiters.WaiterAcceptor;
 import com.amazonaws.waiters.WaiterState;
-import com.amazonaws.waiters.AcceptorPathMatcher;
-import com.amazonaws.services.ec2.model.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.amazonaws.services.ec2.model.*;
 
 import com.amazonaws.jmespath.*;
 
-import java.io.IOException;
+import javax.annotation.Generated;
 
 @SdkInternalApi
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 class VpcPeeringConnectionExists {
 
     static class IsInvalidVpcPeeringConnectionIDNotFoundMatcher extends WaiterAcceptor<DescribeVpcPeeringConnectionsResult> {

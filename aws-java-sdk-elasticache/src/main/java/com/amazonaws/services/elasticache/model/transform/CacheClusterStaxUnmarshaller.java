@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticache.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticache.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * CacheCluster StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheClusterStaxUnmarshaller implements Unmarshaller<CacheCluster, StaxUnmarshallerContext> {
 
     public CacheCluster unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -110,6 +110,11 @@ public class CacheClusterStaxUnmarshaller implements Unmarshaller<CacheCluster, 
                     continue;
                 }
 
+                if (context.testExpression("CacheSecurityGroups", targetDepth)) {
+                    cacheCluster.withCacheSecurityGroups(new ArrayList<CacheSecurityGroupMembership>());
+                    continue;
+                }
+
                 if (context.testExpression("CacheSecurityGroups/CacheSecurityGroup", targetDepth)) {
                     cacheCluster.withCacheSecurityGroups(CacheSecurityGroupMembershipStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -125,6 +130,11 @@ public class CacheClusterStaxUnmarshaller implements Unmarshaller<CacheCluster, 
                     continue;
                 }
 
+                if (context.testExpression("CacheNodes", targetDepth)) {
+                    cacheCluster.withCacheNodes(new ArrayList<CacheNode>());
+                    continue;
+                }
+
                 if (context.testExpression("CacheNodes/CacheNode", targetDepth)) {
                     cacheCluster.withCacheNodes(CacheNodeStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -132,6 +142,11 @@ public class CacheClusterStaxUnmarshaller implements Unmarshaller<CacheCluster, 
 
                 if (context.testExpression("AutoMinorVersionUpgrade", targetDepth)) {
                     cacheCluster.setAutoMinorVersionUpgrade(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SecurityGroups", targetDepth)) {
+                    cacheCluster.withSecurityGroups(new ArrayList<SecurityGroupMembership>());
                     continue;
                 }
 

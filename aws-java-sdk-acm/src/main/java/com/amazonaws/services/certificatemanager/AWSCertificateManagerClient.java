@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.certificatemanager.AWSCertificateManagerClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -55,6 +59,7 @@ import com.amazonaws.services.certificatemanager.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCertificateManagerClient extends AmazonWebServiceClient implements AWSCertificateManager {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -67,38 +72,39 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.InvalidTagException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.TooManyTagsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.ResourceInUseException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RequestInProgressException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.RequestInProgressException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.InvalidStateException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidDomainValidationOptionsException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.InvalidDomainValidationOptionsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.InvalidArnException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.certificatemanager.model.LimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.certificatemanager.model.AWSCertificateManagerException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.InvalidTagException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.TooManyTagsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.ResourceInUseException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RequestInProgressException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.RequestInProgressException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.InvalidStateException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDomainValidationOptionsException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.InvalidDomainValidationOptionsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.InvalidArnException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.certificatemanager.model.LimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.certificatemanager.model.AWSCertificateManagerException.class));
 
     /**
      * Constructs a new client to invoke service methods on ACM. A credentials provider chain will be used that searches
@@ -114,7 +120,9 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSCertificateManagerClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -137,7 +145,9 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *        counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCertificateManagerClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -151,7 +161,10 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSCertificateManagerClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSCertificateManagerClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -169,7 +182,10 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to ACM (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCertificateManagerClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCertificateManagerClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -185,7 +201,9 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSCertificateManagerClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -203,7 +221,10 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to ACM (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCertificateManagerClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCertificateManagerClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -223,12 +244,20 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *        counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSCertificateManagerClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCertificateManagerClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCertificateManagerClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSCertificateManagerClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSCertificateManagerClientBuilder builder() {
+        return AWSCertificateManagerClientBuilder.standard();
     }
 
     /**
@@ -291,9 +320,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws TooManyTagsException
      *         The request contains too many tags. Try the request again with fewer tags.
      * @sample AWSCertificateManager.AddTagsToCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/AddTagsToCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsToCertificateResult addTagsToCertificate(AddTagsToCertificateRequest addTagsToCertificateRequest) {
+    public AddTagsToCertificateResult addTagsToCertificate(AddTagsToCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTagsToCertificate(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsToCertificateResult executeAddTagsToCertificate(AddTagsToCertificateRequest addTagsToCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsToCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -303,7 +341,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsToCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToCertificateRequest));
+                request = new AddTagsToCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -347,9 +385,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest) {
+    public DeleteCertificateResult deleteCertificate(DeleteCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteCertificateResult executeDeleteCertificate(DeleteCertificateRequest deleteCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -359,7 +406,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCertificateRequest));
+                request = new DeleteCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -380,10 +427,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
 
     /**
      * <p>
-     * Returns a list of the fields contained in the specified ACM Certificate. For example, this action returns the
-     * certificate status, a flag that indicates whether the certificate is associated with any other AWS service, and
-     * the date at which the certificate request was created. You specify the ACM Certificate on input by its Amazon
-     * Resource Name (ARN).
+     * Returns detailed metadata about the specified ACM Certificate.
      * </p>
      * 
      * @param describeCertificateRequest
@@ -394,9 +438,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.DescribeCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DescribeCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeCertificateResult describeCertificate(DescribeCertificateRequest describeCertificateRequest) {
+    public DescribeCertificateResult describeCertificate(DescribeCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DescribeCertificateResult executeDescribeCertificate(DescribeCertificateRequest describeCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -406,7 +459,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCertificateRequest));
+                request = new DescribeCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -448,9 +501,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.GetCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/GetCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCertificateResult getCertificate(GetCertificateRequest getCertificateRequest) {
+    public GetCertificateResult getCertificate(GetCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCertificate(request);
+    }
+
+    @SdkInternalApi
+    final GetCertificateResult executeGetCertificate(GetCertificateRequest getCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -460,7 +522,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCertificateRequest));
+                request = new GetCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -528,9 +590,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *         which limit you have violated. For more information about ACM limits, see the <a
      *         href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.
      * @sample AWSCertificateManager.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ImportCertificateResult importCertificate(ImportCertificateRequest importCertificateRequest) {
+    public ImportCertificateResult importCertificate(ImportCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeImportCertificate(request);
+    }
+
+    @SdkInternalApi
+    final ImportCertificateResult executeImportCertificate(ImportCertificateRequest importCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(importCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -540,7 +611,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ImportCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(importCertificateRequest));
+                request = new ImportCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(importCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -568,9 +639,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @param listCertificatesRequest
      * @return Result of the ListCertificates operation returned by the service.
      * @sample AWSCertificateManager.ListCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListCertificatesResult listCertificates(ListCertificatesRequest listCertificatesRequest) {
+    public ListCertificatesResult listCertificates(ListCertificatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListCertificates(request);
+    }
+
+    @SdkInternalApi
+    final ListCertificatesResult executeListCertificates(ListCertificatesRequest listCertificatesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listCertificatesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -580,7 +660,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListCertificatesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listCertificatesRequest));
+                request = new ListCertificatesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listCertificatesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -601,9 +681,9 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
 
     /**
      * <p>
-     * Lists the tags that have been applied to the ACM Certificate. Use the certificate ARN to specify the certificate.
-     * To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the
-     * <a>RemoveTagsFromCertificate</a> action.
+     * Lists the tags that have been applied to the ACM Certificate. Use the certificate's Amazon Resource Name (ARN) to
+     * specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To
+     * delete a tag, use the <a>RemoveTagsFromCertificate</a> action.
      * </p>
      * 
      * @param listTagsForCertificateRequest
@@ -614,9 +694,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.ListTagsForCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListTagsForCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTagsForCertificateResult listTagsForCertificate(ListTagsForCertificateRequest listTagsForCertificateRequest) {
+    public ListTagsForCertificateResult listTagsForCertificate(ListTagsForCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForCertificate(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForCertificateResult executeListTagsForCertificate(ListTagsForCertificateRequest listTagsForCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -626,7 +715,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListTagsForCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForCertificateRequest));
+                request = new ListTagsForCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -668,9 +757,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      *         One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a
      *         tag value that begins with <code>aws:</code>.
      * @sample AWSCertificateManager.RemoveTagsFromCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RemoveTagsFromCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RemoveTagsFromCertificateResult removeTagsFromCertificate(RemoveTagsFromCertificateRequest removeTagsFromCertificateRequest) {
+    public RemoveTagsFromCertificateResult removeTagsFromCertificate(RemoveTagsFromCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTagsFromCertificate(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsFromCertificateResult executeRemoveTagsFromCertificate(RemoveTagsFromCertificateRequest removeTagsFromCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsFromCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -680,7 +778,8 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemoveTagsFromCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromCertificateRequest));
+                request = new RemoveTagsFromCertificateRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(removeTagsFromCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -720,9 +819,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidDomainValidationOptionsException
      *         One or more values in the <a>DomainValidationOption</a> structure is incorrect.
      * @sample AWSCertificateManager.RequestCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RequestCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RequestCertificateResult requestCertificate(RequestCertificateRequest requestCertificateRequest) {
+    public RequestCertificateResult requestCertificate(RequestCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeRequestCertificate(request);
+    }
+
+    @SdkInternalApi
+    final RequestCertificateResult executeRequestCertificate(RequestCertificateRequest requestCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(requestCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -732,7 +840,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RequestCertificateRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(requestCertificateRequest));
+                request = new RequestCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(requestCertificateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -776,9 +884,18 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
      * @throws InvalidDomainValidationOptionsException
      *         One or more values in the <a>DomainValidationOption</a> structure is incorrect.
      * @sample AWSCertificateManager.ResendValidationEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ResendValidationEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResendValidationEmailResult resendValidationEmail(ResendValidationEmailRequest resendValidationEmailRequest) {
+    public ResendValidationEmailResult resendValidationEmail(ResendValidationEmailRequest request) {
+        request = beforeClientExecution(request);
+        return executeResendValidationEmail(request);
+    }
+
+    @SdkInternalApi
+    final ResendValidationEmailResult executeResendValidationEmail(ResendValidationEmailRequest resendValidationEmailRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resendValidationEmailRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -788,7 +905,7 @@ public class AWSCertificateManagerClient extends AmazonWebServiceClient implemen
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ResendValidationEmailRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(resendValidationEmailRequest));
+                request = new ResendValidationEmailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resendValidationEmailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

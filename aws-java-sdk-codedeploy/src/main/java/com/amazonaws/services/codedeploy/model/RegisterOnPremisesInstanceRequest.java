@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of the register on-premises instance operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RegisterOnPremisesInstance"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -28,6 +34,12 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
      * </p>
      */
     private String instanceName;
+    /**
+     * <p>
+     * The ARN of the IAM session to associate with the on-premises instance.
+     * </p>
+     */
+    private String iamSessionArn;
     /**
      * <p>
      * The ARN of the IAM user to associate with the on-premises instance.
@@ -72,6 +84,46 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
 
     public RegisterOnPremisesInstanceRequest withInstanceName(String instanceName) {
         setInstanceName(instanceName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session to associate with the on-premises instance.
+     * </p>
+     * 
+     * @param iamSessionArn
+     *        The ARN of the IAM session to associate with the on-premises instance.
+     */
+
+    public void setIamSessionArn(String iamSessionArn) {
+        this.iamSessionArn = iamSessionArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session to associate with the on-premises instance.
+     * </p>
+     * 
+     * @return The ARN of the IAM session to associate with the on-premises instance.
+     */
+
+    public String getIamSessionArn() {
+        return this.iamSessionArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM session to associate with the on-premises instance.
+     * </p>
+     * 
+     * @param iamSessionArn
+     *        The ARN of the IAM session to associate with the on-premises instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RegisterOnPremisesInstanceRequest withIamSessionArn(String iamSessionArn) {
+        setIamSessionArn(iamSessionArn);
         return this;
     }
 
@@ -127,9 +179,11 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceName() != null)
-            sb.append("InstanceName: " + getInstanceName() + ",");
+            sb.append("InstanceName: ").append(getInstanceName()).append(",");
+        if (getIamSessionArn() != null)
+            sb.append("IamSessionArn: ").append(getIamSessionArn()).append(",");
         if (getIamUserArn() != null)
-            sb.append("IamUserArn: " + getIamUserArn());
+            sb.append("IamUserArn: ").append(getIamUserArn());
         sb.append("}");
         return sb.toString();
     }
@@ -148,6 +202,10 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
             return false;
         if (other.getInstanceName() != null && other.getInstanceName().equals(this.getInstanceName()) == false)
             return false;
+        if (other.getIamSessionArn() == null ^ this.getIamSessionArn() == null)
+            return false;
+        if (other.getIamSessionArn() != null && other.getIamSessionArn().equals(this.getIamSessionArn()) == false)
+            return false;
         if (other.getIamUserArn() == null ^ this.getIamUserArn() == null)
             return false;
         if (other.getIamUserArn() != null && other.getIamUserArn().equals(this.getIamUserArn()) == false)
@@ -161,6 +219,7 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getInstanceName() == null) ? 0 : getInstanceName().hashCode());
+        hashCode = prime * hashCode + ((getIamSessionArn() == null) ? 0 : getIamSessionArn().hashCode());
         hashCode = prime * hashCode + ((getIamUserArn() == null) ? 0 : getIamUserArn().hashCode());
         return hashCode;
     }
@@ -169,4 +228,5 @@ public class RegisterOnPremisesInstanceRequest extends com.amazonaws.AmazonWebSe
     public RegisterOnPremisesInstanceRequest clone() {
         return (RegisterOnPremisesInstanceRequest) super.clone();
     }
+
 }

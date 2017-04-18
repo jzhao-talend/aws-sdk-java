@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,32 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Configuration of a bootstrap action.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/BootstrapActionConfig"
+ *      target="_top">AWS API Documentation</a>
  */
-public class BootstrapActionConfig implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class BootstrapActionConfig implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The name of the bootstrap action.
+     * </p>
+     */
     private String name;
-
+    /**
+     * <p>
+     * The script run by the bootstrap action.
+     * </p>
+     */
     private ScriptBootstrapActionConfig scriptBootstrapAction;
 
     /**
@@ -35,7 +53,9 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
      * to initialize any additional object members.
      * 
      * @param name
+     *        The name of the bootstrap action.
      * @param scriptBootstrapAction
+     *        The script run by the bootstrap action.
      */
     public BootstrapActionConfig(String name, ScriptBootstrapActionConfig scriptBootstrapAction) {
         setName(name);
@@ -43,7 +63,12 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the bootstrap action.
+     * </p>
+     * 
      * @param name
+     *        The name of the bootstrap action.
      */
 
     public void setName(String name) {
@@ -51,7 +76,11 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The name of the bootstrap action.
+     * </p>
+     * 
+     * @return The name of the bootstrap action.
      */
 
     public String getName() {
@@ -59,7 +88,12 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The name of the bootstrap action.
+     * </p>
+     * 
      * @param name
+     *        The name of the bootstrap action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +103,12 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The script run by the bootstrap action.
+     * </p>
+     * 
      * @param scriptBootstrapAction
+     *        The script run by the bootstrap action.
      */
 
     public void setScriptBootstrapAction(ScriptBootstrapActionConfig scriptBootstrapAction) {
@@ -77,7 +116,11 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The script run by the bootstrap action.
+     * </p>
+     * 
+     * @return The script run by the bootstrap action.
      */
 
     public ScriptBootstrapActionConfig getScriptBootstrapAction() {
@@ -85,7 +128,12 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The script run by the bootstrap action.
+     * </p>
+     * 
      * @param scriptBootstrapAction
+     *        The script run by the bootstrap action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,9 +154,9 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getScriptBootstrapAction() != null)
-            sb.append("ScriptBootstrapAction: " + getScriptBootstrapAction());
+            sb.append("ScriptBootstrapAction: ").append(getScriptBootstrapAction());
         sb.append("}");
         return sb.toString();
     }
@@ -151,5 +199,11 @@ public class BootstrapActionConfig implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.BootstrapActionConfigMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

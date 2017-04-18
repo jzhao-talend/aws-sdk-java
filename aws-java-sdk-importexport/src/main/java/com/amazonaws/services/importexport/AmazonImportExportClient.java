@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.importexport.AmazonImportExportClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -51,6 +55,7 @@ import com.amazonaws.services.importexport.model.transform.*;
  * connectivity.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonImportExportClient extends AmazonWebServiceClient implements AmazonImportExport {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -82,7 +87,9 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonImportExportClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonImportExportClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -105,7 +112,9 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonImportExportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonImportExportClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -120,7 +129,10 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonImportExportClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonImportExportClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonImportExportClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -138,7 +150,10 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Import/Export (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonImportExportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonImportExportClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -155,7 +170,9 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonImportExportClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonImportExportClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -173,7 +190,10 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS Import/Export (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonImportExportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonImportExportClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -193,12 +213,20 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonImportExportClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonImportExportClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonImportExportClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonImportExportClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonImportExportClientBuilder builder() {
+        return AmazonImportExportClientBuilder.standard();
     }
 
     /**
@@ -273,7 +301,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.CancelJob
      */
     @Override
-    public CancelJobResult cancelJob(CancelJobRequest cancelJobRequest) {
+    public CancelJobResult cancelJob(CancelJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelJob(request);
+    }
+
+    @SdkInternalApi
+    final CancelJobResult executeCancelJob(CancelJobRequest cancelJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -350,7 +385,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.CreateJob
      */
     @Override
-    public CreateJobResult createJob(CreateJobRequest createJobRequest) {
+    public CreateJobResult createJob(CreateJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateJob(request);
+    }
+
+    @SdkInternalApi
+    final CreateJobResult executeCreateJob(CreateJobRequest createJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -402,7 +444,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.GetShippingLabel
      */
     @Override
-    public GetShippingLabelResult getShippingLabel(GetShippingLabelRequest getShippingLabelRequest) {
+    public GetShippingLabelResult getShippingLabel(GetShippingLabelRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetShippingLabel(request);
+    }
+
+    @SdkInternalApi
+    final GetShippingLabelResult executeGetShippingLabel(GetShippingLabelRequest getShippingLabelRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getShippingLabelRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -453,7 +502,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.GetStatus
      */
     @Override
-    public GetStatusResult getStatus(GetStatusRequest getStatusRequest) {
+    public GetStatusResult getStatus(GetStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetStatus(request);
+    }
+
+    @SdkInternalApi
+    final GetStatusResult executeGetStatus(GetStatusRequest getStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -499,7 +555,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.ListJobs
      */
     @Override
-    public ListJobsResult listJobs(ListJobsRequest listJobsRequest) {
+    public ListJobsResult listJobs(ListJobsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListJobs(request);
+    }
+
+    @SdkInternalApi
+    final ListJobsResult executeListJobs(ListJobsRequest listJobsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listJobsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -584,7 +647,14 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * @sample AmazonImportExport.UpdateJob
      */
     @Override
-    public UpdateJobResult updateJob(UpdateJobRequest updateJobRequest) {
+    public UpdateJobResult updateJob(UpdateJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateJob(request);
+    }
+
+    @SdkInternalApi
+    final UpdateJobResult executeUpdateJob(UpdateJobRequest updateJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);

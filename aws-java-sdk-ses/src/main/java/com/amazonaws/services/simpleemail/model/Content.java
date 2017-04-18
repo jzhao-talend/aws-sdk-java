@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -22,7 +23,11 @@ import java.io.Serializable;
  * By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any
  * other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/Content" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Content implements Serializable, Cloneable {
 
     /**
@@ -148,9 +153,9 @@ public class Content implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getData() != null)
-            sb.append("Data: " + getData() + ",");
+            sb.append("Data: ").append(getData()).append(",");
         if (getCharset() != null)
-            sb.append("Charset: " + getCharset());
+            sb.append("Charset: ").append(getCharset());
         sb.append("}");
         return sb.toString();
     }
@@ -194,4 +199,5 @@ public class Content implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

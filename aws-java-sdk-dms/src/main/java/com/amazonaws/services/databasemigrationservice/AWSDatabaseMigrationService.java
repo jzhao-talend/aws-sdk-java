@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.databasemigrationservice;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,14 +22,20 @@ import com.amazonaws.services.databasemigrationservice.model.*;
 /**
  * Interface for accessing AWS Database Migration Service.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.databasemigrationservice.AbstractAWSDatabaseMigrationService} instead.
+ * </p>
+ * <p>
  * <fullname>AWS Database Migration Service</fullname>
  * <p>
  * AWS Database Migration Service (AWS DMS) can migrate your data to and from the most widely used commercial and
- * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora, and
- * MySQL. The service supports homogeneous migrations such as Oracle to Oracle, as well as heterogeneous migrations
- * between different database platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
+ * open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora,
+ * MySQL, and SAP Adaptive Server Enterprise (ASE). The service supports homogeneous migrations such as Oracle to
+ * Oracle, as well as heterogeneous migrations between different database platforms, such as Oracle to MySQL or SQL
+ * Server to PostgreSQL.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSDatabaseMigrationService {
 
     /**
@@ -58,7 +66,11 @@ public interface AWSDatabaseMigrationService {
      * @param endpoint
      *        The endpoint (ex: "dms.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "dms.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -79,7 +91,9 @@ public interface AWSDatabaseMigrationService {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -94,6 +108,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource" target="_top">AWS API
+     *      Documentation</a>
      */
     AddTagsToResourceResult addTagsToResource(AddTagsToResourceRequest addTagsToResourceRequest);
 
@@ -114,7 +130,11 @@ public interface AWSDatabaseMigrationService {
      *         The resource is in a state that prevents it from being used for database migration.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         AWS DMS was denied access to the endpoint.
      * @sample AWSDatabaseMigrationService.CreateEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateEndpointResult createEndpoint(CreateEndpointRequest createEndpointRequest);
 
@@ -147,6 +167,8 @@ public interface AWSDatabaseMigrationService {
      * @throws KMSKeyNotAccessibleException
      *         AWS DMS cannot access the KMS key.
      * @sample AWSDatabaseMigrationService.CreateReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateReplicationInstanceResult createReplicationInstance(CreateReplicationInstanceRequest createReplicationInstanceRequest);
 
@@ -171,6 +193,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidSubnetException
      *         The subnet provided is invalid.
      * @sample AWSDatabaseMigrationService.CreateReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateReplicationSubnetGroupResult createReplicationSubnetGroup(CreateReplicationSubnetGroupRequest createReplicationSubnetGroupRequest);
 
@@ -192,6 +216,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.CreateReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateReplicationTaskResult createReplicationTask(CreateReplicationTaskRequest createReplicationTaskRequest);
 
@@ -207,6 +233,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest);
 
@@ -228,6 +256,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest deleteEndpointRequest);
 
@@ -249,6 +279,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DeleteReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteReplicationInstanceResult deleteReplicationInstance(DeleteReplicationInstanceRequest deleteReplicationInstanceRequest);
 
@@ -264,6 +296,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DeleteReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteReplicationSubnetGroupResult deleteReplicationSubnetGroup(DeleteReplicationSubnetGroupRequest deleteReplicationSubnetGroupRequest);
 
@@ -279,6 +313,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DeleteReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteReplicationTaskResult deleteReplicationTask(DeleteReplicationTaskRequest deleteReplicationTaskRequest);
 
@@ -295,6 +331,8 @@ public interface AWSDatabaseMigrationService {
      * @param describeAccountAttributesRequest
      * @return Result of the DescribeAccountAttributes operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest);
 
@@ -308,6 +346,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest describeCertificatesRequest);
 
@@ -322,6 +362,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeConnectionsResult describeConnections(DescribeConnectionsRequest describeConnectionsRequest);
 
@@ -333,6 +375,8 @@ public interface AWSDatabaseMigrationService {
      * @param describeEndpointTypesRequest
      * @return Result of the DescribeEndpointTypes operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeEndpointTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpointTypes" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeEndpointTypesResult describeEndpointTypes(DescribeEndpointTypesRequest describeEndpointTypesRequest);
 
@@ -346,6 +390,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeEndpointsResult describeEndpoints(DescribeEndpointsRequest describeEndpointsRequest);
 
@@ -357,6 +403,8 @@ public interface AWSDatabaseMigrationService {
      * @param describeOrderableReplicationInstancesRequest
      * @return Result of the DescribeOrderableReplicationInstances operation returned by the service.
      * @sample AWSDatabaseMigrationService.DescribeOrderableReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeOrderableReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeOrderableReplicationInstancesResult describeOrderableReplicationInstances(
             DescribeOrderableReplicationInstancesRequest describeOrderableReplicationInstancesRequest);
@@ -373,6 +421,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeRefreshSchemasStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeRefreshSchemasStatusResult describeRefreshSchemasStatus(DescribeRefreshSchemasStatusRequest describeRefreshSchemasStatusRequest);
 
@@ -386,6 +436,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeReplicationInstancesResult describeReplicationInstances(DescribeReplicationInstancesRequest describeReplicationInstancesRequest);
 
@@ -399,6 +451,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeReplicationSubnetGroupsResult describeReplicationSubnetGroups(DescribeReplicationSubnetGroupsRequest describeReplicationSubnetGroupsRequest);
 
@@ -412,6 +466,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeReplicationTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeReplicationTasksResult describeReplicationTasks(DescribeReplicationTasksRequest describeReplicationTasksRequest);
 
@@ -428,6 +484,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.DescribeSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeSchemasResult describeSchemas(DescribeSchemasRequest describeSchemasRequest);
 
@@ -444,6 +502,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.DescribeTableStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeTableStatistics" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeTableStatisticsResult describeTableStatistics(DescribeTableStatisticsRequest describeTableStatisticsRequest);
 
@@ -459,6 +519,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidCertificateException
      *         The certificate was not valid.
      * @sample AWSDatabaseMigrationService.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     ImportCertificateResult importCertificate(ImportCertificateRequest importCertificateRequest);
 
@@ -472,6 +534,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -491,6 +555,8 @@ public interface AWSDatabaseMigrationService {
      * @throws KMSKeyNotAccessibleException
      *         AWS DMS cannot access the KMS key.
      * @sample AWSDatabaseMigrationService.ModifyEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     ModifyEndpointResult modifyEndpoint(ModifyEndpointRequest modifyEndpointRequest);
 
@@ -519,6 +585,8 @@ public interface AWSDatabaseMigrationService {
      * @throws UpgradeDependencyFailureException
      *         An upgrade dependency is preventing the database migration.
      * @sample AWSDatabaseMigrationService.ModifyReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
      */
     ModifyReplicationInstanceResult modifyReplicationInstance(ModifyReplicationInstanceRequest modifyReplicationInstanceRequest);
 
@@ -543,8 +611,34 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidSubnetException
      *         The subnet provided is invalid.
      * @sample AWSDatabaseMigrationService.ModifyReplicationSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     ModifyReplicationSubnetGroupResult modifyReplicationSubnetGroup(ModifyReplicationSubnetGroupRequest modifyReplicationSubnetGroupRequest);
+
+    /**
+     * <p>
+     * Modifies the specified replication task.
+     * </p>
+     * <p>
+     * You can't modify the task endpoints. The task must be stopped before you can modify it.
+     * </p>
+     * 
+     * @param modifyReplicationTaskRequest
+     * @return Result of the ModifyReplicationTask operation returned by the service.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws ResourceAlreadyExistsException
+     *         The resource you are attempting to create already exists.
+     * @throws KMSKeyNotAccessibleException
+     *         AWS DMS cannot access the KMS key.
+     * @sample AWSDatabaseMigrationService.ModifyReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ModifyReplicationTaskResult modifyReplicationTask(ModifyReplicationTaskRequest modifyReplicationTaskRequest);
 
     /**
      * <p>
@@ -563,6 +657,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.RefreshSchemas
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas" target="_top">AWS API
+     *      Documentation</a>
      */
     RefreshSchemasResult refreshSchemas(RefreshSchemasRequest refreshSchemasRequest);
 
@@ -576,6 +672,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AWSDatabaseMigrationService.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
+     *      Documentation</a>
      */
     RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -591,6 +689,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.StartReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     StartReplicationTaskResult startReplicationTask(StartReplicationTaskRequest startReplicationTaskRequest);
 
@@ -607,6 +707,8 @@ public interface AWSDatabaseMigrationService {
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @sample AWSDatabaseMigrationService.StopReplicationTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StopReplicationTask" target="_top">AWS API
+     *      Documentation</a>
      */
     StopReplicationTaskResult stopReplicationTask(StopReplicationTaskRequest stopReplicationTaskRequest);
 
@@ -626,6 +728,8 @@ public interface AWSDatabaseMigrationService {
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.TestConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     TestConnectionResult testConnection(TestConnectionRequest testConnectionRequest);
 

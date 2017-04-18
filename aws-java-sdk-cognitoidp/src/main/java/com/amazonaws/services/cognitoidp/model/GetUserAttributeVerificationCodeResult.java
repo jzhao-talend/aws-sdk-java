@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,37 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The verification code response returned by the server response to get the user attribute verification code.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUserAttributeVerificationCode"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetUserAttributeVerificationCodeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
     /**
      * <p>
-     * The code delivery details returned by the server response to get the user attribute verification code.
+     * The code delivery details returned by the server in response to the request to get the user attribute
+     * verification code.
      * </p>
      */
     private CodeDeliveryDetailsType codeDeliveryDetails;
 
     /**
      * <p>
-     * The code delivery details returned by the server response to get the user attribute verification code.
+     * The code delivery details returned by the server in response to the request to get the user attribute
+     * verification code.
      * </p>
      * 
      * @param codeDeliveryDetails
-     *        The code delivery details returned by the server response to get the user attribute verification code.
+     *        The code delivery details returned by the server in response to the request to get the user attribute
+     *        verification code.
      */
 
     public void setCodeDeliveryDetails(CodeDeliveryDetailsType codeDeliveryDetails) {
@@ -44,10 +52,12 @@ public class GetUserAttributeVerificationCodeResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The code delivery details returned by the server response to get the user attribute verification code.
+     * The code delivery details returned by the server in response to the request to get the user attribute
+     * verification code.
      * </p>
      * 
-     * @return The code delivery details returned by the server response to get the user attribute verification code.
+     * @return The code delivery details returned by the server in response to the request to get the user attribute
+     *         verification code.
      */
 
     public CodeDeliveryDetailsType getCodeDeliveryDetails() {
@@ -56,11 +66,13 @@ public class GetUserAttributeVerificationCodeResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The code delivery details returned by the server response to get the user attribute verification code.
+     * The code delivery details returned by the server in response to the request to get the user attribute
+     * verification code.
      * </p>
      * 
      * @param codeDeliveryDetails
-     *        The code delivery details returned by the server response to get the user attribute verification code.
+     *        The code delivery details returned by the server in response to the request to get the user attribute
+     *        verification code.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -81,7 +93,7 @@ public class GetUserAttributeVerificationCodeResult extends com.amazonaws.Amazon
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCodeDeliveryDetails() != null)
-            sb.append("CodeDeliveryDetails: " + getCodeDeliveryDetails());
+            sb.append("CodeDeliveryDetails: ").append(getCodeDeliveryDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -120,4 +132,5 @@ public class GetUserAttributeVerificationCodeResult extends com.amazonaws.Amazon
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

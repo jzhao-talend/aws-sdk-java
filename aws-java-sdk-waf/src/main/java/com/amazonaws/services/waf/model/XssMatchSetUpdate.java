@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies the part of a web request that you want to inspect for cross-site scripting attacks and indicates whether
  * you want to add the specification to an <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/XssMatchSetUpdate" target="_top">AWS API
+ *      Documentation</a>
  */
-public class XssMatchSetUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class XssMatchSetUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -178,9 +185,9 @@ public class XssMatchSetUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAction() != null)
-            sb.append("Action: " + getAction() + ",");
+            sb.append("Action: ").append(getAction()).append(",");
         if (getXssMatchTuple() != null)
-            sb.append("XssMatchTuple: " + getXssMatchTuple());
+            sb.append("XssMatchTuple: ").append(getXssMatchTuple());
         sb.append("}");
         return sb.toString();
     }
@@ -223,5 +230,11 @@ public class XssMatchSetUpdate implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.XssMatchSetUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

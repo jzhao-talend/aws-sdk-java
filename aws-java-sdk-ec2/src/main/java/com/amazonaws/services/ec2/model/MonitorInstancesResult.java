@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceResult;
 
 /**
@@ -20,21 +22,22 @@ import com.amazonaws.AmazonWebServiceResult;
  * Contains the output of MonitorInstances.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Monitoring information for one or more instances.
+     * The monitoring information.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<InstanceMonitoring> instanceMonitorings;
 
     /**
      * <p>
-     * Monitoring information for one or more instances.
+     * The monitoring information.
      * </p>
      * 
-     * @return Monitoring information for one or more instances.
+     * @return The monitoring information.
      */
 
     public java.util.List<InstanceMonitoring> getInstanceMonitorings() {
@@ -46,11 +49,11 @@ public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Monitoring information for one or more instances.
+     * The monitoring information.
      * </p>
      * 
      * @param instanceMonitorings
-     *        Monitoring information for one or more instances.
+     *        The monitoring information.
      */
 
     public void setInstanceMonitorings(java.util.Collection<InstanceMonitoring> instanceMonitorings) {
@@ -64,7 +67,7 @@ public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Monitoring information for one or more instances.
+     * The monitoring information.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -73,7 +76,7 @@ public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * 
      * @param instanceMonitorings
-     *        Monitoring information for one or more instances.
+     *        The monitoring information.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +92,11 @@ public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Monitoring information for one or more instances.
+     * The monitoring information.
      * </p>
      * 
      * @param instanceMonitorings
-     *        Monitoring information for one or more instances.
+     *        The monitoring information.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,7 +117,7 @@ public class MonitorInstancesResult extends com.amazonaws.AmazonWebServiceResult
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceMonitorings() != null)
-            sb.append("InstanceMonitorings: " + getInstanceMonitorings());
+            sb.append("InstanceMonitorings: ").append(getInstanceMonitorings());
         sb.append("}");
         return sb.toString();
     }

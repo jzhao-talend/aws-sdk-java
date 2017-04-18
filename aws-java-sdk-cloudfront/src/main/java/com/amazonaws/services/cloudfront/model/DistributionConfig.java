@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A distribution configuration.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DistributionConfig" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DistributionConfig implements Serializable, Cloneable {
 
     /**
@@ -169,12 +174,7 @@ public class DistributionConfig implements Serializable, Cloneable {
     private String priceClass;
     /**
      * <p>
-     * Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     * </p>
-     * <p>
-     * If you do not want to enable logging when you create a distribution, or if you want to disable logging for an
-     * existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code>
-     * and <code>Prefix</code> elements.
+     * From this field, you can enable or disable the selected distribution.
      * </p>
      * <p>
      * If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and
@@ -291,12 +291,7 @@ public class DistributionConfig implements Serializable, Cloneable {
      *        but the content of the <code>DistributionConfig</code> is different from the original request, CloudFront
      *        returns a <code>DistributionAlreadyExists</code> error.
      * @param enabled
-     *        Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     *        </p>
-     *        <p>
-     *        If you do not want to enable logging when you create a distribution, or if you want to disable logging for
-     *        an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty
-     *        <code>Bucket</code> and <code>Prefix</code> elements.
+     *        From this field, you can enable or disable the selected distribution.
      *        </p>
      *        <p>
      *        If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>
@@ -1305,12 +1300,7 @@ public class DistributionConfig implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     * </p>
-     * <p>
-     * If you do not want to enable logging when you create a distribution, or if you want to disable logging for an
-     * existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code>
-     * and <code>Prefix</code> elements.
+     * From this field, you can enable or disable the selected distribution.
      * </p>
      * <p>
      * If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and
@@ -1318,12 +1308,7 @@ public class DistributionConfig implements Serializable, Cloneable {
      * </p>
      * 
      * @param enabled
-     *        Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.</p>
-     *        <p>
-     *        If you do not want to enable logging when you create a distribution, or if you want to disable logging for
-     *        an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty
-     *        <code>Bucket</code> and <code>Prefix</code> elements.
-     *        </p>
+     *        From this field, you can enable or disable the selected distribution.</p>
      *        <p>
      *        If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>
      *        and <code>Prefix</code>, the values are automatically deleted.
@@ -1335,24 +1320,14 @@ public class DistributionConfig implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     * </p>
-     * <p>
-     * If you do not want to enable logging when you create a distribution, or if you want to disable logging for an
-     * existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code>
-     * and <code>Prefix</code> elements.
+     * From this field, you can enable or disable the selected distribution.
      * </p>
      * <p>
      * If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and
      * <code>Prefix</code>, the values are automatically deleted.
      * </p>
      * 
-     * @return Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.</p>
-     *         <p>
-     *         If you do not want to enable logging when you create a distribution, or if you want to disable logging
-     *         for an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty
-     *         <code>Bucket</code> and <code>Prefix</code> elements.
-     *         </p>
+     * @return From this field, you can enable or disable the selected distribution.</p>
      *         <p>
      *         If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>
      *         and <code>Prefix</code>, the values are automatically deleted.
@@ -1364,12 +1339,7 @@ public class DistributionConfig implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     * </p>
-     * <p>
-     * If you do not want to enable logging when you create a distribution, or if you want to disable logging for an
-     * existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code>
-     * and <code>Prefix</code> elements.
+     * From this field, you can enable or disable the selected distribution.
      * </p>
      * <p>
      * If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and
@@ -1377,12 +1347,7 @@ public class DistributionConfig implements Serializable, Cloneable {
      * </p>
      * 
      * @param enabled
-     *        Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.</p>
-     *        <p>
-     *        If you do not want to enable logging when you create a distribution, or if you want to disable logging for
-     *        an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty
-     *        <code>Bucket</code> and <code>Prefix</code> elements.
-     *        </p>
+     *        From this field, you can enable or disable the selected distribution.</p>
      *        <p>
      *        If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>
      *        and <code>Prefix</code>, the values are automatically deleted.
@@ -1396,24 +1361,14 @@ public class DistributionConfig implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.
-     * </p>
-     * <p>
-     * If you do not want to enable logging when you create a distribution, or if you want to disable logging for an
-     * existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code>
-     * and <code>Prefix</code> elements.
+     * From this field, you can enable or disable the selected distribution.
      * </p>
      * <p>
      * If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and
      * <code>Prefix</code>, the values are automatically deleted.
      * </p>
      * 
-     * @return Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket.</p>
-     *         <p>
-     *         If you do not want to enable logging when you create a distribution, or if you want to disable logging
-     *         for an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty
-     *         <code>Bucket</code> and <code>Prefix</code> elements.
-     *         </p>
+     * @return From this field, you can enable or disable the selected distribution.</p>
      *         <p>
      *         If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>
      *         and <code>Prefix</code>, the values are automatically deleted.
@@ -2117,37 +2072,37 @@ public class DistributionConfig implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCallerReference() != null)
-            sb.append("CallerReference: " + getCallerReference() + ",");
+            sb.append("CallerReference: ").append(getCallerReference()).append(",");
         if (getAliases() != null)
-            sb.append("Aliases: " + getAliases() + ",");
+            sb.append("Aliases: ").append(getAliases()).append(",");
         if (getDefaultRootObject() != null)
-            sb.append("DefaultRootObject: " + getDefaultRootObject() + ",");
+            sb.append("DefaultRootObject: ").append(getDefaultRootObject()).append(",");
         if (getOrigins() != null)
-            sb.append("Origins: " + getOrigins() + ",");
+            sb.append("Origins: ").append(getOrigins()).append(",");
         if (getDefaultCacheBehavior() != null)
-            sb.append("DefaultCacheBehavior: " + getDefaultCacheBehavior() + ",");
+            sb.append("DefaultCacheBehavior: ").append(getDefaultCacheBehavior()).append(",");
         if (getCacheBehaviors() != null)
-            sb.append("CacheBehaviors: " + getCacheBehaviors() + ",");
+            sb.append("CacheBehaviors: ").append(getCacheBehaviors()).append(",");
         if (getCustomErrorResponses() != null)
-            sb.append("CustomErrorResponses: " + getCustomErrorResponses() + ",");
+            sb.append("CustomErrorResponses: ").append(getCustomErrorResponses()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment() + ",");
+            sb.append("Comment: ").append(getComment()).append(",");
         if (getLogging() != null)
-            sb.append("Logging: " + getLogging() + ",");
+            sb.append("Logging: ").append(getLogging()).append(",");
         if (getPriceClass() != null)
-            sb.append("PriceClass: " + getPriceClass() + ",");
+            sb.append("PriceClass: ").append(getPriceClass()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getViewerCertificate() != null)
-            sb.append("ViewerCertificate: " + getViewerCertificate() + ",");
+            sb.append("ViewerCertificate: ").append(getViewerCertificate()).append(",");
         if (getRestrictions() != null)
-            sb.append("Restrictions: " + getRestrictions() + ",");
+            sb.append("Restrictions: ").append(getRestrictions()).append(",");
         if (getWebACLId() != null)
-            sb.append("WebACLId: " + getWebACLId() + ",");
+            sb.append("WebACLId: ").append(getWebACLId()).append(",");
         if (getHttpVersion() != null)
-            sb.append("HttpVersion: " + getHttpVersion() + ",");
+            sb.append("HttpVersion: ").append(getHttpVersion()).append(",");
         if (getIsIPV6Enabled() != null)
-            sb.append("IsIPV6Enabled: " + getIsIPV6Enabled());
+            sb.append("IsIPV6Enabled: ").append(getIsIPV6Enabled());
         sb.append("}");
         return sb.toString();
     }
@@ -2261,4 +2216,5 @@ public class DistributionConfig implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

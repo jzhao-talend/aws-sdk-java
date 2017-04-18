@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * StaleIpPermission StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StaleIpPermissionStaxUnmarshaller implements Unmarshaller<StaleIpPermission, StaxUnmarshallerContext> {
 
     public StaleIpPermission unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -55,8 +55,18 @@ public class StaleIpPermissionStaxUnmarshaller implements Unmarshaller<StaleIpPe
                     continue;
                 }
 
+                if (context.testExpression("ipRanges", targetDepth)) {
+                    staleIpPermission.withIpRanges(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("ipRanges/item", targetDepth)) {
                     staleIpPermission.withIpRanges(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("prefixListIds", targetDepth)) {
+                    staleIpPermission.withPrefixListIds(new ArrayList<String>());
                     continue;
                 }
 
@@ -67,6 +77,11 @@ public class StaleIpPermissionStaxUnmarshaller implements Unmarshaller<StaleIpPe
 
                 if (context.testExpression("toPort", targetDepth)) {
                     staleIpPermission.setToPort(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("groups", targetDepth)) {
+                    staleIpPermission.withUserIdGroupPairs(new ArrayList<UserIdGroupPair>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents entity counters.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/Counters" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Counters implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Counters implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -356,19 +363,19 @@ public class Counters implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTotal() != null)
-            sb.append("Total: " + getTotal() + ",");
+            sb.append("Total: ").append(getTotal()).append(",");
         if (getPassed() != null)
-            sb.append("Passed: " + getPassed() + ",");
+            sb.append("Passed: ").append(getPassed()).append(",");
         if (getFailed() != null)
-            sb.append("Failed: " + getFailed() + ",");
+            sb.append("Failed: ").append(getFailed()).append(",");
         if (getWarned() != null)
-            sb.append("Warned: " + getWarned() + ",");
+            sb.append("Warned: ").append(getWarned()).append(",");
         if (getErrored() != null)
-            sb.append("Errored: " + getErrored() + ",");
+            sb.append("Errored: ").append(getErrored()).append(",");
         if (getStopped() != null)
-            sb.append("Stopped: " + getStopped() + ",");
+            sb.append("Stopped: ").append(getStopped()).append(",");
         if (getSkipped() != null)
-            sb.append("Skipped: " + getSkipped());
+            sb.append("Skipped: ").append(getSkipped());
         sb.append("}");
         return sb.toString();
     }
@@ -436,5 +443,11 @@ public class Counters implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.CountersMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

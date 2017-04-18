@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the average latency for the slowest X percent of requests over the last 10 seconds.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/Latency" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Latency implements Serializable, Cloneable {
 
     /**
@@ -402,21 +407,21 @@ public class Latency implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getP999() != null)
-            sb.append("P999: " + getP999() + ",");
+            sb.append("P999: ").append(getP999()).append(",");
         if (getP99() != null)
-            sb.append("P99: " + getP99() + ",");
+            sb.append("P99: ").append(getP99()).append(",");
         if (getP95() != null)
-            sb.append("P95: " + getP95() + ",");
+            sb.append("P95: ").append(getP95()).append(",");
         if (getP90() != null)
-            sb.append("P90: " + getP90() + ",");
+            sb.append("P90: ").append(getP90()).append(",");
         if (getP85() != null)
-            sb.append("P85: " + getP85() + ",");
+            sb.append("P85: ").append(getP85()).append(",");
         if (getP75() != null)
-            sb.append("P75: " + getP75() + ",");
+            sb.append("P75: ").append(getP75()).append(",");
         if (getP50() != null)
-            sb.append("P50: " + getP50() + ",");
+            sb.append("P50: ").append(getP50()).append(",");
         if (getP10() != null)
-            sb.append("P10: " + getP10());
+            sb.append("P10: ").append(getP10());
         sb.append("}");
         return sb.toString();
     }
@@ -490,4 +495,5 @@ public class Latency implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

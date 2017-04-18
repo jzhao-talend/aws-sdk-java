@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,16 +12,26 @@
  */
 package com.amazonaws.services.route53domains;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.route53domains.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon Route 53 Domains asynchronously. Each asynchronous method will return a Java Future
+ * Client for accessing Amazon Route 53 Domains asynchronously. Each asynchronous method will return a Java Future
  * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient implements AmazonRoute53DomainsAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -43,9 +53,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonRoute53DomainsAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -67,10 +79,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -83,9 +96,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -96,8 +111,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -112,10 +130,12 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -130,9 +150,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -149,11 +171,12 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -164,10 +187,11 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -181,12 +205,19 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonRoute53DomainsAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonRoute53DomainsAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonRoute53DomainsAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonRoute53DomainsAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonRoute53DomainsAsyncClientBuilder asyncBuilder() {
+        return AmazonRoute53DomainsAsyncClientBuilder.standard();
     }
 
     /**
@@ -206,7 +237,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -219,14 +250,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<CheckDomainAvailabilityResult> checkDomainAvailabilityAsync(final CheckDomainAvailabilityRequest request,
             final com.amazonaws.handlers.AsyncHandler<CheckDomainAvailabilityRequest, CheckDomainAvailabilityResult> asyncHandler) {
+        final CheckDomainAvailabilityRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CheckDomainAvailabilityResult>() {
             @Override
             public CheckDomainAvailabilityResult call() throws Exception {
-                CheckDomainAvailabilityResult result;
+                CheckDomainAvailabilityResult result = null;
 
                 try {
-                    result = checkDomainAvailability(request);
+                    result = executeCheckDomainAvailability(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -235,7 +267,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -251,14 +283,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<DeleteTagsForDomainResult> deleteTagsForDomainAsync(final DeleteTagsForDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteTagsForDomainRequest, DeleteTagsForDomainResult> asyncHandler) {
+        final DeleteTagsForDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteTagsForDomainResult>() {
             @Override
             public DeleteTagsForDomainResult call() throws Exception {
-                DeleteTagsForDomainResult result;
+                DeleteTagsForDomainResult result = null;
 
                 try {
-                    result = deleteTagsForDomain(request);
+                    result = executeDeleteTagsForDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -267,7 +300,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -283,14 +316,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<DisableDomainAutoRenewResult> disableDomainAutoRenewAsync(final DisableDomainAutoRenewRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableDomainAutoRenewRequest, DisableDomainAutoRenewResult> asyncHandler) {
+        final DisableDomainAutoRenewRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableDomainAutoRenewResult>() {
             @Override
             public DisableDomainAutoRenewResult call() throws Exception {
-                DisableDomainAutoRenewResult result;
+                DisableDomainAutoRenewResult result = null;
 
                 try {
-                    result = disableDomainAutoRenew(request);
+                    result = executeDisableDomainAutoRenew(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -299,7 +333,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -315,14 +349,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<DisableDomainTransferLockResult> disableDomainTransferLockAsync(final DisableDomainTransferLockRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableDomainTransferLockRequest, DisableDomainTransferLockResult> asyncHandler) {
+        final DisableDomainTransferLockRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableDomainTransferLockResult>() {
             @Override
             public DisableDomainTransferLockResult call() throws Exception {
-                DisableDomainTransferLockResult result;
+                DisableDomainTransferLockResult result = null;
 
                 try {
-                    result = disableDomainTransferLock(request);
+                    result = executeDisableDomainTransferLock(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -331,7 +366,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -347,14 +382,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<EnableDomainAutoRenewResult> enableDomainAutoRenewAsync(final EnableDomainAutoRenewRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableDomainAutoRenewRequest, EnableDomainAutoRenewResult> asyncHandler) {
+        final EnableDomainAutoRenewRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableDomainAutoRenewResult>() {
             @Override
             public EnableDomainAutoRenewResult call() throws Exception {
-                EnableDomainAutoRenewResult result;
+                EnableDomainAutoRenewResult result = null;
 
                 try {
-                    result = enableDomainAutoRenew(request);
+                    result = executeEnableDomainAutoRenew(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -363,7 +399,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -379,14 +415,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<EnableDomainTransferLockResult> enableDomainTransferLockAsync(final EnableDomainTransferLockRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableDomainTransferLockRequest, EnableDomainTransferLockResult> asyncHandler) {
+        final EnableDomainTransferLockRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableDomainTransferLockResult>() {
             @Override
             public EnableDomainTransferLockResult call() throws Exception {
-                EnableDomainTransferLockResult result;
+                EnableDomainTransferLockResult result = null;
 
                 try {
-                    result = enableDomainTransferLock(request);
+                    result = executeEnableDomainTransferLock(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -395,7 +432,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -411,14 +448,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<GetContactReachabilityStatusResult> getContactReachabilityStatusAsync(final GetContactReachabilityStatusRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetContactReachabilityStatusRequest, GetContactReachabilityStatusResult> asyncHandler) {
+        final GetContactReachabilityStatusRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetContactReachabilityStatusResult>() {
             @Override
             public GetContactReachabilityStatusResult call() throws Exception {
-                GetContactReachabilityStatusResult result;
+                GetContactReachabilityStatusResult result = null;
 
                 try {
-                    result = getContactReachabilityStatus(request);
+                    result = executeGetContactReachabilityStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -427,7 +465,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -443,14 +481,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<GetDomainDetailResult> getDomainDetailAsync(final GetDomainDetailRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetDomainDetailRequest, GetDomainDetailResult> asyncHandler) {
+        final GetDomainDetailRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetDomainDetailResult>() {
             @Override
             public GetDomainDetailResult call() throws Exception {
-                GetDomainDetailResult result;
+                GetDomainDetailResult result = null;
 
                 try {
-                    result = getDomainDetail(request);
+                    result = executeGetDomainDetail(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -459,7 +498,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -475,14 +514,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<GetDomainSuggestionsResult> getDomainSuggestionsAsync(final GetDomainSuggestionsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetDomainSuggestionsRequest, GetDomainSuggestionsResult> asyncHandler) {
+        final GetDomainSuggestionsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetDomainSuggestionsResult>() {
             @Override
             public GetDomainSuggestionsResult call() throws Exception {
-                GetDomainSuggestionsResult result;
+                GetDomainSuggestionsResult result = null;
 
                 try {
-                    result = getDomainSuggestions(request);
+                    result = executeGetDomainSuggestions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -491,7 +531,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -507,14 +547,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<GetOperationDetailResult> getOperationDetailAsync(final GetOperationDetailRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetOperationDetailRequest, GetOperationDetailResult> asyncHandler) {
+        final GetOperationDetailRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetOperationDetailResult>() {
             @Override
             public GetOperationDetailResult call() throws Exception {
-                GetOperationDetailResult result;
+                GetOperationDetailResult result = null;
 
                 try {
-                    result = getOperationDetail(request);
+                    result = executeGetOperationDetail(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -523,7 +564,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -539,14 +580,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<ListDomainsResult> listDomainsAsync(final ListDomainsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListDomainsRequest, ListDomainsResult> asyncHandler) {
+        final ListDomainsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListDomainsResult>() {
             @Override
             public ListDomainsResult call() throws Exception {
-                ListDomainsResult result;
+                ListDomainsResult result = null;
 
                 try {
-                    result = listDomains(request);
+                    result = executeListDomains(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -555,7 +597,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -578,6 +620,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @see #listDomainsAsync(ListDomainsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListDomainsResult> listDomainsAsync(
             com.amazonaws.handlers.AsyncHandler<ListDomainsRequest, ListDomainsResult> asyncHandler) {
 
@@ -593,14 +636,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<ListOperationsResult> listOperationsAsync(final ListOperationsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListOperationsRequest, ListOperationsResult> asyncHandler) {
+        final ListOperationsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListOperationsResult>() {
             @Override
             public ListOperationsResult call() throws Exception {
-                ListOperationsResult result;
+                ListOperationsResult result = null;
 
                 try {
-                    result = listOperations(request);
+                    result = executeListOperations(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -609,7 +653,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -632,6 +676,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
      *
      * @see #listOperationsAsync(ListOperationsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListOperationsResult> listOperationsAsync(
             com.amazonaws.handlers.AsyncHandler<ListOperationsRequest, ListOperationsResult> asyncHandler) {
 
@@ -647,14 +692,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<ListTagsForDomainResult> listTagsForDomainAsync(final ListTagsForDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListTagsForDomainRequest, ListTagsForDomainResult> asyncHandler) {
+        final ListTagsForDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListTagsForDomainResult>() {
             @Override
             public ListTagsForDomainResult call() throws Exception {
-                ListTagsForDomainResult result;
+                ListTagsForDomainResult result = null;
 
                 try {
-                    result = listTagsForDomain(request);
+                    result = executeListTagsForDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -663,7 +709,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -679,14 +725,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<RegisterDomainResult> registerDomainAsync(final RegisterDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<RegisterDomainRequest, RegisterDomainResult> asyncHandler) {
+        final RegisterDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RegisterDomainResult>() {
             @Override
             public RegisterDomainResult call() throws Exception {
-                RegisterDomainResult result;
+                RegisterDomainResult result = null;
 
                 try {
-                    result = registerDomain(request);
+                    result = executeRegisterDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -695,7 +742,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -711,14 +758,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<RenewDomainResult> renewDomainAsync(final RenewDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<RenewDomainRequest, RenewDomainResult> asyncHandler) {
+        final RenewDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RenewDomainResult>() {
             @Override
             public RenewDomainResult call() throws Exception {
-                RenewDomainResult result;
+                RenewDomainResult result = null;
 
                 try {
-                    result = renewDomain(request);
+                    result = executeRenewDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -727,7 +775,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -744,14 +792,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     public java.util.concurrent.Future<ResendContactReachabilityEmailResult> resendContactReachabilityEmailAsync(
             final ResendContactReachabilityEmailRequest request,
             final com.amazonaws.handlers.AsyncHandler<ResendContactReachabilityEmailRequest, ResendContactReachabilityEmailResult> asyncHandler) {
+        final ResendContactReachabilityEmailRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ResendContactReachabilityEmailResult>() {
             @Override
             public ResendContactReachabilityEmailResult call() throws Exception {
-                ResendContactReachabilityEmailResult result;
+                ResendContactReachabilityEmailResult result = null;
 
                 try {
-                    result = resendContactReachabilityEmail(request);
+                    result = executeResendContactReachabilityEmail(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -760,7 +809,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -776,14 +825,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<RetrieveDomainAuthCodeResult> retrieveDomainAuthCodeAsync(final RetrieveDomainAuthCodeRequest request,
             final com.amazonaws.handlers.AsyncHandler<RetrieveDomainAuthCodeRequest, RetrieveDomainAuthCodeResult> asyncHandler) {
+        final RetrieveDomainAuthCodeRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RetrieveDomainAuthCodeResult>() {
             @Override
             public RetrieveDomainAuthCodeResult call() throws Exception {
-                RetrieveDomainAuthCodeResult result;
+                RetrieveDomainAuthCodeResult result = null;
 
                 try {
-                    result = retrieveDomainAuthCode(request);
+                    result = executeRetrieveDomainAuthCode(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -792,7 +842,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -808,14 +858,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<TransferDomainResult> transferDomainAsync(final TransferDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<TransferDomainRequest, TransferDomainResult> asyncHandler) {
+        final TransferDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<TransferDomainResult>() {
             @Override
             public TransferDomainResult call() throws Exception {
-                TransferDomainResult result;
+                TransferDomainResult result = null;
 
                 try {
-                    result = transferDomain(request);
+                    result = executeTransferDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -824,7 +875,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -840,14 +891,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<UpdateDomainContactResult> updateDomainContactAsync(final UpdateDomainContactRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateDomainContactRequest, UpdateDomainContactResult> asyncHandler) {
+        final UpdateDomainContactRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateDomainContactResult>() {
             @Override
             public UpdateDomainContactResult call() throws Exception {
-                UpdateDomainContactResult result;
+                UpdateDomainContactResult result = null;
 
                 try {
-                    result = updateDomainContact(request);
+                    result = executeUpdateDomainContact(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -856,7 +908,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -872,14 +924,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<UpdateDomainContactPrivacyResult> updateDomainContactPrivacyAsync(final UpdateDomainContactPrivacyRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateDomainContactPrivacyRequest, UpdateDomainContactPrivacyResult> asyncHandler) {
+        final UpdateDomainContactPrivacyRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateDomainContactPrivacyResult>() {
             @Override
             public UpdateDomainContactPrivacyResult call() throws Exception {
-                UpdateDomainContactPrivacyResult result;
+                UpdateDomainContactPrivacyResult result = null;
 
                 try {
-                    result = updateDomainContactPrivacy(request);
+                    result = executeUpdateDomainContactPrivacy(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -888,7 +941,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -904,14 +957,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<UpdateDomainNameserversResult> updateDomainNameserversAsync(final UpdateDomainNameserversRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateDomainNameserversRequest, UpdateDomainNameserversResult> asyncHandler) {
+        final UpdateDomainNameserversRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateDomainNameserversResult>() {
             @Override
             public UpdateDomainNameserversResult call() throws Exception {
-                UpdateDomainNameserversResult result;
+                UpdateDomainNameserversResult result = null;
 
                 try {
-                    result = updateDomainNameservers(request);
+                    result = executeUpdateDomainNameservers(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -920,7 +974,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -936,14 +990,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<UpdateTagsForDomainResult> updateTagsForDomainAsync(final UpdateTagsForDomainRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdateTagsForDomainRequest, UpdateTagsForDomainResult> asyncHandler) {
+        final UpdateTagsForDomainRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdateTagsForDomainResult>() {
             @Override
             public UpdateTagsForDomainResult call() throws Exception {
-                UpdateTagsForDomainResult result;
+                UpdateTagsForDomainResult result = null;
 
                 try {
-                    result = updateTagsForDomain(request);
+                    result = executeUpdateTagsForDomain(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -952,7 +1007,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -968,14 +1023,15 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
     @Override
     public java.util.concurrent.Future<ViewBillingResult> viewBillingAsync(final ViewBillingRequest request,
             final com.amazonaws.handlers.AsyncHandler<ViewBillingRequest, ViewBillingResult> asyncHandler) {
+        final ViewBillingRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ViewBillingResult>() {
             @Override
             public ViewBillingResult call() throws Exception {
-                ViewBillingResult result;
+                ViewBillingResult result = null;
 
                 try {
-                    result = viewBilling(request);
+                    result = executeViewBilling(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -984,7 +1040,7 @@ public class AmazonRoute53DomainsAsyncClient extends AmazonRoute53DomainsClient 
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,15 @@
 package com.amazonaws.services.budgets.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * AWS Budget model
  */
-public class Budget implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     private String budgetName;
 
@@ -322,21 +326,21 @@ public class Budget implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBudgetName() != null)
-            sb.append("BudgetName: " + getBudgetName() + ",");
+            sb.append("BudgetName: ").append(getBudgetName()).append(",");
         if (getBudgetLimit() != null)
-            sb.append("BudgetLimit: " + getBudgetLimit() + ",");
+            sb.append("BudgetLimit: ").append(getBudgetLimit()).append(",");
         if (getCostFilters() != null)
-            sb.append("CostFilters: " + getCostFilters() + ",");
+            sb.append("CostFilters: ").append(getCostFilters()).append(",");
         if (getCostTypes() != null)
-            sb.append("CostTypes: " + getCostTypes() + ",");
+            sb.append("CostTypes: ").append(getCostTypes()).append(",");
         if (getTimeUnit() != null)
-            sb.append("TimeUnit: " + getTimeUnit() + ",");
+            sb.append("TimeUnit: ").append(getTimeUnit()).append(",");
         if (getTimePeriod() != null)
-            sb.append("TimePeriod: " + getTimePeriod() + ",");
+            sb.append("TimePeriod: ").append(getTimePeriod()).append(",");
         if (getCalculatedSpend() != null)
-            sb.append("CalculatedSpend: " + getCalculatedSpend() + ",");
+            sb.append("CalculatedSpend: ").append(getCalculatedSpend()).append(",");
         if (getBudgetType() != null)
-            sb.append("BudgetType: " + getBudgetType());
+            sb.append("BudgetType: ").append(getBudgetType());
         sb.append("}");
         return sb.toString();
     }
@@ -409,5 +413,11 @@ public class Budget implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.budgets.model.transform.BudgetMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

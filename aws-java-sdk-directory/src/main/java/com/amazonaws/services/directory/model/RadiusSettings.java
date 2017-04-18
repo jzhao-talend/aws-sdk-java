@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a Remote Authentication Dial In User Service (RADIUS) server.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RadiusSettings" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RadiusSettings implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RadiusSettings implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -496,21 +503,21 @@ public class RadiusSettings implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRadiusServers() != null)
-            sb.append("RadiusServers: " + getRadiusServers() + ",");
+            sb.append("RadiusServers: ").append(getRadiusServers()).append(",");
         if (getRadiusPort() != null)
-            sb.append("RadiusPort: " + getRadiusPort() + ",");
+            sb.append("RadiusPort: ").append(getRadiusPort()).append(",");
         if (getRadiusTimeout() != null)
-            sb.append("RadiusTimeout: " + getRadiusTimeout() + ",");
+            sb.append("RadiusTimeout: ").append(getRadiusTimeout()).append(",");
         if (getRadiusRetries() != null)
-            sb.append("RadiusRetries: " + getRadiusRetries() + ",");
+            sb.append("RadiusRetries: ").append(getRadiusRetries()).append(",");
         if (getSharedSecret() != null)
-            sb.append("SharedSecret: " + getSharedSecret() + ",");
+            sb.append("SharedSecret: ").append(getSharedSecret()).append(",");
         if (getAuthenticationProtocol() != null)
-            sb.append("AuthenticationProtocol: " + getAuthenticationProtocol() + ",");
+            sb.append("AuthenticationProtocol: ").append(getAuthenticationProtocol()).append(",");
         if (getDisplayLabel() != null)
-            sb.append("DisplayLabel: " + getDisplayLabel() + ",");
+            sb.append("DisplayLabel: ").append(getDisplayLabel()).append(",");
         if (getUseSameUsername() != null)
-            sb.append("UseSameUsername: " + getUseSameUsername());
+            sb.append("UseSameUsername: ").append(getUseSameUsername());
         sb.append("}");
         return sb.toString();
     }
@@ -583,5 +590,11 @@ public class RadiusSettings implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directory.model.transform.RadiusSettingsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

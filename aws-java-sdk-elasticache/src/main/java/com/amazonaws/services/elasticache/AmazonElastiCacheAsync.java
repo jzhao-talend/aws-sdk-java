@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.elasticache;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticache.model.*;
 
 /**
  * Interface for accessing Amazon ElastiCache asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.elasticache.AbstractAmazonElastiCacheAsync} instead.
+ * </p>
  * <p>
  * <fullname>Amazon ElastiCache</fullname>
  * <p>
@@ -34,11 +40,12 @@ import com.amazonaws.services.elasticache.model.*;
  * statistics associated with their cache and can receive alarms if a part of their cache runs hot.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonElastiCacheAsync extends AmazonElastiCache {
 
     /**
      * <p>
-     * Adds up to 10 cost allocation tags to the named resource. A cost allocation tag is a key-value pair where the key
+     * Adds up to 50 cost allocation tags to the named resource. A cost allocation tag is a key-value pair where the key
      * and value are case-sensitive. You can use cost allocation tags to categorize and track your AWS costs.
      * </p>
      * <p>
@@ -54,12 +61,14 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of an AddTagsToResource operation.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AmazonElastiCacheAsync.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AddTagsToResource" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest);
 
     /**
      * <p>
-     * Adds up to 10 cost allocation tags to the named resource. A cost allocation tag is a key-value pair where the key
+     * Adds up to 50 cost allocation tags to the named resource. A cost allocation tag is a key-value pair where the key
      * and value are case-sensitive. You can use cost allocation tags to categorize and track your AWS costs.
      * </p>
      * <p>
@@ -79,6 +88,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AddTagsToResource" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToResourceRequest, AddTagsToResourceResult> asyncHandler);
@@ -100,6 +111,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the AuthorizeCacheSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.AuthorizeCacheSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AuthorizeCacheSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> authorizeCacheSecurityGroupIngressAsync(
             AuthorizeCacheSecurityGroupIngressRequest authorizeCacheSecurityGroupIngressRequest);
@@ -125,6 +138,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the AuthorizeCacheSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.AuthorizeCacheSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AuthorizeCacheSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> authorizeCacheSecurityGroupIngressAsync(
             AuthorizeCacheSecurityGroupIngressRequest authorizeCacheSecurityGroupIngressRequest,
@@ -243,6 +258,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>CopySnapshotMessage</code> operation.
      * @return A Java Future containing the result of the CopySnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsync.CopySnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CopySnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest);
 
@@ -363,6 +380,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CopySnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CopySnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CopySnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CopySnapshotRequest, Snapshot> asyncHandler);
@@ -383,6 +402,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a CreateCacheCluster operation.
      * @return A Java Future containing the result of the CreateCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> createCacheClusterAsync(CreateCacheClusterRequest createCacheClusterRequest);
 
@@ -406,28 +427,72 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> createCacheClusterAsync(CreateCacheClusterRequest createCacheClusterRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCacheClusterRequest, CacheCluster> asyncHandler);
 
     /**
      * <p>
-     * Creates a new cache parameter group. A cache parameter group is a collection of parameters that you apply to all
-     * of the nodes in a cache cluster.
+     * Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of
+     * parameters and their values that are applied to all of the nodes in any cache cluster or replication group using
+     * the CacheParameterGroup.
      * </p>
+     * <p>
+     * A newly created CacheParameterGroup is an exact duplicate of the default parameter group for the
+     * CacheParameterGroupFamily. To customize the newly created CacheParameterGroup you can change the values of
+     * specific parameters. For more information, see:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html">
+     * ModifyCacheParameterGroup</a> in the ElastiCache API Reference.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html">Parameters and
+     * Parameter Groups</a> in the ElastiCache User Guide.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createCacheParameterGroupRequest
      *        Represents the input of a <code>CreateCacheParameterGroup</code> operation.
      * @return A Java Future containing the result of the CreateCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheParameterGroup> createCacheParameterGroupAsync(CreateCacheParameterGroupRequest createCacheParameterGroupRequest);
 
     /**
      * <p>
-     * Creates a new cache parameter group. A cache parameter group is a collection of parameters that you apply to all
-     * of the nodes in a cache cluster.
+     * Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of
+     * parameters and their values that are applied to all of the nodes in any cache cluster or replication group using
+     * the CacheParameterGroup.
      * </p>
+     * <p>
+     * A newly created CacheParameterGroup is an exact duplicate of the default parameter group for the
+     * CacheParameterGroupFamily. To customize the newly created CacheParameterGroup you can change the values of
+     * specific parameters. For more information, see:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html">
+     * ModifyCacheParameterGroup</a> in the ElastiCache API Reference.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html">Parameters and
+     * Parameter Groups</a> in the ElastiCache User Guide.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createCacheParameterGroupRequest
      *        Represents the input of a <code>CreateCacheParameterGroup</code> operation.
@@ -437,6 +502,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheParameterGroup> createCacheParameterGroupAsync(CreateCacheParameterGroupRequest createCacheParameterGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCacheParameterGroupRequest, CacheParameterGroup> asyncHandler);
@@ -457,6 +524,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>CreateCacheSecurityGroup</code> operation.
      * @return A Java Future containing the result of the CreateCacheSecurityGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateCacheSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> createCacheSecurityGroupAsync(CreateCacheSecurityGroupRequest createCacheSecurityGroupRequest);
 
@@ -480,6 +549,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCacheSecurityGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateCacheSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> createCacheSecurityGroupAsync(CreateCacheSecurityGroupRequest createCacheSecurityGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCacheSecurityGroupRequest, CacheSecurityGroup> asyncHandler);
@@ -496,6 +567,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>CreateCacheSubnetGroup</code> operation.
      * @return A Java Future containing the result of the CreateCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSubnetGroup> createCacheSubnetGroupAsync(CreateCacheSubnetGroupRequest createCacheSubnetGroupRequest);
 
@@ -515,6 +588,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSubnetGroup> createCacheSubnetGroupAsync(CreateCacheSubnetGroupRequest createCacheSubnetGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCacheSubnetGroupRequest, CacheSubnetGroup> asyncHandler);
@@ -537,7 +612,11 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * <p>
      * When a Redis (cluster mode disabled) replication group has been successfully created, you can add one or more
      * read replicas to it, up to a total of 5 read replicas. You cannot alter a Redis (cluster mode enabled)
-     * replication group once it has been created.
+     * replication group after it has been created. However, if you need to increase or decrease the number of node
+     * groups (console: shards), you can avail yourself of ElastiCache for Redis' enhanced backup and restore. For more
+     * information, see <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/backups-restoring.html">Restoring From a
+     * Backup with Cluster Resizing</a> in the <i>ElastiCache User Guide</i>.
      * </p>
      * <note>
      * <p>
@@ -549,6 +628,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>CreateReplicationGroup</code> operation.
      * @return A Java Future containing the result of the CreateReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> createReplicationGroupAsync(CreateReplicationGroupRequest createReplicationGroupRequest);
 
@@ -570,7 +651,11 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * <p>
      * When a Redis (cluster mode disabled) replication group has been successfully created, you can add one or more
      * read replicas to it, up to a total of 5 read replicas. You cannot alter a Redis (cluster mode enabled)
-     * replication group once it has been created.
+     * replication group after it has been created. However, if you need to increase or decrease the number of node
+     * groups (console: shards), you can avail yourself of ElastiCache for Redis' enhanced backup and restore. For more
+     * information, see <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/backups-restoring.html">Restoring From a
+     * Backup with Cluster Resizing</a> in the <i>ElastiCache User Guide</i>.
      * </p>
      * <note>
      * <p>
@@ -586,6 +671,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> createReplicationGroupAsync(CreateReplicationGroupRequest createReplicationGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateReplicationGroupRequest, ReplicationGroup> asyncHandler);
@@ -604,6 +691,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>CreateSnapshot</code> operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsync.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest);
 
@@ -625,6 +714,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSnapshotRequest, Snapshot> asyncHandler);
@@ -651,6 +742,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteCacheCluster</code> operation.
      * @return A Java Future containing the result of the DeleteCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> deleteCacheClusterAsync(DeleteCacheClusterRequest deleteCacheClusterRequest);
 
@@ -680,6 +773,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> deleteCacheClusterAsync(DeleteCacheClusterRequest deleteCacheClusterRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCacheClusterRequest, CacheCluster> asyncHandler);
@@ -694,6 +789,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteCacheParameterGroup</code> operation.
      * @return A Java Future containing the result of the DeleteCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheParameterGroupResult> deleteCacheParameterGroupAsync(
             DeleteCacheParameterGroupRequest deleteCacheParameterGroupRequest);
@@ -712,6 +809,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheParameterGroupResult> deleteCacheParameterGroupAsync(
             DeleteCacheParameterGroupRequest deleteCacheParameterGroupRequest,
@@ -731,6 +830,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteCacheSecurityGroup</code> operation.
      * @return A Java Future containing the result of the DeleteCacheSecurityGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteCacheSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheSecurityGroupResult> deleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupRequest deleteCacheSecurityGroupRequest);
 
@@ -752,6 +853,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCacheSecurityGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteCacheSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheSecurityGroupResult> deleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupRequest deleteCacheSecurityGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCacheSecurityGroupRequest, DeleteCacheSecurityGroupResult> asyncHandler);
@@ -770,6 +873,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteCacheSubnetGroup</code> operation.
      * @return A Java Future containing the result of the DeleteCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheSubnetGroupResult> deleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupRequest deleteCacheSubnetGroupRequest);
 
@@ -791,6 +896,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteCacheSubnetGroupResult> deleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupRequest deleteCacheSubnetGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCacheSubnetGroupRequest, DeleteCacheSubnetGroupResult> asyncHandler);
@@ -816,6 +923,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteReplicationGroup</code> operation.
      * @return A Java Future containing the result of the DeleteReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> deleteReplicationGroupAsync(DeleteReplicationGroupRequest deleteReplicationGroupRequest);
 
@@ -844,6 +953,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> deleteReplicationGroupAsync(DeleteReplicationGroupRequest deleteReplicationGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteReplicationGroupRequest, ReplicationGroup> asyncHandler);
@@ -863,6 +974,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DeleteSnapshot</code> operation.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsync.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest);
 
@@ -885,6 +998,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<Snapshot> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSnapshotRequest, Snapshot> asyncHandler);
@@ -895,21 +1010,21 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * specific cache cluster if a cache cluster identifier is supplied.
      * </p>
      * <p>
-     * By default, abbreviated information about the cache clusters are returned. You can use the optional
-     * <code>ShowDetails</code> flag to retrieve detailed information about the cache nodes associated with the cache
+     * By default, abbreviated information about the cache clusters is returned. You can use the optional
+     * <i>ShowCacheNodeInfo</i> flag to retrieve detailed information about the cache nodes associated with the cache
      * clusters. These details include the DNS address and port for the cache node endpoint.
      * </p>
      * <p>
-     * If the cluster is in the CREATING state, only cluster-level information is displayed until all of the nodes are
-     * successfully provisioned.
+     * If the cluster is in the <i>creating</i> state, only cluster-level information is displayed until all of the
+     * nodes are successfully provisioned.
      * </p>
      * <p>
-     * If the cluster is in the DELETING state, only cluster-level information is displayed.
+     * If the cluster is in the <i>deleting</i> state, only cluster-level information is displayed.
      * </p>
      * <p>
      * If cache nodes are currently being added to the cache cluster, node endpoint information and creation time for
      * the additional nodes are not displayed until they are completely provisioned. When the cache cluster state is
-     * <code>available</code>, the cluster is ready for use.
+     * <i>available</i>, the cluster is ready for use.
      * </p>
      * <p>
      * If cache nodes are currently being removed from the cache cluster, no endpoint information for the removed nodes
@@ -920,6 +1035,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeCacheClusters</code> operation.
      * @return A Java Future containing the result of the DescribeCacheClusters operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeCacheClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClusters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheClustersResult> describeCacheClustersAsync(DescribeCacheClustersRequest describeCacheClustersRequest);
 
@@ -929,21 +1046,21 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * specific cache cluster if a cache cluster identifier is supplied.
      * </p>
      * <p>
-     * By default, abbreviated information about the cache clusters are returned. You can use the optional
-     * <code>ShowDetails</code> flag to retrieve detailed information about the cache nodes associated with the cache
+     * By default, abbreviated information about the cache clusters is returned. You can use the optional
+     * <i>ShowCacheNodeInfo</i> flag to retrieve detailed information about the cache nodes associated with the cache
      * clusters. These details include the DNS address and port for the cache node endpoint.
      * </p>
      * <p>
-     * If the cluster is in the CREATING state, only cluster-level information is displayed until all of the nodes are
-     * successfully provisioned.
+     * If the cluster is in the <i>creating</i> state, only cluster-level information is displayed until all of the
+     * nodes are successfully provisioned.
      * </p>
      * <p>
-     * If the cluster is in the DELETING state, only cluster-level information is displayed.
+     * If the cluster is in the <i>deleting</i> state, only cluster-level information is displayed.
      * </p>
      * <p>
      * If cache nodes are currently being added to the cache cluster, node endpoint information and creation time for
      * the additional nodes are not displayed until they are completely provisioned. When the cache cluster state is
-     * <code>available</code>, the cluster is ready for use.
+     * <i>available</i>, the cluster is ready for use.
      * </p>
      * <p>
      * If cache nodes are currently being removed from the cache cluster, no endpoint information for the removed nodes
@@ -958,6 +1075,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCacheClusters operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClusters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheClustersResult> describeCacheClustersAsync(DescribeCacheClustersRequest describeCacheClustersRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCacheClustersRequest, DescribeCacheClustersResult> asyncHandler);
@@ -986,6 +1105,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeCacheEngineVersions</code> operation.
      * @return A Java Future containing the result of the DescribeCacheEngineVersions operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeCacheEngineVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheEngineVersions"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheEngineVersionsResult> describeCacheEngineVersionsAsync(
             DescribeCacheEngineVersionsRequest describeCacheEngineVersionsRequest);
@@ -1003,6 +1124,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCacheEngineVersions operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheEngineVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheEngineVersions"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheEngineVersionsResult> describeCacheEngineVersionsAsync(
             DescribeCacheEngineVersionsRequest describeCacheEngineVersionsRequest,
@@ -1034,6 +1157,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeCacheParameterGroups operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.DescribeCacheParameterGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameterGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheParameterGroupsResult> describeCacheParameterGroupsAsync(
             DescribeCacheParameterGroupsRequest describeCacheParameterGroupsRequest);
@@ -1053,6 +1178,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeCacheParameterGroups operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheParameterGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameterGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheParameterGroupsResult> describeCacheParameterGroupsAsync(
             DescribeCacheParameterGroupsRequest describeCacheParameterGroupsRequest,
@@ -1082,6 +1209,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeCacheParameters</code> operation.
      * @return A Java Future containing the result of the DescribeCacheParameters operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeCacheParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheParametersResult> describeCacheParametersAsync(DescribeCacheParametersRequest describeCacheParametersRequest);
 
@@ -1098,6 +1227,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCacheParameters operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheParametersResult> describeCacheParametersAsync(DescribeCacheParametersRequest describeCacheParametersRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCacheParametersRequest, DescribeCacheParametersResult> asyncHandler);
@@ -1112,6 +1243,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeCacheSecurityGroups</code> operation.
      * @return A Java Future containing the result of the DescribeCacheSecurityGroups operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeCacheSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheSecurityGroupsResult> describeCacheSecurityGroupsAsync(
             DescribeCacheSecurityGroupsRequest describeCacheSecurityGroupsRequest);
@@ -1130,6 +1263,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCacheSecurityGroups operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheSecurityGroupsResult> describeCacheSecurityGroupsAsync(
             DescribeCacheSecurityGroupsRequest describeCacheSecurityGroupsRequest,
@@ -1160,6 +1295,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeCacheSubnetGroups</code> operation.
      * @return A Java Future containing the result of the DescribeCacheSubnetGroups operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeCacheSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheSubnetGroupsResult> describeCacheSubnetGroupsAsync(
             DescribeCacheSubnetGroupsRequest describeCacheSubnetGroupsRequest);
@@ -1178,6 +1315,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCacheSubnetGroups operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeCacheSubnetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSubnetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheSubnetGroupsResult> describeCacheSubnetGroupsAsync(
             DescribeCacheSubnetGroupsRequest describeCacheSubnetGroupsRequest,
@@ -1208,6 +1347,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeEngineDefaultParameters operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.DescribeEngineDefaultParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEngineDefaultParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EngineDefaults> describeEngineDefaultParametersAsync(
             DescribeEngineDefaultParametersRequest describeEngineDefaultParametersRequest);
@@ -1226,6 +1367,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeEngineDefaultParameters operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeEngineDefaultParameters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEngineDefaultParameters"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EngineDefaults> describeEngineDefaultParametersAsync(
             DescribeEngineDefaultParametersRequest describeEngineDefaultParametersRequest,
@@ -1246,6 +1389,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeEvents</code> operation.
      * @return A Java Future containing the result of the DescribeEvents operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEventsResult> describeEventsAsync(DescribeEventsRequest describeEventsRequest);
 
@@ -1268,6 +1413,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeEvents operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeEventsResult> describeEventsAsync(DescribeEventsRequest describeEventsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeEventsRequest, DescribeEventsResult> asyncHandler);
@@ -1302,6 +1449,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeReplicationGroups</code> operation.
      * @return A Java Future containing the result of the DescribeReplicationGroups operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeReplicationGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationGroupsResult> describeReplicationGroupsAsync(
             DescribeReplicationGroupsRequest describeReplicationGroupsRequest);
@@ -1325,6 +1474,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReplicationGroups operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeReplicationGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReplicationGroupsResult> describeReplicationGroupsAsync(
             DescribeReplicationGroupsRequest describeReplicationGroupsRequest,
@@ -1354,6 +1505,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeReservedCacheNodes</code> operation.
      * @return A Java Future containing the result of the DescribeReservedCacheNodes operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeReservedCacheNodes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedCacheNodesResult> describeReservedCacheNodesAsync(
             DescribeReservedCacheNodesRequest describeReservedCacheNodesRequest);
@@ -1371,6 +1524,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReservedCacheNodes operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeReservedCacheNodes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedCacheNodesResult> describeReservedCacheNodesAsync(
             DescribeReservedCacheNodesRequest describeReservedCacheNodesRequest,
@@ -1401,6 +1556,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeReservedCacheNodesOfferings operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.DescribeReservedCacheNodesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedCacheNodesOfferingsResult> describeReservedCacheNodesOfferingsAsync(
             DescribeReservedCacheNodesOfferingsRequest describeReservedCacheNodesOfferingsRequest);
@@ -1419,6 +1576,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the DescribeReservedCacheNodesOfferings operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeReservedCacheNodesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedCacheNodesOfferingsResult> describeReservedCacheNodesOfferingsAsync(
             DescribeReservedCacheNodesOfferingsRequest describeReservedCacheNodesOfferingsRequest,
@@ -1456,6 +1615,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>DescribeSnapshotsMessage</code> operation.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AmazonElastiCacheAsync.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest);
 
@@ -1479,6 +1640,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSnapshotsRequest, DescribeSnapshotsResult> asyncHandler);
@@ -1514,6 +1677,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the ListAllowedNodeTypeModifications operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.ListAllowedNodeTypeModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListAllowedNodeTypeModifications"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListAllowedNodeTypeModificationsResult> listAllowedNodeTypeModificationsAsync(
             ListAllowedNodeTypeModificationsRequest listAllowedNodeTypeModificationsRequest);
@@ -1538,6 +1703,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the ListAllowedNodeTypeModifications operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.ListAllowedNodeTypeModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListAllowedNodeTypeModifications"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListAllowedNodeTypeModificationsResult> listAllowedNodeTypeModificationsAsync(
             ListAllowedNodeTypeModificationsRequest listAllowedNodeTypeModificationsRequest,
@@ -1566,7 +1733,7 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * and track your AWS costs.
      * </p>
      * <p>
-     * You can have a maximum of 10 cost allocation tags on an ElastiCache resource. For more information, see <a
+     * You can have a maximum of 50 cost allocation tags on an ElastiCache resource. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/BestPractices.html">Using Cost Allocation
      * Tags in Amazon ElastiCache</a>.
      * </p>
@@ -1575,6 +1742,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        The input parameters for the <code>ListTagsForResource</code> operation.
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AmazonElastiCacheAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -1585,7 +1754,7 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * and track your AWS costs.
      * </p>
      * <p>
-     * You can have a maximum of 10 cost allocation tags on an ElastiCache resource. For more information, see <a
+     * You can have a maximum of 50 cost allocation tags on an ElastiCache resource. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/BestPractices.html">Using Cost Allocation
      * Tags in Amazon ElastiCache</a>.
      * </p>
@@ -1598,6 +1767,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
@@ -1612,6 +1783,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>ModifyCacheCluster</code> operation.
      * @return A Java Future containing the result of the ModifyCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsync.ModifyCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> modifyCacheClusterAsync(ModifyCacheClusterRequest modifyCacheClusterRequest);
 
@@ -1629,6 +1802,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ModifyCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> modifyCacheClusterAsync(ModifyCacheClusterRequest modifyCacheClusterRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyCacheClusterRequest, CacheCluster> asyncHandler);
@@ -1643,6 +1818,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>ModifyCacheParameterGroup</code> operation.
      * @return A Java Future containing the result of the ModifyCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.ModifyCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyCacheParameterGroupResult> modifyCacheParameterGroupAsync(
             ModifyCacheParameterGroupRequest modifyCacheParameterGroupRequest);
@@ -1661,6 +1838,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ModifyCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyCacheParameterGroupResult> modifyCacheParameterGroupAsync(
             ModifyCacheParameterGroupRequest modifyCacheParameterGroupRequest,
@@ -1675,6 +1854,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>ModifyCacheSubnetGroup</code> operation.
      * @return A Java Future containing the result of the ModifyCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.ModifyCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSubnetGroup> modifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupRequest modifyCacheSubnetGroupRequest);
 
@@ -1691,6 +1872,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyCacheSubnetGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ModifyCacheSubnetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheSubnetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSubnetGroup> modifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupRequest modifyCacheSubnetGroupRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyCacheSubnetGroupRequest, CacheSubnetGroup> asyncHandler);
@@ -1714,6 +1897,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>ModifyReplicationGroups</code> operation.
      * @return A Java Future containing the result of the ModifyReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.ModifyReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> modifyReplicationGroupAsync(ModifyReplicationGroupRequest modifyReplicationGroupRequest);
 
@@ -1740,6 +1925,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyReplicationGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ModifyReplicationGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplicationGroup> modifyReplicationGroupAsync(ModifyReplicationGroupRequest modifyReplicationGroupRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyReplicationGroupRequest, ReplicationGroup> asyncHandler);
@@ -1754,6 +1941,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the PurchaseReservedCacheNodesOffering operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.PurchaseReservedCacheNodesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PurchaseReservedCacheNodesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReservedCacheNode> purchaseReservedCacheNodesOfferingAsync(
             PurchaseReservedCacheNodesOfferingRequest purchaseReservedCacheNodesOfferingRequest);
@@ -1772,6 +1961,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the PurchaseReservedCacheNodesOffering operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.PurchaseReservedCacheNodesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PurchaseReservedCacheNodesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReservedCacheNode> purchaseReservedCacheNodesOfferingAsync(
             PurchaseReservedCacheNodesOfferingRequest purchaseReservedCacheNodesOfferingRequest,
@@ -1794,6 +1985,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>RebootCacheCluster</code> operation.
      * @return A Java Future containing the result of the RebootCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsync.RebootCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebootCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> rebootCacheClusterAsync(RebootCacheClusterRequest rebootCacheClusterRequest);
 
@@ -1818,6 +2011,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RebootCacheCluster operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.RebootCacheCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebootCacheCluster" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CacheCluster> rebootCacheClusterAsync(RebootCacheClusterRequest rebootCacheClusterRequest,
             com.amazonaws.handlers.AsyncHandler<RebootCacheClusterRequest, CacheCluster> asyncHandler);
@@ -1831,6 +2026,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>RemoveTagsFromResource</code> operation.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AmazonElastiCacheAsync.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RemoveTagsFromResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -1847,6 +2044,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RemoveTagsFromResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest,
             com.amazonaws.handlers.AsyncHandler<RemoveTagsFromResourceRequest, RemoveTagsFromResourceResult> asyncHandler);
@@ -1862,6 +2061,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        Represents the input of a <code>ResetCacheParameterGroup</code> operation.
      * @return A Java Future containing the result of the ResetCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsync.ResetCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ResetCacheParameterGroupResult> resetCacheParameterGroupAsync(ResetCacheParameterGroupRequest resetCacheParameterGroupRequest);
 
@@ -1880,6 +2081,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResetCacheParameterGroup operation returned by the service.
      * @sample AmazonElastiCacheAsyncHandler.ResetCacheParameterGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ResetCacheParameterGroupResult> resetCacheParameterGroupAsync(ResetCacheParameterGroupRequest resetCacheParameterGroupRequest,
             com.amazonaws.handlers.AsyncHandler<ResetCacheParameterGroupRequest, ResetCacheParameterGroupResult> asyncHandler);
@@ -1895,6 +2098,8 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the RevokeCacheSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsync.RevokeCacheSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RevokeCacheSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> revokeCacheSecurityGroupIngressAsync(
             RevokeCacheSecurityGroupIngressRequest revokeCacheSecurityGroupIngressRequest);
@@ -1914,9 +2119,210 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      * @return A Java Future containing the result of the RevokeCacheSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonElastiCacheAsyncHandler.RevokeCacheSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RevokeCacheSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CacheSecurityGroup> revokeCacheSecurityGroupIngressAsync(
             RevokeCacheSecurityGroupIngressRequest revokeCacheSecurityGroupIngressRequest,
             com.amazonaws.handlers.AsyncHandler<RevokeCacheSecurityGroupIngressRequest, CacheSecurityGroup> asyncHandler);
+
+    /**
+     * <p>
+     * Represents the input of a <code>TestFailover</code> operation which test automatic failover on a specified node
+     * group (called shard in the console) in a replication group (called cluster in the console).
+     * </p>
+     * <p class="title">
+     * <b>Note the following</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A customer can use this operation to test automatic failover on up to 5 shards (called node groups in the
+     * ElastiCache API and AWS CLI) in any rolling 24-hour period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If calling this operation on shards in different clusters (called replication groups in the API and CLI), the
+     * calls can be made concurrently.
+     * </p>
+     * <p>
+     * </p></li>
+     * <li>
+     * <p>
+     * If calling this operation multiple times on different shards in the same Redis (cluster mode enabled) replication
+     * group, the first node replacement must complete before a subsequent call can be made.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * To determine whether the node replacement is complete you can check Events using the Amazon ElastiCache console,
+     * the AWS CLI, or the ElastiCache API. Look for the following automatic failover related events, listed here in
+     * order of occurrance:
+     * </p>
+     * <ol>
+     * <li>
+     * <p>
+     * Replication group message: <code>Test Failover API called for node group &lt;node-group-id&gt;</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message:
+     * <code>Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Replication group message:
+     * <code>Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message: <code>Recovering cache nodes &lt;node-id&gt;</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message: <code>Finished recovery for cache nodes &lt;node-id&gt;</code>
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * For more information see:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ECEvents.Viewing.html">Viewing ElastiCache
+     * Events</a> in the <i>ElastiCache User Guide</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html">DescribeEvents<
+     * /a> in the ElastiCache API Reference
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * Also see, <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test">Testing
+     * Multi-AZ with Automatic Failover</a> in the <i>ElastiCache User Guide</i>.
+     * </p>
+     * 
+     * @param testFailoverRequest
+     * @return A Java Future containing the result of the TestFailover operation returned by the service.
+     * @sample AmazonElastiCacheAsync.TestFailover
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/TestFailover" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> testFailoverAsync(TestFailoverRequest testFailoverRequest);
+
+    /**
+     * <p>
+     * Represents the input of a <code>TestFailover</code> operation which test automatic failover on a specified node
+     * group (called shard in the console) in a replication group (called cluster in the console).
+     * </p>
+     * <p class="title">
+     * <b>Note the following</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A customer can use this operation to test automatic failover on up to 5 shards (called node groups in the
+     * ElastiCache API and AWS CLI) in any rolling 24-hour period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If calling this operation on shards in different clusters (called replication groups in the API and CLI), the
+     * calls can be made concurrently.
+     * </p>
+     * <p>
+     * </p></li>
+     * <li>
+     * <p>
+     * If calling this operation multiple times on different shards in the same Redis (cluster mode enabled) replication
+     * group, the first node replacement must complete before a subsequent call can be made.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * To determine whether the node replacement is complete you can check Events using the Amazon ElastiCache console,
+     * the AWS CLI, or the ElastiCache API. Look for the following automatic failover related events, listed here in
+     * order of occurrance:
+     * </p>
+     * <ol>
+     * <li>
+     * <p>
+     * Replication group message: <code>Test Failover API called for node group &lt;node-group-id&gt;</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message:
+     * <code>Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Replication group message:
+     * <code>Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message: <code>Recovering cache nodes &lt;node-id&gt;</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cache cluster message: <code>Finished recovery for cache nodes &lt;node-id&gt;</code>
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * For more information see:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ECEvents.Viewing.html">Viewing ElastiCache
+     * Events</a> in the <i>ElastiCache User Guide</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html">DescribeEvents<
+     * /a> in the ElastiCache API Reference
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * Also see, <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test">Testing
+     * Multi-AZ with Automatic Failover</a> in the <i>ElastiCache User Guide</i>.
+     * </p>
+     * 
+     * @param testFailoverRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TestFailover operation returned by the service.
+     * @sample AmazonElastiCacheAsyncHandler.TestFailover
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/TestFailover" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> testFailoverAsync(TestFailoverRequest testFailoverRequest,
+            com.amazonaws.handlers.AsyncHandler<TestFailoverRequest, ReplicationGroup> asyncHandler);
 
 }

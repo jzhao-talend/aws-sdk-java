@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A resource tag.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ResourceTag" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ResourceTag implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ResourceTag implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -27,7 +34,11 @@ public class ResourceTag implements Serializable, Cloneable {
      * </p>
      */
     private String resourceId;
-
+    /**
+     * <p>
+     * A list of tags.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<Tag> tagsList;
 
     /**
@@ -71,7 +82,11 @@ public class ResourceTag implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A list of tags.
+     * </p>
+     * 
+     * @return A list of tags.
      */
 
     public java.util.List<Tag> getTagsList() {
@@ -82,7 +97,12 @@ public class ResourceTag implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A list of tags.
+     * </p>
+     * 
      * @param tagsList
+     *        A list of tags.
      */
 
     public void setTagsList(java.util.Collection<Tag> tagsList) {
@@ -96,12 +116,16 @@ public class ResourceTag implements Serializable, Cloneable {
 
     /**
      * <p>
+     * A list of tags.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTagsList(java.util.Collection)} or {@link #withTagsList(java.util.Collection)} if you want to override
      * the existing values.
      * </p>
      * 
      * @param tagsList
+     *        A list of tags.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -116,7 +140,12 @@ public class ResourceTag implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A list of tags.
+     * </p>
+     * 
      * @param tagsList
+     *        A list of tags.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -137,9 +166,9 @@ public class ResourceTag implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTagsList() != null)
-            sb.append("TagsList: " + getTagsList());
+            sb.append("TagsList: ").append(getTagsList());
         sb.append("}");
         return sb.toString();
     }
@@ -182,5 +211,11 @@ public class ResourceTag implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudtrail.model.transform.ResourceTagMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

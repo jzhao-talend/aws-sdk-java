@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,23 +13,25 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The result of the <a>DescribeRule</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/DescribeRule" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the rule.
+     * The Amazon Resource Name (ARN) of the rule.
      * </p>
      */
     private String arn;
@@ -53,7 +55,7 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     private String state;
     /**
      * <p>
-     * The rule's description.
+     * The description of the rule.
      * </p>
      */
     private String description;
@@ -66,11 +68,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The rule's name.
+     *        The name of the rule.
      */
 
     public void setName(String name) {
@@ -79,10 +81,10 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
-     * @return The rule's name.
+     * @return The name of the rule.
      */
 
     public String getName() {
@@ -91,11 +93,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's name.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The rule's name.
+     *        The name of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,11 +108,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the rule.
+     * The Amazon Resource Name (ARN) of the rule.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resource Name (ARN) associated with the rule.
+     *        The Amazon Resource Name (ARN) of the rule.
      */
 
     public void setArn(String arn) {
@@ -119,10 +121,10 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the rule.
+     * The Amazon Resource Name (ARN) of the rule.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) associated with the rule.
+     * @return The Amazon Resource Name (ARN) of the rule.
      */
 
     public String getArn() {
@@ -131,11 +133,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) associated with the rule.
+     * The Amazon Resource Name (ARN) of the rule.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resource Name (ARN) associated with the rule.
+     *        The Amazon Resource Name (ARN) of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -299,11 +301,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's description.
+     * The description of the rule.
      * </p>
      * 
      * @param description
-     *        The rule's description.
+     *        The description of the rule.
      */
 
     public void setDescription(String description) {
@@ -312,10 +314,10 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's description.
+     * The description of the rule.
      * </p>
      * 
-     * @return The rule's description.
+     * @return The description of the rule.
      */
 
     public String getDescription() {
@@ -324,11 +326,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The rule's description.
+     * The description of the rule.
      * </p>
      * 
      * @param description
-     *        The rule's description.
+     *        The description of the rule.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -389,19 +391,19 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getEventPattern() != null)
-            sb.append("EventPattern: " + getEventPattern() + ",");
+            sb.append("EventPattern: ").append(getEventPattern()).append(",");
         if (getScheduleExpression() != null)
-            sb.append("ScheduleExpression: " + getScheduleExpression() + ",");
+            sb.append("ScheduleExpression: ").append(getScheduleExpression()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn());
         sb.append("}");
         return sb.toString();
     }
@@ -470,4 +472,5 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

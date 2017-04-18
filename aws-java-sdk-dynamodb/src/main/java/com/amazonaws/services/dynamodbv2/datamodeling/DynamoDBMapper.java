@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,9 @@
  */
 package com.amazonaws.services.dynamodbv2.datamodeling;
 
-import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
-import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.amazonaws.SdkClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.retry.RetryUtils;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -79,6 +59,26 @@ import com.amazonaws.services.dynamodbv2.model.UpdateItemResult;
 import com.amazonaws.services.dynamodbv2.model.WriteRequest;
 import com.amazonaws.services.s3.model.Region;
 import com.amazonaws.util.VersionInfoUtils;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
+import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
 
 /**
  * Object mapper for domain-object interaction with DynamoDB.
@@ -388,7 +388,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         this.models = StandardModelFactories.of(this.s3Links);
     }
 
-    private <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz, DynamoDBMapperConfig config) {
+    @Override
+    public <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz, DynamoDBMapperConfig config) {
         return this.models.getTableFactory(config).getTable(clazz);
     }
 
@@ -894,18 +895,18 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         /**
          * Auto-generates the key.
-         * @param mapping The mapping details.
          */
-        private void onAutoGenerateAssignableKey(DynamoDBMapperFieldModel<Object,Object> field) {
+        private void onAutoGenerateAssignableKey(DynamoDBMapperFieldModel<Object, Object> field) {
             // Generate the new key value first, then ensure it doesn't exist.
             onAutoGenerate(field);
 
-            if ( getLocalSaveBehavior() != SaveBehavior.CLOBBER
-                    && !internalExpectedValueAssertions.containsKey(field.name())) {
+            if (getLocalSaveBehavior() != SaveBehavior.CLOBBER
+                && !internalExpectedValueAssertions.containsKey(field.name())
+                && field.getGenerateStrategy() != DynamoDBAutoGenerateStrategy.ALWAYS) {
                 // Add an expect clause to make sure that the item
                 // doesn't already exist, since it's supposed to be new
                 internalExpectedValueAssertions.put(field.name(),
-                    new ExpectedAttributeValue().withExists(false));
+                                                    new ExpectedAttributeValue().withExists(false));
             }
         }
 
@@ -1331,13 +1332,12 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         BatchLoadContext batchLoadContext = new BatchLoadContext(batchGetItemRequest);
 
         int retries = 0;
-        int noOfItemsInOriginalRequest = requestItems.size();
 
         do {
             if ( batchGetItemResult != null ) {
                 retries++;
                 batchLoadContext.setRetriesAttempted(retries);
-                if (batchGetItemResult.getUnprocessedKeys().size() > 0){
+                if (!isNullOrEmpty(batchGetItemResult.getUnprocessedKeys())) {
                     pause(batchLoadStrategy.getDelayBeforeNextRetry(batchLoadContext));
                     batchGetItemRequest.setRequestItems(
                         batchGetItemResult.getUnprocessedKeys());
@@ -1372,11 +1372,15 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
             // the number of unprocessed keys and  Batch Load Strategy will drive the number of retries
         } while ( batchLoadStrategy.shouldRetry(batchLoadContext) );
 
-        //We still need to throw Amazon Client Exception when none of the requested keys are processed
-        if(noOfItemsInOriginalRequest == batchGetItemResult.getUnprocessedKeys().size()) {
-            throw new SdkClientException("Batch Get Item request to server hasn't received any data. Please try again later");
+        if (!isNullOrEmpty(batchGetItemResult.getUnprocessedKeys())) {
+            throw new BatchGetItemException(
+                    "The BatchGetItemResult has unprocessed keys after max retry attempts. Catch the BatchGetItemException to get the list of unprocessed keys.",
+                    batchGetItemResult.getUnprocessedKeys(), resultSet);
         }
-        
+    }
+
+    private static <K, V> boolean isNullOrEmpty(Map<K, V> map) {
+        return map == null || map.isEmpty();
     }
 
     /**
@@ -1387,7 +1391,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         final T object,
         final SaveBehavior saveBehavior
     ) {
-        for (final DynamoDBMapperFieldModel<T,Object> field : model.keys()) {
+        for (final DynamoDBMapperFieldModel<T, Object> field : model.keys()) {
             if (canGenerate(model, object, saveBehavior, field)) {
                 return true;
             }
@@ -1512,6 +1516,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         QueryResult queryResult = db.query(applyUserAgent(queryRequest));
         QueryResultPage<T> result = new QueryResultPage<T>();
+
         List<AttributeTransformer.Parameters<T>> parameters =
             toParameters(queryResult.getItems(), clazz, queryRequest.getTableName(), config);
 
@@ -1686,16 +1691,16 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         // There should be least one hash key condition.
         final String keyCondExpression = queryRequest.getKeyConditionExpression();
         if (keyCondExpression == null) {
-            if (hashKeyConditions == null || hashKeyConditions.isEmpty()) {
+            if (isNullOrEmpty(hashKeyConditions)) {
                 throw new IllegalArgumentException(
                     "Illegal query expression: No hash key condition is found in the query");
             }
         } else {
-            if (hashKeyConditions != null && !hashKeyConditions.isEmpty()) {
+            if (!isNullOrEmpty(hashKeyConditions)) {
                 throw new IllegalArgumentException(
                     "Illegal query expression: Either the hash key conditions or the key condition expression must be specified but not both.");
             }
-            if (rangeKeyConditions != null && !rangeKeyConditions.isEmpty()) {
+            if (!isNullOrEmpty(rangeKeyConditions)) {
                 throw new IllegalArgumentException(
                     "Illegal query expression: The range key conditions can only be specified when the key condition expression is not specified.");
             }
@@ -1967,9 +1972,11 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
             final String tableName,
             final DynamoDBMapperConfig mapperConfig
     ) {
-        List<AttributeTransformer.Parameters<T>> rval =
-            new ArrayList<AttributeTransformer.Parameters<T>>(
-                attributeValues.size());
+        if(attributeValues == null) {
+            return Collections.emptyList();
+        }
+
+        List<AttributeTransformer.Parameters<T>> rval = new ArrayList<AttributeTransformer.Parameters<T>>(attributeValues.size());
 
         for (Map<String, AttributeValue> item : attributeValues) {
             rval.add(toParameters(item, modelClass, tableName, mapperConfig));
@@ -2274,6 +2281,34 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new SdkClientException(e.getMessage(), e);
+        }
+    }
+
+    public static final class BatchGetItemException extends SdkClientException {
+        private final Map<String, KeysAndAttributes> unprocessedKeys;
+        private final Map<String, List<Object>> responses;
+
+        public BatchGetItemException(String message, Map<String, KeysAndAttributes> unprocessedKeys, Map<String, List<Object>> responses) {
+            super(message);
+            this.unprocessedKeys = unprocessedKeys;
+            this.responses = responses;
+        }
+
+        /**
+         * Returns a map of tables and their respective keys that were not processed during the operation..
+         */
+        public Map<String, KeysAndAttributes> getUnprocessedKeys() {
+            return unprocessedKeys;
+        }
+
+        /**
+         * Returns a map of the loaded objects. Each key in the map is the name of a DynamoDB table.
+         * Each value in the map is a list of objects that have been loaded from that table. All
+         * objects for each table can be cast to the associated user defined type that is
+         * annotated as mapping that table.
+         */
+        public Map<String, List<Object>> getResponses() {
+            return responses;
         }
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -210,11 +210,11 @@ public class UpdateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMLModelId() != null)
-            sb.append("MLModelId: " + getMLModelId() + ",");
+            sb.append("MLModelId: ").append(getMLModelId()).append(",");
         if (getMLModelName() != null)
-            sb.append("MLModelName: " + getMLModelName() + ",");
+            sb.append("MLModelName: ").append(getMLModelName()).append(",");
         if (getScoreThreshold() != null)
-            sb.append("ScoreThreshold: " + getScoreThreshold());
+            sb.append("ScoreThreshold: ").append(getScoreThreshold());
         sb.append("}");
         return sb.toString();
     }
@@ -259,4 +259,5 @@ public class UpdateMLModelRequest extends com.amazonaws.AmazonWebServiceRequest 
     public UpdateMLModelRequest clone() {
         return (UpdateMLModelRequest) super.clone();
     }
+
 }

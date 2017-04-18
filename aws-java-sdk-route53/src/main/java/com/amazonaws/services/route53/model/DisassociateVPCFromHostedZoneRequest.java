@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,25 +13,31 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * A complex type that contains information about the VPC and the hosted zone that you want to disassociate.
+ * A complex type that contains information about the VPC that you want to disassociate from a specified private hosted
+ * zone.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DisassociateVPCFromHostedZone"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     * The ID of the private hosted zone that you want to disassociate a VPC from.
      * </p>
      */
     private String hostedZoneId;
     /**
      * <p>
-     * A complex type containing information about the Amazon VPC that you're disassociating from the specified hosted
-     * zone.
+     * A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.
      * </p>
      */
     private VPC vPC;
@@ -44,11 +50,11 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     * The ID of the private hosted zone that you want to disassociate a VPC from.
      * </p>
      * 
      * @param hostedZoneId
-     *        The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     *        The ID of the private hosted zone that you want to disassociate a VPC from.
      */
 
     public void setHostedZoneId(String hostedZoneId) {
@@ -57,10 +63,10 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     * The ID of the private hosted zone that you want to disassociate a VPC from.
      * </p>
      * 
-     * @return The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     * @return The ID of the private hosted zone that you want to disassociate a VPC from.
      */
 
     public String getHostedZoneId() {
@@ -69,11 +75,11 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     * The ID of the private hosted zone that you want to disassociate a VPC from.
      * </p>
      * 
      * @param hostedZoneId
-     *        The ID of the VPC that you want to disassociate from an Amazon Route 53 hosted zone.
+     *        The ID of the private hosted zone that you want to disassociate a VPC from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -84,12 +90,11 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A complex type containing information about the Amazon VPC that you're disassociating from the specified hosted
-     * zone.
+     * A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.
      * </p>
      * 
      * @param vPC
-     *        A complex type containing information about the Amazon VPC that you're disassociating from the specified
+     *        A complex type that contains information about the VPC that you're disassociating from the specified
      *        hosted zone.
      */
 
@@ -99,11 +104,10 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A complex type containing information about the Amazon VPC that you're disassociating from the specified hosted
-     * zone.
+     * A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.
      * </p>
      * 
-     * @return A complex type containing information about the Amazon VPC that you're disassociating from the specified
+     * @return A complex type that contains information about the VPC that you're disassociating from the specified
      *         hosted zone.
      */
 
@@ -113,12 +117,11 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A complex type containing information about the Amazon VPC that you're disassociating from the specified hosted
-     * zone.
+     * A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.
      * </p>
      * 
      * @param vPC
-     *        A complex type containing information about the Amazon VPC that you're disassociating from the specified
+     *        A complex type that contains information about the VPC that you're disassociating from the specified
      *        hosted zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -180,11 +183,11 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostedZoneId() != null)
-            sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+            sb.append("HostedZoneId: ").append(getHostedZoneId()).append(",");
         if (getVPC() != null)
-            sb.append("VPC: " + getVPC() + ",");
+            sb.append("VPC: ").append(getVPC()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment());
+            sb.append("Comment: ").append(getComment());
         sb.append("}");
         return sb.toString();
     }
@@ -229,4 +232,5 @@ public class DisassociateVPCFromHostedZoneRequest extends com.amazonaws.AmazonWe
     public DisassociateVPCFromHostedZoneRequest clone() {
         return (DisassociateVPCFromHostedZoneRequest) super.clone();
     }
+
 }

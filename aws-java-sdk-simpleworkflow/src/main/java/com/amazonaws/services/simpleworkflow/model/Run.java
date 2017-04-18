@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Specifies the <code>runId</code> of a workflow execution.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Run extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -87,7 +89,7 @@ public class Run extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.Resp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRunId() != null)
-            sb.append("RunId: " + getRunId());
+            sb.append("RunId: ").append(getRunId());
         sb.append("}");
         return sb.toString();
     }
@@ -126,4 +128,5 @@ public class Run extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.Resp
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,14 @@
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Input structure for the UpateJob operation.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String jobId;
@@ -203,15 +206,15 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getManifest() != null)
-            sb.append("Manifest: " + getManifest() + ",");
+            sb.append("Manifest: ").append(getManifest()).append(",");
         if (getJobType() != null)
-            sb.append("JobType: " + getJobType() + ",");
+            sb.append("JobType: ").append(getJobType()).append(",");
         if (getValidateOnly() != null)
-            sb.append("ValidateOnly: " + getValidateOnly() + ",");
+            sb.append("ValidateOnly: ").append(getValidateOnly()).append(",");
         if (getAPIVersion() != null)
-            sb.append("APIVersion: " + getAPIVersion());
+            sb.append("APIVersion: ").append(getAPIVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -266,4 +269,5 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public UpdateJobRequest clone() {
         return (UpdateJobRequest) super.clone();
     }
+
 }

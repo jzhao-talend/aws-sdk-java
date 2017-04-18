@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Details about the Dedicated Host Reservation and associated Dedicated Hosts.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/HostReservation" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class HostReservation implements Serializable, Cloneable {
 
     /**
@@ -792,31 +797,31 @@ public class HostReservation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostReservationId() != null)
-            sb.append("HostReservationId: " + getHostReservationId() + ",");
+            sb.append("HostReservationId: ").append(getHostReservationId()).append(",");
         if (getHostIdSet() != null)
-            sb.append("HostIdSet: " + getHostIdSet() + ",");
+            sb.append("HostIdSet: ").append(getHostIdSet()).append(",");
         if (getOfferingId() != null)
-            sb.append("OfferingId: " + getOfferingId() + ",");
+            sb.append("OfferingId: ").append(getOfferingId()).append(",");
         if (getInstanceFamily() != null)
-            sb.append("InstanceFamily: " + getInstanceFamily() + ",");
+            sb.append("InstanceFamily: ").append(getInstanceFamily()).append(",");
         if (getPaymentOption() != null)
-            sb.append("PaymentOption: " + getPaymentOption() + ",");
+            sb.append("PaymentOption: ").append(getPaymentOption()).append(",");
         if (getHourlyPrice() != null)
-            sb.append("HourlyPrice: " + getHourlyPrice() + ",");
+            sb.append("HourlyPrice: ").append(getHourlyPrice()).append(",");
         if (getUpfrontPrice() != null)
-            sb.append("UpfrontPrice: " + getUpfrontPrice() + ",");
+            sb.append("UpfrontPrice: ").append(getUpfrontPrice()).append(",");
         if (getCurrencyCode() != null)
-            sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+            sb.append("CurrencyCode: ").append(getCurrencyCode()).append(",");
         if (getCount() != null)
-            sb.append("Count: " + getCount() + ",");
+            sb.append("Count: ").append(getCount()).append(",");
         if (getDuration() != null)
-            sb.append("Duration: " + getDuration() + ",");
+            sb.append("Duration: ").append(getDuration()).append(",");
         if (getEnd() != null)
-            sb.append("End: " + getEnd() + ",");
+            sb.append("End: ").append(getEnd()).append(",");
         if (getStart() != null)
-            sb.append("Start: " + getStart() + ",");
+            sb.append("Start: ").append(getStart()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState());
+            sb.append("State: ").append(getState());
         sb.append("}");
         return sb.toString();
     }
@@ -915,4 +920,5 @@ public class HostReservation implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

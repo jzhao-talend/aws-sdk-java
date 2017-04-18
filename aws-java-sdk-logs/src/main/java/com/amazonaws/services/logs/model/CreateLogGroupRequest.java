@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,30 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group to create.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
+    /**
+     * <p>
+     * The key-value pairs to use for the tags.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalMap<String, String> tags;
 
     /**
      * Default constructor for CreateLogGroupRequest object. Callers should use the setter or fluent setter (with...)
@@ -39,7 +50,7 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
      * to initialize any additional object members.
      * 
      * @param logGroupName
-     *        The name of the log group to create.
+     *        The name of the log group.
      */
     public CreateLogGroupRequest(String logGroupName) {
         setLogGroupName(logGroupName);
@@ -47,11 +58,11 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to create.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to create.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -60,10 +71,10 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to create.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group to create.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -72,16 +83,80 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to create.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to create.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateLogGroupRequest withLogGroupName(String logGroupName) {
         setLogGroupName(logGroupName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The key-value pairs to use for the tags.
+     * </p>
+     * 
+     * @return The key-value pairs to use for the tags.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalMap<String, String>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The key-value pairs to use for the tags.
+     * </p>
+     * 
+     * @param tags
+     *        The key-value pairs to use for the tags.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags == null ? null : new com.amazonaws.internal.SdkInternalMap<String, String>(tags);
+    }
+
+    /**
+     * <p>
+     * The key-value pairs to use for the tags.
+     * </p>
+     * 
+     * @param tags
+     *        The key-value pairs to use for the tags.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLogGroupRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateLogGroupRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new com.amazonaws.internal.SdkInternalMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLogGroupRequest clearTagsEntries() {
+        this.tags = null;
         return this;
     }
 
@@ -97,7 +172,9 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName());
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -116,6 +193,10 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
             return false;
         if (other.getLogGroupName() != null && other.getLogGroupName().equals(this.getLogGroupName()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -125,6 +206,7 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getLogGroupName() == null) ? 0 : getLogGroupName().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -132,4 +214,5 @@ public class CreateLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
     public CreateLogGroupRequest clone() {
         return (CreateLogGroupRequest) super.clone();
     }
+
 }

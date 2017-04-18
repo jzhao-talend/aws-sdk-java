@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.cloudsearchdomain.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An autocomplete suggestion that matches the query string specified in a <code>SuggestRequest</code>.
  * </p>
  */
-public class SuggestionMatch implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SuggestionMatch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -172,11 +176,11 @@ public class SuggestionMatch implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSuggestion() != null)
-            sb.append("Suggestion: " + getSuggestion() + ",");
+            sb.append("Suggestion: ").append(getSuggestion()).append(",");
         if (getScore() != null)
-            sb.append("Score: " + getScore() + ",");
+            sb.append("Score: ").append(getScore()).append(",");
         if (getId() != null)
-            sb.append("Id: " + getId());
+            sb.append("Id: ").append(getId());
         sb.append("}");
         return sb.toString();
     }
@@ -224,5 +228,11 @@ public class SuggestionMatch implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudsearchdomain.model.transform.SuggestionMatchMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

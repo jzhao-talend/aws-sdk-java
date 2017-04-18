@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,22 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The Amazon Simple Notification Service (Amazon SNS) topic or topics to notify in order to report job status.
  * </p>
- * <important>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.</important>
+ * <important>
+ * <p>
+ * To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.
+ * </p>
+ * </important>
  */
-public class Notifications implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Notifications implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -226,13 +234,13 @@ public class Notifications implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProgressing() != null)
-            sb.append("Progressing: " + getProgressing() + ",");
+            sb.append("Progressing: ").append(getProgressing()).append(",");
         if (getCompleted() != null)
-            sb.append("Completed: " + getCompleted() + ",");
+            sb.append("Completed: ").append(getCompleted()).append(",");
         if (getWarning() != null)
-            sb.append("Warning: " + getWarning() + ",");
+            sb.append("Warning: ").append(getWarning()).append(",");
         if (getError() != null)
-            sb.append("Error: " + getError());
+            sb.append("Error: ").append(getError());
         sb.append("}");
         return sb.toString();
     }
@@ -285,5 +293,11 @@ public class Notifications implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.NotificationsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

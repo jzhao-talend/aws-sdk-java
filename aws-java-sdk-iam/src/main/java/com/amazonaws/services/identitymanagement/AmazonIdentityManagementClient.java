@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.identitymanagement.AmazonIdentityManagementClientBuilder;
 import com.amazonaws.services.identitymanagement.waiters.AmazonIdentityManagementWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -113,6 +117,7 @@ import com.amazonaws.services.identitymanagement.model.transform.*;
  * </ul>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonIdentityManagementClient extends AmazonWebServiceClient implements AmazonIdentityManagement {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -146,7 +151,9 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonIdentityManagementClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -169,7 +176,9 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *        counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -183,7 +192,11 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AmazonIdentityManagementClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -201,7 +214,10 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to IAM (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonIdentityManagementClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -217,7 +233,9 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -235,7 +253,10 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to IAM (ex: proxy settings, retry
      *        counts, etc.).
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonIdentityManagementClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -255,12 +276,20 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *        counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonIdentityManagementClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonIdentityManagementClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonIdentityManagementClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonIdentityManagementClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonIdentityManagementClientBuilder builder() {
+        return AmazonIdentityManagementClientBuilder.standard();
     }
 
     /**
@@ -289,6 +318,7 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
         exceptionUnmarshallers.add(new InvalidUserTypeExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NoSuchEntityExceptionUnmarshaller());
         exceptionUnmarshallers.add(new EntityTemporarilyUnmodifiableExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new ServiceNotSupportedExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DuplicateSSHPublicKeyExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DuplicateCertificateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new KeyPairMismatchExceptionUnmarshaller());
@@ -336,10 +366,19 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AddClientIDToOpenIDConnectProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddClientIDToOpenIDConnectProvider"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AddClientIDToOpenIDConnectProviderResult addClientIDToOpenIDConnectProvider(
+    public AddClientIDToOpenIDConnectProviderResult addClientIDToOpenIDConnectProvider(AddClientIDToOpenIDConnectProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddClientIDToOpenIDConnectProvider(request);
+    }
+
+    @SdkInternalApi
+    final AddClientIDToOpenIDConnectProviderResult executeAddClientIDToOpenIDConnectProvider(
             AddClientIDToOpenIDConnectProviderRequest addClientIDToOpenIDConnectProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addClientIDToOpenIDConnectProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -399,9 +438,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AddRoleToInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddRoleToInstanceProfile" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AddRoleToInstanceProfileResult addRoleToInstanceProfile(AddRoleToInstanceProfileRequest addRoleToInstanceProfileRequest) {
+    public AddRoleToInstanceProfileResult addRoleToInstanceProfile(AddRoleToInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddRoleToInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final AddRoleToInstanceProfileResult executeAddRoleToInstanceProfile(AddRoleToInstanceProfileRequest addRoleToInstanceProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addRoleToInstanceProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -446,9 +494,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AddUserToGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddUserToGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddUserToGroupResult addUserToGroup(AddUserToGroupRequest addUserToGroupRequest) {
+    public AddUserToGroupResult addUserToGroup(AddUserToGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddUserToGroup(request);
+    }
+
+    @SdkInternalApi
+    final AddUserToGroupResult executeAddUserToGroup(AddUserToGroupRequest addUserToGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addUserToGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -504,9 +561,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AttachGroupPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachGroupPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachGroupPolicyResult attachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) {
+    public AttachGroupPolicyResult attachGroupPolicy(AttachGroupPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachGroupPolicy(request);
+    }
+
+    @SdkInternalApi
+    final AttachGroupPolicyResult executeAttachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachGroupPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -565,9 +631,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AttachRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachRolePolicyResult attachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) {
+    public AttachRolePolicyResult attachRolePolicy(AttachRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final AttachRolePolicyResult executeAttachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -623,9 +698,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.AttachUserPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachUserPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AttachUserPolicyResult attachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) {
+    public AttachUserPolicyResult attachUserPolicy(AttachUserPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeAttachUserPolicy(request);
+    }
+
+    @SdkInternalApi
+    final AttachUserPolicyResult executeAttachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(attachUserPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -685,9 +769,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ChangePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ChangePassword" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ChangePasswordResult changePassword(ChangePasswordRequest changePasswordRequest) {
+    public ChangePasswordResult changePassword(ChangePasswordRequest request) {
+        request = beforeClientExecution(request);
+        return executeChangePassword(request);
+    }
+
+    @SdkInternalApi
+    final ChangePasswordResult executeChangePassword(ChangePasswordRequest changePasswordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(changePasswordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -750,9 +843,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateAccessKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateAccessKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateAccessKeyResult createAccessKey(CreateAccessKeyRequest createAccessKeyRequest) {
+    public CreateAccessKeyResult createAccessKey(CreateAccessKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAccessKey(request);
+    }
+
+    @SdkInternalApi
+    final CreateAccessKeyResult executeCreateAccessKey(CreateAccessKeyRequest createAccessKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createAccessKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -803,9 +905,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateAccountAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateAccountAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateAccountAliasResult createAccountAlias(CreateAccountAliasRequest createAccountAliasRequest) {
+    public CreateAccountAliasResult createAccountAlias(CreateAccountAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAccountAlias(request);
+    }
+
+    @SdkInternalApi
+    final CreateAccountAliasResult executeCreateAccountAlias(CreateAccountAliasRequest createAccountAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createAccountAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -857,9 +968,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateGroupResult createGroup(CreateGroupRequest createGroupRequest) {
+    public CreateGroupResult createGroup(CreateGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateGroupResult executeCreateGroup(CreateGroupRequest createGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -908,9 +1028,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateInstanceProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateInstanceProfileResult createInstanceProfile(CreateInstanceProfileRequest createInstanceProfileRequest) {
+    public CreateInstanceProfileResult createInstanceProfile(CreateInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final CreateInstanceProfileResult executeCreateInstanceProfile(CreateInstanceProfileRequest createInstanceProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createInstanceProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -963,9 +1092,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateLoginProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateLoginProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateLoginProfileResult createLoginProfile(CreateLoginProfileRequest createLoginProfileRequest) {
+    public CreateLoginProfileResult createLoginProfile(CreateLoginProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLoginProfile(request);
+    }
+
+    @SdkInternalApi
+    final CreateLoginProfileResult executeCreateLoginProfile(CreateLoginProfileRequest createLoginProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLoginProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1028,9 +1166,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateOpenIDConnectProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateOpenIDConnectProvider"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateOpenIDConnectProviderResult createOpenIDConnectProvider(CreateOpenIDConnectProviderRequest createOpenIDConnectProviderRequest) {
+    public CreateOpenIDConnectProviderResult createOpenIDConnectProvider(CreateOpenIDConnectProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateOpenIDConnectProvider(request);
+    }
+
+    @SdkInternalApi
+    final CreateOpenIDConnectProviderResult executeCreateOpenIDConnectProvider(CreateOpenIDConnectProviderRequest createOpenIDConnectProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createOpenIDConnectProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1090,9 +1237,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreatePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreatePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreatePolicyResult createPolicy(CreatePolicyRequest createPolicyRequest) {
+    public CreatePolicyResult createPolicy(CreatePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePolicy(request);
+    }
+
+    @SdkInternalApi
+    final CreatePolicyResult executeCreatePolicy(CreatePolicyRequest createPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1152,9 +1308,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreatePolicyVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreatePolicyVersion" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreatePolicyVersionResult createPolicyVersion(CreatePolicyVersionRequest createPolicyVersionRequest) {
+    public CreatePolicyVersionResult createPolicyVersion(CreatePolicyVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePolicyVersion(request);
+    }
+
+    @SdkInternalApi
+    final CreatePolicyVersionResult executeCreatePolicyVersion(CreatePolicyVersionRequest createPolicyVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPolicyVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1205,9 +1370,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateRole" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateRoleResult createRole(CreateRoleRequest createRoleRequest) {
+    public CreateRoleResult createRole(CreateRoleRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRole(request);
+    }
+
+    @SdkInternalApi
+    final CreateRoleResult executeCreateRole(CreateRoleRequest createRoleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRoleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1277,9 +1451,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateSAMLProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateSAMLProvider" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateSAMLProviderResult createSAMLProvider(CreateSAMLProviderRequest createSAMLProviderRequest) {
+    public CreateSAMLProviderResult createSAMLProvider(CreateSAMLProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSAMLProvider(request);
+    }
+
+    @SdkInternalApi
+    final CreateSAMLProviderResult executeCreateSAMLProvider(CreateSAMLProviderRequest createSAMLProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createSAMLProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1298,6 +1481,78 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
 
             StaxResponseHandler<CreateSAMLProviderResult> responseHandler = new StaxResponseHandler<CreateSAMLProviderResult>(
                     new CreateSAMLProviderResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Generates a set of credentials consisting of a user name and password that can be used to access the service
+     * specified in the request. These credentials are generated by IAM, and can be used only for the specified service.
+     * </p>
+     * <p>
+     * You can have a maximum of two sets of service-specific credentials for each supported service per user.
+     * </p>
+     * <p>
+     * The only supported service at this time is AWS CodeCommit.
+     * </p>
+     * <p>
+     * You can reset the password to a new service-generated value by calling <a>ResetServiceSpecificCredential</a>.
+     * </p>
+     * <p>
+     * For more information about service-specific credentials, see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html">Using IAM with AWS
+     * CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys</a> in the <i>IAM User Guide</i>.
+     * </p>
+     * 
+     * @param createServiceSpecificCredentialRequest
+     * @return Result of the CreateServiceSpecificCredential operation returned by the service.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error message describes the limit exceeded.
+     * @throws NoSuchEntityException
+     *         The request was rejected because it referenced an entity that does not exist. The error message describes
+     *         the entity.
+     * @throws ServiceNotSupportedException
+     *         The specified service does not support service-specific credentials.
+     * @sample AmazonIdentityManagement.CreateServiceSpecificCredential
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateServiceSpecificCredential"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateServiceSpecificCredentialResult createServiceSpecificCredential(CreateServiceSpecificCredentialRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateServiceSpecificCredential(request);
+    }
+
+    @SdkInternalApi
+    final CreateServiceSpecificCredentialResult executeCreateServiceSpecificCredential(
+            CreateServiceSpecificCredentialRequest createServiceSpecificCredentialRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createServiceSpecificCredentialRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateServiceSpecificCredentialRequest> request = null;
+        Response<CreateServiceSpecificCredentialResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateServiceSpecificCredentialRequestMarshaller().marshall(super.beforeMarshalling(createServiceSpecificCredentialRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateServiceSpecificCredentialResult> responseHandler = new StaxResponseHandler<CreateServiceSpecificCredentialResult>(
+                    new CreateServiceSpecificCredentialResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1331,9 +1586,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateUserResult createUser(CreateUserRequest createUserRequest) {
+    public CreateUserResult createUser(CreateUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUser(request);
+    }
+
+    @SdkInternalApi
+    final CreateUserResult executeCreateUser(CreateUserRequest createUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1391,9 +1655,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.CreateVirtualMFADevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateVirtualMFADevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateVirtualMFADeviceResult createVirtualMFADevice(CreateVirtualMFADeviceRequest createVirtualMFADeviceRequest) {
+    public CreateVirtualMFADeviceResult createVirtualMFADevice(CreateVirtualMFADeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVirtualMFADevice(request);
+    }
+
+    @SdkInternalApi
+    final CreateVirtualMFADeviceResult executeCreateVirtualMFADevice(CreateVirtualMFADeviceRequest createVirtualMFADeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createVirtualMFADeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1448,9 +1721,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeactivateMFADevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeactivateMFADevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeactivateMFADeviceResult deactivateMFADevice(DeactivateMFADeviceRequest deactivateMFADeviceRequest) {
+    public DeactivateMFADeviceResult deactivateMFADevice(DeactivateMFADeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeactivateMFADevice(request);
+    }
+
+    @SdkInternalApi
+    final DeactivateMFADeviceResult executeDeactivateMFADevice(DeactivateMFADeviceRequest deactivateMFADeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deactivateMFADeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1500,9 +1782,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteAccessKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccessKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteAccessKeyResult deleteAccessKey(DeleteAccessKeyRequest deleteAccessKeyRequest) {
+    public DeleteAccessKeyResult deleteAccessKey(DeleteAccessKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAccessKey(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAccessKeyResult executeDeleteAccessKey(DeleteAccessKeyRequest deleteAccessKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteAccessKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1549,9 +1840,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteAccountAlias
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccountAlias" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteAccountAliasResult deleteAccountAlias(DeleteAccountAliasRequest deleteAccountAliasRequest) {
+    public DeleteAccountAliasResult deleteAccountAlias(DeleteAccountAliasRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAccountAlias(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAccountAliasResult executeDeleteAccountAlias(DeleteAccountAliasRequest deleteAccountAliasRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteAccountAliasRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1596,9 +1896,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteAccountPasswordPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccountPasswordPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteAccountPasswordPolicyResult deleteAccountPasswordPolicy(DeleteAccountPasswordPolicyRequest deleteAccountPasswordPolicyRequest) {
+    public DeleteAccountPasswordPolicyResult deleteAccountPasswordPolicy(DeleteAccountPasswordPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAccountPasswordPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAccountPasswordPolicyResult executeDeleteAccountPasswordPolicy(DeleteAccountPasswordPolicyRequest deleteAccountPasswordPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteAccountPasswordPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1651,9 +1960,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteGroupResult deleteGroup(DeleteGroupRequest deleteGroupRequest) {
+    public DeleteGroupResult deleteGroup(DeleteGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteGroupResult executeDeleteGroup(DeleteGroupRequest deleteGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1703,9 +2021,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteGroupPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteGroupPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteGroupPolicyResult deleteGroupPolicy(DeleteGroupPolicyRequest deleteGroupPolicyRequest) {
+    public DeleteGroupPolicyResult deleteGroupPolicy(DeleteGroupPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteGroupPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteGroupPolicyResult executeDeleteGroupPolicy(DeleteGroupPolicyRequest deleteGroupPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteGroupPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1764,9 +2091,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteInstanceProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteInstanceProfileResult deleteInstanceProfile(DeleteInstanceProfileRequest deleteInstanceProfileRequest) {
+    public DeleteInstanceProfileResult deleteInstanceProfile(DeleteInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final DeleteInstanceProfileResult executeDeleteInstanceProfile(DeleteInstanceProfileRequest deleteInstanceProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteInstanceProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1823,9 +2159,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteLoginProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteLoginProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteLoginProfileResult deleteLoginProfile(DeleteLoginProfileRequest deleteLoginProfileRequest) {
+    public DeleteLoginProfileResult deleteLoginProfile(DeleteLoginProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLoginProfile(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLoginProfileResult executeDeleteLoginProfile(DeleteLoginProfileRequest deleteLoginProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLoginProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1877,9 +2222,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteOpenIDConnectProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteOpenIDConnectProvider"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteOpenIDConnectProviderResult deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) {
+    public DeleteOpenIDConnectProviderResult deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteOpenIDConnectProvider(request);
+    }
+
+    @SdkInternalApi
+    final DeleteOpenIDConnectProviderResult executeDeleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteOpenIDConnectProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1960,9 +2314,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeletePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeletePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeletePolicyResult deletePolicy(DeletePolicyRequest deletePolicyRequest) {
+    public DeletePolicyResult deletePolicy(DeletePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeletePolicyResult executeDeletePolicy(DeletePolicyRequest deletePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2021,9 +2384,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeletePolicyVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeletePolicyVersion" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeletePolicyVersionResult deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) {
+    public DeletePolicyVersionResult deletePolicyVersion(DeletePolicyVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePolicyVersion(request);
+    }
+
+    @SdkInternalApi
+    final DeletePolicyVersionResult executeDeletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePolicyVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2079,9 +2451,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteRole" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteRoleResult deleteRole(DeleteRoleRequest deleteRoleRequest) {
+    public DeleteRoleResult deleteRole(DeleteRoleRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRole(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRoleResult executeDeleteRole(DeleteRoleRequest deleteRoleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRoleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2131,9 +2512,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteRolePolicyResult deleteRolePolicy(DeleteRolePolicyRequest deleteRolePolicyRequest) {
+    public DeleteRolePolicyResult deleteRolePolicy(DeleteRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRolePolicyResult executeDeleteRolePolicy(DeleteRolePolicyRequest deleteRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2191,9 +2581,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteSAMLProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSAMLProvider" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteSAMLProviderResult deleteSAMLProvider(DeleteSAMLProviderRequest deleteSAMLProviderRequest) {
+    public DeleteSAMLProviderResult deleteSAMLProvider(DeleteSAMLProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSAMLProvider(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSAMLProviderResult executeDeleteSAMLProvider(DeleteSAMLProviderRequest deleteSAMLProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSAMLProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2239,9 +2638,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request was rejected because it referenced an entity that does not exist. The error message describes
      *         the entity.
      * @sample AmazonIdentityManagement.DeleteSSHPublicKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSSHPublicKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteSSHPublicKeyResult deleteSSHPublicKey(DeleteSSHPublicKeyRequest deleteSSHPublicKeyRequest) {
+    public DeleteSSHPublicKeyResult deleteSSHPublicKey(DeleteSSHPublicKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSSHPublicKey(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSSHPublicKeyResult executeDeleteSSHPublicKey(DeleteSSHPublicKeyRequest deleteSSHPublicKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSSHPublicKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2306,9 +2714,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteServerCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServerCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteServerCertificateResult deleteServerCertificate(DeleteServerCertificateRequest deleteServerCertificateRequest) {
+    public DeleteServerCertificateResult deleteServerCertificate(DeleteServerCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteServerCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteServerCertificateResult executeDeleteServerCertificate(DeleteServerCertificateRequest deleteServerCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteServerCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2327,6 +2744,58 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
 
             StaxResponseHandler<DeleteServerCertificateResult> responseHandler = new StaxResponseHandler<DeleteServerCertificateResult>(
                     new DeleteServerCertificateResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes the specified service-specific credential.
+     * </p>
+     * 
+     * @param deleteServiceSpecificCredentialRequest
+     * @return Result of the DeleteServiceSpecificCredential operation returned by the service.
+     * @throws NoSuchEntityException
+     *         The request was rejected because it referenced an entity that does not exist. The error message describes
+     *         the entity.
+     * @sample AmazonIdentityManagement.DeleteServiceSpecificCredential
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServiceSpecificCredential"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteServiceSpecificCredentialResult deleteServiceSpecificCredential(DeleteServiceSpecificCredentialRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteServiceSpecificCredential(request);
+    }
+
+    @SdkInternalApi
+    final DeleteServiceSpecificCredentialResult executeDeleteServiceSpecificCredential(
+            DeleteServiceSpecificCredentialRequest deleteServiceSpecificCredentialRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteServiceSpecificCredentialRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteServiceSpecificCredentialRequest> request = null;
+        Response<DeleteServiceSpecificCredentialResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteServiceSpecificCredentialRequestMarshaller().marshall(super.beforeMarshalling(deleteServiceSpecificCredentialRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteServiceSpecificCredentialResult> responseHandler = new StaxResponseHandler<DeleteServiceSpecificCredentialResult>(
+                    new DeleteServiceSpecificCredentialResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2358,9 +2827,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSigningCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteSigningCertificateResult deleteSigningCertificate(DeleteSigningCertificateRequest deleteSigningCertificateRequest) {
+    public DeleteSigningCertificateResult deleteSigningCertificate(DeleteSigningCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSigningCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSigningCertificateResult executeDeleteSigningCertificate(DeleteSigningCertificateRequest deleteSigningCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSigningCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2409,9 +2887,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteUserResult deleteUser(DeleteUserRequest deleteUserRequest) {
+    public DeleteUserResult deleteUser(DeleteUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUser(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserResult executeDeleteUser(DeleteUserRequest deleteUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2461,9 +2948,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteUserPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteUserPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteUserPolicyResult deleteUserPolicy(DeleteUserPolicyRequest deleteUserPolicyRequest) {
+    public DeleteUserPolicyResult deleteUserPolicy(DeleteUserPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUserPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserPolicyResult executeDeleteUserPolicy(DeleteUserPolicyRequest deleteUserPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2517,9 +3013,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DeleteVirtualMFADevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteVirtualMFADevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteVirtualMFADeviceResult deleteVirtualMFADevice(DeleteVirtualMFADeviceRequest deleteVirtualMFADeviceRequest) {
+    public DeleteVirtualMFADeviceResult deleteVirtualMFADevice(DeleteVirtualMFADeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVirtualMFADevice(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVirtualMFADeviceResult executeDeleteVirtualMFADevice(DeleteVirtualMFADeviceRequest deleteVirtualMFADeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteVirtualMFADeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2572,9 +3077,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DetachGroupPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachGroupPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachGroupPolicyResult detachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) {
+    public DetachGroupPolicyResult detachGroupPolicy(DetachGroupPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachGroupPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DetachGroupPolicyResult executeDetachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachGroupPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2627,9 +3141,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DetachRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachRolePolicyResult detachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) {
+    public DetachRolePolicyResult detachRolePolicy(DetachRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final DetachRolePolicyResult executeDetachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2682,9 +3205,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.DetachUserPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachUserPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DetachUserPolicyResult detachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) {
+    public DetachUserPolicyResult detachUserPolicy(DetachUserPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDetachUserPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DetachUserPolicyResult executeDetachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(detachUserPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2739,9 +3271,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.EnableMFADevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/EnableMFADevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public EnableMFADeviceResult enableMFADevice(EnableMFADeviceRequest enableMFADeviceRequest) {
+    public EnableMFADeviceResult enableMFADevice(EnableMFADeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableMFADevice(request);
+    }
+
+    @SdkInternalApi
+    final EnableMFADeviceResult executeEnableMFADevice(EnableMFADeviceRequest enableMFADeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableMFADeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2785,9 +3326,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GenerateCredentialReport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GenerateCredentialReport" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GenerateCredentialReportResult generateCredentialReport(GenerateCredentialReportRequest generateCredentialReportRequest) {
+    public GenerateCredentialReportResult generateCredentialReport(GenerateCredentialReportRequest request) {
+        request = beforeClientExecution(request);
+        return executeGenerateCredentialReport(request);
+    }
+
+    @SdkInternalApi
+    final GenerateCredentialReportResult executeGenerateCredentialReport(GenerateCredentialReportRequest generateCredentialReportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(generateCredentialReportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2834,9 +3384,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request was rejected because it referenced an entity that does not exist. The error message describes
      *         the entity.
      * @sample AmazonIdentityManagement.GetAccessKeyLastUsed
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccessKeyLastUsed" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetAccessKeyLastUsedResult getAccessKeyLastUsed(GetAccessKeyLastUsedRequest getAccessKeyLastUsedRequest) {
+    public GetAccessKeyLastUsedResult getAccessKeyLastUsed(GetAccessKeyLastUsedRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccessKeyLastUsed(request);
+    }
+
+    @SdkInternalApi
+    final GetAccessKeyLastUsedResult executeGetAccessKeyLastUsed(GetAccessKeyLastUsedRequest getAccessKeyLastUsedRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getAccessKeyLastUsedRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2881,9 +3440,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetAccountAuthorizationDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountAuthorizationDetails"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails(GetAccountAuthorizationDetailsRequest getAccountAuthorizationDetailsRequest) {
+    public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails(GetAccountAuthorizationDetailsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccountAuthorizationDetails(request);
+    }
+
+    @SdkInternalApi
+    final GetAccountAuthorizationDetailsResult executeGetAccountAuthorizationDetails(GetAccountAuthorizationDetailsRequest getAccountAuthorizationDetailsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getAccountAuthorizationDetailsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2932,9 +3500,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetAccountPasswordPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountPasswordPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetAccountPasswordPolicyResult getAccountPasswordPolicy(GetAccountPasswordPolicyRequest getAccountPasswordPolicyRequest) {
+    public GetAccountPasswordPolicyResult getAccountPasswordPolicy(GetAccountPasswordPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccountPasswordPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetAccountPasswordPolicyResult executeGetAccountPasswordPolicy(GetAccountPasswordPolicyRequest getAccountPasswordPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getAccountPasswordPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2983,9 +3560,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetAccountSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountSummary" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetAccountSummaryResult getAccountSummary(GetAccountSummaryRequest getAccountSummaryRequest) {
+    public GetAccountSummaryResult getAccountSummary(GetAccountSummaryRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccountSummary(request);
+    }
+
+    @SdkInternalApi
+    final GetAccountSummaryResult executeGetAccountSummary(GetAccountSummaryRequest getAccountSummaryRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getAccountSummaryRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3038,9 +3624,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonIdentityManagement.GetContextKeysForCustomPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetContextKeysForCustomPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetContextKeysForCustomPolicyResult getContextKeysForCustomPolicy(GetContextKeysForCustomPolicyRequest getContextKeysForCustomPolicyRequest) {
+    public GetContextKeysForCustomPolicyResult getContextKeysForCustomPolicy(GetContextKeysForCustomPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetContextKeysForCustomPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetContextKeysForCustomPolicyResult executeGetContextKeysForCustomPolicy(GetContextKeysForCustomPolicyRequest getContextKeysForCustomPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getContextKeysForCustomPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3099,10 +3694,19 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonIdentityManagement.GetContextKeysForPrincipalPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetContextKeysForPrincipalPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetContextKeysForPrincipalPolicyResult getContextKeysForPrincipalPolicy(
+    public GetContextKeysForPrincipalPolicyResult getContextKeysForPrincipalPolicy(GetContextKeysForPrincipalPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetContextKeysForPrincipalPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetContextKeysForPrincipalPolicyResult executeGetContextKeysForPrincipalPolicy(
             GetContextKeysForPrincipalPolicyRequest getContextKeysForPrincipalPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getContextKeysForPrincipalPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3153,9 +3757,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetCredentialReport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetCredentialReport" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCredentialReportResult getCredentialReport(GetCredentialReportRequest getCredentialReportRequest) {
+    public GetCredentialReportResult getCredentialReport(GetCredentialReportRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCredentialReport(request);
+    }
+
+    @SdkInternalApi
+    final GetCredentialReportResult executeGetCredentialReport(GetCredentialReportRequest getCredentialReportRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCredentialReportRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3203,9 +3816,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetGroupResult getGroup(GetGroupRequest getGroupRequest) {
+    public GetGroupResult getGroup(GetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetGroup(request);
+    }
+
+    @SdkInternalApi
+    final GetGroupResult executeGetGroup(GetGroupRequest getGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3264,9 +3886,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetGroupPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroupPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetGroupPolicyResult getGroupPolicy(GetGroupPolicyRequest getGroupPolicyRequest) {
+    public GetGroupPolicyResult getGroupPolicy(GetGroupPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetGroupPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetGroupPolicyResult executeGetGroupPolicy(GetGroupPolicyRequest getGroupPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getGroupPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3311,9 +3942,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetInstanceProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetInstanceProfileResult getInstanceProfile(GetInstanceProfileRequest getInstanceProfileRequest) {
+    public GetInstanceProfileResult getInstanceProfile(GetInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final GetInstanceProfileResult executeGetInstanceProfile(GetInstanceProfileRequest getInstanceProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getInstanceProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3356,9 +3996,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetLoginProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetLoginProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetLoginProfileResult getLoginProfile(GetLoginProfileRequest getLoginProfileRequest) {
+    public GetLoginProfileResult getLoginProfile(GetLoginProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetLoginProfile(request);
+    }
+
+    @SdkInternalApi
+    final GetLoginProfileResult executeGetLoginProfile(GetLoginProfileRequest getLoginProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getLoginProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3402,9 +4051,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetOpenIDConnectProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetOpenIDConnectProvider" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetOpenIDConnectProviderResult getOpenIDConnectProvider(GetOpenIDConnectProviderRequest getOpenIDConnectProviderRequest) {
+    public GetOpenIDConnectProviderResult getOpenIDConnectProvider(GetOpenIDConnectProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetOpenIDConnectProvider(request);
+    }
+
+    @SdkInternalApi
+    final GetOpenIDConnectProviderResult executeGetOpenIDConnectProvider(GetOpenIDConnectProviderRequest getOpenIDConnectProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getOpenIDConnectProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3462,9 +4120,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetPolicyResult getPolicy(GetPolicyRequest getPolicyRequest) {
+    public GetPolicyResult getPolicy(GetPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetPolicyResult executeGetPolicy(GetPolicyRequest getPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3533,9 +4200,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetPolicyVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetPolicyVersion" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetPolicyVersionResult getPolicyVersion(GetPolicyVersionRequest getPolicyVersionRequest) {
+    public GetPolicyVersionResult getPolicyVersion(GetPolicyVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPolicyVersion(request);
+    }
+
+    @SdkInternalApi
+    final GetPolicyVersionResult executeGetPolicyVersion(GetPolicyVersionRequest getPolicyVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPolicyVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3587,9 +4263,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetRole" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetRoleResult getRole(GetRoleRequest getRoleRequest) {
+    public GetRoleResult getRole(GetRoleRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRole(request);
+    }
+
+    @SdkInternalApi
+    final GetRoleResult executeGetRole(GetRoleRequest getRoleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getRoleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3653,9 +4338,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetRolePolicyResult getRolePolicy(GetRolePolicyRequest getRolePolicyRequest) {
+    public GetRolePolicyResult getRolePolicy(GetRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetRolePolicyResult executeGetRolePolicy(GetRolePolicyRequest getRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3705,9 +4399,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetSAMLProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetSAMLProvider" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetSAMLProviderResult getSAMLProvider(GetSAMLProviderRequest getSAMLProviderRequest) {
+    public GetSAMLProviderResult getSAMLProvider(GetSAMLProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSAMLProvider(request);
+    }
+
+    @SdkInternalApi
+    final GetSAMLProviderResult executeGetSAMLProvider(GetSAMLProviderRequest getSAMLProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getSAMLProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3755,9 +4458,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws UnrecognizedPublicKeyEncodingException
      *         The request was rejected because the public key encoding format is unsupported or unrecognized.
      * @sample AmazonIdentityManagement.GetSSHPublicKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetSSHPublicKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetSSHPublicKeyResult getSSHPublicKey(GetSSHPublicKeyRequest getSSHPublicKeyRequest) {
+    public GetSSHPublicKeyResult getSSHPublicKey(GetSSHPublicKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSSHPublicKey(request);
+    }
+
+    @SdkInternalApi
+    final GetSSHPublicKeyResult executeGetSSHPublicKey(GetSSHPublicKeyRequest getSSHPublicKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getSSHPublicKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3805,9 +4517,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetServerCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetServerCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetServerCertificateResult getServerCertificate(GetServerCertificateRequest getServerCertificateRequest) {
+    public GetServerCertificateResult getServerCertificate(GetServerCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetServerCertificate(request);
+    }
+
+    @SdkInternalApi
+    final GetServerCertificateResult executeGetServerCertificate(GetServerCertificateRequest getServerCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getServerCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3853,9 +4574,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetUserResult getUser(GetUserRequest getUserRequest) {
+    public GetUserResult getUser(GetUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetUser(request);
+    }
+
+    @SdkInternalApi
+    final GetUserResult executeGetUser(GetUserRequest getUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3919,9 +4649,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.GetUserPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetUserPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetUserPolicyResult getUserPolicy(GetUserPolicyRequest getUserPolicyRequest) {
+    public GetUserPolicyResult getUserPolicy(GetUserPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetUserPolicy(request);
+    }
+
+    @SdkInternalApi
+    final GetUserPolicyResult executeGetUserPolicy(GetUserPolicyRequest getUserPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getUserPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3978,9 +4717,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListAccessKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListAccessKeysResult listAccessKeys(ListAccessKeysRequest listAccessKeysRequest) {
+    public ListAccessKeysResult listAccessKeys(ListAccessKeysRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAccessKeys(request);
+    }
+
+    @SdkInternalApi
+    final ListAccessKeysResult executeListAccessKeys(ListAccessKeysRequest listAccessKeysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAccessKeysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4026,9 +4774,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListAccountAliases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccountAliases" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListAccountAliasesResult listAccountAliases(ListAccountAliasesRequest listAccountAliasesRequest) {
+    public ListAccountAliasesResult listAccountAliases(ListAccountAliasesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAccountAliases(request);
+    }
+
+    @SdkInternalApi
+    final ListAccountAliasesResult executeListAccountAliases(ListAccountAliasesRequest listAccountAliasesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAccountAliasesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4089,9 +4846,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListAttachedGroupPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedGroupPolicies" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListAttachedGroupPoliciesResult listAttachedGroupPolicies(ListAttachedGroupPoliciesRequest listAttachedGroupPoliciesRequest) {
+    public ListAttachedGroupPoliciesResult listAttachedGroupPolicies(ListAttachedGroupPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAttachedGroupPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListAttachedGroupPoliciesResult executeListAttachedGroupPolicies(ListAttachedGroupPoliciesRequest listAttachedGroupPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAttachedGroupPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4147,9 +4913,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListAttachedRolePolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListAttachedRolePoliciesResult listAttachedRolePolicies(ListAttachedRolePoliciesRequest listAttachedRolePoliciesRequest) {
+    public ListAttachedRolePoliciesResult listAttachedRolePolicies(ListAttachedRolePoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAttachedRolePolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListAttachedRolePoliciesResult executeListAttachedRolePolicies(ListAttachedRolePoliciesRequest listAttachedRolePoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAttachedRolePoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4205,9 +4980,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListAttachedUserPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListAttachedUserPoliciesResult listAttachedUserPolicies(ListAttachedUserPoliciesRequest listAttachedUserPoliciesRequest) {
+    public ListAttachedUserPoliciesResult listAttachedUserPolicies(ListAttachedUserPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAttachedUserPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListAttachedUserPoliciesResult executeListAttachedUserPolicies(ListAttachedUserPoliciesRequest listAttachedUserPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listAttachedUserPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4259,9 +5043,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListEntitiesForPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListEntitiesForPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListEntitiesForPolicyResult listEntitiesForPolicy(ListEntitiesForPolicyRequest listEntitiesForPolicyRequest) {
+    public ListEntitiesForPolicyResult listEntitiesForPolicy(ListEntitiesForPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeListEntitiesForPolicy(request);
+    }
+
+    @SdkInternalApi
+    final ListEntitiesForPolicyResult executeListEntitiesForPolicy(ListEntitiesForPolicyRequest listEntitiesForPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listEntitiesForPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4313,9 +5106,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListGroupPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListGroupPoliciesResult listGroupPolicies(ListGroupPoliciesRequest listGroupPoliciesRequest) {
+    public ListGroupPoliciesResult listGroupPolicies(ListGroupPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListGroupPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListGroupPoliciesResult executeListGroupPolicies(ListGroupPoliciesRequest listGroupPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listGroupPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4357,9 +5159,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListGroupsResult listGroups(ListGroupsRequest listGroupsRequest) {
+    public ListGroupsResult listGroups(ListGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListGroups(request);
+    }
+
+    @SdkInternalApi
+    final ListGroupsResult executeListGroups(ListGroupsRequest listGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4408,9 +5219,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListGroupsForUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListGroupsForUserResult listGroupsForUser(ListGroupsForUserRequest listGroupsForUserRequest) {
+    public ListGroupsForUserResult listGroupsForUser(ListGroupsForUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeListGroupsForUser(request);
+    }
+
+    @SdkInternalApi
+    final ListGroupsForUserResult executeListGroupsForUser(ListGroupsForUserRequest listGroupsForUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listGroupsForUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4454,9 +5274,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListInstanceProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfiles" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListInstanceProfilesResult listInstanceProfiles(ListInstanceProfilesRequest listInstanceProfilesRequest) {
+    public ListInstanceProfilesResult listInstanceProfiles(ListInstanceProfilesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListInstanceProfiles(request);
+    }
+
+    @SdkInternalApi
+    final ListInstanceProfilesResult executeListInstanceProfiles(ListInstanceProfilesRequest listInstanceProfilesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listInstanceProfilesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4508,9 +5337,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListInstanceProfilesForRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListInstanceProfilesForRoleResult listInstanceProfilesForRole(ListInstanceProfilesForRoleRequest listInstanceProfilesForRoleRequest) {
+    public ListInstanceProfilesForRoleResult listInstanceProfilesForRole(ListInstanceProfilesForRoleRequest request) {
+        request = beforeClientExecution(request);
+        return executeListInstanceProfilesForRole(request);
+    }
+
+    @SdkInternalApi
+    final ListInstanceProfilesForRoleResult executeListInstanceProfilesForRole(ListInstanceProfilesForRoleRequest listInstanceProfilesForRoleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listInstanceProfilesForRoleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4557,9 +5395,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListMFADevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListMFADevicesResult listMFADevices(ListMFADevicesRequest listMFADevicesRequest) {
+    public ListMFADevicesResult listMFADevices(ListMFADevicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListMFADevices(request);
+    }
+
+    @SdkInternalApi
+    final ListMFADevicesResult executeListMFADevices(ListMFADevicesRequest listMFADevicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listMFADevicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4603,9 +5450,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListOpenIDConnectProviders
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListOpenIDConnectProviders" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListOpenIDConnectProvidersResult listOpenIDConnectProviders(ListOpenIDConnectProvidersRequest listOpenIDConnectProvidersRequest) {
+    public ListOpenIDConnectProvidersResult listOpenIDConnectProviders(ListOpenIDConnectProvidersRequest request) {
+        request = beforeClientExecution(request);
+        return executeListOpenIDConnectProviders(request);
+    }
+
+    @SdkInternalApi
+    final ListOpenIDConnectProvidersResult executeListOpenIDConnectProviders(ListOpenIDConnectProvidersRequest listOpenIDConnectProvidersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listOpenIDConnectProvidersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4664,9 +5520,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListPoliciesResult listPolicies(ListPoliciesRequest listPoliciesRequest) {
+    public ListPoliciesResult listPolicies(ListPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListPoliciesResult executeListPolicies(ListPoliciesRequest listPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4720,9 +5585,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListPolicyVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListPolicyVersions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListPolicyVersionsResult listPolicyVersions(ListPolicyVersionsRequest listPolicyVersionsRequest) {
+    public ListPolicyVersionsResult listPolicyVersions(ListPolicyVersionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPolicyVersions(request);
+    }
+
+    @SdkInternalApi
+    final ListPolicyVersionsResult executeListPolicyVersions(ListPolicyVersionsRequest listPolicyVersionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPolicyVersionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4774,9 +5648,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListRolePolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListRolePoliciesResult listRolePolicies(ListRolePoliciesRequest listRolePoliciesRequest) {
+    public ListRolePoliciesResult listRolePolicies(ListRolePoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListRolePolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListRolePoliciesResult executeListRolePolicies(ListRolePoliciesRequest listRolePoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listRolePoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4820,9 +5703,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListRoles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRoles" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListRolesResult listRoles(ListRolesRequest listRolesRequest) {
+    public ListRolesResult listRoles(ListRolesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListRoles(request);
+    }
+
+    @SdkInternalApi
+    final ListRolesResult executeListRoles(ListRolesRequest listRolesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listRolesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4871,9 +5763,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListSAMLProviders
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSAMLProviders" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListSAMLProvidersResult listSAMLProviders(ListSAMLProvidersRequest listSAMLProvidersRequest) {
+    public ListSAMLProvidersResult listSAMLProviders(ListSAMLProvidersRequest request) {
+        request = beforeClientExecution(request);
+        return executeListSAMLProviders(request);
+    }
+
+    @SdkInternalApi
+    final ListSAMLProvidersResult executeListSAMLProviders(ListSAMLProvidersRequest listSAMLProvidersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listSAMLProvidersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4929,9 +5830,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request was rejected because it referenced an entity that does not exist. The error message describes
      *         the entity.
      * @sample AmazonIdentityManagement.ListSSHPublicKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSSHPublicKeys" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListSSHPublicKeysResult listSSHPublicKeys(ListSSHPublicKeysRequest listSSHPublicKeysRequest) {
+    public ListSSHPublicKeysResult listSSHPublicKeys(ListSSHPublicKeysRequest request) {
+        request = beforeClientExecution(request);
+        return executeListSSHPublicKeys(request);
+    }
+
+    @SdkInternalApi
+    final ListSSHPublicKeysResult executeListSSHPublicKeys(ListSSHPublicKeysRequest listSSHPublicKeysRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listSSHPublicKeysRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -4985,9 +5895,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListServerCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListServerCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListServerCertificatesResult listServerCertificates(ListServerCertificatesRequest listServerCertificatesRequest) {
+    public ListServerCertificatesResult listServerCertificates(ListServerCertificatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListServerCertificates(request);
+    }
+
+    @SdkInternalApi
+    final ListServerCertificatesResult executeListServerCertificates(ListServerCertificatesRequest listServerCertificatesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listServerCertificatesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5023,6 +5942,64 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
 
     /**
      * <p>
+     * Returns information about the service-specific credentials associated with the specified IAM user. If there are
+     * none, the action returns an empty list. The service-specific credentials returned by this action are used only
+     * for authenticating the IAM user to a specific service. For more information about using service-specific
+     * credentials to authenticate to an AWS service, see <a
+     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html">Set Up service-specific
+     * credentials</a> in the AWS CodeCommit User Guide.
+     * </p>
+     * 
+     * @param listServiceSpecificCredentialsRequest
+     * @return Result of the ListServiceSpecificCredentials operation returned by the service.
+     * @throws NoSuchEntityException
+     *         The request was rejected because it referenced an entity that does not exist. The error message describes
+     *         the entity.
+     * @throws ServiceNotSupportedException
+     *         The specified service does not support service-specific credentials.
+     * @sample AmazonIdentityManagement.ListServiceSpecificCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListServiceSpecificCredentials"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListServiceSpecificCredentialsResult listServiceSpecificCredentials(ListServiceSpecificCredentialsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListServiceSpecificCredentials(request);
+    }
+
+    @SdkInternalApi
+    final ListServiceSpecificCredentialsResult executeListServiceSpecificCredentials(ListServiceSpecificCredentialsRequest listServiceSpecificCredentialsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listServiceSpecificCredentialsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListServiceSpecificCredentialsRequest> request = null;
+        Response<ListServiceSpecificCredentialsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListServiceSpecificCredentialsRequestMarshaller().marshall(super.beforeMarshalling(listServiceSpecificCredentialsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListServiceSpecificCredentialsResult> responseHandler = new StaxResponseHandler<ListServiceSpecificCredentialsResult>(
+                    new ListServiceSpecificCredentialsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns information about the signing certificates associated with the specified IAM user. If there are none, the
      * action returns an empty list.
      * </p>
@@ -5044,9 +6021,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListSigningCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListSigningCertificatesResult listSigningCertificates(ListSigningCertificatesRequest listSigningCertificatesRequest) {
+    public ListSigningCertificatesResult listSigningCertificates(ListSigningCertificatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListSigningCertificates(request);
+    }
+
+    @SdkInternalApi
+    final ListSigningCertificatesResult executeListSigningCertificates(ListSigningCertificatesRequest listSigningCertificatesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listSigningCertificatesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5103,9 +6089,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListUserPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListUserPoliciesResult listUserPolicies(ListUserPoliciesRequest listUserPoliciesRequest) {
+    public ListUserPoliciesResult listUserPolicies(ListUserPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUserPolicies(request);
+    }
+
+    @SdkInternalApi
+    final ListUserPoliciesResult executeListUserPolicies(ListUserPoliciesRequest listUserPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUserPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5148,9 +6143,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ListUsers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUsers" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListUsersResult listUsers(ListUsersRequest listUsersRequest) {
+    public ListUsersResult listUsers(ListUsersRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUsers(request);
+    }
+
+    @SdkInternalApi
+    final ListUsersResult executeListUsers(ListUsersRequest listUsersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUsersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5196,9 +6200,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @param listVirtualMFADevicesRequest
      * @return Result of the ListVirtualMFADevices operation returned by the service.
      * @sample AmazonIdentityManagement.ListVirtualMFADevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListVirtualMFADevices" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListVirtualMFADevicesResult listVirtualMFADevices(ListVirtualMFADevicesRequest listVirtualMFADevicesRequest) {
+    public ListVirtualMFADevicesResult listVirtualMFADevices(ListVirtualMFADevicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListVirtualMFADevices(request);
+    }
+
+    @SdkInternalApi
+    final ListVirtualMFADevicesResult executeListVirtualMFADevices(ListVirtualMFADevicesRequest listVirtualMFADevicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listVirtualMFADevicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5270,9 +6283,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.PutGroupPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutGroupPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutGroupPolicyResult putGroupPolicy(PutGroupPolicyRequest putGroupPolicyRequest) {
+    public PutGroupPolicyResult putGroupPolicy(PutGroupPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutGroupPolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutGroupPolicyResult executePutGroupPolicy(PutGroupPolicyRequest putGroupPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putGroupPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5346,9 +6368,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.PutRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRolePolicyResult putRolePolicy(PutRolePolicyRequest putRolePolicyRequest) {
+    public PutRolePolicyResult putRolePolicy(PutRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutRolePolicyResult executePutRolePolicy(PutRolePolicyRequest putRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5414,9 +6445,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.PutUserPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutUserPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutUserPolicyResult putUserPolicy(PutUserPolicyRequest putUserPolicyRequest) {
+    public PutUserPolicyResult putUserPolicy(PutUserPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutUserPolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutUserPolicyResult executePutUserPolicy(PutUserPolicyRequest putUserPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putUserPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5464,10 +6504,19 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.RemoveClientIDFromOpenIDConnectProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveClientIDFromOpenIDConnectProvider"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RemoveClientIDFromOpenIDConnectProviderResult removeClientIDFromOpenIDConnectProvider(
+    public RemoveClientIDFromOpenIDConnectProviderResult removeClientIDFromOpenIDConnectProvider(RemoveClientIDFromOpenIDConnectProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveClientIDFromOpenIDConnectProvider(request);
+    }
+
+    @SdkInternalApi
+    final RemoveClientIDFromOpenIDConnectProviderResult executeRemoveClientIDFromOpenIDConnectProvider(
             RemoveClientIDFromOpenIDConnectProviderRequest removeClientIDFromOpenIDConnectProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeClientIDFromOpenIDConnectProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5526,9 +6575,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.RemoveRoleFromInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveRoleFromInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RemoveRoleFromInstanceProfileResult removeRoleFromInstanceProfile(RemoveRoleFromInstanceProfileRequest removeRoleFromInstanceProfileRequest) {
+    public RemoveRoleFromInstanceProfileResult removeRoleFromInstanceProfile(RemoveRoleFromInstanceProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveRoleFromInstanceProfile(request);
+    }
+
+    @SdkInternalApi
+    final RemoveRoleFromInstanceProfileResult executeRemoveRoleFromInstanceProfile(RemoveRoleFromInstanceProfileRequest removeRoleFromInstanceProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeRoleFromInstanceProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5573,9 +6631,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.RemoveUserFromGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveUserFromGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemoveUserFromGroupResult removeUserFromGroup(RemoveUserFromGroupRequest removeUserFromGroupRequest) {
+    public RemoveUserFromGroupResult removeUserFromGroup(RemoveUserFromGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveUserFromGroup(request);
+    }
+
+    @SdkInternalApi
+    final RemoveUserFromGroupResult executeRemoveUserFromGroup(RemoveUserFromGroupRequest removeUserFromGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeUserFromGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5594,6 +6661,59 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
 
             StaxResponseHandler<RemoveUserFromGroupResult> responseHandler = new StaxResponseHandler<RemoveUserFromGroupResult>(
                     new RemoveUserFromGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Resets the password for a service-specific credential. The new password is AWS generated and cryptographically
+     * strong. It cannot be configured by the user. Resetting the password immediately invalidates the previous password
+     * associated with this user.
+     * </p>
+     * 
+     * @param resetServiceSpecificCredentialRequest
+     * @return Result of the ResetServiceSpecificCredential operation returned by the service.
+     * @throws NoSuchEntityException
+     *         The request was rejected because it referenced an entity that does not exist. The error message describes
+     *         the entity.
+     * @sample AmazonIdentityManagement.ResetServiceSpecificCredential
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ResetServiceSpecificCredential"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ResetServiceSpecificCredentialResult resetServiceSpecificCredential(ResetServiceSpecificCredentialRequest request) {
+        request = beforeClientExecution(request);
+        return executeResetServiceSpecificCredential(request);
+    }
+
+    @SdkInternalApi
+    final ResetServiceSpecificCredentialResult executeResetServiceSpecificCredential(ResetServiceSpecificCredentialRequest resetServiceSpecificCredentialRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(resetServiceSpecificCredentialRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ResetServiceSpecificCredentialRequest> request = null;
+        Response<ResetServiceSpecificCredentialResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ResetServiceSpecificCredentialRequestMarshaller().marshall(super.beforeMarshalling(resetServiceSpecificCredentialRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ResetServiceSpecificCredentialResult> responseHandler = new StaxResponseHandler<ResetServiceSpecificCredentialResult>(
+                    new ResetServiceSpecificCredentialResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -5628,9 +6748,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.ResyncMFADevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ResyncMFADevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ResyncMFADeviceResult resyncMFADevice(ResyncMFADeviceRequest resyncMFADeviceRequest) {
+    public ResyncMFADeviceResult resyncMFADevice(ResyncMFADeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeResyncMFADevice(request);
+    }
+
+    @SdkInternalApi
+    final ResyncMFADeviceResult executeResyncMFADevice(ResyncMFADeviceRequest resyncMFADeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resyncMFADeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5686,9 +6815,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.SetDefaultPolicyVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SetDefaultPolicyVersion" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetDefaultPolicyVersionResult setDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) {
+    public SetDefaultPolicyVersionResult setDefaultPolicyVersion(SetDefaultPolicyVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetDefaultPolicyVersion(request);
+    }
+
+    @SdkInternalApi
+    final SetDefaultPolicyVersionResult executeSetDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setDefaultPolicyVersionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5749,9 +6887,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request failed because a provided policy could not be successfully evaluated. An additional detail
      *         message indicates the source of the failure.
      * @sample AmazonIdentityManagement.SimulateCustomPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulateCustomPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SimulateCustomPolicyResult simulateCustomPolicy(SimulateCustomPolicyRequest simulateCustomPolicyRequest) {
+    public SimulateCustomPolicyResult simulateCustomPolicy(SimulateCustomPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeSimulateCustomPolicy(request);
+    }
+
+    @SdkInternalApi
+    final SimulateCustomPolicyResult executeSimulateCustomPolicy(SimulateCustomPolicyRequest simulateCustomPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(simulateCustomPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5825,9 +6972,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request failed because a provided policy could not be successfully evaluated. An additional detail
      *         message indicates the source of the failure.
      * @sample AmazonIdentityManagement.SimulatePrincipalPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulatePrincipalPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SimulatePrincipalPolicyResult simulatePrincipalPolicy(SimulatePrincipalPolicyRequest simulatePrincipalPolicyRequest) {
+    public SimulatePrincipalPolicyResult simulatePrincipalPolicy(SimulatePrincipalPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeSimulatePrincipalPolicy(request);
+    }
+
+    @SdkInternalApi
+    final SimulatePrincipalPolicyResult executeSimulatePrincipalPolicy(SimulatePrincipalPolicyRequest simulatePrincipalPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(simulatePrincipalPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5883,9 +7039,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateAccessKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAccessKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateAccessKeyResult updateAccessKey(UpdateAccessKeyRequest updateAccessKeyRequest) {
+    public UpdateAccessKeyResult updateAccessKey(UpdateAccessKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAccessKey(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAccessKeyResult executeUpdateAccessKey(UpdateAccessKeyRequest updateAccessKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateAccessKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5945,9 +7110,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateAccountPasswordPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAccountPasswordPolicy"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateAccountPasswordPolicyResult updateAccountPasswordPolicy(UpdateAccountPasswordPolicyRequest updateAccountPasswordPolicyRequest) {
+    public UpdateAccountPasswordPolicyResult updateAccountPasswordPolicy(UpdateAccountPasswordPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAccountPasswordPolicy(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAccountPasswordPolicyResult executeUpdateAccountPasswordPolicy(UpdateAccountPasswordPolicyRequest updateAccountPasswordPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateAccountPasswordPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -5998,9 +7172,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateAssumeRolePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAssumeRolePolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateAssumeRolePolicyResult updateAssumeRolePolicy(UpdateAssumeRolePolicyRequest updateAssumeRolePolicyRequest) {
+    public UpdateAssumeRolePolicyResult updateAssumeRolePolicy(UpdateAssumeRolePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAssumeRolePolicy(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAssumeRolePolicyResult executeUpdateAssumeRolePolicy(UpdateAssumeRolePolicyRequest updateAssumeRolePolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateAssumeRolePolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6061,9 +7244,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateGroupResult updateGroup(UpdateGroupRequest updateGroupRequest) {
+    public UpdateGroupResult updateGroup(UpdateGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateGroup(request);
+    }
+
+    @SdkInternalApi
+    final UpdateGroupResult executeUpdateGroup(UpdateGroupRequest updateGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6119,9 +7311,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateLoginProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateLoginProfile" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateLoginProfileResult updateLoginProfile(UpdateLoginProfileRequest updateLoginProfileRequest) {
+    public UpdateLoginProfileResult updateLoginProfile(UpdateLoginProfileRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateLoginProfile(request);
+    }
+
+    @SdkInternalApi
+    final UpdateLoginProfileResult executeUpdateLoginProfile(UpdateLoginProfileRequest updateLoginProfileRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateLoginProfileRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6182,10 +7383,19 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateOpenIDConnectProviderThumbprint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateOpenIDConnectProviderThumbprint"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateOpenIDConnectProviderThumbprintResult updateOpenIDConnectProviderThumbprint(
+    public UpdateOpenIDConnectProviderThumbprintResult updateOpenIDConnectProviderThumbprint(UpdateOpenIDConnectProviderThumbprintRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateOpenIDConnectProviderThumbprint(request);
+    }
+
+    @SdkInternalApi
+    final UpdateOpenIDConnectProviderThumbprintResult executeUpdateOpenIDConnectProviderThumbprint(
             UpdateOpenIDConnectProviderThumbprintRequest updateOpenIDConnectProviderThumbprintRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateOpenIDConnectProviderThumbprintRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6239,9 +7449,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateSAMLProvider
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSAMLProvider" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateSAMLProviderResult updateSAMLProvider(UpdateSAMLProviderRequest updateSAMLProviderRequest) {
+    public UpdateSAMLProviderResult updateSAMLProvider(UpdateSAMLProviderRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateSAMLProvider(request);
+    }
+
+    @SdkInternalApi
+    final UpdateSAMLProviderResult executeUpdateSAMLProvider(UpdateSAMLProviderRequest updateSAMLProviderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateSAMLProviderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6289,9 +7508,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      *         The request was rejected because it referenced an entity that does not exist. The error message describes
      *         the entity.
      * @sample AmazonIdentityManagement.UpdateSSHPublicKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSSHPublicKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateSSHPublicKeyResult updateSSHPublicKey(UpdateSSHPublicKeyRequest updateSSHPublicKeyRequest) {
+    public UpdateSSHPublicKeyResult updateSSHPublicKey(UpdateSSHPublicKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateSSHPublicKey(request);
+    }
+
+    @SdkInternalApi
+    final UpdateSSHPublicKeyResult executeUpdateSSHPublicKey(UpdateSSHPublicKeyRequest updateSSHPublicKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateSSHPublicKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6360,9 +7588,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateServerCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateServerCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UpdateServerCertificateResult updateServerCertificate(UpdateServerCertificateRequest updateServerCertificateRequest) {
+    public UpdateServerCertificateResult updateServerCertificate(UpdateServerCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateServerCertificate(request);
+    }
+
+    @SdkInternalApi
+    final UpdateServerCertificateResult executeUpdateServerCertificate(UpdateServerCertificateRequest updateServerCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateServerCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6381,6 +7618,60 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
 
             StaxResponseHandler<UpdateServerCertificateResult> responseHandler = new StaxResponseHandler<UpdateServerCertificateResult>(
                     new UpdateServerCertificateResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Sets the status of a service-specific credential to <code>Active</code> or <code>Inactive</code>.
+     * Service-specific credentials that are inactive cannot be used for authentication to the service. This action can
+     * be used to disable a user’s service-specific credential as part of a credential rotation work flow.
+     * </p>
+     * 
+     * @param updateServiceSpecificCredentialRequest
+     * @return Result of the UpdateServiceSpecificCredential operation returned by the service.
+     * @throws NoSuchEntityException
+     *         The request was rejected because it referenced an entity that does not exist. The error message describes
+     *         the entity.
+     * @sample AmazonIdentityManagement.UpdateServiceSpecificCredential
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateServiceSpecificCredential"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateServiceSpecificCredentialResult updateServiceSpecificCredential(UpdateServiceSpecificCredentialRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateServiceSpecificCredential(request);
+    }
+
+    @SdkInternalApi
+    final UpdateServiceSpecificCredentialResult executeUpdateServiceSpecificCredential(
+            UpdateServiceSpecificCredentialRequest updateServiceSpecificCredentialRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateServiceSpecificCredentialRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateServiceSpecificCredentialRequest> request = null;
+        Response<UpdateServiceSpecificCredentialResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateServiceSpecificCredentialRequestMarshaller().marshall(super.beforeMarshalling(updateServiceSpecificCredentialRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UpdateServiceSpecificCredentialResult> responseHandler = new StaxResponseHandler<UpdateServiceSpecificCredentialResult>(
+                    new UpdateServiceSpecificCredentialResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -6413,9 +7704,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSigningCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UpdateSigningCertificateResult updateSigningCertificate(UpdateSigningCertificateRequest updateSigningCertificateRequest) {
+    public UpdateSigningCertificateResult updateSigningCertificate(UpdateSigningCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateSigningCertificate(request);
+    }
+
+    @SdkInternalApi
+    final UpdateSigningCertificateResult executeUpdateSigningCertificate(UpdateSigningCertificateRequest updateSigningCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateSigningCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6481,9 +7781,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UpdateUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateUserResult updateUser(UpdateUserRequest updateUserRequest) {
+    public UpdateUserResult updateUser(UpdateUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateUser(request);
+    }
+
+    @SdkInternalApi
+    final UpdateUserResult executeUpdateUser(UpdateUserRequest updateUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6537,9 +7846,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws UnrecognizedPublicKeyEncodingException
      *         The request was rejected because the public key encoding format is unsupported or unrecognized.
      * @sample AmazonIdentityManagement.UploadSSHPublicKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadSSHPublicKey" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UploadSSHPublicKeyResult uploadSSHPublicKey(UploadSSHPublicKeyRequest uploadSSHPublicKeyRequest) {
+    public UploadSSHPublicKeyResult uploadSSHPublicKey(UploadSSHPublicKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUploadSSHPublicKey(request);
+    }
+
+    @SdkInternalApi
+    final UploadSSHPublicKeyResult executeUploadSSHPublicKey(UploadSSHPublicKeyRequest uploadSSHPublicKeyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(uploadSSHPublicKeyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6572,6 +7890,13 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * <p>
      * Uploads a server certificate entity for the AWS account. The server certificate entity includes a public key
      * certificate, a private key, and an optional certificate chain, which should all be PEM-encoded.
+     * </p>
+     * <p>
+     * We recommend that you use <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a> to
+     * provision, manage, and deploy your server certificates. With ACM you can request a certificate, deploy it to AWS
+     * resources, and let ACM handle certificate renewals for you. Certificates provided by ACM are free. For more
+     * information about using ACM, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/">AWS Certificate
+     * Manager User Guide</a>.
      * </p>
      * <p>
      * For more information about working with server certificates, including a list of AWS services that can use the
@@ -6611,9 +7936,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UploadServerCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadServerCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UploadServerCertificateResult uploadServerCertificate(UploadServerCertificateRequest uploadServerCertificateRequest) {
+    public UploadServerCertificateResult uploadServerCertificate(UploadServerCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUploadServerCertificate(request);
+    }
+
+    @SdkInternalApi
+    final UploadServerCertificateResult executeUploadServerCertificate(UploadServerCertificateRequest uploadServerCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(uploadServerCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6684,9 +8018,18 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
      * @throws ServiceFailureException
      *         The request processing has failed because of an unknown error, exception or failure.
      * @sample AmazonIdentityManagement.UploadSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadSigningCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UploadSigningCertificateResult uploadSigningCertificate(UploadSigningCertificateRequest uploadSigningCertificateRequest) {
+    public UploadSigningCertificateResult uploadSigningCertificate(UploadSigningCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUploadSigningCertificate(request);
+    }
+
+    @SdkInternalApi
+    final UploadSigningCertificateResult executeUploadSigningCertificate(UploadSigningCertificateRequest uploadSigningCertificateRequest) {
+
         ExecutionContext executionContext = createExecutionContext(uploadSigningCertificateRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -6768,6 +8111,7 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonIdentityManagementWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -6777,6 +8121,14 @@ public class AmazonIdentityManagementClient extends AmazonWebServiceClient imple
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the DKIM attributes of a verified email address or a domain.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/IdentityDkimAttributes" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IdentityDkimAttributes implements Serializable, Cloneable {
 
     /**
@@ -342,11 +347,11 @@ public class IdentityDkimAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDkimEnabled() != null)
-            sb.append("DkimEnabled: " + getDkimEnabled() + ",");
+            sb.append("DkimEnabled: ").append(getDkimEnabled()).append(",");
         if (getDkimVerificationStatus() != null)
-            sb.append("DkimVerificationStatus: " + getDkimVerificationStatus() + ",");
+            sb.append("DkimVerificationStatus: ").append(getDkimVerificationStatus()).append(",");
         if (getDkimTokens() != null)
-            sb.append("DkimTokens: " + getDkimTokens());
+            sb.append("DkimTokens: ").append(getDkimTokens());
         sb.append("}");
         return sb.toString();
     }
@@ -395,4 +400,5 @@ public class IdentityDkimAttributes implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

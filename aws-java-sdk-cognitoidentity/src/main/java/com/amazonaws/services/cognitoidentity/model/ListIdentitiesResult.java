@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,21 +13,42 @@
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
  * The response to a ListIdentities request.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentities" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
-    /** An identity pool ID in the format REGION:GUID. */
+    /**
+     * <p>
+     * An identity pool ID in the format REGION:GUID.
+     * </p>
+     */
     private String identityPoolId;
-    /** An object containing a set of identities and associated mappings. */
+    /**
+     * <p>
+     * An object containing a set of identities and associated mappings.
+     * </p>
+     */
     private java.util.List<IdentityDescription> identities;
-    /** A pagination token. */
+    /**
+     * <p>
+     * A pagination token.
+     * </p>
+     */
     private String nextToken;
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @param identityPoolId
      *        An identity pool ID in the format REGION:GUID.
@@ -38,7 +59,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @return An identity pool ID in the format REGION:GUID.
      */
@@ -48,7 +71,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An identity pool ID in the format REGION:GUID.
+     * </p>
      * 
      * @param identityPoolId
      *        An identity pool ID in the format REGION:GUID.
@@ -61,7 +86,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An object containing a set of identities and associated mappings.
+     * </p>
      * 
      * @return An object containing a set of identities and associated mappings.
      */
@@ -71,7 +98,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An object containing a set of identities and associated mappings.
+     * </p>
      * 
      * @param identities
      *        An object containing a set of identities and associated mappings.
@@ -87,7 +116,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An object containing a set of identities and associated mappings.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setIdentities(java.util.Collection)} or {@link #withIdentities(java.util.Collection)} if you want to
@@ -110,7 +141,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * An object containing a set of identities and associated mappings.
+     * </p>
      * 
      * @param identities
      *        An object containing a set of identities and associated mappings.
@@ -123,7 +156,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @param nextToken
      *        A pagination token.
@@ -134,7 +169,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @return A pagination token.
      */
@@ -144,7 +181,9 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
      * A pagination token.
+     * </p>
      * 
      * @param nextToken
      *        A pagination token.
@@ -168,11 +207,11 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPoolId() != null)
-            sb.append("IdentityPoolId: " + getIdentityPoolId() + ",");
+            sb.append("IdentityPoolId: ").append(getIdentityPoolId()).append(",");
         if (getIdentities() != null)
-            sb.append("Identities: " + getIdentities() + ",");
+            sb.append("Identities: ").append(getIdentities()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -221,4 +260,5 @@ public class ListIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

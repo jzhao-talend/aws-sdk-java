@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for <code>MergeShards</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/MergeShards" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MergeShardsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -173,11 +179,11 @@ public class MergeShardsRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStreamName() != null)
-            sb.append("StreamName: " + getStreamName() + ",");
+            sb.append("StreamName: ").append(getStreamName()).append(",");
         if (getShardToMerge() != null)
-            sb.append("ShardToMerge: " + getShardToMerge() + ",");
+            sb.append("ShardToMerge: ").append(getShardToMerge()).append(",");
         if (getAdjacentShardToMerge() != null)
-            sb.append("AdjacentShardToMerge: " + getAdjacentShardToMerge());
+            sb.append("AdjacentShardToMerge: ").append(getAdjacentShardToMerge());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +228,5 @@ public class MergeShardsRequest extends com.amazonaws.AmazonWebServiceRequest im
     public MergeShardsRequest clone() {
         return (MergeShardsRequest) super.clone();
     }
+
 }

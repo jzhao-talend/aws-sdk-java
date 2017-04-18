@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.dynamodbv2;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,6 +22,10 @@ import com.amazonaws.services.dynamodbv2.model.*;
 /**
  * Interface for accessing Amazon DynamoDB Streams.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.dynamodbv2.AbstractAmazonDynamoDBStreams} instead.
+ * </p>
+ * <p>
  * <fullname>Amazon DynamoDB</fullname>
  * <p>
  * Amazon DynamoDB Streams provides API actions for accessing streams and processing stream records. To learn more about
@@ -27,33 +33,8 @@ import com.amazonaws.services.dynamodbv2.model.*;
  * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html">Capturing Table Activity with
  * DynamoDB Streams</a> in the Amazon DynamoDB Developer Guide.
  * </p>
- * <p>
- * The following are short descriptions of each low-level DynamoDB Streams action:
- * </p>
- * <ul>
- * <li>
- * <p>
- * <i>DescribeStream</i> - Returns detailed information about a particular stream.
- * </p>
- * </li>
- * <li>
- * <p>
- * <i>GetRecords</i> - Retrieves the stream records from within a shard.
- * </p>
- * </li>
- * <li>
- * <p>
- * <i>GetShardIterator</i> - Returns information on how to retrieve the streams record from a shard with a given shard
- * ID.
- * </p>
- * </li>
- * <li>
- * <p>
- * <i>ListStreams</i> - Returns a list of all the streams associated with the current AWS account and endpoint.
- * </p>
- * </li>
- * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonDynamoDBStreams {
 
     /**
@@ -85,7 +66,11 @@ public interface AmazonDynamoDBStreams {
      *        The endpoint (ex: "streams.dynamodb.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://streams.dynamodb.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -106,7 +91,9 @@ public interface AmazonDynamoDBStreams {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -116,7 +103,7 @@ public interface AmazonDynamoDBStreams {
      * </p>
      * <note>
      * <p>
-     * You can call <i>DescribeStream</i> at a maximum rate of 10 times per second.
+     * You can call <code>DescribeStream</code> at a maximum rate of 10 times per second.
      * </p>
      * </note>
      * <p>
@@ -128,13 +115,15 @@ public interface AmazonDynamoDBStreams {
      * </p>
      * 
      * @param describeStreamRequest
-     *        Represents the input of a <i>DescribeStream</i> operation.
+     *        Represents the input of a <code>DescribeStream</code> operation.
      * @return Result of the DescribeStream operation returned by the service.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent stream.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDBStreams.DescribeStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/DescribeStream"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeStreamResult describeStream(DescribeStreamRequest describeStreamRequest);
 
@@ -155,7 +144,7 @@ public interface AmazonDynamoDBStreams {
      * </note>
      * 
      * @param getRecordsRequest
-     *        Represents the input of a <i>GetRecords</i> operation.
+     *        Represents the input of a <code>GetRecords</code> operation.
      * @return Result of the GetRecords operation returned by the service.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent stream.
@@ -169,7 +158,7 @@ public interface AmazonDynamoDBStreams {
      *         An error occurred on the server side.
      * @throws ExpiredIteratorException
      *         The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator
-     *         expires 15 minutes after it is retrieved using the <i>GetShardIterator</i> action.
+     *         expires 15 minutes after it is retrieved using the <code>GetShardIterator</code> action.
      * @throws TrimmedDataAccessException
      *         The operation attempted to read past the oldest stream record in a shard.</p>
      *         <p>
@@ -185,12 +174,14 @@ public interface AmazonDynamoDBStreams {
      *         </li>
      *         <li>
      *         <p>
-     *         You obtain a shard iterator, but before you use the iterator in a <i>GetRecords</i> request, a stream
-     *         record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a
-     *         record that no longer exists.
+     *         You obtain a shard iterator, but before you use the iterator in a <code>GetRecords</code> request, a
+     *         stream record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access
+     *         a record that no longer exists.
      *         </p>
      *         </li>
      * @sample AmazonDynamoDBStreams.GetRecords
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/GetRecords" target="_top">AWS
+     *      API Documentation</a>
      */
     GetRecordsResult getRecords(GetRecordsRequest getRecordsRequest);
 
@@ -207,7 +198,7 @@ public interface AmazonDynamoDBStreams {
      * </note>
      * 
      * @param getShardIteratorRequest
-     *        Represents the input of a <i>GetShardIterator</i> operation.
+     *        Represents the input of a <code>GetShardIterator</code> operation.
      * @return Result of the GetShardIterator operation returned by the service.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent stream.
@@ -228,34 +219,38 @@ public interface AmazonDynamoDBStreams {
      *         </li>
      *         <li>
      *         <p>
-     *         You obtain a shard iterator, but before you use the iterator in a <i>GetRecords</i> request, a stream
-     *         record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a
-     *         record that no longer exists.
+     *         You obtain a shard iterator, but before you use the iterator in a <code>GetRecords</code> request, a
+     *         stream record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access
+     *         a record that no longer exists.
      *         </p>
      *         </li>
      * @sample AmazonDynamoDBStreams.GetShardIterator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/GetShardIterator"
+     *      target="_top">AWS API Documentation</a>
      */
     GetShardIteratorResult getShardIterator(GetShardIteratorRequest getShardIteratorRequest);
 
     /**
      * <p>
      * Returns an array of stream ARNs associated with the current account and endpoint. If the <code>TableName</code>
-     * parameter is present, then <i>ListStreams</i> will return only the streams ARNs for that table.
+     * parameter is present, then <code>ListStreams</code> will return only the streams ARNs for that table.
      * </p>
      * <note>
      * <p>
-     * You can call <i>ListStreams</i> at a maximum rate of 5 times per second.
+     * You can call <code>ListStreams</code> at a maximum rate of 5 times per second.
      * </p>
      * </note>
      * 
      * @param listStreamsRequest
-     *        Represents the input of a <i>ListStreams</i> operation.
+     *        Represents the input of a <code>ListStreams</code> operation.
      * @return Result of the ListStreams operation returned by the service.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent stream.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDBStreams.ListStreams
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/ListStreams" target="_top">AWS
+     *      API Documentation</a>
      */
     ListStreamsResult listStreams(ListStreamsRequest listStreamsRequest);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,11 +12,32 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
- * The specified S3 bucket does not belong to the S3 region in which the service is running.
+ * The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are
+ * supported:
  * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * IAD/us-east-1
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * PDX/us-west-2
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * DUB/eu-west-1
+ * </p>
+ * </li>
+ * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class S3LocationNotInServiceRegionException extends com.amazonaws.services.elasticbeanstalk.model.AWSElasticBeanstalkException {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeletePolicyVersion" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -36,9 +41,9 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * The policy version to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters that
-     * consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a
-     * string of letters and digits.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a
+     * period '.' and a string of letters and digits.
      * </p>
      * <p>
      * For more information about managed policy versions, see <a
@@ -120,9 +125,9 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * The policy version to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters that
-     * consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a
-     * string of letters and digits.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a
+     * period '.' and a string of letters and digits.
      * </p>
      * <p>
      * For more information about managed policy versions, see <a
@@ -133,7 +138,7 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * @param versionId
      *        The policy version to delete.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally
      *        followed by a period '.' and a string of letters and digits.
      *        </p>
@@ -152,9 +157,9 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * The policy version to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters that
-     * consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a
-     * string of letters and digits.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a
+     * period '.' and a string of letters and digits.
      * </p>
      * <p>
      * For more information about managed policy versions, see <a
@@ -164,7 +169,7 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * 
      * @return The policy version to delete.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *         characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally
      *         followed by a period '.' and a string of letters and digits.
      *         </p>
@@ -183,9 +188,9 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * The policy version to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters that
-     * consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a
-     * string of letters and digits.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a
+     * period '.' and a string of letters and digits.
      * </p>
      * <p>
      * For more information about managed policy versions, see <a
@@ -196,7 +201,7 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
      * @param versionId
      *        The policy version to delete.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally
      *        followed by a period '.' and a string of letters and digits.
      *        </p>
@@ -224,9 +229,9 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPolicyArn() != null)
-            sb.append("PolicyArn: " + getPolicyArn() + ",");
+            sb.append("PolicyArn: ").append(getPolicyArn()).append(",");
         if (getVersionId() != null)
-            sb.append("VersionId: " + getVersionId());
+            sb.append("VersionId: ").append(getVersionId());
         sb.append("}");
         return sb.toString();
     }
@@ -266,4 +271,5 @@ public class DeletePolicyVersionRequest extends com.amazonaws.AmazonWebServiceRe
     public DeletePolicyVersionRequest clone() {
         return (DeletePolicyVersionRequest) super.clone();
     }
+
 }

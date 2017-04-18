@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.cloudformation;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudformation.model.*;
 
 /**
  * Interface for accessing AWS CloudFormation asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.cloudformation.AbstractAmazonCloudFormationAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS CloudFormation</fullname>
  * <p>
@@ -36,11 +42,11 @@ import com.amazonaws.services.cloudformation.model.*;
  * CloudFormation Product Page</a>.
  * </p>
  * <p>
- * Amazon CloudFormation makes use of other AWS products. If you need additional technical information about a specific
- * AWS product, you can find the product's technical documentation at <a
- * href="http://docs.aws.amazon.com/">http://docs.aws.amazon.com/</a>.
+ * Amazon CloudFormation makes use of other AWS products. For additional technical information about a specific AWS
+ * product, see its <a href="http://docs.aws.amazon.com/">technical documentation</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
@@ -58,6 +64,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>CancelUpdateStack</a> action.
      * @return A Java Future containing the result of the CancelUpdateStack operation returned by the service.
      * @sample AmazonCloudFormationAsync.CancelUpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CancelUpdateStack"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CancelUpdateStackResult> cancelUpdateStackAsync(CancelUpdateStackRequest cancelUpdateStackRequest);
 
@@ -80,6 +88,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelUpdateStack operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.CancelUpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CancelUpdateStack"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CancelUpdateStackResult> cancelUpdateStackAsync(CancelUpdateStackRequest cancelUpdateStackRequest,
             com.amazonaws.handlers.AsyncHandler<CancelUpdateStackRequest, CancelUpdateStackResult> asyncHandler);
@@ -104,6 +114,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>ContinueUpdateRollback</a> action.
      * @return A Java Future containing the result of the ContinueUpdateRollback operation returned by the service.
      * @sample AmazonCloudFormationAsync.ContinueUpdateRollback
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ContinueUpdateRollback"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ContinueUpdateRollbackResult> continueUpdateRollbackAsync(ContinueUpdateRollbackRequest continueUpdateRollbackRequest);
 
@@ -131,6 +143,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ContinueUpdateRollback operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ContinueUpdateRollback
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ContinueUpdateRollback"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ContinueUpdateRollbackResult> continueUpdateRollbackAsync(ContinueUpdateRollbackRequest continueUpdateRollbackRequest,
             com.amazonaws.handlers.AsyncHandler<ContinueUpdateRollbackRequest, ContinueUpdateRollbackResult> asyncHandler);
@@ -155,6 +169,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>CreateChangeSet</a> action.
      * @return A Java Future containing the result of the CreateChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsync.CreateChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateChangeSetResult> createChangeSetAsync(CreateChangeSetRequest createChangeSetRequest);
 
@@ -182,6 +198,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.CreateChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateChangeSetResult> createChangeSetAsync(CreateChangeSetRequest createChangeSetRequest,
             com.amazonaws.handlers.AsyncHandler<CreateChangeSetRequest, CreateChangeSetResult> asyncHandler);
@@ -196,6 +214,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>CreateStack</a> action.
      * @return A Java Future containing the result of the CreateStack operation returned by the service.
      * @sample AmazonCloudFormationAsync.CreateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateStackResult> createStackAsync(CreateStackRequest createStackRequest);
 
@@ -213,6 +233,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateStack operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.CreateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateStackResult> createStackAsync(CreateStackRequest createStackRequest,
             com.amazonaws.handlers.AsyncHandler<CreateStackRequest, CreateStackResult> asyncHandler);
@@ -229,6 +251,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>DeleteChangeSet</a> action.
      * @return A Java Future containing the result of the DeleteChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsync.DeleteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteChangeSetResult> deleteChangeSetAsync(DeleteChangeSetRequest deleteChangeSetRequest);
 
@@ -248,6 +272,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DeleteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteChangeSetResult> deleteChangeSetAsync(DeleteChangeSetRequest deleteChangeSetRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteChangeSetRequest, DeleteChangeSetResult> asyncHandler);
@@ -262,6 +288,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>DeleteStack</a> action.
      * @return A Java Future containing the result of the DeleteStack operation returned by the service.
      * @sample AmazonCloudFormationAsync.DeleteStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteStackResult> deleteStackAsync(DeleteStackRequest deleteStackRequest);
 
@@ -279,6 +307,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteStack operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DeleteStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteStackResult> deleteStackAsync(DeleteStackRequest deleteStackRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteStackRequest, DeleteStackResult> asyncHandler);
@@ -293,6 +323,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>DescribeAccountLimits</a> action.
      * @return A Java Future containing the result of the DescribeAccountLimits operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeAccountLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeAccountLimits"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(DescribeAccountLimitsRequest describeAccountLimitsRequest);
 
@@ -310,6 +342,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAccountLimits operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeAccountLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeAccountLimits"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(DescribeAccountLimitsRequest describeAccountLimitsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeAccountLimitsRequest, DescribeAccountLimitsResult> asyncHandler);
@@ -326,6 +360,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>DescribeChangeSet</a> action.
      * @return A Java Future containing the result of the DescribeChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeChangeSetResult> describeChangeSetAsync(DescribeChangeSetRequest describeChangeSetRequest);
 
@@ -345,6 +381,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeChangeSetResult> describeChangeSetAsync(DescribeChangeSetRequest describeChangeSetRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeChangeSetRequest, DescribeChangeSetResult> asyncHandler);
@@ -367,6 +405,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>DescribeStackEvents</a> action.
      * @return A Java Future containing the result of the DescribeStackEvents operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeStackEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackEvents"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackEventsResult> describeStackEventsAsync(DescribeStackEventsRequest describeStackEventsRequest);
 
@@ -392,6 +432,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStackEvents operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeStackEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackEvents"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackEventsResult> describeStackEventsAsync(DescribeStackEventsRequest describeStackEventsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeStackEventsRequest, DescribeStackEventsResult> asyncHandler);
@@ -409,6 +451,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>DescribeStackResource</a> action.
      * @return A Java Future containing the result of the DescribeStackResource operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeStackResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackResourceResult> describeStackResourceAsync(DescribeStackResourceRequest describeStackResourceRequest);
 
@@ -429,6 +473,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStackResource operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeStackResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackResourceResult> describeStackResourceAsync(DescribeStackResourceRequest describeStackResourceRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeStackResourceRequest, DescribeStackResourceResult> asyncHandler);
@@ -466,6 +512,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>DescribeStackResources</a> action.
      * @return A Java Future containing the result of the DescribeStackResources operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackResourcesResult> describeStackResourcesAsync(DescribeStackResourcesRequest describeStackResourcesRequest);
 
@@ -506,6 +554,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStackResources operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStackResourcesResult> describeStackResourcesAsync(DescribeStackResourcesRequest describeStackResourcesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeStackResourcesRequest, DescribeStackResourcesResult> asyncHandler);
@@ -525,6 +575,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>DescribeStacks</a> action.
      * @return A Java Future containing the result of the DescribeStacks operation returned by the service.
      * @sample AmazonCloudFormationAsync.DescribeStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStacks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStacksResult> describeStacksAsync(DescribeStacksRequest describeStacksRequest);
 
@@ -547,6 +599,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStacks operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.DescribeStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStacks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStacksResult> describeStacksAsync(DescribeStacksRequest describeStacksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeStacksRequest, DescribeStacksResult> asyncHandler);
@@ -576,6 +630,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for an <a>EstimateTemplateCost</a> action.
      * @return A Java Future containing the result of the EstimateTemplateCost operation returned by the service.
      * @sample AmazonCloudFormationAsync.EstimateTemplateCost
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/EstimateTemplateCost"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EstimateTemplateCostResult> estimateTemplateCostAsync(EstimateTemplateCostRequest estimateTemplateCostRequest);
 
@@ -593,6 +649,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EstimateTemplateCost operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.EstimateTemplateCost
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/EstimateTemplateCost"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EstimateTemplateCostResult> estimateTemplateCostAsync(EstimateTemplateCostRequest estimateTemplateCostRequest,
             com.amazonaws.handlers.AsyncHandler<EstimateTemplateCostRequest, EstimateTemplateCostResult> asyncHandler);
@@ -631,6 +689,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>ExecuteChangeSet</a> action.
      * @return A Java Future containing the result of the ExecuteChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsync.ExecuteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ExecuteChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ExecuteChangeSetResult> executeChangeSetAsync(ExecuteChangeSetRequest executeChangeSetRequest);
 
@@ -657,6 +717,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ExecuteChangeSet operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ExecuteChangeSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ExecuteChangeSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ExecuteChangeSetResult> executeChangeSetAsync(ExecuteChangeSetRequest executeChangeSetRequest,
             com.amazonaws.handlers.AsyncHandler<ExecuteChangeSetRequest, ExecuteChangeSetResult> asyncHandler);
@@ -670,6 +732,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>GetStackPolicy</a> action.
      * @return A Java Future containing the result of the GetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormationAsync.GetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<GetStackPolicyResult> getStackPolicyAsync(GetStackPolicyRequest getStackPolicyRequest);
 
@@ -686,6 +750,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.GetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<GetStackPolicyResult> getStackPolicyAsync(GetStackPolicyRequest getStackPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<GetStackPolicyRequest, GetStackPolicyResult> asyncHandler);
@@ -707,6 +773,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for a <a>GetTemplate</a> action.
      * @return A Java Future containing the result of the GetTemplate operation returned by the service.
      * @sample AmazonCloudFormationAsync.GetTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetTemplateResult> getTemplateAsync(GetTemplateRequest getTemplateRequest);
 
@@ -731,6 +799,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetTemplate operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.GetTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplate" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetTemplateResult> getTemplateAsync(GetTemplateRequest getTemplateRequest,
             com.amazonaws.handlers.AsyncHandler<GetTemplateRequest, GetTemplateResult> asyncHandler);
@@ -754,6 +824,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>GetTemplateSummary</a> action.
      * @return A Java Future containing the result of the GetTemplateSummary operation returned by the service.
      * @sample AmazonCloudFormationAsync.GetTemplateSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetTemplateSummaryResult> getTemplateSummaryAsync(GetTemplateSummaryRequest getTemplateSummaryRequest);
 
@@ -780,6 +852,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetTemplateSummary operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.GetTemplateSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetTemplateSummaryResult> getTemplateSummaryAsync(GetTemplateSummaryRequest getTemplateSummaryRequest,
             com.amazonaws.handlers.AsyncHandler<GetTemplateSummaryRequest, GetTemplateSummaryResult> asyncHandler);
@@ -809,6 +883,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>ListChangeSets</a> action.
      * @return A Java Future containing the result of the ListChangeSets operation returned by the service.
      * @sample AmazonCloudFormationAsync.ListChangeSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListChangeSets" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListChangeSetsResult> listChangeSetsAsync(ListChangeSetsRequest listChangeSetsRequest);
 
@@ -826,6 +902,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListChangeSets operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ListChangeSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListChangeSets" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListChangeSetsResult> listChangeSetsAsync(ListChangeSetsRequest listChangeSetsRequest,
             com.amazonaws.handlers.AsyncHandler<ListChangeSetsRequest, ListChangeSetsResult> asyncHandler);
@@ -838,14 +916,16 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <code>Fn::ImportValue</code> </a> function.
      * </p>
      * <p>
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
-     * AWS CloudFormation Export Stack Output Values</a>.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html"> AWS
+     * CloudFormation Export Stack Output Values</a>.
      * </p>
      * 
      * @param listExportsRequest
      * @return A Java Future containing the result of the ListExports operation returned by the service.
      * @sample AmazonCloudFormationAsync.ListExports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListExports" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListExportsResult> listExportsAsync(ListExportsRequest listExportsRequest);
 
@@ -857,9 +937,9 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <code>Fn::ImportValue</code> </a> function.
      * </p>
      * <p>
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
-     * AWS CloudFormation Export Stack Output Values</a>.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html"> AWS
+     * CloudFormation Export Stack Output Values</a>.
      * </p>
      * 
      * @param listExportsRequest
@@ -869,9 +949,56 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListExports operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ListExports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListExports" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListExportsResult> listExportsAsync(ListExportsRequest listExportsRequest,
             com.amazonaws.handlers.AsyncHandler<ListExportsRequest, ListExportsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first
+     * use this action to see which stacks are using it. To see the exported output values in your account, see
+     * <a>ListExports</a>.
+     * </p>
+     * <p>
+     * For more information about importing an exported output value, see the <a href=
+     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
+     * <code>Fn::ImportValue</code> </a> function.
+     * </p>
+     * 
+     * @param listImportsRequest
+     * @return A Java Future containing the result of the ListImports operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListImports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListImports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListImportsResult> listImportsAsync(ListImportsRequest listImportsRequest);
+
+    /**
+     * <p>
+     * Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first
+     * use this action to see which stacks are using it. To see the exported output values in your account, see
+     * <a>ListExports</a>.
+     * </p>
+     * <p>
+     * For more information about importing an exported output value, see the <a href=
+     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">
+     * <code>Fn::ImportValue</code> </a> function.
+     * </p>
+     * 
+     * @param listImportsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListImports operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListImports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListImports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListImportsResult> listImportsAsync(ListImportsRequest listImportsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListImportsRequest, ListImportsResult> asyncHandler);
 
     /**
      * <p>
@@ -886,6 +1013,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>ListStackResource</a> action.
      * @return A Java Future containing the result of the ListStackResources operation returned by the service.
      * @sample AmazonCloudFormationAsync.ListStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListStackResourcesResult> listStackResourcesAsync(ListStackResourcesRequest listStackResourcesRequest);
 
@@ -906,6 +1035,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListStackResources operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ListStackResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackResources"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListStackResourcesResult> listStackResourcesAsync(ListStackResourcesRequest listStackResourcesRequest,
             com.amazonaws.handlers.AsyncHandler<ListStackResourcesRequest, ListStackResourcesResult> asyncHandler);
@@ -922,6 +1053,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>ListStacks</a> action.
      * @return A Java Future containing the result of the ListStacks operation returned by the service.
      * @sample AmazonCloudFormationAsync.ListStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStacks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListStacksResult> listStacksAsync(ListStacksRequest listStacksRequest);
 
@@ -941,6 +1074,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListStacks operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ListStacks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStacks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListStacksResult> listStacksAsync(ListStacksRequest listStacksRequest,
             com.amazonaws.handlers.AsyncHandler<ListStacksRequest, ListStacksResult> asyncHandler);
@@ -968,6 +1103,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>SetStackPolicy</a> action.
      * @return A Java Future containing the result of the SetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormationAsync.SetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetStackPolicyResult> setStackPolicyAsync(SetStackPolicyRequest setStackPolicyRequest);
 
@@ -984,6 +1121,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetStackPolicy operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.SetStackPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetStackPolicy" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetStackPolicyResult> setStackPolicyAsync(SetStackPolicyRequest setStackPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<SetStackPolicyRequest, SetStackPolicyResult> asyncHandler);
@@ -1001,6 +1140,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for the <a>SignalResource</a> action.
      * @return A Java Future containing the result of the SignalResource operation returned by the service.
      * @sample AmazonCloudFormationAsync.SignalResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SignalResource" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SignalResourceResult> signalResourceAsync(SignalResourceRequest signalResourceRequest);
 
@@ -1021,6 +1162,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SignalResource operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.SignalResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SignalResource" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SignalResourceResult> signalResourceAsync(SignalResourceRequest signalResourceRequest,
             com.amazonaws.handlers.AsyncHandler<SignalResourceRequest, SignalResourceResult> asyncHandler);
@@ -1044,6 +1187,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for an <a>UpdateStack</a> action.
      * @return A Java Future containing the result of the UpdateStack operation returned by the service.
      * @sample AmazonCloudFormationAsync.UpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateStackResult> updateStackAsync(UpdateStackRequest updateStackRequest);
 
@@ -1070,6 +1215,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateStack operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.UpdateStack
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStack" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateStackResult> updateStackAsync(UpdateStackRequest updateStackRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateStackRequest, UpdateStackResult> asyncHandler);
@@ -1085,6 +1232,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        The input for <a>ValidateTemplate</a> action.
      * @return A Java Future containing the result of the ValidateTemplate operation returned by the service.
      * @sample AmazonCloudFormationAsync.ValidateTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ValidateTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ValidateTemplateResult> validateTemplateAsync(ValidateTemplateRequest validateTemplateRequest);
 
@@ -1103,6 +1252,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ValidateTemplate operation returned by the service.
      * @sample AmazonCloudFormationAsyncHandler.ValidateTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ValidateTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ValidateTemplateResult> validateTemplateAsync(ValidateTemplateRequest validateTemplateRequest,
             com.amazonaws.handlers.AsyncHandler<ValidateTemplateRequest, ValidateTemplateResult> asyncHandler);

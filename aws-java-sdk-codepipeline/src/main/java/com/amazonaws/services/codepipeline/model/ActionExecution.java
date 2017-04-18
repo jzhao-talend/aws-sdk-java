@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents information about the run of an action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ActionExecution" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ActionExecution implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActionExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -502,23 +509,23 @@ public class ActionExecution implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getSummary() != null)
-            sb.append("Summary: " + getSummary() + ",");
+            sb.append("Summary: ").append(getSummary()).append(",");
         if (getLastStatusChange() != null)
-            sb.append("LastStatusChange: " + getLastStatusChange() + ",");
+            sb.append("LastStatusChange: ").append(getLastStatusChange()).append(",");
         if (getToken() != null)
-            sb.append("Token: " + getToken() + ",");
+            sb.append("Token: ").append(getToken()).append(",");
         if (getLastUpdatedBy() != null)
-            sb.append("LastUpdatedBy: " + getLastUpdatedBy() + ",");
+            sb.append("LastUpdatedBy: ").append(getLastUpdatedBy()).append(",");
         if (getExternalExecutionId() != null)
-            sb.append("ExternalExecutionId: " + getExternalExecutionId() + ",");
+            sb.append("ExternalExecutionId: ").append(getExternalExecutionId()).append(",");
         if (getExternalExecutionUrl() != null)
-            sb.append("ExternalExecutionUrl: " + getExternalExecutionUrl() + ",");
+            sb.append("ExternalExecutionUrl: ").append(getExternalExecutionUrl()).append(",");
         if (getPercentComplete() != null)
-            sb.append("PercentComplete: " + getPercentComplete() + ",");
+            sb.append("PercentComplete: ").append(getPercentComplete()).append(",");
         if (getErrorDetails() != null)
-            sb.append("ErrorDetails: " + getErrorDetails());
+            sb.append("ErrorDetails: ").append(getErrorDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -596,5 +603,11 @@ public class ActionExecution implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.ActionExecutionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

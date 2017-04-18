@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -22,7 +23,11 @@ import java.io.Serializable;
  * This data type is used by the return parameter of <code> <a>SimulateCustomPolicy</a> </code> and
  * <code> <a>SimulatePrincipalPolicy</a> </code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/EvaluationResult" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EvaluationResult implements Serializable, Cloneable {
 
     /**
@@ -61,6 +66,13 @@ public class EvaluationResult implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> missingContextValues;
+    /**
+     * <p>
+     * A structure that details how AWS Organizations and its service control policies affect the results of the
+     * simulation. Only applies if the simulated user's account is part of an organization.
+     * </p>
+     */
+    private OrganizationsDecisionDetail organizationsDecisionDetail;
     /**
      * <p>
      * Additional details about the results of the evaluation decision. When there are both IAM policies and resource
@@ -436,6 +448,52 @@ public class EvaluationResult implements Serializable, Cloneable {
 
     /**
      * <p>
+     * A structure that details how AWS Organizations and its service control policies affect the results of the
+     * simulation. Only applies if the simulated user's account is part of an organization.
+     * </p>
+     * 
+     * @param organizationsDecisionDetail
+     *        A structure that details how AWS Organizations and its service control policies affect the results of the
+     *        simulation. Only applies if the simulated user's account is part of an organization.
+     */
+
+    public void setOrganizationsDecisionDetail(OrganizationsDecisionDetail organizationsDecisionDetail) {
+        this.organizationsDecisionDetail = organizationsDecisionDetail;
+    }
+
+    /**
+     * <p>
+     * A structure that details how AWS Organizations and its service control policies affect the results of the
+     * simulation. Only applies if the simulated user's account is part of an organization.
+     * </p>
+     * 
+     * @return A structure that details how AWS Organizations and its service control policies affect the results of the
+     *         simulation. Only applies if the simulated user's account is part of an organization.
+     */
+
+    public OrganizationsDecisionDetail getOrganizationsDecisionDetail() {
+        return this.organizationsDecisionDetail;
+    }
+
+    /**
+     * <p>
+     * A structure that details how AWS Organizations and its service control policies affect the results of the
+     * simulation. Only applies if the simulated user's account is part of an organization.
+     * </p>
+     * 
+     * @param organizationsDecisionDetail
+     *        A structure that details how AWS Organizations and its service control policies affect the results of the
+     *        simulation. Only applies if the simulated user's account is part of an organization.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EvaluationResult withOrganizationsDecisionDetail(OrganizationsDecisionDetail organizationsDecisionDetail) {
+        setOrganizationsDecisionDetail(organizationsDecisionDetail);
+        return this;
+    }
+
+    /**
+     * <p>
      * Additional details about the results of the evaluation decision. When there are both IAM policies and resource
      * policies, this parameter explains how each set of policies contributes to the final evaluation decision. When
      * simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must
@@ -613,19 +671,21 @@ public class EvaluationResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEvalActionName() != null)
-            sb.append("EvalActionName: " + getEvalActionName() + ",");
+            sb.append("EvalActionName: ").append(getEvalActionName()).append(",");
         if (getEvalResourceName() != null)
-            sb.append("EvalResourceName: " + getEvalResourceName() + ",");
+            sb.append("EvalResourceName: ").append(getEvalResourceName()).append(",");
         if (getEvalDecision() != null)
-            sb.append("EvalDecision: " + getEvalDecision() + ",");
+            sb.append("EvalDecision: ").append(getEvalDecision()).append(",");
         if (getMatchedStatements() != null)
-            sb.append("MatchedStatements: " + getMatchedStatements() + ",");
+            sb.append("MatchedStatements: ").append(getMatchedStatements()).append(",");
         if (getMissingContextValues() != null)
-            sb.append("MissingContextValues: " + getMissingContextValues() + ",");
+            sb.append("MissingContextValues: ").append(getMissingContextValues()).append(",");
+        if (getOrganizationsDecisionDetail() != null)
+            sb.append("OrganizationsDecisionDetail: ").append(getOrganizationsDecisionDetail()).append(",");
         if (getEvalDecisionDetails() != null)
-            sb.append("EvalDecisionDetails: " + getEvalDecisionDetails() + ",");
+            sb.append("EvalDecisionDetails: ").append(getEvalDecisionDetails()).append(",");
         if (getResourceSpecificResults() != null)
-            sb.append("ResourceSpecificResults: " + getResourceSpecificResults());
+            sb.append("ResourceSpecificResults: ").append(getResourceSpecificResults());
         sb.append("}");
         return sb.toString();
     }
@@ -660,6 +720,10 @@ public class EvaluationResult implements Serializable, Cloneable {
             return false;
         if (other.getMissingContextValues() != null && other.getMissingContextValues().equals(this.getMissingContextValues()) == false)
             return false;
+        if (other.getOrganizationsDecisionDetail() == null ^ this.getOrganizationsDecisionDetail() == null)
+            return false;
+        if (other.getOrganizationsDecisionDetail() != null && other.getOrganizationsDecisionDetail().equals(this.getOrganizationsDecisionDetail()) == false)
+            return false;
         if (other.getEvalDecisionDetails() == null ^ this.getEvalDecisionDetails() == null)
             return false;
         if (other.getEvalDecisionDetails() != null && other.getEvalDecisionDetails().equals(this.getEvalDecisionDetails()) == false)
@@ -681,6 +745,7 @@ public class EvaluationResult implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEvalDecision() == null) ? 0 : getEvalDecision().hashCode());
         hashCode = prime * hashCode + ((getMatchedStatements() == null) ? 0 : getMatchedStatements().hashCode());
         hashCode = prime * hashCode + ((getMissingContextValues() == null) ? 0 : getMissingContextValues().hashCode());
+        hashCode = prime * hashCode + ((getOrganizationsDecisionDetail() == null) ? 0 : getOrganizationsDecisionDetail().hashCode());
         hashCode = prime * hashCode + ((getEvalDecisionDetails() == null) ? 0 : getEvalDecisionDetails().hashCode());
         hashCode = prime * hashCode + ((getResourceSpecificResults() == null) ? 0 : getResourceSpecificResults().hashCode());
         return hashCode;
@@ -694,4 +759,5 @@ public class EvaluationResult implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

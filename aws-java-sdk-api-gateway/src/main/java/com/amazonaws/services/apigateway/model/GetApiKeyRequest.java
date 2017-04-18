@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * A request to get information about the current <a>ApiKey</a> resource.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetApiKeyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -148,9 +151,9 @@ public class GetApiKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApiKey() != null)
-            sb.append("ApiKey: " + getApiKey() + ",");
+            sb.append("ApiKey: ").append(getApiKey()).append(",");
         if (getIncludeValue() != null)
-            sb.append("IncludeValue: " + getIncludeValue());
+            sb.append("IncludeValue: ").append(getIncludeValue());
         sb.append("}");
         return sb.toString();
     }
@@ -190,4 +193,5 @@ public class GetApiKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public GetApiKeyRequest clone() {
         return (GetApiKeyRequest) super.clone();
     }
+
 }

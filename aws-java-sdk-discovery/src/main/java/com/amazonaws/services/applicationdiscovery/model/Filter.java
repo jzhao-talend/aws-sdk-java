@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,205 +13,33 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A filter that can use conditional operators.
  * </p>
+ * <p>
+ * For more information about filters, see <a
+ * href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html">Querying
+ * Discovered Configuration Items</a>.
+ * </p>
  */
-public class Filter implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Filter implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration items.
+     * The name of the filter.
      * </p>
-     * <p class="title">
-     * <b>Server</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentid</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Process</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>process.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Connection</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>connection.sourceIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationPort</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.agentId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
      */
     private String name;
     /**
      * <p>
-     * A string value that you want to filter on. For example, if you choose the
-     * <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     * A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter
+     * name, you could specify <code>Ubuntu</code> for the value.
      * </p>
      */
     private java.util.List<String> values;
@@ -227,375 +55,11 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration items.
+     * The name of the filter.
      * </p>
-     * <p class="title">
-     * <b>Server</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentid</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Process</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>process.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Connection</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>connection.sourceIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationPort</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.agentId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param name
-     *        The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration
-     *        items.</p>
-     *        <p class="title">
-     *        <b>Server</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>server.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.agentid</code>
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration
-     *        items.
-     *        </p>
-     *        <p class="title">
-     *        <b>Process</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>process.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>process.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>process.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.agentId</code>
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration
-     *        items.
-     *        </p>
-     *        <p class="title">
-     *        <b>Connection</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>connection.sourceIp</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>connection.destinationIp</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>connection.destinationPort</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.agentId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.agentId</code>
-     *        </p>
-     *        </li>
+     *        The name of the filter.
      */
 
     public void setName(String name) {
@@ -604,374 +68,10 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration items.
+     * The name of the filter.
      * </p>
-     * <p class="title">
-     * <b>Server</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentid</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Process</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>process.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Connection</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>connection.sourceIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationPort</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.agentId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
      * 
-     * @return The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration
-     *         items.</p>
-     *         <p class="title">
-     *         <b>Server</b>
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>server.hostName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.osName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.osVersion</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.configurationid</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.agentid</code>
-     *         </p>
-     *         </li>
-     *         </ul>
-     *         <p>
-     *         The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration
-     *         items.
-     *         </p>
-     *         <p class="title">
-     *         <b>Process</b>
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>process.configurationid</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>process.name</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>process.commandLine</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.configurationid</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.hostName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.osName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.osVersion</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>server.agentId</code>
-     *         </p>
-     *         </li>
-     *         </ul>
-     *         <p>
-     *         The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration
-     *         items.
-     *         </p>
-     *         <p class="title">
-     *         <b>Connection</b>
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>connection.sourceIp</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>connection.destinationIp</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>connection.destinationPort</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceProcess.configurationId</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceProcess.name</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceProcess.commandLine</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationProcess.configurationId</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationProcess.name</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationProcess.commandLine</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceServer.configurationId</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceServer.hostName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceServer.osName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceServer.osVersion</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>sourceServer.agentId</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationServer.configurationId</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationServer.hostName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationServer.osName</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationServer.osVersion</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>destinationServer.agentId</code>
-     *         </p>
-     *         </li>
+     * @return The name of the filter.
      */
 
     public String getName() {
@@ -980,375 +80,11 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration items.
+     * The name of the filter.
      * </p>
-     * <p class="title">
-     * <b>Server</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentid</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Process</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>process.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>process.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.configurationid</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>server.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration items.
-     * </p>
-     * <p class="title">
-     * <b>Connection</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>connection.sourceIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationIp</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>connection.destinationPort</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.name</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationProcess.commandLine</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>sourceServer.agentId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.configurationId</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.hostName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osName</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.osVersion</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>destinationServer.agentId</code>
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param name
-     *        The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration
-     *        items.</p>
-     *        <p class="title">
-     *        <b>Server</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>server.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.agentid</code>
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration
-     *        items.
-     *        </p>
-     *        <p class="title">
-     *        <b>Process</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>process.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>process.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>process.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.configurationid</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>server.agentId</code>
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration
-     *        items.
-     *        </p>
-     *        <p class="title">
-     *        <b>Connection</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>connection.sourceIp</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>connection.destinationIp</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>connection.destinationPort</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceProcess.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.name</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationProcess.commandLine</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>sourceServer.agentId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.configurationId</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.hostName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.osName</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.osVersion</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>destinationServer.agentId</code>
-     *        </p>
-     *        </li>
+     *        The name of the filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1359,11 +95,11 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string value that you want to filter on. For example, if you choose the
-     * <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     * A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter
+     * name, you could specify <code>Ubuntu</code> for the value.
      * </p>
      * 
-     * @return A string value that you want to filter on. For example, if you choose the
+     * @return A string value on which to filter. For example, if you choose the
      *         <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the
      *         value.
      */
@@ -1374,13 +110,13 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string value that you want to filter on. For example, if you choose the
-     * <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     * A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter
+     * name, you could specify <code>Ubuntu</code> for the value.
      * </p>
      * 
      * @param values
-     *        A string value that you want to filter on. For example, if you choose the
-     *        <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     *        A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code>
+     *        filter name, you could specify <code>Ubuntu</code> for the value.
      */
 
     public void setValues(java.util.Collection<String> values) {
@@ -1394,8 +130,8 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string value that you want to filter on. For example, if you choose the
-     * <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     * A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter
+     * name, you could specify <code>Ubuntu</code> for the value.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1404,8 +140,8 @@ public class Filter implements Serializable, Cloneable {
      * </p>
      * 
      * @param values
-     *        A string value that you want to filter on. For example, if you choose the
-     *        <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     *        A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code>
+     *        filter name, you could specify <code>Ubuntu</code> for the value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1421,13 +157,13 @@ public class Filter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A string value that you want to filter on. For example, if you choose the
-     * <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     * A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter
+     * name, you could specify <code>Ubuntu</code> for the value.
      * </p>
      * 
      * @param values
-     *        A string value that you want to filter on. For example, if you choose the
-     *        <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.
+     *        A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code>
+     *        filter name, you could specify <code>Ubuntu</code> for the value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1509,11 +245,11 @@ public class Filter implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getValues() != null)
-            sb.append("Values: " + getValues() + ",");
+            sb.append("Values: ").append(getValues()).append(",");
         if (getCondition() != null)
-            sb.append("Condition: " + getCondition());
+            sb.append("Condition: ").append(getCondition());
         sb.append("}");
         return sb.toString();
     }
@@ -1561,5 +297,11 @@ public class Filter implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationdiscovery.model.transform.FilterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

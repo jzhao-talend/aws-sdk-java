@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,34 +13,38 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The name of a tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.
+ * The tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.
  * </p>
  */
-public class TagFilter implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TagFilter implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A name of a tag filter.
+     * A name of the tag filter.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Values of a tag filter.
+     * Values for the tag filter.
      * </p>
      */
     private java.util.List<String> values;
 
     /**
      * <p>
-     * A name of a tag filter.
+     * A name of the tag filter.
      * </p>
      * 
      * @param name
-     *        A name of a tag filter.
+     *        A name of the tag filter.
      */
 
     public void setName(String name) {
@@ -49,10 +53,10 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A name of a tag filter.
+     * A name of the tag filter.
      * </p>
      * 
-     * @return A name of a tag filter.
+     * @return A name of the tag filter.
      */
 
     public String getName() {
@@ -61,11 +65,11 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A name of a tag filter.
+     * A name of the tag filter.
      * </p>
      * 
      * @param name
-     *        A name of a tag filter.
+     *        A name of the tag filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -76,10 +80,10 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Values of a tag filter.
+     * Values for the tag filter.
      * </p>
      * 
-     * @return Values of a tag filter.
+     * @return Values for the tag filter.
      */
 
     public java.util.List<String> getValues() {
@@ -88,11 +92,11 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Values of a tag filter.
+     * Values for the tag filter.
      * </p>
      * 
      * @param values
-     *        Values of a tag filter.
+     *        Values for the tag filter.
      */
 
     public void setValues(java.util.Collection<String> values) {
@@ -106,7 +110,7 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Values of a tag filter.
+     * Values for the tag filter.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -115,7 +119,7 @@ public class TagFilter implements Serializable, Cloneable {
      * </p>
      * 
      * @param values
-     *        Values of a tag filter.
+     *        Values for the tag filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -131,11 +135,11 @@ public class TagFilter implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Values of a tag filter.
+     * Values for the tag filter.
      * </p>
      * 
      * @param values
-     *        Values of a tag filter.
+     *        Values for the tag filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,9 +160,9 @@ public class TagFilter implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getValues() != null)
-            sb.append("Values: " + getValues());
+            sb.append("Values: ").append(getValues());
         sb.append("}");
         return sb.toString();
     }
@@ -201,5 +205,11 @@ public class TagFilter implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationdiscovery.model.transform.TagFilterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

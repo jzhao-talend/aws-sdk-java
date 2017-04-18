@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Provides options for defining a job.
  * </p>
  */
-public class JobParameters implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobParameters implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -72,6 +76,13 @@ public class JobParameters implements Serializable, Cloneable {
      * </p>
      */
     private String retrievalByteRange;
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     */
+    private String tier;
     /**
      * <p>
      * Input parameters used for range inventory retrieval.
@@ -448,6 +459,52 @@ public class JobParameters implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @param tier
+     *        The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *        <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     */
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @return The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *         <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     */
+
+    public String getTier() {
+        return this.tier;
+    }
+
+    /**
+     * <p>
+     * The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     * <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * </p>
+     * 
+     * @param tier
+     *        The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>,
+     *        <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobParameters withTier(String tier) {
+        setTier(tier);
+        return this;
+    }
+
+    /**
+     * <p>
      * Input parameters used for range inventory retrieval.
      * </p>
      * 
@@ -498,19 +555,21 @@ public class JobParameters implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFormat() != null)
-            sb.append("Format: " + getFormat() + ",");
+            sb.append("Format: ").append(getFormat()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getArchiveId() != null)
-            sb.append("ArchiveId: " + getArchiveId() + ",");
+            sb.append("ArchiveId: ").append(getArchiveId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getSNSTopic() != null)
-            sb.append("SNSTopic: " + getSNSTopic() + ",");
+            sb.append("SNSTopic: ").append(getSNSTopic()).append(",");
         if (getRetrievalByteRange() != null)
-            sb.append("RetrievalByteRange: " + getRetrievalByteRange() + ",");
+            sb.append("RetrievalByteRange: ").append(getRetrievalByteRange()).append(",");
+        if (getTier() != null)
+            sb.append("Tier: ").append(getTier()).append(",");
         if (getInventoryRetrievalParameters() != null)
-            sb.append("InventoryRetrievalParameters: " + getInventoryRetrievalParameters());
+            sb.append("InventoryRetrievalParameters: ").append(getInventoryRetrievalParameters());
         sb.append("}");
         return sb.toString();
     }
@@ -549,6 +608,10 @@ public class JobParameters implements Serializable, Cloneable {
             return false;
         if (other.getRetrievalByteRange() != null && other.getRetrievalByteRange().equals(this.getRetrievalByteRange()) == false)
             return false;
+        if (other.getTier() == null ^ this.getTier() == null)
+            return false;
+        if (other.getTier() != null && other.getTier().equals(this.getTier()) == false)
+            return false;
         if (other.getInventoryRetrievalParameters() == null ^ this.getInventoryRetrievalParameters() == null)
             return false;
         if (other.getInventoryRetrievalParameters() != null && other.getInventoryRetrievalParameters().equals(this.getInventoryRetrievalParameters()) == false)
@@ -567,6 +630,7 @@ public class JobParameters implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getSNSTopic() == null) ? 0 : getSNSTopic().hashCode());
         hashCode = prime * hashCode + ((getRetrievalByteRange() == null) ? 0 : getRetrievalByteRange().hashCode());
+        hashCode = prime * hashCode + ((getTier() == null) ? 0 : getTier().hashCode());
         hashCode = prime * hashCode + ((getInventoryRetrievalParameters() == null) ? 0 : getInventoryRetrievalParameters().hashCode());
         return hashCode;
     }
@@ -578,5 +642,11 @@ public class JobParameters implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.glacier.model.transform.JobParametersMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

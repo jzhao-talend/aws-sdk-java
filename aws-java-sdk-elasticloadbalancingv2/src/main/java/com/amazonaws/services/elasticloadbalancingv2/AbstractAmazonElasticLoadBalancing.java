@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,13 +12,17 @@
  */
 package com.amazonaws.services.elasticloadbalancingv2;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elasticloadbalancingv2.model.*;
 import com.amazonaws.*;
+import com.amazonaws.services.elasticloadbalancingv2.waiters.AmazonElasticLoadBalancingWaiters;
 
 /**
  * Abstract implementation of {@code AmazonElasticLoadBalancing}. Convenient method forms pass through to the
  * corresponding overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonElasticLoadBalancing implements AmazonElasticLoadBalancing {
 
     protected AbstractAmazonElasticLoadBalancing() {
@@ -165,6 +169,11 @@ public class AbstractAmazonElasticLoadBalancing implements AmazonElasticLoadBala
     }
 
     @Override
+    public SetIpAddressTypeResult setIpAddressType(SetIpAddressTypeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public SetRulePrioritiesResult setRulePriorities(SetRulePrioritiesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -186,6 +195,11 @@ public class AbstractAmazonElasticLoadBalancing implements AmazonElasticLoadBala
 
     @Override
     public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public AmazonElasticLoadBalancingWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
 

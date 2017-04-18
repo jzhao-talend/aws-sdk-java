@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RespondActivityTaskCompletedRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -146,9 +146,9 @@ public class RespondActivityTaskCompletedRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskToken() != null)
-            sb.append("TaskToken: " + getTaskToken() + ",");
+            sb.append("TaskToken: ").append(getTaskToken()).append(",");
         if (getResult() != null)
-            sb.append("Result: " + getResult());
+            sb.append("Result: ").append(getResult());
         sb.append("}");
         return sb.toString();
     }
@@ -188,4 +188,5 @@ public class RespondActivityTaskCompletedRequest extends com.amazonaws.AmazonWeb
     public RespondActivityTaskCompletedRequest clone() {
         return (RespondActivityTaskCompletedRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/Disk" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Disk implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Disk implements Serializable, Cloneable, StructuredPojo {
 
     private String diskId;
 
@@ -227,19 +233,19 @@ public class Disk implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDiskId() != null)
-            sb.append("DiskId: " + getDiskId() + ",");
+            sb.append("DiskId: ").append(getDiskId()).append(",");
         if (getDiskPath() != null)
-            sb.append("DiskPath: " + getDiskPath() + ",");
+            sb.append("DiskPath: ").append(getDiskPath()).append(",");
         if (getDiskNode() != null)
-            sb.append("DiskNode: " + getDiskNode() + ",");
+            sb.append("DiskNode: ").append(getDiskNode()).append(",");
         if (getDiskStatus() != null)
-            sb.append("DiskStatus: " + getDiskStatus() + ",");
+            sb.append("DiskStatus: ").append(getDiskStatus()).append(",");
         if (getDiskSizeInBytes() != null)
-            sb.append("DiskSizeInBytes: " + getDiskSizeInBytes() + ",");
+            sb.append("DiskSizeInBytes: ").append(getDiskSizeInBytes()).append(",");
         if (getDiskAllocationType() != null)
-            sb.append("DiskAllocationType: " + getDiskAllocationType() + ",");
+            sb.append("DiskAllocationType: ").append(getDiskAllocationType()).append(",");
         if (getDiskAllocationResource() != null)
-            sb.append("DiskAllocationResource: " + getDiskAllocationResource());
+            sb.append("DiskAllocationResource: ").append(getDiskAllocationResource());
         sb.append("}");
         return sb.toString();
     }
@@ -307,5 +313,11 @@ public class Disk implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.DiskMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

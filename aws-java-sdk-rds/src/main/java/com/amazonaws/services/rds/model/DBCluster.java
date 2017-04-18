@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -53,7 +54,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>DescribeDBClusters</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBCluster" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBCluster implements Serializable, Cloneable {
 
     /**
@@ -144,6 +149,12 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      */
     private String readerEndpoint;
+    /**
+     * <p>
+     * Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * </p>
+     */
+    private Boolean multiAZ;
     /**
      * <p>
      * Provides the name of the database engine to be used for this DB cluster.
@@ -256,6 +267,12 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DBClusterRole> associatedRoles;
+    /**
+     * <p>
+     * Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     * </p>
+     */
+    private java.util.Date clusterCreateTime;
 
     /**
      * <p>
@@ -871,6 +888,58 @@ public class DBCluster implements Serializable, Cloneable {
     public DBCluster withReaderEndpoint(String readerEndpoint) {
         setReaderEndpoint(readerEndpoint);
         return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * </p>
+     * 
+     * @param multiAZ
+     *        Specifies whether the DB cluster has instances in multiple Availability Zones.
+     */
+
+    public void setMultiAZ(Boolean multiAZ) {
+        this.multiAZ = multiAZ;
+    }
+
+    /**
+     * <p>
+     * Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * </p>
+     * 
+     * @return Specifies whether the DB cluster has instances in multiple Availability Zones.
+     */
+
+    public Boolean getMultiAZ() {
+        return this.multiAZ;
+    }
+
+    /**
+     * <p>
+     * Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * </p>
+     * 
+     * @param multiAZ
+     *        Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBCluster withMultiAZ(Boolean multiAZ) {
+        setMultiAZ(multiAZ);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether the DB cluster has instances in multiple Availability Zones.
+     * </p>
+     * 
+     * @return Specifies whether the DB cluster has instances in multiple Availability Zones.
+     */
+
+    public Boolean isMultiAZ() {
+        return this.multiAZ;
     }
 
     /**
@@ -1802,6 +1871,46 @@ public class DBCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     * </p>
+     * 
+     * @param clusterCreateTime
+     *        Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     */
+
+    public void setClusterCreateTime(java.util.Date clusterCreateTime) {
+        this.clusterCreateTime = clusterCreateTime;
+    }
+
+    /**
+     * <p>
+     * Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     * </p>
+     * 
+     * @return Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     */
+
+    public java.util.Date getClusterCreateTime() {
+        return this.clusterCreateTime;
+    }
+
+    /**
+     * <p>
+     * Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     * </p>
+     * 
+     * @param clusterCreateTime
+     *        Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBCluster withClusterCreateTime(java.util.Date clusterCreateTime) {
+        setClusterCreateTime(clusterCreateTime);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1813,67 +1922,71 @@ public class DBCluster implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getAvailabilityZones() != null)
-            sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+            sb.append("AvailabilityZones: ").append(getAvailabilityZones()).append(",");
         if (getBackupRetentionPeriod() != null)
-            sb.append("BackupRetentionPeriod: " + getBackupRetentionPeriod() + ",");
+            sb.append("BackupRetentionPeriod: ").append(getBackupRetentionPeriod()).append(",");
         if (getCharacterSetName() != null)
-            sb.append("CharacterSetName: " + getCharacterSetName() + ",");
+            sb.append("CharacterSetName: ").append(getCharacterSetName()).append(",");
         if (getDatabaseName() != null)
-            sb.append("DatabaseName: " + getDatabaseName() + ",");
+            sb.append("DatabaseName: ").append(getDatabaseName()).append(",");
         if (getDBClusterIdentifier() != null)
-            sb.append("DBClusterIdentifier: " + getDBClusterIdentifier() + ",");
+            sb.append("DBClusterIdentifier: ").append(getDBClusterIdentifier()).append(",");
         if (getDBClusterParameterGroup() != null)
-            sb.append("DBClusterParameterGroup: " + getDBClusterParameterGroup() + ",");
+            sb.append("DBClusterParameterGroup: ").append(getDBClusterParameterGroup()).append(",");
         if (getDBSubnetGroup() != null)
-            sb.append("DBSubnetGroup: " + getDBSubnetGroup() + ",");
+            sb.append("DBSubnetGroup: ").append(getDBSubnetGroup()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getPercentProgress() != null)
-            sb.append("PercentProgress: " + getPercentProgress() + ",");
+            sb.append("PercentProgress: ").append(getPercentProgress()).append(",");
         if (getEarliestRestorableTime() != null)
-            sb.append("EarliestRestorableTime: " + getEarliestRestorableTime() + ",");
+            sb.append("EarliestRestorableTime: ").append(getEarliestRestorableTime()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint() + ",");
+            sb.append("Endpoint: ").append(getEndpoint()).append(",");
         if (getReaderEndpoint() != null)
-            sb.append("ReaderEndpoint: " + getReaderEndpoint() + ",");
+            sb.append("ReaderEndpoint: ").append(getReaderEndpoint()).append(",");
+        if (getMultiAZ() != null)
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getLatestRestorableTime() != null)
-            sb.append("LatestRestorableTime: " + getLatestRestorableTime() + ",");
+            sb.append("LatestRestorableTime: ").append(getLatestRestorableTime()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getMasterUsername() != null)
-            sb.append("MasterUsername: " + getMasterUsername() + ",");
+            sb.append("MasterUsername: ").append(getMasterUsername()).append(",");
         if (getDBClusterOptionGroupMemberships() != null)
-            sb.append("DBClusterOptionGroupMemberships: " + getDBClusterOptionGroupMemberships() + ",");
+            sb.append("DBClusterOptionGroupMemberships: ").append(getDBClusterOptionGroupMemberships()).append(",");
         if (getPreferredBackupWindow() != null)
-            sb.append("PreferredBackupWindow: " + getPreferredBackupWindow() + ",");
+            sb.append("PreferredBackupWindow: ").append(getPreferredBackupWindow()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getReplicationSourceIdentifier() != null)
-            sb.append("ReplicationSourceIdentifier: " + getReplicationSourceIdentifier() + ",");
+            sb.append("ReplicationSourceIdentifier: ").append(getReplicationSourceIdentifier()).append(",");
         if (getReadReplicaIdentifiers() != null)
-            sb.append("ReadReplicaIdentifiers: " + getReadReplicaIdentifiers() + ",");
+            sb.append("ReadReplicaIdentifiers: ").append(getReadReplicaIdentifiers()).append(",");
         if (getDBClusterMembers() != null)
-            sb.append("DBClusterMembers: " + getDBClusterMembers() + ",");
+            sb.append("DBClusterMembers: ").append(getDBClusterMembers()).append(",");
         if (getVpcSecurityGroups() != null)
-            sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+            sb.append("VpcSecurityGroups: ").append(getVpcSecurityGroups()).append(",");
         if (getHostedZoneId() != null)
-            sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+            sb.append("HostedZoneId: ").append(getHostedZoneId()).append(",");
         if (getStorageEncrypted() != null)
-            sb.append("StorageEncrypted: " + getStorageEncrypted() + ",");
+            sb.append("StorageEncrypted: ").append(getStorageEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getDbClusterResourceId() != null)
-            sb.append("DbClusterResourceId: " + getDbClusterResourceId() + ",");
+            sb.append("DbClusterResourceId: ").append(getDbClusterResourceId()).append(",");
         if (getDBClusterArn() != null)
-            sb.append("DBClusterArn: " + getDBClusterArn() + ",");
+            sb.append("DBClusterArn: ").append(getDBClusterArn()).append(",");
         if (getAssociatedRoles() != null)
-            sb.append("AssociatedRoles: " + getAssociatedRoles());
+            sb.append("AssociatedRoles: ").append(getAssociatedRoles()).append(",");
+        if (getClusterCreateTime() != null)
+            sb.append("ClusterCreateTime: ").append(getClusterCreateTime());
         sb.append("}");
         return sb.toString();
     }
@@ -1939,6 +2052,10 @@ public class DBCluster implements Serializable, Cloneable {
         if (other.getReaderEndpoint() == null ^ this.getReaderEndpoint() == null)
             return false;
         if (other.getReaderEndpoint() != null && other.getReaderEndpoint().equals(this.getReaderEndpoint()) == false)
+            return false;
+        if (other.getMultiAZ() == null ^ this.getMultiAZ() == null)
+            return false;
+        if (other.getMultiAZ() != null && other.getMultiAZ().equals(this.getMultiAZ()) == false)
             return false;
         if (other.getEngine() == null ^ this.getEngine() == null)
             return false;
@@ -2013,6 +2130,10 @@ public class DBCluster implements Serializable, Cloneable {
             return false;
         if (other.getAssociatedRoles() != null && other.getAssociatedRoles().equals(this.getAssociatedRoles()) == false)
             return false;
+        if (other.getClusterCreateTime() == null ^ this.getClusterCreateTime() == null)
+            return false;
+        if (other.getClusterCreateTime() != null && other.getClusterCreateTime().equals(this.getClusterCreateTime()) == false)
+            return false;
         return true;
     }
 
@@ -2034,6 +2155,7 @@ public class DBCluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getEarliestRestorableTime() == null) ? 0 : getEarliestRestorableTime().hashCode());
         hashCode = prime * hashCode + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
         hashCode = prime * hashCode + ((getReaderEndpoint() == null) ? 0 : getReaderEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
         hashCode = prime * hashCode + ((getEngine() == null) ? 0 : getEngine().hashCode());
         hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
         hashCode = prime * hashCode + ((getLatestRestorableTime() == null) ? 0 : getLatestRestorableTime().hashCode());
@@ -2052,6 +2174,7 @@ public class DBCluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDbClusterResourceId() == null) ? 0 : getDbClusterResourceId().hashCode());
         hashCode = prime * hashCode + ((getDBClusterArn() == null) ? 0 : getDBClusterArn().hashCode());
         hashCode = prime * hashCode + ((getAssociatedRoles() == null) ? 0 : getAssociatedRoles().hashCode());
+        hashCode = prime * hashCode + ((getClusterCreateTime() == null) ? 0 : getClusterCreateTime().hashCode());
         return hashCode;
     }
 
@@ -2063,4 +2186,5 @@ public class DBCluster implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains the codes and full continent, country, and subdivision names for the specified
  * <code>geolocation</code> code.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GeoLocationDetails" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GeoLocationDetails implements Serializable, Cloneable {
 
     /**
@@ -311,17 +316,17 @@ public class GeoLocationDetails implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getContinentCode() != null)
-            sb.append("ContinentCode: " + getContinentCode() + ",");
+            sb.append("ContinentCode: ").append(getContinentCode()).append(",");
         if (getContinentName() != null)
-            sb.append("ContinentName: " + getContinentName() + ",");
+            sb.append("ContinentName: ").append(getContinentName()).append(",");
         if (getCountryCode() != null)
-            sb.append("CountryCode: " + getCountryCode() + ",");
+            sb.append("CountryCode: ").append(getCountryCode()).append(",");
         if (getCountryName() != null)
-            sb.append("CountryName: " + getCountryName() + ",");
+            sb.append("CountryName: ").append(getCountryName()).append(",");
         if (getSubdivisionCode() != null)
-            sb.append("SubdivisionCode: " + getSubdivisionCode() + ",");
+            sb.append("SubdivisionCode: ").append(getSubdivisionCode()).append(",");
         if (getSubdivisionName() != null)
-            sb.append("SubdivisionName: " + getSubdivisionName());
+            sb.append("SubdivisionName: ").append(getSubdivisionName());
         sb.append("}");
         return sb.toString();
     }
@@ -385,4 +390,5 @@ public class GeoLocationDetails implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

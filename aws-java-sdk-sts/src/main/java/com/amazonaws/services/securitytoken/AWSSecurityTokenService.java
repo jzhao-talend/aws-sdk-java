@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.securitytoken;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.securitytoken.model.*;
 
 /**
  * Interface for accessing AWS STS.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.securitytoken.AbstractAWSSecurityTokenService} instead.
+ * </p>
  * <p>
  * <fullname>AWS Security Token Service</fullname>
  * <p>
@@ -76,6 +82,7 @@ import com.amazonaws.services.securitytoken.model.*;
  * User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSSecurityTokenService {
 
     /**
@@ -106,7 +113,11 @@ public interface AWSSecurityTokenService {
      * @param endpoint
      *        The endpoint (ex: "sts.amazonaws.com") or a full URL, including the protocol (ex: "sts.amazonaws.com") of
      *        the region specific AWS endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -127,7 +138,9 @@ public interface AWSSecurityTokenService {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -237,6 +250,8 @@ public interface AWSSecurityTokenService {
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRole" target="_top">AWS API
+     *      Documentation</a>
      */
     AssumeRoleResult assumeRole(AssumeRoleRequest assumeRoleRequest);
 
@@ -354,6 +369,8 @@ public interface AWSSecurityTokenService {
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRoleWithSAML
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithSAML" target="_top">AWS API
+     *      Documentation</a>
      */
     AssumeRoleWithSAMLResult assumeRoleWithSAML(AssumeRoleWithSAMLRequest assumeRoleWithSAMLRequest);
 
@@ -438,7 +455,7 @@ public interface AWSSecurityTokenService {
      * <ul>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual">Using Web Identity
+     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html">Using Web Identity
      * Federation APIs for Mobile Apps</a> and <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity"
      * >Federation Through a Web-based Identity Provider</a>.
@@ -500,6 +517,8 @@ public interface AWSSecurityTokenService {
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.AssumeRoleWithWebIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithWebIdentity" target="_top">AWS
+     *      API Documentation</a>
      */
     AssumeRoleWithWebIdentityResult assumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest assumeRoleWithWebIdentityRequest);
 
@@ -565,6 +584,8 @@ public interface AWSSecurityTokenService {
      *         The error returned if the message passed to <code>DecodeAuthorizationMessage</code> was invalid. This can
      *         happen if the token contains invalid characters, such as linebreaks.
      * @sample AWSSecurityTokenService.DecodeAuthorizationMessage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/DecodeAuthorizationMessage" target="_top">AWS
+     *      API Documentation</a>
      */
     DecodeAuthorizationMessageResult decodeAuthorizationMessage(DecodeAuthorizationMessageRequest decodeAuthorizationMessageRequest);
 
@@ -576,6 +597,8 @@ public interface AWSSecurityTokenService {
      * @param getCallerIdentityRequest
      * @return Result of the GetCallerIdentity operation returned by the service.
      * @sample AWSSecurityTokenService.GetCallerIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetCallerIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     GetCallerIdentityResult getCallerIdentity(GetCallerIdentityRequest getCallerIdentityRequest);
 
@@ -629,7 +652,7 @@ public interface AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS APIs.
+     * You cannot call any STS APIs except <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -697,6 +720,8 @@ public interface AWSSecurityTokenService {
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.GetFederationToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetFederationToken" target="_top">AWS API
+     *      Documentation</a>
      */
     GetFederationTokenResult getFederationToken(GetFederationTokenRequest getFederationTokenRequest);
 
@@ -734,7 +759,7 @@ public interface AWSSecurityTokenService {
      * </li>
      * <li>
      * <p>
-     * You cannot call any STS API <i>except</i> <code>AssumeRole</code>.
+     * You cannot call any STS API <i>except</i> <code>AssumeRole</code> or <code>GetCallerIdentity</code>.
      * </p>
      * </li>
      * </ul>
@@ -767,6 +792,8 @@ public interface AWSSecurityTokenService {
      *         see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">
      *         Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.
      * @sample AWSSecurityTokenService.GetSessionToken
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionToken" target="_top">AWS API
+     *      Documentation</a>
      */
     GetSessionTokenResult getSessionToken(GetSessionTokenRequest getSessionTokenRequest);
 

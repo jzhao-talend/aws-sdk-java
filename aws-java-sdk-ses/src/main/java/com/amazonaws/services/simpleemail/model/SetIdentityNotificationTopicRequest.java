@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,7 +24,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer
  * Guide</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityNotificationTopic" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SetIdentityNotificationTopicRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -230,11 +236,11 @@ public class SetIdentityNotificationTopicRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentity() != null)
-            sb.append("Identity: " + getIdentity() + ",");
+            sb.append("Identity: ").append(getIdentity()).append(",");
         if (getNotificationType() != null)
-            sb.append("NotificationType: " + getNotificationType() + ",");
+            sb.append("NotificationType: ").append(getNotificationType()).append(",");
         if (getSnsTopic() != null)
-            sb.append("SnsTopic: " + getSnsTopic());
+            sb.append("SnsTopic: ").append(getSnsTopic());
         sb.append("}");
         return sb.toString();
     }
@@ -279,4 +285,5 @@ public class SetIdentityNotificationTopicRequest extends com.amazonaws.AmazonWeb
     public SetIdentityNotificationTopicRequest clone() {
         return (SetIdentityNotificationTopicRequest) super.clone();
     }
+
 }

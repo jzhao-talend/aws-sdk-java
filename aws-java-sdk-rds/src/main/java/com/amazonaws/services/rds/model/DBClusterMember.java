@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains information about an instance that is part of a DB cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBClusterMember" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBClusterMember implements Serializable, Cloneable {
 
     /**
@@ -260,13 +265,13 @@ public class DBClusterMember implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getIsClusterWriter() != null)
-            sb.append("IsClusterWriter: " + getIsClusterWriter() + ",");
+            sb.append("IsClusterWriter: ").append(getIsClusterWriter()).append(",");
         if (getDBClusterParameterGroupStatus() != null)
-            sb.append("DBClusterParameterGroupStatus: " + getDBClusterParameterGroupStatus() + ",");
+            sb.append("DBClusterParameterGroupStatus: ").append(getDBClusterParameterGroupStatus()).append(",");
         if (getPromotionTier() != null)
-            sb.append("PromotionTier: " + getPromotionTier());
+            sb.append("PromotionTier: ").append(getPromotionTier());
         sb.append("}");
         return sb.toString();
     }
@@ -321,4 +326,5 @@ public class DBClusterMember implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

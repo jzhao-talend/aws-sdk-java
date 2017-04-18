@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -37,7 +40,8 @@ import java.io.Serializable;
  * Amazon SWF Workflows</a>.
  * </p>
  */
-public class StartTimerDecisionAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StartTimerDecisionAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -231,11 +235,11 @@ public class StartTimerDecisionAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTimerId() != null)
-            sb.append("TimerId: " + getTimerId() + ",");
+            sb.append("TimerId: ").append(getTimerId()).append(",");
         if (getControl() != null)
-            sb.append("Control: " + getControl() + ",");
+            sb.append("Control: ").append(getControl()).append(",");
         if (getStartToFireTimeout() != null)
-            sb.append("StartToFireTimeout: " + getStartToFireTimeout());
+            sb.append("StartToFireTimeout: ").append(getStartToFireTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -283,5 +287,11 @@ public class StartTimerDecisionAttributes implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.StartTimerDecisionAttributesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

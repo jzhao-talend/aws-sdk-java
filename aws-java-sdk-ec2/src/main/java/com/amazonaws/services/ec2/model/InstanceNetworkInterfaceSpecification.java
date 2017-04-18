@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a network interface.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/InstanceNetworkInterfaceSpecification"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceNetworkInterfaceSpecification implements Serializable, Cloneable {
 
     /**
@@ -50,7 +55,7 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
     private String description;
     /**
      * <p>
-     * The private IP address of the network interface. Applies only if creating a network interface when launching an
+     * The private IPv4 address of the network interface. Applies only if creating a network interface when launching an
      * instance. You cannot specify this option if you're launching more than one instance in a <a>RunInstances</a>
      * request.
      * </p>
@@ -72,7 +77,7 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
     private Boolean deleteOnTermination;
     /**
      * <p>
-     * One or more private IP addresses to assign to the network interface. Only one private IP address can be
+     * One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be
      * designated as primary. You cannot specify this option if you're launching more than one instance in a
      * <a>RunInstances</a> request.
      * </p>
@@ -80,21 +85,37 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
     private com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification> privateIpAddresses;
     /**
      * <p>
-     * The number of secondary private IP addresses. You can't specify this option and specify more than one private IP
-     * address using the private IP addresses option. You cannot specify this option if you're launching more than one
-     * instance in a <a>RunInstances</a> request.
+     * The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private
+     * IP address using the private IP addresses option. You cannot specify this option if you're launching more than
+     * one instance in a <a>RunInstances</a> request.
      * </p>
      */
     private Integer secondaryPrivateIpAddressCount;
     /**
      * <p>
-     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can
+     * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can
      * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
      * existing one. You cannot specify more than one network interface in the request. If launching into a default
      * subnet, the default value is <code>true</code>.
      * </p>
      */
     private Boolean associatePublicIpAddress;
+    /**
+     * <p>
+     * One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to
+     * assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a
+     * minimum number of instances to launch.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> ipv6Addresses;
+    /**
+     * <p>
+     * A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from the
+     * range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same
+     * request. You can specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     */
+    private Integer ipv6AddressCount;
 
     /**
      * <p>
@@ -276,13 +297,13 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The private IP address of the network interface. Applies only if creating a network interface when launching an
+     * The private IPv4 address of the network interface. Applies only if creating a network interface when launching an
      * instance. You cannot specify this option if you're launching more than one instance in a <a>RunInstances</a>
      * request.
      * </p>
      * 
      * @param privateIpAddress
-     *        The private IP address of the network interface. Applies only if creating a network interface when
+     *        The private IPv4 address of the network interface. Applies only if creating a network interface when
      *        launching an instance. You cannot specify this option if you're launching more than one instance in a
      *        <a>RunInstances</a> request.
      */
@@ -293,12 +314,12 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The private IP address of the network interface. Applies only if creating a network interface when launching an
+     * The private IPv4 address of the network interface. Applies only if creating a network interface when launching an
      * instance. You cannot specify this option if you're launching more than one instance in a <a>RunInstances</a>
      * request.
      * </p>
      * 
-     * @return The private IP address of the network interface. Applies only if creating a network interface when
+     * @return The private IPv4 address of the network interface. Applies only if creating a network interface when
      *         launching an instance. You cannot specify this option if you're launching more than one instance in a
      *         <a>RunInstances</a> request.
      */
@@ -309,13 +330,13 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The private IP address of the network interface. Applies only if creating a network interface when launching an
+     * The private IPv4 address of the network interface. Applies only if creating a network interface when launching an
      * instance. You cannot specify this option if you're launching more than one instance in a <a>RunInstances</a>
      * request.
      * </p>
      * 
      * @param privateIpAddress
-     *        The private IP address of the network interface. Applies only if creating a network interface when
+     *        The private IPv4 address of the network interface. Applies only if creating a network interface when
      *        launching an instance. You cannot specify this option if you're launching more than one instance in a
      *        <a>RunInstances</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -469,13 +490,13 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * One or more private IP addresses to assign to the network interface. Only one private IP address can be
+     * One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be
      * designated as primary. You cannot specify this option if you're launching more than one instance in a
      * <a>RunInstances</a> request.
      * </p>
      * 
-     * @return One or more private IP addresses to assign to the network interface. Only one private IP address can be
-     *         designated as primary. You cannot specify this option if you're launching more than one instance in a
+     * @return One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can
+     *         be designated as primary. You cannot specify this option if you're launching more than one instance in a
      *         <a>RunInstances</a> request.
      */
 
@@ -488,14 +509,14 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * One or more private IP addresses to assign to the network interface. Only one private IP address can be
+     * One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be
      * designated as primary. You cannot specify this option if you're launching more than one instance in a
      * <a>RunInstances</a> request.
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses to assign to the network interface. Only one private IP address can be
-     *        designated as primary. You cannot specify this option if you're launching more than one instance in a
+     *        One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can
+     *        be designated as primary. You cannot specify this option if you're launching more than one instance in a
      *        <a>RunInstances</a> request.
      */
 
@@ -510,7 +531,7 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * One or more private IP addresses to assign to the network interface. Only one private IP address can be
+     * One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be
      * designated as primary. You cannot specify this option if you're launching more than one instance in a
      * <a>RunInstances</a> request.
      * </p>
@@ -521,8 +542,8 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses to assign to the network interface. Only one private IP address can be
-     *        designated as primary. You cannot specify this option if you're launching more than one instance in a
+     *        One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can
+     *        be designated as primary. You cannot specify this option if you're launching more than one instance in a
      *        <a>RunInstances</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -539,14 +560,14 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * One or more private IP addresses to assign to the network interface. Only one private IP address can be
+     * One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be
      * designated as primary. You cannot specify this option if you're launching more than one instance in a
      * <a>RunInstances</a> request.
      * </p>
      * 
      * @param privateIpAddresses
-     *        One or more private IP addresses to assign to the network interface. Only one private IP address can be
-     *        designated as primary. You cannot specify this option if you're launching more than one instance in a
+     *        One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can
+     *        be designated as primary. You cannot specify this option if you're launching more than one instance in a
      *        <a>RunInstances</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -558,13 +579,13 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The number of secondary private IP addresses. You can't specify this option and specify more than one private IP
-     * address using the private IP addresses option. You cannot specify this option if you're launching more than one
-     * instance in a <a>RunInstances</a> request.
+     * The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private
+     * IP address using the private IP addresses option. You cannot specify this option if you're launching more than
+     * one instance in a <a>RunInstances</a> request.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses. You can't specify this option and specify more than one
+     *        The number of secondary private IPv4 addresses. You can't specify this option and specify more than one
      *        private IP address using the private IP addresses option. You cannot specify this option if you're
      *        launching more than one instance in a <a>RunInstances</a> request.
      */
@@ -575,12 +596,12 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The number of secondary private IP addresses. You can't specify this option and specify more than one private IP
-     * address using the private IP addresses option. You cannot specify this option if you're launching more than one
-     * instance in a <a>RunInstances</a> request.
+     * The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private
+     * IP address using the private IP addresses option. You cannot specify this option if you're launching more than
+     * one instance in a <a>RunInstances</a> request.
      * </p>
      * 
-     * @return The number of secondary private IP addresses. You can't specify this option and specify more than one
+     * @return The number of secondary private IPv4 addresses. You can't specify this option and specify more than one
      *         private IP address using the private IP addresses option. You cannot specify this option if you're
      *         launching more than one instance in a <a>RunInstances</a> request.
      */
@@ -591,13 +612,13 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * The number of secondary private IP addresses. You can't specify this option and specify more than one private IP
-     * address using the private IP addresses option. You cannot specify this option if you're launching more than one
-     * instance in a <a>RunInstances</a> request.
+     * The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private
+     * IP address using the private IP addresses option. You cannot specify this option if you're launching more than
+     * one instance in a <a>RunInstances</a> request.
      * </p>
      * 
      * @param secondaryPrivateIpAddressCount
-     *        The number of secondary private IP addresses. You can't specify this option and specify more than one
+     *        The number of secondary private IPv4 addresses. You can't specify this option and specify more than one
      *        private IP address using the private IP addresses option. You cannot specify this option if you're
      *        launching more than one instance in a <a>RunInstances</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -610,17 +631,17 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can
+     * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can
      * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
      * existing one. You cannot specify more than one network interface in the request. If launching into a default
      * subnet, the default value is <code>true</code>.
      * </p>
      * 
      * @param associatePublicIpAddress
-     *        Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address
-     *        can only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
-     *        not an existing one. You cannot specify more than one network interface in the request. If launching into
-     *        a default subnet, the default value is <code>true</code>.
+     *        Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP
+     *        address can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     *        interface, not an existing one. You cannot specify more than one network interface in the request. If
+     *        launching into a default subnet, the default value is <code>true</code>.
      */
 
     public void setAssociatePublicIpAddress(Boolean associatePublicIpAddress) {
@@ -629,14 +650,14 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can
+     * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can
      * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
      * existing one. You cannot specify more than one network interface in the request. If launching into a default
      * subnet, the default value is <code>true</code>.
      * </p>
      * 
-     * @return Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address
-     *         can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     * @return Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP
+     *         address can only be assigned to a network interface for eth0, and can only be assigned to a new network
      *         interface, not an existing one. You cannot specify more than one network interface in the request. If
      *         launching into a default subnet, the default value is <code>true</code>.
      */
@@ -647,17 +668,17 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can
+     * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can
      * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
      * existing one. You cannot specify more than one network interface in the request. If launching into a default
      * subnet, the default value is <code>true</code>.
      * </p>
      * 
      * @param associatePublicIpAddress
-     *        Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address
-     *        can only be assigned to a network interface for eth0, and can only be assigned to a new network interface,
-     *        not an existing one. You cannot specify more than one network interface in the request. If launching into
-     *        a default subnet, the default value is <code>true</code>.
+     *        Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP
+     *        address can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     *        interface, not an existing one. You cannot specify more than one network interface in the request. If
+     *        launching into a default subnet, the default value is <code>true</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -668,20 +689,164 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
 
     /**
      * <p>
-     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can
+     * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can
      * only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an
      * existing one. You cannot specify more than one network interface in the request. If launching into a default
      * subnet, the default value is <code>true</code>.
      * </p>
      * 
-     * @return Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address
-     *         can only be assigned to a network interface for eth0, and can only be assigned to a new network
+     * @return Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP
+     *         address can only be assigned to a network interface for eth0, and can only be assigned to a new network
      *         interface, not an existing one. You cannot specify more than one network interface in the request. If
      *         launching into a default subnet, the default value is <code>true</code>.
      */
 
     public Boolean isAssociatePublicIpAddress() {
         return this.associatePublicIpAddress;
+    }
+
+    /**
+     * <p>
+     * One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to
+     * assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a
+     * minimum number of instances to launch.
+     * </p>
+     * 
+     * @return One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the
+     *         option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've
+     *         specified a minimum number of instances to launch.
+     */
+
+    public java.util.List<InstanceIpv6Address> getIpv6Addresses() {
+        if (ipv6Addresses == null) {
+            ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>();
+        }
+        return ipv6Addresses;
+    }
+
+    /**
+     * <p>
+     * One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to
+     * assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a
+     * minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the
+     *        option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've
+     *        specified a minimum number of instances to launch.
+     */
+
+    public void setIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        if (ipv6Addresses == null) {
+            this.ipv6Addresses = null;
+            return;
+        }
+
+        this.ipv6Addresses = new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses);
+    }
+
+    /**
+     * <p>
+     * One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to
+     * assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a
+     * minimum number of instances to launch.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6Addresses(java.util.Collection)} or {@link #withIpv6Addresses(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the
+     *        option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've
+     *        specified a minimum number of instances to launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceNetworkInterfaceSpecification withIpv6Addresses(InstanceIpv6Address... ipv6Addresses) {
+        if (this.ipv6Addresses == null) {
+            setIpv6Addresses(new com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>(ipv6Addresses.length));
+        }
+        for (InstanceIpv6Address ele : ipv6Addresses) {
+            this.ipv6Addresses.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to
+     * assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a
+     * minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the
+     *        option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've
+     *        specified a minimum number of instances to launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceNetworkInterfaceSpecification withIpv6Addresses(java.util.Collection<InstanceIpv6Address> ipv6Addresses) {
+        setIpv6Addresses(ipv6Addresses);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from the
+     * range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same
+     * request. You can specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from
+     *        the range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses
+     *        in the same request. You can specify this option if you've specified a minimum number of instances to
+     *        launch.
+     */
+
+    public void setIpv6AddressCount(Integer ipv6AddressCount) {
+        this.ipv6AddressCount = ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from the
+     * range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same
+     * request. You can specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @return A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from
+     *         the range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses
+     *         in the same request. You can specify this option if you've specified a minimum number of instances to
+     *         launch.
+     */
+
+    public Integer getIpv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+
+    /**
+     * <p>
+     * A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from the
+     * range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same
+     * request. You can specify this option if you've specified a minimum number of instances to launch.
+     * </p>
+     * 
+     * @param ipv6AddressCount
+     *        A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from
+     *        the range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses
+     *        in the same request. You can specify this option if you've specified a minimum number of instances to
+     *        launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceNetworkInterfaceSpecification withIpv6AddressCount(Integer ipv6AddressCount) {
+        setIpv6AddressCount(ipv6AddressCount);
+        return this;
     }
 
     /**
@@ -696,25 +861,29 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getDeviceIndex() != null)
-            sb.append("DeviceIndex: " + getDeviceIndex() + ",");
+            sb.append("DeviceIndex: ").append(getDeviceIndex()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
         if (getGroups() != null)
-            sb.append("Groups: " + getGroups() + ",");
+            sb.append("Groups: ").append(getGroups()).append(",");
         if (getDeleteOnTermination() != null)
-            sb.append("DeleteOnTermination: " + getDeleteOnTermination() + ",");
+            sb.append("DeleteOnTermination: ").append(getDeleteOnTermination()).append(",");
         if (getPrivateIpAddresses() != null)
-            sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");
+            sb.append("PrivateIpAddresses: ").append(getPrivateIpAddresses()).append(",");
         if (getSecondaryPrivateIpAddressCount() != null)
-            sb.append("SecondaryPrivateIpAddressCount: " + getSecondaryPrivateIpAddressCount() + ",");
+            sb.append("SecondaryPrivateIpAddressCount: ").append(getSecondaryPrivateIpAddressCount()).append(",");
         if (getAssociatePublicIpAddress() != null)
-            sb.append("AssociatePublicIpAddress: " + getAssociatePublicIpAddress());
+            sb.append("AssociatePublicIpAddress: ").append(getAssociatePublicIpAddress()).append(",");
+        if (getIpv6Addresses() != null)
+            sb.append("Ipv6Addresses: ").append(getIpv6Addresses()).append(",");
+        if (getIpv6AddressCount() != null)
+            sb.append("Ipv6AddressCount: ").append(getIpv6AddressCount());
         sb.append("}");
         return sb.toString();
     }
@@ -770,6 +939,14 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
             return false;
         if (other.getAssociatePublicIpAddress() != null && other.getAssociatePublicIpAddress().equals(this.getAssociatePublicIpAddress()) == false)
             return false;
+        if (other.getIpv6Addresses() == null ^ this.getIpv6Addresses() == null)
+            return false;
+        if (other.getIpv6Addresses() != null && other.getIpv6Addresses().equals(this.getIpv6Addresses()) == false)
+            return false;
+        if (other.getIpv6AddressCount() == null ^ this.getIpv6AddressCount() == null)
+            return false;
+        if (other.getIpv6AddressCount() != null && other.getIpv6AddressCount().equals(this.getIpv6AddressCount()) == false)
+            return false;
         return true;
     }
 
@@ -788,6 +965,8 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
         hashCode = prime * hashCode + ((getPrivateIpAddresses() == null) ? 0 : getPrivateIpAddresses().hashCode());
         hashCode = prime * hashCode + ((getSecondaryPrivateIpAddressCount() == null) ? 0 : getSecondaryPrivateIpAddressCount().hashCode());
         hashCode = prime * hashCode + ((getAssociatePublicIpAddress() == null) ? 0 : getAssociatePublicIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getIpv6Addresses() == null) ? 0 : getIpv6Addresses().hashCode());
+        hashCode = prime * hashCode + ((getIpv6AddressCount() == null) ? 0 : getIpv6AddressCount().hashCode());
         return hashCode;
     }
 
@@ -799,4 +978,5 @@ public class InstanceNetworkInterfaceSpecification implements Serializable, Clon
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

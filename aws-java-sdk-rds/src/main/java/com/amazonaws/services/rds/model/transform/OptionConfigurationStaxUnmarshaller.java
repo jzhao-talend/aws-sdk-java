@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.rds.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.rds.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * OptionConfiguration StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OptionConfigurationStaxUnmarshaller implements Unmarshaller<OptionConfiguration, StaxUnmarshallerContext> {
 
     public OptionConfiguration unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -60,13 +60,28 @@ public class OptionConfigurationStaxUnmarshaller implements Unmarshaller<OptionC
                     continue;
                 }
 
+                if (context.testExpression("DBSecurityGroupMemberships", targetDepth)) {
+                    optionConfiguration.withDBSecurityGroupMemberships(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("DBSecurityGroupMemberships/DBSecurityGroupName", targetDepth)) {
                     optionConfiguration.withDBSecurityGroupMemberships(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("VpcSecurityGroupMemberships", targetDepth)) {
+                    optionConfiguration.withVpcSecurityGroupMemberships(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("VpcSecurityGroupMemberships/VpcSecurityGroupId", targetDepth)) {
                     optionConfiguration.withVpcSecurityGroupMemberships(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("OptionSettings", targetDepth)) {
+                    optionConfiguration.withOptionSettings(new ArrayList<OptionSetting>());
                     continue;
                 }
 

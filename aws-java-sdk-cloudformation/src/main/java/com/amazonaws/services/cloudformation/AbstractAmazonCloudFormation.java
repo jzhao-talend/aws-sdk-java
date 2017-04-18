@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudformation;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.cloudformation.waiters.AmazonCloudFormationWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.cloudformation.waiters.AmazonCloudFormationWaiters
  * Abstract implementation of {@code AmazonCloudFormation}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonCloudFormation implements AmazonCloudFormation {
 
     protected AbstractAmazonCloudFormation() {
@@ -146,6 +149,11 @@ public class AbstractAmazonCloudFormation implements AmazonCloudFormation {
     }
 
     @Override
+    public ListImportsResult listImports(ListImportsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListStackResourcesResult listStackResources(ListStackResourcesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -194,4 +202,5 @@ public class AbstractAmazonCloudFormation implements AmazonCloudFormation {
     public AmazonCloudFormationWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

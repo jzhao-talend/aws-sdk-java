@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.iotdata.AWSIotDataClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -53,6 +57,7 @@ import com.amazonaws.services.iotdata.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotData {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -65,42 +70,43 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .withContentTypeOverride("")
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnsupportedDocumentEncodingException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.UnsupportedDocumentEncodingException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.MethodNotAllowedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.ConflictException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.ServiceUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.InternalFailureException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.UnauthorizedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("RequestEntityTooLargeException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.RequestEntityTooLargeException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.InvalidRequestException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.ThrottlingException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.iotdata.model.ResourceNotFoundException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.iotdata.model.AWSIotDataException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .withContentTypeOverride("")
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedDocumentEncodingException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.UnsupportedDocumentEncodingException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.MethodNotAllowedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.ConflictException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.ServiceUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.InternalFailureException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.UnauthorizedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RequestEntityTooLargeException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.RequestEntityTooLargeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.InvalidRequestException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.ThrottlingException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.iotdata.model.ResourceNotFoundException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.iotdata.model.AWSIotDataException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS IoT Data Plane. A credentials provider chain will be
@@ -116,7 +122,9 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSIotDataClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSIotDataClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -139,7 +147,9 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSIotDataClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSIotDataClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -154,7 +164,10 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSIotDataClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSIotDataClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSIotDataClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -172,7 +185,10 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS IoT Data Plane (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSIotDataClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSIotDataClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -189,7 +205,9 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSIotDataClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSIotDataClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -207,7 +225,10 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to AWS IoT Data Plane (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSIotDataClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSIotDataClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -227,12 +248,20 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSIotDataClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSIotDataClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSIotDataClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSIotDataClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSIotDataClientBuilder builder() {
+        return AWSIotDataClientBuilder.standard();
     }
 
     /**
@@ -294,7 +323,14 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @sample AWSIotData.DeleteThingShadow
      */
     @Override
-    public DeleteThingShadowResult deleteThingShadow(DeleteThingShadowRequest deleteThingShadowRequest) {
+    public DeleteThingShadowResult deleteThingShadow(DeleteThingShadowRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteThingShadow(request);
+    }
+
+    @SdkInternalApi
+    final DeleteThingShadowResult executeDeleteThingShadow(DeleteThingShadowRequest deleteThingShadowRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteThingShadowRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -304,7 +340,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteThingShadowRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteThingShadowRequest));
+                request = new DeleteThingShadowRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteThingShadowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -355,7 +391,14 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @sample AWSIotData.GetThingShadow
      */
     @Override
-    public GetThingShadowResult getThingShadow(GetThingShadowRequest getThingShadowRequest) {
+    public GetThingShadowResult getThingShadow(GetThingShadowRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetThingShadow(request);
+    }
+
+    @SdkInternalApi
+    final GetThingShadowResult executeGetThingShadow(GetThingShadowRequest getThingShadowRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getThingShadowRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -365,7 +408,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetThingShadowRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getThingShadowRequest));
+                request = new GetThingShadowRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getThingShadowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -407,7 +450,14 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @sample AWSIotData.Publish
      */
     @Override
-    public PublishResult publish(PublishRequest publishRequest) {
+    public PublishResult publish(PublishRequest request) {
+        request = beforeClientExecution(request);
+        return executePublish(request);
+    }
+
+    @SdkInternalApi
+    final PublishResult executePublish(PublishRequest publishRequest) {
+
         ExecutionContext executionContext = createExecutionContext(publishRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -417,7 +467,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PublishRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(publishRequest));
+                request = new PublishRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(publishRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -470,7 +520,14 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
      * @sample AWSIotData.UpdateThingShadow
      */
     @Override
-    public UpdateThingShadowResult updateThingShadow(UpdateThingShadowRequest updateThingShadowRequest) {
+    public UpdateThingShadowResult updateThingShadow(UpdateThingShadowRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateThingShadow(request);
+    }
+
+    @SdkInternalApi
+    final UpdateThingShadowResult executeUpdateThingShadow(UpdateThingShadowRequest updateThingShadowRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateThingShadowRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -480,7 +537,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateThingShadowRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateThingShadowRequest));
+                request = new UpdateThingShadowRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateThingShadowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

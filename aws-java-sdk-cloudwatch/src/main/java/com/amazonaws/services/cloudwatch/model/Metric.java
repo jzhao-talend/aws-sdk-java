@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,17 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The <code>Metric</code> data type contains information about a specific metric. If you call <a>ListMetrics</a>,
- * Amazon CloudWatch returns information contained by this data type.
+ * Represents a specific metric.
  * </p>
- * <p>
- * The example in the Examples section publishes two metrics named buffers and latency. Both metrics are in the examples
- * namespace. Both metrics have two dimensions, InstanceID and InstanceType.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/Metric" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Metric implements Serializable, Cloneable {
 
     /**
@@ -40,7 +40,7 @@ public class Metric implements Serializable, Cloneable {
     private String metricName;
     /**
      * <p>
-     * A list of dimensions associated with the metric.
+     * The dimensions for the metric.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Dimension> dimensions;
@@ -127,10 +127,10 @@ public class Metric implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of dimensions associated with the metric.
+     * The dimensions for the metric.
      * </p>
      * 
-     * @return A list of dimensions associated with the metric.
+     * @return The dimensions for the metric.
      */
 
     public java.util.List<Dimension> getDimensions() {
@@ -142,11 +142,11 @@ public class Metric implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of dimensions associated with the metric.
+     * The dimensions for the metric.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions associated with the metric.
+     *        The dimensions for the metric.
      */
 
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
@@ -160,7 +160,7 @@ public class Metric implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of dimensions associated with the metric.
+     * The dimensions for the metric.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -169,7 +169,7 @@ public class Metric implements Serializable, Cloneable {
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions associated with the metric.
+     *        The dimensions for the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -185,11 +185,11 @@ public class Metric implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of dimensions associated with the metric.
+     * The dimensions for the metric.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions associated with the metric.
+     *        The dimensions for the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -210,11 +210,11 @@ public class Metric implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getDimensions() != null)
-            sb.append("Dimensions: " + getDimensions());
+            sb.append("Dimensions: ").append(getDimensions());
         sb.append("}");
         return sb.toString();
     }
@@ -263,4 +263,5 @@ public class Metric implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

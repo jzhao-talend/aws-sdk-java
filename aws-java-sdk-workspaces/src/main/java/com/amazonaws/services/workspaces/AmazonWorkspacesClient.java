@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.workspaces.AmazonWorkspacesClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -50,6 +54,7 @@ import com.amazonaws.services.workspaces.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonWorkspacesClient extends AmazonWebServiceClient implements AmazonWorkspaces {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -62,35 +67,36 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.AccessDeniedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnsupportedWorkspaceConfigurationException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.UnsupportedWorkspaceConfigurationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.InvalidResourceStateException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValuesException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.InvalidParameterValuesException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("OperationInProgressException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.OperationInProgressException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.ResourceUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
-                            com.amazonaws.services.workspaces.model.ResourceLimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.workspaces.model.AmazonWorkspacesException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.AccessDeniedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedWorkspaceConfigurationException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.UnsupportedWorkspaceConfigurationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.InvalidResourceStateException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValuesException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.InvalidParameterValuesException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OperationInProgressException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.OperationInProgressException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.ResourceUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
+                                    com.amazonaws.services.workspaces.model.ResourceLimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.workspaces.model.AmazonWorkspacesException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon WorkSpaces. A credentials provider chain will be used
@@ -106,7 +112,9 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonWorkspacesClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -129,7 +137,9 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonWorkspacesClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -144,7 +154,10 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonWorkspacesClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonWorkspacesClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -162,7 +175,10 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon WorkSpaces (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonWorkspacesClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonWorkspacesClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -179,7 +195,9 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonWorkspacesClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -197,7 +215,10 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon WorkSpaces (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonWorkspacesClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonWorkspacesClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -217,12 +238,20 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonWorkspacesClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonWorkspacesClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonWorkspacesClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonWorkspacesClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonWorkspacesClientBuilder builder() {
+        return AmazonWorkspacesClientBuilder.standard();
     }
 
     /**
@@ -267,9 +296,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws ResourceLimitExceededException
      *         Your resource limits have been exceeded.
      * @sample AmazonWorkspaces.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateTagsResult createTags(CreateTagsRequest createTagsRequest) {
+    public CreateTagsResult createTags(CreateTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTags(request);
+    }
+
+    @SdkInternalApi
+    final CreateTagsResult executeCreateTags(CreateTagsRequest createTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -279,7 +317,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTagsRequest));
+                request = new CreateTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -316,9 +354,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.CreateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
+    public CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final CreateWorkspacesResult executeCreateWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -328,7 +375,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createWorkspacesRequest));
+                request = new CreateWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -360,9 +407,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest) {
+    public DeleteTagsResult deleteTags(DeleteTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTags(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTagsResult executeDeleteTags(DeleteTagsRequest deleteTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -372,7 +428,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsRequest));
+                request = new DeleteTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -402,9 +458,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AmazonWorkspaces.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -414,7 +479,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeTagsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTagsRequest));
+                request = new DescribeTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -453,9 +518,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspaceBundles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeWorkspaceBundlesResult describeWorkspaceBundles(DescribeWorkspaceBundlesRequest describeWorkspaceBundlesRequest) {
+    public DescribeWorkspaceBundlesResult describeWorkspaceBundles(DescribeWorkspaceBundlesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeWorkspaceBundles(request);
+    }
+
+    @SdkInternalApi
+    final DescribeWorkspaceBundlesResult executeDescribeWorkspaceBundles(DescribeWorkspaceBundlesRequest describeWorkspaceBundlesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeWorkspaceBundlesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -465,7 +539,8 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeWorkspaceBundlesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeWorkspaceBundlesRequest));
+                request = new DescribeWorkspaceBundlesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeWorkspaceBundlesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -507,9 +582,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspaceDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeWorkspaceDirectoriesResult describeWorkspaceDirectories(DescribeWorkspaceDirectoriesRequest describeWorkspaceDirectoriesRequest) {
+    public DescribeWorkspaceDirectoriesResult describeWorkspaceDirectories(DescribeWorkspaceDirectoriesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeWorkspaceDirectories(request);
+    }
+
+    @SdkInternalApi
+    final DescribeWorkspaceDirectoriesResult executeDescribeWorkspaceDirectories(DescribeWorkspaceDirectoriesRequest describeWorkspaceDirectoriesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeWorkspaceDirectoriesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -519,7 +603,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeWorkspaceDirectoriesRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeWorkspaceDirectoriesRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeWorkspaceDirectoriesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -567,9 +651,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws ResourceUnavailableException
      *         The specified resource is not available.
      * @sample AmazonWorkspaces.DescribeWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeWorkspacesResult describeWorkspaces(DescribeWorkspacesRequest describeWorkspacesRequest) {
+    public DescribeWorkspacesResult describeWorkspaces(DescribeWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final DescribeWorkspacesResult executeDescribeWorkspaces(DescribeWorkspacesRequest describeWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -579,7 +672,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeWorkspacesRequest));
+                request = new DescribeWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -613,10 +706,19 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspacesConnectionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeWorkspacesConnectionStatusResult describeWorkspacesConnectionStatus(
+    public DescribeWorkspacesConnectionStatusResult describeWorkspacesConnectionStatus(DescribeWorkspacesConnectionStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeWorkspacesConnectionStatus(request);
+    }
+
+    @SdkInternalApi
+    final DescribeWorkspacesConnectionStatusResult executeDescribeWorkspacesConnectionStatus(
             DescribeWorkspacesConnectionStatusRequest describeWorkspacesConnectionStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeWorkspacesConnectionStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -626,7 +728,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeWorkspacesConnectionStatusRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeWorkspacesConnectionStatusRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeWorkspacesConnectionStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -670,9 +772,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws ResourceUnavailableException
      *         The specified resource is not available.
      * @sample AmazonWorkspaces.ModifyWorkspaceProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyWorkspacePropertiesResult modifyWorkspaceProperties(ModifyWorkspacePropertiesRequest modifyWorkspacePropertiesRequest) {
+    public ModifyWorkspacePropertiesResult modifyWorkspaceProperties(ModifyWorkspacePropertiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyWorkspaceProperties(request);
+    }
+
+    @SdkInternalApi
+    final ModifyWorkspacePropertiesResult executeModifyWorkspaceProperties(ModifyWorkspacePropertiesRequest modifyWorkspacePropertiesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyWorkspacePropertiesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -682,7 +793,8 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ModifyWorkspacePropertiesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyWorkspacePropertiesRequest));
+                request = new ModifyWorkspacePropertiesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(modifyWorkspacePropertiesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -720,9 +832,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *        Contains the inputs for the <a>RebootWorkspaces</a> operation.
      * @return Result of the RebootWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.RebootWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RebootWorkspacesResult rebootWorkspaces(RebootWorkspacesRequest rebootWorkspacesRequest) {
+    public RebootWorkspacesResult rebootWorkspaces(RebootWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRebootWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final RebootWorkspacesResult executeRebootWorkspaces(RebootWorkspacesRequest rebootWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rebootWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -732,7 +853,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RebootWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(rebootWorkspacesRequest));
+                request = new RebootWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(rebootWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -788,9 +909,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *        Contains the inputs for the <a>RebuildWorkspaces</a> operation.
      * @return Result of the RebuildWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.RebuildWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RebuildWorkspacesResult rebuildWorkspaces(RebuildWorkspacesRequest rebuildWorkspacesRequest) {
+    public RebuildWorkspacesResult rebuildWorkspaces(RebuildWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeRebuildWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final RebuildWorkspacesResult executeRebuildWorkspaces(RebuildWorkspacesRequest rebuildWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(rebuildWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -800,7 +930,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RebuildWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(rebuildWorkspacesRequest));
+                request = new RebuildWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(rebuildWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -828,9 +958,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @param startWorkspacesRequest
      * @return Result of the StartWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.StartWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StartWorkspacesResult startWorkspaces(StartWorkspacesRequest startWorkspacesRequest) {
+    public StartWorkspacesResult startWorkspaces(StartWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final StartWorkspacesResult executeStartWorkspaces(StartWorkspacesRequest startWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -840,7 +979,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(startWorkspacesRequest));
+                request = new StartWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -868,9 +1007,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @param stopWorkspacesRequest
      * @return Result of the StopWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.StopWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public StopWorkspacesResult stopWorkspaces(StopWorkspacesRequest stopWorkspacesRequest) {
+    public StopWorkspacesResult stopWorkspaces(StopWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final StopWorkspacesResult executeStopWorkspaces(StopWorkspacesRequest stopWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(stopWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -880,7 +1028,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StopWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopWorkspacesRequest));
+                request = new StopWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -920,9 +1068,18 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      *        Contains the inputs for the <a>TerminateWorkspaces</a> operation.
      * @return Result of the TerminateWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.TerminateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public TerminateWorkspacesResult terminateWorkspaces(TerminateWorkspacesRequest terminateWorkspacesRequest) {
+    public TerminateWorkspacesResult terminateWorkspaces(TerminateWorkspacesRequest request) {
+        request = beforeClientExecution(request);
+        return executeTerminateWorkspaces(request);
+    }
+
+    @SdkInternalApi
+    final TerminateWorkspacesResult executeTerminateWorkspaces(TerminateWorkspacesRequest terminateWorkspacesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(terminateWorkspacesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -932,7 +1089,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new TerminateWorkspacesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(terminateWorkspacesRequest));
+                request = new TerminateWorkspacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(terminateWorkspacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

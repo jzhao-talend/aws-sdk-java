@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -46,7 +47,11 @@ import java.io.Serializable;
  * "http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior"
  * >Cache Behaviors</a> in the <i>Amazon CloudFront Developer Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CacheBehavior" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheBehavior implements Serializable, Cloneable {
 
     /**
@@ -213,6 +218,12 @@ public class CacheBehavior implements Serializable, Cloneable {
      * </p>
      */
     private Boolean compress;
+    /**
+     * <p>
+     * A complex type that contains zero or more Lambda function associations for a cache behavior.
+     * </p>
+     */
+    private LambdaFunctionAssociations lambdaFunctionAssociations;
 
     /**
      * <p>
@@ -1468,6 +1479,46 @@ public class CacheBehavior implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that contains zero or more Lambda function associations for a cache behavior.
+     * </p>
+     * 
+     * @param lambdaFunctionAssociations
+     *        A complex type that contains zero or more Lambda function associations for a cache behavior.
+     */
+
+    public void setLambdaFunctionAssociations(LambdaFunctionAssociations lambdaFunctionAssociations) {
+        this.lambdaFunctionAssociations = lambdaFunctionAssociations;
+    }
+
+    /**
+     * <p>
+     * A complex type that contains zero or more Lambda function associations for a cache behavior.
+     * </p>
+     * 
+     * @return A complex type that contains zero or more Lambda function associations for a cache behavior.
+     */
+
+    public LambdaFunctionAssociations getLambdaFunctionAssociations() {
+        return this.lambdaFunctionAssociations;
+    }
+
+    /**
+     * <p>
+     * A complex type that contains zero or more Lambda function associations for a cache behavior.
+     * </p>
+     * 
+     * @param lambdaFunctionAssociations
+     *        A complex type that contains zero or more Lambda function associations for a cache behavior.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CacheBehavior withLambdaFunctionAssociations(LambdaFunctionAssociations lambdaFunctionAssociations) {
+        setLambdaFunctionAssociations(lambdaFunctionAssociations);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1479,27 +1530,29 @@ public class CacheBehavior implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPathPattern() != null)
-            sb.append("PathPattern: " + getPathPattern() + ",");
+            sb.append("PathPattern: ").append(getPathPattern()).append(",");
         if (getTargetOriginId() != null)
-            sb.append("TargetOriginId: " + getTargetOriginId() + ",");
+            sb.append("TargetOriginId: ").append(getTargetOriginId()).append(",");
         if (getForwardedValues() != null)
-            sb.append("ForwardedValues: " + getForwardedValues() + ",");
+            sb.append("ForwardedValues: ").append(getForwardedValues()).append(",");
         if (getTrustedSigners() != null)
-            sb.append("TrustedSigners: " + getTrustedSigners() + ",");
+            sb.append("TrustedSigners: ").append(getTrustedSigners()).append(",");
         if (getViewerProtocolPolicy() != null)
-            sb.append("ViewerProtocolPolicy: " + getViewerProtocolPolicy() + ",");
+            sb.append("ViewerProtocolPolicy: ").append(getViewerProtocolPolicy()).append(",");
         if (getMinTTL() != null)
-            sb.append("MinTTL: " + getMinTTL() + ",");
+            sb.append("MinTTL: ").append(getMinTTL()).append(",");
         if (getAllowedMethods() != null)
-            sb.append("AllowedMethods: " + getAllowedMethods() + ",");
+            sb.append("AllowedMethods: ").append(getAllowedMethods()).append(",");
         if (getSmoothStreaming() != null)
-            sb.append("SmoothStreaming: " + getSmoothStreaming() + ",");
+            sb.append("SmoothStreaming: ").append(getSmoothStreaming()).append(",");
         if (getDefaultTTL() != null)
-            sb.append("DefaultTTL: " + getDefaultTTL() + ",");
+            sb.append("DefaultTTL: ").append(getDefaultTTL()).append(",");
         if (getMaxTTL() != null)
-            sb.append("MaxTTL: " + getMaxTTL() + ",");
+            sb.append("MaxTTL: ").append(getMaxTTL()).append(",");
         if (getCompress() != null)
-            sb.append("Compress: " + getCompress());
+            sb.append("Compress: ").append(getCompress()).append(",");
+        if (getLambdaFunctionAssociations() != null)
+            sb.append("LambdaFunctionAssociations: ").append(getLambdaFunctionAssociations());
         sb.append("}");
         return sb.toString();
     }
@@ -1558,6 +1611,10 @@ public class CacheBehavior implements Serializable, Cloneable {
             return false;
         if (other.getCompress() != null && other.getCompress().equals(this.getCompress()) == false)
             return false;
+        if (other.getLambdaFunctionAssociations() == null ^ this.getLambdaFunctionAssociations() == null)
+            return false;
+        if (other.getLambdaFunctionAssociations() != null && other.getLambdaFunctionAssociations().equals(this.getLambdaFunctionAssociations()) == false)
+            return false;
         return true;
     }
 
@@ -1577,6 +1634,7 @@ public class CacheBehavior implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDefaultTTL() == null) ? 0 : getDefaultTTL().hashCode());
         hashCode = prime * hashCode + ((getMaxTTL() == null) ? 0 : getMaxTTL().hashCode());
         hashCode = prime * hashCode + ((getCompress() == null) ? 0 : getCompress().hashCode());
+        hashCode = prime * hashCode + ((getLambdaFunctionAssociations() == null) ? 0 : getLambdaFunctionAssociations().hashCode());
         return hashCode;
     }
 
@@ -1588,4 +1646,5 @@ public class CacheBehavior implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

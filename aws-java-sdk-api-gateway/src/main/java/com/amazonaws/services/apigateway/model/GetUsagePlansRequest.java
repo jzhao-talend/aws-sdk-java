@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,11 +22,12 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The GET request to get all the usage plans of the caller's account.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
@@ -36,18 +39,18 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String keyId;
     /**
      * <p>
-     * The number of <a>UsagePlan</a> resources to be returned as the result.
+     * The maximum number of returned results per page.
      * </p>
      */
     private Integer limit;
 
     /**
      * <p>
-     * The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -56,10 +59,10 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -68,11 +71,11 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.
+     *        The current pagination position in the paged result set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -123,11 +126,11 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The number of <a>UsagePlan</a> resources to be returned as the result.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The number of <a>UsagePlan</a> resources to be returned as the result.
+     *        The maximum number of returned results per page.
      */
 
     public void setLimit(Integer limit) {
@@ -136,10 +139,10 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The number of <a>UsagePlan</a> resources to be returned as the result.
+     * The maximum number of returned results per page.
      * </p>
      * 
-     * @return The number of <a>UsagePlan</a> resources to be returned as the result.
+     * @return The maximum number of returned results per page.
      */
 
     public Integer getLimit() {
@@ -148,11 +151,11 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The number of <a>UsagePlan</a> resources to be returned as the result.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The number of <a>UsagePlan</a> resources to be returned as the result.
+     *        The maximum number of returned results per page.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,11 +176,11 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +225,5 @@ public class GetUsagePlansRequest extends com.amazonaws.AmazonWebServiceRequest 
     public GetUsagePlansRequest clone() {
         return (GetUsagePlansRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateCaseRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -533,23 +539,23 @@ public class CreateCaseRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubject() != null)
-            sb.append("Subject: " + getSubject() + ",");
+            sb.append("Subject: ").append(getSubject()).append(",");
         if (getServiceCode() != null)
-            sb.append("ServiceCode: " + getServiceCode() + ",");
+            sb.append("ServiceCode: ").append(getServiceCode()).append(",");
         if (getSeverityCode() != null)
-            sb.append("SeverityCode: " + getSeverityCode() + ",");
+            sb.append("SeverityCode: ").append(getSeverityCode()).append(",");
         if (getCategoryCode() != null)
-            sb.append("CategoryCode: " + getCategoryCode() + ",");
+            sb.append("CategoryCode: ").append(getCategoryCode()).append(",");
         if (getCommunicationBody() != null)
-            sb.append("CommunicationBody: " + getCommunicationBody() + ",");
+            sb.append("CommunicationBody: ").append(getCommunicationBody()).append(",");
         if (getCcEmailAddresses() != null)
-            sb.append("CcEmailAddresses: " + getCcEmailAddresses() + ",");
+            sb.append("CcEmailAddresses: ").append(getCcEmailAddresses()).append(",");
         if (getLanguage() != null)
-            sb.append("Language: " + getLanguage() + ",");
+            sb.append("Language: ").append(getLanguage()).append(",");
         if (getIssueType() != null)
-            sb.append("IssueType: " + getIssueType() + ",");
+            sb.append("IssueType: ").append(getIssueType()).append(",");
         if (getAttachmentSetId() != null)
-            sb.append("AttachmentSetId: " + getAttachmentSetId());
+            sb.append("AttachmentSetId: ").append(getAttachmentSetId());
         sb.append("}");
         return sb.toString();
     }
@@ -624,4 +630,5 @@ public class CreateCaseRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public CreateCaseRequest clone() {
         return (CreateCaseRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateGameSession" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateGameSessionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the updated game session metadata.
+     * Object that contains the updated game session metadata.
      * </p>
      */
     private GameSession gameSession;
 
     /**
      * <p>
-     * Object containing the updated game session metadata.
+     * Object that contains the updated game session metadata.
      * </p>
      * 
      * @param gameSession
-     *        Object containing the updated game session metadata.
+     *        Object that contains the updated game session metadata.
      */
 
     public void setGameSession(GameSession gameSession) {
@@ -43,10 +48,10 @@ public class UpdateGameSessionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Object containing the updated game session metadata.
+     * Object that contains the updated game session metadata.
      * </p>
      * 
-     * @return Object containing the updated game session metadata.
+     * @return Object that contains the updated game session metadata.
      */
 
     public GameSession getGameSession() {
@@ -55,11 +60,11 @@ public class UpdateGameSessionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * Object containing the updated game session metadata.
+     * Object that contains the updated game session metadata.
      * </p>
      * 
      * @param gameSession
-     *        Object containing the updated game session metadata.
+     *        Object that contains the updated game session metadata.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class UpdateGameSessionResult extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSession() != null)
-            sb.append("GameSession: " + getGameSession());
+            sb.append("GameSession: ").append(getGameSession());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class UpdateGameSessionResult extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

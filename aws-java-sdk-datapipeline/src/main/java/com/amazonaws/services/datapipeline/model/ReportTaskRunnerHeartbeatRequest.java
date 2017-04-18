@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.datapipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the parameters for ReportTaskRunnerHeartbeat.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReportTaskRunnerHeartbeatRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -215,11 +221,11 @@ public class ReportTaskRunnerHeartbeatRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskrunnerId() != null)
-            sb.append("TaskrunnerId: " + getTaskrunnerId() + ",");
+            sb.append("TaskrunnerId: ").append(getTaskrunnerId()).append(",");
         if (getWorkerGroup() != null)
-            sb.append("WorkerGroup: " + getWorkerGroup() + ",");
+            sb.append("WorkerGroup: ").append(getWorkerGroup()).append(",");
         if (getHostname() != null)
-            sb.append("Hostname: " + getHostname());
+            sb.append("Hostname: ").append(getHostname());
         sb.append("}");
         return sb.toString();
     }
@@ -264,4 +270,5 @@ public class ReportTaskRunnerHeartbeatRequest extends com.amazonaws.AmazonWebSer
     public ReportTaskRunnerHeartbeatRequest clone() {
         return (ReportTaskRunnerHeartbeatRequest) super.clone();
     }
+
 }

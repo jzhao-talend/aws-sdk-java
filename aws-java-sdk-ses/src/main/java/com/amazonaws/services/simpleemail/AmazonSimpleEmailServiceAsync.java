@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.simpleemail;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.simpleemail.model.*;
 
 /**
  * Interface for accessing Amazon SES asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.simpleemail.AbstractAmazonSimpleEmailServiceAsync} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Simple Email Service</fullname>
  * <p>
@@ -33,6 +39,7 @@ import com.amazonaws.services.simpleemail.model.*;
  * </p>
  * </note>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService {
 
     /**
@@ -56,6 +63,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the CloneReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.CloneReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CloneReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CloneReceiptRuleSetResult> cloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest cloneReceiptRuleSetRequest);
 
@@ -84,6 +93,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CloneReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CloneReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CloneReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CloneReceiptRuleSetResult> cloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest cloneReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<CloneReceiptRuleSetRequest, CloneReceiptRuleSetResult> asyncHandler);
@@ -108,6 +119,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the CreateConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.CreateConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateConfigurationSetResult> createConfigurationSetAsync(CreateConfigurationSetRequest createConfigurationSetRequest);
 
@@ -135,6 +148,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CreateConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateConfigurationSetResult> createConfigurationSetAsync(CreateConfigurationSetRequest createConfigurationSetRequest,
             com.amazonaws.handlers.AsyncHandler<CreateConfigurationSetRequest, CreateConfigurationSetResult> asyncHandler);
@@ -169,6 +184,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the CreateConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsync.CreateConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateConfigurationSetEventDestinationResult> createConfigurationSetEventDestinationAsync(
             CreateConfigurationSetEventDestinationRequest createConfigurationSetEventDestinationRequest);
@@ -207,6 +224,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the CreateConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CreateConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateConfigurationSetEventDestinationResult> createConfigurationSetEventDestinationAsync(
             CreateConfigurationSetEventDestinationRequest createConfigurationSetEventDestinationRequest,
@@ -232,6 +251,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the CreateReceiptFilter operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.CreateReceiptFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptFilterResult> createReceiptFilterAsync(CreateReceiptFilterRequest createReceiptFilterRequest);
 
@@ -259,6 +280,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReceiptFilter operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CreateReceiptFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptFilterResult> createReceiptFilterAsync(CreateReceiptFilterRequest createReceiptFilterRequest,
             com.amazonaws.handlers.AsyncHandler<CreateReceiptFilterRequest, CreateReceiptFilterResult> asyncHandler);
@@ -283,6 +306,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the CreateReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.CreateReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptRuleResult> createReceiptRuleAsync(CreateReceiptRuleRequest createReceiptRuleRequest);
 
@@ -310,6 +335,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CreateReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptRuleResult> createReceiptRuleAsync(CreateReceiptRuleRequest createReceiptRuleRequest,
             com.amazonaws.handlers.AsyncHandler<CreateReceiptRuleRequest, CreateReceiptRuleResult> asyncHandler);
@@ -334,6 +361,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the CreateReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.CreateReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptRuleSetResult> createReceiptRuleSetAsync(CreateReceiptRuleSetRequest createReceiptRuleSetRequest);
 
@@ -361,6 +390,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.CreateReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateReceiptRuleSetResult> createReceiptRuleSetAsync(CreateReceiptRuleSetRequest createReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<CreateReceiptRuleSetRequest, CreateReceiptRuleSetResult> asyncHandler);
@@ -385,6 +416,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DeleteConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConfigurationSetResult> deleteConfigurationSetAsync(DeleteConfigurationSetRequest deleteConfigurationSetRequest);
 
@@ -412,6 +445,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConfigurationSetResult> deleteConfigurationSetAsync(DeleteConfigurationSetRequest deleteConfigurationSetRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteConfigurationSetRequest, DeleteConfigurationSetResult> asyncHandler);
@@ -439,6 +474,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the DeleteConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConfigurationSetEventDestinationResult> deleteConfigurationSetEventDestinationAsync(
             DeleteConfigurationSetEventDestinationRequest deleteConfigurationSetEventDestinationRequest);
@@ -470,6 +507,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the DeleteConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteConfigurationSetEventDestinationResult> deleteConfigurationSetEventDestinationAsync(
             DeleteConfigurationSetEventDestinationRequest deleteConfigurationSetEventDestinationRequest,
@@ -487,6 +526,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Represents a request to delete one of your Amazon SES identities (an email address or domain).
      * @return A Java Future containing the result of the DeleteIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteIdentityResult> deleteIdentityAsync(DeleteIdentityRequest deleteIdentityRequest);
 
@@ -506,6 +547,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteIdentityResult> deleteIdentityAsync(DeleteIdentityRequest deleteIdentityRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteIdentityRequest, DeleteIdentityResult> asyncHandler);
@@ -537,6 +580,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        SES Developer Guide</a>.
      * @return A Java Future containing the result of the DeleteIdentityPolicy operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteIdentityPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentityPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteIdentityPolicyResult> deleteIdentityPolicyAsync(DeleteIdentityPolicyRequest deleteIdentityPolicyRequest);
 
@@ -571,6 +616,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteIdentityPolicy operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteIdentityPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentityPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteIdentityPolicyResult> deleteIdentityPolicyAsync(DeleteIdentityPolicyRequest deleteIdentityPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteIdentityPolicyRequest, DeleteIdentityPolicyResult> asyncHandler);
@@ -595,6 +642,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DeleteReceiptFilter operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteReceiptFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptFilterResult> deleteReceiptFilterAsync(DeleteReceiptFilterRequest deleteReceiptFilterRequest);
 
@@ -622,6 +671,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReceiptFilter operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteReceiptFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptFilterResult> deleteReceiptFilterAsync(DeleteReceiptFilterRequest deleteReceiptFilterRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteReceiptFilterRequest, DeleteReceiptFilterResult> asyncHandler);
@@ -646,6 +697,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DeleteReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptRuleResult> deleteReceiptRuleAsync(DeleteReceiptRuleRequest deleteReceiptRuleRequest);
 
@@ -673,6 +726,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptRuleResult> deleteReceiptRuleAsync(DeleteReceiptRuleRequest deleteReceiptRuleRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteReceiptRuleRequest, DeleteReceiptRuleResult> asyncHandler);
@@ -702,6 +757,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DeleteReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptRuleSetResult> deleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest deleteReceiptRuleSetRequest);
 
@@ -734,6 +791,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRuleSet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteReceiptRuleSetResult> deleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest deleteReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteReceiptRuleSetRequest, DeleteReceiptRuleSetResult> asyncHandler);
@@ -757,6 +816,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        verify under your AWS account.
      * @return A Java Future containing the result of the DeleteVerifiedEmailAddress operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DeleteVerifiedEmailAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteVerifiedEmailAddress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVerifiedEmailAddressResult> deleteVerifiedEmailAddressAsync(
             DeleteVerifiedEmailAddressRequest deleteVerifiedEmailAddressRequest);
@@ -784,6 +845,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVerifiedEmailAddress operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DeleteVerifiedEmailAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteVerifiedEmailAddress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVerifiedEmailAddressResult> deleteVerifiedEmailAddressAsync(
             DeleteVerifiedEmailAddressRequest deleteVerifiedEmailAddressRequest,
@@ -810,6 +873,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the DescribeActiveReceiptRuleSet operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.DescribeActiveReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeActiveReceiptRuleSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeActiveReceiptRuleSetResult> describeActiveReceiptRuleSetAsync(
             DescribeActiveReceiptRuleSetRequest describeActiveReceiptRuleSetRequest);
@@ -839,6 +904,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the DescribeActiveReceiptRuleSet operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DescribeActiveReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeActiveReceiptRuleSet"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeActiveReceiptRuleSetResult> describeActiveReceiptRuleSetAsync(
             DescribeActiveReceiptRuleSetRequest describeActiveReceiptRuleSetRequest,
@@ -864,6 +931,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DescribeConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DescribeConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConfigurationSetResult> describeConfigurationSetAsync(DescribeConfigurationSetRequest describeConfigurationSetRequest);
 
@@ -891,6 +960,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeConfigurationSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DescribeConfigurationSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeConfigurationSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConfigurationSetResult> describeConfigurationSetAsync(DescribeConfigurationSetRequest describeConfigurationSetRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeConfigurationSetRequest, DescribeConfigurationSetResult> asyncHandler);
@@ -915,6 +986,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DescribeReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DescribeReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeReceiptRuleResult> describeReceiptRuleAsync(DescribeReceiptRuleRequest describeReceiptRuleRequest);
 
@@ -942,6 +1015,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DescribeReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeReceiptRuleResult> describeReceiptRuleAsync(DescribeReceiptRuleRequest describeReceiptRuleRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeReceiptRuleRequest, DescribeReceiptRuleResult> asyncHandler);
@@ -966,6 +1041,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the DescribeReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.DescribeReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReceiptRuleSetResult> describeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest describeReceiptRuleSetRequest);
 
@@ -993,6 +1070,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.DescribeReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReceiptRuleSetResult> describeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest describeReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeReceiptRuleSetRequest, DescribeReceiptRuleSetResult> asyncHandler);
@@ -1043,6 +1122,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Guide</a>.
      * @return A Java Future containing the result of the GetIdentityDkimAttributes operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.GetIdentityDkimAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityDkimAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityDkimAttributesResult> getIdentityDkimAttributesAsync(
             GetIdentityDkimAttributesRequest getIdentityDkimAttributesRequest);
@@ -1097,6 +1178,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetIdentityDkimAttributes operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetIdentityDkimAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityDkimAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityDkimAttributesResult> getIdentityDkimAttributesAsync(
             GetIdentityDkimAttributesRequest getIdentityDkimAttributesRequest,
@@ -1118,6 +1201,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityMailFromDomainAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.GetIdentityMailFromDomainAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityMailFromDomainAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityMailFromDomainAttributesResult> getIdentityMailFromDomainAttributesAsync(
             GetIdentityMailFromDomainAttributesRequest getIdentityMailFromDomainAttributesRequest);
@@ -1142,6 +1227,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityMailFromDomainAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetIdentityMailFromDomainAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityMailFromDomainAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityMailFromDomainAttributesResult> getIdentityMailFromDomainAttributesAsync(
             GetIdentityMailFromDomainAttributesRequest getIdentityMailFromDomainAttributesRequest,
@@ -1169,6 +1256,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityNotificationAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.GetIdentityNotificationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityNotificationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityNotificationAttributesResult> getIdentityNotificationAttributesAsync(
             GetIdentityNotificationAttributesRequest getIdentityNotificationAttributesRequest);
@@ -1199,6 +1288,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityNotificationAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetIdentityNotificationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityNotificationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityNotificationAttributesResult> getIdentityNotificationAttributesAsync(
             GetIdentityNotificationAttributesRequest getIdentityNotificationAttributesRequest,
@@ -1233,6 +1324,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the GetIdentityPolicies operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.GetIdentityPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityPoliciesResult> getIdentityPoliciesAsync(GetIdentityPoliciesRequest getIdentityPoliciesRequest);
 
@@ -1269,6 +1362,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetIdentityPolicies operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetIdentityPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityPoliciesResult> getIdentityPoliciesAsync(GetIdentityPoliciesRequest getIdentityPoliciesRequest,
             com.amazonaws.handlers.AsyncHandler<GetIdentityPoliciesRequest, GetIdentityPoliciesResult> asyncHandler);
@@ -1292,6 +1387,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityVerificationAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.GetIdentityVerificationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityVerificationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityVerificationAttributesResult> getIdentityVerificationAttributesAsync(
             GetIdentityVerificationAttributesRequest getIdentityVerificationAttributesRequest);
@@ -1319,6 +1416,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the GetIdentityVerificationAttributes operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetIdentityVerificationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityVerificationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetIdentityVerificationAttributesResult> getIdentityVerificationAttributesAsync(
             GetIdentityVerificationAttributesRequest getIdentityVerificationAttributesRequest,
@@ -1335,6 +1434,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @param getSendQuotaRequest
      * @return A Java Future containing the result of the GetSendQuota operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.GetSendQuota
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendQuota" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSendQuotaResult> getSendQuotaAsync(GetSendQuotaRequest getSendQuotaRequest);
 
@@ -1353,6 +1454,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSendQuota operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetSendQuota
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendQuota" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSendQuotaResult> getSendQuotaAsync(GetSendQuotaRequest getSendQuotaRequest,
             com.amazonaws.handlers.AsyncHandler<GetSendQuotaRequest, GetSendQuotaResult> asyncHandler);
@@ -1386,6 +1489,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @param getSendStatisticsRequest
      * @return A Java Future containing the result of the GetSendStatistics operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.GetSendStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendStatistics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSendStatisticsResult> getSendStatisticsAsync(GetSendStatisticsRequest getSendStatisticsRequest);
 
@@ -1408,6 +1513,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSendStatistics operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.GetSendStatistics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendStatistics" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSendStatisticsResult> getSendStatisticsAsync(GetSendStatisticsRequest getSendStatisticsRequest,
             com.amazonaws.handlers.AsyncHandler<GetSendStatisticsRequest, GetSendStatisticsResult> asyncHandler);
@@ -1447,6 +1554,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the ListConfigurationSets operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListConfigurationSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListConfigurationSets" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListConfigurationSetsResult> listConfigurationSetsAsync(ListConfigurationSetsRequest listConfigurationSetsRequest);
 
@@ -1474,6 +1583,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListConfigurationSets operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListConfigurationSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListConfigurationSets" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListConfigurationSetsResult> listConfigurationSetsAsync(ListConfigurationSetsRequest listConfigurationSetsRequest,
             com.amazonaws.handlers.AsyncHandler<ListConfigurationSetsRequest, ListConfigurationSetsResult> asyncHandler);
@@ -1492,6 +1603,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        attempted to verify under your AWS account, regardless of verification status.
      * @return A Java Future containing the result of the ListIdentities operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentities" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIdentitiesResult> listIdentitiesAsync(ListIdentitiesRequest listIdentitiesRequest);
 
@@ -1513,6 +1626,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListIdentities operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListIdentities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentities" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIdentitiesResult> listIdentitiesAsync(ListIdentitiesRequest listIdentitiesRequest,
             com.amazonaws.handlers.AsyncHandler<ListIdentitiesRequest, ListIdentitiesResult> asyncHandler);
@@ -1561,6 +1676,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the ListIdentityPolicies operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListIdentityPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentityPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIdentityPoliciesResult> listIdentityPoliciesAsync(ListIdentityPoliciesRequest listIdentityPoliciesRequest);
 
@@ -1597,6 +1714,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListIdentityPolicies operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListIdentityPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentityPolicies" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListIdentityPoliciesResult> listIdentityPoliciesAsync(ListIdentityPoliciesRequest listIdentityPoliciesRequest,
             com.amazonaws.handlers.AsyncHandler<ListIdentityPoliciesRequest, ListIdentityPoliciesResult> asyncHandler);
@@ -1621,6 +1740,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the ListReceiptFilters operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListReceiptFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptFilters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListReceiptFiltersResult> listReceiptFiltersAsync(ListReceiptFiltersRequest listReceiptFiltersRequest);
 
@@ -1648,6 +1769,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListReceiptFilters operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListReceiptFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptFilters" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListReceiptFiltersResult> listReceiptFiltersAsync(ListReceiptFiltersRequest listReceiptFiltersRequest,
             com.amazonaws.handlers.AsyncHandler<ListReceiptFiltersRequest, ListReceiptFiltersResult> asyncHandler);
@@ -1674,6 +1797,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the ListReceiptRuleSets operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListReceiptRuleSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptRuleSets" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListReceiptRuleSetsResult> listReceiptRuleSetsAsync(ListReceiptRuleSetsRequest listReceiptRuleSetsRequest);
 
@@ -1703,6 +1828,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListReceiptRuleSets operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListReceiptRuleSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptRuleSets" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListReceiptRuleSetsResult> listReceiptRuleSetsAsync(ListReceiptRuleSetsRequest listReceiptRuleSetsRequest,
             com.amazonaws.handlers.AsyncHandler<ListReceiptRuleSetsRequest, ListReceiptRuleSetsResult> asyncHandler);
@@ -1724,6 +1851,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @param listVerifiedEmailAddressesRequest
      * @return A Java Future containing the result of the ListVerifiedEmailAddresses operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ListVerifiedEmailAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListVerifiedEmailAddresses"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVerifiedEmailAddressesResult> listVerifiedEmailAddressesAsync(
             ListVerifiedEmailAddressesRequest listVerifiedEmailAddressesRequest);
@@ -1749,6 +1878,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListVerifiedEmailAddresses operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ListVerifiedEmailAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListVerifiedEmailAddresses"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVerifiedEmailAddressesResult> listVerifiedEmailAddressesAsync(
             ListVerifiedEmailAddressesRequest listVerifiedEmailAddressesRequest,
@@ -1796,6 +1927,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the PutIdentityPolicy operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.PutIdentityPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/PutIdentityPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PutIdentityPolicyResult> putIdentityPolicyAsync(PutIdentityPolicyRequest putIdentityPolicyRequest);
 
@@ -1830,6 +1963,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the PutIdentityPolicy operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.PutIdentityPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/PutIdentityPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<PutIdentityPolicyResult> putIdentityPolicyAsync(PutIdentityPolicyRequest putIdentityPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<PutIdentityPolicyRequest, PutIdentityPolicyResult> asyncHandler);
@@ -1860,6 +1995,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the ReorderReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.ReorderReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReorderReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ReorderReceiptRuleSetResult> reorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest reorderReceiptRuleSetRequest);
 
@@ -1893,6 +2030,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReorderReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.ReorderReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReorderReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ReorderReceiptRuleSetResult> reorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest reorderReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<ReorderReceiptRuleSetRequest, ReorderReceiptRuleSetResult> asyncHandler);
@@ -1919,6 +2058,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Represents a request to send a bounce message to the sender of an email you received through Amazon SES.
      * @return A Java Future containing the result of the SendBounce operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SendBounce
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBounce" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendBounceResult> sendBounceAsync(SendBounceRequest sendBounceRequest);
 
@@ -1948,6 +2089,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SendBounce operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SendBounce
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBounce" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendBounceResult> sendBounceAsync(SendBounceRequest sendBounceRequest,
             com.amazonaws.handlers.AsyncHandler<SendBounceRequest, SendBounceResult> asyncHandler);
@@ -1998,6 +2141,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Guide</a>.
      * @return A Java Future containing the result of the SendEmail operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SendEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendEmailResult> sendEmailAsync(SendEmailRequest sendEmailRequest);
 
@@ -2051,6 +2196,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SendEmail operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SendEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendEmailResult> sendEmailAsync(SendEmailRequest sendEmailRequest,
             com.amazonaws.handlers.AsyncHandler<SendEmailRequest, SendEmailResult> asyncHandler);
@@ -2155,6 +2302,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Guide</a>.
      * @return A Java Future containing the result of the SendRawEmail operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SendRawEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendRawEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendRawEmailResult> sendRawEmailAsync(SendRawEmailRequest sendRawEmailRequest);
 
@@ -2262,6 +2411,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SendRawEmail operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SendRawEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendRawEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<SendRawEmailResult> sendRawEmailAsync(SendRawEmailRequest sendRawEmailRequest,
             com.amazonaws.handlers.AsyncHandler<SendRawEmailRequest, SendRawEmailResult> asyncHandler);
@@ -2292,6 +2443,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the SetActiveReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SetActiveReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetActiveReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetActiveReceiptRuleSetResult> setActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest setActiveReceiptRuleSetRequest);
 
@@ -2325,6 +2478,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetActiveReceiptRuleSet operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetActiveReceiptRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetActiveReceiptRuleSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetActiveReceiptRuleSetResult> setActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest setActiveReceiptRuleSetRequest,
             com.amazonaws.handlers.AsyncHandler<SetActiveReceiptRuleSetRequest, SetActiveReceiptRuleSetResult> asyncHandler);
@@ -2366,6 +2521,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.
      * @return A Java Future containing the result of the SetIdentityDkimEnabled operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SetIdentityDkimEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityDkimEnabled" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityDkimEnabledResult> setIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest setIdentityDkimEnabledRequest);
 
@@ -2410,6 +2567,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetIdentityDkimEnabled operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetIdentityDkimEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityDkimEnabled" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityDkimEnabledResult> setIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest setIdentityDkimEnabledRequest,
             com.amazonaws.handlers.AsyncHandler<SetIdentityDkimEnabledRequest, SetIdentityDkimEnabledResult> asyncHandler);
@@ -2442,6 +2601,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityFeedbackForwardingEnabled operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.SetIdentityFeedbackForwardingEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityFeedbackForwardingEnabled"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityFeedbackForwardingEnabledResult> setIdentityFeedbackForwardingEnabledAsync(
             SetIdentityFeedbackForwardingEnabledRequest setIdentityFeedbackForwardingEnabledRequest);
@@ -2478,6 +2639,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityFeedbackForwardingEnabled operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetIdentityFeedbackForwardingEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityFeedbackForwardingEnabled"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityFeedbackForwardingEnabledResult> setIdentityFeedbackForwardingEnabledAsync(
             SetIdentityFeedbackForwardingEnabledRequest setIdentityFeedbackForwardingEnabledRequest,
@@ -2504,6 +2667,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityHeadersInNotificationsEnabled operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsync.SetIdentityHeadersInNotificationsEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityHeadersInNotificationsEnabled"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityHeadersInNotificationsEnabledResult> setIdentityHeadersInNotificationsEnabledAsync(
             SetIdentityHeadersInNotificationsEnabledRequest setIdentityHeadersInNotificationsEnabledRequest);
@@ -2533,6 +2698,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityHeadersInNotificationsEnabled operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetIdentityHeadersInNotificationsEnabled
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityHeadersInNotificationsEnabled"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityHeadersInNotificationsEnabledResult> setIdentityHeadersInNotificationsEnabledAsync(
             SetIdentityHeadersInNotificationsEnabledRequest setIdentityHeadersInNotificationsEnabledRequest,
@@ -2560,6 +2727,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.
      * @return A Java Future containing the result of the SetIdentityMailFromDomain operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SetIdentityMailFromDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityMailFromDomain"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityMailFromDomainResult> setIdentityMailFromDomainAsync(
             SetIdentityMailFromDomainRequest setIdentityMailFromDomainRequest);
@@ -2590,6 +2759,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetIdentityMailFromDomain operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetIdentityMailFromDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityMailFromDomain"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityMailFromDomainResult> setIdentityMailFromDomainAsync(
             SetIdentityMailFromDomainRequest setIdentityMailFromDomainRequest,
@@ -2624,6 +2795,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityNotificationTopic operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsync.SetIdentityNotificationTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityNotificationTopic"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityNotificationTopicResult> setIdentityNotificationTopicAsync(
             SetIdentityNotificationTopicRequest setIdentityNotificationTopicRequest);
@@ -2661,6 +2834,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the SetIdentityNotificationTopic operation returned by the
      *         service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetIdentityNotificationTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityNotificationTopic"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetIdentityNotificationTopicResult> setIdentityNotificationTopicAsync(
             SetIdentityNotificationTopicRequest setIdentityNotificationTopicRequest,
@@ -2686,6 +2861,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the SetReceiptRulePosition operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.SetReceiptRulePosition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetReceiptRulePosition" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetReceiptRulePositionResult> setReceiptRulePositionAsync(SetReceiptRulePositionRequest setReceiptRulePositionRequest);
 
@@ -2713,6 +2890,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetReceiptRulePosition operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.SetReceiptRulePosition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetReceiptRulePosition" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<SetReceiptRulePositionResult> setReceiptRulePositionAsync(SetReceiptRulePositionRequest setReceiptRulePositionRequest,
             com.amazonaws.handlers.AsyncHandler<SetReceiptRulePositionRequest, SetReceiptRulePositionResult> asyncHandler);
@@ -2745,6 +2924,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the UpdateConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsync.UpdateConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateConfigurationSetEventDestinationResult> updateConfigurationSetEventDestinationAsync(
             UpdateConfigurationSetEventDestinationRequest updateConfigurationSetEventDestinationRequest);
@@ -2781,6 +2962,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      * @return A Java Future containing the result of the UpdateConfigurationSetEventDestination operation returned by
      *         the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.UpdateConfigurationSetEventDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetEventDestination"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateConfigurationSetEventDestinationResult> updateConfigurationSetEventDestinationAsync(
             UpdateConfigurationSetEventDestinationRequest updateConfigurationSetEventDestinationRequest,
@@ -2806,6 +2989,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the UpdateReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.UpdateReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateReceiptRuleResult> updateReceiptRuleAsync(UpdateReceiptRuleRequest updateReceiptRuleRequest);
 
@@ -2833,6 +3018,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateReceiptRule operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.UpdateReceiptRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateReceiptRule" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateReceiptRuleResult> updateReceiptRuleAsync(UpdateReceiptRuleRequest updateReceiptRuleRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateReceiptRuleRequest, UpdateReceiptRuleResult> asyncHandler);
@@ -2863,6 +3050,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.
      * @return A Java Future containing the result of the VerifyDomainDkim operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.VerifyDomainDkim
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainDkim" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyDomainDkimResult> verifyDomainDkimAsync(VerifyDomainDkimRequest verifyDomainDkimRequest);
 
@@ -2896,6 +3085,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the VerifyDomainDkim operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.VerifyDomainDkim
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainDkim" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyDomainDkimResult> verifyDomainDkimAsync(VerifyDomainDkimRequest verifyDomainDkimRequest,
             com.amazonaws.handlers.AsyncHandler<VerifyDomainDkimRequest, VerifyDomainDkimResult> asyncHandler);
@@ -2916,6 +3107,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Guide</a>.
      * @return A Java Future containing the result of the VerifyDomainIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.VerifyDomainIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyDomainIdentityResult> verifyDomainIdentityAsync(VerifyDomainIdentityRequest verifyDomainIdentityRequest);
 
@@ -2939,6 +3132,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the VerifyDomainIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.VerifyDomainIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyDomainIdentityResult> verifyDomainIdentityAsync(VerifyDomainIdentityRequest verifyDomainIdentityRequest,
             com.amazonaws.handlers.AsyncHandler<VerifyDomainIdentityRequest, VerifyDomainIdentityResult> asyncHandler);
@@ -2964,6 +3159,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the VerifyEmailAddress operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.VerifyEmailAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyEmailAddressResult> verifyEmailAddressAsync(VerifyEmailAddressRequest verifyEmailAddressRequest);
 
@@ -2992,6 +3189,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the VerifyEmailAddress operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.VerifyEmailAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyEmailAddressResult> verifyEmailAddressAsync(VerifyEmailAddressRequest verifyEmailAddressRequest,
             com.amazonaws.handlers.AsyncHandler<VerifyEmailAddressRequest, VerifyEmailAddressResult> asyncHandler);
@@ -3011,6 +3210,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        Developer Guide</a>.
      * @return A Java Future containing the result of the VerifyEmailIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsync.VerifyEmailIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyEmailIdentityResult> verifyEmailIdentityAsync(VerifyEmailIdentityRequest verifyEmailIdentityRequest);
 
@@ -3033,6 +3234,8 @@ public interface AmazonSimpleEmailServiceAsync extends AmazonSimpleEmailService 
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the VerifyEmailIdentity operation returned by the service.
      * @sample AmazonSimpleEmailServiceAsyncHandler.VerifyEmailIdentity
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailIdentity" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<VerifyEmailIdentityResult> verifyEmailIdentityAsync(VerifyEmailIdentityRequest verifyEmailIdentityRequest,
             com.amazonaws.handlers.AsyncHandler<VerifyEmailIdentityRequest, VerifyEmailIdentityResult> asyncHandler);

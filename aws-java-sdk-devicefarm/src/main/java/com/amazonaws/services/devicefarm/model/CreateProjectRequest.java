@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the create project operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateProject" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -28,6 +34,13 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified
+     * execution timeout value unless overridden when scheduling a run.
+     * </p>
+     */
+    private Integer defaultJobTimeoutMinutes;
 
     /**
      * <p>
@@ -70,6 +83,52 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified
+     * execution timeout value unless overridden when scheduling a run.
+     * </p>
+     * 
+     * @param defaultJobTimeoutMinutes
+     *        Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the
+     *        specified execution timeout value unless overridden when scheduling a run.
+     */
+
+    public void setDefaultJobTimeoutMinutes(Integer defaultJobTimeoutMinutes) {
+        this.defaultJobTimeoutMinutes = defaultJobTimeoutMinutes;
+    }
+
+    /**
+     * <p>
+     * Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified
+     * execution timeout value unless overridden when scheduling a run.
+     * </p>
+     * 
+     * @return Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the
+     *         specified execution timeout value unless overridden when scheduling a run.
+     */
+
+    public Integer getDefaultJobTimeoutMinutes() {
+        return this.defaultJobTimeoutMinutes;
+    }
+
+    /**
+     * <p>
+     * Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the specified
+     * execution timeout value unless overridden when scheduling a run.
+     * </p>
+     * 
+     * @param defaultJobTimeoutMinutes
+     *        Sets the execution timeout value (in minutes) for a project. All test runs in this project will use the
+     *        specified execution timeout value unless overridden when scheduling a run.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateProjectRequest withDefaultJobTimeoutMinutes(Integer defaultJobTimeoutMinutes) {
+        setDefaultJobTimeoutMinutes(defaultJobTimeoutMinutes);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -81,7 +140,9 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getDefaultJobTimeoutMinutes() != null)
+            sb.append("DefaultJobTimeoutMinutes: ").append(getDefaultJobTimeoutMinutes());
         sb.append("}");
         return sb.toString();
     }
@@ -100,6 +161,10 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getDefaultJobTimeoutMinutes() == null ^ this.getDefaultJobTimeoutMinutes() == null)
+            return false;
+        if (other.getDefaultJobTimeoutMinutes() != null && other.getDefaultJobTimeoutMinutes().equals(this.getDefaultJobTimeoutMinutes()) == false)
+            return false;
         return true;
     }
 
@@ -109,6 +174,7 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDefaultJobTimeoutMinutes() == null) ? 0 : getDefaultJobTimeoutMinutes().hashCode());
         return hashCode;
     }
 
@@ -116,4 +182,5 @@ public class CreateProjectRequest extends com.amazonaws.AmazonWebServiceRequest 
     public CreateProjectRequest clone() {
         return (CreateProjectRequest) super.clone();
     }
+
 }

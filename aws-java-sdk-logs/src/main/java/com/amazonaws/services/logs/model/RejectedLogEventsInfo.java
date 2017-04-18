@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,20 +13,47 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Represents the rejected events.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/RejectedLogEventsInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RejectedLogEventsInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RejectedLogEventsInfo implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The log events that are too new.
+     * </p>
+     */
     private Integer tooNewLogEventStartIndex;
-
+    /**
+     * <p>
+     * The log events that are too old.
+     * </p>
+     */
     private Integer tooOldLogEventEndIndex;
-
+    /**
+     * <p>
+     * The expired log events.
+     * </p>
+     */
     private Integer expiredLogEventEndIndex;
 
     /**
+     * <p>
+     * The log events that are too new.
+     * </p>
+     * 
      * @param tooNewLogEventStartIndex
+     *        The log events that are too new.
      */
 
     public void setTooNewLogEventStartIndex(Integer tooNewLogEventStartIndex) {
@@ -34,7 +61,11 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The log events that are too new.
+     * </p>
+     * 
+     * @return The log events that are too new.
      */
 
     public Integer getTooNewLogEventStartIndex() {
@@ -42,7 +73,12 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The log events that are too new.
+     * </p>
+     * 
      * @param tooNewLogEventStartIndex
+     *        The log events that are too new.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -52,7 +88,12 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The log events that are too old.
+     * </p>
+     * 
      * @param tooOldLogEventEndIndex
+     *        The log events that are too old.
      */
 
     public void setTooOldLogEventEndIndex(Integer tooOldLogEventEndIndex) {
@@ -60,7 +101,11 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The log events that are too old.
+     * </p>
+     * 
+     * @return The log events that are too old.
      */
 
     public Integer getTooOldLogEventEndIndex() {
@@ -68,7 +113,12 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The log events that are too old.
+     * </p>
+     * 
      * @param tooOldLogEventEndIndex
+     *        The log events that are too old.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -78,7 +128,12 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The expired log events.
+     * </p>
+     * 
      * @param expiredLogEventEndIndex
+     *        The expired log events.
      */
 
     public void setExpiredLogEventEndIndex(Integer expiredLogEventEndIndex) {
@@ -86,7 +141,11 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The expired log events.
+     * </p>
+     * 
+     * @return The expired log events.
      */
 
     public Integer getExpiredLogEventEndIndex() {
@@ -94,7 +153,12 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The expired log events.
+     * </p>
+     * 
      * @param expiredLogEventEndIndex
+     *        The expired log events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -115,11 +179,11 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTooNewLogEventStartIndex() != null)
-            sb.append("TooNewLogEventStartIndex: " + getTooNewLogEventStartIndex() + ",");
+            sb.append("TooNewLogEventStartIndex: ").append(getTooNewLogEventStartIndex()).append(",");
         if (getTooOldLogEventEndIndex() != null)
-            sb.append("TooOldLogEventEndIndex: " + getTooOldLogEventEndIndex() + ",");
+            sb.append("TooOldLogEventEndIndex: ").append(getTooOldLogEventEndIndex()).append(",");
         if (getExpiredLogEventEndIndex() != null)
-            sb.append("ExpiredLogEventEndIndex: " + getExpiredLogEventEndIndex());
+            sb.append("ExpiredLogEventEndIndex: ").append(getExpiredLogEventEndIndex());
         sb.append("}");
         return sb.toString();
     }
@@ -167,5 +231,11 @@ public class RejectedLogEventsInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.logs.model.transform.RejectedLogEventsInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

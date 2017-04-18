@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpledb.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SelectRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /** The expression used to query the domain. */
@@ -205,11 +205,11 @@ public class SelectRequest extends com.amazonaws.AmazonWebServiceRequest impleme
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSelectExpression() != null)
-            sb.append("SelectExpression: " + getSelectExpression() + ",");
+            sb.append("SelectExpression: ").append(getSelectExpression()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getConsistentRead() != null)
-            sb.append("ConsistentRead: " + getConsistentRead());
+            sb.append("ConsistentRead: ").append(getConsistentRead());
         sb.append("}");
         return sb.toString();
     }
@@ -254,4 +254,5 @@ public class SelectRequest extends com.amazonaws.AmazonWebServiceRequest impleme
     public SelectRequest clone() {
         return (SelectRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.route53;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.route53.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.route53.waiters.AmazonRoute53Waiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.route53.waiters.AmazonRoute53Waiters;
  * Abstract implementation of {@code AmazonRoute53}. Convenient method forms pass through to the corresponding overload
  * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonRoute53 implements AmazonRoute53 {
 
     protected AbstractAmazonRoute53() {
@@ -81,6 +84,11 @@ public class AbstractAmazonRoute53 implements AmazonRoute53 {
     }
 
     @Override
+    public CreateVPCAssociationAuthorizationResult createVPCAssociationAuthorization(CreateVPCAssociationAuthorizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteHealthCheckResult deleteHealthCheck(DeleteHealthCheckRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -106,18 +114,17 @@ public class AbstractAmazonRoute53 implements AmazonRoute53 {
     }
 
     @Override
+    public DeleteVPCAssociationAuthorizationResult deleteVPCAssociationAuthorization(DeleteVPCAssociationAuthorizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DisassociateVPCFromHostedZoneResult disassociateVPCFromHostedZone(DisassociateVPCFromHostedZoneRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public GetChangeResult getChange(GetChangeRequest request) {
-        throw new java.lang.UnsupportedOperationException();
-    }
-
-    @Override
-    @Deprecated
-    public GetChangeDetailsResult getChangeDetails(GetChangeDetailsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -204,18 +211,6 @@ public class AbstractAmazonRoute53 implements AmazonRoute53 {
     @Override
     public GetTrafficPolicyInstanceCountResult getTrafficPolicyInstanceCount() {
         return getTrafficPolicyInstanceCount(new GetTrafficPolicyInstanceCountRequest());
-    }
-
-    @Override
-    @Deprecated
-    public ListChangeBatchesByHostedZoneResult listChangeBatchesByHostedZone(ListChangeBatchesByHostedZoneRequest request) {
-        throw new java.lang.UnsupportedOperationException();
-    }
-
-    @Override
-    @Deprecated
-    public ListChangeBatchesByRRSetResult listChangeBatchesByRRSet(ListChangeBatchesByRRSetRequest request) {
-        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -319,6 +314,11 @@ public class AbstractAmazonRoute53 implements AmazonRoute53 {
     }
 
     @Override
+    public ListVPCAssociationAuthorizationsResult listVPCAssociationAuthorizations(ListVPCAssociationAuthorizationsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public TestDNSAnswerResult testDNSAnswer(TestDNSAnswerRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -357,4 +357,5 @@ public class AbstractAmazonRoute53 implements AmazonRoute53 {
     public AmazonRoute53Waiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

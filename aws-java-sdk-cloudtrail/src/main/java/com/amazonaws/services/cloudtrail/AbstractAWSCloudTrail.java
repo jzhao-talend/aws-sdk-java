@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudtrail;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudtrail.model.*;
 import com.amazonaws.*;
 
@@ -19,6 +21,7 @@ import com.amazonaws.*;
  * Abstract implementation of {@code AWSCloudTrail}. Convenient method forms pass through to the corresponding overload
  * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSCloudTrail implements AWSCloudTrail {
 
     protected AbstractAWSCloudTrail() {
@@ -60,6 +63,11 @@ public class AbstractAWSCloudTrail implements AWSCloudTrail {
     }
 
     @Override
+    public GetEventSelectorsResult getEventSelectors(GetEventSelectorsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetTrailStatusResult getTrailStatus(GetTrailStatusRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -87,6 +95,11 @@ public class AbstractAWSCloudTrail implements AWSCloudTrail {
     @Override
     public LookupEventsResult lookupEvents() {
         return lookupEvents(new LookupEventsRequest());
+    }
+
+    @Override
+    public PutEventSelectorsResult putEventSelectors(PutEventSelectorsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override

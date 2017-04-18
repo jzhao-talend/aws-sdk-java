@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudwatch;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudwatch.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.cloudwatch.waiters.AmazonCloudWatchWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.cloudwatch.waiters.AmazonCloudWatchWaiters;
  * Abstract implementation of {@code AmazonCloudWatch}. Convenient method forms pass through to the corresponding
  * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonCloudWatch implements AmazonCloudWatch {
 
     protected AbstractAmazonCloudWatch() {
@@ -119,4 +122,5 @@ public class AbstractAmazonCloudWatch implements AmazonCloudWatch {
     public AmazonCloudWatchWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

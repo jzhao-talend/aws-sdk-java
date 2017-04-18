@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.route53domains;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.route53domains.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.route53domains.model.*;
  * corresponding overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonRoute53DomainsAsync extends AbstractAmazonRoute53Domains implements AmazonRoute53DomainsAsync {
 
     protected AbstractAmazonRoute53DomainsAsync() {
@@ -183,6 +186,7 @@ public class AbstractAmazonRoute53DomainsAsync extends AbstractAmazonRoute53Doma
      *
      * @see #listDomainsAsync(ListDomainsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListDomainsResult> listDomainsAsync(
             com.amazonaws.handlers.AsyncHandler<ListDomainsRequest, ListDomainsResult> asyncHandler) {
 
@@ -218,6 +222,7 @@ public class AbstractAmazonRoute53DomainsAsync extends AbstractAmazonRoute53Doma
      *
      * @see #listOperationsAsync(ListOperationsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListOperationsResult> listOperationsAsync(
             com.amazonaws.handlers.AsyncHandler<ListOperationsRequest, ListOperationsResult> asyncHandler) {
 

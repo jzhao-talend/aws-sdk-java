@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -28,7 +31,8 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use
  * Usage Plans</a> </div>
  */
-public class UsagePlan implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UsagePlan implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -66,6 +70,12 @@ public class UsagePlan implements Serializable, Cloneable {
      * </p>
      */
     private QuotaSettings quota;
+    /**
+     * <p>
+     * The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
+     * </p>
+     */
+    private String productCode;
 
     /**
      * <p>
@@ -338,6 +348,49 @@ public class UsagePlan implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
+     * </p>
+     * 
+     * @param productCode
+     *        The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS
+     *        Marketplace.
+     */
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
+    /**
+     * <p>
+     * The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
+     * </p>
+     * 
+     * @return The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS
+     *         Marketplace.
+     */
+
+    public String getProductCode() {
+        return this.productCode;
+    }
+
+    /**
+     * <p>
+     * The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
+     * </p>
+     * 
+     * @param productCode
+     *        The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS
+     *        Marketplace.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UsagePlan withProductCode(String productCode) {
+        setProductCode(productCode);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -349,17 +402,19 @@ public class UsagePlan implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getApiStages() != null)
-            sb.append("ApiStages: " + getApiStages() + ",");
+            sb.append("ApiStages: ").append(getApiStages()).append(",");
         if (getThrottle() != null)
-            sb.append("Throttle: " + getThrottle() + ",");
+            sb.append("Throttle: ").append(getThrottle()).append(",");
         if (getQuota() != null)
-            sb.append("Quota: " + getQuota());
+            sb.append("Quota: ").append(getQuota()).append(",");
+        if (getProductCode() != null)
+            sb.append("ProductCode: ").append(getProductCode());
         sb.append("}");
         return sb.toString();
     }
@@ -398,6 +453,10 @@ public class UsagePlan implements Serializable, Cloneable {
             return false;
         if (other.getQuota() != null && other.getQuota().equals(this.getQuota()) == false)
             return false;
+        if (other.getProductCode() == null ^ this.getProductCode() == null)
+            return false;
+        if (other.getProductCode() != null && other.getProductCode().equals(this.getProductCode()) == false)
+            return false;
         return true;
     }
 
@@ -412,6 +471,7 @@ public class UsagePlan implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getApiStages() == null) ? 0 : getApiStages().hashCode());
         hashCode = prime * hashCode + ((getThrottle() == null) ? 0 : getThrottle().hashCode());
         hashCode = prime * hashCode + ((getQuota() == null) ? 0 : getQuota().hashCode());
+        hashCode = prime * hashCode + ((getProductCode() == null) ? 0 : getProductCode().hashCode());
         return hashCode;
     }
 
@@ -422,5 +482,11 @@ public class UsagePlan implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.UsagePlanMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

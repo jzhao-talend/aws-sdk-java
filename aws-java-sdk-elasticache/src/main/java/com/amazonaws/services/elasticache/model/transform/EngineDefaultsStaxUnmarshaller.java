@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticache.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticache.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * EngineDefaults StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EngineDefaultsStaxUnmarshaller implements Unmarshaller<EngineDefaults, StaxUnmarshallerContext> {
 
     public EngineDefaults unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -55,8 +55,18 @@ public class EngineDefaultsStaxUnmarshaller implements Unmarshaller<EngineDefaul
                     continue;
                 }
 
+                if (context.testExpression("Parameters", targetDepth)) {
+                    engineDefaults.withParameters(new ArrayList<Parameter>());
+                    continue;
+                }
+
                 if (context.testExpression("Parameters/Parameter", targetDepth)) {
                     engineDefaults.withParameters(ParameterStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("CacheNodeTypeSpecificParameters", targetDepth)) {
+                    engineDefaults.withCacheNodeTypeSpecificParameters(new ArrayList<CacheNodeTypeSpecificParameter>());
                     continue;
                 }
 

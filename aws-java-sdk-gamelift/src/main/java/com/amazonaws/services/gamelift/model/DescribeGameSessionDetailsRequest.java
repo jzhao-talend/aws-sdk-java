@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,34 +13,36 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeGameSessionDetails"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the fleet.
+     * Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve.
      * </p>
      */
     private String gameSessionId;
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active on the
-     * fleet.
+     * Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      * </p>
      */
     private String aliasId;
@@ -60,20 +62,19 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     private Integer limit;
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the fleet.
+     * Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the
-     *        fleet.
+     *        Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      */
 
     public void setFleetId(String fleetId) {
@@ -82,11 +83,10 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the fleet.
+     * Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      * </p>
      * 
-     * @return Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the
-     *         fleet.
+     * @return Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      */
 
     public String getFleetId() {
@@ -95,12 +95,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the fleet.
+     * Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Specify a fleet to retrieve information on all game sessions active on the
-     *        fleet.
+     *        Unique identifier for a fleet to retrieve all game sessions active on the fleet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -111,17 +110,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to retrieve.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -130,16 +123,10 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve.
      * </p>
      * 
-     * @return Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *         &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created)
-     *         an auto-generated string.
+     * @return Unique identifier for the game session to retrieve.
      */
 
     public String getGameSessionId() {
@@ -148,17 +135,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to retrieve.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to retrieve information on. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to retrieve.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -169,13 +150,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active on the
-     * fleet.
+     * Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active
-     *        on the fleet.
+     *        Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      */
 
     public void setAliasId(String aliasId) {
@@ -184,12 +163,10 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active on the
-     * fleet.
+     * Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      * </p>
      * 
-     * @return Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active
-     *         on the fleet.
+     * @return Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      */
 
     public String getAliasId() {
@@ -198,13 +175,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active on the
-     * fleet.
+     * Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Specify an alias to retrieve information on all game sessions active
-     *        on the fleet.
+     *        Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -310,13 +285,13 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public void setNextToken(String nextToken) {
@@ -325,12 +300,12 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
-     * @return Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *         previous call to this action. To specify the start of the result set, do not specify a value.
+     * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
+     *         with a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public String getNextToken() {
@@ -339,13 +314,13 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -366,17 +341,17 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId() + ",");
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
         if (getAliasId() != null)
-            sb.append("AliasId: " + getAliasId() + ",");
+            sb.append("AliasId: ").append(getAliasId()).append(",");
         if (getStatusFilter() != null)
-            sb.append("StatusFilter: " + getStatusFilter() + ",");
+            sb.append("StatusFilter: ").append(getStatusFilter()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -436,4 +411,5 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     public DescribeGameSessionDetailsRequest clone() {
         return (DescribeGameSessionDetailsRequest) super.clone();
     }
+
 }

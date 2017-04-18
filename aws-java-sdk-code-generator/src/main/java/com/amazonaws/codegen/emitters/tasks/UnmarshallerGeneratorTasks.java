@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -53,11 +53,13 @@ public class UnmarshallerGeneratorTasks extends BaseGeneratorTasks {
     private GeneratorTask createTask(String javaShapeName, ShapeModel shapeModel) throws Exception {
         final Template template = freemarker.getModelUnmarshallerTemplate();
         final ShapeType shapeType = shapeModel.getShapeType();
-        Map<String, Object> dataModel = ImmutableMapParameter.of(
-                "fileHeader", model.getFileHeader(),
-                "shape", shapeModel,
-                "metadata", metadata,
-                "exceptionUnmarshallerImpl", model.getExceptionUnmarshallerImpl());
+        Map<String, Object> dataModel = ImmutableMapParameter.<String, Object>builder()
+                .put("fileHeader", model.getFileHeader())
+                .put("shape", shapeModel)
+                .put("metadata", metadata)
+                .put("transformPackage", model.getTransformPackage())
+                .put("exceptionUnmarshallerImpl", model.getExceptionUnmarshallerImpl())
+                .build();
 
         switch (shapeType) {
             case Response:

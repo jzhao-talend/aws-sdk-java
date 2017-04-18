@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.cloudsearchdomain.AmazonCloudSearchDomainClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -59,6 +63,7 @@ import com.amazonaws.services.cloudsearchdomain.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implements AmazonCloudSearchDomain {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -71,18 +76,19 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .withContentTypeOverride("")
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("SearchException").withModeledClass(
-                            com.amazonaws.services.cloudsearchdomain.model.SearchException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DocumentServiceException").withModeledClass(
-                            com.amazonaws.services.cloudsearchdomain.model.DocumentServiceException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.cloudsearchdomain.model.AmazonCloudSearchDomainException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .withContentTypeOverride("")
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("SearchException").withModeledClass(
+                                    com.amazonaws.services.cloudsearchdomain.model.SearchException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DocumentServiceException").withModeledClass(
+                                    com.amazonaws.services.cloudsearchdomain.model.DocumentServiceException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.cloudsearchdomain.model.AmazonCloudSearchDomainException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon CloudSearch Domain. A credentials provider chain will
@@ -98,7 +104,9 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -121,7 +129,9 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      *        proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -136,7 +146,10 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonCloudSearchDomainClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -154,7 +167,10 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon CloudSearch Domain (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -171,7 +187,9 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -189,7 +207,10 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon CloudSearch Domain (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -209,12 +230,20 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      *        proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonCloudSearchDomainClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudSearchDomainClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonCloudSearchDomainClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonCloudSearchDomainClientBuilder builder() {
+        return AmazonCloudSearchDomainClientBuilder.standard();
     }
 
     /**
@@ -276,7 +305,14 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * @sample AmazonCloudSearchDomain.Search
      */
     @Override
-    public SearchResult search(SearchRequest searchRequest) {
+    public SearchResult search(SearchRequest request) {
+        request = beforeClientExecution(request);
+        return executeSearch(request);
+    }
+
+    @SdkInternalApi
+    final SearchResult executeSearch(SearchRequest searchRequest) {
+
         ExecutionContext executionContext = createExecutionContext(searchRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -286,7 +322,7 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SearchRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchRequest));
+                request = new SearchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -333,7 +369,14 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * @sample AmazonCloudSearchDomain.Suggest
      */
     @Override
-    public SuggestResult suggest(SuggestRequest suggestRequest) {
+    public SuggestResult suggest(SuggestRequest request) {
+        request = beforeClientExecution(request);
+        return executeSuggest(request);
+    }
+
+    @SdkInternalApi
+    final SuggestResult executeSuggest(SuggestRequest suggestRequest) {
+
         ExecutionContext executionContext = createExecutionContext(suggestRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -343,7 +386,7 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SuggestRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(suggestRequest));
+                request = new SuggestRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(suggestRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -394,7 +437,14 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
      * @sample AmazonCloudSearchDomain.UploadDocuments
      */
     @Override
-    public UploadDocumentsResult uploadDocuments(UploadDocumentsRequest uploadDocumentsRequest) {
+    public UploadDocumentsResult uploadDocuments(UploadDocumentsRequest request) {
+        request = beforeClientExecution(request);
+        return executeUploadDocuments(request);
+    }
+
+    @SdkInternalApi
+    final UploadDocumentsResult executeUploadDocuments(UploadDocumentsRequest uploadDocumentsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(uploadDocumentsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -404,7 +454,7 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UploadDocumentsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(uploadDocumentsRequest));
+                request = new UploadDocumentsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(uploadDocumentsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

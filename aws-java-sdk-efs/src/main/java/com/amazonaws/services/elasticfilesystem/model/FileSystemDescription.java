@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.elasticfilesystem.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Description of the file system.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/FileSystemDescription"
+ *      target="_top">AWS API Documentation</a>
  */
-public class FileSystemDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class FileSystemDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -576,23 +583,23 @@ public class FileSystemDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOwnerId() != null)
-            sb.append("OwnerId: " + getOwnerId() + ",");
+            sb.append("OwnerId: ").append(getOwnerId()).append(",");
         if (getCreationToken() != null)
-            sb.append("CreationToken: " + getCreationToken() + ",");
+            sb.append("CreationToken: ").append(getCreationToken()).append(",");
         if (getFileSystemId() != null)
-            sb.append("FileSystemId: " + getFileSystemId() + ",");
+            sb.append("FileSystemId: ").append(getFileSystemId()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getLifeCycleState() != null)
-            sb.append("LifeCycleState: " + getLifeCycleState() + ",");
+            sb.append("LifeCycleState: ").append(getLifeCycleState()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getNumberOfMountTargets() != null)
-            sb.append("NumberOfMountTargets: " + getNumberOfMountTargets() + ",");
+            sb.append("NumberOfMountTargets: ").append(getNumberOfMountTargets()).append(",");
         if (getSizeInBytes() != null)
-            sb.append("SizeInBytes: " + getSizeInBytes() + ",");
+            sb.append("SizeInBytes: ").append(getSizeInBytes()).append(",");
         if (getPerformanceMode() != null)
-            sb.append("PerformanceMode: " + getPerformanceMode());
+            sb.append("PerformanceMode: ").append(getPerformanceMode());
         sb.append("}");
         return sb.toString();
     }
@@ -670,5 +677,11 @@ public class FileSystemDescription implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticfilesystem.model.transform.FileSystemDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

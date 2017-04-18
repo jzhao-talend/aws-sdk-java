@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.elasticmapreduce;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -21,12 +23,17 @@ import com.amazonaws.services.elasticmapreduce.waiters.AmazonElasticMapReduceWai
 /**
  * Interface for accessing Amazon EMR.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.elasticmapreduce.AbstractAmazonElasticMapReduce} instead.
+ * </p>
  * <p>
- * Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it easy to process large amounts of data
- * efficiently. Amazon EMR uses Hadoop processing combined with several AWS products to do tasks such as web indexing,
- * data mining, log file analysis, machine learning, scientific simulation, and data warehousing.
+ * <p>
+ * Amazon EMR is a web service that makes it easy to process large amounts of data efficiently. Amazon EMR uses Hadoop
+ * processing combined with several AWS products to do tasks such as web indexing, data mining, log file analysis,
+ * machine learning, scientific simulation, and data warehousing.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonElasticMapReduce {
 
     /**
@@ -58,7 +65,11 @@ public interface AmazonElasticMapReduce {
      *        The endpoint (ex: "elasticmapreduce.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://elasticmapreduce.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -79,12 +90,36 @@ public interface AmazonElasticMapReduce {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
-     * AddInstanceGroups adds an instance group to a running cluster.
+     * Adds an instance fleet to a running cluster.
+     * </p>
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x.
+     * </p>
+     * </note>
+     * 
+     * @param addInstanceFleetRequest
+     * @return Result of the AddInstanceFleet operation returned by the service.
+     * @throws InternalServerException
+     *         This exception occurs when there is an internal failure in the EMR service.
+     * @throws InvalidRequestException
+     *         This exception occurs when there is something wrong with user input.
+     * @sample AmazonElasticMapReduce.AddInstanceFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceFleet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AddInstanceFleetResult addInstanceFleet(AddInstanceFleetRequest addInstanceFleetRequest);
+
+    /**
+     * <p>
+     * Adds one or more instance groups to a running cluster.
      * </p>
      * 
      * @param addInstanceGroupsRequest
@@ -93,33 +128,35 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.AddInstanceGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     AddInstanceGroupsResult addInstanceGroups(AddInstanceGroupsRequest addInstanceGroupsRequest);
 
     /**
      * <p>
-     * AddJobFlowSteps adds new steps to a running job flow. A maximum of 256 steps are allowed in each job flow.
+     * AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.
      * </p>
      * <p>
-     * If your job flow is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps
-     * to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to
-     * connect to the master node and submitting queries directly to the software running on the master node, such as
-     * Hive and Hadoop. For more information on how to do this, go to <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add More than
-     * 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce Developer's Guide</i>.
+     * If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps
+     * to process your data. You can bypass the 256-step limitation in various ways, including using SSH to connect to
+     * the master node and submitting queries directly to the software running on the master node, such as Hive and
+     * Hadoop. For more information on how to do this, see <a
+     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html">Add More than
+     * 256 Steps to a Cluster</a> in the <i>Amazon EMR Management Guide</i>.
      * </p>
      * <p>
-     * A step specifies the location of a JAR file stored either on the master node of the job flow or in Amazon S3.
-     * Each step is performed by the main function of the main class of the JAR file. The main class can be specified
-     * either in the manifest of the JAR or by using the MainFunction parameter of the step.
+     * A step specifies the location of a JAR file stored either on the master node of the cluster or in Amazon S3. Each
+     * step is performed by the main function of the main class of the JAR file. The main class can be specified either
+     * in the manifest of the JAR or by using the MainFunction parameter of the step.
      * </p>
      * <p>
-     * Elastic MapReduce executes each step in the order listed. For a step to be considered complete, the main function
-     * must exit with a zero exit code and all Hadoop jobs started while the step was running must have completed and
-     * run successfully.
+     * Amazon EMR executes each step in the order listed. For a step to be considered complete, the main function must
+     * exit with a zero exit code and all Hadoop jobs started while the step was running must have completed and run
+     * successfully.
      * </p>
      * <p>
-     * You can only add steps to a job flow that is in one of the following states: STARTING, BOOTSTRAPPING, RUNNING, or
+     * You can only add steps to a cluster that is in one of the following states: STARTING, BOOTSTRAPPING, RUNNING, or
      * WAITING.
      * </p>
      * 
@@ -129,6 +166,8 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.AddJobFlowSteps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddJobFlowSteps"
+     *      target="_top">AWS API Documentation</a>
      */
     AddJobFlowStepsResult addJobFlowSteps(AddJobFlowStepsRequest addJobFlowStepsRequest);
 
@@ -148,14 +187,35 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddTags" target="_top">AWS API
+     *      Documentation</a>
      */
     AddTagsResult addTags(AddTagsRequest addTagsRequest);
 
     /**
      * <p>
-     * Creates a security configuration using EMR Security Configurations, which are stored in the service. Security
-     * Configurations enable you to more easily create a configuration, reuse it, and apply it whenever a cluster is
-     * created.
+     * Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and later,
+     * excluding version 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is
+     * idempotent but asynchronous; it does not guarantee a step will be canceled, even if the request is successfully
+     * submitted. You can only cancel steps that are in a <code>PENDING</code> state.
+     * </p>
+     * 
+     * @param cancelStepsRequest
+     *        The input argument to the <a>CancelSteps</a> operation.
+     * @return Result of the CancelSteps operation returned by the service.
+     * @throws InternalServerErrorException
+     *         Indicates that an error occurred while processing the request and that the request was not completed.
+     * @throws InvalidRequestException
+     *         This exception occurs when there is something wrong with user input.
+     * @sample AmazonElasticMapReduce.CancelSteps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/CancelSteps" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CancelStepsResult cancelSteps(CancelStepsRequest cancelStepsRequest);
+
+    /**
+     * <p>
+     * Creates a security configuration, which is stored in the service and can be specified when a cluster is created.
      * </p>
      * 
      * @param createSecurityConfigurationRequest
@@ -165,6 +225,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.CreateSecurityConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/CreateSecurityConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateSecurityConfigurationResult createSecurityConfiguration(CreateSecurityConfigurationRequest createSecurityConfigurationRequest);
 
@@ -180,6 +242,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.DeleteSecurityConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DeleteSecurityConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteSecurityConfigurationResult deleteSecurityConfiguration(DeleteSecurityConfigurationRequest deleteSecurityConfigurationRequest);
 
@@ -197,6 +261,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.DescribeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeCluster"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeClusterResult describeCluster(DescribeClusterRequest describeClusterRequest);
 
@@ -229,7 +295,7 @@ public interface AmazonElasticMapReduce {
      * </li>
      * </ul>
      * <p>
-     * Amazon Elastic MapReduce can return a maximum of 512 job flow descriptions.
+     * Amazon EMR can return a maximum of 512 job flow descriptions.
      * </p>
      * 
      * @param describeJobFlowsRequest
@@ -238,6 +304,8 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.DescribeJobFlows
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeJobFlows"
+     *      target="_top">AWS API Documentation</a>
      */
     @Deprecated
     DescribeJobFlowsResult describeJobFlows(DescribeJobFlowsRequest describeJobFlowsRequest);
@@ -262,6 +330,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.DescribeSecurityConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeSecurityConfiguration"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeSecurityConfigurationResult describeSecurityConfiguration(DescribeSecurityConfigurationRequest describeSecurityConfigurationRequest);
 
@@ -278,6 +348,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.DescribeStep
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeStep" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeStepResult describeStep(DescribeStepRequest describeStepRequest);
 
@@ -294,6 +366,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListBootstrapActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListBootstrapActions"
+     *      target="_top">AWS API Documentation</a>
      */
     ListBootstrapActionsResult listBootstrapActions(ListBootstrapActionsRequest listBootstrapActionsRequest);
 
@@ -313,6 +387,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListClusters" target="_top">AWS
+     *      API Documentation</a>
      */
     ListClustersResult listClusters(ListClustersRequest listClustersRequest);
 
@@ -322,6 +398,29 @@ public interface AmazonElasticMapReduce {
      * @see #listClusters(ListClustersRequest)
      */
     ListClustersResult listClusters();
+
+    /**
+     * <p>
+     * Lists all available details about the instance fleets in a cluster.
+     * </p>
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * 
+     * @param listInstanceFleetsRequest
+     * @return Result of the ListInstanceFleets operation returned by the service.
+     * @throws InternalServerException
+     *         This exception occurs when there is an internal failure in the EMR service.
+     * @throws InvalidRequestException
+     *         This exception occurs when there is something wrong with user input.
+     * @sample AmazonElasticMapReduce.ListInstanceFleets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstanceFleets"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListInstanceFleetsResult listInstanceFleets(ListInstanceFleetsRequest listInstanceFleetsRequest);
 
     /**
      * <p>
@@ -336,6 +435,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListInstanceGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstanceGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     ListInstanceGroupsResult listInstanceGroups(ListInstanceGroupsRequest listInstanceGroupsRequest);
 
@@ -354,6 +455,8 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     ListInstancesResult listInstances(ListInstancesRequest listInstancesRequest);
 
@@ -371,12 +474,14 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListSecurityConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSecurityConfigurations"
+     *      target="_top">AWS API Documentation</a>
      */
     ListSecurityConfigurationsResult listSecurityConfigurations(ListSecurityConfigurationsRequest listSecurityConfigurationsRequest);
 
     /**
      * <p>
-     * Provides a list of steps for the cluster.
+     * Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request.
      * </p>
      * 
      * @param listStepsRequest
@@ -387,8 +492,34 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.ListSteps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSteps" target="_top">AWS API
+     *      Documentation</a>
      */
     ListStepsResult listSteps(ListStepsRequest listStepsRequest);
+
+    /**
+     * <p>
+     * Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified
+     * InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails atomically.
+     * </p>
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * 
+     * @param modifyInstanceFleetRequest
+     * @return Result of the ModifyInstanceFleet operation returned by the service.
+     * @throws InternalServerException
+     *         This exception occurs when there is an internal failure in the EMR service.
+     * @throws InvalidRequestException
+     *         This exception occurs when there is something wrong with user input.
+     * @sample AmazonElasticMapReduce.ModifyInstanceFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceFleet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyInstanceFleetResult modifyInstanceFleet(ModifyInstanceFleetRequest modifyInstanceFleetRequest);
 
     /**
      * <p>
@@ -403,6 +534,8 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.ModifyInstanceGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     ModifyInstanceGroupsResult modifyInstanceGroups(ModifyInstanceGroupsRequest modifyInstanceGroupsRequest);
 
@@ -412,6 +545,34 @@ public interface AmazonElasticMapReduce {
      * @see #modifyInstanceGroups(ModifyInstanceGroupsRequest)
      */
     ModifyInstanceGroupsResult modifyInstanceGroups();
+
+    /**
+     * <p>
+     * Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR
+     * cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances
+     * in response to the value of a CloudWatch metric.
+     * </p>
+     * 
+     * @param putAutoScalingPolicyRequest
+     * @return Result of the PutAutoScalingPolicy operation returned by the service.
+     * @sample AmazonElasticMapReduce.PutAutoScalingPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/PutAutoScalingPolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    PutAutoScalingPolicyResult putAutoScalingPolicy(PutAutoScalingPolicyRequest putAutoScalingPolicyRequest);
+
+    /**
+     * <p>
+     * Removes an automatic scaling policy from a specified instance group within an EMR cluster.
+     * </p>
+     * 
+     * @param removeAutoScalingPolicyRequest
+     * @return Result of the RemoveAutoScalingPolicy operation returned by the service.
+     * @sample AmazonElasticMapReduce.RemoveAutoScalingPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveAutoScalingPolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RemoveAutoScalingPolicyResult removeAutoScalingPolicy(RemoveAutoScalingPolicyRequest removeAutoScalingPolicyRequest);
 
     /**
      * <p>
@@ -432,36 +593,45 @@ public interface AmazonElasticMapReduce {
      * @throws InvalidRequestException
      *         This exception occurs when there is something wrong with user input.
      * @sample AmazonElasticMapReduce.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveTags" target="_top">AWS
+     *      API Documentation</a>
      */
     RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest);
 
     /**
      * <p>
-     * RunJobFlow creates and starts running a new job flow. The job flow will run the steps specified. Once the job
-     * flow completes, the cluster is stopped and the HDFS partition is lost. To prevent loss of data, configure the
-     * last step of the job flow to store results in Amazon S3. If the <a>JobFlowInstancesConfig</a>
-     * <code>KeepJobFlowAliveWhenNoSteps</code> parameter is set to <code>TRUE</code>, the job flow will transition to
-     * the WAITING state rather than shutting down once the steps have completed.
+     * RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the
+     * steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last
+     * step of the job flow to store results in Amazon S3. If the <a>JobFlowInstancesConfig</a>
+     * <code>KeepJobFlowAliveWhenNoSteps</code> parameter is set to <code>TRUE</code>, the cluster transitions to the
+     * WAITING state rather than shutting down after the steps have completed.
      * </p>
      * <p>
      * For additional protection, you can set the <a>JobFlowInstancesConfig</a> <code>TerminationProtected</code>
-     * parameter to <code>TRUE</code> to lock the job flow and prevent it from being terminated by API call, user
+     * parameter to <code>TRUE</code> to lock the cluster and prevent it from being terminated by API call, user
      * intervention, or in the event of a job flow error.
      * </p>
      * <p>
      * A maximum of 256 steps are allowed in each job flow.
      * </p>
      * <p>
-     * If your job flow is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps
+     * If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps
      * to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to
      * connect to the master node and submitting queries directly to the software running on the master node, such as
-     * Hive and Hadoop. For more information on how to do this, go to <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add More than
-     * 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce Developer's Guide</i>.
+     * Hive and Hadoop. For more information on how to do this, see <a
+     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/Management/Guide/AddMoreThan256Steps.html">Add More than
+     * 256 Steps to a Cluster</a> in the <i>Amazon EMR Management Guide</i>.
      * </p>
      * <p>
-     * For long running job flows, we recommend that you periodically store your results.
+     * For long running clusters, we recommend that you periodically store your results.
      * </p>
+     * <note>
+     * <p>
+     * The instance fleets configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions. The RunJobFlow request can contain InstanceFleets parameters or InstanceGroups parameters, but not
+     * both.
+     * </p>
+     * </note>
      * 
      * @param runJobFlowRequest
      *        Input to the <a>RunJobFlow</a> operation.
@@ -469,29 +639,32 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.RunJobFlow
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RunJobFlow" target="_top">AWS
+     *      API Documentation</a>
      */
     RunJobFlowResult runJobFlow(RunJobFlowRequest runJobFlowRequest);
 
     /**
      * <p>
-     * SetTerminationProtection locks a job flow so the Amazon EC2 instances in the cluster cannot be terminated by user
-     * intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful
-     * completion of the job flow. Calling SetTerminationProtection on a job flow is analogous to calling the Amazon EC2
-     * DisableAPITermination API on all of the EC2 instances in a cluster.
+     * SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by
+     * user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful
+     * completion of the job flow. Calling <code>SetTerminationProtection</code> on a cluster is similar to calling the
+     * Amazon EC2 <code>DisableAPITermination</code> API on all EC2 instances in a cluster.
      * </p>
      * <p>
-     * SetTerminationProtection is used to prevent accidental termination of a job flow and to ensure that in the event
-     * of an error, the instances will persist so you can recover any data stored in their ephemeral instance storage.
+     * <code>SetTerminationProtection</code> is used to prevent accidental termination of a cluster and to ensure that
+     * in the event of an error, the instances persist so that you can recover any data stored in their ephemeral
+     * instance storage.
      * </p>
      * <p>
-     * To terminate a job flow that has been locked by setting SetTerminationProtection to <code>true</code>, you must
-     * first unlock the job flow by a subsequent call to SetTerminationProtection in which you set the value to
-     * <code>false</code>.
+     * To terminate a cluster that has been locked by setting <code>SetTerminationProtection</code> to <code>true</code>
+     * , you must first unlock the job flow by a subsequent call to <code>SetTerminationProtection</code> in which you
+     * set the value to <code>false</code>.
      * </p>
      * <p>
-     * For more information, go to <a
-     * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html"
-     * >Protecting a Job Flow from Termination</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+     * For more information, see<a
+     * href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing Cluster
+     * Termination</a> in the <i>Amazon EMR Management Guide</i>.
      * </p>
      * 
      * @param setTerminationProtectionRequest
@@ -500,15 +673,17 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.SetTerminationProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetTerminationProtection"
+     *      target="_top">AWS API Documentation</a>
      */
     SetTerminationProtectionResult setTerminationProtection(SetTerminationProtectionRequest setTerminationProtectionRequest);
 
     /**
      * <p>
-     * Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified job
-     * flows. This action works on running job flows. You can also set the visibility of a job flow when you launch it
-     * using the <code>VisibleToAllUsers</code> parameter of <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be
-     * called only by an IAM user who created the job flow or the AWS account that owns the job flow.
+     * Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified
+     * clusters (job flows). This action works on running clusters. You can also set the visibility of a cluster when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of <a>RunJobFlow</a>. The SetVisibleToAllUsers
+     * action can be called only by an IAM user who created the cluster or the AWS account that owns the cluster.
      * </p>
      * 
      * @param setVisibleToAllUsersRequest
@@ -517,19 +692,21 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.SetVisibleToAllUsers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetVisibleToAllUsers"
+     *      target="_top">AWS API Documentation</a>
      */
     SetVisibleToAllUsersResult setVisibleToAllUsers(SetVisibleToAllUsersRequest setVisibleToAllUsersRequest);
 
     /**
      * <p>
-     * TerminateJobFlows shuts a list of job flows down. When a job flow is shut down, any step not yet completed is
-     * canceled and the EC2 instances on which the job flow is running are stopped. Any log files not already saved are
-     * uploaded to Amazon S3 if a LogUri was specified when the job flow was created.
+     * TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet
+     * completed is canceled and the EC2 instances on which the cluster is running are stopped. Any log files not
+     * already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.
      * </p>
      * <p>
-     * The maximum number of JobFlows allowed is 10. The call to TerminateJobFlows is asynchronous. Depending on the
-     * configuration of the job flow, it may take up to 5-20 minutes for the job flow to completely terminate and
-     * release allocated resources, such as Amazon EC2 instances.
+     * The maximum number of clusters allowed is 10. The call to <code>TerminateJobFlows</code> is asynchronous.
+     * Depending on the configuration of the cluster, it may take up to 1-5 minutes for the cluster to completely
+     * terminate and release allocated resources, such as Amazon EC2 instances.
      * </p>
      * 
      * @param terminateJobFlowsRequest
@@ -538,6 +715,8 @@ public interface AmazonElasticMapReduce {
      * @throws InternalServerErrorException
      *         Indicates that an error occurred while processing the request and that the request was not completed.
      * @sample AmazonElasticMapReduce.TerminateJobFlows
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/TerminateJobFlows"
+     *      target="_top">AWS API Documentation</a>
      */
     TerminateJobFlowsResult terminateJobFlows(TerminateJobFlowsRequest terminateJobFlowsRequest);
 
@@ -565,4 +744,5 @@ public interface AmazonElasticMapReduce {
     ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
 
     AmazonElasticMapReduceWaiters waiters();
+
 }

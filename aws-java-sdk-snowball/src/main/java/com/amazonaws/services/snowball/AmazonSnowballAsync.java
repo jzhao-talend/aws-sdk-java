@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.snowball;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.snowball.model.*;
 
 /**
@@ -19,20 +21,58 @@ import com.amazonaws.services.snowball.model.*;
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.snowball.AbstractAmazonSnowballAsync} instead.
+ * </p>
  * <p>
- * AWS Import/Export Snowball is a petabyte-scale data transport solution that uses secure appliances to transfer large
- * amounts of data between your on-premises data centers and Amazon Simple Storage Service (Amazon S3). The Snowball
- * commands described here provide access to the same functionality that is available in the AWS Snowball Management
- * Console, which enables you to create and manage jobs for Snowball. To transfer data locally with a Snowball
- * appliance, you'll need to use the Snowball client or the Amazon S3 API adapter for Snowball. For more information,
- * see the <a href="http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html">User Guide</a>.
+ * <p>
+ * AWS Snowball is a petabyte-scale data transport solution that uses secure appliances to transfer large amounts of
+ * data between your on-premises data centers and Amazon Simple Storage Service (Amazon S3). The Snowball commands
+ * described here provide access to the same functionality that is available in the AWS Snowball Management Console,
+ * which enables you to create and manage jobs for Snowball. To transfer data locally with a Snowball appliance, you'll
+ * need to use the Snowball client or the Amazon S3 API adapter for Snowball. For more information, see the <a
+ * href="http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html">User Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSnowballAsync extends AmazonSnowball {
 
     /**
      * <p>
-     * Cancels the specified job. Note that you can only cancel a job before its <code>JobState</code> value changes to
+     * Cancels a cluster job. You can only cancel a cluster job while it's in the <code>AwaitingQuorum</code> status.
+     * You'll have at least an hour after creating a cluster job to cancel it.
+     * </p>
+     * 
+     * @param cancelClusterRequest
+     * @return A Java Future containing the result of the CancelCluster operation returned by the service.
+     * @sample AmazonSnowballAsync.CancelCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelClusterResult> cancelClusterAsync(CancelClusterRequest cancelClusterRequest);
+
+    /**
+     * <p>
+     * Cancels a cluster job. You can only cancel a cluster job while it's in the <code>AwaitingQuorum</code> status.
+     * You'll have at least an hour after creating a cluster job to cancel it.
+     * </p>
+     * 
+     * @param cancelClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CancelCluster operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.CancelCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelClusterResult> cancelClusterAsync(CancelClusterRequest cancelClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<CancelClusterRequest, CancelClusterResult> asyncHandler);
+
+    /**
+     * <p>
+     * Cancels the specified job. You can only cancel a job before its <code>JobState</code> value changes to
      * <code>PreparingAppliance</code>. Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
      * return a job's <code>JobState</code> as part of the response element data returned.
      * </p>
@@ -40,12 +80,14 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param cancelJobRequest
      * @return A Java Future containing the result of the CancelJob operation returned by the service.
      * @sample AmazonSnowballAsync.CancelJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelJobResult> cancelJobAsync(CancelJobRequest cancelJobRequest);
 
     /**
      * <p>
-     * Cancels the specified job. Note that you can only cancel a job before its <code>JobState</code> value changes to
+     * Cancels the specified job. You can only cancel a job before its <code>JobState</code> value changes to
      * <code>PreparingAppliance</code>. Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
      * return a job's <code>JobState</code> as part of the response element data returned.
      * </p>
@@ -57,6 +99,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelJob operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.CancelJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelJobResult> cancelJobAsync(CancelJobRequest cancelJobRequest,
             com.amazonaws.handlers.AsyncHandler<CancelJobRequest, CancelJobResult> asyncHandler);
@@ -73,6 +117,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param createAddressRequest
      * @return A Java Future containing the result of the CreateAddress operation returned by the service.
      * @sample AmazonSnowballAsync.CreateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAddressResult> createAddressAsync(CreateAddressRequest createAddressRequest);
 
@@ -92,28 +138,64 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateAddress operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.CreateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateAddressResult> createAddressAsync(CreateAddressRequest createAddressRequest,
             com.amazonaws.handlers.AsyncHandler<CreateAddressRequest, CreateAddressResult> asyncHandler);
 
     /**
      * <p>
-     * Creates a job to import or export data between Amazon S3 and your on-premises data center. Note that your AWS
-     * account must have the right trust policies and permissions in place to create a job for Snowball. For more
-     * information, see <a>api-reference-policies</a>.
+     * Creates an empty cluster. Each cluster supports five nodes. You use the <a>CreateJob</a> action separately to
+     * create the jobs for each of these nodes. The cluster does not ship until these five node jobs have been created.
+     * </p>
+     * 
+     * @param createClusterRequest
+     * @return A Java Future containing the result of the CreateCluster operation returned by the service.
+     * @sample AmazonSnowballAsync.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateClusterResult> createClusterAsync(CreateClusterRequest createClusterRequest);
+
+    /**
+     * <p>
+     * Creates an empty cluster. Each cluster supports five nodes. You use the <a>CreateJob</a> action separately to
+     * create the jobs for each of these nodes. The cluster does not ship until these five node jobs have been created.
+     * </p>
+     * 
+     * @param createClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateCluster operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.CreateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateClusterResult> createClusterAsync(CreateClusterRequest createClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateClusterRequest, CreateClusterResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a job to the other job attributes are inherited from the cluster. .
      * </p>
      * 
      * @param createJobRequest
      * @return A Java Future containing the result of the CreateJob operation returned by the service.
      * @sample AmazonSnowballAsync.CreateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateJobResult> createJobAsync(CreateJobRequest createJobRequest);
 
     /**
      * <p>
-     * Creates a job to import or export data between Amazon S3 and your on-premises data center. Note that your AWS
-     * account must have the right trust policies and permissions in place to create a job for Snowball. For more
-     * information, see <a>api-reference-policies</a>.
+     * Creates a job to import or export data between Amazon S3 and your on-premises data center. Your AWS account must
+     * have the right trust policies and permissions in place to create a job for Snowball. If you're creating a job for
+     * a node in a cluster, you only need to provide the <code>clusterId</code> value; the other job attributes are
+     * inherited from the cluster. .
      * </p>
      * 
      * @param createJobRequest
@@ -123,6 +205,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateJob operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.CreateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateJobResult> createJobAsync(CreateJobRequest createJobRequest,
             com.amazonaws.handlers.AsyncHandler<CreateJobRequest, CreateJobResult> asyncHandler);
@@ -136,6 +220,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param describeAddressRequest
      * @return A Java Future containing the result of the DescribeAddress operation returned by the service.
      * @sample AmazonSnowballAsync.DescribeAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressResult> describeAddressAsync(DescribeAddressRequest describeAddressRequest);
 
@@ -152,6 +238,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAddress operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.DescribeAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressResult> describeAddressAsync(DescribeAddressRequest describeAddressRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeAddressRequest, DescribeAddressResult> asyncHandler);
@@ -165,6 +253,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param describeAddressesRequest
      * @return A Java Future containing the result of the DescribeAddresses operation returned by the service.
      * @sample AmazonSnowballAsync.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressesResult> describeAddressesAsync(DescribeAddressesRequest describeAddressesRequest);
 
@@ -181,26 +271,63 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAddresses operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressesResult> describeAddressesAsync(DescribeAddressesRequest describeAddressesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeAddressesRequest, DescribeAddressesResult> asyncHandler);
 
     /**
      * <p>
-     * Returns information about a specific job including shipping information, job status, and other important
+     * Returns information about a specific cluster including shipping information, cluster status, and other important
      * metadata.
+     * </p>
+     * 
+     * @param describeClusterRequest
+     * @return A Java Future containing the result of the DescribeCluster operation returned by the service.
+     * @sample AmazonSnowballAsync.DescribeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeClusterResult> describeClusterAsync(DescribeClusterRequest describeClusterRequest);
+
+    /**
+     * <p>
+     * Returns information about a specific cluster including shipping information, cluster status, and other important
+     * metadata.
+     * </p>
+     * 
+     * @param describeClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeCluster operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.DescribeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeClusterResult> describeClusterAsync(DescribeClusterRequest describeClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeClusterRequest, DescribeClusterResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about a specific job including shipping information, job status, and other important
+     * metadata. .
      * </p>
      * 
      * @param describeJobRequest
      * @return A Java Future containing the result of the DescribeJob operation returned by the service.
      * @sample AmazonSnowballAsync.DescribeJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeJobResult> describeJobAsync(DescribeJobRequest describeJobRequest);
 
     /**
      * <p>
      * Returns information about a specific job including shipping information, job status, and other important
-     * metadata.
+     * metadata. .
      * </p>
      * 
      * @param describeJobRequest
@@ -210,6 +337,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeJob operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.DescribeJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeJobResult> describeJobAsync(DescribeJobRequest describeJobRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeJobRequest, DescribeJobResult> asyncHandler);
@@ -232,13 +361,15 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * gaining access to the Snowball associated with that job.
      * </p>
      * <p>
-     * Note that the credentials of a given job, including its manifest file and unlock code, expire 90 days after the
-     * job is created.
+     * The credentials of a given job, including its manifest file and unlock code, expire 90 days after the job is
+     * created.
      * </p>
      * 
      * @param getJobManifestRequest
      * @return A Java Future containing the result of the GetJobManifest operation returned by the service.
      * @sample AmazonSnowballAsync.GetJobManifest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetJobManifestResult> getJobManifestAsync(GetJobManifestRequest getJobManifestRequest);
 
@@ -260,8 +391,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * gaining access to the Snowball associated with that job.
      * </p>
      * <p>
-     * Note that the credentials of a given job, including its manifest file and unlock code, expire 90 days after the
-     * job is created.
+     * The credentials of a given job, including its manifest file and unlock code, expire 90 days after the job is
+     * created.
      * </p>
      * 
      * @param getJobManifestRequest
@@ -271,6 +402,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetJobManifest operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.GetJobManifest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetJobManifestResult> getJobManifestAsync(GetJobManifestRequest getJobManifestRequest,
             com.amazonaws.handlers.AsyncHandler<GetJobManifestRequest, GetJobManifestResult> asyncHandler);
@@ -294,6 +427,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param getJobUnlockCodeRequest
      * @return A Java Future containing the result of the GetJobUnlockCode operation returned by the service.
      * @sample AmazonSnowballAsync.GetJobUnlockCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetJobUnlockCodeResult> getJobUnlockCodeAsync(GetJobUnlockCodeRequest getJobUnlockCodeRequest);
 
@@ -320,6 +455,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetJobUnlockCode operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.GetJobUnlockCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetJobUnlockCodeResult> getJobUnlockCodeAsync(GetJobUnlockCodeRequest getJobUnlockCodeRequest,
             com.amazonaws.handlers.AsyncHandler<GetJobUnlockCodeRequest, GetJobUnlockCodeResult> asyncHandler);
@@ -330,13 +467,15 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * account has in use.
      * </p>
      * <p>
-     * Note that the default service limit for the number of Snowballs that you can have at one time is 1. If you want
-     * to increase your service limit, contact AWS Support.
+     * The default service limit for the number of Snowballs that you can have at one time is 1. If you want to increase
+     * your service limit, contact AWS Support.
      * </p>
      * 
      * @param getSnowballUsageRequest
      * @return A Java Future containing the result of the GetSnowballUsage operation returned by the service.
      * @sample AmazonSnowballAsync.GetSnowballUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSnowballUsageResult> getSnowballUsageAsync(GetSnowballUsageRequest getSnowballUsageRequest);
 
@@ -346,8 +485,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * account has in use.
      * </p>
      * <p>
-     * Note that the default service limit for the number of Snowballs that you can have at one time is 1. If you want
-     * to increase your service limit, contact AWS Support.
+     * The default service limit for the number of Snowballs that you can have at one time is 1. If you want to increase
+     * your service limit, contact AWS Support.
      * </p>
      * 
      * @param getSnowballUsageRequest
@@ -357,9 +496,79 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetSnowballUsage operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.GetSnowballUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetSnowballUsageResult> getSnowballUsageAsync(GetSnowballUsageRequest getSnowballUsageRequest,
             com.amazonaws.handlers.AsyncHandler<GetSnowballUsageRequest, GetSnowballUsageResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns an array of <code>JobListEntry</code> objects of the specified length. Each <code>JobListEntry</code>
+     * object is for a job in the specified cluster and contains a job's state, a job's ID, and other information.
+     * </p>
+     * 
+     * @param listClusterJobsRequest
+     * @return A Java Future containing the result of the ListClusterJobs operation returned by the service.
+     * @sample AmazonSnowballAsync.ListClusterJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListClusterJobsResult> listClusterJobsAsync(ListClusterJobsRequest listClusterJobsRequest);
+
+    /**
+     * <p>
+     * Returns an array of <code>JobListEntry</code> objects of the specified length. Each <code>JobListEntry</code>
+     * object is for a job in the specified cluster and contains a job's state, a job's ID, and other information.
+     * </p>
+     * 
+     * @param listClusterJobsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListClusterJobs operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.ListClusterJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListClusterJobsResult> listClusterJobsAsync(ListClusterJobsRequest listClusterJobsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListClusterJobsRequest, ListClusterJobsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns an array of <code>ClusterListEntry</code> objects of the specified length. Each
+     * <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status
+     * information.
+     * </p>
+     * 
+     * @param listClustersRequest
+     * @return A Java Future containing the result of the ListClusters operation returned by the service.
+     * @sample AmazonSnowballAsync.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListClustersResult> listClustersAsync(ListClustersRequest listClustersRequest);
+
+    /**
+     * <p>
+     * Returns an array of <code>ClusterListEntry</code> objects of the specified length. Each
+     * <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status
+     * information.
+     * </p>
+     * 
+     * @param listClustersRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListClusters operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.ListClusters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListClustersResult> listClustersAsync(ListClustersRequest listClustersRequest,
+            com.amazonaws.handlers.AsyncHandler<ListClustersRequest, ListClustersResult> asyncHandler);
 
     /**
      * <p>
@@ -372,6 +581,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param listJobsRequest
      * @return A Java Future containing the result of the ListJobs operation returned by the service.
      * @sample AmazonSnowballAsync.ListJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListJobsResult> listJobsAsync(ListJobsRequest listJobsRequest);
 
@@ -390,9 +601,46 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListJobs operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.ListJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListJobsResult> listJobsAsync(ListJobsRequest listJobsRequest,
             com.amazonaws.handlers.AsyncHandler<ListJobsRequest, ListJobsResult> asyncHandler);
+
+    /**
+     * <p>
+     * While a cluster's <code>ClusterState</code> value is in the <code>AwaitingQuorum</code> state, you can update
+     * some of the information associated with a cluster. Once the cluster changes to a different job state, usually 60
+     * minutes after the cluster being created, this action is no longer available.
+     * </p>
+     * 
+     * @param updateClusterRequest
+     * @return A Java Future containing the result of the UpdateCluster operation returned by the service.
+     * @sample AmazonSnowballAsync.UpdateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateClusterResult> updateClusterAsync(UpdateClusterRequest updateClusterRequest);
+
+    /**
+     * <p>
+     * While a cluster's <code>ClusterState</code> value is in the <code>AwaitingQuorum</code> state, you can update
+     * some of the information associated with a cluster. Once the cluster changes to a different job state, usually 60
+     * minutes after the cluster being created, this action is no longer available.
+     * </p>
+     * 
+     * @param updateClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateCluster operation returned by the service.
+     * @sample AmazonSnowballAsyncHandler.UpdateCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateClusterResult> updateClusterAsync(UpdateClusterRequest updateClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateClusterRequest, UpdateClusterResult> asyncHandler);
 
     /**
      * <p>
@@ -404,6 +652,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      * @param updateJobRequest
      * @return A Java Future containing the result of the UpdateJob operation returned by the service.
      * @sample AmazonSnowballAsync.UpdateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateJobResult> updateJobAsync(UpdateJobRequest updateJobRequest);
 
@@ -421,6 +671,8 @@ public interface AmazonSnowballAsync extends AmazonSnowball {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateJob operation returned by the service.
      * @sample AmazonSnowballAsyncHandler.UpdateJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UpdateJobResult> updateJobAsync(UpdateJobRequest updateJobRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateJobRequest, UpdateJobResult> asyncHandler);

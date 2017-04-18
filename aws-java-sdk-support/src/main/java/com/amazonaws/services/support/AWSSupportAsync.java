@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.support;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.support.model.*;
 
 /**
  * Interface for accessing AWS Support asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.support.AbstractAWSSupportAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS Support</fullname>
  * <p>
@@ -96,6 +102,7 @@ import com.amazonaws.services.support.model.*;
  * and how to call Trusted Advisor for results of checks on your resources.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSSupportAsync extends AWSSupport {
 
     /**
@@ -114,6 +121,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param addAttachmentsToSetRequest
      * @return A Java Future containing the result of the AddAttachmentsToSet operation returned by the service.
      * @sample AWSSupportAsync.AddAttachmentsToSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddAttachmentsToSetResult> addAttachmentsToSetAsync(AddAttachmentsToSetRequest addAttachmentsToSetRequest);
 
@@ -137,6 +146,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddAttachmentsToSet operation returned by the service.
      * @sample AWSSupportAsyncHandler.AddAttachmentsToSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddAttachmentsToSetResult> addAttachmentsToSetAsync(AddAttachmentsToSetRequest addAttachmentsToSetRequest,
             com.amazonaws.handlers.AsyncHandler<AddAttachmentsToSetRequest, AddAttachmentsToSetResult> asyncHandler);
@@ -159,6 +170,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        To be written.
      * @return A Java Future containing the result of the AddCommunicationToCase operation returned by the service.
      * @sample AWSSupportAsync.AddCommunicationToCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddCommunicationToCaseResult> addCommunicationToCaseAsync(AddCommunicationToCaseRequest addCommunicationToCaseRequest);
 
@@ -184,6 +197,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddCommunicationToCase operation returned by the service.
      * @sample AWSSupportAsyncHandler.AddCommunicationToCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddCommunicationToCaseResult> addCommunicationToCaseAsync(AddCommunicationToCaseRequest addCommunicationToCaseRequest,
             com.amazonaws.handlers.AsyncHandler<AddCommunicationToCaseRequest, AddCommunicationToCaseResult> asyncHandler);
@@ -267,6 +282,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param createCaseRequest
      * @return A Java Future containing the result of the CreateCase operation returned by the service.
      * @sample AWSSupportAsync.CreateCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateCaseResult> createCaseAsync(CreateCaseRequest createCaseRequest);
 
@@ -353,6 +370,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCase operation returned by the service.
      * @sample AWSSupportAsyncHandler.CreateCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateCaseResult> createCaseAsync(CreateCaseRequest createCaseRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCaseRequest, CreateCaseResult> asyncHandler);
@@ -367,6 +386,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param describeAttachmentRequest
      * @return A Java Future containing the result of the DescribeAttachment operation returned by the service.
      * @sample AWSSupportAsync.DescribeAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAttachmentResult> describeAttachmentAsync(DescribeAttachmentRequest describeAttachmentRequest);
 
@@ -384,6 +405,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAttachment operation returned by the service.
      * @sample AWSSupportAsyncHandler.DescribeAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAttachmentResult> describeAttachmentAsync(DescribeAttachmentRequest describeAttachmentRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeAttachmentRequest, DescribeAttachmentResult> asyncHandler);
@@ -419,6 +442,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param describeCasesRequest
      * @return A Java Future containing the result of the DescribeCases operation returned by the service.
      * @sample AWSSupportAsync.DescribeCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCasesResult> describeCasesAsync(DescribeCasesRequest describeCasesRequest);
 
@@ -457,6 +482,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCases operation returned by the service.
      * @sample AWSSupportAsyncHandler.DescribeCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeCasesResult> describeCasesAsync(DescribeCasesRequest describeCasesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCasesRequest, DescribeCasesResult> asyncHandler);
@@ -495,6 +522,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param describeCommunicationsRequest
      * @return A Java Future containing the result of the DescribeCommunications operation returned by the service.
      * @sample AWSSupportAsync.DescribeCommunications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCommunicationsResult> describeCommunicationsAsync(DescribeCommunicationsRequest describeCommunicationsRequest);
 
@@ -521,6 +550,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCommunications operation returned by the service.
      * @sample AWSSupportAsyncHandler.DescribeCommunications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCommunicationsResult> describeCommunicationsAsync(DescribeCommunicationsRequest describeCommunicationsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCommunicationsRequest, DescribeCommunicationsResult> asyncHandler);
@@ -542,6 +573,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param describeServicesRequest
      * @return A Java Future containing the result of the DescribeServices operation returned by the service.
      * @sample AWSSupportAsync.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeServicesResult> describeServicesAsync(DescribeServicesRequest describeServicesRequest);
 
@@ -566,6 +599,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeServices operation returned by the service.
      * @sample AWSSupportAsyncHandler.DescribeServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeServicesResult> describeServicesAsync(DescribeServicesRequest describeServicesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeServicesRequest, DescribeServicesResult> asyncHandler);
@@ -594,6 +629,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param describeSeverityLevelsRequest
      * @return A Java Future containing the result of the DescribeSeverityLevels operation returned by the service.
      * @sample AWSSupportAsync.DescribeSeverityLevels
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSeverityLevelsResult> describeSeverityLevelsAsync(DescribeSeverityLevelsRequest describeSeverityLevelsRequest);
 
@@ -610,6 +647,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSeverityLevels operation returned by the service.
      * @sample AWSSupportAsyncHandler.DescribeSeverityLevels
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSeverityLevelsResult> describeSeverityLevelsAsync(DescribeSeverityLevelsRequest describeSeverityLevelsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSeverityLevelsRequest, DescribeSeverityLevelsResult> asyncHandler);
@@ -646,6 +685,9 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckRefreshStatuses operation returned
      *         by the service.
      * @sample AWSSupportAsync.DescribeTrustedAdvisorCheckRefreshStatuses
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckRefreshStatusesResult> describeTrustedAdvisorCheckRefreshStatusesAsync(
             DescribeTrustedAdvisorCheckRefreshStatusesRequest describeTrustedAdvisorCheckRefreshStatusesRequest);
@@ -671,6 +713,9 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckRefreshStatuses operation returned
      *         by the service.
      * @sample AWSSupportAsyncHandler.DescribeTrustedAdvisorCheckRefreshStatuses
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckRefreshStatusesResult> describeTrustedAdvisorCheckRefreshStatusesAsync(
             DescribeTrustedAdvisorCheckRefreshStatusesRequest describeTrustedAdvisorCheckRefreshStatusesRequest,
@@ -727,6 +772,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckResult operation returned by the
      *         service.
      * @sample AWSSupportAsync.DescribeTrustedAdvisorCheckResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckResultResult> describeTrustedAdvisorCheckResultAsync(
             DescribeTrustedAdvisorCheckResultRequest describeTrustedAdvisorCheckResultRequest);
@@ -786,6 +833,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckResult operation returned by the
      *         service.
      * @sample AWSSupportAsyncHandler.DescribeTrustedAdvisorCheckResult
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckResultResult> describeTrustedAdvisorCheckResultAsync(
             DescribeTrustedAdvisorCheckResultRequest describeTrustedAdvisorCheckResultRequest,
@@ -804,6 +853,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckSummaries operation returned by the
      *         service.
      * @sample AWSSupportAsync.DescribeTrustedAdvisorCheckSummaries
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckSummariesResult> describeTrustedAdvisorCheckSummariesAsync(
             DescribeTrustedAdvisorCheckSummariesRequest describeTrustedAdvisorCheckSummariesRequest);
@@ -825,6 +876,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorCheckSummaries operation returned by the
      *         service.
      * @sample AWSSupportAsyncHandler.DescribeTrustedAdvisorCheckSummaries
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorCheckSummariesResult> describeTrustedAdvisorCheckSummariesAsync(
             DescribeTrustedAdvisorCheckSummariesRequest describeTrustedAdvisorCheckSummariesRequest,
@@ -841,6 +894,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorChecks operation returned by the
      *         service.
      * @sample AWSSupportAsync.DescribeTrustedAdvisorChecks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorChecksResult> describeTrustedAdvisorChecksAsync(
             DescribeTrustedAdvisorChecksRequest describeTrustedAdvisorChecksRequest);
@@ -860,6 +915,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @return A Java Future containing the result of the DescribeTrustedAdvisorChecks operation returned by the
      *         service.
      * @sample AWSSupportAsyncHandler.DescribeTrustedAdvisorChecks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTrustedAdvisorChecksResult> describeTrustedAdvisorChecksAsync(
             DescribeTrustedAdvisorChecksRequest describeTrustedAdvisorChecksRequest,
@@ -901,6 +958,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param refreshTrustedAdvisorCheckRequest
      * @return A Java Future containing the result of the RefreshTrustedAdvisorCheck operation returned by the service.
      * @sample AWSSupportAsync.RefreshTrustedAdvisorCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RefreshTrustedAdvisorCheckResult> refreshTrustedAdvisorCheckAsync(
             RefreshTrustedAdvisorCheckRequest refreshTrustedAdvisorCheckRequest);
@@ -945,6 +1004,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RefreshTrustedAdvisorCheck operation returned by the service.
      * @sample AWSSupportAsyncHandler.RefreshTrustedAdvisorCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RefreshTrustedAdvisorCheckResult> refreshTrustedAdvisorCheckAsync(
             RefreshTrustedAdvisorCheckRequest refreshTrustedAdvisorCheckRequest,
@@ -959,6 +1020,8 @@ public interface AWSSupportAsync extends AWSSupport {
      * @param resolveCaseRequest
      * @return A Java Future containing the result of the ResolveCase operation returned by the service.
      * @sample AWSSupportAsync.ResolveCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResolveCaseResult> resolveCaseAsync(ResolveCaseRequest resolveCaseRequest);
 
@@ -975,6 +1038,8 @@ public interface AWSSupportAsync extends AWSSupport {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResolveCase operation returned by the service.
      * @sample AWSSupportAsyncHandler.ResolveCase
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResolveCaseResult> resolveCaseAsync(ResolveCaseRequest resolveCaseRequest,
             com.amazonaws.handlers.AsyncHandler<ResolveCaseRequest, ResolveCaseResult> asyncHandler);

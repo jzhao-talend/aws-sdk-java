@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -28,12 +31,16 @@ import java.io.Serializable;
  * same server executable but with different launch parameters.
  * </p>
  * <p>
- * A GameLift instance is limited to 50 processes running simultaneously. To calculate the total number of processes
- * specified in a runtime configuration, add the values of the <code>ConcurrentExecutions</code> parameter for each
- * <code> <a>ServerProcess</a> </code> object in the runtime configuration.
+ * A Amazon GameLift instance is limited to 50 processes running simultaneously. To calculate the total number of
+ * processes specified in a runtime configuration, add the values of the <code>ConcurrentExecutions</code> parameter for
+ * each <code> <a>ServerProcess</a> </code> object in the runtime configuration.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/RuntimeConfiguration" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RuntimeConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RuntimeConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -128,7 +135,7 @@ public class RuntimeConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getServerProcesses() != null)
-            sb.append("ServerProcesses: " + getServerProcesses());
+            sb.append("ServerProcesses: ").append(getServerProcesses());
         sb.append("}");
         return sb.toString();
     }
@@ -166,5 +173,11 @@ public class RuntimeConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.RuntimeConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a scheduled update to an Auto Scaling group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ScheduledUpdateGroupAction"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledUpdateGroupAction implements Serializable, Cloneable {
 
     /**
@@ -525,25 +530,25 @@ public class ScheduledUpdateGroupAction implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getScheduledActionName() != null)
-            sb.append("ScheduledActionName: " + getScheduledActionName() + ",");
+            sb.append("ScheduledActionName: ").append(getScheduledActionName()).append(",");
         if (getScheduledActionARN() != null)
-            sb.append("ScheduledActionARN: " + getScheduledActionARN() + ",");
+            sb.append("ScheduledActionARN: ").append(getScheduledActionARN()).append(",");
         if (getTime() != null)
-            sb.append("Time: " + getTime() + ",");
+            sb.append("Time: ").append(getTime()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getRecurrence() != null)
-            sb.append("Recurrence: " + getRecurrence() + ",");
+            sb.append("Recurrence: ").append(getRecurrence()).append(",");
         if (getMinSize() != null)
-            sb.append("MinSize: " + getMinSize() + ",");
+            sb.append("MinSize: ").append(getMinSize()).append(",");
         if (getMaxSize() != null)
-            sb.append("MaxSize: " + getMaxSize() + ",");
+            sb.append("MaxSize: ").append(getMaxSize()).append(",");
         if (getDesiredCapacity() != null)
-            sb.append("DesiredCapacity: " + getDesiredCapacity());
+            sb.append("DesiredCapacity: ").append(getDesiredCapacity());
         sb.append("}");
         return sb.toString();
     }
@@ -627,4 +632,5 @@ public class ScheduledUpdateGroupAction implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

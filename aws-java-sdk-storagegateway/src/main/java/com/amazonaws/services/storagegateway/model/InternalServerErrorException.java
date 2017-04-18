@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,11 +12,14 @@
  */
 package com.amazonaws.services.storagegateway.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
  * An internal server error has occurred during the request. For more information, see the error and message fields.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InternalServerErrorException extends com.amazonaws.services.storagegateway.model.AWSStorageGatewayException {
     private static final long serialVersionUID = 1L;
 

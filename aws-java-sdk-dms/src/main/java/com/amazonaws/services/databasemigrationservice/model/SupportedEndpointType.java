@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,23 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/SupportedEndpointType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SupportedEndpointType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SupportedEndpointType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      */
     private String engineName;
@@ -40,11 +48,13 @@ public class SupportedEndpointType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The database engine name.
+     *        The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE,
+     *        and SQLSERVER.
      */
 
     public void setEngineName(String engineName) {
@@ -53,10 +63,12 @@ public class SupportedEndpointType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
-     * @return The database engine name.
+     * @return The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT,
+     *         SYBASE, and SQLSERVER.
      */
 
     public String getEngineName() {
@@ -65,11 +77,13 @@ public class SupportedEndpointType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database engine name.
+     * The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and
+     * SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The database engine name.
+     *        The database engine name. Valid values include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE,
+     *        and SQLSERVER.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -215,11 +229,11 @@ public class SupportedEndpointType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getSupportsCDC() != null)
-            sb.append("SupportsCDC: " + getSupportsCDC() + ",");
+            sb.append("SupportsCDC: ").append(getSupportsCDC()).append(",");
         if (getEndpointType() != null)
-            sb.append("EndpointType: " + getEndpointType());
+            sb.append("EndpointType: ").append(getEndpointType());
         sb.append("}");
         return sb.toString();
     }
@@ -267,5 +281,11 @@ public class SupportedEndpointType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.SupportedEndpointTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

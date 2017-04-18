@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.workspaces;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,11 +22,16 @@ import com.amazonaws.services.workspaces.model.*;
 /**
  * Interface for accessing Amazon WorkSpaces.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.workspaces.AbstractAmazonWorkspaces} instead.
+ * </p>
+ * <p>
  * <fullname>Amazon WorkSpaces Service</fullname>
  * <p>
  * This reference provides detailed information about the Amazon WorkSpaces operations.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonWorkspaces {
 
     /**
@@ -56,7 +63,11 @@ public interface AmazonWorkspaces {
      *        The endpoint (ex: "workspaces.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://workspaces.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -77,7 +88,9 @@ public interface AmazonWorkspaces {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -95,6 +108,8 @@ public interface AmazonWorkspaces {
      * @throws ResourceLimitExceededException
      *         Your resource limits have been exceeded.
      * @sample AmazonWorkspaces.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateTagsResult createTags(CreateTagsRequest createTagsRequest);
 
@@ -116,6 +131,8 @@ public interface AmazonWorkspaces {
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.CreateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest createWorkspacesRequest);
 
@@ -132,6 +149,8 @@ public interface AmazonWorkspaces {
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteTagsResult deleteTags(DeleteTagsRequest deleteTagsRequest);
 
@@ -146,6 +165,8 @@ public interface AmazonWorkspaces {
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @sample AmazonWorkspaces.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest);
 
@@ -169,6 +190,8 @@ public interface AmazonWorkspaces {
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspaceBundles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeWorkspaceBundlesResult describeWorkspaceBundles(DescribeWorkspaceBundlesRequest describeWorkspaceBundlesRequest);
 
@@ -196,6 +219,8 @@ public interface AmazonWorkspaces {
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspaceDirectories
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeWorkspaceDirectoriesResult describeWorkspaceDirectories(DescribeWorkspaceDirectoriesRequest describeWorkspaceDirectoriesRequest);
 
@@ -228,6 +253,8 @@ public interface AmazonWorkspaces {
      * @throws ResourceUnavailableException
      *         The specified resource is not available.
      * @sample AmazonWorkspaces.DescribeWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     DescribeWorkspacesResult describeWorkspaces(DescribeWorkspacesRequest describeWorkspacesRequest);
 
@@ -248,6 +275,8 @@ public interface AmazonWorkspaces {
      * @throws InvalidParameterValuesException
      *         One or more parameter values are not valid.
      * @sample AmazonWorkspaces.DescribeWorkspacesConnectionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeWorkspacesConnectionStatusResult describeWorkspacesConnectionStatus(
             DescribeWorkspacesConnectionStatusRequest describeWorkspacesConnectionStatusRequest);
@@ -275,6 +304,8 @@ public interface AmazonWorkspaces {
      * @throws ResourceUnavailableException
      *         The specified resource is not available.
      * @sample AmazonWorkspaces.ModifyWorkspaceProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties"
+     *      target="_top">AWS API Documentation</a>
      */
     ModifyWorkspacePropertiesResult modifyWorkspaceProperties(ModifyWorkspacePropertiesRequest modifyWorkspacePropertiesRequest);
 
@@ -296,6 +327,8 @@ public interface AmazonWorkspaces {
      *        Contains the inputs for the <a>RebootWorkspaces</a> operation.
      * @return Result of the RebootWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.RebootWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     RebootWorkspacesResult rebootWorkspaces(RebootWorkspacesRequest rebootWorkspacesRequest);
 
@@ -336,6 +369,8 @@ public interface AmazonWorkspaces {
      *        Contains the inputs for the <a>RebuildWorkspaces</a> operation.
      * @return Result of the RebuildWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.RebuildWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     RebuildWorkspacesResult rebuildWorkspaces(RebuildWorkspacesRequest rebuildWorkspacesRequest);
 
@@ -348,6 +383,8 @@ public interface AmazonWorkspaces {
      * @param startWorkspacesRequest
      * @return Result of the StartWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.StartWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     StartWorkspacesResult startWorkspaces(StartWorkspacesRequest startWorkspacesRequest);
 
@@ -360,6 +397,8 @@ public interface AmazonWorkspaces {
      * @param stopWorkspacesRequest
      * @return Result of the StopWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.StopWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces" target="_top">AWS API
+     *      Documentation</a>
      */
     StopWorkspacesResult stopWorkspaces(StopWorkspacesRequest stopWorkspacesRequest);
 
@@ -384,6 +423,8 @@ public interface AmazonWorkspaces {
      *        Contains the inputs for the <a>TerminateWorkspaces</a> operation.
      * @return Result of the TerminateWorkspaces operation returned by the service.
      * @sample AmazonWorkspaces.TerminateWorkspaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces" target="_top">AWS
+     *      API Documentation</a>
      */
     TerminateWorkspacesResult terminateWorkspaces(TerminateWorkspacesRequest terminateWorkspacesRequest);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a stale rule in a security group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StaleIpPermission" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class StaleIpPermission implements Serializable, Cloneable {
 
     /**
@@ -439,17 +444,17 @@ public class StaleIpPermission implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFromPort() != null)
-            sb.append("FromPort: " + getFromPort() + ",");
+            sb.append("FromPort: ").append(getFromPort()).append(",");
         if (getIpProtocol() != null)
-            sb.append("IpProtocol: " + getIpProtocol() + ",");
+            sb.append("IpProtocol: ").append(getIpProtocol()).append(",");
         if (getIpRanges() != null)
-            sb.append("IpRanges: " + getIpRanges() + ",");
+            sb.append("IpRanges: ").append(getIpRanges()).append(",");
         if (getPrefixListIds() != null)
-            sb.append("PrefixListIds: " + getPrefixListIds() + ",");
+            sb.append("PrefixListIds: ").append(getPrefixListIds()).append(",");
         if (getToPort() != null)
-            sb.append("ToPort: " + getToPort() + ",");
+            sb.append("ToPort: ").append(getToPort()).append(",");
         if (getUserIdGroupPairs() != null)
-            sb.append("UserIdGroupPairs: " + getUserIdGroupPairs());
+            sb.append("UserIdGroupPairs: ").append(getUserIdGroupPairs());
         sb.append("}");
         return sb.toString();
     }
@@ -513,4 +518,5 @@ public class StaleIpPermission implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

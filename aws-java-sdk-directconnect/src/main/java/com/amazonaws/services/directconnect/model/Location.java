@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An AWS Direct Connect location where connections and interconnects can be requested.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/Location" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Location implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -133,9 +140,9 @@ public class Location implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLocationCode() != null)
-            sb.append("LocationCode: " + getLocationCode() + ",");
+            sb.append("LocationCode: ").append(getLocationCode()).append(",");
         if (getLocationName() != null)
-            sb.append("LocationName: " + getLocationName());
+            sb.append("LocationName: ").append(getLocationName());
         sb.append("}");
         return sb.toString();
     }
@@ -178,5 +185,11 @@ public class Location implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directconnect.model.transform.LocationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

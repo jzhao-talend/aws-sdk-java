@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.inspector;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.inspector.model.*;
 
 /**
  * Interface for accessing Amazon Inspector.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.inspector.AbstractAmazonInspector} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Inspector</fullname>
  * <p>
@@ -28,6 +34,7 @@ import com.amazonaws.services.inspector.model.*;
  * Guide</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonInspector {
 
     /**
@@ -59,7 +66,11 @@ public interface AmazonInspector {
      *        The endpoint (ex: "inspector.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://inspector.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
      *        communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -80,7 +91,9 @@ public interface AmazonInspector {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -100,6 +113,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.AddAttributesToFindings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AddAttributesToFindings"
+     *      target="_top">AWS API Documentation</a>
      */
     AddAttributesToFindingsResult addAttributesToFindings(AddAttributesToFindingsRequest addAttributesToFindingsRequest);
 
@@ -127,6 +142,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.CreateAssessmentTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/CreateAssessmentTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateAssessmentTargetResult createAssessmentTarget(CreateAssessmentTargetRequest createAssessmentTargetRequest);
 
@@ -150,6 +167,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.CreateAssessmentTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/CreateAssessmentTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     CreateAssessmentTemplateResult createAssessmentTemplate(CreateAssessmentTemplateRequest createAssessmentTemplateRequest);
 
@@ -172,6 +191,8 @@ public interface AmazonInspector {
      * @throws AccessDeniedException
      *         You do not have required permissions to access the requested resource.
      * @sample AmazonInspector.CreateResourceGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/CreateResourceGroup" target="_top">AWS
+     *      API Documentation</a>
      */
     CreateResourceGroupResult createResourceGroup(CreateResourceGroupRequest createResourceGroupRequest);
 
@@ -194,6 +215,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.DeleteAssessmentRun
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DeleteAssessmentRun" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteAssessmentRunResult deleteAssessmentRun(DeleteAssessmentRunRequest deleteAssessmentRunRequest);
 
@@ -216,6 +239,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.DeleteAssessmentTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DeleteAssessmentTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteAssessmentTargetResult deleteAssessmentTarget(DeleteAssessmentTargetRequest deleteAssessmentTargetRequest);
 
@@ -238,6 +263,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.DeleteAssessmentTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DeleteAssessmentTemplate"
+     *      target="_top">AWS API Documentation</a>
      */
     DeleteAssessmentTemplateResult deleteAssessmentTemplate(DeleteAssessmentTemplateRequest deleteAssessmentTemplateRequest);
 
@@ -253,6 +280,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeAssessmentRuns
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeAssessmentRuns"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeAssessmentRunsResult describeAssessmentRuns(DescribeAssessmentRunsRequest describeAssessmentRunsRequest);
 
@@ -268,6 +297,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeAssessmentTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeAssessmentTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeAssessmentTargetsResult describeAssessmentTargets(DescribeAssessmentTargetsRequest describeAssessmentTargetsRequest);
 
@@ -283,6 +314,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeAssessmentTemplates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeAssessmentTemplates"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeAssessmentTemplatesResult describeAssessmentTemplates(DescribeAssessmentTemplatesRequest describeAssessmentTemplatesRequest);
 
@@ -296,6 +329,8 @@ public interface AmazonInspector {
      * @throws InternalException
      *         Internal server error.
      * @sample AmazonInspector.DescribeCrossAccountAccessRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeCrossAccountAccessRole"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeCrossAccountAccessRoleResult describeCrossAccountAccessRole(DescribeCrossAccountAccessRoleRequest describeCrossAccountAccessRoleRequest);
 
@@ -311,6 +346,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeFindings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeFindings" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeFindingsResult describeFindings(DescribeFindingsRequest describeFindingsRequest);
 
@@ -326,6 +363,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeResourceGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeResourceGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeResourceGroupsResult describeResourceGroups(DescribeResourceGroupsRequest describeResourceGroupsRequest);
 
@@ -341,6 +380,8 @@ public interface AmazonInspector {
      * @throws InvalidInputException
      *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
      * @sample AmazonInspector.DescribeRulesPackages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/DescribeRulesPackages"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeRulesPackagesResult describeRulesPackages(DescribeRulesPackagesRequest describeRulesPackagesRequest);
 
@@ -361,6 +402,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.GetTelemetryMetadata
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/GetTelemetryMetadata" target="_top">AWS
+     *      API Documentation</a>
      */
     GetTelemetryMetadataResult getTelemetryMetadata(GetTelemetryMetadataRequest getTelemetryMetadataRequest);
 
@@ -381,6 +424,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListAssessmentRunAgents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListAssessmentRunAgents"
+     *      target="_top">AWS API Documentation</a>
      */
     ListAssessmentRunAgentsResult listAssessmentRunAgents(ListAssessmentRunAgentsRequest listAssessmentRunAgentsRequest);
 
@@ -402,6 +447,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListAssessmentRuns
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListAssessmentRuns" target="_top">AWS
+     *      API Documentation</a>
      */
     ListAssessmentRunsResult listAssessmentRuns(ListAssessmentRunsRequest listAssessmentRunsRequest);
 
@@ -421,6 +468,8 @@ public interface AmazonInspector {
      * @throws AccessDeniedException
      *         You do not have required permissions to access the requested resource.
      * @sample AmazonInspector.ListAssessmentTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListAssessmentTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     ListAssessmentTargetsResult listAssessmentTargets(ListAssessmentTargetsRequest listAssessmentTargetsRequest);
 
@@ -442,6 +491,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListAssessmentTemplates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListAssessmentTemplates"
+     *      target="_top">AWS API Documentation</a>
      */
     ListAssessmentTemplatesResult listAssessmentTemplates(ListAssessmentTemplatesRequest listAssessmentTemplatesRequest);
 
@@ -463,6 +514,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListEventSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListEventSubscriptions"
+     *      target="_top">AWS API Documentation</a>
      */
     ListEventSubscriptionsResult listEventSubscriptions(ListEventSubscriptionsRequest listEventSubscriptionsRequest);
 
@@ -483,6 +536,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListFindings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListFindings" target="_top">AWS API
+     *      Documentation</a>
      */
     ListFindingsResult listFindings(ListFindingsRequest listFindingsRequest);
 
@@ -500,6 +555,8 @@ public interface AmazonInspector {
      * @throws AccessDeniedException
      *         You do not have required permissions to access the requested resource.
      * @sample AmazonInspector.ListRulesPackages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListRulesPackages" target="_top">AWS
+     *      API Documentation</a>
      */
     ListRulesPackagesResult listRulesPackages(ListRulesPackagesRequest listRulesPackagesRequest);
 
@@ -520,6 +577,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
      */
     ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -543,6 +602,8 @@ public interface AmazonInspector {
      *         Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the
      *         assessment run.
      * @sample AmazonInspector.PreviewAgents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/PreviewAgents" target="_top">AWS API
+     *      Documentation</a>
      */
     PreviewAgentsResult previewAgents(PreviewAgentsRequest previewAgentsRequest);
 
@@ -564,6 +625,8 @@ public interface AmazonInspector {
      *         Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the
      *         assessment run.
      * @sample AmazonInspector.RegisterCrossAccountAccessRole
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/RegisterCrossAccountAccessRole"
+     *      target="_top">AWS API Documentation</a>
      */
     RegisterCrossAccountAccessRoleResult registerCrossAccountAccessRole(RegisterCrossAccountAccessRoleRequest registerCrossAccountAccessRoleRequest);
 
@@ -585,6 +648,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.RemoveAttributesFromFindings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/RemoveAttributesFromFindings"
+     *      target="_top">AWS API Documentation</a>
      */
     RemoveAttributesFromFindingsResult removeAttributesFromFindings(RemoveAttributesFromFindingsRequest removeAttributesFromFindingsRequest);
 
@@ -606,6 +671,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.SetTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/SetTagsForResource" target="_top">AWS
+     *      API Documentation</a>
      */
     SetTagsForResourceResult setTagsForResource(SetTagsForResourceRequest setTagsForResourceRequest);
 
@@ -636,6 +703,8 @@ public interface AmazonInspector {
      *         You started an assessment run, but one of the instances is already participating in another assessment
      *         run.
      * @sample AmazonInspector.StartAssessmentRun
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/StartAssessmentRun" target="_top">AWS
+     *      API Documentation</a>
      */
     StartAssessmentRunResult startAssessmentRun(StartAssessmentRunRequest startAssessmentRunRequest);
 
@@ -656,6 +725,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.StopAssessmentRun
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/StopAssessmentRun" target="_top">AWS
+     *      API Documentation</a>
      */
     StopAssessmentRunResult stopAssessmentRun(StopAssessmentRunRequest stopAssessmentRunRequest);
 
@@ -680,6 +751,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.SubscribeToEvent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/SubscribeToEvent" target="_top">AWS API
+     *      Documentation</a>
      */
     SubscribeToEventResult subscribeToEvent(SubscribeToEventRequest subscribeToEventRequest);
 
@@ -701,6 +774,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.UnsubscribeFromEvent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/UnsubscribeFromEvent" target="_top">AWS
+     *      API Documentation</a>
      */
     UnsubscribeFromEventResult unsubscribeFromEvent(UnsubscribeFromEventRequest unsubscribeFromEventRequest);
 
@@ -721,6 +796,8 @@ public interface AmazonInspector {
      *         The request was rejected because it referenced an entity that does not exist. The error code describes
      *         the entity.
      * @sample AmazonInspector.UpdateAssessmentTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/UpdateAssessmentTarget"
+     *      target="_top">AWS API Documentation</a>
      */
     UpdateAssessmentTargetResult updateAssessmentTarget(UpdateAssessmentTargetRequest updateAssessmentTargetRequest);
 

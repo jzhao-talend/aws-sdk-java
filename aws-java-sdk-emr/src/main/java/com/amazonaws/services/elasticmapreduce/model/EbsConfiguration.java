@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,40 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * The Amazon EBS configuration of a cluster instance.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/EbsConfiguration" target="_top">AWS
+ *      API Documentation</a>
  */
-public class EbsConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EbsConfiguration implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * An array of Amazon EBS volume specifications attached to a cluster instance.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<EbsBlockDeviceConfig> ebsBlockDeviceConfigs;
-
+    /**
+     * <p>
+     * Indicates whether an Amazon EBS volume is EBS-optimized.
+     * </p>
+     */
     private Boolean ebsOptimized;
 
     /**
-     * @return
+     * <p>
+     * An array of Amazon EBS volume specifications attached to a cluster instance.
+     * </p>
+     * 
+     * @return An array of Amazon EBS volume specifications attached to a cluster instance.
      */
 
     public java.util.List<EbsBlockDeviceConfig> getEbsBlockDeviceConfigs() {
@@ -35,7 +57,12 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * An array of Amazon EBS volume specifications attached to a cluster instance.
+     * </p>
+     * 
      * @param ebsBlockDeviceConfigs
+     *        An array of Amazon EBS volume specifications attached to a cluster instance.
      */
 
     public void setEbsBlockDeviceConfigs(java.util.Collection<EbsBlockDeviceConfig> ebsBlockDeviceConfigs) {
@@ -49,12 +76,16 @@ public class EbsConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
+     * An array of Amazon EBS volume specifications attached to a cluster instance.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setEbsBlockDeviceConfigs(java.util.Collection)} or
      * {@link #withEbsBlockDeviceConfigs(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param ebsBlockDeviceConfigs
+     *        An array of Amazon EBS volume specifications attached to a cluster instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,7 +100,12 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * An array of Amazon EBS volume specifications attached to a cluster instance.
+     * </p>
+     * 
      * @param ebsBlockDeviceConfigs
+     *        An array of Amazon EBS volume specifications attached to a cluster instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -79,7 +115,12 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether an Amazon EBS volume is EBS-optimized.
+     * </p>
+     * 
      * @param ebsOptimized
+     *        Indicates whether an Amazon EBS volume is EBS-optimized.
      */
 
     public void setEbsOptimized(Boolean ebsOptimized) {
@@ -87,7 +128,11 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Indicates whether an Amazon EBS volume is EBS-optimized.
+     * </p>
+     * 
+     * @return Indicates whether an Amazon EBS volume is EBS-optimized.
      */
 
     public Boolean getEbsOptimized() {
@@ -95,7 +140,12 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether an Amazon EBS volume is EBS-optimized.
+     * </p>
+     * 
      * @param ebsOptimized
+     *        Indicates whether an Amazon EBS volume is EBS-optimized.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -105,7 +155,11 @@ public class EbsConfiguration implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Indicates whether an Amazon EBS volume is EBS-optimized.
+     * </p>
+     * 
+     * @return Indicates whether an Amazon EBS volume is EBS-optimized.
      */
 
     public Boolean isEbsOptimized() {
@@ -124,9 +178,9 @@ public class EbsConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEbsBlockDeviceConfigs() != null)
-            sb.append("EbsBlockDeviceConfigs: " + getEbsBlockDeviceConfigs() + ",");
+            sb.append("EbsBlockDeviceConfigs: ").append(getEbsBlockDeviceConfigs()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized());
+            sb.append("EbsOptimized: ").append(getEbsOptimized());
         sb.append("}");
         return sb.toString();
     }
@@ -169,5 +223,11 @@ public class EbsConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.EbsConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

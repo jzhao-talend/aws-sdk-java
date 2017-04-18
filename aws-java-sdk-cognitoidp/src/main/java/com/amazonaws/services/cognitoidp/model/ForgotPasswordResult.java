@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,33 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Respresents the response from the server regarding the request to reset a password.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgotPassword" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ForgotPasswordResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The code delivery details returned by the server in response to the request to reset a password.
+     * </p>
+     */
     private CodeDeliveryDetailsType codeDeliveryDetails;
 
     /**
+     * <p>
+     * The code delivery details returned by the server in response to the request to reset a password.
+     * </p>
+     * 
      * @param codeDeliveryDetails
+     *        The code delivery details returned by the server in response to the request to reset a password.
      */
 
     public void setCodeDeliveryDetails(CodeDeliveryDetailsType codeDeliveryDetails) {
@@ -32,7 +47,11 @@ public class ForgotPasswordResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * @return
+     * <p>
+     * The code delivery details returned by the server in response to the request to reset a password.
+     * </p>
+     * 
+     * @return The code delivery details returned by the server in response to the request to reset a password.
      */
 
     public CodeDeliveryDetailsType getCodeDeliveryDetails() {
@@ -40,7 +59,12 @@ public class ForgotPasswordResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * <p>
+     * The code delivery details returned by the server in response to the request to reset a password.
+     * </p>
+     * 
      * @param codeDeliveryDetails
+     *        The code delivery details returned by the server in response to the request to reset a password.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,7 +85,7 @@ public class ForgotPasswordResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCodeDeliveryDetails() != null)
-            sb.append("CodeDeliveryDetails: " + getCodeDeliveryDetails());
+            sb.append("CodeDeliveryDetails: ").append(getCodeDeliveryDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -100,4 +124,5 @@ public class ForgotPasswordResult extends com.amazonaws.AmazonWebServiceResult<c
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Configuration settings registered with the activity type.
  * </p>
  */
-public class ActivityTypeConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActivityTypeConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -567,17 +571,17 @@ public class ActivityTypeConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDefaultTaskStartToCloseTimeout() != null)
-            sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+            sb.append("DefaultTaskStartToCloseTimeout: ").append(getDefaultTaskStartToCloseTimeout()).append(",");
         if (getDefaultTaskHeartbeatTimeout() != null)
-            sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");
+            sb.append("DefaultTaskHeartbeatTimeout: ").append(getDefaultTaskHeartbeatTimeout()).append(",");
         if (getDefaultTaskList() != null)
-            sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
+            sb.append("DefaultTaskList: ").append(getDefaultTaskList()).append(",");
         if (getDefaultTaskPriority() != null)
-            sb.append("DefaultTaskPriority: " + getDefaultTaskPriority() + ",");
+            sb.append("DefaultTaskPriority: ").append(getDefaultTaskPriority()).append(",");
         if (getDefaultTaskScheduleToStartTimeout() != null)
-            sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");
+            sb.append("DefaultTaskScheduleToStartTimeout: ").append(getDefaultTaskScheduleToStartTimeout()).append(",");
         if (getDefaultTaskScheduleToCloseTimeout() != null)
-            sb.append("DefaultTaskScheduleToCloseTimeout: " + getDefaultTaskScheduleToCloseTimeout());
+            sb.append("DefaultTaskScheduleToCloseTimeout: ").append(getDefaultTaskScheduleToCloseTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -643,5 +647,11 @@ public class ActivityTypeConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.ActivityTypeConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

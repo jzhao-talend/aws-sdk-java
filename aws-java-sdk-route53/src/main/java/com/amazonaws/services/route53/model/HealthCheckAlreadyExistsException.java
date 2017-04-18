@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,15 +12,15 @@
  */
 package com.amazonaws.services.route53.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
- * The health check you're attempting to create already exists.
- * </p>
- * <p>
- * Amazon Route 53 returns this error when a health check has already been created with the specified value for
- * <code>CallerReference</code>.
+ * The health check you're attempting to create already exists. Amazon Route 53 returns this error when a health check
+ * has already been created with the specified value for <code>CallerReference</code>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class HealthCheckAlreadyExistsException extends com.amazonaws.services.route53.model.AmazonRoute53Exception {
     private static final long serialVersionUID = 1L;
 

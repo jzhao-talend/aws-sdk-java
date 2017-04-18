@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshotAttribute" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyDBSnapshotAttributeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -413,13 +419,13 @@ public class ModifyDBSnapshotAttributeRequest extends com.amazonaws.AmazonWebSer
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBSnapshotIdentifier() != null)
-            sb.append("DBSnapshotIdentifier: " + getDBSnapshotIdentifier() + ",");
+            sb.append("DBSnapshotIdentifier: ").append(getDBSnapshotIdentifier()).append(",");
         if (getAttributeName() != null)
-            sb.append("AttributeName: " + getAttributeName() + ",");
+            sb.append("AttributeName: ").append(getAttributeName()).append(",");
         if (getValuesToAdd() != null)
-            sb.append("ValuesToAdd: " + getValuesToAdd() + ",");
+            sb.append("ValuesToAdd: ").append(getValuesToAdd()).append(",");
         if (getValuesToRemove() != null)
-            sb.append("ValuesToRemove: " + getValuesToRemove());
+            sb.append("ValuesToRemove: ").append(getValuesToRemove());
         sb.append("}");
         return sb.toString();
     }
@@ -469,4 +475,5 @@ public class ModifyDBSnapshotAttributeRequest extends com.amazonaws.AmazonWebSer
     public ModifyDBSnapshotAttributeRequest clone() {
         return (ModifyDBSnapshotAttributeRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.ec2;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.ec2.model.*;
 
 /**
  * Interface for accessing Amazon EC2 asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.ec2.AbstractAmazonEC2Async} instead.
+ * </p>
  * <p>
  * <fullname>Amazon Elastic Compute Cloud</fullname>
  * <p>
@@ -26,11 +32,13 @@ import com.amazonaws.services.ec2.model.*;
  * applications faster.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
-     * Purchases Convertible Reserved Instance offerings described in the <a>GetReservedInstancesExchangeQuote</a> call.
+     * Accepts the Convertible Reserved Instance exchange quote described in the
+     * <a>GetReservedInstancesExchangeQuote</a> call.
      * </p>
      * 
      * @param acceptReservedInstancesExchangeQuoteRequest
@@ -38,13 +46,16 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AcceptReservedInstancesExchangeQuote operation returned by the
      *         service.
      * @sample AmazonEC2Async.AcceptReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AcceptReservedInstancesExchangeQuoteResult> acceptReservedInstancesExchangeQuoteAsync(
             AcceptReservedInstancesExchangeQuoteRequest acceptReservedInstancesExchangeQuoteRequest);
 
     /**
      * <p>
-     * Purchases Convertible Reserved Instance offerings described in the <a>GetReservedInstancesExchangeQuote</a> call.
+     * Accepts the Convertible Reserved Instance exchange quote described in the
+     * <a>GetReservedInstancesExchangeQuote</a> call.
      * </p>
      * 
      * @param acceptReservedInstancesExchangeQuoteRequest
@@ -56,6 +67,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AcceptReservedInstancesExchangeQuote operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.AcceptReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AcceptReservedInstancesExchangeQuoteResult> acceptReservedInstancesExchangeQuoteAsync(
             AcceptReservedInstancesExchangeQuoteRequest acceptReservedInstancesExchangeQuoteRequest,
@@ -72,6 +85,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AcceptVpcPeeringConnection.
      * @return A Java Future containing the result of the AcceptVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2Async.AcceptVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AcceptVpcPeeringConnectionResult> acceptVpcPeeringConnectionAsync(
             AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest);
@@ -91,6 +106,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AcceptVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AcceptVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AcceptVpcPeeringConnectionResult> acceptVpcPeeringConnectionAsync(
             AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest,
@@ -125,6 +142,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AllocateAddress.
      * @return A Java Future containing the result of the AllocateAddress operation returned by the service.
      * @sample AmazonEC2Async.AllocateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AllocateAddressResult> allocateAddressAsync(AllocateAddressRequest allocateAddressRequest);
 
@@ -146,6 +165,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AllocateAddress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AllocateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AllocateAddressResult> allocateAddressAsync(AllocateAddressRequest allocateAddressRequest,
             com.amazonaws.handlers.AsyncHandler<AllocateAddressRequest, AllocateAddressResult> asyncHandler);
@@ -175,6 +196,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AllocateHosts.
      * @return A Java Future containing the result of the AllocateHosts operation returned by the service.
      * @sample AmazonEC2Async.AllocateHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AllocateHostsResult> allocateHostsAsync(AllocateHostsRequest allocateHostsRequest);
 
@@ -192,9 +215,52 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AllocateHosts operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AllocateHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AllocateHostsResult> allocateHostsAsync(AllocateHostsRequest allocateHostsRequest,
             com.amazonaws.handlers.AsyncHandler<AllocateHostsRequest, AllocateHostsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6
+     * addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's
+     * IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private
+     * IPv4 addresses, and the limit varies per instance type. For information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses Per
+     * Network Interface Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param assignIpv6AddressesRequest
+     * @return A Java Future containing the result of the AssignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2Async.AssignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AssignIpv6AddressesResult> assignIpv6AddressesAsync(AssignIpv6AddressesRequest assignIpv6AddressesRequest);
+
+    /**
+     * <p>
+     * Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6
+     * addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's
+     * IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private
+     * IPv4 addresses, and the limit varies per instance type. For information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses Per
+     * Network Interface Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param assignIpv6AddressesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.AssignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AssignIpv6AddressesResult> assignIpv6AddressesAsync(AssignIpv6AddressesRequest assignIpv6AddressesRequest,
+            com.amazonaws.handlers.AsyncHandler<AssignIpv6AddressesRequest, AssignIpv6AddressesResult> asyncHandler);
 
     /**
      * <p>
@@ -215,6 +281,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AssignPrivateIpAddresses.
      * @return A Java Future containing the result of the AssignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2Async.AssignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AssignPrivateIpAddressesResult> assignPrivateIpAddressesAsync(AssignPrivateIpAddressesRequest assignPrivateIpAddressesRequest);
 
@@ -241,6 +309,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AssignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AssignPrivateIpAddressesResult> assignPrivateIpAddressesAsync(AssignPrivateIpAddressesRequest assignPrivateIpAddressesRequest,
             com.amazonaws.handlers.AsyncHandler<AssignPrivateIpAddressesRequest, AssignPrivateIpAddressesResult> asyncHandler);
@@ -276,6 +346,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AssociateAddress.
      * @return A Java Future containing the result of the AssociateAddress operation returned by the service.
      * @sample AmazonEC2Async.AssociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateAddressResult> associateAddressAsync(AssociateAddressRequest associateAddressRequest);
 
@@ -314,6 +386,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssociateAddress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AssociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateAddressResult> associateAddressAsync(AssociateAddressRequest associateAddressRequest,
             com.amazonaws.handlers.AsyncHandler<AssociateAddressRequest, AssociateAddressResult> asyncHandler);
@@ -339,6 +413,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AssociateDhcpOptions.
      * @return A Java Future containing the result of the AssociateDhcpOptions operation returned by the service.
      * @sample AmazonEC2Async.AssociateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateDhcpOptionsResult> associateDhcpOptionsAsync(AssociateDhcpOptionsRequest associateDhcpOptionsRequest);
 
@@ -367,9 +443,46 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssociateDhcpOptions operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AssociateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateDhcpOptionsResult> associateDhcpOptionsAsync(AssociateDhcpOptionsRequest associateDhcpOptionsRequest,
             com.amazonaws.handlers.AsyncHandler<AssociateDhcpOptionsRequest, AssociateDhcpOptionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM
+     * instance profile with an instance.
+     * </p>
+     * 
+     * @param associateIamInstanceProfileRequest
+     * @return A Java Future containing the result of the AssociateIamInstanceProfile operation returned by the service.
+     * @sample AmazonEC2Async.AssociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateIamInstanceProfileResult> associateIamInstanceProfileAsync(
+            AssociateIamInstanceProfileRequest associateIamInstanceProfileRequest);
+
+    /**
+     * <p>
+     * Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM
+     * instance profile with an instance.
+     * </p>
+     * 
+     * @param associateIamInstanceProfileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssociateIamInstanceProfile operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.AssociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateIamInstanceProfileResult> associateIamInstanceProfileAsync(
+            AssociateIamInstanceProfileRequest associateIamInstanceProfileRequest,
+            com.amazonaws.handlers.AsyncHandler<AssociateIamInstanceProfileRequest, AssociateIamInstanceProfileResult> asyncHandler);
 
     /**
      * <p>
@@ -388,6 +501,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AssociateRouteTable.
      * @return A Java Future containing the result of the AssociateRouteTable operation returned by the service.
      * @sample AmazonEC2Async.AssociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateRouteTableResult> associateRouteTableAsync(AssociateRouteTableRequest associateRouteTableRequest);
 
@@ -412,9 +527,77 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AssociateRouteTable operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AssociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AssociateRouteTableResult> associateRouteTableAsync(AssociateRouteTableRequest associateRouteTableRequest,
             com.amazonaws.handlers.AsyncHandler<AssociateRouteTableRequest, AssociateRouteTableResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An
+     * IPv6 CIDR block must have a prefix length of /64.
+     * </p>
+     * 
+     * @param associateSubnetCidrBlockRequest
+     * @return A Java Future containing the result of the AssociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2Async.AssociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSubnetCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateSubnetCidrBlockResult> associateSubnetCidrBlockAsync(AssociateSubnetCidrBlockRequest associateSubnetCidrBlockRequest);
+
+    /**
+     * <p>
+     * Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An
+     * IPv6 CIDR block must have a prefix length of /64.
+     * </p>
+     * 
+     * @param associateSubnetCidrBlockRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.AssociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSubnetCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateSubnetCidrBlockResult> associateSubnetCidrBlockAsync(AssociateSubnetCidrBlockRequest associateSubnetCidrBlockRequest,
+            com.amazonaws.handlers.AsyncHandler<AssociateSubnetCidrBlockRequest, AssociateSubnetCidrBlockResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates a CIDR block with your VPC. You can only associate a single Amazon-provided IPv6 CIDR block with your
+     * VPC. The IPv6 CIDR block size is fixed at /56.
+     * </p>
+     * 
+     * @param associateVpcCidrBlockRequest
+     * @return A Java Future containing the result of the AssociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2Async.AssociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateVpcCidrBlock" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateVpcCidrBlockResult> associateVpcCidrBlockAsync(AssociateVpcCidrBlockRequest associateVpcCidrBlockRequest);
+
+    /**
+     * <p>
+     * Associates a CIDR block with your VPC. You can only associate a single Amazon-provided IPv6 CIDR block with your
+     * VPC. The IPv6 CIDR block size is fixed at /56.
+     * </p>
+     * 
+     * @param associateVpcCidrBlockRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.AssociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateVpcCidrBlock" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateVpcCidrBlockResult> associateVpcCidrBlockAsync(AssociateVpcCidrBlockRequest associateVpcCidrBlockRequest,
+            com.amazonaws.handlers.AsyncHandler<AssociateVpcCidrBlockRequest, AssociateVpcCidrBlockResult> asyncHandler);
 
     /**
      * <p>
@@ -435,6 +618,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AttachClassicLinkVpc.
      * @return A Java Future containing the result of the AttachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2Async.AttachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachClassicLinkVpcResult> attachClassicLinkVpcAsync(AttachClassicLinkVpcRequest attachClassicLinkVpcRequest);
 
@@ -461,6 +646,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AttachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AttachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachClassicLinkVpcResult> attachClassicLinkVpcAsync(AttachClassicLinkVpcRequest attachClassicLinkVpcRequest,
             com.amazonaws.handlers.AsyncHandler<AttachClassicLinkVpcRequest, AttachClassicLinkVpcResult> asyncHandler);
@@ -476,6 +663,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AttachInternetGateway.
      * @return A Java Future containing the result of the AttachInternetGateway operation returned by the service.
      * @sample AmazonEC2Async.AttachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachInternetGatewayResult> attachInternetGatewayAsync(AttachInternetGatewayRequest attachInternetGatewayRequest);
 
@@ -494,6 +683,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AttachInternetGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AttachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachInternetGatewayResult> attachInternetGatewayAsync(AttachInternetGatewayRequest attachInternetGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<AttachInternetGatewayRequest, AttachInternetGatewayResult> asyncHandler);
@@ -507,6 +698,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AttachNetworkInterface.
      * @return A Java Future containing the result of the AttachNetworkInterface operation returned by the service.
      * @sample AmazonEC2Async.AttachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachNetworkInterfaceResult> attachNetworkInterfaceAsync(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest);
 
@@ -523,6 +716,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AttachNetworkInterface operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AttachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachNetworkInterfaceResult> attachNetworkInterfaceAsync(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest,
             com.amazonaws.handlers.AsyncHandler<AttachNetworkInterfaceRequest, AttachNetworkInterfaceResult> asyncHandler);
@@ -584,6 +779,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for AttachVolume.
      * @return A Java Future containing the result of the AttachVolume operation returned by the service.
      * @sample AmazonEC2Async.AttachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachVolumeResult> attachVolumeAsync(AttachVolumeRequest attachVolumeRequest);
 
@@ -648,29 +845,37 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AttachVolume operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AttachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachVolumeResult> attachVolumeAsync(AttachVolumeRequest attachVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<AttachVolumeRequest, AttachVolumeResult> asyncHandler);
 
     /**
      * <p>
-     * Attaches a virtual private gateway to a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private
-     * Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a
+     * Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param attachVpnGatewayRequest
      *        Contains the parameters for AttachVpnGateway.
      * @return A Java Future containing the result of the AttachVpnGateway operation returned by the service.
      * @sample AmazonEC2Async.AttachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachVpnGatewayResult> attachVpnGatewayAsync(AttachVpnGatewayRequest attachVpnGatewayRequest);
 
     /**
      * <p>
-     * Attaches a virtual private gateway to a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private
-     * Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a
+     * Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param attachVpnGatewayRequest
@@ -681,6 +886,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AttachVpnGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.AttachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AttachVpnGatewayResult> attachVpnGatewayAsync(AttachVpnGatewayRequest attachVpnGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<AttachVpnGatewayRequest, AttachVpnGatewayResult> asyncHandler);
@@ -688,17 +895,14 @@ public interface AmazonEC2Async extends AmazonEC2 {
     /**
      * <p>
      * [EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action
-     * permits instances to send traffic to one or more destination CIDR IP address ranges, or to one or more
+     * permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more
      * destination security groups for the same VPC. This action doesn't apply to security groups for use in
      * EC2-Classic. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your
-     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits,
+     * see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC
+     * Limits</a>.
      * </p>
-     * <important>
-     * <p>
-     * You can have up to 50 rules per security group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP
      * and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also
@@ -713,6 +917,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AuthorizeSecurityGroupEgress operation returned by the
      *         service.
      * @sample AmazonEC2Async.AuthorizeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupEgress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AuthorizeSecurityGroupEgressResult> authorizeSecurityGroupEgressAsync(
             AuthorizeSecurityGroupEgressRequest authorizeSecurityGroupEgressRequest);
@@ -720,17 +926,14 @@ public interface AmazonEC2Async extends AmazonEC2 {
     /**
      * <p>
      * [EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action
-     * permits instances to send traffic to one or more destination CIDR IP address ranges, or to one or more
+     * permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more
      * destination security groups for the same VPC. This action doesn't apply to security groups for use in
      * EC2-Classic. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your
-     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits,
+     * see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC
+     * Limits</a>.
      * </p>
-     * <important>
-     * <p>
-     * You can have up to 50 rules per security group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP
      * and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also
@@ -749,6 +952,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AuthorizeSecurityGroupEgress operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.AuthorizeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupEgress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AuthorizeSecurityGroupEgressResult> authorizeSecurityGroupEgressAsync(
             AuthorizeSecurityGroupEgressRequest authorizeSecurityGroupEgressRequest,
@@ -758,27 +963,22 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * Adds one or more ingress rules to a security group.
      * </p>
-     * <important>
-     * <p>
-     * EC2-Classic: You can have up to 100 rules per group.
-     * </p>
-     * <p>
-     * EC2-VPC: You can have up to 50 rules per group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
      * might occur.
      * </p>
      * <p>
-     * [EC2-Classic] This action gives one or more CIDR IP address ranges permission to access a security group in your
-     * account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security
-     * group for your account. A source group can be for your own AWS account, or another.
+     * [EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in
+     * your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a
+     * security group for your account. A source group can be for your own AWS account, or another. You can have up to
+     * 100 rules per group.
      * </p>
      * <p>
-     * [EC2-VPC] This action gives one or more CIDR IP address ranges permission to access a security group in your VPC,
-     * or gives one or more other security groups (called the <i>source groups</i>) permission to access a security
-     * group for your VPC. The security groups must all be for the same VPC.
+     * [EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in
+     * your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a
+     * security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering
+     * connection. For more information about VPC security group limits, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.
      * </p>
      * 
      * @param authorizeSecurityGroupIngressRequest
@@ -786,6 +986,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AuthorizeSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonEC2Async.AuthorizeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AuthorizeSecurityGroupIngressResult> authorizeSecurityGroupIngressAsync(
             AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest);
@@ -794,27 +996,22 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * Adds one or more ingress rules to a security group.
      * </p>
-     * <important>
-     * <p>
-     * EC2-Classic: You can have up to 100 rules per group.
-     * </p>
-     * <p>
-     * EC2-VPC: You can have up to 50 rules per group (covering both ingress and egress rules).
-     * </p>
-     * </important>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
      * might occur.
      * </p>
      * <p>
-     * [EC2-Classic] This action gives one or more CIDR IP address ranges permission to access a security group in your
-     * account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security
-     * group for your account. A source group can be for your own AWS account, or another.
+     * [EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in
+     * your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a
+     * security group for your account. A source group can be for your own AWS account, or another. You can have up to
+     * 100 rules per group.
      * </p>
      * <p>
-     * [EC2-VPC] This action gives one or more CIDR IP address ranges permission to access a security group in your VPC,
-     * or gives one or more other security groups (called the <i>source groups</i>) permission to access a security
-     * group for your VPC. The security groups must all be for the same VPC.
+     * [EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in
+     * your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a
+     * security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering
+     * connection. For more information about VPC security group limits, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.
      * </p>
      * 
      * @param authorizeSecurityGroupIngressRequest
@@ -826,6 +1023,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the AuthorizeSecurityGroupIngress operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.AuthorizeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngress"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AuthorizeSecurityGroupIngressResult> authorizeSecurityGroupIngressAsync(
             AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest,
@@ -854,6 +1053,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for BundleInstance.
      * @return A Java Future containing the result of the BundleInstance operation returned by the service.
      * @sample AmazonEC2Async.BundleInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/BundleInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<BundleInstanceResult> bundleInstanceAsync(BundleInstanceRequest bundleInstanceRequest);
 
@@ -884,6 +1085,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the BundleInstance operation returned by the service.
      * @sample AmazonEC2AsyncHandler.BundleInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/BundleInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<BundleInstanceResult> bundleInstanceAsync(BundleInstanceRequest bundleInstanceRequest,
             com.amazonaws.handlers.AsyncHandler<BundleInstanceRequest, BundleInstanceResult> asyncHandler);
@@ -897,6 +1100,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelBundleTask.
      * @return A Java Future containing the result of the CancelBundleTask operation returned by the service.
      * @sample AmazonEC2Async.CancelBundleTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelBundleTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelBundleTaskResult> cancelBundleTaskAsync(CancelBundleTaskRequest cancelBundleTaskRequest);
 
@@ -913,6 +1118,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelBundleTask operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelBundleTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelBundleTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelBundleTaskResult> cancelBundleTaskAsync(CancelBundleTaskRequest cancelBundleTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CancelBundleTaskRequest, CancelBundleTaskResult> asyncHandler);
@@ -933,6 +1140,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelConversionTask.
      * @return A Java Future containing the result of the CancelConversionTask operation returned by the service.
      * @sample AmazonEC2Async.CancelConversionTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelConversionTaskResult> cancelConversionTaskAsync(CancelConversionTaskRequest cancelConversionTaskRequest);
 
@@ -956,6 +1165,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelConversionTask operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelConversionTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelConversionTaskResult> cancelConversionTaskAsync(CancelConversionTaskRequest cancelConversionTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CancelConversionTaskRequest, CancelConversionTaskResult> asyncHandler);
@@ -971,6 +1182,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelExportTask.
      * @return A Java Future containing the result of the CancelExportTask operation returned by the service.
      * @sample AmazonEC2Async.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelExportTaskResult> cancelExportTaskAsync(CancelExportTaskRequest cancelExportTaskRequest);
 
@@ -989,6 +1202,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelExportTask operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelExportTaskResult> cancelExportTaskAsync(CancelExportTaskRequest cancelExportTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CancelExportTaskRequest, CancelExportTaskResult> asyncHandler);
@@ -1002,6 +1217,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelImportTask.
      * @return A Java Future containing the result of the CancelImportTask operation returned by the service.
      * @sample AmazonEC2Async.CancelImportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelImportTaskResult> cancelImportTaskAsync(CancelImportTaskRequest cancelImportTaskRequest);
 
@@ -1018,6 +1235,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelImportTask operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelImportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CancelImportTaskResult> cancelImportTaskAsync(CancelImportTaskRequest cancelImportTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CancelImportTaskRequest, CancelImportTaskResult> asyncHandler);
@@ -1052,6 +1271,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CancelReservedInstancesListing operation returned by the
      *         service.
      * @sample AmazonEC2Async.CancelReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CancelReservedInstancesListingResult> cancelReservedInstancesListingAsync(
             CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest);
@@ -1075,6 +1296,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CancelReservedInstancesListing operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.CancelReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CancelReservedInstancesListingResult> cancelReservedInstancesListingAsync(
             CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest,
@@ -1096,6 +1319,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelSpotFleetRequests.
      * @return A Java Future containing the result of the CancelSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2Async.CancelSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelSpotFleetRequestsResult> cancelSpotFleetRequestsAsync(CancelSpotFleetRequestsRequest cancelSpotFleetRequestsRequest);
 
@@ -1119,6 +1344,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelSpotFleetRequestsResult> cancelSpotFleetRequestsAsync(CancelSpotFleetRequestsRequest cancelSpotFleetRequestsRequest,
             com.amazonaws.handlers.AsyncHandler<CancelSpotFleetRequestsRequest, CancelSpotFleetRequestsResult> asyncHandler);
@@ -1141,6 +1368,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CancelSpotInstanceRequests.
      * @return A Java Future containing the result of the CancelSpotInstanceRequests operation returned by the service.
      * @sample AmazonEC2Async.CancelSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotInstanceRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelSpotInstanceRequestsResult> cancelSpotInstanceRequestsAsync(
             CancelSpotInstanceRequestsRequest cancelSpotInstanceRequestsRequest);
@@ -1167,6 +1396,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelSpotInstanceRequests operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CancelSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotInstanceRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelSpotInstanceRequestsResult> cancelSpotInstanceRequestsAsync(
             CancelSpotInstanceRequestsRequest cancelSpotInstanceRequestsRequest,
@@ -1183,6 +1414,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ConfirmProductInstance.
      * @return A Java Future containing the result of the ConfirmProductInstance operation returned by the service.
      * @sample AmazonEC2Async.ConfirmProductInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ConfirmProductInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConfirmProductInstanceResult> confirmProductInstanceAsync(ConfirmProductInstanceRequest confirmProductInstanceRequest);
 
@@ -1201,6 +1434,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ConfirmProductInstance operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ConfirmProductInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ConfirmProductInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ConfirmProductInstanceResult> confirmProductInstanceAsync(ConfirmProductInstanceRequest confirmProductInstanceRequest,
             com.amazonaws.handlers.AsyncHandler<ConfirmProductInstanceRequest, ConfirmProductInstanceResult> asyncHandler);
@@ -1219,6 +1454,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CopyImage.
      * @return A Java Future containing the result of the CopyImage operation returned by the service.
      * @sample AmazonEC2Async.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest copyImageRequest);
 
@@ -1240,6 +1477,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CopyImage operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest copyImageRequest,
             com.amazonaws.handlers.AsyncHandler<CopyImageRequest, CopyImageResult> asyncHandler);
@@ -1276,6 +1515,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CopySnapshot.
      * @return A Java Future containing the result of the CopySnapshot operation returned by the service.
      * @sample AmazonEC2Async.CopySnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CopySnapshotResult> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest);
 
@@ -1315,6 +1556,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CopySnapshot operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CopySnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CopySnapshotResult> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CopySnapshotRequest, CopySnapshotResult> asyncHandler);
@@ -1355,6 +1598,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateCustomerGateway.
      * @return A Java Future containing the result of the CreateCustomerGateway operation returned by the service.
      * @sample AmazonEC2Async.CreateCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateCustomerGatewayResult> createCustomerGatewayAsync(CreateCustomerGatewayRequest createCustomerGatewayRequest);
 
@@ -1398,6 +1643,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCustomerGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateCustomerGatewayResult> createCustomerGatewayAsync(CreateCustomerGatewayRequest createCustomerGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCustomerGatewayRequest, CreateCustomerGatewayResult> asyncHandler);
@@ -1461,6 +1708,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateDhcpOptions.
      * @return A Java Future containing the result of the CreateDhcpOptions operation returned by the service.
      * @sample AmazonEC2Async.CreateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateDhcpOptionsResult> createDhcpOptionsAsync(CreateDhcpOptionsRequest createDhcpOptionsRequest);
 
@@ -1527,9 +1776,50 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateDhcpOptions operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateDhcpOptionsResult> createDhcpOptionsAsync(CreateDhcpOptionsRequest createDhcpOptionsRequest,
             com.amazonaws.handlers.AsyncHandler<CreateDhcpOptionsRequest, CreateDhcpOptionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * [IPv6 only] Creates an egress-only Internet gateway for your VPC. An egress-only Internet gateway is used to
+     * enable outbound communication over IPv6 from instances in your VPC to the Internet, and prevents hosts outside of
+     * your VPC from initiating an IPv6 connection with your instance.
+     * </p>
+     * 
+     * @param createEgressOnlyInternetGatewayRequest
+     * @return A Java Future containing the result of the CreateEgressOnlyInternetGateway operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.CreateEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateEgressOnlyInternetGatewayResult> createEgressOnlyInternetGatewayAsync(
+            CreateEgressOnlyInternetGatewayRequest createEgressOnlyInternetGatewayRequest);
+
+    /**
+     * <p>
+     * [IPv6 only] Creates an egress-only Internet gateway for your VPC. An egress-only Internet gateway is used to
+     * enable outbound communication over IPv6 from instances in your VPC to the Internet, and prevents hosts outside of
+     * your VPC from initiating an IPv6 connection with your instance.
+     * </p>
+     * 
+     * @param createEgressOnlyInternetGatewayRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateEgressOnlyInternetGateway operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.CreateEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateEgressOnlyInternetGatewayResult> createEgressOnlyInternetGatewayAsync(
+            CreateEgressOnlyInternetGatewayRequest createEgressOnlyInternetGatewayRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateEgressOnlyInternetGatewayRequest, CreateEgressOnlyInternetGatewayResult> asyncHandler);
 
     /**
      * <p>
@@ -1547,6 +1837,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateFlowLogs.
      * @return A Java Future containing the result of the CreateFlowLogs operation returned by the service.
      * @sample AmazonEC2Async.CreateFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateFlowLogsResult> createFlowLogsAsync(CreateFlowLogsRequest createFlowLogsRequest);
 
@@ -1570,6 +1862,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateFlowLogs operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateFlowLogsResult> createFlowLogsAsync(CreateFlowLogsRequest createFlowLogsRequest,
             com.amazonaws.handlers.AsyncHandler<CreateFlowLogsRequest, CreateFlowLogsResult> asyncHandler);
@@ -1593,6 +1887,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateImage.
      * @return A Java Future containing the result of the CreateImage operation returned by the service.
      * @sample AmazonEC2Async.CreateImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateImageResult> createImageAsync(CreateImageRequest createImageRequest);
 
@@ -1619,6 +1915,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateImage operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateImageResult> createImageAsync(CreateImageRequest createImageRequest,
             com.amazonaws.handlers.AsyncHandler<CreateImageRequest, CreateImageResult> asyncHandler);
@@ -1638,6 +1936,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateInstanceExportTask.
      * @return A Java Future containing the result of the CreateInstanceExportTask operation returned by the service.
      * @sample AmazonEC2Async.CreateInstanceExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceExportTask" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateInstanceExportTaskResult> createInstanceExportTaskAsync(CreateInstanceExportTaskRequest createInstanceExportTaskRequest);
 
@@ -1660,6 +1960,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateInstanceExportTask operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateInstanceExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceExportTask" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateInstanceExportTaskResult> createInstanceExportTaskAsync(CreateInstanceExportTaskRequest createInstanceExportTaskRequest,
             com.amazonaws.handlers.AsyncHandler<CreateInstanceExportTaskRequest, CreateInstanceExportTaskResult> asyncHandler);
@@ -1678,6 +1980,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateInternetGateway.
      * @return A Java Future containing the result of the CreateInternetGateway operation returned by the service.
      * @sample AmazonEC2Async.CreateInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateInternetGatewayResult> createInternetGatewayAsync(CreateInternetGatewayRequest createInternetGatewayRequest);
 
@@ -1699,6 +2003,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateInternetGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateInternetGatewayResult> createInternetGatewayAsync(CreateInternetGatewayRequest createInternetGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<CreateInternetGatewayRequest, CreateInternetGatewayResult> asyncHandler);
@@ -1741,6 +2047,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateKeyPair.
      * @return A Java Future containing the result of the CreateKeyPair operation returned by the service.
      * @sample AmazonEC2Async.CreateKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateKeyPairResult> createKeyPairAsync(CreateKeyPairRequest createKeyPairRequest);
 
@@ -1771,6 +2079,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateKeyPair operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateKeyPairResult> createKeyPairAsync(CreateKeyPairRequest createKeyPairRequest,
             com.amazonaws.handlers.AsyncHandler<CreateKeyPairRequest, CreateKeyPairResult> asyncHandler);
@@ -1788,6 +2098,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateNatGateway.
      * @return A Java Future containing the result of the CreateNatGateway operation returned by the service.
      * @sample AmazonEC2Async.CreateNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNatGatewayResult> createNatGatewayAsync(CreateNatGatewayRequest createNatGatewayRequest);
 
@@ -1808,6 +2120,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateNatGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNatGatewayResult> createNatGatewayAsync(CreateNatGatewayRequest createNatGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<CreateNatGatewayRequest, CreateNatGatewayResult> asyncHandler);
@@ -1827,6 +2141,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateNetworkAcl.
      * @return A Java Future containing the result of the CreateNetworkAcl operation returned by the service.
      * @sample AmazonEC2Async.CreateNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkAclResult> createNetworkAclAsync(CreateNetworkAclRequest createNetworkAclRequest);
 
@@ -1849,6 +2165,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateNetworkAcl operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkAclResult> createNetworkAclAsync(CreateNetworkAclRequest createNetworkAclRequest,
             com.amazonaws.handlers.AsyncHandler<CreateNetworkAclRequest, CreateNetworkAclResult> asyncHandler);
@@ -1879,6 +2197,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateNetworkAclEntry.
      * @return A Java Future containing the result of the CreateNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2Async.CreateNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkAclEntryResult> createNetworkAclEntryAsync(CreateNetworkAclEntryRequest createNetworkAclEntryRequest);
 
@@ -1912,6 +2232,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkAclEntryResult> createNetworkAclEntryAsync(CreateNetworkAclEntryRequest createNetworkAclEntryRequest,
             com.amazonaws.handlers.AsyncHandler<CreateNetworkAclEntryRequest, CreateNetworkAclEntryResult> asyncHandler);
@@ -1923,13 +2245,15 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * For more information about network interfaces, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interfaces</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param createNetworkInterfaceRequest
      *        Contains the parameters for CreateNetworkInterface.
      * @return A Java Future containing the result of the CreateNetworkInterface operation returned by the service.
      * @sample AmazonEC2Async.CreateNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkInterfaceResult> createNetworkInterfaceAsync(CreateNetworkInterfaceRequest createNetworkInterfaceRequest);
 
@@ -1940,7 +2264,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * For more information about network interfaces, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interfaces</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param createNetworkInterfaceRequest
@@ -1951,6 +2275,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateNetworkInterface operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateNetworkInterfaceResult> createNetworkInterfaceAsync(CreateNetworkInterfaceRequest createNetworkInterfaceRequest,
             com.amazonaws.handlers.AsyncHandler<CreateNetworkInterfaceRequest, CreateNetworkInterfaceResult> asyncHandler);
@@ -1970,6 +2296,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreatePlacementGroup.
      * @return A Java Future containing the result of the CreatePlacementGroup operation returned by the service.
      * @sample AmazonEC2Async.CreatePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreatePlacementGroupResult> createPlacementGroupAsync(CreatePlacementGroupRequest createPlacementGroupRequest);
 
@@ -1992,6 +2320,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreatePlacementGroup operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreatePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreatePlacementGroupResult> createPlacementGroupAsync(CreatePlacementGroupRequest createPlacementGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreatePlacementGroupRequest, CreatePlacementGroupResult> asyncHandler);
@@ -2002,6 +2332,12 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances,
      * you can use the <a>DescribeReservedInstances</a> operation.
      * </p>
+     * <note>
+     * <p>
+     * Only Standard Reserved Instances with a capacity reservation can be sold in the Reserved Instance Marketplace.
+     * Convertible Reserved Instances and Standard Reserved Instances with a regional benefit cannot be sold.
+     * </p>
+     * </note>
      * <p>
      * The Reserved Instance Marketplace matches sellers who want to resell Standard Reserved Instance capacity that
      * they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold
@@ -2025,6 +2361,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CreateReservedInstancesListing operation returned by the
      *         service.
      * @sample AmazonEC2Async.CreateReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateReservedInstancesListingResult> createReservedInstancesListingAsync(
             CreateReservedInstancesListingRequest createReservedInstancesListingRequest);
@@ -2035,6 +2373,12 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances,
      * you can use the <a>DescribeReservedInstances</a> operation.
      * </p>
+     * <note>
+     * <p>
+     * Only Standard Reserved Instances with a capacity reservation can be sold in the Reserved Instance Marketplace.
+     * Convertible Reserved Instances and Standard Reserved Instances with a regional benefit cannot be sold.
+     * </p>
+     * </note>
      * <p>
      * The Reserved Instance Marketplace matches sellers who want to resell Standard Reserved Instance capacity that
      * they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold
@@ -2062,6 +2406,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CreateReservedInstancesListing operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.CreateReservedInstancesListing
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReservedInstancesListing"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateReservedInstancesListingResult> createReservedInstancesListingAsync(
             CreateReservedInstancesListingRequest createReservedInstancesListingRequest,
@@ -2073,11 +2419,11 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </p>
      * <p>
      * You must specify one of the following targets: Internet gateway or virtual private gateway, NAT instance, NAT
-     * gateway, VPC peering connection, or network interface.
+     * gateway, VPC peering connection, network interface, or egress-only Internet gateway.
      * </p>
      * <p>
-     * When determining how to route traffic, we use the route with the most specific match. For example, let's say the
-     * traffic is destined for <code>192.0.2.3</code>, and the route table includes the following two routes:
+     * When determining how to route traffic, we use the route with the most specific match. For example, traffic is
+     * destined for the IPv4 address <code>192.0.2.3</code>, and the route table includes the following two IPv4 routes:
      * </p>
      * <ul>
      * <li>
@@ -2106,6 +2452,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateRoute.
      * @return A Java Future containing the result of the CreateRoute operation returned by the service.
      * @sample AmazonEC2Async.CreateRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateRouteResult> createRouteAsync(CreateRouteRequest createRouteRequest);
 
@@ -2115,11 +2463,11 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </p>
      * <p>
      * You must specify one of the following targets: Internet gateway or virtual private gateway, NAT instance, NAT
-     * gateway, VPC peering connection, or network interface.
+     * gateway, VPC peering connection, network interface, or egress-only Internet gateway.
      * </p>
      * <p>
-     * When determining how to route traffic, we use the route with the most specific match. For example, let's say the
-     * traffic is destined for <code>192.0.2.3</code>, and the route table includes the following two routes:
+     * When determining how to route traffic, we use the route with the most specific match. For example, traffic is
+     * destined for the IPv4 address <code>192.0.2.3</code>, and the route table includes the following two IPv4 routes:
      * </p>
      * <ul>
      * <li>
@@ -2152,6 +2500,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateRoute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateRouteResult> createRouteAsync(CreateRouteRequest createRouteRequest,
             com.amazonaws.handlers.AsyncHandler<CreateRouteRequest, CreateRouteResult> asyncHandler);
@@ -2171,6 +2521,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateRouteTable.
      * @return A Java Future containing the result of the CreateRouteTable operation returned by the service.
      * @sample AmazonEC2Async.CreateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateRouteTableResult> createRouteTableAsync(CreateRouteTableRequest createRouteTableRequest);
 
@@ -2193,6 +2545,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateRouteTable operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateRouteTableResult> createRouteTableAsync(CreateRouteTableRequest createRouteTableRequest,
             com.amazonaws.handlers.AsyncHandler<CreateRouteTableRequest, CreateRouteTableResult> asyncHandler);
@@ -2236,6 +2590,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateSecurityGroup.
      * @return A Java Future containing the result of the CreateSecurityGroup operation returned by the service.
      * @sample AmazonEC2Async.CreateSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSecurityGroupResult> createSecurityGroupAsync(CreateSecurityGroupRequest createSecurityGroupRequest);
 
@@ -2282,6 +2638,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSecurityGroup operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSecurityGroupResult> createSecurityGroupAsync(CreateSecurityGroupRequest createSecurityGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSecurityGroupRequest, CreateSecurityGroupResult> asyncHandler);
@@ -2324,6 +2682,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateSnapshot.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AmazonEC2Async.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest);
 
@@ -2369,6 +2729,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSnapshotRequest, CreateSnapshotResult> asyncHandler);
@@ -2386,6 +2748,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CreateSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2Async.CreateSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateSpotDatafeedSubscriptionResult> createSpotDatafeedSubscriptionAsync(
             CreateSpotDatafeedSubscriptionRequest createSpotDatafeedSubscriptionRequest);
@@ -2407,6 +2771,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the CreateSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.CreateSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateSpotDatafeedSubscriptionResult> createSpotDatafeedSubscriptionAsync(
             CreateSpotDatafeedSubscriptionRequest createSpotDatafeedSubscriptionRequest,
@@ -2418,10 +2784,15 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </p>
      * <p>
      * When you create each subnet, you provide the VPC ID and the CIDR block you want for the subnet. After you create
-     * a subnet, you can't change its CIDR block. The subnet's CIDR block can be the same as the VPC's CIDR block
-     * (assuming you want only a single subnet in the VPC), or a subset of the VPC's CIDR block. If you create more than
-     * one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest subnet (and VPC) you can create uses
-     * a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536 IP addresses).
+     * a subnet, you can't change its CIDR block. The subnet's IPv4 CIDR block can be the same as the VPC's IPv4 CIDR
+     * block (assuming you want only a single subnet in the VPC), or a subset of the VPC's IPv4 CIDR block. If you
+     * create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and
+     * VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4
+     * addresses).
+     * </p>
+     * <p>
+     * If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses
+     * a /64 prefix length.
      * </p>
      * <important>
      * <p>
@@ -2448,6 +2819,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateSubnet.
      * @return A Java Future containing the result of the CreateSubnet operation returned by the service.
      * @sample AmazonEC2Async.CreateSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSubnetResult> createSubnetAsync(CreateSubnetRequest createSubnetRequest);
 
@@ -2457,10 +2830,15 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </p>
      * <p>
      * When you create each subnet, you provide the VPC ID and the CIDR block you want for the subnet. After you create
-     * a subnet, you can't change its CIDR block. The subnet's CIDR block can be the same as the VPC's CIDR block
-     * (assuming you want only a single subnet in the VPC), or a subset of the VPC's CIDR block. If you create more than
-     * one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest subnet (and VPC) you can create uses
-     * a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536 IP addresses).
+     * a subnet, you can't change its CIDR block. The subnet's IPv4 CIDR block can be the same as the VPC's IPv4 CIDR
+     * block (assuming you want only a single subnet in the VPC), or a subset of the VPC's IPv4 CIDR block. If you
+     * create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and
+     * VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4
+     * addresses).
+     * </p>
+     * <p>
+     * If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses
+     * a /64 prefix length.
      * </p>
      * <important>
      * <p>
@@ -2491,6 +2869,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSubnet operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateSubnetResult> createSubnetAsync(CreateSubnetRequest createSubnetRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSubnetRequest, CreateSubnetResult> asyncHandler);
@@ -2513,6 +2893,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateTags.
      * @return A Java Future containing the result of the CreateTags operation returned by the service.
      * @sample AmazonEC2Async.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTagsResult> createTagsAsync(CreateTagsRequest createTagsRequest);
 
@@ -2538,6 +2920,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTags operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTagsResult> createTagsAsync(CreateTagsRequest createTagsRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTagsRequest, CreateTagsResult> asyncHandler);
@@ -2560,15 +2944,21 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
+     * You can tag your volumes during creation. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
+     * </p>
+     * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating or Restoring an
-     * Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating an Amazon EBS
+     * Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVolumeRequest
      *        Contains the parameters for CreateVolume.
      * @return A Java Future containing the result of the CreateVolume operation returned by the service.
      * @sample AmazonEC2Async.CreateVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVolumeResult> createVolumeAsync(CreateVolumeRequest createVolumeRequest);
 
@@ -2590,9 +2980,13 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
+     * You can tag your volumes during creation. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
+     * </p>
+     * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating or Restoring an
-     * Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating an Amazon EBS
+     * Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVolumeRequest
@@ -2603,19 +2997,22 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVolume operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVolumeResult> createVolumeAsync(CreateVolumeRequest createVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVolumeRequest, CreateVolumeResult> asyncHandler);
 
     /**
      * <p>
-     * Creates a VPC with the specified CIDR block.
+     * Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4
+     * addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). To help you decide how big to make your
+     * VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and
+     * Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
-     * The smallest VPC you can create uses a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536
-     * IP addresses). To help you decide how big to make your VPC, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the
-     * <i>Amazon Virtual Private Cloud User Guide</i>.
+     * You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix
+     * length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
      * </p>
      * <p>
      * By default, each instance you launch in the VPC has the default DHCP options, which includes only a default DNS
@@ -2626,26 +3023,29 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the
      * VPC after you create it. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html.html">Dedicated Instances</a>
-     * in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVpcRequest
      *        Contains the parameters for CreateVpc.
      * @return A Java Future containing the result of the CreateVpc operation returned by the service.
      * @sample AmazonEC2Async.CreateVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcResult> createVpcAsync(CreateVpcRequest createVpcRequest);
 
     /**
      * <p>
-     * Creates a VPC with the specified CIDR block.
+     * Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4
+     * addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). To help you decide how big to make your
+     * VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and
+     * Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
-     * The smallest VPC you can create uses a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536
-     * IP addresses). To help you decide how big to make your VPC, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the
-     * <i>Amazon Virtual Private Cloud User Guide</i>.
+     * You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix
+     * length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
      * </p>
      * <p>
      * By default, each instance you launch in the VPC has the default DHCP options, which includes only a default DNS
@@ -2656,8 +3056,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * <p>
      * You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the
      * VPC after you create it. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html.html">Dedicated Instances</a>
-     * in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param createVpcRequest
@@ -2668,6 +3068,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpc operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcResult> createVpcAsync(CreateVpcRequest createVpcRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVpcRequest, CreateVpcResult> asyncHandler);
@@ -2680,13 +3082,15 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * use the endpoint.
      * </p>
      * <p>
-     * Currently, only endpoints to Amazon S3 are supported.
+     * Use <a>DescribeVpcEndpointServices</a> to get a list of supported AWS services.
      * </p>
      * 
      * @param createVpcEndpointRequest
      *        Contains the parameters for CreateVpcEndpoint.
      * @return A Java Future containing the result of the CreateVpcEndpoint operation returned by the service.
      * @sample AmazonEC2Async.CreateVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcEndpointResult> createVpcEndpointAsync(CreateVpcEndpointRequest createVpcEndpointRequest);
 
@@ -2698,7 +3102,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * use the endpoint.
      * </p>
      * <p>
-     * Currently, only endpoints to Amazon S3 are supported.
+     * Use <a>DescribeVpcEndpointServices</a> to get a list of supported AWS services.
      * </p>
      * 
      * @param createVpcEndpointRequest
@@ -2709,6 +3113,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpcEndpoint operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcEndpointResult> createVpcEndpointAsync(CreateVpcEndpointRequest createVpcEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVpcEndpointRequest, CreateVpcEndpointResult> asyncHandler);
@@ -2732,6 +3138,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateVpcPeeringConnection.
      * @return A Java Future containing the result of the CreateVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2Async.CreateVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcPeeringConnectionResult> createVpcPeeringConnectionAsync(
             CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest);
@@ -2759,6 +3167,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateVpcPeeringConnectionResult> createVpcPeeringConnectionAsync(
             CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest,
@@ -2811,6 +3221,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateVpnConnection.
      * @return A Java Future containing the result of the CreateVpnConnection operation returned by the service.
      * @sample AmazonEC2Async.CreateVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnConnectionResult> createVpnConnectionAsync(CreateVpnConnectionRequest createVpnConnectionRequest);
 
@@ -2850,6 +3262,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpnConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnConnectionResult> createVpnConnectionAsync(CreateVpnConnectionRequest createVpnConnectionRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVpnConnectionRequest, CreateVpnConnectionResult> asyncHandler);
@@ -2870,6 +3284,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateVpnConnectionRoute.
      * @return A Java Future containing the result of the CreateVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2Async.CreateVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnConnectionRouteResult> createVpnConnectionRouteAsync(CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest);
 
@@ -2893,6 +3309,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnConnectionRouteResult> createVpnConnectionRouteAsync(CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVpnConnectionRouteRequest, CreateVpnConnectionRouteResult> asyncHandler);
@@ -2912,6 +3330,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for CreateVpnGateway.
      * @return A Java Future containing the result of the CreateVpnGateway operation returned by the service.
      * @sample AmazonEC2Async.CreateVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnGatewayResult> createVpnGatewayAsync(CreateVpnGatewayRequest createVpnGatewayRequest);
 
@@ -2934,6 +3354,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateVpnGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.CreateVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateVpnGatewayResult> createVpnGatewayAsync(CreateVpnGatewayRequest createVpnGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<CreateVpnGatewayRequest, CreateVpnGatewayResult> asyncHandler);
@@ -2948,6 +3370,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteCustomerGateway.
      * @return A Java Future containing the result of the DeleteCustomerGateway operation returned by the service.
      * @sample AmazonEC2Async.DeleteCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCustomerGatewayResult> deleteCustomerGatewayAsync(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest);
 
@@ -2965,6 +3389,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteCustomerGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteCustomerGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteCustomerGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteCustomerGatewayResult> deleteCustomerGatewayAsync(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCustomerGatewayRequest, DeleteCustomerGatewayResult> asyncHandler);
@@ -2980,6 +3406,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteDhcpOptions.
      * @return A Java Future containing the result of the DeleteDhcpOptions operation returned by the service.
      * @sample AmazonEC2Async.DeleteDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteDhcpOptionsResult> deleteDhcpOptionsAsync(DeleteDhcpOptionsRequest deleteDhcpOptionsRequest);
 
@@ -2998,9 +3426,46 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteDhcpOptions operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteDhcpOptionsResult> deleteDhcpOptionsAsync(DeleteDhcpOptionsRequest deleteDhcpOptionsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteDhcpOptionsRequest, DeleteDhcpOptionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes an egress-only Internet gateway.
+     * </p>
+     * 
+     * @param deleteEgressOnlyInternetGatewayRequest
+     * @return A Java Future containing the result of the DeleteEgressOnlyInternetGateway operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.DeleteEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteEgressOnlyInternetGatewayResult> deleteEgressOnlyInternetGatewayAsync(
+            DeleteEgressOnlyInternetGatewayRequest deleteEgressOnlyInternetGatewayRequest);
+
+    /**
+     * <p>
+     * Deletes an egress-only Internet gateway.
+     * </p>
+     * 
+     * @param deleteEgressOnlyInternetGatewayRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteEgressOnlyInternetGateway operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.DeleteEgressOnlyInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteEgressOnlyInternetGateway"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteEgressOnlyInternetGatewayResult> deleteEgressOnlyInternetGatewayAsync(
+            DeleteEgressOnlyInternetGatewayRequest deleteEgressOnlyInternetGatewayRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteEgressOnlyInternetGatewayRequest, DeleteEgressOnlyInternetGatewayResult> asyncHandler);
 
     /**
      * <p>
@@ -3011,6 +3476,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteFlowLogs.
      * @return A Java Future containing the result of the DeleteFlowLogs operation returned by the service.
      * @sample AmazonEC2Async.DeleteFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteFlowLogsResult> deleteFlowLogsAsync(DeleteFlowLogsRequest deleteFlowLogsRequest);
 
@@ -3027,6 +3494,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteFlowLogs operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteFlowLogsResult> deleteFlowLogsAsync(DeleteFlowLogsRequest deleteFlowLogsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteFlowLogsRequest, DeleteFlowLogsResult> asyncHandler);
@@ -3041,6 +3510,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteInternetGateway.
      * @return A Java Future containing the result of the DeleteInternetGateway operation returned by the service.
      * @sample AmazonEC2Async.DeleteInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteInternetGatewayResult> deleteInternetGatewayAsync(DeleteInternetGatewayRequest deleteInternetGatewayRequest);
 
@@ -3058,6 +3529,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteInternetGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteInternetGatewayResult> deleteInternetGatewayAsync(DeleteInternetGatewayRequest deleteInternetGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteInternetGatewayRequest, DeleteInternetGatewayResult> asyncHandler);
@@ -3071,6 +3544,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteKeyPair.
      * @return A Java Future containing the result of the DeleteKeyPair operation returned by the service.
      * @sample AmazonEC2Async.DeleteKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteKeyPairResult> deleteKeyPairAsync(DeleteKeyPairRequest deleteKeyPairRequest);
 
@@ -3087,6 +3562,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteKeyPair operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteKeyPairResult> deleteKeyPairAsync(DeleteKeyPairRequest deleteKeyPairRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteKeyPairRequest, DeleteKeyPairResult> asyncHandler);
@@ -3102,6 +3579,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteNatGateway.
      * @return A Java Future containing the result of the DeleteNatGateway operation returned by the service.
      * @sample AmazonEC2Async.DeleteNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNatGatewayResult> deleteNatGatewayAsync(DeleteNatGatewayRequest deleteNatGatewayRequest);
 
@@ -3120,6 +3599,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteNatGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteNatGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNatGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNatGatewayResult> deleteNatGatewayAsync(DeleteNatGatewayRequest deleteNatGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteNatGatewayRequest, DeleteNatGatewayResult> asyncHandler);
@@ -3134,6 +3615,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteNetworkAcl.
      * @return A Java Future containing the result of the DeleteNetworkAcl operation returned by the service.
      * @sample AmazonEC2Async.DeleteNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkAclResult> deleteNetworkAclAsync(DeleteNetworkAclRequest deleteNetworkAclRequest);
 
@@ -3151,6 +3634,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteNetworkAcl operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteNetworkAcl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAcl" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkAclResult> deleteNetworkAclAsync(DeleteNetworkAclRequest deleteNetworkAclRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteNetworkAclRequest, DeleteNetworkAclResult> asyncHandler);
@@ -3164,6 +3649,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteNetworkAclEntry.
      * @return A Java Future containing the result of the DeleteNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2Async.DeleteNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkAclEntryResult> deleteNetworkAclEntryAsync(DeleteNetworkAclEntryRequest deleteNetworkAclEntryRequest);
 
@@ -3180,6 +3667,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkAclEntryResult> deleteNetworkAclEntryAsync(DeleteNetworkAclEntryRequest deleteNetworkAclEntryRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteNetworkAclEntryRequest, DeleteNetworkAclEntryResult> asyncHandler);
@@ -3193,6 +3682,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteNetworkInterface.
      * @return A Java Future containing the result of the DeleteNetworkInterface operation returned by the service.
      * @sample AmazonEC2Async.DeleteNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkInterfaceResult> deleteNetworkInterfaceAsync(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest);
 
@@ -3209,6 +3700,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteNetworkInterface operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteNetworkInterfaceResult> deleteNetworkInterfaceAsync(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteNetworkInterfaceRequest, DeleteNetworkInterfaceResult> asyncHandler);
@@ -3225,6 +3718,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeletePlacementGroup.
      * @return A Java Future containing the result of the DeletePlacementGroup operation returned by the service.
      * @sample AmazonEC2Async.DeletePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeletePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeletePlacementGroupResult> deletePlacementGroupAsync(DeletePlacementGroupRequest deletePlacementGroupRequest);
 
@@ -3244,6 +3739,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeletePlacementGroup operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeletePlacementGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeletePlacementGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeletePlacementGroupResult> deletePlacementGroupAsync(DeletePlacementGroupRequest deletePlacementGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeletePlacementGroupRequest, DeletePlacementGroupResult> asyncHandler);
@@ -3257,6 +3754,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteRoute.
      * @return A Java Future containing the result of the DeleteRoute operation returned by the service.
      * @sample AmazonEC2Async.DeleteRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteRouteResult> deleteRouteAsync(DeleteRouteRequest deleteRouteRequest);
 
@@ -3273,6 +3772,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteRoute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteRouteResult> deleteRouteAsync(DeleteRouteRequest deleteRouteRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteRouteRequest, DeleteRouteResult> asyncHandler);
@@ -3287,6 +3788,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteRouteTable.
      * @return A Java Future containing the result of the DeleteRouteTable operation returned by the service.
      * @sample AmazonEC2Async.DeleteRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteRouteTableResult> deleteRouteTableAsync(DeleteRouteTableRequest deleteRouteTableRequest);
 
@@ -3304,6 +3807,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteRouteTable operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteRouteTableResult> deleteRouteTableAsync(DeleteRouteTableRequest deleteRouteTableRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteRouteTableRequest, DeleteRouteTableResult> asyncHandler);
@@ -3322,6 +3827,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteSecurityGroup.
      * @return A Java Future containing the result of the DeleteSecurityGroup operation returned by the service.
      * @sample AmazonEC2Async.DeleteSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSecurityGroupResult> deleteSecurityGroupAsync(DeleteSecurityGroupRequest deleteSecurityGroupRequest);
 
@@ -3343,6 +3850,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSecurityGroup operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSecurityGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSecurityGroupResult> deleteSecurityGroupAsync(DeleteSecurityGroupRequest deleteSecurityGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSecurityGroupRequest, DeleteSecurityGroupResult> asyncHandler);
@@ -3371,6 +3880,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteSnapshot.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonEC2Async.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotResult> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest);
 
@@ -3402,6 +3913,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotResult> deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSnapshotRequest, DeleteSnapshotResult> asyncHandler);
@@ -3416,6 +3929,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DeleteSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2Async.DeleteSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteSpotDatafeedSubscriptionResult> deleteSpotDatafeedSubscriptionAsync(
             DeleteSpotDatafeedSubscriptionRequest deleteSpotDatafeedSubscriptionRequest);
@@ -3434,6 +3949,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DeleteSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DeleteSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteSpotDatafeedSubscriptionResult> deleteSpotDatafeedSubscriptionAsync(
             DeleteSpotDatafeedSubscriptionRequest deleteSpotDatafeedSubscriptionRequest,
@@ -3465,6 +3982,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteSubnet.
      * @return A Java Future containing the result of the DeleteSubnet operation returned by the service.
      * @sample AmazonEC2Async.DeleteSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSubnetResult> deleteSubnetAsync(DeleteSubnetRequest deleteSubnetRequest);
 
@@ -3482,6 +4001,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSubnet operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteSubnet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSubnet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteSubnetResult> deleteSubnetAsync(DeleteSubnetRequest deleteSubnetRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSubnetRequest, DeleteSubnetResult> asyncHandler);
@@ -3501,6 +4022,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteTags.
      * @return A Java Future containing the result of the DeleteTags operation returned by the service.
      * @sample AmazonEC2Async.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTagsResult> deleteTagsAsync(DeleteTagsRequest deleteTagsRequest);
 
@@ -3523,6 +4046,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTags operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTagsResult> deleteTagsAsync(DeleteTagsRequest deleteTagsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTagsRequest, DeleteTagsResult> asyncHandler);
@@ -3547,6 +4072,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVolume.
      * @return A Java Future containing the result of the DeleteVolume operation returned by the service.
      * @sample AmazonEC2Async.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVolumeResult> deleteVolumeAsync(DeleteVolumeRequest deleteVolumeRequest);
 
@@ -3574,6 +4101,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVolume operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVolumeResult> deleteVolumeAsync(DeleteVolumeRequest deleteVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVolumeRequest, DeleteVolumeResult> asyncHandler);
@@ -3590,6 +4119,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpc.
      * @return A Java Future containing the result of the DeleteVpc operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcResult> deleteVpcAsync(DeleteVpcRequest deleteVpcRequest);
 
@@ -3609,6 +4140,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpc operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcResult> deleteVpcAsync(DeleteVpcRequest deleteVpcRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVpcRequest, DeleteVpcResult> asyncHandler);
@@ -3623,6 +4156,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpcEndpoints.
      * @return A Java Future containing the result of the DeleteVpcEndpoints operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcEndpointsResult> deleteVpcEndpointsAsync(DeleteVpcEndpointsRequest deleteVpcEndpointsRequest);
 
@@ -3640,6 +4175,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpcEndpoints operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcEndpointsResult> deleteVpcEndpointsAsync(DeleteVpcEndpointsRequest deleteVpcEndpointsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVpcEndpointsRequest, DeleteVpcEndpointsResult> asyncHandler);
@@ -3655,6 +4192,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpcPeeringConnection.
      * @return A Java Future containing the result of the DeleteVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcPeeringConnectionResult> deleteVpcPeeringConnectionAsync(
             DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest);
@@ -3674,6 +4213,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpcPeeringConnectionResult> deleteVpcPeeringConnectionAsync(
             DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest,
@@ -3696,6 +4237,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpnConnection.
      * @return A Java Future containing the result of the DeleteVpnConnection operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnConnectionResult> deleteVpnConnectionAsync(DeleteVpnConnectionRequest deleteVpnConnectionRequest);
 
@@ -3720,6 +4263,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpnConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpnConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnection" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnConnectionResult> deleteVpnConnectionAsync(DeleteVpnConnectionRequest deleteVpnConnectionRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVpnConnectionRequest, DeleteVpnConnectionResult> asyncHandler);
@@ -3735,6 +4280,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpnConnectionRoute.
      * @return A Java Future containing the result of the DeleteVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnConnectionRouteResult> deleteVpnConnectionRouteAsync(DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest);
 
@@ -3753,6 +4300,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpnConnectionRoute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpnConnectionRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnectionRoute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnConnectionRouteResult> deleteVpnConnectionRouteAsync(DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVpnConnectionRouteRequest, DeleteVpnConnectionRouteResult> asyncHandler);
@@ -3768,6 +4317,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeleteVpnGateway.
      * @return A Java Future containing the result of the DeleteVpnGateway operation returned by the service.
      * @sample AmazonEC2Async.DeleteVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnGatewayResult> deleteVpnGatewayAsync(DeleteVpnGatewayRequest deleteVpnGatewayRequest);
 
@@ -3786,6 +4337,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVpnGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeleteVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteVpnGatewayResult> deleteVpnGatewayAsync(DeleteVpnGatewayRequest deleteVpnGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVpnGatewayRequest, DeleteVpnGatewayResult> asyncHandler);
@@ -3802,6 +4355,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DeregisterImage.
      * @return A Java Future containing the result of the DeregisterImage operation returned by the service.
      * @sample AmazonEC2Async.DeregisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeregisterImageResult> deregisterImageAsync(DeregisterImageRequest deregisterImageRequest);
 
@@ -3821,6 +4376,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeregisterImage operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DeregisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeregisterImageResult> deregisterImageAsync(DeregisterImageRequest deregisterImageRequest,
             com.amazonaws.handlers.AsyncHandler<DeregisterImageRequest, DeregisterImageResult> asyncHandler);
@@ -3870,6 +4427,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeAccountAttributes.
      * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
      * @sample AmazonEC2Async.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
             DescribeAccountAttributesRequest describeAccountAttributesRequest);
@@ -3923,6 +4482,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAccountAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
             DescribeAccountAttributesRequest describeAccountAttributesRequest,
@@ -3957,6 +4518,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeAddresses.
      * @return A Java Future containing the result of the DescribeAddresses operation returned by the service.
      * @sample AmazonEC2Async.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressesResult> describeAddressesAsync(DescribeAddressesRequest describeAddressesRequest);
 
@@ -3978,6 +4541,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAddresses operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeAddressesResult> describeAddressesAsync(DescribeAddressesRequest describeAddressesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeAddressesRequest, DescribeAddressesResult> asyncHandler);
@@ -4013,6 +4578,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeAvailabilityZones.
      * @return A Java Future containing the result of the DescribeAvailabilityZones operation returned by the service.
      * @sample AmazonEC2Async.DescribeAvailabilityZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAvailabilityZones" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAvailabilityZonesResult> describeAvailabilityZonesAsync(
             DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest);
@@ -4037,6 +4604,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeAvailabilityZones operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeAvailabilityZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAvailabilityZones" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeAvailabilityZonesResult> describeAvailabilityZonesAsync(
             DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest,
@@ -4073,6 +4642,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeBundleTasks.
      * @return A Java Future containing the result of the DescribeBundleTasks operation returned by the service.
      * @sample AmazonEC2Async.DescribeBundleTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeBundleTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeBundleTasksResult> describeBundleTasksAsync(DescribeBundleTasksRequest describeBundleTasksRequest);
 
@@ -4096,6 +4667,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeBundleTasks operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeBundleTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeBundleTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeBundleTasksResult> describeBundleTasksAsync(DescribeBundleTasksRequest describeBundleTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeBundleTasksRequest, DescribeBundleTasksResult> asyncHandler);
@@ -4127,6 +4700,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeClassicLinkInstances operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeClassicLinkInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClassicLinkInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeClassicLinkInstancesResult> describeClassicLinkInstancesAsync(
             DescribeClassicLinkInstancesRequest describeClassicLinkInstancesRequest);
@@ -4147,6 +4722,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeClassicLinkInstances operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeClassicLinkInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClassicLinkInstances"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeClassicLinkInstancesResult> describeClassicLinkInstancesAsync(
             DescribeClassicLinkInstancesRequest describeClassicLinkInstancesRequest,
@@ -4181,6 +4758,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeConversionTasks.
      * @return A Java Future containing the result of the DescribeConversionTasks operation returned by the service.
      * @sample AmazonEC2Async.DescribeConversionTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConversionTasksResult> describeConversionTasksAsync(DescribeConversionTasksRequest describeConversionTasksRequest);
 
@@ -4202,6 +4781,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeConversionTasks operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeConversionTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeConversionTasksResult> describeConversionTasksAsync(DescribeConversionTasksRequest describeConversionTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeConversionTasksRequest, DescribeConversionTasksResult> asyncHandler);
@@ -4235,6 +4816,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeCustomerGateways.
      * @return A Java Future containing the result of the DescribeCustomerGateways operation returned by the service.
      * @sample AmazonEC2Async.DescribeCustomerGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCustomerGatewaysResult> describeCustomerGatewaysAsync(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest);
 
@@ -4256,6 +4839,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCustomerGateways operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeCustomerGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCustomerGatewaysResult> describeCustomerGatewaysAsync(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCustomerGatewaysRequest, DescribeCustomerGatewaysResult> asyncHandler);
@@ -4289,6 +4874,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeDhcpOptions.
      * @return A Java Future containing the result of the DescribeDhcpOptions operation returned by the service.
      * @sample AmazonEC2Async.DescribeDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeDhcpOptionsResult> describeDhcpOptionsAsync(DescribeDhcpOptionsRequest describeDhcpOptionsRequest);
 
@@ -4310,6 +4897,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeDhcpOptions operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeDhcpOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDhcpOptions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeDhcpOptionsResult> describeDhcpOptionsAsync(DescribeDhcpOptionsRequest describeDhcpOptionsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeDhcpOptionsRequest, DescribeDhcpOptionsResult> asyncHandler);
@@ -4331,6 +4920,41 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
+     * Describes one or more of your egress-only Internet gateways.
+     * </p>
+     * 
+     * @param describeEgressOnlyInternetGatewaysRequest
+     * @return A Java Future containing the result of the DescribeEgressOnlyInternetGateways operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.DescribeEgressOnlyInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeEgressOnlyInternetGateways"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeEgressOnlyInternetGatewaysResult> describeEgressOnlyInternetGatewaysAsync(
+            DescribeEgressOnlyInternetGatewaysRequest describeEgressOnlyInternetGatewaysRequest);
+
+    /**
+     * <p>
+     * Describes one or more of your egress-only Internet gateways.
+     * </p>
+     * 
+     * @param describeEgressOnlyInternetGatewaysRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeEgressOnlyInternetGateways operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.DescribeEgressOnlyInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeEgressOnlyInternetGateways"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeEgressOnlyInternetGatewaysResult> describeEgressOnlyInternetGatewaysAsync(
+            DescribeEgressOnlyInternetGatewaysRequest describeEgressOnlyInternetGatewaysRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeEgressOnlyInternetGatewaysRequest, DescribeEgressOnlyInternetGatewaysResult> asyncHandler);
+
+    /**
+     * <p>
      * Describes one or more of your export tasks.
      * </p>
      * 
@@ -4338,6 +4962,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeExportTasks.
      * @return A Java Future containing the result of the DescribeExportTasks operation returned by the service.
      * @sample AmazonEC2Async.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeExportTasksResult> describeExportTasksAsync(DescribeExportTasksRequest describeExportTasksRequest);
 
@@ -4354,6 +4980,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeExportTasks operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeExportTasksResult> describeExportTasksAsync(DescribeExportTasksRequest describeExportTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeExportTasksRequest, DescribeExportTasksResult> asyncHandler);
@@ -4383,6 +5011,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeFlowLogs.
      * @return A Java Future containing the result of the DescribeFlowLogs operation returned by the service.
      * @sample AmazonEC2Async.DescribeFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeFlowLogsResult> describeFlowLogsAsync(DescribeFlowLogsRequest describeFlowLogsRequest);
 
@@ -4400,6 +5030,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeFlowLogs operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeFlowLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeFlowLogsResult> describeFlowLogsAsync(DescribeFlowLogsRequest describeFlowLogsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeFlowLogsRequest, DescribeFlowLogsResult> asyncHandler);
@@ -4436,6 +5068,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeHostReservationOfferings operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeHostReservationOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservationOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostReservationOfferingsResult> describeHostReservationOfferingsAsync(
             DescribeHostReservationOfferingsRequest describeHostReservationOfferingsRequest);
@@ -4461,6 +5095,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeHostReservationOfferings operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeHostReservationOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservationOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostReservationOfferingsResult> describeHostReservationOfferingsAsync(
             DescribeHostReservationOfferingsRequest describeHostReservationOfferingsRequest,
@@ -4474,6 +5110,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @param describeHostReservationsRequest
      * @return A Java Future containing the result of the DescribeHostReservations operation returned by the service.
      * @sample AmazonEC2Async.DescribeHostReservations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservations" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostReservationsResult> describeHostReservationsAsync(DescribeHostReservationsRequest describeHostReservationsRequest);
 
@@ -4489,6 +5127,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeHostReservations operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeHostReservations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservations" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostReservationsResult> describeHostReservationsAsync(DescribeHostReservationsRequest describeHostReservationsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeHostReservationsRequest, DescribeHostReservationsResult> asyncHandler);
@@ -4507,6 +5147,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeHosts.
      * @return A Java Future containing the result of the DescribeHosts operation returned by the service.
      * @sample AmazonEC2Async.DescribeHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostsResult> describeHostsAsync(DescribeHostsRequest describeHostsRequest);
 
@@ -4528,6 +5170,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeHosts operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeHostsResult> describeHostsAsync(DescribeHostsRequest describeHostsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeHostsRequest, DescribeHostsResult> asyncHandler);
@@ -4546,6 +5190,41 @@ public interface AmazonEC2Async extends AmazonEC2 {
      */
     java.util.concurrent.Future<DescribeHostsResult> describeHostsAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeHostsRequest, DescribeHostsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Describes your IAM instance profile associations.
+     * </p>
+     * 
+     * @param describeIamInstanceProfileAssociationsRequest
+     * @return A Java Future containing the result of the DescribeIamInstanceProfileAssociations operation returned by
+     *         the service.
+     * @sample AmazonEC2Async.DescribeIamInstanceProfileAssociations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIamInstanceProfileAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeIamInstanceProfileAssociationsResult> describeIamInstanceProfileAssociationsAsync(
+            DescribeIamInstanceProfileAssociationsRequest describeIamInstanceProfileAssociationsRequest);
+
+    /**
+     * <p>
+     * Describes your IAM instance profile associations.
+     * </p>
+     * 
+     * @param describeIamInstanceProfileAssociationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeIamInstanceProfileAssociations operation returned by
+     *         the service.
+     * @sample AmazonEC2AsyncHandler.DescribeIamInstanceProfileAssociations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIamInstanceProfileAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeIamInstanceProfileAssociationsResult> describeIamInstanceProfileAssociationsAsync(
+            DescribeIamInstanceProfileAssociationsRequest describeIamInstanceProfileAssociationsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeIamInstanceProfileAssociationsRequest, DescribeIamInstanceProfileAssociationsResult> asyncHandler);
 
     /**
      * <p>
@@ -4569,6 +5248,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeIdFormat.
      * @return A Java Future containing the result of the DescribeIdFormat operation returned by the service.
      * @sample AmazonEC2Async.DescribeIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeIdFormatResult> describeIdFormatAsync(DescribeIdFormatRequest describeIdFormatRequest);
 
@@ -4598,6 +5279,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeIdFormat operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeIdFormatResult> describeIdFormatAsync(DescribeIdFormatRequest describeIdFormatRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeIdFormatRequest, DescribeIdFormatResult> asyncHandler);
@@ -4638,6 +5321,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeIdentityIdFormat.
      * @return A Java Future containing the result of the DescribeIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2Async.DescribeIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdentityIdFormat" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeIdentityIdFormatResult> describeIdentityIdFormatAsync(DescribeIdentityIdFormatRequest describeIdentityIdFormatRequest);
 
@@ -4666,6 +5351,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdentityIdFormat" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeIdentityIdFormatResult> describeIdentityIdFormatAsync(DescribeIdentityIdFormatRequest describeIdentityIdFormatRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeIdentityIdFormatRequest, DescribeIdentityIdFormatResult> asyncHandler);
@@ -4679,6 +5366,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeImageAttribute.
      * @return A Java Future containing the result of the DescribeImageAttribute operation returned by the service.
      * @sample AmazonEC2Async.DescribeImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeImageAttributeResult> describeImageAttributeAsync(DescribeImageAttributeRequest describeImageAttributeRequest);
 
@@ -4695,6 +5384,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeImageAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeImageAttributeResult> describeImageAttributeAsync(DescribeImageAttributeRequest describeImageAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeImageAttributeRequest, DescribeImageAttributeResult> asyncHandler);
@@ -4715,6 +5406,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeImages.
      * @return A Java Future containing the result of the DescribeImages operation returned by the service.
      * @sample AmazonEC2Async.DescribeImages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeImagesResult> describeImagesAsync(DescribeImagesRequest describeImagesRequest);
 
@@ -4738,6 +5431,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeImages operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeImages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeImagesResult> describeImagesAsync(DescribeImagesRequest describeImagesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeImagesRequest, DescribeImagesResult> asyncHandler);
@@ -4766,6 +5461,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeImportImageTasks.
      * @return A Java Future containing the result of the DescribeImportImageTasks operation returned by the service.
      * @sample AmazonEC2Async.DescribeImportImageTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportImageTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeImportImageTasksResult> describeImportImageTasksAsync(DescribeImportImageTasksRequest describeImportImageTasksRequest);
 
@@ -4782,6 +5479,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeImportImageTasks operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeImportImageTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportImageTasks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeImportImageTasksResult> describeImportImageTasksAsync(DescribeImportImageTasksRequest describeImportImageTasksRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeImportImageTasksRequest, DescribeImportImageTasksResult> asyncHandler);
@@ -4810,6 +5509,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeImportSnapshotTasks.
      * @return A Java Future containing the result of the DescribeImportSnapshotTasks operation returned by the service.
      * @sample AmazonEC2Async.DescribeImportSnapshotTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportSnapshotTasks"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeImportSnapshotTasksResult> describeImportSnapshotTasksAsync(
             DescribeImportSnapshotTasksRequest describeImportSnapshotTasksRequest);
@@ -4827,6 +5528,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeImportSnapshotTasks operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeImportSnapshotTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportSnapshotTasks"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeImportSnapshotTasksResult> describeImportSnapshotTasksAsync(
             DescribeImportSnapshotTasksRequest describeImportSnapshotTasksRequest,
@@ -4860,6 +5563,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeInstanceAttribute.
      * @return A Java Future containing the result of the DescribeInstanceAttribute operation returned by the service.
      * @sample AmazonEC2Async.DescribeInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstanceAttributeResult> describeInstanceAttributeAsync(
             DescribeInstanceAttributeRequest describeInstanceAttributeRequest);
@@ -4881,6 +5586,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeInstanceAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstanceAttributeResult> describeInstanceAttributeAsync(
             DescribeInstanceAttributeRequest describeInstanceAttributeRequest,
@@ -4927,6 +5634,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeInstanceStatus.
      * @return A Java Future containing the result of the DescribeInstanceStatus operation returned by the service.
      * @sample AmazonEC2Async.DescribeInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstanceStatusResult> describeInstanceStatusAsync(DescribeInstanceStatusRequest describeInstanceStatusRequest);
 
@@ -4975,6 +5684,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeInstanceStatus operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstanceStatusResult> describeInstanceStatusAsync(DescribeInstanceStatusRequest describeInstanceStatusRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeInstanceStatusRequest, DescribeInstanceStatusResult> asyncHandler);
@@ -5018,6 +5729,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeInstances.
      * @return A Java Future containing the result of the DescribeInstances operation returned by the service.
      * @sample AmazonEC2Async.DescribeInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstancesResult> describeInstancesAsync(DescribeInstancesRequest describeInstancesRequest);
 
@@ -5049,6 +5762,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeInstancesResult> describeInstancesAsync(DescribeInstancesRequest describeInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeInstancesRequest, DescribeInstancesResult> asyncHandler);
@@ -5077,6 +5792,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeInternetGateways.
      * @return A Java Future containing the result of the DescribeInternetGateways operation returned by the service.
      * @sample AmazonEC2Async.DescribeInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeInternetGatewaysResult> describeInternetGatewaysAsync(DescribeInternetGatewaysRequest describeInternetGatewaysRequest);
 
@@ -5093,6 +5810,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeInternetGateways operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeInternetGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeInternetGatewaysResult> describeInternetGatewaysAsync(DescribeInternetGatewaysRequest describeInternetGatewaysRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeInternetGatewaysRequest, DescribeInternetGatewaysResult> asyncHandler);
@@ -5126,6 +5845,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeKeyPairs.
      * @return A Java Future containing the result of the DescribeKeyPairs operation returned by the service.
      * @sample AmazonEC2Async.DescribeKeyPairs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeKeyPairs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeKeyPairsResult> describeKeyPairsAsync(DescribeKeyPairsRequest describeKeyPairsRequest);
 
@@ -5147,6 +5868,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeKeyPairs operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeKeyPairs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeKeyPairs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeKeyPairsResult> describeKeyPairsAsync(DescribeKeyPairsRequest describeKeyPairsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeKeyPairsRequest, DescribeKeyPairsResult> asyncHandler);
@@ -5177,6 +5900,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeMovingAddresses.
      * @return A Java Future containing the result of the DescribeMovingAddresses operation returned by the service.
      * @sample AmazonEC2Async.DescribeMovingAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeMovingAddressesResult> describeMovingAddressesAsync(DescribeMovingAddressesRequest describeMovingAddressesRequest);
 
@@ -5195,6 +5920,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeMovingAddresses operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeMovingAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeMovingAddressesResult> describeMovingAddressesAsync(DescribeMovingAddressesRequest describeMovingAddressesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeMovingAddressesRequest, DescribeMovingAddressesResult> asyncHandler);
@@ -5223,6 +5950,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeNatGateways.
      * @return A Java Future containing the result of the DescribeNatGateways operation returned by the service.
      * @sample AmazonEC2Async.DescribeNatGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNatGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeNatGatewaysResult> describeNatGatewaysAsync(DescribeNatGatewaysRequest describeNatGatewaysRequest);
 
@@ -5239,6 +5968,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeNatGateways operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeNatGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNatGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeNatGatewaysResult> describeNatGatewaysAsync(DescribeNatGatewaysRequest describeNatGatewaysRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeNatGatewaysRequest, DescribeNatGatewaysResult> asyncHandler);
@@ -5257,6 +5988,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeNetworkAcls.
      * @return A Java Future containing the result of the DescribeNetworkAcls operation returned by the service.
      * @sample AmazonEC2Async.DescribeNetworkAcls
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkAclsResult> describeNetworkAclsAsync(DescribeNetworkAclsRequest describeNetworkAclsRequest);
 
@@ -5278,6 +6011,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeNetworkAcls operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeNetworkAcls
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkAclsResult> describeNetworkAclsAsync(DescribeNetworkAclsRequest describeNetworkAclsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeNetworkAclsRequest, DescribeNetworkAclsResult> asyncHandler);
@@ -5307,6 +6042,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkInterfaceAttributeResult> describeNetworkInterfaceAttributeAsync(
             DescribeNetworkInterfaceAttributeRequest describeNetworkInterfaceAttributeRequest);
@@ -5325,6 +6062,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkInterfaceAttributeResult> describeNetworkInterfaceAttributeAsync(
             DescribeNetworkInterfaceAttributeRequest describeNetworkInterfaceAttributeRequest,
@@ -5339,6 +6078,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeNetworkInterfaces.
      * @return A Java Future containing the result of the DescribeNetworkInterfaces operation returned by the service.
      * @sample AmazonEC2Async.DescribeNetworkInterfaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkInterfacesResult> describeNetworkInterfacesAsync(
             DescribeNetworkInterfacesRequest describeNetworkInterfacesRequest);
@@ -5356,6 +6097,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeNetworkInterfaces operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeNetworkInterfaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeNetworkInterfacesResult> describeNetworkInterfacesAsync(
             DescribeNetworkInterfacesRequest describeNetworkInterfacesRequest,
@@ -5387,6 +6130,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribePlacementGroups.
      * @return A Java Future containing the result of the DescribePlacementGroups operation returned by the service.
      * @sample AmazonEC2Async.DescribePlacementGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePlacementGroups" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribePlacementGroupsResult> describePlacementGroupsAsync(DescribePlacementGroupsRequest describePlacementGroupsRequest);
 
@@ -5405,6 +6150,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribePlacementGroups operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribePlacementGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePlacementGroups" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribePlacementGroupsResult> describePlacementGroupsAsync(DescribePlacementGroupsRequest describePlacementGroupsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribePlacementGroupsRequest, DescribePlacementGroupsResult> asyncHandler);
@@ -5435,6 +6182,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribePrefixLists.
      * @return A Java Future containing the result of the DescribePrefixLists operation returned by the service.
      * @sample AmazonEC2Async.DescribePrefixLists
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixLists" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribePrefixListsResult> describePrefixListsAsync(DescribePrefixListsRequest describePrefixListsRequest);
 
@@ -5453,6 +6202,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribePrefixLists operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribePrefixLists
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixLists" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribePrefixListsResult> describePrefixListsAsync(DescribePrefixListsRequest describePrefixListsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribePrefixListsRequest, DescribePrefixListsResult> asyncHandler);
@@ -5485,6 +6236,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeRegions.
      * @return A Java Future containing the result of the DescribeRegions operation returned by the service.
      * @sample AmazonEC2Async.DescribeRegions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRegions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeRegionsResult> describeRegionsAsync(DescribeRegionsRequest describeRegionsRequest);
 
@@ -5505,6 +6258,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeRegions operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeRegions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRegions" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeRegionsResult> describeRegionsAsync(DescribeRegionsRequest describeRegionsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeRegionsRequest, DescribeRegionsResult> asyncHandler);
@@ -5538,6 +6293,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeReservedInstances.
      * @return A Java Future containing the result of the DescribeReservedInstances operation returned by the service.
      * @sample AmazonEC2Async.DescribeReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesResult> describeReservedInstancesAsync(
             DescribeReservedInstancesRequest describeReservedInstancesRequest);
@@ -5560,6 +6317,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeReservedInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesResult> describeReservedInstancesAsync(
             DescribeReservedInstancesRequest describeReservedInstancesRequest,
@@ -5611,6 +6370,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesListings operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeReservedInstancesListings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesListings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesListingsResult> describeReservedInstancesListingsAsync(
             DescribeReservedInstancesListingsRequest describeReservedInstancesListingsRequest);
@@ -5650,6 +6411,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesListings operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeReservedInstancesListings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesListings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesListingsResult> describeReservedInstancesListingsAsync(
             DescribeReservedInstancesListingsRequest describeReservedInstancesListingsRequest,
@@ -5688,6 +6451,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesModifications operation returned by
      *         the service.
      * @sample AmazonEC2Async.DescribeReservedInstancesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesModifications"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesModificationsResult> describeReservedInstancesModificationsAsync(
             DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest);
@@ -5713,6 +6478,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesModifications operation returned by
      *         the service.
      * @sample AmazonEC2AsyncHandler.DescribeReservedInstancesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesModifications"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesModificationsResult> describeReservedInstancesModificationsAsync(
             DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest,
@@ -5755,6 +6522,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesOfferings operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeReservedInstancesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesOfferingsResult> describeReservedInstancesOfferingsAsync(
             DescribeReservedInstancesOfferingsRequest describeReservedInstancesOfferingsRequest);
@@ -5784,6 +6553,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeReservedInstancesOfferings operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeReservedInstancesOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesOfferings"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeReservedInstancesOfferingsResult> describeReservedInstancesOfferingsAsync(
             DescribeReservedInstancesOfferingsRequest describeReservedInstancesOfferingsRequest,
@@ -5824,6 +6595,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeRouteTables.
      * @return A Java Future containing the result of the DescribeRouteTables operation returned by the service.
      * @sample AmazonEC2Async.DescribeRouteTables
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeRouteTablesResult> describeRouteTablesAsync(DescribeRouteTablesRequest describeRouteTablesRequest);
 
@@ -5850,6 +6623,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeRouteTables operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeRouteTables
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeRouteTablesResult> describeRouteTablesAsync(DescribeRouteTablesRequest describeRouteTablesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeRouteTablesRequest, DescribeRouteTablesResult> asyncHandler);
@@ -5888,6 +6663,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeScheduledInstanceAvailability operation returned by
      *         the service.
      * @sample AmazonEC2Async.DescribeScheduledInstanceAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstanceAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeScheduledInstanceAvailabilityResult> describeScheduledInstanceAvailabilityAsync(
             DescribeScheduledInstanceAvailabilityRequest describeScheduledInstanceAvailabilityRequest);
@@ -5915,6 +6692,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeScheduledInstanceAvailability operation returned by
      *         the service.
      * @sample AmazonEC2AsyncHandler.DescribeScheduledInstanceAvailability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstanceAvailability"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeScheduledInstanceAvailabilityResult> describeScheduledInstanceAvailabilityAsync(
             DescribeScheduledInstanceAvailabilityRequest describeScheduledInstanceAvailabilityRequest,
@@ -5929,6 +6708,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeScheduledInstances.
      * @return A Java Future containing the result of the DescribeScheduledInstances operation returned by the service.
      * @sample AmazonEC2Async.DescribeScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeScheduledInstancesResult> describeScheduledInstancesAsync(
             DescribeScheduledInstancesRequest describeScheduledInstancesRequest);
@@ -5946,6 +6727,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeScheduledInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeScheduledInstancesResult> describeScheduledInstancesAsync(
             DescribeScheduledInstancesRequest describeScheduledInstancesRequest,
@@ -5961,6 +6744,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSecurityGroupReferences operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeSecurityGroupReferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupReferences"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSecurityGroupReferencesResult> describeSecurityGroupReferencesAsync(
             DescribeSecurityGroupReferencesRequest describeSecurityGroupReferencesRequest);
@@ -5979,6 +6764,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSecurityGroupReferences operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeSecurityGroupReferences
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupReferences"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSecurityGroupReferencesResult> describeSecurityGroupReferencesAsync(
             DescribeSecurityGroupReferencesRequest describeSecurityGroupReferencesRequest,
@@ -6000,6 +6787,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSecurityGroups.
      * @return A Java Future containing the result of the DescribeSecurityGroups operation returned by the service.
      * @sample AmazonEC2Async.DescribeSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSecurityGroupsResult> describeSecurityGroupsAsync(DescribeSecurityGroupsRequest describeSecurityGroupsRequest);
 
@@ -6023,6 +6812,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSecurityGroups operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSecurityGroupsResult> describeSecurityGroupsAsync(DescribeSecurityGroupsRequest describeSecurityGroupsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSecurityGroupsRequest, DescribeSecurityGroupsResult> asyncHandler);
@@ -6056,6 +6847,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSnapshotAttribute.
      * @return A Java Future containing the result of the DescribeSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2Async.DescribeSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotAttributeResult> describeSnapshotAttributeAsync(
             DescribeSnapshotAttributeRequest describeSnapshotAttributeRequest);
@@ -6078,6 +6871,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotAttributeResult> describeSnapshotAttributeAsync(
             DescribeSnapshotAttributeRequest describeSnapshotAttributeRequest,
@@ -6148,6 +6943,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSnapshots.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AmazonEC2Async.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest);
 
@@ -6220,6 +7017,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSnapshots operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotsResult> describeSnapshotsAsync(DescribeSnapshotsRequest describeSnapshotsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSnapshotsRequest, DescribeSnapshotsResult> asyncHandler);
@@ -6251,6 +7050,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotDatafeedSubscriptionResult> describeSpotDatafeedSubscriptionAsync(
             DescribeSpotDatafeedSubscriptionRequest describeSpotDatafeedSubscriptionRequest);
@@ -6271,6 +7072,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotDatafeedSubscription operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotDatafeedSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotDatafeedSubscription"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotDatafeedSubscriptionResult> describeSpotDatafeedSubscriptionAsync(
             DescribeSpotDatafeedSubscriptionRequest describeSpotDatafeedSubscriptionRequest,
@@ -6301,6 +7104,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSpotFleetInstances.
      * @return A Java Future containing the result of the DescribeSpotFleetInstances operation returned by the service.
      * @sample AmazonEC2Async.DescribeSpotFleetInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetInstancesResult> describeSpotFleetInstancesAsync(
             DescribeSpotFleetInstancesRequest describeSpotFleetInstancesRequest);
@@ -6318,6 +7123,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSpotFleetInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotFleetInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetInstancesResult> describeSpotFleetInstancesAsync(
             DescribeSpotFleetInstancesRequest describeSpotFleetInstancesRequest,
@@ -6337,6 +7144,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotFleetRequestHistory operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeSpotFleetRequestHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistory"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetRequestHistoryResult> describeSpotFleetRequestHistoryAsync(
             DescribeSpotFleetRequestHistoryRequest describeSpotFleetRequestHistoryRequest);
@@ -6359,6 +7168,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotFleetRequestHistory operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotFleetRequestHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistory"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetRequestHistoryResult> describeSpotFleetRequestHistoryAsync(
             DescribeSpotFleetRequestHistoryRequest describeSpotFleetRequestHistoryRequest,
@@ -6376,6 +7187,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSpotFleetRequests.
      * @return A Java Future containing the result of the DescribeSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2Async.DescribeSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetRequestsResult> describeSpotFleetRequestsAsync(
             DescribeSpotFleetRequestsRequest describeSpotFleetRequestsRequest);
@@ -6396,6 +7209,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSpotFleetRequests operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotFleetRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequests" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotFleetRequestsResult> describeSpotFleetRequestsAsync(
             DescribeSpotFleetRequestsRequest describeSpotFleetRequestsRequest,
@@ -6439,6 +7254,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotInstanceRequests operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotInstanceRequests"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotInstanceRequestsResult> describeSpotInstanceRequestsAsync(
             DescribeSpotInstanceRequestsRequest describeSpotInstanceRequestsRequest);
@@ -6470,6 +7287,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeSpotInstanceRequests operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotInstanceRequests
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotInstanceRequests"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotInstanceRequestsResult> describeSpotInstanceRequestsAsync(
             DescribeSpotInstanceRequestsRequest describeSpotInstanceRequestsRequest,
@@ -6492,8 +7311,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
-     * Describes the Spot price history. The prices returned are listed in chronological order, from the oldest to the
-     * most recent, for up to the past 90 days. For more information, see <a
+     * Describes the Spot price history. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing
      * History</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -6507,13 +7325,14 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSpotPriceHistory.
      * @return A Java Future containing the result of the DescribeSpotPriceHistory operation returned by the service.
      * @sample AmazonEC2Async.DescribeSpotPriceHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistory" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotPriceHistoryResult> describeSpotPriceHistoryAsync(DescribeSpotPriceHistoryRequest describeSpotPriceHistoryRequest);
 
     /**
      * <p>
-     * Describes the Spot price history. The prices returned are listed in chronological order, from the oldest to the
-     * most recent, for up to the past 90 days. For more information, see <a
+     * Describes the Spot price history. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing
      * History</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -6531,6 +7350,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSpotPriceHistory operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSpotPriceHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistory" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSpotPriceHistoryResult> describeSpotPriceHistoryAsync(DescribeSpotPriceHistoryRequest describeSpotPriceHistoryRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSpotPriceHistoryRequest, DescribeSpotPriceHistoryResult> asyncHandler);
@@ -6560,6 +7381,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @param describeStaleSecurityGroupsRequest
      * @return A Java Future containing the result of the DescribeStaleSecurityGroups operation returned by the service.
      * @sample AmazonEC2Async.DescribeStaleSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStaleSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStaleSecurityGroupsResult> describeStaleSecurityGroupsAsync(
             DescribeStaleSecurityGroupsRequest describeStaleSecurityGroupsRequest);
@@ -6578,6 +7401,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStaleSecurityGroups operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeStaleSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStaleSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStaleSecurityGroupsResult> describeStaleSecurityGroupsAsync(
             DescribeStaleSecurityGroupsRequest describeStaleSecurityGroupsRequest,
@@ -6597,6 +7422,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeSubnets.
      * @return A Java Future containing the result of the DescribeSubnets operation returned by the service.
      * @sample AmazonEC2Async.DescribeSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSubnetsResult> describeSubnetsAsync(DescribeSubnetsRequest describeSubnetsRequest);
 
@@ -6618,6 +7445,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSubnets operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeSubnetsResult> describeSubnetsAsync(DescribeSubnetsRequest describeSubnetsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSubnetsRequest, DescribeSubnetsResult> asyncHandler);
@@ -6651,6 +7480,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeTags.
      * @return A Java Future containing the result of the DescribeTags operation returned by the service.
      * @sample AmazonEC2Async.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(DescribeTagsRequest describeTagsRequest);
 
@@ -6672,6 +7503,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTags operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTags" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeTagsResult> describeTagsAsync(DescribeTagsRequest describeTagsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTagsRequest, DescribeTagsResult> asyncHandler);
@@ -6704,6 +7537,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVolumeAttribute.
      * @return A Java Future containing the result of the DescribeVolumeAttribute operation returned by the service.
      * @sample AmazonEC2Async.DescribeVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumeAttributeResult> describeVolumeAttributeAsync(DescribeVolumeAttributeRequest describeVolumeAttributeRequest);
 
@@ -6725,6 +7560,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVolumeAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumeAttributeResult> describeVolumeAttributeAsync(DescribeVolumeAttributeRequest describeVolumeAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVolumeAttributeRequest, DescribeVolumeAttributeResult> asyncHandler);
@@ -6774,6 +7611,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVolumeStatus.
      * @return A Java Future containing the result of the DescribeVolumeStatus operation returned by the service.
      * @sample AmazonEC2Async.DescribeVolumeStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumeStatusResult> describeVolumeStatusAsync(DescribeVolumeStatusRequest describeVolumeStatusRequest);
 
@@ -6826,6 +7665,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVolumeStatus operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVolumeStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumeStatusResult> describeVolumeStatusAsync(DescribeVolumeStatusRequest describeVolumeStatusRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVolumeStatusRequest, DescribeVolumeStatusResult> asyncHandler);
@@ -6866,6 +7707,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVolumes.
      * @return A Java Future containing the result of the DescribeVolumes operation returned by the service.
      * @sample AmazonEC2Async.DescribeVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumesResult> describeVolumesAsync(DescribeVolumesRequest describeVolumesRequest);
 
@@ -6894,6 +7737,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVolumes operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVolumesResult> describeVolumesAsync(DescribeVolumesRequest describeVolumesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVolumesRequest, DescribeVolumesResult> asyncHandler);
@@ -6915,6 +7760,69 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
+     * Reports the current modification status of EBS volumes.
+     * </p>
+     * <p>
+     * Current-generation EBS volumes support modification of attributes including type, size, and (for <code>io1</code>
+     * volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the
+     * API or the console to modify a volume, the status of the modification may be <code>modifying</code>,
+     * <code>optimizing</code>, <code>completed</code>, or <code>failed</code>. If a volume has never been modified,
+     * then certain elements of the returned <code>VolumeModification</code> objects are null.
+     * </p>
+     * <p>
+     * You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications"</a>.
+     * </p>
+     * 
+     * @param describeVolumesModificationsRequest
+     * @return A Java Future containing the result of the DescribeVolumesModifications operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.DescribeVolumesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumesModifications"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeVolumesModificationsResult> describeVolumesModificationsAsync(
+            DescribeVolumesModificationsRequest describeVolumesModificationsRequest);
+
+    /**
+     * <p>
+     * Reports the current modification status of EBS volumes.
+     * </p>
+     * <p>
+     * Current-generation EBS volumes support modification of attributes including type, size, and (for <code>io1</code>
+     * volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the
+     * API or the console to modify a volume, the status of the modification may be <code>modifying</code>,
+     * <code>optimizing</code>, <code>completed</code>, or <code>failed</code>. If a volume has never been modified,
+     * then certain elements of the returned <code>VolumeModification</code> objects are null.
+     * </p>
+     * <p>
+     * You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications"</a>.
+     * </p>
+     * 
+     * @param describeVolumesModificationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeVolumesModifications operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.DescribeVolumesModifications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumesModifications"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeVolumesModificationsResult> describeVolumesModificationsAsync(
+            DescribeVolumesModificationsRequest describeVolumesModificationsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeVolumesModificationsRequest, DescribeVolumesModificationsResult> asyncHandler);
+
+    /**
+     * <p>
      * Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
      * </p>
      * 
@@ -6922,6 +7830,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpcAttribute.
      * @return A Java Future containing the result of the DescribeVpcAttribute operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcAttributeResult> describeVpcAttributeAsync(DescribeVpcAttributeRequest describeVpcAttributeRequest);
 
@@ -6938,6 +7848,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpcAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcAttributeResult> describeVpcAttributeAsync(DescribeVpcAttributeRequest describeVpcAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpcAttributeRequest, DescribeVpcAttributeResult> asyncHandler);
@@ -6951,6 +7863,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpcClassicLink.
      * @return A Java Future containing the result of the DescribeVpcClassicLink operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcClassicLinkResult> describeVpcClassicLinkAsync(DescribeVpcClassicLinkRequest describeVpcClassicLinkRequest);
 
@@ -6967,6 +7881,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpcClassicLink operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcClassicLinkResult> describeVpcClassicLinkAsync(DescribeVpcClassicLinkRequest describeVpcClassicLinkRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpcClassicLinkRequest, DescribeVpcClassicLinkResult> asyncHandler);
@@ -7001,6 +7917,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcClassicLinkDnsSupportResult> describeVpcClassicLinkDnsSupportAsync(
             DescribeVpcClassicLinkDnsSupportRequest describeVpcClassicLinkDnsSupportRequest);
@@ -7024,6 +7942,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcClassicLinkDnsSupportResult> describeVpcClassicLinkDnsSupportAsync(
             DescribeVpcClassicLinkDnsSupportRequest describeVpcClassicLinkDnsSupportRequest,
@@ -7038,6 +7958,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpcEndpointServices.
      * @return A Java Future containing the result of the DescribeVpcEndpointServices operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpcEndpointServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServices"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcEndpointServicesResult> describeVpcEndpointServicesAsync(
             DescribeVpcEndpointServicesRequest describeVpcEndpointServicesRequest);
@@ -7055,6 +7977,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpcEndpointServices operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcEndpointServices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServices"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcEndpointServicesResult> describeVpcEndpointServicesAsync(
             DescribeVpcEndpointServicesRequest describeVpcEndpointServicesRequest,
@@ -7084,6 +8008,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpcEndpoints.
      * @return A Java Future containing the result of the DescribeVpcEndpoints operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcEndpointsResult> describeVpcEndpointsAsync(DescribeVpcEndpointsRequest describeVpcEndpointsRequest);
 
@@ -7100,6 +8026,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpcEndpoints operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpoints" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcEndpointsResult> describeVpcEndpointsAsync(DescribeVpcEndpointsRequest describeVpcEndpointsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpcEndpointsRequest, DescribeVpcEndpointsResult> asyncHandler);
@@ -7129,6 +8057,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeVpcPeeringConnections operation returned by the
      *         service.
      * @sample AmazonEC2Async.DescribeVpcPeeringConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcPeeringConnections"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcPeeringConnectionsResult> describeVpcPeeringConnectionsAsync(
             DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest);
@@ -7147,6 +8077,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DescribeVpcPeeringConnections operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcPeeringConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcPeeringConnections"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcPeeringConnectionsResult> describeVpcPeeringConnectionsAsync(
             DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest,
@@ -7177,6 +8109,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpcs.
      * @return A Java Future containing the result of the DescribeVpcs operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpcs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcsResult> describeVpcsAsync(DescribeVpcsRequest describeVpcsRequest);
 
@@ -7193,6 +8127,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpcs operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpcs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcs" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpcsResult> describeVpcsAsync(DescribeVpcsRequest describeVpcsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpcsRequest, DescribeVpcsResult> asyncHandler);
@@ -7225,6 +8161,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpnConnections.
      * @return A Java Future containing the result of the DescribeVpnConnections operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpnConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpnConnectionsResult> describeVpnConnectionsAsync(DescribeVpnConnectionsRequest describeVpnConnectionsRequest);
 
@@ -7246,6 +8184,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpnConnections operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpnConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnConnections" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpnConnectionsResult> describeVpnConnectionsAsync(DescribeVpnConnectionsRequest describeVpnConnectionsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpnConnectionsRequest, DescribeVpnConnectionsResult> asyncHandler);
@@ -7279,6 +8219,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DescribeVpnGateways.
      * @return A Java Future containing the result of the DescribeVpnGateways operation returned by the service.
      * @sample AmazonEC2Async.DescribeVpnGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpnGatewaysResult> describeVpnGatewaysAsync(DescribeVpnGatewaysRequest describeVpnGatewaysRequest);
 
@@ -7300,6 +8242,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVpnGateways operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DescribeVpnGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnGateways" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DescribeVpnGatewaysResult> describeVpnGatewaysAsync(DescribeVpnGatewaysRequest describeVpnGatewaysRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVpnGatewaysRequest, DescribeVpnGatewaysResult> asyncHandler);
@@ -7330,6 +8274,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DetachClassicLinkVpc.
      * @return A Java Future containing the result of the DetachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2Async.DetachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachClassicLinkVpcResult> detachClassicLinkVpcAsync(DetachClassicLinkVpcRequest detachClassicLinkVpcRequest);
 
@@ -7348,6 +8294,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DetachClassicLinkVpc operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DetachClassicLinkVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachClassicLinkVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachClassicLinkVpcResult> detachClassicLinkVpcAsync(DetachClassicLinkVpcRequest detachClassicLinkVpcRequest,
             com.amazonaws.handlers.AsyncHandler<DetachClassicLinkVpcRequest, DetachClassicLinkVpcResult> asyncHandler);
@@ -7362,6 +8310,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DetachInternetGateway.
      * @return A Java Future containing the result of the DetachInternetGateway operation returned by the service.
      * @sample AmazonEC2Async.DetachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachInternetGatewayResult> detachInternetGatewayAsync(DetachInternetGatewayRequest detachInternetGatewayRequest);
 
@@ -7379,6 +8329,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DetachInternetGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DetachInternetGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachInternetGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachInternetGatewayResult> detachInternetGatewayAsync(DetachInternetGatewayRequest detachInternetGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DetachInternetGatewayRequest, DetachInternetGatewayResult> asyncHandler);
@@ -7392,6 +8344,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DetachNetworkInterface.
      * @return A Java Future containing the result of the DetachNetworkInterface operation returned by the service.
      * @sample AmazonEC2Async.DetachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachNetworkInterfaceResult> detachNetworkInterfaceAsync(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest);
 
@@ -7408,6 +8362,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DetachNetworkInterface operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DetachNetworkInterface
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachNetworkInterface" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachNetworkInterfaceResult> detachNetworkInterfaceAsync(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest,
             com.amazonaws.handlers.AsyncHandler<DetachNetworkInterfaceRequest, DetachNetworkInterfaceResult> asyncHandler);
@@ -7435,6 +8391,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DetachVolume.
      * @return A Java Future containing the result of the DetachVolume operation returned by the service.
      * @sample AmazonEC2Async.DetachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachVolumeResult> detachVolumeAsync(DetachVolumeRequest detachVolumeRequest);
 
@@ -7465,6 +8423,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DetachVolume operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DetachVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachVolumeResult> detachVolumeAsync(DetachVolumeRequest detachVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<DetachVolumeRequest, DetachVolumeResult> asyncHandler);
@@ -7484,6 +8444,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DetachVpnGateway.
      * @return A Java Future containing the result of the DetachVpnGateway operation returned by the service.
      * @sample AmazonEC2Async.DetachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachVpnGatewayResult> detachVpnGatewayAsync(DetachVpnGatewayRequest detachVpnGatewayRequest);
 
@@ -7506,6 +8468,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DetachVpnGateway operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DetachVpnGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVpnGateway" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DetachVpnGatewayResult> detachVpnGatewayAsync(DetachVpnGatewayRequest detachVpnGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DetachVpnGatewayRequest, DetachVpnGatewayResult> asyncHandler);
@@ -7519,6 +8483,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DisableVgwRoutePropagation.
      * @return A Java Future containing the result of the DisableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2Async.DisableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DisableVgwRoutePropagationResult> disableVgwRoutePropagationAsync(
             DisableVgwRoutePropagationRequest disableVgwRoutePropagationRequest);
@@ -7536,6 +8502,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DisableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DisableVgwRoutePropagationResult> disableVgwRoutePropagationAsync(
             DisableVgwRoutePropagationRequest disableVgwRoutePropagationRequest,
@@ -7551,6 +8519,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DisableVpcClassicLink.
      * @return A Java Future containing the result of the DisableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2Async.DisableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableVpcClassicLinkResult> disableVpcClassicLinkAsync(DisableVpcClassicLinkRequest disableVpcClassicLinkRequest);
 
@@ -7568,6 +8538,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DisableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisableVpcClassicLinkResult> disableVpcClassicLinkAsync(DisableVpcClassicLinkRequest disableVpcClassicLinkRequest,
             com.amazonaws.handlers.AsyncHandler<DisableVpcClassicLinkRequest, DisableVpcClassicLinkResult> asyncHandler);
@@ -7586,6 +8558,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DisableVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2Async.DisableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DisableVpcClassicLinkDnsSupportResult> disableVpcClassicLinkDnsSupportAsync(
             DisableVpcClassicLinkDnsSupportRequest disableVpcClassicLinkDnsSupportRequest);
@@ -7608,6 +8582,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the DisableVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.DisableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DisableVpcClassicLinkDnsSupportResult> disableVpcClassicLinkDnsSupportAsync(
             DisableVpcClassicLinkDnsSupportRequest disableVpcClassicLinkDnsSupportRequest,
@@ -7630,6 +8606,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DisassociateAddress.
      * @return A Java Future containing the result of the DisassociateAddress operation returned by the service.
      * @sample AmazonEC2Async.DisassociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisassociateAddressResult> disassociateAddressAsync(DisassociateAddressRequest disassociateAddressRequest);
 
@@ -7654,9 +8632,52 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisassociateAddress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DisassociateAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisassociateAddressResult> disassociateAddressAsync(DisassociateAddressRequest disassociateAddressRequest,
             com.amazonaws.handlers.AsyncHandler<DisassociateAddressRequest, DisassociateAddressResult> asyncHandler);
+
+    /**
+     * <p>
+     * Disassociates an IAM instance profile from a running or stopped instance.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param disassociateIamInstanceProfileRequest
+     * @return A Java Future containing the result of the DisassociateIamInstanceProfile operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.DisassociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateIamInstanceProfileResult> disassociateIamInstanceProfileAsync(
+            DisassociateIamInstanceProfileRequest disassociateIamInstanceProfileRequest);
+
+    /**
+     * <p>
+     * Disassociates an IAM instance profile from a running or stopped instance.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param disassociateIamInstanceProfileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DisassociateIamInstanceProfile operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.DisassociateIamInstanceProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateIamInstanceProfile"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateIamInstanceProfileResult> disassociateIamInstanceProfileAsync(
+            DisassociateIamInstanceProfileRequest disassociateIamInstanceProfileRequest,
+            com.amazonaws.handlers.AsyncHandler<DisassociateIamInstanceProfileRequest, DisassociateIamInstanceProfileResult> asyncHandler);
 
     /**
      * <p>
@@ -7673,6 +8694,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for DisassociateRouteTable.
      * @return A Java Future containing the result of the DisassociateRouteTable operation returned by the service.
      * @sample AmazonEC2Async.DisassociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisassociateRouteTableResult> disassociateRouteTableAsync(DisassociateRouteTableRequest disassociateRouteTableRequest);
 
@@ -7695,9 +8718,81 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisassociateRouteTable operation returned by the service.
      * @sample AmazonEC2AsyncHandler.DisassociateRouteTable
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteTable" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DisassociateRouteTableResult> disassociateRouteTableAsync(DisassociateRouteTableRequest disassociateRouteTableRequest,
             com.amazonaws.handlers.AsyncHandler<DisassociateRouteTableRequest, DisassociateRouteTableResult> asyncHandler);
+
+    /**
+     * <p>
+     * Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must
+     * detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate
+     * it.
+     * </p>
+     * 
+     * @param disassociateSubnetCidrBlockRequest
+     * @return A Java Future containing the result of the DisassociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2Async.DisassociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateSubnetCidrBlock"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateSubnetCidrBlockResult> disassociateSubnetCidrBlockAsync(
+            DisassociateSubnetCidrBlockRequest disassociateSubnetCidrBlockRequest);
+
+    /**
+     * <p>
+     * Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must
+     * detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate
+     * it.
+     * </p>
+     * 
+     * @param disassociateSubnetCidrBlockRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DisassociateSubnetCidrBlock operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.DisassociateSubnetCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateSubnetCidrBlock"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateSubnetCidrBlockResult> disassociateSubnetCidrBlockAsync(
+            DisassociateSubnetCidrBlockRequest disassociateSubnetCidrBlockRequest,
+            com.amazonaws.handlers.AsyncHandler<DisassociateSubnetCidrBlockRequest, DisassociateSubnetCidrBlockResult> asyncHandler);
+
+    /**
+     * <p>
+     * Disassociates a CIDR block from a VPC. Currently, you can disassociate an IPv6 CIDR block only. You must detach
+     * or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+     * </p>
+     * 
+     * @param disassociateVpcCidrBlockRequest
+     * @return A Java Future containing the result of the DisassociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2Async.DisassociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateVpcCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateVpcCidrBlockResult> disassociateVpcCidrBlockAsync(DisassociateVpcCidrBlockRequest disassociateVpcCidrBlockRequest);
+
+    /**
+     * <p>
+     * Disassociates a CIDR block from a VPC. Currently, you can disassociate an IPv6 CIDR block only. You must detach
+     * or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+     * </p>
+     * 
+     * @param disassociateVpcCidrBlockRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DisassociateVpcCidrBlock operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.DisassociateVpcCidrBlock
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateVpcCidrBlock" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateVpcCidrBlockResult> disassociateVpcCidrBlockAsync(DisassociateVpcCidrBlockRequest disassociateVpcCidrBlockRequest,
+            com.amazonaws.handlers.AsyncHandler<DisassociateVpcCidrBlockRequest, DisassociateVpcCidrBlockResult> asyncHandler);
 
     /**
      * <p>
@@ -7708,6 +8803,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for EnableVgwRoutePropagation.
      * @return A Java Future containing the result of the EnableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2Async.EnableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<EnableVgwRoutePropagationResult> enableVgwRoutePropagationAsync(
             EnableVgwRoutePropagationRequest enableVgwRoutePropagationRequest);
@@ -7725,6 +8822,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableVgwRoutePropagation operation returned by the service.
      * @sample AmazonEC2AsyncHandler.EnableVgwRoutePropagation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVgwRoutePropagation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<EnableVgwRoutePropagationResult> enableVgwRoutePropagationAsync(
             EnableVgwRoutePropagationRequest enableVgwRoutePropagationRequest,
@@ -7740,6 +8839,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for EnableVolumeIO.
      * @return A Java Future containing the result of the EnableVolumeIO operation returned by the service.
      * @sample AmazonEC2Async.EnableVolumeIO
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVolumeIO" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableVolumeIOResult> enableVolumeIOAsync(EnableVolumeIORequest enableVolumeIORequest);
 
@@ -7757,6 +8858,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableVolumeIO operation returned by the service.
      * @sample AmazonEC2AsyncHandler.EnableVolumeIO
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVolumeIO" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableVolumeIOResult> enableVolumeIOAsync(EnableVolumeIORequest enableVolumeIORequest,
             com.amazonaws.handlers.AsyncHandler<EnableVolumeIORequest, EnableVolumeIOResult> asyncHandler);
@@ -7776,6 +8879,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for EnableVpcClassicLink.
      * @return A Java Future containing the result of the EnableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2Async.EnableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableVpcClassicLinkResult> enableVpcClassicLinkAsync(EnableVpcClassicLinkRequest enableVpcClassicLinkRequest);
 
@@ -7798,6 +8903,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the EnableVpcClassicLink operation returned by the service.
      * @sample AmazonEC2AsyncHandler.EnableVpcClassicLink
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLink" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<EnableVpcClassicLinkResult> enableVpcClassicLinkAsync(EnableVpcClassicLinkRequest enableVpcClassicLinkRequest,
             com.amazonaws.handlers.AsyncHandler<EnableVpcClassicLinkRequest, EnableVpcClassicLinkResult> asyncHandler);
@@ -7808,8 +8915,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's
      * linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed
      * from a linked EC2-Classic instance. For more information about ClassicLink, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon
+     * Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param enableVpcClassicLinkDnsSupportRequest
@@ -7817,6 +8924,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the EnableVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2Async.EnableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EnableVpcClassicLinkDnsSupportResult> enableVpcClassicLinkDnsSupportAsync(
             EnableVpcClassicLinkDnsSupportRequest enableVpcClassicLinkDnsSupportRequest);
@@ -7827,8 +8936,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's
      * linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed
      * from a linked EC2-Classic instance. For more information about ClassicLink, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon
+     * Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param enableVpcClassicLinkDnsSupportRequest
@@ -7840,6 +8949,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the EnableVpcClassicLinkDnsSupport operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.EnableVpcClassicLinkDnsSupport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLinkDnsSupport"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<EnableVpcClassicLinkDnsSupportResult> enableVpcClassicLinkDnsSupportAsync(
             EnableVpcClassicLinkDnsSupportRequest enableVpcClassicLinkDnsSupportRequest,
@@ -7871,6 +8982,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for GetConsoleOutput.
      * @return A Java Future containing the result of the GetConsoleOutput operation returned by the service.
      * @sample AmazonEC2Async.GetConsoleOutput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleOutput" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetConsoleOutputResult> getConsoleOutputAsync(GetConsoleOutputRequest getConsoleOutputRequest);
 
@@ -7904,6 +9017,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetConsoleOutput operation returned by the service.
      * @sample AmazonEC2AsyncHandler.GetConsoleOutput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleOutput" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetConsoleOutputResult> getConsoleOutputAsync(GetConsoleOutputRequest getConsoleOutputRequest,
             com.amazonaws.handlers.AsyncHandler<GetConsoleOutputRequest, GetConsoleOutputResult> asyncHandler);
@@ -7920,6 +9035,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for the request.
      * @return A Java Future containing the result of the GetConsoleScreenshot operation returned by the service.
      * @sample AmazonEC2Async.GetConsoleScreenshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleScreenshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetConsoleScreenshotResult> getConsoleScreenshotAsync(GetConsoleScreenshotRequest getConsoleScreenshotRequest);
 
@@ -7939,6 +9056,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetConsoleScreenshot operation returned by the service.
      * @sample AmazonEC2AsyncHandler.GetConsoleScreenshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleScreenshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetConsoleScreenshotResult> getConsoleScreenshotAsync(GetConsoleScreenshotRequest getConsoleScreenshotRequest,
             com.amazonaws.handlers.AsyncHandler<GetConsoleScreenshotRequest, GetConsoleScreenshotResult> asyncHandler);
@@ -7957,6 +9076,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the GetHostReservationPurchasePreview operation returned by the
      *         service.
      * @sample AmazonEC2Async.GetHostReservationPurchasePreview
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetHostReservationPurchasePreview"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetHostReservationPurchasePreviewResult> getHostReservationPurchasePreviewAsync(
             GetHostReservationPurchasePreviewRequest getHostReservationPurchasePreviewRequest);
@@ -7979,6 +9100,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the GetHostReservationPurchasePreview operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.GetHostReservationPurchasePreview
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetHostReservationPurchasePreview"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetHostReservationPurchasePreviewResult> getHostReservationPurchasePreviewAsync(
             GetHostReservationPurchasePreviewRequest getHostReservationPurchasePreviewRequest,
@@ -8007,6 +9130,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for GetPasswordData.
      * @return A Java Future containing the result of the GetPasswordData operation returned by the service.
      * @sample AmazonEC2Async.GetPasswordData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetPasswordData" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetPasswordDataResult> getPasswordDataAsync(GetPasswordDataRequest getPasswordDataRequest);
 
@@ -8037,14 +9162,16 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the GetPasswordData operation returned by the service.
      * @sample AmazonEC2AsyncHandler.GetPasswordData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetPasswordData" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<GetPasswordDataResult> getPasswordDataAsync(GetPasswordDataRequest getPasswordDataRequest,
             com.amazonaws.handlers.AsyncHandler<GetPasswordDataRequest, GetPasswordDataResult> asyncHandler);
 
     /**
      * <p>
-     * Returns details about the values and term of your specified Convertible Reserved Instances. When an offering ID
-     * is specified it returns information about whether the exchange is valid and can be performed.
+     * Returns details about the values and term of your specified Convertible Reserved Instances. When a target
+     * configuration is specified, it returns information about whether the exchange is valid and can be performed.
      * </p>
      * 
      * @param getReservedInstancesExchangeQuoteRequest
@@ -8052,14 +9179,16 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the GetReservedInstancesExchangeQuote operation returned by the
      *         service.
      * @sample AmazonEC2Async.GetReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetReservedInstancesExchangeQuoteResult> getReservedInstancesExchangeQuoteAsync(
             GetReservedInstancesExchangeQuoteRequest getReservedInstancesExchangeQuoteRequest);
 
     /**
      * <p>
-     * Returns details about the values and term of your specified Convertible Reserved Instances. When an offering ID
-     * is specified it returns information about whether the exchange is valid and can be performed.
+     * Returns details about the values and term of your specified Convertible Reserved Instances. When a target
+     * configuration is specified, it returns information about whether the exchange is valid and can be performed.
      * </p>
      * 
      * @param getReservedInstancesExchangeQuoteRequest
@@ -8071,6 +9200,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the GetReservedInstancesExchangeQuote operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.GetReservedInstancesExchangeQuote
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetReservedInstancesExchangeQuote"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<GetReservedInstancesExchangeQuoteResult> getReservedInstancesExchangeQuoteAsync(
             GetReservedInstancesExchangeQuoteRequest getReservedInstancesExchangeQuoteRequest,
@@ -8088,6 +9219,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ImportImage.
      * @return A Java Future containing the result of the ImportImage operation returned by the service.
      * @sample AmazonEC2Async.ImportImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportImageResult> importImageAsync(ImportImageRequest importImageRequest);
 
@@ -8107,6 +9240,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportImage operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ImportImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportImageResult> importImageAsync(ImportImageRequest importImageRequest,
             com.amazonaws.handlers.AsyncHandler<ImportImageRequest, ImportImageResult> asyncHandler);
@@ -8141,6 +9276,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ImportInstance.
      * @return A Java Future containing the result of the ImportInstance operation returned by the service.
      * @sample AmazonEC2Async.ImportInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportInstanceResult> importInstanceAsync(ImportInstanceRequest importInstanceRequest);
 
@@ -8164,6 +9301,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportInstance operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ImportInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstance" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportInstanceResult> importInstanceAsync(ImportInstanceRequest importInstanceRequest,
             com.amazonaws.handlers.AsyncHandler<ImportInstanceRequest, ImportInstanceResult> asyncHandler);
@@ -8185,6 +9324,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ImportKeyPair.
      * @return A Java Future containing the result of the ImportKeyPair operation returned by the service.
      * @sample AmazonEC2Async.ImportKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportKeyPairResult> importKeyPairAsync(ImportKeyPairRequest importKeyPairRequest);
 
@@ -8209,6 +9350,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportKeyPair operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ImportKeyPair
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPair" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportKeyPairResult> importKeyPairAsync(ImportKeyPairRequest importKeyPairRequest,
             com.amazonaws.handlers.AsyncHandler<ImportKeyPairRequest, ImportKeyPairResult> asyncHandler);
@@ -8222,6 +9365,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ImportSnapshot.
      * @return A Java Future containing the result of the ImportSnapshot operation returned by the service.
      * @sample AmazonEC2Async.ImportSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportSnapshotResult> importSnapshotAsync(ImportSnapshotRequest importSnapshotRequest);
 
@@ -8238,6 +9383,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportSnapshot operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ImportSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshot" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportSnapshotResult> importSnapshotAsync(ImportSnapshotRequest importSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<ImportSnapshotRequest, ImportSnapshotResult> asyncHandler);
@@ -8272,6 +9419,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ImportVolume.
      * @return A Java Future containing the result of the ImportVolume operation returned by the service.
      * @sample AmazonEC2Async.ImportVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportVolumeResult> importVolumeAsync(ImportVolumeRequest importVolumeRequest);
 
@@ -8294,6 +9443,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ImportVolume operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ImportVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolume" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ImportVolumeResult> importVolumeAsync(ImportVolumeRequest importVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<ImportVolumeRequest, ImportVolumeResult> asyncHandler);
@@ -8311,6 +9462,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyHosts.
      * @return A Java Future containing the result of the ModifyHosts operation returned by the service.
      * @sample AmazonEC2Async.ModifyHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyHostsResult> modifyHostsAsync(ModifyHostsRequest modifyHostsRequest);
 
@@ -8331,6 +9484,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyHosts operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyHostsResult> modifyHostsAsync(ModifyHostsRequest modifyHostsRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyHostsRequest, ModifyHostsResult> asyncHandler);
@@ -8358,6 +9513,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters of ModifyIdFormat.
      * @return A Java Future containing the result of the ModifyIdFormat operation returned by the service.
      * @sample AmazonEC2Async.ModifyIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyIdFormatResult> modifyIdFormatAsync(ModifyIdFormatRequest modifyIdFormatRequest);
 
@@ -8388,6 +9545,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyIdFormat operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyIdFormatResult> modifyIdFormatAsync(ModifyIdFormatRequest modifyIdFormatRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyIdFormatRequest, ModifyIdFormatResult> asyncHandler);
@@ -8417,6 +9576,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters of ModifyIdentityIdFormat.
      * @return A Java Future containing the result of the ModifyIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2Async.ModifyIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdentityIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyIdentityIdFormatResult> modifyIdentityIdFormatAsync(ModifyIdentityIdFormatRequest modifyIdentityIdFormatRequest);
 
@@ -8449,6 +9610,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyIdentityIdFormat operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyIdentityIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdentityIdFormat" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyIdentityIdFormatResult> modifyIdentityIdFormatAsync(ModifyIdentityIdFormatRequest modifyIdentityIdFormatRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyIdentityIdFormatRequest, ModifyIdentityIdFormatResult> asyncHandler);
@@ -8474,6 +9637,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyImageAttribute.
      * @return A Java Future containing the result of the ModifyImageAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifyImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyImageAttributeResult> modifyImageAttributeAsync(ModifyImageAttributeRequest modifyImageAttributeRequest);
 
@@ -8502,6 +9667,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyImageAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyImageAttributeResult> modifyImageAttributeAsync(ModifyImageAttributeRequest modifyImageAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyImageAttributeRequest, ModifyImageAttributeResult> asyncHandler);
@@ -8520,6 +9687,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyInstanceAttribute.
      * @return A Java Future containing the result of the ModifyInstanceAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifyInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyInstanceAttributeResult> modifyInstanceAttributeAsync(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest);
 
@@ -8541,6 +9710,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyInstanceAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyInstanceAttributeResult> modifyInstanceAttributeAsync(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyInstanceAttributeRequest, ModifyInstanceAttributeResult> asyncHandler);
@@ -8571,6 +9742,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyInstancePlacement.
      * @return A Java Future containing the result of the ModifyInstancePlacement operation returned by the service.
      * @sample AmazonEC2Async.ModifyInstancePlacement
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstancePlacement" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyInstancePlacementResult> modifyInstancePlacementAsync(ModifyInstancePlacementRequest modifyInstancePlacementRequest);
 
@@ -8604,6 +9777,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyInstancePlacement operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyInstancePlacement
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstancePlacement" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyInstancePlacementResult> modifyInstancePlacementAsync(ModifyInstancePlacementRequest modifyInstancePlacementRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyInstancePlacementRequest, ModifyInstancePlacementResult> asyncHandler);
@@ -8618,6 +9793,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ModifyNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2Async.ModifyNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyNetworkInterfaceAttributeResult> modifyNetworkInterfaceAttributeAsync(
             ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest);
@@ -8636,6 +9813,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ModifyNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.ModifyNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyNetworkInterfaceAttributeResult> modifyNetworkInterfaceAttributeAsync(
             ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest,
@@ -8657,6 +9836,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyReservedInstances.
      * @return A Java Future containing the result of the ModifyReservedInstances operation returned by the service.
      * @sample AmazonEC2Async.ModifyReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReservedInstancesResult> modifyReservedInstancesAsync(ModifyReservedInstancesRequest modifyReservedInstancesRequest);
 
@@ -8680,6 +9861,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyReservedInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyReservedInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifyReservedInstancesResult> modifyReservedInstancesAsync(ModifyReservedInstancesRequest modifyReservedInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyReservedInstancesRequest, ModifyReservedInstancesResult> asyncHandler);
@@ -8706,6 +9889,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifySnapshotAttribute.
      * @return A Java Future containing the result of the ModifySnapshotAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifySnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifySnapshotAttributeResult> modifySnapshotAttributeAsync(ModifySnapshotAttributeRequest modifySnapshotAttributeRequest);
 
@@ -8735,6 +9920,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifySnapshotAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifySnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ModifySnapshotAttributeResult> modifySnapshotAttributeAsync(ModifySnapshotAttributeRequest modifySnapshotAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifySnapshotAttributeRequest, ModifySnapshotAttributeResult> asyncHandler);
@@ -8766,6 +9953,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifySpotFleetRequest.
      * @return A Java Future containing the result of the ModifySpotFleetRequest operation returned by the service.
      * @sample AmazonEC2Async.ModifySpotFleetRequest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySpotFleetRequest" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifySpotFleetRequestResult> modifySpotFleetRequestAsync(ModifySpotFleetRequestRequest modifySpotFleetRequestRequest);
 
@@ -8800,25 +9989,29 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifySpotFleetRequest operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifySpotFleetRequest
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySpotFleetRequest" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifySpotFleetRequestResult> modifySpotFleetRequestAsync(ModifySpotFleetRequestRequest modifySpotFleetRequestRequest,
             com.amazonaws.handlers.AsyncHandler<ModifySpotFleetRequestRequest, ModifySpotFleetRequestResult> asyncHandler);
 
     /**
      * <p>
-     * Modifies a subnet attribute.
+     * Modifies a subnet attribute. You can only modify one attribute at a time.
      * </p>
      * 
      * @param modifySubnetAttributeRequest
      *        Contains the parameters for ModifySubnetAttribute.
      * @return A Java Future containing the result of the ModifySubnetAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifySubnetAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySubnetAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifySubnetAttributeResult> modifySubnetAttributeAsync(ModifySubnetAttributeRequest modifySubnetAttributeRequest);
 
     /**
      * <p>
-     * Modifies a subnet attribute.
+     * Modifies a subnet attribute. You can only modify one attribute at a time.
      * </p>
      * 
      * @param modifySubnetAttributeRequest
@@ -8829,9 +10022,118 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifySubnetAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifySubnetAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySubnetAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifySubnetAttributeResult> modifySubnetAttributeAsync(ModifySubnetAttributeRequest modifySubnetAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifySubnetAttributeRequest, ModifySubnetAttributeResult> asyncHandler);
+
+    /**
+     * <p>
+     * You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS
+     * capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply
+     * these changes without stopping the instance or detaching the volume from it. For more information about modifying
+     * an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * <p>
+     * When you complete a resize operation on your volume, you need to extend the volume's file-system size to take
+     * advantage of the new storage capacity. For information about extending a Linux file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux"
+     * >Extending a Linux File System</a>. For information about extending a Windows file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows"
+     * >Extending a Windows File System</a>.
+     * </p>
+     * <p>
+     * You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. You can also track the status of a modification using the
+     * <a>DescribeVolumesModifications</a> API. For information about tracking status changes using either method, see
+     * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications</a>.
+     * </p>
+     * <note>
+     * <p>
+     * With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume
+     * or stopping and restarting the instance. For more information about modifying an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * </note> <note>
+     * <p>
+     * If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours
+     * before applying further modifications to the affected EBS volume.
+     * </p>
+     * </note>
+     * 
+     * @param modifyVolumeRequest
+     * @return A Java Future containing the result of the ModifyVolume operation returned by the service.
+     * @sample AmazonEC2Async.ModifyVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolume" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyVolumeResult> modifyVolumeAsync(ModifyVolumeRequest modifyVolumeRequest);
+
+    /**
+     * <p>
+     * You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS
+     * capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply
+     * these changes without stopping the instance or detaching the volume from it. For more information about modifying
+     * an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * <p>
+     * When you complete a resize operation on your volume, you need to extend the volume's file-system size to take
+     * advantage of the new storage capacity. For information about extending a Linux file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux"
+     * >Extending a Linux File System</a>. For information about extending a Windows file system, see <a href=
+     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows"
+     * >Extending a Windows File System</a>.
+     * </p>
+     * <p>
+     * You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about
+     * CloudWatch Events, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/">Amazon CloudWatch
+     * Events User Guide</a>. You can also track the status of a modification using the
+     * <a>DescribeVolumesModifications</a> API. For information about tracking status changes using either method, see
+     * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods">Monitoring
+     * Volume Modifications</a>.
+     * </p>
+     * <note>
+     * <p>
+     * With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume
+     * or stopping and restarting the instance. For more information about modifying an EBS volume running Linux, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Linux</a>. For more information about modifying an EBS volume running Windows, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html">Modifying the Size, IOPS, or
+     * Type of an EBS Volume on Windows</a>.
+     * </p>
+     * </note> <note>
+     * <p>
+     * If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours
+     * before applying further modifications to the affected EBS volume.
+     * </p>
+     * </note>
+     * 
+     * @param modifyVolumeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyVolume operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.ModifyVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolume" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyVolumeResult> modifyVolumeAsync(ModifyVolumeRequest modifyVolumeRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyVolumeRequest, ModifyVolumeResult> asyncHandler);
 
     /**
      * <p>
@@ -8851,6 +10153,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyVolumeAttribute.
      * @return A Java Future containing the result of the ModifyVolumeAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifyVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolumeAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVolumeAttributeResult> modifyVolumeAttributeAsync(ModifyVolumeAttributeRequest modifyVolumeAttributeRequest);
 
@@ -8876,6 +10180,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyVolumeAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyVolumeAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolumeAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVolumeAttributeResult> modifyVolumeAttributeAsync(ModifyVolumeAttributeRequest modifyVolumeAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyVolumeAttributeRequest, ModifyVolumeAttributeResult> asyncHandler);
@@ -8889,6 +10195,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyVpcAttribute.
      * @return A Java Future containing the result of the ModifyVpcAttribute operation returned by the service.
      * @sample AmazonEC2Async.ModifyVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcAttributeResult> modifyVpcAttributeAsync(ModifyVpcAttributeRequest modifyVpcAttributeRequest);
 
@@ -8905,6 +10213,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyVpcAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyVpcAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcAttributeResult> modifyVpcAttributeAsync(ModifyVpcAttributeRequest modifyVpcAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyVpcAttributeRequest, ModifyVpcAttributeResult> asyncHandler);
@@ -8919,6 +10229,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ModifyVpcEndpoint.
      * @return A Java Future containing the result of the ModifyVpcEndpoint operation returned by the service.
      * @sample AmazonEC2Async.ModifyVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcEndpointResult> modifyVpcEndpointAsync(ModifyVpcEndpointRequest modifyVpcEndpointRequest);
 
@@ -8936,6 +10248,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ModifyVpcEndpoint operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ModifyVpcEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcEndpointResult> modifyVpcEndpointAsync(ModifyVpcEndpointRequest modifyVpcEndpointRequest,
             com.amazonaws.handlers.AsyncHandler<ModifyVpcEndpointRequest, ModifyVpcEndpointResult> asyncHandler);
@@ -8976,6 +10290,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ModifyVpcPeeringConnectionOptions operation returned by the
      *         service.
      * @sample AmazonEC2Async.ModifyVpcPeeringConnectionOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcPeeringConnectionOptions"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcPeeringConnectionOptionsResult> modifyVpcPeeringConnectionOptionsAsync(
             ModifyVpcPeeringConnectionOptionsRequest modifyVpcPeeringConnectionOptionsRequest);
@@ -9020,6 +10336,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ModifyVpcPeeringConnectionOptions operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.ModifyVpcPeeringConnectionOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcPeeringConnectionOptions"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ModifyVpcPeeringConnectionOptionsResult> modifyVpcPeeringConnectionOptionsAsync(
             ModifyVpcPeeringConnectionOptionsRequest modifyVpcPeeringConnectionOptionsRequest,
@@ -9027,23 +10345,31 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
-     * Enables monitoring for a running instance. For more information about monitoring instances, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
-     * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information,
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances
+     * and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * To disable detailed monitoring, see .
      * </p>
      * 
      * @param monitorInstancesRequest
      *        Contains the parameters for MonitorInstances.
      * @return A Java Future containing the result of the MonitorInstances operation returned by the service.
      * @sample AmazonEC2Async.MonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<MonitorInstancesResult> monitorInstancesAsync(MonitorInstancesRequest monitorInstancesRequest);
 
     /**
      * <p>
-     * Enables monitoring for a running instance. For more information about monitoring instances, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
-     * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information,
+     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances
+     * and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * To disable detailed monitoring, see .
      * </p>
      * 
      * @param monitorInstancesRequest
@@ -9054,6 +10380,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the MonitorInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.MonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<MonitorInstancesResult> monitorInstancesAsync(MonitorInstancesRequest monitorInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<MonitorInstancesRequest, MonitorInstancesResult> asyncHandler);
@@ -9071,6 +10399,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for MoveAddressToVpc.
      * @return A Java Future containing the result of the MoveAddressToVpc operation returned by the service.
      * @sample AmazonEC2Async.MoveAddressToVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveAddressToVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<MoveAddressToVpcResult> moveAddressToVpcAsync(MoveAddressToVpcRequest moveAddressToVpcRequest);
 
@@ -9091,6 +10421,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the MoveAddressToVpc operation returned by the service.
      * @sample AmazonEC2AsyncHandler.MoveAddressToVpc
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveAddressToVpc" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<MoveAddressToVpcResult> moveAddressToVpcAsync(MoveAddressToVpcRequest moveAddressToVpcRequest,
             com.amazonaws.handlers.AsyncHandler<MoveAddressToVpcRequest, MoveAddressToVpcResult> asyncHandler);
@@ -9105,6 +10437,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @param purchaseHostReservationRequest
      * @return A Java Future containing the result of the PurchaseHostReservation operation returned by the service.
      * @sample AmazonEC2Async.PurchaseHostReservation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseHostReservation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseHostReservationResult> purchaseHostReservationAsync(PurchaseHostReservationRequest purchaseHostReservationRequest);
 
@@ -9122,6 +10456,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the PurchaseHostReservation operation returned by the service.
      * @sample AmazonEC2AsyncHandler.PurchaseHostReservation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseHostReservation" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseHostReservationResult> purchaseHostReservationAsync(PurchaseHostReservationRequest purchaseHostReservationRequest,
             com.amazonaws.handlers.AsyncHandler<PurchaseHostReservationRequest, PurchaseHostReservationResult> asyncHandler);
@@ -9148,6 +10484,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the PurchaseReservedInstancesOffering operation returned by the
      *         service.
      * @sample AmazonEC2Async.PurchaseReservedInstancesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseReservedInstancesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseReservedInstancesOfferingResult> purchaseReservedInstancesOfferingAsync(
             PurchaseReservedInstancesOfferingRequest purchaseReservedInstancesOfferingRequest);
@@ -9178,6 +10516,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the PurchaseReservedInstancesOffering operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.PurchaseReservedInstancesOffering
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseReservedInstancesOffering"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseReservedInstancesOfferingResult> purchaseReservedInstancesOfferingAsync(
             PurchaseReservedInstancesOfferingRequest purchaseReservedInstancesOfferingRequest,
@@ -9201,6 +10541,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for PurchaseScheduledInstances.
      * @return A Java Future containing the result of the PurchaseScheduledInstances operation returned by the service.
      * @sample AmazonEC2Async.PurchaseScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseScheduledInstancesResult> purchaseScheduledInstancesAsync(
             PurchaseScheduledInstancesRequest purchaseScheduledInstancesRequest);
@@ -9227,6 +10569,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the PurchaseScheduledInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.PurchaseScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseScheduledInstances" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<PurchaseScheduledInstancesResult> purchaseScheduledInstancesAsync(
             PurchaseScheduledInstancesRequest purchaseScheduledInstancesRequest,
@@ -9251,6 +10595,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RebootInstances.
      * @return A Java Future containing the result of the RebootInstances operation returned by the service.
      * @sample AmazonEC2Async.RebootInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RebootInstancesResult> rebootInstancesAsync(RebootInstancesRequest rebootInstancesRequest);
 
@@ -9277,6 +10623,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RebootInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RebootInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RebootInstancesResult> rebootInstancesAsync(RebootInstancesRequest rebootInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<RebootInstancesRequest, RebootInstancesResult> asyncHandler);
@@ -9296,41 +10644,32 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </note>
      * <p>
      * You can also use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a snapshot of a root
-     * device volume. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_LaunchingInstanceFromSnapshot.html">Launching an
-     * Instance from a Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * device volume. You specify the snapshot using the block device mapping. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html">Launching a Linux
+     * Instance from a Backup</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
-     * <important>
+     * <p>
+     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
+     * </p>
      * <p>
      * Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use
-     * the EC2 <code>billingProduct</code> code associated with an AMI to verify subscription status for package
-     * updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances
-     * launched from such an AMI will not be able to connect to package update infrastructure.
+     * the EC2 billing product code associated with an AMI to verify the subscription status for package updates.
+     * Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances launched from
+     * such an AMI will not be able to connect to package update infrastructure. To create an AMI that must retain
+     * billing codes, see <a>CreateImage</a>.
      * </p>
-     * <p>
-     * Similarly, although you can create a Windows AMI from a snapshot, you can't successfully launch an instance from
-     * the AMI.
-     * </p>
-     * <p>
-     * To create Windows AMIs or to create AMIs for Linux operating systems that must retain AMI billing codes to work
-     * properly, see <a>CreateImage</a>.
-     * </p>
-     * </important>
      * <p>
      * If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance
      * store volume invalidates its registration. If you make changes to an image, deregister the previous image and
      * register the new image.
      * </p>
-     * <note>
-     * <p>
-     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
-     * </p>
-     * </note>
      * 
      * @param registerImageRequest
      *        Contains the parameters for RegisterImage.
      * @return A Java Future containing the result of the RegisterImage operation returned by the service.
      * @sample AmazonEC2Async.RegisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterImageResult> registerImageAsync(RegisterImageRequest registerImageRequest);
 
@@ -9349,36 +10688,25 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * </note>
      * <p>
      * You can also use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a snapshot of a root
-     * device volume. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_LaunchingInstanceFromSnapshot.html">Launching an
-     * Instance from a Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * device volume. You specify the snapshot using the block device mapping. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html">Launching a Linux
+     * Instance from a Backup</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
-     * <important>
+     * <p>
+     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
+     * </p>
      * <p>
      * Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use
-     * the EC2 <code>billingProduct</code> code associated with an AMI to verify subscription status for package
-     * updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances
-     * launched from such an AMI will not be able to connect to package update infrastructure.
+     * the EC2 billing product code associated with an AMI to verify the subscription status for package updates.
+     * Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances launched from
+     * such an AMI will not be able to connect to package update infrastructure. To create an AMI that must retain
+     * billing codes, see <a>CreateImage</a>.
      * </p>
-     * <p>
-     * Similarly, although you can create a Windows AMI from a snapshot, you can't successfully launch an instance from
-     * the AMI.
-     * </p>
-     * <p>
-     * To create Windows AMIs or to create AMIs for Linux operating systems that must retain AMI billing codes to work
-     * properly, see <a>CreateImage</a>.
-     * </p>
-     * </important>
      * <p>
      * If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance
      * store volume invalidates its registration. If you make changes to an image, deregister the previous image and
      * register the new image.
      * </p>
-     * <note>
-     * <p>
-     * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
-     * </p>
-     * </note>
      * 
      * @param registerImageRequest
      *        Contains the parameters for RegisterImage.
@@ -9388,6 +10716,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RegisterImage operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RegisterImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterImage" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RegisterImageResult> registerImageAsync(RegisterImageRequest registerImageRequest,
             com.amazonaws.handlers.AsyncHandler<RegisterImageRequest, RegisterImageResult> asyncHandler);
@@ -9404,6 +10734,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RejectVpcPeeringConnection.
      * @return A Java Future containing the result of the RejectVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2Async.RejectVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RejectVpcPeeringConnectionResult> rejectVpcPeeringConnectionAsync(
             RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest);
@@ -9424,6 +10756,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RejectVpcPeeringConnection operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RejectVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectVpcPeeringConnection" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RejectVpcPeeringConnectionResult> rejectVpcPeeringConnectionAsync(
             RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest,
@@ -9452,6 +10786,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ReleaseAddress.
      * @return A Java Future containing the result of the ReleaseAddress operation returned by the service.
      * @sample AmazonEC2Async.ReleaseAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReleaseAddressResult> releaseAddressAsync(ReleaseAddressRequest releaseAddressRequest);
 
@@ -9482,6 +10818,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReleaseAddress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ReleaseAddress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddress" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReleaseAddressResult> releaseAddressAsync(ReleaseAddressRequest releaseAddressRequest,
             com.amazonaws.handlers.AsyncHandler<ReleaseAddressRequest, ReleaseAddressResult> asyncHandler);
@@ -9506,6 +10844,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ReleaseHosts.
      * @return A Java Future containing the result of the ReleaseHosts operation returned by the service.
      * @sample AmazonEC2Async.ReleaseHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReleaseHostsResult> releaseHostsAsync(ReleaseHostsRequest releaseHostsRequest);
 
@@ -9533,9 +10873,56 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReleaseHosts operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ReleaseHosts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseHosts" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReleaseHostsResult> releaseHostsAsync(ReleaseHostsRequest releaseHostsRequest,
             com.amazonaws.handlers.AsyncHandler<ReleaseHostsRequest, ReleaseHostsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM
+     * instance profile that's associated with an instance without having to disassociate the existing IAM instance
+     * profile first.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param replaceIamInstanceProfileAssociationRequest
+     * @return A Java Future containing the result of the ReplaceIamInstanceProfileAssociation operation returned by the
+     *         service.
+     * @sample AmazonEC2Async.ReplaceIamInstanceProfileAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceIamInstanceProfileAssociation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ReplaceIamInstanceProfileAssociationResult> replaceIamInstanceProfileAssociationAsync(
+            ReplaceIamInstanceProfileAssociationRequest replaceIamInstanceProfileAssociationRequest);
+
+    /**
+     * <p>
+     * Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM
+     * instance profile that's associated with an instance without having to disassociate the existing IAM instance
+     * profile first.
+     * </p>
+     * <p>
+     * Use <a>DescribeIamInstanceProfileAssociations</a> to get the association ID.
+     * </p>
+     * 
+     * @param replaceIamInstanceProfileAssociationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ReplaceIamInstanceProfileAssociation operation returned by the
+     *         service.
+     * @sample AmazonEC2AsyncHandler.ReplaceIamInstanceProfileAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceIamInstanceProfileAssociation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ReplaceIamInstanceProfileAssociationResult> replaceIamInstanceProfileAssociationAsync(
+            ReplaceIamInstanceProfileAssociationRequest replaceIamInstanceProfileAssociationRequest,
+            com.amazonaws.handlers.AsyncHandler<ReplaceIamInstanceProfileAssociationRequest, ReplaceIamInstanceProfileAssociationResult> asyncHandler);
 
     /**
      * <p>
@@ -9550,6 +10937,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ReplaceNetworkAclAssociation operation returned by the
      *         service.
      * @sample AmazonEC2Async.ReplaceNetworkAclAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplaceNetworkAclAssociationResult> replaceNetworkAclAssociationAsync(
             ReplaceNetworkAclAssociationRequest replaceNetworkAclAssociationRequest);
@@ -9571,6 +10960,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ReplaceNetworkAclAssociation operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.ReplaceNetworkAclAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplaceNetworkAclAssociationResult> replaceNetworkAclAssociationAsync(
             ReplaceNetworkAclAssociationRequest replaceNetworkAclAssociationRequest,
@@ -9587,6 +10978,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ReplaceNetworkAclEntry.
      * @return A Java Future containing the result of the ReplaceNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2Async.ReplaceNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReplaceNetworkAclEntryResult> replaceNetworkAclEntryAsync(ReplaceNetworkAclEntryRequest replaceNetworkAclEntryRequest);
 
@@ -9605,6 +10998,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReplaceNetworkAclEntry operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ReplaceNetworkAclEntry
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclEntry" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReplaceNetworkAclEntryResult> replaceNetworkAclEntryAsync(ReplaceNetworkAclEntryRequest replaceNetworkAclEntryRequest,
             com.amazonaws.handlers.AsyncHandler<ReplaceNetworkAclEntryRequest, ReplaceNetworkAclEntryResult> asyncHandler);
@@ -9612,7 +11007,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
     /**
      * <p>
      * Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet
-     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, or network interface.
+     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or
+     * egress-only Internet gateway.
      * </p>
      * <p>
      * For more information about route tables, see <a
@@ -9624,13 +11020,16 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ReplaceRoute.
      * @return A Java Future containing the result of the ReplaceRoute operation returned by the service.
      * @sample AmazonEC2Async.ReplaceRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReplaceRouteResult> replaceRouteAsync(ReplaceRouteRequest replaceRouteRequest);
 
     /**
      * <p>
      * Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet
-     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, or network interface.
+     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or
+     * egress-only Internet gateway.
      * </p>
      * <p>
      * For more information about route tables, see <a
@@ -9646,6 +11045,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReplaceRoute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ReplaceRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRoute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReplaceRouteResult> replaceRouteAsync(ReplaceRouteRequest replaceRouteRequest,
             com.amazonaws.handlers.AsyncHandler<ReplaceRouteRequest, ReplaceRouteResult> asyncHandler);
@@ -9667,6 +11068,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ReplaceRouteTableAssociation operation returned by the
      *         service.
      * @sample AmazonEC2Async.ReplaceRouteTableAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRouteTableAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplaceRouteTableAssociationResult> replaceRouteTableAssociationAsync(
             ReplaceRouteTableAssociationRequest replaceRouteTableAssociationRequest);
@@ -9692,6 +11095,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ReplaceRouteTableAssociation operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.ReplaceRouteTableAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRouteTableAssociation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ReplaceRouteTableAssociationResult> replaceRouteTableAssociationAsync(
             ReplaceRouteTableAssociationRequest replaceRouteTableAssociationRequest,
@@ -9712,6 +11117,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ReportInstanceStatus.
      * @return A Java Future containing the result of the ReportInstanceStatus operation returned by the service.
      * @sample AmazonEC2Async.ReportInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReportInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReportInstanceStatusResult> reportInstanceStatusAsync(ReportInstanceStatusRequest reportInstanceStatusRequest);
 
@@ -9734,6 +11141,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ReportInstanceStatus operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ReportInstanceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReportInstanceStatus" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ReportInstanceStatusResult> reportInstanceStatusAsync(ReportInstanceStatusRequest reportInstanceStatusRequest,
             com.amazonaws.handlers.AsyncHandler<ReportInstanceStatusRequest, ReportInstanceStatusResult> asyncHandler);
@@ -9766,6 +11175,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RequestSpotFleet.
      * @return A Java Future containing the result of the RequestSpotFleet operation returned by the service.
      * @sample AmazonEC2Async.RequestSpotFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotFleet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestSpotFleetResult> requestSpotFleetAsync(RequestSpotFleetRequest requestSpotFleetRequest);
 
@@ -9801,6 +11212,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RequestSpotFleet operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RequestSpotFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotFleet" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestSpotFleetResult> requestSpotFleetAsync(RequestSpotFleetRequest requestSpotFleetRequest,
             com.amazonaws.handlers.AsyncHandler<RequestSpotFleetRequest, RequestSpotFleetResult> asyncHandler);
@@ -9818,6 +11231,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RequestSpotInstances.
      * @return A Java Future containing the result of the RequestSpotInstances operation returned by the service.
      * @sample AmazonEC2Async.RequestSpotInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestSpotInstancesResult> requestSpotInstancesAsync(RequestSpotInstancesRequest requestSpotInstancesRequest);
 
@@ -9838,6 +11253,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RequestSpotInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RequestSpotInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RequestSpotInstancesResult> requestSpotInstancesAsync(RequestSpotInstancesRequest requestSpotInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<RequestSpotInstancesRequest, RequestSpotInstancesResult> asyncHandler);
@@ -9856,6 +11273,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ResetImageAttribute.
      * @return A Java Future containing the result of the ResetImageAttribute operation returned by the service.
      * @sample AmazonEC2Async.ResetImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetImageAttributeResult> resetImageAttributeAsync(ResetImageAttributeRequest resetImageAttributeRequest);
 
@@ -9877,6 +11296,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResetImageAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ResetImageAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetImageAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetImageAttributeResult> resetImageAttributeAsync(ResetImageAttributeRequest resetImageAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ResetImageAttributeRequest, ResetImageAttributeResult> asyncHandler);
@@ -9899,6 +11320,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ResetInstanceAttribute.
      * @return A Java Future containing the result of the ResetInstanceAttribute operation returned by the service.
      * @sample AmazonEC2Async.ResetInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetInstanceAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetInstanceAttributeResult> resetInstanceAttributeAsync(ResetInstanceAttributeRequest resetInstanceAttributeRequest);
 
@@ -9924,6 +11347,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResetInstanceAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ResetInstanceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetInstanceAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetInstanceAttributeResult> resetInstanceAttributeAsync(ResetInstanceAttributeRequest resetInstanceAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ResetInstanceAttributeRequest, ResetInstanceAttributeResult> asyncHandler);
@@ -9938,6 +11363,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ResetNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2Async.ResetNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ResetNetworkInterfaceAttributeResult> resetNetworkInterfaceAttributeAsync(
             ResetNetworkInterfaceAttributeRequest resetNetworkInterfaceAttributeRequest);
@@ -9956,6 +11383,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * @return A Java Future containing the result of the ResetNetworkInterfaceAttribute operation returned by the
      *         service.
      * @sample AmazonEC2AsyncHandler.ResetNetworkInterfaceAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetNetworkInterfaceAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ResetNetworkInterfaceAttributeResult> resetNetworkInterfaceAttributeAsync(
             ResetNetworkInterfaceAttributeRequest resetNetworkInterfaceAttributeRequest,
@@ -9975,6 +11404,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for ResetSnapshotAttribute.
      * @return A Java Future containing the result of the ResetSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2Async.ResetSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetSnapshotAttributeResult> resetSnapshotAttributeAsync(ResetSnapshotAttributeRequest resetSnapshotAttributeRequest);
 
@@ -9996,6 +11427,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResetSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2AsyncHandler.ResetSnapshotAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetSnapshotAttributeResult> resetSnapshotAttributeAsync(ResetSnapshotAttributeRequest resetSnapshotAttributeRequest,
             com.amazonaws.handlers.AsyncHandler<ResetSnapshotAttributeRequest, ResetSnapshotAttributeResult> asyncHandler);
@@ -10011,6 +11444,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RestoreAddressToClassic.
      * @return A Java Future containing the result of the RestoreAddressToClassic operation returned by the service.
      * @sample AmazonEC2Async.RestoreAddressToClassic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreAddressToClassic" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RestoreAddressToClassicResult> restoreAddressToClassicAsync(RestoreAddressToClassicRequest restoreAddressToClassicRequest);
 
@@ -10029,6 +11464,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RestoreAddressToClassic operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RestoreAddressToClassic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreAddressToClassic" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RestoreAddressToClassicResult> restoreAddressToClassicAsync(RestoreAddressToClassicRequest restoreAddressToClassicRequest,
             com.amazonaws.handlers.AsyncHandler<RestoreAddressToClassicRequest, RestoreAddressToClassicResult> asyncHandler);
@@ -10040,9 +11477,9 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * must match the existing rule's values for the rule to be revoked.
      * </p>
      * <p>
-     * Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols,
-     * you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the
-     * ICMP type and code.
+     * Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP
+     * protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also
+     * specify the ICMP type and code.
      * </p>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
@@ -10053,6 +11490,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RevokeSecurityGroupEgress.
      * @return A Java Future containing the result of the RevokeSecurityGroupEgress operation returned by the service.
      * @sample AmazonEC2Async.RevokeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupEgress" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RevokeSecurityGroupEgressResult> revokeSecurityGroupEgressAsync(
             RevokeSecurityGroupEgressRequest revokeSecurityGroupEgressRequest);
@@ -10064,9 +11503,9 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * must match the existing rule's values for the rule to be revoked.
      * </p>
      * <p>
-     * Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols,
-     * you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the
-     * ICMP type and code.
+     * Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP
+     * protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also
+     * specify the ICMP type and code.
      * </p>
      * <p>
      * Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay
@@ -10081,6 +11520,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RevokeSecurityGroupEgress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RevokeSecurityGroupEgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupEgress" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RevokeSecurityGroupEgressResult> revokeSecurityGroupEgressAsync(
             RevokeSecurityGroupEgressRequest revokeSecurityGroupEgressRequest,
@@ -10105,6 +11546,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RevokeSecurityGroupIngress.
      * @return A Java Future containing the result of the RevokeSecurityGroupIngress operation returned by the service.
      * @sample AmazonEC2Async.RevokeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupIngress" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RevokeSecurityGroupIngressResult> revokeSecurityGroupIngressAsync(
             RevokeSecurityGroupIngressRequest revokeSecurityGroupIngressRequest);
@@ -10132,6 +11575,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RevokeSecurityGroupIngress operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RevokeSecurityGroupIngress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupIngress" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<RevokeSecurityGroupIngressResult> revokeSecurityGroupIngressAsync(
             RevokeSecurityGroupIngressRequest revokeSecurityGroupIngressRequest,
@@ -10142,6 +11587,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *
      * @see #revokeSecurityGroupIngressAsync(RevokeSecurityGroupIngressRequest)
      */
+    @Deprecated
     java.util.concurrent.Future<RevokeSecurityGroupIngressResult> revokeSecurityGroupIngressAsync();
 
     /**
@@ -10149,6 +11595,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *
      * @see #revokeSecurityGroupIngressAsync(RevokeSecurityGroupIngressRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Deprecated
     java.util.concurrent.Future<RevokeSecurityGroupIngressResult> revokeSecurityGroupIngressAsync(
             com.amazonaws.handlers.AsyncHandler<RevokeSecurityGroupIngressRequest, RevokeSecurityGroupIngressResult> asyncHandler);
 
@@ -10157,31 +11604,61 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * Launches the specified number of instances using an AMI for which you have permissions.
      * </p>
      * <p>
-     * When you launch an instance, it enters the <code>pending</code> state. After the instance is ready for you, it
-     * enters the <code>running</code> state. To check the state of your instance, call <a>DescribeInstances</a>.
+     * You can specify a number of options, or leave the default options. The following rules apply:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * [EC2-VPC] If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you
+     * don't have a default VPC, you must specify a subnet ID in the request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-Classic] If don't specify an Availability Zone, we choose one for you.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a
+     * subnet ID, the request fails. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
+     * Available Only in a VPC</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-VPC] All instances have a network interface with a primary private IPv4 address. If you don't specify this
+     * address, we choose one from the IPv4 range of your subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not all instance types support IPv6 addresses. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you don't specify a security group ID, we use the default security group. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To ensure faster instance launches, break up large requests into smaller batches. For example, create 5 separate
+     * launch requests for 100 instances each instead of 1 launch request for 500 instances.
      * </p>
      * <p>
-     * To ensure faster instance launches, break up large requests into smaller batches. For example, create five
-     * separate launch requests for 100 instances each instead of one launch request for 500 instances.
-     * </p>
-     * <p>
-     * To tag your instance, ensure that it is <code>running</code> as <a>CreateTags</a> requires a resource ID. For
-     * more information about tagging, see <a
+     * An instance is ready for you to use when it's in the <code>running</code> state. You can check the state of your
+     * instance using <a>DescribeInstances</a>. You can tag instances and EBS volumes during launch, after launch, or
+     * both. For more information, see <a>CreateTags</a> and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
-     * </p>
-     * <p>
-     * If you don't specify a security group when launching an instance, Amazon EC2 uses the default security group. For
-     * more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * [EC2-VPC only accounts] If you don't specify a subnet in the request, we choose a default subnet from your
-     * default VPC for you.
-     * </p>
-     * <p>
-     * [EC2-Classic accounts] If you're launching into EC2-Classic and you don't specify an Availability Zone, we choose
-     * one for you.
      * </p>
      * <p>
      * Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure
@@ -10190,22 +11667,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * You can provide optional user data when launching an instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a>
-     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * If any of the AMIs have a product code attached for which the user has not subscribed, <code>RunInstances</code>
-     * fails.
-     * </p>
-     * <p>
-     * Some instance types can only be launched into a VPC. If you do not have a default VPC, or if you do not specify a
-     * subnet ID in the request, <code>RunInstances</code> fails. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
-     * Available Only in a VPC</a>.
-     * </p>
-     * <p>
-     * For more information about troubleshooting, see <a
+     * For troubleshooting, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What To Do If
      * An Instance Immediately Terminates</a>, and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting
@@ -10216,6 +11678,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RunInstances.
      * @return A Java Future containing the result of the RunInstances operation returned by the service.
      * @sample AmazonEC2Async.RunInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunInstancesResult> runInstancesAsync(RunInstancesRequest runInstancesRequest);
 
@@ -10224,31 +11688,61 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * Launches the specified number of instances using an AMI for which you have permissions.
      * </p>
      * <p>
-     * When you launch an instance, it enters the <code>pending</code> state. After the instance is ready for you, it
-     * enters the <code>running</code> state. To check the state of your instance, call <a>DescribeInstances</a>.
+     * You can specify a number of options, or leave the default options. The following rules apply:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * [EC2-VPC] If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you
+     * don't have a default VPC, you must specify a subnet ID in the request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-Classic] If don't specify an Availability Zone, we choose one for you.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Some instance types must be launched into a VPC. If you do not have a default VPC, or if you do not specify a
+     * subnet ID, the request fails. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
+     * Available Only in a VPC</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * [EC2-VPC] All instances have a network interface with a primary private IPv4 address. If you don't specify this
+     * address, we choose one from the IPv4 range of your subnet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not all instance types support IPv6 addresses. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you don't specify a security group ID, we use the default security group. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To ensure faster instance launches, break up large requests into smaller batches. For example, create 5 separate
+     * launch requests for 100 instances each instead of 1 launch request for 500 instances.
      * </p>
      * <p>
-     * To ensure faster instance launches, break up large requests into smaller batches. For example, create five
-     * separate launch requests for 100 instances each instead of one launch request for 500 instances.
-     * </p>
-     * <p>
-     * To tag your instance, ensure that it is <code>running</code> as <a>CreateTags</a> requires a resource ID. For
-     * more information about tagging, see <a
+     * An instance is ready for you to use when it's in the <code>running</code> state. You can check the state of your
+     * instance using <a>DescribeInstances</a>. You can tag instances and EBS volumes during launch, after launch, or
+     * both. For more information, see <a>CreateTags</a> and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
-     * </p>
-     * <p>
-     * If you don't specify a security group when launching an instance, Amazon EC2 uses the default security group. For
-     * more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * [EC2-VPC only accounts] If you don't specify a subnet in the request, we choose a default subnet from your
-     * default VPC for you.
-     * </p>
-     * <p>
-     * [EC2-Classic accounts] If you're launching into EC2-Classic and you don't specify an Availability Zone, we choose
-     * one for you.
      * </p>
      * <p>
      * Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure
@@ -10257,22 +11751,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
      * Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * You can provide optional user data when launching an instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a>
-     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * If any of the AMIs have a product code attached for which the user has not subscribed, <code>RunInstances</code>
-     * fails.
-     * </p>
-     * <p>
-     * Some instance types can only be launched into a VPC. If you do not have a default VPC, or if you do not specify a
-     * subnet ID in the request, <code>RunInstances</code> fails. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types
-     * Available Only in a VPC</a>.
-     * </p>
-     * <p>
-     * For more information about troubleshooting, see <a
+     * For troubleshooting, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What To Do If
      * An Instance Immediately Terminates</a>, and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting
@@ -10287,6 +11766,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RunInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RunInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunInstancesResult> runInstancesAsync(RunInstancesRequest runInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<RunInstancesRequest, RunInstancesResult> asyncHandler);
@@ -10311,6 +11792,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for RunScheduledInstances.
      * @return A Java Future containing the result of the RunScheduledInstances operation returned by the service.
      * @sample AmazonEC2Async.RunScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunScheduledInstancesResult> runScheduledInstancesAsync(RunScheduledInstancesRequest runScheduledInstancesRequest);
 
@@ -10338,6 +11821,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RunScheduledInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.RunScheduledInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<RunScheduledInstancesResult> runScheduledInstancesAsync(RunScheduledInstancesRequest runScheduledInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<RunScheduledInstancesRequest, RunScheduledInstancesResult> asyncHandler);
@@ -10369,6 +11854,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for StartInstances.
      * @return A Java Future containing the result of the StartInstances operation returned by the service.
      * @sample AmazonEC2Async.StartInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartInstancesResult> startInstancesAsync(StartInstancesRequest startInstancesRequest);
 
@@ -10403,6 +11890,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.StartInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StartInstancesResult> startInstancesAsync(StartInstancesRequest startInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<StartInstancesRequest, StartInstancesResult> asyncHandler);
@@ -10445,6 +11934,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for StopInstances.
      * @return A Java Future containing the result of the StopInstances operation returned by the service.
      * @sample AmazonEC2Async.StopInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopInstancesResult> stopInstancesAsync(StopInstancesRequest stopInstancesRequest);
 
@@ -10490,6 +11981,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StopInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.StopInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<StopInstancesResult> stopInstancesAsync(StopInstancesRequest stopInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<StopInstancesRequest, StopInstancesResult> asyncHandler);
@@ -10529,6 +12022,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for TerminateInstances.
      * @return A Java Future containing the result of the TerminateInstances operation returned by the service.
      * @sample AmazonEC2Async.TerminateInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<TerminateInstancesResult> terminateInstancesAsync(TerminateInstancesRequest terminateInstancesRequest);
 
@@ -10571,9 +12066,42 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the TerminateInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.TerminateInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<TerminateInstancesResult> terminateInstancesAsync(TerminateInstancesRequest terminateInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<TerminateInstancesRequest, TerminateInstancesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Unassigns one or more IPv6 addresses from a network interface.
+     * </p>
+     * 
+     * @param unassignIpv6AddressesRequest
+     * @return A Java Future containing the result of the UnassignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2Async.UnassignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UnassignIpv6AddressesResult> unassignIpv6AddressesAsync(UnassignIpv6AddressesRequest unassignIpv6AddressesRequest);
+
+    /**
+     * <p>
+     * Unassigns one or more IPv6 addresses from a network interface.
+     * </p>
+     * 
+     * @param unassignIpv6AddressesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UnassignIpv6Addresses operation returned by the service.
+     * @sample AmazonEC2AsyncHandler.UnassignIpv6Addresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignIpv6Addresses" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UnassignIpv6AddressesResult> unassignIpv6AddressesAsync(UnassignIpv6AddressesRequest unassignIpv6AddressesRequest,
+            com.amazonaws.handlers.AsyncHandler<UnassignIpv6AddressesRequest, UnassignIpv6AddressesResult> asyncHandler);
 
     /**
      * <p>
@@ -10584,6 +12112,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for UnassignPrivateIpAddresses.
      * @return A Java Future containing the result of the UnassignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2Async.UnassignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UnassignPrivateIpAddressesResult> unassignPrivateIpAddressesAsync(
             UnassignPrivateIpAddressesRequest unassignPrivateIpAddressesRequest);
@@ -10601,6 +12131,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UnassignPrivateIpAddresses operation returned by the service.
      * @sample AmazonEC2AsyncHandler.UnassignPrivateIpAddresses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateIpAddresses" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<UnassignPrivateIpAddressesResult> unassignPrivateIpAddressesAsync(
             UnassignPrivateIpAddressesRequest unassignPrivateIpAddressesRequest,
@@ -10608,7 +12140,7 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
-     * Disables monitoring for a running instance. For more information about monitoring instances, see <a
+     * Disables detailed monitoring for a running instance. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
      * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -10617,12 +12149,14 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        Contains the parameters for UnmonitorInstances.
      * @return A Java Future containing the result of the UnmonitorInstances operation returned by the service.
      * @sample AmazonEC2Async.UnmonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UnmonitorInstancesResult> unmonitorInstancesAsync(UnmonitorInstancesRequest unmonitorInstancesRequest);
 
     /**
      * <p>
-     * Disables monitoring for a running instance. For more information about monitoring instances, see <a
+     * Disables detailed monitoring for a running instance. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and
      * Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -10635,6 +12169,8 @@ public interface AmazonEC2Async extends AmazonEC2 {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UnmonitorInstances operation returned by the service.
      * @sample AmazonEC2AsyncHandler.UnmonitorInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<UnmonitorInstancesResult> unmonitorInstancesAsync(UnmonitorInstancesRequest unmonitorInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<UnmonitorInstancesRequest, UnmonitorInstancesResult> asyncHandler);

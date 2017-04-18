@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The result of the <a>RemoveTargets</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/RemoveTargets" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -29,7 +31,7 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
     private Integer failedEntryCount;
     /**
      * <p>
-     * An array of failed target entries.
+     * The failed target entries.
      * </p>
      */
     private java.util.List<RemoveTargetsResultEntry> failedEntries;
@@ -76,10 +78,10 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * An array of failed target entries.
+     * The failed target entries.
      * </p>
      * 
-     * @return An array of failed target entries.
+     * @return The failed target entries.
      */
 
     public java.util.List<RemoveTargetsResultEntry> getFailedEntries() {
@@ -88,11 +90,11 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * An array of failed target entries.
+     * The failed target entries.
      * </p>
      * 
      * @param failedEntries
-     *        An array of failed target entries.
+     *        The failed target entries.
      */
 
     public void setFailedEntries(java.util.Collection<RemoveTargetsResultEntry> failedEntries) {
@@ -106,7 +108,7 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * An array of failed target entries.
+     * The failed target entries.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -115,7 +117,7 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
      * </p>
      * 
      * @param failedEntries
-     *        An array of failed target entries.
+     *        The failed target entries.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -131,11 +133,11 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * An array of failed target entries.
+     * The failed target entries.
      * </p>
      * 
      * @param failedEntries
-     *        An array of failed target entries.
+     *        The failed target entries.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,9 +158,9 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFailedEntryCount() != null)
-            sb.append("FailedEntryCount: " + getFailedEntryCount() + ",");
+            sb.append("FailedEntryCount: ").append(getFailedEntryCount()).append(",");
         if (getFailedEntries() != null)
-            sb.append("FailedEntries: " + getFailedEntries());
+            sb.append("FailedEntries: ").append(getFailedEntries());
         sb.append("}");
         return sb.toString();
     }
@@ -202,4 +204,5 @@ public class RemoveTargetsResult extends com.amazonaws.AmazonWebServiceResult<co
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

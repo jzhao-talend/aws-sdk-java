@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The detailed description of the cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/Cluster" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Cluster implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -39,8 +46,26 @@ public class Cluster implements Serializable, Cloneable {
      * </p>
      */
     private ClusterStatus status;
-
+    /**
+     * <p>
+     * Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID,
+     * IAM instance profile, and so on.
+     * </p>
+     */
     private Ec2InstanceAttributes ec2InstanceAttributes;
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     */
+    private String instanceCollectionType;
     /**
      * <p>
      * The path to the Amazon S3 location where logs for this cluster are stored.
@@ -81,10 +106,10 @@ public class Cluster implements Serializable, Cloneable {
     private Boolean terminationProtected;
     /**
      * <p>
-     * Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If
-     * this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if
-     * they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created
-     * the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
+     * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
+     * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      */
     private Boolean visibleToAllUsers;
@@ -108,7 +133,7 @@ public class Cluster implements Serializable, Cloneable {
     private String serviceRole;
     /**
      * <p>
-     * An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time
+     * An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time
      * for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly
      * four times more expensive would result in the normalized instance hours being incremented by four. This result is
      * only an approximation and does not reflect the actual billing rate.
@@ -138,6 +163,28 @@ public class Cluster implements Serializable, Cloneable {
      * </p>
      */
     private String securityConfiguration;
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     */
+    private String autoScalingRole;
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     */
+    private String scaleDownBehavior;
 
     /**
      * <p>
@@ -260,7 +307,14 @@ public class Cluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID,
+     * IAM instance profile, and so on.
+     * </p>
+     * 
      * @param ec2InstanceAttributes
+     *        Provides information about the EC2 instances in a cluster grouped by category. For example, key name,
+     *        subnet ID, IAM instance profile, and so on.
      */
 
     public void setEc2InstanceAttributes(Ec2InstanceAttributes ec2InstanceAttributes) {
@@ -268,7 +322,13 @@ public class Cluster implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID,
+     * IAM instance profile, and so on.
+     * </p>
+     * 
+     * @return Provides information about the EC2 instances in a cluster grouped by category. For example, key name,
+     *         subnet ID, IAM instance profile, and so on.
      */
 
     public Ec2InstanceAttributes getEc2InstanceAttributes() {
@@ -276,12 +336,167 @@ public class Cluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID,
+     * IAM instance profile, and so on.
+     * </p>
+     * 
      * @param ec2InstanceAttributes
+     *        Provides information about the EC2 instances in a cluster grouped by category. For example, key name,
+     *        subnet ID, IAM instance profile, and so on.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Cluster withEc2InstanceAttributes(Ec2InstanceAttributes ec2InstanceAttributes) {
         setEc2InstanceAttributes(ec2InstanceAttributes);
+        return this;
+    }
+
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     * 
+     * @param instanceCollectionType
+     *        <p>
+     *        The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     *        versions.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a
+     *        uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets
+     *        configuration.
+     * @see InstanceCollectionType
+     */
+
+    public void setInstanceCollectionType(String instanceCollectionType) {
+        this.instanceCollectionType = instanceCollectionType;
+    }
+
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     * 
+     * @return <p>
+     *         The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding
+     *         5.0.x versions.
+     *         </p>
+     *         </note>
+     *         <p>
+     *         The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a
+     *         uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets
+     *         configuration.
+     * @see InstanceCollectionType
+     */
+
+    public String getInstanceCollectionType() {
+        return this.instanceCollectionType;
+    }
+
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     * 
+     * @param instanceCollectionType
+     *        <p>
+     *        The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     *        versions.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a
+     *        uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets
+     *        configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceCollectionType
+     */
+
+    public Cluster withInstanceCollectionType(String instanceCollectionType) {
+        setInstanceCollectionType(instanceCollectionType);
+        return this;
+    }
+
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     * 
+     * @param instanceCollectionType
+     *        <p>
+     *        The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     *        versions.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a
+     *        uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets
+     *        configuration.
+     * @see InstanceCollectionType
+     */
+
+    public void setInstanceCollectionType(InstanceCollectionType instanceCollectionType) {
+        this.instanceCollectionType = instanceCollectionType.toString();
+    }
+
+    /**
+     * <note>
+     * <p>
+     * The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     * versions.
+     * </p>
+     * </note>
+     * <p>
+     * The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform
+     * instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.
+     * </p>
+     * 
+     * @param instanceCollectionType
+     *        <p>
+     *        The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x
+     *        versions.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a
+     *        uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets
+     *        configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceCollectionType
+     */
+
+    public Cluster withInstanceCollectionType(InstanceCollectionType instanceCollectionType) {
+        setInstanceCollectionType(instanceCollectionType);
         return this;
     }
 
@@ -565,16 +780,16 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If
-     * this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if
-     * they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created
-     * the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
+     * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
+     * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
      * @param visibleToAllUsers
-     *        Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job
-     *        flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
-     *        job flow if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
+     *        Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     *        If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
+     *        cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
      *        user that created the cluster can view and manage it. This value can be changed using the
      *        <a>SetVisibleToAllUsers</a> action.
      */
@@ -585,16 +800,16 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If
-     * this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if
-     * they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created
-     * the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
+     * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
+     * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
-     * @return Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job
-     *         flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage
-     *         the job flow if they have the proper policy permissions set. If this value is <code>false</code>, only
-     *         the IAM user that created the cluster can view and manage it. This value can be changed using the
+     * @return Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     *         If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
+     *         cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
+     *         user that created the cluster can view and manage it. This value can be changed using the
      *         <a>SetVisibleToAllUsers</a> action.
      */
 
@@ -604,16 +819,16 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If
-     * this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if
-     * they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created
-     * the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
+     * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
+     * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
      * @param visibleToAllUsers
-     *        Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job
-     *        flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
-     *        job flow if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
+     *        Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     *        If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
+     *        cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
      *        user that created the cluster can view and manage it. This value can be changed using the
      *        <a>SetVisibleToAllUsers</a> action.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -626,16 +841,16 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If
-     * this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if
-     * they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created
-     * the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
+     * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
+     * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
+     * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
-     * @return Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job
-     *         flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage
-     *         the job flow if they have the proper policy permissions set. If this value is <code>false</code>, only
-     *         the IAM user that created the cluster can view and manage it. This value can be changed using the
+     * @return Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     *         If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
+     *         cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
+     *         user that created the cluster can view and manage it. This value can be changed using the
      *         <a>SetVisibleToAllUsers</a> action.
      */
 
@@ -831,14 +1046,14 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time
+     * An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time
      * for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly
      * four times more expensive would result in the normalized instance hours being incremented by four. This result is
      * only an approximation and does not reflect the actual billing rate.
      * </p>
      * 
      * @param normalizedInstanceHours
-     *        An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one
+     *        An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one
      *        time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that
      *        is roughly four times more expensive would result in the normalized instance hours being incremented by
      *        four. This result is only an approximation and does not reflect the actual billing rate.
@@ -850,14 +1065,14 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time
+     * An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time
      * for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly
      * four times more expensive would result in the normalized instance hours being incremented by four. This result is
      * only an approximation and does not reflect the actual billing rate.
      * </p>
      * 
-     * @return An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented
-     *         one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance
+     * @return An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one
+     *         time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance
      *         that is roughly four times more expensive would result in the normalized instance hours being incremented
      *         by four. This result is only an approximation and does not reflect the actual billing rate.
      */
@@ -868,14 +1083,14 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time
+     * An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time
      * for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly
      * four times more expensive would result in the normalized instance hours being incremented by four. This result is
      * only an approximation and does not reflect the actual billing rate.
      * </p>
      * 
      * @param normalizedInstanceHours
-     *        An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one
+     *        An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one
      *        time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that
      *        is roughly four times more expensive would result in the normalized instance hours being incremented by
      *        four. This result is only an approximation and does not reflect the actual billing rate.
@@ -1081,6 +1296,216 @@ public class Cluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @param autoScalingRole
+     *        An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *        The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *        instances in an instance group.
+     */
+
+    public void setAutoScalingRole(String autoScalingRole) {
+        this.autoScalingRole = autoScalingRole;
+    }
+
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @return An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *         The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *         instances in an instance group.
+     */
+
+    public String getAutoScalingRole() {
+        return this.autoScalingRole;
+    }
+
+    /**
+     * <p>
+     * An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM
+     * role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an
+     * instance group.
+     * </p>
+     * 
+     * @param autoScalingRole
+     *        An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>.
+     *        The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2
+     *        instances in an instance group.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withAutoScalingRole(String autoScalingRole) {
+        setAutoScalingRole(autoScalingRole);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     *        instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates
+     *        nodes at the instance-hour boundary, regardless of when the request to terminate the instance was
+     *        submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters
+     *        created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists
+     *        and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour
+     *        boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance
+     *        termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available
+     *        only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than
+     *        5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public void setScaleDownBehavior(String scaleDownBehavior) {
+        this.scaleDownBehavior = scaleDownBehavior;
+    }
+
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @return The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     *         instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates
+     *         nodes at the instance-hour boundary, regardless of when the request to terminate the instance was
+     *         submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters
+     *         created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR
+     *         blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the
+     *         instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks
+     *         instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is
+     *         available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR
+     *         earlier than 5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public String getScaleDownBehavior() {
+        return this.scaleDownBehavior;
+    }
+
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     *        instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates
+     *        nodes at the instance-hour boundary, regardless of when the request to terminate the instance was
+     *        submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters
+     *        created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists
+     *        and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour
+     *        boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance
+     *        termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available
+     *        only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than
+     *        5.1.0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ScaleDownBehavior
+     */
+
+    public Cluster withScaleDownBehavior(String scaleDownBehavior) {
+        setScaleDownBehavior(scaleDownBehavior);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     *        instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates
+     *        nodes at the instance-hour boundary, regardless of when the request to terminate the instance was
+     *        submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters
+     *        created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists
+     *        and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour
+     *        boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance
+     *        termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available
+     *        only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than
+     *        5.1.0.
+     * @see ScaleDownBehavior
+     */
+
+    public void setScaleDownBehavior(ScaleDownBehavior scaleDownBehavior) {
+        this.scaleDownBehavior = scaleDownBehavior.toString();
+    }
+
+    /**
+     * <p>
+     * The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance
+     * group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the
+     * instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is
+     * only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before
+     * terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR
+     * removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption.
+     * <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the
+     * default for versions of Amazon EMR earlier than 5.1.0.
+     * </p>
+     * 
+     * @param scaleDownBehavior
+     *        The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an
+     *        instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates
+     *        nodes at the instance-hour boundary, regardless of when the request to terminate the instance was
+     *        submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters
+     *        created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists
+     *        and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour
+     *        boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance
+     *        termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available
+     *        only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than
+     *        5.1.0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ScaleDownBehavior
+     */
+
+    public Cluster withScaleDownBehavior(ScaleDownBehavior scaleDownBehavior) {
+        setScaleDownBehavior(scaleDownBehavior);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1092,41 +1517,47 @@ public class Cluster implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getEc2InstanceAttributes() != null)
-            sb.append("Ec2InstanceAttributes: " + getEc2InstanceAttributes() + ",");
+            sb.append("Ec2InstanceAttributes: ").append(getEc2InstanceAttributes()).append(",");
+        if (getInstanceCollectionType() != null)
+            sb.append("InstanceCollectionType: ").append(getInstanceCollectionType()).append(",");
         if (getLogUri() != null)
-            sb.append("LogUri: " + getLogUri() + ",");
+            sb.append("LogUri: ").append(getLogUri()).append(",");
         if (getRequestedAmiVersion() != null)
-            sb.append("RequestedAmiVersion: " + getRequestedAmiVersion() + ",");
+            sb.append("RequestedAmiVersion: ").append(getRequestedAmiVersion()).append(",");
         if (getRunningAmiVersion() != null)
-            sb.append("RunningAmiVersion: " + getRunningAmiVersion() + ",");
+            sb.append("RunningAmiVersion: ").append(getRunningAmiVersion()).append(",");
         if (getReleaseLabel() != null)
-            sb.append("ReleaseLabel: " + getReleaseLabel() + ",");
+            sb.append("ReleaseLabel: ").append(getReleaseLabel()).append(",");
         if (getAutoTerminate() != null)
-            sb.append("AutoTerminate: " + getAutoTerminate() + ",");
+            sb.append("AutoTerminate: ").append(getAutoTerminate()).append(",");
         if (getTerminationProtected() != null)
-            sb.append("TerminationProtected: " + getTerminationProtected() + ",");
+            sb.append("TerminationProtected: ").append(getTerminationProtected()).append(",");
         if (getVisibleToAllUsers() != null)
-            sb.append("VisibleToAllUsers: " + getVisibleToAllUsers() + ",");
+            sb.append("VisibleToAllUsers: ").append(getVisibleToAllUsers()).append(",");
         if (getApplications() != null)
-            sb.append("Applications: " + getApplications() + ",");
+            sb.append("Applications: ").append(getApplications()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getServiceRole() != null)
-            sb.append("ServiceRole: " + getServiceRole() + ",");
+            sb.append("ServiceRole: ").append(getServiceRole()).append(",");
         if (getNormalizedInstanceHours() != null)
-            sb.append("NormalizedInstanceHours: " + getNormalizedInstanceHours() + ",");
+            sb.append("NormalizedInstanceHours: ").append(getNormalizedInstanceHours()).append(",");
         if (getMasterPublicDnsName() != null)
-            sb.append("MasterPublicDnsName: " + getMasterPublicDnsName() + ",");
+            sb.append("MasterPublicDnsName: ").append(getMasterPublicDnsName()).append(",");
         if (getConfigurations() != null)
-            sb.append("Configurations: " + getConfigurations() + ",");
+            sb.append("Configurations: ").append(getConfigurations()).append(",");
         if (getSecurityConfiguration() != null)
-            sb.append("SecurityConfiguration: " + getSecurityConfiguration());
+            sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
+        if (getAutoScalingRole() != null)
+            sb.append("AutoScalingRole: ").append(getAutoScalingRole()).append(",");
+        if (getScaleDownBehavior() != null)
+            sb.append("ScaleDownBehavior: ").append(getScaleDownBehavior());
         sb.append("}");
         return sb.toString();
     }
@@ -1156,6 +1587,10 @@ public class Cluster implements Serializable, Cloneable {
         if (other.getEc2InstanceAttributes() == null ^ this.getEc2InstanceAttributes() == null)
             return false;
         if (other.getEc2InstanceAttributes() != null && other.getEc2InstanceAttributes().equals(this.getEc2InstanceAttributes()) == false)
+            return false;
+        if (other.getInstanceCollectionType() == null ^ this.getInstanceCollectionType() == null)
+            return false;
+        if (other.getInstanceCollectionType() != null && other.getInstanceCollectionType().equals(this.getInstanceCollectionType()) == false)
             return false;
         if (other.getLogUri() == null ^ this.getLogUri() == null)
             return false;
@@ -1213,6 +1648,14 @@ public class Cluster implements Serializable, Cloneable {
             return false;
         if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
             return false;
+        if (other.getAutoScalingRole() == null ^ this.getAutoScalingRole() == null)
+            return false;
+        if (other.getAutoScalingRole() != null && other.getAutoScalingRole().equals(this.getAutoScalingRole()) == false)
+            return false;
+        if (other.getScaleDownBehavior() == null ^ this.getScaleDownBehavior() == null)
+            return false;
+        if (other.getScaleDownBehavior() != null && other.getScaleDownBehavior().equals(this.getScaleDownBehavior()) == false)
+            return false;
         return true;
     }
 
@@ -1225,6 +1668,7 @@ public class Cluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getEc2InstanceAttributes() == null) ? 0 : getEc2InstanceAttributes().hashCode());
+        hashCode = prime * hashCode + ((getInstanceCollectionType() == null) ? 0 : getInstanceCollectionType().hashCode());
         hashCode = prime * hashCode + ((getLogUri() == null) ? 0 : getLogUri().hashCode());
         hashCode = prime * hashCode + ((getRequestedAmiVersion() == null) ? 0 : getRequestedAmiVersion().hashCode());
         hashCode = prime * hashCode + ((getRunningAmiVersion() == null) ? 0 : getRunningAmiVersion().hashCode());
@@ -1239,6 +1683,8 @@ public class Cluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getMasterPublicDnsName() == null) ? 0 : getMasterPublicDnsName().hashCode());
         hashCode = prime * hashCode + ((getConfigurations() == null) ? 0 : getConfigurations().hashCode());
         hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingRole() == null) ? 0 : getAutoScalingRole().hashCode());
+        hashCode = prime * hashCode + ((getScaleDownBehavior() == null) ? 0 : getScaleDownBehavior().hashCode());
         return hashCode;
     }
 
@@ -1249,5 +1695,11 @@ public class Cluster implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.ClusterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

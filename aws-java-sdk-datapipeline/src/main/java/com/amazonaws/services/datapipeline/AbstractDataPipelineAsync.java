@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.datapipeline;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.datapipeline.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.datapipeline.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractDataPipelineAsync extends AbstractDataPipeline implements DataPipelineAsync {
 
     protected AbstractDataPipelineAsync() {
@@ -170,6 +173,7 @@ public class AbstractDataPipelineAsync extends AbstractDataPipeline implements D
      *
      * @see #listPipelinesAsync(ListPipelinesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListPipelinesResult> listPipelinesAsync(
             com.amazonaws.handlers.AsyncHandler<ListPipelinesRequest, ListPipelinesResult> asyncHandler) {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that specifies how CloudFront handles query strings and cookies.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ForwardedValues" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ForwardedValues implements Serializable, Cloneable {
 
     /**
@@ -467,13 +472,13 @@ public class ForwardedValues implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueryString() != null)
-            sb.append("QueryString: " + getQueryString() + ",");
+            sb.append("QueryString: ").append(getQueryString()).append(",");
         if (getCookies() != null)
-            sb.append("Cookies: " + getCookies() + ",");
+            sb.append("Cookies: ").append(getCookies()).append(",");
         if (getHeaders() != null)
-            sb.append("Headers: " + getHeaders() + ",");
+            sb.append("Headers: ").append(getHeaders()).append(",");
         if (getQueryStringCacheKeys() != null)
-            sb.append("QueryStringCacheKeys: " + getQueryStringCacheKeys());
+            sb.append("QueryStringCacheKeys: ").append(getQueryStringCacheKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -527,4 +532,5 @@ public class ForwardedValues implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

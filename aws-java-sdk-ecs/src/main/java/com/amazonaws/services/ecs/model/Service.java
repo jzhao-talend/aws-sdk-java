@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Details on a service within a cluster
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Service" target="_top">AWS API Documentation</a>
  */
-public class Service implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -117,6 +123,18 @@ public class Service implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date createdAt;
+    /**
+     * <p>
+     * The placement constraints for the tasks in the service.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<PlacementConstraint> placementConstraints;
+    /**
+     * <p>
+     * The placement strategy that determines how tasks for the service are placed.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<PlacementStrategy> placementStrategy;
 
     /**
      * <p>
@@ -852,6 +870,152 @@ public class Service implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The placement constraints for the tasks in the service.
+     * </p>
+     * 
+     * @return The placement constraints for the tasks in the service.
+     */
+
+    public java.util.List<PlacementConstraint> getPlacementConstraints() {
+        if (placementConstraints == null) {
+            placementConstraints = new com.amazonaws.internal.SdkInternalList<PlacementConstraint>();
+        }
+        return placementConstraints;
+    }
+
+    /**
+     * <p>
+     * The placement constraints for the tasks in the service.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        The placement constraints for the tasks in the service.
+     */
+
+    public void setPlacementConstraints(java.util.Collection<PlacementConstraint> placementConstraints) {
+        if (placementConstraints == null) {
+            this.placementConstraints = null;
+            return;
+        }
+
+        this.placementConstraints = new com.amazonaws.internal.SdkInternalList<PlacementConstraint>(placementConstraints);
+    }
+
+    /**
+     * <p>
+     * The placement constraints for the tasks in the service.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementConstraints(java.util.Collection)} or {@link #withPlacementConstraints(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        The placement constraints for the tasks in the service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Service withPlacementConstraints(PlacementConstraint... placementConstraints) {
+        if (this.placementConstraints == null) {
+            setPlacementConstraints(new com.amazonaws.internal.SdkInternalList<PlacementConstraint>(placementConstraints.length));
+        }
+        for (PlacementConstraint ele : placementConstraints) {
+            this.placementConstraints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The placement constraints for the tasks in the service.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        The placement constraints for the tasks in the service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Service withPlacementConstraints(java.util.Collection<PlacementConstraint> placementConstraints) {
+        setPlacementConstraints(placementConstraints);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The placement strategy that determines how tasks for the service are placed.
+     * </p>
+     * 
+     * @return The placement strategy that determines how tasks for the service are placed.
+     */
+
+    public java.util.List<PlacementStrategy> getPlacementStrategy() {
+        if (placementStrategy == null) {
+            placementStrategy = new com.amazonaws.internal.SdkInternalList<PlacementStrategy>();
+        }
+        return placementStrategy;
+    }
+
+    /**
+     * <p>
+     * The placement strategy that determines how tasks for the service are placed.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy that determines how tasks for the service are placed.
+     */
+
+    public void setPlacementStrategy(java.util.Collection<PlacementStrategy> placementStrategy) {
+        if (placementStrategy == null) {
+            this.placementStrategy = null;
+            return;
+        }
+
+        this.placementStrategy = new com.amazonaws.internal.SdkInternalList<PlacementStrategy>(placementStrategy);
+    }
+
+    /**
+     * <p>
+     * The placement strategy that determines how tasks for the service are placed.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementStrategy(java.util.Collection)} or {@link #withPlacementStrategy(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy that determines how tasks for the service are placed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Service withPlacementStrategy(PlacementStrategy... placementStrategy) {
+        if (this.placementStrategy == null) {
+            setPlacementStrategy(new com.amazonaws.internal.SdkInternalList<PlacementStrategy>(placementStrategy.length));
+        }
+        for (PlacementStrategy ele : placementStrategy) {
+            this.placementStrategy.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The placement strategy that determines how tasks for the service are placed.
+     * </p>
+     * 
+     * @param placementStrategy
+     *        The placement strategy that determines how tasks for the service are placed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Service withPlacementStrategy(java.util.Collection<PlacementStrategy> placementStrategy) {
+        setPlacementStrategy(placementStrategy);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -863,33 +1027,37 @@ public class Service implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getServiceArn() != null)
-            sb.append("ServiceArn: " + getServiceArn() + ",");
+            sb.append("ServiceArn: ").append(getServiceArn()).append(",");
         if (getServiceName() != null)
-            sb.append("ServiceName: " + getServiceName() + ",");
+            sb.append("ServiceName: ").append(getServiceName()).append(",");
         if (getClusterArn() != null)
-            sb.append("ClusterArn: " + getClusterArn() + ",");
+            sb.append("ClusterArn: ").append(getClusterArn()).append(",");
         if (getLoadBalancers() != null)
-            sb.append("LoadBalancers: " + getLoadBalancers() + ",");
+            sb.append("LoadBalancers: ").append(getLoadBalancers()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getDesiredCount() != null)
-            sb.append("DesiredCount: " + getDesiredCount() + ",");
+            sb.append("DesiredCount: ").append(getDesiredCount()).append(",");
         if (getRunningCount() != null)
-            sb.append("RunningCount: " + getRunningCount() + ",");
+            sb.append("RunningCount: ").append(getRunningCount()).append(",");
         if (getPendingCount() != null)
-            sb.append("PendingCount: " + getPendingCount() + ",");
+            sb.append("PendingCount: ").append(getPendingCount()).append(",");
         if (getTaskDefinition() != null)
-            sb.append("TaskDefinition: " + getTaskDefinition() + ",");
+            sb.append("TaskDefinition: ").append(getTaskDefinition()).append(",");
         if (getDeploymentConfiguration() != null)
-            sb.append("DeploymentConfiguration: " + getDeploymentConfiguration() + ",");
+            sb.append("DeploymentConfiguration: ").append(getDeploymentConfiguration()).append(",");
         if (getDeployments() != null)
-            sb.append("Deployments: " + getDeployments() + ",");
+            sb.append("Deployments: ").append(getDeployments()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn() + ",");
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
         if (getEvents() != null)
-            sb.append("Events: " + getEvents() + ",");
+            sb.append("Events: ").append(getEvents()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt());
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
+        if (getPlacementConstraints() != null)
+            sb.append("PlacementConstraints: ").append(getPlacementConstraints()).append(",");
+        if (getPlacementStrategy() != null)
+            sb.append("PlacementStrategy: ").append(getPlacementStrategy());
         sb.append("}");
         return sb.toString();
     }
@@ -960,6 +1128,14 @@ public class Service implements Serializable, Cloneable {
             return false;
         if (other.getCreatedAt() != null && other.getCreatedAt().equals(this.getCreatedAt()) == false)
             return false;
+        if (other.getPlacementConstraints() == null ^ this.getPlacementConstraints() == null)
+            return false;
+        if (other.getPlacementConstraints() != null && other.getPlacementConstraints().equals(this.getPlacementConstraints()) == false)
+            return false;
+        if (other.getPlacementStrategy() == null ^ this.getPlacementStrategy() == null)
+            return false;
+        if (other.getPlacementStrategy() != null && other.getPlacementStrategy().equals(this.getPlacementStrategy()) == false)
+            return false;
         return true;
     }
 
@@ -982,6 +1158,8 @@ public class Service implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
         hashCode = prime * hashCode + ((getEvents() == null) ? 0 : getEvents().hashCode());
         hashCode = prime * hashCode + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
+        hashCode = prime * hashCode + ((getPlacementConstraints() == null) ? 0 : getPlacementConstraints().hashCode());
+        hashCode = prime * hashCode + ((getPlacementStrategy() == null) ? 0 : getPlacementStrategy().hashCode());
         return hashCode;
     }
 
@@ -992,5 +1170,11 @@ public class Service implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ServiceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the CreateInterconnect operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateInterconnect" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -61,6 +67,8 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      */
     private String location;
+
+    private String lagId;
 
     /**
      * <p>
@@ -300,6 +308,32 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * @param lagId
+     */
+
+    public void setLagId(String lagId) {
+        this.lagId = lagId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getLagId() {
+        return this.lagId;
+    }
+
+    /**
+     * @param lagId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInterconnectRequest withLagId(String lagId) {
+        setLagId(lagId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -311,11 +345,13 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInterconnectName() != null)
-            sb.append("InterconnectName: " + getInterconnectName() + ",");
+            sb.append("InterconnectName: ").append(getInterconnectName()).append(",");
         if (getBandwidth() != null)
-            sb.append("Bandwidth: " + getBandwidth() + ",");
+            sb.append("Bandwidth: ").append(getBandwidth()).append(",");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation());
+            sb.append("Location: ").append(getLocation()).append(",");
+        if (getLagId() != null)
+            sb.append("LagId: ").append(getLagId());
         sb.append("}");
         return sb.toString();
     }
@@ -342,6 +378,10 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getLocation() != null && other.getLocation().equals(this.getLocation()) == false)
             return false;
+        if (other.getLagId() == null ^ this.getLagId() == null)
+            return false;
+        if (other.getLagId() != null && other.getLagId().equals(this.getLagId()) == false)
+            return false;
         return true;
     }
 
@@ -353,6 +393,7 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
         hashCode = prime * hashCode + ((getInterconnectName() == null) ? 0 : getInterconnectName().hashCode());
         hashCode = prime * hashCode + ((getBandwidth() == null) ? 0 : getBandwidth().hashCode());
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
+        hashCode = prime * hashCode + ((getLagId() == null) ? 0 : getLagId().hashCode());
         return hashCode;
     }
 
@@ -360,4 +401,5 @@ public class CreateInterconnectRequest extends com.amazonaws.AmazonWebServiceReq
     public CreateInterconnectRequest clone() {
         return (CreateInterconnectRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,14 @@
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Input structure for the ListJobs operation.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListJobsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private Integer maxJobs;
@@ -116,11 +119,11 @@ public class ListJobsRequest extends com.amazonaws.AmazonWebServiceRequest imple
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaxJobs() != null)
-            sb.append("MaxJobs: " + getMaxJobs() + ",");
+            sb.append("MaxJobs: ").append(getMaxJobs()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getAPIVersion() != null)
-            sb.append("APIVersion: " + getAPIVersion());
+            sb.append("APIVersion: ").append(getAPIVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -165,4 +168,5 @@ public class ListJobsRequest extends com.amazonaws.AmazonWebServiceRequest imple
     public ListJobsRequest clone() {
         return (ListJobsRequest) super.clone();
     }
+
 }

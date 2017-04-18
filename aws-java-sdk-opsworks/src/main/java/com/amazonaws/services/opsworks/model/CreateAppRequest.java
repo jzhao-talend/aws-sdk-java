@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateApp" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -53,8 +58,8 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      */
@@ -349,16 +354,16 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      * 
      * @param type
      *        The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     *        associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of
-     *        the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own
-     *        Deploy recipes, specify <code>other</code>.
+     *        associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are
+     *        members of the corresponding layer. If your app isn't one of the standard types, or you prefer to
+     *        implement your own Deploy recipes, specify <code>other</code>.
      * @see AppType
      */
 
@@ -369,15 +374,15 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      * 
      * @return The app type. Each supported type is associated with a particular layer. For example, PHP applications
-     *         are associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members
-     *         of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your
-     *         own Deploy recipes, specify <code>other</code>.
+     *         are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are
+     *         members of the corresponding layer. If your app isn't one of the standard types, or you prefer to
+     *         implement your own Deploy recipes, specify <code>other</code>.
      * @see AppType
      */
 
@@ -388,16 +393,16 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      * 
      * @param type
      *        The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     *        associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of
-     *        the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own
-     *        Deploy recipes, specify <code>other</code>.
+     *        associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are
+     *        members of the corresponding layer. If your app isn't one of the standard types, or you prefer to
+     *        implement your own Deploy recipes, specify <code>other</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AppType
      */
@@ -410,16 +415,16 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      * 
      * @param type
      *        The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     *        associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of
-     *        the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own
-     *        Deploy recipes, specify <code>other</code>.
+     *        associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are
+     *        members of the corresponding layer. If your app isn't one of the standard types, or you prefer to
+     *        implement your own Deploy recipes, specify <code>other</code>.
      * @see AppType
      */
 
@@ -430,16 +435,16 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     * associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of the
-     * corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
+     * associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of
+     * the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy
      * recipes, specify <code>other</code>.
      * </p>
      * 
      * @param type
      *        The app type. Each supported type is associated with a particular layer. For example, PHP applications are
-     *        associated with a PHP layer. AWS OpsWorks deploys an application to those instances that are members of
-     *        the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own
-     *        Deploy recipes, specify <code>other</code>.
+     *        associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are
+     *        members of the corresponding layer. If your app isn't one of the standard types, or you prefer to
+     *        implement your own Deploy recipes, specify <code>other</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AppType
      */
@@ -935,29 +940,29 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getShortname() != null)
-            sb.append("Shortname: " + getShortname() + ",");
+            sb.append("Shortname: ").append(getShortname()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getDataSources() != null)
-            sb.append("DataSources: " + getDataSources() + ",");
+            sb.append("DataSources: ").append(getDataSources()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getAppSource() != null)
-            sb.append("AppSource: " + getAppSource() + ",");
+            sb.append("AppSource: ").append(getAppSource()).append(",");
         if (getDomains() != null)
-            sb.append("Domains: " + getDomains() + ",");
+            sb.append("Domains: ").append(getDomains()).append(",");
         if (getEnableSsl() != null)
-            sb.append("EnableSsl: " + getEnableSsl() + ",");
+            sb.append("EnableSsl: ").append(getEnableSsl()).append(",");
         if (getSslConfiguration() != null)
-            sb.append("SslConfiguration: " + getSslConfiguration() + ",");
+            sb.append("SslConfiguration: ").append(getSslConfiguration()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getEnvironment() != null)
-            sb.append("Environment: " + getEnvironment());
+            sb.append("Environment: ").append(getEnvironment());
         sb.append("}");
         return sb.toString();
     }
@@ -1047,4 +1052,5 @@ public class CreateAppRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public CreateAppRequest clone() {
         return (CreateAppRequest) super.clone();
     }
+
 }

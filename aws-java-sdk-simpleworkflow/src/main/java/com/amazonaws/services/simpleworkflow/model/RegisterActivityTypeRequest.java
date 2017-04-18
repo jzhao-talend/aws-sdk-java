@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterActivityTypeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -801,25 +801,25 @@ public class RegisterActivityTypeRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getDefaultTaskStartToCloseTimeout() != null)
-            sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+            sb.append("DefaultTaskStartToCloseTimeout: ").append(getDefaultTaskStartToCloseTimeout()).append(",");
         if (getDefaultTaskHeartbeatTimeout() != null)
-            sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");
+            sb.append("DefaultTaskHeartbeatTimeout: ").append(getDefaultTaskHeartbeatTimeout()).append(",");
         if (getDefaultTaskList() != null)
-            sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
+            sb.append("DefaultTaskList: ").append(getDefaultTaskList()).append(",");
         if (getDefaultTaskPriority() != null)
-            sb.append("DefaultTaskPriority: " + getDefaultTaskPriority() + ",");
+            sb.append("DefaultTaskPriority: ").append(getDefaultTaskPriority()).append(",");
         if (getDefaultTaskScheduleToStartTimeout() != null)
-            sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");
+            sb.append("DefaultTaskScheduleToStartTimeout: ").append(getDefaultTaskScheduleToStartTimeout()).append(",");
         if (getDefaultTaskScheduleToCloseTimeout() != null)
-            sb.append("DefaultTaskScheduleToCloseTimeout: " + getDefaultTaskScheduleToCloseTimeout());
+            sb.append("DefaultTaskScheduleToCloseTimeout: ").append(getDefaultTaskScheduleToCloseTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -902,4 +902,5 @@ public class RegisterActivityTypeRequest extends com.amazonaws.AmazonWebServiceR
     public RegisterActivityTypeRequest clone() {
         return (RegisterActivityTypeRequest) super.clone();
     }
+
 }

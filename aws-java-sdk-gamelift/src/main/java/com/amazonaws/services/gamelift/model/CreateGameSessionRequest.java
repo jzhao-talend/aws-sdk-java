@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,32 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateGameSession" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias
+     * ID, but not both.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference
+     * either a fleet ID or alias ID, but not both.
      * </p>
      */
     private String aliasId;
@@ -42,44 +50,53 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
     private Integer maximumPlayerSessionCount;
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Set of properties used to administer a game session. These properties are passed to the server process hosting
-     * it.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      */
     private java.util.List<GameProperty> gameProperties;
     /**
      * <p>
-     * Player ID identifying the person or entity creating the game session. This ID is used to enforce a resource
+     * Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
      * protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.
      * </p>
      */
     private String creatorId;
     /**
      * <p>
-     * Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter is
-     * set, GameLift creates a game session ID in the following format:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For example, this
-     * full game session ID:
-     * "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session" includes the
-     * custom ID string "my-game-session". If this parameter is not set, GameLift creates a game session ID in the same
-     * format with an auto-generated ID string.
+     * <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string
+     * that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided,
+     * this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
      * </p>
      */
     private String gameSessionId;
+    /**
+     * <p>
+     * Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     * If provided, this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
+     * </p>
+     */
+    private String idempotencyToken;
 
     /**
      * <p>
-     * Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias
+     * ID, but not both.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     *        Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID
+     *        or alias ID, but not both.
      */
 
     public void setFleetId(String fleetId) {
@@ -88,10 +105,12 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias
+     * ID, but not both.
      * </p>
      * 
-     * @return Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     * @return Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID
+     *         or alias ID, but not both.
      */
 
     public String getFleetId() {
@@ -100,11 +119,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias
+     * ID, but not both.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Each request must reference either a fleet ID or alias ID, but not both.
+     *        Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID
+     *        or alias ID, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -115,12 +136,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference
+     * either a fleet ID or alias ID, but not both.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not
-     *        both.
+     *        Unique identifier for an alias associated with the fleet to create a game session in. Each request must
+     *        reference either a fleet ID or alias ID, but not both.
      */
 
     public void setAliasId(String aliasId) {
@@ -129,11 +151,12 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference
+     * either a fleet ID or alias ID, but not both.
      * </p>
      * 
-     * @return Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not
-     *         both.
+     * @return Unique identifier for an alias associated with the fleet to create a game session in. Each request must
+     *         reference either a fleet ID or alias ID, but not both.
      */
 
     public String getAliasId() {
@@ -142,12 +165,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not both.
+     * Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference
+     * either a fleet ID or alias ID, but not both.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Each request must reference either a fleet ID or alias ID, but not
-     *        both.
+     *        Unique identifier for an alias associated with the fleet to create a game session in. Each request must
+     *        reference either a fleet ID or alias ID, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -198,11 +222,11 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do not need to be unique.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -211,10 +235,10 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a game session. Session names do not need to be unique.
+     * @return Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public String getName() {
@@ -223,11 +247,11 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do not need to be unique.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -238,12 +262,12 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Set of properties used to administer a game session. These properties are passed to the server process hosting
-     * it.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
-     * @return Set of properties used to administer a game session. These properties are passed to the server process
-     *         hosting it.
+     * @return Set of developer-defined properties for a game session. These properties are passed to the server process
+     *         hosting the game session.
      */
 
     public java.util.List<GameProperty> getGameProperties() {
@@ -252,13 +276,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Set of properties used to administer a game session. These properties are passed to the server process hosting
-     * it.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
      * @param gameProperties
-     *        Set of properties used to administer a game session. These properties are passed to the server process
-     *        hosting it.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
      */
 
     public void setGameProperties(java.util.Collection<GameProperty> gameProperties) {
@@ -272,8 +296,8 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Set of properties used to administer a game session. These properties are passed to the server process hosting
-     * it.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -282,8 +306,8 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @param gameProperties
-     *        Set of properties used to administer a game session. These properties are passed to the server process
-     *        hosting it.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -299,13 +323,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Set of properties used to administer a game session. These properties are passed to the server process hosting
-     * it.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
      * @param gameProperties
-     *        Set of properties used to administer a game session. These properties are passed to the server process
-     *        hosting it.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -316,14 +340,14 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Player ID identifying the person or entity creating the game session. This ID is used to enforce a resource
+     * Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
      * protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.
      * </p>
      * 
      * @param creatorId
-     *        Player ID identifying the person or entity creating the game session. This ID is used to enforce a
-     *        resource protection policy (if one exists) that limits the number of concurrent active game sessions one
-     *        player can have.
+     *        Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
+     *        protection policy (if one exists) that limits the number of concurrent active game sessions one player can
+     *        have.
      */
 
     public void setCreatorId(String creatorId) {
@@ -332,13 +356,13 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Player ID identifying the person or entity creating the game session. This ID is used to enforce a resource
+     * Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
      * protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.
      * </p>
      * 
-     * @return Player ID identifying the person or entity creating the game session. This ID is used to enforce a
-     *         resource protection policy (if one exists) that limits the number of concurrent active game sessions one
-     *         player can have.
+     * @return Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
+     *         protection policy (if one exists) that limits the number of concurrent active game sessions one player
+     *         can have.
      */
 
     public String getCreatorId() {
@@ -347,14 +371,14 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Player ID identifying the person or entity creating the game session. This ID is used to enforce a resource
+     * Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
      * protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.
      * </p>
      * 
      * @param creatorId
-     *        Player ID identifying the person or entity creating the game session. This ID is used to enforce a
-     *        resource protection policy (if one exists) that limits the number of concurrent active game sessions one
-     *        player can have.
+     *        Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource
+     *        protection policy (if one exists) that limits the number of concurrent active game sessions one player can
+     *        have.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -365,23 +389,20 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter is
-     * set, GameLift creates a game session ID in the following format:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For example, this
-     * full game session ID:
-     * "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session" includes the
-     * custom ID string "my-game-session". If this parameter is not set, GameLift creates a game session ID in the same
-     * format with an auto-generated ID string.
+     * <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string
+     * that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided,
+     * this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
      * </p>
      * 
      * @param gameSessionId
-     *        Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter
-     *        is set, GameLift creates a game session ID in the following format:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For
-     *        example, this full game session ID:
-     *        "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session"
-     *        includes the custom ID string "my-game-session". If this parameter is not set, GameLift creates a game
-     *        session ID in the same format with an auto-generated ID string.
+     *        <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom
+     *        string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     *        If provided, this string is included in the new game session's ID. (A game session ID has the following
+     *        format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .)
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -390,22 +411,19 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter is
-     * set, GameLift creates a game session ID in the following format:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For example, this
-     * full game session ID:
-     * "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session" includes the
-     * custom ID string "my-game-session". If this parameter is not set, GameLift creates a game session ID in the same
-     * format with an auto-generated ID string.
+     * <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string
+     * that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided,
+     * this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
      * </p>
      * 
-     * @return Custom string to include in the game session ID, with a maximum length of 48 characters. If this
-     *         parameter is set, GameLift creates a game session ID in the following format:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For
-     *         example, this full game session ID:
-     *         "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session"
-     *         includes the custom ID string "my-game-session". If this parameter is not set, GameLift creates a game
-     *         session ID in the same format with an auto-generated ID string.
+     * @return <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom
+     *         string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     *         If provided, this string is included in the new game session's ID. (A game session ID has the following
+     *         format:
+     *         <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *         .)
      */
 
     public String getGameSessionId() {
@@ -414,28 +432,86 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter is
-     * set, GameLift creates a game session ID in the following format:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For example, this
-     * full game session ID:
-     * "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session" includes the
-     * custom ID string "my-game-session". If this parameter is not set, GameLift creates a game session ID in the same
-     * format with an auto-generated ID string.
+     * <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string
+     * that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided,
+     * this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
      * </p>
      * 
      * @param gameSessionId
-     *        Custom string to include in the game session ID, with a maximum length of 48 characters. If this parameter
-     *        is set, GameLift creates a game session ID in the following format:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;custom ID string&gt;". For
-     *        example, this full game session ID:
-     *        "arn:aws:gamelift:us-west-2::gamesession/fleet-2ec2aae5-c2c7-43ca-b19d-8249fe5fddf2/my-game-session"
-     *        includes the custom ID string "my-game-session". If this parameter is not set, GameLift creates a game
-     *        session ID in the same format with an auto-generated ID string.
+     *        <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom
+     *        string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     *        If provided, this string is included in the new game session's ID. (A game session ID has the following
+     *        format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateGameSessionRequest withGameSessionId(String gameSessionId) {
         setGameSessionId(gameSessionId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     * If provided, this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
+     * </p>
+     * 
+     * @param idempotencyToken
+     *        Custom string that uniquely identifies a request for a new game session. Maximum token length is 48
+     *        characters. If provided, this string is included in the new game session's ID. (A game session ID has the
+     *        following format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .)
+     */
+
+    public void setIdempotencyToken(String idempotencyToken) {
+        this.idempotencyToken = idempotencyToken;
+    }
+
+    /**
+     * <p>
+     * Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     * If provided, this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
+     * </p>
+     * 
+     * @return Custom string that uniquely identifies a request for a new game session. Maximum token length is 48
+     *         characters. If provided, this string is included in the new game session's ID. (A game session ID has the
+     *         following format:
+     *         <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *         .)
+     */
+
+    public String getIdempotencyToken() {
+        return this.idempotencyToken;
+    }
+
+    /**
+     * <p>
+     * Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters.
+     * If provided, this string is included in the new game session's ID. (A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .)
+     * </p>
+     * 
+     * @param idempotencyToken
+     *        Custom string that uniquely identifies a request for a new game session. Maximum token length is 48
+     *        characters. If provided, this string is included in the new game session's ID. (A game session ID has the
+     *        following format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .)
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateGameSessionRequest withIdempotencyToken(String idempotencyToken) {
+        setIdempotencyToken(idempotencyToken);
         return this;
     }
 
@@ -451,19 +527,21 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getAliasId() != null)
-            sb.append("AliasId: " + getAliasId() + ",");
+            sb.append("AliasId: ").append(getAliasId()).append(",");
         if (getMaximumPlayerSessionCount() != null)
-            sb.append("MaximumPlayerSessionCount: " + getMaximumPlayerSessionCount() + ",");
+            sb.append("MaximumPlayerSessionCount: ").append(getMaximumPlayerSessionCount()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getGameProperties() != null)
-            sb.append("GameProperties: " + getGameProperties() + ",");
+            sb.append("GameProperties: ").append(getGameProperties()).append(",");
         if (getCreatorId() != null)
-            sb.append("CreatorId: " + getCreatorId() + ",");
+            sb.append("CreatorId: ").append(getCreatorId()).append(",");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId());
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
+        if (getIdempotencyToken() != null)
+            sb.append("IdempotencyToken: ").append(getIdempotencyToken());
         sb.append("}");
         return sb.toString();
     }
@@ -506,6 +584,10 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getGameSessionId() != null && other.getGameSessionId().equals(this.getGameSessionId()) == false)
             return false;
+        if (other.getIdempotencyToken() == null ^ this.getIdempotencyToken() == null)
+            return false;
+        if (other.getIdempotencyToken() != null && other.getIdempotencyToken().equals(this.getIdempotencyToken()) == false)
+            return false;
         return true;
     }
 
@@ -521,6 +603,7 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getGameProperties() == null) ? 0 : getGameProperties().hashCode());
         hashCode = prime * hashCode + ((getCreatorId() == null) ? 0 : getCreatorId().hashCode());
         hashCode = prime * hashCode + ((getGameSessionId() == null) ? 0 : getGameSessionId().hashCode());
+        hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
         return hashCode;
     }
 
@@ -528,4 +611,5 @@ public class CreateGameSessionRequest extends com.amazonaws.AmazonWebServiceRequ
     public CreateGameSessionRequest clone() {
         return (CreateGameSessionRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * LaunchSpecification StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LaunchSpecificationStaxUnmarshaller implements Unmarshaller<LaunchSpecification, StaxUnmarshallerContext> {
 
     public LaunchSpecification unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -85,6 +85,11 @@ public class LaunchSpecificationStaxUnmarshaller implements Unmarshaller<LaunchS
                     continue;
                 }
 
+                if (context.testExpression("blockDeviceMapping", targetDepth)) {
+                    launchSpecification.withBlockDeviceMappings(new ArrayList<BlockDeviceMapping>());
+                    continue;
+                }
+
                 if (context.testExpression("blockDeviceMapping/item", targetDepth)) {
                     launchSpecification.withBlockDeviceMappings(BlockDeviceMappingStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -92,6 +97,11 @@ public class LaunchSpecificationStaxUnmarshaller implements Unmarshaller<LaunchS
 
                 if (context.testExpression("subnetId", targetDepth)) {
                     launchSpecification.setSubnetId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("networkInterfaceSet", targetDepth)) {
+                    launchSpecification.withNetworkInterfaces(new ArrayList<InstanceNetworkInterfaceSpecification>());
                     continue;
                 }
 
@@ -110,6 +120,11 @@ public class LaunchSpecificationStaxUnmarshaller implements Unmarshaller<LaunchS
                     continue;
                 }
 
+                if (context.testExpression("groupSet", targetDepth)) {
+                    launchSpecification.withAllSecurityGroups(new ArrayList<GroupIdentifier>());
+                    continue;
+                }
+
                 if (context.testExpression("groupSet/item", targetDepth)) {
                     launchSpecification.withAllSecurityGroups(GroupIdentifierStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -117,6 +132,11 @@ public class LaunchSpecificationStaxUnmarshaller implements Unmarshaller<LaunchS
 
                 if (context.testExpression("monitoring/enabled", targetDepth)) {
                     launchSpecification.setMonitoringEnabled(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("securityGroup", targetDepth)) {
+                    launchSpecification.withSecurityGroups(new ArrayList<String>());
                     continue;
                 }
 

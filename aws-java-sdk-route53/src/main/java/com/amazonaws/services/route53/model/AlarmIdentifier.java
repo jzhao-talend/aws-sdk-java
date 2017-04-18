@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine
  * whether this health check is healthy.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/AlarmIdentifier" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AlarmIdentifier implements Serializable, Cloneable {
 
     /**
@@ -29,8 +34,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      */
     private String region;
@@ -49,8 +54,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param region
@@ -58,8 +63,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      *        to determine whether this health check is healthy.</p>
      *        <p>
      *        For the current list of CloudWatch regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS
-     *        Regions and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the
+     *        <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * @see CloudWatchRegion
      */
 
@@ -74,16 +79,16 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @return A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use
      *         to determine whether this health check is healthy.</p>
      *         <p>
      *         For the current list of CloudWatch regions, see <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS
-     *         Regions and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the
+     *         <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * @see CloudWatchRegion
      */
 
@@ -98,8 +103,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param region
@@ -107,8 +112,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      *        to determine whether this health check is healthy.</p>
      *        <p>
      *        For the current list of CloudWatch regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS
-     *        Regions and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the
+     *        <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CloudWatchRegion
      */
@@ -125,8 +130,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param region
@@ -134,8 +139,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      *        to determine whether this health check is healthy.</p>
      *        <p>
      *        For the current list of CloudWatch regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS
-     *        Regions and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the
+     *        <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * @see CloudWatchRegion
      */
 
@@ -150,8 +155,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      * </p>
      * <p>
      * For the current list of CloudWatch regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS Regions
-     * and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS
+     * Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param region
@@ -159,8 +164,8 @@ public class AlarmIdentifier implements Serializable, Cloneable {
      *        to determine whether this health check is healthy.</p>
      *        <p>
      *        For the current list of CloudWatch regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in <i>AWS
-     *        Regions and Endpoints</i> in the <i>Amazon Web Services General Reference</i>.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the
+     *        <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CloudWatchRegion
      */
@@ -228,9 +233,9 @@ public class AlarmIdentifier implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName());
+            sb.append("Name: ").append(getName());
         sb.append("}");
         return sb.toString();
     }
@@ -274,4 +279,5 @@ public class AlarmIdentifier implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a storage volume object.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/VolumeInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class VolumeInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class VolumeInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -59,7 +66,7 @@ public class VolumeInfo implements Serializable, Cloneable {
     private String volumeType;
     /**
      * <p>
-     * The size, in bytes, of the volume.
+     * The size of the volume in bytes.
      * </p>
      * <p>
      * Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
@@ -316,14 +323,14 @@ public class VolumeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size, in bytes, of the volume.
+     * The size of the volume in bytes.
      * </p>
      * <p>
      * Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      * </p>
      * 
      * @param volumeSizeInBytes
-     *        The size, in bytes, of the volume.</p>
+     *        The size of the volume in bytes.</p>
      *        <p>
      *        Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      */
@@ -334,13 +341,13 @@ public class VolumeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size, in bytes, of the volume.
+     * The size of the volume in bytes.
      * </p>
      * <p>
      * Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      * </p>
      * 
-     * @return The size, in bytes, of the volume.</p>
+     * @return The size of the volume in bytes.</p>
      *         <p>
      *         Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      */
@@ -351,14 +358,14 @@ public class VolumeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size, in bytes, of the volume.
+     * The size of the volume in bytes.
      * </p>
      * <p>
      * Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      * </p>
      * 
      * @param volumeSizeInBytes
-     *        The size, in bytes, of the volume.</p>
+     *        The size of the volume in bytes.</p>
      *        <p>
      *        Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -381,17 +388,17 @@ public class VolumeInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVolumeARN() != null)
-            sb.append("VolumeARN: " + getVolumeARN() + ",");
+            sb.append("VolumeARN: ").append(getVolumeARN()).append(",");
         if (getVolumeId() != null)
-            sb.append("VolumeId: " + getVolumeId() + ",");
+            sb.append("VolumeId: ").append(getVolumeId()).append(",");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getGatewayId() != null)
-            sb.append("GatewayId: " + getGatewayId() + ",");
+            sb.append("GatewayId: ").append(getGatewayId()).append(",");
         if (getVolumeType() != null)
-            sb.append("VolumeType: " + getVolumeType() + ",");
+            sb.append("VolumeType: ").append(getVolumeType()).append(",");
         if (getVolumeSizeInBytes() != null)
-            sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes());
+            sb.append("VolumeSizeInBytes: ").append(getVolumeSizeInBytes());
         sb.append("}");
         return sb.toString();
     }
@@ -454,5 +461,11 @@ public class VolumeInfo implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.VolumeInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

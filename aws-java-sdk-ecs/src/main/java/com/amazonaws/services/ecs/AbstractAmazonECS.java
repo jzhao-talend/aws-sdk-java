@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.ecs;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.ecs.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.ecs.waiters.AmazonECSWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.ecs.waiters.AmazonECSWaiters;
  * Abstract implementation of {@code AmazonECS}. Convenient method forms pass through to the corresponding overload that
  * takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonECS implements AmazonECS {
 
     protected AbstractAmazonECS() {
@@ -47,6 +50,11 @@ public class AbstractAmazonECS implements AmazonECS {
 
     @Override
     public CreateServiceResult createService(CreateServiceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAttributesResult deleteAttributes(DeleteAttributesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -111,6 +119,11 @@ public class AbstractAmazonECS implements AmazonECS {
     }
 
     @Override
+    public ListAttributesResult listAttributes(ListAttributesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListClustersResult listClusters(ListClustersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -171,6 +184,11 @@ public class AbstractAmazonECS implements AmazonECS {
     }
 
     @Override
+    public PutAttributesResult putAttributes(PutAttributesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public RegisterContainerInstanceResult registerContainerInstance(RegisterContainerInstanceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -216,6 +234,11 @@ public class AbstractAmazonECS implements AmazonECS {
     }
 
     @Override
+    public UpdateContainerInstancesStateResult updateContainerInstancesState(UpdateContainerInstancesStateRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateServiceResult updateService(UpdateServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -234,4 +257,5 @@ public class AbstractAmazonECS implements AmazonECS {
     public AmazonECSWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

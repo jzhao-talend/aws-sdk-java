@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * A PUT request to update an existing API, with external API definitions specified as the request body.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutRestApiRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -306,7 +309,7 @@ public class PutRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * supported.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -351,6 +354,16 @@ public class PutRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are
      * supported.
      * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
      * 
      * @param body
      *        The PUT request body containing external API definitions. Currently, only Swagger definition JSON files
@@ -375,15 +388,15 @@ public class PutRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getMode() != null)
-            sb.append("Mode: " + getMode() + ",");
+            sb.append("Mode: ").append(getMode()).append(",");
         if (getFailOnWarnings() != null)
-            sb.append("FailOnWarnings: " + getFailOnWarnings() + ",");
+            sb.append("FailOnWarnings: ").append(getFailOnWarnings()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getBody() != null)
-            sb.append("Body: " + getBody());
+            sb.append("Body: ").append(getBody());
         sb.append("}");
         return sb.toString();
     }
@@ -438,4 +451,5 @@ public class PutRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public PutRestApiRequest clone() {
         return (PutRestApiRequest) super.clone();
     }
+
 }

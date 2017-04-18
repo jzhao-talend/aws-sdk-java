@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the configuration of a Spot fleet request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotFleetRequestConfigData" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
@@ -110,6 +115,12 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * </p>
      */
     private String type;
+    /**
+     * <p>
+     * Indicates whether Spot fleet should replace unhealthy instances.
+     * </p>
+     */
+    private Boolean replaceUnhealthyInstances;
 
     /**
      * <p>
@@ -867,6 +878,58 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether Spot fleet should replace unhealthy instances.
+     * </p>
+     * 
+     * @param replaceUnhealthyInstances
+     *        Indicates whether Spot fleet should replace unhealthy instances.
+     */
+
+    public void setReplaceUnhealthyInstances(Boolean replaceUnhealthyInstances) {
+        this.replaceUnhealthyInstances = replaceUnhealthyInstances;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Spot fleet should replace unhealthy instances.
+     * </p>
+     * 
+     * @return Indicates whether Spot fleet should replace unhealthy instances.
+     */
+
+    public Boolean getReplaceUnhealthyInstances() {
+        return this.replaceUnhealthyInstances;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Spot fleet should replace unhealthy instances.
+     * </p>
+     * 
+     * @param replaceUnhealthyInstances
+     *        Indicates whether Spot fleet should replace unhealthy instances.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpotFleetRequestConfigData withReplaceUnhealthyInstances(Boolean replaceUnhealthyInstances) {
+        setReplaceUnhealthyInstances(replaceUnhealthyInstances);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Spot fleet should replace unhealthy instances.
+     * </p>
+     * 
+     * @return Indicates whether Spot fleet should replace unhealthy instances.
+     */
+
+    public Boolean isReplaceUnhealthyInstances() {
+        return this.replaceUnhealthyInstances;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -878,29 +941,31 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getSpotPrice() != null)
-            sb.append("SpotPrice: " + getSpotPrice() + ",");
+            sb.append("SpotPrice: ").append(getSpotPrice()).append(",");
         if (getTargetCapacity() != null)
-            sb.append("TargetCapacity: " + getTargetCapacity() + ",");
+            sb.append("TargetCapacity: ").append(getTargetCapacity()).append(",");
         if (getValidFrom() != null)
-            sb.append("ValidFrom: " + getValidFrom() + ",");
+            sb.append("ValidFrom: ").append(getValidFrom()).append(",");
         if (getValidUntil() != null)
-            sb.append("ValidUntil: " + getValidUntil() + ",");
+            sb.append("ValidUntil: ").append(getValidUntil()).append(",");
         if (getTerminateInstancesWithExpiration() != null)
-            sb.append("TerminateInstancesWithExpiration: " + getTerminateInstancesWithExpiration() + ",");
+            sb.append("TerminateInstancesWithExpiration: ").append(getTerminateInstancesWithExpiration()).append(",");
         if (getIamFleetRole() != null)
-            sb.append("IamFleetRole: " + getIamFleetRole() + ",");
+            sb.append("IamFleetRole: ").append(getIamFleetRole()).append(",");
         if (getLaunchSpecifications() != null)
-            sb.append("LaunchSpecifications: " + getLaunchSpecifications() + ",");
+            sb.append("LaunchSpecifications: ").append(getLaunchSpecifications()).append(",");
         if (getExcessCapacityTerminationPolicy() != null)
-            sb.append("ExcessCapacityTerminationPolicy: " + getExcessCapacityTerminationPolicy() + ",");
+            sb.append("ExcessCapacityTerminationPolicy: ").append(getExcessCapacityTerminationPolicy()).append(",");
         if (getAllocationStrategy() != null)
-            sb.append("AllocationStrategy: " + getAllocationStrategy() + ",");
+            sb.append("AllocationStrategy: ").append(getAllocationStrategy()).append(",");
         if (getFulfilledCapacity() != null)
-            sb.append("FulfilledCapacity: " + getFulfilledCapacity() + ",");
+            sb.append("FulfilledCapacity: ").append(getFulfilledCapacity()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType());
+            sb.append("Type: ").append(getType()).append(",");
+        if (getReplaceUnhealthyInstances() != null)
+            sb.append("ReplaceUnhealthyInstances: ").append(getReplaceUnhealthyInstances());
         sb.append("}");
         return sb.toString();
     }
@@ -965,6 +1030,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             return false;
         if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
+        if (other.getReplaceUnhealthyInstances() == null ^ this.getReplaceUnhealthyInstances() == null)
+            return false;
+        if (other.getReplaceUnhealthyInstances() != null && other.getReplaceUnhealthyInstances().equals(this.getReplaceUnhealthyInstances()) == false)
+            return false;
         return true;
     }
 
@@ -985,6 +1054,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAllocationStrategy() == null) ? 0 : getAllocationStrategy().hashCode());
         hashCode = prime * hashCode + ((getFulfilledCapacity() == null) ? 0 : getFulfilledCapacity().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getReplaceUnhealthyInstances() == null) ? 0 : getReplaceUnhealthyInstances().hashCode());
         return hashCode;
     }
 
@@ -996,4 +1066,5 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

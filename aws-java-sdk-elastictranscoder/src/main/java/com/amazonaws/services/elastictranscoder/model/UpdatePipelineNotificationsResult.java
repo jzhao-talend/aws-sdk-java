@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,31 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The <code>UpdatePipelineNotificationsResponse</code> structure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdatePipelineNotificationsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the pipeline.
+     * A section of the response body that provides information about the pipeline associated with this notification.
      * </p>
      */
     private Pipeline pipeline;
 
     /**
      * <p>
-     * A section of the response body that provides information about the pipeline.
+     * A section of the response body that provides information about the pipeline associated with this notification.
      * </p>
      * 
      * @param pipeline
-     *        A section of the response body that provides information about the pipeline.
+     *        A section of the response body that provides information about the pipeline associated with this
+     *        notification.
      */
 
     public void setPipeline(Pipeline pipeline) {
@@ -43,10 +46,11 @@ public class UpdatePipelineNotificationsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * A section of the response body that provides information about the pipeline.
+     * A section of the response body that provides information about the pipeline associated with this notification.
      * </p>
      * 
-     * @return A section of the response body that provides information about the pipeline.
+     * @return A section of the response body that provides information about the pipeline associated with this
+     *         notification.
      */
 
     public Pipeline getPipeline() {
@@ -55,11 +59,12 @@ public class UpdatePipelineNotificationsResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * A section of the response body that provides information about the pipeline.
+     * A section of the response body that provides information about the pipeline associated with this notification.
      * </p>
      * 
      * @param pipeline
-     *        A section of the response body that provides information about the pipeline.
+     *        A section of the response body that provides information about the pipeline associated with this
+     *        notification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class UpdatePipelineNotificationsResult extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPipeline() != null)
-            sb.append("Pipeline: " + getPipeline());
+            sb.append("Pipeline: ").append(getPipeline());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class UpdatePipelineNotificationsResult extends com.amazonaws.AmazonWebSe
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

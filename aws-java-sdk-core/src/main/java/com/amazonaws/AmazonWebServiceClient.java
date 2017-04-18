@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.amazonaws.auth.RegionAwareSigner;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SignerFactory;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.handlers.RequestHandler;
 import com.amazonaws.handlers.RequestHandler2;
 import com.amazonaws.http.AmazonHttpClient;
@@ -179,7 +180,17 @@ public abstract class AmazonWebServiceClient {
      * as the information on the S3 bucket and key is not yet known.
      */
     @Deprecated
-    protected Signer getSigner() { return signerProvider.getSigner(SignerProviderContext.builder().build()); }
+    protected Signer getSigner() {
+        return signerProvider.getSigner(SignerProviderContext.builder().build());
+    }
+
+    /**
+     * @return Current SignerProvider instance.
+     */
+    @SdkProtectedApi
+    protected SignerProvider getSignerProvider() {
+        return signerProvider;
+    }
 
     /**
      * Overrides the default endpoint for this client. Callers can use this
@@ -208,7 +219,10 @@ public abstract class AmazonWebServiceClient {
      * @throws IllegalArgumentException
      *             If any problems are detected with the specified endpoint.
      *
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for example:
+     * {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     public void setEndpoint(String endpoint) throws IllegalArgumentException {
         checkMutability();
         URI uri = toURI(endpoint);
@@ -328,8 +342,9 @@ public abstract class AmazonWebServiceClient {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider,
      *      ClientConfiguration)
-     *
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     public void setRegion(Region region) throws IllegalArgumentException {
         checkMutability();
         if (region == null) {
@@ -352,8 +367,9 @@ public abstract class AmazonWebServiceClient {
      * @param region region to set to; must not be null.
      *
      * @see #setRegion(Region)
-     *
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     public final void configureRegion(Regions region) {
         checkMutability();
         if (region == null)
@@ -395,7 +411,9 @@ public abstract class AmazonWebServiceClient {
      * @param requestHandler2
      *            The new handler to add to the current list of request
      *            handlers.
+     * @deprecated use {@link AwsClientBuilder#withRequestHandlers(RequestHandler2...)}
      */
+    @Deprecated
     public void addRequestHandler(RequestHandler2 requestHandler2) {
         checkMutability();
         requestHandler2s.add(requestHandler2);
@@ -408,12 +426,18 @@ public abstract class AmazonWebServiceClient {
      * @param requestHandler
      *            The handler to remove from the current list of request
      *            handlers.
+     * @deprecated use {@link AwsClientBuilder#withRequestHandlers(RequestHandler2...)}
      */
+    @Deprecated
     public void removeRequestHandler(RequestHandler requestHandler) {
         checkMutability();
         requestHandler2s.remove(RequestHandler2.adapt(requestHandler));
     }
 
+    /**
+     * @deprecated use {@link AwsClientBuilder#withRequestHandlers(RequestHandler2...)}
+     */
+    @Deprecated
     public void removeRequestHandler(RequestHandler2 requestHandler2) {
         checkMutability();
         requestHandler2s.remove(requestHandler2);
@@ -558,6 +582,17 @@ public abstract class AmazonWebServiceClient {
         } else {
             return AwsSdkMetrics.getRequestMetricCollector();
         }
+    }
+
+    /**
+     * Notify request handlers that we are about to start execution.
+     */
+    protected final <T extends AmazonWebServiceRequest> T beforeClientExecution(T request) {
+        T local = request;
+        for (RequestHandler2 handler : requestHandler2s) {
+            local = (T) handler.beforeExecution(local);
+        }
+        return local;
     }
 
     /**
@@ -755,7 +790,10 @@ public abstract class AmazonWebServiceClient {
      *   AmazonDynamoDBClient client = new AmazonDynamoDBClient(...).<AmazonDynamoDBClient>withRegion(...);
      *</pre>
      * @see #setRegion(Region)
+     * @deprecated use {@link AwsClientBuilder#withRegion(Region)} for example:
+     * {@code AmazonSNSClientBuilder.standard().withRegion(region).build();}
      */
+    @Deprecated
     public <T extends AmazonWebServiceClient> T withRegion(Region region) {
         setRegion(region);
         @SuppressWarnings("unchecked") T t= (T)this;
@@ -768,7 +806,10 @@ public abstract class AmazonWebServiceClient {
      * @param region region to set to; must not be null.
      *
      * @see #withRegion(Region)
+     * @deprecated use {@link AwsClientBuilder#withRegion(Regions)} for example:
+     * {@code AmazonSNSClientBuilder.standard().withRegion(region).build();}
      */
+    @Deprecated
     public <T extends AmazonWebServiceClient> T withRegion(Regions region) {
         configureRegion(region);
         @SuppressWarnings("unchecked") T t= (T)this;
@@ -782,7 +823,10 @@ public abstract class AmazonWebServiceClient {
      *   AmazonDynamoDBClient client = new AmazonDynamoDBClient(...).<AmazonDynamoDBClient>withEndPoint(...);
      *</pre>
      * @see #setEndpoint(String)
+     * @deprecated use {@link AwsClientBuilder#withEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for example:
+     * {@code AmazonSNSClientBuilder.standard().withEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion)).build();}
      */
+    @Deprecated
     public <T extends AmazonWebServiceClient> T withEndpoint(String endpoint) {
         setEndpoint(endpoint);
         @SuppressWarnings("unchecked") T t= (T)this;
@@ -829,5 +873,9 @@ public abstract class AmazonWebServiceClient {
      */
     protected boolean calculateCRC32FromCompressedData() {
         return false;
+    }
+
+    public String getSignerOverride() {
+        return clientConfiguration.getSignerOverride();
     }
 }

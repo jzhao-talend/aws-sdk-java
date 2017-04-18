@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ApplyPendingMaintenanceAction" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -357,11 +363,11 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceIdentifier() != null)
-            sb.append("ResourceIdentifier: " + getResourceIdentifier() + ",");
+            sb.append("ResourceIdentifier: ").append(getResourceIdentifier()).append(",");
         if (getApplyAction() != null)
-            sb.append("ApplyAction: " + getApplyAction() + ",");
+            sb.append("ApplyAction: ").append(getApplyAction()).append(",");
         if (getOptInType() != null)
-            sb.append("OptInType: " + getOptInType());
+            sb.append("OptInType: ").append(getOptInType());
         sb.append("}");
         return sb.toString();
     }
@@ -406,4 +412,5 @@ public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWe
     public ApplyPendingMaintenanceActionRequest clone() {
         return (ApplyPendingMaintenanceActionRequest) super.clone();
     }
+
 }

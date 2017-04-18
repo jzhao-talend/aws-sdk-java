@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The response from the server for a registration request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SignUp" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -27,7 +32,11 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * </p>
      */
     private Boolean userConfirmed;
-
+    /**
+     * <p>
+     * The code delivery details returned by the server response to the user registration request.
+     * </p>
+     */
     private CodeDeliveryDetailsType codeDeliveryDetails;
 
     /**
@@ -83,7 +92,12 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     }
 
     /**
+     * <p>
+     * The code delivery details returned by the server response to the user registration request.
+     * </p>
+     * 
      * @param codeDeliveryDetails
+     *        The code delivery details returned by the server response to the user registration request.
      */
 
     public void setCodeDeliveryDetails(CodeDeliveryDetailsType codeDeliveryDetails) {
@@ -91,7 +105,11 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     }
 
     /**
-     * @return
+     * <p>
+     * The code delivery details returned by the server response to the user registration request.
+     * </p>
+     * 
+     * @return The code delivery details returned by the server response to the user registration request.
      */
 
     public CodeDeliveryDetailsType getCodeDeliveryDetails() {
@@ -99,7 +117,12 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
     }
 
     /**
+     * <p>
+     * The code delivery details returned by the server response to the user registration request.
+     * </p>
+     * 
      * @param codeDeliveryDetails
+     *        The code delivery details returned by the server response to the user registration request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -120,9 +143,9 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserConfirmed() != null)
-            sb.append("UserConfirmed: " + getUserConfirmed() + ",");
+            sb.append("UserConfirmed: ").append(getUserConfirmed()).append(",");
         if (getCodeDeliveryDetails() != null)
-            sb.append("CodeDeliveryDetails: " + getCodeDeliveryDetails());
+            sb.append("CodeDeliveryDetails: ").append(getCodeDeliveryDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -166,4 +189,5 @@ public class SignUpResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

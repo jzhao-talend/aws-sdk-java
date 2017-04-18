@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains all of the attributes of a specific cache cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheCluster" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheCluster implements Serializable, Cloneable {
 
     /**
@@ -28,7 +33,16 @@ public class CacheCluster implements Serializable, Cloneable {
      * </p>
      */
     private String cacheClusterId;
-
+    /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     */
     private Endpoint configurationEndpoint;
     /**
      * <p>
@@ -328,7 +342,21 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
      * @param configurationEndpoint
+     *        Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *        used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *        <code>.cfg</code> in it.</p>
+     *        <p>
+     *        Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
      */
 
     public void setConfigurationEndpoint(Endpoint configurationEndpoint) {
@@ -336,7 +364,20 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
+     * @return Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *         used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *         <code>.cfg</code> in it.</p>
+     *         <p>
+     *         Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
      */
 
     public Endpoint getConfigurationEndpoint() {
@@ -344,7 +385,21 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
      * @param configurationEndpoint
+     *        Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *        used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *        <code>.cfg</code> in it.</p>
+     *        <p>
+     *        Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2079,49 +2134,49 @@ public class CacheCluster implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheClusterId() != null)
-            sb.append("CacheClusterId: " + getCacheClusterId() + ",");
+            sb.append("CacheClusterId: ").append(getCacheClusterId()).append(",");
         if (getConfigurationEndpoint() != null)
-            sb.append("ConfigurationEndpoint: " + getConfigurationEndpoint() + ",");
+            sb.append("ConfigurationEndpoint: ").append(getConfigurationEndpoint()).append(",");
         if (getClientDownloadLandingPage() != null)
-            sb.append("ClientDownloadLandingPage: " + getClientDownloadLandingPage() + ",");
+            sb.append("ClientDownloadLandingPage: ").append(getClientDownloadLandingPage()).append(",");
         if (getCacheNodeType() != null)
-            sb.append("CacheNodeType: " + getCacheNodeType() + ",");
+            sb.append("CacheNodeType: ").append(getCacheNodeType()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getCacheClusterStatus() != null)
-            sb.append("CacheClusterStatus: " + getCacheClusterStatus() + ",");
+            sb.append("CacheClusterStatus: ").append(getCacheClusterStatus()).append(",");
         if (getNumCacheNodes() != null)
-            sb.append("NumCacheNodes: " + getNumCacheNodes() + ",");
+            sb.append("NumCacheNodes: ").append(getNumCacheNodes()).append(",");
         if (getPreferredAvailabilityZone() != null)
-            sb.append("PreferredAvailabilityZone: " + getPreferredAvailabilityZone() + ",");
+            sb.append("PreferredAvailabilityZone: ").append(getPreferredAvailabilityZone()).append(",");
         if (getCacheClusterCreateTime() != null)
-            sb.append("CacheClusterCreateTime: " + getCacheClusterCreateTime() + ",");
+            sb.append("CacheClusterCreateTime: ").append(getCacheClusterCreateTime()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues() + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getNotificationConfiguration() != null)
-            sb.append("NotificationConfiguration: " + getNotificationConfiguration() + ",");
+            sb.append("NotificationConfiguration: ").append(getNotificationConfiguration()).append(",");
         if (getCacheSecurityGroups() != null)
-            sb.append("CacheSecurityGroups: " + getCacheSecurityGroups() + ",");
+            sb.append("CacheSecurityGroups: ").append(getCacheSecurityGroups()).append(",");
         if (getCacheParameterGroup() != null)
-            sb.append("CacheParameterGroup: " + getCacheParameterGroup() + ",");
+            sb.append("CacheParameterGroup: ").append(getCacheParameterGroup()).append(",");
         if (getCacheSubnetGroupName() != null)
-            sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName() + ",");
+            sb.append("CacheSubnetGroupName: ").append(getCacheSubnetGroupName()).append(",");
         if (getCacheNodes() != null)
-            sb.append("CacheNodes: " + getCacheNodes() + ",");
+            sb.append("CacheNodes: ").append(getCacheNodes()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getReplicationGroupId() != null)
-            sb.append("ReplicationGroupId: " + getReplicationGroupId() + ",");
+            sb.append("ReplicationGroupId: ").append(getReplicationGroupId()).append(",");
         if (getSnapshotRetentionLimit() != null)
-            sb.append("SnapshotRetentionLimit: " + getSnapshotRetentionLimit() + ",");
+            sb.append("SnapshotRetentionLimit: ").append(getSnapshotRetentionLimit()).append(",");
         if (getSnapshotWindow() != null)
-            sb.append("SnapshotWindow: " + getSnapshotWindow());
+            sb.append("SnapshotWindow: ").append(getSnapshotWindow());
         sb.append("}");
         return sb.toString();
     }
@@ -2265,4 +2320,5 @@ public class CacheCluster implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

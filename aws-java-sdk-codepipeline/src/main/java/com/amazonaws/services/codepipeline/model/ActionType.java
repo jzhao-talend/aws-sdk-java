@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Returns information about the details of an action type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ActionType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ActionType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActionType implements Serializable, Cloneable, StructuredPojo {
 
     private ActionTypeId id;
     /**
@@ -275,15 +282,15 @@ public class ActionType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getSettings() != null)
-            sb.append("Settings: " + getSettings() + ",");
+            sb.append("Settings: ").append(getSettings()).append(",");
         if (getActionConfigurationProperties() != null)
-            sb.append("ActionConfigurationProperties: " + getActionConfigurationProperties() + ",");
+            sb.append("ActionConfigurationProperties: ").append(getActionConfigurationProperties()).append(",");
         if (getInputArtifactDetails() != null)
-            sb.append("InputArtifactDetails: " + getInputArtifactDetails() + ",");
+            sb.append("InputArtifactDetails: ").append(getInputArtifactDetails()).append(",");
         if (getOutputArtifactDetails() != null)
-            sb.append("OutputArtifactDetails: " + getOutputArtifactDetails());
+            sb.append("OutputArtifactDetails: ").append(getOutputArtifactDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -342,5 +349,11 @@ public class ActionType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.ActionTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,17 @@ import java.util.Map;
  * @see AbstractDynamoDBMapper
  */
 public interface IDynamoDBMapper {
+    /**
+     * Get the table model for the class, using the default configuration.
+     *
+     * @see DynamoDBMapper#getTableModel(Class, DynamoDBMapperConfig)
+     */
+    <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz);
+
+    /**
+     * Get the table model for the class using the provided configuration override.
+     */
+    <T extends Object> DynamoDBMapperTableModel<T> getTableModel(Class<T> clazz, DynamoDBMapperConfig config);
 
     /**
      * Loads an object with the hash key given and a configuration override. This configuration
@@ -333,6 +344,8 @@ public interface IDynamoDBMapper {
      *         Each value in the map is a list of objects that have been loaded from that table. All
      *         objects for each table can be cast to the associated user defined type that is
      *         annotated as mapping that table.
+     * @throws DynamoDBMapper.BatchGetItemException if all the requested items are not processed
+     *         within the maximum number of retries.
      */
     Map<String, List<Object>> batchLoad(Iterable<? extends Object> itemsToGet);
 
@@ -349,6 +362,8 @@ public interface IDynamoDBMapper {
      *         Each value in the map is a list of objects that have been loaded from that table. All
      *         objects for each table can be cast to the associated user defined type that is
      *         annotated as mapping that table.
+     * @throws DynamoDBMapper.BatchGetItemException if all the requested items are not processed
+     *         within the maximum number of retries.
      */
     Map<String, List<Object>> batchLoad(Iterable<? extends Object> itemsToGet, DynamoDBMapperConfig config);
 
@@ -360,6 +375,8 @@ public interface IDynamoDBMapper {
      *         Each value in the map is a list of objects that have been loaded from that table. All
      *         objects for each table can be cast to the associated user defined type that is
      *         annotated as mapping that table.
+     * @throws DynamoDBMapper.BatchGetItemException if all the requested items are not processed
+     *         within the maximum number of retries.
      * @see #batchLoad(List, DynamoDBMapperConfig)
      * @see #batchLoad(Map, DynamoDBMapperConfig)
      */
@@ -379,6 +396,8 @@ public interface IDynamoDBMapper {
      *         Each value in the map is a list of objects that have been loaded from that table. All
      *         objects for each table can be cast to the associated user defined type that is
      *         annotated as mapping that table.
+     * @throws DynamoDBMapper.BatchGetItemException if all the requested items are not processed
+     *         within the maximum number of retries.
      */
     Map<String, List<Object>> batchLoad(Map<Class<?>, List<KeyPair>> itemsToGet, DynamoDBMapperConfig config);
 

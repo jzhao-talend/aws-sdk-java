@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,12 @@
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * Output structure for the GetStatus operation.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetStatusResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private String jobId;
@@ -531,37 +533,37 @@ public class GetStatusResult extends com.amazonaws.AmazonWebServiceResult<com.am
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getJobType() != null)
-            sb.append("JobType: " + getJobType() + ",");
+            sb.append("JobType: ").append(getJobType()).append(",");
         if (getLocationCode() != null)
-            sb.append("LocationCode: " + getLocationCode() + ",");
+            sb.append("LocationCode: ").append(getLocationCode()).append(",");
         if (getLocationMessage() != null)
-            sb.append("LocationMessage: " + getLocationMessage() + ",");
+            sb.append("LocationMessage: ").append(getLocationMessage()).append(",");
         if (getProgressCode() != null)
-            sb.append("ProgressCode: " + getProgressCode() + ",");
+            sb.append("ProgressCode: ").append(getProgressCode()).append(",");
         if (getProgressMessage() != null)
-            sb.append("ProgressMessage: " + getProgressMessage() + ",");
+            sb.append("ProgressMessage: ").append(getProgressMessage()).append(",");
         if (getCarrier() != null)
-            sb.append("Carrier: " + getCarrier() + ",");
+            sb.append("Carrier: ").append(getCarrier()).append(",");
         if (getTrackingNumber() != null)
-            sb.append("TrackingNumber: " + getTrackingNumber() + ",");
+            sb.append("TrackingNumber: ").append(getTrackingNumber()).append(",");
         if (getLogBucket() != null)
-            sb.append("LogBucket: " + getLogBucket() + ",");
+            sb.append("LogBucket: ").append(getLogBucket()).append(",");
         if (getLogKey() != null)
-            sb.append("LogKey: " + getLogKey() + ",");
+            sb.append("LogKey: ").append(getLogKey()).append(",");
         if (getErrorCount() != null)
-            sb.append("ErrorCount: " + getErrorCount() + ",");
+            sb.append("ErrorCount: ").append(getErrorCount()).append(",");
         if (getSignature() != null)
-            sb.append("Signature: " + getSignature() + ",");
+            sb.append("Signature: ").append(getSignature()).append(",");
         if (getSignatureFileContents() != null)
-            sb.append("SignatureFileContents: " + getSignatureFileContents() + ",");
+            sb.append("SignatureFileContents: ").append(getSignatureFileContents()).append(",");
         if (getCurrentManifest() != null)
-            sb.append("CurrentManifest: " + getCurrentManifest() + ",");
+            sb.append("CurrentManifest: ").append(getCurrentManifest()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getArtifactList() != null)
-            sb.append("ArtifactList: " + getArtifactList());
+            sb.append("ArtifactList: ").append(getArtifactList());
         sb.append("}");
         return sb.toString();
     }
@@ -675,4 +677,5 @@ public class GetStatusResult extends com.amazonaws.AmazonWebServiceResult<com.am
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

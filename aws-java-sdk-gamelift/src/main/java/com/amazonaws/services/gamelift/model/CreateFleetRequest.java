@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateFleet" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      */
     private String name;
@@ -36,8 +42,9 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String description;
     /**
      * <p>
-     * Unique identifier of the build to be deployed on the new fleet. The build must have been successfully uploaded to
-     * GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.
+     * Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to
+     * Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is
+     * created.
      * </p>
      */
     private String buildId;
@@ -59,20 +66,18 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String serverLaunchParameters;
     /**
      * <p>
-     * Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log
-     * files in this location. These logs are in addition to game session logs; see more on game session logs in the <a
-     * href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     * >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     * automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console to
-     * access stored logs.
+     * This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server
+     * process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more
+     * directory paths in <code>logParameters</code>. See more information in the <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     * >Server API Reference</a>.
      * </p>
      */
     private java.util.List<String> logPaths;
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
@@ -113,9 +118,9 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance. A <code>CreateFleet</code> request
-     * must include a runtime configuration with at least one server process configuration; otherwise the request will
-     * fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
+     * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
+     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
      * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
      * configuration will continue to work.)
      * </p>
@@ -131,11 +136,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     *        Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -144,10 +149,10 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * @return Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      */
 
     public String getName() {
@@ -156,11 +161,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     * Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a fleet. Fleet names do not need to be unique.
+     *        Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -211,14 +216,15 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier of the build to be deployed on the new fleet. The build must have been successfully uploaded to
-     * GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.
+     * Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to
+     * Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is
+     * created.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier of the build to be deployed on the new fleet. The build must have been successfully
-     *        uploaded to GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the
-     *        fleet is created.
+     *        Unique identifier for a build to be deployed on the new fleet. The build must have been successfully
+     *        uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed
+     *        once the fleet is created.
      */
 
     public void setBuildId(String buildId) {
@@ -227,13 +233,14 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier of the build to be deployed on the new fleet. The build must have been successfully uploaded to
-     * GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.
+     * Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to
+     * Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is
+     * created.
      * </p>
      * 
-     * @return Unique identifier of the build to be deployed on the new fleet. The build must have been successfully
-     *         uploaded to GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the
-     *         fleet is created.
+     * @return Unique identifier for a build to be deployed on the new fleet. The build must have been successfully
+     *         uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed
+     *         once the fleet is created.
      */
 
     public String getBuildId() {
@@ -242,14 +249,15 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier of the build to be deployed on the new fleet. The build must have been successfully uploaded to
-     * GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.
+     * Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to
+     * Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is
+     * created.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier of the build to be deployed on the new fleet. The build must have been successfully
-     *        uploaded to GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the
-     *        fleet is created.
+     *        Unique identifier for a build to be deployed on the new fleet. The build must have been successfully
+     *        uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed
+     *        once the fleet is created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -364,22 +372,18 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log
-     * files in this location. These logs are in addition to game session logs; see more on game session logs in the <a
-     * href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     * >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     * automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console to
-     * access stored logs.
+     * This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server
+     * process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more
+     * directory paths in <code>logParameters</code>. See more information in the <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     * >Server API Reference</a>.
      * </p>
      * 
-     * @return Location of default log files. When a server process is shut down, Amazon GameLift captures and stores
-     *         any log files in this location. These logs are in addition to game session logs; see more on game session
-     *         logs in the <a href=
-     *         "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     *         >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     *         automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console
-     *         to access stored logs.
+     * @return This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a
+     *         server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one
+     *         or more directory paths in <code>logParameters</code>. See more information in the <a href=
+     *         "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     *         >Server API Reference</a>.
      */
 
     public java.util.List<String> getLogPaths() {
@@ -388,23 +392,19 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log
-     * files in this location. These logs are in addition to game session logs; see more on game session logs in the <a
-     * href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     * >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     * automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console to
-     * access stored logs.
+     * This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server
+     * process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more
+     * directory paths in <code>logParameters</code>. See more information in the <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     * >Server API Reference</a>.
      * </p>
      * 
      * @param logPaths
-     *        Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any
-     *        log files in this location. These logs are in addition to game session logs; see more on game session logs
-     *        in the <a href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     *        >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     *        automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console
-     *        to access stored logs.
+     *        This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a
+     *        server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one
+     *        or more directory paths in <code>logParameters</code>. See more information in the <a href=
+     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     *        >Server API Reference</a>.
      */
 
     public void setLogPaths(java.util.Collection<String> logPaths) {
@@ -418,13 +418,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log
-     * files in this location. These logs are in addition to game session logs; see more on game session logs in the <a
-     * href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     * >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     * automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console to
-     * access stored logs.
+     * This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server
+     * process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more
+     * directory paths in <code>logParameters</code>. See more information in the <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     * >Server API Reference</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -433,13 +431,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param logPaths
-     *        Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any
-     *        log files in this location. These logs are in addition to game session logs; see more on game session logs
-     *        in the <a href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     *        >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     *        automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console
-     *        to access stored logs.
+     *        This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a
+     *        server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one
+     *        or more directory paths in <code>logParameters</code>. See more information in the <a href=
+     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     *        >Server API Reference</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -455,23 +451,19 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log
-     * files in this location. These logs are in addition to game session logs; see more on game session logs in the <a
-     * href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     * >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     * automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console to
-     * access stored logs.
+     * This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server
+     * process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more
+     * directory paths in <code>logParameters</code>. See more information in the <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     * >Server API Reference</a>.
      * </p>
      * 
      * @param logPaths
-     *        Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any
-     *        log files in this location. These logs are in addition to game session logs; see more on game session logs
-     *        in the <a href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code"
-     *        >Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, GameLift will
-     *        automatically upload logs stored on each instance at <code>C:\game\logs</code>. Use the GameLift console
-     *        to access stored logs.
+     *        This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a
+     *        server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one
+     *        or more directory paths in <code>logParameters</code>. See more information in the <a href=
+     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process"
+     *        >Server API Reference</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -483,7 +475,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
@@ -491,7 +483,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      * @see EC2InstanceType
      */
@@ -503,14 +495,14 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
      * 
      * @return Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *         computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *         capacity. GameLift supports the following EC2 instance types. See <a
+     *         capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *         href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      * @see EC2InstanceType
      */
@@ -522,7 +514,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
@@ -530,7 +522,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see EC2InstanceType
@@ -544,7 +536,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
@@ -552,7 +544,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      * @see EC2InstanceType
      */
@@ -564,7 +556,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing
-     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. GameLift
+     * resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift
      * supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
      * Instance Types</a> for detailed descriptions.
      * </p>
@@ -572,7 +564,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param eC2InstanceType
      *        Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the
      *        computing resources of each instance in the fleet, including CPU, memory, storage, and networking
-     *        capacity. GameLift supports the following EC2 instance types. See <a
+     *        capacity. Amazon GameLift supports the following EC2 instance types. See <a
      *        href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see EC2InstanceType
@@ -906,9 +898,9 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance. A <code>CreateFleet</code> request
-     * must include a runtime configuration with at least one server process configuration; otherwise the request will
-     * fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
+     * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
+     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
      * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
      * configuration will continue to work.)
      * </p>
@@ -918,10 +910,10 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        fleet has a collection of server process configurations, one for each type of server process to run on an
      *        instance. A server process configuration specifies the location of the server executable, launch
      *        parameters, and the number of concurrent processes with that configuration to maintain on each instance. A
-     *        <code>CreateFleet</code> request must include a runtime configuration with at least one server process
-     *        configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces
-     *        the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that
-     *        contain values for these parameters instead of a runtime configuration will continue to work.)
+     *        CreateFleet request must include a runtime configuration with at least one server process configuration;
+     *        otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters
+     *        <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for
+     *        these parameters instead of a runtime configuration will continue to work.)
      */
 
     public void setRuntimeConfiguration(RuntimeConfiguration runtimeConfiguration) {
@@ -933,9 +925,9 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance. A <code>CreateFleet</code> request
-     * must include a runtime configuration with at least one server process configuration; otherwise the request will
-     * fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
+     * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
+     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
      * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
      * configuration will continue to work.)
      * </p>
@@ -944,7 +936,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         a fleet has a collection of server process configurations, one for each type of server process to run on
      *         an instance. A server process configuration specifies the location of the server executable, launch
      *         parameters, and the number of concurrent processes with that configuration to maintain on each instance.
-     *         A <code>CreateFleet</code> request must include a runtime configuration with at least one server process
+     *         A CreateFleet request must include a runtime configuration with at least one server process
      *         configuration; otherwise the request will fail with an invalid request exception. (This parameter
      *         replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests
      *         that contain values for these parameters instead of a runtime configuration will continue to work.)
@@ -959,9 +951,9 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance. A <code>CreateFleet</code> request
-     * must include a runtime configuration with at least one server process configuration; otherwise the request will
-     * fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
+     * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
+     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
      * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
      * configuration will continue to work.)
      * </p>
@@ -971,10 +963,10 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        fleet has a collection of server process configurations, one for each type of server process to run on an
      *        instance. A server process configuration specifies the location of the server executable, launch
      *        parameters, and the number of concurrent processes with that configuration to maintain on each instance. A
-     *        <code>CreateFleet</code> request must include a runtime configuration with at least one server process
-     *        configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces
-     *        the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that
-     *        contain values for these parameters instead of a runtime configuration will continue to work.)
+     *        CreateFleet request must include a runtime configuration with at least one server process configuration;
+     *        otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters
+     *        <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for
+     *        these parameters instead of a runtime configuration will continue to work.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1041,27 +1033,27 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getBuildId() != null)
-            sb.append("BuildId: " + getBuildId() + ",");
+            sb.append("BuildId: ").append(getBuildId()).append(",");
         if (getServerLaunchPath() != null)
-            sb.append("ServerLaunchPath: " + getServerLaunchPath() + ",");
+            sb.append("ServerLaunchPath: ").append(getServerLaunchPath()).append(",");
         if (getServerLaunchParameters() != null)
-            sb.append("ServerLaunchParameters: " + getServerLaunchParameters() + ",");
+            sb.append("ServerLaunchParameters: ").append(getServerLaunchParameters()).append(",");
         if (getLogPaths() != null)
-            sb.append("LogPaths: " + getLogPaths() + ",");
+            sb.append("LogPaths: ").append(getLogPaths()).append(",");
         if (getEC2InstanceType() != null)
-            sb.append("EC2InstanceType: " + getEC2InstanceType() + ",");
+            sb.append("EC2InstanceType: ").append(getEC2InstanceType()).append(",");
         if (getEC2InboundPermissions() != null)
-            sb.append("EC2InboundPermissions: " + getEC2InboundPermissions() + ",");
+            sb.append("EC2InboundPermissions: ").append(getEC2InboundPermissions()).append(",");
         if (getNewGameSessionProtectionPolicy() != null)
-            sb.append("NewGameSessionProtectionPolicy: " + getNewGameSessionProtectionPolicy() + ",");
+            sb.append("NewGameSessionProtectionPolicy: ").append(getNewGameSessionProtectionPolicy()).append(",");
         if (getRuntimeConfiguration() != null)
-            sb.append("RuntimeConfiguration: " + getRuntimeConfiguration() + ",");
+            sb.append("RuntimeConfiguration: ").append(getRuntimeConfiguration()).append(",");
         if (getResourceCreationLimitPolicy() != null)
-            sb.append("ResourceCreationLimitPolicy: " + getResourceCreationLimitPolicy());
+            sb.append("ResourceCreationLimitPolicy: ").append(getResourceCreationLimitPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -1147,4 +1139,5 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateFleetRequest clone() {
         return (CreateFleetRequest) super.clone();
     }
+
 }

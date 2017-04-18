@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -83,6 +83,16 @@ public class SdkJsonGenerator implements StructuredJsonGenerator {
     public StructuredJsonGenerator writeEndArray() {
         try {
             generator.writeEndArray();
+        } catch (IOException e) {
+            throw new JsonGenerationException(e);
+        }
+        return this;
+    }
+
+    @Override
+    public StructuredJsonGenerator writeNull() {
+        try {
+            generator.writeNull();
         } catch (IOException e) {
             throw new JsonGenerationException(e);
         }

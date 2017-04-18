@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codecommit.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about a repository.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/RepositoryMetadata" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RepositoryMetadata implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RepositoryMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -494,25 +501,25 @@ public class RepositoryMetadata implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccountId() != null)
-            sb.append("AccountId: " + getAccountId() + ",");
+            sb.append("AccountId: ").append(getAccountId()).append(",");
         if (getRepositoryId() != null)
-            sb.append("RepositoryId: " + getRepositoryId() + ",");
+            sb.append("RepositoryId: ").append(getRepositoryId()).append(",");
         if (getRepositoryName() != null)
-            sb.append("RepositoryName: " + getRepositoryName() + ",");
+            sb.append("RepositoryName: ").append(getRepositoryName()).append(",");
         if (getRepositoryDescription() != null)
-            sb.append("RepositoryDescription: " + getRepositoryDescription() + ",");
+            sb.append("RepositoryDescription: ").append(getRepositoryDescription()).append(",");
         if (getDefaultBranch() != null)
-            sb.append("DefaultBranch: " + getDefaultBranch() + ",");
+            sb.append("DefaultBranch: ").append(getDefaultBranch()).append(",");
         if (getLastModifiedDate() != null)
-            sb.append("LastModifiedDate: " + getLastModifiedDate() + ",");
+            sb.append("LastModifiedDate: ").append(getLastModifiedDate()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getCloneUrlHttp() != null)
-            sb.append("CloneUrlHttp: " + getCloneUrlHttp() + ",");
+            sb.append("CloneUrlHttp: ").append(getCloneUrlHttp()).append(",");
         if (getCloneUrlSsh() != null)
-            sb.append("CloneUrlSsh: " + getCloneUrlSsh() + ",");
+            sb.append("CloneUrlSsh: ").append(getCloneUrlSsh()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn());
+            sb.append("Arn: ").append(getArn());
         sb.append("}");
         return sb.toString();
     }
@@ -595,5 +602,11 @@ public class RepositoryMetadata implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codecommit.model.transform.RepositoryMetadataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

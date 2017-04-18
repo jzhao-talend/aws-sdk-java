@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,15 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeConfigRuleEvaluationStatus"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
@@ -26,6 +31,12 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ConfigRuleEvaluationStatus> configRulesEvaluationStatus;
+    /**
+     * <p>
+     * The string that you use in a subsequent request to get the next page of results in a paginated response.
+     * </p>
+     */
+    private String nextToken;
 
     /**
      * <p>
@@ -101,6 +112,46 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
     }
 
     /**
+     * <p>
+     * The string that you use in a subsequent request to get the next page of results in a paginated response.
+     * </p>
+     * 
+     * @param nextToken
+     *        The string that you use in a subsequent request to get the next page of results in a paginated response.
+     */
+
+    public void setNextToken(String nextToken) {
+        this.nextToken = nextToken;
+    }
+
+    /**
+     * <p>
+     * The string that you use in a subsequent request to get the next page of results in a paginated response.
+     * </p>
+     * 
+     * @return The string that you use in a subsequent request to get the next page of results in a paginated response.
+     */
+
+    public String getNextToken() {
+        return this.nextToken;
+    }
+
+    /**
+     * <p>
+     * The string that you use in a subsequent request to get the next page of results in a paginated response.
+     * </p>
+     * 
+     * @param nextToken
+     *        The string that you use in a subsequent request to get the next page of results in a paginated response.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeConfigRuleEvaluationStatusResult withNextToken(String nextToken) {
+        setNextToken(nextToken);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -112,7 +163,9 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConfigRulesEvaluationStatus() != null)
-            sb.append("ConfigRulesEvaluationStatus: " + getConfigRulesEvaluationStatus());
+            sb.append("ConfigRulesEvaluationStatus: ").append(getConfigRulesEvaluationStatus()).append(",");
+        if (getNextToken() != null)
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -131,6 +184,10 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
             return false;
         if (other.getConfigRulesEvaluationStatus() != null && other.getConfigRulesEvaluationStatus().equals(this.getConfigRulesEvaluationStatus()) == false)
             return false;
+        if (other.getNextToken() == null ^ this.getNextToken() == null)
+            return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
+            return false;
         return true;
     }
 
@@ -140,6 +197,7 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getConfigRulesEvaluationStatus() == null) ? 0 : getConfigRulesEvaluationStatus().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -151,4 +209,5 @@ public class DescribeConfigRuleEvaluationStatusResult extends com.amazonaws.Amaz
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,21 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group to delete.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
@@ -39,7 +44,7 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
      * to initialize any additional object members.
      * 
      * @param logGroupName
-     *        The name of the log group to delete.
+     *        The name of the log group.
      */
     public DeleteLogGroupRequest(String logGroupName) {
         setLogGroupName(logGroupName);
@@ -47,11 +52,11 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to delete.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to delete.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -60,10 +65,10 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to delete.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group to delete.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -72,11 +77,11 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the log group to delete.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to delete.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -97,7 +102,7 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName());
+            sb.append("LogGroupName: ").append(getLogGroupName());
         sb.append("}");
         return sb.toString();
     }
@@ -132,4 +137,5 @@ public class DeleteLogGroupRequest extends com.amazonaws.AmazonWebServiceRequest
     public DeleteLogGroupRequest clone() {
         return (DeleteLogGroupRequest) super.clone();
     }
+
 }

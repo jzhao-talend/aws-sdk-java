@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains the data needed by RDP clients such as the Microsoft Remote Desktop Connection to log in to the instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/TemporaryCredential" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TemporaryCredential implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TemporaryCredential implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -43,7 +50,7 @@ public class TemporaryCredential implements Serializable, Cloneable {
     private Integer validForInMinutes;
     /**
      * <p>
-     * The instance's AWS OpsWorks ID.
+     * The instance's AWS OpsWorks Stacks ID.
      * </p>
      */
     private String instanceId;
@@ -182,11 +189,11 @@ public class TemporaryCredential implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's AWS OpsWorks ID.
+     * The instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
      * @param instanceId
-     *        The instance's AWS OpsWorks ID.
+     *        The instance's AWS OpsWorks Stacks ID.
      */
 
     public void setInstanceId(String instanceId) {
@@ -195,10 +202,10 @@ public class TemporaryCredential implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's AWS OpsWorks ID.
+     * The instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
-     * @return The instance's AWS OpsWorks ID.
+     * @return The instance's AWS OpsWorks Stacks ID.
      */
 
     public String getInstanceId() {
@@ -207,11 +214,11 @@ public class TemporaryCredential implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance's AWS OpsWorks ID.
+     * The instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
      * @param instanceId
-     *        The instance's AWS OpsWorks ID.
+     *        The instance's AWS OpsWorks Stacks ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -232,13 +239,13 @@ public class TemporaryCredential implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getPassword() != null)
-            sb.append("Password: " + getPassword() + ",");
+            sb.append("Password: ").append(getPassword()).append(",");
         if (getValidForInMinutes() != null)
-            sb.append("ValidForInMinutes: " + getValidForInMinutes() + ",");
+            sb.append("ValidForInMinutes: ").append(getValidForInMinutes()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId());
+            sb.append("InstanceId: ").append(getInstanceId());
         sb.append("}");
         return sb.toString();
     }
@@ -291,5 +298,11 @@ public class TemporaryCredential implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.TemporaryCredentialMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

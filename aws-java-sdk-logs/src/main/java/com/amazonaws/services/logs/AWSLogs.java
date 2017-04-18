@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.logs;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,11 +22,14 @@ import com.amazonaws.services.logs.model.*;
 /**
  * Interface for accessing Amazon CloudWatch Logs.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.logs.AbstractAWSLogs} instead.
+ * </p>
  * <p>
- * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon Elastic Compute Cloud
- * (Amazon EC2) instances, Amazon CloudTrail, or other sources. You can then retrieve the associated log data from
- * CloudWatch Logs using the Amazon CloudWatch console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch Logs
- * API, or the CloudWatch Logs SDK.
+ * <p>
+ * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from EC2 instances, Amazon
+ * CloudTrail, or other sources. You can then retrieve the associated log data from CloudWatch Logs using the Amazon
+ * CloudWatch console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.
  * </p>
  * <p>
  * You can use CloudWatch Logs to:
@@ -57,6 +62,7 @@ import com.amazonaws.services.logs.model.*;
  * </li>
  * </ul>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSLogs {
 
     /**
@@ -88,7 +94,11 @@ public interface AWSLogs {
      *        The endpoint (ex: "logs.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://logs.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -109,67 +119,77 @@ public interface AWSLogs {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
      * <p>
-     * Cancels an export task if it is in <code>PENDING</code> or <code>RUNNING</code> state.
+     * Cancels the specified export task.
+     * </p>
+     * <p>
+     * The task must be in the <code>PENDING</code> or <code>RUNNING</code> state.
      * </p>
      * 
      * @param cancelExportTaskRequest
      * @return Result of the CancelExportTask operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws InvalidOperationException
-     *         Returned if the operation is not valid on the specified resource
+     *         The operation is not valid on the specified resource.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     CancelExportTaskResult cancelExportTask(CancelExportTaskRequest cancelExportTaskRequest);
 
     /**
      * <p>
-     * Creates an <code>ExportTask</code> which allows you to efficiently export data from a Log Group to your Amazon S3
-     * bucket.
+     * Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket.
      * </p>
      * <p>
-     * This is an asynchronous call. If all the required information is provided, this API will initiate an export task
-     * and respond with the task Id. Once started, <code>DescribeExportTasks</code> can be used to get the status of an
-     * export task. You can only have one active (<code>RUNNING</code> or <code>PENDING</code>) export task at a time,
-     * per account.
+     * This is an asynchronous call. If all the required information is provided, this operation initiates an export
+     * task and responds with the ID of the task. After the task has started, you can use <a>DescribeExportTasks</a> to
+     * get the status of the export task. Each account can only have one active (<code>RUNNING</code> or
+     * <code>PENDING</code>) export task at a time. To cancel an export task, use <a>CancelExportTask</a>.
      * </p>
      * <p>
-     * You can export logs from multiple log groups or multiple time ranges to the same Amazon S3 bucket. To separate
-     * out log data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all
+     * You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log
+     * data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all
      * exported objects.
      * </p>
      * 
      * @param createExportTaskRequest
      * @return Result of the CreateExportTask operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @sample AWSLogs.CreateExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateExportTaskResult createExportTask(CreateExportTaskRequest createExportTaskRequest);
 
     /**
      * <p>
-     * Creates a new log group with the specified name. The name of the log group must be unique within a region for an
-     * AWS account. You can create up to 500 log groups per account.
+     * Creates a log group with the specified name.
+     * </p>
+     * <p>
+     * You can create up to 5000 log groups per account.
      * </p>
      * <p>
      * You must use the following guidelines when naming a log group:
@@ -177,12 +197,18 @@ public interface AWSLogs {
      * <ul>
      * <li>
      * <p>
+     * Log group names must be unique within a region for an AWS account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Log group names can be between 1 and 512 characters long.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
+     * Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward
+     * slash), and '.' (period).
      * </p>
      * </li>
      * </ul>
@@ -190,23 +216,27 @@ public interface AWSLogs {
      * @param createLogGroupRequest
      * @return Result of the CreateLogGroup operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CreateLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateLogGroupResult createLogGroup(CreateLogGroupRequest createLogGroupRequest);
 
     /**
      * <p>
-     * Creates a new log stream in the specified log group. The name of the log stream must be unique within the log
-     * group. There is no limit on the number of log streams that can exist in a log group.
+     * Creates a log stream for the specified log group.
+     * </p>
+     * <p>
+     * There is no limit on the number of log streams that you can create for a log group.
      * </p>
      * <p>
      * You must use the following guidelines when naming a log stream:
@@ -214,12 +244,17 @@ public interface AWSLogs {
      * <ul>
      * <li>
      * <p>
+     * Log stream names must be unique within the log group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Log stream names can be between 1 and 512 characters long.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The ':' colon character is not allowed.
+     * The ':' (colon) and '*' (asterisk) characters are not allowed.
      * </p>
      * </li>
      * </ul>
@@ -227,152 +262,165 @@ public interface AWSLogs {
      * @param createLogStreamRequest
      * @return Result of the CreateLogStream operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CreateLogStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogStream" target="_top">AWS API
+     *      Documentation</a>
      */
     CreateLogStreamResult createLogStream(CreateLogStreamRequest createLogStreamRequest);
 
     /**
      * <p>
-     * Deletes the destination with the specified name and eventually disables all the subscription filters that publish
-     * to it. This will not delete the physical resource encapsulated by the destination.
+     * Deletes the specified destination, and eventually disables all the subscription filters that publish to it. This
+     * operation does not delete the physical resource encapsulated by the destination.
      * </p>
      * 
      * @param deleteDestinationRequest
      * @return Result of the DeleteDestination operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteDestination" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteDestinationResult deleteDestination(DeleteDestinationRequest deleteDestinationRequest);
 
     /**
      * <p>
-     * Deletes the log group with the specified name and permanently deletes all the archived log events associated with
-     * it.
+     * Deletes the specified log group and permanently deletes all the archived log events associated with the log
+     * group.
      * </p>
      * 
      * @param deleteLogGroupRequest
      * @return Result of the DeleteLogGroup operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteLogGroupResult deleteLogGroup(DeleteLogGroupRequest deleteLogGroupRequest);
 
     /**
      * <p>
-     * Deletes a log stream and permanently deletes all the archived log events associated with it.
+     * Deletes the specified log stream and permanently deletes all the archived log events associated with the log
+     * stream.
      * </p>
      * 
      * @param deleteLogStreamRequest
      * @return Result of the DeleteLogStream operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteLogStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogStream" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteLogStreamResult deleteLogStream(DeleteLogStreamRequest deleteLogStreamRequest);
 
     /**
      * <p>
-     * Deletes a metric filter associated with the specified log group.
+     * Deletes the specified metric filter.
      * </p>
      * 
      * @param deleteMetricFilterRequest
      * @return Result of the DeleteMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteMetricFilterResult deleteMetricFilter(DeleteMetricFilterRequest deleteMetricFilterRequest);
 
     /**
      * <p>
-     * Deletes the retention policy of the specified log group. Log events would not expire if they belong to log groups
-     * without a retention policy.
+     * Deletes the specified retention policy.
+     * </p>
+     * <p>
+     * Log events do not expire if they belong to log groups without a retention policy.
      * </p>
      * 
      * @param deleteRetentionPolicyRequest
      * @return Result of the DeleteRetentionPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteRetentionPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteRetentionPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteRetentionPolicyResult deleteRetentionPolicy(DeleteRetentionPolicyRequest deleteRetentionPolicyRequest);
 
     /**
      * <p>
-     * Deletes a subscription filter associated with the specified log group.
+     * Deletes the specified subscription filter.
      * </p>
      * 
      * @param deleteSubscriptionFilterRequest
      * @return Result of the DeleteSubscriptionFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteSubscriptionFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteSubscriptionFilter" target="_top">AWS
+     *      API Documentation</a>
      */
     DeleteSubscriptionFilterResult deleteSubscriptionFilter(DeleteSubscriptionFilterRequest deleteSubscriptionFilterRequest);
 
     /**
      * <p>
-     * Returns all the destinations that are associated with the AWS account making the request. The list returned in
-     * the response is ASCII-sorted by destination name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 destinations. If there are more destinations to list, the response
-     * would contain a <code>nextToken</code> value in the response body. You can also limit the number of destinations
-     * returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists all your destinations. The results are ASCII-sorted by destination name.
      * </p>
      * 
      * @param describeDestinationsRequest
      * @return Result of the DescribeDestinations operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeDestinations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDestinations" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeDestinationsResult describeDestinations(DescribeDestinationsRequest describeDestinationsRequest);
 
@@ -385,44 +433,37 @@ public interface AWSLogs {
 
     /**
      * <p>
-     * Returns all the export tasks that are associated with the AWS account making the request. The export tasks can be
-     * filtered based on <code>TaskId</code> or <code>TaskStatus</code>.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 export tasks that satisfy the specified filters. If there are more
-     * export tasks to list, the response would contain a <code>nextToken</code> value in the response body. You can
-     * also limit the number of export tasks returned in the response by specifying the <code>limit</code> parameter in
-     * the request.
+     * Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or
+     * task status.
      * </p>
      * 
      * @param describeExportTasksRequest
      * @return Result of the DescribeExportTasks operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest describeExportTasksRequest);
 
     /**
      * <p>
-     * Returns all the log groups that are associated with the AWS account making the request. The list returned in the
-     * response is ASCII-sorted by log group name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 log groups. If there are more log groups to list, the response would
-     * contain a <code>nextToken</code> value in the response body. You can also limit the number of log groups returned
-     * in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are
+     * ASCII-sorted by log group name.
      * </p>
      * 
      * @param describeLogGroupsRequest
      * @return Result of the DescribeLogGroups operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeLogGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeLogGroupsResult describeLogGroups(DescribeLogGroupsRequest describeLogGroupsRequest);
 
@@ -435,169 +476,182 @@ public interface AWSLogs {
 
     /**
      * <p>
-     * Returns all the log streams that are associated with the specified log group. The list returned in the response
-     * is ASCII-sorted by log stream name.
+     * Lists the log streams for the specified log group. You can list all the log streams or filter the results by
+     * prefix. You can also control how the results are ordered.
      * </p>
      * <p>
-     * By default, this operation returns up to 50 log streams. If there are more log streams to list, the response
-     * would contain a <code>nextToken</code> value in the response body. You can also limit the number of log streams
-     * returned in the response by specifying the <code>limit</code> parameter in the request. This operation has a
-     * limit of five transactions per second, after which transactions are throttled.
+     * This operation has a limit of five transactions per second, after which transactions are throttled.
      * </p>
      * 
      * @param describeLogStreamsRequest
      * @return Result of the DescribeLogStreams operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeLogStreams
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogStreams" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeLogStreamsResult describeLogStreams(DescribeLogStreamsRequest describeLogStreamsRequest);
 
     /**
      * <p>
-     * Returns all the metrics filters associated with the specified log group. The list returned in the response is
-     * ASCII-sorted by filter name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 metric filters. If there are more metric filters to list, the
-     * response would contain a <code>nextToken</code> value in the response body. You can also limit the number of
-     * metric filters returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the specified metric filters. You can list all the metric filters or filter the results by log name,
+     * prefix, metric name, and metric namespace. The results are ASCII-sorted by filter name.
      * </p>
      * 
      * @param describeMetricFiltersRequest
      * @return Result of the DescribeMetricFilters operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeMetricFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeMetricFilters" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeMetricFiltersResult describeMetricFilters(DescribeMetricFiltersRequest describeMetricFiltersRequest);
 
     /**
      * <p>
-     * Returns all the subscription filters associated with the specified log group. The list returned in the response
-     * is ASCII-sorted by filter name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 subscription filters. If there are more subscription filters to list,
-     * the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of
-     * subscription filters returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the subscription filters for the specified log group. You can list all the subscription filters or filter
+     * the results by prefix. The results are ASCII-sorted by filter name.
      * </p>
      * 
      * @param describeSubscriptionFiltersRequest
      * @return Result of the DescribeSubscriptionFilters operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeSubscriptionFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeSubscriptionFilters"
+     *      target="_top">AWS API Documentation</a>
      */
     DescribeSubscriptionFiltersResult describeSubscriptionFilters(DescribeSubscriptionFiltersRequest describeSubscriptionFiltersRequest);
 
     /**
      * <p>
-     * Retrieves log events, optionally filtered by a filter pattern from the specified log group. You can provide an
-     * optional time range to filter the results on the event <code>timestamp</code>. You can limit the streams searched
-     * to an explicit list of <code>logStreamNames</code>.
+     * Lists log events from the specified log group. You can list all the log events or filter the results using a
+     * filter pattern, a time range, and the name of the log stream.
      * </p>
      * <p>
-     * By default, this operation returns as much matching log events as can fit in a response size of 1MB, up to 10,000
-     * log events, or all the events found within a time-bounded scan window. If the response includes a
-     * <code>nextToken</code>, then there is more data to search, and the search can be resumed with a new request
-     * providing the nextToken. The response will contain a list of <code>searchedLogStreams</code> that contains
-     * information about which streams were searched in the request and whether they have been searched completely or
-     * require further pagination. The <code>limit</code> parameter in the request can be used to specify the maximum
-     * number of events to return in a page.
+     * By default, this operation returns as many log events as can fit in 1MB (up to 10,000 log events), or all the
+     * events found within the time range that you specify. If the results include a token, then there are more log
+     * events available, and you can get additional results by specifying the token in a subsequent call.
      * </p>
      * 
      * @param filterLogEventsRequest
      * @return Result of the FilterLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.FilterLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilterLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     FilterLogEventsResult filterLogEvents(FilterLogEventsRequest filterLogEventsRequest);
 
     /**
      * <p>
-     * Retrieves log events from the specified log stream. You can provide an optional time range to filter the results
-     * on the event <code>timestamp</code>.
+     * Lists log events from the specified log stream. You can list all the log events or filter using a time range.
      * </p>
      * <p>
-     * By default, this operation returns as much log events as can fit in a response size of 1MB, up to 10,000 log
-     * events. The response will always include a <code>nextForwardToken</code> and a <code>nextBackwardToken</code> in
-     * the response body. You can use any of these tokens in subsequent <code>GetLogEvents</code> requests to paginate
-     * through events in either forward or backward direction. You can also limit the number of log events returned in
-     * the response by specifying the <code>limit</code> parameter in the request.
+     * By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log
+     * events). If the results include tokens, there are more log events available. You can get additional log events by
+     * specifying one of the tokens in a subsequent call.
      * </p>
      * 
      * @param getLogEventsRequest
      * @return Result of the GetLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.GetLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     GetLogEventsResult getLogEvents(GetLogEventsRequest getLogEventsRequest);
 
     /**
      * <p>
-     * Creates or updates a <code>Destination</code>. A destination encapsulates a physical resource (such as a Kinesis
-     * stream) and allows you to subscribe to a real-time stream of log events of a different account, ingested through
-     * <code>PutLogEvents</code> requests. Currently, the only supported physical resource is a Amazon Kinesis stream
-     * belonging to the same account as the destination.
+     * Lists the tags for the specified log group.
+     * </p>
+     * <p>
+     * To add tags, use <a>TagLogGroup</a>. To remove tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * 
+     * @param listTagsLogGroupRequest
+     * @return Result of the ListTagsLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.ListTagsLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListTagsLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTagsLogGroupResult listTagsLogGroup(ListTagsLogGroupRequest listTagsLogGroupRequest);
+
+    /**
+     * <p>
+     * Creates or updates a destination. A destination encapsulates a physical resource (such as a Kinesis stream) and
+     * enables you to subscribe to a real-time stream of log events of a different account, ingested using
+     * <a>PutLogEvents</a>. Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the
+     * same account as the destination.
      * </p>
      * <p>
      * A destination controls what is written to its Amazon Kinesis stream through an access policy. By default,
-     * PutDestination does not set any access policy with the destination, which means a cross-account user will not be
-     * able to call <code>PutSubscriptionFilter</code> against this destination. To enable that, the destination owner
-     * must call <code>PutDestinationPolicy</code> after PutDestination.
+     * <code>PutDestination</code> does not set any access policy with the destination, which means a cross-account user
+     * cannot call <a>PutSubscriptionFilter</a> against this destination. To enable this, the destination owner must
+     * call <a>PutDestinationPolicy</a> after <code>PutDestination</code>.
      * </p>
      * 
      * @param putDestinationRequest
      * @return Result of the PutDestination operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestination" target="_top">AWS API
+     *      Documentation</a>
      */
     PutDestinationResult putDestination(PutDestinationRequest putDestinationRequest);
 
     /**
      * <p>
-     * Creates or updates an access policy associated with an existing <code>Destination</code>. An access policy is an
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
+     * Creates or updates an access policy associated with an existing destination. An access policy is an <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
      * used to authorize claims to register a subscription filter against a given destination.
      * </p>
      * 
      * @param putDestinationPolicyRequest
      * @return Result of the PutDestinationPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutDestinationPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestinationPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     PutDestinationPolicyResult putDestinationPolicy(PutDestinationPolicyRequest putDestinationPolicyRequest);
 
@@ -606,9 +660,9 @@ public interface AWSLogs {
      * Uploads a batch of log events to the specified log stream.
      * </p>
      * <p>
-     * Every PutLogEvents request must include the <code>sequenceToken</code> obtained from the response of the previous
-     * request. An upload in a newly created log stream does not require a <code>sequenceToken</code>. You can also get
-     * the <code>sequenceToken</code> using <a>DescribeLogStreams</a>.
+     * You must include the sequence token obtained from the response of the previous call. An upload in a newly created
+     * log stream does not require a sequence token. You can also get the sequence token using
+     * <a>DescribeLogStreams</a>.
      * </p>
      * <p>
      * The batch of events must satisfy the following constraints:
@@ -632,7 +686,8 @@ public interface AWSLogs {
      * </li>
      * <li>
      * <p>
-     * The log events in the batch must be in chronological ordered by their <code>timestamp</code>.
+     * The log events in the batch must be in chronological ordered by their timestamp (the time the event occurred,
+     * expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC).
      * </p>
      * </li>
      * <li>
@@ -642,8 +697,7 @@ public interface AWSLogs {
      * </li>
      * <li>
      * <p>
-     * A batch of log events in a single PutLogEvents request cannot span more than 24 hours. Otherwise, the
-     * PutLogEvents operation will fail.
+     * A batch of log events in a single request cannot span more than 24 hours. Otherwise, the operation fails.
      * </p>
      * </li>
      * </ul>
@@ -651,21 +705,25 @@ public interface AWSLogs {
      * @param putLogEventsRequest
      * @return Result of the PutLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws InvalidSequenceTokenException
+     *         The sequence token is not valid.
      * @throws DataAlreadyAcceptedException
+     *         The event was already logged.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     PutLogEventsResult putLogEvents(PutLogEventsRequest putLogEventsRequest);
 
     /**
      * <p>
      * Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to
-     * configure rules to extract metric data from log events ingested through <code>PutLogEvents</code> requests.
+     * configure rules to extract metric data from log events ingested through <a>PutLogEvents</a>.
      * </p>
      * <p>
      * The maximum number of metric filters that can be associated with a log group is 100.
@@ -674,16 +732,18 @@ public interface AWSLogs {
      * @param putMetricFilterRequest
      * @return Result of the PutMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     PutMetricFilterResult putMetricFilter(PutMetricFilterRequest putMetricFilterRequest);
 
@@ -696,22 +756,24 @@ public interface AWSLogs {
      * @param putRetentionPolicyRequest
      * @return Result of the PutRetentionPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutRetentionPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutRetentionPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     PutRetentionPolicyResult putRetentionPolicy(PutRetentionPolicyRequest putRetentionPolicyRequest);
 
     /**
      * <p>
      * Creates or updates a subscription filter and associates it with the specified log group. Subscription filters
-     * allow you to subscribe to a real-time stream of log events ingested through <code>PutLogEvents</code> requests
-     * and have them delivered to a specific destination. Currently, the supported destinations are:
+     * allow you to subscribe to a real-time stream of log events ingested through <a>PutLogEvents</a> and have them
+     * delivered to a specific destination. Currently, the supported destinations are:
      * </p>
      * <ul>
      * <li>
@@ -721,41 +783,67 @@ public interface AWSLogs {
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination that belongs to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
      * <p>
-     * An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account
+     * An Amazon Kinesis Firehose stream that belongs to the same account as the subscription filter, for same-account
      * delivery.
      * </p>
      * </li>
      * <li>
      * <p>
-     * An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.
+     * An AWS Lambda function that belongs to the same account as the subscription filter, for same-account delivery.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Currently there can only be one subscription filter associated with a log group.
+     * There can only be one subscription filter associated with a log group.
      * </p>
      * 
      * @param putSubscriptionFilterRequest
      * @return Result of the PutSubscriptionFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutSubscriptionFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutSubscriptionFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     PutSubscriptionFilterResult putSubscriptionFilter(PutSubscriptionFilterRequest putSubscriptionFilterRequest);
+
+    /**
+     * <p>
+     * Adds or updates the specified tags for the specified log group.
+     * </p>
+     * <p>
+     * To list the tags for a log group, use <a>ListTagsLogGroup</a>. To remove tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * <p>
+     * For more information about tags, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html">Tag Log Groups in Amazon
+     * CloudWatch Logs</a> in the <i>Amazon CloudWatch Logs User Guide</i>.
+     * </p>
+     * 
+     * @param tagLogGroupRequest
+     * @return Result of the TagLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @sample AWSLogs.TagLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TagLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagLogGroupResult tagLogGroup(TagLogGroupRequest tagLogGroupRequest);
 
     /**
      * <p>
@@ -766,12 +854,32 @@ public interface AWSLogs {
      * @param testMetricFilterRequest
      * @return Result of the TestMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.TestMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TestMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     TestMetricFilterResult testMetricFilter(TestMetricFilterRequest testMetricFilterRequest);
+
+    /**
+     * <p>
+     * Removes the specified tags from the specified log group.
+     * </p>
+     * <p>
+     * To list the tags for a log group, use <a>ListTagsLogGroup</a>. To add tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * 
+     * @param untagLogGroupRequest
+     * @return Result of the UntagLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @sample AWSLogs.UntagLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/UntagLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagLogGroupResult untagLogGroup(UntagLogGroupRequest untagLogGroupRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

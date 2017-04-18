@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Details of a task definition.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/TaskDefinition" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TaskDefinition implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TaskDefinition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -95,6 +102,12 @@ public class TaskDefinition implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Attribute> requiresAttributes;
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint> placementConstraints;
 
     /**
      * <p>
@@ -792,6 +805,79 @@ public class TaskDefinition implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * An array of placement constraint objects to use for tasks.
+     * </p>
+     * 
+     * @return An array of placement constraint objects to use for tasks.
+     */
+
+    public java.util.List<TaskDefinitionPlacementConstraint> getPlacementConstraints() {
+        if (placementConstraints == null) {
+            placementConstraints = new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>();
+        }
+        return placementConstraints;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks.
+     */
+
+    public void setPlacementConstraints(java.util.Collection<TaskDefinitionPlacementConstraint> placementConstraints) {
+        if (placementConstraints == null) {
+            this.placementConstraints = null;
+            return;
+        }
+
+        this.placementConstraints = new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>(placementConstraints);
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementConstraints(java.util.Collection)} or {@link #withPlacementConstraints(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TaskDefinition withPlacementConstraints(TaskDefinitionPlacementConstraint... placementConstraints) {
+        if (this.placementConstraints == null) {
+            setPlacementConstraints(new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>(placementConstraints.length));
+        }
+        for (TaskDefinitionPlacementConstraint ele : placementConstraints) {
+            this.placementConstraints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for tasks.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for tasks.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TaskDefinition withPlacementConstraints(java.util.Collection<TaskDefinitionPlacementConstraint> placementConstraints) {
+        setPlacementConstraints(placementConstraints);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -803,23 +889,25 @@ public class TaskDefinition implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskDefinitionArn() != null)
-            sb.append("TaskDefinitionArn: " + getTaskDefinitionArn() + ",");
+            sb.append("TaskDefinitionArn: ").append(getTaskDefinitionArn()).append(",");
         if (getContainerDefinitions() != null)
-            sb.append("ContainerDefinitions: " + getContainerDefinitions() + ",");
+            sb.append("ContainerDefinitions: ").append(getContainerDefinitions()).append(",");
         if (getFamily() != null)
-            sb.append("Family: " + getFamily() + ",");
+            sb.append("Family: ").append(getFamily()).append(",");
         if (getTaskRoleArn() != null)
-            sb.append("TaskRoleArn: " + getTaskRoleArn() + ",");
+            sb.append("TaskRoleArn: ").append(getTaskRoleArn()).append(",");
         if (getNetworkMode() != null)
-            sb.append("NetworkMode: " + getNetworkMode() + ",");
+            sb.append("NetworkMode: ").append(getNetworkMode()).append(",");
         if (getRevision() != null)
-            sb.append("Revision: " + getRevision() + ",");
+            sb.append("Revision: ").append(getRevision()).append(",");
         if (getVolumes() != null)
-            sb.append("Volumes: " + getVolumes() + ",");
+            sb.append("Volumes: ").append(getVolumes()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getRequiresAttributes() != null)
-            sb.append("RequiresAttributes: " + getRequiresAttributes());
+            sb.append("RequiresAttributes: ").append(getRequiresAttributes()).append(",");
+        if (getPlacementConstraints() != null)
+            sb.append("PlacementConstraints: ").append(getPlacementConstraints());
         sb.append("}");
         return sb.toString();
     }
@@ -870,6 +958,10 @@ public class TaskDefinition implements Serializable, Cloneable {
             return false;
         if (other.getRequiresAttributes() != null && other.getRequiresAttributes().equals(this.getRequiresAttributes()) == false)
             return false;
+        if (other.getPlacementConstraints() == null ^ this.getPlacementConstraints() == null)
+            return false;
+        if (other.getPlacementConstraints() != null && other.getPlacementConstraints().equals(this.getPlacementConstraints()) == false)
+            return false;
         return true;
     }
 
@@ -887,6 +979,7 @@ public class TaskDefinition implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getVolumes() == null) ? 0 : getVolumes().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getRequiresAttributes() == null) ? 0 : getRequiresAttributes().hashCode());
+        hashCode = prime * hashCode + ((getPlacementConstraints() == null) ? 0 : getPlacementConstraints().hashCode());
         return hashCode;
     }
 
@@ -897,5 +990,11 @@ public class TaskDefinition implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.TaskDefinitionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticbeanstalk.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * EnvironmentResourceDescription StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EnvironmentResourceDescriptionStaxUnmarshaller implements Unmarshaller<EnvironmentResourceDescription, StaxUnmarshallerContext> {
 
     public EnvironmentResourceDescription unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -50,8 +50,18 @@ public class EnvironmentResourceDescriptionStaxUnmarshaller implements Unmarshal
                     continue;
                 }
 
+                if (context.testExpression("AutoScalingGroups", targetDepth)) {
+                    environmentResourceDescription.withAutoScalingGroups(new ArrayList<AutoScalingGroup>());
+                    continue;
+                }
+
                 if (context.testExpression("AutoScalingGroups/member", targetDepth)) {
                     environmentResourceDescription.withAutoScalingGroups(AutoScalingGroupStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Instances", targetDepth)) {
+                    environmentResourceDescription.withInstances(new ArrayList<Instance>());
                     continue;
                 }
 
@@ -60,8 +70,18 @@ public class EnvironmentResourceDescriptionStaxUnmarshaller implements Unmarshal
                     continue;
                 }
 
+                if (context.testExpression("LaunchConfigurations", targetDepth)) {
+                    environmentResourceDescription.withLaunchConfigurations(new ArrayList<LaunchConfiguration>());
+                    continue;
+                }
+
                 if (context.testExpression("LaunchConfigurations/member", targetDepth)) {
                     environmentResourceDescription.withLaunchConfigurations(LaunchConfigurationStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("LoadBalancers", targetDepth)) {
+                    environmentResourceDescription.withLoadBalancers(new ArrayList<LoadBalancer>());
                     continue;
                 }
 
@@ -70,8 +90,18 @@ public class EnvironmentResourceDescriptionStaxUnmarshaller implements Unmarshal
                     continue;
                 }
 
+                if (context.testExpression("Triggers", targetDepth)) {
+                    environmentResourceDescription.withTriggers(new ArrayList<Trigger>());
+                    continue;
+                }
+
                 if (context.testExpression("Triggers/member", targetDepth)) {
                     environmentResourceDescription.withTriggers(TriggerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Queues", targetDepth)) {
+                    environmentResourceDescription.withQueues(new ArrayList<Queue>());
                     continue;
                 }
 

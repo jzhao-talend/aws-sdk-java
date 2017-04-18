@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.cloudsearchdomain;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudsearchdomain.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon CloudSearch Domain asynchronously. Each asynchronous method will return a Java Future
+ * Client for accessing Amazon CloudSearch Domain asynchronously. Each asynchronous method will return a Java Future
  * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -36,6 +45,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainClient implements AmazonCloudSearchDomainAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -57,9 +67,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonCloudSearchDomainAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -81,10 +93,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -97,9 +110,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -110,8 +125,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -126,10 +144,12 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -144,9 +164,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -163,11 +185,12 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -178,10 +201,11 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -195,12 +219,19 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonCloudSearchDomainAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonCloudSearchDomainAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonCloudSearchDomainAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonCloudSearchDomainAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonCloudSearchDomainAsyncClientBuilder asyncBuilder() {
+        return AmazonCloudSearchDomainAsyncClientBuilder.standard();
     }
 
     /**
@@ -220,7 +251,7 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -233,14 +264,15 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
     @Override
     public java.util.concurrent.Future<SearchResult> searchAsync(final SearchRequest request,
             final com.amazonaws.handlers.AsyncHandler<SearchRequest, SearchResult> asyncHandler) {
+        final SearchRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SearchResult>() {
             @Override
             public SearchResult call() throws Exception {
-                SearchResult result;
+                SearchResult result = null;
 
                 try {
-                    result = search(request);
+                    result = executeSearch(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -249,7 +281,7 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -265,14 +297,15 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
     @Override
     public java.util.concurrent.Future<SuggestResult> suggestAsync(final SuggestRequest request,
             final com.amazonaws.handlers.AsyncHandler<SuggestRequest, SuggestResult> asyncHandler) {
+        final SuggestRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<SuggestResult>() {
             @Override
             public SuggestResult call() throws Exception {
-                SuggestResult result;
+                SuggestResult result = null;
 
                 try {
-                    result = suggest(request);
+                    result = executeSuggest(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -281,7 +314,7 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -297,14 +330,15 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
     @Override
     public java.util.concurrent.Future<UploadDocumentsResult> uploadDocumentsAsync(final UploadDocumentsRequest request,
             final com.amazonaws.handlers.AsyncHandler<UploadDocumentsRequest, UploadDocumentsResult> asyncHandler) {
+        final UploadDocumentsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UploadDocumentsResult>() {
             @Override
             public UploadDocumentsResult call() throws Exception {
-                UploadDocumentsResult result;
+                UploadDocumentsResult result = null;
 
                 try {
-                    result = uploadDocuments(request);
+                    result = executeUploadDocuments(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -313,7 +347,7 @@ public class AmazonCloudSearchDomainAsyncClient extends AmazonCloudSearchDomainC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

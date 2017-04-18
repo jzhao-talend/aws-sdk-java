@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The input for the <a>DescribeJobFlows</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeJobFlows" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeJobFlowsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -331,13 +337,13 @@ public class DescribeJobFlowsRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCreatedAfter() != null)
-            sb.append("CreatedAfter: " + getCreatedAfter() + ",");
+            sb.append("CreatedAfter: ").append(getCreatedAfter()).append(",");
         if (getCreatedBefore() != null)
-            sb.append("CreatedBefore: " + getCreatedBefore() + ",");
+            sb.append("CreatedBefore: ").append(getCreatedBefore()).append(",");
         if (getJobFlowIds() != null)
-            sb.append("JobFlowIds: " + getJobFlowIds() + ",");
+            sb.append("JobFlowIds: ").append(getJobFlowIds()).append(",");
         if (getJobFlowStates() != null)
-            sb.append("JobFlowStates: " + getJobFlowStates());
+            sb.append("JobFlowStates: ").append(getJobFlowStates());
         sb.append("}");
         return sb.toString();
     }
@@ -387,4 +393,5 @@ public class DescribeJobFlowsRequest extends com.amazonaws.AmazonWebServiceReque
     public DescribeJobFlowsRequest clone() {
         return (DescribeJobFlowsRequest) super.clone();
     }
+
 }

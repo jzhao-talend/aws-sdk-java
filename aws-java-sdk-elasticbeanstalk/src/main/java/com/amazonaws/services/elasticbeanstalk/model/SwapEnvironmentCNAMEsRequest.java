@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Swaps the CNAMEs of two environments.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SwapEnvironmentCNAMEs"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SwapEnvironmentCNAMEsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -347,13 +353,13 @@ public class SwapEnvironmentCNAMEsRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSourceEnvironmentId() != null)
-            sb.append("SourceEnvironmentId: " + getSourceEnvironmentId() + ",");
+            sb.append("SourceEnvironmentId: ").append(getSourceEnvironmentId()).append(",");
         if (getSourceEnvironmentName() != null)
-            sb.append("SourceEnvironmentName: " + getSourceEnvironmentName() + ",");
+            sb.append("SourceEnvironmentName: ").append(getSourceEnvironmentName()).append(",");
         if (getDestinationEnvironmentId() != null)
-            sb.append("DestinationEnvironmentId: " + getDestinationEnvironmentId() + ",");
+            sb.append("DestinationEnvironmentId: ").append(getDestinationEnvironmentId()).append(",");
         if (getDestinationEnvironmentName() != null)
-            sb.append("DestinationEnvironmentName: " + getDestinationEnvironmentName());
+            sb.append("DestinationEnvironmentName: ").append(getDestinationEnvironmentName());
         sb.append("}");
         return sb.toString();
     }
@@ -403,4 +409,5 @@ public class SwapEnvironmentCNAMEsRequest extends com.amazonaws.AmazonWebService
     public SwapEnvironmentCNAMEsRequest clone() {
         return (SwapEnvironmentCNAMEsRequest) super.clone();
     }
+
 }

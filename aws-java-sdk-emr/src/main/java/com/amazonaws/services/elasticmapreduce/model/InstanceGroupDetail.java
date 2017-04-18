@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Detailed information about an instance group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/InstanceGroupDetail"
+ *      target="_top">AWS API Documentation</a>
  */
-public class InstanceGroupDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceGroupDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -35,7 +42,7 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      */
     private String market;
@@ -53,7 +60,7 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
     private String bidPrice;
     /**
      * <p>
-     * Amazon EC2 Instance type.
+     * EC2 instance type.
      * </p>
      */
     private String instanceType;
@@ -120,7 +127,7 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
      * @param instanceRole
      *        Instance group role in the cluster
      * @param instanceType
-     *        Amazon EC2 Instance type.
+     *        EC2 instance type.
      * @param instanceRequestCount
      *        Target number of instances to run in the instance group.
      * @param instanceRunningCount
@@ -147,7 +154,7 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
      * @param instanceRole
      *        Instance group role in the cluster
      * @param instanceType
-     *        Amazon EC2 Instance type.
+     *        EC2 instance type.
      * @param instanceRequestCount
      *        Target number of instances to run in the instance group.
      * @param instanceRunningCount
@@ -249,11 +256,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      * 
      * @param market
-     *        Market type of the Amazon EC2 instances used to create a cluster node.
+     *        Market type of the EC2 instances used to create a cluster node.
      * @see MarketType
      */
 
@@ -263,10 +270,10 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      * 
-     * @return Market type of the Amazon EC2 instances used to create a cluster node.
+     * @return Market type of the EC2 instances used to create a cluster node.
      * @see MarketType
      */
 
@@ -276,11 +283,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      * 
      * @param market
-     *        Market type of the Amazon EC2 instances used to create a cluster node.
+     *        Market type of the EC2 instances used to create a cluster node.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MarketType
      */
@@ -292,11 +299,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      * 
      * @param market
-     *        Market type of the Amazon EC2 instances used to create a cluster node.
+     *        Market type of the EC2 instances used to create a cluster node.
      * @see MarketType
      */
 
@@ -306,11 +313,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Market type of the Amazon EC2 instances used to create a cluster node.
+     * Market type of the EC2 instances used to create a cluster node.
      * </p>
      * 
      * @param market
-     *        Market type of the Amazon EC2 instances used to create a cluster node.
+     *        Market type of the EC2 instances used to create a cluster node.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MarketType
      */
@@ -435,11 +442,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon EC2 Instance type.
+     * EC2 instance type.
      * </p>
      * 
      * @param instanceType
-     *        Amazon EC2 Instance type.
+     *        EC2 instance type.
      */
 
     public void setInstanceType(String instanceType) {
@@ -448,10 +455,10 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon EC2 Instance type.
+     * EC2 instance type.
      * </p>
      * 
-     * @return Amazon EC2 Instance type.
+     * @return EC2 instance type.
      */
 
     public String getInstanceType() {
@@ -460,11 +467,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon EC2 Instance type.
+     * EC2 instance type.
      * </p>
      * 
      * @param instanceType
-     *        Amazon EC2 Instance type.
+     *        EC2 instance type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -838,33 +845,33 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceGroupId() != null)
-            sb.append("InstanceGroupId: " + getInstanceGroupId() + ",");
+            sb.append("InstanceGroupId: ").append(getInstanceGroupId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getMarket() != null)
-            sb.append("Market: " + getMarket() + ",");
+            sb.append("Market: ").append(getMarket()).append(",");
         if (getInstanceRole() != null)
-            sb.append("InstanceRole: " + getInstanceRole() + ",");
+            sb.append("InstanceRole: ").append(getInstanceRole()).append(",");
         if (getBidPrice() != null)
-            sb.append("BidPrice: " + getBidPrice() + ",");
+            sb.append("BidPrice: ").append(getBidPrice()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getInstanceRequestCount() != null)
-            sb.append("InstanceRequestCount: " + getInstanceRequestCount() + ",");
+            sb.append("InstanceRequestCount: ").append(getInstanceRequestCount()).append(",");
         if (getInstanceRunningCount() != null)
-            sb.append("InstanceRunningCount: " + getInstanceRunningCount() + ",");
+            sb.append("InstanceRunningCount: ").append(getInstanceRunningCount()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getLastStateChangeReason() != null)
-            sb.append("LastStateChangeReason: " + getLastStateChangeReason() + ",");
+            sb.append("LastStateChangeReason: ").append(getLastStateChangeReason()).append(",");
         if (getCreationDateTime() != null)
-            sb.append("CreationDateTime: " + getCreationDateTime() + ",");
+            sb.append("CreationDateTime: ").append(getCreationDateTime()).append(",");
         if (getStartDateTime() != null)
-            sb.append("StartDateTime: " + getStartDateTime() + ",");
+            sb.append("StartDateTime: ").append(getStartDateTime()).append(",");
         if (getReadyDateTime() != null)
-            sb.append("ReadyDateTime: " + getReadyDateTime() + ",");
+            sb.append("ReadyDateTime: ").append(getReadyDateTime()).append(",");
         if (getEndDateTime() != null)
-            sb.append("EndDateTime: " + getEndDateTime());
+            sb.append("EndDateTime: ").append(getEndDateTime());
         sb.append("}");
         return sb.toString();
     }
@@ -967,5 +974,11 @@ public class InstanceGroupDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.InstanceGroupDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

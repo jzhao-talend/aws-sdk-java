@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for CreateLoadBalancer.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateLoadBalancer"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -27,7 +30,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * The name of the load balancer.
      * </p>
      * <p>
-     * This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * </p>
      */
@@ -67,20 +70,28 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      */
     private java.util.List<Tag> tags;
+    /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     */
+    private String ipAddressType;
 
     /**
      * <p>
      * The name of the load balancer.
      * </p>
      * <p>
-     * This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * </p>
      * 
      * @param name
      *        The name of the load balancer.</p>
      *        <p>
-     *        This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     *        This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      *        alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      */
 
@@ -93,13 +104,13 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * The name of the load balancer.
      * </p>
      * <p>
-     * This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * </p>
      * 
      * @return The name of the load balancer.</p>
      *         <p>
-     *         This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     *         This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      *         alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      */
 
@@ -112,14 +123,14 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * The name of the load balancer.
      * </p>
      * <p>
-     * This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     * This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      * alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * </p>
      * 
      * @param name
      *        The name of the load balancer.</p>
      *        <p>
-     *        This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only
+     *        This name must be unique per region per account, can have a maximum of 32 characters, must contain only
      *        alphanumeric characters or hyphens, and must not begin or end with a hyphen.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -516,6 +527,99 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     * 
+     * @param ipAddressType
+     *        The type of IP addresses used by the subnets for your load balancer. The possible values are
+     *        <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal
+     *        load balancers must use <code>ipv4</code>.
+     * @see IpAddressType
+     */
+
+    public void setIpAddressType(String ipAddressType) {
+        this.ipAddressType = ipAddressType;
+    }
+
+    /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     * 
+     * @return The type of IP addresses used by the subnets for your load balancer. The possible values are
+     *         <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal
+     *         load balancers must use <code>ipv4</code>.
+     * @see IpAddressType
+     */
+
+    public String getIpAddressType() {
+        return this.ipAddressType;
+    }
+
+    /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     * 
+     * @param ipAddressType
+     *        The type of IP addresses used by the subnets for your load balancer. The possible values are
+     *        <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal
+     *        load balancers must use <code>ipv4</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see IpAddressType
+     */
+
+    public CreateLoadBalancerRequest withIpAddressType(String ipAddressType) {
+        setIpAddressType(ipAddressType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     * 
+     * @param ipAddressType
+     *        The type of IP addresses used by the subnets for your load balancer. The possible values are
+     *        <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal
+     *        load balancers must use <code>ipv4</code>.
+     * @see IpAddressType
+     */
+
+    public void setIpAddressType(IpAddressType ipAddressType) {
+        this.ipAddressType = ipAddressType.toString();
+    }
+
+    /**
+     * <p>
+     * The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code>
+     * (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use
+     * <code>ipv4</code>.
+     * </p>
+     * 
+     * @param ipAddressType
+     *        The type of IP addresses used by the subnets for your load balancer. The possible values are
+     *        <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal
+     *        load balancers must use <code>ipv4</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see IpAddressType
+     */
+
+    public CreateLoadBalancerRequest withIpAddressType(IpAddressType ipAddressType) {
+        setIpAddressType(ipAddressType);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -527,15 +631,17 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getSubnets() != null)
-            sb.append("Subnets: " + getSubnets() + ",");
+            sb.append("Subnets: ").append(getSubnets()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getScheme() != null)
-            sb.append("Scheme: " + getScheme() + ",");
+            sb.append("Scheme: ").append(getScheme()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getIpAddressType() != null)
+            sb.append("IpAddressType: ").append(getIpAddressType());
         sb.append("}");
         return sb.toString();
     }
@@ -570,6 +676,10 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getIpAddressType() == null ^ this.getIpAddressType() == null)
+            return false;
+        if (other.getIpAddressType() != null && other.getIpAddressType().equals(this.getIpAddressType()) == false)
+            return false;
         return true;
     }
 
@@ -583,6 +693,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
         hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
         hashCode = prime * hashCode + ((getScheme() == null) ? 0 : getScheme().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getIpAddressType() == null) ? 0 : getIpAddressType().hashCode());
         return hashCode;
     }
 
@@ -590,4 +701,5 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
     public CreateLoadBalancerRequest clone() {
         return (CreateLoadBalancerRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,15 @@
 package com.amazonaws.services.applicationautoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a step adjustment for a <a>StepScalingPolicyConfiguration</a>. Describes an adjustment based
- * on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined
- * for the alarm.
+ * Represents a step adjustment for a <a>StepScalingPolicyConfiguration</a>. Describes an adjustment based on the
+ * difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the
+ * alarm.
  * </p>
  * <p>
  * For the following examples, suppose that you have an alarm with a breach threshold of 50:
@@ -26,14 +29,14 @@ import java.io.Serializable;
  * <ul>
  * <li>
  * <p>
- * If you want the adjustment to be triggered when the metric is greater than or equal to 50 and less than 60, specify a
- * lower bound of 0 and an upper bound of 10.
+ * To trigger the adjustment when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0
+ * and an upper bound of 10.
  * </p>
  * </li>
  * <li>
  * <p>
- * If you want the adjustment to be triggered when the metric is greater than 40 and less than or equal to 50, specify a
- * lower bound of -10 and an upper bound of 0.
+ * To trigger the adjustment when the metric is greater than 40 and less than or equal to 50, specify a lower bound of
+ * -10 and an upper bound of 0.
  * </p>
  * </li>
  * </ul>
@@ -64,8 +67,12 @@ import java.io.Serializable;
  * </p>
  * </li>
  * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/StepAdjustment"
+ *      target="_top">AWS API Documentation</a>
  */
-public class StepAdjustment implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StepAdjustment implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -285,11 +292,11 @@ public class StepAdjustment implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMetricIntervalLowerBound() != null)
-            sb.append("MetricIntervalLowerBound: " + getMetricIntervalLowerBound() + ",");
+            sb.append("MetricIntervalLowerBound: ").append(getMetricIntervalLowerBound()).append(",");
         if (getMetricIntervalUpperBound() != null)
-            sb.append("MetricIntervalUpperBound: " + getMetricIntervalUpperBound() + ",");
+            sb.append("MetricIntervalUpperBound: ").append(getMetricIntervalUpperBound()).append(",");
         if (getScalingAdjustment() != null)
-            sb.append("ScalingAdjustment: " + getScalingAdjustment());
+            sb.append("ScalingAdjustment: ").append(getScalingAdjustment());
         sb.append("}");
         return sb.toString();
     }
@@ -337,5 +344,11 @@ public class StepAdjustment implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationautoscaling.model.transform.StepAdjustmentMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

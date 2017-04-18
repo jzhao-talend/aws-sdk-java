@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application
  * Input</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/InputDescription" target="_top">AWS
+ *      API Documentation</a>
  */
-public class InputDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InputDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -444,21 +451,21 @@ public class InputDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInputId() != null)
-            sb.append("InputId: " + getInputId() + ",");
+            sb.append("InputId: ").append(getInputId()).append(",");
         if (getNamePrefix() != null)
-            sb.append("NamePrefix: " + getNamePrefix() + ",");
+            sb.append("NamePrefix: ").append(getNamePrefix()).append(",");
         if (getInAppStreamNames() != null)
-            sb.append("InAppStreamNames: " + getInAppStreamNames() + ",");
+            sb.append("InAppStreamNames: ").append(getInAppStreamNames()).append(",");
         if (getKinesisStreamsInputDescription() != null)
-            sb.append("KinesisStreamsInputDescription: " + getKinesisStreamsInputDescription() + ",");
+            sb.append("KinesisStreamsInputDescription: ").append(getKinesisStreamsInputDescription()).append(",");
         if (getKinesisFirehoseInputDescription() != null)
-            sb.append("KinesisFirehoseInputDescription: " + getKinesisFirehoseInputDescription() + ",");
+            sb.append("KinesisFirehoseInputDescription: ").append(getKinesisFirehoseInputDescription()).append(",");
         if (getInputSchema() != null)
-            sb.append("InputSchema: " + getInputSchema() + ",");
+            sb.append("InputSchema: ").append(getInputSchema()).append(",");
         if (getInputParallelism() != null)
-            sb.append("InputParallelism: " + getInputParallelism() + ",");
+            sb.append("InputParallelism: ").append(getInputParallelism()).append(",");
         if (getInputStartingPositionConfiguration() != null)
-            sb.append("InputStartingPositionConfiguration: " + getInputStartingPositionConfiguration());
+            sb.append("InputStartingPositionConfiguration: ").append(getInputStartingPositionConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -534,5 +541,11 @@ public class InputDescription implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.InputDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

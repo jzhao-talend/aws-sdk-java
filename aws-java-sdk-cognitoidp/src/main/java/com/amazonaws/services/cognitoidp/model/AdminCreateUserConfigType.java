@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The type of configuration for creating a new user profile.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminCreateUserConfigType"
+ *      target="_top">AWS API Documentation</a>
  */
-public class AdminCreateUserConfigType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AdminCreateUserConfigType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -32,6 +39,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
      * <p>
      * The user account expiration limit, in days, after which the account is no longer usable. To reset the account
      * after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.
+     * The default value for this paameter is 7.
      * </p>
      */
     private Integer unusedAccountValidityDays;
@@ -106,12 +114,13 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
      * <p>
      * The user account expiration limit, in days, after which the account is no longer usable. To reset the account
      * after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.
+     * The default value for this paameter is 7.
      * </p>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the
-     *        MessageAction parameter.
+     *        MessageAction parameter. The default value for this paameter is 7.
      */
 
     public void setUnusedAccountValidityDays(Integer unusedAccountValidityDays) {
@@ -122,11 +131,12 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
      * <p>
      * The user account expiration limit, in days, after which the account is no longer usable. To reset the account
      * after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.
+     * The default value for this paameter is 7.
      * </p>
      * 
      * @return The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *         account after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the
-     *         MessageAction parameter.
+     *         MessageAction parameter. The default value for this paameter is 7.
      */
 
     public Integer getUnusedAccountValidityDays() {
@@ -137,12 +147,13 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
      * <p>
      * The user account expiration limit, in days, after which the account is no longer usable. To reset the account
      * after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.
+     * The default value for this paameter is 7.
      * </p>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the
-     *        MessageAction parameter.
+     *        MessageAction parameter. The default value for this paameter is 7.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -203,11 +214,11 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAllowAdminCreateUserOnly() != null)
-            sb.append("AllowAdminCreateUserOnly: " + getAllowAdminCreateUserOnly() + ",");
+            sb.append("AllowAdminCreateUserOnly: ").append(getAllowAdminCreateUserOnly()).append(",");
         if (getUnusedAccountValidityDays() != null)
-            sb.append("UnusedAccountValidityDays: " + getUnusedAccountValidityDays() + ",");
+            sb.append("UnusedAccountValidityDays: ").append(getUnusedAccountValidityDays()).append(",");
         if (getInviteMessageTemplate() != null)
-            sb.append("InviteMessageTemplate: " + getInviteMessageTemplate());
+            sb.append("InviteMessageTemplate: ").append(getInviteMessageTemplate());
         sb.append("}");
         return sb.toString();
     }
@@ -255,5 +266,11 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.AdminCreateUserConfigTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

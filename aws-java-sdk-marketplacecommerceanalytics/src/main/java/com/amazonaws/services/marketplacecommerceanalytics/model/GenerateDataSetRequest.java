@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.marketplacecommerceanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the GenerateDataSet operation.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -44,6 +50,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -52,6 +60,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      */
@@ -114,6 +126,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -122,6 +136,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      * 
@@ -153,6 +171,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        2012-04-19 until 2015-01-25. After 2015-01-25, this data set was split into three data sets:
      *        disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
      *        disbursed_amount_by_age_of_disbursed_funds.</li>
+     *        <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since
+     *        2012-09-04.</li>
      *        <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since
      *        2012-04-19.</li>
      *        <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time
@@ -162,6 +182,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     *        <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM
+     *        Pacific Time since 2016-12.</li>
+     *        <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM
+     *        Pacific Time since 2017-02-15.</li>
      *        </ul>
      * @see DataSetType
      */
@@ -194,6 +218,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -202,6 +228,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      * 
@@ -232,6 +262,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *         2012-04-19 until 2015-01-25. After 2015-01-25, this data set was split into three data sets:
      *         disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
      *         disbursed_amount_by_age_of_disbursed_funds.</li>
+     *         <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since
+     *         2012-09-04.</li>
      *         <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since
      *         2012-04-19.</li>
      *         <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time
@@ -241,6 +273,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *         <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *         <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *         <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     *         <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM
+     *         Pacific Time since 2016-12.</li>
+     *         <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM
+     *         Pacific Time since 2017-02-15.</li>
      *         </ul>
      * @see DataSetType
      */
@@ -273,6 +309,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -281,6 +319,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      * 
@@ -312,6 +354,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        2012-04-19 until 2015-01-25. After 2015-01-25, this data set was split into three data sets:
      *        disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
      *        disbursed_amount_by_age_of_disbursed_funds.</li>
+     *        <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since
+     *        2012-09-04.</li>
      *        <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since
      *        2012-04-19.</li>
      *        <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time
@@ -321,6 +365,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     *        <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM
+     *        Pacific Time since 2016-12.</li>
+     *        <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM
+     *        Pacific Time since 2017-02-15.</li>
      *        </ul>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DataSetType
@@ -355,6 +403,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -363,6 +413,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      * 
@@ -394,6 +448,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        2012-04-19 until 2015-01-25. After 2015-01-25, this data set was split into three data sets:
      *        disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
      *        disbursed_amount_by_age_of_disbursed_funds.</li>
+     *        <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since
+     *        2012-09-04.</li>
      *        <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since
      *        2012-04-19.</li>
      *        <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time
@@ -403,6 +459,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     *        <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM
+     *        Pacific Time since 2016-12.</li>
+     *        <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM
+     *        Pacific Time since 2017-02-15.</li>
      *        </ul>
      * @see DataSetType
      */
@@ -435,6 +495,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>disbursed_amount_by_product_with_uncollected_funds</i> -This data set is only available from 2012-04-19
      * until 2015-01-25. After 2015-01-25, this data set was split into three data sets: disbursed_amount_by_product,
      * disbursed_amount_by_age_of_uncollected_funds, and disbursed_amount_by_age_of_disbursed_funds.</li>
+     * <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-09-04.
+     * </li>
      * <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since 2012-04-19.</li>
      * <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time since
      * 2015-01-26.</li>
@@ -443,6 +505,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      * <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     * <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM Pacific
+     * Time since 2016-12.</li>
+     * <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM Pacific Time
+     * since 2017-02-15.</li>
      * </ul>
      * </p>
      * 
@@ -474,6 +540,8 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        2012-04-19 until 2015-01-25. After 2015-01-25, this data set was split into three data sets:
      *        disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
      *        disbursed_amount_by_age_of_disbursed_funds.</li>
+     *        <li><i>disbursed_amount_by_instance_hours</i> - Available every 30 days by 5:00 PM Pacific Time since
+     *        2012-09-04.</li>
      *        <li><i>disbursed_amount_by_customer_geo</i> - Available every 30 days by 5:00 PM Pacific Time since
      *        2012-04-19.</li>
      *        <li><i>disbursed_amount_by_age_of_uncollected_funds</i> - Available every 30 days by 5:00 PM Pacific Time
@@ -483,6 +551,10 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
      *        <li><i>customer_profile_by_industry</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_revenue</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
      *        <li><i>customer_profile_by_geography</i> - Available daily by 5:00 PM Pacific Time since 2015-10-01.</li>
+     *        <li><i>sales_compensation_billed_revenue</i> - Available monthly on the 4th day of the month by 5:00 PM
+     *        Pacific Time since 2016-12.</li>
+     *        <li><i>us_sales_and_use_tax_records</i> - Available monthly on the 15th day of the month by 5:00 PM
+     *        Pacific Time since 2017-02-15.</li>
      *        </ul>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DataSetType
@@ -796,19 +868,19 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataSetType() != null)
-            sb.append("DataSetType: " + getDataSetType() + ",");
+            sb.append("DataSetType: ").append(getDataSetType()).append(",");
         if (getDataSetPublicationDate() != null)
-            sb.append("DataSetPublicationDate: " + getDataSetPublicationDate() + ",");
+            sb.append("DataSetPublicationDate: ").append(getDataSetPublicationDate()).append(",");
         if (getRoleNameArn() != null)
-            sb.append("RoleNameArn: " + getRoleNameArn() + ",");
+            sb.append("RoleNameArn: ").append(getRoleNameArn()).append(",");
         if (getDestinationS3BucketName() != null)
-            sb.append("DestinationS3BucketName: " + getDestinationS3BucketName() + ",");
+            sb.append("DestinationS3BucketName: ").append(getDestinationS3BucketName()).append(",");
         if (getDestinationS3Prefix() != null)
-            sb.append("DestinationS3Prefix: " + getDestinationS3Prefix() + ",");
+            sb.append("DestinationS3Prefix: ").append(getDestinationS3Prefix()).append(",");
         if (getSnsTopicArn() != null)
-            sb.append("SnsTopicArn: " + getSnsTopicArn() + ",");
+            sb.append("SnsTopicArn: ").append(getSnsTopicArn()).append(",");
         if (getCustomerDefinedValues() != null)
-            sb.append("CustomerDefinedValues: " + getCustomerDefinedValues());
+            sb.append("CustomerDefinedValues: ").append(getCustomerDefinedValues());
         sb.append("}");
         return sb.toString();
     }
@@ -873,4 +945,5 @@ public class GenerateDataSetRequest extends com.amazonaws.AmazonWebServiceReques
     public GenerateDataSetRequest clone() {
         return (GenerateDataSetRequest) super.clone();
     }
+
 }

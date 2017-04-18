@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a Spot fleet request that was successfully canceled.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequestsSuccessItem"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CancelSpotFleetRequestsSuccessItem implements Serializable, Cloneable {
 
     /**
@@ -238,11 +243,11 @@ public class CancelSpotFleetRequestsSuccessItem implements Serializable, Cloneab
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSpotFleetRequestId() != null)
-            sb.append("SpotFleetRequestId: " + getSpotFleetRequestId() + ",");
+            sb.append("SpotFleetRequestId: ").append(getSpotFleetRequestId()).append(",");
         if (getCurrentSpotFleetRequestState() != null)
-            sb.append("CurrentSpotFleetRequestState: " + getCurrentSpotFleetRequestState() + ",");
+            sb.append("CurrentSpotFleetRequestState: ").append(getCurrentSpotFleetRequestState()).append(",");
         if (getPreviousSpotFleetRequestState() != null)
-            sb.append("PreviousSpotFleetRequestState: " + getPreviousSpotFleetRequestState());
+            sb.append("PreviousSpotFleetRequestState: ").append(getPreviousSpotFleetRequestState());
         sb.append("}");
         return sb.toString();
     }
@@ -292,4 +297,5 @@ public class CancelSpotFleetRequestsSuccessItem implements Serializable, Cloneab
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

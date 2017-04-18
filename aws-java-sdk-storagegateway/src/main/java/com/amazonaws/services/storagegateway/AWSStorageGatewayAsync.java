@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.storagegateway;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.storagegateway.model.*;
 
 /**
  * Interface for accessing AWS Storage Gateway asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.storagegateway.AbstractAWSStorageGatewayAsync} instead.
+ * </p>
  * <p>
  * <fullname>AWS Storage Gateway Service</fullname>
  * <p>
@@ -32,29 +38,32 @@ import com.amazonaws.services.storagegateway.model.*;
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayHTTPRequestsHeaders.html">AWS
- * Storage Gateway Required Request Headers</a>: Describes the required headers that you must send with every POST
+ * <a href=
+ * "http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders"
+ * >AWS Storage Gateway Required Request Headers</a>: Describes the required headers that you must send with every POST
  * request to AWS Storage Gateway.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewaySigningRequests.html">Signing
- * Requests</a>: AWS Storage Gateway requires that you authenticate every request you send; this topic describes how
- * sign such a request.
+ * <a href=
+ * "http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests"
+ * >Signing Requests</a>: AWS Storage Gateway requires that you authenticate every request you send; this topic
+ * describes how sign such a request.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/APIErrorResponses.html">Error Responses</a>:
- * Provides reference information about AWS Storage Gateway errors.
+ * <a
+ * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses">Error
+ * Responses</a>: Provides reference information about AWS Storage Gateway errors.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPIOperations.html">Operations
- * in AWS Storage Gateway</a>: Contains detailed descriptions of all AWS Storage Gateway operations, their request
- * parameters, response elements, possible errors, and examples of requests and responses.
+ * <a href="http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html">Operations in AWS Storage
+ * Gateway</a>: Contains detailed descriptions of all AWS Storage Gateway operations, their request parameters, response
+ * elements, possible errors, and examples of requests and responses.
  * </p>
  * </li>
  * <li>
@@ -93,14 +102,15 @@ import com.amazonaws.services.storagegateway.model.*;
  * </p>
  * </important>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
      * Activates the gateway you previously deployed on your host. For more information, see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html">
-     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the you want to
-     * use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
+     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the region you
+     * want to use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
      * activation key, and a name for your gateway. The activation process also associates your gateway with your
      * account; for more information, see <a>UpdateGatewayInformation</a>.
      * </p>
@@ -150,6 +160,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the ActivateGateway operation returned by the service.
      * @sample AWSStorageGatewayAsync.ActivateGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ActivateGatewayResult> activateGatewayAsync(ActivateGatewayRequest activateGatewayRequest);
 
@@ -157,8 +169,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * Activates the gateway you previously deployed on your host. For more information, see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html">
-     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the you want to
-     * use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
+     * Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the region you
+     * want to use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an
      * activation key, and a name for your gateway. The activation process also associates your gateway with your
      * account; for more information, see <a>UpdateGatewayInformation</a>.
      * </p>
@@ -212,14 +224,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ActivateGateway operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ActivateGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ActivateGatewayResult> activateGatewayAsync(ActivateGatewayRequest activateGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<ActivateGatewayRequest, ActivateGatewayResult> asyncHandler);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as cache for a cached-volume gateway. This operation is supported only
-     * for the gateway-cached volume architecture (see <a
+     * Configures one or more gateway local disks as cache for a cached volumes gateway. This operation is only
+     * supported in the cached volumes gateway architecture (see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">Storage Gateway
      * Concepts</a>).
      * </p>
@@ -231,13 +245,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param addCacheRequest
      * @return A Java Future containing the result of the AddCache operation returned by the service.
      * @sample AWSStorageGatewayAsync.AddCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddCache" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddCacheResult> addCacheAsync(AddCacheRequest addCacheRequest);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as cache for a cached-volume gateway. This operation is supported only
-     * for the gateway-cached volume architecture (see <a
+     * Configures one or more gateway local disks as cache for a cached volumes gateway. This operation is only
+     * supported in the cached volumes gateway architecture (see <a
      * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">Storage Gateway
      * Concepts</a>).
      * </p>
@@ -253,6 +269,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddCache operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.AddCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddCache" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<AddCacheResult> addCacheAsync(AddCacheRequest addCacheRequest,
             com.amazonaws.handlers.AsyncHandler<AddCacheRequest, AddCacheResult> asyncHandler);
@@ -294,6 +312,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        AddTagsToResourceInput
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSStorageGatewayAsync.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddTagsToResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest);
 
@@ -338,6 +358,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.AddTagsToResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddTagsToResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToResourceRequest, AddTagsToResourceResult> asyncHandler);
@@ -345,7 +367,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported
-     * for both the gateway-stored and gateway-cached volume architectures.
+     * for both the stored volumes and cached volumes gateway architectures.
      * </p>
      * <p>
      * In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and
@@ -355,13 +377,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param addUploadBufferRequest
      * @return A Java Future containing the result of the AddUploadBuffer operation returned by the service.
      * @sample AWSStorageGatewayAsync.AddUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddUploadBuffer" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddUploadBufferResult> addUploadBufferAsync(AddUploadBufferRequest addUploadBufferRequest);
 
     /**
      * <p>
      * Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported
-     * for both the gateway-stored and gateway-cached volume architectures.
+     * for both the stored volumes and cached volumes gateway architectures.
      * </p>
      * <p>
      * In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and
@@ -375,14 +399,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddUploadBuffer operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.AddUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddUploadBuffer" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<AddUploadBufferResult> addUploadBufferAsync(AddUploadBufferRequest addUploadBufferRequest,
             com.amazonaws.handlers.AsyncHandler<AddUploadBufferRequest, AddUploadBufferResult> asyncHandler);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as working storage for a gateway. This operation is supported only for
-     * the gateway-stored volume architecture. This operation is deprecated in cached-volumes API version 20120630. Use
+     * Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in
+     * the stored volume gateway architecture. This operation is deprecated in cached-volumes API version 20120630. Use
      * <a>AddUploadBuffer</a> instead.
      * </p>
      * <note>
@@ -406,13 +432,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the AddWorkingStorage operation returned by the service.
      * @sample AWSStorageGatewayAsync.AddWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AddWorkingStorageResult> addWorkingStorageAsync(AddWorkingStorageRequest addWorkingStorageRequest);
 
     /**
      * <p>
-     * Configures one or more gateway local disks as working storage for a gateway. This operation is supported only for
-     * the gateway-stored volume architecture. This operation is deprecated in cached-volumes API version 20120630. Use
+     * Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in
+     * the stored volume gateway architecture. This operation is deprecated in cached-volumes API version 20120630. Use
      * <a>AddUploadBuffer</a> instead.
      * </p>
      * <note>
@@ -440,6 +468,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the AddWorkingStorage operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.AddWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<AddWorkingStorageResult> addWorkingStorageAsync(AddWorkingStorageRequest addWorkingStorageRequest,
             com.amazonaws.handlers.AsyncHandler<AddWorkingStorageRequest, AddWorkingStorageResult> asyncHandler);
@@ -447,18 +477,22 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param cancelArchivalRequest
      *        CancelArchivalInput
      * @return A Java Future containing the result of the CancelArchival operation returned by the service.
      * @sample AWSStorageGatewayAsync.CancelArchival
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelArchival" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelArchivalResult> cancelArchivalAsync(CancelArchivalRequest cancelArchivalRequest);
 
     /**
      * <p>
      * Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param cancelArchivalRequest
@@ -469,6 +503,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelArchival operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CancelArchival
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelArchival" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelArchivalResult> cancelArchivalAsync(CancelArchivalRequest cancelArchivalRequest,
             com.amazonaws.handlers.AsyncHandler<CancelArchivalRequest, CancelArchivalResult> asyncHandler);
@@ -483,6 +519,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        CancelRetrievalInput
      * @return A Java Future containing the result of the CancelRetrieval operation returned by the service.
      * @sample AWSStorageGatewayAsync.CancelRetrieval
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelRetrieval" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelRetrievalResult> cancelRetrievalAsync(CancelRetrievalRequest cancelRetrievalRequest);
 
@@ -500,14 +538,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CancelRetrieval operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CancelRetrieval
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelRetrieval" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CancelRetrievalResult> cancelRetrievalAsync(CancelRetrievalRequest cancelRetrievalRequest,
             com.amazonaws.handlers.AsyncHandler<CancelRetrievalRequest, CancelRetrievalResult> asyncHandler);
 
     /**
      * <p>
-     * Creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached
-     * volume architecture.
+     * Creates a cached volume on a specified cached volumes gateway. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <note>
      * <p>
@@ -518,20 +558,27 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address
      * on which to expose the target, and a unique client token. In response, AWS Storage Gateway creates the volume and
-     * returns information about it such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN
-     * that initiators can use to connect to the volume target.
+     * returns information about it. This information includes the volume Amazon Resource Name (ARN), its size, and the
+     * iSCSI target ARN that initiators can use to connect to the volume target.
+     * </p>
+     * <p>
+     * Optionally, you can provide the ARN for an existing volume as the <code>SourceVolumeARN</code> for this cached
+     * volume, which creates an exact copy of the existing volume’s latest recovery point. The
+     * <code>VolumeSizeInBytes</code> value must be equal to or larger than the size of the copied volume, in bytes.
      * </p>
      * 
      * @param createCachediSCSIVolumeRequest
      * @return A Java Future containing the result of the CreateCachediSCSIVolume operation returned by the service.
      * @sample AWSStorageGatewayAsync.CreateCachediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateCachediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateCachediSCSIVolumeResult> createCachediSCSIVolumeAsync(CreateCachediSCSIVolumeRequest createCachediSCSIVolumeRequest);
 
     /**
      * <p>
-     * Creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached
-     * volume architecture.
+     * Creates a cached volume on a specified cached volumes gateway. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <note>
      * <p>
@@ -542,8 +589,13 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address
      * on which to expose the target, and a unique client token. In response, AWS Storage Gateway creates the volume and
-     * returns information about it such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN
-     * that initiators can use to connect to the volume target.
+     * returns information about it. This information includes the volume Amazon Resource Name (ARN), its size, and the
+     * iSCSI target ARN that initiators can use to connect to the volume target.
+     * </p>
+     * <p>
+     * Optionally, you can provide the ARN for an existing volume as the <code>SourceVolumeARN</code> for this cached
+     * volume, which creates an exact copy of the existing volume’s latest recovery point. The
+     * <code>VolumeSizeInBytes</code> value must be equal to or larger than the size of the copied volume, in bytes.
      * </p>
      * 
      * @param createCachediSCSIVolumeRequest
@@ -553,9 +605,48 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateCachediSCSIVolume operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateCachediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateCachediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateCachediSCSIVolumeResult> createCachediSCSIVolumeAsync(CreateCachediSCSIVolumeRequest createCachediSCSIVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<CreateCachediSCSIVolumeRequest, CreateCachediSCSIVolumeResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point
+     * backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using a Network File System (NFS)
+     * interface. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param createNFSFileShareRequest
+     *        CreateNFSFileShareInput
+     * @return A Java Future containing the result of the CreateNFSFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsync.CreateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateNFSFileShareResult> createNFSFileShareAsync(CreateNFSFileShareRequest createNFSFileShareRequest);
+
+    /**
+     * <p>
+     * Creates a file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point
+     * backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using a Network File System (NFS)
+     * interface. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param createNFSFileShareRequest
+     *        CreateNFSFileShareInput
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateNFSFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.CreateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateNFSFileShareResult> createNFSFileShareAsync(CreateNFSFileShareRequest createNFSFileShareRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateNFSFileShareRequest, CreateNFSFileShareResult> asyncHandler);
 
     /**
      * <p>
@@ -574,7 +665,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the
      * snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you
      * a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to
-     * create a volume from a snapshot.
+     * create a volume from a snapshot. This operation is only supported in stored and cached volumes gateways.
      * </p>
      * <note>
      * <p>
@@ -604,6 +695,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AWSStorageGatewayAsync.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshot" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest);
 
@@ -624,7 +717,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the
      * snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you
      * a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to
-     * create a volume from a snapshot.
+     * create a volume from a snapshot. This operation is only supported in stored and cached volumes gateways.
      * </p>
      * <note>
      * <p>
@@ -658,18 +751,20 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateSnapshot operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshot" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotResult> createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<CreateSnapshotRequest, CreateSnapshotResult> asyncHandler);
 
     /**
      * <p>
-     * Initiates a snapshot of a gateway from a volume recovery point. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <p>
      * A volume recovery point is a point in time at which all data of the volume is consistent and from which you can
-     * create a snapshot. To get a list of volume recovery point for gateway-cached volumes, use
+     * create a snapshot. To get a list of volume recovery point for cached volumes gateway, use
      * <a>ListVolumeRecoveryPoints</a>.
      * </p>
      * <p>
@@ -690,18 +785,21 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @return A Java Future containing the result of the CreateSnapshotFromVolumeRecoveryPoint operation returned by
      *         the service.
      * @sample AWSStorageGatewayAsync.CreateSnapshotFromVolumeRecoveryPoint
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshotFromVolumeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotFromVolumeRecoveryPointResult> createSnapshotFromVolumeRecoveryPointAsync(
             CreateSnapshotFromVolumeRecoveryPointRequest createSnapshotFromVolumeRecoveryPointRequest);
 
     /**
      * <p>
-     * Initiates a snapshot of a gateway from a volume recovery point. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached
+     * volumes gateway architecture.
      * </p>
      * <p>
      * A volume recovery point is a point in time at which all data of the volume is consistent and from which you can
-     * create a snapshot. To get a list of volume recovery point for gateway-cached volumes, use
+     * create a snapshot. To get a list of volume recovery point for cached volumes gateway, use
      * <a>ListVolumeRecoveryPoints</a>.
      * </p>
      * <p>
@@ -726,6 +824,9 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @return A Java Future containing the result of the CreateSnapshotFromVolumeRecoveryPoint operation returned by
      *         the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateSnapshotFromVolumeRecoveryPoint
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshotFromVolumeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateSnapshotFromVolumeRecoveryPointResult> createSnapshotFromVolumeRecoveryPointAsync(
             CreateSnapshotFromVolumeRecoveryPointRequest createSnapshotFromVolumeRecoveryPointRequest,
@@ -733,7 +834,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Creates a volume on a specified gateway. This operation is supported only for the gateway-stored volume
+     * Creates a volume on a specified gateway. This operation is only supported in the stored volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -777,12 +878,14 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the CreateStorediSCSIVolume operation returned by the service.
      * @sample AWSStorageGatewayAsync.CreateStorediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateStorediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateStorediSCSIVolumeResult> createStorediSCSIVolumeAsync(CreateStorediSCSIVolumeRequest createStorediSCSIVolumeRequest);
 
     /**
      * <p>
-     * Creates a volume on a specified gateway. This operation is supported only for the gateway-stored volume
+     * Creates a volume on a specified gateway. This operation is only supported in the stored volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -830,6 +933,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateStorediSCSIVolume operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateStorediSCSIVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateStorediSCSIVolume"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateStorediSCSIVolumeResult> createStorediSCSIVolumeAsync(CreateStorediSCSIVolumeRequest createStorediSCSIVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<CreateStorediSCSIVolumeRequest, CreateStorediSCSIVolumeResult> asyncHandler);
@@ -837,6 +942,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape.
+     * This operation is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -849,12 +955,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        CreateTapeWithBarcodeInput
      * @return A Java Future containing the result of the CreateTapeWithBarcode operation returned by the service.
      * @sample AWSStorageGatewayAsync.CreateTapeWithBarcode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapeWithBarcode"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateTapeWithBarcodeResult> createTapeWithBarcodeAsync(CreateTapeWithBarcodeRequest createTapeWithBarcodeRequest);
 
     /**
      * <p>
      * Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape.
+     * This operation is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -871,13 +980,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTapeWithBarcode operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateTapeWithBarcode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapeWithBarcode"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<CreateTapeWithBarcodeResult> createTapeWithBarcodeAsync(CreateTapeWithBarcodeRequest createTapeWithBarcodeRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTapeWithBarcodeRequest, CreateTapeWithBarcodeResult> asyncHandler);
 
     /**
      * <p>
-     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes.
+     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation
+     * is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -890,12 +1002,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        CreateTapesInput
      * @return A Java Future containing the result of the CreateTapes operation returned by the service.
      * @sample AWSStorageGatewayAsync.CreateTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTapesResult> createTapesAsync(CreateTapesRequest createTapesRequest);
 
     /**
      * <p>
-     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes.
+     * Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation
+     * is only supported in tape gateways.
      * </p>
      * <note>
      * <p>
@@ -912,6 +1027,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the CreateTapes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.CreateTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<CreateTapesResult> createTapesAsync(CreateTapesRequest createTapesRequest,
             com.amazonaws.handlers.AsyncHandler<CreateTapesRequest, CreateTapesResult> asyncHandler);
@@ -924,8 +1041,17 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </p>
      * 
      * @param deleteBandwidthRateLimitRequest
+     *        A JSON object containing the following fields:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a>DeleteBandwidthRateLimitInput$BandwidthType</a>
+     *        </p>
+     *        </li>
      * @return A Java Future containing the result of the DeleteBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteBandwidthRateLimitResult> deleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitRequest deleteBandwidthRateLimitRequest);
 
@@ -937,12 +1063,21 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </p>
      * 
      * @param deleteBandwidthRateLimitRequest
+     *        A JSON object containing the following fields:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a>DeleteBandwidthRateLimitInput$BandwidthType</a>
+     *        </p>
+     *        </li>
      * @param asyncHandler
      *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
      *        implementation of the callback methods in this interface to receive notification of successful or
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteBandwidthRateLimitResult> deleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitRequest deleteBandwidthRateLimitRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteBandwidthRateLimitRequest, DeleteBandwidthRateLimitResult> asyncHandler);
@@ -968,6 +1103,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the DeleteChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteChapCredentialsResult> deleteChapCredentialsAsync(DeleteChapCredentialsRequest deleteChapCredentialsRequest);
 
@@ -996,9 +1133,44 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteChapCredentialsResult> deleteChapCredentialsAsync(DeleteChapCredentialsRequest deleteChapCredentialsRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteChapCredentialsRequest, DeleteChapCredentialsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a file share from a file gateway. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param deleteFileShareRequest
+     *        DeleteFileShareInput
+     * @return A Java Future containing the result of the DeleteFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsync.DeleteFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteFileShare" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFileShareResult> deleteFileShareAsync(DeleteFileShareRequest deleteFileShareRequest);
+
+    /**
+     * <p>
+     * Deletes a file share from a file gateway. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param deleteFileShareRequest
+     *        DeleteFileShareInput
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.DeleteFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteFileShare" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFileShareResult> deleteFileShareAsync(DeleteFileShareRequest deleteFileShareRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteFileShareRequest, DeleteFileShareResult> asyncHandler);
 
     /**
      * <p>
@@ -1025,6 +1197,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the id of the gateway to delete.
      * @return A Java Future containing the result of the DeleteGateway operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteGatewayResult> deleteGatewayAsync(DeleteGatewayRequest deleteGatewayRequest);
 
@@ -1057,6 +1231,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteGateway operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteGatewayResult> deleteGatewayAsync(DeleteGatewayRequest deleteGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteGatewayRequest, DeleteGatewayResult> asyncHandler);
@@ -1082,6 +1258,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param deleteSnapshotScheduleRequest
      * @return A Java Future containing the result of the DeleteSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotScheduleResult> deleteSnapshotScheduleAsync(DeleteSnapshotScheduleRequest deleteSnapshotScheduleRequest);
 
@@ -1110,25 +1288,29 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteSnapshotScheduleResult> deleteSnapshotScheduleAsync(DeleteSnapshotScheduleRequest deleteSnapshotScheduleRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteSnapshotScheduleRequest, DeleteSnapshotScheduleResult> asyncHandler);
 
     /**
      * <p>
-     * Deletes the specified virtual tape.
+     * Deletes the specified virtual tape. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param deleteTapeRequest
      *        DeleteTapeInput
      * @return A Java Future containing the result of the DeleteTape operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteTape
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTape" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTapeResult> deleteTapeAsync(DeleteTapeRequest deleteTapeRequest);
 
     /**
      * <p>
-     * Deletes the specified virtual tape.
+     * Deletes the specified virtual tape. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param deleteTapeRequest
@@ -1139,25 +1321,31 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTape operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteTape
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTape" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<DeleteTapeResult> deleteTapeAsync(DeleteTapeRequest deleteTapeRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTapeRequest, DeleteTapeResult> asyncHandler);
 
     /**
      * <p>
-     * Deletes the specified virtual tape from the virtual tape shelf (VTS).
+     * Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in tape
+     * gateways.
      * </p>
      * 
      * @param deleteTapeArchiveRequest
      *        DeleteTapeArchiveInput
      * @return A Java Future containing the result of the DeleteTapeArchive operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteTapeArchiveResult> deleteTapeArchiveAsync(DeleteTapeArchiveRequest deleteTapeArchiveRequest);
 
     /**
      * <p>
-     * Deletes the specified virtual tape from the virtual tape shelf (VTS).
+     * Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in tape
+     * gateways.
      * </p>
      * 
      * @param deleteTapeArchiveRequest
@@ -1168,6 +1356,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteTapeArchive operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DeleteTapeArchiveResult> deleteTapeArchiveAsync(DeleteTapeArchiveRequest deleteTapeArchiveRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteTapeArchiveRequest, DeleteTapeArchiveResult> asyncHandler);
@@ -1175,8 +1365,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Deletes the specified gateway volume that you previously created using the <a>CreateCachediSCSIVolume</a> or
-     * <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local disk that was configured as the storage
-     * volume is not deleted. You can reuse the local disk to create another storage volume.
+     * <a>CreateStorediSCSIVolume</a> API. For stored volumes gateways, the local disk that was configured as the
+     * storage volume is not deleted. You can reuse the local disk to create another storage volume.
      * </p>
      * <p>
      * Before you delete a gateway volume, make sure there are no iSCSI connections to the volume you are deleting. You
@@ -1193,14 +1383,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.
      * @return A Java Future containing the result of the DeleteVolume operation returned by the service.
      * @sample AWSStorageGatewayAsync.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteVolume" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVolumeResult> deleteVolumeAsync(DeleteVolumeRequest deleteVolumeRequest);
 
     /**
      * <p>
      * Deletes the specified gateway volume that you previously created using the <a>CreateCachediSCSIVolume</a> or
-     * <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local disk that was configured as the storage
-     * volume is not deleted. You can reuse the local disk to create another storage volume.
+     * <a>CreateStorediSCSIVolume</a> API. For stored volumes gateways, the local disk that was configured as the
+     * storage volume is not deleted. You can reuse the local disk to create another storage volume.
      * </p>
      * <p>
      * Before you delete a gateway volume, make sure there are no iSCSI connections to the volume you are deleting. You
@@ -1221,6 +1413,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DeleteVolume operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DeleteVolume
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteVolume" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DeleteVolumeResult> deleteVolumeAsync(DeleteVolumeRequest deleteVolumeRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteVolumeRequest, DeleteVolumeResult> asyncHandler);
@@ -1240,6 +1434,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway.
      * @return A Java Future containing the result of the DescribeBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeBandwidthRateLimitResult> describeBandwidthRateLimitAsync(
             DescribeBandwidthRateLimitRequest describeBandwidthRateLimitRequest);
@@ -1263,6 +1459,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeBandwidthRateLimitResult> describeBandwidthRateLimitAsync(
             DescribeBandwidthRateLimitRequest describeBandwidthRateLimitRequest,
@@ -1270,7 +1468,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Returns information about the cache of a gateway. This operation is supported only for the gateway-cached volume
+     * Returns information about the cache of a gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -1281,12 +1479,14 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param describeCacheRequest
      * @return A Java Future containing the result of the DescribeCache operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCache" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheResult> describeCacheAsync(DescribeCacheRequest describeCacheRequest);
 
     /**
      * <p>
-     * Returns information about the cache of a gateway. This operation is supported only for the gateway-cached volume
+     * Returns information about the cache of a gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
@@ -1301,14 +1501,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCache operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCache" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCacheResult> describeCacheAsync(DescribeCacheRequest describeCacheRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCacheRequest, DescribeCacheResult> asyncHandler);
 
     /**
      * <p>
-     * Returns a description of the gateway volumes specified in the request. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Returns a description of the gateway volumes specified in the request. This operation is only supported in the
+     * cached volumes gateway architecture.
      * </p>
      * <p>
      * The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway
@@ -1318,14 +1520,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param describeCachediSCSIVolumesRequest
      * @return A Java Future containing the result of the DescribeCachediSCSIVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeCachediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCachediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCachediSCSIVolumesResult> describeCachediSCSIVolumesAsync(
             DescribeCachediSCSIVolumesRequest describeCachediSCSIVolumesRequest);
 
     /**
      * <p>
-     * Returns a description of the gateway volumes specified in the request. This operation is supported only for the
-     * gateway-cached volume architecture.
+     * Returns a description of the gateway volumes specified in the request. This operation is only supported in the
+     * cached volumes gateway architecture.
      * </p>
      * <p>
      * The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway
@@ -1339,6 +1543,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeCachediSCSIVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeCachediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCachediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeCachediSCSIVolumesResult> describeCachediSCSIVolumesAsync(
             DescribeCachediSCSIVolumesRequest describeCachediSCSIVolumesRequest,
@@ -1354,6 +1560,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.
      * @return A Java Future containing the result of the DescribeChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeChapCredentialsResult> describeChapCredentialsAsync(DescribeChapCredentialsRequest describeChapCredentialsRequest);
 
@@ -1371,6 +1579,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeChapCredentialsResult> describeChapCredentialsAsync(DescribeChapCredentialsRequest describeChapCredentialsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeChapCredentialsRequest, DescribeChapCredentialsResult> asyncHandler);
@@ -1386,6 +1596,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the id of the gateway.
      * @return A Java Future containing the result of the DescribeGatewayInformation operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeGatewayInformationResult> describeGatewayInformationAsync(
             DescribeGatewayInformationRequest describeGatewayInformationRequest);
@@ -1405,6 +1617,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeGatewayInformation operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeGatewayInformationResult> describeGatewayInformationAsync(
             DescribeGatewayInformationRequest describeGatewayInformationRequest,
@@ -1421,6 +1635,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @return A Java Future containing the result of the DescribeMaintenanceStartTime operation returned by the
      *         service.
      * @sample AWSStorageGatewayAsync.DescribeMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeMaintenanceStartTimeResult> describeMaintenanceStartTimeAsync(
             DescribeMaintenanceStartTimeRequest describeMaintenanceStartTimeRequest);
@@ -1440,10 +1656,47 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @return A Java Future containing the result of the DescribeMaintenanceStartTime operation returned by the
      *         service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeMaintenanceStartTimeResult> describeMaintenanceStartTimeAsync(
             DescribeMaintenanceStartTimeRequest describeMaintenanceStartTimeRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeMaintenanceStartTimeRequest, DescribeMaintenanceStartTimeResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets a description for one or more file shares from a file gateway. This operation is only supported in file
+     * gateways.
+     * </p>
+     * 
+     * @param describeNFSFileSharesRequest
+     *        DescribeNFSFileSharesInput
+     * @return A Java Future containing the result of the DescribeNFSFileShares operation returned by the service.
+     * @sample AWSStorageGatewayAsync.DescribeNFSFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeNFSFileShares"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeNFSFileSharesResult> describeNFSFileSharesAsync(DescribeNFSFileSharesRequest describeNFSFileSharesRequest);
+
+    /**
+     * <p>
+     * Gets a description for one or more file shares from a file gateway. This operation is only supported in file
+     * gateways.
+     * </p>
+     * 
+     * @param describeNFSFileSharesRequest
+     *        DescribeNFSFileSharesInput
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeNFSFileShares operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.DescribeNFSFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeNFSFileShares"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeNFSFileSharesResult> describeNFSFileSharesAsync(DescribeNFSFileSharesRequest describeNFSFileSharesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeNFSFileSharesRequest, DescribeNFSFileSharesResult> asyncHandler);
 
     /**
      * <p>
@@ -1455,6 +1708,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.
      * @return A Java Future containing the result of the DescribeSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotScheduleResult> describeSnapshotScheduleAsync(DescribeSnapshotScheduleRequest describeSnapshotScheduleRequest);
 
@@ -1472,6 +1727,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeSnapshotScheduleResult> describeSnapshotScheduleAsync(DescribeSnapshotScheduleRequest describeSnapshotScheduleRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeSnapshotScheduleRequest, DescribeSnapshotScheduleResult> asyncHandler);
@@ -1480,13 +1737,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the
      * request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by
-     * volume ARNs.
+     * volume ARNs. This operation is only supported in stored volumes gateways.
      * </p>
      * 
      * @param describeStorediSCSIVolumesRequest
      *        A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.
      * @return A Java Future containing the result of the DescribeStorediSCSIVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeStorediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeStorediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStorediSCSIVolumesResult> describeStorediSCSIVolumesAsync(
             DescribeStorediSCSIVolumesRequest describeStorediSCSIVolumesRequest);
@@ -1495,7 +1754,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the
      * request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by
-     * volume ARNs.
+     * volume ARNs. This operation is only supported in stored volumes gateways.
      * </p>
      * 
      * @param describeStorediSCSIVolumesRequest
@@ -1506,6 +1765,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeStorediSCSIVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeStorediSCSIVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeStorediSCSIVolumes"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeStorediSCSIVolumesResult> describeStorediSCSIVolumesAsync(
             DescribeStorediSCSIVolumesRequest describeStorediSCSIVolumesRequest,
@@ -1517,13 +1778,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </p>
      * <p>
      * If a specific <code>TapeARN</code> is not specified, AWS Storage Gateway returns a description of all virtual
-     * tapes found in the VTS associated with your account.
+     * tapes found in the VTS associated with your account. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeArchivesRequest
      *        DescribeTapeArchivesInput
      * @return A Java Future containing the result of the DescribeTapeArchives operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeTapeArchives
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeArchives"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapeArchivesResult> describeTapeArchivesAsync(DescribeTapeArchivesRequest describeTapeArchivesRequest);
 
@@ -1533,7 +1796,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </p>
      * <p>
      * If a specific <code>TapeARN</code> is not specified, AWS Storage Gateway returns a description of all virtual
-     * tapes found in the VTS associated with your account.
+     * tapes found in the VTS associated with your account. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeArchivesRequest
@@ -1544,6 +1807,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTapeArchives operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeTapeArchives
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeArchives"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapeArchivesResult> describeTapeArchivesAsync(DescribeTapeArchivesRequest describeTapeArchivesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTapeArchivesRequest, DescribeTapeArchivesResult> asyncHandler);
@@ -1565,28 +1830,32 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Returns a list of virtual tape recovery points that are available for the specified gateway-VTL.
+     * Returns a list of virtual tape recovery points that are available for the specified tape gateway.
      * </p>
      * <p>
      * A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is
      * consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeRecoveryPointsRequest
      *        DescribeTapeRecoveryPointsInput
      * @return A Java Future containing the result of the DescribeTapeRecoveryPoints operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeTapeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapeRecoveryPointsResult> describeTapeRecoveryPointsAsync(
             DescribeTapeRecoveryPointsRequest describeTapeRecoveryPointsRequest);
 
     /**
      * <p>
-     * Returns a list of virtual tape recovery points that are available for the specified gateway-VTL.
+     * Returns a list of virtual tape recovery points that are available for the specified tape gateway.
      * </p>
      * <p>
      * A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is
      * consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapeRecoveryPointsRequest
@@ -1597,6 +1866,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTapeRecoveryPoints operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeTapeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapeRecoveryPointsResult> describeTapeRecoveryPointsAsync(
             DescribeTapeRecoveryPointsRequest describeTapeRecoveryPointsRequest,
@@ -1605,20 +1876,24 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a <code>TapeARN</code> is
-     * not specified, returns a description of all virtual tapes associated with the specified gateway.
+     * not specified, returns a description of all virtual tapes associated with the specified gateway. This operation
+     * is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapesRequest
      *        DescribeTapesInput
      * @return A Java Future containing the result of the DescribeTapes operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapesResult> describeTapesAsync(DescribeTapesRequest describeTapesRequest);
 
     /**
      * <p>
      * Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a <code>TapeARN</code> is
-     * not specified, returns a description of all virtual tapes associated with the specified gateway.
+     * not specified, returns a description of all virtual tapes associated with the specified gateway. This operation
+     * is only supported in tape gateways.
      * </p>
      * 
      * @param describeTapesRequest
@@ -1629,14 +1904,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeTapes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapes" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DescribeTapesResult> describeTapesAsync(DescribeTapesRequest describeTapesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeTapesRequest, DescribeTapesResult> asyncHandler);
 
     /**
      * <p>
-     * Returns information about the upload buffer of a gateway. This operation is supported for both the gateway-stored
-     * and gateway-cached volume architectures.
+     * Returns information about the upload buffer of a gateway. This operation is supported for both the stored volume
+     * and cached volumes gateway architectures.
      * </p>
      * <p>
      * The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload
@@ -1646,13 +1923,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param describeUploadBufferRequest
      * @return A Java Future containing the result of the DescribeUploadBuffer operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeUploadBuffer"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeUploadBufferResult> describeUploadBufferAsync(DescribeUploadBufferRequest describeUploadBufferRequest);
 
     /**
      * <p>
-     * Returns information about the upload buffer of a gateway. This operation is supported for both the gateway-stored
-     * and gateway-cached volume architectures.
+     * Returns information about the upload buffer of a gateway. This operation is supported for both the stored volume
+     * and cached volumes gateway architectures.
      * </p>
      * <p>
      * The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload
@@ -1666,33 +1945,37 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeUploadBuffer operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeUploadBuffer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeUploadBuffer"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeUploadBufferResult> describeUploadBufferAsync(DescribeUploadBufferRequest describeUploadBufferRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeUploadBufferRequest, DescribeUploadBufferResult> asyncHandler);
 
     /**
      * <p>
-     * Returns a description of virtual tape library (VTL) devices for the specified gateway. In the response, AWS
+     * Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, AWS
      * Storage Gateway returns VTL device information.
      * </p>
      * <p>
-     * The list of VTL devices must be from one gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeVTLDevicesRequest
      *        DescribeVTLDevicesInput
      * @return A Java Future containing the result of the DescribeVTLDevices operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeVTLDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeVTLDevices"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVTLDevicesResult> describeVTLDevicesAsync(DescribeVTLDevicesRequest describeVTLDevicesRequest);
 
     /**
      * <p>
-     * Returns a description of virtual tape library (VTL) devices for the specified gateway. In the response, AWS
+     * Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, AWS
      * Storage Gateway returns VTL device information.
      * </p>
      * <p>
-     * The list of VTL devices must be from one gateway.
+     * This operation is only supported in tape gateways.
      * </p>
      * 
      * @param describeVTLDevicesRequest
@@ -1703,14 +1986,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeVTLDevices operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeVTLDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeVTLDevices"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeVTLDevicesResult> describeVTLDevicesAsync(DescribeVTLDevicesRequest describeVTLDevicesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeVTLDevicesRequest, DescribeVTLDevicesResult> asyncHandler);
 
     /**
      * <p>
-     * Returns information about the working storage of a gateway. This operation is supported only for the
-     * gateway-stored volume architecture. This operation is deprecated in cached-volumes API version (20120630). Use
+     * Returns information about the working storage of a gateway. This operation is only supported in the stored
+     * volumes gateway architecture. This operation is deprecated in cached-volumes API version (20120630). Use
      * DescribeUploadBuffer instead.
      * </p>
      * <note>
@@ -1728,13 +2013,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway.
      * @return A Java Future containing the result of the DescribeWorkingStorage operation returned by the service.
      * @sample AWSStorageGatewayAsync.DescribeWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkingStorageResult> describeWorkingStorageAsync(DescribeWorkingStorageRequest describeWorkingStorageRequest);
 
     /**
      * <p>
-     * Returns information about the working storage of a gateway. This operation is supported only for the
-     * gateway-stored volume architecture. This operation is deprecated in cached-volumes API version (20120630). Use
+     * Returns information about the working storage of a gateway. This operation is only supported in the stored
+     * volumes gateway architecture. This operation is deprecated in cached-volumes API version (20120630). Use
      * DescribeUploadBuffer instead.
      * </p>
      * <note>
@@ -1756,6 +2043,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DescribeWorkingStorage operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DescribeWorkingStorage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeWorkingStorage"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<DescribeWorkingStorageResult> describeWorkingStorageAsync(DescribeWorkingStorageRequest describeWorkingStorageRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeWorkingStorageRequest, DescribeWorkingStorageResult> asyncHandler);
@@ -1766,7 +2055,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * disable the gateway so you can recover virtual tapes.
      * </p>
      * <p>
-     * Use this operation for a gateway-VTL that is not reachable or not functioning.
+     * Use this operation for a tape gateway that is not reachable or not functioning.
      * </p>
      * <important>
      * <p>
@@ -1778,6 +2067,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        DisableGatewayInput
      * @return A Java Future containing the result of the DisableGateway operation returned by the service.
      * @sample AWSStorageGatewayAsync.DisableGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DisableGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DisableGatewayResult> disableGatewayAsync(DisableGatewayRequest disableGatewayRequest);
 
@@ -1787,7 +2078,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * disable the gateway so you can recover virtual tapes.
      * </p>
      * <p>
-     * Use this operation for a gateway-VTL that is not reachable or not functioning.
+     * Use this operation for a tape gateway that is not reachable or not functioning.
      * </p>
      * <important>
      * <p>
@@ -1803,9 +2094,46 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the DisableGateway operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.DisableGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DisableGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<DisableGatewayResult> disableGatewayAsync(DisableGatewayRequest disableGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<DisableGatewayRequest, DisableGatewayResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling
+     * user account. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param listFileSharesRequest
+     *        ListFileShareInput
+     * @return A Java Future containing the result of the ListFileShares operation returned by the service.
+     * @sample AWSStorageGatewayAsync.ListFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListFileShares" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListFileSharesResult> listFileSharesAsync(ListFileSharesRequest listFileSharesRequest);
+
+    /**
+     * <p>
+     * Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling
+     * user account. This operation is only supported in file gateways.
+     * </p>
+     * 
+     * @param listFileSharesRequest
+     *        ListFileShareInput
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListFileShares operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.ListFileShares
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListFileShares" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListFileSharesResult> listFileSharesAsync(ListFileSharesRequest listFileSharesRequest,
+            com.amazonaws.handlers.AsyncHandler<ListFileSharesRequest, ListFileSharesResult> asyncHandler);
 
     /**
      * <p>
@@ -1837,6 +2165,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the ListGateways operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListGatewaysResult> listGatewaysAsync(ListGatewaysRequest listGatewaysRequest);
 
@@ -1874,6 +2204,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListGateways operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListGateways" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListGatewaysResult> listGatewaysAsync(ListGatewaysRequest listGatewaysRequest,
             com.amazonaws.handlers.AsyncHandler<ListGatewaysRequest, ListGatewaysResult> asyncHandler);
@@ -1908,6 +2240,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway.
      * @return A Java Future containing the result of the ListLocalDisks operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListLocalDisks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListLocalDisks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListLocalDisksResult> listLocalDisksAsync(ListLocalDisksRequest listLocalDisksRequest);
 
@@ -1931,6 +2265,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListLocalDisks operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListLocalDisks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListLocalDisks" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ListLocalDisksResult> listLocalDisksAsync(ListLocalDisksRequest listLocalDisksRequest,
             com.amazonaws.handlers.AsyncHandler<ListLocalDisksRequest, ListLocalDisksResult> asyncHandler);
@@ -1944,6 +2280,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        ListTagsForResourceInput
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
 
@@ -1960,6 +2298,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
@@ -1989,7 +2329,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can
      * optionally specify the <code>Limit</code> parameter in the body to limit the number of tapes in the response. If
      * the number of tapes returned in the response is truncated, the response includes a <code>Marker</code> element
-     * that you can use in your subsequent request to retrieve the next set of tapes.
+     * that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported
+     * in tape gateways.
      * </p>
      * 
      * @param listTapesRequest
@@ -2012,6 +2353,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the ListTapes operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTapesResult> listTapesAsync(ListTapesRequest listTapesRequest);
 
@@ -2025,7 +2368,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can
      * optionally specify the <code>Limit</code> parameter in the body to limit the number of tapes in the response. If
      * the number of tapes returned in the response is truncated, the response includes a <code>Marker</code> element
-     * that you can use in your subsequent request to retrieve the next set of tapes.
+     * that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported
+     * in tape gateways.
      * </p>
      * 
      * @param listTapesRequest
@@ -2052,6 +2396,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListTapes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListTapes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTapes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListTapesResult> listTapesAsync(ListTapesRequest listTapesRequest,
             com.amazonaws.handlers.AsyncHandler<ListTapesRequest, ListTapesResult> asyncHandler);
@@ -2066,6 +2412,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        ListVolumeInitiatorsInput
      * @return A Java Future containing the result of the ListVolumeInitiators operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListVolumeInitiators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeInitiators"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVolumeInitiatorsResult> listVolumeInitiatorsAsync(ListVolumeInitiatorsRequest listVolumeInitiatorsRequest);
 
@@ -2083,36 +2431,40 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListVolumeInitiators operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListVolumeInitiators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeInitiators"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVolumeInitiatorsResult> listVolumeInitiatorsAsync(ListVolumeInitiatorsRequest listVolumeInitiatorsRequest,
             com.amazonaws.handlers.AsyncHandler<ListVolumeInitiatorsRequest, ListVolumeInitiatorsResult> asyncHandler);
 
     /**
      * <p>
-     * Lists the recovery points for a specified gateway. This operation is supported only for the gateway-cached volume
+     * Lists the recovery points for a specified gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
-     * Each gateway-cached volume has one recovery point. A volume recovery point is a point in time at which all data
-     * of the volume is consistent and from which you can create a snapshot. To create a snapshot from a volume recovery
-     * point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
+     * Each cache volume has one recovery point. A volume recovery point is a point in time at which all data of the
+     * volume is consistent and from which you can create a snapshot or clone a new cached volume from a source volume.
+     * To create a snapshot from a volume recovery point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
      * </p>
      * 
      * @param listVolumeRecoveryPointsRequest
      * @return A Java Future containing the result of the ListVolumeRecoveryPoints operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListVolumeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVolumeRecoveryPointsResult> listVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsRequest listVolumeRecoveryPointsRequest);
 
     /**
      * <p>
-     * Lists the recovery points for a specified gateway. This operation is supported only for the gateway-cached volume
+     * Lists the recovery points for a specified gateway. This operation is only supported in the cached volumes gateway
      * architecture.
      * </p>
      * <p>
-     * Each gateway-cached volume has one recovery point. A volume recovery point is a point in time at which all data
-     * of the volume is consistent and from which you can create a snapshot. To create a snapshot from a volume recovery
-     * point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
+     * Each cache volume has one recovery point. A volume recovery point is a point in time at which all data of the
+     * volume is consistent and from which you can create a snapshot or clone a new cached volume from a source volume.
+     * To create a snapshot from a volume recovery point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
      * </p>
      * 
      * @param listVolumeRecoveryPointsRequest
@@ -2122,6 +2474,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListVolumeRecoveryPoints operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListVolumeRecoveryPoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeRecoveryPoints"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<ListVolumeRecoveryPointsResult> listVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsRequest listVolumeRecoveryPointsRequest,
             com.amazonaws.handlers.AsyncHandler<ListVolumeRecoveryPointsRequest, ListVolumeRecoveryPointsResult> asyncHandler);
@@ -2129,7 +2483,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the
-     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> API.
+     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> or the
+     * <a>DescribeCachediSCSIVolumes</a> API.
      * </p>
      * <p>
      * The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can
@@ -2153,13 +2508,16 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the ListVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsync.ListVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListVolumesResult> listVolumesAsync(ListVolumesRequest listVolumesRequest);
 
     /**
      * <p>
      * Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the
-     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> API.
+     * volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> or the
+     * <a>DescribeCachediSCSIVolumes</a> API.
      * </p>
      * <p>
      * The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can
@@ -2187,9 +2545,44 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ListVolumes operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ListVolumes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumes" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ListVolumesResult> listVolumesAsync(ListVolumesRequest listVolumesRequest,
             com.amazonaws.handlers.AsyncHandler<ListVolumesRequest, ListVolumesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were
+     * added or removed since the gateway last listed the bucket's contents and cached the results.
+     * </p>
+     * 
+     * @param refreshCacheRequest
+     * @return A Java Future containing the result of the RefreshCache operation returned by the service.
+     * @sample AWSStorageGatewayAsync.RefreshCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RefreshCache" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<RefreshCacheResult> refreshCacheAsync(RefreshCacheRequest refreshCacheRequest);
+
+    /**
+     * <p>
+     * Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were
+     * added or removed since the gateway last listed the bucket's contents and cached the results.
+     * </p>
+     * 
+     * @param refreshCacheRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RefreshCache operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.RefreshCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RefreshCache" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<RefreshCacheResult> refreshCacheAsync(RefreshCacheRequest refreshCacheRequest,
+            com.amazonaws.handlers.AsyncHandler<RefreshCacheRequest, RefreshCacheResult> asyncHandler);
 
     /**
      * <p>
@@ -2200,6 +2593,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        RemoveTagsFromResourceInput
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSStorageGatewayAsync.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RemoveTagsFromResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
 
@@ -2216,6 +2611,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.RemoveTagsFromResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RemoveTagsFromResource"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RemoveTagsFromResourceResult> removeTagsFromResourceAsync(RemoveTagsFromResourceRequest removeTagsFromResourceRequest,
             com.amazonaws.handlers.AsyncHandler<RemoveTagsFromResourceRequest, RemoveTagsFromResourceResult> asyncHandler);
@@ -2253,6 +2650,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param resetCacheRequest
      * @return A Java Future containing the result of the ResetCache operation returned by the service.
      * @sample AWSStorageGatewayAsync.ResetCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ResetCache" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetCacheResult> resetCacheAsync(ResetCacheRequest resetCacheRequest);
 
@@ -2278,13 +2677,15 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ResetCache operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ResetCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ResetCache" target="_top">AWS API
+     *      Documentation</a>
      */
     java.util.concurrent.Future<ResetCacheResult> resetCacheAsync(ResetCacheRequest resetCacheRequest,
             com.amazonaws.handlers.AsyncHandler<ResetCacheRequest, ResetCacheResult> asyncHandler);
 
     /**
      * <p>
-     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a gateway-VTL. Virtual tapes archived in
+     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in
      * the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway,
      * even though it is also listed in the VTS.
      * </p>
@@ -2297,12 +2698,14 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        RetrieveTapeArchiveInput
      * @return A Java Future containing the result of the RetrieveTapeArchive operation returned by the service.
      * @sample AWSStorageGatewayAsync.RetrieveTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RetrieveTapeArchiveResult> retrieveTapeArchiveAsync(RetrieveTapeArchiveRequest retrieveTapeArchiveRequest);
 
     /**
      * <p>
-     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a gateway-VTL. Virtual tapes archived in
+     * Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in
      * the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway,
      * even though it is also listed in the VTS.
      * </p>
@@ -2319,6 +2722,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RetrieveTapeArchive operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.RetrieveTapeArchive
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeArchive"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RetrieveTapeArchiveResult> retrieveTapeArchiveAsync(RetrieveTapeArchiveRequest retrieveTapeArchiveRequest,
             com.amazonaws.handlers.AsyncHandler<RetrieveTapeArchiveRequest, RetrieveTapeArchiveResult> asyncHandler);
@@ -2334,7 +2739,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <note>
      * <p>
      * The virtual tape can be retrieved to only one gateway. The retrieved tape is read-only. The virtual tape can be
-     * retrieved to only a gateway-VTL. There is no charge for retrieving recovery points.
+     * retrieved to only a tape gateway. There is no charge for retrieving recovery points.
      * </p>
      * </note>
      * 
@@ -2342,6 +2747,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        RetrieveTapeRecoveryPointInput
      * @return A Java Future containing the result of the RetrieveTapeRecoveryPoint operation returned by the service.
      * @sample AWSStorageGatewayAsync.RetrieveTapeRecoveryPoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RetrieveTapeRecoveryPointResult> retrieveTapeRecoveryPointAsync(
             RetrieveTapeRecoveryPointRequest retrieveTapeRecoveryPointRequest);
@@ -2357,7 +2764,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <note>
      * <p>
      * The virtual tape can be retrieved to only one gateway. The retrieved tape is read-only. The virtual tape can be
-     * retrieved to only a gateway-VTL. There is no charge for retrieving recovery points.
+     * retrieved to only a tape gateway. There is no charge for retrieving recovery points.
      * </p>
      * </note>
      * 
@@ -2369,6 +2776,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the RetrieveTapeRecoveryPoint operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.RetrieveTapeRecoveryPoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeRecoveryPoint"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<RetrieveTapeRecoveryPointResult> retrieveTapeRecoveryPointAsync(
             RetrieveTapeRecoveryPointRequest retrieveTapeRecoveryPointRequest,
@@ -2385,6 +2794,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        SetLocalConsolePasswordInput
      * @return A Java Future containing the result of the SetLocalConsolePassword operation returned by the service.
      * @sample AWSStorageGatewayAsync.SetLocalConsolePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/SetLocalConsolePassword"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetLocalConsolePasswordResult> setLocalConsolePasswordAsync(SetLocalConsolePasswordRequest setLocalConsolePasswordRequest);
 
@@ -2403,6 +2814,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the SetLocalConsolePassword operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.SetLocalConsolePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/SetLocalConsolePassword"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<SetLocalConsolePasswordResult> setLocalConsolePasswordAsync(SetLocalConsolePasswordRequest setLocalConsolePasswordRequest,
             com.amazonaws.handlers.AsyncHandler<SetLocalConsolePasswordRequest, SetLocalConsolePasswordResult> asyncHandler);
@@ -2443,6 +2856,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway to shut down.
      * @return A Java Future containing the result of the ShutdownGateway operation returned by the service.
      * @sample AWSStorageGatewayAsync.ShutdownGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ShutdownGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ShutdownGatewayResult> shutdownGatewayAsync(ShutdownGatewayRequest shutdownGatewayRequest);
 
@@ -2486,6 +2901,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the ShutdownGateway operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.ShutdownGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ShutdownGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<ShutdownGatewayResult> shutdownGatewayAsync(ShutdownGatewayRequest shutdownGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<ShutdownGatewayRequest, ShutdownGatewayResult> asyncHandler);
@@ -2511,6 +2928,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway to start.
      * @return A Java Future containing the result of the StartGateway operation returned by the service.
      * @sample AWSStorageGatewayAsync.StartGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/StartGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<StartGatewayResult> startGatewayAsync(StartGatewayRequest startGatewayRequest);
 
@@ -2539,6 +2958,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the StartGateway operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.StartGateway
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/StartGateway" target="_top">AWS
+     *      API Documentation</a>
      */
     java.util.concurrent.Future<StartGatewayResult> startGatewayAsync(StartGatewayRequest startGatewayRequest,
             com.amazonaws.handlers.AsyncHandler<StartGatewayRequest, StartGatewayResult> asyncHandler);
@@ -2571,6 +2992,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the UpdateBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateBandwidthRateLimitResult> updateBandwidthRateLimitAsync(UpdateBandwidthRateLimitRequest updateBandwidthRateLimitRequest);
 
@@ -2606,6 +3029,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateBandwidthRateLimit operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateBandwidthRateLimit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateBandwidthRateLimit"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateBandwidthRateLimitResult> updateBandwidthRateLimitAsync(UpdateBandwidthRateLimitRequest updateBandwidthRateLimitRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateBandwidthRateLimitRequest, UpdateBandwidthRateLimitResult> asyncHandler);
@@ -2647,6 +3072,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the UpdateChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateChapCredentialsResult> updateChapCredentialsAsync(UpdateChapCredentialsRequest updateChapCredentialsRequest);
 
@@ -2691,6 +3118,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateChapCredentials operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateChapCredentials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateChapCredentials"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateChapCredentialsResult> updateChapCredentialsAsync(UpdateChapCredentialsRequest updateChapCredentialsRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateChapCredentialsRequest, UpdateChapCredentialsResult> asyncHandler);
@@ -2710,6 +3139,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param updateGatewayInformationRequest
      * @return A Java Future containing the result of the UpdateGatewayInformation operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateGatewayInformationResult> updateGatewayInformationAsync(UpdateGatewayInformationRequest updateGatewayInformationRequest);
 
@@ -2732,6 +3163,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateGatewayInformation operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateGatewayInformation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewayInformation"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateGatewayInformationResult> updateGatewayInformationAsync(UpdateGatewayInformationRequest updateGatewayInformationRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateGatewayInformationRequest, UpdateGatewayInformationResult> asyncHandler);
@@ -2762,6 +3195,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        A JSON object containing the of the gateway to update.
      * @return A Java Future containing the result of the UpdateGatewaySoftwareNow operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateGatewaySoftwareNow
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewaySoftwareNow"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateGatewaySoftwareNowResult> updateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowRequest updateGatewaySoftwareNowRequest);
 
@@ -2795,6 +3230,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateGatewaySoftwareNow operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateGatewaySoftwareNow
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewaySoftwareNow"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateGatewaySoftwareNowResult> updateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowRequest updateGatewaySoftwareNowRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateGatewaySoftwareNowRequest, UpdateGatewaySoftwareNowResult> asyncHandler);
@@ -2825,6 +3262,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the UpdateMaintenanceStartTime operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateMaintenanceStartTimeResult> updateMaintenanceStartTimeAsync(
             UpdateMaintenanceStartTimeRequest updateMaintenanceStartTimeRequest);
@@ -2859,10 +3298,55 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateMaintenanceStartTime operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateMaintenanceStartTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateMaintenanceStartTime"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateMaintenanceStartTimeResult> updateMaintenanceStartTimeAsync(
             UpdateMaintenanceStartTimeRequest updateMaintenanceStartTimeRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateMaintenanceStartTimeRequest, UpdateMaintenanceStartTimeResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a file share. This operation is only supported in file gateways.
+     * </p>
+     * <note>
+     * <p>
+     * To leave a file share field unchanged, set the corresponding input field to null.
+     * </p>
+     * </note>
+     * 
+     * @param updateNFSFileShareRequest
+     *        UpdateNFSFileShareInput
+     * @return A Java Future containing the result of the UpdateNFSFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsync.UpdateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNFSFileShareResult> updateNFSFileShareAsync(UpdateNFSFileShareRequest updateNFSFileShareRequest);
+
+    /**
+     * <p>
+     * Updates a file share. This operation is only supported in file gateways.
+     * </p>
+     * <note>
+     * <p>
+     * To leave a file share field unchanged, set the corresponding input field to null.
+     * </p>
+     * </note>
+     * 
+     * @param updateNFSFileShareRequest
+     *        UpdateNFSFileShareInput
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateNFSFileShare operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.UpdateNFSFileShare
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateNFSFileShare"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNFSFileShareResult> updateNFSFileShareAsync(UpdateNFSFileShareRequest updateNFSFileShareRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateNFSFileShareRequest, UpdateNFSFileShareResult> asyncHandler);
 
     /**
      * <p>
@@ -2902,6 +3386,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        </li>
      * @return A Java Future containing the result of the UpdateSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateSnapshotScheduleResult> updateSnapshotScheduleAsync(UpdateSnapshotScheduleRequest updateSnapshotScheduleRequest);
 
@@ -2947,28 +3433,32 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateSnapshotSchedule operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateSnapshotSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSnapshotSchedule"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateSnapshotScheduleResult> updateSnapshotScheduleAsync(UpdateSnapshotScheduleRequest updateSnapshotScheduleRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateSnapshotScheduleRequest, UpdateSnapshotScheduleResult> asyncHandler);
 
     /**
      * <p>
-     * Updates the type of medium changer in a gateway-VTL. When you activate a gateway-VTL, you select a medium changer
-     * type for the gateway-VTL. This operation enables you to select a different type of medium changer after a
-     * gateway-VTL is activated.
+     * Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium
+     * changer type for the tape gateway. This operation enables you to select a different type of medium changer after
+     * a tape gateway is activated. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param updateVTLDeviceTypeRequest
      * @return A Java Future containing the result of the UpdateVTLDeviceType operation returned by the service.
      * @sample AWSStorageGatewayAsync.UpdateVTLDeviceType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateVTLDeviceType"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateVTLDeviceTypeResult> updateVTLDeviceTypeAsync(UpdateVTLDeviceTypeRequest updateVTLDeviceTypeRequest);
 
     /**
      * <p>
-     * Updates the type of medium changer in a gateway-VTL. When you activate a gateway-VTL, you select a medium changer
-     * type for the gateway-VTL. This operation enables you to select a different type of medium changer after a
-     * gateway-VTL is activated.
+     * Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium
+     * changer type for the tape gateway. This operation enables you to select a different type of medium changer after
+     * a tape gateway is activated. This operation is only supported in tape gateways.
      * </p>
      * 
      * @param updateVTLDeviceTypeRequest
@@ -2978,6 +3468,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        unsuccessful completion of the operation.
      * @return A Java Future containing the result of the UpdateVTLDeviceType operation returned by the service.
      * @sample AWSStorageGatewayAsyncHandler.UpdateVTLDeviceType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateVTLDeviceType"
+     *      target="_top">AWS API Documentation</a>
      */
     java.util.concurrent.Future<UpdateVTLDeviceTypeResult> updateVTLDeviceTypeAsync(UpdateVTLDeviceTypeRequest updateVTLDeviceTypeRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateVTLDeviceTypeRequest, UpdateVTLDeviceTypeResult> asyncHandler);

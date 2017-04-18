@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -21,8 +24,12 @@ import java.io.Serializable;
  * <p>
  * Used as the response element in the <a>DescribeAssessmentRuns</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AssessmentRun" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AssessmentRun implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssessmentRun implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -867,33 +874,33 @@ public class AssessmentRun implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getAssessmentTemplateArn() != null)
-            sb.append("AssessmentTemplateArn: " + getAssessmentTemplateArn() + ",");
+            sb.append("AssessmentTemplateArn: ").append(getAssessmentTemplateArn()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getDurationInSeconds() != null)
-            sb.append("DurationInSeconds: " + getDurationInSeconds() + ",");
+            sb.append("DurationInSeconds: ").append(getDurationInSeconds()).append(",");
         if (getRulesPackageArns() != null)
-            sb.append("RulesPackageArns: " + getRulesPackageArns() + ",");
+            sb.append("RulesPackageArns: ").append(getRulesPackageArns()).append(",");
         if (getUserAttributesForFindings() != null)
-            sb.append("UserAttributesForFindings: " + getUserAttributesForFindings() + ",");
+            sb.append("UserAttributesForFindings: ").append(getUserAttributesForFindings()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getStartedAt() != null)
-            sb.append("StartedAt: " + getStartedAt() + ",");
+            sb.append("StartedAt: ").append(getStartedAt()).append(",");
         if (getCompletedAt() != null)
-            sb.append("CompletedAt: " + getCompletedAt() + ",");
+            sb.append("CompletedAt: ").append(getCompletedAt()).append(",");
         if (getStateChangedAt() != null)
-            sb.append("StateChangedAt: " + getStateChangedAt() + ",");
+            sb.append("StateChangedAt: ").append(getStateChangedAt()).append(",");
         if (getDataCollected() != null)
-            sb.append("DataCollected: " + getDataCollected() + ",");
+            sb.append("DataCollected: ").append(getDataCollected()).append(",");
         if (getStateChanges() != null)
-            sb.append("StateChanges: " + getStateChanges() + ",");
+            sb.append("StateChanges: ").append(getStateChanges()).append(",");
         if (getNotifications() != null)
-            sb.append("Notifications: " + getNotifications());
+            sb.append("Notifications: ").append(getNotifications());
         sb.append("}");
         return sb.toString();
     }
@@ -996,5 +1003,11 @@ public class AssessmentRun implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.AssessmentRunMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

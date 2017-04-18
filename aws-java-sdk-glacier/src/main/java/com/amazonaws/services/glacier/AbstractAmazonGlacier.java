@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.glacier;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.glacier.model.*;
 import com.amazonaws.*;
 import com.amazonaws.services.glacier.waiters.AmazonGlacierWaiters;
@@ -20,6 +22,7 @@ import com.amazonaws.services.glacier.waiters.AmazonGlacierWaiters;
  * Abstract implementation of {@code AmazonGlacier}. Convenient method forms pass through to the corresponding overload
  * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonGlacier implements AmazonGlacier {
 
     protected AbstractAmazonGlacier() {
@@ -151,12 +154,22 @@ public class AbstractAmazonGlacier implements AmazonGlacier {
     }
 
     @Override
+    public ListProvisionedCapacityResult listProvisionedCapacity(ListProvisionedCapacityRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListTagsForVaultResult listTagsForVault(ListTagsForVaultRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ListVaultsResult listVaults(ListVaultsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PurchaseProvisionedCapacityResult purchaseProvisionedCapacity(PurchaseProvisionedCapacityRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -204,4 +217,5 @@ public class AbstractAmazonGlacier implements AmazonGlacier {
     public AmazonGlacierWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
+
 }

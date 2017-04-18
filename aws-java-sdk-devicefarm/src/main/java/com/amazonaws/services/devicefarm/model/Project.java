@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents an operating-system neutral workspace for running and managing tests.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/Project" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Project implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Project implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -33,6 +40,13 @@ public class Project implements Serializable, Cloneable {
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The default number of minutes (at the project level) a test run will execute before it times out. Default value
+     * is 60 minutes.
+     * </p>
+     */
+    private Integer defaultJobTimeoutMinutes;
     /**
      * <p>
      * When the project was created.
@@ -122,6 +136,52 @@ public class Project implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The default number of minutes (at the project level) a test run will execute before it times out. Default value
+     * is 60 minutes.
+     * </p>
+     * 
+     * @param defaultJobTimeoutMinutes
+     *        The default number of minutes (at the project level) a test run will execute before it times out. Default
+     *        value is 60 minutes.
+     */
+
+    public void setDefaultJobTimeoutMinutes(Integer defaultJobTimeoutMinutes) {
+        this.defaultJobTimeoutMinutes = defaultJobTimeoutMinutes;
+    }
+
+    /**
+     * <p>
+     * The default number of minutes (at the project level) a test run will execute before it times out. Default value
+     * is 60 minutes.
+     * </p>
+     * 
+     * @return The default number of minutes (at the project level) a test run will execute before it times out. Default
+     *         value is 60 minutes.
+     */
+
+    public Integer getDefaultJobTimeoutMinutes() {
+        return this.defaultJobTimeoutMinutes;
+    }
+
+    /**
+     * <p>
+     * The default number of minutes (at the project level) a test run will execute before it times out. Default value
+     * is 60 minutes.
+     * </p>
+     * 
+     * @param defaultJobTimeoutMinutes
+     *        The default number of minutes (at the project level) a test run will execute before it times out. Default
+     *        value is 60 minutes.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Project withDefaultJobTimeoutMinutes(Integer defaultJobTimeoutMinutes) {
+        setDefaultJobTimeoutMinutes(defaultJobTimeoutMinutes);
+        return this;
+    }
+
+    /**
+     * <p>
      * When the project was created.
      * </p>
      * 
@@ -172,11 +232,13 @@ public class Project implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
+        if (getDefaultJobTimeoutMinutes() != null)
+            sb.append("DefaultJobTimeoutMinutes: ").append(getDefaultJobTimeoutMinutes()).append(",");
         if (getCreated() != null)
-            sb.append("Created: " + getCreated());
+            sb.append("Created: ").append(getCreated());
         sb.append("}");
         return sb.toString();
     }
@@ -199,6 +261,10 @@ public class Project implements Serializable, Cloneable {
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getDefaultJobTimeoutMinutes() == null ^ this.getDefaultJobTimeoutMinutes() == null)
+            return false;
+        if (other.getDefaultJobTimeoutMinutes() != null && other.getDefaultJobTimeoutMinutes().equals(this.getDefaultJobTimeoutMinutes()) == false)
+            return false;
         if (other.getCreated() == null ^ this.getCreated() == null)
             return false;
         if (other.getCreated() != null && other.getCreated().equals(this.getCreated()) == false)
@@ -213,6 +279,7 @@ public class Project implements Serializable, Cloneable {
 
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDefaultJobTimeoutMinutes() == null) ? 0 : getDefaultJobTimeoutMinutes().hashCode());
         hashCode = prime * hashCode + ((getCreated() == null) ? 0 : getCreated().hashCode());
         return hashCode;
     }
@@ -224,5 +291,11 @@ public class Project implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.ProjectMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

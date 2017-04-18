@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A Docker container that is part of a task.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Container" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Container implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Container implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -53,7 +60,7 @@ public class Container implements Serializable, Cloneable {
     private Integer exitCode;
     /**
      * <p>
-     * A short (255 max characters) human-readable string to provide additional detail about a running or stopped
+     * A short (255 max characters) human-readable string to provide additional details about a running or stopped
      * container.
      * </p>
      */
@@ -267,13 +274,13 @@ public class Container implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A short (255 max characters) human-readable string to provide additional detail about a running or stopped
+     * A short (255 max characters) human-readable string to provide additional details about a running or stopped
      * container.
      * </p>
      * 
      * @param reason
-     *        A short (255 max characters) human-readable string to provide additional detail about a running or stopped
-     *        container.
+     *        A short (255 max characters) human-readable string to provide additional details about a running or
+     *        stopped container.
      */
 
     public void setReason(String reason) {
@@ -282,11 +289,11 @@ public class Container implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A short (255 max characters) human-readable string to provide additional detail about a running or stopped
+     * A short (255 max characters) human-readable string to provide additional details about a running or stopped
      * container.
      * </p>
      * 
-     * @return A short (255 max characters) human-readable string to provide additional detail about a running or
+     * @return A short (255 max characters) human-readable string to provide additional details about a running or
      *         stopped container.
      */
 
@@ -296,13 +303,13 @@ public class Container implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A short (255 max characters) human-readable string to provide additional detail about a running or stopped
+     * A short (255 max characters) human-readable string to provide additional details about a running or stopped
      * container.
      * </p>
      * 
      * @param reason
-     *        A short (255 max characters) human-readable string to provide additional detail about a running or stopped
-     *        container.
+     *        A short (255 max characters) human-readable string to provide additional details about a running or
+     *        stopped container.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -396,19 +403,19 @@ public class Container implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getContainerArn() != null)
-            sb.append("ContainerArn: " + getContainerArn() + ",");
+            sb.append("ContainerArn: ").append(getContainerArn()).append(",");
         if (getTaskArn() != null)
-            sb.append("TaskArn: " + getTaskArn() + ",");
+            sb.append("TaskArn: ").append(getTaskArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getLastStatus() != null)
-            sb.append("LastStatus: " + getLastStatus() + ",");
+            sb.append("LastStatus: ").append(getLastStatus()).append(",");
         if (getExitCode() != null)
-            sb.append("ExitCode: " + getExitCode() + ",");
+            sb.append("ExitCode: ").append(getExitCode()).append(",");
         if (getReason() != null)
-            sb.append("Reason: " + getReason() + ",");
+            sb.append("Reason: ").append(getReason()).append(",");
         if (getNetworkBindings() != null)
-            sb.append("NetworkBindings: " + getNetworkBindings());
+            sb.append("NetworkBindings: ").append(getNetworkBindings());
         sb.append("}");
         return sb.toString();
     }
@@ -476,5 +483,11 @@ public class Container implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ContainerMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

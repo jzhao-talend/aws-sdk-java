@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a filter for a specific list of instances.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/InstanceInformation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InstanceInformation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceInformation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -29,25 +36,25 @@ public class InstanceInformation implements Serializable, Cloneable {
     private String instanceId;
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      */
     private String pingStatus;
     /**
      * <p>
-     * The date and time when agent last pinged SSM service.
+     * The date and time when agent last pinged Systems Manager service.
      * </p>
      */
     private java.util.Date lastPingDateTime;
     /**
      * <p>
-     * The version of the SSM agent running on your Linux instance.
+     * The version of the SSM Agent running on your Linux instance.
      * </p>
      */
     private String agentVersion;
     /**
      * <p>
-     * Indicates whether latest version of the SSM agent is running on your instance.
+     * Indicates whether latest version of the SSM Agent is running on your instance.
      * </p>
      */
     private Boolean isLatestVersion;
@@ -71,7 +78,7 @@ public class InstanceInformation implements Serializable, Cloneable {
     private String platformVersion;
     /**
      * <p>
-     * The activation ID created by SSM when the server or VM was registered.
+     * The activation ID created by Systems Manager when the server or VM was registered.
      * </p>
      */
     private String activationId;
@@ -111,6 +118,30 @@ public class InstanceInformation implements Serializable, Cloneable {
      * </p>
      */
     private String computerName;
+    /**
+     * <p>
+     * The status of the association.
+     * </p>
+     */
+    private String associationStatus;
+    /**
+     * <p>
+     * The date the association was last executed.
+     * </p>
+     */
+    private java.util.Date lastAssociationExecutionDate;
+    /**
+     * <p>
+     * The last date the association was successfully run.
+     * </p>
+     */
+    private java.util.Date lastSuccessfulAssociationExecutionDate;
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     */
+    private InstanceAggregatedAssociationOverview associationOverview;
 
     /**
      * <p>
@@ -154,11 +185,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      * 
      * @param pingStatus
-     *        Connection status of the SSM agent.
+     *        Connection status of the SSM Agent.
      * @see PingStatus
      */
 
@@ -168,10 +199,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      * 
-     * @return Connection status of the SSM agent.
+     * @return Connection status of the SSM Agent.
      * @see PingStatus
      */
 
@@ -181,11 +212,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      * 
      * @param pingStatus
-     *        Connection status of the SSM agent.
+     *        Connection status of the SSM Agent.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PingStatus
      */
@@ -197,11 +228,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      * 
      * @param pingStatus
-     *        Connection status of the SSM agent.
+     *        Connection status of the SSM Agent.
      * @see PingStatus
      */
 
@@ -211,11 +242,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Connection status of the SSM agent.
+     * Connection status of the SSM Agent.
      * </p>
      * 
      * @param pingStatus
-     *        Connection status of the SSM agent.
+     *        Connection status of the SSM Agent.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PingStatus
      */
@@ -227,11 +258,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time when agent last pinged SSM service.
+     * The date and time when agent last pinged Systems Manager service.
      * </p>
      * 
      * @param lastPingDateTime
-     *        The date and time when agent last pinged SSM service.
+     *        The date and time when agent last pinged Systems Manager service.
      */
 
     public void setLastPingDateTime(java.util.Date lastPingDateTime) {
@@ -240,10 +271,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time when agent last pinged SSM service.
+     * The date and time when agent last pinged Systems Manager service.
      * </p>
      * 
-     * @return The date and time when agent last pinged SSM service.
+     * @return The date and time when agent last pinged Systems Manager service.
      */
 
     public java.util.Date getLastPingDateTime() {
@@ -252,11 +283,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time when agent last pinged SSM service.
+     * The date and time when agent last pinged Systems Manager service.
      * </p>
      * 
      * @param lastPingDateTime
-     *        The date and time when agent last pinged SSM service.
+     *        The date and time when agent last pinged Systems Manager service.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -267,11 +298,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the SSM agent running on your Linux instance.
+     * The version of the SSM Agent running on your Linux instance.
      * </p>
      * 
      * @param agentVersion
-     *        The version of the SSM agent running on your Linux instance.
+     *        The version of the SSM Agent running on your Linux instance.
      */
 
     public void setAgentVersion(String agentVersion) {
@@ -280,10 +311,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the SSM agent running on your Linux instance.
+     * The version of the SSM Agent running on your Linux instance.
      * </p>
      * 
-     * @return The version of the SSM agent running on your Linux instance.
+     * @return The version of the SSM Agent running on your Linux instance.
      */
 
     public String getAgentVersion() {
@@ -292,11 +323,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the SSM agent running on your Linux instance.
+     * The version of the SSM Agent running on your Linux instance.
      * </p>
      * 
      * @param agentVersion
-     *        The version of the SSM agent running on your Linux instance.
+     *        The version of the SSM Agent running on your Linux instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -307,11 +338,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether latest version of the SSM agent is running on your instance.
+     * Indicates whether latest version of the SSM Agent is running on your instance.
      * </p>
      * 
      * @param isLatestVersion
-     *        Indicates whether latest version of the SSM agent is running on your instance.
+     *        Indicates whether latest version of the SSM Agent is running on your instance.
      */
 
     public void setIsLatestVersion(Boolean isLatestVersion) {
@@ -320,10 +351,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether latest version of the SSM agent is running on your instance.
+     * Indicates whether latest version of the SSM Agent is running on your instance.
      * </p>
      * 
-     * @return Indicates whether latest version of the SSM agent is running on your instance.
+     * @return Indicates whether latest version of the SSM Agent is running on your instance.
      */
 
     public Boolean getIsLatestVersion() {
@@ -332,11 +363,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether latest version of the SSM agent is running on your instance.
+     * Indicates whether latest version of the SSM Agent is running on your instance.
      * </p>
      * 
      * @param isLatestVersion
-     *        Indicates whether latest version of the SSM agent is running on your instance.
+     *        Indicates whether latest version of the SSM Agent is running on your instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -347,10 +378,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether latest version of the SSM agent is running on your instance.
+     * Indicates whether latest version of the SSM Agent is running on your instance.
      * </p>
      * 
-     * @return Indicates whether latest version of the SSM agent is running on your instance.
+     * @return Indicates whether latest version of the SSM Agent is running on your instance.
      */
 
     public Boolean isLatestVersion() {
@@ -512,11 +543,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The activation ID created by SSM when the server or VM was registered.
+     * The activation ID created by Systems Manager when the server or VM was registered.
      * </p>
      * 
      * @param activationId
-     *        The activation ID created by SSM when the server or VM was registered.
+     *        The activation ID created by Systems Manager when the server or VM was registered.
      */
 
     public void setActivationId(String activationId) {
@@ -525,10 +556,10 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The activation ID created by SSM when the server or VM was registered.
+     * The activation ID created by Systems Manager when the server or VM was registered.
      * </p>
      * 
-     * @return The activation ID created by SSM when the server or VM was registered.
+     * @return The activation ID created by Systems Manager when the server or VM was registered.
      */
 
     public String getActivationId() {
@@ -537,11 +568,11 @@ public class InstanceInformation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The activation ID created by SSM when the server or VM was registered.
+     * The activation ID created by Systems Manager when the server or VM was registered.
      * </p>
      * 
      * @param activationId
-     *        The activation ID created by SSM when the server or VM was registered.
+     *        The activation ID created by Systems Manager when the server or VM was registered.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -824,6 +855,166 @@ public class InstanceInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The status of the association.
+     * </p>
+     * 
+     * @param associationStatus
+     *        The status of the association.
+     */
+
+    public void setAssociationStatus(String associationStatus) {
+        this.associationStatus = associationStatus;
+    }
+
+    /**
+     * <p>
+     * The status of the association.
+     * </p>
+     * 
+     * @return The status of the association.
+     */
+
+    public String getAssociationStatus() {
+        return this.associationStatus;
+    }
+
+    /**
+     * <p>
+     * The status of the association.
+     * </p>
+     * 
+     * @param associationStatus
+     *        The status of the association.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceInformation withAssociationStatus(String associationStatus) {
+        setAssociationStatus(associationStatus);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date the association was last executed.
+     * </p>
+     * 
+     * @param lastAssociationExecutionDate
+     *        The date the association was last executed.
+     */
+
+    public void setLastAssociationExecutionDate(java.util.Date lastAssociationExecutionDate) {
+        this.lastAssociationExecutionDate = lastAssociationExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The date the association was last executed.
+     * </p>
+     * 
+     * @return The date the association was last executed.
+     */
+
+    public java.util.Date getLastAssociationExecutionDate() {
+        return this.lastAssociationExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The date the association was last executed.
+     * </p>
+     * 
+     * @param lastAssociationExecutionDate
+     *        The date the association was last executed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceInformation withLastAssociationExecutionDate(java.util.Date lastAssociationExecutionDate) {
+        setLastAssociationExecutionDate(lastAssociationExecutionDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The last date the association was successfully run.
+     * </p>
+     * 
+     * @param lastSuccessfulAssociationExecutionDate
+     *        The last date the association was successfully run.
+     */
+
+    public void setLastSuccessfulAssociationExecutionDate(java.util.Date lastSuccessfulAssociationExecutionDate) {
+        this.lastSuccessfulAssociationExecutionDate = lastSuccessfulAssociationExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The last date the association was successfully run.
+     * </p>
+     * 
+     * @return The last date the association was successfully run.
+     */
+
+    public java.util.Date getLastSuccessfulAssociationExecutionDate() {
+        return this.lastSuccessfulAssociationExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The last date the association was successfully run.
+     * </p>
+     * 
+     * @param lastSuccessfulAssociationExecutionDate
+     *        The last date the association was successfully run.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceInformation withLastSuccessfulAssociationExecutionDate(java.util.Date lastSuccessfulAssociationExecutionDate) {
+        setLastSuccessfulAssociationExecutionDate(lastSuccessfulAssociationExecutionDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @param associationOverview
+     *        Information about the association.
+     */
+
+    public void setAssociationOverview(InstanceAggregatedAssociationOverview associationOverview) {
+        this.associationOverview = associationOverview;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @return Information about the association.
+     */
+
+    public InstanceAggregatedAssociationOverview getAssociationOverview() {
+        return this.associationOverview;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @param associationOverview
+     *        Information about the association.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceInformation withAssociationOverview(InstanceAggregatedAssociationOverview associationOverview) {
+        setAssociationOverview(associationOverview);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -835,35 +1026,43 @@ public class InstanceInformation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getPingStatus() != null)
-            sb.append("PingStatus: " + getPingStatus() + ",");
+            sb.append("PingStatus: ").append(getPingStatus()).append(",");
         if (getLastPingDateTime() != null)
-            sb.append("LastPingDateTime: " + getLastPingDateTime() + ",");
+            sb.append("LastPingDateTime: ").append(getLastPingDateTime()).append(",");
         if (getAgentVersion() != null)
-            sb.append("AgentVersion: " + getAgentVersion() + ",");
+            sb.append("AgentVersion: ").append(getAgentVersion()).append(",");
         if (getIsLatestVersion() != null)
-            sb.append("IsLatestVersion: " + getIsLatestVersion() + ",");
+            sb.append("IsLatestVersion: ").append(getIsLatestVersion()).append(",");
         if (getPlatformType() != null)
-            sb.append("PlatformType: " + getPlatformType() + ",");
+            sb.append("PlatformType: ").append(getPlatformType()).append(",");
         if (getPlatformName() != null)
-            sb.append("PlatformName: " + getPlatformName() + ",");
+            sb.append("PlatformName: ").append(getPlatformName()).append(",");
         if (getPlatformVersion() != null)
-            sb.append("PlatformVersion: " + getPlatformVersion() + ",");
+            sb.append("PlatformVersion: ").append(getPlatformVersion()).append(",");
         if (getActivationId() != null)
-            sb.append("ActivationId: " + getActivationId() + ",");
+            sb.append("ActivationId: ").append(getActivationId()).append(",");
         if (getIamRole() != null)
-            sb.append("IamRole: " + getIamRole() + ",");
+            sb.append("IamRole: ").append(getIamRole()).append(",");
         if (getRegistrationDate() != null)
-            sb.append("RegistrationDate: " + getRegistrationDate() + ",");
+            sb.append("RegistrationDate: ").append(getRegistrationDate()).append(",");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getIPAddress() != null)
-            sb.append("IPAddress: " + getIPAddress() + ",");
+            sb.append("IPAddress: ").append(getIPAddress()).append(",");
         if (getComputerName() != null)
-            sb.append("ComputerName: " + getComputerName());
+            sb.append("ComputerName: ").append(getComputerName()).append(",");
+        if (getAssociationStatus() != null)
+            sb.append("AssociationStatus: ").append(getAssociationStatus()).append(",");
+        if (getLastAssociationExecutionDate() != null)
+            sb.append("LastAssociationExecutionDate: ").append(getLastAssociationExecutionDate()).append(",");
+        if (getLastSuccessfulAssociationExecutionDate() != null)
+            sb.append("LastSuccessfulAssociationExecutionDate: ").append(getLastSuccessfulAssociationExecutionDate()).append(",");
+        if (getAssociationOverview() != null)
+            sb.append("AssociationOverview: ").append(getAssociationOverview());
         sb.append("}");
         return sb.toString();
     }
@@ -938,6 +1137,23 @@ public class InstanceInformation implements Serializable, Cloneable {
             return false;
         if (other.getComputerName() != null && other.getComputerName().equals(this.getComputerName()) == false)
             return false;
+        if (other.getAssociationStatus() == null ^ this.getAssociationStatus() == null)
+            return false;
+        if (other.getAssociationStatus() != null && other.getAssociationStatus().equals(this.getAssociationStatus()) == false)
+            return false;
+        if (other.getLastAssociationExecutionDate() == null ^ this.getLastAssociationExecutionDate() == null)
+            return false;
+        if (other.getLastAssociationExecutionDate() != null && other.getLastAssociationExecutionDate().equals(this.getLastAssociationExecutionDate()) == false)
+            return false;
+        if (other.getLastSuccessfulAssociationExecutionDate() == null ^ this.getLastSuccessfulAssociationExecutionDate() == null)
+            return false;
+        if (other.getLastSuccessfulAssociationExecutionDate() != null
+                && other.getLastSuccessfulAssociationExecutionDate().equals(this.getLastSuccessfulAssociationExecutionDate()) == false)
+            return false;
+        if (other.getAssociationOverview() == null ^ this.getAssociationOverview() == null)
+            return false;
+        if (other.getAssociationOverview() != null && other.getAssociationOverview().equals(this.getAssociationOverview()) == false)
+            return false;
         return true;
     }
 
@@ -961,6 +1177,10 @@ public class InstanceInformation implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getIPAddress() == null) ? 0 : getIPAddress().hashCode());
         hashCode = prime * hashCode + ((getComputerName() == null) ? 0 : getComputerName().hashCode());
+        hashCode = prime * hashCode + ((getAssociationStatus() == null) ? 0 : getAssociationStatus().hashCode());
+        hashCode = prime * hashCode + ((getLastAssociationExecutionDate() == null) ? 0 : getLastAssociationExecutionDate().hashCode());
+        hashCode = prime * hashCode + ((getLastSuccessfulAssociationExecutionDate() == null) ? 0 : getLastSuccessfulAssociationExecutionDate().hashCode());
+        hashCode = prime * hashCode + ((getAssociationOverview() == null) ? 0 : getAssociationOverview().hashCode());
         return hashCode;
     }
 
@@ -971,5 +1191,11 @@ public class InstanceInformation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.InstanceInformationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

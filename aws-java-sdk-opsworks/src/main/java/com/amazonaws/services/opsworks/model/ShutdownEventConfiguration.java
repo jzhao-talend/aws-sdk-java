@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,25 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The Shutdown event configuration.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/ShutdownEventConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ShutdownEventConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ShutdownEventConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down an
-     * instance.
+     * The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down
+     * an instance.
      * </p>
      */
     private Integer executionTimeout;
@@ -39,13 +46,13 @@ public class ShutdownEventConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down an
-     * instance.
+     * The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down
+     * an instance.
      * </p>
      * 
      * @param executionTimeout
-     *        The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down
-     *        an instance.
+     *        The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting
+     *        down an instance.
      */
 
     public void setExecutionTimeout(Integer executionTimeout) {
@@ -54,12 +61,12 @@ public class ShutdownEventConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down an
-     * instance.
+     * The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down
+     * an instance.
      * </p>
      * 
-     * @return The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down
-     *         an instance.
+     * @return The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before
+     *         shutting down an instance.
      */
 
     public Integer getExecutionTimeout() {
@@ -68,13 +75,13 @@ public class ShutdownEventConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down an
-     * instance.
+     * The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down
+     * an instance.
      * </p>
      * 
      * @param executionTimeout
-     *        The time, in seconds, that AWS OpsWorks will wait after triggering a Shutdown event before shutting down
-     *        an instance.
+     *        The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting
+     *        down an instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -163,9 +170,9 @@ public class ShutdownEventConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExecutionTimeout() != null)
-            sb.append("ExecutionTimeout: " + getExecutionTimeout() + ",");
+            sb.append("ExecutionTimeout: ").append(getExecutionTimeout()).append(",");
         if (getDelayUntilElbConnectionsDrained() != null)
-            sb.append("DelayUntilElbConnectionsDrained: " + getDelayUntilElbConnectionsDrained());
+            sb.append("DelayUntilElbConnectionsDrained: ").append(getDelayUntilElbConnectionsDrained());
         sb.append("}");
         return sb.toString();
     }
@@ -209,5 +216,11 @@ public class ShutdownEventConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.ShutdownEventConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

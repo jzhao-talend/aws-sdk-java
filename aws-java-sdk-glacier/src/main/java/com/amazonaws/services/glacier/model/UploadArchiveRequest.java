@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Provides options to add an archive to a vault.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -31,9 +34,9 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify
-     * an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the
-     * AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include
-     * any hyphens (apos-apos) in the ID.
+     * an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS
+     * account ID associated with the credentials used to sign the request. If you use an account ID, do not include any
+     * hyphens ('-') in the ID.
      * </p>
      */
     private String accountId;
@@ -93,9 +96,9 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        The name of the vault.
      * @param accountId
      *        The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either
-     *        specify an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon
-     *        Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an
-     *        account ID, do not include any hyphens (apos-apos) in the ID.
+     *        specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier
+     *        uses the AWS account ID associated with the credentials used to sign the request. If you use an account
+     *        ID, do not include any hyphens ('-') in the ID.
      * @param archiveDescription
      *        The optional description of the archive you are uploading.
      * @param checksum
@@ -154,16 +157,16 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify
-     * an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the
-     * AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include
-     * any hyphens (apos-apos) in the ID.
+     * an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS
+     * account ID associated with the credentials used to sign the request. If you use an account ID, do not include any
+     * hyphens ('-') in the ID.
      * </p>
      * 
      * @param accountId
      *        The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either
-     *        specify an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon
-     *        Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an
-     *        account ID, do not include any hyphens (apos-apos) in the ID.
+     *        specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier
+     *        uses the AWS account ID associated with the credentials used to sign the request. If you use an account
+     *        ID, do not include any hyphens ('-') in the ID.
      */
 
     public void setAccountId(String accountId) {
@@ -173,15 +176,15 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify
-     * an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the
-     * AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include
-     * any hyphens (apos-apos) in the ID.
+     * an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS
+     * account ID associated with the credentials used to sign the request. If you use an account ID, do not include any
+     * hyphens ('-') in the ID.
      * </p>
      * 
      * @return The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either
-     *         specify an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon
-     *         Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an
-     *         account ID, do not include any hyphens (apos-apos) in the ID.
+     *         specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier
+     *         uses the AWS account ID associated with the credentials used to sign the request. If you use an account
+     *         ID, do not include any hyphens ('-') in the ID.
      */
 
     public String getAccountId() {
@@ -191,16 +194,16 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify
-     * an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the
-     * AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include
-     * any hyphens (apos-apos) in the ID.
+     * an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS
+     * account ID associated with the credentials used to sign the request. If you use an account ID, do not include any
+     * hyphens ('-') in the ID.
      * </p>
      * 
      * @param accountId
      *        The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either
-     *        specify an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon
-     *        Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an
-     *        account ID, do not include any hyphens (apos-apos) in the ID.
+     *        specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier
+     *        uses the AWS account ID associated with the credentials used to sign the request. If you use an account
+     *        ID, do not include any hyphens ('-') in the ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -375,17 +378,17 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVaultName() != null)
-            sb.append("VaultName: " + getVaultName() + ",");
+            sb.append("VaultName: ").append(getVaultName()).append(",");
         if (getAccountId() != null)
-            sb.append("AccountId: " + getAccountId() + ",");
+            sb.append("AccountId: ").append(getAccountId()).append(",");
         if (getArchiveDescription() != null)
-            sb.append("ArchiveDescription: " + getArchiveDescription() + ",");
+            sb.append("ArchiveDescription: ").append(getArchiveDescription()).append(",");
         if (getChecksum() != null)
-            sb.append("Checksum: " + getChecksum() + ",");
+            sb.append("Checksum: ").append(getChecksum()).append(",");
         if (getBody() != null)
-            sb.append("Body: " + getBody() + ",");
+            sb.append("Body: ").append(getBody()).append(",");
         if (getContentLength() != null)
-            sb.append("ContentLength: " + getContentLength());
+            sb.append("ContentLength: ").append(getContentLength());
         sb.append("}");
         return sb.toString();
     }
@@ -445,4 +448,5 @@ public class UploadArchiveRequest extends com.amazonaws.AmazonWebServiceRequest 
     public UploadArchiveRequest clone() {
         return (UploadArchiveRequest) super.clone();
     }
+
 }

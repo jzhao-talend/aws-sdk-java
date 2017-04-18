@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents a collection of cache nodes in a replication group. One node in the node group is the read/write Primary
+ * Represents a collection of cache nodes in a replication group. One node in the node group is the read/write primary
  * node. All the other nodes are read-only Replica nodes.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/NodeGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NodeGroup implements Serializable, Cloneable {
 
     /**
@@ -312,15 +317,15 @@ public class NodeGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNodeGroupId() != null)
-            sb.append("NodeGroupId: " + getNodeGroupId() + ",");
+            sb.append("NodeGroupId: ").append(getNodeGroupId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getPrimaryEndpoint() != null)
-            sb.append("PrimaryEndpoint: " + getPrimaryEndpoint() + ",");
+            sb.append("PrimaryEndpoint: ").append(getPrimaryEndpoint()).append(",");
         if (getSlots() != null)
-            sb.append("Slots: " + getSlots() + ",");
+            sb.append("Slots: ").append(getSlots()).append(",");
         if (getNodeGroupMembers() != null)
-            sb.append("NodeGroupMembers: " + getNodeGroupMembers());
+            sb.append("NodeGroupMembers: ").append(getNodeGroupMembers());
         sb.append("}");
         return sb.toString();
     }
@@ -379,4 +384,5 @@ public class NodeGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

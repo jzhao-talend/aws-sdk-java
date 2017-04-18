@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -23,8 +26,12 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2
  * CreateVpnGateway action</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/VirtualGateway" target="_top">AWS API
+ *      Documentation</a>
  */
-public class VirtualGateway implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class VirtualGateway implements Serializable, Cloneable, StructuredPojo {
 
     private String virtualGatewayId;
 
@@ -94,9 +101,9 @@ public class VirtualGateway implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVirtualGatewayId() != null)
-            sb.append("VirtualGatewayId: " + getVirtualGatewayId() + ",");
+            sb.append("VirtualGatewayId: ").append(getVirtualGatewayId()).append(",");
         if (getVirtualGatewayState() != null)
-            sb.append("VirtualGatewayState: " + getVirtualGatewayState());
+            sb.append("VirtualGatewayState: ").append(getVirtualGatewayState());
         sb.append("}");
         return sb.toString();
     }
@@ -139,5 +146,11 @@ public class VirtualGateway implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directconnect.model.transform.VirtualGatewayMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

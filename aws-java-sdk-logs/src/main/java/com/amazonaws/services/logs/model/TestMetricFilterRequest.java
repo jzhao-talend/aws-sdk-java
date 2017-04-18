@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,22 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TestMetricFilter" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String filterPattern;
     /**
      * <p>
-     * A list of log event messages to test.
+     * The log event messages to test.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> logEventMessages;
@@ -56,10 +61,10 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A list of log event messages to test.
+     * The log event messages to test.
      * </p>
      * 
-     * @return A list of log event messages to test.
+     * @return The log event messages to test.
      */
 
     public java.util.List<String> getLogEventMessages() {
@@ -71,11 +76,11 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A list of log event messages to test.
+     * The log event messages to test.
      * </p>
      * 
      * @param logEventMessages
-     *        A list of log event messages to test.
+     *        The log event messages to test.
      */
 
     public void setLogEventMessages(java.util.Collection<String> logEventMessages) {
@@ -89,7 +94,7 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A list of log event messages to test.
+     * The log event messages to test.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -98,7 +103,7 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param logEventMessages
-     *        A list of log event messages to test.
+     *        The log event messages to test.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,11 +119,11 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A list of log event messages to test.
+     * The log event messages to test.
      * </p>
      * 
      * @param logEventMessages
-     *        A list of log event messages to test.
+     *        The log event messages to test.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -139,9 +144,9 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFilterPattern() != null)
-            sb.append("FilterPattern: " + getFilterPattern() + ",");
+            sb.append("FilterPattern: ").append(getFilterPattern()).append(",");
         if (getLogEventMessages() != null)
-            sb.append("LogEventMessages: " + getLogEventMessages());
+            sb.append("LogEventMessages: ").append(getLogEventMessages());
         sb.append("}");
         return sb.toString();
     }
@@ -181,4 +186,5 @@ public class TestMetricFilterRequest extends com.amazonaws.AmazonWebServiceReque
     public TestMetricFilterRequest clone() {
         return (TestMetricFilterRequest) super.clone();
     }
+
 }

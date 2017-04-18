@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,27 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Describes the inputs for DescribeAlarms.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarms" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of alarm names to retrieve information for.
+     * The names of the alarms.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> alarmNames;
     /**
      * <p>
-     * The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     * The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      * </p>
      */
     private String alarmNamePrefix;
@@ -61,10 +64,10 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of alarm names to retrieve information for.
+     * The names of the alarms.
      * </p>
      * 
-     * @return A list of alarm names to retrieve information for.
+     * @return The names of the alarms.
      */
 
     public java.util.List<String> getAlarmNames() {
@@ -76,11 +79,11 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of alarm names to retrieve information for.
+     * The names of the alarms.
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarm names to retrieve information for.
+     *        The names of the alarms.
      */
 
     public void setAlarmNames(java.util.Collection<String> alarmNames) {
@@ -94,7 +97,7 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of alarm names to retrieve information for.
+     * The names of the alarms.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -103,7 +106,7 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarm names to retrieve information for.
+     *        The names of the alarms.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -119,11 +122,11 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of alarm names to retrieve information for.
+     * The names of the alarms.
      * </p>
      * 
      * @param alarmNames
-     *        A list of alarm names to retrieve information for.
+     *        The names of the alarms.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -134,11 +137,11 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     * The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      * </p>
      * 
      * @param alarmNamePrefix
-     *        The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     *        The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      */
 
     public void setAlarmNamePrefix(String alarmNamePrefix) {
@@ -147,10 +150,10 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     * The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      * </p>
      * 
-     * @return The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     * @return The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      */
 
     public String getAlarmNamePrefix() {
@@ -159,11 +162,11 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     * The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      * </p>
      * 
      * @param alarmNamePrefix
-     *        The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.
+     *        The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -377,17 +380,17 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlarmNames() != null)
-            sb.append("AlarmNames: " + getAlarmNames() + ",");
+            sb.append("AlarmNames: ").append(getAlarmNames()).append(",");
         if (getAlarmNamePrefix() != null)
-            sb.append("AlarmNamePrefix: " + getAlarmNamePrefix() + ",");
+            sb.append("AlarmNamePrefix: ").append(getAlarmNamePrefix()).append(",");
         if (getStateValue() != null)
-            sb.append("StateValue: " + getStateValue() + ",");
+            sb.append("StateValue: ").append(getStateValue()).append(",");
         if (getActionPrefix() != null)
-            sb.append("ActionPrefix: " + getActionPrefix() + ",");
+            sb.append("ActionPrefix: ").append(getActionPrefix()).append(",");
         if (getMaxRecords() != null)
-            sb.append("MaxRecords: " + getMaxRecords() + ",");
+            sb.append("MaxRecords: ").append(getMaxRecords()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -447,4 +450,5 @@ public class DescribeAlarmsRequest extends com.amazonaws.AmazonWebServiceRequest
     public DescribeAlarmsRequest clone() {
         return (DescribeAlarmsRequest) super.clone();
     }
+
 }

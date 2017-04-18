@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,14 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceResult;
 
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PurchaseHostReservationResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -354,15 +357,15 @@ public class PurchaseHostReservationResult extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPurchase() != null)
-            sb.append("Purchase: " + getPurchase() + ",");
+            sb.append("Purchase: ").append(getPurchase()).append(",");
         if (getTotalUpfrontPrice() != null)
-            sb.append("TotalUpfrontPrice: " + getTotalUpfrontPrice() + ",");
+            sb.append("TotalUpfrontPrice: ").append(getTotalUpfrontPrice()).append(",");
         if (getTotalHourlyPrice() != null)
-            sb.append("TotalHourlyPrice: " + getTotalHourlyPrice() + ",");
+            sb.append("TotalHourlyPrice: ").append(getTotalHourlyPrice()).append(",");
         if (getCurrencyCode() != null)
-            sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+            sb.append("CurrencyCode: ").append(getCurrencyCode()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken());
+            sb.append("ClientToken: ").append(getClientToken());
         sb.append("}");
         return sb.toString();
     }

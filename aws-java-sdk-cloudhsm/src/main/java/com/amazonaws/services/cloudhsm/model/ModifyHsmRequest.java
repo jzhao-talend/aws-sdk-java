@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cloudhsm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the inputs for the <a>ModifyHsm</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ModifyHsm" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyHsmRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -350,17 +356,17 @@ public class ModifyHsmRequest extends com.amazonaws.AmazonWebServiceRequest impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHsmArn() != null)
-            sb.append("HsmArn: " + getHsmArn() + ",");
+            sb.append("HsmArn: ").append(getHsmArn()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getEniIp() != null)
-            sb.append("EniIp: " + getEniIp() + ",");
+            sb.append("EniIp: ").append(getEniIp()).append(",");
         if (getIamRoleArn() != null)
-            sb.append("IamRoleArn: " + getIamRoleArn() + ",");
+            sb.append("IamRoleArn: ").append(getIamRoleArn()).append(",");
         if (getExternalId() != null)
-            sb.append("ExternalId: " + getExternalId() + ",");
+            sb.append("ExternalId: ").append(getExternalId()).append(",");
         if (getSyslogIp() != null)
-            sb.append("SyslogIp: " + getSyslogIp());
+            sb.append("SyslogIp: ").append(getSyslogIp());
         sb.append("}");
         return sb.toString();
     }
@@ -420,4 +426,5 @@ public class ModifyHsmRequest extends com.amazonaws.AmazonWebServiceRequest impl
     public ModifyHsmRequest clone() {
         return (ModifyHsmRequest) super.clone();
     }
+
 }

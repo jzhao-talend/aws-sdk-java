@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -67,7 +69,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * </p>
  * </dd>
  * </dl>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TestDNSAnswer" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestDNSAnswerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -437,17 +443,17 @@ public class TestDNSAnswerRequest extends com.amazonaws.AmazonWebServiceRequest 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostedZoneId() != null)
-            sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+            sb.append("HostedZoneId: ").append(getHostedZoneId()).append(",");
         if (getRecordName() != null)
-            sb.append("RecordName: " + getRecordName() + ",");
+            sb.append("RecordName: ").append(getRecordName()).append(",");
         if (getRecordType() != null)
-            sb.append("RecordType: " + getRecordType() + ",");
+            sb.append("RecordType: ").append(getRecordType()).append(",");
         if (getResolverIP() != null)
-            sb.append("ResolverIP: " + getResolverIP() + ",");
+            sb.append("ResolverIP: ").append(getResolverIP()).append(",");
         if (getEDNS0ClientSubnetIP() != null)
-            sb.append("EDNS0ClientSubnetIP: " + getEDNS0ClientSubnetIP() + ",");
+            sb.append("EDNS0ClientSubnetIP: ").append(getEDNS0ClientSubnetIP()).append(",");
         if (getEDNS0ClientSubnetMask() != null)
-            sb.append("EDNS0ClientSubnetMask: " + getEDNS0ClientSubnetMask());
+            sb.append("EDNS0ClientSubnetMask: ").append(getEDNS0ClientSubnetMask());
         sb.append("}");
         return sb.toString();
     }
@@ -507,4 +513,5 @@ public class TestDNSAnswerRequest extends com.amazonaws.AmazonWebServiceRequest 
     public TestDNSAnswerRequest clone() {
         return (TestDNSAnswerRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * number of desired instances. Pending and terminating counts are non-zero only if fleet capacity is adjusting to an
  * <a>UpdateFleetCapacity</a> request, or if access to resources is temporarily affected.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/EC2InstanceCounts" target="_top">AWS API
+ *      Documentation</a>
  */
-public class EC2InstanceCounts implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -358,19 +365,19 @@ public class EC2InstanceCounts implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDESIRED() != null)
-            sb.append("DESIRED: " + getDESIRED() + ",");
+            sb.append("DESIRED: ").append(getDESIRED()).append(",");
         if (getMINIMUM() != null)
-            sb.append("MINIMUM: " + getMINIMUM() + ",");
+            sb.append("MINIMUM: ").append(getMINIMUM()).append(",");
         if (getMAXIMUM() != null)
-            sb.append("MAXIMUM: " + getMAXIMUM() + ",");
+            sb.append("MAXIMUM: ").append(getMAXIMUM()).append(",");
         if (getPENDING() != null)
-            sb.append("PENDING: " + getPENDING() + ",");
+            sb.append("PENDING: ").append(getPENDING()).append(",");
         if (getACTIVE() != null)
-            sb.append("ACTIVE: " + getACTIVE() + ",");
+            sb.append("ACTIVE: ").append(getACTIVE()).append(",");
         if (getIDLE() != null)
-            sb.append("IDLE: " + getIDLE() + ",");
+            sb.append("IDLE: ").append(getIDLE()).append(",");
         if (getTERMINATING() != null)
-            sb.append("TERMINATING: " + getTERMINATING());
+            sb.append("TERMINATING: ").append(getTERMINATING());
         sb.append("}");
         return sb.toString();
     }
@@ -438,5 +445,11 @@ public class EC2InstanceCounts implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.EC2InstanceCountsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

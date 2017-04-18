@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The configuration settings of a workflow type.
  * </p>
  */
-public class WorkflowTypeConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WorkflowTypeConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -646,17 +650,17 @@ public class WorkflowTypeConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDefaultTaskStartToCloseTimeout() != null)
-            sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+            sb.append("DefaultTaskStartToCloseTimeout: ").append(getDefaultTaskStartToCloseTimeout()).append(",");
         if (getDefaultExecutionStartToCloseTimeout() != null)
-            sb.append("DefaultExecutionStartToCloseTimeout: " + getDefaultExecutionStartToCloseTimeout() + ",");
+            sb.append("DefaultExecutionStartToCloseTimeout: ").append(getDefaultExecutionStartToCloseTimeout()).append(",");
         if (getDefaultTaskList() != null)
-            sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
+            sb.append("DefaultTaskList: ").append(getDefaultTaskList()).append(",");
         if (getDefaultTaskPriority() != null)
-            sb.append("DefaultTaskPriority: " + getDefaultTaskPriority() + ",");
+            sb.append("DefaultTaskPriority: ").append(getDefaultTaskPriority()).append(",");
         if (getDefaultChildPolicy() != null)
-            sb.append("DefaultChildPolicy: " + getDefaultChildPolicy() + ",");
+            sb.append("DefaultChildPolicy: ").append(getDefaultChildPolicy()).append(",");
         if (getDefaultLambdaRole() != null)
-            sb.append("DefaultLambdaRole: " + getDefaultLambdaRole());
+            sb.append("DefaultLambdaRole: ").append(getDefaultLambdaRole());
         sb.append("}");
         return sb.toString();
     }
@@ -721,5 +725,11 @@ public class WorkflowTypeConfiguration implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.WorkflowTypeConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

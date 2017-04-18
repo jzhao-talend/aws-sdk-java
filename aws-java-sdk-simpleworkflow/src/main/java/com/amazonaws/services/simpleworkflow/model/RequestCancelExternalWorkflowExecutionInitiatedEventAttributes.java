@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,17 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Provides details of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event.
  * </p>
  */
-public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -235,13 +239,13 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes impl
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWorkflowId() != null)
-            sb.append("WorkflowId: " + getWorkflowId() + ",");
+            sb.append("WorkflowId: ").append(getWorkflowId()).append(",");
         if (getRunId() != null)
-            sb.append("RunId: " + getRunId() + ",");
+            sb.append("RunId: ").append(getRunId()).append(",");
         if (getDecisionTaskCompletedEventId() != null)
-            sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
+            sb.append("DecisionTaskCompletedEventId: ").append(getDecisionTaskCompletedEventId()).append(",");
         if (getControl() != null)
-            sb.append("Control: " + getControl());
+            sb.append("Control: ").append(getControl());
         sb.append("}");
         return sb.toString();
     }
@@ -294,5 +298,12 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes impl
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.RequestCancelExternalWorkflowExecutionInitiatedEventAttributesMarshaller.getInstance().marshall(
+                this, protocolMarshaller);
     }
 }

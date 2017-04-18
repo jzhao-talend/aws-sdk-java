@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,18 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ReplicationInstance" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ReplicationInstance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplicationInstance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -173,6 +180,12 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * </p>
      */
     private Boolean publiclyAccessible;
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     */
+    private String secondaryAvailabilityZone;
 
     /**
      * <p>
@@ -1298,6 +1311,46 @@ public class ReplicationInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @param secondaryAvailabilityZone
+     *        The availability zone of the standby replication instance in a Multi-AZ deployment.
+     */
+
+    public void setSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
+        this.secondaryAvailabilityZone = secondaryAvailabilityZone;
+    }
+
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @return The availability zone of the standby replication instance in a Multi-AZ deployment.
+     */
+
+    public String getSecondaryAvailabilityZone() {
+        return this.secondaryAvailabilityZone;
+    }
+
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @param secondaryAvailabilityZone
+     *        The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReplicationInstance withSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
+        setSecondaryAvailabilityZone(secondaryAvailabilityZone);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1309,45 +1362,47 @@ public class ReplicationInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationInstanceIdentifier() != null)
-            sb.append("ReplicationInstanceIdentifier: " + getReplicationInstanceIdentifier() + ",");
+            sb.append("ReplicationInstanceIdentifier: ").append(getReplicationInstanceIdentifier()).append(",");
         if (getReplicationInstanceClass() != null)
-            sb.append("ReplicationInstanceClass: " + getReplicationInstanceClass() + ",");
+            sb.append("ReplicationInstanceClass: ").append(getReplicationInstanceClass()).append(",");
         if (getReplicationInstanceStatus() != null)
-            sb.append("ReplicationInstanceStatus: " + getReplicationInstanceStatus() + ",");
+            sb.append("ReplicationInstanceStatus: ").append(getReplicationInstanceStatus()).append(",");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getInstanceCreateTime() != null)
-            sb.append("InstanceCreateTime: " + getInstanceCreateTime() + ",");
+            sb.append("InstanceCreateTime: ").append(getInstanceCreateTime()).append(",");
         if (getVpcSecurityGroups() != null)
-            sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+            sb.append("VpcSecurityGroups: ").append(getVpcSecurityGroups()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getReplicationSubnetGroup() != null)
-            sb.append("ReplicationSubnetGroup: " + getReplicationSubnetGroup() + ",");
+            sb.append("ReplicationSubnetGroup: ").append(getReplicationSubnetGroup()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues() + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getReplicationInstanceArn() != null)
-            sb.append("ReplicationInstanceArn: " + getReplicationInstanceArn() + ",");
+            sb.append("ReplicationInstanceArn: ").append(getReplicationInstanceArn()).append(",");
         if (getReplicationInstancePublicIpAddress() != null)
-            sb.append("ReplicationInstancePublicIpAddress: " + getReplicationInstancePublicIpAddress() + ",");
+            sb.append("ReplicationInstancePublicIpAddress: ").append(getReplicationInstancePublicIpAddress()).append(",");
         if (getReplicationInstancePrivateIpAddress() != null)
-            sb.append("ReplicationInstancePrivateIpAddress: " + getReplicationInstancePrivateIpAddress() + ",");
+            sb.append("ReplicationInstancePrivateIpAddress: ").append(getReplicationInstancePrivateIpAddress()).append(",");
         if (getReplicationInstancePublicIpAddresses() != null)
-            sb.append("ReplicationInstancePublicIpAddresses: " + getReplicationInstancePublicIpAddresses() + ",");
+            sb.append("ReplicationInstancePublicIpAddresses: ").append(getReplicationInstancePublicIpAddresses()).append(",");
         if (getReplicationInstancePrivateIpAddresses() != null)
-            sb.append("ReplicationInstancePrivateIpAddresses: " + getReplicationInstancePrivateIpAddresses() + ",");
+            sb.append("ReplicationInstancePrivateIpAddresses: ").append(getReplicationInstancePrivateIpAddresses()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible());
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
+        if (getSecondaryAvailabilityZone() != null)
+            sb.append("SecondaryAvailabilityZone: ").append(getSecondaryAvailabilityZone());
         sb.append("}");
         return sb.toString();
     }
@@ -1447,6 +1502,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
             return false;
         if (other.getPubliclyAccessible() != null && other.getPubliclyAccessible().equals(this.getPubliclyAccessible()) == false)
             return false;
+        if (other.getSecondaryAvailabilityZone() == null ^ this.getSecondaryAvailabilityZone() == null)
+            return false;
+        if (other.getSecondaryAvailabilityZone() != null && other.getSecondaryAvailabilityZone().equals(this.getSecondaryAvailabilityZone()) == false)
+            return false;
         return true;
     }
 
@@ -1475,6 +1534,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getReplicationInstancePublicIpAddresses() == null) ? 0 : getReplicationInstancePublicIpAddresses().hashCode());
         hashCode = prime * hashCode + ((getReplicationInstancePrivateIpAddresses() == null) ? 0 : getReplicationInstancePrivateIpAddresses().hashCode());
         hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
+        hashCode = prime * hashCode + ((getSecondaryAvailabilityZone() == null) ? 0 : getSecondaryAvailabilityZone().hashCode());
         return hashCode;
     }
 
@@ -1485,5 +1545,11 @@ public class ReplicationInstance implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.ReplicationInstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

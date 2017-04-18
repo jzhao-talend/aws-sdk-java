@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,32 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list
  * of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts
  * and forwards the argument list to the corresponding installation script as bootstrap action argument. For more
- * information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a
- * Job Flow on the MapR Distribution for Hadoop</a>. Currently supported values are:
+ * information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-mapr.html">Using the
+ * MapR Distribution for Hadoop</a>. Currently supported values are:
  * </p>
  * <ul>
  * <li>
  * <p>
- * "mapr-m3" - launch the job flow using MapR M3 Edition.
+ * "mapr-m3" - launch the cluster using MapR M3 Edition.
  * </p>
  * </li>
  * <li>
  * <p>
- * "mapr-m5" - launch the job flow using MapR M5 Edition.
+ * "mapr-m5" - launch the cluster using MapR M5 Edition.
  * </p>
  * </li>
  * <li>
  * <p>
- * "mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5
+ * "mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the cluster using MapR M3 or M5
  * Edition, respectively.
  * </p>
  * </li>
@@ -46,8 +49,12 @@ import java.io.Serializable;
  * applications, you supply a configuration for each application.
  * </p>
  * </note>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/Application" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Application implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Application implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -310,13 +317,13 @@ public class Application implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getArgs() != null)
-            sb.append("Args: " + getArgs() + ",");
+            sb.append("Args: ").append(getArgs()).append(",");
         if (getAdditionalInfo() != null)
-            sb.append("AdditionalInfo: " + getAdditionalInfo());
+            sb.append("AdditionalInfo: ").append(getAdditionalInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -369,5 +376,11 @@ public class Application implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.ApplicationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

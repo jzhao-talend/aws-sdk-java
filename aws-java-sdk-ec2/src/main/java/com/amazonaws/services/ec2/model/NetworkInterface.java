@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a network interface.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/NetworkInterface" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NetworkInterface implements Serializable, Cloneable {
 
     /**
@@ -84,7 +89,7 @@ public class NetworkInterface implements Serializable, Cloneable {
     private String macAddress;
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      */
     private String privateIpAddress;
@@ -114,7 +119,7 @@ public class NetworkInterface implements Serializable, Cloneable {
     private NetworkInterfaceAttachment attachment;
     /**
      * <p>
-     * The association information for an Elastic IP associated with the network interface.
+     * The association information for an Elastic IP address (IPv4) associated with the network interface.
      * </p>
      */
     private NetworkInterfaceAssociation association;
@@ -126,10 +131,16 @@ public class NetworkInterface implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<Tag> tagSet;
     /**
      * <p>
-     * The private IP addresses associated with the network interface.
+     * The private IPv4 addresses associated with the network interface.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<NetworkInterfacePrivateIpAddress> privateIpAddresses;
+    /**
+     * <p>
+     * The IPv6 addresses associated with the network interface.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<NetworkInterfaceIpv6Address> ipv6Addresses;
     /**
      * <p>
      * The type of interface.
@@ -590,11 +601,11 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
      * @param privateIpAddress
-     *        The IP address of the network interface within the subnet.
+     *        The IPv4 address of the network interface within the subnet.
      */
 
     public void setPrivateIpAddress(String privateIpAddress) {
@@ -603,10 +614,10 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
-     * @return The IP address of the network interface within the subnet.
+     * @return The IPv4 address of the network interface within the subnet.
      */
 
     public String getPrivateIpAddress() {
@@ -615,11 +626,11 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP address of the network interface within the subnet.
+     * The IPv4 address of the network interface within the subnet.
      * </p>
      * 
      * @param privateIpAddress
-     *        The IP address of the network interface within the subnet.
+     *        The IPv4 address of the network interface within the subnet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -835,11 +846,11 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The association information for an Elastic IP associated with the network interface.
+     * The association information for an Elastic IP address (IPv4) associated with the network interface.
      * </p>
      * 
      * @param association
-     *        The association information for an Elastic IP associated with the network interface.
+     *        The association information for an Elastic IP address (IPv4) associated with the network interface.
      */
 
     public void setAssociation(NetworkInterfaceAssociation association) {
@@ -848,10 +859,10 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The association information for an Elastic IP associated with the network interface.
+     * The association information for an Elastic IP address (IPv4) associated with the network interface.
      * </p>
      * 
-     * @return The association information for an Elastic IP associated with the network interface.
+     * @return The association information for an Elastic IP address (IPv4) associated with the network interface.
      */
 
     public NetworkInterfaceAssociation getAssociation() {
@@ -860,11 +871,11 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The association information for an Elastic IP associated with the network interface.
+     * The association information for an Elastic IP address (IPv4) associated with the network interface.
      * </p>
      * 
      * @param association
-     *        The association information for an Elastic IP associated with the network interface.
+     *        The association information for an Elastic IP address (IPv4) associated with the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -948,10 +959,10 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses associated with the network interface.
+     * The private IPv4 addresses associated with the network interface.
      * </p>
      * 
-     * @return The private IP addresses associated with the network interface.
+     * @return The private IPv4 addresses associated with the network interface.
      */
 
     public java.util.List<NetworkInterfacePrivateIpAddress> getPrivateIpAddresses() {
@@ -963,11 +974,11 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses associated with the network interface.
+     * The private IPv4 addresses associated with the network interface.
      * </p>
      * 
      * @param privateIpAddresses
-     *        The private IP addresses associated with the network interface.
+     *        The private IPv4 addresses associated with the network interface.
      */
 
     public void setPrivateIpAddresses(java.util.Collection<NetworkInterfacePrivateIpAddress> privateIpAddresses) {
@@ -981,7 +992,7 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses associated with the network interface.
+     * The private IPv4 addresses associated with the network interface.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -990,7 +1001,7 @@ public class NetworkInterface implements Serializable, Cloneable {
      * </p>
      * 
      * @param privateIpAddresses
-     *        The private IP addresses associated with the network interface.
+     *        The private IPv4 addresses associated with the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1006,16 +1017,89 @@ public class NetworkInterface implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The private IP addresses associated with the network interface.
+     * The private IPv4 addresses associated with the network interface.
      * </p>
      * 
      * @param privateIpAddresses
-     *        The private IP addresses associated with the network interface.
+     *        The private IPv4 addresses associated with the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public NetworkInterface withPrivateIpAddresses(java.util.Collection<NetworkInterfacePrivateIpAddress> privateIpAddresses) {
         setPrivateIpAddresses(privateIpAddresses);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 addresses associated with the network interface.
+     * </p>
+     * 
+     * @return The IPv6 addresses associated with the network interface.
+     */
+
+    public java.util.List<NetworkInterfaceIpv6Address> getIpv6Addresses() {
+        if (ipv6Addresses == null) {
+            ipv6Addresses = new com.amazonaws.internal.SdkInternalList<NetworkInterfaceIpv6Address>();
+        }
+        return ipv6Addresses;
+    }
+
+    /**
+     * <p>
+     * The IPv6 addresses associated with the network interface.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        The IPv6 addresses associated with the network interface.
+     */
+
+    public void setIpv6Addresses(java.util.Collection<NetworkInterfaceIpv6Address> ipv6Addresses) {
+        if (ipv6Addresses == null) {
+            this.ipv6Addresses = null;
+            return;
+        }
+
+        this.ipv6Addresses = new com.amazonaws.internal.SdkInternalList<NetworkInterfaceIpv6Address>(ipv6Addresses);
+    }
+
+    /**
+     * <p>
+     * The IPv6 addresses associated with the network interface.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6Addresses(java.util.Collection)} or {@link #withIpv6Addresses(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        The IPv6 addresses associated with the network interface.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NetworkInterface withIpv6Addresses(NetworkInterfaceIpv6Address... ipv6Addresses) {
+        if (this.ipv6Addresses == null) {
+            setIpv6Addresses(new com.amazonaws.internal.SdkInternalList<NetworkInterfaceIpv6Address>(ipv6Addresses.length));
+        }
+        for (NetworkInterfaceIpv6Address ele : ipv6Addresses) {
+            this.ipv6Addresses.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 addresses associated with the network interface.
+     * </p>
+     * 
+     * @param ipv6Addresses
+     *        The IPv6 addresses associated with the network interface.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NetworkInterface withIpv6Addresses(java.util.Collection<NetworkInterfaceIpv6Address> ipv6Addresses) {
+        setIpv6Addresses(ipv6Addresses);
         return this;
     }
 
@@ -1104,43 +1188,45 @@ public class NetworkInterface implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getOwnerId() != null)
-            sb.append("OwnerId: " + getOwnerId() + ",");
+            sb.append("OwnerId: ").append(getOwnerId()).append(",");
         if (getRequesterId() != null)
-            sb.append("RequesterId: " + getRequesterId() + ",");
+            sb.append("RequesterId: ").append(getRequesterId()).append(",");
         if (getRequesterManaged() != null)
-            sb.append("RequesterManaged: " + getRequesterManaged() + ",");
+            sb.append("RequesterManaged: ").append(getRequesterManaged()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getMacAddress() != null)
-            sb.append("MacAddress: " + getMacAddress() + ",");
+            sb.append("MacAddress: ").append(getMacAddress()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
         if (getPrivateDnsName() != null)
-            sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");
+            sb.append("PrivateDnsName: ").append(getPrivateDnsName()).append(",");
         if (getSourceDestCheck() != null)
-            sb.append("SourceDestCheck: " + getSourceDestCheck() + ",");
+            sb.append("SourceDestCheck: ").append(getSourceDestCheck()).append(",");
         if (getGroups() != null)
-            sb.append("Groups: " + getGroups() + ",");
+            sb.append("Groups: ").append(getGroups()).append(",");
         if (getAttachment() != null)
-            sb.append("Attachment: " + getAttachment() + ",");
+            sb.append("Attachment: ").append(getAttachment()).append(",");
         if (getAssociation() != null)
-            sb.append("Association: " + getAssociation() + ",");
+            sb.append("Association: ").append(getAssociation()).append(",");
         if (getTagSet() != null)
-            sb.append("TagSet: " + getTagSet() + ",");
+            sb.append("TagSet: ").append(getTagSet()).append(",");
         if (getPrivateIpAddresses() != null)
-            sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");
+            sb.append("PrivateIpAddresses: ").append(getPrivateIpAddresses()).append(",");
+        if (getIpv6Addresses() != null)
+            sb.append("Ipv6Addresses: ").append(getIpv6Addresses()).append(",");
         if (getInterfaceType() != null)
-            sb.append("InterfaceType: " + getInterfaceType());
+            sb.append("InterfaceType: ").append(getInterfaceType());
         sb.append("}");
         return sb.toString();
     }
@@ -1227,6 +1313,10 @@ public class NetworkInterface implements Serializable, Cloneable {
             return false;
         if (other.getPrivateIpAddresses() != null && other.getPrivateIpAddresses().equals(this.getPrivateIpAddresses()) == false)
             return false;
+        if (other.getIpv6Addresses() == null ^ this.getIpv6Addresses() == null)
+            return false;
+        if (other.getIpv6Addresses() != null && other.getIpv6Addresses().equals(this.getIpv6Addresses()) == false)
+            return false;
         if (other.getInterfaceType() == null ^ this.getInterfaceType() == null)
             return false;
         if (other.getInterfaceType() != null && other.getInterfaceType().equals(this.getInterfaceType()) == false)
@@ -1257,6 +1347,7 @@ public class NetworkInterface implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAssociation() == null) ? 0 : getAssociation().hashCode());
         hashCode = prime * hashCode + ((getTagSet() == null) ? 0 : getTagSet().hashCode());
         hashCode = prime * hashCode + ((getPrivateIpAddresses() == null) ? 0 : getPrivateIpAddresses().hashCode());
+        hashCode = prime * hashCode + ((getIpv6Addresses() == null) ? 0 : getIpv6Addresses().hashCode());
         hashCode = prime * hashCode + ((getInterfaceType() == null) ? 0 : getInterfaceType().hashCode());
         return hashCode;
     }
@@ -1269,4 +1360,5 @@ public class NetworkInterface implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,15 @@
 package com.amazonaws.services.elasticbeanstalk.model.transform;
 
 import org.w3c.dom.Node;
+import javax.annotation.Generated;
 
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.util.XpathUtils;
+
 import com.amazonaws.transform.StandardErrorUnmarshaller;
 
 import com.amazonaws.services.elasticbeanstalk.model.ElasticBeanstalkServiceException;
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ElasticBeanstalkServiceExceptionUnmarshaller extends StandardErrorUnmarshaller {
 
     public ElasticBeanstalkServiceExceptionUnmarshaller() {

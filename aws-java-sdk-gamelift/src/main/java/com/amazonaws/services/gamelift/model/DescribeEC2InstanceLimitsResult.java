@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeEC2InstanceLimits" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the maximum number of instances for the specified instance type.
+     * Object that contains the maximum number of instances for the specified instance type.
      * </p>
      */
     private java.util.List<EC2InstanceLimit> eC2InstanceLimits;
 
     /**
      * <p>
-     * Object containing the maximum number of instances for the specified instance type.
+     * Object that contains the maximum number of instances for the specified instance type.
      * </p>
      * 
-     * @return Object containing the maximum number of instances for the specified instance type.
+     * @return Object that contains the maximum number of instances for the specified instance type.
      */
 
     public java.util.List<EC2InstanceLimit> getEC2InstanceLimits() {
@@ -42,11 +47,11 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing the maximum number of instances for the specified instance type.
+     * Object that contains the maximum number of instances for the specified instance type.
      * </p>
      * 
      * @param eC2InstanceLimits
-     *        Object containing the maximum number of instances for the specified instance type.
+     *        Object that contains the maximum number of instances for the specified instance type.
      */
 
     public void setEC2InstanceLimits(java.util.Collection<EC2InstanceLimit> eC2InstanceLimits) {
@@ -60,7 +65,7 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing the maximum number of instances for the specified instance type.
+     * Object that contains the maximum number of instances for the specified instance type.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -69,7 +74,7 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
      * </p>
      * 
      * @param eC2InstanceLimits
-     *        Object containing the maximum number of instances for the specified instance type.
+     *        Object that contains the maximum number of instances for the specified instance type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -85,11 +90,11 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Object containing the maximum number of instances for the specified instance type.
+     * Object that contains the maximum number of instances for the specified instance type.
      * </p>
      * 
      * @param eC2InstanceLimits
-     *        Object containing the maximum number of instances for the specified instance type.
+     *        Object that contains the maximum number of instances for the specified instance type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -110,7 +115,7 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEC2InstanceLimits() != null)
-            sb.append("EC2InstanceLimits: " + getEC2InstanceLimits());
+            sb.append("EC2InstanceLimits: ").append(getEC2InstanceLimits());
         sb.append("}");
         return sb.toString();
     }
@@ -149,4 +154,5 @@ public class DescribeEC2InstanceLimitsResult extends com.amazonaws.AmazonWebServ
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

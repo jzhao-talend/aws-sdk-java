@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,26 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A game session's properties and the protection policy currently in force.
+ * A game session's properties plus the protection policy currently in force.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GameSessionDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GameSessionDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GameSessionDetail implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * Object that describes a game session.
+     * </p>
+     */
     private GameSession gameSession;
     /**
      * <p>
@@ -43,7 +55,12 @@ public class GameSessionDetail implements Serializable, Cloneable {
     private String protectionPolicy;
 
     /**
+     * <p>
+     * Object that describes a game session.
+     * </p>
+     * 
      * @param gameSession
+     *        Object that describes a game session.
      */
 
     public void setGameSession(GameSession gameSession) {
@@ -51,7 +68,11 @@ public class GameSessionDetail implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Object that describes a game session.
+     * </p>
+     * 
+     * @return Object that describes a game session.
      */
 
     public GameSession getGameSession() {
@@ -59,7 +80,12 @@ public class GameSessionDetail implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Object that describes a game session.
+     * </p>
+     * 
      * @param gameSession
+     *        Object that describes a game session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -278,9 +304,9 @@ public class GameSessionDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSession() != null)
-            sb.append("GameSession: " + getGameSession() + ",");
+            sb.append("GameSession: ").append(getGameSession()).append(",");
         if (getProtectionPolicy() != null)
-            sb.append("ProtectionPolicy: " + getProtectionPolicy());
+            sb.append("ProtectionPolicy: ").append(getProtectionPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -323,5 +349,11 @@ public class GameSessionDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.GameSessionDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

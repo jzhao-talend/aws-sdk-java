@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ExecutionDetails" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ExecutionDetails implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ExecutionDetails implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -179,11 +186,11 @@ public class ExecutionDetails implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSummary() != null)
-            sb.append("Summary: " + getSummary() + ",");
+            sb.append("Summary: ").append(getSummary()).append(",");
         if (getExternalExecutionId() != null)
-            sb.append("ExternalExecutionId: " + getExternalExecutionId() + ",");
+            sb.append("ExternalExecutionId: ").append(getExternalExecutionId()).append(",");
         if (getPercentComplete() != null)
-            sb.append("PercentComplete: " + getPercentComplete());
+            sb.append("PercentComplete: ").append(getPercentComplete());
         sb.append("}");
         return sb.toString();
     }
@@ -231,5 +238,11 @@ public class ExecutionDetails implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.ExecutionDetailsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

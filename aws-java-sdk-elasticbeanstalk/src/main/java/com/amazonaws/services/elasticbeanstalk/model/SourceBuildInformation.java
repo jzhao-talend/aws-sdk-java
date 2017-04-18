@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,20 +13,106 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
+ * Location of the source code for an application version.
+ * </p>
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SourceBuildInformation"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SourceBuildInformation implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     */
     private String sourceType;
-
+    /**
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     */
     private String sourceRepository;
-
+    /**
+     * <p>
+     * The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For
+     * example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example,
+     * <code>my-s3-bucket/Folders/my-source-file</code>.
+     * </p>
+     * </li>
+     * </ul>
+     */
     private String sourceLocation;
 
     /**
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceType
+     *        The type of repository.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>Git</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Zip</code>
+     *        </p>
+     *        </li>
      * @see SourceType
      */
 
@@ -35,7 +121,34 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The type of repository.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>Git</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Zip</code>
+     *         </p>
+     *         </li>
      * @see SourceType
      */
 
@@ -44,7 +157,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceType
+     *        The type of repository.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>Git</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Zip</code>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceType
      */
@@ -55,7 +196,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceType
+     *        The type of repository.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>Git</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Zip</code>
+     *        </p>
+     *        </li>
      * @see SourceType
      */
 
@@ -64,7 +233,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The type of repository.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Git</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Zip</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceType
+     *        The type of repository.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>Git</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Zip</code>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceType
      */
@@ -75,7 +272,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceRepository
+     *        Location where the repository is stored.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CodeCommit</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>S3</code>
+     *        </p>
+     *        </li>
      * @see SourceRepository
      */
 
@@ -84,7 +309,34 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return Location where the repository is stored.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>CodeCommit</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>S3</code>
+     *         </p>
+     *         </li>
      * @see SourceRepository
      */
 
@@ -93,7 +345,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceRepository
+     *        Location where the repository is stored.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CodeCommit</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>S3</code>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceRepository
      */
@@ -104,7 +384,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceRepository
+     *        Location where the repository is stored.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CodeCommit</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>S3</code>
+     *        </p>
+     *        </li>
      * @see SourceRepository
      */
 
@@ -113,7 +421,35 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Location where the repository is stored.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>CodeCommit</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>S3</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceRepository
+     *        Location where the repository is stored.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>CodeCommit</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>S3</code>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceRepository
      */
@@ -124,7 +460,40 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For
+     * example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example,
+     * <code>my-s3-bucket/Folders/my-source-file</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceLocation
+     *        The location of the source code, as a formatted string, depending on the value of
+     *        <code>SourceRepository</code> </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward
+     *        slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For
+     *        example, <code>my-s3-bucket/Folders/my-source-file</code>.
+     *        </p>
+     *        </li>
      */
 
     public void setSourceLocation(String sourceLocation) {
@@ -132,7 +501,39 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For
+     * example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example,
+     * <code>my-s3-bucket/Folders/my-source-file</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The location of the source code, as a formatted string, depending on the value of
+     *         <code>SourceRepository</code> </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward
+     *         slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For
+     *         example, <code>my-s3-bucket/Folders/my-source-file</code>.
+     *         </p>
+     *         </li>
      */
 
     public String getSourceLocation() {
@@ -140,7 +541,40 @@ public class SourceBuildInformation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For
+     * example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example,
+     * <code>my-s3-bucket/Folders/my-source-file</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param sourceLocation
+     *        The location of the source code, as a formatted string, depending on the value of
+     *        <code>SourceRepository</code> </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward
+     *        slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For
+     *        example, <code>my-s3-bucket/Folders/my-source-file</code>.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -161,11 +595,11 @@ public class SourceBuildInformation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSourceType() != null)
-            sb.append("SourceType: " + getSourceType() + ",");
+            sb.append("SourceType: ").append(getSourceType()).append(",");
         if (getSourceRepository() != null)
-            sb.append("SourceRepository: " + getSourceRepository() + ",");
+            sb.append("SourceRepository: ").append(getSourceRepository()).append(",");
         if (getSourceLocation() != null)
-            sb.append("SourceLocation: " + getSourceLocation());
+            sb.append("SourceLocation: ").append(getSourceLocation());
         sb.append("}");
         return sb.toString();
     }
@@ -214,4 +648,5 @@ public class SourceBuildInformation implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

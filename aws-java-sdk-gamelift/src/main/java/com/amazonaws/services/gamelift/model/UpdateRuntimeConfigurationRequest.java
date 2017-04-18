@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateRuntimeConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier of the fleet to update runtime configuration for.
+     * Unique identifier for a fleet to update runtime configuration for.
      * </p>
      */
     private String fleetId;
@@ -40,11 +46,11 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier of the fleet to update runtime configuration for.
+     * Unique identifier for a fleet to update runtime configuration for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier of the fleet to update runtime configuration for.
+     *        Unique identifier for a fleet to update runtime configuration for.
      */
 
     public void setFleetId(String fleetId) {
@@ -53,10 +59,10 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier of the fleet to update runtime configuration for.
+     * Unique identifier for a fleet to update runtime configuration for.
      * </p>
      * 
-     * @return Unique identifier of the fleet to update runtime configuration for.
+     * @return Unique identifier for a fleet to update runtime configuration for.
      */
 
     public String getFleetId() {
@@ -65,11 +71,11 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Unique identifier of the fleet to update runtime configuration for.
+     * Unique identifier for a fleet to update runtime configuration for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier of the fleet to update runtime configuration for.
+     *        Unique identifier for a fleet to update runtime configuration for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -148,9 +154,9 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getRuntimeConfiguration() != null)
-            sb.append("RuntimeConfiguration: " + getRuntimeConfiguration());
+            sb.append("RuntimeConfiguration: ").append(getRuntimeConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -190,4 +196,5 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
     public UpdateRuntimeConfigurationRequest clone() {
         return (UpdateRuntimeConfigurationRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A CA certificate for an AWS account.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/Certificate" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Certificate implements Serializable, Cloneable {
 
     /**
@@ -310,17 +315,17 @@ public class Certificate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateIdentifier() != null)
-            sb.append("CertificateIdentifier: " + getCertificateIdentifier() + ",");
+            sb.append("CertificateIdentifier: ").append(getCertificateIdentifier()).append(",");
         if (getCertificateType() != null)
-            sb.append("CertificateType: " + getCertificateType() + ",");
+            sb.append("CertificateType: ").append(getCertificateType()).append(",");
         if (getThumbprint() != null)
-            sb.append("Thumbprint: " + getThumbprint() + ",");
+            sb.append("Thumbprint: ").append(getThumbprint()).append(",");
         if (getValidFrom() != null)
-            sb.append("ValidFrom: " + getValidFrom() + ",");
+            sb.append("ValidFrom: ").append(getValidFrom()).append(",");
         if (getValidTill() != null)
-            sb.append("ValidTill: " + getValidTill() + ",");
+            sb.append("ValidTill: ").append(getValidTill()).append(",");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn());
+            sb.append("CertificateArn: ").append(getCertificateArn());
         sb.append("}");
         return sb.toString();
     }
@@ -384,4 +389,5 @@ public class Certificate implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

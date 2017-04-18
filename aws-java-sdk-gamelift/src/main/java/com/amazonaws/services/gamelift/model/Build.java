@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,50 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Properties describing a game build.
  * </p>
+ * <p>
+ * Build-related operations include:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateBuild</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ListBuilds</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeBuild</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateBuild</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteBuild</a>
+ * </p>
+ * </li>
+ * </ul>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/Build" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Build implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Build implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -29,15 +66,15 @@ public class Build implements Serializable, Cloneable {
     private String buildId;
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. It can be set using
+     * Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using
      * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. This value can be set
-     * using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
+     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      */
     private String version;
@@ -85,7 +122,7 @@ public class Build implements Serializable, Cloneable {
     /**
      * <p>
      * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     * milliseconds (ex: "1469498468.057".
+     * milliseconds (for example "1469498468.057").
      * </p>
      */
     private java.util.Date creationTime;
@@ -132,13 +169,13 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. It can be set using
+     * Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using
      * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a build. Build names do not need to be unique. It can be set using
-     *        <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     *        Descriptive label that is associated with a build. Build names do not need to be unique. It can be set
+     *        using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
     public void setName(String name) {
@@ -147,12 +184,12 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. It can be set using
+     * Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using
      * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
-     * @return Descriptive label associated with a build. Build names do not need to be unique. It can be set using
-     *         <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * @return Descriptive label that is associated with a build. Build names do not need to be unique. It can be set
+     *         using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
     public String getName() {
@@ -161,13 +198,13 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. It can be set using
+     * Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using
      * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a build. Build names do not need to be unique. It can be set using
-     *        <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     *        Descriptive label that is associated with a build. Build names do not need to be unique. It can be set
+     *        using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,12 +215,12 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. This value can be set
-     * using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
+     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param version
-     *        Version associated with this build. Version strings do not need to be unique to a build. This value can be
+     *        Version that is associated with this build. Version strings do not need to be unique. This value can be
      *        set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
@@ -193,12 +230,12 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. This value can be set
-     * using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
+     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
-     * @return Version associated with this build. Version strings do not need to be unique to a build. This value can
-     *         be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * @return Version that is associated with this build. Version strings do not need to be unique. This value can be
+     *         set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
     public String getVersion() {
@@ -207,12 +244,12 @@ public class Build implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. This value can be set
-     * using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
+     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param version
-     *        Version associated with this build. Version strings do not need to be unique to a build. This value can be
+     *        Version that is associated with this build. Version strings do not need to be unique. This value can be
      *        set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -642,12 +679,12 @@ public class Build implements Serializable, Cloneable {
     /**
      * <p>
      * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     * milliseconds (ex: "1469498468.057".
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param creationTime
      *        Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     *        milliseconds (ex: "1469498468.057".
+     *        milliseconds (for example "1469498468.057").
      */
 
     public void setCreationTime(java.util.Date creationTime) {
@@ -657,11 +694,11 @@ public class Build implements Serializable, Cloneable {
     /**
      * <p>
      * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     * milliseconds (ex: "1469498468.057".
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @return Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     *         milliseconds (ex: "1469498468.057".
+     *         milliseconds (for example "1469498468.057").
      */
 
     public java.util.Date getCreationTime() {
@@ -671,12 +708,12 @@ public class Build implements Serializable, Cloneable {
     /**
      * <p>
      * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     * milliseconds (ex: "1469498468.057".
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param creationTime
      *        Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
-     *        milliseconds (ex: "1469498468.057".
+     *        milliseconds (for example "1469498468.057").
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -697,19 +734,19 @@ public class Build implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBuildId() != null)
-            sb.append("BuildId: " + getBuildId() + ",");
+            sb.append("BuildId: ").append(getBuildId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getSizeOnDisk() != null)
-            sb.append("SizeOnDisk: " + getSizeOnDisk() + ",");
+            sb.append("SizeOnDisk: ").append(getSizeOnDisk()).append(",");
         if (getOperatingSystem() != null)
-            sb.append("OperatingSystem: " + getOperatingSystem() + ",");
+            sb.append("OperatingSystem: ").append(getOperatingSystem()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime());
+            sb.append("CreationTime: ").append(getCreationTime());
         sb.append("}");
         return sb.toString();
     }
@@ -777,5 +814,11 @@ public class Build implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.BuildMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

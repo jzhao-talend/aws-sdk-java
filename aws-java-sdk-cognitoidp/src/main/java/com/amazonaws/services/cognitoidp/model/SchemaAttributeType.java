@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about the schema attribute.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SchemaAttributeType" target="_top">AWS
+ *      API Documentation</a>
  */
-public class SchemaAttributeType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SchemaAttributeType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -434,19 +441,19 @@ public class SchemaAttributeType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getAttributeDataType() != null)
-            sb.append("AttributeDataType: " + getAttributeDataType() + ",");
+            sb.append("AttributeDataType: ").append(getAttributeDataType()).append(",");
         if (getDeveloperOnlyAttribute() != null)
-            sb.append("DeveloperOnlyAttribute: " + getDeveloperOnlyAttribute() + ",");
+            sb.append("DeveloperOnlyAttribute: ").append(getDeveloperOnlyAttribute()).append(",");
         if (getMutable() != null)
-            sb.append("Mutable: " + getMutable() + ",");
+            sb.append("Mutable: ").append(getMutable()).append(",");
         if (getRequired() != null)
-            sb.append("Required: " + getRequired() + ",");
+            sb.append("Required: ").append(getRequired()).append(",");
         if (getNumberAttributeConstraints() != null)
-            sb.append("NumberAttributeConstraints: " + getNumberAttributeConstraints() + ",");
+            sb.append("NumberAttributeConstraints: ").append(getNumberAttributeConstraints()).append(",");
         if (getStringAttributeConstraints() != null)
-            sb.append("StringAttributeConstraints: " + getStringAttributeConstraints());
+            sb.append("StringAttributeConstraints: ").append(getStringAttributeConstraints());
         sb.append("}");
         return sb.toString();
     }
@@ -514,5 +521,11 @@ public class SchemaAttributeType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.SchemaAttributeTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

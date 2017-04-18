@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProviderClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -56,6 +60,7 @@ import com.amazonaws.services.cognitoidp.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient implements AWSCognitoIdentityProvider {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -68,95 +73,102 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("PasswordResetRequiredException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.PasswordResetRequiredException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.ConcurrentModificationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaResponseException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidLambdaResponseException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnexpectedLambdaException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UnexpectedLambdaException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UserLambdaValidationException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UserLambdaValidationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSmsRoleTrustRelationshipException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidSmsRoleTrustRelationshipException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TooManyFailedAttemptsException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.TooManyFailedAttemptsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSmsRoleAccessPolicyException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidSmsRoleAccessPolicyException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UsernameExistsException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UsernameExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CodeDeliveryFailureException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.CodeDeliveryFailureException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UserImportInProgressException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UserImportInProgressException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ExpiredCodeException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.ExpiredCodeException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InternalErrorException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidEmailRoleAccessPolicyException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidEmailRoleAccessPolicyException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.LimitExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("PreconditionNotMetException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.PreconditionNotMetException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UserNotFoundException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UserNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("MFAMethodNotFoundException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.MFAMethodNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidPasswordException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidPasswordException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("AliasExistsException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.AliasExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UnsupportedUserStateException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UnsupportedUserStateException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.NotAuthorizedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("UserNotConfirmedException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.UserNotConfirmedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidUserPoolConfigurationException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.InvalidUserPoolConfigurationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.TooManyRequestsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("CodeMismatchException").withModeledClass(
-                            com.amazonaws.services.cognitoidp.model.CodeMismatchException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.cognitoidp.model.AWSCognitoIdentityProviderException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.ConcurrentModificationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaResponseException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidLambdaResponseException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSmsRoleAccessPolicyException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidSmsRoleAccessPolicyException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UsernameExistsException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UsernameExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UserImportInProgressException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UserImportInProgressException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ExpiredCodeException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.ExpiredCodeException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.LimitExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UserNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UserNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MFAMethodNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.MFAMethodNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPasswordException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidPasswordException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AliasExistsException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.AliasExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedUserStateException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UnsupportedUserStateException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.NotAuthorizedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UserNotConfirmedException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UserNotConfirmedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PasswordResetRequiredException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.PasswordResetRequiredException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnexpectedLambdaException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UnexpectedLambdaException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UserLambdaValidationException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UserLambdaValidationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSmsRoleTrustRelationshipException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidSmsRoleTrustRelationshipException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyFailedAttemptsException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.TooManyFailedAttemptsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CodeDeliveryFailureException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.CodeDeliveryFailureException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InternalErrorException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEmailRoleAccessPolicyException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidEmailRoleAccessPolicyException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PreconditionNotMetException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.PreconditionNotMetException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("GroupExistsException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.GroupExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UserPoolTaggingException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.UserPoolTaggingException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidUserPoolConfigurationException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.InvalidUserPoolConfigurationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.TooManyRequestsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CodeMismatchException").withModeledClass(
+                                    com.amazonaws.services.cognitoidp.model.CodeMismatchException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.cognitoidp.model.AWSCognitoIdentityProviderException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon Cognito Identity Provider. A credentials provider
@@ -172,7 +184,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -195,7 +209,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *        (ex: proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -210,7 +226,11 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AWSCognitoIdentityProviderClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -228,7 +248,10 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Cognito Identity Provider
      *        (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCognitoIdentityProviderClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -245,7 +268,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -263,7 +288,10 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon Cognito Identity Provider
      *        (ex: proxy settings, retry counts, etc.).
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCognitoIdentityProviderClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -283,12 +311,20 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *        (ex: proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSCognitoIdentityProviderClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCognitoIdentityProviderClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCognitoIdentityProviderClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSCognitoIdentityProviderClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSCognitoIdentityProviderClientBuilder builder() {
+        return AWSCognitoIdentityProviderClientBuilder.standard();
     }
 
     /**
@@ -341,9 +377,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AddCustomAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AddCustomAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AddCustomAttributesResult addCustomAttributes(AddCustomAttributesRequest addCustomAttributesRequest) {
+    public AddCustomAttributesResult addCustomAttributes(AddCustomAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddCustomAttributes(request);
+    }
+
+    @SdkInternalApi
+    final AddCustomAttributesResult executeAddCustomAttributes(AddCustomAttributesRequest addCustomAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addCustomAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -353,7 +398,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddCustomAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addCustomAttributesRequest));
+                request = new AddCustomAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addCustomAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -374,7 +419,73 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
+     * Adds the specified user to the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminAddUserToGroupRequest
+     * @return Result of the AdminAddUserToGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminAddUserToGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminAddUserToGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AdminAddUserToGroupResult adminAddUserToGroup(AdminAddUserToGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminAddUserToGroup(request);
+    }
+
+    @SdkInternalApi
+    final AdminAddUserToGroupResult executeAdminAddUserToGroup(AdminAddUserToGroupRequest adminAddUserToGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(adminAddUserToGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AdminAddUserToGroupRequest> request = null;
+        Response<AdminAddUserToGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AdminAddUserToGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminAddUserToGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AdminAddUserToGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AdminAddUserToGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Confirms user registration as an admin without using a confirmation code. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminConfirmSignUpRequest
@@ -406,9 +517,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminConfirmSignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminConfirmSignUp" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminConfirmSignUpResult adminConfirmSignUp(AdminConfirmSignUpRequest adminConfirmSignUpRequest) {
+    public AdminConfirmSignUpResult adminConfirmSignUp(AdminConfirmSignUpRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminConfirmSignUp(request);
+    }
+
+    @SdkInternalApi
+    final AdminConfirmSignUpResult executeAdminConfirmSignUp(AdminConfirmSignUpRequest adminConfirmSignUpRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminConfirmSignUpRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -418,7 +538,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminConfirmSignUpRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminConfirmSignUpRequest));
+                request = new AdminConfirmSignUpRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminConfirmSignUpRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -488,9 +608,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminCreateUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminCreateUser" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminCreateUserResult adminCreateUser(AdminCreateUserRequest adminCreateUserRequest) {
+    public AdminCreateUserResult adminCreateUser(AdminCreateUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminCreateUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminCreateUserResult executeAdminCreateUser(AdminCreateUserRequest adminCreateUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminCreateUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -500,7 +629,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminCreateUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminCreateUserRequest));
+                request = new AdminCreateUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminCreateUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -523,6 +652,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Deletes a user as an administrator. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminDeleteUserRequest
      *        Represents the request to delete a user as an administrator.
@@ -540,9 +672,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDeleteUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUser" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminDeleteUserResult adminDeleteUser(AdminDeleteUserRequest adminDeleteUserRequest) {
+    public AdminDeleteUserResult adminDeleteUser(AdminDeleteUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminDeleteUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminDeleteUserResult executeAdminDeleteUser(AdminDeleteUserRequest adminDeleteUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminDeleteUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -552,7 +693,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminDeleteUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminDeleteUserRequest));
+                request = new AdminDeleteUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminDeleteUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -575,6 +716,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Deletes the user attributes in a user pool as an administrator. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminDeleteUserAttributesRequest
      *        Represents the request to delete user attributes as an administrator.
@@ -592,9 +736,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDeleteUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminDeleteUserAttributesResult adminDeleteUserAttributes(AdminDeleteUserAttributesRequest adminDeleteUserAttributesRequest) {
+    public AdminDeleteUserAttributesResult adminDeleteUserAttributes(AdminDeleteUserAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminDeleteUserAttributes(request);
+    }
+
+    @SdkInternalApi
+    final AdminDeleteUserAttributesResult executeAdminDeleteUserAttributes(AdminDeleteUserAttributesRequest adminDeleteUserAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminDeleteUserAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -604,7 +757,8 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminDeleteUserAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminDeleteUserAttributesRequest));
+                request = new AdminDeleteUserAttributesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(adminDeleteUserAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -628,6 +782,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Disables the specified user as an administrator. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminDisableUserRequest
      *        Represents the request to disable any user as an administrator.
@@ -645,9 +802,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminDisableUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDisableUser" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminDisableUserResult adminDisableUser(AdminDisableUserRequest adminDisableUserRequest) {
+    public AdminDisableUserResult adminDisableUser(AdminDisableUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminDisableUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminDisableUserResult executeAdminDisableUser(AdminDisableUserRequest adminDisableUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminDisableUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -657,7 +823,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminDisableUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminDisableUserRequest));
+                request = new AdminDisableUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminDisableUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -680,6 +846,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Enables the specified user as an administrator. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminEnableUserRequest
      *        Represents the request that enables the user as an administrator.
@@ -697,9 +866,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminEnableUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminEnableUser" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminEnableUserResult adminEnableUser(AdminEnableUserRequest adminEnableUserRequest) {
+    public AdminEnableUserResult adminEnableUser(AdminEnableUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminEnableUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminEnableUserResult executeAdminEnableUser(AdminEnableUserRequest adminEnableUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminEnableUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -709,7 +887,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminEnableUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminEnableUserRequest));
+                request = new AdminEnableUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminEnableUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -732,6 +910,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Forgets the device, as an administrator.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminForgetDeviceRequest
      *        Sends the forgot device request, as an administrator.
@@ -751,9 +932,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminForgetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminForgetDevice" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminForgetDeviceResult adminForgetDevice(AdminForgetDeviceRequest adminForgetDeviceRequest) {
+    public AdminForgetDeviceResult adminForgetDevice(AdminForgetDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminForgetDevice(request);
+    }
+
+    @SdkInternalApi
+    final AdminForgetDeviceResult executeAdminForgetDevice(AdminForgetDeviceRequest adminForgetDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminForgetDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -763,7 +953,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminForgetDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminForgetDeviceRequest));
+                request = new AdminForgetDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminForgetDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -786,6 +976,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Gets the device, as an administrator.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminGetDeviceRequest
      *        Represents the request to get the device, as an administrator.
@@ -803,9 +996,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.AdminGetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AdminGetDeviceResult adminGetDevice(AdminGetDeviceRequest adminGetDeviceRequest) {
+    public AdminGetDeviceResult adminGetDevice(AdminGetDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminGetDevice(request);
+    }
+
+    @SdkInternalApi
+    final AdminGetDeviceResult executeAdminGetDevice(AdminGetDeviceRequest adminGetDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminGetDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -815,7 +1017,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminGetDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminGetDeviceRequest));
+                request = new AdminGetDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminGetDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -838,6 +1040,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Gets the specified user by user name in a user pool as an administrator. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminGetUserRequest
      *        Represents the request to get the specified user as an administrator.
@@ -855,9 +1060,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminGetUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AdminGetUserResult adminGetUser(AdminGetUserRequest adminGetUserRequest) {
+    public AdminGetUserResult adminGetUser(AdminGetUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminGetUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminGetUserResult executeAdminGetUser(AdminGetUserRequest adminGetUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminGetUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -867,7 +1081,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminGetUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminGetUserRequest));
+                request = new AdminGetUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminGetUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -889,6 +1103,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
     /**
      * <p>
      * Initiates the authentication flow, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminInitiateAuthRequest
@@ -930,9 +1147,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws UserNotConfirmedException
      *         This exception is thrown when a user is not confirmed successfully.
      * @sample AWSCognitoIdentityProvider.AdminInitiateAuth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminInitiateAuth" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminInitiateAuthResult adminInitiateAuth(AdminInitiateAuthRequest adminInitiateAuthRequest) {
+    public AdminInitiateAuthResult adminInitiateAuth(AdminInitiateAuthRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminInitiateAuth(request);
+    }
+
+    @SdkInternalApi
+    final AdminInitiateAuthResult executeAdminInitiateAuth(AdminInitiateAuthRequest adminInitiateAuthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminInitiateAuthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -942,7 +1168,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminInitiateAuthRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminInitiateAuthRequest));
+                request = new AdminInitiateAuthRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminInitiateAuthRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -965,6 +1191,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Lists devices, as an administrator.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminListDevicesRequest
      *        Represents the request to list devices, as an administrator.
@@ -982,9 +1211,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.AdminListDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListDevices" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AdminListDevicesResult adminListDevices(AdminListDevicesRequest adminListDevicesRequest) {
+    public AdminListDevicesResult adminListDevices(AdminListDevicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminListDevices(request);
+    }
+
+    @SdkInternalApi
+    final AdminListDevicesResult executeAdminListDevices(AdminListDevicesRequest adminListDevicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminListDevicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -994,7 +1232,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminListDevicesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminListDevicesRequest));
+                request = new AdminListDevicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminListDevicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1003,6 +1241,135 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<AdminListDevicesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AdminListDevicesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the groups that the user belongs to.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminListGroupsForUserRequest
+     * @return Result of the AdminListGroupsForUser operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminListGroupsForUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListGroupsForUser"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AdminListGroupsForUserResult adminListGroupsForUser(AdminListGroupsForUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminListGroupsForUser(request);
+    }
+
+    @SdkInternalApi
+    final AdminListGroupsForUserResult executeAdminListGroupsForUser(AdminListGroupsForUserRequest adminListGroupsForUserRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(adminListGroupsForUserRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AdminListGroupsForUserRequest> request = null;
+        Response<AdminListGroupsForUserResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AdminListGroupsForUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminListGroupsForUserRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AdminListGroupsForUserResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new AdminListGroupsForUserResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes the specified user from the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param adminRemoveUserFromGroupRequest
+     * @return Result of the AdminRemoveUserFromGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.AdminRemoveUserFromGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRemoveUserFromGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AdminRemoveUserFromGroupResult adminRemoveUserFromGroup(AdminRemoveUserFromGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminRemoveUserFromGroup(request);
+    }
+
+    @SdkInternalApi
+    final AdminRemoveUserFromGroupResult executeAdminRemoveUserFromGroup(AdminRemoveUserFromGroupRequest adminRemoveUserFromGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(adminRemoveUserFromGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AdminRemoveUserFromGroupRequest> request = null;
+        Response<AdminRemoveUserFromGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AdminRemoveUserFromGroupRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(adminRemoveUserFromGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AdminRemoveUserFromGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new AdminRemoveUserFromGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1024,6 +1391,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * if the user pool has phone verification selected and a verified phone number exists for the user, or if email
      * verification is selected and a verified email exists for the user, calling this API will also result in sending a
      * message to the end user with the code to change their password.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminResetUserPasswordRequest
@@ -1052,9 +1422,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminResetUserPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminResetUserPassword"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminResetUserPasswordResult adminResetUserPassword(AdminResetUserPasswordRequest adminResetUserPasswordRequest) {
+    public AdminResetUserPasswordResult adminResetUserPassword(AdminResetUserPasswordRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminResetUserPassword(request);
+    }
+
+    @SdkInternalApi
+    final AdminResetUserPasswordResult executeAdminResetUserPassword(AdminResetUserPasswordRequest adminResetUserPasswordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminResetUserPasswordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1064,7 +1443,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminResetUserPasswordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminResetUserPasswordRequest));
+                request = new AdminResetUserPasswordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminResetUserPasswordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1087,6 +1466,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
     /**
      * <p>
      * Responds to an authentication challenge, as an administrator.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminRespondToAuthChallengeRequest
@@ -1138,9 +1520,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws UserNotConfirmedException
      *         This exception is thrown when a user is not confirmed successfully.
      * @sample AWSCognitoIdentityProvider.AdminRespondToAuthChallenge
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRespondToAuthChallenge"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminRespondToAuthChallengeResult adminRespondToAuthChallenge(AdminRespondToAuthChallengeRequest adminRespondToAuthChallengeRequest) {
+    public AdminRespondToAuthChallengeResult adminRespondToAuthChallenge(AdminRespondToAuthChallengeRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminRespondToAuthChallenge(request);
+    }
+
+    @SdkInternalApi
+    final AdminRespondToAuthChallengeResult executeAdminRespondToAuthChallenge(AdminRespondToAuthChallengeRequest adminRespondToAuthChallengeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminRespondToAuthChallengeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1150,7 +1541,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminRespondToAuthChallengeRequestMarshaller(protocolFactory).marshall(super
+                request = new AdminRespondToAuthChallengeRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(adminRespondToAuthChallengeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1175,6 +1566,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Sets all the user settings for a specified user name. Works on any user.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminSetUserSettingsRequest
      *        Represents the request to set user settings as an administrator.
@@ -1190,9 +1584,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminSetUserSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminSetUserSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminSetUserSettingsResult adminSetUserSettings(AdminSetUserSettingsRequest adminSetUserSettingsRequest) {
+    public AdminSetUserSettingsResult adminSetUserSettings(AdminSetUserSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminSetUserSettings(request);
+    }
+
+    @SdkInternalApi
+    final AdminSetUserSettingsResult executeAdminSetUserSettings(AdminSetUserSettingsRequest adminSetUserSettingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminSetUserSettingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1202,7 +1605,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminSetUserSettingsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminSetUserSettingsRequest));
+                request = new AdminSetUserSettingsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminSetUserSettingsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1225,6 +1628,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Updates the device status as an administrator.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminUpdateDeviceStatusRequest
      *        The request to update the device status, as an administrator.
@@ -1244,9 +1650,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUpdateDeviceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateDeviceStatus"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminUpdateDeviceStatusResult adminUpdateDeviceStatus(AdminUpdateDeviceStatusRequest adminUpdateDeviceStatusRequest) {
+    public AdminUpdateDeviceStatusResult adminUpdateDeviceStatus(AdminUpdateDeviceStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminUpdateDeviceStatus(request);
+    }
+
+    @SdkInternalApi
+    final AdminUpdateDeviceStatusResult executeAdminUpdateDeviceStatus(AdminUpdateDeviceStatusRequest adminUpdateDeviceStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminUpdateDeviceStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1256,7 +1671,8 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminUpdateDeviceStatusRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminUpdateDeviceStatusRequest));
+                request = new AdminUpdateDeviceStatusRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(adminUpdateDeviceStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1279,6 +1695,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
     /**
      * <p>
      * Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * Requires developer credentials.
      * </p>
      * 
      * @param adminUpdateUserAttributesRequest
@@ -1309,9 +1728,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUpdateUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminUpdateUserAttributesResult adminUpdateUserAttributes(AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest) {
+    public AdminUpdateUserAttributesResult adminUpdateUserAttributes(AdminUpdateUserAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminUpdateUserAttributes(request);
+    }
+
+    @SdkInternalApi
+    final AdminUpdateUserAttributesResult executeAdminUpdateUserAttributes(AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminUpdateUserAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1321,7 +1749,8 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminUpdateUserAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminUpdateUserAttributesRequest));
+                request = new AdminUpdateUserAttributesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(adminUpdateUserAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1345,6 +1774,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Signs out users from all devices, as an administrator.
      * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
      * 
      * @param adminUserGlobalSignOutRequest
      *        The request to sign out of all devices, as an administrator.
@@ -1362,9 +1794,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.AdminUserGlobalSignOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUserGlobalSignOut"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public AdminUserGlobalSignOutResult adminUserGlobalSignOut(AdminUserGlobalSignOutRequest adminUserGlobalSignOutRequest) {
+    public AdminUserGlobalSignOutResult adminUserGlobalSignOut(AdminUserGlobalSignOutRequest request) {
+        request = beforeClientExecution(request);
+        return executeAdminUserGlobalSignOut(request);
+    }
+
+    @SdkInternalApi
+    final AdminUserGlobalSignOutResult executeAdminUserGlobalSignOut(AdminUserGlobalSignOutRequest adminUserGlobalSignOutRequest) {
+
         ExecutionContext executionContext = createExecutionContext(adminUserGlobalSignOutRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1374,7 +1815,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AdminUserGlobalSignOutRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminUserGlobalSignOutRequest));
+                request = new AdminUserGlobalSignOutRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(adminUserGlobalSignOutRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1423,9 +1864,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ChangePassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ChangePassword" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ChangePasswordResult changePassword(ChangePasswordRequest changePasswordRequest) {
+    public ChangePasswordResult changePassword(ChangePasswordRequest request) {
+        request = beforeClientExecution(request);
+        return executeChangePassword(request);
+    }
+
+    @SdkInternalApi
+    final ChangePasswordResult executeChangePassword(ChangePasswordRequest changePasswordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(changePasswordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1435,7 +1885,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ChangePasswordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(changePasswordRequest));
+                request = new ChangePasswordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(changePasswordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1487,9 +1937,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ConfirmDeviceResult confirmDevice(ConfirmDeviceRequest confirmDeviceRequest) {
+    public ConfirmDeviceResult confirmDevice(ConfirmDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfirmDevice(request);
+    }
+
+    @SdkInternalApi
+    final ConfirmDeviceResult executeConfirmDevice(ConfirmDeviceRequest confirmDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(confirmDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1499,7 +1958,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ConfirmDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmDeviceRequest));
+                request = new ConfirmDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1560,9 +2019,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmForgotPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmForgotPassword"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ConfirmForgotPasswordResult confirmForgotPassword(ConfirmForgotPasswordRequest confirmForgotPasswordRequest) {
+    public ConfirmForgotPasswordResult confirmForgotPassword(ConfirmForgotPasswordRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfirmForgotPassword(request);
+    }
+
+    @SdkInternalApi
+    final ConfirmForgotPasswordResult executeConfirmForgotPassword(ConfirmForgotPasswordRequest confirmForgotPasswordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(confirmForgotPasswordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1572,7 +2040,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ConfirmForgotPasswordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmForgotPasswordRequest));
+                request = new ConfirmForgotPasswordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmForgotPasswordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1634,9 +2102,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ConfirmSignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmSignUp" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ConfirmSignUpResult confirmSignUp(ConfirmSignUpRequest confirmSignUpRequest) {
+    public ConfirmSignUpResult confirmSignUp(ConfirmSignUpRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfirmSignUp(request);
+    }
+
+    @SdkInternalApi
+    final ConfirmSignUpResult executeConfirmSignUp(ConfirmSignUpRequest confirmSignUpRequest) {
+
         ExecutionContext executionContext = createExecutionContext(confirmSignUpRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1646,7 +2123,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ConfirmSignUpRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmSignUpRequest));
+                request = new ConfirmSignUpRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(confirmSignUpRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1656,6 +2133,71 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
             HttpResponseHandler<AmazonWebServiceResponse<ConfirmSignUpResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ConfirmSignUpResultJsonUnmarshaller());
             response = anonymousInvoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new group in the specified user pool.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param createGroupRequest
+     * @return Result of the CreateGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws GroupExistsException
+     *         This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws LimitExceededException
+     *         This exception is thrown when a user exceeds the limit for a requested AWS resource.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.CreateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateGroupResult createGroup(CreateGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateGroupResult executeCreateGroup(CreateGroupRequest createGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateGroupRequest> request = null;
+        Response<CreateGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
 
@@ -1688,9 +2230,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserImportJob"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateUserImportJobResult createUserImportJob(CreateUserImportJobRequest createUserImportJobRequest) {
+    public CreateUserImportJobResult createUserImportJob(CreateUserImportJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUserImportJob(request);
+    }
+
+    @SdkInternalApi
+    final CreateUserImportJobResult executeCreateUserImportJob(CreateUserImportJobRequest createUserImportJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createUserImportJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1700,7 +2251,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateUserImportJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserImportJobRequest));
+                request = new CreateUserImportJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserImportJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1745,12 +2296,23 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *         400.
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateUserPoolResult createUserPool(CreateUserPoolRequest createUserPoolRequest) {
+    public CreateUserPoolResult createUserPool(CreateUserPoolRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUserPool(request);
+    }
+
+    @SdkInternalApi
+    final CreateUserPoolResult executeCreateUserPool(CreateUserPoolRequest createUserPoolRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createUserPoolRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1760,7 +2322,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateUserPoolRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserPoolRequest));
+                request = new CreateUserPoolRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserPoolRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1800,9 +2362,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.CreateUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateUserPoolClientResult createUserPoolClient(CreateUserPoolClientRequest createUserPoolClientRequest) {
+    public CreateUserPoolClientResult createUserPoolClient(CreateUserPoolClientRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUserPoolClient(request);
+    }
+
+    @SdkInternalApi
+    final CreateUserPoolClientResult executeCreateUserPoolClient(CreateUserPoolClientRequest createUserPoolClientRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createUserPoolClientRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1812,7 +2383,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateUserPoolClientRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserPoolClientRequest));
+                request = new CreateUserPoolClientRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserPoolClientRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1821,6 +2392,67 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateUserPoolClientResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateUserPoolClientResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a group. Currently only groups with no members can be deleted.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param deleteGroupRequest
+     * @return Result of the DeleteGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.DeleteGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteGroupResult deleteGroup(DeleteGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteGroupResult executeDeleteGroup(DeleteGroupRequest deleteGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteGroupRequest> request = null;
+        Response<DeleteGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1856,9 +2488,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteUserResult deleteUser(DeleteUserRequest deleteUserRequest) {
+    public DeleteUserResult deleteUser(DeleteUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUser(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserResult executeDeleteUser(DeleteUserRequest deleteUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1868,7 +2509,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserRequest));
+                request = new DeleteUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1912,9 +2553,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteUserAttributesResult deleteUserAttributes(DeleteUserAttributesRequest deleteUserAttributesRequest) {
+    public DeleteUserAttributesResult deleteUserAttributes(DeleteUserAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUserAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserAttributesResult executeDeleteUserAttributes(DeleteUserAttributesRequest deleteUserAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1924,7 +2574,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteUserAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserAttributesRequest));
+                request = new DeleteUserAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1965,9 +2615,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteUserPoolResult deleteUserPool(DeleteUserPoolRequest deleteUserPoolRequest) {
+    public DeleteUserPoolResult deleteUserPool(DeleteUserPoolRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUserPool(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserPoolResult executeDeleteUserPool(DeleteUserPoolRequest deleteUserPoolRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserPoolRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1977,7 +2636,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteUserPoolRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserPoolRequest));
+                request = new DeleteUserPoolRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserPoolRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2015,9 +2674,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DeleteUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteUserPoolClientResult deleteUserPoolClient(DeleteUserPoolClientRequest deleteUserPoolClientRequest) {
+    public DeleteUserPoolClientResult deleteUserPoolClient(DeleteUserPoolClientRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteUserPoolClient(request);
+    }
+
+    @SdkInternalApi
+    final DeleteUserPoolClientResult executeDeleteUserPoolClient(DeleteUserPoolClientRequest deleteUserPoolClientRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteUserPoolClientRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2027,7 +2695,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteUserPoolClientRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserPoolClientRequest));
+                request = new DeleteUserPoolClientRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserPoolClientRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2065,9 +2733,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserImportJob"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeUserImportJobResult describeUserImportJob(DescribeUserImportJobRequest describeUserImportJobRequest) {
+    public DescribeUserImportJobResult describeUserImportJob(DescribeUserImportJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeUserImportJob(request);
+    }
+
+    @SdkInternalApi
+    final DescribeUserImportJobResult executeDescribeUserImportJob(DescribeUserImportJobRequest describeUserImportJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeUserImportJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2077,7 +2754,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeUserImportJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserImportJobRequest));
+                request = new DescribeUserImportJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserImportJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2113,12 +2790,23 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *         This exception gets thrown when the user has made too many requests for a given operation.
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPool" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DescribeUserPoolResult describeUserPool(DescribeUserPoolRequest describeUserPoolRequest) {
+    public DescribeUserPoolResult describeUserPool(DescribeUserPoolRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeUserPool(request);
+    }
+
+    @SdkInternalApi
+    final DescribeUserPoolResult executeDescribeUserPool(DescribeUserPoolRequest describeUserPoolRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeUserPoolRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2128,7 +2816,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeUserPoolRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserPoolRequest));
+                request = new DescribeUserPoolRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserPoolRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2166,9 +2854,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.DescribeUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeUserPoolClientResult describeUserPoolClient(DescribeUserPoolClientRequest describeUserPoolClientRequest) {
+    public DescribeUserPoolClientResult describeUserPoolClient(DescribeUserPoolClientRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeUserPoolClient(request);
+    }
+
+    @SdkInternalApi
+    final DescribeUserPoolClientResult executeDescribeUserPoolClient(DescribeUserPoolClientRequest describeUserPoolClientRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeUserPoolClientRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2178,7 +2875,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeUserPoolClientRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserPoolClientRequest));
+                request = new DescribeUserPoolClientRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserPoolClientRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2225,9 +2922,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ForgetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ForgetDeviceResult forgetDevice(ForgetDeviceRequest forgetDeviceRequest) {
+    public ForgetDeviceResult forgetDevice(ForgetDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeForgetDevice(request);
+    }
+
+    @SdkInternalApi
+    final ForgetDeviceResult executeForgetDevice(ForgetDeviceRequest forgetDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(forgetDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2237,7 +2943,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ForgetDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(forgetDeviceRequest));
+                request = new ForgetDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(forgetDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2301,9 +3007,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ForgotPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgotPassword" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ForgotPasswordResult forgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
+    public ForgotPasswordResult forgotPassword(ForgotPasswordRequest request) {
+        request = beforeClientExecution(request);
+        return executeForgotPassword(request);
+    }
+
+    @SdkInternalApi
+    final ForgotPasswordResult executeForgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(forgotPasswordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2313,7 +3028,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ForgotPasswordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(forgotPasswordRequest));
+                request = new ForgotPasswordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(forgotPasswordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2351,9 +3066,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetCSVHeader
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetCSVHeader" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetCSVHeaderResult getCSVHeader(GetCSVHeaderRequest getCSVHeaderRequest) {
+    public GetCSVHeaderResult getCSVHeader(GetCSVHeaderRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCSVHeader(request);
+    }
+
+    @SdkInternalApi
+    final GetCSVHeaderResult executeGetCSVHeader(GetCSVHeaderRequest getCSVHeaderRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getCSVHeaderRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2363,7 +3087,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetCSVHeaderRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCSVHeaderRequest));
+                request = new GetCSVHeaderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCSVHeaderRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2409,9 +3133,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetDevice
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetDevice" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetDeviceResult getDevice(GetDeviceRequest getDeviceRequest) {
+    public GetDeviceResult getDevice(GetDeviceRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetDevice(request);
+    }
+
+    @SdkInternalApi
+    final GetDeviceResult executeGetDevice(GetDeviceRequest getDeviceRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getDeviceRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2421,7 +3154,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetDeviceRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDeviceRequest));
+                request = new GetDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2430,6 +3163,67 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<GetDeviceResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetDeviceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets a group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param getGroupRequest
+     * @return Result of the GetGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.GetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetGroupResult getGroup(GetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetGroup(request);
+    }
+
+    @SdkInternalApi
+    final GetGroupResult executeGetGroup(GetGroupRequest getGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetGroupRequest> request = null;
+        Response<GetGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetGroupResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2465,9 +3259,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetUser
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUser" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetUserResult getUser(GetUserRequest getUserRequest) {
+    public GetUserResult getUser(GetUserRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetUser(request);
+    }
+
+    @SdkInternalApi
+    final GetUserResult executeGetUser(GetUserRequest getUserRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getUserRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2477,7 +3280,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetUserRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getUserRequest));
+                request = new GetUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2543,10 +3346,19 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GetUserAttributeVerificationCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUserAttributeVerificationCode"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetUserAttributeVerificationCodeResult getUserAttributeVerificationCode(
+    public GetUserAttributeVerificationCodeResult getUserAttributeVerificationCode(GetUserAttributeVerificationCodeRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetUserAttributeVerificationCode(request);
+    }
+
+    @SdkInternalApi
+    final GetUserAttributeVerificationCodeResult executeGetUserAttributeVerificationCode(
             GetUserAttributeVerificationCodeRequest getUserAttributeVerificationCodeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getUserAttributeVerificationCodeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2556,7 +3368,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetUserAttributeVerificationCodeRequestMarshaller(protocolFactory).marshall(super
+                request = new GetUserAttributeVerificationCodeRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(getUserAttributeVerificationCodeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -2600,9 +3412,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.GlobalSignOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GlobalSignOut" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GlobalSignOutResult globalSignOut(GlobalSignOutRequest globalSignOutRequest) {
+    public GlobalSignOutResult globalSignOut(GlobalSignOutRequest request) {
+        request = beforeClientExecution(request);
+        return executeGlobalSignOut(request);
+    }
+
+    @SdkInternalApi
+    final GlobalSignOutResult executeGlobalSignOut(GlobalSignOutRequest globalSignOutRequest) {
+
         ExecutionContext executionContext = createExecutionContext(globalSignOutRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2612,7 +3433,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GlobalSignOutRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(globalSignOutRequest));
+                request = new GlobalSignOutRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(globalSignOutRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2666,9 +3487,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.InitiateAuth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public InitiateAuthResult initiateAuth(InitiateAuthRequest initiateAuthRequest) {
+    public InitiateAuthResult initiateAuth(InitiateAuthRequest request) {
+        request = beforeClientExecution(request);
+        return executeInitiateAuth(request);
+    }
+
+    @SdkInternalApi
+    final InitiateAuthResult executeInitiateAuth(InitiateAuthRequest initiateAuthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(initiateAuthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2678,7 +3508,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new InitiateAuthRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(initiateAuthRequest));
+                request = new InitiateAuthRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(initiateAuthRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2724,9 +3554,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListDevices
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListDevices" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListDevicesResult listDevices(ListDevicesRequest listDevicesRequest) {
+    public ListDevicesResult listDevices(ListDevicesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDevices(request);
+    }
+
+    @SdkInternalApi
+    final ListDevicesResult executeListDevices(ListDevicesRequest listDevicesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listDevicesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2736,7 +3575,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListDevicesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDevicesRequest));
+                request = new ListDevicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDevicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2745,6 +3584,67 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<ListDevicesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListDevicesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the groups associated with a user pool.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param listGroupsRequest
+     * @return Result of the ListGroups operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.ListGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListGroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ListGroupsResult listGroups(ListGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListGroups(request);
+    }
+
+    @SdkInternalApi
+    final ListGroupsResult executeListGroups(ListGroupsRequest listGroupsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listGroupsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListGroupsRequest> request = null;
+        Response<ListGroupsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListGroupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listGroupsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListGroupsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListGroupsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2774,9 +3674,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserImportJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserImportJobs" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListUserImportJobsResult listUserImportJobs(ListUserImportJobsRequest listUserImportJobsRequest) {
+    public ListUserImportJobsResult listUserImportJobs(ListUserImportJobsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUserImportJobs(request);
+    }
+
+    @SdkInternalApi
+    final ListUserImportJobsResult executeListUserImportJobs(ListUserImportJobsRequest listUserImportJobsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUserImportJobsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2786,7 +3695,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListUserImportJobsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserImportJobsRequest));
+                request = new ListUserImportJobsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserImportJobsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2824,9 +3733,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserPoolClients
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPoolClients"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListUserPoolClientsResult listUserPoolClients(ListUserPoolClientsRequest listUserPoolClientsRequest) {
+    public ListUserPoolClientsResult listUserPoolClients(ListUserPoolClientsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUserPoolClients(request);
+    }
+
+    @SdkInternalApi
+    final ListUserPoolClientsResult executeListUserPoolClients(ListUserPoolClientsRequest listUserPoolClientsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUserPoolClientsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2836,7 +3754,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListUserPoolClientsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserPoolClientsRequest));
+                request = new ListUserPoolClientsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserPoolClientsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2872,9 +3790,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUserPools
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPools" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListUserPoolsResult listUserPools(ListUserPoolsRequest listUserPoolsRequest) {
+    public ListUserPoolsResult listUserPools(ListUserPoolsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUserPools(request);
+    }
+
+    @SdkInternalApi
+    final ListUserPoolsResult executeListUserPools(ListUserPoolsRequest listUserPoolsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUserPoolsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2884,7 +3811,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListUserPoolsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserPoolsRequest));
+                request = new ListUserPoolsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUserPoolsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2922,9 +3849,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ListUsers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsers" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListUsersResult listUsers(ListUsersRequest listUsersRequest) {
+    public ListUsersResult listUsers(ListUsersRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUsers(request);
+    }
+
+    @SdkInternalApi
+    final ListUsersResult executeListUsers(ListUsersRequest listUsersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listUsersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -2934,7 +3870,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListUsersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUsersRequest));
+                request = new ListUsersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUsersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -2943,6 +3879,67 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<ListUsersResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListUsersResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the users in the specified group.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param listUsersInGroupRequest
+     * @return Result of the ListUsersInGroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.ListUsersInGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsersInGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListUsersInGroupResult listUsersInGroup(ListUsersInGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeListUsersInGroup(request);
+    }
+
+    @SdkInternalApi
+    final ListUsersInGroupResult executeListUsersInGroup(ListUsersInGroupRequest listUsersInGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listUsersInGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListUsersInGroupRequest> request = null;
+        Response<ListUsersInGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListUsersInGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUsersInGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListUsersInGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListUsersInGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2996,9 +3993,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.ResendConfirmationCode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ResendConfirmationCode"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ResendConfirmationCodeResult resendConfirmationCode(ResendConfirmationCodeRequest resendConfirmationCodeRequest) {
+    public ResendConfirmationCodeResult resendConfirmationCode(ResendConfirmationCodeRequest request) {
+        request = beforeClientExecution(request);
+        return executeResendConfirmationCode(request);
+    }
+
+    @SdkInternalApi
+    final ResendConfirmationCodeResult executeResendConfirmationCode(ResendConfirmationCodeRequest resendConfirmationCodeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(resendConfirmationCodeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3008,7 +4014,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ResendConfirmationCodeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(resendConfirmationCodeRequest));
+                request = new ResendConfirmationCodeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resendConfirmationCodeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3082,9 +4088,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.RespondToAuthChallenge
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallenge"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RespondToAuthChallengeResult respondToAuthChallenge(RespondToAuthChallengeRequest respondToAuthChallengeRequest) {
+    public RespondToAuthChallengeResult respondToAuthChallenge(RespondToAuthChallengeRequest request) {
+        request = beforeClientExecution(request);
+        return executeRespondToAuthChallenge(request);
+    }
+
+    @SdkInternalApi
+    final RespondToAuthChallengeResult executeRespondToAuthChallenge(RespondToAuthChallengeRequest respondToAuthChallengeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(respondToAuthChallengeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3094,7 +4109,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RespondToAuthChallengeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(respondToAuthChallengeRequest));
+                request = new RespondToAuthChallengeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(respondToAuthChallengeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3138,9 +4153,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.SetUserSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUserSettings" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetUserSettingsResult setUserSettings(SetUserSettingsRequest setUserSettingsRequest) {
+    public SetUserSettingsResult setUserSettings(SetUserSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetUserSettings(request);
+    }
+
+    @SdkInternalApi
+    final SetUserSettingsResult executeSetUserSettings(SetUserSettingsRequest setUserSettingsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setUserSettingsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3150,7 +4174,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SetUserSettingsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(setUserSettingsRequest));
+                request = new SetUserSettingsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(setUserSettingsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3212,9 +4236,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws CodeDeliveryFailureException
      *         This exception is thrown when a verification code fails to deliver successfully.
      * @sample AWSCognitoIdentityProvider.SignUp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SignUp" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SignUpResult signUp(SignUpRequest signUpRequest) {
+    public SignUpResult signUp(SignUpRequest request) {
+        request = beforeClientExecution(request);
+        return executeSignUp(request);
+    }
+
+    @SdkInternalApi
+    final SignUpResult executeSignUp(SignUpRequest signUpRequest) {
+
         ExecutionContext executionContext = createExecutionContext(signUpRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3224,7 +4257,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SignUpRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(signUpRequest));
+                request = new SignUpRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(signUpRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3264,9 +4297,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.StartUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StartUserImportJob" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public StartUserImportJobResult startUserImportJob(StartUserImportJobRequest startUserImportJobRequest) {
+    public StartUserImportJobResult startUserImportJob(StartUserImportJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartUserImportJob(request);
+    }
+
+    @SdkInternalApi
+    final StartUserImportJobResult executeStartUserImportJob(StartUserImportJobRequest startUserImportJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(startUserImportJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3276,7 +4318,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StartUserImportJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(startUserImportJobRequest));
+                request = new StartUserImportJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startUserImportJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3316,9 +4358,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws NotAuthorizedException
      *         This exception gets thrown when a user is not authorized.
      * @sample AWSCognitoIdentityProvider.StopUserImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StopUserImportJob" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public StopUserImportJobResult stopUserImportJob(StopUserImportJobRequest stopUserImportJobRequest) {
+    public StopUserImportJobResult stopUserImportJob(StopUserImportJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopUserImportJob(request);
+    }
+
+    @SdkInternalApi
+    final StopUserImportJobResult executeStopUserImportJob(StopUserImportJobRequest stopUserImportJobRequest) {
+
         ExecutionContext executionContext = createExecutionContext(stopUserImportJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3328,7 +4379,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new StopUserImportJobRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopUserImportJobRequest));
+                request = new StopUserImportJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopUserImportJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3374,9 +4425,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateDeviceStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateDeviceStatus" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public UpdateDeviceStatusResult updateDeviceStatus(UpdateDeviceStatusRequest updateDeviceStatusRequest) {
+    public UpdateDeviceStatusResult updateDeviceStatus(UpdateDeviceStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateDeviceStatus(request);
+    }
+
+    @SdkInternalApi
+    final UpdateDeviceStatusResult executeUpdateDeviceStatus(UpdateDeviceStatusRequest updateDeviceStatusRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateDeviceStatusRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3386,7 +4446,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateDeviceStatusRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDeviceStatusRequest));
+                request = new UpdateDeviceStatusRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDeviceStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3395,6 +4455,67 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
             HttpResponseHandler<AmazonWebServiceResponse<UpdateDeviceStatusResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateDeviceStatusResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the specified group with the specified attributes.
+     * </p>
+     * <p>
+     * Requires developer credentials.
+     * </p>
+     * 
+     * @param updateGroupRequest
+     * @return Result of the UpdateGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws TooManyRequestsException
+     *         This exception gets thrown when the user has made too many requests for a given operation.
+     * @throws NotAuthorizedException
+     *         This exception gets thrown when a user is not authorized.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.UpdateGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateGroupResult updateGroup(UpdateGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateGroup(request);
+    }
+
+    @SdkInternalApi
+    final UpdateGroupResult executeUpdateGroup(UpdateGroupRequest updateGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateGroupRequest> request = null;
+        Response<UpdateGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3458,9 +4579,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateUserAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateUserAttributesResult updateUserAttributes(UpdateUserAttributesRequest updateUserAttributesRequest) {
+    public UpdateUserAttributesResult updateUserAttributes(UpdateUserAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateUserAttributes(request);
+    }
+
+    @SdkInternalApi
+    final UpdateUserAttributesResult executeUpdateUserAttributes(UpdateUserAttributesRequest updateUserAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateUserAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3470,7 +4600,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateUserAttributesRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserAttributesRequest));
+                request = new UpdateUserAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3519,13 +4649,24 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *         This exception is thrown when the trust relationship is invalid for the role provided for SMS
      *         configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID
      *         provided in the role does not match what is provided in the SMS configuration for the user pool.
+     * @throws UserPoolTaggingException
+     *         This exception gets thrown when a user pool tag cannot be set or updated.
      * @throws InvalidEmailRoleAccessPolicyException
      *         This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code:
      *         400.
      * @sample AWSCognitoIdentityProvider.UpdateUserPool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPool" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UpdateUserPoolResult updateUserPool(UpdateUserPoolRequest updateUserPoolRequest) {
+    public UpdateUserPoolResult updateUserPool(UpdateUserPoolRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateUserPool(request);
+    }
+
+    @SdkInternalApi
+    final UpdateUserPoolResult executeUpdateUserPool(UpdateUserPoolRequest updateUserPoolRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateUserPoolRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3535,7 +4676,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateUserPoolRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserPoolRequest));
+                request = new UpdateUserPoolRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserPoolRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3573,9 +4714,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.UpdateUserPoolClient
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPoolClient"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public UpdateUserPoolClientResult updateUserPoolClient(UpdateUserPoolClientRequest updateUserPoolClientRequest) {
+    public UpdateUserPoolClientResult updateUserPoolClient(UpdateUserPoolClientRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateUserPoolClient(request);
+    }
+
+    @SdkInternalApi
+    final UpdateUserPoolClientResult executeUpdateUserPoolClient(UpdateUserPoolClientRequest updateUserPoolClientRequest) {
+
         ExecutionContext executionContext = createExecutionContext(updateUserPoolClientRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3585,7 +4735,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new UpdateUserPoolClientRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserPoolClientRequest));
+                request = new UpdateUserPoolClientRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateUserPoolClientRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -3635,9 +4785,18 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
      * @sample AWSCognitoIdentityProvider.VerifyUserAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/VerifyUserAttribute"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public VerifyUserAttributeResult verifyUserAttribute(VerifyUserAttributeRequest verifyUserAttributeRequest) {
+    public VerifyUserAttributeResult verifyUserAttribute(VerifyUserAttributeRequest request) {
+        request = beforeClientExecution(request);
+        return executeVerifyUserAttribute(request);
+    }
+
+    @SdkInternalApi
+    final VerifyUserAttributeResult executeVerifyUserAttribute(VerifyUserAttributeRequest verifyUserAttributeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(verifyUserAttributeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -3647,7 +4806,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new VerifyUserAttributeRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(verifyUserAttributeRequest));
+                request = new VerifyUserAttributeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(verifyUserAttributeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {

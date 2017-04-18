@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Make a request to simulate the execution of an <a>Authorizer</a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -434,19 +437,19 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getAuthorizerId() != null)
-            sb.append("AuthorizerId: " + getAuthorizerId() + ",");
+            sb.append("AuthorizerId: ").append(getAuthorizerId()).append(",");
         if (getHeaders() != null)
-            sb.append("Headers: " + getHeaders() + ",");
+            sb.append("Headers: ").append(getHeaders()).append(",");
         if (getPathWithQueryString() != null)
-            sb.append("PathWithQueryString: " + getPathWithQueryString() + ",");
+            sb.append("PathWithQueryString: ").append(getPathWithQueryString()).append(",");
         if (getBody() != null)
-            sb.append("Body: " + getBody() + ",");
+            sb.append("Body: ").append(getBody()).append(",");
         if (getStageVariables() != null)
-            sb.append("StageVariables: " + getStageVariables() + ",");
+            sb.append("StageVariables: ").append(getStageVariables()).append(",");
         if (getAdditionalContext() != null)
-            sb.append("AdditionalContext: " + getAdditionalContext());
+            sb.append("AdditionalContext: ").append(getAdditionalContext());
         sb.append("}");
         return sb.toString();
     }
@@ -511,4 +514,5 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
     public TestInvokeAuthorizerRequest clone() {
         return (TestInvokeAuthorizerRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Custom policy for requesting termination protection or termination of specific instances when shrinking an instance
  * group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/InstanceResizePolicy"
+ *      target="_top">AWS API Documentation</a>
  */
-public class InstanceResizePolicy implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstanceResizePolicy implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -239,11 +246,11 @@ public class InstanceResizePolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstancesToTerminate() != null)
-            sb.append("InstancesToTerminate: " + getInstancesToTerminate() + ",");
+            sb.append("InstancesToTerminate: ").append(getInstancesToTerminate()).append(",");
         if (getInstancesToProtect() != null)
-            sb.append("InstancesToProtect: " + getInstancesToProtect() + ",");
+            sb.append("InstancesToProtect: ").append(getInstancesToProtect()).append(",");
         if (getInstanceTerminationTimeout() != null)
-            sb.append("InstanceTerminationTimeout: " + getInstanceTerminationTimeout());
+            sb.append("InstanceTerminationTimeout: ").append(getInstanceTerminationTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -291,5 +298,11 @@ public class InstanceResizePolicy implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elasticmapreduce.model.transform.InstanceResizePolicyMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

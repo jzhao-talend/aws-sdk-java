@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,78 +12,45 @@
  */
 package com.amazonaws.services.workspaces.model.transform;
 
-import java.io.ByteArrayInputStream;
-import java.util.Collections;
-import java.util.Map;
 import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.workspaces.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * StartWorkspacesRequest Marshaller
+ * StartWorkspacesRequestMarshaller
  */
-public class StartWorkspacesRequestMarshaller implements Marshaller<Request<StartWorkspacesRequest>, StartWorkspacesRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class StartWorkspacesRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<List> STARTWORKSPACEREQUESTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StartWorkspaceRequests").build();
 
-    public StartWorkspacesRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final StartWorkspacesRequestMarshaller instance = new StartWorkspacesRequestMarshaller();
+
+    public static StartWorkspacesRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<StartWorkspacesRequest> marshall(StartWorkspacesRequest startWorkspacesRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(StartWorkspacesRequest startWorkspacesRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (startWorkspacesRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<StartWorkspacesRequest> request = new DefaultRequest<StartWorkspacesRequest>(startWorkspacesRequest, "AmazonWorkspaces");
-        request.addHeader("X-Amz-Target", "WorkspacesService.StartWorkspaces");
-
-        request.setHttpMethod(HttpMethodName.POST);
-
-        request.setResourcePath("");
-
         try {
-            final StructuredJsonGenerator jsonGenerator = protocolFactory.createGenerator();
-
-            jsonGenerator.writeStartObject();
-
-            com.amazonaws.internal.SdkInternalList<StartRequest> startWorkspaceRequestsList = (com.amazonaws.internal.SdkInternalList<StartRequest>) startWorkspacesRequest
-                    .getStartWorkspaceRequests();
-            if (!startWorkspaceRequestsList.isEmpty() || !startWorkspaceRequestsList.isAutoConstruct()) {
-                jsonGenerator.writeFieldName("StartWorkspaceRequests");
-                jsonGenerator.writeStartArray();
-                for (StartRequest startWorkspaceRequestsListValue : startWorkspaceRequestsList) {
-                    if (startWorkspaceRequestsListValue != null) {
-
-                        StartRequestJsonMarshaller.getInstance().marshall(startWorkspaceRequestsListValue, jsonGenerator);
-                    }
-                }
-                jsonGenerator.writeEndArray();
-            }
-
-            jsonGenerator.writeEndObject();
-
-            byte[] content = jsonGenerator.getBytes();
-            request.setContent(new ByteArrayInputStream(content));
-            request.addHeader("Content-Length", Integer.toString(content.length));
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        } catch (Throwable t) {
-            throw new SdkClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
+            protocolMarshaller.marshall(startWorkspacesRequest.getStartWorkspaceRequests(), STARTWORKSPACEREQUESTS_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

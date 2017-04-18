@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type that contains information about the traffic policy that you want to create.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -30,9 +36,9 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
     private String name;
     /**
      * <p>
-     * The definition of this traffic policy in JSON format. For more information, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     * >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     * The definition of this traffic policy in JSON format. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     * >Traffic Policy Document Format</a>.
      * </p>
      */
     private String document;
@@ -85,15 +91,15 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The definition of this traffic policy in JSON format. For more information, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     * >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     * The definition of this traffic policy in JSON format. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     * >Traffic Policy Document Format</a>.
      * </p>
      * 
      * @param document
      *        The definition of this traffic policy in JSON format. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     *        >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     *        "http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     *        >Traffic Policy Document Format</a>.
      */
 
     public void setDocument(String document) {
@@ -102,14 +108,14 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The definition of this traffic policy in JSON format. For more information, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     * >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     * The definition of this traffic policy in JSON format. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     * >Traffic Policy Document Format</a>.
      * </p>
      * 
-     * @return The definition of this traffic policy in JSON format. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     *         >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     * @return The definition of this traffic policy in JSON format. For more information, see <a
+     *         href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     *         >Traffic Policy Document Format</a>.
      */
 
     public String getDocument() {
@@ -118,15 +124,15 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The definition of this traffic policy in JSON format. For more information, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     * >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     * The definition of this traffic policy in JSON format. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     * >Traffic Policy Document Format</a>.
      * </p>
      * 
      * @param document
      *        The definition of this traffic policy in JSON format. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/api-policies-traffic-policy-document-format.html"
-     *        >Traffic Policy Document Format</a> in the <i>Amazon Route 53 API Reference</i>.
+     *        "http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
+     *        >Traffic Policy Document Format</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,11 +193,11 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDocument() != null)
-            sb.append("Document: " + getDocument() + ",");
+            sb.append("Document: ").append(getDocument()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment());
+            sb.append("Comment: ").append(getComment());
         sb.append("}");
         return sb.toString();
     }
@@ -236,4 +242,5 @@ public class CreateTrafficPolicyRequest extends com.amazonaws.AmazonWebServiceRe
     public CreateTrafficPolicyRequest clone() {
         return (CreateTrafficPolicyRequest) super.clone();
     }
+
 }

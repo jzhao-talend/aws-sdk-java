@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -28,7 +30,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-monitor-view-status.html">Viewing Health
  * Check Status and the Reason for Health Check Failures</a> in the <i>Amazon Route 53 Developer Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckLastFailureReason"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetHealthCheckLastFailureReasonRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -98,7 +104,7 @@ public class GetHealthCheckLastFailureReasonRequest extends com.amazonaws.Amazon
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHealthCheckId() != null)
-            sb.append("HealthCheckId: " + getHealthCheckId());
+            sb.append("HealthCheckId: ").append(getHealthCheckId());
         sb.append("}");
         return sb.toString();
     }
@@ -133,4 +139,5 @@ public class GetHealthCheckLastFailureReasonRequest extends com.amazonaws.Amazon
     public GetHealthCheckLastFailureReasonRequest clone() {
         return (GetHealthCheckLastFailureReasonRequest) super.clone();
     }
+
 }

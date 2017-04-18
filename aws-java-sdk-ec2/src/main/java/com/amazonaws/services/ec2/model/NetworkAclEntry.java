@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an entry in a network ACL.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/NetworkAclEntry" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NetworkAclEntry implements Serializable, Cloneable {
 
     /**
@@ -47,10 +52,16 @@ public class NetworkAclEntry implements Serializable, Cloneable {
     private Boolean egress;
     /**
      * <p>
-     * The network range to allow or deny, in CIDR notation.
+     * The IPv4 network range to allow or deny, in CIDR notation.
      * </p>
      */
     private String cidrBlock;
+    /**
+     * <p>
+     * The IPv6 network range to allow or deny, in CIDR notation.
+     * </p>
+     */
+    private String ipv6CidrBlock;
     /**
      * <p>
      * ICMP protocol: The ICMP type and code.
@@ -271,11 +282,11 @@ public class NetworkAclEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The network range to allow or deny, in CIDR notation.
+     * The IPv4 network range to allow or deny, in CIDR notation.
      * </p>
      * 
      * @param cidrBlock
-     *        The network range to allow or deny, in CIDR notation.
+     *        The IPv4 network range to allow or deny, in CIDR notation.
      */
 
     public void setCidrBlock(String cidrBlock) {
@@ -284,10 +295,10 @@ public class NetworkAclEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The network range to allow or deny, in CIDR notation.
+     * The IPv4 network range to allow or deny, in CIDR notation.
      * </p>
      * 
-     * @return The network range to allow or deny, in CIDR notation.
+     * @return The IPv4 network range to allow or deny, in CIDR notation.
      */
 
     public String getCidrBlock() {
@@ -296,16 +307,56 @@ public class NetworkAclEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The network range to allow or deny, in CIDR notation.
+     * The IPv4 network range to allow or deny, in CIDR notation.
      * </p>
      * 
      * @param cidrBlock
-     *        The network range to allow or deny, in CIDR notation.
+     *        The IPv4 network range to allow or deny, in CIDR notation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public NetworkAclEntry withCidrBlock(String cidrBlock) {
         setCidrBlock(cidrBlock);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range to allow or deny, in CIDR notation.
+     * </p>
+     * 
+     * @param ipv6CidrBlock
+     *        The IPv6 network range to allow or deny, in CIDR notation.
+     */
+
+    public void setIpv6CidrBlock(String ipv6CidrBlock) {
+        this.ipv6CidrBlock = ipv6CidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range to allow or deny, in CIDR notation.
+     * </p>
+     * 
+     * @return The IPv6 network range to allow or deny, in CIDR notation.
+     */
+
+    public String getIpv6CidrBlock() {
+        return this.ipv6CidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range to allow or deny, in CIDR notation.
+     * </p>
+     * 
+     * @param ipv6CidrBlock
+     *        The IPv6 network range to allow or deny, in CIDR notation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NetworkAclEntry withIpv6CidrBlock(String ipv6CidrBlock) {
+        setIpv6CidrBlock(ipv6CidrBlock);
         return this;
     }
 
@@ -401,19 +452,21 @@ public class NetworkAclEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleNumber() != null)
-            sb.append("RuleNumber: " + getRuleNumber() + ",");
+            sb.append("RuleNumber: ").append(getRuleNumber()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getRuleAction() != null)
-            sb.append("RuleAction: " + getRuleAction() + ",");
+            sb.append("RuleAction: ").append(getRuleAction()).append(",");
         if (getEgress() != null)
-            sb.append("Egress: " + getEgress() + ",");
+            sb.append("Egress: ").append(getEgress()).append(",");
         if (getCidrBlock() != null)
-            sb.append("CidrBlock: " + getCidrBlock() + ",");
+            sb.append("CidrBlock: ").append(getCidrBlock()).append(",");
+        if (getIpv6CidrBlock() != null)
+            sb.append("Ipv6CidrBlock: ").append(getIpv6CidrBlock()).append(",");
         if (getIcmpTypeCode() != null)
-            sb.append("IcmpTypeCode: " + getIcmpTypeCode() + ",");
+            sb.append("IcmpTypeCode: ").append(getIcmpTypeCode()).append(",");
         if (getPortRange() != null)
-            sb.append("PortRange: " + getPortRange());
+            sb.append("PortRange: ").append(getPortRange());
         sb.append("}");
         return sb.toString();
     }
@@ -448,6 +501,10 @@ public class NetworkAclEntry implements Serializable, Cloneable {
             return false;
         if (other.getCidrBlock() != null && other.getCidrBlock().equals(this.getCidrBlock()) == false)
             return false;
+        if (other.getIpv6CidrBlock() == null ^ this.getIpv6CidrBlock() == null)
+            return false;
+        if (other.getIpv6CidrBlock() != null && other.getIpv6CidrBlock().equals(this.getIpv6CidrBlock()) == false)
+            return false;
         if (other.getIcmpTypeCode() == null ^ this.getIcmpTypeCode() == null)
             return false;
         if (other.getIcmpTypeCode() != null && other.getIcmpTypeCode().equals(this.getIcmpTypeCode()) == false)
@@ -469,6 +526,7 @@ public class NetworkAclEntry implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getRuleAction() == null) ? 0 : getRuleAction().hashCode());
         hashCode = prime * hashCode + ((getEgress() == null) ? 0 : getEgress().hashCode());
         hashCode = prime * hashCode + ((getCidrBlock() == null) ? 0 : getCidrBlock().hashCode());
+        hashCode = prime * hashCode + ((getIpv6CidrBlock() == null) ? 0 : getIpv6CidrBlock().hashCode());
         hashCode = prime * hashCode + ((getIcmpTypeCode() == null) ? 0 : getIcmpTypeCode().hashCode());
         hashCode = prime * hashCode + ((getPortRange() == null) ? 0 : getPortRange().hashCode());
         return hashCode;
@@ -482,4 +540,5 @@ public class NetworkAclEntry implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

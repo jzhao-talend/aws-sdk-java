@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,17 +13,23 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the resources available for a container instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Resource" target="_top">AWS API Documentation</a>
  */
-public class Resource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Resource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a user-defined
+     * The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined
      * resource.
      * </p>
      */
@@ -64,12 +70,12 @@ public class Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a user-defined
+     * The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined
      * resource.
      * </p>
      * 
      * @param name
-     *        The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a
+     *        The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a
      *        user-defined resource.
      */
 
@@ -79,11 +85,11 @@ public class Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a user-defined
+     * The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined
      * resource.
      * </p>
      * 
-     * @return The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a
+     * @return The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a
      *         user-defined resource.
      */
 
@@ -93,12 +99,12 @@ public class Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a user-defined
+     * The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined
      * resource.
      * </p>
      * 
      * @param name
-     *        The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>, <code>PORTS</code>, or a
+     *        The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a
      *        user-defined resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -371,17 +377,17 @@ public class Resource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getDoubleValue() != null)
-            sb.append("DoubleValue: " + getDoubleValue() + ",");
+            sb.append("DoubleValue: ").append(getDoubleValue()).append(",");
         if (getLongValue() != null)
-            sb.append("LongValue: " + getLongValue() + ",");
+            sb.append("LongValue: ").append(getLongValue()).append(",");
         if (getIntegerValue() != null)
-            sb.append("IntegerValue: " + getIntegerValue() + ",");
+            sb.append("IntegerValue: ").append(getIntegerValue()).append(",");
         if (getStringSetValue() != null)
-            sb.append("StringSetValue: " + getStringSetValue());
+            sb.append("StringSetValue: ").append(getStringSetValue());
         sb.append("}");
         return sb.toString();
     }
@@ -444,5 +450,11 @@ public class Resource implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.ResourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to send a bounce message to the sender of an email you received through Amazon SES.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBounce" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SendBounceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -404,17 +410,17 @@ public class SendBounceRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOriginalMessageId() != null)
-            sb.append("OriginalMessageId: " + getOriginalMessageId() + ",");
+            sb.append("OriginalMessageId: ").append(getOriginalMessageId()).append(",");
         if (getBounceSender() != null)
-            sb.append("BounceSender: " + getBounceSender() + ",");
+            sb.append("BounceSender: ").append(getBounceSender()).append(",");
         if (getExplanation() != null)
-            sb.append("Explanation: " + getExplanation() + ",");
+            sb.append("Explanation: ").append(getExplanation()).append(",");
         if (getMessageDsn() != null)
-            sb.append("MessageDsn: " + getMessageDsn() + ",");
+            sb.append("MessageDsn: ").append(getMessageDsn()).append(",");
         if (getBouncedRecipientInfoList() != null)
-            sb.append("BouncedRecipientInfoList: " + getBouncedRecipientInfoList() + ",");
+            sb.append("BouncedRecipientInfoList: ").append(getBouncedRecipientInfoList()).append(",");
         if (getBounceSenderArn() != null)
-            sb.append("BounceSenderArn: " + getBounceSenderArn());
+            sb.append("BounceSenderArn: ").append(getBounceSenderArn());
         sb.append("}");
         return sb.toString();
     }
@@ -474,4 +480,5 @@ public class SendBounceRequest extends com.amazonaws.AmazonWebServiceRequest imp
     public SendBounceRequest clone() {
         return (SendBounceRequest) super.clone();
     }
+
 }

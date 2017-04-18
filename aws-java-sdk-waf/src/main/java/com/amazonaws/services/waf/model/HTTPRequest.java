@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web
  * requests that were returned by <code>GetSampledRequests</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/HTTPRequest" target="_top">AWS API
+ *      Documentation</a>
  */
-public class HTTPRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class HTTPRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -463,17 +470,17 @@ public class HTTPRequest implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientIP() != null)
-            sb.append("ClientIP: " + getClientIP() + ",");
+            sb.append("ClientIP: ").append(getClientIP()).append(",");
         if (getCountry() != null)
-            sb.append("Country: " + getCountry() + ",");
+            sb.append("Country: ").append(getCountry()).append(",");
         if (getURI() != null)
-            sb.append("URI: " + getURI() + ",");
+            sb.append("URI: ").append(getURI()).append(",");
         if (getMethod() != null)
-            sb.append("Method: " + getMethod() + ",");
+            sb.append("Method: ").append(getMethod()).append(",");
         if (getHTTPVersion() != null)
-            sb.append("HTTPVersion: " + getHTTPVersion() + ",");
+            sb.append("HTTPVersion: ").append(getHTTPVersion()).append(",");
         if (getHeaders() != null)
-            sb.append("Headers: " + getHeaders());
+            sb.append("Headers: ").append(getHeaders());
         sb.append("}");
         return sb.toString();
     }
@@ -536,5 +543,11 @@ public class HTTPRequest implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.HTTPRequestMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreatePlayerSession" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreatePlayerSessionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the newly created player session record.
+     * Object that describes the newly created player session record.
      * </p>
      */
     private PlayerSession playerSession;
 
     /**
      * <p>
-     * Object containing the newly created player session record.
+     * Object that describes the newly created player session record.
      * </p>
      * 
      * @param playerSession
-     *        Object containing the newly created player session record.
+     *        Object that describes the newly created player session record.
      */
 
     public void setPlayerSession(PlayerSession playerSession) {
@@ -43,10 +48,10 @@ public class CreatePlayerSessionResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Object containing the newly created player session record.
+     * Object that describes the newly created player session record.
      * </p>
      * 
-     * @return Object containing the newly created player session record.
+     * @return Object that describes the newly created player session record.
      */
 
     public PlayerSession getPlayerSession() {
@@ -55,11 +60,11 @@ public class CreatePlayerSessionResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Object containing the newly created player session record.
+     * Object that describes the newly created player session record.
      * </p>
      * 
      * @param playerSession
-     *        Object containing the newly created player session record.
+     *        Object that describes the newly created player session record.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class CreatePlayerSessionResult extends com.amazonaws.AmazonWebServiceRes
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPlayerSession() != null)
-            sb.append("PlayerSession: " + getPlayerSession());
+            sb.append("PlayerSession: ").append(getPlayerSession());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class CreatePlayerSessionResult extends com.amazonaws.AmazonWebServiceRes
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

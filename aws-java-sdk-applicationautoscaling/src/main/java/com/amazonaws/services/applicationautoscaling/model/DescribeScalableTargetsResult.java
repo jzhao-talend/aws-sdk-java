@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,14 @@
 package com.amazonaws.services.applicationautoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalableTargets"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -27,9 +31,8 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
     private java.util.List<ScalableTarget> scalableTargets;
     /**
      * <p>
-     * The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When the
-     * results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value can be used
-     * to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+     * The token required to get the next set of results. This value is <code>null</code> if there are no more results
+     * to return.
      * </p>
      */
     private String nextToken;
@@ -106,15 +109,12 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When the
-     * results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value can be used
-     * to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+     * The token required to get the next set of results. This value is <code>null</code> if there are no more results
+     * to return.
      * </p>
      * 
      * @param nextToken
-     *        The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When
-     *        the results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value
-     *        can be used to retrieve the next page of results. This value is <code>null</code> when there are no more
+     *        The token required to get the next set of results. This value is <code>null</code> if there are no more
      *        results to return.
      */
 
@@ -124,15 +124,12 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When the
-     * results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value can be used
-     * to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+     * The token required to get the next set of results. This value is <code>null</code> if there are no more results
+     * to return.
      * </p>
      * 
-     * @return The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request.
-     *         When the results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this
-     *         value can be used to retrieve the next page of results. This value is <code>null</code> when there are no
-     *         more results to return.
+     * @return The token required to get the next set of results. This value is <code>null</code> if there are no more
+     *         results to return.
      */
 
     public String getNextToken() {
@@ -141,15 +138,12 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When the
-     * results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value can be used
-     * to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+     * The token required to get the next set of results. This value is <code>null</code> if there are no more results
+     * to return.
      * </p>
      * 
      * @param nextToken
-     *        The <code>NextToken</code> value to include in a future <code>DescribeScalableTargets</code> request. When
-     *        the results of a <code>DescribeScalableTargets</code> request exceed <code>MaxResults</code>, this value
-     *        can be used to retrieve the next page of results. This value is <code>null</code> when there are no more
+     *        The token required to get the next set of results. This value is <code>null</code> if there are no more
      *        results to return.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -171,9 +165,9 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getScalableTargets() != null)
-            sb.append("ScalableTargets: " + getScalableTargets() + ",");
+            sb.append("ScalableTargets: ").append(getScalableTargets()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -217,4 +211,5 @@ public class DescribeScalableTargetsResult extends com.amazonaws.AmazonWebServic
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

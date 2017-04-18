@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.elasticloadbalancing.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -23,7 +24,11 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html">Listeners for Your
  * Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/Listener" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Listener implements Serializable, Cloneable {
 
     /**
@@ -386,15 +391,15 @@ public class Listener implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getLoadBalancerPort() != null)
-            sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");
+            sb.append("LoadBalancerPort: ").append(getLoadBalancerPort()).append(",");
         if (getInstanceProtocol() != null)
-            sb.append("InstanceProtocol: " + getInstanceProtocol() + ",");
+            sb.append("InstanceProtocol: ").append(getInstanceProtocol()).append(",");
         if (getInstancePort() != null)
-            sb.append("InstancePort: " + getInstancePort() + ",");
+            sb.append("InstancePort: ").append(getInstancePort()).append(",");
         if (getSSLCertificateId() != null)
-            sb.append("SSLCertificateId: " + getSSLCertificateId());
+            sb.append("SSLCertificateId: ").append(getSSLCertificateId());
         sb.append("}");
         return sb.toString();
     }
@@ -453,4 +458,5 @@ public class Listener implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

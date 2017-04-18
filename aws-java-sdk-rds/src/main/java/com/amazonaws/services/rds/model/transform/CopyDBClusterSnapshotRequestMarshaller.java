@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,7 @@
  */
 package com.amazonaws.services.rds.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
@@ -23,12 +21,12 @@ import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.rds.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * CopyDBClusterSnapshotRequest Marshaller
  */
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CopyDBClusterSnapshotRequestMarshaller implements Marshaller<Request<CopyDBClusterSnapshotRequest>, CopyDBClusterSnapshotRequest> {
 
     public Request<CopyDBClusterSnapshotRequest> marshall(CopyDBClusterSnapshotRequest copyDBClusterSnapshotRequest) {
@@ -52,6 +50,18 @@ public class CopyDBClusterSnapshotRequestMarshaller implements Marshaller<Reques
                     StringUtils.fromString(copyDBClusterSnapshotRequest.getTargetDBClusterSnapshotIdentifier()));
         }
 
+        if (copyDBClusterSnapshotRequest.getKmsKeyId() != null) {
+            request.addParameter("KmsKeyId", StringUtils.fromString(copyDBClusterSnapshotRequest.getKmsKeyId()));
+        }
+
+        if (copyDBClusterSnapshotRequest.getPreSignedUrl() != null) {
+            request.addParameter("PreSignedUrl", StringUtils.fromString(copyDBClusterSnapshotRequest.getPreSignedUrl()));
+        }
+
+        if (copyDBClusterSnapshotRequest.getCopyTags() != null) {
+            request.addParameter("CopyTags", StringUtils.fromBoolean(copyDBClusterSnapshotRequest.getCopyTags()));
+        }
+
         com.amazonaws.internal.SdkInternalList<Tag> tagsList = (com.amazonaws.internal.SdkInternalList<Tag>) copyDBClusterSnapshotRequest.getTags();
         if (!tagsList.isEmpty() || !tagsList.isAutoConstruct()) {
             int tagsListIndex = 1;
@@ -67,6 +77,10 @@ public class CopyDBClusterSnapshotRequestMarshaller implements Marshaller<Reques
                 }
                 tagsListIndex++;
             }
+        }
+
+        if (copyDBClusterSnapshotRequest.getSourceRegion() != null) {
+            request.addParameter("SourceRegion", StringUtils.fromString(copyDBClusterSnapshotRequest.getSourceRegion()));
         }
 
         return request;

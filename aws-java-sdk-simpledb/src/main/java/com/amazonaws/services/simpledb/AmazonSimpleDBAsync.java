@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.simpledb;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.simpledb.model.*;
 
 /**
  * Interface for accessing Amazon SimpleDB asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.simpledb.AbstractAmazonSimpleDBAsync} instead.
+ * </p>
  * <p>
  * Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By
  * offloading the time and effort associated with building and operating a web-scale database, SimpleDB provides
@@ -34,6 +40,7 @@ import com.amazonaws.services.simpledb.model.*;
  * Visit <a href="http://aws.amazon.com/simpledb/">http://aws.amazon.com/simpledb/</a> for more information.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
 
     /**

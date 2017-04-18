@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to
  * store artifact for the pipeline in AWS CodePipeline.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AWSSessionCredentials" target="_top">AWS
+ *      API Documentation</a>
  */
-public class AWSSessionCredentials implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AWSSessionCredentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -174,11 +181,11 @@ public class AWSSessionCredentials implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessKeyId() != null)
-            sb.append("AccessKeyId: " + getAccessKeyId() + ",");
+            sb.append("AccessKeyId: ").append(getAccessKeyId()).append(",");
         if (getSecretAccessKey() != null)
-            sb.append("SecretAccessKey: " + getSecretAccessKey() + ",");
+            sb.append("SecretAccessKey: ").append(getSecretAccessKey()).append(",");
         if (getSessionToken() != null)
-            sb.append("SessionToken: " + getSessionToken());
+            sb.append("SessionToken: ").append(getSessionToken());
         sb.append("}");
         return sb.toString();
     }
@@ -226,5 +233,11 @@ public class AWSSessionCredentials implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.AWSSessionCredentialsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

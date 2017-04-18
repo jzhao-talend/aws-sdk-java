@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Initiates the creation of a conditional forwarder for your AWS Directory Service for Microsoft Active Directory.
  * Conditional forwarders are required in order to set up a trust relationship with another domain.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateConditionalForwarder" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateConditionalForwarderRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -210,11 +216,11 @@ public class CreateConditionalForwarderRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getRemoteDomainName() != null)
-            sb.append("RemoteDomainName: " + getRemoteDomainName() + ",");
+            sb.append("RemoteDomainName: ").append(getRemoteDomainName()).append(",");
         if (getDnsIpAddrs() != null)
-            sb.append("DnsIpAddrs: " + getDnsIpAddrs());
+            sb.append("DnsIpAddrs: ").append(getDnsIpAddrs());
         sb.append("}");
         return sb.toString();
     }
@@ -259,4 +265,5 @@ public class CreateConditionalForwarderRequest extends com.amazonaws.AmazonWebSe
     public CreateConditionalForwarderRequest clone() {
         return (CreateConditionalForwarderRequest) super.clone();
     }
+
 }

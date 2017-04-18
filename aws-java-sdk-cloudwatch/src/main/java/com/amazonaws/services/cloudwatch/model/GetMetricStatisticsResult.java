@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,34 +13,36 @@
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * The output for <a>GetMetricStatistics</a>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricStatistics" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A label describing the specified metric.
+     * A label for the specified metric.
      * </p>
      */
     private String label;
     /**
      * <p>
-     * The datapoints for the specified metric.
+     * The data points for the specified metric.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Datapoint> datapoints;
 
     /**
      * <p>
-     * A label describing the specified metric.
+     * A label for the specified metric.
      * </p>
      * 
      * @param label
-     *        A label describing the specified metric.
+     *        A label for the specified metric.
      */
 
     public void setLabel(String label) {
@@ -49,10 +51,10 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * A label describing the specified metric.
+     * A label for the specified metric.
      * </p>
      * 
-     * @return A label describing the specified metric.
+     * @return A label for the specified metric.
      */
 
     public String getLabel() {
@@ -61,11 +63,11 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * A label describing the specified metric.
+     * A label for the specified metric.
      * </p>
      * 
      * @param label
-     *        A label describing the specified metric.
+     *        A label for the specified metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -76,10 +78,10 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The datapoints for the specified metric.
+     * The data points for the specified metric.
      * </p>
      * 
-     * @return The datapoints for the specified metric.
+     * @return The data points for the specified metric.
      */
 
     public java.util.List<Datapoint> getDatapoints() {
@@ -91,11 +93,11 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The datapoints for the specified metric.
+     * The data points for the specified metric.
      * </p>
      * 
      * @param datapoints
-     *        The datapoints for the specified metric.
+     *        The data points for the specified metric.
      */
 
     public void setDatapoints(java.util.Collection<Datapoint> datapoints) {
@@ -109,7 +111,7 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The datapoints for the specified metric.
+     * The data points for the specified metric.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -118,7 +120,7 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
      * </p>
      * 
      * @param datapoints
-     *        The datapoints for the specified metric.
+     *        The data points for the specified metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -134,11 +136,11 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The datapoints for the specified metric.
+     * The data points for the specified metric.
      * </p>
      * 
      * @param datapoints
-     *        The datapoints for the specified metric.
+     *        The data points for the specified metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,9 +161,9 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLabel() != null)
-            sb.append("Label: " + getLabel() + ",");
+            sb.append("Label: ").append(getLabel()).append(",");
         if (getDatapoints() != null)
-            sb.append("Datapoints: " + getDatapoints());
+            sb.append("Datapoints: ").append(getDatapoints());
         sb.append("}");
         return sb.toString();
     }
@@ -205,4 +207,5 @@ public class GetMetricStatisticsResult extends com.amazonaws.AmazonWebServiceRes
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

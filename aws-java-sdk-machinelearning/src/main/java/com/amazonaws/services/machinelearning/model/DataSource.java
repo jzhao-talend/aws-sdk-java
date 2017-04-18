@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -23,7 +26,8 @@ import java.io.Serializable;
  * <code>DataSource</code>.
  * </p>
  */
-public class DataSource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DataSource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -904,41 +908,41 @@ public class DataSource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataSourceId() != null)
-            sb.append("DataSourceId: " + getDataSourceId() + ",");
+            sb.append("DataSourceId: ").append(getDataSourceId()).append(",");
         if (getDataLocationS3() != null)
-            sb.append("DataLocationS3: " + getDataLocationS3() + ",");
+            sb.append("DataLocationS3: ").append(getDataLocationS3()).append(",");
         if (getDataRearrangement() != null)
-            sb.append("DataRearrangement: " + getDataRearrangement() + ",");
+            sb.append("DataRearrangement: ").append(getDataRearrangement()).append(",");
         if (getCreatedByIamUser() != null)
-            sb.append("CreatedByIamUser: " + getCreatedByIamUser() + ",");
+            sb.append("CreatedByIamUser: ").append(getCreatedByIamUser()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getLastUpdatedAt() != null)
-            sb.append("LastUpdatedAt: " + getLastUpdatedAt() + ",");
+            sb.append("LastUpdatedAt: ").append(getLastUpdatedAt()).append(",");
         if (getDataSizeInBytes() != null)
-            sb.append("DataSizeInBytes: " + getDataSizeInBytes() + ",");
+            sb.append("DataSizeInBytes: ").append(getDataSizeInBytes()).append(",");
         if (getNumberOfFiles() != null)
-            sb.append("NumberOfFiles: " + getNumberOfFiles() + ",");
+            sb.append("NumberOfFiles: ").append(getNumberOfFiles()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getRedshiftMetadata() != null)
-            sb.append("RedshiftMetadata: " + getRedshiftMetadata() + ",");
+            sb.append("RedshiftMetadata: ").append(getRedshiftMetadata()).append(",");
         if (getRDSMetadata() != null)
-            sb.append("RDSMetadata: " + getRDSMetadata() + ",");
+            sb.append("RDSMetadata: ").append(getRDSMetadata()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getComputeStatistics() != null)
-            sb.append("ComputeStatistics: " + getComputeStatistics() + ",");
+            sb.append("ComputeStatistics: ").append(getComputeStatistics()).append(",");
         if (getComputeTime() != null)
-            sb.append("ComputeTime: " + getComputeTime() + ",");
+            sb.append("ComputeTime: ").append(getComputeTime()).append(",");
         if (getFinishedAt() != null)
-            sb.append("FinishedAt: " + getFinishedAt() + ",");
+            sb.append("FinishedAt: ").append(getFinishedAt()).append(",");
         if (getStartedAt() != null)
-            sb.append("StartedAt: " + getStartedAt());
+            sb.append("StartedAt: ").append(getStartedAt());
         sb.append("}");
         return sb.toString();
     }
@@ -1061,5 +1065,11 @@ public class DataSource implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.machinelearning.model.transform.DataSourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

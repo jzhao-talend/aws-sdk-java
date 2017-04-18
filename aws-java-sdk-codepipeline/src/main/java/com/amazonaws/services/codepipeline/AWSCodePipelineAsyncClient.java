@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.codepipeline;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.codepipeline.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing CodePipeline asynchronously. Each asynchronous method will return a Java Future object
+ * Client for accessing CodePipeline asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -85,13 +94,13 @@ import com.amazonaws.annotation.ThreadSafe;
  * </li>
  * </ul>
  * <p>
- * Pipelines include <i>stages</i>, which are which are logical groupings of gates and actions. Each stage contains one
- * or more actions that must complete before the next stage begins. A stage will result in success or failure. If a
- * stage fails, then the pipeline stops at that stage and will remain stopped until either a new version of an artifact
- * appears in the source location, or a user takes action to re-run the most recent artifact through the pipeline. You
- * can call <a>GetPipelineState</a>, which displays the status of a pipeline, including the status of stages in the
- * pipeline, or <a>GetPipeline</a>, which returns the entire structure of the pipeline, including the stages of that
- * pipeline. For more information about the structure of stages and actions, also refer to the <a
+ * Pipelines include <i>stages</i>, which are logical groupings of gates and actions. Each stage contains one or more
+ * actions that must complete before the next stage begins. A stage will result in success or failure. If a stage fails,
+ * then the pipeline stops at that stage and will remain stopped until either a new version of an artifact appears in
+ * the source location, or a user takes action to re-run the most recent artifact through the pipeline. You can call
+ * <a>GetPipelineState</a>, which displays the status of a pipeline, including the status of stages in the pipeline, or
+ * <a>GetPipeline</a>, which returns the entire structure of the pipeline, including the stages of that pipeline. For
+ * more information about the structure of stages and actions, also refer to the <a
  * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS CodePipeline Pipeline
  * Structure Reference</a>.
  * </p>
@@ -199,6 +208,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </ul>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements AWSCodePipelineAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -220,9 +230,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSCodePipelineAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -244,10 +256,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSCodePipelineAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -260,9 +273,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -273,8 +288,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -289,10 +307,12 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -307,9 +327,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -326,10 +348,12 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -340,9 +364,11 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -356,12 +382,18 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AWSCodePipelineAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSCodePipelineAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AWSCodePipelineAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AWSCodePipelineAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AWSCodePipelineAsyncClientBuilder asyncBuilder() {
+        return AWSCodePipelineAsyncClientBuilder.standard();
     }
 
     /**
@@ -380,7 +412,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -393,14 +425,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<AcknowledgeJobResult> acknowledgeJobAsync(final AcknowledgeJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<AcknowledgeJobRequest, AcknowledgeJobResult> asyncHandler) {
+        final AcknowledgeJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AcknowledgeJobResult>() {
             @Override
             public AcknowledgeJobResult call() throws Exception {
-                AcknowledgeJobResult result;
+                AcknowledgeJobResult result = null;
 
                 try {
-                    result = acknowledgeJob(request);
+                    result = executeAcknowledgeJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -409,7 +442,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -425,14 +458,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<AcknowledgeThirdPartyJobResult> acknowledgeThirdPartyJobAsync(final AcknowledgeThirdPartyJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<AcknowledgeThirdPartyJobRequest, AcknowledgeThirdPartyJobResult> asyncHandler) {
+        final AcknowledgeThirdPartyJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<AcknowledgeThirdPartyJobResult>() {
             @Override
             public AcknowledgeThirdPartyJobResult call() throws Exception {
-                AcknowledgeThirdPartyJobResult result;
+                AcknowledgeThirdPartyJobResult result = null;
 
                 try {
-                    result = acknowledgeThirdPartyJob(request);
+                    result = executeAcknowledgeThirdPartyJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -441,7 +475,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -457,14 +491,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<CreateCustomActionTypeResult> createCustomActionTypeAsync(final CreateCustomActionTypeRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateCustomActionTypeRequest, CreateCustomActionTypeResult> asyncHandler) {
+        final CreateCustomActionTypeRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateCustomActionTypeResult>() {
             @Override
             public CreateCustomActionTypeResult call() throws Exception {
-                CreateCustomActionTypeResult result;
+                CreateCustomActionTypeResult result = null;
 
                 try {
-                    result = createCustomActionType(request);
+                    result = executeCreateCustomActionType(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -473,7 +508,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -489,14 +524,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<CreatePipelineResult> createPipelineAsync(final CreatePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreatePipelineRequest, CreatePipelineResult> asyncHandler) {
+        final CreatePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreatePipelineResult>() {
             @Override
             public CreatePipelineResult call() throws Exception {
-                CreatePipelineResult result;
+                CreatePipelineResult result = null;
 
                 try {
-                    result = createPipeline(request);
+                    result = executeCreatePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -505,7 +541,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -521,14 +557,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<DeleteCustomActionTypeResult> deleteCustomActionTypeAsync(final DeleteCustomActionTypeRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeleteCustomActionTypeRequest, DeleteCustomActionTypeResult> asyncHandler) {
+        final DeleteCustomActionTypeRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeleteCustomActionTypeResult>() {
             @Override
             public DeleteCustomActionTypeResult call() throws Exception {
-                DeleteCustomActionTypeResult result;
+                DeleteCustomActionTypeResult result = null;
 
                 try {
-                    result = deleteCustomActionType(request);
+                    result = executeDeleteCustomActionType(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -537,7 +574,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -553,14 +590,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<DeletePipelineResult> deletePipelineAsync(final DeletePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeletePipelineRequest, DeletePipelineResult> asyncHandler) {
+        final DeletePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeletePipelineResult>() {
             @Override
             public DeletePipelineResult call() throws Exception {
-                DeletePipelineResult result;
+                DeletePipelineResult result = null;
 
                 try {
-                    result = deletePipeline(request);
+                    result = executeDeletePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -569,7 +607,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -585,14 +623,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<DisableStageTransitionResult> disableStageTransitionAsync(final DisableStageTransitionRequest request,
             final com.amazonaws.handlers.AsyncHandler<DisableStageTransitionRequest, DisableStageTransitionResult> asyncHandler) {
+        final DisableStageTransitionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DisableStageTransitionResult>() {
             @Override
             public DisableStageTransitionResult call() throws Exception {
-                DisableStageTransitionResult result;
+                DisableStageTransitionResult result = null;
 
                 try {
-                    result = disableStageTransition(request);
+                    result = executeDisableStageTransition(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -601,7 +640,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -617,14 +656,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<EnableStageTransitionResult> enableStageTransitionAsync(final EnableStageTransitionRequest request,
             final com.amazonaws.handlers.AsyncHandler<EnableStageTransitionRequest, EnableStageTransitionResult> asyncHandler) {
+        final EnableStageTransitionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<EnableStageTransitionResult>() {
             @Override
             public EnableStageTransitionResult call() throws Exception {
-                EnableStageTransitionResult result;
+                EnableStageTransitionResult result = null;
 
                 try {
-                    result = enableStageTransition(request);
+                    result = executeEnableStageTransition(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -633,7 +673,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -649,14 +689,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<GetJobDetailsResult> getJobDetailsAsync(final GetJobDetailsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetJobDetailsRequest, GetJobDetailsResult> asyncHandler) {
+        final GetJobDetailsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetJobDetailsResult>() {
             @Override
             public GetJobDetailsResult call() throws Exception {
-                GetJobDetailsResult result;
+                GetJobDetailsResult result = null;
 
                 try {
-                    result = getJobDetails(request);
+                    result = executeGetJobDetails(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -665,7 +706,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -681,14 +722,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<GetPipelineResult> getPipelineAsync(final GetPipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetPipelineRequest, GetPipelineResult> asyncHandler) {
+        final GetPipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetPipelineResult>() {
             @Override
             public GetPipelineResult call() throws Exception {
-                GetPipelineResult result;
+                GetPipelineResult result = null;
 
                 try {
-                    result = getPipeline(request);
+                    result = executeGetPipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -697,7 +739,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -713,14 +755,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<GetPipelineExecutionResult> getPipelineExecutionAsync(final GetPipelineExecutionRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetPipelineExecutionRequest, GetPipelineExecutionResult> asyncHandler) {
+        final GetPipelineExecutionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetPipelineExecutionResult>() {
             @Override
             public GetPipelineExecutionResult call() throws Exception {
-                GetPipelineExecutionResult result;
+                GetPipelineExecutionResult result = null;
 
                 try {
-                    result = getPipelineExecution(request);
+                    result = executeGetPipelineExecution(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -729,7 +772,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -745,14 +788,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<GetPipelineStateResult> getPipelineStateAsync(final GetPipelineStateRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetPipelineStateRequest, GetPipelineStateResult> asyncHandler) {
+        final GetPipelineStateRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetPipelineStateResult>() {
             @Override
             public GetPipelineStateResult call() throws Exception {
-                GetPipelineStateResult result;
+                GetPipelineStateResult result = null;
 
                 try {
-                    result = getPipelineState(request);
+                    result = executeGetPipelineState(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -761,7 +805,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -777,14 +821,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<GetThirdPartyJobDetailsResult> getThirdPartyJobDetailsAsync(final GetThirdPartyJobDetailsRequest request,
             final com.amazonaws.handlers.AsyncHandler<GetThirdPartyJobDetailsRequest, GetThirdPartyJobDetailsResult> asyncHandler) {
+        final GetThirdPartyJobDetailsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<GetThirdPartyJobDetailsResult>() {
             @Override
             public GetThirdPartyJobDetailsResult call() throws Exception {
-                GetThirdPartyJobDetailsResult result;
+                GetThirdPartyJobDetailsResult result = null;
 
                 try {
-                    result = getThirdPartyJobDetails(request);
+                    result = executeGetThirdPartyJobDetails(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -793,7 +838,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -809,14 +854,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<ListActionTypesResult> listActionTypesAsync(final ListActionTypesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListActionTypesRequest, ListActionTypesResult> asyncHandler) {
+        final ListActionTypesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListActionTypesResult>() {
             @Override
             public ListActionTypesResult call() throws Exception {
-                ListActionTypesResult result;
+                ListActionTypesResult result = null;
 
                 try {
-                    result = listActionTypes(request);
+                    result = executeListActionTypes(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -825,7 +871,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -841,14 +887,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<ListPipelinesResult> listPipelinesAsync(final ListPipelinesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListPipelinesRequest, ListPipelinesResult> asyncHandler) {
+        final ListPipelinesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListPipelinesResult>() {
             @Override
             public ListPipelinesResult call() throws Exception {
-                ListPipelinesResult result;
+                ListPipelinesResult result = null;
 
                 try {
-                    result = listPipelines(request);
+                    result = executeListPipelines(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -857,7 +904,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -873,14 +920,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PollForJobsResult> pollForJobsAsync(final PollForJobsRequest request,
             final com.amazonaws.handlers.AsyncHandler<PollForJobsRequest, PollForJobsResult> asyncHandler) {
+        final PollForJobsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PollForJobsResult>() {
             @Override
             public PollForJobsResult call() throws Exception {
-                PollForJobsResult result;
+                PollForJobsResult result = null;
 
                 try {
-                    result = pollForJobs(request);
+                    result = executePollForJobs(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -889,7 +937,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -905,14 +953,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PollForThirdPartyJobsResult> pollForThirdPartyJobsAsync(final PollForThirdPartyJobsRequest request,
             final com.amazonaws.handlers.AsyncHandler<PollForThirdPartyJobsRequest, PollForThirdPartyJobsResult> asyncHandler) {
+        final PollForThirdPartyJobsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PollForThirdPartyJobsResult>() {
             @Override
             public PollForThirdPartyJobsResult call() throws Exception {
-                PollForThirdPartyJobsResult result;
+                PollForThirdPartyJobsResult result = null;
 
                 try {
-                    result = pollForThirdPartyJobs(request);
+                    result = executePollForThirdPartyJobs(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -921,7 +970,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -937,14 +986,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PutActionRevisionResult> putActionRevisionAsync(final PutActionRevisionRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutActionRevisionRequest, PutActionRevisionResult> asyncHandler) {
+        final PutActionRevisionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutActionRevisionResult>() {
             @Override
             public PutActionRevisionResult call() throws Exception {
-                PutActionRevisionResult result;
+                PutActionRevisionResult result = null;
 
                 try {
-                    result = putActionRevision(request);
+                    result = executePutActionRevision(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -953,7 +1003,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -969,14 +1019,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PutApprovalResultResult> putApprovalResultAsync(final PutApprovalResultRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutApprovalResultRequest, PutApprovalResultResult> asyncHandler) {
+        final PutApprovalResultRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutApprovalResultResult>() {
             @Override
             public PutApprovalResultResult call() throws Exception {
-                PutApprovalResultResult result;
+                PutApprovalResultResult result = null;
 
                 try {
-                    result = putApprovalResult(request);
+                    result = executePutApprovalResult(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -985,7 +1036,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1001,14 +1052,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PutJobFailureResultResult> putJobFailureResultAsync(final PutJobFailureResultRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutJobFailureResultRequest, PutJobFailureResultResult> asyncHandler) {
+        final PutJobFailureResultRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutJobFailureResultResult>() {
             @Override
             public PutJobFailureResultResult call() throws Exception {
-                PutJobFailureResultResult result;
+                PutJobFailureResultResult result = null;
 
                 try {
-                    result = putJobFailureResult(request);
+                    result = executePutJobFailureResult(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1017,7 +1069,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1033,14 +1085,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<PutJobSuccessResultResult> putJobSuccessResultAsync(final PutJobSuccessResultRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutJobSuccessResultRequest, PutJobSuccessResultResult> asyncHandler) {
+        final PutJobSuccessResultRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutJobSuccessResultResult>() {
             @Override
             public PutJobSuccessResultResult call() throws Exception {
-                PutJobSuccessResultResult result;
+                PutJobSuccessResultResult result = null;
 
                 try {
-                    result = putJobSuccessResult(request);
+                    result = executePutJobSuccessResult(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1049,7 +1102,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1066,14 +1119,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     public java.util.concurrent.Future<PutThirdPartyJobFailureResultResult> putThirdPartyJobFailureResultAsync(
             final PutThirdPartyJobFailureResultRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutThirdPartyJobFailureResultRequest, PutThirdPartyJobFailureResultResult> asyncHandler) {
+        final PutThirdPartyJobFailureResultRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutThirdPartyJobFailureResultResult>() {
             @Override
             public PutThirdPartyJobFailureResultResult call() throws Exception {
-                PutThirdPartyJobFailureResultResult result;
+                PutThirdPartyJobFailureResultResult result = null;
 
                 try {
-                    result = putThirdPartyJobFailureResult(request);
+                    result = executePutThirdPartyJobFailureResult(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1082,7 +1136,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1099,14 +1153,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     public java.util.concurrent.Future<PutThirdPartyJobSuccessResultResult> putThirdPartyJobSuccessResultAsync(
             final PutThirdPartyJobSuccessResultRequest request,
             final com.amazonaws.handlers.AsyncHandler<PutThirdPartyJobSuccessResultRequest, PutThirdPartyJobSuccessResultResult> asyncHandler) {
+        final PutThirdPartyJobSuccessResultRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<PutThirdPartyJobSuccessResultResult>() {
             @Override
             public PutThirdPartyJobSuccessResultResult call() throws Exception {
-                PutThirdPartyJobSuccessResultResult result;
+                PutThirdPartyJobSuccessResultResult result = null;
 
                 try {
-                    result = putThirdPartyJobSuccessResult(request);
+                    result = executePutThirdPartyJobSuccessResult(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1115,7 +1170,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1131,14 +1186,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<RetryStageExecutionResult> retryStageExecutionAsync(final RetryStageExecutionRequest request,
             final com.amazonaws.handlers.AsyncHandler<RetryStageExecutionRequest, RetryStageExecutionResult> asyncHandler) {
+        final RetryStageExecutionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<RetryStageExecutionResult>() {
             @Override
             public RetryStageExecutionResult call() throws Exception {
-                RetryStageExecutionResult result;
+                RetryStageExecutionResult result = null;
 
                 try {
-                    result = retryStageExecution(request);
+                    result = executeRetryStageExecution(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1147,7 +1203,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1163,14 +1219,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<StartPipelineExecutionResult> startPipelineExecutionAsync(final StartPipelineExecutionRequest request,
             final com.amazonaws.handlers.AsyncHandler<StartPipelineExecutionRequest, StartPipelineExecutionResult> asyncHandler) {
+        final StartPipelineExecutionRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<StartPipelineExecutionResult>() {
             @Override
             public StartPipelineExecutionResult call() throws Exception {
-                StartPipelineExecutionResult result;
+                StartPipelineExecutionResult result = null;
 
                 try {
-                    result = startPipelineExecution(request);
+                    result = executeStartPipelineExecution(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1179,7 +1236,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -1195,14 +1252,15 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
     @Override
     public java.util.concurrent.Future<UpdatePipelineResult> updatePipelineAsync(final UpdatePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdatePipelineRequest, UpdatePipelineResult> asyncHandler) {
+        final UpdatePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdatePipelineResult>() {
             @Override
             public UpdatePipelineResult call() throws Exception {
-                UpdatePipelineResult result;
+                UpdatePipelineResult result = null;
 
                 try {
-                    result = updatePipeline(request);
+                    result = executeUpdatePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1211,7 +1269,7 @@ public class AWSCodePipelineAsyncClient extends AWSCodePipelineClient implements
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

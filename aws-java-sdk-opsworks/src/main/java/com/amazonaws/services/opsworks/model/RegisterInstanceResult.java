@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,28 +13,33 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the response to a <code>RegisterInstanceResult</code> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterInstanceResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The registered instance's AWS OpsWorks ID.
+     * The registered instance's AWS OpsWorks Stacks ID.
      * </p>
      */
     private String instanceId;
 
     /**
      * <p>
-     * The registered instance's AWS OpsWorks ID.
+     * The registered instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
      * @param instanceId
-     *        The registered instance's AWS OpsWorks ID.
+     *        The registered instance's AWS OpsWorks Stacks ID.
      */
 
     public void setInstanceId(String instanceId) {
@@ -43,10 +48,10 @@ public class RegisterInstanceResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The registered instance's AWS OpsWorks ID.
+     * The registered instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
-     * @return The registered instance's AWS OpsWorks ID.
+     * @return The registered instance's AWS OpsWorks Stacks ID.
      */
 
     public String getInstanceId() {
@@ -55,11 +60,11 @@ public class RegisterInstanceResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The registered instance's AWS OpsWorks ID.
+     * The registered instance's AWS OpsWorks Stacks ID.
      * </p>
      * 
      * @param instanceId
-     *        The registered instance's AWS OpsWorks ID.
+     *        The registered instance's AWS OpsWorks Stacks ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +85,7 @@ public class RegisterInstanceResult extends com.amazonaws.AmazonWebServiceResult
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId());
+            sb.append("InstanceId: ").append(getInstanceId());
         sb.append("}");
         return sb.toString();
     }
@@ -119,4 +124,5 @@ public class RegisterInstanceResult extends com.amazonaws.AmazonWebServiceResult
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

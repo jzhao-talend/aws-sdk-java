@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,23 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the response to a <code>DescribeStackProvisioningParameters</code> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStackProvisioningParameters"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeStackProvisioningParametersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
         Cloneable {
 
     /**
      * <p>
-     * The AWS OpsWorks agent installer's URL.
+     * The AWS OpsWorks Stacks agent installer's URL.
      * </p>
      */
     private String agentInstallerUrl;
@@ -37,11 +42,11 @@ public class DescribeStackProvisioningParametersResult extends com.amazonaws.Ama
 
     /**
      * <p>
-     * The AWS OpsWorks agent installer's URL.
+     * The AWS OpsWorks Stacks agent installer's URL.
      * </p>
      * 
      * @param agentInstallerUrl
-     *        The AWS OpsWorks agent installer's URL.
+     *        The AWS OpsWorks Stacks agent installer's URL.
      */
 
     public void setAgentInstallerUrl(String agentInstallerUrl) {
@@ -50,10 +55,10 @@ public class DescribeStackProvisioningParametersResult extends com.amazonaws.Ama
 
     /**
      * <p>
-     * The AWS OpsWorks agent installer's URL.
+     * The AWS OpsWorks Stacks agent installer's URL.
      * </p>
      * 
-     * @return The AWS OpsWorks agent installer's URL.
+     * @return The AWS OpsWorks Stacks agent installer's URL.
      */
 
     public String getAgentInstallerUrl() {
@@ -62,11 +67,11 @@ public class DescribeStackProvisioningParametersResult extends com.amazonaws.Ama
 
     /**
      * <p>
-     * The AWS OpsWorks agent installer's URL.
+     * The AWS OpsWorks Stacks agent installer's URL.
      * </p>
      * 
      * @param agentInstallerUrl
-     *        The AWS OpsWorks agent installer's URL.
+     *        The AWS OpsWorks Stacks agent installer's URL.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -151,9 +156,9 @@ public class DescribeStackProvisioningParametersResult extends com.amazonaws.Ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAgentInstallerUrl() != null)
-            sb.append("AgentInstallerUrl: " + getAgentInstallerUrl() + ",");
+            sb.append("AgentInstallerUrl: ").append(getAgentInstallerUrl()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters());
+            sb.append("Parameters: ").append(getParameters());
         sb.append("}");
         return sb.toString();
     }
@@ -197,4 +202,5 @@ public class DescribeStackProvisioningParametersResult extends com.amazonaws.Ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

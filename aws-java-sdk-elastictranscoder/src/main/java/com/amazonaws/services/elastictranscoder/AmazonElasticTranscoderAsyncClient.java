@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,21 @@
  */
 package com.amazonaws.services.elastictranscoder;
 
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
+import javax.annotation.Generated;
+
 import com.amazonaws.services.elastictranscoder.model.*;
 import com.amazonaws.client.AwsAsyncClientParams;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 /**
- * Interface for accessing Amazon Elastic Transcoder asynchronously. Each asynchronous method will return a Java Future
+ * Client for accessing Amazon Elastic Transcoder asynchronously. Each asynchronous method will return a Java Future
  * object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
  * <p>
@@ -27,6 +36,7 @@ import com.amazonaws.annotation.ThreadSafe;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderClient implements AmazonElasticTranscoderAsync {
 
     private static final int DEFAULT_THREAD_POOL_SIZE = 50;
@@ -48,9 +58,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonElasticTranscoderAsyncClient() {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance());
+        this(DefaultAWSCredentialsProviderChain.getInstance());
     }
 
     /**
@@ -72,10 +84,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.ClientConfiguration clientConfiguration) {
-        this(com.amazonaws.auth.DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, java.util.concurrent.Executors
-                .newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(ClientConfiguration clientConfiguration) {
+        this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -88,9 +101,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials) {
-        this(awsCredentials, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentials awsCredentials) {
+        this(awsCredentials, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -101,8 +116,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, java.util.concurrent.ExecutorService executorService) {
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentials awsCredentials, ExecutorService executorService) {
 
         this(awsCredentials, configFactory.getConfig(), executorService);
     }
@@ -117,10 +135,12 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentials awsCredentials, com.amazonaws.ClientConfiguration clientConfiguration,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration, ExecutorService executorService) {
         super(awsCredentials, clientConfiguration);
         this.executorService = executorService;
     }
@@ -135,9 +155,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, java.util.concurrent.Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
+        this(awsCredentialsProvider, newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -154,11 +176,12 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @see com.amazonaws.auth.DefaultAWSCredentialsProviderChain
      * @see java.util.concurrent.Executors#newFixedThreadPool(int)
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration) {
-
-        this(awsCredentialsProvider, clientConfiguration, java.util.concurrent.Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -169,10 +192,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, configFactory.getConfig(), executorService);
     }
 
@@ -186,12 +210,19 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *        Client configuration options (ex: max retry limit, proxy settings, etc).
      * @param executorService
      *        The executor service by which all asynchronous requests will be executed.
+     * @deprecated use {@link AmazonElasticTranscoderAsyncClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticTranscoderAsyncClientBuilder#withExecutorFactory(com.amazonaws.client.builder.ExecutorFactory)}
      */
-    public AmazonElasticTranscoderAsyncClient(com.amazonaws.auth.AWSCredentialsProvider awsCredentialsProvider,
-            com.amazonaws.ClientConfiguration clientConfiguration, java.util.concurrent.ExecutorService executorService) {
-
+    @Deprecated
+    public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
+            ExecutorService executorService) {
         super(awsCredentialsProvider, clientConfiguration);
         this.executorService = executorService;
+    }
+
+    public static AmazonElasticTranscoderAsyncClientBuilder asyncBuilder() {
+        return AmazonElasticTranscoderAsyncClientBuilder.standard();
     }
 
     /**
@@ -211,7 +242,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @return The executor service used by this client to execute async requests.
      */
-    public java.util.concurrent.ExecutorService getExecutorService() {
+    public ExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -224,14 +255,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<CancelJobResult> cancelJobAsync(final CancelJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<CancelJobRequest, CancelJobResult> asyncHandler) {
+        final CancelJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CancelJobResult>() {
             @Override
             public CancelJobResult call() throws Exception {
-                CancelJobResult result;
+                CancelJobResult result = null;
 
                 try {
-                    result = cancelJob(request);
+                    result = executeCancelJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -240,7 +272,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -256,14 +288,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<CreateJobResult> createJobAsync(final CreateJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreateJobRequest, CreateJobResult> asyncHandler) {
+        final CreateJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreateJobResult>() {
             @Override
             public CreateJobResult call() throws Exception {
-                CreateJobResult result;
+                CreateJobResult result = null;
 
                 try {
-                    result = createJob(request);
+                    result = executeCreateJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -272,7 +305,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -288,14 +321,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<CreatePipelineResult> createPipelineAsync(final CreatePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreatePipelineRequest, CreatePipelineResult> asyncHandler) {
+        final CreatePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreatePipelineResult>() {
             @Override
             public CreatePipelineResult call() throws Exception {
-                CreatePipelineResult result;
+                CreatePipelineResult result = null;
 
                 try {
-                    result = createPipeline(request);
+                    result = executeCreatePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -304,7 +338,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -320,14 +354,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<CreatePresetResult> createPresetAsync(final CreatePresetRequest request,
             final com.amazonaws.handlers.AsyncHandler<CreatePresetRequest, CreatePresetResult> asyncHandler) {
+        final CreatePresetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<CreatePresetResult>() {
             @Override
             public CreatePresetResult call() throws Exception {
-                CreatePresetResult result;
+                CreatePresetResult result = null;
 
                 try {
-                    result = createPreset(request);
+                    result = executeCreatePreset(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -336,7 +371,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -352,14 +387,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<DeletePipelineResult> deletePipelineAsync(final DeletePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeletePipelineRequest, DeletePipelineResult> asyncHandler) {
+        final DeletePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeletePipelineResult>() {
             @Override
             public DeletePipelineResult call() throws Exception {
-                DeletePipelineResult result;
+                DeletePipelineResult result = null;
 
                 try {
-                    result = deletePipeline(request);
+                    result = executeDeletePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -368,7 +404,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -384,14 +420,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<DeletePresetResult> deletePresetAsync(final DeletePresetRequest request,
             final com.amazonaws.handlers.AsyncHandler<DeletePresetRequest, DeletePresetResult> asyncHandler) {
+        final DeletePresetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<DeletePresetResult>() {
             @Override
             public DeletePresetResult call() throws Exception {
-                DeletePresetResult result;
+                DeletePresetResult result = null;
 
                 try {
-                    result = deletePreset(request);
+                    result = executeDeletePreset(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -400,7 +437,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -416,14 +453,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ListJobsByPipelineResult> listJobsByPipelineAsync(final ListJobsByPipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListJobsByPipelineRequest, ListJobsByPipelineResult> asyncHandler) {
+        final ListJobsByPipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListJobsByPipelineResult>() {
             @Override
             public ListJobsByPipelineResult call() throws Exception {
-                ListJobsByPipelineResult result;
+                ListJobsByPipelineResult result = null;
 
                 try {
-                    result = listJobsByPipeline(request);
+                    result = executeListJobsByPipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -432,7 +470,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -448,14 +486,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ListJobsByStatusResult> listJobsByStatusAsync(final ListJobsByStatusRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListJobsByStatusRequest, ListJobsByStatusResult> asyncHandler) {
+        final ListJobsByStatusRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListJobsByStatusResult>() {
             @Override
             public ListJobsByStatusResult call() throws Exception {
-                ListJobsByStatusResult result;
+                ListJobsByStatusResult result = null;
 
                 try {
-                    result = listJobsByStatus(request);
+                    result = executeListJobsByStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -464,7 +503,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -480,14 +519,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ListPipelinesResult> listPipelinesAsync(final ListPipelinesRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListPipelinesRequest, ListPipelinesResult> asyncHandler) {
+        final ListPipelinesRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListPipelinesResult>() {
             @Override
             public ListPipelinesResult call() throws Exception {
-                ListPipelinesResult result;
+                ListPipelinesResult result = null;
 
                 try {
-                    result = listPipelines(request);
+                    result = executeListPipelines(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -496,7 +536,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -519,6 +559,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @see #listPipelinesAsync(ListPipelinesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListPipelinesResult> listPipelinesAsync(
             com.amazonaws.handlers.AsyncHandler<ListPipelinesRequest, ListPipelinesResult> asyncHandler) {
 
@@ -534,14 +575,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ListPresetsResult> listPresetsAsync(final ListPresetsRequest request,
             final com.amazonaws.handlers.AsyncHandler<ListPresetsRequest, ListPresetsResult> asyncHandler) {
+        final ListPresetsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ListPresetsResult>() {
             @Override
             public ListPresetsResult call() throws Exception {
-                ListPresetsResult result;
+                ListPresetsResult result = null;
 
                 try {
-                    result = listPresets(request);
+                    result = executeListPresets(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -550,7 +592,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -573,6 +615,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *
      * @see #listPresetsAsync(ListPresetsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListPresetsResult> listPresetsAsync(
             com.amazonaws.handlers.AsyncHandler<ListPresetsRequest, ListPresetsResult> asyncHandler) {
 
@@ -588,14 +631,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ReadJobResult> readJobAsync(final ReadJobRequest request,
             final com.amazonaws.handlers.AsyncHandler<ReadJobRequest, ReadJobResult> asyncHandler) {
+        final ReadJobRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ReadJobResult>() {
             @Override
             public ReadJobResult call() throws Exception {
-                ReadJobResult result;
+                ReadJobResult result = null;
 
                 try {
-                    result = readJob(request);
+                    result = executeReadJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -604,7 +648,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -620,14 +664,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ReadPipelineResult> readPipelineAsync(final ReadPipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<ReadPipelineRequest, ReadPipelineResult> asyncHandler) {
+        final ReadPipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ReadPipelineResult>() {
             @Override
             public ReadPipelineResult call() throws Exception {
-                ReadPipelineResult result;
+                ReadPipelineResult result = null;
 
                 try {
-                    result = readPipeline(request);
+                    result = executeReadPipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -636,7 +681,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -652,14 +697,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<ReadPresetResult> readPresetAsync(final ReadPresetRequest request,
             final com.amazonaws.handlers.AsyncHandler<ReadPresetRequest, ReadPresetResult> asyncHandler) {
+        final ReadPresetRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<ReadPresetResult>() {
             @Override
             public ReadPresetResult call() throws Exception {
-                ReadPresetResult result;
+                ReadPresetResult result = null;
 
                 try {
-                    result = readPreset(request);
+                    result = executeReadPreset(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -668,7 +714,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -676,22 +722,25 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     }
 
     @Override
+    @Deprecated
     public java.util.concurrent.Future<TestRoleResult> testRoleAsync(TestRoleRequest request) {
 
         return testRoleAsync(request, null);
     }
 
     @Override
+    @Deprecated
     public java.util.concurrent.Future<TestRoleResult> testRoleAsync(final TestRoleRequest request,
             final com.amazonaws.handlers.AsyncHandler<TestRoleRequest, TestRoleResult> asyncHandler) {
+        final TestRoleRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<TestRoleResult>() {
             @Override
             public TestRoleResult call() throws Exception {
-                TestRoleResult result;
+                TestRoleResult result = null;
 
                 try {
-                    result = testRole(request);
+                    result = executeTestRole(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -700,7 +749,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -716,14 +765,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<UpdatePipelineResult> updatePipelineAsync(final UpdatePipelineRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdatePipelineRequest, UpdatePipelineResult> asyncHandler) {
+        final UpdatePipelineRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdatePipelineResult>() {
             @Override
             public UpdatePipelineResult call() throws Exception {
-                UpdatePipelineResult result;
+                UpdatePipelineResult result = null;
 
                 try {
-                    result = updatePipeline(request);
+                    result = executeUpdatePipeline(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -732,7 +782,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -748,14 +798,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<UpdatePipelineNotificationsResult> updatePipelineNotificationsAsync(final UpdatePipelineNotificationsRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdatePipelineNotificationsRequest, UpdatePipelineNotificationsResult> asyncHandler) {
+        final UpdatePipelineNotificationsRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdatePipelineNotificationsResult>() {
             @Override
             public UpdatePipelineNotificationsResult call() throws Exception {
-                UpdatePipelineNotificationsResult result;
+                UpdatePipelineNotificationsResult result = null;
 
                 try {
-                    result = updatePipelineNotifications(request);
+                    result = executeUpdatePipelineNotifications(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -764,7 +815,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }
@@ -780,14 +831,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     @Override
     public java.util.concurrent.Future<UpdatePipelineStatusResult> updatePipelineStatusAsync(final UpdatePipelineStatusRequest request,
             final com.amazonaws.handlers.AsyncHandler<UpdatePipelineStatusRequest, UpdatePipelineStatusResult> asyncHandler) {
+        final UpdatePipelineStatusRequest finalRequest = beforeClientExecution(request);
 
         return executorService.submit(new java.util.concurrent.Callable<UpdatePipelineStatusResult>() {
             @Override
             public UpdatePipelineStatusResult call() throws Exception {
-                UpdatePipelineStatusResult result;
+                UpdatePipelineStatusResult result = null;
 
                 try {
-                    result = updatePipelineStatus(request);
+                    result = executeUpdatePipelineStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -796,7 +848,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                 }
 
                 if (asyncHandler != null) {
-                    asyncHandler.onSuccess(request, result);
+                    asyncHandler.onSuccess(finalRequest, result);
                 }
                 return result;
             }

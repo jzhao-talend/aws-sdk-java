@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes mapping between an Amazon Kinesis stream and a Lambda function.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetEventSourceMapping" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetEventSourceMappingResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -430,21 +435,21 @@ public class GetEventSourceMappingResult extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUUID() != null)
-            sb.append("UUID: " + getUUID() + ",");
+            sb.append("UUID: ").append(getUUID()).append(",");
         if (getBatchSize() != null)
-            sb.append("BatchSize: " + getBatchSize() + ",");
+            sb.append("BatchSize: ").append(getBatchSize()).append(",");
         if (getEventSourceArn() != null)
-            sb.append("EventSourceArn: " + getEventSourceArn() + ",");
+            sb.append("EventSourceArn: ").append(getEventSourceArn()).append(",");
         if (getFunctionArn() != null)
-            sb.append("FunctionArn: " + getFunctionArn() + ",");
+            sb.append("FunctionArn: ").append(getFunctionArn()).append(",");
         if (getLastModified() != null)
-            sb.append("LastModified: " + getLastModified() + ",");
+            sb.append("LastModified: ").append(getLastModified()).append(",");
         if (getLastProcessingResult() != null)
-            sb.append("LastProcessingResult: " + getLastProcessingResult() + ",");
+            sb.append("LastProcessingResult: ").append(getLastProcessingResult()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getStateTransitionReason() != null)
-            sb.append("StateTransitionReason: " + getStateTransitionReason());
+            sb.append("StateTransitionReason: ").append(getStateTransitionReason());
         sb.append("}");
         return sb.toString();
     }
@@ -518,4 +523,5 @@ public class GetEventSourceMappingResult extends com.amazonaws.AmazonWebServiceR
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

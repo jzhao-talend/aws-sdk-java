@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.kinesis.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for <code>DescribeStream</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStream" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -30,7 +36,8 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
     private String streamName;
     /**
      * <p>
-     * The maximum number of shards to return.
+     * The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater
+     * than 100, at most 100 shards are returned.
      * </p>
      */
     private Integer limit;
@@ -83,11 +90,13 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of shards to return.
+     * The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater
+     * than 100, at most 100 shards are returned.
      * </p>
      * 
      * @param limit
-     *        The maximum number of shards to return.
+     *        The maximum number of shards to return in a single call. The default value is 100. If you specify a value
+     *        greater than 100, at most 100 shards are returned.
      */
 
     public void setLimit(Integer limit) {
@@ -96,10 +105,12 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of shards to return.
+     * The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater
+     * than 100, at most 100 shards are returned.
      * </p>
      * 
-     * @return The maximum number of shards to return.
+     * @return The maximum number of shards to return in a single call. The default value is 100. If you specify a value
+     *         greater than 100, at most 100 shards are returned.
      */
 
     public Integer getLimit() {
@@ -108,11 +119,13 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of shards to return.
+     * The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater
+     * than 100, at most 100 shards are returned.
      * </p>
      * 
      * @param limit
-     *        The maximum number of shards to return.
+     *        The maximum number of shards to return in a single call. The default value is 100. If you specify a value
+     *        greater than 100, at most 100 shards are returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,11 +186,11 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStreamName() != null)
-            sb.append("StreamName: " + getStreamName() + ",");
+            sb.append("StreamName: ").append(getStreamName()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getExclusiveStartShardId() != null)
-            sb.append("ExclusiveStartShardId: " + getExclusiveStartShardId());
+            sb.append("ExclusiveStartShardId: ").append(getExclusiveStartShardId());
         sb.append("}");
         return sb.toString();
     }
@@ -222,4 +235,5 @@ public class DescribeStreamRequest extends com.amazonaws.AmazonWebServiceRequest
     public DescribeStreamRequest clone() {
         return (DescribeStreamRequest) super.clone();
     }
+
 }

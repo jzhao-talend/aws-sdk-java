@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,46 +13,61 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a <i>PutItem</i> operation.
+ * Represents the output of a <code>PutItem</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/PutItem" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i> is
-     * specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an attribute
-     * value.
+     * The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     * <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      * </p>
      */
     private java.util.Map<String, AttributeValue> attributes;
-
+    /**
+     * <p>
+     * The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     */
     private ConsumedCapacity consumedCapacity;
     /**
      * <p>
-     * Information about item collections, if any, that were affected by the operation. <i>ItemCollectionMetrics</i> is
-     * only returned if the request asked for it. If the table does not have any local secondary indexes, this
-     * information is not returned in the response.
+     * Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     * <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was
+     * specified. If the table does not have any local secondary indexes, this information is not returned in the
+     * response.
      * </p>
      * <p>
-     * Each <i>ItemCollectionMetrics</i> element consists of:
+     * Each <code>ItemCollectionMetrics</code> element consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the partition key
-     * value of the item itself.
+     * <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
+     * partition key value of the item itself.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element array
-     * containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in
-     * the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use
-     * this estimate to measure whether a local secondary index is approaching its size limit.
+     * <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element
+     * array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the
+     * items in the table, plus the size of all attributes projected into all of the local secondary indexes on that
+     * table. Use this estimate to measure whether a local secondary index is approaching its size limit.
      * </p>
      * <p>
      * The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
@@ -64,14 +79,14 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i> is
-     * specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an attribute
-     * value.
+     * The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     * <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      * </p>
      * 
-     * @return The attribute values as they appeared before the <i>PutItem</i> operation, but only if
-     *         <i>ReturnValues</i> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
-     *         attribute name and an attribute value.
+     * @return The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     *         <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of
+     *         an attribute name and an attribute value.
      */
 
     public java.util.Map<String, AttributeValue> getAttributes() {
@@ -80,15 +95,15 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i> is
-     * specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an attribute
-     * value.
+     * The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     * <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      * </p>
      * 
      * @param attributes
-     *        The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i>
-     *        is specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an
-     *        attribute value.
+     *        The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     *        <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     *        attribute name and an attribute value.
      */
 
     public void setAttributes(java.util.Map<String, AttributeValue> attributes) {
@@ -97,15 +112,15 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i> is
-     * specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an attribute
-     * value.
+     * The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     * <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      * </p>
      * 
      * @param attributes
-     *        The attribute values as they appeared before the <i>PutItem</i> operation, but only if <i>ReturnValues</i>
-     *        is specified as <code>ALL_OLD</code> in the request. Each element consists of an attribute name and an
-     *        attribute value.
+     *        The attribute values as they appeared before the <code>PutItem</code> operation, but only if
+     *        <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element consists of an
+     *        attribute name and an attribute value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,7 +151,22 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
+     * <p>
+     * The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param consumedCapacity
+     *        The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     *        provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *        operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *        parameter was specified. For more information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *        >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
@@ -144,7 +174,21 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
-     * @return
+     * <p>
+     * The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
+     * @return The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     *         provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *         operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *         parameter was specified. For more information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *         >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public ConsumedCapacity getConsumedCapacity() {
@@ -152,7 +196,22 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
     }
 
     /**
+     * <p>
+     * The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     * provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation.
+     * <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was
+     * specified. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     * >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param consumedCapacity
+     *        The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total
+     *        provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+     *        operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code>
+     *        parameter was specified. For more information, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"
+     *        >Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -163,26 +222,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * Information about item collections, if any, that were affected by the operation. <i>ItemCollectionMetrics</i> is
-     * only returned if the request asked for it. If the table does not have any local secondary indexes, this
-     * information is not returned in the response.
+     * Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     * <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was
+     * specified. If the table does not have any local secondary indexes, this information is not returned in the
+     * response.
      * </p>
      * <p>
-     * Each <i>ItemCollectionMetrics</i> element consists of:
+     * Each <code>ItemCollectionMetrics</code> element consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the partition key
-     * value of the item itself.
+     * <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
+     * partition key value of the item itself.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element array
-     * containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in
-     * the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use
-     * this estimate to measure whether a local secondary index is approaching its size limit.
+     * <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element
+     * array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the
+     * items in the table, plus the size of all attributes projected into all of the local secondary indexes on that
+     * table. Use this estimate to measure whether a local secondary index is approaching its size limit.
      * </p>
      * <p>
      * The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
@@ -191,25 +251,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
      * </ul>
      * 
      * @param itemCollectionMetrics
-     *        Information about item collections, if any, that were affected by the operation.
-     *        <i>ItemCollectionMetrics</i> is only returned if the request asked for it. If the table does not have any
-     *        local secondary indexes, this information is not returned in the response.</p>
+     *        Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     *        <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code>
+     *        parameter was specified. If the table does not have any local secondary indexes, this information is not
+     *        returned in the response.</p>
      *        <p>
-     *        Each <i>ItemCollectionMetrics</i> element consists of:
+     *        Each <code>ItemCollectionMetrics</code> element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the
+     *        <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
      *        partition key value of the item itself.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element
-     *        array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all
-     *        the items in the table, plus the size of all attributes projected into all of the local secondary indexes
-     *        on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.
+     *        <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a
+     *        two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the
+     *        size of all the items in the table, plus the size of all attributes projected into all of the local
+     *        secondary indexes on that table. Use this estimate to measure whether a local secondary index is
+     *        approaching its size limit.
      *        </p>
      *        <p>
      *        The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
@@ -224,26 +286,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * Information about item collections, if any, that were affected by the operation. <i>ItemCollectionMetrics</i> is
-     * only returned if the request asked for it. If the table does not have any local secondary indexes, this
-     * information is not returned in the response.
+     * Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     * <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was
+     * specified. If the table does not have any local secondary indexes, this information is not returned in the
+     * response.
      * </p>
      * <p>
-     * Each <i>ItemCollectionMetrics</i> element consists of:
+     * Each <code>ItemCollectionMetrics</code> element consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the partition key
-     * value of the item itself.
+     * <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
+     * partition key value of the item itself.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element array
-     * containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in
-     * the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use
-     * this estimate to measure whether a local secondary index is approaching its size limit.
+     * <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element
+     * array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the
+     * items in the table, plus the size of all attributes projected into all of the local secondary indexes on that
+     * table. Use this estimate to measure whether a local secondary index is approaching its size limit.
      * </p>
      * <p>
      * The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
@@ -251,26 +314,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
      * </li>
      * </ul>
      * 
-     * @return Information about item collections, if any, that were affected by the operation.
-     *         <i>ItemCollectionMetrics</i> is only returned if the request asked for it. If the table does not have any
-     *         local secondary indexes, this information is not returned in the response.</p>
+     * @return Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     *         <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code>
+     *         parameter was specified. If the table does not have any local secondary indexes, this information is not
+     *         returned in the response.</p>
      *         <p>
-     *         Each <i>ItemCollectionMetrics</i> element consists of:
+     *         Each <code>ItemCollectionMetrics</code> element consists of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the
+     *         <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
      *         partition key value of the item itself.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element
-     *         array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all
-     *         the items in the table, plus the size of all attributes projected into all of the local secondary indexes
-     *         on that table. Use this estimate to measure whether a local secondary index is approaching its size
-     *         limit.
+     *         <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a
+     *         two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the
+     *         size of all the items in the table, plus the size of all attributes projected into all of the local
+     *         secondary indexes on that table. Use this estimate to measure whether a local secondary index is
+     *         approaching its size limit.
      *         </p>
      *         <p>
      *         The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
@@ -285,26 +349,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * Information about item collections, if any, that were affected by the operation. <i>ItemCollectionMetrics</i> is
-     * only returned if the request asked for it. If the table does not have any local secondary indexes, this
-     * information is not returned in the response.
+     * Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     * <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was
+     * specified. If the table does not have any local secondary indexes, this information is not returned in the
+     * response.
      * </p>
      * <p>
-     * Each <i>ItemCollectionMetrics</i> element consists of:
+     * Each <code>ItemCollectionMetrics</code> element consists of:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the partition key
-     * value of the item itself.
+     * <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
+     * partition key value of the item itself.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element array
-     * containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in
-     * the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use
-     * this estimate to measure whether a local secondary index is approaching its size limit.
+     * <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a two-element
+     * array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the
+     * items in the table, plus the size of all attributes projected into all of the local secondary indexes on that
+     * table. Use this estimate to measure whether a local secondary index is approaching its size limit.
      * </p>
      * <p>
      * The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
@@ -313,25 +378,27 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
      * </ul>
      * 
      * @param itemCollectionMetrics
-     *        Information about item collections, if any, that were affected by the operation.
-     *        <i>ItemCollectionMetrics</i> is only returned if the request asked for it. If the table does not have any
-     *        local secondary indexes, this information is not returned in the response.</p>
+     *        Information about item collections, if any, that were affected by the <code>PutItem</code> operation.
+     *        <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code>
+     *        parameter was specified. If the table does not have any local secondary indexes, this information is not
+     *        returned in the response.</p>
      *        <p>
-     *        Each <i>ItemCollectionMetrics</i> element consists of:
+     *        Each <code>ItemCollectionMetrics</code> element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>ItemCollectionKey</i> - The partition key value of the item collection. This is the same as the
+     *        <code>ItemCollectionKey</code> - The partition key value of the item collection. This is the same as the
      *        partition key value of the item itself.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>SizeEstimateRange</i> - An estimate of item collection size, in gigabytes. This value is a two-element
-     *        array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all
-     *        the items in the table, plus the size of all attributes projected into all of the local secondary indexes
-     *        on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.
+     *        <code>SizeEstimateRange</code> - An estimate of item collection size, in gigabytes. This value is a
+     *        two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the
+     *        size of all the items in the table, plus the size of all attributes projected into all of the local
+     *        secondary indexes on that table. Use this estimate to measure whether a local secondary index is
+     *        approaching its size limit.
      *        </p>
      *        <p>
      *        The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
@@ -358,11 +425,11 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getConsumedCapacity() != null)
-            sb.append("ConsumedCapacity: " + getConsumedCapacity() + ",");
+            sb.append("ConsumedCapacity: ").append(getConsumedCapacity()).append(",");
         if (getItemCollectionMetrics() != null)
-            sb.append("ItemCollectionMetrics: " + getItemCollectionMetrics());
+            sb.append("ItemCollectionMetrics: ").append(getItemCollectionMetrics());
         sb.append("}");
         return sb.toString();
     }
@@ -411,4 +478,5 @@ public class PutItemResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

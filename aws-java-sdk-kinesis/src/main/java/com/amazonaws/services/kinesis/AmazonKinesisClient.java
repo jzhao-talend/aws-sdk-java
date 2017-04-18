@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
 import com.amazonaws.services.kinesis.waiters.AmazonKinesisWaiters;
 
 import com.amazonaws.AmazonServiceException;
@@ -51,6 +55,7 @@ import com.amazonaws.services.kinesis.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonKinesisClient extends AmazonWebServiceClient implements AmazonKinesis {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -65,29 +70,30 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(true)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.InvalidArgumentException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.ResourceInUseException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ExpiredIteratorException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.ExpiredIteratorException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.ProvisionedThroughputExceededException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.kinesis.model.LimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.kinesis.model.AmazonKinesisException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(true)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.InvalidArgumentException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.ResourceInUseException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ExpiredIteratorException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.ExpiredIteratorException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.ProvisionedThroughputExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.kinesis.model.LimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.kinesis.model.AmazonKinesisException.class));
 
     /**
      * Constructs a new client to invoke service methods on Kinesis. A credentials provider chain will be used that
@@ -103,7 +109,9 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonKinesisClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonKinesisClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -126,7 +134,9 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonKinesisClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -140,7 +150,10 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonKinesisClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonKinesisClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonKinesisClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -158,7 +171,10 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Kinesis (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonKinesisClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -175,7 +191,9 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonKinesisClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonKinesisClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -193,7 +211,10 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Kinesis (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonKinesisClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonKinesisClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -213,12 +234,20 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonKinesisClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonKinesisClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonKinesisClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonKinesisClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonKinesisClientBuilder builder() {
+        return AmazonKinesisClientBuilder.standard();
     }
 
     /**
@@ -261,8 +290,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>AddTagsToStream</code>.
      * @return Result of the AddTagsToStream operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws ResourceInUseException
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
@@ -273,9 +301,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.AddTagsToStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/AddTagsToStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddTagsToStreamResult addTagsToStream(AddTagsToStreamRequest addTagsToStreamRequest) {
+    public AddTagsToStreamResult addTagsToStream(AddTagsToStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTagsToStream(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsToStreamResult executeAddTagsToStream(AddTagsToStreamRequest addTagsToStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsToStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -285,7 +322,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new AddTagsToStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToStreamRequest));
+                request = new AddTagsToStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -332,8 +369,16 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      * do one of the following:
      * </p>
      * <ul>
-     * <li>Have more than five streams in the <code>CREATING</code> state at any point in time.</li>
-     * <li>Create more shards than are authorized for your account.</li>
+     * <li>
+     * <p>
+     * Have more than five streams in the <code>CREATING</code> state at any point in time.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Create more shards than are authorized for your account.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * For the default shard limit for an AWS account, see <a
@@ -362,9 +407,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
      * @sample AmazonKinesis.CreateStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/CreateStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateStreamResult createStream(CreateStreamRequest createStreamRequest) {
+    public CreateStreamResult createStream(CreateStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStream(request);
+    }
+
+    @SdkInternalApi
+    final CreateStreamResult executeCreateStream(CreateStreamRequest createStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -374,7 +428,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createStreamRequest));
+                request = new CreateStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -415,18 +469,23 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
-     * @throws LimitExceededException
-     *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
-     *         exceeds the maximum number allowed (5).
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
      * @sample AmazonKinesis.DecreaseStreamRetentionPeriod
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DecreaseStreamRetentionPeriod"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DecreaseStreamRetentionPeriodResult decreaseStreamRetentionPeriod(DecreaseStreamRetentionPeriodRequest decreaseStreamRetentionPeriodRequest) {
+    public DecreaseStreamRetentionPeriodResult decreaseStreamRetentionPeriod(DecreaseStreamRetentionPeriodRequest request) {
+        request = beforeClientExecution(request);
+        return executeDecreaseStreamRetentionPeriod(request);
+    }
+
+    @SdkInternalApi
+    final DecreaseStreamRetentionPeriodResult executeDecreaseStreamRetentionPeriod(DecreaseStreamRetentionPeriodRequest decreaseStreamRetentionPeriodRequest) {
+
         ExecutionContext executionContext = createExecutionContext(decreaseStreamRetentionPeriodRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -436,7 +495,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DecreaseStreamRetentionPeriodRequestMarshaller(protocolFactory).marshall(super
+                request = new DecreaseStreamRetentionPeriodRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(decreaseStreamRetentionPeriodRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -488,15 +547,23 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <a>DeleteStream</a>.
      * @return Result of the DeleteStream operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws LimitExceededException
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.DeleteStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DeleteStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteStreamResult deleteStream(DeleteStreamRequest deleteStreamRequest) {
+    public DeleteStreamResult deleteStream(DeleteStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteStream(request);
+    }
+
+    @SdkInternalApi
+    final DeleteStreamResult executeDeleteStream(DeleteStreamRequest deleteStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -506,7 +573,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteStreamRequest));
+                request = new DeleteStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -532,48 +599,106 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
+     * Describes the shard limits and usage for the account.
+     * </p>
+     * <p>
+     * If you update your account limits, the old limits might be returned for a few minutes.
+     * </p>
+     * <p>
+     * This operation has a limit of 1 transaction per second per account.
+     * </p>
+     * 
+     * @param describeLimitsRequest
+     * @return Result of the DescribeLimits operation returned by the service.
+     * @throws LimitExceededException
+     *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
+     *         exceeds the maximum number allowed (5).
+     * @sample AmazonKinesis.DescribeLimits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeLimits" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DescribeLimitsResult describeLimits(DescribeLimitsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLimits(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLimitsResult executeDescribeLimits(DescribeLimitsRequest describeLimitsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeLimitsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeLimitsRequest> request = null;
+        Response<DescribeLimitsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeLimitsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLimitsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeLimitsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeLimitsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Describes the specified Amazon Kinesis stream.
      * </p>
      * <p>
-     * The information about the stream includes its current status, its Amazon Resource Name (ARN), and an array of
-     * shard objects. For each shard object, there is information about the hash key and sequence number ranges that the
-     * shard spans, and the IDs of any earlier shards that played in a role in creating the shard. A sequence number is
-     * the identifier associated with every record ingested in the stream. The sequence number is assigned when a record
-     * is put into the stream.
+     * The information returned includes the stream name, Amazon Resource Name (ARN), creation time, enhanced metric
+     * configuration, and shard map. The shard map is an array of shard objects. For each shard object, there is the
+     * hash key and sequence number ranges that the shard spans, and the IDs of any earlier shards that played in a role
+     * in creating the shard. Every record ingested in the stream is identified by a sequence number, which is assigned
+     * when the record is put into the stream.
      * </p>
      * <p>
-     * You can limit the number of returned shards using the <code>Limit</code> parameter. The number of shards in a
-     * stream may be too large to return from a single call to <code>DescribeStream</code>. You can detect this by using
-     * the <code>HasMoreShards</code> flag in the returned output. <code>HasMoreShards</code> is set to
-     * <code>true</code> when there is more data available.
+     * You can limit the number of shards returned by each call. For more information, see <a
+     * href="http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-retrieve-shards.html">Retrieving
+     * Shards from a Stream</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.
      * </p>
      * <p>
-     * <code>DescribeStream</code> is a paginated operation. If there are more shards available, you can request them
-     * using the shard ID of the last shard returned. Specify this ID in the <code>ExclusiveStartShardId</code>
-     * parameter in a subsequent request to <code>DescribeStream</code>.
+     * There are no guarantees about the chronological order shards returned. To process shards in chronological order,
+     * use the ID of the parent shard to track the lineage to the oldest shard.
      * </p>
      * <p>
-     * There are no guarantees about the chronological order shards returned in <code>DescribeStream</code> results. If
-     * you want to process shards in chronological order, use <code>ParentShardId</code> to track lineage to the oldest
-     * shard.
-     * </p>
-     * <p>
-     * <a>DescribeStream</a> has a limit of 10 transactions per second per account.
+     * This operation has a limit of 10 transactions per second per account.
      * </p>
      * 
      * @param describeStreamRequest
      *        Represents the input for <code>DescribeStream</code>.
      * @return Result of the DescribeStream operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws LimitExceededException
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.DescribeStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeStreamResult describeStream(DescribeStreamRequest describeStreamRequest) {
+    public DescribeStreamResult describeStream(DescribeStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeStream(request);
+    }
+
+    @SdkInternalApi
+    final DescribeStreamResult executeDescribeStream(DescribeStreamRequest describeStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -583,7 +708,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeStreamRequest));
+                request = new DescribeStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -635,12 +760,20 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @sample AmazonKinesis.DisableEnhancedMonitoring
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DisableEnhancedMonitoring"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DisableEnhancedMonitoringResult disableEnhancedMonitoring(DisableEnhancedMonitoringRequest disableEnhancedMonitoringRequest) {
+    public DisableEnhancedMonitoringResult disableEnhancedMonitoring(DisableEnhancedMonitoringRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableEnhancedMonitoring(request);
+    }
+
+    @SdkInternalApi
+    final DisableEnhancedMonitoringResult executeDisableEnhancedMonitoring(DisableEnhancedMonitoringRequest disableEnhancedMonitoringRequest) {
+
         ExecutionContext executionContext = createExecutionContext(disableEnhancedMonitoringRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -650,7 +783,8 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DisableEnhancedMonitoringRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(disableEnhancedMonitoringRequest));
+                request = new DisableEnhancedMonitoringRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(disableEnhancedMonitoringRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -688,12 +822,20 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @sample AmazonKinesis.EnableEnhancedMonitoring
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/EnableEnhancedMonitoring"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public EnableEnhancedMonitoringResult enableEnhancedMonitoring(EnableEnhancedMonitoringRequest enableEnhancedMonitoringRequest) {
+    public EnableEnhancedMonitoringResult enableEnhancedMonitoring(EnableEnhancedMonitoringRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableEnhancedMonitoring(request);
+    }
+
+    @SdkInternalApi
+    final EnableEnhancedMonitoringResult executeEnableEnhancedMonitoring(EnableEnhancedMonitoringRequest enableEnhancedMonitoringRequest) {
+
         ExecutionContext executionContext = createExecutionContext(enableEnhancedMonitoringRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -703,7 +845,8 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new EnableEnhancedMonitoringRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(enableEnhancedMonitoringRequest));
+                request = new EnableEnhancedMonitoringRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(enableEnhancedMonitoringRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -779,8 +922,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <a>GetRecords</a>.
      * @return Result of the GetRecords operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
@@ -794,9 +936,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      * @throws ExpiredIteratorException
      *         The provided iterator exceeds the maximum age allowed.
      * @sample AmazonKinesis.GetRecords
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/GetRecords" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetRecordsResult getRecords(GetRecordsRequest getRecordsRequest) {
+    public GetRecordsResult getRecords(GetRecordsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRecords(request);
+    }
+
+    @SdkInternalApi
+    final GetRecordsResult executeGetRecords(GetRecordsRequest getRecordsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getRecordsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -806,7 +957,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetRecordsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRecordsRequest));
+                request = new GetRecordsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRecordsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -873,8 +1024,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>GetShardIterator</code>.
      * @return Result of the GetShardIterator operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
@@ -886,9 +1036,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential
      *         Backoff in AWS</a> in the <i>AWS General Reference</i>.
      * @sample AmazonKinesis.GetShardIterator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/GetShardIterator" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetShardIteratorResult getShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+    public GetShardIteratorResult getShardIterator(GetShardIteratorRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetShardIterator(request);
+    }
+
+    @SdkInternalApi
+    final GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getShardIteratorRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -898,7 +1057,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetShardIteratorRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getShardIteratorRequest));
+                request = new GetShardIteratorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getShardIteratorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -948,18 +1107,23 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
-     * @throws LimitExceededException
-     *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
-     *         exceeds the maximum number allowed (5).
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
      * @sample AmazonKinesis.IncreaseStreamRetentionPeriod
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/IncreaseStreamRetentionPeriod"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public IncreaseStreamRetentionPeriodResult increaseStreamRetentionPeriod(IncreaseStreamRetentionPeriodRequest increaseStreamRetentionPeriodRequest) {
+    public IncreaseStreamRetentionPeriodResult increaseStreamRetentionPeriod(IncreaseStreamRetentionPeriodRequest request) {
+        request = beforeClientExecution(request);
+        return executeIncreaseStreamRetentionPeriod(request);
+    }
+
+    @SdkInternalApi
+    final IncreaseStreamRetentionPeriodResult executeIncreaseStreamRetentionPeriod(IncreaseStreamRetentionPeriodRequest increaseStreamRetentionPeriodRequest) {
+
         ExecutionContext executionContext = createExecutionContext(increaseStreamRetentionPeriodRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -969,7 +1133,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new IncreaseStreamRetentionPeriodRequestMarshaller(protocolFactory).marshall(super
+                request = new IncreaseStreamRetentionPeriodRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(increaseStreamRetentionPeriodRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1017,9 +1181,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.ListStreams
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListStreams" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListStreamsResult listStreams(ListStreamsRequest listStreamsRequest) {
+    public ListStreamsResult listStreams(ListStreamsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStreams(request);
+    }
+
+    @SdkInternalApi
+    final ListStreamsResult executeListStreams(ListStreamsRequest listStreamsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listStreamsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1029,7 +1202,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListStreamsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listStreamsRequest));
+                request = new ListStreamsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listStreamsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1072,8 +1245,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>ListTagsForStream</code>.
      * @return Result of the ListTagsForStream operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
@@ -1081,9 +1253,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.ListTagsForStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListTagsForStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTagsForStreamResult listTagsForStream(ListTagsForStreamRequest listTagsForStreamRequest) {
+    public ListTagsForStreamResult listTagsForStream(ListTagsForStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForStream(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForStreamResult executeListTagsForStream(ListTagsForStreamRequest listTagsForStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTagsForStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1093,7 +1274,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new ListTagsForStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForStreamRequest));
+                request = new ListTagsForStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1160,8 +1341,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>MergeShards</code>.
      * @return Result of the MergeShards operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws ResourceInUseException
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
@@ -1172,9 +1352,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.MergeShards
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/MergeShards" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public MergeShardsResult mergeShards(MergeShardsRequest mergeShardsRequest) {
+    public MergeShardsResult mergeShards(MergeShardsRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergeShards(request);
+    }
+
+    @SdkInternalApi
+    final MergeShardsResult executeMergeShards(MergeShardsRequest mergeShardsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(mergeShardsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1184,7 +1373,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new MergeShardsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(mergeShardsRequest));
+                request = new MergeShardsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(mergeShardsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1259,8 +1448,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>PutRecord</code>.
      * @return Result of the PutRecord operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
@@ -1272,9 +1460,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential
      *         Backoff in AWS</a> in the <i>AWS General Reference</i>.
      * @sample AmazonKinesis.PutRecord
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecord" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRecordResult putRecord(PutRecordRequest putRecordRequest) {
+    public PutRecordResult putRecord(PutRecordRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRecord(request);
+    }
+
+    @SdkInternalApi
+    final PutRecordResult executePutRecord(PutRecordRequest putRecordRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRecordRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1284,7 +1481,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRecordRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordRequest));
+                request = new PutRecordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1386,8 +1583,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        A <code>PutRecords</code> request.
      * @return Result of the PutRecords operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws InvalidArgumentException
      *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
      *         see the returned message.
@@ -1399,9 +1595,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential
      *         Backoff in AWS</a> in the <i>AWS General Reference</i>.
      * @sample AmazonKinesis.PutRecords
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecords" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRecordsResult putRecords(PutRecordsRequest putRecordsRequest) {
+    public PutRecordsResult putRecords(PutRecordsRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRecords(request);
+    }
+
+    @SdkInternalApi
+    final PutRecordsResult executePutRecords(PutRecordsRequest putRecordsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRecordsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1411,7 +1616,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRecordsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordsRequest));
+                request = new PutRecordsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRecordsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1443,8 +1648,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>RemoveTagsFromStream</code>.
      * @return Result of the RemoveTagsFromStream operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws ResourceInUseException
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
@@ -1455,9 +1659,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.RemoveTagsFromStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/RemoveTagsFromStream" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public RemoveTagsFromStreamResult removeTagsFromStream(RemoveTagsFromStreamRequest removeTagsFromStreamRequest) {
+    public RemoveTagsFromStreamResult removeTagsFromStream(RemoveTagsFromStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTagsFromStream(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsFromStreamResult executeRemoveTagsFromStream(RemoveTagsFromStreamRequest removeTagsFromStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsFromStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1467,7 +1680,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new RemoveTagsFromStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromStreamRequest));
+                request = new RemoveTagsFromStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1545,8 +1758,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *        Represents the input for <code>SplitShard</code>.
      * @return Result of the SplitShard operation returned by the service.
      * @throws ResourceNotFoundException
-     *         The requested resource could not be found. The stream might not be specified correctly, or it might not
-     *         be in the <code>ACTIVE</code> state if the operation requires it.
+     *         The requested resource could not be found. The stream might not be specified correctly.
      * @throws ResourceInUseException
      *         The resource is not available for this operation. For successful operation, the resource needs to be in
      *         the <code>ACTIVE</code> state.
@@ -1557,9 +1769,18 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
      *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
      *         exceeds the maximum number allowed (5).
      * @sample AmazonKinesis.SplitShard
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/SplitShard" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SplitShardResult splitShard(SplitShardRequest splitShardRequest) {
+    public SplitShardResult splitShard(SplitShardRequest request) {
+        request = beforeClientExecution(request);
+        return executeSplitShard(request);
+    }
+
+    @SdkInternalApi
+    final SplitShardResult executeSplitShard(SplitShardRequest splitShardRequest) {
+
         ExecutionContext executionContext = createExecutionContext(splitShardRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1569,7 +1790,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new SplitShardRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(splitShardRequest));
+                request = new SplitShardRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(splitShardRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1591,6 +1812,87 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
     @Override
     public SplitShardResult splitShard(String streamName, String shardToSplit, String newStartingHashKey) {
         return splitShard(new SplitShardRequest().withStreamName(streamName).withShardToSplit(shardToSplit).withNewStartingHashKey(newStartingHashKey));
+    }
+
+    /**
+     * <p>
+     * Updates the shard count of the specified stream to the specified number of shards.
+     * </p>
+     * <p>
+     * Updating the shard count is an asynchronous operation. Upon receiving the request, Amazon Kinesis returns
+     * immediately and sets the status of the stream to <code>UPDATING</code>. After the update is complete, Amazon
+     * Kinesis sets the status of the stream back to <code>ACTIVE</code>. Depending on the size of the stream, the
+     * scaling action could take a few minutes to complete. You can continue to read and write data to your stream while
+     * its status is <code>UPDATING</code>.
+     * </p>
+     * <p>
+     * To update the shard count, Amazon Kinesis performs splits and merges and individual shards. This can cause
+     * short-lived shards to be created, in addition to the final shards. We recommend that you double or halve the
+     * shard count, as this results in the fewest number of splits or merges.
+     * </p>
+     * <p>
+     * This operation has a rate limit of twice per rolling 24 hour period. You cannot scale above double your current
+     * shard count, scale below half your current shard count, or exceed the shard limits for your account.
+     * </p>
+     * <p>
+     * For the default limits for an AWS account, see <a
+     * href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams Limits</a> in the
+     * <i>Amazon Kinesis Streams Developer Guide</i>. If you need to increase a limit, <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">contact AWS Support</a>.
+     * </p>
+     * 
+     * @param updateShardCountRequest
+     * @return Result of the UpdateShardCount operation returned by the service.
+     * @throws InvalidArgumentException
+     *         A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information,
+     *         see the returned message.
+     * @throws LimitExceededException
+     *         The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests
+     *         exceeds the maximum number allowed (5).
+     * @throws ResourceInUseException
+     *         The resource is not available for this operation. For successful operation, the resource needs to be in
+     *         the <code>ACTIVE</code> state.
+     * @throws ResourceNotFoundException
+     *         The requested resource could not be found. The stream might not be specified correctly.
+     * @sample AmazonKinesis.UpdateShardCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/UpdateShardCount" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateShardCountResult updateShardCount(UpdateShardCountRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateShardCount(request);
+    }
+
+    @SdkInternalApi
+    final UpdateShardCountResult executeUpdateShardCount(UpdateShardCountRequest updateShardCountRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateShardCountRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateShardCountRequest> request = null;
+        Response<UpdateShardCountResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateShardCountRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateShardCountRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateShardCountResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateShardCountResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
 
     /**
@@ -1646,6 +1948,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
+    @Override
     public AmazonKinesisWaiters waiters() {
         if (waiters == null) {
             synchronized (this) {
@@ -1655,6 +1958,14 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
             }
         }
         return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,24 +13,30 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * This input determines how the ListClusters action filters the list of clusters that it returns.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListClusters" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The creation date and time beginning value filter for listing clusters .
+     * The creation date and time beginning value filter for listing clusters.
      * </p>
      */
     private java.util.Date createdAfter;
     /**
      * <p>
-     * The creation date and time end value filter for listing clusters .
+     * The creation date and time end value filter for listing clusters.
      * </p>
      */
     private java.util.Date createdBefore;
@@ -49,11 +55,11 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time beginning value filter for listing clusters .
+     * The creation date and time beginning value filter for listing clusters.
      * </p>
      * 
      * @param createdAfter
-     *        The creation date and time beginning value filter for listing clusters .
+     *        The creation date and time beginning value filter for listing clusters.
      */
 
     public void setCreatedAfter(java.util.Date createdAfter) {
@@ -62,10 +68,10 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time beginning value filter for listing clusters .
+     * The creation date and time beginning value filter for listing clusters.
      * </p>
      * 
-     * @return The creation date and time beginning value filter for listing clusters .
+     * @return The creation date and time beginning value filter for listing clusters.
      */
 
     public java.util.Date getCreatedAfter() {
@@ -74,11 +80,11 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time beginning value filter for listing clusters .
+     * The creation date and time beginning value filter for listing clusters.
      * </p>
      * 
      * @param createdAfter
-     *        The creation date and time beginning value filter for listing clusters .
+     *        The creation date and time beginning value filter for listing clusters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +95,11 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time end value filter for listing clusters .
+     * The creation date and time end value filter for listing clusters.
      * </p>
      * 
      * @param createdBefore
-     *        The creation date and time end value filter for listing clusters .
+     *        The creation date and time end value filter for listing clusters.
      */
 
     public void setCreatedBefore(java.util.Date createdBefore) {
@@ -102,10 +108,10 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time end value filter for listing clusters .
+     * The creation date and time end value filter for listing clusters.
      * </p>
      * 
-     * @return The creation date and time end value filter for listing clusters .
+     * @return The creation date and time end value filter for listing clusters.
      */
 
     public java.util.Date getCreatedBefore() {
@@ -114,11 +120,11 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The creation date and time end value filter for listing clusters .
+     * The creation date and time end value filter for listing clusters.
      * </p>
      * 
      * @param createdBefore
-     *        The creation date and time end value filter for listing clusters .
+     *        The creation date and time end value filter for listing clusters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,13 +286,13 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCreatedAfter() != null)
-            sb.append("CreatedAfter: " + getCreatedAfter() + ",");
+            sb.append("CreatedAfter: ").append(getCreatedAfter()).append(",");
         if (getCreatedBefore() != null)
-            sb.append("CreatedBefore: " + getCreatedBefore() + ",");
+            sb.append("CreatedBefore: ").append(getCreatedBefore()).append(",");
         if (getClusterStates() != null)
-            sb.append("ClusterStates: " + getClusterStates() + ",");
+            sb.append("ClusterStates: ").append(getClusterStates()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -336,4 +342,5 @@ public class ListClustersRequest extends com.amazonaws.AmazonWebServiceRequest i
     public ListClustersRequest clone() {
         return (ListClustersRequest) super.clone();
     }
+
 }

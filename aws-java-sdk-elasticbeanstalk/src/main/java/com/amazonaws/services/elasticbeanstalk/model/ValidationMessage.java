@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * An error or warning for a desired configuration option value.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ValidationMessage" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ValidationMessage implements Serializable, Cloneable {
 
     /**
@@ -45,9 +50,17 @@ public class ValidationMessage implements Serializable, Cloneable {
      * </ul>
      */
     private String severity;
-    /** <p/> */
+    /**
+     * <p>
+     * The namespace to which the option belongs.
+     * </p>
+     */
     private String namespace;
-    /** <p/> */
+    /**
+     * <p>
+     * The name of the option.
+     * </p>
+     */
     private String optionName;
 
     /**
@@ -279,9 +292,12 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The namespace to which the option belongs.
+     * </p>
      * 
      * @param namespace
+     *        The namespace to which the option belongs.
      */
 
     public void setNamespace(String namespace) {
@@ -289,9 +305,11 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The namespace to which the option belongs.
+     * </p>
      * 
-     * @return
+     * @return The namespace to which the option belongs.
      */
 
     public String getNamespace() {
@@ -299,9 +317,12 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The namespace to which the option belongs.
+     * </p>
      * 
      * @param namespace
+     *        The namespace to which the option belongs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -311,9 +332,12 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The name of the option.
+     * </p>
      * 
      * @param optionName
+     *        The name of the option.
      */
 
     public void setOptionName(String optionName) {
@@ -321,9 +345,11 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The name of the option.
+     * </p>
      * 
-     * @return
+     * @return The name of the option.
      */
 
     public String getOptionName() {
@@ -331,9 +357,12 @@ public class ValidationMessage implements Serializable, Cloneable {
     }
 
     /**
-     * <p/>
+     * <p>
+     * The name of the option.
+     * </p>
      * 
      * @param optionName
+     *        The name of the option.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -354,13 +383,13 @@ public class ValidationMessage implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getSeverity() != null)
-            sb.append("Severity: " + getSeverity() + ",");
+            sb.append("Severity: ").append(getSeverity()).append(",");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getOptionName() != null)
-            sb.append("OptionName: " + getOptionName());
+            sb.append("OptionName: ").append(getOptionName());
         sb.append("}");
         return sb.toString();
     }
@@ -414,4 +443,5 @@ public class ValidationMessage implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

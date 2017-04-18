@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A parameter used to successfully provision the product. This value includes a list of allowable values and additional
  * metadata.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisioningArtifactParameter"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProvisioningArtifactParameter implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProvisioningArtifactParameter implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -332,17 +339,17 @@ public class ProvisioningArtifactParameter implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getParameterKey() != null)
-            sb.append("ParameterKey: " + getParameterKey() + ",");
+            sb.append("ParameterKey: ").append(getParameterKey()).append(",");
         if (getDefaultValue() != null)
-            sb.append("DefaultValue: " + getDefaultValue() + ",");
+            sb.append("DefaultValue: ").append(getDefaultValue()).append(",");
         if (getParameterType() != null)
-            sb.append("ParameterType: " + getParameterType() + ",");
+            sb.append("ParameterType: ").append(getParameterType()).append(",");
         if (getIsNoEcho() != null)
-            sb.append("IsNoEcho: " + getIsNoEcho() + ",");
+            sb.append("IsNoEcho: ").append(getIsNoEcho()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getParameterConstraints() != null)
-            sb.append("ParameterConstraints: " + getParameterConstraints());
+            sb.append("ParameterConstraints: ").append(getParameterConstraints());
         sb.append("}");
         return sb.toString();
     }
@@ -405,5 +412,11 @@ public class ProvisioningArtifactParameter implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProvisioningArtifactParameterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

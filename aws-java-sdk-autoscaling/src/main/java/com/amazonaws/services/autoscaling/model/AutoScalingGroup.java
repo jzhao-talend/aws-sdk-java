@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an Auto Scaling group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AutoScalingGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AutoScalingGroup implements Serializable, Cloneable {
 
     /**
@@ -1373,49 +1378,49 @@ public class AutoScalingGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getAutoScalingGroupARN() != null)
-            sb.append("AutoScalingGroupARN: " + getAutoScalingGroupARN() + ",");
+            sb.append("AutoScalingGroupARN: ").append(getAutoScalingGroupARN()).append(",");
         if (getLaunchConfigurationName() != null)
-            sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+            sb.append("LaunchConfigurationName: ").append(getLaunchConfigurationName()).append(",");
         if (getMinSize() != null)
-            sb.append("MinSize: " + getMinSize() + ",");
+            sb.append("MinSize: ").append(getMinSize()).append(",");
         if (getMaxSize() != null)
-            sb.append("MaxSize: " + getMaxSize() + ",");
+            sb.append("MaxSize: ").append(getMaxSize()).append(",");
         if (getDesiredCapacity() != null)
-            sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");
+            sb.append("DesiredCapacity: ").append(getDesiredCapacity()).append(",");
         if (getDefaultCooldown() != null)
-            sb.append("DefaultCooldown: " + getDefaultCooldown() + ",");
+            sb.append("DefaultCooldown: ").append(getDefaultCooldown()).append(",");
         if (getAvailabilityZones() != null)
-            sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+            sb.append("AvailabilityZones: ").append(getAvailabilityZones()).append(",");
         if (getLoadBalancerNames() != null)
-            sb.append("LoadBalancerNames: " + getLoadBalancerNames() + ",");
+            sb.append("LoadBalancerNames: ").append(getLoadBalancerNames()).append(",");
         if (getTargetGroupARNs() != null)
-            sb.append("TargetGroupARNs: " + getTargetGroupARNs() + ",");
+            sb.append("TargetGroupARNs: ").append(getTargetGroupARNs()).append(",");
         if (getHealthCheckType() != null)
-            sb.append("HealthCheckType: " + getHealthCheckType() + ",");
+            sb.append("HealthCheckType: ").append(getHealthCheckType()).append(",");
         if (getHealthCheckGracePeriod() != null)
-            sb.append("HealthCheckGracePeriod: " + getHealthCheckGracePeriod() + ",");
+            sb.append("HealthCheckGracePeriod: ").append(getHealthCheckGracePeriod()).append(",");
         if (getInstances() != null)
-            sb.append("Instances: " + getInstances() + ",");
+            sb.append("Instances: ").append(getInstances()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime() + ",");
+            sb.append("CreatedTime: ").append(getCreatedTime()).append(",");
         if (getSuspendedProcesses() != null)
-            sb.append("SuspendedProcesses: " + getSuspendedProcesses() + ",");
+            sb.append("SuspendedProcesses: ").append(getSuspendedProcesses()).append(",");
         if (getPlacementGroup() != null)
-            sb.append("PlacementGroup: " + getPlacementGroup() + ",");
+            sb.append("PlacementGroup: ").append(getPlacementGroup()).append(",");
         if (getVPCZoneIdentifier() != null)
-            sb.append("VPCZoneIdentifier: " + getVPCZoneIdentifier() + ",");
+            sb.append("VPCZoneIdentifier: ").append(getVPCZoneIdentifier()).append(",");
         if (getEnabledMetrics() != null)
-            sb.append("EnabledMetrics: " + getEnabledMetrics() + ",");
+            sb.append("EnabledMetrics: ").append(getEnabledMetrics()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getTerminationPolicies() != null)
-            sb.append("TerminationPolicies: " + getTerminationPolicies() + ",");
+            sb.append("TerminationPolicies: ").append(getTerminationPolicies()).append(",");
         if (getNewInstancesProtectedFromScaleIn() != null)
-            sb.append("NewInstancesProtectedFromScaleIn: " + getNewInstancesProtectedFromScaleIn());
+            sb.append("NewInstancesProtectedFromScaleIn: ").append(getNewInstancesProtectedFromScaleIn());
         sb.append("}");
         return sb.toString();
     }
@@ -1560,4 +1565,5 @@ public class AutoScalingGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

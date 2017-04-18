@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateEnvironment" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -97,11 +103,6 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * The name of the configuration template to use in deployment. If no configuration template is found with this
      * name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      * </p>
-     * <p>
-     * Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If you
-     * specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not
-     * specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      */
     private String templateName;
     /**
@@ -109,13 +110,14 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration
      * values to the default values associated with the specified solution stack.
      * </p>
-     * <p>
-     * Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both, AWS
-     * Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS
-     * Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      */
     private String solutionStackName;
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     */
+    private String platformArn;
     /**
      * <p>
      * If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the
@@ -664,19 +666,10 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * The name of the configuration template to use in deployment. If no configuration template is found with this
      * name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      * </p>
-     * <p>
-     * Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If you
-     * specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not
-     * specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @param templateName
      *        The name of the configuration template to use in deployment. If no configuration template is found with
-     *        this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
-     *        <p>
-     *        Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If
-     *        you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you
-     *        do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *        this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      */
 
     public void setTemplateName(String templateName) {
@@ -688,18 +681,9 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * The name of the configuration template to use in deployment. If no configuration template is found with this
      * name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      * </p>
-     * <p>
-     * Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If you
-     * specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not
-     * specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @return The name of the configuration template to use in deployment. If no configuration template is found with
-     *         this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
-     *         <p>
-     *         Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If
-     *         you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you
-     *         do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *         this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      */
 
     public String getTemplateName() {
@@ -711,19 +695,10 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * The name of the configuration template to use in deployment. If no configuration template is found with this
      * name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      * </p>
-     * <p>
-     * Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If you
-     * specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not
-     * specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @param templateName
      *        The name of the configuration template to use in deployment. If no configuration template is found with
-     *        this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
-     *        <p>
-     *        Condition: You must specify either this parameter or a <code>SolutionStackName</code>, but not both. If
-     *        you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you
-     *        do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *        this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -737,19 +712,10 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration
      * values to the default values associated with the specified solution stack.
      * </p>
-     * <p>
-     * Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both, AWS
-     * Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS
-     * Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @param solutionStackName
      *        This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the
-     *        configuration values to the default values associated with the specified solution stack.</p>
-     *        <p>
-     *        Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both,
-     *        AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify
-     *        either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *        configuration values to the default values associated with the specified solution stack.
      */
 
     public void setSolutionStackName(String solutionStackName) {
@@ -761,18 +727,9 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration
      * values to the default values associated with the specified solution stack.
      * </p>
-     * <p>
-     * Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both, AWS
-     * Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS
-     * Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @return This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the
-     *         configuration values to the default values associated with the specified solution stack.</p>
-     *         <p>
-     *         Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify
-     *         both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not
-     *         specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *         configuration values to the default values associated with the specified solution stack.
      */
 
     public String getSolutionStackName() {
@@ -784,24 +741,55 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
      * This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration
      * values to the default values associated with the specified solution stack.
      * </p>
-     * <p>
-     * Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both, AWS
-     * Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS
-     * Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
-     * </p>
      * 
      * @param solutionStackName
      *        This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the
-     *        configuration values to the default values associated with the specified solution stack.</p>
-     *        <p>
-     *        Condition: You must specify either this or a <code>TemplateName</code>, but not both. If you specify both,
-     *        AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify
-     *        either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error.
+     *        configuration values to the default values associated with the specified solution stack.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEnvironmentRequest withSolutionStackName(String solutionStackName) {
         setSolutionStackName(solutionStackName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @param platformArn
+     *        The ARN of the custom platform.
+     */
+
+    public void setPlatformArn(String platformArn) {
+        this.platformArn = platformArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @return The ARN of the custom platform.
+     */
+
+    public String getPlatformArn() {
+        return this.platformArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the custom platform.
+     * </p>
+     * 
+     * @param platformArn
+     *        The ARN of the custom platform.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateEnvironmentRequest withPlatformArn(String platformArn) {
+        setPlatformArn(platformArn);
         return this;
     }
 
@@ -987,29 +975,31 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getEnvironmentName() != null)
-            sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+            sb.append("EnvironmentName: ").append(getEnvironmentName()).append(",");
         if (getGroupName() != null)
-            sb.append("GroupName: " + getGroupName() + ",");
+            sb.append("GroupName: ").append(getGroupName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCNAMEPrefix() != null)
-            sb.append("CNAMEPrefix: " + getCNAMEPrefix() + ",");
+            sb.append("CNAMEPrefix: ").append(getCNAMEPrefix()).append(",");
         if (getTier() != null)
-            sb.append("Tier: " + getTier() + ",");
+            sb.append("Tier: ").append(getTier()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getVersionLabel() != null)
-            sb.append("VersionLabel: " + getVersionLabel() + ",");
+            sb.append("VersionLabel: ").append(getVersionLabel()).append(",");
         if (getTemplateName() != null)
-            sb.append("TemplateName: " + getTemplateName() + ",");
+            sb.append("TemplateName: ").append(getTemplateName()).append(",");
         if (getSolutionStackName() != null)
-            sb.append("SolutionStackName: " + getSolutionStackName() + ",");
+            sb.append("SolutionStackName: ").append(getSolutionStackName()).append(",");
+        if (getPlatformArn() != null)
+            sb.append("PlatformArn: ").append(getPlatformArn()).append(",");
         if (getOptionSettings() != null)
-            sb.append("OptionSettings: " + getOptionSettings() + ",");
+            sb.append("OptionSettings: ").append(getOptionSettings()).append(",");
         if (getOptionsToRemove() != null)
-            sb.append("OptionsToRemove: " + getOptionsToRemove());
+            sb.append("OptionsToRemove: ").append(getOptionsToRemove());
         sb.append("}");
         return sb.toString();
     }
@@ -1064,6 +1054,10 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getSolutionStackName() != null && other.getSolutionStackName().equals(this.getSolutionStackName()) == false)
             return false;
+        if (other.getPlatformArn() == null ^ this.getPlatformArn() == null)
+            return false;
+        if (other.getPlatformArn() != null && other.getPlatformArn().equals(this.getPlatformArn()) == false)
+            return false;
         if (other.getOptionSettings() == null ^ this.getOptionSettings() == null)
             return false;
         if (other.getOptionSettings() != null && other.getOptionSettings().equals(this.getOptionSettings()) == false)
@@ -1090,6 +1084,7 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getVersionLabel() == null) ? 0 : getVersionLabel().hashCode());
         hashCode = prime * hashCode + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode());
         hashCode = prime * hashCode + ((getSolutionStackName() == null) ? 0 : getSolutionStackName().hashCode());
+        hashCode = prime * hashCode + ((getPlatformArn() == null) ? 0 : getPlatformArn().hashCode());
         hashCode = prime * hashCode + ((getOptionSettings() == null) ? 0 : getOptionSettings().hashCode());
         hashCode = prime * hashCode + ((getOptionsToRemove() == null) ? 0 : getOptionsToRemove().hashCode());
         return hashCode;
@@ -1099,4 +1094,5 @@ public class CreateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
     public CreateEnvironmentRequest clone() {
         return (CreateEnvironmentRequest) super.clone();
     }
+
 }

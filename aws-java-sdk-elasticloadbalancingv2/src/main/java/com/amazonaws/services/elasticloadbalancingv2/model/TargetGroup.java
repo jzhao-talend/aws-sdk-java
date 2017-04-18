@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about a target group.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/TargetGroup" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TargetGroup implements Serializable, Cloneable {
 
     /**
@@ -775,33 +780,33 @@ public class TargetGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetGroupArn() != null)
-            sb.append("TargetGroupArn: " + getTargetGroupArn() + ",");
+            sb.append("TargetGroupArn: ").append(getTargetGroupArn()).append(",");
         if (getTargetGroupName() != null)
-            sb.append("TargetGroupName: " + getTargetGroupName() + ",");
+            sb.append("TargetGroupName: ").append(getTargetGroupName()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getHealthCheckProtocol() != null)
-            sb.append("HealthCheckProtocol: " + getHealthCheckProtocol() + ",");
+            sb.append("HealthCheckProtocol: ").append(getHealthCheckProtocol()).append(",");
         if (getHealthCheckPort() != null)
-            sb.append("HealthCheckPort: " + getHealthCheckPort() + ",");
+            sb.append("HealthCheckPort: ").append(getHealthCheckPort()).append(",");
         if (getHealthCheckIntervalSeconds() != null)
-            sb.append("HealthCheckIntervalSeconds: " + getHealthCheckIntervalSeconds() + ",");
+            sb.append("HealthCheckIntervalSeconds: ").append(getHealthCheckIntervalSeconds()).append(",");
         if (getHealthCheckTimeoutSeconds() != null)
-            sb.append("HealthCheckTimeoutSeconds: " + getHealthCheckTimeoutSeconds() + ",");
+            sb.append("HealthCheckTimeoutSeconds: ").append(getHealthCheckTimeoutSeconds()).append(",");
         if (getHealthyThresholdCount() != null)
-            sb.append("HealthyThresholdCount: " + getHealthyThresholdCount() + ",");
+            sb.append("HealthyThresholdCount: ").append(getHealthyThresholdCount()).append(",");
         if (getUnhealthyThresholdCount() != null)
-            sb.append("UnhealthyThresholdCount: " + getUnhealthyThresholdCount() + ",");
+            sb.append("UnhealthyThresholdCount: ").append(getUnhealthyThresholdCount()).append(",");
         if (getHealthCheckPath() != null)
-            sb.append("HealthCheckPath: " + getHealthCheckPath() + ",");
+            sb.append("HealthCheckPath: ").append(getHealthCheckPath()).append(",");
         if (getMatcher() != null)
-            sb.append("Matcher: " + getMatcher() + ",");
+            sb.append("Matcher: ").append(getMatcher()).append(",");
         if (getLoadBalancerArns() != null)
-            sb.append("LoadBalancerArns: " + getLoadBalancerArns());
+            sb.append("LoadBalancerArns: ").append(getLoadBalancerArns());
         sb.append("}");
         return sb.toString();
     }
@@ -905,4 +910,5 @@ public class TargetGroup implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

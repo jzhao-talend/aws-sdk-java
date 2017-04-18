@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterTaskDefinition" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -69,6 +74,13 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Volume> volumes;
+    /**
+     * <p>
+     * An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per
+     * task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint> placementConstraints;
 
     /**
      * <p>
@@ -543,6 +555,87 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per
+     * task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @return An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints
+     *         per task (this limit includes constraints in the task definition and those specified at run time).
+     */
+
+    public java.util.List<TaskDefinitionPlacementConstraint> getPlacementConstraints() {
+        if (placementConstraints == null) {
+            placementConstraints = new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>();
+        }
+        return placementConstraints;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per
+     * task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints
+     *        per task (this limit includes constraints in the task definition and those specified at run time).
+     */
+
+    public void setPlacementConstraints(java.util.Collection<TaskDefinitionPlacementConstraint> placementConstraints) {
+        if (placementConstraints == null) {
+            this.placementConstraints = null;
+            return;
+        }
+
+        this.placementConstraints = new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>(placementConstraints);
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per
+     * task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPlacementConstraints(java.util.Collection)} or {@link #withPlacementConstraints(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints
+     *        per task (this limit includes constraints in the task definition and those specified at run time).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RegisterTaskDefinitionRequest withPlacementConstraints(TaskDefinitionPlacementConstraint... placementConstraints) {
+        if (this.placementConstraints == null) {
+            setPlacementConstraints(new com.amazonaws.internal.SdkInternalList<TaskDefinitionPlacementConstraint>(placementConstraints.length));
+        }
+        for (TaskDefinitionPlacementConstraint ele : placementConstraints) {
+            this.placementConstraints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per
+     * task (this limit includes constraints in the task definition and those specified at run time).
+     * </p>
+     * 
+     * @param placementConstraints
+     *        An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints
+     *        per task (this limit includes constraints in the task definition and those specified at run time).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RegisterTaskDefinitionRequest withPlacementConstraints(java.util.Collection<TaskDefinitionPlacementConstraint> placementConstraints) {
+        setPlacementConstraints(placementConstraints);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -554,15 +647,17 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFamily() != null)
-            sb.append("Family: " + getFamily() + ",");
+            sb.append("Family: ").append(getFamily()).append(",");
         if (getTaskRoleArn() != null)
-            sb.append("TaskRoleArn: " + getTaskRoleArn() + ",");
+            sb.append("TaskRoleArn: ").append(getTaskRoleArn()).append(",");
         if (getNetworkMode() != null)
-            sb.append("NetworkMode: " + getNetworkMode() + ",");
+            sb.append("NetworkMode: ").append(getNetworkMode()).append(",");
         if (getContainerDefinitions() != null)
-            sb.append("ContainerDefinitions: " + getContainerDefinitions() + ",");
+            sb.append("ContainerDefinitions: ").append(getContainerDefinitions()).append(",");
         if (getVolumes() != null)
-            sb.append("Volumes: " + getVolumes());
+            sb.append("Volumes: ").append(getVolumes()).append(",");
+        if (getPlacementConstraints() != null)
+            sb.append("PlacementConstraints: ").append(getPlacementConstraints());
         sb.append("}");
         return sb.toString();
     }
@@ -597,6 +692,10 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getVolumes() != null && other.getVolumes().equals(this.getVolumes()) == false)
             return false;
+        if (other.getPlacementConstraints() == null ^ this.getPlacementConstraints() == null)
+            return false;
+        if (other.getPlacementConstraints() != null && other.getPlacementConstraints().equals(this.getPlacementConstraints()) == false)
+            return false;
         return true;
     }
 
@@ -610,6 +709,7 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
         hashCode = prime * hashCode + ((getNetworkMode() == null) ? 0 : getNetworkMode().hashCode());
         hashCode = prime * hashCode + ((getContainerDefinitions() == null) ? 0 : getContainerDefinitions().hashCode());
         hashCode = prime * hashCode + ((getVolumes() == null) ? 0 : getVolumes().hashCode());
+        hashCode = prime * hashCode + ((getPlacementConstraints() == null) ? 0 : getPlacementConstraints().hashCode());
         return hashCode;
     }
 
@@ -617,4 +717,5 @@ public class RegisterTaskDefinitionRequest extends com.amazonaws.AmazonWebServic
     public RegisterTaskDefinitionRequest clone() {
         return (RegisterTaskDefinitionRequest) super.clone();
     }
+
 }

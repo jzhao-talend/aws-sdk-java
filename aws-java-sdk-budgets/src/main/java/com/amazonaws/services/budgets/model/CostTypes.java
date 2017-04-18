@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,15 @@
 package com.amazonaws.services.budgets.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * This includes the options for getting the cost of a budget.
  */
-public class CostTypes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CostTypes implements Serializable, Cloneable, StructuredPojo {
 
     private Boolean includeTax;
 
@@ -139,11 +143,11 @@ public class CostTypes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIncludeTax() != null)
-            sb.append("IncludeTax: " + getIncludeTax() + ",");
+            sb.append("IncludeTax: ").append(getIncludeTax()).append(",");
         if (getIncludeSubscription() != null)
-            sb.append("IncludeSubscription: " + getIncludeSubscription() + ",");
+            sb.append("IncludeSubscription: ").append(getIncludeSubscription()).append(",");
         if (getUseBlended() != null)
-            sb.append("UseBlended: " + getUseBlended());
+            sb.append("UseBlended: ").append(getUseBlended());
         sb.append("}");
         return sb.toString();
     }
@@ -191,5 +195,11 @@ public class CostTypes implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.budgets.model.transform.CostTypesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

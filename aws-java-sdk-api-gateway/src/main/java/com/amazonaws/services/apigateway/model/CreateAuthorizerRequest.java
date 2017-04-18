@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Request to add a new <a>Authorizer</a> to an existing <a>RestApi</a> resource.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAuthorizerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -558,25 +561,25 @@ public class CreateAuthorizerRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getProviderARNs() != null)
-            sb.append("ProviderARNs: " + getProviderARNs() + ",");
+            sb.append("ProviderARNs: ").append(getProviderARNs()).append(",");
         if (getAuthType() != null)
-            sb.append("AuthType: " + getAuthType() + ",");
+            sb.append("AuthType: ").append(getAuthType()).append(",");
         if (getAuthorizerUri() != null)
-            sb.append("AuthorizerUri: " + getAuthorizerUri() + ",");
+            sb.append("AuthorizerUri: ").append(getAuthorizerUri()).append(",");
         if (getAuthorizerCredentials() != null)
-            sb.append("AuthorizerCredentials: " + getAuthorizerCredentials() + ",");
+            sb.append("AuthorizerCredentials: ").append(getAuthorizerCredentials()).append(",");
         if (getIdentitySource() != null)
-            sb.append("IdentitySource: " + getIdentitySource() + ",");
+            sb.append("IdentitySource: ").append(getIdentitySource()).append(",");
         if (getIdentityValidationExpression() != null)
-            sb.append("IdentityValidationExpression: " + getIdentityValidationExpression() + ",");
+            sb.append("IdentityValidationExpression: ").append(getIdentityValidationExpression()).append(",");
         if (getAuthorizerResultTtlInSeconds() != null)
-            sb.append("AuthorizerResultTtlInSeconds: " + getAuthorizerResultTtlInSeconds());
+            sb.append("AuthorizerResultTtlInSeconds: ").append(getAuthorizerResultTtlInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -656,4 +659,5 @@ public class CreateAuthorizerRequest extends com.amazonaws.AmazonWebServiceReque
     public CreateAuthorizerRequest clone() {
         return (CreateAuthorizerRequest) super.clone();
     }
+
 }

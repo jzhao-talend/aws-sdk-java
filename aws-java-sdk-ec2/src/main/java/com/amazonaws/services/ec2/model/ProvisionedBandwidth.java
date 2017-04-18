@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -20,7 +21,11 @@ import java.io.Serializable;
  * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">documented limits</a>, contact us
  * through the <a href="https://console.aws.amazon.com/support/home?">Support Center</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ProvisionedBandwidth" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ProvisionedBandwidth implements Serializable, Cloneable {
 
     /**
@@ -336,15 +341,15 @@ public class ProvisionedBandwidth implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProvisioned() != null)
-            sb.append("Provisioned: " + getProvisioned() + ",");
+            sb.append("Provisioned: ").append(getProvisioned()).append(",");
         if (getRequested() != null)
-            sb.append("Requested: " + getRequested() + ",");
+            sb.append("Requested: ").append(getRequested()).append(",");
         if (getRequestTime() != null)
-            sb.append("RequestTime: " + getRequestTime() + ",");
+            sb.append("RequestTime: ").append(getRequestTime()).append(",");
         if (getProvisionTime() != null)
-            sb.append("ProvisionTime: " + getProvisionTime() + ",");
+            sb.append("ProvisionTime: ").append(getProvisionTime()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus());
+            sb.append("Status: ").append(getStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -403,4 +408,5 @@ public class ProvisionedBandwidth implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

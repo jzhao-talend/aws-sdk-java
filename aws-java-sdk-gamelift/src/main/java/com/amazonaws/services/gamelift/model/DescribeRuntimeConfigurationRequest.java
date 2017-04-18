@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,29 +13,35 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeRuntimeConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeRuntimeConfigurationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier of the fleet to get the runtime configuration for.
+     * Unique identifier for a fleet to get the runtime configuration for.
      * </p>
      */
     private String fleetId;
 
     /**
      * <p>
-     * Unique identifier of the fleet to get the runtime configuration for.
+     * Unique identifier for a fleet to get the runtime configuration for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier of the fleet to get the runtime configuration for.
+     *        Unique identifier for a fleet to get the runtime configuration for.
      */
 
     public void setFleetId(String fleetId) {
@@ -44,10 +50,10 @@ public class DescribeRuntimeConfigurationRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Unique identifier of the fleet to get the runtime configuration for.
+     * Unique identifier for a fleet to get the runtime configuration for.
      * </p>
      * 
-     * @return Unique identifier of the fleet to get the runtime configuration for.
+     * @return Unique identifier for a fleet to get the runtime configuration for.
      */
 
     public String getFleetId() {
@@ -56,11 +62,11 @@ public class DescribeRuntimeConfigurationRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Unique identifier of the fleet to get the runtime configuration for.
+     * Unique identifier for a fleet to get the runtime configuration for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier of the fleet to get the runtime configuration for.
+     *        Unique identifier for a fleet to get the runtime configuration for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -81,7 +87,7 @@ public class DescribeRuntimeConfigurationRequest extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId());
+            sb.append("FleetId: ").append(getFleetId());
         sb.append("}");
         return sb.toString();
     }
@@ -116,4 +122,5 @@ public class DescribeRuntimeConfigurationRequest extends com.amazonaws.AmazonWeb
     public DescribeRuntimeConfigurationRequest clone() {
         return (DescribeRuntimeConfigurationRequest) super.clone();
     }
+
 }

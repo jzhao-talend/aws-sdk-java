@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -43,8 +46,12 @@ import java.io.Serializable;
  * <p>
  * <code> { "12":"on", "13":"on", "14":"on", "15":"on" } </code>
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/WeeklyAutoScalingSchedule" target="_top">AWS
+ *      API Documentation</a>
  */
-public class WeeklyAutoScalingSchedule implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WeeklyAutoScalingSchedule implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -549,19 +556,19 @@ public class WeeklyAutoScalingSchedule implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMonday() != null)
-            sb.append("Monday: " + getMonday() + ",");
+            sb.append("Monday: ").append(getMonday()).append(",");
         if (getTuesday() != null)
-            sb.append("Tuesday: " + getTuesday() + ",");
+            sb.append("Tuesday: ").append(getTuesday()).append(",");
         if (getWednesday() != null)
-            sb.append("Wednesday: " + getWednesday() + ",");
+            sb.append("Wednesday: ").append(getWednesday()).append(",");
         if (getThursday() != null)
-            sb.append("Thursday: " + getThursday() + ",");
+            sb.append("Thursday: ").append(getThursday()).append(",");
         if (getFriday() != null)
-            sb.append("Friday: " + getFriday() + ",");
+            sb.append("Friday: ").append(getFriday()).append(",");
         if (getSaturday() != null)
-            sb.append("Saturday: " + getSaturday() + ",");
+            sb.append("Saturday: ").append(getSaturday()).append(",");
         if (getSunday() != null)
-            sb.append("Sunday: " + getSunday());
+            sb.append("Sunday: ").append(getSunday());
         sb.append("}");
         return sb.toString();
     }
@@ -629,5 +636,11 @@ public class WeeklyAutoScalingSchedule implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.WeeklyAutoScalingScheduleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

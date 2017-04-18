@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.logs.AWSLogsClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -45,10 +49,9 @@ import com.amazonaws.services.logs.model.transform.*;
  * return until the service call completes.
  * <p>
  * <p>
- * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon Elastic Compute Cloud
- * (Amazon EC2) instances, Amazon CloudTrail, or other sources. You can then retrieve the associated log data from
- * CloudWatch Logs using the Amazon CloudWatch console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch Logs
- * API, or the CloudWatch Logs SDK.
+ * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from EC2 instances, Amazon
+ * CloudTrail, or other sources. You can then retrieve the associated log data from CloudWatch Logs using the Amazon
+ * CloudWatch console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.
  * </p>
  * <p>
  * You can use CloudWatch Logs to:
@@ -82,6 +85,7 @@ import com.amazonaws.services.logs.model.transform.*;
  * </ul>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -94,38 +98,39 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(new JsonClientMetadata()
-            .withProtocolVersion("1.1")
-            .withSupportsCbor(false)
-            .withSupportsIon(false)
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                            com.amazonaws.services.logs.model.InvalidParameterException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withModeledClass(
-                            com.amazonaws.services.logs.model.InvalidOperationException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                            com.amazonaws.services.logs.model.ResourceNotFoundException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("DataAlreadyAcceptedException").withModeledClass(
-                            com.amazonaws.services.logs.model.DataAlreadyAcceptedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("InvalidSequenceTokenException").withModeledClass(
-                            com.amazonaws.services.logs.model.InvalidSequenceTokenException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                            com.amazonaws.services.logs.model.ServiceUnavailableException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                            com.amazonaws.services.logs.model.ResourceAlreadyExistsException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("OperationAbortedException").withModeledClass(
-                            com.amazonaws.services.logs.model.OperationAbortedException.class))
-            .addErrorMetadata(
-                    new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                            com.amazonaws.services.logs.model.LimitExceededException.class))
-            .withBaseServiceExceptionClass(com.amazonaws.services.logs.model.AWSLogsException.class));
+    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+            new JsonClientMetadata()
+                    .withProtocolVersion("1.1")
+                    .withSupportsCbor(false)
+                    .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
+                                    com.amazonaws.services.logs.model.InvalidParameterException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withModeledClass(
+                                    com.amazonaws.services.logs.model.InvalidOperationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
+                                    com.amazonaws.services.logs.model.ResourceNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DataAlreadyAcceptedException").withModeledClass(
+                                    com.amazonaws.services.logs.model.DataAlreadyAcceptedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSequenceTokenException").withModeledClass(
+                                    com.amazonaws.services.logs.model.InvalidSequenceTokenException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
+                                    com.amazonaws.services.logs.model.ServiceUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
+                                    com.amazonaws.services.logs.model.ResourceAlreadyExistsException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OperationAbortedException").withModeledClass(
+                                    com.amazonaws.services.logs.model.OperationAbortedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
+                                    com.amazonaws.services.logs.model.LimitExceededException.class))
+                    .withBaseServiceExceptionClass(com.amazonaws.services.logs.model.AWSLogsException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon CloudWatch Logs. A credentials provider chain will be
@@ -141,7 +146,9 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSLogsClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AWSLogsClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -164,7 +171,9 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      *        settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AWSLogsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLogsClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -179,7 +188,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AWSLogsClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AWSLogsClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AWSLogsClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -197,7 +209,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon CloudWatch Logs (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSLogsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLogsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLogsClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -214,7 +229,9 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AWSLogsClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AWSLogsClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -232,7 +249,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon CloudWatch Logs (ex: proxy
      *        settings, retry counts, etc.).
+     * @deprecated use {@link AWSLogsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLogsClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AWSLogsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -252,11 +272,19 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      *        settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AWSLogsClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AWSLogsClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AWSLogsClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AWSLogsClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AWSLogsClientBuilder builder() {
+        return AWSLogsClientBuilder.standard();
     }
 
     /**
@@ -288,23 +316,35 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Cancels an export task if it is in <code>PENDING</code> or <code>RUNNING</code> state.
+     * Cancels the specified export task.
+     * </p>
+     * <p>
+     * The task must be in the <code>PENDING</code> or <code>RUNNING</code> state.
      * </p>
      * 
      * @param cancelExportTaskRequest
      * @return Result of the CancelExportTask operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws InvalidOperationException
-     *         Returned if the operation is not valid on the specified resource
+     *         The operation is not valid on the specified resource.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CancelExportTaskResult cancelExportTask(CancelExportTaskRequest cancelExportTaskRequest) {
+    public CancelExportTaskResult cancelExportTask(CancelExportTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelExportTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelExportTaskResult executeCancelExportTask(CancelExportTaskRequest cancelExportTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(cancelExportTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -314,7 +354,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CancelExportTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(cancelExportTaskRequest));
+                request = new CancelExportTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(cancelExportTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -335,39 +375,47 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Creates an <code>ExportTask</code> which allows you to efficiently export data from a Log Group to your Amazon S3
-     * bucket.
+     * Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket.
      * </p>
      * <p>
-     * This is an asynchronous call. If all the required information is provided, this API will initiate an export task
-     * and respond with the task Id. Once started, <code>DescribeExportTasks</code> can be used to get the status of an
-     * export task. You can only have one active (<code>RUNNING</code> or <code>PENDING</code>) export task at a time,
-     * per account.
+     * This is an asynchronous call. If all the required information is provided, this operation initiates an export
+     * task and responds with the ID of the task. After the task has started, you can use <a>DescribeExportTasks</a> to
+     * get the status of the export task. Each account can only have one active (<code>RUNNING</code> or
+     * <code>PENDING</code>) export task at a time. To cancel an export task, use <a>CancelExportTask</a>.
      * </p>
      * <p>
-     * You can export logs from multiple log groups or multiple time ranges to the same Amazon S3 bucket. To separate
-     * out log data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all
+     * You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log
+     * data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all
      * exported objects.
      * </p>
      * 
      * @param createExportTaskRequest
      * @return Result of the CreateExportTask operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @sample AWSLogs.CreateExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateExportTask" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateExportTaskResult createExportTask(CreateExportTaskRequest createExportTaskRequest) {
+    public CreateExportTaskResult createExportTask(CreateExportTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateExportTask(request);
+    }
+
+    @SdkInternalApi
+    final CreateExportTaskResult executeCreateExportTask(CreateExportTaskRequest createExportTaskRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createExportTaskRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -377,7 +425,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateExportTaskRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createExportTaskRequest));
+                request = new CreateExportTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createExportTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -398,8 +446,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Creates a new log group with the specified name. The name of the log group must be unique within a region for an
-     * AWS account. You can create up to 500 log groups per account.
+     * Creates a log group with the specified name.
+     * </p>
+     * <p>
+     * You can create up to 5000 log groups per account.
      * </p>
      * <p>
      * You must use the following guidelines when naming a log group:
@@ -407,12 +457,18 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * <ul>
      * <li>
      * <p>
+     * Log group names must be unique within a region for an AWS account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Log group names can be between 1 and 512 characters long.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
+     * Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward
+     * slash), and '.' (period).
      * </p>
      * </li>
      * </ul>
@@ -420,19 +476,28 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param createLogGroupRequest
      * @return Result of the CreateLogGroup operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CreateLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateLogGroupResult createLogGroup(CreateLogGroupRequest createLogGroupRequest) {
+    public CreateLogGroupResult createLogGroup(CreateLogGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLogGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateLogGroupResult executeCreateLogGroup(CreateLogGroupRequest createLogGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLogGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -442,7 +507,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateLogGroupRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createLogGroupRequest));
+                request = new CreateLogGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createLogGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -463,8 +528,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Creates a new log stream in the specified log group. The name of the log stream must be unique within the log
-     * group. There is no limit on the number of log streams that can exist in a log group.
+     * Creates a log stream for the specified log group.
+     * </p>
+     * <p>
+     * There is no limit on the number of log streams that you can create for a log group.
      * </p>
      * <p>
      * You must use the following guidelines when naming a log stream:
@@ -472,12 +539,17 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * <ul>
      * <li>
      * <p>
+     * Log stream names must be unique within the log group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Log stream names can be between 1 and 512 characters long.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The ':' colon character is not allowed.
+     * The ':' (colon) and '*' (asterisk) characters are not allowed.
      * </p>
      * </li>
      * </ul>
@@ -485,17 +557,26 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param createLogStreamRequest
      * @return Result of the CreateLogStream operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceAlreadyExistsException
-     *         Returned if the specified resource already exists.
+     *         The specified resource already exists.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.CreateLogStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateLogStreamResult createLogStream(CreateLogStreamRequest createLogStreamRequest) {
+    public CreateLogStreamResult createLogStream(CreateLogStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLogStream(request);
+    }
+
+    @SdkInternalApi
+    final CreateLogStreamResult executeCreateLogStream(CreateLogStreamRequest createLogStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLogStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -505,7 +586,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new CreateLogStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(createLogStreamRequest));
+                request = new CreateLogStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createLogStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -526,24 +607,33 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes the destination with the specified name and eventually disables all the subscription filters that publish
-     * to it. This will not delete the physical resource encapsulated by the destination.
+     * Deletes the specified destination, and eventually disables all the subscription filters that publish to it. This
+     * operation does not delete the physical resource encapsulated by the destination.
      * </p>
      * 
      * @param deleteDestinationRequest
      * @return Result of the DeleteDestination operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteDestination" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteDestinationResult deleteDestination(DeleteDestinationRequest deleteDestinationRequest) {
+    public DeleteDestinationResult deleteDestination(DeleteDestinationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteDestination(request);
+    }
+
+    @SdkInternalApi
+    final DeleteDestinationResult executeDeleteDestination(DeleteDestinationRequest deleteDestinationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteDestinationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -553,7 +643,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteDestinationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDestinationRequest));
+                request = new DeleteDestinationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDestinationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -574,24 +664,33 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes the log group with the specified name and permanently deletes all the archived log events associated with
-     * it.
+     * Deletes the specified log group and permanently deletes all the archived log events associated with the log
+     * group.
      * </p>
      * 
      * @param deleteLogGroupRequest
      * @return Result of the DeleteLogGroup operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogGroup" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteLogGroupResult deleteLogGroup(DeleteLogGroupRequest deleteLogGroupRequest) {
+    public DeleteLogGroupResult deleteLogGroup(DeleteLogGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLogGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLogGroupResult executeDeleteLogGroup(DeleteLogGroupRequest deleteLogGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLogGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -601,7 +700,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteLogGroupRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteLogGroupRequest));
+                request = new DeleteLogGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteLogGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -622,23 +721,33 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes a log stream and permanently deletes all the archived log events associated with it.
+     * Deletes the specified log stream and permanently deletes all the archived log events associated with the log
+     * stream.
      * </p>
      * 
      * @param deleteLogStreamRequest
      * @return Result of the DeleteLogStream operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteLogStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteLogStreamResult deleteLogStream(DeleteLogStreamRequest deleteLogStreamRequest) {
+    public DeleteLogStreamResult deleteLogStream(DeleteLogStreamRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLogStream(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLogStreamResult executeDeleteLogStream(DeleteLogStreamRequest deleteLogStreamRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLogStreamRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -648,7 +757,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteLogStreamRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteLogStreamRequest));
+                request = new DeleteLogStreamRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteLogStreamRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -669,23 +778,32 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes a metric filter associated with the specified log group.
+     * Deletes the specified metric filter.
      * </p>
      * 
      * @param deleteMetricFilterRequest
      * @return Result of the DeleteMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteMetricFilterResult deleteMetricFilter(DeleteMetricFilterRequest deleteMetricFilterRequest) {
+    public DeleteMetricFilterResult deleteMetricFilter(DeleteMetricFilterRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteMetricFilter(request);
+    }
+
+    @SdkInternalApi
+    final DeleteMetricFilterResult executeDeleteMetricFilter(DeleteMetricFilterRequest deleteMetricFilterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteMetricFilterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -695,7 +813,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteMetricFilterRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteMetricFilterRequest));
+                request = new DeleteMetricFilterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteMetricFilterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -716,24 +834,35 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes the retention policy of the specified log group. Log events would not expire if they belong to log groups
-     * without a retention policy.
+     * Deletes the specified retention policy.
+     * </p>
+     * <p>
+     * Log events do not expire if they belong to log groups without a retention policy.
      * </p>
      * 
      * @param deleteRetentionPolicyRequest
      * @return Result of the DeleteRetentionPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteRetentionPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteRetentionPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteRetentionPolicyResult deleteRetentionPolicy(DeleteRetentionPolicyRequest deleteRetentionPolicyRequest) {
+    public DeleteRetentionPolicyResult deleteRetentionPolicy(DeleteRetentionPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRetentionPolicy(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRetentionPolicyResult executeDeleteRetentionPolicy(DeleteRetentionPolicyRequest deleteRetentionPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRetentionPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -743,7 +872,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteRetentionPolicyRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRetentionPolicyRequest));
+                request = new DeleteRetentionPolicyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRetentionPolicyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -765,23 +894,32 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Deletes a subscription filter associated with the specified log group.
+     * Deletes the specified subscription filter.
      * </p>
      * 
      * @param deleteSubscriptionFilterRequest
      * @return Result of the DeleteSubscriptionFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DeleteSubscriptionFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteSubscriptionFilter" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeleteSubscriptionFilterResult deleteSubscriptionFilter(DeleteSubscriptionFilterRequest deleteSubscriptionFilterRequest) {
+    public DeleteSubscriptionFilterResult deleteSubscriptionFilter(DeleteSubscriptionFilterRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSubscriptionFilter(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSubscriptionFilterResult executeDeleteSubscriptionFilter(DeleteSubscriptionFilterRequest deleteSubscriptionFilterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteSubscriptionFilterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -791,7 +929,8 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DeleteSubscriptionFilterRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteSubscriptionFilterRequest));
+                request = new DeleteSubscriptionFilterRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteSubscriptionFilterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -813,25 +952,28 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the destinations that are associated with the AWS account making the request. The list returned in
-     * the response is ASCII-sorted by destination name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 destinations. If there are more destinations to list, the response
-     * would contain a <code>nextToken</code> value in the response body. You can also limit the number of destinations
-     * returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists all your destinations. The results are ASCII-sorted by destination name.
      * </p>
      * 
      * @param describeDestinationsRequest
      * @return Result of the DescribeDestinations operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeDestinations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDestinations" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeDestinationsResult describeDestinations(DescribeDestinationsRequest describeDestinationsRequest) {
+    public DescribeDestinationsResult describeDestinations(DescribeDestinationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeDestinations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeDestinationsResult executeDescribeDestinations(DescribeDestinationsRequest describeDestinationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeDestinationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -841,7 +983,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeDestinationsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDestinationsRequest));
+                request = new DescribeDestinationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDestinationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -867,26 +1009,29 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the export tasks that are associated with the AWS account making the request. The export tasks can be
-     * filtered based on <code>TaskId</code> or <code>TaskStatus</code>.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 export tasks that satisfy the specified filters. If there are more
-     * export tasks to list, the response would contain a <code>nextToken</code> value in the response body. You can
-     * also limit the number of export tasks returned in the response by specifying the <code>limit</code> parameter in
-     * the request.
+     * Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or
+     * task status.
      * </p>
      * 
      * @param describeExportTasksRequest
      * @return Result of the DescribeExportTasks operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest describeExportTasksRequest) {
+    public DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeExportTasks(request);
+    }
+
+    @SdkInternalApi
+    final DescribeExportTasksResult executeDescribeExportTasks(DescribeExportTasksRequest describeExportTasksRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeExportTasksRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -896,7 +1041,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeExportTasksRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeExportTasksRequest));
+                request = new DescribeExportTasksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeExportTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -917,25 +1062,29 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the log groups that are associated with the AWS account making the request. The list returned in the
-     * response is ASCII-sorted by log group name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 log groups. If there are more log groups to list, the response would
-     * contain a <code>nextToken</code> value in the response body. You can also limit the number of log groups returned
-     * in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are
+     * ASCII-sorted by log group name.
      * </p>
      * 
      * @param describeLogGroupsRequest
      * @return Result of the DescribeLogGroups operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeLogGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogGroups" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeLogGroupsResult describeLogGroups(DescribeLogGroupsRequest describeLogGroupsRequest) {
+    public DescribeLogGroupsResult describeLogGroups(DescribeLogGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLogGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLogGroupsResult executeDescribeLogGroups(DescribeLogGroupsRequest describeLogGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLogGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -945,7 +1094,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeLogGroupsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLogGroupsRequest));
+                request = new DescribeLogGroupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLogGroupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -971,28 +1120,34 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the log streams that are associated with the specified log group. The list returned in the response
-     * is ASCII-sorted by log stream name.
+     * Lists the log streams for the specified log group. You can list all the log streams or filter the results by
+     * prefix. You can also control how the results are ordered.
      * </p>
      * <p>
-     * By default, this operation returns up to 50 log streams. If there are more log streams to list, the response
-     * would contain a <code>nextToken</code> value in the response body. You can also limit the number of log streams
-     * returned in the response by specifying the <code>limit</code> parameter in the request. This operation has a
-     * limit of five transactions per second, after which transactions are throttled.
+     * This operation has a limit of five transactions per second, after which transactions are throttled.
      * </p>
      * 
      * @param describeLogStreamsRequest
      * @return Result of the DescribeLogStreams operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeLogStreams
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogStreams" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeLogStreamsResult describeLogStreams(DescribeLogStreamsRequest describeLogStreamsRequest) {
+    public DescribeLogStreamsResult describeLogStreams(DescribeLogStreamsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLogStreams(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLogStreamsResult executeDescribeLogStreams(DescribeLogStreamsRequest describeLogStreamsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLogStreamsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1002,7 +1157,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeLogStreamsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLogStreamsRequest));
+                request = new DescribeLogStreamsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLogStreamsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1023,27 +1178,31 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the metrics filters associated with the specified log group. The list returned in the response is
-     * ASCII-sorted by filter name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 metric filters. If there are more metric filters to list, the
-     * response would contain a <code>nextToken</code> value in the response body. You can also limit the number of
-     * metric filters returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the specified metric filters. You can list all the metric filters or filter the results by log name,
+     * prefix, metric name, and metric namespace. The results are ASCII-sorted by filter name.
      * </p>
      * 
      * @param describeMetricFiltersRequest
      * @return Result of the DescribeMetricFilters operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeMetricFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeMetricFilters" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DescribeMetricFiltersResult describeMetricFilters(DescribeMetricFiltersRequest describeMetricFiltersRequest) {
+    public DescribeMetricFiltersResult describeMetricFilters(DescribeMetricFiltersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMetricFilters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMetricFiltersResult executeDescribeMetricFilters(DescribeMetricFiltersRequest describeMetricFiltersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeMetricFiltersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1053,7 +1212,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeMetricFiltersRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMetricFiltersRequest));
+                request = new DescribeMetricFiltersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMetricFiltersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1075,27 +1234,31 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns all the subscription filters associated with the specified log group. The list returned in the response
-     * is ASCII-sorted by filter name.
-     * </p>
-     * <p>
-     * By default, this operation returns up to 50 subscription filters. If there are more subscription filters to list,
-     * the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of
-     * subscription filters returned in the response by specifying the <code>limit</code> parameter in the request.
+     * Lists the subscription filters for the specified log group. You can list all the subscription filters or filter
+     * the results by prefix. The results are ASCII-sorted by filter name.
      * </p>
      * 
      * @param describeSubscriptionFiltersRequest
      * @return Result of the DescribeSubscriptionFilters operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.DescribeSubscriptionFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeSubscriptionFilters"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSubscriptionFiltersResult describeSubscriptionFilters(DescribeSubscriptionFiltersRequest describeSubscriptionFiltersRequest) {
+    public DescribeSubscriptionFiltersResult describeSubscriptionFilters(DescribeSubscriptionFiltersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSubscriptionFilters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSubscriptionFiltersResult executeDescribeSubscriptionFilters(DescribeSubscriptionFiltersRequest describeSubscriptionFiltersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSubscriptionFiltersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1105,7 +1268,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new DescribeSubscriptionFiltersRequestMarshaller(protocolFactory).marshall(super
+                request = new DescribeSubscriptionFiltersRequestProtocolMarshaller(protocolFactory).marshall(super
                         .beforeMarshalling(describeSubscriptionFiltersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
@@ -1128,32 +1291,36 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Retrieves log events, optionally filtered by a filter pattern from the specified log group. You can provide an
-     * optional time range to filter the results on the event <code>timestamp</code>. You can limit the streams searched
-     * to an explicit list of <code>logStreamNames</code>.
+     * Lists log events from the specified log group. You can list all the log events or filter the results using a
+     * filter pattern, a time range, and the name of the log stream.
      * </p>
      * <p>
-     * By default, this operation returns as much matching log events as can fit in a response size of 1MB, up to 10,000
-     * log events, or all the events found within a time-bounded scan window. If the response includes a
-     * <code>nextToken</code>, then there is more data to search, and the search can be resumed with a new request
-     * providing the nextToken. The response will contain a list of <code>searchedLogStreams</code> that contains
-     * information about which streams were searched in the request and whether they have been searched completely or
-     * require further pagination. The <code>limit</code> parameter in the request can be used to specify the maximum
-     * number of events to return in a page.
+     * By default, this operation returns as many log events as can fit in 1MB (up to 10,000 log events), or all the
+     * events found within the time range that you specify. If the results include a token, then there are more log
+     * events available, and you can get additional results by specifying the token in a subsequent call.
      * </p>
      * 
      * @param filterLogEventsRequest
      * @return Result of the FilterLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.FilterLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilterLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public FilterLogEventsResult filterLogEvents(FilterLogEventsRequest filterLogEventsRequest) {
+    public FilterLogEventsResult filterLogEvents(FilterLogEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeFilterLogEvents(request);
+    }
+
+    @SdkInternalApi
+    final FilterLogEventsResult executeFilterLogEvents(FilterLogEventsRequest filterLogEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(filterLogEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1163,7 +1330,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new FilterLogEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(filterLogEventsRequest));
+                request = new FilterLogEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(filterLogEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1184,29 +1351,35 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Retrieves log events from the specified log stream. You can provide an optional time range to filter the results
-     * on the event <code>timestamp</code>.
+     * Lists log events from the specified log stream. You can list all the log events or filter using a time range.
      * </p>
      * <p>
-     * By default, this operation returns as much log events as can fit in a response size of 1MB, up to 10,000 log
-     * events. The response will always include a <code>nextForwardToken</code> and a <code>nextBackwardToken</code> in
-     * the response body. You can use any of these tokens in subsequent <code>GetLogEvents</code> requests to paginate
-     * through events in either forward or backward direction. You can also limit the number of log events returned in
-     * the response by specifying the <code>limit</code> parameter in the request.
+     * By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log
+     * events). If the results include tokens, there are more log events available. You can get additional log events by
+     * specifying one of the tokens in a subsequent call.
      * </p>
      * 
      * @param getLogEventsRequest
      * @return Result of the GetLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.GetLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetLogEventsResult getLogEvents(GetLogEventsRequest getLogEventsRequest) {
+    public GetLogEventsResult getLogEvents(GetLogEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetLogEvents(request);
+    }
+
+    @SdkInternalApi
+    final GetLogEventsResult executeGetLogEvents(GetLogEventsRequest getLogEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getLogEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1216,7 +1389,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetLogEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(getLogEventsRequest));
+                request = new GetLogEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getLogEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1237,30 +1410,94 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Creates or updates a <code>Destination</code>. A destination encapsulates a physical resource (such as a Kinesis
-     * stream) and allows you to subscribe to a real-time stream of log events of a different account, ingested through
-     * <code>PutLogEvents</code> requests. Currently, the only supported physical resource is a Amazon Kinesis stream
-     * belonging to the same account as the destination.
+     * Lists the tags for the specified log group.
+     * </p>
+     * <p>
+     * To add tags, use <a>TagLogGroup</a>. To remove tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * 
+     * @param listTagsLogGroupRequest
+     * @return Result of the ListTagsLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.ListTagsLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListTagsLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ListTagsLogGroupResult listTagsLogGroup(ListTagsLogGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsLogGroup(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsLogGroupResult executeListTagsLogGroup(ListTagsLogGroupRequest listTagsLogGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsLogGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsLogGroupRequest> request = null;
+        Response<ListTagsLogGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsLogGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsLogGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsLogGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsLogGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates or updates a destination. A destination encapsulates a physical resource (such as a Kinesis stream) and
+     * enables you to subscribe to a real-time stream of log events of a different account, ingested using
+     * <a>PutLogEvents</a>. Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the
+     * same account as the destination.
      * </p>
      * <p>
      * A destination controls what is written to its Amazon Kinesis stream through an access policy. By default,
-     * PutDestination does not set any access policy with the destination, which means a cross-account user will not be
-     * able to call <code>PutSubscriptionFilter</code> against this destination. To enable that, the destination owner
-     * must call <code>PutDestinationPolicy</code> after PutDestination.
+     * <code>PutDestination</code> does not set any access policy with the destination, which means a cross-account user
+     * cannot call <a>PutSubscriptionFilter</a> against this destination. To enable this, the destination owner must
+     * call <a>PutDestinationPolicy</a> after <code>PutDestination</code>.
      * </p>
      * 
      * @param putDestinationRequest
      * @return Result of the PutDestination operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutDestination
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestination" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutDestinationResult putDestination(PutDestinationRequest putDestinationRequest) {
+    public PutDestinationResult putDestination(PutDestinationRequest request) {
+        request = beforeClientExecution(request);
+        return executePutDestination(request);
+    }
+
+    @SdkInternalApi
+    final PutDestinationResult executePutDestination(PutDestinationRequest putDestinationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putDestinationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1270,7 +1507,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutDestinationRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putDestinationRequest));
+                request = new PutDestinationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putDestinationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1291,23 +1528,32 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Creates or updates an access policy associated with an existing <code>Destination</code>. An access policy is an
-     * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
+     * Creates or updates an access policy associated with an existing destination. An access policy is an <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is
      * used to authorize claims to register a subscription filter against a given destination.
      * </p>
      * 
      * @param putDestinationPolicyRequest
      * @return Result of the PutDestinationPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutDestinationPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestinationPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutDestinationPolicyResult putDestinationPolicy(PutDestinationPolicyRequest putDestinationPolicyRequest) {
+    public PutDestinationPolicyResult putDestinationPolicy(PutDestinationPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutDestinationPolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutDestinationPolicyResult executePutDestinationPolicy(PutDestinationPolicyRequest putDestinationPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putDestinationPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1317,7 +1563,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutDestinationPolicyRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putDestinationPolicyRequest));
+                request = new PutDestinationPolicyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putDestinationPolicyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1341,9 +1587,9 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * Uploads a batch of log events to the specified log stream.
      * </p>
      * <p>
-     * Every PutLogEvents request must include the <code>sequenceToken</code> obtained from the response of the previous
-     * request. An upload in a newly created log stream does not require a <code>sequenceToken</code>. You can also get
-     * the <code>sequenceToken</code> using <a>DescribeLogStreams</a>.
+     * You must include the sequence token obtained from the response of the previous call. An upload in a newly created
+     * log stream does not require a sequence token. You can also get the sequence token using
+     * <a>DescribeLogStreams</a>.
      * </p>
      * <p>
      * The batch of events must satisfy the following constraints:
@@ -1367,7 +1613,8 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * </li>
      * <li>
      * <p>
-     * The log events in the batch must be in chronological ordered by their <code>timestamp</code>.
+     * The log events in the batch must be in chronological ordered by their timestamp (the time the event occurred,
+     * expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC).
      * </p>
      * </li>
      * <li>
@@ -1377,8 +1624,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * </li>
      * <li>
      * <p>
-     * A batch of log events in a single PutLogEvents request cannot span more than 24 hours. Otherwise, the
-     * PutLogEvents operation will fail.
+     * A batch of log events in a single request cannot span more than 24 hours. Otherwise, the operation fails.
      * </p>
      * </li>
      * </ul>
@@ -1386,17 +1632,28 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param putLogEventsRequest
      * @return Result of the PutLogEvents operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws InvalidSequenceTokenException
+     *         The sequence token is not valid.
      * @throws DataAlreadyAcceptedException
+     *         The event was already logged.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutLogEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutLogEventsResult putLogEvents(PutLogEventsRequest putLogEventsRequest) {
+    public PutLogEventsResult putLogEvents(PutLogEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executePutLogEvents(request);
+    }
+
+    @SdkInternalApi
+    final PutLogEventsResult executePutLogEvents(PutLogEventsRequest putLogEventsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putLogEventsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1406,7 +1663,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutLogEventsRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putLogEventsRequest));
+                request = new PutLogEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putLogEventsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1428,7 +1685,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
     /**
      * <p>
      * Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to
-     * configure rules to extract metric data from log events ingested through <code>PutLogEvents</code> requests.
+     * configure rules to extract metric data from log events ingested through <a>PutLogEvents</a>.
      * </p>
      * <p>
      * The maximum number of metric filters that can be associated with a log group is 100.
@@ -1437,19 +1694,28 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param putMetricFilterRequest
      * @return Result of the PutMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutMetricFilterResult putMetricFilter(PutMetricFilterRequest putMetricFilterRequest) {
+    public PutMetricFilterResult putMetricFilter(PutMetricFilterRequest request) {
+        request = beforeClientExecution(request);
+        return executePutMetricFilter(request);
+    }
+
+    @SdkInternalApi
+    final PutMetricFilterResult executePutMetricFilter(PutMetricFilterRequest putMetricFilterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putMetricFilterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1459,7 +1725,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutMetricFilterRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putMetricFilterRequest));
+                request = new PutMetricFilterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putMetricFilterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1487,17 +1753,26 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param putRetentionPolicyRequest
      * @return Result of the PutRetentionPolicy operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutRetentionPolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutRetentionPolicy" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutRetentionPolicyResult putRetentionPolicy(PutRetentionPolicyRequest putRetentionPolicyRequest) {
+    public PutRetentionPolicyResult putRetentionPolicy(PutRetentionPolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRetentionPolicy(request);
+    }
+
+    @SdkInternalApi
+    final PutRetentionPolicyResult executePutRetentionPolicy(PutRetentionPolicyRequest putRetentionPolicyRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putRetentionPolicyRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1507,7 +1782,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutRetentionPolicyRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRetentionPolicyRequest));
+                request = new PutRetentionPolicyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRetentionPolicyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1529,8 +1804,8 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
     /**
      * <p>
      * Creates or updates a subscription filter and associates it with the specified log group. Subscription filters
-     * allow you to subscribe to a real-time stream of log events ingested through <code>PutLogEvents</code> requests
-     * and have them delivered to a specific destination. Currently, the supported destinations are:
+     * allow you to subscribe to a real-time stream of log events ingested through <a>PutLogEvents</a> and have them
+     * delivered to a specific destination. Currently, the supported destinations are:
      * </p>
      * <ul>
      * <li>
@@ -1540,42 +1815,50 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination that belongs to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
      * <p>
-     * An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account
+     * An Amazon Kinesis Firehose stream that belongs to the same account as the subscription filter, for same-account
      * delivery.
      * </p>
      * </li>
      * <li>
      * <p>
-     * An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.
+     * An AWS Lambda function that belongs to the same account as the subscription filter, for same-account delivery.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Currently there can only be one subscription filter associated with a log group.
+     * There can only be one subscription filter associated with a log group.
      * </p>
      * 
      * @param putSubscriptionFilterRequest
      * @return Result of the PutSubscriptionFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ResourceNotFoundException
-     *         Returned if the specified resource does not exist.
+     *         The specified resource does not exist.
      * @throws OperationAbortedException
-     *         Returned if multiple requests to update the same resource were in conflict.
+     *         Multiple requests to update the same resource were in conflict.
      * @throws LimitExceededException
-     *         Returned if you have reached the maximum number of resources that can be created.
+     *         You have reached the maximum number of resources that can be created.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.PutSubscriptionFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutSubscriptionFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PutSubscriptionFilterResult putSubscriptionFilter(PutSubscriptionFilterRequest putSubscriptionFilterRequest) {
+    public PutSubscriptionFilterResult putSubscriptionFilter(PutSubscriptionFilterRequest request) {
+        request = beforeClientExecution(request);
+        return executePutSubscriptionFilter(request);
+    }
+
+    @SdkInternalApi
+    final PutSubscriptionFilterResult executePutSubscriptionFilter(PutSubscriptionFilterRequest putSubscriptionFilterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(putSubscriptionFilterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1585,7 +1868,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new PutSubscriptionFilterRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(putSubscriptionFilterRequest));
+                request = new PutSubscriptionFilterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putSubscriptionFilterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1607,6 +1890,66 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
+     * Adds or updates the specified tags for the specified log group.
+     * </p>
+     * <p>
+     * To list the tags for a log group, use <a>ListTagsLogGroup</a>. To remove tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * <p>
+     * For more information about tags, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html">Tag Log Groups in Amazon
+     * CloudWatch Logs</a> in the <i>Amazon CloudWatch Logs User Guide</i>.
+     * </p>
+     * 
+     * @param tagLogGroupRequest
+     * @return Result of the TagLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @sample AWSLogs.TagLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TagLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagLogGroupResult tagLogGroup(TagLogGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagLogGroup(request);
+    }
+
+    @SdkInternalApi
+    final TagLogGroupResult executeTagLogGroup(TagLogGroupRequest tagLogGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagLogGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagLogGroupRequest> request = null;
+        Response<TagLogGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagLogGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagLogGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagLogGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagLogGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to
      * validate the correctness of a metric filter pattern.
      * </p>
@@ -1614,13 +1957,22 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * @param testMetricFilterRequest
      * @return Result of the TestMetricFilter operation returned by the service.
      * @throws InvalidParameterException
-     *         Returned if a parameter of the request is incorrectly specified.
+     *         A parameter is specified incorrectly.
      * @throws ServiceUnavailableException
-     *         Returned if the service cannot complete the request.
+     *         The service cannot complete the request.
      * @sample AWSLogs.TestMetricFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TestMetricFilter" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public TestMetricFilterResult testMetricFilter(TestMetricFilterRequest testMetricFilterRequest) {
+    public TestMetricFilterResult testMetricFilter(TestMetricFilterRequest request) {
+        request = beforeClientExecution(request);
+        return executeTestMetricFilter(request);
+    }
+
+    @SdkInternalApi
+    final TestMetricFilterResult executeTestMetricFilter(TestMetricFilterRequest testMetricFilterRequest) {
+
         ExecutionContext executionContext = createExecutionContext(testMetricFilterRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1630,7 +1982,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
         try {
             awsRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new TestMetricFilterRequestMarshaller(protocolFactory).marshall(super.beforeMarshalling(testMetricFilterRequest));
+                request = new TestMetricFilterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(testMetricFilterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
             } finally {
@@ -1639,6 +1991,59 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
             HttpResponseHandler<AmazonWebServiceResponse<TestMetricFilterResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TestMetricFilterResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes the specified tags from the specified log group.
+     * </p>
+     * <p>
+     * To list the tags for a log group, use <a>ListTagsLogGroup</a>. To add tags, use <a>UntagLogGroup</a>.
+     * </p>
+     * 
+     * @param untagLogGroupRequest
+     * @return Result of the UntagLogGroup operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @sample AWSLogs.UntagLogGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/UntagLogGroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagLogGroupResult untagLogGroup(UntagLogGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagLogGroup(request);
+    }
+
+    @SdkInternalApi
+    final UntagLogGroupResult executeUntagLogGroup(UntagLogGroupRequest untagLogGroupRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagLogGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagLogGroupRequest> request = null;
+        Response<UntagLogGroupResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagLogGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagLogGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagLogGroupResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagLogGroupResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

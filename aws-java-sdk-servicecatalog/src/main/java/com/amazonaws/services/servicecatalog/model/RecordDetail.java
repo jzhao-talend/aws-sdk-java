@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The full details of a specific ProvisionedProduct object.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/RecordDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RecordDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RecordDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -41,7 +48,7 @@ public class RecordDetail implements Serializable, Cloneable {
     private String status;
     /**
      * <p>
-     * The time when the record for the ProvisionedProduct object was created.
+     * The UTC timestamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
@@ -71,7 +78,7 @@ public class RecordDetail implements Serializable, Cloneable {
     private String provisionedProductId;
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      */
     private String productId;
@@ -255,11 +262,11 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time when the record for the ProvisionedProduct object was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time when the record for the ProvisionedProduct object was created.
+     *        The UTC timestamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -268,10 +275,10 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time when the record for the ProvisionedProduct object was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
-     * @return The time when the record for the ProvisionedProduct object was created.
+     * @return The UTC timestamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -280,11 +287,11 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time when the record for the ProvisionedProduct object was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time when the record for the ProvisionedProduct object was created.
+     *        The UTC timestamp of the creation time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -455,11 +462,11 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
      * @param productId
-     *        The identifier of the product.
+     *        The product identifier.
      */
 
     public void setProductId(String productId) {
@@ -468,10 +475,10 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
-     * @return The identifier of the product.
+     * @return The product identifier.
      */
 
     public String getProductId() {
@@ -480,11 +487,11 @@ public class RecordDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
      * @param productId
-     *        The identifier of the product.
+     *        The product identifier.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -725,31 +732,31 @@ public class RecordDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecordId() != null)
-            sb.append("RecordId: " + getRecordId() + ",");
+            sb.append("RecordId: ").append(getRecordId()).append(",");
         if (getProvisionedProductName() != null)
-            sb.append("ProvisionedProductName: " + getProvisionedProductName() + ",");
+            sb.append("ProvisionedProductName: ").append(getProvisionedProductName()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime() + ",");
+            sb.append("CreatedTime: ").append(getCreatedTime()).append(",");
         if (getUpdatedTime() != null)
-            sb.append("UpdatedTime: " + getUpdatedTime() + ",");
+            sb.append("UpdatedTime: ").append(getUpdatedTime()).append(",");
         if (getProvisionedProductType() != null)
-            sb.append("ProvisionedProductType: " + getProvisionedProductType() + ",");
+            sb.append("ProvisionedProductType: ").append(getProvisionedProductType()).append(",");
         if (getRecordType() != null)
-            sb.append("RecordType: " + getRecordType() + ",");
+            sb.append("RecordType: ").append(getRecordType()).append(",");
         if (getProvisionedProductId() != null)
-            sb.append("ProvisionedProductId: " + getProvisionedProductId() + ",");
+            sb.append("ProvisionedProductId: ").append(getProvisionedProductId()).append(",");
         if (getProductId() != null)
-            sb.append("ProductId: " + getProductId() + ",");
+            sb.append("ProductId: ").append(getProductId()).append(",");
         if (getProvisioningArtifactId() != null)
-            sb.append("ProvisioningArtifactId: " + getProvisioningArtifactId() + ",");
+            sb.append("ProvisioningArtifactId: ").append(getProvisioningArtifactId()).append(",");
         if (getPathId() != null)
-            sb.append("PathId: " + getPathId() + ",");
+            sb.append("PathId: ").append(getPathId()).append(",");
         if (getRecordErrors() != null)
-            sb.append("RecordErrors: " + getRecordErrors() + ",");
+            sb.append("RecordErrors: ").append(getRecordErrors()).append(",");
         if (getRecordTags() != null)
-            sb.append("RecordTags: " + getRecordTags());
+            sb.append("RecordTags: ").append(getRecordTags());
         sb.append("}");
         return sb.toString();
     }
@@ -847,5 +854,11 @@ public class RecordDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.RecordDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

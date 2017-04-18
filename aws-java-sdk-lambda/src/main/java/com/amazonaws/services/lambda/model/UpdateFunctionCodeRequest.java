@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionCode" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -37,7 +43,7 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * The contents of your zip file containing your deployment package. If you are using the web API directly, the
      * contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI
-     * will do the encoding for you. For more information about creating a .zip file, go to <a
+     * will do the encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      * >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      * </p>
@@ -46,7 +52,7 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside
-     * in the same AWS region where you are creating the Lambda function.
+     * in the same AWS Region where you are creating the Lambda function.
      * </p>
      */
     private String s3Bucket;
@@ -153,12 +159,12 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * The contents of your zip file containing your deployment package. If you are using the web API directly, the
      * contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI
-     * will do the encoding for you. For more information about creating a .zip file, go to <a
+     * will do the encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      * >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      * </p>
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -171,7 +177,7 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * @param zipFile
      *        The contents of your zip file containing your deployment package. If you are using the web API directly,
      *        the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
-     *        SDKs or CLI will do the encoding for you. For more information about creating a .zip file, go to <a href=
+     *        SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href=
      *        "http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      *        >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      */
@@ -184,7 +190,7 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * The contents of your zip file containing your deployment package. If you are using the web API directly, the
      * contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI
-     * will do the encoding for you. For more information about creating a .zip file, go to <a
+     * will do the encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      * >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      * </p>
@@ -198,7 +204,7 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * 
      * @return The contents of your zip file containing your deployment package. If you are using the web API directly,
      *         the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
-     *         SDKs or CLI will do the encoding for you. For more information about creating a .zip file, go to <a href=
+     *         SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href=
      *         "http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      *         >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      */
@@ -211,15 +217,25 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * The contents of your zip file containing your deployment package. If you are using the web API directly, the
      * contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI
-     * will do the encoding for you. For more information about creating a .zip file, go to <a
+     * will do the encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      * >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
      * </p>
      * 
      * @param zipFile
      *        The contents of your zip file containing your deployment package. If you are using the web API directly,
      *        the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
-     *        SDKs or CLI will do the encoding for you. For more information about creating a .zip file, go to <a href=
+     *        SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href=
      *        "http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html"
      *        >Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -233,12 +249,12 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside
-     * in the same AWS region where you are creating the Lambda function.
+     * in the same AWS Region where you are creating the Lambda function.
      * </p>
      * 
      * @param s3Bucket
      *        Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must
-     *        reside in the same AWS region where you are creating the Lambda function.
+     *        reside in the same AWS Region where you are creating the Lambda function.
      */
 
     public void setS3Bucket(String s3Bucket) {
@@ -248,11 +264,11 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside
-     * in the same AWS region where you are creating the Lambda function.
+     * in the same AWS Region where you are creating the Lambda function.
      * </p>
      * 
      * @return Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must
-     *         reside in the same AWS region where you are creating the Lambda function.
+     *         reside in the same AWS Region where you are creating the Lambda function.
      */
 
     public String getS3Bucket() {
@@ -262,12 +278,12 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside
-     * in the same AWS region where you are creating the Lambda function.
+     * in the same AWS Region where you are creating the Lambda function.
      * </p>
      * 
      * @param s3Bucket
      *        Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must
-     *        reside in the same AWS region where you are creating the Lambda function.
+     *        reside in the same AWS Region where you are creating the Lambda function.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -428,17 +444,17 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFunctionName() != null)
-            sb.append("FunctionName: " + getFunctionName() + ",");
+            sb.append("FunctionName: ").append(getFunctionName()).append(",");
         if (getZipFile() != null)
-            sb.append("ZipFile: " + getZipFile() + ",");
+            sb.append("ZipFile: ").append(getZipFile()).append(",");
         if (getS3Bucket() != null)
-            sb.append("S3Bucket: " + getS3Bucket() + ",");
+            sb.append("S3Bucket: ").append(getS3Bucket()).append(",");
         if (getS3Key() != null)
-            sb.append("S3Key: " + getS3Key() + ",");
+            sb.append("S3Key: ").append(getS3Key()).append(",");
         if (getS3ObjectVersion() != null)
-            sb.append("S3ObjectVersion: " + getS3ObjectVersion() + ",");
+            sb.append("S3ObjectVersion: ").append(getS3ObjectVersion()).append(",");
         if (getPublish() != null)
-            sb.append("Publish: " + getPublish());
+            sb.append("Publish: ").append(getPublish());
         sb.append("}");
         return sb.toString();
     }
@@ -498,4 +514,5 @@ public class UpdateFunctionCodeRequest extends com.amazonaws.AmazonWebServiceReq
     public UpdateFunctionCodeRequest clone() {
         return (UpdateFunctionCodeRequest) super.clone();
     }
+
 }

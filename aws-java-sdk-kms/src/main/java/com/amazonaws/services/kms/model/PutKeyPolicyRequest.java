@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -35,7 +40,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -61,7 +66,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     * It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      * <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For
      * more information, refer to the scenario in the <a href=
      * "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -70,8 +75,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS
-     * principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
+     * The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new
+     * AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
      * principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
@@ -100,8 +105,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * Use this parameter only when you intend to prevent the principal making the request from making a subsequent
-     * <code>PutKeyPolicy</code> request on the CMK.
+     * Use this parameter only when you intend to prevent the principal that is making the request from making a
+     * subsequent <code>PutKeyPolicy</code> request on the CMK.
      * </p>
      * <p>
      * The default value is false.
@@ -124,7 +129,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -142,7 +147,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     *        ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *        </p>
      *        </li>
      */
@@ -166,7 +171,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -183,7 +188,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </li>
      *         <li>
      *         <p>
-     *         ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     *         ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *         </p>
      *         </li>
      */
@@ -207,7 +212,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -225,7 +230,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+     *        ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -302,7 +307,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     * It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      * <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For
      * more information, refer to the scenario in the <a href=
      * "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -311,8 +316,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS
-     * principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
+     * The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new
+     * AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
      * principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
@@ -333,7 +338,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     *        It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      *        <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes
      *        unmanageable. For more information, refer to the scenario in the <a href=
      *        "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -342,10 +347,10 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new
-     *        AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the
-     *        new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For
-     *        more information, see <a href=
+     *        The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create
+     *        a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before
+     *        specifying the new principal in a key policy because the new principal might not immediately be visible to
+     *        AWS KMS. For more information, see <a href=
      *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
      *        >Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.
      *        </p>
@@ -370,7 +375,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     * It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      * <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For
      * more information, refer to the scenario in the <a href=
      * "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -379,8 +384,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS
-     * principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
+     * The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new
+     * AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
      * principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
@@ -400,7 +405,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <ul>
      *         <li>
      *         <p>
-     *         It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     *         It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      *         <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes
      *         unmanageable. For more information, refer to the scenario in the <a href=
      *         "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -409,10 +414,10 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </li>
      *         <li>
      *         <p>
-     *         The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new
-     *         AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the
-     *         new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For
-     *         more information, see <a href=
+     *         The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create
+     *         a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before
+     *         specifying the new principal in a key policy because the new principal might not immediately be visible
+     *         to AWS KMS. For more information, see <a href=
      *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
      *         >Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.
      *         </p>
@@ -437,7 +442,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     * It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      * <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For
      * more information, refer to the scenario in the <a href=
      * "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -446,8 +451,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </li>
      * <li>
      * <p>
-     * The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS
-     * principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
+     * The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new
+     * AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new
      * principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
@@ -468,7 +473,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        It must allow the principal making the <code>PutKeyPolicy</code> request to make a subsequent
+     *        It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent
      *        <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes
      *        unmanageable. For more information, refer to the scenario in the <a href=
      *        "http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam"
@@ -477,10 +482,10 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </li>
      *        <li>
      *        <p>
-     *        The principal(s) specified in the key policy must exist and be visible to AWS KMS. When you create a new
-     *        AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the
-     *        new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For
-     *        more information, see <a href=
+     *        The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create
+     *        a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before
+     *        specifying the new principal in a key policy because the new principal might not immediately be visible to
+     *        AWS KMS. For more information, see <a href=
      *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency"
      *        >Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.
      *        </p>
@@ -512,8 +517,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * Use this parameter only when you intend to prevent the principal making the request from making a subsequent
-     * <code>PutKeyPolicy</code> request on the CMK.
+     * Use this parameter only when you intend to prevent the principal that is making the request from making a
+     * subsequent <code>PutKeyPolicy</code> request on the CMK.
      * </p>
      * <p>
      * The default value is false.
@@ -532,7 +537,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        </important>
      *        <p>
-     *        Use this parameter only when you intend to prevent the principal making the request from making a
+     *        Use this parameter only when you intend to prevent the principal that is making the request from making a
      *        subsequent <code>PutKeyPolicy</code> request on the CMK.
      *        </p>
      *        <p>
@@ -559,8 +564,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * Use this parameter only when you intend to prevent the principal making the request from making a subsequent
-     * <code>PutKeyPolicy</code> request on the CMK.
+     * Use this parameter only when you intend to prevent the principal that is making the request from making a
+     * subsequent <code>PutKeyPolicy</code> request on the CMK.
      * </p>
      * <p>
      * The default value is false.
@@ -578,7 +583,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </p>
      *         </important>
      *         <p>
-     *         Use this parameter only when you intend to prevent the principal making the request from making a
+     *         Use this parameter only when you intend to prevent the principal that is making the request from making a
      *         subsequent <code>PutKeyPolicy</code> request on the CMK.
      *         </p>
      *         <p>
@@ -605,8 +610,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * Use this parameter only when you intend to prevent the principal making the request from making a subsequent
-     * <code>PutKeyPolicy</code> request on the CMK.
+     * Use this parameter only when you intend to prevent the principal that is making the request from making a
+     * subsequent <code>PutKeyPolicy</code> request on the CMK.
      * </p>
      * <p>
      * The default value is false.
@@ -625,7 +630,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        </important>
      *        <p>
-     *        Use this parameter only when you intend to prevent the principal making the request from making a
+     *        Use this parameter only when you intend to prevent the principal that is making the request from making a
      *        subsequent <code>PutKeyPolicy</code> request on the CMK.
      *        </p>
      *        <p>
@@ -654,8 +659,8 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * Use this parameter only when you intend to prevent the principal making the request from making a subsequent
-     * <code>PutKeyPolicy</code> request on the CMK.
+     * Use this parameter only when you intend to prevent the principal that is making the request from making a
+     * subsequent <code>PutKeyPolicy</code> request on the CMK.
      * </p>
      * <p>
      * The default value is false.
@@ -673,7 +678,7 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </p>
      *         </important>
      *         <p>
-     *         Use this parameter only when you intend to prevent the principal making the request from making a
+     *         Use this parameter only when you intend to prevent the principal that is making the request from making a
      *         subsequent <code>PutKeyPolicy</code> request on the CMK.
      *         </p>
      *         <p>
@@ -696,13 +701,13 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getPolicyName() != null)
-            sb.append("PolicyName: " + getPolicyName() + ",");
+            sb.append("PolicyName: ").append(getPolicyName()).append(",");
         if (getPolicy() != null)
-            sb.append("Policy: " + getPolicy() + ",");
+            sb.append("Policy: ").append(getPolicy()).append(",");
         if (getBypassPolicyLockoutSafetyCheck() != null)
-            sb.append("BypassPolicyLockoutSafetyCheck: " + getBypassPolicyLockoutSafetyCheck());
+            sb.append("BypassPolicyLockoutSafetyCheck: ").append(getBypassPolicyLockoutSafetyCheck());
         sb.append("}");
         return sb.toString();
     }
@@ -753,4 +758,5 @@ public class PutKeyPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
     public PutKeyPolicyRequest clone() {
         return (PutKeyPolicyRequest) super.clone();
     }
+
 }

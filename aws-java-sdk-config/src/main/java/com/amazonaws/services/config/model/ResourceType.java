@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,9 +12,12 @@
  */
 package com.amazonaws.services.config.model;
 
+import javax.annotation.Generated;
+
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ResourceType {
 
     AWSEC2CustomerGateway("AWS::EC2::CustomerGateway"),
@@ -43,7 +46,14 @@ public enum ResourceType {
     AWSRDSDBSnapshot("AWS::RDS::DBSnapshot"),
     AWSRDSEventSubscription("AWS::RDS::EventSubscription"),
     AWSElasticLoadBalancingV2LoadBalancer("AWS::ElasticLoadBalancingV2::LoadBalancer"),
-    AWSS3Bucket("AWS::S3::Bucket");
+    AWSS3Bucket("AWS::S3::Bucket"),
+    AWSSSMManagedInstanceInventory("AWS::SSM::ManagedInstanceInventory"),
+    AWSRedshiftCluster("AWS::Redshift::Cluster"),
+    AWSRedshiftClusterSnapshot("AWS::Redshift::ClusterSnapshot"),
+    AWSRedshiftClusterParameterGroup("AWS::Redshift::ClusterParameterGroup"),
+    AWSRedshiftClusterSecurityGroup("AWS::Redshift::ClusterSecurityGroup"),
+    AWSRedshiftClusterSubnetGroup("AWS::Redshift::ClusterSubnetGroup"),
+    AWSRedshiftEventSubscription("AWS::Redshift::EventSubscription");
 
     private String value;
 

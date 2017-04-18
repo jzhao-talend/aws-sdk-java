@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,16 +13,21 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutSubscriptionFilter" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the log group to associate the subscription filter with.
+     * The name of the log group.
      * </p>
      */
     private String logGroupName;
@@ -34,7 +39,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     private String filterName;
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     * A filter pattern for subscribing to a filtered stream of log events.
      * </p>
      */
     private String filterPattern;
@@ -50,8 +55,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
@@ -71,19 +75,26 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination
-     * stream. You don't need to provide the ARN when you are working with a logical destination (used via an ARN of
-     * <code>Destination</code>) for cross-account delivery.
+     * stream. You don't need to provide the ARN when you are working with a logical destination for cross-account
+     * delivery.
      * </p>
      */
     private String roleArn;
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     */
+    private String distribution;
 
     /**
      * <p>
-     * The name of the log group to associate the subscription filter with.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to associate the subscription filter with.
+     *        The name of the log group.
      */
 
     public void setLogGroupName(String logGroupName) {
@@ -92,10 +103,10 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The name of the log group to associate the subscription filter with.
+     * The name of the log group.
      * </p>
      * 
-     * @return The name of the log group to associate the subscription filter with.
+     * @return The name of the log group.
      */
 
     public String getLogGroupName() {
@@ -104,11 +115,11 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The name of the log group to associate the subscription filter with.
+     * The name of the log group.
      * </p>
      * 
      * @param logGroupName
-     *        The name of the log group to associate the subscription filter with.
+     *        The name of the log group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -159,11 +170,11 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     * A filter pattern for subscribing to a filtered stream of log events.
      * </p>
      * 
      * @param filterPattern
-     *        A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     *        A filter pattern for subscribing to a filtered stream of log events.
      */
 
     public void setFilterPattern(String filterPattern) {
@@ -172,10 +183,10 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     * A filter pattern for subscribing to a filtered stream of log events.
      * </p>
      * 
-     * @return A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     * @return A filter pattern for subscribing to a filtered stream of log events.
      */
 
     public String getFilterPattern() {
@@ -184,11 +195,11 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     * A filter pattern for subscribing to a filtered stream of log events.
      * </p>
      * 
      * @param filterPattern
-     *        A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+     *        A filter pattern for subscribing to a filtered stream of log events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -209,8 +220,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
@@ -238,8 +248,8 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      *        </li>
      *        <li>
      *        <p>
-     *        A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     *        cross-account delivery.
+     *        A logical destination (specified using an ARN) belonging to a different account, for cross-account
+     *        delivery.
      *        </p>
      *        </li>
      *        <li>
@@ -272,8 +282,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
@@ -300,8 +309,8 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      *         </li>
      *         <li>
      *         <p>
-     *         A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     *         cross-account delivery.
+     *         A logical destination (specified using an ARN) belonging to a different account, for cross-account
+     *         delivery.
      *         </p>
      *         </li>
      *         <li>
@@ -334,8 +343,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      * </li>
      * <li>
      * <p>
-     * A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     * cross-account delivery.
+     * A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.
      * </p>
      * </li>
      * <li>
@@ -363,8 +371,8 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
      *        </li>
      *        <li>
      *        <p>
-     *        A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for
-     *        cross-account delivery.
+     *        A logical destination (specified using an ARN) belonging to a different account, for cross-account
+     *        delivery.
      *        </p>
      *        </li>
      *        <li>
@@ -390,14 +398,14 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination
-     * stream. You don't need to provide the ARN when you are working with a logical destination (used via an ARN of
-     * <code>Destination</code>) for cross-account delivery.
+     * stream. You don't need to provide the ARN when you are working with a logical destination for cross-account
+     * delivery.
      * </p>
      * 
      * @param roleArn
      *        The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the
-     *        destination stream. You don't need to provide the ARN when you are working with a logical destination
-     *        (used via an ARN of <code>Destination</code>) for cross-account delivery.
+     *        destination stream. You don't need to provide the ARN when you are working with a logical destination for
+     *        cross-account delivery.
      */
 
     public void setRoleArn(String roleArn) {
@@ -407,13 +415,13 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination
-     * stream. You don't need to provide the ARN when you are working with a logical destination (used via an ARN of
-     * <code>Destination</code>) for cross-account delivery.
+     * stream. You don't need to provide the ARN when you are working with a logical destination for cross-account
+     * delivery.
      * </p>
      * 
      * @return The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the
-     *         destination stream. You don't need to provide the ARN when you are working with a logical destination
-     *         (used via an ARN of <code>Destination</code>) for cross-account delivery.
+     *         destination stream. You don't need to provide the ARN when you are working with a logical destination for
+     *         cross-account delivery.
      */
 
     public String getRoleArn() {
@@ -423,19 +431,107 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination
-     * stream. You don't need to provide the ARN when you are working with a logical destination (used via an ARN of
-     * <code>Destination</code>) for cross-account delivery.
+     * stream. You don't need to provide the ARN when you are working with a logical destination for cross-account
+     * delivery.
      * </p>
      * 
      * @param roleArn
      *        The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the
-     *        destination stream. You don't need to provide the ARN when you are working with a logical destination
-     *        (used via an ARN of <code>Destination</code>) for cross-account delivery.
+     *        destination stream. You don't need to provide the ARN when you are working with a logical destination for
+     *        cross-account delivery.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutSubscriptionFilterRequest withRoleArn(String roleArn) {
         setRoleArn(roleArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream. By default, log data is grouped by log stream. For a more even distribution, you can group log
+     *        data randomly.
+     * @see Distribution
+     */
+
+    public void setDistribution(String distribution) {
+        this.distribution = distribution;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     * 
+     * @return The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *         stream. By default, log data is grouped by log stream. For a more even distribution, you can group log
+     *         data randomly.
+     * @see Distribution
+     */
+
+    public String getDistribution() {
+        return this.distribution;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream. By default, log data is grouped by log stream. For a more even distribution, you can group log
+     *        data randomly.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Distribution
+     */
+
+    public PutSubscriptionFilterRequest withDistribution(String distribution) {
+        setDistribution(distribution);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream. By default, log data is grouped by log stream. For a more even distribution, you can group log
+     *        data randomly.
+     * @see Distribution
+     */
+
+    public void setDistribution(Distribution distribution) {
+        this.distribution = distribution.toString();
+    }
+
+    /**
+     * <p>
+     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By
+     * default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+     * </p>
+     * 
+     * @param distribution
+     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
+     *        stream. By default, log data is grouped by log stream. For a more even distribution, you can group log
+     *        data randomly.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Distribution
+     */
+
+    public PutSubscriptionFilterRequest withDistribution(Distribution distribution) {
+        setDistribution(distribution);
         return this;
     }
 
@@ -451,15 +547,17 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: " + getLogGroupName() + ",");
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
         if (getFilterName() != null)
-            sb.append("FilterName: " + getFilterName() + ",");
+            sb.append("FilterName: ").append(getFilterName()).append(",");
         if (getFilterPattern() != null)
-            sb.append("FilterPattern: " + getFilterPattern() + ",");
+            sb.append("FilterPattern: ").append(getFilterPattern()).append(",");
         if (getDestinationArn() != null)
-            sb.append("DestinationArn: " + getDestinationArn() + ",");
+            sb.append("DestinationArn: ").append(getDestinationArn()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getDistribution() != null)
+            sb.append("Distribution: ").append(getDistribution());
         sb.append("}");
         return sb.toString();
     }
@@ -494,6 +592,10 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getDistribution() == null ^ this.getDistribution() == null)
+            return false;
+        if (other.getDistribution() != null && other.getDistribution().equals(this.getDistribution()) == false)
+            return false;
         return true;
     }
 
@@ -507,6 +609,7 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getFilterPattern() == null) ? 0 : getFilterPattern().hashCode());
         hashCode = prime * hashCode + ((getDestinationArn() == null) ? 0 : getDestinationArn().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getDistribution() == null) ? 0 : getDistribution().hashCode());
         return hashCode;
     }
 
@@ -514,4 +617,5 @@ public class PutSubscriptionFilterRequest extends com.amazonaws.AmazonWebService
     public PutSubscriptionFilterRequest clone() {
         return (PutSubscriptionFilterRequest) super.clone();
     }
+
 }

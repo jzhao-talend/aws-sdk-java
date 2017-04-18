@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,7 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -61,6 +65,7 @@ import com.amazonaws.services.sns.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -92,7 +97,9 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonSNSClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonSNSClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -115,7 +122,9 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      *        retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonSNSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonSNSClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -129,7 +138,10 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonSNSClientBuilder#withCredentials(AWSCredentialsProvider)} for example:
+     *             {@code AmazonSNSClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonSNSClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -147,7 +159,10 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon SNS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonSNSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSNSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonSNSClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -164,7 +179,9 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonSNSClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonSNSClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -182,7 +199,10 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Amazon SNS (ex: proxy settings,
      *        retry counts, etc.).
+     * @deprecated use {@link AmazonSNSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSNSClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonSNSClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -202,11 +222,19 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      *        retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonSNSClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonSNSClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonSNSClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonSNSClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration, RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonSNSClientBuilder builder() {
+        return AmazonSNSClientBuilder.standard();
     }
 
     /**
@@ -265,9 +293,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.AddPermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/AddPermission" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public AddPermissionResult addPermission(AddPermissionRequest addPermissionRequest) {
+    public AddPermissionResult addPermission(AddPermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddPermission(request);
+    }
+
+    @SdkInternalApi
+    final AddPermissionResult executeAddPermission(AddPermissionRequest addPermissionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addPermissionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -322,9 +359,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws InvalidParameterException
      *         Indicates that a request parameter does not comply with the associated constraints.
      * @sample AmazonSNS.CheckIfPhoneNumberIsOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CheckIfPhoneNumberIsOptedOutResult checkIfPhoneNumberIsOptedOut(CheckIfPhoneNumberIsOptedOutRequest checkIfPhoneNumberIsOptedOutRequest) {
+    public CheckIfPhoneNumberIsOptedOutResult checkIfPhoneNumberIsOptedOut(CheckIfPhoneNumberIsOptedOutRequest request) {
+        request = beforeClientExecution(request);
+        return executeCheckIfPhoneNumberIsOptedOut(request);
+    }
+
+    @SdkInternalApi
+    final CheckIfPhoneNumberIsOptedOutResult executeCheckIfPhoneNumberIsOptedOut(CheckIfPhoneNumberIsOptedOutRequest checkIfPhoneNumberIsOptedOutRequest) {
+
         ExecutionContext executionContext = createExecutionContext(checkIfPhoneNumberIsOptedOutRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -375,9 +421,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.ConfirmSubscription
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ConfirmSubscription" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ConfirmSubscriptionResult confirmSubscription(ConfirmSubscriptionRequest confirmSubscriptionRequest) {
+    public ConfirmSubscriptionResult confirmSubscription(ConfirmSubscriptionRequest request) {
+        request = beforeClientExecution(request);
+        return executeConfirmSubscription(request);
+    }
+
+    @SdkInternalApi
+    final ConfirmSubscriptionResult executeConfirmSubscription(ConfirmSubscriptionRequest confirmSubscriptionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(confirmSubscriptionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -456,9 +511,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.CreatePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public CreatePlatformApplicationResult createPlatformApplication(CreatePlatformApplicationRequest createPlatformApplicationRequest) {
+    public CreatePlatformApplicationResult createPlatformApplication(CreatePlatformApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePlatformApplication(request);
+    }
+
+    @SdkInternalApi
+    final CreatePlatformApplicationResult executeCreatePlatformApplication(CreatePlatformApplicationRequest createPlatformApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPlatformApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -518,9 +582,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.CreatePlatformEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreatePlatformEndpointResult createPlatformEndpoint(CreatePlatformEndpointRequest createPlatformEndpointRequest) {
+    public CreatePlatformEndpointResult createPlatformEndpoint(CreatePlatformEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePlatformEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final CreatePlatformEndpointResult executeCreatePlatformEndpoint(CreatePlatformEndpointRequest createPlatformEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createPlatformEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -569,9 +642,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.CreateTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public CreateTopicResult createTopic(CreateTopicRequest createTopicRequest) {
+    public CreateTopicResult createTopic(CreateTopicRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTopic(request);
+    }
+
+    @SdkInternalApi
+    final CreateTopicResult executeCreateTopic(CreateTopicRequest createTopicRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTopicRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -625,9 +707,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.DeleteEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) {
+    public DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEndpoint(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEndpointResult executeDeleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteEndpointRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -673,9 +764,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.DeletePlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeletePlatformApplication" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public DeletePlatformApplicationResult deletePlatformApplication(DeletePlatformApplicationRequest deletePlatformApplicationRequest) {
+    public DeletePlatformApplicationResult deletePlatformApplication(DeletePlatformApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePlatformApplication(request);
+    }
+
+    @SdkInternalApi
+    final DeletePlatformApplicationResult executeDeletePlatformApplication(DeletePlatformApplicationRequest deletePlatformApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deletePlatformApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -722,9 +822,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.DeleteTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteTopic" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public DeleteTopicResult deleteTopic(DeleteTopicRequest deleteTopicRequest) {
+    public DeleteTopicResult deleteTopic(DeleteTopicRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTopic(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTopicResult executeDeleteTopic(DeleteTopicRequest deleteTopicRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTopicRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -776,9 +885,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.GetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetEndpointAttributesResult getEndpointAttributes(GetEndpointAttributesRequest getEndpointAttributesRequest) {
+    public GetEndpointAttributesResult getEndpointAttributes(GetEndpointAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEndpointAttributes(request);
+    }
+
+    @SdkInternalApi
+    final GetEndpointAttributesResult executeGetEndpointAttributes(GetEndpointAttributesRequest getEndpointAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getEndpointAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -827,10 +945,19 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.GetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public GetPlatformApplicationAttributesResult getPlatformApplicationAttributes(
+    public GetPlatformApplicationAttributesResult getPlatformApplicationAttributes(GetPlatformApplicationAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPlatformApplicationAttributes(request);
+    }
+
+    @SdkInternalApi
+    final GetPlatformApplicationAttributesResult executeGetPlatformApplicationAttributes(
             GetPlatformApplicationAttributesRequest getPlatformApplicationAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getPlatformApplicationAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -880,9 +1007,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws InvalidParameterException
      *         Indicates that a request parameter does not comply with the associated constraints.
      * @sample AmazonSNS.GetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetSMSAttributesResult getSMSAttributes(GetSMSAttributesRequest getSMSAttributesRequest) {
+    public GetSMSAttributesResult getSMSAttributes(GetSMSAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSMSAttributes(request);
+    }
+
+    @SdkInternalApi
+    final GetSMSAttributesResult executeGetSMSAttributes(GetSMSAttributesRequest getSMSAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getSMSAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -928,9 +1064,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.GetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public GetSubscriptionAttributesResult getSubscriptionAttributes(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) {
+    public GetSubscriptionAttributesResult getSubscriptionAttributes(GetSubscriptionAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSubscriptionAttributes(request);
+    }
+
+    @SdkInternalApi
+    final GetSubscriptionAttributesResult executeGetSubscriptionAttributes(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getSubscriptionAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -982,9 +1127,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.GetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public GetTopicAttributesResult getTopicAttributes(GetTopicAttributesRequest getTopicAttributesRequest) {
+    public GetTopicAttributesResult getTopicAttributes(GetTopicAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTopicAttributes(request);
+    }
+
+    @SdkInternalApi
+    final GetTopicAttributesResult executeGetTopicAttributes(GetTopicAttributesRequest getTopicAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(getTopicAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1041,10 +1195,19 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.ListEndpointsByPlatformApplication
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListEndpointsByPlatformApplication"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ListEndpointsByPlatformApplicationResult listEndpointsByPlatformApplication(
+    public ListEndpointsByPlatformApplicationResult listEndpointsByPlatformApplication(ListEndpointsByPlatformApplicationRequest request) {
+        request = beforeClientExecution(request);
+        return executeListEndpointsByPlatformApplication(request);
+    }
+
+    @SdkInternalApi
+    final ListEndpointsByPlatformApplicationResult executeListEndpointsByPlatformApplication(
             ListEndpointsByPlatformApplicationRequest listEndpointsByPlatformApplicationRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listEndpointsByPlatformApplicationRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1099,9 +1262,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws InvalidParameterException
      *         Indicates that a request parameter does not comply with the associated constraints.
      * @sample AmazonSNS.ListPhoneNumbersOptedOut
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOut" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListPhoneNumbersOptedOutResult listPhoneNumbersOptedOut(ListPhoneNumbersOptedOutRequest listPhoneNumbersOptedOutRequest) {
+    public ListPhoneNumbersOptedOutResult listPhoneNumbersOptedOut(ListPhoneNumbersOptedOutRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPhoneNumbersOptedOut(request);
+    }
+
+    @SdkInternalApi
+    final ListPhoneNumbersOptedOutResult executeListPhoneNumbersOptedOut(ListPhoneNumbersOptedOutRequest listPhoneNumbersOptedOutRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPhoneNumbersOptedOutRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1151,9 +1323,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.ListPlatformApplications
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplications" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListPlatformApplicationsResult listPlatformApplications(ListPlatformApplicationsRequest listPlatformApplicationsRequest) {
+    public ListPlatformApplicationsResult listPlatformApplications(ListPlatformApplicationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPlatformApplications(request);
+    }
+
+    @SdkInternalApi
+    final ListPlatformApplicationsResult executeListPlatformApplications(ListPlatformApplicationsRequest listPlatformApplicationsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listPlatformApplicationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1204,9 +1385,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.ListSubscriptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptions" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListSubscriptionsResult listSubscriptions(ListSubscriptionsRequest listSubscriptionsRequest) {
+    public ListSubscriptionsResult listSubscriptions(ListSubscriptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListSubscriptions(request);
+    }
+
+    @SdkInternalApi
+    final ListSubscriptionsResult executeListSubscriptions(ListSubscriptionsRequest listSubscriptionsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listSubscriptionsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1264,9 +1454,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.ListSubscriptionsByTopic
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(ListSubscriptionsByTopicRequest listSubscriptionsByTopicRequest) {
+    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(ListSubscriptionsByTopicRequest request) {
+        request = beforeClientExecution(request);
+        return executeListSubscriptionsByTopic(request);
+    }
+
+    @SdkInternalApi
+    final ListSubscriptionsByTopicResult executeListSubscriptionsByTopic(ListSubscriptionsByTopicRequest listSubscriptionsByTopicRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listSubscriptionsByTopicRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1321,9 +1520,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.ListTopics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListTopics" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public ListTopicsResult listTopics(ListTopicsRequest listTopicsRequest) {
+    public ListTopicsResult listTopics(ListTopicsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTopics(request);
+    }
+
+    @SdkInternalApi
+    final ListTopicsResult executeListTopics(ListTopicsRequest listTopicsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(listTopicsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1383,9 +1591,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws InvalidParameterException
      *         Indicates that a request parameter does not comply with the associated constraints.
      * @sample AmazonSNS.OptInPhoneNumber
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/OptInPhoneNumber" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public OptInPhoneNumberResult optInPhoneNumber(OptInPhoneNumberRequest optInPhoneNumberRequest) {
+    public OptInPhoneNumberResult optInPhoneNumber(OptInPhoneNumberRequest request) {
+        request = beforeClientExecution(request);
+        return executeOptInPhoneNumber(request);
+    }
+
+    @SdkInternalApi
+    final OptInPhoneNumberResult executeOptInPhoneNumber(OptInPhoneNumberRequest optInPhoneNumberRequest) {
+
         ExecutionContext executionContext = createExecutionContext(optInPhoneNumberRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1449,9 +1666,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.Publish
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Publish" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public PublishResult publish(PublishRequest publishRequest) {
+    public PublishResult publish(PublishRequest request) {
+        request = beforeClientExecution(request);
+        return executePublish(request);
+    }
+
+    @SdkInternalApi
+    final PublishResult executePublish(PublishRequest publishRequest) {
+
         ExecutionContext executionContext = createExecutionContext(publishRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1506,9 +1732,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.RemovePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/RemovePermission" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public RemovePermissionResult removePermission(RemovePermissionRequest removePermissionRequest) {
+    public RemovePermissionResult removePermission(RemovePermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemovePermission(request);
+    }
+
+    @SdkInternalApi
+    final RemovePermissionResult executeRemovePermission(RemovePermissionRequest removePermissionRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removePermissionRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1561,9 +1796,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.SetEndpointAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetEndpointAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SetEndpointAttributesResult setEndpointAttributes(SetEndpointAttributesRequest setEndpointAttributesRequest) {
+    public SetEndpointAttributesResult setEndpointAttributes(SetEndpointAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetEndpointAttributes(request);
+    }
+
+    @SdkInternalApi
+    final SetEndpointAttributesResult executeSetEndpointAttributes(SetEndpointAttributesRequest setEndpointAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setEndpointAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1613,10 +1857,19 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.SetPlatformApplicationAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetPlatformApplicationAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetPlatformApplicationAttributesResult setPlatformApplicationAttributes(
+    public SetPlatformApplicationAttributesResult setPlatformApplicationAttributes(SetPlatformApplicationAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetPlatformApplicationAttributes(request);
+    }
+
+    @SdkInternalApi
+    final SetPlatformApplicationAttributesResult executeSetPlatformApplicationAttributes(
             SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setPlatformApplicationAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1669,9 +1922,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.SetSMSAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSMSAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SetSMSAttributesResult setSMSAttributes(SetSMSAttributesRequest setSMSAttributesRequest) {
+    public SetSMSAttributesResult setSMSAttributes(SetSMSAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetSMSAttributes(request);
+    }
+
+    @SdkInternalApi
+    final SetSMSAttributesResult executeSetSMSAttributes(SetSMSAttributesRequest setSMSAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setSMSAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1717,9 +1979,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.SetSubscriptionAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSubscriptionAttributes" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public SetSubscriptionAttributesResult setSubscriptionAttributes(SetSubscriptionAttributesRequest setSubscriptionAttributesRequest) {
+    public SetSubscriptionAttributesResult setSubscriptionAttributes(SetSubscriptionAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetSubscriptionAttributes(request);
+    }
+
+    @SdkInternalApi
+    final SetSubscriptionAttributesResult executeSetSubscriptionAttributes(SetSubscriptionAttributesRequest setSubscriptionAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setSubscriptionAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1771,9 +2042,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.SetTopicAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetTopicAttributes" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SetTopicAttributesResult setTopicAttributes(SetTopicAttributesRequest setTopicAttributesRequest) {
+    public SetTopicAttributesResult setTopicAttributes(SetTopicAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetTopicAttributes(request);
+    }
+
+    @SdkInternalApi
+    final SetTopicAttributesResult executeSetTopicAttributes(SetTopicAttributesRequest setTopicAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setTopicAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1828,9 +2108,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws AuthorizationErrorException
      *         Indicates that the user has been denied access to the requested resource.
      * @sample AmazonSNS.Subscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public SubscribeResult subscribe(SubscribeRequest subscribeRequest) {
+    public SubscribeResult subscribe(SubscribeRequest request) {
+        request = beforeClientExecution(request);
+        return executeSubscribe(request);
+    }
+
+    @SdkInternalApi
+    final SubscribeResult executeSubscribe(SubscribeRequest subscribeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(subscribeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1884,9 +2173,18 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * @throws NotFoundException
      *         Indicates that the requested resource does not exist.
      * @sample AmazonSNS.Unsubscribe
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Unsubscribe" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
-    public UnsubscribeResult unsubscribe(UnsubscribeRequest unsubscribeRequest) {
+    public UnsubscribeResult unsubscribe(UnsubscribeRequest request) {
+        request = beforeClientExecution(request);
+        return executeUnsubscribe(request);
+    }
+
+    @SdkInternalApi
+    final UnsubscribeResult executeUnsubscribe(UnsubscribeRequest unsubscribeRequest) {
+
         ExecutionContext executionContext = createExecutionContext(unsubscribeRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);

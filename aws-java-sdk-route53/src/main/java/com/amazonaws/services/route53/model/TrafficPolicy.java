@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains settings for a traffic policy.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TrafficPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TrafficPolicy implements Serializable, Cloneable {
 
     /**
@@ -51,7 +56,7 @@ public class TrafficPolicy implements Serializable, Cloneable {
      * <p>
      * The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy
      * in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      * >Traffic Policy Document Format</a>.
      * </p>
      */
@@ -276,7 +281,7 @@ public class TrafficPolicy implements Serializable, Cloneable {
      * <p>
      * The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy
      * in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      * >Traffic Policy Document Format</a>.
      * </p>
      * 
@@ -284,7 +289,7 @@ public class TrafficPolicy implements Serializable, Cloneable {
      *        The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic
      *        policy in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
      *        href=
-     *        "http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     *        "http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      *        >Traffic Policy Document Format</a>.
      */
 
@@ -296,14 +301,14 @@ public class TrafficPolicy implements Serializable, Cloneable {
      * <p>
      * The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy
      * in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      * >Traffic Policy Document Format</a>.
      * </p>
      * 
      * @return The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic
      *         policy in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see
      *         <a href=
-     *         "http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     *         "http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      *         >Traffic Policy Document Format</a>.
      */
 
@@ -315,7 +320,7 @@ public class TrafficPolicy implements Serializable, Cloneable {
      * <p>
      * The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy
      * in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     * href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      * >Traffic Policy Document Format</a>.
      * </p>
      * 
@@ -323,7 +328,7 @@ public class TrafficPolicy implements Serializable, Cloneable {
      *        The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic
      *        policy in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a
      *        href=
-     *        "http://docs.aws.amazon.com/Route53/latest/api-reference/api-policies-traffic-policy-document-format.html"
+     *        "http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html"
      *        >Traffic Policy Document Format</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -385,17 +390,17 @@ public class TrafficPolicy implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getDocument() != null)
-            sb.append("Document: " + getDocument() + ",");
+            sb.append("Document: ").append(getDocument()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment());
+            sb.append("Comment: ").append(getComment());
         sb.append("}");
         return sb.toString();
     }
@@ -459,4 +464,5 @@ public class TrafficPolicy implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

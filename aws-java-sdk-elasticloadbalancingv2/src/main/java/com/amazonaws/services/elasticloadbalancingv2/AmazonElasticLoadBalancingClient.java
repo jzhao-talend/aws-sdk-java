@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,12 +16,15 @@ import org.w3c.dom.*;
 
 import java.net.*;
 import java.util.*;
-import java.util.Map.Entry;
+
+import javax.annotation.Generated;
 
 import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
+import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.*;
+
 import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.internal.*;
@@ -34,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.elasticloadbalancingv2.AmazonElasticLoadBalancingClientBuilder;
+import com.amazonaws.services.elasticloadbalancingv2.waiters.AmazonElasticLoadBalancingWaiters;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -118,6 +123,7 @@ import com.amazonaws.services.elasticloadbalancingv2.model.transform.*;
  * </p>
  */
 @ThreadSafe
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient implements AmazonElasticLoadBalancing {
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
@@ -126,6 +132,8 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /** Default signing name for the service. */
     private static final String DEFAULT_SIGNING_NAME = "elasticloadbalancing";
+
+    private volatile AmazonElasticLoadBalancingWaiters waiters;
 
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
@@ -149,7 +157,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * completes.
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#defaultClient()}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient() {
         this(DefaultAWSCredentialsProviderChain.getInstance(), configFactory.getConfig());
     }
@@ -172,7 +182,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *        proxy settings, retry counts, etc.).
      *
      * @see DefaultAWSCredentialsProviderChain
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(ClientConfiguration clientConfiguration) {
         this(DefaultAWSCredentialsProviderChain.getInstance(), clientConfiguration);
     }
@@ -187,7 +199,11 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentials
      *        The AWS credentials (access key ID and secret key) to use when authenticating with AWS services.
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} for
+     *             example:
+     *             {@code AmazonElasticLoadBalancingClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
@@ -205,7 +221,10 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Load Balancing v2 (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
@@ -222,7 +241,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *
      * @param awsCredentialsProvider
      *        The AWS credentials provider which will provide credentials to authenticate requests with AWS services.
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider) {
         this(awsCredentialsProvider, configFactory.getConfig());
     }
@@ -240,7 +261,10 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @param clientConfiguration
      *        The client configuration options controlling how this client connects to Elastic Load Balancing v2 (ex:
      *        proxy settings, retry counts, etc.).
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
         this(awsCredentialsProvider, clientConfiguration, null);
     }
@@ -260,12 +284,20 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *        proxy settings, retry counts, etc.).
      * @param requestMetricCollector
      *        optional request metric collector
+     * @deprecated use {@link AmazonElasticLoadBalancingClientBuilder#withCredentials(AWSCredentialsProvider)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withClientConfiguration(ClientConfiguration)} and
+     *             {@link AmazonElasticLoadBalancingClientBuilder#withMetricsCollector(RequestMetricCollector)}
      */
+    @Deprecated
     public AmazonElasticLoadBalancingClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
+    }
+
+    public static AmazonElasticLoadBalancingClientBuilder builder() {
+        return AmazonElasticLoadBalancingClientBuilder.standard();
     }
 
     /**
@@ -344,7 +376,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param addTagsRequest
-     *        Contains the parameters for AddTags.
      * @return Result of the AddTags operation returned by the service.
      * @throws DuplicateTagKeysException
      *         A tag key was specified more than once.
@@ -355,9 +386,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @sample AmazonElasticLoadBalancing.AddTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/AddTags" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
-    public AddTagsResult addTags(AddTagsRequest addTagsRequest) {
+    public AddTagsResult addTags(AddTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddTags(request);
+    }
+
+    @SdkInternalApi
+    final AddTagsResult executeAddTags(AddTagsRequest addTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(addTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -404,7 +444,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param createListenerRequest
-     *        Contains the parameters for CreateListener.
      * @return Result of the CreateListener operation returned by the service.
      * @throws DuplicateListenerException
      *         A listener with the specified port already exists.
@@ -431,9 +470,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyRegistrationsForTargetIdException
      *         You've reached the limit on the number of times a target can be registered with a load balancer.
      * @sample AmazonElasticLoadBalancing.CreateListener
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateListener"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateListenerResult createListener(CreateListenerRequest createListenerRequest) {
+    public CreateListenerResult createListener(CreateListenerRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateListener(request);
+    }
+
+    @SdkInternalApi
+    final CreateListenerResult executeCreateListener(CreateListenerRequest createListenerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createListenerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -467,13 +515,14 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * Creates an Application Load Balancer.
      * </p>
      * <p>
-     * To create listeners for your load balancer, use <a>CreateListener</a>. You can add security groups, subnets, and
-     * tags when you create your load balancer, or you can add them later using <a>SetSecurityGroups</a>,
-     * <a>SetSubnets</a>, and <a>AddTags</a>.
+     * When you create a load balancer, you can specify security groups, subnets, IP address type, and tags. Otherwise,
+     * you could do so later using <a>SetSecurityGroups</a>, <a>SetSubnets</a>, <a>SetIpAddressType</a>, and
+     * <a>AddTags</a>.
      * </p>
      * <p>
-     * To describe your current load balancers, see <a>DescribeLoadBalancers</a>. When you are finished with a load
-     * balancer, you can delete it using <a>DeleteLoadBalancer</a>.
+     * To create listeners for your load balancer, use <a>CreateListener</a>. To describe your current load balancers,
+     * see <a>DescribeLoadBalancers</a>. When you are finished with a load balancer, you can delete it using
+     * <a>DeleteLoadBalancer</a>.
      * </p>
      * <p>
      * You can create up to 20 load balancers per region per account. You can request an increase for the number of load
@@ -488,10 +537,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param createLoadBalancerRequest
-     *        Contains the parameters for CreateLoadBalancer.
      * @return Result of the CreateLoadBalancer operation returned by the service.
      * @throws DuplicateLoadBalancerNameException
-     *         A load balancer with the specified name already exists for this account.
+     *         A load balancer with the specified name already exists.
      * @throws TooManyLoadBalancersException
      *         You've reached the limit on the number of load balancers for your AWS account.
      * @throws InvalidConfigurationRequestException
@@ -509,9 +557,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws DuplicateTagKeysException
      *         A tag key was specified more than once.
      * @sample AmazonElasticLoadBalancing.CreateLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) {
+    public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final CreateLoadBalancerResult executeCreateLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -557,7 +614,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param createRuleRequest
-     *        Contains the parameters for CreateRule.
      * @return Result of the CreateRule operation returned by the service.
      * @throws PriorityInUseException
      *         The specified priority is in use.
@@ -576,9 +632,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyRegistrationsForTargetIdException
      *         You've reached the limit on the number of times a target can be registered with a load balancer.
      * @sample AmazonElasticLoadBalancing.CreateRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateRule"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateRuleResult createRule(CreateRuleRequest createRuleRequest) {
+    public CreateRuleResult createRule(CreateRuleRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateRule(request);
+    }
+
+    @SdkInternalApi
+    final CreateRuleResult executeCreateRule(CreateRuleRequest createRuleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createRuleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -629,16 +694,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param createTargetGroupRequest
-     *        Contains the parameters for CreateTargetGroup.
      * @return Result of the CreateTargetGroup operation returned by the service.
      * @throws DuplicateTargetGroupNameException
      *         A target group with the specified name already exists.
      * @throws TooManyTargetGroupsException
      *         You've reached the limit on the number of target groups for your AWS account.
      * @sample AmazonElasticLoadBalancing.CreateTargetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateTargetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public CreateTargetGroupResult createTargetGroup(CreateTargetGroupRequest createTargetGroupRequest) {
+    public CreateTargetGroupResult createTargetGroup(CreateTargetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateTargetGroup(request);
+    }
+
+    @SdkInternalApi
+    final CreateTargetGroupResult executeCreateTargetGroup(CreateTargetGroupRequest createTargetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(createTargetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -677,14 +750,22 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param deleteListenerRequest
-     *        Contains the parameters for DeleteListener.
      * @return Result of the DeleteListener operation returned by the service.
      * @throws ListenerNotFoundException
      *         The specified listener does not exist.
      * @sample AmazonElasticLoadBalancing.DeleteListener
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteListener"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteListenerResult deleteListener(DeleteListenerRequest deleteListenerRequest) {
+    public DeleteListenerResult deleteListener(DeleteListenerRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteListener(request);
+    }
+
+    @SdkInternalApi
+    final DeleteListenerResult executeDeleteListener(DeleteListenerRequest deleteListenerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteListenerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -728,16 +809,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param deleteLoadBalancerRequest
-     *        Contains the parameters for DeleteLoadBalancer.
      * @return Result of the DeleteLoadBalancer operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @throws OperationNotPermittedException
      *         This operation is not allowed.
      * @sample AmazonElasticLoadBalancing.DeleteLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) {
+    public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteLoadBalancer(request);
+    }
+
+    @SdkInternalApi
+    final DeleteLoadBalancerResult executeDeleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -772,16 +861,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param deleteRuleRequest
-     *        Contains the parameters for DeleteRule.
      * @return Result of the DeleteRule operation returned by the service.
      * @throws RuleNotFoundException
      *         The specified rule does not exist.
      * @throws OperationNotPermittedException
      *         This operation is not allowed.
      * @sample AmazonElasticLoadBalancing.DeleteRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteRule"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteRuleResult deleteRule(DeleteRuleRequest deleteRuleRequest) {
+    public DeleteRuleResult deleteRule(DeleteRuleRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRule(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRuleResult executeDeleteRule(DeleteRuleRequest deleteRuleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteRuleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -819,14 +916,22 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param deleteTargetGroupRequest
-     *        Contains the parameters for DeleteTargetGroup.
      * @return Result of the DeleteTargetGroup operation returned by the service.
      * @throws ResourceInUseException
      *         A specified resource is in use.
      * @sample AmazonElasticLoadBalancing.DeleteTargetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteTargetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeleteTargetGroupResult deleteTargetGroup(DeleteTargetGroupRequest deleteTargetGroupRequest) {
+    public DeleteTargetGroupResult deleteTargetGroup(DeleteTargetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTargetGroup(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTargetGroupResult executeDeleteTargetGroup(DeleteTargetGroupRequest deleteTargetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deleteTargetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -862,16 +967,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param deregisterTargetsRequest
-     *        Contains the parameters for DeregisterTargets.
      * @return Result of the DeregisterTargets operation returned by the service.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @throws InvalidTargetException
      *         The specified target does not exist or is not in the same VPC as the target group.
      * @sample AmazonElasticLoadBalancing.DeregisterTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeregisterTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DeregisterTargetsResult deregisterTargets(DeregisterTargetsRequest deregisterTargetsRequest) {
+    public DeregisterTargetsResult deregisterTargets(DeregisterTargetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeregisterTargets(request);
+    }
+
+    @SdkInternalApi
+    final DeregisterTargetsResult executeDeregisterTargets(DeregisterTargetsRequest deregisterTargetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(deregisterTargetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -907,16 +1020,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeListenersRequest
-     *        Contains the parameters for DescribeListeners.
      * @return Result of the DescribeListeners operation returned by the service.
      * @throws ListenerNotFoundException
      *         The specified listener does not exist.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeListeners
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeListeners"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeListenersResult describeListeners(DescribeListenersRequest describeListenersRequest) {
+    public DescribeListenersResult describeListeners(DescribeListenersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeListeners(request);
+    }
+
+    @SdkInternalApi
+    final DescribeListenersResult executeDescribeListeners(DescribeListenersRequest describeListenersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeListenersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -951,14 +1072,23 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeLoadBalancerAttributesRequest
-     *        Contains the parameters for DescribeLoadBalancerAttributes.
      * @return Result of the DescribeLoadBalancerAttributes operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest describeLoadBalancerAttributesRequest) {
+    public DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancerAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancerAttributesResult executeDescribeLoadBalancerAttributes(DescribeLoadBalancerAttributesRequest describeLoadBalancerAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancerAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -997,14 +1127,22 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeLoadBalancersRequest
-     *        Contains the parameters for DescribeLoadBalancers.
      * @return Result of the DescribeLoadBalancers operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeLoadBalancers"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+    public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLoadBalancers(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLoadBalancersResult executeDescribeLoadBalancers(DescribeLoadBalancersRequest describeLoadBalancersRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeLoadBalancersRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1040,16 +1178,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeRulesRequest
-     *        Contains the parameters for DescribeRules.
      * @return Result of the DescribeRules operation returned by the service.
      * @throws ListenerNotFoundException
      *         The specified listener does not exist.
      * @throws RuleNotFoundException
      *         The specified rule does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeRules"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeRulesResult describeRules(DescribeRulesRequest describeRulesRequest) {
+    public DescribeRulesResult describeRules(DescribeRulesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeRules(request);
+    }
+
+    @SdkInternalApi
+    final DescribeRulesResult executeDescribeRules(DescribeRulesRequest describeRulesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeRulesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1082,18 +1228,28 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * Describes the specified policies or all policies used for SSL negotiation.
      * </p>
      * <p>
-     * Note that the only supported policy at this time is ELBSecurityPolicy-2015-05.
+     * For more information, see <a href=
+     * "http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies"
+     * >Security Policies</a> in the <i>Application Load Balancers Guide</i>.
      * </p>
      * 
      * @param describeSSLPoliciesRequest
-     *        Contains the parameters for DescribeSSLPolicies.
      * @return Result of the DescribeSSLPolicies operation returned by the service.
      * @throws SSLPolicyNotFoundException
      *         The specified SSL policy does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeSSLPolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeSSLPolicies"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeSSLPoliciesResult describeSSLPolicies(DescribeSSLPoliciesRequest describeSSLPoliciesRequest) {
+    public DescribeSSLPoliciesResult describeSSLPolicies(DescribeSSLPoliciesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeSSLPolicies(request);
+    }
+
+    @SdkInternalApi
+    final DescribeSSLPoliciesResult executeDescribeSSLPolicies(DescribeSSLPoliciesRequest describeSSLPoliciesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeSSLPoliciesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1124,11 +1280,11 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Describes the tags for the specified resources.
+     * Describes the tags for the specified resources. You can describe the tags for one or more Application Load
+     * Balancers and target groups.
      * </p>
      * 
      * @param describeTagsRequest
-     *        Contains the parameters for DescribeTags.
      * @return Result of the DescribeTags operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
@@ -1139,9 +1295,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws RuleNotFoundException
      *         The specified rule does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTags(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTagsResult executeDescribeTags(DescribeTagsRequest describeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1175,14 +1340,23 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeTargetGroupAttributesRequest
-     *        Contains the parameters for DescribeTargetGroupAttributes.
      * @return Result of the DescribeTargetGroupAttributes operation returned by the service.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeTargetGroupAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetGroupAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTargetGroupAttributesResult describeTargetGroupAttributes(DescribeTargetGroupAttributesRequest describeTargetGroupAttributesRequest) {
+    public DescribeTargetGroupAttributesResult describeTargetGroupAttributes(DescribeTargetGroupAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTargetGroupAttributes(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTargetGroupAttributesResult executeDescribeTargetGroupAttributes(DescribeTargetGroupAttributesRequest describeTargetGroupAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTargetGroupAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1223,16 +1397,24 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeTargetGroupsRequest
-     *        Contains the parameters for DescribeTargetGroups.
      * @return Result of the DescribeTargetGroups operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @sample AmazonElasticLoadBalancing.DescribeTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTargetGroupsResult describeTargetGroups(DescribeTargetGroupsRequest describeTargetGroupsRequest) {
+    public DescribeTargetGroupsResult describeTargetGroups(DescribeTargetGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTargetGroups(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTargetGroupsResult executeDescribeTargetGroups(DescribeTargetGroupsRequest describeTargetGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTargetGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1267,7 +1449,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param describeTargetHealthRequest
-     *        Contains the parameters for DescribeTargetHealth.
      * @return Result of the DescribeTargetHealth operation returned by the service.
      * @throws InvalidTargetException
      *         The specified target does not exist or is not in the same VPC as the target group.
@@ -1276,9 +1457,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws HealthUnavailableException
      *         The health of the specified targets could not be retrieved due to an internal error.
      * @sample AmazonElasticLoadBalancing.DescribeTargetHealth
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetHealth"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public DescribeTargetHealthResult describeTargetHealth(DescribeTargetHealthRequest describeTargetHealthRequest) {
+    public DescribeTargetHealthResult describeTargetHealth(DescribeTargetHealthRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeTargetHealth(request);
+    }
+
+    @SdkInternalApi
+    final DescribeTargetHealthResult executeDescribeTargetHealth(DescribeTargetHealthRequest describeTargetHealthRequest) {
+
         ExecutionContext executionContext = createExecutionContext(describeTargetHealthRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1314,11 +1504,10 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * <p>
      * Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to
      * HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS,
-     * you must add the security policy.
+     * you must add the security policy and server certificate.
      * </p>
      * 
      * @param modifyListenerRequest
-     *        Contains the parameters for ModifyListener.
      * @return Result of the ModifyListener operation returned by the service.
      * @throws DuplicateListenerException
      *         A listener with the specified port already exists.
@@ -1345,9 +1534,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyRegistrationsForTargetIdException
      *         You've reached the limit on the number of times a target can be registered with a load balancer.
      * @sample AmazonElasticLoadBalancing.ModifyListener
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyListener"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyListenerResult modifyListener(ModifyListenerRequest modifyListenerRequest) {
+    public ModifyListenerResult modifyListener(ModifyListenerRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyListener(request);
+    }
+
+    @SdkInternalApi
+    final ModifyListenerResult executeModifyListener(ModifyListenerRequest modifyListenerRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyListenerRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1386,16 +1584,25 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param modifyLoadBalancerAttributesRequest
-     *        Contains the parameters for ModifyLoadBalancerAttributes.
      * @return Result of the ModifyLoadBalancerAttributes operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
      * @throws InvalidConfigurationRequestException
      *         The requested configuration is not valid.
      * @sample AmazonElasticLoadBalancing.ModifyLoadBalancerAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyLoadBalancerAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest modifyLoadBalancerAttributesRequest) {
+    public ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyLoadBalancerAttributes(request);
+    }
+
+    @SdkInternalApi
+    final ModifyLoadBalancerAttributesResult executeModifyLoadBalancerAttributes(ModifyLoadBalancerAttributesRequest modifyLoadBalancerAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyLoadBalancerAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1436,7 +1643,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param modifyRuleRequest
-     *        Contains the parameters for ModifyRules.
      * @return Result of the ModifyRule operation returned by the service.
      * @throws TargetGroupAssociationLimitException
      *         You've reached the limit on the number of load balancers per target group.
@@ -1447,9 +1653,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyRegistrationsForTargetIdException
      *         You've reached the limit on the number of times a target can be registered with a load balancer.
      * @sample AmazonElasticLoadBalancing.ModifyRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyRule"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyRuleResult modifyRule(ModifyRuleRequest modifyRuleRequest) {
+    public ModifyRuleResult modifyRule(ModifyRuleRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyRule(request);
+    }
+
+    @SdkInternalApi
+    final ModifyRuleResult executeModifyRule(ModifyRuleRequest modifyRuleRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyRuleRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1486,14 +1701,22 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param modifyTargetGroupRequest
-     *        Contains the parameters for ModifyTargetGroup.
      * @return Result of the ModifyTargetGroup operation returned by the service.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @sample AmazonElasticLoadBalancing.ModifyTargetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroup"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyTargetGroupResult modifyTargetGroup(ModifyTargetGroupRequest modifyTargetGroupRequest) {
+    public ModifyTargetGroupResult modifyTargetGroup(ModifyTargetGroupRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyTargetGroup(request);
+    }
+
+    @SdkInternalApi
+    final ModifyTargetGroupResult executeModifyTargetGroup(ModifyTargetGroupRequest modifyTargetGroupRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyTargetGroupRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1528,14 +1751,23 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param modifyTargetGroupAttributesRequest
-     *        Contains the parameters for ModifyTargetGroupAttributes.
      * @return Result of the ModifyTargetGroupAttributes operation returned by the service.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
      * @sample AmazonElasticLoadBalancing.ModifyTargetGroupAttributes
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroupAttributes"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public ModifyTargetGroupAttributesResult modifyTargetGroupAttributes(ModifyTargetGroupAttributesRequest modifyTargetGroupAttributesRequest) {
+    public ModifyTargetGroupAttributesResult modifyTargetGroupAttributes(ModifyTargetGroupAttributesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyTargetGroupAttributes(request);
+    }
+
+    @SdkInternalApi
+    final ModifyTargetGroupAttributesResult executeModifyTargetGroupAttributes(ModifyTargetGroupAttributesRequest modifyTargetGroupAttributesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(modifyTargetGroupAttributesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1574,14 +1806,13 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * <p>
      * The target must be in the virtual private cloud (VPC) that you specified for the target group. If the target is
-     * an EC2 instance, it can't be in the <code>stopped</code> or <code>running</code> state when you register it.
+     * an EC2 instance, it must be in the <code>running</code> state when you register it.
      * </p>
      * <p>
      * To remove a target from a target group, use <a>DeregisterTargets</a>.
      * </p>
      * 
      * @param registerTargetsRequest
-     *        Contains the parameters for RegisterTargets.
      * @return Result of the RegisterTargets operation returned by the service.
      * @throws TargetGroupNotFoundException
      *         The specified target group does not exist.
@@ -1592,9 +1823,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyRegistrationsForTargetIdException
      *         You've reached the limit on the number of times a target can be registered with a load balancer.
      * @sample AmazonElasticLoadBalancing.RegisterTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/RegisterTargets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RegisterTargetsResult registerTargets(RegisterTargetsRequest registerTargetsRequest) {
+    public RegisterTargetsResult registerTargets(RegisterTargetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterTargets(request);
+    }
+
+    @SdkInternalApi
+    final RegisterTargetsResult executeRegisterTargets(RegisterTargetsRequest registerTargetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(registerTargetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1632,7 +1872,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param removeTagsRequest
-     *        Contains the parameters for RemoveTags.
      * @return Result of the RemoveTags operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
@@ -1645,9 +1884,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws TooManyTagsException
      *         You've reached the limit on the number of tags per load balancer.
      * @sample AmazonElasticLoadBalancing.RemoveTags
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/RemoveTags"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public RemoveTagsResult removeTags(RemoveTagsRequest removeTagsRequest) {
+    public RemoveTagsResult removeTags(RemoveTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeRemoveTags(request);
+    }
+
+    @SdkInternalApi
+    final RemoveTagsResult executeRemoveTags(RemoveTagsRequest removeTagsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(removeTagsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1677,6 +1925,60 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
+     * Sets the type of IP addresses used by the subnets of the specified Application Load Balancer.
+     * </p>
+     * 
+     * @param setIpAddressTypeRequest
+     * @return Result of the SetIpAddressType operation returned by the service.
+     * @throws LoadBalancerNotFoundException
+     *         The specified load balancer does not exist.
+     * @throws InvalidConfigurationRequestException
+     *         The requested configuration is not valid.
+     * @throws InvalidSubnetException
+     *         The specified subnet is out of available addresses.
+     * @sample AmazonElasticLoadBalancing.SetIpAddressType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetIpAddressType"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public SetIpAddressTypeResult setIpAddressType(SetIpAddressTypeRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetIpAddressType(request);
+    }
+
+    @SdkInternalApi
+    final SetIpAddressTypeResult executeSetIpAddressType(SetIpAddressTypeRequest setIpAddressTypeRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(setIpAddressTypeRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<SetIpAddressTypeRequest> request = null;
+        Response<SetIpAddressTypeResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new SetIpAddressTypeRequestMarshaller().marshall(super.beforeMarshalling(setIpAddressTypeRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<SetIpAddressTypeResult> responseHandler = new StaxResponseHandler<SetIpAddressTypeResult>(
+                    new SetIpAddressTypeResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Sets the priorities of the specified rules.
      * </p>
      * <p>
@@ -1685,7 +1987,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param setRulePrioritiesRequest
-     *        Contains the parameters for SetRulePriorities.
      * @return Result of the SetRulePriorities operation returned by the service.
      * @throws RuleNotFoundException
      *         The specified rule does not exist.
@@ -1694,9 +1995,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws OperationNotPermittedException
      *         This operation is not allowed.
      * @sample AmazonElasticLoadBalancing.SetRulePriorities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetRulePriorities"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetRulePrioritiesResult setRulePriorities(SetRulePrioritiesRequest setRulePrioritiesRequest) {
+    public SetRulePrioritiesResult setRulePriorities(SetRulePrioritiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetRulePriorities(request);
+    }
+
+    @SdkInternalApi
+    final SetRulePrioritiesResult executeSetRulePriorities(SetRulePrioritiesRequest setRulePrioritiesRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setRulePrioritiesRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1732,7 +2042,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param setSecurityGroupsRequest
-     *        Contains the parameters for SetSecurityGroups.
      * @return Result of the SetSecurityGroups operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
@@ -1741,9 +2050,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidSecurityGroupException
      *         The specified security group does not exist.
      * @sample AmazonElasticLoadBalancing.SetSecurityGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetSecurityGroups"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetSecurityGroupsResult setSecurityGroups(SetSecurityGroupsRequest setSecurityGroupsRequest) {
+    public SetSecurityGroupsResult setSecurityGroups(SetSecurityGroupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetSecurityGroups(request);
+    }
+
+    @SdkInternalApi
+    final SetSecurityGroupsResult executeSetSecurityGroups(SetSecurityGroupsRequest setSecurityGroupsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setSecurityGroupsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1779,7 +2097,6 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * </p>
      * 
      * @param setSubnetsRequest
-     *        Contains the parameters for SetSubnets.
      * @return Result of the SetSubnets operation returned by the service.
      * @throws LoadBalancerNotFoundException
      *         The specified load balancer does not exist.
@@ -1790,9 +2107,18 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      * @throws InvalidSubnetException
      *         The specified subnet is out of available addresses.
      * @sample AmazonElasticLoadBalancing.SetSubnets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetSubnets"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
-    public SetSubnetsResult setSubnets(SetSubnetsRequest setSubnetsRequest) {
+    public SetSubnetsResult setSubnets(SetSubnetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSetSubnets(request);
+    }
+
+    @SdkInternalApi
+    final SetSubnetsResult executeSetSubnets(SetSubnetsRequest setSubnetsRequest) {
+
         ExecutionContext executionContext = createExecutionContext(setSubnetsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
         awsRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -1871,6 +2197,26 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
 
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
+    }
+
+    @Override
+    public AmazonElasticLoadBalancingWaiters waiters() {
+        if (waiters == null) {
+            synchronized (this) {
+                if (waiters == null) {
+                    waiters = new AmazonElasticLoadBalancingWaiters(this);
+                }
+            }
+        }
+        return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

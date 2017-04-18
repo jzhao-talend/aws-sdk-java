@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,6 +22,7 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The <code>UpdatePipelineStatusRequest</code> structure.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -33,8 +36,16 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      */
     private String status;
@@ -84,15 +95,31 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param status
      *        The desired status of the pipeline:</p>
      *        <ul>
-     *        <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *        <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     *        <li>
+     *        <p>
+     *        <code>Active</code>: The pipeline is processing jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Paused</code>: The pipeline is not currently processing jobs.
+     *        </p>
+     *        </li>
      */
 
     public void setStatus(String status) {
@@ -104,14 +131,30 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The desired status of the pipeline:</p>
      *         <ul>
-     *         <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *         <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     *         <li>
+     *         <p>
+     *         <code>Active</code>: The pipeline is processing jobs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Paused</code>: The pipeline is not currently processing jobs.
+     *         </p>
+     *         </li>
      */
 
     public String getStatus() {
@@ -123,15 +166,31 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param status
      *        The desired status of the pipeline:</p>
      *        <ul>
-     *        <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *        <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     *        <li>
+     *        <p>
+     *        <code>Active</code>: The pipeline is processing jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Paused</code>: The pipeline is not currently processing jobs.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -152,9 +211,9 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus());
+            sb.append("Status: ").append(getStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -194,4 +253,5 @@ public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceR
     public UpdatePipelineStatusRequest clone() {
         return (UpdatePipelineStatusRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,9 @@
 package com.amazonaws.services.applicationdiscovery.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -27,7 +26,9 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
     private java.util.List<java.util.Map<String, String>> configurations;
     /**
      * <p>
-     * The call returns a token. Use this token to get the next set of results.
+     * Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items,
+     * but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with
+     * this token. Use this token in the next query to retrieve the next set of 10.
      * </p>
      */
     private String nextToken;
@@ -104,11 +105,15 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * The call returns a token. Use this token to get the next set of results.
+     * Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items,
+     * but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with
+     * this token. Use this token in the next query to retrieve the next set of 10.
      * </p>
      * 
      * @param nextToken
-     *        The call returns a token. Use this token to get the next set of results.
+     *        Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100
+     *        items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10
+     *        results along with this token. Use this token in the next query to retrieve the next set of 10.
      */
 
     public void setNextToken(String nextToken) {
@@ -117,10 +122,14 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * The call returns a token. Use this token to get the next set of results.
+     * Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items,
+     * but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with
+     * this token. Use this token in the next query to retrieve the next set of 10.
      * </p>
      * 
-     * @return The call returns a token. Use this token to get the next set of results.
+     * @return Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100
+     *         items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10
+     *         results along with this token. Use this token in the next query to retrieve the next set of 10.
      */
 
     public String getNextToken() {
@@ -129,11 +138,15 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * The call returns a token. Use this token to get the next set of results.
+     * Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items,
+     * but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with
+     * this token. Use this token in the next query to retrieve the next set of 10.
      * </p>
      * 
      * @param nextToken
-     *        The call returns a token. Use this token to get the next set of results.
+     *        Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100
+     *        items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10
+     *        results along with this token. Use this token in the next query to retrieve the next set of 10.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -154,9 +167,9 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConfigurations() != null)
-            sb.append("Configurations: " + getConfigurations() + ",");
+            sb.append("Configurations: ").append(getConfigurations()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -200,4 +213,5 @@ public class ListConfigurationsResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

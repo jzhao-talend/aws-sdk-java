@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.certificatemanager;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -19,6 +21,10 @@ import com.amazonaws.services.certificatemanager.model.*;
 
 /**
  * Interface for accessing ACM.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.certificatemanager.AbstractAWSCertificateManager} instead.
+ * </p>
  * <p>
  * <fullname>AWS Certificate Manager</fullname>
  * <p>
@@ -30,6 +36,7 @@ import com.amazonaws.services.certificatemanager.model.*;
  * Guide</i> </a>.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSCertificateManager {
 
     /**
@@ -61,7 +68,11 @@ public interface AWSCertificateManager {
      *        The endpoint (ex: "acm.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
      *        "https://acm.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will communicate
      *        with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -82,7 +93,9 @@ public interface AWSCertificateManager {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -118,6 +131,8 @@ public interface AWSCertificateManager {
      * @throws TooManyTagsException
      *         The request contains too many tags. Try the request again with fewer tags.
      * @sample AWSCertificateManager.AddTagsToCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/AddTagsToCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     AddTagsToCertificateResult addTagsToCertificate(AddTagsToCertificateRequest addTagsToCertificateRequest);
 
@@ -146,15 +161,14 @@ public interface AWSCertificateManager {
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.DeleteCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DeleteCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest);
 
     /**
      * <p>
-     * Returns a list of the fields contained in the specified ACM Certificate. For example, this action returns the
-     * certificate status, a flag that indicates whether the certificate is associated with any other AWS service, and
-     * the date at which the certificate request was created. You specify the ACM Certificate on input by its Amazon
-     * Resource Name (ARN).
+     * Returns detailed metadata about the specified ACM Certificate.
      * </p>
      * 
      * @param describeCertificateRequest
@@ -165,6 +179,8 @@ public interface AWSCertificateManager {
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.DescribeCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/DescribeCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     DescribeCertificateResult describeCertificate(DescribeCertificateRequest describeCertificateRequest);
 
@@ -191,6 +207,8 @@ public interface AWSCertificateManager {
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.GetCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/GetCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     GetCertificateResult getCertificate(GetCertificateRequest getCertificateRequest);
 
@@ -243,6 +261,8 @@ public interface AWSCertificateManager {
      *         which limit you have violated. For more information about ACM limits, see the <a
      *         href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.
      * @sample AWSCertificateManager.ImportCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ImportCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     ImportCertificateResult importCertificate(ImportCertificateRequest importCertificateRequest);
 
@@ -255,14 +275,16 @@ public interface AWSCertificateManager {
      * @param listCertificatesRequest
      * @return Result of the ListCertificates operation returned by the service.
      * @sample AWSCertificateManager.ListCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListCertificates" target="_top">AWS API
+     *      Documentation</a>
      */
     ListCertificatesResult listCertificates(ListCertificatesRequest listCertificatesRequest);
 
     /**
      * <p>
-     * Lists the tags that have been applied to the ACM Certificate. Use the certificate ARN to specify the certificate.
-     * To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the
-     * <a>RemoveTagsFromCertificate</a> action.
+     * Lists the tags that have been applied to the ACM Certificate. Use the certificate's Amazon Resource Name (ARN) to
+     * specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To
+     * delete a tag, use the <a>RemoveTagsFromCertificate</a> action.
      * </p>
      * 
      * @param listTagsForCertificateRequest
@@ -273,6 +295,8 @@ public interface AWSCertificateManager {
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
      * @sample AWSCertificateManager.ListTagsForCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListTagsForCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     ListTagsForCertificateResult listTagsForCertificate(ListTagsForCertificateRequest listTagsForCertificateRequest);
 
@@ -298,6 +322,8 @@ public interface AWSCertificateManager {
      *         One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a
      *         tag value that begins with <code>aws:</code>.
      * @sample AWSCertificateManager.RemoveTagsFromCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RemoveTagsFromCertificate" target="_top">AWS
+     *      API Documentation</a>
      */
     RemoveTagsFromCertificateResult removeTagsFromCertificate(RemoveTagsFromCertificateRequest removeTagsFromCertificateRequest);
 
@@ -321,6 +347,8 @@ public interface AWSCertificateManager {
      * @throws InvalidDomainValidationOptionsException
      *         One or more values in the <a>DomainValidationOption</a> structure is incorrect.
      * @sample AWSCertificateManager.RequestCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/RequestCertificate" target="_top">AWS API
+     *      Documentation</a>
      */
     RequestCertificateResult requestCertificate(RequestCertificateRequest requestCertificateRequest);
 
@@ -349,6 +377,8 @@ public interface AWSCertificateManager {
      * @throws InvalidDomainValidationOptionsException
      *         One or more values in the <a>DomainValidationOption</a> structure is incorrect.
      * @sample AWSCertificateManager.ResendValidationEmail
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ResendValidationEmail" target="_top">AWS API
+     *      Documentation</a>
      */
     ResendValidationEmailResult resendValidationEmail(ResendValidationEmailRequest resendValidationEmailRequest);
 

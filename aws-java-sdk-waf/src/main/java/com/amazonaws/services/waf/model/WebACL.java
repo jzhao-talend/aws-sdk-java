@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -24,8 +27,12 @@ import java.io.Serializable;
  * <code>WebACL</code>, a request needs to match only one of the specifications to be allowed, blocked, or counted. For
  * more information, see <a>UpdateWebACL</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/WebACL" target="_top">AWS API
+ *      Documentation</a>
  */
-public class WebACL implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WebACL implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -45,7 +52,13 @@ public class WebACL implements Serializable, Cloneable {
      * </p>
      */
     private String name;
-
+    /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     * <code>MetricName</code> after you create the <code>WebACL</code>.
+     * </p>
+     */
     private String metricName;
     /**
      * <p>
@@ -176,7 +189,16 @@ public class WebACL implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     * <code>MetricName</code> after you create the <code>WebACL</code>.
+     * </p>
+     * 
      * @param metricName
+     *        A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *        <code>MetricName</code> after you create the <code>WebACL</code>.
      */
 
     public void setMetricName(String metricName) {
@@ -184,7 +206,15 @@ public class WebACL implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     * <code>MetricName</code> after you create the <code>WebACL</code>.
+     * </p>
+     * 
+     * @return A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     *         alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *         <code>MetricName</code> after you create the <code>WebACL</code>.
      */
 
     public String getMetricName() {
@@ -192,7 +222,16 @@ public class WebACL implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     * <code>MetricName</code> after you create the <code>WebACL</code>.
+     * </p>
+     * 
      * @param metricName
+     *        A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only
+     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *        <code>MetricName</code> after you create the <code>WebACL</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,15 +376,15 @@ public class WebACL implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWebACLId() != null)
-            sb.append("WebACLId: " + getWebACLId() + ",");
+            sb.append("WebACLId: ").append(getWebACLId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getDefaultAction() != null)
-            sb.append("DefaultAction: " + getDefaultAction() + ",");
+            sb.append("DefaultAction: ").append(getDefaultAction()).append(",");
         if (getRules() != null)
-            sb.append("Rules: " + getRules());
+            sb.append("Rules: ").append(getRules());
         sb.append("}");
         return sb.toString();
     }
@@ -403,5 +442,11 @@ public class WebACL implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.WebACLMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

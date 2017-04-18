@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,42 +13,45 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateBuild" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set of properties for the newly created build.
+     * The newly created build record, including a unique build ID and status.
      * </p>
      */
     private Build build;
     /**
      * <p>
-     * AWS credentials required when uploading a game build to the storage location. These credentials have a limited
-     * lifespan and are valid only for the build they were issued for. If you need to get fresh credentials, call
-     * <code> <a>RequestUploadCredentials</a> </code>.
+     * This element is not currently in use.
      * </p>
      */
     private Credentials uploadCredentials;
     /**
      * <p>
-     * Amazon S3 path and key, identifying where the game build files are stored.
+     * Amazon S3 location specified in the request.
      * </p>
      */
     private S3Location storageLocation;
 
     /**
      * <p>
-     * Set of properties for the newly created build.
+     * The newly created build record, including a unique build ID and status.
      * </p>
      * 
      * @param build
-     *        Set of properties for the newly created build.
+     *        The newly created build record, including a unique build ID and status.
      */
 
     public void setBuild(Build build) {
@@ -57,10 +60,10 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Set of properties for the newly created build.
+     * The newly created build record, including a unique build ID and status.
      * </p>
      * 
-     * @return Set of properties for the newly created build.
+     * @return The newly created build record, including a unique build ID and status.
      */
 
     public Build getBuild() {
@@ -69,11 +72,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Set of properties for the newly created build.
+     * The newly created build record, including a unique build ID and status.
      * </p>
      * 
      * @param build
-     *        Set of properties for the newly created build.
+     *        The newly created build record, including a unique build ID and status.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -84,15 +87,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * AWS credentials required when uploading a game build to the storage location. These credentials have a limited
-     * lifespan and are valid only for the build they were issued for. If you need to get fresh credentials, call
-     * <code> <a>RequestUploadCredentials</a> </code>.
+     * This element is not currently in use.
      * </p>
      * 
      * @param uploadCredentials
-     *        AWS credentials required when uploading a game build to the storage location. These credentials have a
-     *        limited lifespan and are valid only for the build they were issued for. If you need to get fresh
-     *        credentials, call <code> <a>RequestUploadCredentials</a> </code>.
+     *        This element is not currently in use.
      */
 
     public void setUploadCredentials(Credentials uploadCredentials) {
@@ -101,14 +100,10 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * AWS credentials required when uploading a game build to the storage location. These credentials have a limited
-     * lifespan and are valid only for the build they were issued for. If you need to get fresh credentials, call
-     * <code> <a>RequestUploadCredentials</a> </code>.
+     * This element is not currently in use.
      * </p>
      * 
-     * @return AWS credentials required when uploading a game build to the storage location. These credentials have a
-     *         limited lifespan and are valid only for the build they were issued for. If you need to get fresh
-     *         credentials, call <code> <a>RequestUploadCredentials</a> </code>.
+     * @return This element is not currently in use.
      */
 
     public Credentials getUploadCredentials() {
@@ -117,15 +112,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * AWS credentials required when uploading a game build to the storage location. These credentials have a limited
-     * lifespan and are valid only for the build they were issued for. If you need to get fresh credentials, call
-     * <code> <a>RequestUploadCredentials</a> </code>.
+     * This element is not currently in use.
      * </p>
      * 
      * @param uploadCredentials
-     *        AWS credentials required when uploading a game build to the storage location. These credentials have a
-     *        limited lifespan and are valid only for the build they were issued for. If you need to get fresh
-     *        credentials, call <code> <a>RequestUploadCredentials</a> </code>.
+     *        This element is not currently in use.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,11 +127,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Amazon S3 path and key, identifying where the game build files are stored.
+     * Amazon S3 location specified in the request.
      * </p>
      * 
      * @param storageLocation
-     *        Amazon S3 path and key, identifying where the game build files are stored.
+     *        Amazon S3 location specified in the request.
      */
 
     public void setStorageLocation(S3Location storageLocation) {
@@ -149,10 +140,10 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Amazon S3 path and key, identifying where the game build files are stored.
+     * Amazon S3 location specified in the request.
      * </p>
      * 
-     * @return Amazon S3 path and key, identifying where the game build files are stored.
+     * @return Amazon S3 location specified in the request.
      */
 
     public S3Location getStorageLocation() {
@@ -161,11 +152,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Amazon S3 path and key, identifying where the game build files are stored.
+     * Amazon S3 location specified in the request.
      * </p>
      * 
      * @param storageLocation
-     *        Amazon S3 path and key, identifying where the game build files are stored.
+     *        Amazon S3 location specified in the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -186,11 +177,11 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBuild() != null)
-            sb.append("Build: " + getBuild() + ",");
+            sb.append("Build: ").append(getBuild()).append(",");
         if (getUploadCredentials() != null)
-            sb.append("UploadCredentials: " + getUploadCredentials() + ",");
+            sb.append("UploadCredentials: ").append(getUploadCredentials()).append(",");
         if (getStorageLocation() != null)
-            sb.append("StorageLocation: " + getStorageLocation());
+            sb.append("StorageLocation: ").append(getStorageLocation());
         sb.append("}");
         return sb.toString();
     }
@@ -239,4 +230,5 @@ public class CreateBuildResult extends com.amazonaws.AmazonWebServiceResult<com.
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

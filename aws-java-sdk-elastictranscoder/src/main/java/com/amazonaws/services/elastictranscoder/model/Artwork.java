@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -27,7 +30,8 @@ import java.io.Serializable;
  * and use an empty <code>Artwork</code> array.
  * </p>
  */
-public class Artwork implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Artwork implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -59,27 +63,49 @@ public class Artwork implements Serializable, Cloneable {
      * <p>
      * Specify one of the following values to control scaling of the output album art:
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     * <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
-     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.</li>
-     * <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
-     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
-     * are different, the output art will be distorted.</li>
-     * <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
-     * exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder
-     * crops the output art.</li>
-     * <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding
-     * either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping
-     * below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
+     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
+     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
+     * are different, the output art will be distorted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art exceeds
+     * the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder crops the
+     * output art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding either
+     * value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping below
+     * either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String sizingPolicy;
     /**
@@ -278,51 +304,95 @@ public class Artwork implements Serializable, Cloneable {
      * <p>
      * Specify one of the following values to control scaling of the output album art:
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     * <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
-     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.</li>
-     * <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
-     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
-     * are different, the output art will be distorted.</li>
-     * <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
-     * exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder
-     * crops the output art.</li>
-     * <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding
-     * either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping
-     * below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
+     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
+     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
+     * are different, the output art will be distorted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art exceeds
+     * the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder crops the
+     * output art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding either
+     * value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping below
+     * either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param sizingPolicy
      *        Specify one of the following values to control scaling of the output album art:</p>
-     *        <p>
      *        <ul>
-     *        <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified
-     *        in either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     *        <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified
-     *        in either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic
+     *        <li>
+     *        <p>
+     *        <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *        either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *        either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic
      *        Transcoder centers the output art and then crops it in the dimension (if any) that exceeds the maximum
-     *        value.</li>
-     *        <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you
-     *        specified for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input
-     *        art and the output art are different, the output art will be distorted.</li>
-     *        <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input
-     *        art exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
-     *        Transcoder crops the output art.</li>
-     *        <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *        the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
-     *        exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     *        <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *        the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
-     *        dropping below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     *        </ul>
+     *        value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified
+     *        for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the
+     *        output art are different, the output art will be distorted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
+     *        exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
+     *        Transcoder crops the output art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *        values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *        exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *        values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *        dropping below either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *        </p>
+     *        </li>
      */
 
     public void setSizingPolicy(String sizingPolicy) {
@@ -333,52 +403,94 @@ public class Artwork implements Serializable, Cloneable {
      * <p>
      * Specify one of the following values to control scaling of the output album art:
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     * <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
-     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.</li>
-     * <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
-     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
-     * are different, the output art will be distorted.</li>
-     * <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
-     * exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder
-     * crops the output art.</li>
-     * <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding
-     * either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping
-     * below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
+     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
+     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
+     * are different, the output art will be distorted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art exceeds
+     * the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder crops the
+     * output art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding either
+     * value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping below
+     * either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return Specify one of the following values to control scaling of the output album art:</p>
-     *         <p>
      *         <ul>
-     *         <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified
-     *         in either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     *         <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you
-     *         specified in either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other
-     *         value. Elastic Transcoder centers the output art and then crops it in the dimension (if any) that exceeds
-     *         the maximum value.</li>
-     *         <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you
-     *         specified for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input
-     *         art and the output art are different, the output art will be distorted.</li>
-     *         <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input
-     *         art exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
-     *         Transcoder crops the output art.</li>
-     *         <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *         the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code>
-     *         without exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *         <li>
+     *         <p>
+     *         <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *         either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
+     *         </p>
      *         </li>
-     *         <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *         the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code>
-     *         without dropping below either value. If you specify this option, Elastic Transcoder does not scale the
-     *         art up.</li>
-     *         </ul>
+     *         <li>
+     *         <p>
+     *         <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *         either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic
+     *         Transcoder centers the output art and then crops it in the dimension (if any) that exceeds the maximum
+     *         value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified
+     *         for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and
+     *         the output art are different, the output art will be distorted.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
+     *         exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
+     *         Transcoder crops the output art.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *         values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *         exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *         values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *         dropping below either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *         </p>
+     *         </li>
      */
 
     public String getSizingPolicy() {
@@ -389,51 +501,95 @@ public class Artwork implements Serializable, Cloneable {
      * <p>
      * Specify one of the following values to control scaling of the output album art:
      * </p>
-     * <p>
      * <ul>
-     * <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     * <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
-     * either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
-     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.</li>
-     * <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
-     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
-     * are different, the output art will be distorted.</li>
-     * <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
-     * exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder
-     * crops the output art.</li>
-     * <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding
-     * either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
-     * values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping
-     * below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in either
+     * <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic Transcoder
+     * centers the output art and then crops it in the dimension (if any) that exceeds the maximum value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified for
+     * <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the output art
+     * are different, the output art will be distorted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art exceeds
+     * the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic Transcoder crops the
+     * output art.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without exceeding either
+     * value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the values
+     * that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without dropping below
+     * either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param sizingPolicy
      *        Specify one of the following values to control scaling of the output album art:</p>
-     *        <p>
      *        <ul>
-     *        <li><code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified
-     *        in either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.</li>
-     *        <li><code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified
-     *        in either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic
+     *        <li>
+     *        <p>
+     *        <code>Fit:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *        either <code>MaxWidth</code> or <code>MaxHeight</code> without exceeding the other value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Fill:</code> Elastic Transcoder scales the output art so it matches the value that you specified in
+     *        either <code>MaxWidth</code> or <code>MaxHeight</code> and matches or exceeds the other value. Elastic
      *        Transcoder centers the output art and then crops it in the dimension (if any) that exceeds the maximum
-     *        value.</li>
-     *        <li><code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you
-     *        specified for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input
-     *        art and the output art are different, the output art will be distorted.</li>
-     *        <li><code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input
-     *        art exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
-     *        Transcoder crops the output art.</li>
-     *        <li><code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *        the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
-     *        exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     *        <li><code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match
-     *        the values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
-     *        dropping below either value. If you specify this option, Elastic Transcoder does not scale the art up.</li>
-     *        </ul>
+     *        value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Stretch:</code> Elastic Transcoder stretches the output art to match the values that you specified
+     *        for <code>MaxWidth</code> and <code>MaxHeight</code>. If the relative proportions of the input art and the
+     *        output art are different, the output art will be distorted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Keep:</code> Elastic Transcoder does not scale the output art. If either dimension of the input art
+     *        exceeds the values that you specified for <code>MaxWidth</code> and <code>MaxHeight</code>, Elastic
+     *        Transcoder crops the output art.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ShrinkToFit:</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *        values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *        exceeding either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ShrinkToFill</code> Elastic Transcoder scales the output art down so that its dimensions match the
+     *        values that you specified for at least one of <code>MaxWidth</code> and <code>MaxHeight</code> without
+     *        dropping below either value. If you specify this option, Elastic Transcoder does not scale the art up.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -586,19 +742,19 @@ public class Artwork implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInputKey() != null)
-            sb.append("InputKey: " + getInputKey() + ",");
+            sb.append("InputKey: ").append(getInputKey()).append(",");
         if (getMaxWidth() != null)
-            sb.append("MaxWidth: " + getMaxWidth() + ",");
+            sb.append("MaxWidth: ").append(getMaxWidth()).append(",");
         if (getMaxHeight() != null)
-            sb.append("MaxHeight: " + getMaxHeight() + ",");
+            sb.append("MaxHeight: ").append(getMaxHeight()).append(",");
         if (getSizingPolicy() != null)
-            sb.append("SizingPolicy: " + getSizingPolicy() + ",");
+            sb.append("SizingPolicy: ").append(getSizingPolicy()).append(",");
         if (getPaddingPolicy() != null)
-            sb.append("PaddingPolicy: " + getPaddingPolicy() + ",");
+            sb.append("PaddingPolicy: ").append(getPaddingPolicy()).append(",");
         if (getAlbumArtFormat() != null)
-            sb.append("AlbumArtFormat: " + getAlbumArtFormat() + ",");
+            sb.append("AlbumArtFormat: ").append(getAlbumArtFormat()).append(",");
         if (getEncryption() != null)
-            sb.append("Encryption: " + getEncryption());
+            sb.append("Encryption: ").append(getEncryption());
         sb.append("}");
         return sb.toString();
     }
@@ -666,5 +822,11 @@ public class Artwork implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.ArtworkMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

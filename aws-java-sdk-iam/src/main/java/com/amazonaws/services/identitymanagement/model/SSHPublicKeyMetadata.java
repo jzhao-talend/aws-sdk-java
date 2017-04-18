@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,7 @@
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -21,7 +22,11 @@ import java.io.Serializable;
  * <p>
  * This data type is used as a response element in the <a>ListSSHPublicKeys</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SSHPublicKeyMetadata" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SSHPublicKeyMetadata implements Serializable, Cloneable {
 
     /**
@@ -272,13 +277,13 @@ public class SSHPublicKeyMetadata implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserName() != null)
-            sb.append("UserName: " + getUserName() + ",");
+            sb.append("UserName: ").append(getUserName()).append(",");
         if (getSSHPublicKeyId() != null)
-            sb.append("SSHPublicKeyId: " + getSSHPublicKeyId() + ",");
+            sb.append("SSHPublicKeyId: ").append(getSSHPublicKeyId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getUploadDate() != null)
-            sb.append("UploadDate: " + getUploadDate());
+            sb.append("UploadDate: ").append(getUploadDate());
         sb.append("}");
         return sb.toString();
     }
@@ -332,4 +337,5 @@ public class SSHPublicKeyMetadata implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

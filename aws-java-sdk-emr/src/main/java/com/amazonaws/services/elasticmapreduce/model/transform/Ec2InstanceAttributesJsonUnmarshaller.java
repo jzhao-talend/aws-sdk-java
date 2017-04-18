@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,10 +12,9 @@
  */
 package com.amazonaws.services.elasticmapreduce.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.elasticmapreduce.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -27,6 +26,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * Ec2InstanceAttributes JSON Unmarshaller
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Ec2InstanceAttributesJsonUnmarshaller implements Unmarshaller<Ec2InstanceAttributes, JsonUnmarshallerContext> {
 
     public Ec2InstanceAttributes unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -39,8 +39,9 @@ public class Ec2InstanceAttributesJsonUnmarshaller implements Unmarshaller<Ec2In
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -55,9 +56,18 @@ public class Ec2InstanceAttributesJsonUnmarshaller implements Unmarshaller<Ec2In
                     context.nextToken();
                     ec2InstanceAttributes.setEc2SubnetId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("RequestedEc2SubnetIds", targetDepth)) {
+                    context.nextToken();
+                    ec2InstanceAttributes.setRequestedEc2SubnetIds(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
                 if (context.testExpression("Ec2AvailabilityZone", targetDepth)) {
                     context.nextToken();
                     ec2InstanceAttributes.setEc2AvailabilityZone(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("RequestedEc2AvailabilityZones", targetDepth)) {
+                    context.nextToken();
+                    ec2InstanceAttributes.setRequestedEc2AvailabilityZones(new ListUnmarshaller<String>(context.getUnmarshaller(String.class))
+                            .unmarshall(context));
                 }
                 if (context.testExpression("IamInstanceProfile", targetDepth)) {
                     context.nextToken();

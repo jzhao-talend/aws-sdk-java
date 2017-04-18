@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,24 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Returns the objects or data listed below if successful. Otherwise, returns an error.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListTags" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * A list of resource tags.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<ResourceTag> resourceTagList;
     /**
      * <p>
@@ -30,7 +40,11 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     private String nextToken;
 
     /**
-     * @return
+     * <p>
+     * A list of resource tags.
+     * </p>
+     * 
+     * @return A list of resource tags.
      */
 
     public java.util.List<ResourceTag> getResourceTagList() {
@@ -41,7 +55,12 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     }
 
     /**
+     * <p>
+     * A list of resource tags.
+     * </p>
+     * 
      * @param resourceTagList
+     *        A list of resource tags.
      */
 
     public void setResourceTagList(java.util.Collection<ResourceTag> resourceTagList) {
@@ -55,12 +74,16 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
+     * A list of resource tags.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setResourceTagList(java.util.Collection)} or {@link #withResourceTagList(java.util.Collection)} if you
      * want to override the existing values.
      * </p>
      * 
      * @param resourceTagList
+     *        A list of resource tags.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -75,7 +98,12 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     }
 
     /**
+     * <p>
+     * A list of resource tags.
+     * </p>
+     * 
      * @param resourceTagList
+     *        A list of resource tags.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,9 +164,9 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceTagList() != null)
-            sb.append("ResourceTagList: " + getResourceTagList() + ",");
+            sb.append("ResourceTagList: ").append(getResourceTagList()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -182,4 +210,5 @@ public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

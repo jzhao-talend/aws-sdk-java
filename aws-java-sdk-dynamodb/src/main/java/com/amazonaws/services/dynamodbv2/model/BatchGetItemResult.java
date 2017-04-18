@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,27 +13,32 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a <i>BatchGetItem</i> operation.
+ * Represents the output of a <code>BatchGetItem</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/BatchGetItem" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along with a
-     * map of attribute data consisting of the data type and attribute value.
+     * A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name, along
+     * with a map of attribute data consisting of the data type and attribute value.
      * </p>
      */
     private java.util.Map<String, java.util.List<java.util.Map<String, AttributeValue>>> responses;
     /**
      * <p>
      * A map of tables and their respective keys that were not processed with the current response. The
-     * <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided directly to
-     * a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in the Request
-     * Parameters section.
+     * <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be provided
+     * directly to a subsequent <code>BatchGetItem</code> operation. For more information, see <code>RequestItems</code>
+     * in the Request Parameters section.
      * </p>
      * <p>
      * Each element consists of:
@@ -41,30 +46,30 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     * attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     * <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By default,
+     * all attributes are returned. If a requested attribute is not found, it does not appear in the result.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
+     * <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a strongly
      * consistent read is used; otherwise, an eventually consistent read is used.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     * If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code> map.
      * </p>
      */
     private java.util.Map<String, KeysAndAttributes> unprocessedKeys;
     /**
      * <p>
-     * The read capacity units consumed by the operation.
+     * The read capacity units consumed by the entire <code>BatchGetItem</code> operation.
      * </p>
      * <p>
      * Each element consists of:
@@ -72,12 +77,12 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>TableName</i> - The table that consumed the provisioned throughput.
+     * <code>TableName</code> - The table that consumed the provisioned throughput.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>CapacityUnits</i> - The total number of capacity units consumed.
+     * <code>CapacityUnits</code> - The total number of capacity units consumed.
      * </p>
      * </li>
      * </ul>
@@ -86,12 +91,12 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along with a
-     * map of attribute data consisting of the data type and attribute value.
+     * A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name, along
+     * with a map of attribute data consisting of the data type and attribute value.
      * </p>
      * 
-     * @return A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along
-     *         with a map of attribute data consisting of the data type and attribute value.
+     * @return A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name,
+     *         along with a map of attribute data consisting of the data type and attribute value.
      */
 
     public java.util.Map<String, java.util.List<java.util.Map<String, AttributeValue>>> getResponses() {
@@ -100,13 +105,13 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along with a
-     * map of attribute data consisting of the data type and attribute value.
+     * A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name, along
+     * with a map of attribute data consisting of the data type and attribute value.
      * </p>
      * 
      * @param responses
-     *        A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along
-     *        with a map of attribute data consisting of the data type and attribute value.
+     *        A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name,
+     *        along with a map of attribute data consisting of the data type and attribute value.
      */
 
     public void setResponses(java.util.Map<String, java.util.List<java.util.Map<String, AttributeValue>>> responses) {
@@ -115,13 +120,13 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along with a
-     * map of attribute data consisting of the data type and attribute value.
+     * A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name, along
+     * with a map of attribute data consisting of the data type and attribute value.
      * </p>
      * 
      * @param responses
-     *        A map of table name to a list of items. Each object in <i>Responses</i> consists of a table name, along
-     *        with a map of attribute data consisting of the data type and attribute value.
+     *        A map of table name to a list of items. Each object in <code>Responses</code> consists of a table name,
+     *        along with a map of attribute data consisting of the data type and attribute value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -154,9 +159,9 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * A map of tables and their respective keys that were not processed with the current response. The
-     * <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided directly to
-     * a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in the Request
-     * Parameters section.
+     * <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be provided
+     * directly to a subsequent <code>BatchGetItem</code> operation. For more information, see <code>RequestItems</code>
+     * in the Request Parameters section.
      * </p>
      * <p>
      * Each element consists of:
@@ -164,54 +169,56 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     * attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     * <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By default,
+     * all attributes are returned. If a requested attribute is not found, it does not appear in the result.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
+     * <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a strongly
      * consistent read is used; otherwise, an eventually consistent read is used.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     * If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code> map.
      * </p>
      * 
      * @return A map of tables and their respective keys that were not processed with the current response. The
-     *         <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided
-     *         directly to a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in
-     *         the Request Parameters section.</p>
+     *         <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be
+     *         provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
+     *         <code>RequestItems</code> in the Request Parameters section.</p>
      *         <p>
      *         Each element consists of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     *         <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     *         attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     *         <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By
+     *         default, all attributes are returned. If a requested attribute is not found, it does not appear in the
+     *         result.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
-     *         consistent read is used; otherwise, an eventually consistent read is used.
+     *         <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a
+     *         strongly consistent read is used; otherwise, an eventually consistent read is used.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     *         If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code>
+     *         map.
      */
 
     public java.util.Map<String, KeysAndAttributes> getUnprocessedKeys() {
@@ -221,9 +228,9 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * A map of tables and their respective keys that were not processed with the current response. The
-     * <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided directly to
-     * a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in the Request
-     * Parameters section.
+     * <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be provided
+     * directly to a subsequent <code>BatchGetItem</code> operation. For more information, see <code>RequestItems</code>
+     * in the Request Parameters section.
      * </p>
      * <p>
      * Each element consists of:
@@ -231,55 +238,57 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     * attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     * <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By default,
+     * all attributes are returned. If a requested attribute is not found, it does not appear in the result.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
+     * <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a strongly
      * consistent read is used; otherwise, an eventually consistent read is used.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     * If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code> map.
      * </p>
      * 
      * @param unprocessedKeys
      *        A map of tables and their respective keys that were not processed with the current response. The
-     *        <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided
-     *        directly to a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in
-     *        the Request Parameters section.</p>
+     *        <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be
+     *        provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
+     *        <code>RequestItems</code> in the Request Parameters section.</p>
      *        <p>
      *        Each element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     *        attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     *        <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By
+     *        default, all attributes are returned. If a requested attribute is not found, it does not appear in the
+     *        result.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
-     *        consistent read is used; otherwise, an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a
+     *        strongly consistent read is used; otherwise, an eventually consistent read is used.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     *        If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code>
+     *        map.
      */
 
     public void setUnprocessedKeys(java.util.Map<String, KeysAndAttributes> unprocessedKeys) {
@@ -289,9 +298,9 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * A map of tables and their respective keys that were not processed with the current response. The
-     * <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided directly to
-     * a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in the Request
-     * Parameters section.
+     * <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be provided
+     * directly to a subsequent <code>BatchGetItem</code> operation. For more information, see <code>RequestItems</code>
+     * in the Request Parameters section.
      * </p>
      * <p>
      * Each element consists of:
@@ -299,55 +308,57 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     * <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     * attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     * <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By default,
+     * all attributes are returned. If a requested attribute is not found, it does not appear in the result.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
+     * <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a strongly
      * consistent read is used; otherwise, an eventually consistent read is used.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     * If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code> map.
      * </p>
      * 
      * @param unprocessedKeys
      *        A map of tables and their respective keys that were not processed with the current response. The
-     *        <i>UnprocessedKeys</i> value is in the same form as <i>RequestItems</i>, so the value can be provided
-     *        directly to a subsequent <i>BatchGetItem</i> operation. For more information, see <i>RequestItems</i> in
-     *        the Request Parameters section.</p>
+     *        <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can be
+     *        provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
+     *        <code>RequestItems</code> in the Request Parameters section.</p>
      *        <p>
      *        Each element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>Keys</i> - An array of primary key attribute values that define specific items in the table.
+     *        <code>Keys</code> - An array of primary key attribute values that define specific items in the table.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>AttributesToGet</i> - One or more attributes to be retrieved from the table or index. By default, all
-     *        attributes are returned. If a requested attribute is not found, it does not appear in the result.
+     *        <code>ProjectionExpression</code> - One or more attributes to be retrieved from the table or index. By
+     *        default, all attributes are returned. If a requested attribute is not found, it does not appear in the
+     *        result.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ConsistentRead</i> - The consistency of a read operation. If set to <code>true</code>, then a strongly
-     *        consistent read is used; otherwise, an eventually consistent read is used.
+     *        <code>ConsistentRead</code> - The consistency of a read operation. If set to <code>true</code>, then a
+     *        strongly consistent read is used; otherwise, an eventually consistent read is used.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        If there are no unprocessed keys remaining, the response contains an empty <i>UnprocessedKeys</i> map.
+     *        If there are no unprocessed keys remaining, the response contains an empty <code>UnprocessedKeys</code>
+     *        map.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -379,7 +390,7 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The read capacity units consumed by the operation.
+     * The read capacity units consumed by the entire <code>BatchGetItem</code> operation.
      * </p>
      * <p>
      * Each element consists of:
@@ -387,29 +398,29 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>TableName</i> - The table that consumed the provisioned throughput.
+     * <code>TableName</code> - The table that consumed the provisioned throughput.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>CapacityUnits</i> - The total number of capacity units consumed.
+     * <code>CapacityUnits</code> - The total number of capacity units consumed.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The read capacity units consumed by the operation.</p>
+     * @return The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
      *         <p>
      *         Each element consists of:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>TableName</i> - The table that consumed the provisioned throughput.
+     *         <code>TableName</code> - The table that consumed the provisioned throughput.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>CapacityUnits</i> - The total number of capacity units consumed.
+     *         <code>CapacityUnits</code> - The total number of capacity units consumed.
      *         </p>
      *         </li>
      */
@@ -420,7 +431,7 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The read capacity units consumed by the operation.
+     * The read capacity units consumed by the entire <code>BatchGetItem</code> operation.
      * </p>
      * <p>
      * Each element consists of:
@@ -428,30 +439,30 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>TableName</i> - The table that consumed the provisioned throughput.
+     * <code>TableName</code> - The table that consumed the provisioned throughput.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>CapacityUnits</i> - The total number of capacity units consumed.
+     * <code>CapacityUnits</code> - The total number of capacity units consumed.
      * </p>
      * </li>
      * </ul>
      * 
      * @param consumedCapacity
-     *        The read capacity units consumed by the operation.</p>
+     *        The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
      *        <p>
      *        Each element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>TableName</i> - The table that consumed the provisioned throughput.
+     *        <code>TableName</code> - The table that consumed the provisioned throughput.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>CapacityUnits</i> - The total number of capacity units consumed.
+     *        <code>CapacityUnits</code> - The total number of capacity units consumed.
      *        </p>
      *        </li>
      */
@@ -467,7 +478,7 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The read capacity units consumed by the operation.
+     * The read capacity units consumed by the entire <code>BatchGetItem</code> operation.
      * </p>
      * <p>
      * Each element consists of:
@@ -475,12 +486,12 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>TableName</i> - The table that consumed the provisioned throughput.
+     * <code>TableName</code> - The table that consumed the provisioned throughput.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>CapacityUnits</i> - The total number of capacity units consumed.
+     * <code>CapacityUnits</code> - The total number of capacity units consumed.
      * </p>
      * </li>
      * </ul>
@@ -491,19 +502,19 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * </p>
      * 
      * @param consumedCapacity
-     *        The read capacity units consumed by the operation.</p>
+     *        The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
      *        <p>
      *        Each element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>TableName</i> - The table that consumed the provisioned throughput.
+     *        <code>TableName</code> - The table that consumed the provisioned throughput.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>CapacityUnits</i> - The total number of capacity units consumed.
+     *        <code>CapacityUnits</code> - The total number of capacity units consumed.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -521,7 +532,7 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The read capacity units consumed by the operation.
+     * The read capacity units consumed by the entire <code>BatchGetItem</code> operation.
      * </p>
      * <p>
      * Each element consists of:
@@ -529,30 +540,30 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
      * <ul>
      * <li>
      * <p>
-     * <i>TableName</i> - The table that consumed the provisioned throughput.
+     * <code>TableName</code> - The table that consumed the provisioned throughput.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>CapacityUnits</i> - The total number of capacity units consumed.
+     * <code>CapacityUnits</code> - The total number of capacity units consumed.
      * </p>
      * </li>
      * </ul>
      * 
      * @param consumedCapacity
-     *        The read capacity units consumed by the operation.</p>
+     *        The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
      *        <p>
      *        Each element consists of:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>TableName</i> - The table that consumed the provisioned throughput.
+     *        <code>TableName</code> - The table that consumed the provisioned throughput.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>CapacityUnits</i> - The total number of capacity units consumed.
+     *        <code>CapacityUnits</code> - The total number of capacity units consumed.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -575,11 +586,11 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResponses() != null)
-            sb.append("Responses: " + getResponses() + ",");
+            sb.append("Responses: ").append(getResponses()).append(",");
         if (getUnprocessedKeys() != null)
-            sb.append("UnprocessedKeys: " + getUnprocessedKeys() + ",");
+            sb.append("UnprocessedKeys: ").append(getUnprocessedKeys()).append(",");
         if (getConsumedCapacity() != null)
-            sb.append("ConsumedCapacity: " + getConsumedCapacity());
+            sb.append("ConsumedCapacity: ").append(getConsumedCapacity());
         sb.append("}");
         return sb.toString();
     }
@@ -628,4 +639,5 @@ public class BatchGetItemResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

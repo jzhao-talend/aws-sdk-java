@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a schedule that is available for your Scheduled Instances.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstanceAvailability" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ScheduledInstanceAvailability implements Serializable, Cloneable {
 
     /**
@@ -632,31 +637,31 @@ public class ScheduledInstanceAvailability implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getPlatform() != null)
-            sb.append("Platform: " + getPlatform() + ",");
+            sb.append("Platform: ").append(getPlatform()).append(",");
         if (getNetworkPlatform() != null)
-            sb.append("NetworkPlatform: " + getNetworkPlatform() + ",");
+            sb.append("NetworkPlatform: ").append(getNetworkPlatform()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getPurchaseToken() != null)
-            sb.append("PurchaseToken: " + getPurchaseToken() + ",");
+            sb.append("PurchaseToken: ").append(getPurchaseToken()).append(",");
         if (getSlotDurationInHours() != null)
-            sb.append("SlotDurationInHours: " + getSlotDurationInHours() + ",");
+            sb.append("SlotDurationInHours: ").append(getSlotDurationInHours()).append(",");
         if (getRecurrence() != null)
-            sb.append("Recurrence: " + getRecurrence() + ",");
+            sb.append("Recurrence: ").append(getRecurrence()).append(",");
         if (getFirstSlotStartTime() != null)
-            sb.append("FirstSlotStartTime: " + getFirstSlotStartTime() + ",");
+            sb.append("FirstSlotStartTime: ").append(getFirstSlotStartTime()).append(",");
         if (getHourlyPrice() != null)
-            sb.append("HourlyPrice: " + getHourlyPrice() + ",");
+            sb.append("HourlyPrice: ").append(getHourlyPrice()).append(",");
         if (getTotalScheduledInstanceHours() != null)
-            sb.append("TotalScheduledInstanceHours: " + getTotalScheduledInstanceHours() + ",");
+            sb.append("TotalScheduledInstanceHours: ").append(getTotalScheduledInstanceHours()).append(",");
         if (getAvailableInstanceCount() != null)
-            sb.append("AvailableInstanceCount: " + getAvailableInstanceCount() + ",");
+            sb.append("AvailableInstanceCount: ").append(getAvailableInstanceCount()).append(",");
         if (getMinTermDurationInDays() != null)
-            sb.append("MinTermDurationInDays: " + getMinTermDurationInDays() + ",");
+            sb.append("MinTermDurationInDays: ").append(getMinTermDurationInDays()).append(",");
         if (getMaxTermDurationInDays() != null)
-            sb.append("MaxTermDurationInDays: " + getMaxTermDurationInDays());
+            sb.append("MaxTermDurationInDays: ").append(getMaxTermDurationInDays());
         sb.append("}");
         return sb.toString();
     }
@@ -755,4 +760,5 @@ public class ScheduledInstanceAvailability implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeConfigRuleEvaluationStatus"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -27,6 +33,27 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> configRuleNames;
+    /**
+     * <p>
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * paginated response.
+     * </p>
+     */
+    private String nextToken;
+    /**
+     * <p>
+     * The number of rule evaluation results that you want returned.
+     * </p>
+     * <p>
+     * This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     * </p>
+     * <p>
+     * For more information about requesting a rule limit increase, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a>
+     * in the <i>AWS General Reference Guide</i>.
+     * </p>
+     */
+    private Integer limit;
 
     /**
      * <p>
@@ -110,6 +137,137 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
     }
 
     /**
+     * <p>
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * paginated response.
+     * </p>
+     * 
+     * @param nextToken
+     *        The <code>NextToken</code> string returned on a previous page that you use to get the next page of results
+     *        in a paginated response.
+     */
+
+    public void setNextToken(String nextToken) {
+        this.nextToken = nextToken;
+    }
+
+    /**
+     * <p>
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * paginated response.
+     * </p>
+     * 
+     * @return The <code>NextToken</code> string returned on a previous page that you use to get the next page of
+     *         results in a paginated response.
+     */
+
+    public String getNextToken() {
+        return this.nextToken;
+    }
+
+    /**
+     * <p>
+     * The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a
+     * paginated response.
+     * </p>
+     * 
+     * @param nextToken
+     *        The <code>NextToken</code> string returned on a previous page that you use to get the next page of results
+     *        in a paginated response.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeConfigRuleEvaluationStatusRequest withNextToken(String nextToken) {
+        setNextToken(nextToken);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of rule evaluation results that you want returned.
+     * </p>
+     * <p>
+     * This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     * </p>
+     * <p>
+     * For more information about requesting a rule limit increase, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a>
+     * in the <i>AWS General Reference Guide</i>.
+     * </p>
+     * 
+     * @param limit
+     *        The number of rule evaluation results that you want returned.</p>
+     *        <p>
+     *        This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     *        </p>
+     *        <p>
+     *        For more information about requesting a rule limit increase, see <a
+     *        href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config
+     *        Limits</a> in the <i>AWS General Reference Guide</i>.
+     */
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    /**
+     * <p>
+     * The number of rule evaluation results that you want returned.
+     * </p>
+     * <p>
+     * This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     * </p>
+     * <p>
+     * For more information about requesting a rule limit increase, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a>
+     * in the <i>AWS General Reference Guide</i>.
+     * </p>
+     * 
+     * @return The number of rule evaluation results that you want returned.</p>
+     *         <p>
+     *         This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     *         </p>
+     *         <p>
+     *         For more information about requesting a rule limit increase, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config
+     *         Limits</a> in the <i>AWS General Reference Guide</i>.
+     */
+
+    public Integer getLimit() {
+        return this.limit;
+    }
+
+    /**
+     * <p>
+     * The number of rule evaluation results that you want returned.
+     * </p>
+     * <p>
+     * This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     * </p>
+     * <p>
+     * For more information about requesting a rule limit increase, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a>
+     * in the <i>AWS General Reference Guide</i>.
+     * </p>
+     * 
+     * @param limit
+     *        The number of rule evaluation results that you want returned.</p>
+     *        <p>
+     *        This parameter is required if the rule limit for your account is more than the default of 50 rules.
+     *        </p>
+     *        <p>
+     *        For more information about requesting a rule limit increase, see <a
+     *        href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config
+     *        Limits</a> in the <i>AWS General Reference Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeConfigRuleEvaluationStatusRequest withLimit(Integer limit) {
+        setLimit(limit);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -121,7 +279,11 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConfigRuleNames() != null)
-            sb.append("ConfigRuleNames: " + getConfigRuleNames());
+            sb.append("ConfigRuleNames: ").append(getConfigRuleNames()).append(",");
+        if (getNextToken() != null)
+            sb.append("NextToken: ").append(getNextToken()).append(",");
+        if (getLimit() != null)
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -140,6 +302,14 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
             return false;
         if (other.getConfigRuleNames() != null && other.getConfigRuleNames().equals(this.getConfigRuleNames()) == false)
             return false;
+        if (other.getNextToken() == null ^ this.getNextToken() == null)
+            return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
+            return false;
+        if (other.getLimit() == null ^ this.getLimit() == null)
+            return false;
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
+            return false;
         return true;
     }
 
@@ -149,6 +319,8 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getConfigRuleNames() == null) ? 0 : getConfigRuleNames().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -156,4 +328,5 @@ public class DescribeConfigRuleEvaluationStatusRequest extends com.amazonaws.Ama
     public DescribeConfigRuleEvaluationStatusRequest clone() {
         return (DescribeConfigRuleEvaluationStatusRequest) super.clone();
     }
+
 }

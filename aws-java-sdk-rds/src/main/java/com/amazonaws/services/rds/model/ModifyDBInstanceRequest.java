@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,17 @@
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -140,7 +146,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action.
+     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines.
      * </p>
      * <p>
      * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
@@ -1475,7 +1482,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action.
+     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines.
      * </p>
      * <p>
      * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
@@ -1491,7 +1499,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param dBInstanceClass
      *        The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
+     *        not all instance classes are available in all regions for all DB engines. </p>
      *        <p>
      *        Passing a value for this setting causes an outage during the change and is applied during the next
      *        maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
@@ -1512,7 +1521,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action.
+     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines.
      * </p>
      * <p>
      * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
@@ -1527,7 +1537,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @return The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *         available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+     *         available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
+     *         not all instance classes are available in all regions for all DB engines. </p>
      *         <p>
      *         Passing a value for this setting causes an outage during the change and is applied during the next
      *         maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
@@ -1548,7 +1559,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action.
+     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines.
      * </p>
      * <p>
      * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
@@ -1564,7 +1576,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param dBInstanceClass
      *        The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
+     *        not all instance classes are available in all regions for all DB engines. </p>
      *        <p>
      *        Passing a value for this setting causes an outage during the change and is applied during the next
      *        maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
@@ -5306,69 +5319,69 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getDBInstanceClass() != null)
-            sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+            sb.append("DBInstanceClass: ").append(getDBInstanceClass()).append(",");
         if (getDBSubnetGroupName() != null)
-            sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");
+            sb.append("DBSubnetGroupName: ").append(getDBSubnetGroupName()).append(",");
         if (getDBSecurityGroups() != null)
-            sb.append("DBSecurityGroups: " + getDBSecurityGroups() + ",");
+            sb.append("DBSecurityGroups: ").append(getDBSecurityGroups()).append(",");
         if (getVpcSecurityGroupIds() != null)
-            sb.append("VpcSecurityGroupIds: " + getVpcSecurityGroupIds() + ",");
+            sb.append("VpcSecurityGroupIds: ").append(getVpcSecurityGroupIds()).append(",");
         if (getApplyImmediately() != null)
-            sb.append("ApplyImmediately: " + getApplyImmediately() + ",");
+            sb.append("ApplyImmediately: ").append(getApplyImmediately()).append(",");
         if (getMasterUserPassword() != null)
-            sb.append("MasterUserPassword: " + getMasterUserPassword() + ",");
+            sb.append("MasterUserPassword: ").append(getMasterUserPassword()).append(",");
         if (getDBParameterGroupName() != null)
-            sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");
+            sb.append("DBParameterGroupName: ").append(getDBParameterGroupName()).append(",");
         if (getBackupRetentionPeriod() != null)
-            sb.append("BackupRetentionPeriod: " + getBackupRetentionPeriod() + ",");
+            sb.append("BackupRetentionPeriod: ").append(getBackupRetentionPeriod()).append(",");
         if (getPreferredBackupWindow() != null)
-            sb.append("PreferredBackupWindow: " + getPreferredBackupWindow() + ",");
+            sb.append("PreferredBackupWindow: ").append(getPreferredBackupWindow()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getAllowMajorVersionUpgrade() != null)
-            sb.append("AllowMajorVersionUpgrade: " + getAllowMajorVersionUpgrade() + ",");
+            sb.append("AllowMajorVersionUpgrade: ").append(getAllowMajorVersionUpgrade()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: " + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getLicenseModel() != null)
-            sb.append("LicenseModel: " + getLicenseModel() + ",");
+            sb.append("LicenseModel: ").append(getLicenseModel()).append(",");
         if (getIops() != null)
-            sb.append("Iops: " + getIops() + ",");
+            sb.append("Iops: ").append(getIops()).append(",");
         if (getOptionGroupName() != null)
-            sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+            sb.append("OptionGroupName: ").append(getOptionGroupName()).append(",");
         if (getNewDBInstanceIdentifier() != null)
-            sb.append("NewDBInstanceIdentifier: " + getNewDBInstanceIdentifier() + ",");
+            sb.append("NewDBInstanceIdentifier: ").append(getNewDBInstanceIdentifier()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getTdeCredentialArn() != null)
-            sb.append("TdeCredentialArn: " + getTdeCredentialArn() + ",");
+            sb.append("TdeCredentialArn: ").append(getTdeCredentialArn()).append(",");
         if (getTdeCredentialPassword() != null)
-            sb.append("TdeCredentialPassword: " + getTdeCredentialPassword() + ",");
+            sb.append("TdeCredentialPassword: ").append(getTdeCredentialPassword()).append(",");
         if (getCACertificateIdentifier() != null)
-            sb.append("CACertificateIdentifier: " + getCACertificateIdentifier() + ",");
+            sb.append("CACertificateIdentifier: ").append(getCACertificateIdentifier()).append(",");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: " + getCopyTagsToSnapshot() + ",");
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
         if (getMonitoringInterval() != null)
-            sb.append("MonitoringInterval: " + getMonitoringInterval() + ",");
+            sb.append("MonitoringInterval: ").append(getMonitoringInterval()).append(",");
         if (getDBPortNumber() != null)
-            sb.append("DBPortNumber: " + getDBPortNumber() + ",");
+            sb.append("DBPortNumber: ").append(getDBPortNumber()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible() + ",");
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getMonitoringRoleArn() != null)
-            sb.append("MonitoringRoleArn: " + getMonitoringRoleArn() + ",");
+            sb.append("MonitoringRoleArn: ").append(getMonitoringRoleArn()).append(",");
         if (getDomainIAMRoleName() != null)
-            sb.append("DomainIAMRoleName: " + getDomainIAMRoleName() + ",");
+            sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName()).append(",");
         if (getPromotionTier() != null)
-            sb.append("PromotionTier: " + getPromotionTier());
+            sb.append("PromotionTier: ").append(getPromotionTier());
         sb.append("}");
         return sb.toString();
     }
@@ -5558,4 +5571,5 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     public ModifyDBInstanceRequest clone() {
         return (ModifyDBInstanceRequest) super.clone();
     }
+
 }

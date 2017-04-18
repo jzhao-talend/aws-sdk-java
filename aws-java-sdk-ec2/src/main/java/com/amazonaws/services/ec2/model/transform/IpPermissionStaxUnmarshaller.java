@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * IpPermission StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IpPermissionStaxUnmarshaller implements Unmarshaller<IpPermission, StaxUnmarshallerContext> {
 
     public IpPermission unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -60,18 +60,43 @@ public class IpPermissionStaxUnmarshaller implements Unmarshaller<IpPermission, 
                     continue;
                 }
 
+                if (context.testExpression("groups", targetDepth)) {
+                    ipPermission.withUserIdGroupPairs(new ArrayList<UserIdGroupPair>());
+                    continue;
+                }
+
                 if (context.testExpression("groups/item", targetDepth)) {
                     ipPermission.withUserIdGroupPairs(UserIdGroupPairStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
-                if (context.testExpression("ipRanges/item/cidrIp", targetDepth)) {
-                    ipPermission.withIpRanges(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                if (context.testExpression("ipv6Ranges", targetDepth)) {
+                    ipPermission.withIpv6Ranges(new ArrayList<Ipv6Range>());
+                    continue;
+                }
+
+                if (context.testExpression("ipv6Ranges/item", targetDepth)) {
+                    ipPermission.withIpv6Ranges(Ipv6RangeStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("prefixListIds", targetDepth)) {
+                    ipPermission.withPrefixListIds(new ArrayList<PrefixListId>());
                     continue;
                 }
 
                 if (context.testExpression("prefixListIds/item", targetDepth)) {
                     ipPermission.withPrefixListIds(PrefixListIdStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ipRanges", targetDepth)) {
+                    ipPermission.withIpv4Ranges(new ArrayList<IpRange>());
+                    continue;
+                }
+
+                if (context.testExpression("ipRanges/item", targetDepth)) {
+                    ipPermission.withIpv4Ranges(IpRangeStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 

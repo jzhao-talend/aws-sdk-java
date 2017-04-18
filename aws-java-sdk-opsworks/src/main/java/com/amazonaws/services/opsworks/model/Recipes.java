@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,22 +13,29 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * AWS OpsWorks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>, <b>undeploy</b>, and
- * <b>shutdown</b>. For each layer, AWS OpsWorks runs a set of standard recipes for each event. In addition, you can
- * provide custom recipes for any or all layers and events. AWS OpsWorks runs custom event recipes after the standard
- * recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a particular layer to be run in response to
- * each of the five events.
+ * AWS OpsWorks Stacks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>,
+ * <b>undeploy</b>, and <b>shutdown</b>. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each
+ * event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom
+ * event recipes after the standard recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a
+ * particular layer to be run in response to each of the five events.
  * </p>
  * <p>
  * To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name,
  * which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb
  * recipe in the repository's phpapp2 folder.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Recipes" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Recipes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Recipes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -438,15 +445,15 @@ public class Recipes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSetup() != null)
-            sb.append("Setup: " + getSetup() + ",");
+            sb.append("Setup: ").append(getSetup()).append(",");
         if (getConfigure() != null)
-            sb.append("Configure: " + getConfigure() + ",");
+            sb.append("Configure: ").append(getConfigure()).append(",");
         if (getDeploy() != null)
-            sb.append("Deploy: " + getDeploy() + ",");
+            sb.append("Deploy: ").append(getDeploy()).append(",");
         if (getUndeploy() != null)
-            sb.append("Undeploy: " + getUndeploy() + ",");
+            sb.append("Undeploy: ").append(getUndeploy()).append(",");
         if (getShutdown() != null)
-            sb.append("Shutdown: " + getShutdown());
+            sb.append("Shutdown: ").append(getShutdown());
         sb.append("}");
         return sb.toString();
     }
@@ -504,5 +511,11 @@ public class Recipes implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.RecipesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,12 +12,18 @@
  */
 package com.amazonaws.services.apigateway;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.apigateway.model.*;
 
 /**
  * Interface for accessing Amazon API Gateway asynchronously. Each asynchronous method will return a Java Future object
  * representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to receive
  * notification when an asynchronous operation completes.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.apigateway.AbstractAmazonApiGatewayAsync} instead.
+ * </p>
  * <p>
  * <fullname>Amazon API Gateway</fullname>
  * <p>
@@ -26,6 +32,7 @@ import com.amazonaws.services.apigateway.model.*;
  * EC2, or other publicly addressable web services that are hosted outside of AWS.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AmazonApiGatewayAsync extends AmazonApiGateway {
 
     /**
@@ -153,6 +160,50 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
             com.amazonaws.handlers.AsyncHandler<CreateDeploymentRequest, CreateDeploymentResult> asyncHandler);
 
     /**
+     * @param createDocumentationPartRequest
+     *        Creates a new documentation part of a given API.
+     * @return A Java Future containing the result of the CreateDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsync.CreateDocumentationPart
+     */
+    java.util.concurrent.Future<CreateDocumentationPartResult> createDocumentationPartAsync(CreateDocumentationPartRequest createDocumentationPartRequest);
+
+    /**
+     * @param createDocumentationPartRequest
+     *        Creates a new documentation part of a given API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.CreateDocumentationPart
+     */
+    java.util.concurrent.Future<CreateDocumentationPartResult> createDocumentationPartAsync(CreateDocumentationPartRequest createDocumentationPartRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDocumentationPartRequest, CreateDocumentationPartResult> asyncHandler);
+
+    /**
+     * @param createDocumentationVersionRequest
+     *        Creates a new documentation version of a given API.
+     * @return A Java Future containing the result of the CreateDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsync.CreateDocumentationVersion
+     */
+    java.util.concurrent.Future<CreateDocumentationVersionResult> createDocumentationVersionAsync(
+            CreateDocumentationVersionRequest createDocumentationVersionRequest);
+
+    /**
+     * @param createDocumentationVersionRequest
+     *        Creates a new documentation version of a given API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.CreateDocumentationVersion
+     */
+    java.util.concurrent.Future<CreateDocumentationVersionResult> createDocumentationVersionAsync(
+            CreateDocumentationVersionRequest createDocumentationVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDocumentationVersionRequest, CreateDocumentationVersionResult> asyncHandler);
+
+    /**
      * <p>
      * Creates a new domain name.
      * </p>
@@ -209,6 +260,35 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
      */
     java.util.concurrent.Future<CreateModelResult> createModelAsync(CreateModelRequest createModelRequest,
             com.amazonaws.handlers.AsyncHandler<CreateModelRequest, CreateModelResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a <a>ReqeustValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param createRequestValidatorRequest
+     *        Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return A Java Future containing the result of the CreateRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsync.CreateRequestValidator
+     */
+    java.util.concurrent.Future<CreateRequestValidatorResult> createRequestValidatorAsync(CreateRequestValidatorRequest createRequestValidatorRequest);
+
+    /**
+     * <p>
+     * Creates a <a>ReqeustValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param createRequestValidatorRequest
+     *        Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.CreateRequestValidator
+     */
+    java.util.concurrent.Future<CreateRequestValidatorResult> createRequestValidatorAsync(CreateRequestValidatorRequest createRequestValidatorRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateRequestValidatorRequest, CreateRequestValidatorResult> asyncHandler);
 
     /**
      * <p>
@@ -511,6 +591,50 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
             com.amazonaws.handlers.AsyncHandler<DeleteDeploymentRequest, DeleteDeploymentResult> asyncHandler);
 
     /**
+     * @param deleteDocumentationPartRequest
+     *        Deletes an existing documentation part of an API.
+     * @return A Java Future containing the result of the DeleteDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsync.DeleteDocumentationPart
+     */
+    java.util.concurrent.Future<DeleteDocumentationPartResult> deleteDocumentationPartAsync(DeleteDocumentationPartRequest deleteDocumentationPartRequest);
+
+    /**
+     * @param deleteDocumentationPartRequest
+     *        Deletes an existing documentation part of an API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.DeleteDocumentationPart
+     */
+    java.util.concurrent.Future<DeleteDocumentationPartResult> deleteDocumentationPartAsync(DeleteDocumentationPartRequest deleteDocumentationPartRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteDocumentationPartRequest, DeleteDocumentationPartResult> asyncHandler);
+
+    /**
+     * @param deleteDocumentationVersionRequest
+     *        Deletes an existing documentation version of an API.
+     * @return A Java Future containing the result of the DeleteDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsync.DeleteDocumentationVersion
+     */
+    java.util.concurrent.Future<DeleteDocumentationVersionResult> deleteDocumentationVersionAsync(
+            DeleteDocumentationVersionRequest deleteDocumentationVersionRequest);
+
+    /**
+     * @param deleteDocumentationVersionRequest
+     *        Deletes an existing documentation version of an API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.DeleteDocumentationVersion
+     */
+    java.util.concurrent.Future<DeleteDocumentationVersionResult> deleteDocumentationVersionAsync(
+            DeleteDocumentationVersionRequest deleteDocumentationVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteDocumentationVersionRequest, DeleteDocumentationVersionResult> asyncHandler);
+
+    /**
      * <p>
      * Deletes the <a>DomainName</a> resource.
      * </p>
@@ -685,6 +809,35 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
      */
     java.util.concurrent.Future<DeleteModelResult> deleteModelAsync(DeleteModelRequest deleteModelRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteModelRequest, DeleteModelResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param deleteRequestValidatorRequest
+     *        Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return A Java Future containing the result of the DeleteRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsync.DeleteRequestValidator
+     */
+    java.util.concurrent.Future<DeleteRequestValidatorResult> deleteRequestValidatorAsync(DeleteRequestValidatorRequest deleteRequestValidatorRequest);
+
+    /**
+     * <p>
+     * Deletes a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param deleteRequestValidatorRequest
+     *        Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.DeleteRequestValidator
+     */
+    java.util.concurrent.Future<DeleteRequestValidatorResult> deleteRequestValidatorAsync(DeleteRequestValidatorRequest deleteRequestValidatorRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteRequestValidatorRequest, DeleteRequestValidatorResult> asyncHandler);
 
     /**
      * <p>
@@ -1252,6 +1405,92 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
             com.amazonaws.handlers.AsyncHandler<GetDeploymentsRequest, GetDeploymentsResult> asyncHandler);
 
     /**
+     * @param getDocumentationPartRequest
+     *        Gets a specified documentation part of a given API.
+     * @return A Java Future containing the result of the GetDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetDocumentationPart
+     */
+    java.util.concurrent.Future<GetDocumentationPartResult> getDocumentationPartAsync(GetDocumentationPartRequest getDocumentationPartRequest);
+
+    /**
+     * @param getDocumentationPartRequest
+     *        Gets a specified documentation part of a given API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetDocumentationPart
+     */
+    java.util.concurrent.Future<GetDocumentationPartResult> getDocumentationPartAsync(GetDocumentationPartRequest getDocumentationPartRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDocumentationPartRequest, GetDocumentationPartResult> asyncHandler);
+
+    /**
+     * @param getDocumentationPartsRequest
+     *        Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API
+     *        entities (targets).
+     * @return A Java Future containing the result of the GetDocumentationParts operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetDocumentationParts
+     */
+    java.util.concurrent.Future<GetDocumentationPartsResult> getDocumentationPartsAsync(GetDocumentationPartsRequest getDocumentationPartsRequest);
+
+    /**
+     * @param getDocumentationPartsRequest
+     *        Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API
+     *        entities (targets).
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDocumentationParts operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetDocumentationParts
+     */
+    java.util.concurrent.Future<GetDocumentationPartsResult> getDocumentationPartsAsync(GetDocumentationPartsRequest getDocumentationPartsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDocumentationPartsRequest, GetDocumentationPartsResult> asyncHandler);
+
+    /**
+     * @param getDocumentationVersionRequest
+     *        Gets a documentation snapshot of an API.
+     * @return A Java Future containing the result of the GetDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetDocumentationVersion
+     */
+    java.util.concurrent.Future<GetDocumentationVersionResult> getDocumentationVersionAsync(GetDocumentationVersionRequest getDocumentationVersionRequest);
+
+    /**
+     * @param getDocumentationVersionRequest
+     *        Gets a documentation snapshot of an API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetDocumentationVersion
+     */
+    java.util.concurrent.Future<GetDocumentationVersionResult> getDocumentationVersionAsync(GetDocumentationVersionRequest getDocumentationVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDocumentationVersionRequest, GetDocumentationVersionResult> asyncHandler);
+
+    /**
+     * @param getDocumentationVersionsRequest
+     *        Gets the documentation versions of an API.
+     * @return A Java Future containing the result of the GetDocumentationVersions operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetDocumentationVersions
+     */
+    java.util.concurrent.Future<GetDocumentationVersionsResult> getDocumentationVersionsAsync(GetDocumentationVersionsRequest getDocumentationVersionsRequest);
+
+    /**
+     * @param getDocumentationVersionsRequest
+     *        Gets the documentation versions of an API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDocumentationVersions operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetDocumentationVersions
+     */
+    java.util.concurrent.Future<GetDocumentationVersionsResult> getDocumentationVersionsAsync(GetDocumentationVersionsRequest getDocumentationVersionsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDocumentationVersionsRequest, GetDocumentationVersionsResult> asyncHandler);
+
+    /**
      * <p>
      * Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
      * </p>
@@ -1543,6 +1782,64 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
 
     /**
      * <p>
+     * Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorRequest
+     *        Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return A Java Future containing the result of the GetRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetRequestValidator
+     */
+    java.util.concurrent.Future<GetRequestValidatorResult> getRequestValidatorAsync(GetRequestValidatorRequest getRequestValidatorRequest);
+
+    /**
+     * <p>
+     * Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorRequest
+     *        Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetRequestValidator
+     */
+    java.util.concurrent.Future<GetRequestValidatorResult> getRequestValidatorAsync(GetRequestValidatorRequest getRequestValidatorRequest,
+            com.amazonaws.handlers.AsyncHandler<GetRequestValidatorRequest, GetRequestValidatorResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorsRequest
+     *        Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * @return A Java Future containing the result of the GetRequestValidators operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetRequestValidators
+     */
+    java.util.concurrent.Future<GetRequestValidatorsResult> getRequestValidatorsAsync(GetRequestValidatorsRequest getRequestValidatorsRequest);
+
+    /**
+     * <p>
+     * Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param getRequestValidatorsRequest
+     *        Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetRequestValidators operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetRequestValidators
+     */
+    java.util.concurrent.Future<GetRequestValidatorsResult> getRequestValidatorsAsync(GetRequestValidatorsRequest getRequestValidatorsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetRequestValidatorsRequest, GetRequestValidatorsResult> asyncHandler);
+
+    /**
+     * <p>
      * Lists information about a resource.
      * </p>
      * 
@@ -1685,6 +1982,48 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
      */
     java.util.concurrent.Future<GetSdkResult> getSdkAsync(GetSdkRequest getSdkRequest,
             com.amazonaws.handlers.AsyncHandler<GetSdkRequest, GetSdkResult> asyncHandler);
+
+    /**
+     * @param getSdkTypeRequest
+     *        Get an <a>SdkType</a> instance.
+     * @return A Java Future containing the result of the GetSdkType operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetSdkType
+     */
+    java.util.concurrent.Future<GetSdkTypeResult> getSdkTypeAsync(GetSdkTypeRequest getSdkTypeRequest);
+
+    /**
+     * @param getSdkTypeRequest
+     *        Get an <a>SdkType</a> instance.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSdkType operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetSdkType
+     */
+    java.util.concurrent.Future<GetSdkTypeResult> getSdkTypeAsync(GetSdkTypeRequest getSdkTypeRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSdkTypeRequest, GetSdkTypeResult> asyncHandler);
+
+    /**
+     * @param getSdkTypesRequest
+     *        Get the <a>SdkTypes</a> collection.
+     * @return A Java Future containing the result of the GetSdkTypes operation returned by the service.
+     * @sample AmazonApiGatewayAsync.GetSdkTypes
+     */
+    java.util.concurrent.Future<GetSdkTypesResult> getSdkTypesAsync(GetSdkTypesRequest getSdkTypesRequest);
+
+    /**
+     * @param getSdkTypesRequest
+     *        Get the <a>SdkTypes</a> collection.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSdkTypes operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.GetSdkTypes
+     */
+    java.util.concurrent.Future<GetSdkTypesResult> getSdkTypesAsync(GetSdkTypesRequest getSdkTypesRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSdkTypesRequest, GetSdkTypesResult> asyncHandler);
 
     /**
      * <p>
@@ -1917,6 +2256,27 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
      */
     java.util.concurrent.Future<ImportApiKeysResult> importApiKeysAsync(ImportApiKeysRequest importApiKeysRequest,
             com.amazonaws.handlers.AsyncHandler<ImportApiKeysRequest, ImportApiKeysResult> asyncHandler);
+
+    /**
+     * @param importDocumentationPartsRequest
+     *        Import documentation parts from an external (e.g., Swagger) definition file.
+     * @return A Java Future containing the result of the ImportDocumentationParts operation returned by the service.
+     * @sample AmazonApiGatewayAsync.ImportDocumentationParts
+     */
+    java.util.concurrent.Future<ImportDocumentationPartsResult> importDocumentationPartsAsync(ImportDocumentationPartsRequest importDocumentationPartsRequest);
+
+    /**
+     * @param importDocumentationPartsRequest
+     *        Import documentation parts from an external (e.g., Swagger) definition file.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ImportDocumentationParts operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.ImportDocumentationParts
+     */
+    java.util.concurrent.Future<ImportDocumentationPartsResult> importDocumentationPartsAsync(ImportDocumentationPartsRequest importDocumentationPartsRequest,
+            com.amazonaws.handlers.AsyncHandler<ImportDocumentationPartsRequest, ImportDocumentationPartsResult> asyncHandler);
 
     /**
      * <p>
@@ -2343,6 +2703,50 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
             com.amazonaws.handlers.AsyncHandler<UpdateDeploymentRequest, UpdateDeploymentResult> asyncHandler);
 
     /**
+     * @param updateDocumentationPartRequest
+     *        Updates an existing documentation part of a given API.
+     * @return A Java Future containing the result of the UpdateDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsync.UpdateDocumentationPart
+     */
+    java.util.concurrent.Future<UpdateDocumentationPartResult> updateDocumentationPartAsync(UpdateDocumentationPartRequest updateDocumentationPartRequest);
+
+    /**
+     * @param updateDocumentationPartRequest
+     *        Updates an existing documentation part of a given API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateDocumentationPart operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.UpdateDocumentationPart
+     */
+    java.util.concurrent.Future<UpdateDocumentationPartResult> updateDocumentationPartAsync(UpdateDocumentationPartRequest updateDocumentationPartRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateDocumentationPartRequest, UpdateDocumentationPartResult> asyncHandler);
+
+    /**
+     * @param updateDocumentationVersionRequest
+     *        Updates an existing documentation version of an API.
+     * @return A Java Future containing the result of the UpdateDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsync.UpdateDocumentationVersion
+     */
+    java.util.concurrent.Future<UpdateDocumentationVersionResult> updateDocumentationVersionAsync(
+            UpdateDocumentationVersionRequest updateDocumentationVersionRequest);
+
+    /**
+     * @param updateDocumentationVersionRequest
+     *        Updates an existing documentation version of an API.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateDocumentationVersion operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.UpdateDocumentationVersion
+     */
+    java.util.concurrent.Future<UpdateDocumentationVersionResult> updateDocumentationVersionAsync(
+            UpdateDocumentationVersionRequest updateDocumentationVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateDocumentationVersionRequest, UpdateDocumentationVersionResult> asyncHandler);
+
+    /**
      * <p>
      * Changes information about the <a>DomainName</a> resource.
      * </p>
@@ -2517,6 +2921,35 @@ public interface AmazonApiGatewayAsync extends AmazonApiGateway {
      */
     java.util.concurrent.Future<UpdateModelResult> updateModelAsync(UpdateModelRequest updateModelRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateModelRequest, UpdateModelResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param updateRequestValidatorRequest
+     *        Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @return A Java Future containing the result of the UpdateRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsync.UpdateRequestValidator
+     */
+    java.util.concurrent.Future<UpdateRequestValidatorResult> updateRequestValidatorAsync(UpdateRequestValidatorRequest updateRequestValidatorRequest);
+
+    /**
+     * <p>
+     * Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * </p>
+     * 
+     * @param updateRequestValidatorRequest
+     *        Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateRequestValidator operation returned by the service.
+     * @sample AmazonApiGatewayAsyncHandler.UpdateRequestValidator
+     */
+    java.util.concurrent.Future<UpdateRequestValidatorResult> updateRequestValidatorAsync(UpdateRequestValidatorRequest updateRequestValidatorRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateRequestValidatorRequest, UpdateRequestValidatorResult> asyncHandler);
 
     /**
      * <p>

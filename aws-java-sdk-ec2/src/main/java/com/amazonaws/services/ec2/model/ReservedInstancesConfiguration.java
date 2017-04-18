@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the configuration settings for the modified Reserved Instances.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReservedInstancesConfiguration" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
@@ -47,7 +52,7 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
     private String instanceType;
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      */
     private String scope;
@@ -247,11 +252,12 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     *        Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability
+     *        Zone.
      * @see Scope
      */
 
@@ -261,10 +267,11 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      * 
-     * @return Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * @return Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability
+     *         Zone.
      * @see Scope
      */
 
@@ -274,11 +281,12 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     *        Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability
+     *        Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Scope
      */
@@ -290,11 +298,12 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     *        Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability
+     *        Zone.
      * @see Scope
      */
 
@@ -304,11 +313,12 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     * Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is <code>standard</code> or <code>convertible</code>.
+     *        Whether the Reserved Instance is applied to instances in a region or instances in a specific Availability
+     *        Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Scope
      */
@@ -330,15 +340,15 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getPlatform() != null)
-            sb.append("Platform: " + getPlatform() + ",");
+            sb.append("Platform: ").append(getPlatform()).append(",");
         if (getInstanceCount() != null)
-            sb.append("InstanceCount: " + getInstanceCount() + ",");
+            sb.append("InstanceCount: ").append(getInstanceCount()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getScope() != null)
-            sb.append("Scope: " + getScope());
+            sb.append("Scope: ").append(getScope());
         sb.append("}");
         return sb.toString();
     }
@@ -397,4 +407,5 @@ public class ReservedInstancesConfiguration implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/CreateAssessmentTemplate" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAssessmentTemplateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -346,15 +351,15 @@ public class CreateAssessmentTemplateRequest extends com.amazonaws.AmazonWebServ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAssessmentTargetArn() != null)
-            sb.append("AssessmentTargetArn: " + getAssessmentTargetArn() + ",");
+            sb.append("AssessmentTargetArn: ").append(getAssessmentTargetArn()).append(",");
         if (getAssessmentTemplateName() != null)
-            sb.append("AssessmentTemplateName: " + getAssessmentTemplateName() + ",");
+            sb.append("AssessmentTemplateName: ").append(getAssessmentTemplateName()).append(",");
         if (getDurationInSeconds() != null)
-            sb.append("DurationInSeconds: " + getDurationInSeconds() + ",");
+            sb.append("DurationInSeconds: ").append(getDurationInSeconds()).append(",");
         if (getRulesPackageArns() != null)
-            sb.append("RulesPackageArns: " + getRulesPackageArns() + ",");
+            sb.append("RulesPackageArns: ").append(getRulesPackageArns()).append(",");
         if (getUserAttributesForFindings() != null)
-            sb.append("UserAttributesForFindings: " + getUserAttributesForFindings());
+            sb.append("UserAttributesForFindings: ").append(getUserAttributesForFindings());
         sb.append("}");
         return sb.toString();
     }
@@ -409,4 +414,5 @@ public class CreateAssessmentTemplateRequest extends com.amazonaws.AmazonWebServ
     public CreateAssessmentTemplateRequest clone() {
         return (CreateAssessmentTemplateRequest) super.clone();
     }
+
 }

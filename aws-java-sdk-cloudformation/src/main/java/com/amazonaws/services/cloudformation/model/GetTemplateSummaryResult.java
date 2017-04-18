@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The output for the <a>GetTemplateSummary</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -73,7 +78,7 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
     private String metadata;
     /**
      * <p>
-     * A list of the transforms that have been declared in the template.
+     * A list of the transforms that are declared in the template.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> declaredTransforms;
@@ -569,10 +574,10 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A list of the transforms that have been declared in the template.
+     * A list of the transforms that are declared in the template.
      * </p>
      * 
-     * @return A list of the transforms that have been declared in the template.
+     * @return A list of the transforms that are declared in the template.
      */
 
     public java.util.List<String> getDeclaredTransforms() {
@@ -584,11 +589,11 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A list of the transforms that have been declared in the template.
+     * A list of the transforms that are declared in the template.
      * </p>
      * 
      * @param declaredTransforms
-     *        A list of the transforms that have been declared in the template.
+     *        A list of the transforms that are declared in the template.
      */
 
     public void setDeclaredTransforms(java.util.Collection<String> declaredTransforms) {
@@ -602,7 +607,7 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A list of the transforms that have been declared in the template.
+     * A list of the transforms that are declared in the template.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -611,7 +616,7 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
      * </p>
      * 
      * @param declaredTransforms
-     *        A list of the transforms that have been declared in the template.
+     *        A list of the transforms that are declared in the template.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -627,11 +632,11 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * A list of the transforms that have been declared in the template.
+     * A list of the transforms that are declared in the template.
      * </p>
      * 
      * @param declaredTransforms
-     *        A list of the transforms that have been declared in the template.
+     *        A list of the transforms that are declared in the template.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -652,21 +657,21 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCapabilities() != null)
-            sb.append("Capabilities: " + getCapabilities() + ",");
+            sb.append("Capabilities: ").append(getCapabilities()).append(",");
         if (getCapabilitiesReason() != null)
-            sb.append("CapabilitiesReason: " + getCapabilitiesReason() + ",");
+            sb.append("CapabilitiesReason: ").append(getCapabilitiesReason()).append(",");
         if (getResourceTypes() != null)
-            sb.append("ResourceTypes: " + getResourceTypes() + ",");
+            sb.append("ResourceTypes: ").append(getResourceTypes()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getMetadata() != null)
-            sb.append("Metadata: " + getMetadata() + ",");
+            sb.append("Metadata: ").append(getMetadata()).append(",");
         if (getDeclaredTransforms() != null)
-            sb.append("DeclaredTransforms: " + getDeclaredTransforms());
+            sb.append("DeclaredTransforms: ").append(getDeclaredTransforms());
         sb.append("}");
         return sb.toString();
     }
@@ -740,4 +745,5 @@ public class GetTemplateSummaryResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a stack.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Stack" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Stack implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -135,7 +142,8 @@ public class Stack implements Serializable, Cloneable {
     private Boolean useCustomCookbooks;
     /**
      * <p>
-     * Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's
+     * layers.
      * </p>
      */
     private Boolean useOpsworksSecurityGroups;
@@ -945,12 +953,13 @@ public class Stack implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's
+     * layers.
      * </p>
      * 
      * @param useOpsworksSecurityGroups
-     *        Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's
-     *        layers.
+     *        Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the
+     *        stack's layers.
      */
 
     public void setUseOpsworksSecurityGroups(Boolean useOpsworksSecurityGroups) {
@@ -959,11 +968,12 @@ public class Stack implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's
+     * layers.
      * </p>
      * 
-     * @return Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's
-     *         layers.
+     * @return Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the
+     *         stack's layers.
      */
 
     public Boolean getUseOpsworksSecurityGroups() {
@@ -972,12 +982,13 @@ public class Stack implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's
+     * layers.
      * </p>
      * 
      * @param useOpsworksSecurityGroups
-     *        Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's
-     *        layers.
+     *        Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the
+     *        stack's layers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -988,11 +999,12 @@ public class Stack implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's layers.
+     * Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's
+     * layers.
      * </p>
      * 
-     * @return Whether the stack automatically associates the AWS OpsWorks built-in security groups with the stack's
-     *         layers.
+     * @return Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the
+     *         stack's layers.
      */
 
     public Boolean isUseOpsworksSecurityGroups() {
@@ -1272,49 +1284,49 @@ public class Stack implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes() + ",");
+            sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getServiceRoleArn() != null)
-            sb.append("ServiceRoleArn: " + getServiceRoleArn() + ",");
+            sb.append("ServiceRoleArn: ").append(getServiceRoleArn()).append(",");
         if (getDefaultInstanceProfileArn() != null)
-            sb.append("DefaultInstanceProfileArn: " + getDefaultInstanceProfileArn() + ",");
+            sb.append("DefaultInstanceProfileArn: ").append(getDefaultInstanceProfileArn()).append(",");
         if (getDefaultOs() != null)
-            sb.append("DefaultOs: " + getDefaultOs() + ",");
+            sb.append("DefaultOs: ").append(getDefaultOs()).append(",");
         if (getHostnameTheme() != null)
-            sb.append("HostnameTheme: " + getHostnameTheme() + ",");
+            sb.append("HostnameTheme: ").append(getHostnameTheme()).append(",");
         if (getDefaultAvailabilityZone() != null)
-            sb.append("DefaultAvailabilityZone: " + getDefaultAvailabilityZone() + ",");
+            sb.append("DefaultAvailabilityZone: ").append(getDefaultAvailabilityZone()).append(",");
         if (getDefaultSubnetId() != null)
-            sb.append("DefaultSubnetId: " + getDefaultSubnetId() + ",");
+            sb.append("DefaultSubnetId: ").append(getDefaultSubnetId()).append(",");
         if (getCustomJson() != null)
-            sb.append("CustomJson: " + getCustomJson() + ",");
+            sb.append("CustomJson: ").append(getCustomJson()).append(",");
         if (getConfigurationManager() != null)
-            sb.append("ConfigurationManager: " + getConfigurationManager() + ",");
+            sb.append("ConfigurationManager: ").append(getConfigurationManager()).append(",");
         if (getChefConfiguration() != null)
-            sb.append("ChefConfiguration: " + getChefConfiguration() + ",");
+            sb.append("ChefConfiguration: ").append(getChefConfiguration()).append(",");
         if (getUseCustomCookbooks() != null)
-            sb.append("UseCustomCookbooks: " + getUseCustomCookbooks() + ",");
+            sb.append("UseCustomCookbooks: ").append(getUseCustomCookbooks()).append(",");
         if (getUseOpsworksSecurityGroups() != null)
-            sb.append("UseOpsworksSecurityGroups: " + getUseOpsworksSecurityGroups() + ",");
+            sb.append("UseOpsworksSecurityGroups: ").append(getUseOpsworksSecurityGroups()).append(",");
         if (getCustomCookbooksSource() != null)
-            sb.append("CustomCookbooksSource: " + getCustomCookbooksSource() + ",");
+            sb.append("CustomCookbooksSource: ").append(getCustomCookbooksSource()).append(",");
         if (getDefaultSshKeyName() != null)
-            sb.append("DefaultSshKeyName: " + getDefaultSshKeyName() + ",");
+            sb.append("DefaultSshKeyName: ").append(getDefaultSshKeyName()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt() + ",");
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
         if (getDefaultRootDeviceType() != null)
-            sb.append("DefaultRootDeviceType: " + getDefaultRootDeviceType() + ",");
+            sb.append("DefaultRootDeviceType: ").append(getDefaultRootDeviceType()).append(",");
         if (getAgentVersion() != null)
-            sb.append("AgentVersion: " + getAgentVersion());
+            sb.append("AgentVersion: ").append(getAgentVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -1457,5 +1469,11 @@ public class Stack implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.StackMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

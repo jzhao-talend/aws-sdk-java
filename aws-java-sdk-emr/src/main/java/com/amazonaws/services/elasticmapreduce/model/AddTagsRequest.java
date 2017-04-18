@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * This input identifies a cluster and a list of tags to attach.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddTags" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -30,8 +36,8 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     private String resourceId;
     /**
      * <p>
-     * A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value
-     * pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a
+     * A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs
+     * that consist of a required key string with a maximum of 128 characters, and an optional value string with a
      * maximum of 256 characters.
      * </p>
      */
@@ -62,9 +68,9 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * @param resourceId
      *        The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.
      * @param tags
-     *        A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined
-     *        key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional
-     *        value string with a maximum of 256 characters.
+     *        A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value
+     *        pairs that consist of a required key string with a maximum of 128 characters, and an optional value string
+     *        with a maximum of 256 characters.
      */
     public AddTagsRequest(String resourceId, java.util.List<Tag> tags) {
         setResourceId(resourceId);
@@ -113,12 +119,12 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value
-     * pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a
+     * A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs
+     * that consist of a required key string with a maximum of 128 characters, and an optional value string with a
      * maximum of 256 characters.
      * </p>
      * 
-     * @return A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined
+     * @return A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined
      *         key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional
      *         value string with a maximum of 256 characters.
      */
@@ -132,15 +138,15 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value
-     * pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a
+     * A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs
+     * that consist of a required key string with a maximum of 128 characters, and an optional value string with a
      * maximum of 256 characters.
      * </p>
      * 
      * @param tags
-     *        A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined
-     *        key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional
-     *        value string with a maximum of 256 characters.
+     *        A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value
+     *        pairs that consist of a required key string with a maximum of 128 characters, and an optional value string
+     *        with a maximum of 256 characters.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -154,8 +160,8 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value
-     * pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a
+     * A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs
+     * that consist of a required key string with a maximum of 128 characters, and an optional value string with a
      * maximum of 256 characters.
      * </p>
      * <p>
@@ -165,9 +171,9 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * </p>
      * 
      * @param tags
-     *        A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined
-     *        key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional
-     *        value string with a maximum of 256 characters.
+     *        A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value
+     *        pairs that consist of a required key string with a maximum of 128 characters, and an optional value string
+     *        with a maximum of 256 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -183,15 +189,15 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value
-     * pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a
+     * A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs
+     * that consist of a required key string with a maximum of 128 characters, and an optional value string with a
      * maximum of 256 characters.
      * </p>
      * 
      * @param tags
-     *        A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined
-     *        key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional
-     *        value string with a maximum of 256 characters.
+     *        A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value
+     *        pairs that consist of a required key string with a maximum of 128 characters, and an optional value string
+     *        with a maximum of 256 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -212,9 +218,9 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -254,4 +260,5 @@ public class AddTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     public AddTagsRequest clone() {
         return (AddTagsRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.rds.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.rds.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * DBCluster StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUnmarshallerContext> {
 
     public DBCluster unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -47,6 +47,11 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
 
                 if (context.testExpression("AllocatedStorage", targetDepth)) {
                     dBCluster.setAllocatedStorage(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("AvailabilityZones", targetDepth)) {
+                    dBCluster.withAvailabilityZones(new ArrayList<String>());
                     continue;
                 }
 
@@ -110,6 +115,11 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
                     continue;
                 }
 
+                if (context.testExpression("MultiAZ", targetDepth)) {
+                    dBCluster.setMultiAZ(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("Engine", targetDepth)) {
                     dBCluster.setEngine(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -135,6 +145,11 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
                     continue;
                 }
 
+                if (context.testExpression("DBClusterOptionGroupMemberships", targetDepth)) {
+                    dBCluster.withDBClusterOptionGroupMemberships(new ArrayList<DBClusterOptionGroupStatus>());
+                    continue;
+                }
+
                 if (context.testExpression("DBClusterOptionGroupMemberships/DBClusterOptionGroup", targetDepth)) {
                     dBCluster.withDBClusterOptionGroupMemberships(DBClusterOptionGroupStatusStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -155,13 +170,28 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
                     continue;
                 }
 
+                if (context.testExpression("ReadReplicaIdentifiers", targetDepth)) {
+                    dBCluster.withReadReplicaIdentifiers(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("ReadReplicaIdentifiers/ReadReplicaIdentifier", targetDepth)) {
                     dBCluster.withReadReplicaIdentifiers(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("DBClusterMembers", targetDepth)) {
+                    dBCluster.withDBClusterMembers(new ArrayList<DBClusterMember>());
+                    continue;
+                }
+
                 if (context.testExpression("DBClusterMembers/DBClusterMember", targetDepth)) {
                     dBCluster.withDBClusterMembers(DBClusterMemberStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("VpcSecurityGroups", targetDepth)) {
+                    dBCluster.withVpcSecurityGroups(new ArrayList<VpcSecurityGroupMembership>());
                     continue;
                 }
 
@@ -195,11 +225,20 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
                     continue;
                 }
 
+                if (context.testExpression("AssociatedRoles", targetDepth)) {
+                    dBCluster.withAssociatedRoles(new ArrayList<DBClusterRole>());
+                    continue;
+                }
+
                 if (context.testExpression("AssociatedRoles/DBClusterRole", targetDepth)) {
                     dBCluster.withAssociatedRoles(DBClusterRoleStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
+                if (context.testExpression("ClusterCreateTime", targetDepth)) {
+                    dBCluster.setClusterCreateTime(DateStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return dBCluster;

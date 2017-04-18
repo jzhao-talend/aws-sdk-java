@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,12 @@
 package com.amazonaws.services.identitymanagement.model.transform;
 
 import java.util.Map;
-import java.util.HashMap;
+
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.transform.Unmarshaller;
@@ -28,6 +29,8 @@ import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 /**
  * EvaluationResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EvaluationResultStaxUnmarshaller implements Unmarshaller<EvaluationResult, StaxUnmarshallerContext> {
 
     private static class EvalDecisionDetailsMapEntryUnmarshaller implements Unmarshaller<Map.Entry<String, String>, StaxUnmarshallerContext> {
@@ -100,8 +103,18 @@ public class EvaluationResultStaxUnmarshaller implements Unmarshaller<Evaluation
                     continue;
                 }
 
+                if (context.testExpression("MatchedStatements", targetDepth)) {
+                    evaluationResult.withMatchedStatements(new ArrayList<Statement>());
+                    continue;
+                }
+
                 if (context.testExpression("MatchedStatements/member", targetDepth)) {
                     evaluationResult.withMatchedStatements(StatementStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MissingContextValues", targetDepth)) {
+                    evaluationResult.withMissingContextValues(new ArrayList<String>());
                     continue;
                 }
 
@@ -110,9 +123,19 @@ public class EvaluationResultStaxUnmarshaller implements Unmarshaller<Evaluation
                     continue;
                 }
 
+                if (context.testExpression("OrganizationsDecisionDetail", targetDepth)) {
+                    evaluationResult.setOrganizationsDecisionDetail(OrganizationsDecisionDetailStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("EvalDecisionDetails/entry", targetDepth)) {
                     Entry<String, String> entry = EvalDecisionDetailsMapEntryUnmarshaller.getInstance().unmarshall(context);
                     evaluationResult.addEvalDecisionDetailsEntry(entry.getKey(), entry.getValue());
+                    continue;
+                }
+
+                if (context.testExpression("ResourceSpecificResults", targetDepth)) {
+                    evaluationResult.withResourceSpecificResults(new ArrayList<ResourceSpecificResult>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.cloudformation.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * ListChangeSetsResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListChangeSetsResultStaxUnmarshaller implements Unmarshaller<ListChangeSetsResult, StaxUnmarshallerContext> {
 
     public ListChangeSetsResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -44,6 +44,11 @@ public class ListChangeSetsResultStaxUnmarshaller implements Unmarshaller<ListCh
                 return listChangeSetsResult;
 
             if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+
+                if (context.testExpression("Summaries", targetDepth)) {
+                    listChangeSetsResult.withSummaries(new ArrayList<ChangeSetSummary>());
+                    continue;
+                }
 
                 if (context.testExpression("Summaries/member", targetDepth)) {
                     listChangeSetsResult.withSummaries(ChangeSetSummaryStaxUnmarshaller.getInstance().unmarshall(context));

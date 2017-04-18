@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -62,8 +67,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -74,7 +79,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -98,8 +103,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * <p>
      * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Operating
-     * Systems</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
@@ -107,7 +112,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * device mappings are not supported if the value is <code>Custom</code>. For more information on the supported
      * operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For
-     * more information on how to use custom AMIs with AWS OpsWorks, see <a
+     * more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
@@ -149,7 +154,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     /**
      * <p>
      * The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the
-     * stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     * stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
      * </p>
      */
     private String subnetId;
@@ -201,7 +206,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     private Boolean ebsOptimized;
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
@@ -212,7 +217,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <li>
      * <p>
      * <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To
-     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
+     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then
      * automatically installs that version on the instance.
      * </p>
      * </li>
@@ -220,7 +225,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version
      * number, not the abbreviated number shown on the console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      */
     private String agentVersion;
@@ -542,8 +547,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -554,7 +559,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -578,8 +583,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * <p>
      * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Operating
-     * Systems</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
@@ -587,7 +592,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * device mappings are not supported if the value is <code>Custom</code>. For more information on the supported
      * operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For
-     * more information on how to use custom AMIs with AWS OpsWorks, see <a
+     * more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
@@ -597,8 +602,9 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -609,7 +615,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CentOS 7</code>
+     *        <code>CentOS Linux 7</code>
      *        </p>
      *        </li>
      *        <li>
@@ -633,7 +639,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </ul>
      *        <p>
      *        For more information on the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *        Operating Systems</a>.
      *        </p>
      *        <p>
@@ -642,7 +648,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        use. Block device mappings are not supported if the value is <code>Custom</code>. For more information on
      *        the supported operating systems, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *        Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see <a
+     *        Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      *        AMIs</a>.
      */
@@ -658,8 +664,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -670,7 +676,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -694,8 +700,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * <p>
      * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Operating
-     * Systems</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
@@ -703,7 +709,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * device mappings are not supported if the value is <code>Custom</code>. For more information on the supported
      * operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For
-     * more information on how to use custom AMIs with AWS OpsWorks, see <a
+     * more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
@@ -712,8 +718,9 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         <ul>
      *         <li>
      *         <p>
-     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *         <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *         <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or
+     *         <code>Amazon Linux 2015.03</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -724,7 +731,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>CentOS 7</code>
+     *         <code>CentOS Linux 7</code>
      *         </p>
      *         </li>
      *         <li>
@@ -748,7 +755,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         </ul>
      *         <p>
      *         For more information on the supported operating systems, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *         Operating Systems</a>.
      *         </p>
      *         <p>
@@ -757,7 +764,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         to use. Block device mappings are not supported if the value is <code>Custom</code>. For more information
      *         on the supported operating systems, see <a
      *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *         Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see <a
+     *         Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      *         AMIs</a>.
      */
@@ -773,8 +780,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -785,7 +792,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>CentOS 7</code>
+     * <code>CentOS Linux 7</code>
      * </p>
      * </li>
      * <li>
@@ -809,8 +816,8 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * <p>
      * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Operating
-     * Systems</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
@@ -818,7 +825,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * device mappings are not supported if the value is <code>Custom</code>. For more information on the supported
      * operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For
-     * more information on how to use custom AMIs with AWS OpsWorks, see <a
+     * more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
@@ -828,8 +835,9 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -840,7 +848,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CentOS 7</code>
+     *        <code>CentOS Linux 7</code>
      *        </p>
      *        </li>
      *        <li>
@@ -864,7 +872,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </ul>
      *        <p>
      *        For more information on the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks
+     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *        Operating Systems</a>.
      *        </p>
      *        <p>
@@ -873,7 +881,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        use. Block device mappings are not supported if the value is <code>Custom</code>. For more information on
      *        the supported operating systems, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *        Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see <a
+     *        Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a
      *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      *        AMIs</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1095,12 +1103,13 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     /**
      * <p>
      * The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the
-     * stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     * stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
      * </p>
      * 
      * @param subnetId
      *        The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override
-     *        the stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     *        the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different
+     *        subnet.
      */
 
     public void setSubnetId(String subnetId) {
@@ -1110,11 +1119,12 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     /**
      * <p>
      * The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the
-     * stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     * stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
      * </p>
      * 
      * @return The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override
-     *         the stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     *         the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different
+     *         subnet.
      */
 
     public String getSubnetId() {
@@ -1124,12 +1134,13 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     /**
      * <p>
      * The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the
-     * stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     * stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
      * </p>
      * 
      * @param subnetId
      *        The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override
-     *        the stack's default subnet ID value and direct AWS OpsWorks to launch the instance in a different subnet.
+     *        the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different
+     *        subnet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1600,7 +1611,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
@@ -1611,7 +1622,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <li>
      * <p>
      * <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To
-     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
+     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then
      * automatically installs that version on the instance.
      * </p>
      * </li>
@@ -1619,11 +1630,11 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version
      * number, not the abbreviated number shown on the console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * 
      * @param agentVersion
-     *        The default AWS OpsWorks agent version. You have the following options:</p>
+     *        The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1633,15 +1644,15 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <li>
      *        <p>
      *        <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting.
-     *        To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
-     *        automatically installs that version on the instance.
+     *        To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks
+     *        Stacks then automatically installs that version on the instance.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
      *        The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete
      *        version number, not the abbreviated number shown on the console. For a list of available agent version
-     *        numbers, call <a>DescribeAgentVersions</a>.
+     *        numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      */
 
     public void setAgentVersion(String agentVersion) {
@@ -1650,7 +1661,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
@@ -1661,7 +1672,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <li>
      * <p>
      * <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To
-     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
+     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then
      * automatically installs that version on the instance.
      * </p>
      * </li>
@@ -1669,10 +1680,10 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version
      * number, not the abbreviated number shown on the console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * 
-     * @return The default AWS OpsWorks agent version. You have the following options:</p>
+     * @return The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -1683,14 +1694,14 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         <p>
      *         <i>version_number</i> - Use the specified agent version. This value overrides the stack's default
      *         setting. To update the agent version, edit the instance configuration and specify a new version. AWS
-     *         OpsWorks then automatically installs that version on the instance.
+     *         OpsWorks Stacks then automatically installs that version on the instance.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
      *         The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete
      *         version number, not the abbreviated number shown on the console. For a list of available agent version
-     *         numbers, call <a>DescribeAgentVersions</a>.
+     *         numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      */
 
     public String getAgentVersion() {
@@ -1699,7 +1710,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The default AWS OpsWorks agent version. You have the following options:
+     * The default AWS OpsWorks Stacks agent version. You have the following options:
      * </p>
      * <ul>
      * <li>
@@ -1710,7 +1721,7 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <li>
      * <p>
      * <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To
-     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
+     * update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then
      * automatically installs that version on the instance.
      * </p>
      * </li>
@@ -1718,11 +1729,11 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version
      * number, not the abbreviated number shown on the console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * </p>
      * 
      * @param agentVersion
-     *        The default AWS OpsWorks agent version. You have the following options:</p>
+     *        The default AWS OpsWorks Stacks agent version. You have the following options:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1732,15 +1743,15 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <li>
      *        <p>
      *        <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting.
-     *        To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks then
-     *        automatically installs that version on the instance.
+     *        To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks
+     *        Stacks then automatically installs that version on the instance.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
      *        The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete
      *        version number, not the abbreviated number shown on the console. For a list of available agent version
-     *        numbers, call <a>DescribeAgentVersions</a>.
+     *        numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1855,41 +1866,41 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getLayerIds() != null)
-            sb.append("LayerIds: " + getLayerIds() + ",");
+            sb.append("LayerIds: ").append(getLayerIds()).append(",");
         if (getInstanceType() != null)
-            sb.append("InstanceType: " + getInstanceType() + ",");
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getAutoScalingType() != null)
-            sb.append("AutoScalingType: " + getAutoScalingType() + ",");
+            sb.append("AutoScalingType: ").append(getAutoScalingType()).append(",");
         if (getHostname() != null)
-            sb.append("Hostname: " + getHostname() + ",");
+            sb.append("Hostname: ").append(getHostname()).append(",");
         if (getOs() != null)
-            sb.append("Os: " + getOs() + ",");
+            sb.append("Os: ").append(getOs()).append(",");
         if (getAmiId() != null)
-            sb.append("AmiId: " + getAmiId() + ",");
+            sb.append("AmiId: ").append(getAmiId()).append(",");
         if (getSshKeyName() != null)
-            sb.append("SshKeyName: " + getSshKeyName() + ",");
+            sb.append("SshKeyName: ").append(getSshKeyName()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getVirtualizationType() != null)
-            sb.append("VirtualizationType: " + getVirtualizationType() + ",");
+            sb.append("VirtualizationType: ").append(getVirtualizationType()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getArchitecture() != null)
-            sb.append("Architecture: " + getArchitecture() + ",");
+            sb.append("Architecture: ").append(getArchitecture()).append(",");
         if (getRootDeviceType() != null)
-            sb.append("RootDeviceType: " + getRootDeviceType() + ",");
+            sb.append("RootDeviceType: ").append(getRootDeviceType()).append(",");
         if (getBlockDeviceMappings() != null)
-            sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+            sb.append("BlockDeviceMappings: ").append(getBlockDeviceMappings()).append(",");
         if (getInstallUpdatesOnBoot() != null)
-            sb.append("InstallUpdatesOnBoot: " + getInstallUpdatesOnBoot() + ",");
+            sb.append("InstallUpdatesOnBoot: ").append(getInstallUpdatesOnBoot()).append(",");
         if (getEbsOptimized() != null)
-            sb.append("EbsOptimized: " + getEbsOptimized() + ",");
+            sb.append("EbsOptimized: ").append(getEbsOptimized()).append(",");
         if (getAgentVersion() != null)
-            sb.append("AgentVersion: " + getAgentVersion() + ",");
+            sb.append("AgentVersion: ").append(getAgentVersion()).append(",");
         if (getTenancy() != null)
-            sb.append("Tenancy: " + getTenancy());
+            sb.append("Tenancy: ").append(getTenancy());
         sb.append("}");
         return sb.toString();
     }
@@ -2009,4 +2020,5 @@ public class CreateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     public CreateInstanceRequest clone() {
         return (CreateInstanceRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,15 @@
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The <code>TestRoleResponse</code> structure.
  * </p>
  */
+@Deprecated
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TestRoleResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -171,9 +174,9 @@ public class TestRoleResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSuccess() != null)
-            sb.append("Success: " + getSuccess() + ",");
+            sb.append("Success: ").append(getSuccess()).append(",");
         if (getMessages() != null)
-            sb.append("Messages: " + getMessages());
+            sb.append("Messages: ").append(getMessages());
         sb.append("}");
         return sb.toString();
     }
@@ -217,4 +220,5 @@ public class TestRoleResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

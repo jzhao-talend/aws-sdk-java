@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@ package com.amazonaws.codegen.emitters;
 import com.amazonaws.codegen.model.intermediate.IntermediateModel;
 
 import static com.amazonaws.codegen.internal.Constants.AUTH_POLICY_ENUM_CLASS_DIR;
+import static com.amazonaws.codegen.internal.Constants.PACKAGE_NAME_CUSTOM_AUTH_SUFFIX;
 import static com.amazonaws.codegen.internal.Constants.PACKAGE_NAME_MODEL_SUFFIX;
-import static com.amazonaws.codegen.internal.Constants.PACKAGE_NAME_TRANSFORM_SUFFIX;
 import static com.amazonaws.codegen.internal.Constants.PACKAGE_NAME_WAITERS_SUFFIX;
 import static com.amazonaws.codegen.internal.Constants.SMOKE_TESTS_DIR_NAME;
 
@@ -44,7 +44,7 @@ public class GeneratorPathProvider {
     }
 
     public String getTransformDirectory() {
-        return getModelDirectory() + "/" + PACKAGE_NAME_TRANSFORM_SUFFIX;
+        return getModelDirectory() + "/" + model.getCustomizationConfig().getTransformDirectory();
     }
 
     public String getBasePackageDirectory() {
@@ -69,6 +69,10 @@ public class GeneratorPathProvider {
 
     public String getPolicyEnumDirectory() {
         return getOutputDirectory() + "/" + AUTH_POLICY_ENUM_CLASS_DIR;
+    }
+
+    public String getAuthorizerDirectory() {
+        return getBasePackageDirectory() + "/" + PACKAGE_NAME_CUSTOM_AUTH_SUFFIX;
     }
 
     private String getPackagePath() {

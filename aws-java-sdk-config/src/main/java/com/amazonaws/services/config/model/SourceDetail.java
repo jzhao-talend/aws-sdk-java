@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,8 +23,12 @@ import java.io.Serializable;
  * also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is
  * periodic. You can specify the parameter values for <code>SourceDetail</code> only for custom rules.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SourceDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SourceDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SourceDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -31,29 +38,54 @@ public class SourceDetail implements Serializable, Cloneable {
     private String eventSource;
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
      * </p>
      */
     private String messageType;
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      */
     private String maximumExecutionFrequency;
 
@@ -132,36 +164,75 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
      * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
+     * </p>
      * 
      * @param messageType
-     *        The type of notification that triggers AWS Config to run an evaluation. You can specify the following
-     *        notification types:</p>
+     *        The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the
+     *        following notification types:</p>
+     *        <ul>
+     *        <li>
      *        <p>
      *        <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     *        configuration item change notification.
+     *        configuration item as a result of a resource change.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config
+     *        delivers an oversized configuration item. AWS Config may generate this notification type when a resource
+     *        changes and the notification exceeds the maximum size allowed by Amazon SNS.
+     *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      *        <code>MaximumExecutionFrequency</code>.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config
      *        delivers a configuration snapshot.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you want your custom rule to be triggered by configuration changes, specify both
+     *        <code>ConfigurationItemChangeNotification</code> and
+     *        <code>OversizedConfigurationItemChangeNotification</code>.
      * @see MessageType
      */
 
@@ -171,35 +242,74 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
      * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
+     * </p>
      * 
-     * @return The type of notification that triggers AWS Config to run an evaluation. You can specify the following
-     *         notification types:</p>
+     * @return The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the
+     *         following notification types:</p>
+     *         <ul>
+     *         <li>
      *         <p>
      *         <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     *         configuration item change notification.
+     *         configuration item as a result of a resource change.
      *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config
+     *         delivers an oversized configuration item. AWS Config may generate this notification type when a resource
+     *         changes and the notification exceeds the maximum size allowed by Amazon SNS.
+     *         </p>
+     *         </li>
+     *         <li>
      *         <p>
      *         <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      *         <code>MaximumExecutionFrequency</code>.
      *         </p>
+     *         </li>
+     *         <li>
      *         <p>
      *         <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config
      *         delivers a configuration snapshot.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If you want your custom rule to be triggered by configuration changes, specify both
+     *         <code>ConfigurationItemChangeNotification</code> and
+     *         <code>OversizedConfigurationItemChangeNotification</code>.
      * @see MessageType
      */
 
@@ -209,36 +319,75 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
      * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
+     * </p>
      * 
      * @param messageType
-     *        The type of notification that triggers AWS Config to run an evaluation. You can specify the following
-     *        notification types:</p>
+     *        The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the
+     *        following notification types:</p>
+     *        <ul>
+     *        <li>
      *        <p>
      *        <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     *        configuration item change notification.
+     *        configuration item as a result of a resource change.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config
+     *        delivers an oversized configuration item. AWS Config may generate this notification type when a resource
+     *        changes and the notification exceeds the maximum size allowed by Amazon SNS.
+     *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      *        <code>MaximumExecutionFrequency</code>.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config
      *        delivers a configuration snapshot.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you want your custom rule to be triggered by configuration changes, specify both
+     *        <code>ConfigurationItemChangeNotification</code> and
+     *        <code>OversizedConfigurationItemChangeNotification</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MessageType
      */
@@ -250,36 +399,75 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
      * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
+     * </p>
      * 
      * @param messageType
-     *        The type of notification that triggers AWS Config to run an evaluation. You can specify the following
-     *        notification types:</p>
+     *        The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the
+     *        following notification types:</p>
+     *        <ul>
+     *        <li>
      *        <p>
      *        <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     *        configuration item change notification.
+     *        configuration item as a result of a resource change.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config
+     *        delivers an oversized configuration item. AWS Config may generate this notification type when a resource
+     *        changes and the notification exceeds the maximum size allowed by Amazon SNS.
+     *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      *        <code>MaximumExecutionFrequency</code>.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config
      *        delivers a configuration snapshot.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you want your custom rule to be triggered by configuration changes, specify both
+     *        <code>ConfigurationItemChangeNotification</code> and
+     *        <code>OversizedConfigurationItemChangeNotification</code>.
      * @see MessageType
      */
 
@@ -289,36 +477,75 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of notification that triggers AWS Config to run an evaluation. You can specify the following
+     * The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following
      * notification types:
      * </p>
+     * <ul>
+     * <li>
      * <p>
      * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     * configuration item change notification.
+     * configuration item as a result of a resource change.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an
+     * oversized configuration item. AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      * <code>MaximumExecutionFrequency</code>.
      * </p>
+     * </li>
+     * <li>
      * <p>
      * <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a
      * configuration snapshot.
      * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you want your custom rule to be triggered by configuration changes, specify both
+     * <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>.
+     * </p>
      * 
      * @param messageType
-     *        The type of notification that triggers AWS Config to run an evaluation. You can specify the following
-     *        notification types:</p>
+     *        The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the
+     *        following notification types:</p>
+     *        <ul>
+     *        <li>
      *        <p>
      *        <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a
-     *        configuration item change notification.
+     *        configuration item as a result of a resource change.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config
+     *        delivers an oversized configuration item. AWS Config may generate this notification type when a resource
+     *        changes and the notification exceeds the maximum size allowed by Amazon SNS.
+     *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for
      *        <code>MaximumExecutionFrequency</code>.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
      *        <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config
      *        delivers a configuration snapshot.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you want your custom rule to be triggered by configuration changes, specify both
+     *        <code>ConfigurationItemChangeNotification</code> and
+     *        <code>OversizedConfigurationItemChangeNotification</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MessageType
      */
@@ -330,15 +557,25 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param maximumExecutionFrequency
-     *        The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If
+     *        The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If
      *        you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
-     *        <code>ScheduledNotification</code> value.
+     *        <code>ScheduledNotification</code> value.</p> <note>
+     *        <p>
+     *        By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a
+     *        valid value for the <code>MaximumExecutionFrequency</code> parameter.
+     *        </p>
      * @see MaximumExecutionFrequency
      */
 
@@ -348,14 +585,24 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      * 
-     * @return The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If
+     * @return The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If
      *         you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     *         the <code>ScheduledNotification</code> value.
+     *         the <code>ScheduledNotification</code> value.</p> <note>
+     *         <p>
+     *         By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify
+     *         a valid value for the <code>MaximumExecutionFrequency</code> parameter.
+     *         </p>
      * @see MaximumExecutionFrequency
      */
 
@@ -365,15 +612,25 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param maximumExecutionFrequency
-     *        The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If
+     *        The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If
      *        you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
-     *        <code>ScheduledNotification</code> value.
+     *        <code>ScheduledNotification</code> value.</p> <note>
+     *        <p>
+     *        By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a
+     *        valid value for the <code>MaximumExecutionFrequency</code> parameter.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MaximumExecutionFrequency
      */
@@ -385,15 +642,25 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param maximumExecutionFrequency
-     *        The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If
+     *        The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If
      *        you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
-     *        <code>ScheduledNotification</code> value.
+     *        <code>ScheduledNotification</code> value.</p> <note>
+     *        <p>
+     *        By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a
+     *        valid value for the <code>MaximumExecutionFrequency</code> parameter.
+     *        </p>
      * @see MaximumExecutionFrequency
      */
 
@@ -403,15 +670,25 @@ public class SourceDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If you
+     * The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you
      * specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
      * <code>ScheduledNotification</code> value.
      * </p>
+     * <note>
+     * <p>
+     * By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid
+     * value for the <code>MaximumExecutionFrequency</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param maximumExecutionFrequency
-     *        The frequency that you want AWS Config to run evaluations for a rule that is triggered periodically. If
+     *        The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If
      *        you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the
-     *        <code>ScheduledNotification</code> value.
+     *        <code>ScheduledNotification</code> value.</p> <note>
+     *        <p>
+     *        By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a
+     *        valid value for the <code>MaximumExecutionFrequency</code> parameter.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MaximumExecutionFrequency
      */
@@ -433,11 +710,11 @@ public class SourceDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEventSource() != null)
-            sb.append("EventSource: " + getEventSource() + ",");
+            sb.append("EventSource: ").append(getEventSource()).append(",");
         if (getMessageType() != null)
-            sb.append("MessageType: " + getMessageType() + ",");
+            sb.append("MessageType: ").append(getMessageType()).append(",");
         if (getMaximumExecutionFrequency() != null)
-            sb.append("MaximumExecutionFrequency: " + getMaximumExecutionFrequency());
+            sb.append("MaximumExecutionFrequency: ").append(getMaximumExecutionFrequency());
         sb.append("}");
         return sb.toString();
     }
@@ -485,5 +762,11 @@ public class SourceDetail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.SourceDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

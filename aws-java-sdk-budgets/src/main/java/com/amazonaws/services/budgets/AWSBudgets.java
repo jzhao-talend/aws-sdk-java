@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.budgets;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,8 +22,13 @@ import com.amazonaws.services.budgets.model.*;
 /**
  * Interface for accessing AWSBudgets.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.budgets.AbstractAWSBudgets} instead.
+ * </p>
+ * <p>
  * All public APIs for AWS Budgets
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSBudgets {
 
     /**
@@ -52,7 +59,11 @@ public interface AWSBudgets {
      * @param endpoint
      *        The endpoint (ex: "budgets.amazonaws.com") or a full URL, including the protocol (ex:
      *        "budgets.amazonaws.com") of the region specific AWS endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -73,7 +84,9 @@ public interface AWSBudgets {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -135,6 +148,9 @@ public interface AWSBudgets {
      *         already exceeds the limitation.
      * @throws DuplicateRecordException
      *         The exception is thrown when customer tries to create a record (e.g. budget) that already exists.
+     * @throws NotFoundException
+     *         This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an
+     *         account ID.
      * @sample AWSBudgets.CreateSubscriber
      */
     CreateSubscriberResult createSubscriber(CreateSubscriberRequest createSubscriberRequest);

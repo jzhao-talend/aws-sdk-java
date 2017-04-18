@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of
  * sending activity.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendDataPoint" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SendDataPoint implements Serializable, Cloneable {
 
     /**
@@ -265,15 +270,15 @@ public class SendDataPoint implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTimestamp() != null)
-            sb.append("Timestamp: " + getTimestamp() + ",");
+            sb.append("Timestamp: ").append(getTimestamp()).append(",");
         if (getDeliveryAttempts() != null)
-            sb.append("DeliveryAttempts: " + getDeliveryAttempts() + ",");
+            sb.append("DeliveryAttempts: ").append(getDeliveryAttempts()).append(",");
         if (getBounces() != null)
-            sb.append("Bounces: " + getBounces() + ",");
+            sb.append("Bounces: ").append(getBounces()).append(",");
         if (getComplaints() != null)
-            sb.append("Complaints: " + getComplaints() + ",");
+            sb.append("Complaints: ").append(getComplaints()).append(",");
         if (getRejects() != null)
-            sb.append("Rejects: " + getRejects());
+            sb.append("Rejects: ").append(getRejects());
         sb.append("}");
         return sb.toString();
     }
@@ -332,4 +337,5 @@ public class SendDataPoint implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

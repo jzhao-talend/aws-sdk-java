@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.autoscaling.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.autoscaling.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * DescribeAutoScalingGroupsResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeAutoScalingGroupsResultStaxUnmarshaller implements Unmarshaller<DescribeAutoScalingGroupsResult, StaxUnmarshallerContext> {
 
     public DescribeAutoScalingGroupsResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -44,6 +44,11 @@ public class DescribeAutoScalingGroupsResultStaxUnmarshaller implements Unmarsha
                 return describeAutoScalingGroupsResult;
 
             if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+
+                if (context.testExpression("AutoScalingGroups", targetDepth)) {
+                    describeAutoScalingGroupsResult.withAutoScalingGroups(new ArrayList<AutoScalingGroup>());
+                    continue;
+                }
 
                 if (context.testExpression("AutoScalingGroups/member", targetDepth)) {
                     describeAutoScalingGroupsResult.withAutoScalingGroups(AutoScalingGroupStaxUnmarshaller.getInstance().unmarshall(context));

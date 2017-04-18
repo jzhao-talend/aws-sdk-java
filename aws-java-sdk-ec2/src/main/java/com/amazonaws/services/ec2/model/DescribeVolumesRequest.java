@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeVolumesRequestMarshaller;
@@ -22,6 +24,7 @@ import com.amazonaws.services.ec2.model.transform.DescribeVolumesRequestMarshall
  * Contains the parameters for DescribeVolumes.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeVolumesRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeVolumesRequest> {
 
     /**
@@ -95,7 +98,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -143,7 +148,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a single page
      * along with a <code>NextToken</code> response element. The remaining results of the initial request can be seen by
      * sending another <code>DescribeVolumes</code> request with the returned <code>NextToken</code> value. This value
-     * can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are
+     * can be between 5 and 500; if <code>MaxResults</code> is given a value larger than 500, only 500 results are
      * returned. If this parameter is not used, then <code>DescribeVolumes</code> returns all results. You cannot
      * specify this parameter and the volume IDs parameter in the same request.
      * </p>
@@ -306,7 +311,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -401,6 +408,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *         <li>
      *         <p>
      *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
      *         </p>
      *         </li>
      *         <li>
@@ -504,7 +514,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -600,6 +612,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -705,7 +720,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -806,6 +823,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -913,7 +933,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
@@ -1009,6 +1031,9 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        <li>
      *        <p>
      *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
      *        </p>
      *        </li>
      *        <li>
@@ -1110,7 +1135,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a single page
      * along with a <code>NextToken</code> response element. The remaining results of the initial request can be seen by
      * sending another <code>DescribeVolumes</code> request with the returned <code>NextToken</code> value. This value
-     * can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are
+     * can be between 5 and 500; if <code>MaxResults</code> is given a value larger than 500, only 500 results are
      * returned. If this parameter is not used, then <code>DescribeVolumes</code> returns all results. You cannot
      * specify this parameter and the volume IDs parameter in the same request.
      * </p>
@@ -1120,8 +1145,8 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        this parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a
      *        single page along with a <code>NextToken</code> response element. The remaining results of the initial
      *        request can be seen by sending another <code>DescribeVolumes</code> request with the returned
-     *        <code>NextToken</code> value. This value can be between 5 and 1000; if <code>MaxResults</code> is given a
-     *        value larger than 1000, only 1000 results are returned. If this parameter is not used, then
+     *        <code>NextToken</code> value. This value can be between 5 and 500; if <code>MaxResults</code> is given a
+     *        value larger than 500, only 500 results are returned. If this parameter is not used, then
      *        <code>DescribeVolumes</code> returns all results. You cannot specify this parameter and the volume IDs
      *        parameter in the same request.
      */
@@ -1136,7 +1161,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a single page
      * along with a <code>NextToken</code> response element. The remaining results of the initial request can be seen by
      * sending another <code>DescribeVolumes</code> request with the returned <code>NextToken</code> value. This value
-     * can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are
+     * can be between 5 and 500; if <code>MaxResults</code> is given a value larger than 500, only 500 results are
      * returned. If this parameter is not used, then <code>DescribeVolumes</code> returns all results. You cannot
      * specify this parameter and the volume IDs parameter in the same request.
      * </p>
@@ -1145,8 +1170,8 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *         this parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a
      *         single page along with a <code>NextToken</code> response element. The remaining results of the initial
      *         request can be seen by sending another <code>DescribeVolumes</code> request with the returned
-     *         <code>NextToken</code> value. This value can be between 5 and 1000; if <code>MaxResults</code> is given a
-     *         value larger than 1000, only 1000 results are returned. If this parameter is not used, then
+     *         <code>NextToken</code> value. This value can be between 5 and 500; if <code>MaxResults</code> is given a
+     *         value larger than 500, only 500 results are returned. If this parameter is not used, then
      *         <code>DescribeVolumes</code> returns all results. You cannot specify this parameter and the volume IDs
      *         parameter in the same request.
      */
@@ -1161,7 +1186,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a single page
      * along with a <code>NextToken</code> response element. The remaining results of the initial request can be seen by
      * sending another <code>DescribeVolumes</code> request with the returned <code>NextToken</code> value. This value
-     * can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are
+     * can be between 5 and 500; if <code>MaxResults</code> is given a value larger than 500, only 500 results are
      * returned. If this parameter is not used, then <code>DescribeVolumes</code> returns all results. You cannot
      * specify this parameter and the volume IDs parameter in the same request.
      * </p>
@@ -1171,8 +1196,8 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        this parameter is used, <code>DescribeVolumes</code> only returns <code>MaxResults</code> results in a
      *        single page along with a <code>NextToken</code> response element. The remaining results of the initial
      *        request can be seen by sending another <code>DescribeVolumes</code> request with the returned
-     *        <code>NextToken</code> value. This value can be between 5 and 1000; if <code>MaxResults</code> is given a
-     *        value larger than 1000, only 1000 results are returned. If this parameter is not used, then
+     *        <code>NextToken</code> value. This value can be between 5 and 500; if <code>MaxResults</code> is given a
+     *        value larger than 500, only 500 results are returned. If this parameter is not used, then
      *        <code>DescribeVolumes</code> returns all results. You cannot specify this parameter and the volume IDs
      *        parameter in the same request.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1206,13 +1231,13 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVolumeIds() != null)
-            sb.append("VolumeIds: " + getVolumeIds() + ",");
+            sb.append("VolumeIds: ").append(getVolumeIds()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults());
+            sb.append("MaxResults: ").append(getMaxResults());
         sb.append("}");
         return sb.toString();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,25 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetCapacity" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity information
-     * for all fleets, leave this parameter empty.
+     * Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all
+     * fleets, leave this parameter empty.
      * </p>
      */
     private java.util.List<String> fleetIds;
@@ -38,21 +44,21 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
     private Integer limit;
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored
-     * when the request specifies one or a list of fleet IDs.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. This parameter is
+     * ignored when the request specifies one or a list of fleet IDs.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity information
-     * for all fleets, leave this parameter empty.
+     * Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all
+     * fleets, leave this parameter empty.
      * </p>
      * 
-     * @return Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity
-     *         information for all fleets, leave this parameter empty.
+     * @return Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information
+     *         for all fleets, leave this parameter empty.
      */
 
     public java.util.List<String> getFleetIds() {
@@ -61,13 +67,13 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity information
-     * for all fleets, leave this parameter empty.
+     * Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all
+     * fleets, leave this parameter empty.
      * </p>
      * 
      * @param fleetIds
-     *        Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity
-     *        information for all fleets, leave this parameter empty.
+     *        Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for
+     *        all fleets, leave this parameter empty.
      */
 
     public void setFleetIds(java.util.Collection<String> fleetIds) {
@@ -81,8 +87,8 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity information
-     * for all fleets, leave this parameter empty.
+     * Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all
+     * fleets, leave this parameter empty.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -91,8 +97,8 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param fleetIds
-     *        Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity
-     *        information for all fleets, leave this parameter empty.
+     *        Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for
+     *        all fleets, leave this parameter empty.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -108,13 +114,13 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity information
-     * for all fleets, leave this parameter empty.
+     * Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all
+     * fleets, leave this parameter empty.
      * </p>
      * 
      * @param fleetIds
-     *        Unique identifier for the fleet(s) you want to retrieve capacity information for. To request capacity
-     *        information for all fleets, leave this parameter empty.
+     *        Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for
+     *        all fleets, leave this parameter empty.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -171,14 +177,14 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored
-     * when the request specifies one or a list of fleet IDs.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. This parameter is
+     * ignored when the request specifies one or a list of fleet IDs.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value. This
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value. This
      *        parameter is ignored when the request specifies one or a list of fleet IDs.
      */
 
@@ -188,13 +194,13 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored
-     * when the request specifies one or a list of fleet IDs.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. This parameter is
+     * ignored when the request specifies one or a list of fleet IDs.
      * </p>
      * 
-     * @return Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *         previous call to this action. To specify the start of the result set, do not specify a value. This
+     * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
+     *         with a previous call to this action. To specify the start of the result set, do not specify a value. This
      *         parameter is ignored when the request specifies one or a list of fleet IDs.
      */
 
@@ -204,14 +210,14 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored
-     * when the request specifies one or a list of fleet IDs.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value. This parameter is
+     * ignored when the request specifies one or a list of fleet IDs.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value. This
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value. This
      *        parameter is ignored when the request specifies one or a list of fleet IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -233,11 +239,11 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetIds() != null)
-            sb.append("FleetIds: " + getFleetIds() + ",");
+            sb.append("FleetIds: ").append(getFleetIds()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -282,4 +288,5 @@ public class DescribeFleetCapacityRequest extends com.amazonaws.AmazonWebService
     public DescribeFleetCapacityRequest clone() {
         return (DescribeFleetCapacityRequest) super.clone();
     }
+
 }

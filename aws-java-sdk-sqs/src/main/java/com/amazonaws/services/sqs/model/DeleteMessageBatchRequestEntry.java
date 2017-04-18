@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,19 +13,28 @@
 package com.amazonaws.services.sqs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Encloses a receipt handle and an identifier for it.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/DeleteMessageBatchRequestEntry" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle. This is used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      */
     private String id;
     /**
@@ -47,8 +56,10 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
      * methods to initialize any additional object members.
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle. This is used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      * @param receiptHandle
      *        A receipt handle.
      */
@@ -59,13 +70,19 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle. This is used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle. This is used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      */
 
     public void setId(String id) {
@@ -74,12 +91,18 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle. This is used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
-     * @return An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *         <code>Id</code>s of a batch request need to be unique within the request.
+     * @return An identifier for this particular receipt handle. This is used to communicate the result.</p> <note>
+     *         <p>
+     *         The <code>Id</code>s of a batch request need to be unique within a request
+     *         </p>
      */
 
     public String getId() {
@@ -88,13 +111,19 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     * <code>Id</code>s of a batch request need to be unique within the request.
+     * An identifier for this particular receipt handle. This is used to communicate the result.
      * </p>
+     * <note>
+     * <p>
+     * The <code>Id</code>s of a batch request need to be unique within a request
+     * </p>
+     * </note>
      * 
      * @param id
-     *        An identifier for this particular receipt handle. This is used to communicate the result. Note that the
-     *        <code>Id</code>s of a batch request need to be unique within the request.
+     *        An identifier for this particular receipt handle. This is used to communicate the result.</p> <note>
+     *        <p>
+     *        The <code>Id</code>s of a batch request need to be unique within a request
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -155,9 +184,9 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getReceiptHandle() != null)
-            sb.append("ReceiptHandle: " + getReceiptHandle());
+            sb.append("ReceiptHandle: ").append(getReceiptHandle());
         sb.append("}");
         return sb.toString();
     }
@@ -201,4 +230,5 @@ public class DeleteMessageBatchRequestEntry implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

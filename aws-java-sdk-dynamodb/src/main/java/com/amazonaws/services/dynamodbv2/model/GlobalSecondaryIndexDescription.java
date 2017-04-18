@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Represents the properties of a global secondary index.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/GlobalSecondaryIndexDescription"
+ *      target="_top">AWS API Documentation</a>
  */
-public class GlobalSecondaryIndexDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GlobalSecondaryIndexDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -58,7 +65,12 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * </note>
      */
     private java.util.List<KeySchemaElement> keySchema;
-
+    /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into the global secondary index. These are in
+     * addition to the primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     */
     private Projection projection;
     /**
      * <p>
@@ -67,22 +79,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -93,17 +105,26 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from the
      * table and determining whether they can be added to the index. (Not all items will qualify: For example, a
      * partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB will do so. After
-     * all items have been processed, the backfilling operation is complete and <i>Backfilling</i> is false.
+     * all items have been processed, the backfilling operation is complete and <code>Backfilling</code> is false.
      * </p>
      * <note>
      * <p>
-     * For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does not
-     * appear in the <i>DescribeTable</i> output.
+     * For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code> attribute
+     * does not appear in the <code>DescribeTable</code> output.
      * </p>
      * </note>
      */
     private Boolean backfilling;
-
+    /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     */
     private ProvisionedThroughputDescription provisionedThroughput;
     /**
      * <p>
@@ -433,7 +454,14 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into the global secondary index. These are in
+     * addition to the primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
      * @param projection
+     *        Represents attributes that are copied (projected) from the table into the global secondary index. These
+     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
      */
 
     public void setProjection(Projection projection) {
@@ -441,7 +469,14 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
-     * @return
+     * <p>
+     * Represents attributes that are copied (projected) from the table into the global secondary index. These are in
+     * addition to the primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
+     * @return Represents attributes that are copied (projected) from the table into the global secondary index. These
+     *         are in addition to the primary key attributes and index key attributes, which are automatically
+     *         projected.
      */
 
     public Projection getProjection() {
@@ -449,7 +484,14 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
+     * <p>
+     * Represents attributes that are copied (projected) from the table into the global secondary index. These are in
+     * addition to the primary key attributes and index key attributes, which are automatically projected.
+     * </p>
+     * 
      * @param projection
+     *        Represents attributes that are copied (projected) from the table into the global secondary index. These
+     *        are in addition to the primary key attributes and index key attributes, which are automatically projected.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -465,22 +507,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -490,22 +532,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      * @see IndexStatus
@@ -522,22 +564,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -546,22 +588,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *         <ul>
      *         <li>
      *         <p>
-     *         <i>CREATING</i> - The index is being created.
+     *         <code>CREATING</code> - The index is being created.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>UPDATING</i> - The index is being updated.
+     *         <code>UPDATING</code> - The index is being updated.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>DELETING</i> - The index is being deleted.
+     *         <code>DELETING</code> - The index is being deleted.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <i>ACTIVE</i> - The index is ready for use.
+     *         <code>ACTIVE</code> - The index is ready for use.
      *         </p>
      *         </li>
      * @see IndexStatus
@@ -578,22 +620,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -603,22 +645,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -637,22 +679,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -662,22 +704,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      * @see IndexStatus
@@ -694,22 +736,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * <ul>
      * <li>
      * <p>
-     * <i>CREATING</i> - The index is being created.
+     * <code>CREATING</code> - The index is being created.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>UPDATING</i> - The index is being updated.
+     * <code>UPDATING</code> - The index is being updated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>DELETING</i> - The index is being deleted.
+     * <code>DELETING</code> - The index is being deleted.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <i>ACTIVE</i> - The index is ready for use.
+     * <code>ACTIVE</code> - The index is ready for use.
      * </p>
      * </li>
      * </ul>
@@ -719,22 +761,22 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        <ul>
      *        <li>
      *        <p>
-     *        <i>CREATING</i> - The index is being created.
+     *        <code>CREATING</code> - The index is being created.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>UPDATING</i> - The index is being updated.
+     *        <code>UPDATING</code> - The index is being updated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>DELETING</i> - The index is being deleted.
+     *        <code>DELETING</code> - The index is being deleted.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <i>ACTIVE</i> - The index is ready for use.
+     *        <code>ACTIVE</code> - The index is ready for use.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -751,12 +793,12 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from the
      * table and determining whether they can be added to the index. (Not all items will qualify: For example, a
      * partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB will do so. After
-     * all items have been processed, the backfilling operation is complete and <i>Backfilling</i> is false.
+     * all items have been processed, the backfilling operation is complete and <code>Backfilling</code> is false.
      * </p>
      * <note>
      * <p>
-     * For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does not
-     * appear in the <i>DescribeTable</i> output.
+     * For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code> attribute
+     * does not appear in the <code>DescribeTable</code> output.
      * </p>
      * </note>
      * 
@@ -765,10 +807,10 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        from the table and determining whether they can be added to the index. (Not all items will qualify: For
      *        example, a partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB
      *        will do so. After all items have been processed, the backfilling operation is complete and
-     *        <i>Backfilling</i> is false.</p> <note>
+     *        <code>Backfilling</code> is false.</p> <note>
      *        <p>
-     *        For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does
-     *        not appear in the <i>DescribeTable</i> output.
+     *        For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code>
+     *        attribute does not appear in the <code>DescribeTable</code> output.
      *        </p>
      */
 
@@ -781,12 +823,12 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from the
      * table and determining whether they can be added to the index. (Not all items will qualify: For example, a
      * partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB will do so. After
-     * all items have been processed, the backfilling operation is complete and <i>Backfilling</i> is false.
+     * all items have been processed, the backfilling operation is complete and <code>Backfilling</code> is false.
      * </p>
      * <note>
      * <p>
-     * For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does not
-     * appear in the <i>DescribeTable</i> output.
+     * For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code> attribute
+     * does not appear in the <code>DescribeTable</code> output.
      * </p>
      * </note>
      * 
@@ -794,10 +836,10 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *         from the table and determining whether they can be added to the index. (Not all items will qualify: For
      *         example, a partition key cannot have any duplicate values.) If an item can be added to the index,
      *         DynamoDB will do so. After all items have been processed, the backfilling operation is complete and
-     *         <i>Backfilling</i> is false.</p> <note>
+     *         <code>Backfilling</code> is false.</p> <note>
      *         <p>
-     *         For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute
-     *         does not appear in the <i>DescribeTable</i> output.
+     *         For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code>
+     *         attribute does not appear in the <code>DescribeTable</code> output.
      *         </p>
      */
 
@@ -810,12 +852,12 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from the
      * table and determining whether they can be added to the index. (Not all items will qualify: For example, a
      * partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB will do so. After
-     * all items have been processed, the backfilling operation is complete and <i>Backfilling</i> is false.
+     * all items have been processed, the backfilling operation is complete and <code>Backfilling</code> is false.
      * </p>
      * <note>
      * <p>
-     * For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does not
-     * appear in the <i>DescribeTable</i> output.
+     * For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code> attribute
+     * does not appear in the <code>DescribeTable</code> output.
      * </p>
      * </note>
      * 
@@ -824,10 +866,10 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *        from the table and determining whether they can be added to the index. (Not all items will qualify: For
      *        example, a partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB
      *        will do so. After all items have been processed, the backfilling operation is complete and
-     *        <i>Backfilling</i> is false.</p> <note>
+     *        <code>Backfilling</code> is false.</p> <note>
      *        <p>
-     *        For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does
-     *        not appear in the <i>DescribeTable</i> output.
+     *        For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code>
+     *        attribute does not appear in the <code>DescribeTable</code> output.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -842,12 +884,12 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      * Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from the
      * table and determining whether they can be added to the index. (Not all items will qualify: For example, a
      * partition key cannot have any duplicate values.) If an item can be added to the index, DynamoDB will do so. After
-     * all items have been processed, the backfilling operation is complete and <i>Backfilling</i> is false.
+     * all items have been processed, the backfilling operation is complete and <code>Backfilling</code> is false.
      * </p>
      * <note>
      * <p>
-     * For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute does not
-     * appear in the <i>DescribeTable</i> output.
+     * For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code> attribute
+     * does not appear in the <code>DescribeTable</code> output.
      * </p>
      * </note>
      * 
@@ -855,10 +897,10 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
      *         from the table and determining whether they can be added to the index. (Not all items will qualify: For
      *         example, a partition key cannot have any duplicate values.) If an item can be added to the index,
      *         DynamoDB will do so. After all items have been processed, the backfilling operation is complete and
-     *         <i>Backfilling</i> is false.</p> <note>
+     *         <code>Backfilling</code> is false.</p> <note>
      *         <p>
-     *         For indexes that were created during a <i>CreateTable</i> operation, the <i>Backfilling</i> attribute
-     *         does not appear in the <i>DescribeTable</i> output.
+     *         For indexes that were created during a <code>CreateTable</code> operation, the <code>Backfilling</code>
+     *         attribute does not appear in the <code>DescribeTable</code> output.
      *         </p>
      */
 
@@ -867,7 +909,21 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public void setProvisionedThroughput(ProvisionedThroughputDescription provisionedThroughput) {
@@ -875,7 +931,20 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
-     * @return
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
+     * @return Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *         <p>
+     *         For current minimum and maximum provisioned throughput values, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *         <i>Amazon DynamoDB Developer Guide</i>.
      */
 
     public ProvisionedThroughputDescription getProvisionedThroughput() {
@@ -883,7 +952,21 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
     }
 
     /**
+     * <p>
+     * Represents the provisioned throughput settings for the specified global secondary index.
+     * </p>
+     * <p>
+     * For current minimum and maximum provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * DynamoDB Developer Guide</i>.
+     * </p>
+     * 
      * @param provisionedThroughput
+     *        Represents the provisioned throughput settings for the specified global secondary index.</p>
+     *        <p>
+     *        For current minimum and maximum provisioned throughput values, see <a
+     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1036,23 +1119,23 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIndexName() != null)
-            sb.append("IndexName: " + getIndexName() + ",");
+            sb.append("IndexName: ").append(getIndexName()).append(",");
         if (getKeySchema() != null)
-            sb.append("KeySchema: " + getKeySchema() + ",");
+            sb.append("KeySchema: ").append(getKeySchema()).append(",");
         if (getProjection() != null)
-            sb.append("Projection: " + getProjection() + ",");
+            sb.append("Projection: ").append(getProjection()).append(",");
         if (getIndexStatus() != null)
-            sb.append("IndexStatus: " + getIndexStatus() + ",");
+            sb.append("IndexStatus: ").append(getIndexStatus()).append(",");
         if (getBackfilling() != null)
-            sb.append("Backfilling: " + getBackfilling() + ",");
+            sb.append("Backfilling: ").append(getBackfilling()).append(",");
         if (getProvisionedThroughput() != null)
-            sb.append("ProvisionedThroughput: " + getProvisionedThroughput() + ",");
+            sb.append("ProvisionedThroughput: ").append(getProvisionedThroughput()).append(",");
         if (getIndexSizeBytes() != null)
-            sb.append("IndexSizeBytes: " + getIndexSizeBytes() + ",");
+            sb.append("IndexSizeBytes: ").append(getIndexSizeBytes()).append(",");
         if (getItemCount() != null)
-            sb.append("ItemCount: " + getItemCount() + ",");
+            sb.append("ItemCount: ").append(getItemCount()).append(",");
         if (getIndexArn() != null)
-            sb.append("IndexArn: " + getIndexArn());
+            sb.append("IndexArn: ").append(getIndexArn());
         sb.append("}");
         return sb.toString();
     }
@@ -1130,5 +1213,11 @@ public class GlobalSecondaryIndexDescription implements Serializable, Cloneable 
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.GlobalSecondaryIndexDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

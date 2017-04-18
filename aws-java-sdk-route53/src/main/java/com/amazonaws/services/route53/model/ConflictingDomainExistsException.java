@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,13 +12,16 @@
  */
 package com.amazonaws.services.route53.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
  * You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you specified for
  * one of the hosted zones is a subdomain of the domain that you specified for the other hosted zone. For example, you
- * cannot use the same Amazon VPC for the hosted zones for example.com and test.example.com.
+ * can't use the same Amazon VPC for the hosted zones for example.com and test.example.com.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ConflictingDomainExistsException extends com.amazonaws.services.route53.model.AmazonRoute53Exception {
     private static final long serialVersionUID = 1L;
 

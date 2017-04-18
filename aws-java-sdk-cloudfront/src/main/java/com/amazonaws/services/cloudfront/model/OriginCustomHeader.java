@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains <code>HeaderName</code> and <code>HeaderValue</code> elements, if any, for this
  * distribution.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/OriginCustomHeader" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OriginCustomHeader implements Serializable, Cloneable {
 
     /**
@@ -148,9 +153,9 @@ public class OriginCustomHeader implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHeaderName() != null)
-            sb.append("HeaderName: " + getHeaderName() + ",");
+            sb.append("HeaderName: ").append(getHeaderName()).append(",");
         if (getHeaderValue() != null)
-            sb.append("HeaderValue: " + getHeaderValue());
+            sb.append("HeaderValue: ").append(getHeaderValue());
         sb.append("}");
         return sb.toString();
     }
@@ -194,4 +199,5 @@ public class OriginCustomHeader implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

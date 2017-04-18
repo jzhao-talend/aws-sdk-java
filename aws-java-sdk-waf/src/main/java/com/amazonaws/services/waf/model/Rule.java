@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -38,8 +41,12 @@ import java.io.Serializable;
  * To match the settings in this <code>Rule</code>, a request must originate from <code>192.0.2.44</code> AND include a
  * <code>User-Agent</code> header for which the value is <code>BadBot</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/Rule" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Rule implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Rule implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -60,7 +67,13 @@ public class Rule implements Serializable, Cloneable {
      * </p>
      */
     private String name;
-
+    /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric
+     * characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you
+     * create the <code>Rule</code>.
+     * </p>
+     */
     private String metricName;
     /**
      * <p>
@@ -190,7 +203,16 @@ public class Rule implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric
+     * characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you
+     * create the <code>Rule</code>.
+     * </p>
+     * 
      * @param metricName
+     *        A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only
+     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *        <code>MetricName</code> after you create the <code>Rule</code>.
      */
 
     public void setMetricName(String metricName) {
@@ -198,7 +220,15 @@ public class Rule implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric
+     * characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you
+     * create the <code>Rule</code>.
+     * </p>
+     * 
+     * @return A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only
+     *         alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *         <code>MetricName</code> after you create the <code>Rule</code>.
      */
 
     public String getMetricName() {
@@ -206,7 +236,16 @@ public class Rule implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric
+     * characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you
+     * create the <code>Rule</code>.
+     * </p>
+     * 
      * @param metricName
+     *        A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only
+     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
+     *        <code>MetricName</code> after you create the <code>Rule</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -309,13 +348,13 @@ public class Rule implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleId() != null)
-            sb.append("RuleId: " + getRuleId() + ",");
+            sb.append("RuleId: ").append(getRuleId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getPredicates() != null)
-            sb.append("Predicates: " + getPredicates());
+            sb.append("Predicates: ").append(getPredicates());
         sb.append("}");
         return sb.toString();
     }
@@ -368,5 +407,11 @@ public class Rule implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.RuleMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

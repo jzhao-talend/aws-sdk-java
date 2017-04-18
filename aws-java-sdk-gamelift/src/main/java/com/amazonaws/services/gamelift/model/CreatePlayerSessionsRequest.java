@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,21 +13,24 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreatePlayerSessions" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to add players to.
      * </p>
      */
     private String gameSessionId;
@@ -37,20 +40,22 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      */
     private java.util.List<String> playerIds;
+    /**
+     * <p>
+     * Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     * player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data
+     * strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     * </p>
+     */
+    private java.util.Map<String, String> playerDataMap;
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to add players to.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to add players to. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to add players to.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -59,16 +64,10 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to add players to.
      * </p>
      * 
-     * @return Unique identifier for the game session to add players to. Game session ID format is as follows:
-     *         "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *         &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created)
-     *         an auto-generated string.
+     * @return Unique identifier for the game session to add players to.
      */
 
     public String getGameSessionId() {
@@ -77,17 +76,11 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to. Game session ID format is as follows:
-     * "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of &lt;ID
-     * string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     * auto-generated string.
+     * Unique identifier for the game session to add players to.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to add players to. Game session ID format is as follows:
-     *        "arn:aws:gamelift:&lt;region&gt;::gamesession/fleet-&lt;fleet ID&gt;/&lt;ID string&gt;". The value of
-     *        &lt;ID string&gt; is either a custom ID string (if one was specified when the game session was created) an
-     *        auto-generated string.
+     *        Unique identifier for the game session to add players to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,6 +160,79 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
+     * <p>
+     * Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     * player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data
+     * strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     * </p>
+     * 
+     * @return Map of string pairs, each specifying a player ID and a set of developer-defined information related to
+     *         the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.
+     *         Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     */
+
+    public java.util.Map<String, String> getPlayerDataMap() {
+        return playerDataMap;
+    }
+
+    /**
+     * <p>
+     * Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     * player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data
+     * strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     * </p>
+     * 
+     * @param playerDataMap
+     *        Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     *        player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.
+     *        Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     */
+
+    public void setPlayerDataMap(java.util.Map<String, String> playerDataMap) {
+        this.playerDataMap = playerDataMap;
+    }
+
+    /**
+     * <p>
+     * Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     * player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data
+     * strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     * </p>
+     * 
+     * @param playerDataMap
+     *        Map of string pairs, each specifying a player ID and a set of developer-defined information related to the
+     *        player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.
+     *        Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePlayerSessionsRequest withPlayerDataMap(java.util.Map<String, String> playerDataMap) {
+        setPlayerDataMap(playerDataMap);
+        return this;
+    }
+
+    public CreatePlayerSessionsRequest addPlayerDataMapEntry(String key, String value) {
+        if (null == this.playerDataMap) {
+            this.playerDataMap = new java.util.HashMap<String, String>();
+        }
+        if (this.playerDataMap.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.playerDataMap.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into PlayerDataMap.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePlayerSessionsRequest clearPlayerDataMapEntries() {
+        this.playerDataMap = null;
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -178,9 +244,11 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId() + ",");
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
         if (getPlayerIds() != null)
-            sb.append("PlayerIds: " + getPlayerIds());
+            sb.append("PlayerIds: ").append(getPlayerIds()).append(",");
+        if (getPlayerDataMap() != null)
+            sb.append("PlayerDataMap: ").append(getPlayerDataMap());
         sb.append("}");
         return sb.toString();
     }
@@ -203,6 +271,10 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
             return false;
         if (other.getPlayerIds() != null && other.getPlayerIds().equals(this.getPlayerIds()) == false)
             return false;
+        if (other.getPlayerDataMap() == null ^ this.getPlayerDataMap() == null)
+            return false;
+        if (other.getPlayerDataMap() != null && other.getPlayerDataMap().equals(this.getPlayerDataMap()) == false)
+            return false;
         return true;
     }
 
@@ -213,6 +285,7 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
         hashCode = prime * hashCode + ((getGameSessionId() == null) ? 0 : getGameSessionId().hashCode());
         hashCode = prime * hashCode + ((getPlayerIds() == null) ? 0 : getPlayerIds().hashCode());
+        hashCode = prime * hashCode + ((getPlayerDataMap() == null) ? 0 : getPlayerDataMap().hashCode());
         return hashCode;
     }
 
@@ -220,4 +293,5 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
     public CreatePlayerSessionsRequest clone() {
         return (CreatePlayerSessionsRequest) super.clone();
     }
+
 }

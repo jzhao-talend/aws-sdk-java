@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/Loa" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Loa implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Loa implements Serializable, Cloneable, StructuredPojo {
 
     private java.nio.ByteBuffer loaContent;
 
@@ -27,7 +34,7 @@ public class Loa implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS SDK for Java performs a Base64 encoding on this field before sending this request to AWS service by default.
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
      * Users of the SDK should not perform Base64 encoding on this field.
      * </p>
      * <p>
@@ -61,6 +68,17 @@ public class Loa implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
+     * 
      * @param loaContent
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -131,9 +149,9 @@ public class Loa implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLoaContent() != null)
-            sb.append("LoaContent: " + getLoaContent() + ",");
+            sb.append("LoaContent: ").append(getLoaContent()).append(",");
         if (getLoaContentType() != null)
-            sb.append("LoaContentType: " + getLoaContentType());
+            sb.append("LoaContentType: ").append(getLoaContentType());
         sb.append("}");
         return sb.toString();
     }
@@ -176,5 +194,11 @@ public class Loa implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directconnect.model.transform.LoaMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

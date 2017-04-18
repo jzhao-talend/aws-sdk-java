@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A user pool of the client type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UserPoolClientType" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UserPoolClientType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UserPoolClientType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -59,7 +66,7 @@ public class UserPoolClientType implements Serializable, Cloneable {
     private java.util.Date creationDate;
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      */
     private Integer refreshTokenValidity;
@@ -324,11 +331,11 @@ public class UserPoolClientType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
      * @param refreshTokenValidity
-     *        The validity of the refresh token.
+     *        The validity of the refresh token, in days.
      */
 
     public void setRefreshTokenValidity(Integer refreshTokenValidity) {
@@ -337,10 +344,10 @@ public class UserPoolClientType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
-     * @return The validity of the refresh token.
+     * @return The validity of the refresh token, in days.
      */
 
     public Integer getRefreshTokenValidity() {
@@ -349,11 +356,11 @@ public class UserPoolClientType implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The validity of the refresh token.
+     * The validity of the refresh token, in days.
      * </p>
      * 
      * @param refreshTokenValidity
-     *        The validity of the refresh token.
+     *        The validity of the refresh token, in days.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -612,25 +619,25 @@ public class UserPoolClientType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserPoolId() != null)
-            sb.append("UserPoolId: " + getUserPoolId() + ",");
+            sb.append("UserPoolId: ").append(getUserPoolId()).append(",");
         if (getClientName() != null)
-            sb.append("ClientName: " + getClientName() + ",");
+            sb.append("ClientName: ").append(getClientName()).append(",");
         if (getClientId() != null)
-            sb.append("ClientId: " + getClientId() + ",");
+            sb.append("ClientId: ").append(getClientId()).append(",");
         if (getClientSecret() != null)
-            sb.append("ClientSecret: " + getClientSecret() + ",");
+            sb.append("ClientSecret: ").append(getClientSecret()).append(",");
         if (getLastModifiedDate() != null)
-            sb.append("LastModifiedDate: " + getLastModifiedDate() + ",");
+            sb.append("LastModifiedDate: ").append(getLastModifiedDate()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getRefreshTokenValidity() != null)
-            sb.append("RefreshTokenValidity: " + getRefreshTokenValidity() + ",");
+            sb.append("RefreshTokenValidity: ").append(getRefreshTokenValidity()).append(",");
         if (getReadAttributes() != null)
-            sb.append("ReadAttributes: " + getReadAttributes() + ",");
+            sb.append("ReadAttributes: ").append(getReadAttributes()).append(",");
         if (getWriteAttributes() != null)
-            sb.append("WriteAttributes: " + getWriteAttributes() + ",");
+            sb.append("WriteAttributes: ").append(getWriteAttributes()).append(",");
         if (getExplicitAuthFlows() != null)
-            sb.append("ExplicitAuthFlows: " + getExplicitAuthFlows());
+            sb.append("ExplicitAuthFlows: ").append(getExplicitAuthFlows());
         sb.append("}");
         return sb.toString();
     }
@@ -713,5 +720,11 @@ public class UserPoolClientType implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.UserPoolClientTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

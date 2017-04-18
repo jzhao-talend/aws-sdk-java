@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,16 @@
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProvisioningParameters"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -40,7 +45,7 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
     private String acceptLanguage;
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      */
     private String productId;
@@ -169,11 +174,11 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
      * @param productId
-     *        The identifier of the product.
+     *        The product identifier.
      */
 
     public void setProductId(String productId) {
@@ -182,10 +187,10 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
-     * @return The identifier of the product.
+     * @return The product identifier.
      */
 
     public String getProductId() {
@@ -194,11 +199,11 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier of the product.
+     * The product identifier.
      * </p>
      * 
      * @param productId
-     *        The identifier of the product.
+     *        The product identifier.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -305,13 +310,13 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAcceptLanguage() != null)
-            sb.append("AcceptLanguage: " + getAcceptLanguage() + ",");
+            sb.append("AcceptLanguage: ").append(getAcceptLanguage()).append(",");
         if (getProductId() != null)
-            sb.append("ProductId: " + getProductId() + ",");
+            sb.append("ProductId: ").append(getProductId()).append(",");
         if (getProvisioningArtifactId() != null)
-            sb.append("ProvisioningArtifactId: " + getProvisioningArtifactId() + ",");
+            sb.append("ProvisioningArtifactId: ").append(getProvisioningArtifactId()).append(",");
         if (getPathId() != null)
-            sb.append("PathId: " + getPathId());
+            sb.append("PathId: ").append(getPathId());
         sb.append("}");
         return sb.toString();
     }
@@ -361,4 +366,5 @@ public class DescribeProvisioningParametersRequest extends com.amazonaws.AmazonW
     public DescribeProvisioningParametersRequest clone() {
         return (DescribeProvisioningParametersRequest) super.clone();
     }
+
 }

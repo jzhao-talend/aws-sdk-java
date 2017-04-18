@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,22 +12,22 @@
  */
 package com.amazonaws.services.cloudformation.model.transform;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.MapEntry;
+
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
 /**
  * DescribeChangeSetResult StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeChangeSetResultStaxUnmarshaller implements Unmarshaller<DescribeChangeSetResult, StaxUnmarshallerContext> {
 
     public DescribeChangeSetResult unmarshall(StaxUnmarshallerContext context) throws Exception {
@@ -70,6 +70,11 @@ public class DescribeChangeSetResultStaxUnmarshaller implements Unmarshaller<Des
                     continue;
                 }
 
+                if (context.testExpression("Parameters", targetDepth)) {
+                    describeChangeSetResult.withParameters(new ArrayList<Parameter>());
+                    continue;
+                }
+
                 if (context.testExpression("Parameters/member", targetDepth)) {
                     describeChangeSetResult.withParameters(ParameterStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -95,8 +100,18 @@ public class DescribeChangeSetResultStaxUnmarshaller implements Unmarshaller<Des
                     continue;
                 }
 
+                if (context.testExpression("NotificationARNs", targetDepth)) {
+                    describeChangeSetResult.withNotificationARNs(new ArrayList<String>());
+                    continue;
+                }
+
                 if (context.testExpression("NotificationARNs/member", targetDepth)) {
                     describeChangeSetResult.withNotificationARNs(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Capabilities", targetDepth)) {
+                    describeChangeSetResult.withCapabilities(new ArrayList<String>());
                     continue;
                 }
 
@@ -105,8 +120,18 @@ public class DescribeChangeSetResultStaxUnmarshaller implements Unmarshaller<Des
                     continue;
                 }
 
+                if (context.testExpression("Tags", targetDepth)) {
+                    describeChangeSetResult.withTags(new ArrayList<Tag>());
+                    continue;
+                }
+
                 if (context.testExpression("Tags/member", targetDepth)) {
                     describeChangeSetResult.withTags(TagStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Changes", targetDepth)) {
+                    describeChangeSetResult.withChanges(new ArrayList<Change>());
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,15 +13,27 @@
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Change the size of some instance groups.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceGroups"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The ID of the cluster to which the instance group belongs.
+     * </p>
+     */
+    private String clusterId;
     /**
      * <p>
      * Instance groups to change.
@@ -45,6 +57,46 @@ public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceR
      */
     public ModifyInstanceGroupsRequest(java.util.List<InstanceGroupModifyConfig> instanceGroups) {
         setInstanceGroups(instanceGroups);
+    }
+
+    /**
+     * <p>
+     * The ID of the cluster to which the instance group belongs.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of the cluster to which the instance group belongs.
+     */
+
+    public void setClusterId(String clusterId) {
+        this.clusterId = clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of the cluster to which the instance group belongs.
+     * </p>
+     * 
+     * @return The ID of the cluster to which the instance group belongs.
+     */
+
+    public String getClusterId() {
+        return this.clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of the cluster to which the instance group belongs.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of the cluster to which the instance group belongs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyInstanceGroupsRequest withClusterId(String clusterId) {
+        setClusterId(clusterId);
+        return this;
     }
 
     /**
@@ -131,8 +183,10 @@ public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceR
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getClusterId() != null)
+            sb.append("ClusterId: ").append(getClusterId()).append(",");
         if (getInstanceGroups() != null)
-            sb.append("InstanceGroups: " + getInstanceGroups());
+            sb.append("InstanceGroups: ").append(getInstanceGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -147,6 +201,10 @@ public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceR
         if (obj instanceof ModifyInstanceGroupsRequest == false)
             return false;
         ModifyInstanceGroupsRequest other = (ModifyInstanceGroupsRequest) obj;
+        if (other.getClusterId() == null ^ this.getClusterId() == null)
+            return false;
+        if (other.getClusterId() != null && other.getClusterId().equals(this.getClusterId()) == false)
+            return false;
         if (other.getInstanceGroups() == null ^ this.getInstanceGroups() == null)
             return false;
         if (other.getInstanceGroups() != null && other.getInstanceGroups().equals(this.getInstanceGroups()) == false)
@@ -159,6 +217,7 @@ public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceR
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getClusterId() == null) ? 0 : getClusterId().hashCode());
         hashCode = prime * hashCode + ((getInstanceGroups() == null) ? 0 : getInstanceGroups().hashCode());
         return hashCode;
     }
@@ -167,4 +226,5 @@ public class ModifyInstanceGroupsRequest extends com.amazonaws.AmazonWebServiceR
     public ModifyInstanceGroupsRequest clone() {
         return (ModifyInstanceGroupsRequest) super.clone();
     }
+
 }

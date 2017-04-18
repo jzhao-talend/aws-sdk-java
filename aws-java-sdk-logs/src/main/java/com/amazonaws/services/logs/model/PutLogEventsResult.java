@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,18 +13,36 @@
 package com.amazonaws.services.logs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The next sequence token.
+     * </p>
+     */
     private String nextSequenceToken;
-
+    /**
+     * <p>
+     * The rejected events.
+     * </p>
+     */
     private RejectedLogEventsInfo rejectedLogEventsInfo;
 
     /**
+     * <p>
+     * The next sequence token.
+     * </p>
+     * 
      * @param nextSequenceToken
+     *        The next sequence token.
      */
 
     public void setNextSequenceToken(String nextSequenceToken) {
@@ -32,7 +50,11 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
-     * @return
+     * <p>
+     * The next sequence token.
+     * </p>
+     * 
+     * @return The next sequence token.
      */
 
     public String getNextSequenceToken() {
@@ -40,7 +62,12 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
+     * <p>
+     * The next sequence token.
+     * </p>
+     * 
      * @param nextSequenceToken
+     *        The next sequence token.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -50,7 +77,12 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
+     * <p>
+     * The rejected events.
+     * </p>
+     * 
      * @param rejectedLogEventsInfo
+     *        The rejected events.
      */
 
     public void setRejectedLogEventsInfo(RejectedLogEventsInfo rejectedLogEventsInfo) {
@@ -58,7 +90,11 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
-     * @return
+     * <p>
+     * The rejected events.
+     * </p>
+     * 
+     * @return The rejected events.
      */
 
     public RejectedLogEventsInfo getRejectedLogEventsInfo() {
@@ -66,7 +102,12 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
+     * <p>
+     * The rejected events.
+     * </p>
+     * 
      * @param rejectedLogEventsInfo
+     *        The rejected events.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -87,9 +128,9 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNextSequenceToken() != null)
-            sb.append("NextSequenceToken: " + getNextSequenceToken() + ",");
+            sb.append("NextSequenceToken: ").append(getNextSequenceToken()).append(",");
         if (getRejectedLogEventsInfo() != null)
-            sb.append("RejectedLogEventsInfo: " + getRejectedLogEventsInfo());
+            sb.append("RejectedLogEventsInfo: ").append(getRejectedLogEventsInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -133,4 +174,5 @@ public class PutLogEventsResult extends com.amazonaws.AmazonWebServiceResult<com
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

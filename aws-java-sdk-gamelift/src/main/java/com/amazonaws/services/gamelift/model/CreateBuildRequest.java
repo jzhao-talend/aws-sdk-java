@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,48 +13,64 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateBuild" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. A build name can be changed
-     * later using <code> <a>UpdateBuild</a> </code>.
+     * Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. A build version can be
-     * changed later using <code> <a>UpdateBuild</a> </code>.
+     * Version that is associated with this build. Version strings do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      */
     private String version;
-
+    /**
+     * <p>
+     * Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account
+     * that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build
+     * in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your
+     * Amazon S3 bucket (see <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     * >Create a Build with Files in Amazon S3</a>).
+     * </p>
+     */
     private S3Location storageLocation;
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      */
     private String operatingSystem;
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. A build name can be changed
-     * later using <code> <a>UpdateBuild</a> </code>.
+     * Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a build. Build names do not need to be unique. A build name can be
-     *        changed later using <code> <a>UpdateBuild</a> </code>.
+     *        Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     *        <a>UpdateBuild</a> to change this value later.
      */
 
     public void setName(String name) {
@@ -63,12 +79,12 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. A build name can be changed
-     * later using <code> <a>UpdateBuild</a> </code>.
+     * Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
-     * @return Descriptive label associated with a build. Build names do not need to be unique. A build name can be
-     *         changed later using <code> <a>UpdateBuild</a> </code>.
+     * @return Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     *         <a>UpdateBuild</a> to change this value later.
      */
 
     public String getName() {
@@ -77,13 +93,13 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Descriptive label associated with a build. Build names do not need to be unique. A build name can be changed
-     * later using <code> <a>UpdateBuild</a> </code>.
+     * Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a build. Build names do not need to be unique. A build name can be
-     *        changed later using <code> <a>UpdateBuild</a> </code>.
+     *        Descriptive label that is associated with a build. Build names do not need to be unique. You can use
+     *        <a>UpdateBuild</a> to change this value later.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -94,13 +110,13 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. A build version can be
-     * changed later using <code> <a>UpdateBuild</a> </code>.
+     * Version that is associated with this build. Version strings do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
      * @param version
-     *        Version associated with this build. Version strings do not need to be unique to a build. A build version
-     *        can be changed later using <code> <a>UpdateBuild</a> </code>.
+     *        Version that is associated with this build. Version strings do not need to be unique. You can use
+     *        <a>UpdateBuild</a> to change this value later.
      */
 
     public void setVersion(String version) {
@@ -109,12 +125,12 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. A build version can be
-     * changed later using <code> <a>UpdateBuild</a> </code>.
+     * Version that is associated with this build. Version strings do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
-     * @return Version associated with this build. Version strings do not need to be unique to a build. A build version
-     *         can be changed later using <code> <a>UpdateBuild</a> </code>.
+     * @return Version that is associated with this build. Version strings do not need to be unique. You can use
+     *         <a>UpdateBuild</a> to change this value later.
      */
 
     public String getVersion() {
@@ -123,13 +139,13 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version associated with this build. Version strings do not need to be unique to a build. A build version can be
-     * changed later using <code> <a>UpdateBuild</a> </code>.
+     * Version that is associated with this build. Version strings do not need to be unique. You can use
+     * <a>UpdateBuild</a> to change this value later.
      * </p>
      * 
      * @param version
-     *        Version associated with this build. Version strings do not need to be unique to a build. A build version
-     *        can be changed later using <code> <a>UpdateBuild</a> </code>.
+     *        Version that is associated with this build. Version strings do not need to be unique. You can use
+     *        <a>UpdateBuild</a> to change this value later.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -139,7 +155,22 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account
+     * that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build
+     * in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your
+     * Amazon S3 bucket (see <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     * >Create a Build with Files in Amazon S3</a>).
+     * </p>
+     * 
      * @param storageLocation
+     *        Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS
+     *        account that you're using to manage Amazon GameLift. It also must in the same region that you want to
+     *        create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon
+     *        GameLift to access your Amazon S3 bucket (see <a href=
+     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     *        >Create a Build with Files in Amazon S3</a>).
      */
 
     public void setStorageLocation(S3Location storageLocation) {
@@ -147,7 +178,21 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * @return
+     * <p>
+     * Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account
+     * that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build
+     * in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your
+     * Amazon S3 bucket (see <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     * >Create a Build with Files in Amazon S3</a>).
+     * </p>
+     * 
+     * @return Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS
+     *         account that you're using to manage Amazon GameLift. It also must in the same region that you want to
+     *         create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon
+     *         GameLift to access your Amazon S3 bucket (see <a href=
+     *         "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     *         >Create a Build with Files in Amazon S3</a>).
      */
 
     public S3Location getStorageLocation() {
@@ -155,7 +200,22 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account
+     * that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build
+     * in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your
+     * Amazon S3 bucket (see <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     * >Create a Build with Files in Amazon S3</a>).
+     * </p>
+     * 
      * @param storageLocation
+     *        Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS
+     *        account that you're using to manage Amazon GameLift. It also must in the same region that you want to
+     *        create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon
+     *        GameLift to access your Amazon S3 bucket (see <a href=
+     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     *        >Create a Build with Files in Amazon S3</a>).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,12 +227,14 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      * 
      * @param operatingSystem
      *        Operating system that the game server binaries are built to run on. This value determines the type of
-     *        fleet resources that you can use for this build.
+     *        fleet resources that you can use for this build. If your game build contains multiple executables, they
+     *        all must run on the same operating system.
      * @see OperatingSystem
      */
 
@@ -183,11 +245,13 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      * 
      * @return Operating system that the game server binaries are built to run on. This value determines the type of
-     *         fleet resources that you can use for this build.
+     *         fleet resources that you can use for this build. If your game build contains multiple executables, they
+     *         all must run on the same operating system.
      * @see OperatingSystem
      */
 
@@ -198,12 +262,14 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      * 
      * @param operatingSystem
      *        Operating system that the game server binaries are built to run on. This value determines the type of
-     *        fleet resources that you can use for this build.
+     *        fleet resources that you can use for this build. If your game build contains multiple executables, they
+     *        all must run on the same operating system.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OperatingSystem
      */
@@ -216,12 +282,14 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      * 
      * @param operatingSystem
      *        Operating system that the game server binaries are built to run on. This value determines the type of
-     *        fleet resources that you can use for this build.
+     *        fleet resources that you can use for this build. If your game build contains multiple executables, they
+     *        all must run on the same operating system.
      * @see OperatingSystem
      */
 
@@ -232,12 +300,14 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Operating system that the game server binaries are built to run on. This value determines the type of fleet
-     * resources that you can use for this build.
+     * resources that you can use for this build. If your game build contains multiple executables, they all must run on
+     * the same operating system.
      * </p>
      * 
      * @param operatingSystem
      *        Operating system that the game server binaries are built to run on. This value determines the type of
-     *        fleet resources that you can use for this build.
+     *        fleet resources that you can use for this build. If your game build contains multiple executables, they
+     *        all must run on the same operating system.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OperatingSystem
      */
@@ -259,13 +329,13 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion() + ",");
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getStorageLocation() != null)
-            sb.append("StorageLocation: " + getStorageLocation() + ",");
+            sb.append("StorageLocation: ").append(getStorageLocation()).append(",");
         if (getOperatingSystem() != null)
-            sb.append("OperatingSystem: " + getOperatingSystem());
+            sb.append("OperatingSystem: ").append(getOperatingSystem());
         sb.append("}");
         return sb.toString();
     }
@@ -315,4 +385,5 @@ public class CreateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     public CreateBuildRequest clone() {
         return (CreateBuildRequest) super.clone();
     }
+
 }

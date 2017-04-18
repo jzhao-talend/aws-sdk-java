@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,71 +12,47 @@
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.apigateway.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * DeleteBasePathMappingRequest Marshaller
+ * DeleteBasePathMappingRequestMarshaller
  */
-public class DeleteBasePathMappingRequestMarshaller implements Marshaller<Request<DeleteBasePathMappingRequest>, DeleteBasePathMappingRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class DeleteBasePathMappingRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> DOMAINNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("domain_name").build();
+    private static final MarshallingInfo<String> BASEPATH_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("base_path").build();
 
-    public DeleteBasePathMappingRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final DeleteBasePathMappingRequestMarshaller instance = new DeleteBasePathMappingRequestMarshaller();
+
+    public static DeleteBasePathMappingRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<DeleteBasePathMappingRequest> marshall(DeleteBasePathMappingRequest deleteBasePathMappingRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(DeleteBasePathMappingRequest deleteBasePathMappingRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (deleteBasePathMappingRequest == null) {
             throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteBasePathMappingRequest> request = new DefaultRequest<DeleteBasePathMappingRequest>(deleteBasePathMappingRequest, "AmazonApiGateway");
-
-        request.setHttpMethod(HttpMethodName.DELETE);
-
-        String uriResourcePath = "/domainnames/{domain_name}/basepathmappings/{base_path}";
-
-        uriResourcePath = uriResourcePath.replace(
-                "{domain_name}",
-                (deleteBasePathMappingRequest.getDomainName() != null) ? SdkHttpUtils.urlEncode(
-                        StringUtils.fromString(deleteBasePathMappingRequest.getDomainName()), false) : "");
-        uriResourcePath = uriResourcePath.replace(
-                "{base_path}",
-                (deleteBasePathMappingRequest.getBasePath() != null) ? SdkHttpUtils.urlEncode(
-                        StringUtils.fromString(deleteBasePathMappingRequest.getBasePath()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
-        request.setContent(new ByteArrayInputStream(new byte[0]));
-        if (!request.getHeaders().containsKey("Content-Type")) {
-            request.addHeader("Content-Type", protocolFactory.getContentType());
+        try {
+            protocolMarshaller.marshall(deleteBasePathMappingRequest.getDomainName(), DOMAINNAME_BINDING);
+            protocolMarshaller.marshall(deleteBasePathMappingRequest.getBasePath(), BASEPATH_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,25 +13,31 @@
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeInstances" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     * Unique identifier for a fleet to retrieve instance information for.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     * information on all instances in the fleet.
+     * Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in
+     * the fleet.
      * </p>
      */
     private String instanceId;
@@ -44,19 +50,19 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
     private Integer limit;
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     * Unique identifier for a fleet to retrieve instance information for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     *        Unique identifier for a fleet to retrieve instance information for.
      */
 
     public void setFleetId(String fleetId) {
@@ -65,10 +71,10 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     * Unique identifier for a fleet to retrieve instance information for.
      * </p>
      * 
-     * @return Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     * @return Unique identifier for a fleet to retrieve instance information for.
      */
 
     public String getFleetId() {
@@ -77,11 +83,11 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     * Unique identifier for a fleet to retrieve instance information for.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet. Specify the fleet to retrieve instance information for.
+     *        Unique identifier for a fleet to retrieve instance information for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,13 +98,13 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     * information on all instances in the fleet.
+     * Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in
+     * the fleet.
      * </p>
      * 
      * @param instanceId
-     *        Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     *        information on all instances in the fleet.
+     *        Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all
+     *        instances in the fleet.
      */
 
     public void setInstanceId(String instanceId) {
@@ -107,12 +113,12 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     * information on all instances in the fleet.
+     * Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in
+     * the fleet.
      * </p>
      * 
-     * @return Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     *         information on all instances in the fleet.
+     * @return Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all
+     *         instances in the fleet.
      */
 
     public String getInstanceId() {
@@ -121,13 +127,13 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     * information on all instances in the fleet.
+     * Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in
+     * the fleet.
      * </p>
      * 
      * @param instanceId
-     *        Unique identifier for an instance. Specify an instance to retrieve information for or leave blank to get
-     *        information on all instances in the fleet.
+     *        Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all
+     *        instances in the fleet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -184,13 +190,13 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public void setNextToken(String nextToken) {
@@ -199,12 +205,12 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
-     * @return Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *         previous call to this action. To specify the start of the result set, do not specify a value.
+     * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
+     *         with a previous call to this action. To specify the start of the result set, do not specify a value.
      */
 
     public String getNextToken() {
@@ -213,13 +219,13 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Token indicating the start of the next sequential page of results. Use the token that is returned with a previous
-     * call to this action. To specify the start of the result set, do not specify a value.
+     * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
+     * previous call to this action. To specify the start of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
-     *        Token indicating the start of the next sequential page of results. Use the token that is returned with a
-     *        previous call to this action. To specify the start of the result set, do not specify a value.
+     *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
+     *        a previous call to this action. To specify the start of the result set, do not specify a value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -240,13 +246,13 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -296,4 +302,5 @@ public class DescribeInstancesRequest extends com.amazonaws.AmazonWebServiceRequ
     public DescribeInstancesRequest clone() {
         return (DescribeInstancesRequest) super.clone();
     }
+
 }

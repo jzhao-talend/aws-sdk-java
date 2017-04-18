@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The settings for a trail.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/Trail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Trail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -117,6 +124,12 @@ public class Trail implements Serializable, Cloneable {
      * </p>
      */
     private String kmsKeyId;
+    /**
+     * <p>
+     * Specifies if the trail has custom event selectors.
+     * </p>
+     */
+    private Boolean hasCustomEventSelectors;
 
     /**
      * <p>
@@ -770,6 +783,58 @@ public class Trail implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Specifies if the trail has custom event selectors.
+     * </p>
+     * 
+     * @param hasCustomEventSelectors
+     *        Specifies if the trail has custom event selectors.
+     */
+
+    public void setHasCustomEventSelectors(Boolean hasCustomEventSelectors) {
+        this.hasCustomEventSelectors = hasCustomEventSelectors;
+    }
+
+    /**
+     * <p>
+     * Specifies if the trail has custom event selectors.
+     * </p>
+     * 
+     * @return Specifies if the trail has custom event selectors.
+     */
+
+    public Boolean getHasCustomEventSelectors() {
+        return this.hasCustomEventSelectors;
+    }
+
+    /**
+     * <p>
+     * Specifies if the trail has custom event selectors.
+     * </p>
+     * 
+     * @param hasCustomEventSelectors
+     *        Specifies if the trail has custom event selectors.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Trail withHasCustomEventSelectors(Boolean hasCustomEventSelectors) {
+        setHasCustomEventSelectors(hasCustomEventSelectors);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies if the trail has custom event selectors.
+     * </p>
+     * 
+     * @return Specifies if the trail has custom event selectors.
+     */
+
+    public Boolean isHasCustomEventSelectors() {
+        return this.hasCustomEventSelectors;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -781,31 +846,33 @@ public class Trail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getS3BucketName() != null)
-            sb.append("S3BucketName: " + getS3BucketName() + ",");
+            sb.append("S3BucketName: ").append(getS3BucketName()).append(",");
         if (getS3KeyPrefix() != null)
-            sb.append("S3KeyPrefix: " + getS3KeyPrefix() + ",");
+            sb.append("S3KeyPrefix: ").append(getS3KeyPrefix()).append(",");
         if (getSnsTopicName() != null)
-            sb.append("SnsTopicName: " + getSnsTopicName() + ",");
+            sb.append("SnsTopicName: ").append(getSnsTopicName()).append(",");
         if (getSnsTopicARN() != null)
-            sb.append("SnsTopicARN: " + getSnsTopicARN() + ",");
+            sb.append("SnsTopicARN: ").append(getSnsTopicARN()).append(",");
         if (getIncludeGlobalServiceEvents() != null)
-            sb.append("IncludeGlobalServiceEvents: " + getIncludeGlobalServiceEvents() + ",");
+            sb.append("IncludeGlobalServiceEvents: ").append(getIncludeGlobalServiceEvents()).append(",");
         if (getIsMultiRegionTrail() != null)
-            sb.append("IsMultiRegionTrail: " + getIsMultiRegionTrail() + ",");
+            sb.append("IsMultiRegionTrail: ").append(getIsMultiRegionTrail()).append(",");
         if (getHomeRegion() != null)
-            sb.append("HomeRegion: " + getHomeRegion() + ",");
+            sb.append("HomeRegion: ").append(getHomeRegion()).append(",");
         if (getTrailARN() != null)
-            sb.append("TrailARN: " + getTrailARN() + ",");
+            sb.append("TrailARN: ").append(getTrailARN()).append(",");
         if (getLogFileValidationEnabled() != null)
-            sb.append("LogFileValidationEnabled: " + getLogFileValidationEnabled() + ",");
+            sb.append("LogFileValidationEnabled: ").append(getLogFileValidationEnabled()).append(",");
         if (getCloudWatchLogsLogGroupArn() != null)
-            sb.append("CloudWatchLogsLogGroupArn: " + getCloudWatchLogsLogGroupArn() + ",");
+            sb.append("CloudWatchLogsLogGroupArn: ").append(getCloudWatchLogsLogGroupArn()).append(",");
         if (getCloudWatchLogsRoleArn() != null)
-            sb.append("CloudWatchLogsRoleArn: " + getCloudWatchLogsRoleArn() + ",");
+            sb.append("CloudWatchLogsRoleArn: ").append(getCloudWatchLogsRoleArn()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId());
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
+        if (getHasCustomEventSelectors() != null)
+            sb.append("HasCustomEventSelectors: ").append(getHasCustomEventSelectors());
         sb.append("}");
         return sb.toString();
     }
@@ -872,6 +939,10 @@ public class Trail implements Serializable, Cloneable {
             return false;
         if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
+        if (other.getHasCustomEventSelectors() == null ^ this.getHasCustomEventSelectors() == null)
+            return false;
+        if (other.getHasCustomEventSelectors() != null && other.getHasCustomEventSelectors().equals(this.getHasCustomEventSelectors()) == false)
+            return false;
         return true;
     }
 
@@ -893,6 +964,7 @@ public class Trail implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getCloudWatchLogsLogGroupArn() == null) ? 0 : getCloudWatchLogsLogGroupArn().hashCode());
         hashCode = prime * hashCode + ((getCloudWatchLogsRoleArn() == null) ? 0 : getCloudWatchLogsRoleArn().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getHasCustomEventSelectors() == null) ? 0 : getHasCustomEventSelectors().hashCode());
         return hashCode;
     }
 
@@ -903,5 +975,11 @@ public class Trail implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudtrail.model.transform.TrailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

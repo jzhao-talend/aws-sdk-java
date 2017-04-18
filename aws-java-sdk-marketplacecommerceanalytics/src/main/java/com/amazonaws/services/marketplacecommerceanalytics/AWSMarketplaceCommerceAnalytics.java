@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.marketplacecommerceanalytics;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -20,8 +22,13 @@ import com.amazonaws.services.marketplacecommerceanalytics.model.*;
 /**
  * Interface for accessing AWS Marketplace Commerce Analytics.
  * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link com.amazonaws.services.marketplacecommerceanalytics.AbstractAWSMarketplaceCommerceAnalytics} instead.
+ * </p>
+ * <p>
  * Provides AWS Marketplace business intelligence data on-demand.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface AWSMarketplaceCommerceAnalytics {
 
     /**
@@ -54,7 +61,11 @@ public interface AWSMarketplaceCommerceAnalytics {
      *        The endpoint (ex: "marketplacecommerceanalytics.us-east-1.amazonaws.com") or a full URL, including the
      *        protocol (ex: "https://marketplacecommerceanalytics.us-east-1.amazonaws.com") of the region specific AWS
      *        endpoint this client will communicate with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
+     *             example:
+     *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
 
     /**
@@ -75,7 +86,9 @@ public interface AWSMarketplaceCommerceAnalytics {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see Region#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(Region region);
 
     /**
@@ -93,6 +106,8 @@ public interface AWSMarketplaceCommerceAnalytics {
      * @throws MarketplaceCommerceAnalyticsException
      *         This exception is thrown when an internal service error occurs.
      * @sample AWSMarketplaceCommerceAnalytics.GenerateDataSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet"
+     *      target="_top">AWS API Documentation</a>
      */
     GenerateDataSetResult generateDataSet(GenerateDataSetRequest generateDataSetRequest);
 
@@ -112,6 +127,9 @@ public interface AWSMarketplaceCommerceAnalytics {
      * @throws MarketplaceCommerceAnalyticsException
      *         This exception is thrown when an internal service error occurs.
      * @sample AWSMarketplaceCommerceAnalytics.StartSupportDataExport
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport"
+     *      target="_top">AWS API Documentation</a>
      */
     StartSupportDataExportResult startSupportDataExport(StartSupportDataExportRequest startSupportDataExportRequest);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,14 +13,21 @@
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a specific job including shipping information, job status, and other important metadata.
  * This information is returned as a part of the response syntax of the <code>DescribeJob</code> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/JobMetadata" target="_top">AWS API
+ *      Documentation</a>
  */
-public class JobMetadata implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -30,7 +37,7 @@ public class JobMetadata implements Serializable, Cloneable {
     private String jobId;
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      */
     private String jobState;
@@ -40,6 +47,12 @@ public class JobMetadata implements Serializable, Cloneable {
      * </p>
      */
     private String jobType;
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     */
+    private String snowballType;
     /**
      * <p>
      * The creation date for this job.
@@ -102,9 +115,9 @@ public class JobMetadata implements Serializable, Cloneable {
     private Notification notification;
     /**
      * <p>
-     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. Note that
-     * this data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both
-     * import and export jobs.
+     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data
+     * is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and
+     * export jobs.
      * </p>
      */
     private DataTransfer dataTransferProgress;
@@ -116,6 +129,12 @@ public class JobMetadata implements Serializable, Cloneable {
      * </p>
      */
     private JobLogs jobLogInfo;
+    /**
+     * <p>
+     * The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     * </p>
+     */
+    private String clusterId;
 
     /**
      * <p>
@@ -162,11 +181,11 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      * 
      * @param jobState
-     *        The current state of the jobs.
+     *        The current status of the jobs.
      * @see JobState
      */
 
@@ -176,10 +195,10 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      * 
-     * @return The current state of the jobs.
+     * @return The current status of the jobs.
      * @see JobState
      */
 
@@ -189,11 +208,11 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      * 
      * @param jobState
-     *        The current state of the jobs.
+     *        The current status of the jobs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see JobState
      */
@@ -205,11 +224,11 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      * 
      * @param jobState
-     *        The current state of the jobs.
+     *        The current status of the jobs.
      * @see JobState
      */
 
@@ -219,11 +238,11 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of the jobs.
+     * The current status of the jobs.
      * </p>
      * 
      * @param jobState
-     *        The current state of the jobs.
+     *        The current status of the jobs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see JobState
      */
@@ -303,6 +322,79 @@ public class JobMetadata implements Serializable, Cloneable {
 
     public JobMetadata withJobType(JobType jobType) {
         setJobType(jobType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of appliance used with this job.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(String snowballType) {
+        this.snowballType = snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     * 
+     * @return The type of appliance used with this job.
+     * @see SnowballType
+     */
+
+    public String getSnowballType() {
+        return this.snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of appliance used with this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public JobMetadata withSnowballType(String snowballType) {
+        setSnowballType(snowballType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of appliance used with this job.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(SnowballType snowballType) {
+        this.snowballType = snowballType.toString();
+    }
+
+    /**
+     * <p>
+     * The type of appliance used with this job.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of appliance used with this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public JobMetadata withSnowballType(SnowballType snowballType) {
+        setSnowballType(snowballType);
         return this;
     }
 
@@ -741,15 +833,15 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. Note that
-     * this data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both
-     * import and export jobs.
+     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data
+     * is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and
+     * export jobs.
      * </p>
      * 
      * @param dataTransferProgress
      *        A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS.
-     *        Note that this data is only available while a job has a <code>JobState</code> value of
-     *        <code>InProgress</code>, for both import and export jobs.
+     *        This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for
+     *        both import and export jobs.
      */
 
     public void setDataTransferProgress(DataTransfer dataTransferProgress) {
@@ -758,14 +850,14 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. Note that
-     * this data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both
-     * import and export jobs.
+     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data
+     * is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and
+     * export jobs.
      * </p>
      * 
      * @return A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS.
-     *         Note that this data is only available while a job has a <code>JobState</code> value of
-     *         <code>InProgress</code>, for both import and export jobs.
+     *         This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for
+     *         both import and export jobs.
      */
 
     public DataTransfer getDataTransferProgress() {
@@ -774,15 +866,15 @@ public class JobMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. Note that
-     * this data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both
-     * import and export jobs.
+     * A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data
+     * is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and
+     * export jobs.
      * </p>
      * 
      * @param dataTransferProgress
      *        A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS.
-     *        Note that this data is only available while a job has a <code>JobState</code> value of
-     *        <code>InProgress</code>, for both import and export jobs.
+     *        This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for
+     *        both import and export jobs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -844,6 +936,46 @@ public class JobMetadata implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     * </p>
+     * 
+     * @param clusterId
+     *        The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     */
+
+    public void setClusterId(String clusterId) {
+        this.clusterId = clusterId;
+    }
+
+    /**
+     * <p>
+     * The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     * </p>
+     * 
+     * @return The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     */
+
+    public String getClusterId() {
+        return this.clusterId;
+    }
+
+    /**
+     * <p>
+     * The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     * </p>
+     * 
+     * @param clusterId
+     *        The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobMetadata withClusterId(String clusterId) {
+        setClusterId(clusterId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -855,33 +987,37 @@ public class JobMetadata implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobId() != null)
-            sb.append("JobId: " + getJobId() + ",");
+            sb.append("JobId: ").append(getJobId()).append(",");
         if (getJobState() != null)
-            sb.append("JobState: " + getJobState() + ",");
+            sb.append("JobState: ").append(getJobState()).append(",");
         if (getJobType() != null)
-            sb.append("JobType: " + getJobType() + ",");
+            sb.append("JobType: ").append(getJobType()).append(",");
+        if (getSnowballType() != null)
+            sb.append("SnowballType: ").append(getSnowballType()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getKmsKeyARN() != null)
-            sb.append("KmsKeyARN: " + getKmsKeyARN() + ",");
+            sb.append("KmsKeyARN: ").append(getKmsKeyARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getAddressId() != null)
-            sb.append("AddressId: " + getAddressId() + ",");
+            sb.append("AddressId: ").append(getAddressId()).append(",");
         if (getShippingDetails() != null)
-            sb.append("ShippingDetails: " + getShippingDetails() + ",");
+            sb.append("ShippingDetails: ").append(getShippingDetails()).append(",");
         if (getSnowballCapacityPreference() != null)
-            sb.append("SnowballCapacityPreference: " + getSnowballCapacityPreference() + ",");
+            sb.append("SnowballCapacityPreference: ").append(getSnowballCapacityPreference()).append(",");
         if (getNotification() != null)
-            sb.append("Notification: " + getNotification() + ",");
+            sb.append("Notification: ").append(getNotification()).append(",");
         if (getDataTransferProgress() != null)
-            sb.append("DataTransferProgress: " + getDataTransferProgress() + ",");
+            sb.append("DataTransferProgress: ").append(getDataTransferProgress()).append(",");
         if (getJobLogInfo() != null)
-            sb.append("JobLogInfo: " + getJobLogInfo());
+            sb.append("JobLogInfo: ").append(getJobLogInfo()).append(",");
+        if (getClusterId() != null)
+            sb.append("ClusterId: ").append(getClusterId());
         sb.append("}");
         return sb.toString();
     }
@@ -907,6 +1043,10 @@ public class JobMetadata implements Serializable, Cloneable {
         if (other.getJobType() == null ^ this.getJobType() == null)
             return false;
         if (other.getJobType() != null && other.getJobType().equals(this.getJobType()) == false)
+            return false;
+        if (other.getSnowballType() == null ^ this.getSnowballType() == null)
+            return false;
+        if (other.getSnowballType() != null && other.getSnowballType().equals(this.getSnowballType()) == false)
             return false;
         if (other.getCreationDate() == null ^ this.getCreationDate() == null)
             return false;
@@ -952,6 +1092,10 @@ public class JobMetadata implements Serializable, Cloneable {
             return false;
         if (other.getJobLogInfo() != null && other.getJobLogInfo().equals(this.getJobLogInfo()) == false)
             return false;
+        if (other.getClusterId() == null ^ this.getClusterId() == null)
+            return false;
+        if (other.getClusterId() != null && other.getClusterId().equals(this.getClusterId()) == false)
+            return false;
         return true;
     }
 
@@ -963,6 +1107,7 @@ public class JobMetadata implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getJobId() == null) ? 0 : getJobId().hashCode());
         hashCode = prime * hashCode + ((getJobState() == null) ? 0 : getJobState().hashCode());
         hashCode = prime * hashCode + ((getJobType() == null) ? 0 : getJobType().hashCode());
+        hashCode = prime * hashCode + ((getSnowballType() == null) ? 0 : getSnowballType().hashCode());
         hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
         hashCode = prime * hashCode + ((getResources() == null) ? 0 : getResources().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
@@ -974,6 +1119,7 @@ public class JobMetadata implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getNotification() == null) ? 0 : getNotification().hashCode());
         hashCode = prime * hashCode + ((getDataTransferProgress() == null) ? 0 : getDataTransferProgress().hashCode());
         hashCode = prime * hashCode + ((getJobLogInfo() == null) ? 0 : getJobLogInfo().hashCode());
+        hashCode = prime * hashCode + ((getClusterId() == null) ? 0 : getClusterId().hashCode());
         return hashCode;
     }
 
@@ -984,5 +1130,11 @@ public class JobMetadata implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.JobMetadataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

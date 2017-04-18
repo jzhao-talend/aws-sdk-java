@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.securitytoken.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the response to a successful <a>AssumeRoleWithSAML</a> request, including temporary AWS credentials that can
  * be used to make AWS requests.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/AssumeRoleWithSAML" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AssumeRoleWithSAMLResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -557,21 +562,21 @@ public class AssumeRoleWithSAMLResult extends com.amazonaws.AmazonWebServiceResu
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCredentials() != null)
-            sb.append("Credentials: " + getCredentials() + ",");
+            sb.append("Credentials: ").append(getCredentials()).append(",");
         if (getAssumedRoleUser() != null)
-            sb.append("AssumedRoleUser: " + getAssumedRoleUser() + ",");
+            sb.append("AssumedRoleUser: ").append(getAssumedRoleUser()).append(",");
         if (getPackedPolicySize() != null)
-            sb.append("PackedPolicySize: " + getPackedPolicySize() + ",");
+            sb.append("PackedPolicySize: ").append(getPackedPolicySize()).append(",");
         if (getSubject() != null)
-            sb.append("Subject: " + getSubject() + ",");
+            sb.append("Subject: ").append(getSubject()).append(",");
         if (getSubjectType() != null)
-            sb.append("SubjectType: " + getSubjectType() + ",");
+            sb.append("SubjectType: ").append(getSubjectType()).append(",");
         if (getIssuer() != null)
-            sb.append("Issuer: " + getIssuer() + ",");
+            sb.append("Issuer: ").append(getIssuer()).append(",");
         if (getAudience() != null)
-            sb.append("Audience: " + getAudience() + ",");
+            sb.append("Audience: ").append(getAudience()).append(",");
         if (getNameQualifier() != null)
-            sb.append("NameQualifier: " + getNameQualifier());
+            sb.append("NameQualifier: ").append(getNameQualifier());
         sb.append("}");
         return sb.toString();
     }
@@ -645,4 +650,5 @@ public class AssumeRoleWithSAMLResult extends com.amazonaws.AmazonWebServiceResu
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

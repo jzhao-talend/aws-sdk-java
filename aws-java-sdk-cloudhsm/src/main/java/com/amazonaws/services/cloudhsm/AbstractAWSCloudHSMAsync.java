@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,8 @@
  */
 package com.amazonaws.services.cloudhsm;
 
+import javax.annotation.Generated;
+
 import com.amazonaws.services.cloudhsm.model.*;
 
 /**
@@ -19,6 +21,7 @@ import com.amazonaws.services.cloudhsm.model.*;
  * overload that takes a request object and an {@code AsyncHandler}, which throws an
  * {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWSCloudHSMAsync {
 
     protected AbstractAWSCloudHSMAsync() {
@@ -157,6 +160,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #describeHsmAsync(DescribeHsmRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeHsmResult> describeHsmAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeHsmRequest, DescribeHsmResult> asyncHandler) {
 
@@ -192,6 +196,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #describeLunaClientAsync(DescribeLunaClientRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<DescribeLunaClientResult> describeLunaClientAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeLunaClientRequest, DescribeLunaClientResult> asyncHandler) {
 
@@ -240,6 +245,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #listAvailableZonesAsync(ListAvailableZonesRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListAvailableZonesResult> listAvailableZonesAsync(
             com.amazonaws.handlers.AsyncHandler<ListAvailableZonesRequest, ListAvailableZonesResult> asyncHandler) {
 
@@ -275,6 +281,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #listHapgsAsync(ListHapgsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListHapgsResult> listHapgsAsync(com.amazonaws.handlers.AsyncHandler<ListHapgsRequest, ListHapgsResult> asyncHandler) {
 
         return listHapgsAsync(new ListHapgsRequest(), asyncHandler);
@@ -309,6 +316,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #listHsmsAsync(ListHsmsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListHsmsResult> listHsmsAsync(com.amazonaws.handlers.AsyncHandler<ListHsmsRequest, ListHsmsResult> asyncHandler) {
 
         return listHsmsAsync(new ListHsmsRequest(), asyncHandler);
@@ -343,6 +351,7 @@ public class AbstractAWSCloudHSMAsync extends AbstractAWSCloudHSM implements AWS
      *
      * @see #listLunaClientsAsync(ListLunaClientsRequest, com.amazonaws.handlers.AsyncHandler)
      */
+    @Override
     public java.util.concurrent.Future<ListLunaClientsResult> listLunaClientsAsync(
             com.amazonaws.handlers.AsyncHandler<ListLunaClientsRequest, ListLunaClientsResult> asyncHandler) {
 

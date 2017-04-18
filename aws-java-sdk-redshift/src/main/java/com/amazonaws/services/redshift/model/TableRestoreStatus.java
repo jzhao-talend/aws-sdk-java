@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes the status of a <a>RestoreTableFromClusterSnapshot</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/TableRestoreStatus" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class TableRestoreStatus implements Serializable, Cloneable {
 
     /**
@@ -757,33 +762,33 @@ public class TableRestoreStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTableRestoreRequestId() != null)
-            sb.append("TableRestoreRequestId: " + getTableRestoreRequestId() + ",");
+            sb.append("TableRestoreRequestId: ").append(getTableRestoreRequestId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getMessage() != null)
-            sb.append("Message: " + getMessage() + ",");
+            sb.append("Message: ").append(getMessage()).append(",");
         if (getRequestTime() != null)
-            sb.append("RequestTime: " + getRequestTime() + ",");
+            sb.append("RequestTime: ").append(getRequestTime()).append(",");
         if (getProgressInMegaBytes() != null)
-            sb.append("ProgressInMegaBytes: " + getProgressInMegaBytes() + ",");
+            sb.append("ProgressInMegaBytes: ").append(getProgressInMegaBytes()).append(",");
         if (getTotalDataInMegaBytes() != null)
-            sb.append("TotalDataInMegaBytes: " + getTotalDataInMegaBytes() + ",");
+            sb.append("TotalDataInMegaBytes: ").append(getTotalDataInMegaBytes()).append(",");
         if (getClusterIdentifier() != null)
-            sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+            sb.append("ClusterIdentifier: ").append(getClusterIdentifier()).append(",");
         if (getSnapshotIdentifier() != null)
-            sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
+            sb.append("SnapshotIdentifier: ").append(getSnapshotIdentifier()).append(",");
         if (getSourceDatabaseName() != null)
-            sb.append("SourceDatabaseName: " + getSourceDatabaseName() + ",");
+            sb.append("SourceDatabaseName: ").append(getSourceDatabaseName()).append(",");
         if (getSourceSchemaName() != null)
-            sb.append("SourceSchemaName: " + getSourceSchemaName() + ",");
+            sb.append("SourceSchemaName: ").append(getSourceSchemaName()).append(",");
         if (getSourceTableName() != null)
-            sb.append("SourceTableName: " + getSourceTableName() + ",");
+            sb.append("SourceTableName: ").append(getSourceTableName()).append(",");
         if (getTargetDatabaseName() != null)
-            sb.append("TargetDatabaseName: " + getTargetDatabaseName() + ",");
+            sb.append("TargetDatabaseName: ").append(getTargetDatabaseName()).append(",");
         if (getTargetSchemaName() != null)
-            sb.append("TargetSchemaName: " + getTargetSchemaName() + ",");
+            sb.append("TargetSchemaName: ").append(getTargetSchemaName()).append(",");
         if (getNewTableName() != null)
-            sb.append("NewTableName: " + getNewTableName());
+            sb.append("NewTableName: ").append(getNewTableName());
         sb.append("}");
         return sb.toString();
     }
@@ -887,4 +892,5 @@ public class TableRestoreStatus implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

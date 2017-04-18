@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,8 @@
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -20,7 +22,11 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Represents a request to delete an email address from the list of email addresses you have attempted to verify under
  * your AWS account.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteVerifiedEmailAddress" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteVerifiedEmailAddressRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -82,7 +88,7 @@ public class DeleteVerifiedEmailAddressRequest extends com.amazonaws.AmazonWebSe
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEmailAddress() != null)
-            sb.append("EmailAddress: " + getEmailAddress());
+            sb.append("EmailAddress: ").append(getEmailAddress());
         sb.append("}");
         return sb.toString();
     }
@@ -117,4 +123,5 @@ public class DeleteVerifiedEmailAddressRequest extends com.amazonaws.AmazonWebSe
     public DeleteVerifiedEmailAddressRequest clone() {
         return (DeleteVerifiedEmailAddressRequest) super.clone();
     }
+
 }

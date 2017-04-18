@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,11 +13,11 @@
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
-/**
- * 
- */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateDataSourceFromS3Request extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -442,13 +442,13 @@ public class CreateDataSourceFromS3Request extends com.amazonaws.AmazonWebServic
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDataSourceId() != null)
-            sb.append("DataSourceId: " + getDataSourceId() + ",");
+            sb.append("DataSourceId: ").append(getDataSourceId()).append(",");
         if (getDataSourceName() != null)
-            sb.append("DataSourceName: " + getDataSourceName() + ",");
+            sb.append("DataSourceName: ").append(getDataSourceName()).append(",");
         if (getDataSpec() != null)
-            sb.append("DataSpec: " + getDataSpec() + ",");
+            sb.append("DataSpec: ").append(getDataSpec()).append(",");
         if (getComputeStatistics() != null)
-            sb.append("ComputeStatistics: " + getComputeStatistics());
+            sb.append("ComputeStatistics: ").append(getComputeStatistics());
         sb.append("}");
         return sb.toString();
     }
@@ -498,4 +498,5 @@ public class CreateDataSourceFromS3Request extends com.amazonaws.AmazonWebServic
     public CreateDataSourceFromS3Request clone() {
         return (CreateDataSourceFromS3Request) super.clone();
     }
+
 }

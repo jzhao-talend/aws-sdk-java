@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,14 @@
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains details about a workflow execution.
  * </p>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class WorkflowExecutionDetail extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -288,15 +290,15 @@ public class WorkflowExecutionDetail extends com.amazonaws.AmazonWebServiceResul
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExecutionInfo() != null)
-            sb.append("ExecutionInfo: " + getExecutionInfo() + ",");
+            sb.append("ExecutionInfo: ").append(getExecutionInfo()).append(",");
         if (getExecutionConfiguration() != null)
-            sb.append("ExecutionConfiguration: " + getExecutionConfiguration() + ",");
+            sb.append("ExecutionConfiguration: ").append(getExecutionConfiguration()).append(",");
         if (getOpenCounts() != null)
-            sb.append("OpenCounts: " + getOpenCounts() + ",");
+            sb.append("OpenCounts: ").append(getOpenCounts()).append(",");
         if (getLatestActivityTaskTimestamp() != null)
-            sb.append("LatestActivityTaskTimestamp: " + getLatestActivityTaskTimestamp() + ",");
+            sb.append("LatestActivityTaskTimestamp: ").append(getLatestActivityTaskTimestamp()).append(",");
         if (getLatestExecutionContext() != null)
-            sb.append("LatestExecutionContext: " + getLatestExecutionContext());
+            sb.append("LatestExecutionContext: ").append(getLatestExecutionContext());
         sb.append("}");
         return sb.toString();
     }
@@ -355,4 +357,5 @@ public class WorkflowExecutionDetail extends com.amazonaws.AmazonWebServiceResul
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

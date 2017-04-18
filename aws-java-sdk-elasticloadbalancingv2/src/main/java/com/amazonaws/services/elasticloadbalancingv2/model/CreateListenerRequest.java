@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,16 @@
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for CreateListener.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateListener"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateListenerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -411,17 +414,17 @@ public class CreateListenerRequest extends com.amazonaws.AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLoadBalancerArn() != null)
-            sb.append("LoadBalancerArn: " + getLoadBalancerArn() + ",");
+            sb.append("LoadBalancerArn: ").append(getLoadBalancerArn()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getSslPolicy() != null)
-            sb.append("SslPolicy: " + getSslPolicy() + ",");
+            sb.append("SslPolicy: ").append(getSslPolicy()).append(",");
         if (getCertificates() != null)
-            sb.append("Certificates: " + getCertificates() + ",");
+            sb.append("Certificates: ").append(getCertificates()).append(",");
         if (getDefaultActions() != null)
-            sb.append("DefaultActions: " + getDefaultActions());
+            sb.append("DefaultActions: ").append(getDefaultActions());
         sb.append("}");
         return sb.toString();
     }
@@ -481,4 +484,5 @@ public class CreateListenerRequest extends com.amazonaws.AmazonWebServiceRequest
     public CreateListenerRequest clone() {
         return (CreateListenerRequest) super.clone();
     }
+
 }

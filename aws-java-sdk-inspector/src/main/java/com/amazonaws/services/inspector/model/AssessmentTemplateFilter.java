@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,20 @@
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Used as the request parameter in the <a>ListAssessmentTemplates</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AssessmentTemplateFilter" target="_top">AWS
+ *      API Documentation</a>
  */
-public class AssessmentTemplateFilter implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssessmentTemplateFilter implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -243,11 +250,11 @@ public class AssessmentTemplateFilter implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNamePattern() != null)
-            sb.append("NamePattern: " + getNamePattern() + ",");
+            sb.append("NamePattern: ").append(getNamePattern()).append(",");
         if (getDurationRange() != null)
-            sb.append("DurationRange: " + getDurationRange() + ",");
+            sb.append("DurationRange: ").append(getDurationRange()).append(",");
         if (getRulesPackageArns() != null)
-            sb.append("RulesPackageArns: " + getRulesPackageArns());
+            sb.append("RulesPackageArns: ").append(getRulesPackageArns());
         sb.append("}");
         return sb.toString();
     }
@@ -295,5 +302,11 @@ public class AssessmentTemplateFilter implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.AssessmentTemplateFilterMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

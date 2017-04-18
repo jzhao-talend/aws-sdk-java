@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,19 @@
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The input for the <a>CreateChangeSet</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
@@ -123,7 +129,7 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      * assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your
-     * behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have
+     * behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have
      * permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to
      * pass it. Ensure that the role grants least privilege.
      * </p>
@@ -175,21 +181,19 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
     private String description;
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      */
     private String changeSetType;
 
@@ -1086,7 +1090,7 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      * assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your
-     * behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have
+     * behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have
      * permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to
      * pass it. Ensure that the role grants least privilege.
      * </p>
@@ -1098,9 +1102,9 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * @param roleARN
      *        The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      *        assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on
-     *        your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as
-     *        users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't
-     *        have permission to pass it. Ensure that the role grants least privilege.</p>
+     *        your behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users
+     *        have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have
+     *        permission to pass it. Ensure that the role grants least privilege.</p>
      *        <p>
      *        If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the
      *        stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your
@@ -1115,7 +1119,7 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      * assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your
-     * behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have
+     * behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have
      * permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to
      * pass it. Ensure that the role grants least privilege.
      * </p>
@@ -1126,9 +1130,9 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * 
      * @return The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS
      *         CloudFormation assumes when executing the change set. AWS CloudFormation uses the role's credentials to
-     *         make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the
-     *         stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even
-     *         if the users don't have permission to pass it. Ensure that the role grants least privilege.</p>
+     *         make calls on your behalf. AWS CloudFormation uses this role for all future operations on the stack. As
+     *         long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the
+     *         users don't have permission to pass it. Ensure that the role grants least privilege.</p>
      *         <p>
      *         If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the
      *         stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your
@@ -1143,7 +1147,7 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      * assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your
-     * behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have
+     * behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have
      * permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to
      * pass it. Ensure that the role grants least privilege.
      * </p>
@@ -1155,9 +1159,9 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
      * @param roleARN
      *        The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation
      *        assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on
-     *        your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as
-     *        users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't
-     *        have permission to pass it. Ensure that the role grants least privilege.</p>
+     *        your behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users
+     *        have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have
+     *        permission to pass it. Ensure that the role grants least privilege.</p>
      *        <p>
      *        If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the
      *        stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your
@@ -1503,36 +1507,33 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      * 
      * @param changeSetType
-     *        The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:</p>
-     *        <ul>
-     *        <li>
+     *        The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To
+     *        create a change set for an existing stack, specify <code>UPDATE</code>.</p>
      *        <p>
-     *        <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an
-     *        expected unique ID, but no template or resources. It can include multiple change sets.
+     *        If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but
+     *        no template or resources. The stack will be in the <a href=
+     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     *        <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      *        </p>
-     *        </li>
-     *        <li>
      *        <p>
-     *        <code>UPDATE</code> - Specify for a change set for an existing stack.
-     *        </p>
-     *        </li>
+     *        By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type
+     *        to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an
+     *        existing stack.
      * @see ChangeSetType
      */
 
@@ -1542,35 +1543,32 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      * 
-     * @return The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:</p>
-     *         <ul>
-     *         <li>
+     * @return The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To
+     *         create a change set for an existing stack, specify <code>UPDATE</code>.</p>
      *         <p>
-     *         <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an
-     *         expected unique ID, but no template or resources. It can include multiple change sets.
+     *         If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID,
+     *         but no template or resources. The stack will be in the <a href=
+     *         "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995"
+     *         > <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      *         </p>
-     *         </li>
-     *         <li>
      *         <p>
-     *         <code>UPDATE</code> - Specify for a change set for an existing stack.
-     *         </p>
-     *         </li>
+     *         By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type
+     *         to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an
+     *         existing stack.
      * @see ChangeSetType
      */
 
@@ -1580,36 +1578,33 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      * 
      * @param changeSetType
-     *        The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:</p>
-     *        <ul>
-     *        <li>
+     *        The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To
+     *        create a change set for an existing stack, specify <code>UPDATE</code>.</p>
      *        <p>
-     *        <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an
-     *        expected unique ID, but no template or resources. It can include multiple change sets.
+     *        If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but
+     *        no template or resources. The stack will be in the <a href=
+     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     *        <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      *        </p>
-     *        </li>
-     *        <li>
      *        <p>
-     *        <code>UPDATE</code> - Specify for a change set for an existing stack.
-     *        </p>
-     *        </li>
+     *        By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type
+     *        to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an
+     *        existing stack.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChangeSetType
      */
@@ -1621,36 +1616,33 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      * 
      * @param changeSetType
-     *        The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:</p>
-     *        <ul>
-     *        <li>
+     *        The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To
+     *        create a change set for an existing stack, specify <code>UPDATE</code>.</p>
      *        <p>
-     *        <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an
-     *        expected unique ID, but no template or resources. It can include multiple change sets.
+     *        If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but
+     *        no template or resources. The stack will be in the <a href=
+     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     *        <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      *        </p>
-     *        </li>
-     *        <li>
      *        <p>
-     *        <code>UPDATE</code> - Specify for a change set for an existing stack.
-     *        </p>
-     *        </li>
+     *        By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type
+     *        to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an
+     *        existing stack.
      * @see ChangeSetType
      */
 
@@ -1660,36 +1652,33 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:
+     * The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create
+     * a change set for an existing stack, specify <code>UPDATE</code>.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an expected
-     * unique ID, but no template or resources. It can include multiple change sets.
+     * If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no
+     * template or resources. The stack will be in the <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     * <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      * </p>
-     * </li>
-     * <li>
      * <p>
-     * <code>UPDATE</code> - Specify for a change set for an existing stack.
+     * By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to
+     * create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.
      * </p>
-     * </li>
-     * </ul>
      * 
      * @param changeSetType
-     *        The type of change set operation. Valid values are <code>CREATE</code> and <code>UPDATE</code>:</p>
-     *        <ul>
-     *        <li>
+     *        The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To
+     *        create a change set for an existing stack, specify <code>UPDATE</code>.</p>
      *        <p>
-     *        <code>CREATE</code> - Specify for a change set for a stack that does not yet exist. The stack has an
-     *        expected unique ID, but no template or resources. It can include multiple change sets.
+     *        If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but
+     *        no template or resources. The stack will be in the <a href=
+     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995">
+     *        <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.
      *        </p>
-     *        </li>
-     *        <li>
      *        <p>
-     *        <code>UPDATE</code> - Specify for a change set for an existing stack.
-     *        </p>
-     *        </li>
+     *        By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type
+     *        to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an
+     *        existing stack.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChangeSetType
      */
@@ -1711,33 +1700,33 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackName() != null)
-            sb.append("StackName: " + getStackName() + ",");
+            sb.append("StackName: ").append(getStackName()).append(",");
         if (getTemplateBody() != null)
-            sb.append("TemplateBody: " + getTemplateBody() + ",");
+            sb.append("TemplateBody: ").append(getTemplateBody()).append(",");
         if (getTemplateURL() != null)
-            sb.append("TemplateURL: " + getTemplateURL() + ",");
+            sb.append("TemplateURL: ").append(getTemplateURL()).append(",");
         if (getUsePreviousTemplate() != null)
-            sb.append("UsePreviousTemplate: " + getUsePreviousTemplate() + ",");
+            sb.append("UsePreviousTemplate: ").append(getUsePreviousTemplate()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getCapabilities() != null)
-            sb.append("Capabilities: " + getCapabilities() + ",");
+            sb.append("Capabilities: ").append(getCapabilities()).append(",");
         if (getResourceTypes() != null)
-            sb.append("ResourceTypes: " + getResourceTypes() + ",");
+            sb.append("ResourceTypes: ").append(getResourceTypes()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getNotificationARNs() != null)
-            sb.append("NotificationARNs: " + getNotificationARNs() + ",");
+            sb.append("NotificationARNs: ").append(getNotificationARNs()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getChangeSetName() != null)
-            sb.append("ChangeSetName: " + getChangeSetName() + ",");
+            sb.append("ChangeSetName: ").append(getChangeSetName()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getChangeSetType() != null)
-            sb.append("ChangeSetType: " + getChangeSetType());
+            sb.append("ChangeSetType: ").append(getChangeSetType());
         sb.append("}");
         return sb.toString();
     }
@@ -1837,4 +1826,5 @@ public class CreateChangeSetRequest extends com.amazonaws.AmazonWebServiceReques
     public CreateChangeSetRequest clone() {
         return (CreateChangeSetRequest) super.clone();
     }
+
 }

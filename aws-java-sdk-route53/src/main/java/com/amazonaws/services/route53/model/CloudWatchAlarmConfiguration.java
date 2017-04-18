@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,13 +13,18 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this
  * health check.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CloudWatchAlarmConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
 
     /**
@@ -58,7 +63,7 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * The namespace of the metric that the alarm is associated with. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      */
     private String namespace;
@@ -72,8 +77,8 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the
      * dimensions for the metric.For information, see <a
-     * href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Dimension> dimensions;
@@ -334,14 +339,13 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * The namespace of the metric that the alarm is associated with. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param namespace
      *        The namespace of the metric that the alarm is associated with. For more information, see <a
      *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *        Guide</i>.
+     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public void setNamespace(String namespace) {
@@ -352,13 +356,12 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * The namespace of the metric that the alarm is associated with. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @return The namespace of the metric that the alarm is associated with. For more information, see <a
      *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *         CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *         Guide</i>.
+     *         CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public String getNamespace() {
@@ -369,14 +372,13 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * The namespace of the metric that the alarm is associated with. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param namespace
      *        The namespace of the metric that the alarm is associated with. For more information, see <a
      *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *        Guide</i>.
+     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -462,15 +464,14 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the
      * dimensions for the metric.For information, see <a
-     * href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @return For the metric that the CloudWatch alarm is associated with, a complex type that contains information
      *         about the dimensions for the metric.For information, see <a
-     *         href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *         CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *         Guide</i>.
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     *         CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public java.util.List<Dimension> getDimensions() {
@@ -484,16 +485,15 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the
      * dimensions for the metric.For information, see <a
-     * href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param dimensions
      *        For the metric that the CloudWatch alarm is associated with, a complex type that contains information
      *        about the dimensions for the metric.For information, see <a
-     *        href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *        Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
@@ -509,8 +509,8 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the
      * dimensions for the metric.For information, see <a
-     * href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -521,9 +521,8 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * @param dimensions
      *        For the metric that the CloudWatch alarm is associated with, a complex type that contains information
      *        about the dimensions for the metric.For information, see <a
-     *        href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *        Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -541,16 +540,15 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
      * <p>
      * For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the
      * dimensions for the metric.For information, see <a
-     * href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param dimensions
      *        For the metric that the CloudWatch alarm is associated with, a complex type that contains information
      *        about the dimensions for the metric.For information, see <a
-     *        href=" http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
-     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch Developer
-     *        Guide</i>.
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     *        CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -571,21 +569,21 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEvaluationPeriods() != null)
-            sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+            sb.append("EvaluationPeriods: ").append(getEvaluationPeriods()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: " + getThreshold() + ",");
+            sb.append("Threshold: ").append(getThreshold()).append(",");
         if (getComparisonOperator() != null)
-            sb.append("ComparisonOperator: " + getComparisonOperator() + ",");
+            sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
         if (getPeriod() != null)
-            sb.append("Period: " + getPeriod() + ",");
+            sb.append("Period: ").append(getPeriod()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getStatistic() != null)
-            sb.append("Statistic: " + getStatistic() + ",");
+            sb.append("Statistic: ").append(getStatistic()).append(",");
         if (getDimensions() != null)
-            sb.append("Dimensions: " + getDimensions());
+            sb.append("Dimensions: ").append(getDimensions());
         sb.append("}");
         return sb.toString();
     }
@@ -659,4 +657,5 @@ public class CloudWatchAlarmConfiguration implements Serializable, Cloneable {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

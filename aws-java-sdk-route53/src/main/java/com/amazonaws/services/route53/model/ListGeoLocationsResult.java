@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,12 +13,17 @@
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type containing the response information for the request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListGeoLocations" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListGeoLocationsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
@@ -442,17 +447,17 @@ public class ListGeoLocationsResult extends com.amazonaws.AmazonWebServiceResult
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGeoLocationDetailsList() != null)
-            sb.append("GeoLocationDetailsList: " + getGeoLocationDetailsList() + ",");
+            sb.append("GeoLocationDetailsList: ").append(getGeoLocationDetailsList()).append(",");
         if (getIsTruncated() != null)
-            sb.append("IsTruncated: " + getIsTruncated() + ",");
+            sb.append("IsTruncated: ").append(getIsTruncated()).append(",");
         if (getNextContinentCode() != null)
-            sb.append("NextContinentCode: " + getNextContinentCode() + ",");
+            sb.append("NextContinentCode: ").append(getNextContinentCode()).append(",");
         if (getNextCountryCode() != null)
-            sb.append("NextCountryCode: " + getNextCountryCode() + ",");
+            sb.append("NextCountryCode: ").append(getNextCountryCode()).append(",");
         if (getNextSubdivisionCode() != null)
-            sb.append("NextSubdivisionCode: " + getNextSubdivisionCode() + ",");
+            sb.append("NextSubdivisionCode: ").append(getNextSubdivisionCode()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -516,4 +521,5 @@ public class ListGeoLocationsResult extends com.amazonaws.AmazonWebServiceResult
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

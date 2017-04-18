@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,6 +13,9 @@
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -20,12 +23,16 @@ import java.io.Serializable;
  * those servers or VMs using Run Command. A server or VM that has been registered with AWS is called a managed
  * instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/Activation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Activation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Activation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID created by SSM when you submitted the activation.
+     * The ID created by Systems Manager when you submitted the activation.
      * </p>
      */
     private String activationId;
@@ -80,11 +87,11 @@ public class Activation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID created by SSM when you submitted the activation.
+     * The ID created by Systems Manager when you submitted the activation.
      * </p>
      * 
      * @param activationId
-     *        The ID created by SSM when you submitted the activation.
+     *        The ID created by Systems Manager when you submitted the activation.
      */
 
     public void setActivationId(String activationId) {
@@ -93,10 +100,10 @@ public class Activation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID created by SSM when you submitted the activation.
+     * The ID created by Systems Manager when you submitted the activation.
      * </p>
      * 
-     * @return The ID created by SSM when you submitted the activation.
+     * @return The ID created by Systems Manager when you submitted the activation.
      */
 
     public String getActivationId() {
@@ -105,11 +112,11 @@ public class Activation implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID created by SSM when you submitted the activation.
+     * The ID created by Systems Manager when you submitted the activation.
      * </p>
      * 
      * @param activationId
-     *        The ID created by SSM when you submitted the activation.
+     *        The ID created by Systems Manager when you submitted the activation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -462,23 +469,23 @@ public class Activation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActivationId() != null)
-            sb.append("ActivationId: " + getActivationId() + ",");
+            sb.append("ActivationId: ").append(getActivationId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getDefaultInstanceName() != null)
-            sb.append("DefaultInstanceName: " + getDefaultInstanceName() + ",");
+            sb.append("DefaultInstanceName: ").append(getDefaultInstanceName()).append(",");
         if (getIamRole() != null)
-            sb.append("IamRole: " + getIamRole() + ",");
+            sb.append("IamRole: ").append(getIamRole()).append(",");
         if (getRegistrationLimit() != null)
-            sb.append("RegistrationLimit: " + getRegistrationLimit() + ",");
+            sb.append("RegistrationLimit: ").append(getRegistrationLimit()).append(",");
         if (getRegistrationsCount() != null)
-            sb.append("RegistrationsCount: " + getRegistrationsCount() + ",");
+            sb.append("RegistrationsCount: ").append(getRegistrationsCount()).append(",");
         if (getExpirationDate() != null)
-            sb.append("ExpirationDate: " + getExpirationDate() + ",");
+            sb.append("ExpirationDate: ").append(getExpirationDate()).append(",");
         if (getExpired() != null)
-            sb.append("Expired: " + getExpired() + ",");
+            sb.append("Expired: ").append(getExpired()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate());
+            sb.append("CreatedDate: ").append(getCreatedDate());
         sb.append("}");
         return sb.toString();
     }
@@ -556,5 +563,11 @@ public class Activation implements Serializable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.ActivationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

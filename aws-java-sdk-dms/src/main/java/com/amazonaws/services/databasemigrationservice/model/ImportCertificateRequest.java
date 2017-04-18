@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,33 +13,44 @@
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     * The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      * </p>
      */
     private String certificateIdentifier;
     /**
      * <p>
-     * The contents of the .pem X.509 certificate file.
+     * The contents of the .pem X.509 certificate file for the certificate.
      * </p>
      */
     private String certificatePem;
+    /**
+     * <p>
+     * The location of the imported Oracle Wallet certificate for use with SSL.
+     * </p>
+     */
+    private java.nio.ByteBuffer certificateWallet;
 
     /**
      * <p>
-     * The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     * The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      * </p>
      * 
      * @param certificateIdentifier
-     *        The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     *        The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      */
 
     public void setCertificateIdentifier(String certificateIdentifier) {
@@ -48,10 +59,10 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     * The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      * </p>
      * 
-     * @return The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     * @return The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      */
 
     public String getCertificateIdentifier() {
@@ -60,11 +71,11 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     * The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      * </p>
      * 
      * @param certificateIdentifier
-     *        The customer-assigned name of the certificate. Valid characters are [A-z_0-9].
+     *        The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -75,11 +86,11 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The contents of the .pem X.509 certificate file.
+     * The contents of the .pem X.509 certificate file for the certificate.
      * </p>
      * 
      * @param certificatePem
-     *        The contents of the .pem X.509 certificate file.
+     *        The contents of the .pem X.509 certificate file for the certificate.
      */
 
     public void setCertificatePem(String certificatePem) {
@@ -88,10 +99,10 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The contents of the .pem X.509 certificate file.
+     * The contents of the .pem X.509 certificate file for the certificate.
      * </p>
      * 
-     * @return The contents of the .pem X.509 certificate file.
+     * @return The contents of the .pem X.509 certificate file for the certificate.
      */
 
     public String getCertificatePem() {
@@ -100,16 +111,83 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The contents of the .pem X.509 certificate file.
+     * The contents of the .pem X.509 certificate file for the certificate.
      * </p>
      * 
      * @param certificatePem
-     *        The contents of the .pem X.509 certificate file.
+     *        The contents of the .pem X.509 certificate file for the certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ImportCertificateRequest withCertificatePem(String certificatePem) {
         setCertificatePem(certificatePem);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The location of the imported Oracle Wallet certificate for use with SSL.
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
+     * 
+     * @param certificateWallet
+     *        The location of the imported Oracle Wallet certificate for use with SSL.
+     */
+
+    public void setCertificateWallet(java.nio.ByteBuffer certificateWallet) {
+        this.certificateWallet = certificateWallet;
+    }
+
+    /**
+     * <p>
+     * The location of the imported Oracle Wallet certificate for use with SSL.
+     * </p>
+     * <p>
+     * {@code ByteBuffer}s are stateful. Calling their {@code get} methods changes their {@code position}. We recommend
+     * using {@link java.nio.ByteBuffer#asReadOnlyBuffer()} to create a read-only view of the buffer with an independent
+     * {@code position}, and calling {@code get} methods on this rather than directly on the returned {@code ByteBuffer}.
+     * Doing so will ensure that anyone else using the {@code ByteBuffer} will not be affected by changes to the
+     * {@code position}.
+     * </p>
+     * 
+     * @return The location of the imported Oracle Wallet certificate for use with SSL.
+     */
+
+    public java.nio.ByteBuffer getCertificateWallet() {
+        return this.certificateWallet;
+    }
+
+    /**
+     * <p>
+     * The location of the imported Oracle Wallet certificate for use with SSL.
+     * </p>
+     * <p>
+     * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
+     * Users of the SDK should not perform Base64 encoding on this field.
+     * </p>
+     * <p>
+     * Warning: ByteBuffers returned by the SDK are mutable. Changes to the content or position of the byte buffer will
+     * be seen by all objects that have a reference to this object. It is recommended to call ByteBuffer.duplicate() or
+     * ByteBuffer.asReadOnlyBuffer() before using or reading from the buffer. This behavior will be changed in a future
+     * major version of the SDK.
+     * </p>
+     * 
+     * @param certificateWallet
+     *        The location of the imported Oracle Wallet certificate for use with SSL.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportCertificateRequest withCertificateWallet(java.nio.ByteBuffer certificateWallet) {
+        setCertificateWallet(certificateWallet);
         return this;
     }
 
@@ -125,9 +203,11 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateIdentifier() != null)
-            sb.append("CertificateIdentifier: " + getCertificateIdentifier() + ",");
+            sb.append("CertificateIdentifier: ").append(getCertificateIdentifier()).append(",");
         if (getCertificatePem() != null)
-            sb.append("CertificatePem: " + getCertificatePem());
+            sb.append("CertificatePem: ").append(getCertificatePem()).append(",");
+        if (getCertificateWallet() != null)
+            sb.append("CertificateWallet: ").append(getCertificateWallet());
         sb.append("}");
         return sb.toString();
     }
@@ -150,6 +230,10 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getCertificatePem() != null && other.getCertificatePem().equals(this.getCertificatePem()) == false)
             return false;
+        if (other.getCertificateWallet() == null ^ this.getCertificateWallet() == null)
+            return false;
+        if (other.getCertificateWallet() != null && other.getCertificateWallet().equals(this.getCertificateWallet()) == false)
+            return false;
         return true;
     }
 
@@ -160,6 +244,7 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
 
         hashCode = prime * hashCode + ((getCertificateIdentifier() == null) ? 0 : getCertificateIdentifier().hashCode());
         hashCode = prime * hashCode + ((getCertificatePem() == null) ? 0 : getCertificatePem().hashCode());
+        hashCode = prime * hashCode + ((getCertificateWallet() == null) ? 0 : getCertificateWallet().hashCode());
         return hashCode;
     }
 
@@ -167,4 +252,5 @@ public class ImportCertificateRequest extends com.amazonaws.AmazonWebServiceRequ
     public ImportCertificateRequest clone() {
         return (ImportCertificateRequest) super.clone();
     }
+
 }
